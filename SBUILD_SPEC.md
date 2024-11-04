@@ -294,8 +294,6 @@ See some examples:
 > _disabled: false
 > pkg: "86box"
 > description: "Emulator of x86-based machines"
-> repology_pkg:
->  - "86box"
 > x_exec:
 >   shell: bash
 >   run: |
