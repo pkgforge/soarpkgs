@@ -2,8 +2,8 @@
 A `.SBUILD` file is a build script in spirit of [APKBUILD](https://wiki.alpinelinux.org/wiki/APKBUILD_Reference) & [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD), but fear not, it is much more flexible & forgiving.<br>
 It is a [yaml file](https://web.archive.org/web/2/https://spacelift.io/blog/yaml) & should be relatively easier to read, understand & write.<br>
 See some examples: 
-> - [Minimal](https://github.com/pkgforge/soarpkgs/main#minimal-bare-minimum)
-> - [Generic/Recommended](https://github.com/pkgforge/soarpkgs/main#generic-recommended)
+> - [Minimal](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#generic-recommended)
+> - [Generic/Recommended](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#generic-recommended)
 
 ### Prerequisite
 - We start by learning:
@@ -283,7 +283,6 @@ See some examples:
   > - `$pkg.version` file containing the `$version` information, Otherwise considered `latest`
   - At END, `soar` will copy all the needed files from this `$TMPDIR` to relevant dirs & cleanup (Unless used `--no-clean`)
   - At END, `soar` will also save the entire build log in "${SOAR_DIR}/.cache/logs"
-  - 
 </details>
 <!--  -->
 
@@ -299,7 +298,14 @@ See some examples:
 >   run: |
 >     #Remember we are inside some random dir and we have got the env vars injected ($pkg etc)
 >     #We use eget to download the AppImage
->     timeout 3m eget "https://github.com/86Box/86Box" --asset "Linux" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>     case "$(uname -m)" in
+>       aarch64)
+>         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         ;;
+>       x86_64)
+>         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         ;;
+>     esac
 >     #We extract the needed files soar wants
 >     "./${pkg}" --appimage-extract *.desktop 1>/dev/null && mv "./squashfs-root/"*.desktop "./${pkg}.desktop"
 >     "./${pkg}" --appimage-extract .DirIcon 1>/dev/null && mv "./squashfs-root/.DirIcon" "./.DirIcon"
@@ -368,7 +374,14 @@ See some examples:
 >   run: |
 >     #Remember we are inside some random dir and we have got the env vars injected ($pkg etc)
 >     #We use eget to download the AppImage
->     timeout 3m eget "https://github.com/86Box/86Box" --asset "Linux" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>     case "$(uname -m)" in
+>       aarch64)
+>         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         ;;
+>       x86_64)
+>         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         ;;
+>     esac
 >     #We extract the needed files soar wants
 >     "./${pkg}" --appimage-extract *.desktop 1>/dev/null && mv "./squashfs-root/"*.desktop "./${pkg}.desktop"
 >     "./${pkg}" --appimage-extract .DirIcon 1>/dev/null && mv "./squashfs-root/.DirIcon" "./.DirIcon"
