@@ -306,14 +306,6 @@ See some examples:
 >         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
 >         ;;
 >     esac
->     case "$(uname -m)" in
->       aarch64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
->         ;;
->       x86_64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
->         ;;
->     esac
 >     #We extract the needed files soar wants
 >     "./${pkg}" --appimage-extract *.desktop 1>/dev/null && mv "./squashfs-root/"*.desktop "./${pkg}.desktop"
 >     "./${pkg}" --appimage-extract .DirIcon 1>/dev/null && mv "./squashfs-root/.DirIcon" "./.DirIcon"
@@ -382,14 +374,6 @@ See some examples:
 >   run: |
 >     #Remember we are inside some random dir and we have got the env vars injected ($pkg etc)
 >     #We use eget to download the AppImage
->     case "$(uname -m)" in
->       aarch64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
->         ;;
->       x86_64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
->         ;;
->     esac
 >     case "$(uname -m)" in
 >       aarch64)
 >         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
