@@ -238,7 +238,25 @@ See some examples:
   - Can have single or multiple entries 
 </details>
 <!--  -->
-<details><summary><b><code>14. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>14. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
+
+  ```yaml
+  #Example ONLY
+  # $pkg itself will always be a default value, so not needed if contains only 1 program and that 1 program is $pkg itself
+  provides:
+    - "prog-a"
+    - "prog-b"
+  ```
+  - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
+  - This lists all programs that are fetched/built during the `x_exec.run` part.
+  - If this field is empty or doesn't exist, the interpreter will use `$pkg` as the only value of `provides` by default.
+  - If this field exists, soar will treat it as a `$pkg` family containing all programs from `provides`
+  - `soar install $pkg` by default will install all programs from `provides`. This is same as `$pkg` when `provides` is empty/nonexistent.
+  - `soar install $pkg/$prog` will only install `$prog` from the `$pkg`'s `.SBUILD`
+  - Can have single or multiple entries
+</details>
+<!--  -->
+<details><summary><b><code>15. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -251,7 +269,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>15. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>16. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -264,7 +282,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>16. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>17. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -279,7 +297,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>17. x_exec (TYPE:ENFORCED)</code></a></b></summary>
+<details><summary><b><code>18. x_exec (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
