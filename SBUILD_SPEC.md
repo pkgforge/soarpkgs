@@ -17,8 +17,9 @@ See some examples:
 
 
 ### Sections
+> ℹ️ Make sure to `Click ▶` to **Expand**
 <!--  -->
-<details><summary><b><code>1. Shebang (TYPE:ENFORCED)</code></a></b></summary>
+<details id="shebang"><summary><b><code>1. Shebang (TYPE:ENFORCED)</code></a></b></summary>
   
   - It starts with `#!/SBUILD ver @${VERSION}` `(TYPE:RECOMMENDED)`
   - It is followed by `_disabled: boolean`, which can either be `true` or `false` which will disable or enable the entire script respectively. `(TYPE:ENFORCED)`
@@ -28,7 +29,7 @@ See some examples:
   ```
 </details>
 <!--  -->
-<details><summary><b><code>2. Build Assets (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="build_asset"><summary><b><code>2. Build Assets (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -45,7 +46,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>3. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="build_util"><summary><b><code>3. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -63,7 +64,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>4. Pkg (TYPE:ENFORCED)</code></a></b></summary>
+<details id="pkg"><summary><b><code>4. Pkg (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -96,7 +97,7 @@ See some examples:
   > - `Note:` Interpreter will read the magic bytes to determine correct format in case this field is empty.
 </details>
 <!--  -->
-<details><summary><b><code>5. Category (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="category"><summary><b><code>5. Category (TYPE:RECOMMENDED)</code></a></b></summary>
 
   - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
   - If it is left empty or doesn't exist, It is set to `Utility` by default.
@@ -112,7 +113,7 @@ See some examples:
   > ```
 </details>
 <!--  -->
-<details><summary><b><code>6. Description (TYPE:ENFORCED)</code></a></b></summary>
+<details id="description"><summary><b><code>6. Description (TYPE:ENFORCED)</code></a></b></summary>
  
   ```yaml
   #Example ONLY
@@ -123,7 +124,7 @@ See some examples:
   - Otherwise Use abridged version from the `$pkg`'s Homepage etc
 </details> 
 <!--  -->
-<details><summary><b><code>7. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="desktop"><summary><b><code>7. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -136,7 +137,7 @@ See some examples:
   - This MAY BE OVERWRITTEN, if `x_exec.run` does something to the file, otherwise is used as the default `.Desktop` file
 </details>
 <!--  -->
-<details><summary><b><code>8. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="distro_pkg"><summary><b><code>8. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
  
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - Use [repology/projects/$pkg](https://repology.org/projects/) to quickly fetch this Information
@@ -165,7 +166,7 @@ See some examples:
   ``` 
 </details> 
 <!--  -->
-<details><summary><b><code>9. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="homepage"><summary><b><code>9. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -178,7 +179,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details><summary><b><code>10. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="icon"><summary><b><code>10. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   icon: "#A Direct RAW URL to download a icon/logo file"
@@ -191,7 +192,7 @@ See some examples:
   - If the `icon` file is NOT a `png` File, it MUST BE RENAMED to correct `$pkg.format` in the `x_exec.run` step.
 </details>
 <!--  -->
-<details><summary><b><code>11. License (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="license"><summary><b><code>11. License (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -210,7 +211,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details><summary><b><code>12. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="maintainer"><summary><b><code>12. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -225,7 +226,7 @@ See some examples:
   - You will usually add yourself to this field
 </details>
 <!--  -->
-<details><summary><b><code>13. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="note"><summary><b><code>13. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -238,7 +239,7 @@ See some examples:
   - Can have single or multiple entries 
 </details>
 <!--  -->
-<details><summary><b><code>14. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="provides"><summary><b><code>14. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -256,7 +257,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>15. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="repology"><summary><b><code>15. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -269,7 +270,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>16. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="src_url"><summary><b><code>16. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -282,7 +283,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>17. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="tag"><summary><b><code>17. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -297,7 +298,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>18. x_exec (TYPE:ENFORCED)</code></a></b></summary>
+<details id="x_exec"><summary><b><code>18. x_exec (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
