@@ -295,11 +295,11 @@ See some examples:
   - `Interpreter` will also setup `GITHUB_TOKEN` `GITLAB_TOKEN` `HF_TOKEN` if they were exported prior to running `soar build` (Useful for using [gh cli](https://cli.github.com/), [glab](https://gitlab.com/gitlab-org/cli), [eget](https://github.com/zyedidia/eget), [HF CLI](https://huggingface.co/docs/huggingface_hub/en/guides/cli) etc)
   - `Interpreter` will setup a `$TMPDIR` & set it as Current Working Dir `CWD`
   - The Shell CMDs here can be anything but MUST, at end, produce the following files:
-  > - `$pkg` file (`>100 KB`), this is the main Pkg we are trying to Install
+  > - `$pkg` file (`>100KB`), this is the main Pkg we are trying to Install
   > - `$pkg.desktop` file (`>3B`) if `$pkg_type` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `desktop`]
-  > - `.DirIcon` file (`>3B`) if `$pkg_type` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `icon`, but may need to rename it to correct `$pkg.format`]
-  > - `$pkg.png` file (`>3B`) if `$pkg_type` is a Portable Format like AppImage & `.DirIcon` doesn't exist
-  > - `$pkg.version` file containing the `$version` information, Otherwise considered `latest`
+  > - `.DirIcon` file (`>1KB`) if `$pkg_type` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `icon`, but may need to rename it to correct `$pkg.format`]
+  > - `$pkg.png` file (`>1KB`) if `$pkg_type` is a Portable Format like AppImage & `.DirIcon` doesn't exist
+  > - `$pkg.version` file (`>3B`) containing the `$version` information, Otherwise considered `latest`
   - At END, `soar` will copy all the needed files from this `$TMPDIR` to relevant dirs & cleanup (Unless used `--no-clean`)
   - At END, `soar` will also save the entire build log in "${SOAR_DIR}/.cache/logs"
 </details>
@@ -333,10 +333,10 @@ See some examples:
 >     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${pkg}.version"
 >     #We do a final sanity check to ensure we have all the needed files
 >     if [[ -s "./${pkg}" && $(stat -c%s "./${pkg}") -gt 1024 ]] && \
->        [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 1024 ]] && \
+>        [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 3 ]] && \
 >        [[ -s "./.DirIcon" && $(stat -c%s "./.DirIcon") -gt 1024 ]] && \
 >        [[ -s "./${pkg}.png" && $(stat -c%s "./${pkg}.png") -gt 1024 ]] && \
->        [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 1024 ]]; then
+>        [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 3 ]]; then
 >       echo "All files exist"
 >     else
 >        echo "One or more files are missing or less than 1KB."
@@ -409,10 +409,10 @@ See some examples:
 >     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${pkg}.version"
 >     #We do a final sanity check to ensure we have all the needed files
 >     if [[ -s "./${pkg}" && $(stat -c%s "./${pkg}") -gt 1024 ]] && \
->        [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 1024 ]] && \
+>        [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 3 ]] && \
 >        [[ -s "./.DirIcon" && $(stat -c%s "./.DirIcon") -gt 1024 ]] && \
 >        [[ -s "./${pkg}.png" && $(stat -c%s "./${pkg}.png") -gt 1024 ]] && \
->        [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 1024 ]]; then
+>        [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 3 ]]; then
 >       echo "All files exist"
 >     else
 >        echo "One or more files are missing or less than 1KB."
