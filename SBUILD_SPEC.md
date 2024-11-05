@@ -12,6 +12,7 @@ See some examples:
 > - `NON_ENFORCED` means the field is Skippable & NOT Mandatory
 > - `RECOMMENDED` means, it can be skipped, but best to try to include it if possible
 > - `$TMPDIR` is a temporary directory the `Interpreter` uses to run the `.SBUILD` Script in.
+> - `x_exec.run` refers to the raw/vanilla shell cmds that are run
 - It is always RECOMMENDED to check your `.SBUILD` with [yamllint](https://www.yamllint.com/) & the `x_exec.run` with [shellcheck](https://www.shellcheck.net/)
 
 
@@ -27,24 +28,42 @@ See some examples:
   ```
 </details>
 <!--  -->
-<details><summary><b><code>2. Bootstrap (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>2. Build Assets (TYPE:NON_ENFORCED)</code></a></b></summary>
+
+  ```yaml
+  #Example ONLY
+  #soar will add these using soar dl to $TMPDIR/$OUT prior to running the x_exec part
+  build_asset:
+    - url: "https://example.com/fileA.tar" #soar dl downloads it
+      out: "example_01.tar" #It's saved as $TMPDIR/example_01.tar
+    - url: "https://example.com/abc.gif" #soar dl downloads it
+      out: "xyz.gif" #It's saved as xyz.gif
+  ```
+  - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
+  - This can be used to pull in Static Assets needed for `x_exec.run` part
+  - The benefit of using this over doing it manually in `x_exec.run` is that it's parallelized & pre-downloaded
+  - Can have single or multiple entries
+</details>
+<!--  -->
+<details><summary><b><code>3. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
   #WARNING: DO NOT USE THIS TO INSTALL STUFF LIKE GIT as that is known not to work as static binary
-  #This should only be used for static bins, until soar's unipkg wrapper is ready
+  #This should only be used for static bins, (use build_dep instead CURRENTLY NOT IMPLEMENTED)
   #soar will add these using soar dl temporarily in cache prior to running the x_exec part
-  bootstrap:
+  build_util:
     - "curl" #for web stuff
-    - "eget" #to dl from github
-    - "ouch" #to extract archives
+    - "eget" #to dl from github without curl + jq
+    - "ouch" #to extract archives easily without remembering flags
   ```
-  - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
+  - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - This can be used to pull in Static Binaries if some extra tools are being used
+  - Use this only if your distro doesn't provide it or you need the latest version of a tool
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>3. Pkg (TYPE:ENFORCED)</code></a></b></summary>
+<details><summary><b><code>4. Pkg (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -77,7 +96,7 @@ See some examples:
   > - `Note:` Interpreter will read the magic bytes to determine correct format in case this field is empty.
 </details>
 <!--  -->
-<details><summary><b><code>4. Category (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>5. Category (TYPE:RECOMMENDED)</code></a></b></summary>
 
   - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
   - If it is left empty or doesn't exist, It is set to `Utility` by default.
@@ -93,7 +112,7 @@ See some examples:
   > ```
 </details>
 <!--  -->
-<details><summary><b><code>5. Description (TYPE:ENFORCED)</code></a></b></summary>
+<details><summary><b><code>6. Description (TYPE:ENFORCED)</code></a></b></summary>
  
   ```yaml
   #Example ONLY
@@ -104,7 +123,7 @@ See some examples:
   - Otherwise Use abridged version from the `$pkg`'s Homepage etc
 </details> 
 <!--  -->
-<details><summary><b><code>6. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>7. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -117,7 +136,7 @@ See some examples:
   - This MAY BE OVERWRITTEN, if `x_exec.run` does something to the file, otherwise is used as the default `.Desktop` file
 </details>
 <!--  -->
-<details><summary><b><code>7. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>8. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
  
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - Use [repology/projects/$pkg](https://repology.org/projects/) to quickly fetch this Information
@@ -146,7 +165,7 @@ See some examples:
   ``` 
 </details> 
 <!--  -->
-<details><summary><b><code>8. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>9. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -159,7 +178,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details><summary><b><code>9. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>10. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   icon: "#A Direct RAW URL to download a icon/logo file"
@@ -172,7 +191,7 @@ See some examples:
   - If the `icon` file is NOT a `png` File, it MUST BE RENAMED to correct `$pkg.format` in the `x_exec.run` step.
 </details>
 <!--  -->
-<details><summary><b><code>10. License (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>11. License (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -191,7 +210,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details><summary><b><code>11. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>12. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -206,7 +225,7 @@ See some examples:
   - You will usually add yourself to this field
 </details>
 <!--  -->
-<details><summary><b><code>12. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details><summary><b><code>13. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -219,7 +238,7 @@ See some examples:
   - Can have single or multiple entries 
 </details>
 <!--  -->
-<details><summary><b><code>13. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>14. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -232,7 +251,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>14. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>15. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -245,7 +264,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>15. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
+<details><summary><b><code>16. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -260,7 +279,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details><summary><b><code>16. x_exec (TYPE:ENFORCED)</code></a></b></summary>
+<details><summary><b><code>17. x_exec (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -361,7 +380,7 @@ See some examples:
 > note:
 >  - "Officially Created AppImage. Check/Report @ https://github.com/86Box/86Box"
 >  - "You need to download ROMS: https://86box.readthedocs.io/en/latest/usage/roms.html"
-> repology_pkg:
+> repology:
 >  - "86box"
 > src_url: "https://github.com/86Box/86Box"
 > tag:
