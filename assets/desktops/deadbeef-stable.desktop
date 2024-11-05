@@ -1,0 +1,38 @@
+[Desktop Entry]
+Type=Application
+Name=DeaDBeeF
+GenericName=Audio Player
+Comment=Listen to music
+Icon=deadbeef
+Exec=deadbeef %F
+Terminal=false
+Actions=Play;Pause;Toggle-Pause;Stop;Next;Prev;
+MimeType=application/ogg;audio/x-vorbis+ogg;application/x-ogg;audio/mp3;audio/prs.sid;audio/x-flac;audio/mpeg;audio/x-mpeg;audio/x-mod;audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mpegurl;audio/x-scpls;application/x-cue;
+Categories=Audio;AudioVideo;Player;GTK;
+Keywords=Sound;Music;Audio;Player;Musicplayer;MP3;
+X-Ayatana-Desktop-Shortcuts=Play;Pause;Stop;Next;Prev;
+X-PulseAudio-Properties=media.role=music
+
+[Desktop Action Play]
+Name=Play
+Exec=deadbeef --play
+
+[Desktop Action Pause]
+Name=Pause
+Exec=deadbeef --pause
+
+[Desktop Action Toggle-Pause]
+Name=Toggle Pause
+Exec=deadbeef --toggle-pause
+
+[Desktop Action Stop]
+Name=Stop
+Exec=deadbeef --stop
+
+[Desktop Action Next]
+Name=Next
+Exec=deadbeef --next
+
+[Desktop Action Prev]
+Name=Prev
+Exec=deadbeef --prev
