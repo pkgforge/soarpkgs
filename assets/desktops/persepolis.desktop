@@ -1,0 +1,25 @@
+[Desktop Entry]
+Actions=Open;Tray;
+Categories=Qt;Network;
+Comment[en_US]=Download Manager
+Comment=Download Manager
+Exec=persepolis
+GenericName[en_US]=Download Manager
+GenericName=Download Manager
+Icon=persepolis
+Keywords=Internet;WWW;Web;
+Name[en_US]=Persepolis Download Manager
+Name=Persepolis Download Manager
+StartupNotify=true
+StartupWMClass=com.github.persepolisdm.persepolis
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false
+
+[Desktop Action Open]
+Exec=persepolis
+Name=Start Persepolis
+
+[Desktop Action Tray]
+Exec=persepolis --tray
+Name=Start in System Tray
