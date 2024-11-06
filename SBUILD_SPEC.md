@@ -146,7 +146,7 @@ See some examples:
   distro_pkg:
    #Not ALL fileds are necessary, they can be left empty or deleted
     #suggests alpine has it
-    alpine
+    alpine:
       - "mypkg"
     #suggests archlinux has it
     archlinux:
