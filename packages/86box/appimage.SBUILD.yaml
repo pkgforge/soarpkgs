@@ -6,9 +6,11 @@ pkg: "86box"
 pkg_id: "net._86box._86Box"
 pkg_type: "appimage"
 build_util:
+  - "7z"
   - "curl"
   - "eget"
   - "rsync"
+  - "wget"
 category:
   - "Emulator"
 description: "Emulator of x86-based machines"
