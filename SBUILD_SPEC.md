@@ -53,6 +53,7 @@ See some examples:
   #WARNING: DO NOT USE THIS TO INSTALL STUFF LIKE GIT as that is known not to work as static binary
   #This should only be used for static bins, (use build_dep instead CURRENTLY NOT IMPLEMENTED)
   #soar will add these using soar dl temporarily in cache prior to running the x_exec part
+  #if these are already installed/cached by soar, soar will skip them (Unless Upgrade is found)
   build_util:
     - "curl" #for web stuff
     - "eget" #to dl from github without curl + jq
