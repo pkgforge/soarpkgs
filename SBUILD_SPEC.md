@@ -84,16 +84,16 @@ See some examples:
   > > xxx.io.github.SuperApp --> #Created from a the site's Homepage: SuperApp.github.io
   > > xxx.com.github.CoolApp --> #Created from https://github.com/CoolApp
   > > ```
-  > - `pkg_type` is the Package Format, it can be one of the following (`Case-Sensitive`) `(TYPE:RECOMMENDED)` :
-  > > - [`AppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPIMAGES.md) denotes it is an [AppImage](https://appimage.org/)
-  > > - [`AppBundle`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPBUNDLES.md) denotes it is an [AppBundle](https://github.com/xplshn/pelf/)
+  > - `pkg_type` is the Package Format, it can be one of the following (`lowercase`) `(TYPE:RECOMMENDED)` :
+  > > - [`AppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPIMAGES.md) denotes it is an [AppImage](https://appimage.org/) `pkg_type: "appimage"`
+  > > - [`AppBundle`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPBUNDLES.md) denotes it is an [AppBundle](https://github.com/xplshn/pelf/) `pkg_type: "appbundle"`
   > > - [`archive`](https://github.com/ouch-org/ouch?tab=readme-ov-file#supported-formats) denotes it is an archive format: `.7z` `.bz` `.bz2` `.gz` `.lz4` `.lzma` `.rar` `.sz` `.tar` `.xz` `.zst` or a mix-mash of these.
-  > > - [`dynamic`]() denotes it is a Dynamic Binary
-  > > - [`FlatImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/FLATIMAGES.md) denotes it is a [FlatImage](https://github.com/ruanformigoni/flatimage)
-  > > - [`GameImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/GAMEIMAGES.md) denotes it is a [GameImage](https://github.com/ruanformigoni/gameimage)
-  > > - [`NixAppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/NIXAPPIMAGES.md) denotes it is a [NixAppImage](https://github.com/ralismark/nix-appimage)
-  > > - [`RunImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/RUNIMAGES.md) denotes it is a [RunImage](https://github.com/VHSgunzo/runimage)
-  > > - [`static`](https://en.wikipedia.org/wiki/Static_build) denotes it is a Static Binary
+  > > - [`dynamic`]() denotes it is a Dynamic Binary `pkg_type: "dynamic"`
+  > > - [`FlatImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/FLATIMAGES.md) denotes it is a [FlatImage](https://github.com/ruanformigoni/flatimage) `pkg_type: "flatimage"`
+  > > - [`GameImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/GAMEIMAGES.md) denotes it is a [GameImage](https://github.com/ruanformigoni/gameimage) `pkg_type: "gameimage"`
+  > > - [`NixAppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/NIXAPPIMAGES.md) denotes it is a [NixAppImage](https://github.com/ralismark/nix-appimage) `pkg_type: "nixappimage"`
+  > > - [`RunImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/RUNIMAGES.md) denotes it is a [RunImage](https://github.com/VHSgunzo/runimage) `pkg_type: "runimage"`
+  > > - [`static`](https://en.wikipedia.org/wiki/Static_build) denotes it is a Static Binary `pkg_type: "static"`
   > - `Note:` Interpreter will read the magic bytes to determine correct format in case this field is empty.
 </details>
 <!--  -->
