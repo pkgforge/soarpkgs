@@ -88,7 +88,7 @@ See some examples:
   > - `pkg_type` is the Package Format, it can be one of the following (`lowercase`) `(TYPE:RECOMMENDED)` :
   > > - [`AppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPIMAGES.md) denotes it is an [AppImage](https://appimage.org/) `pkg_type: "appimage"`
   > > - [`AppBundle`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPBUNDLES.md) denotes it is an [AppBundle](https://github.com/xplshn/pelf/) `pkg_type: "appbundle"`
-  > > - [`archive`](https://github.com/ouch-org/ouch?tab=readme-ov-file#supported-formats) denotes it is an archive format: `.7z` `.bz` `.bz2` `.gz` `.lz4` `.lzma` `.rar` `.sz` `.tar` `.xz` `.zst` or a mix-mash of these.
+  > > - [`archive`](https://github.com/ouch-org/ouch?tab=readme-ov-file#supported-formats) denotes it is an archive (`SELF-EXTRACTABLE`) format: `.7z` `.bz` `.bz2` `.gz` `.lz4` `.lzma` `.rar` `.sz` `.tar` `.xz` `.zst` or a mix-mash of these. This includes formats like [alpix](https://github.com/QaidVoid/alpix), [staticx](https://github.com/JonathonReinhart/staticx) etc. `pkg_type: "archive"`
   > > - [`dynamic`]() denotes it is a Dynamic Binary `pkg_type: "dynamic"`
   > > - [`FlatImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/FLATIMAGES.md) denotes it is a [FlatImage](https://github.com/ruanformigoni/flatimage) `pkg_type: "flatimage"`
   > > - [`GameImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/GAMEIMAGES.md) denotes it is a [GameImage](https://github.com/ruanformigoni/gameimage) `pkg_type: "gameimage"`
@@ -176,6 +176,8 @@ See some examples:
     - "https://mypkg.readthedocs.io"
   ```
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
+  - This contains the urls to homepage, project page & source code (Git/SVN/etc)
+  - This should `NOT BE CONFUSED` with `src_url` which <ins>contains urls</ins> to the page that contains the `download_link`
   - Can have single or multiple entries
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
@@ -271,7 +273,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="src_url"><summary><b><code>16. Source URL (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="src_url"><summary><b><code>16. Source (Download) URL (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -280,8 +282,9 @@ See some examples:
     - "https://github.com/mypkg"
   ```
   - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
-  - This contains the url to source code (Git/SVN/etc)
-  - Can have single or multiple entries
+  - This contains the url to the `download/source` page which contains the download link for the `pkg`
+  - This should `NOT BE CONFUSED` with `homepage`
+  - Can have only single or multiple entries
 </details>
 <!--  -->
 <details id="tag"><summary><b><code>17. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
