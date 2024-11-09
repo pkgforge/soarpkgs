@@ -273,7 +273,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="src_url"><summary><b><code>16. Source (Download) URL (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="src_url"><summary><b><code>16. Source (Download) URL (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -281,7 +281,7 @@ See some examples:
     - "https://gitlab.com/mypkg"
     - "https://github.com/mypkg"
   ```
-  - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
+  - This MUST contain at least `1` URL `(TYPE:ENFORCED)`
   - This contains the url to the `download/source` page which contains the download link for the `pkg`
   - This should `NOT BE CONFUSED` with `homepage`
   - Can have only single or multiple entries
