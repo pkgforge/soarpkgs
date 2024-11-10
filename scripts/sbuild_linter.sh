@@ -2,13 +2,22 @@
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
-#
-#set -x
+# DEBUG=1|ON sbuild-linter example.SBUILD --> runs with set -x
+# SHOW_DIFF=1|ON sbuild-linter example.SBUILD --> shows diff between example.SBUILD & example.SBUILD.validated
+# SHELLCHECK=0|OFF sbuild-linter example.SBUILD --> Disables Shellcheck
+#-------------------------------------------------------#
+
+#-------------------------------------------------------#
+
 #-------------------------------------------------------#
 
 #-------------------------------------------------------#
 sbuild_linter()
  {
+ ##Enable Debug 
+ if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
+    set -x
+ fi 
  ##ENV
   #INPUT="${1:-$(cat)}"
   INPUT="${1:-$(echo "$@" | tr -d '[:space:]')}"
@@ -35,13 +44,26 @@ sbuild_linter()
  #jq: Needed for some validators, yq's json support is limited
  #Shellcheck: Needed for checking x_exec.run
  #Yq: The main parser & validator
- for DEP_CMD in grep jq sed shellcheck yq; do
+ for DEP_CMD in grep jq sed yq; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
         "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\nInstall: soar add ${DEP_CMD} --yes\n"
             export CONTINUE_SBUILD="NO"
             return 1 ;;
     esac
  done
+ if [ "${SHELLCHECK}" != "0" ] || [ "${SHELLCHECK}" != "OFF" ]; then
+   if ! command -v "shellcheck" >/dev/null 2>&1; then
+     echo -e "\n[✗] FATAL: shellcheck is NOT INSTALLED\nInstall: soar add shellcheck --yes\n"
+     export CONTINUE_SBUILD="NO"
+     return 1
+   fi
+ fi
+ ##Docs
+  show_docs(){
+   echo -e "[+] Build Docs: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md"
+   echo -e "[+] Spec Docs: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md\n"
+  }
+  export -f show_docs
  ##Validate
  #yaml
   validate_yaml(){
@@ -51,14 +73,27 @@ sbuild_linter()
        export CONTINUE_SBUILD="NO" && return 1
     fi
    #Validator (Proper Yaml file), relying on exit status is good enough
-    if ! yq eval . "$(sed 's/[[:space:]]*$//' "${SRC_SBUILD}")" >/dev/null 2>&1; then
-       echo -e "\n[✗] ERROR (Validation Failed) Incorrect SBUILD File, Please recheck @ https://www.yamllint.com/\n"
+    if ! yq eval . <(sed 's/[[:space:]]*$//' "${SRC_SBUILD}") >/dev/null 2>&1; then
+      echo -e "\n[✗] ERROR (Validation Failed) Incorrect SBUILD File, Please recheck @ https://www.yamllint.com"
+      show_docs
       #Also show what went wrong, (could capture the output status & log at same time, and print that, instead of rerunning? )
        yq eval . "${SRC_SBUILD}"
        export CONTINUE_SBUILD="NO" && return 1
     else
       echo -e "[✓] ${SRC_SBUILD} is a Valid YAML File"
       export CONTINUE_SBUILD="YES"
+    fi
+   #Validator (_disabled)
+    if yq eval 'has("_disabled")' "${SRC_SBUILD}" >/dev/null 2>&1; then
+     if ! yq eval '.["_disabled"] == true or .["_disabled"] == false' "${SRC_SBUILD}" >/dev/null 2>&1; then
+       echo -e "\n[✗] ERROR (Validation Failed) '_disabled' must either be '_disabled: false' OR '_disabled: true'"
+       show_docs
+     else
+      export CONTINUE_SBUILD="YES"
+     fi
+    else
+      echo -e "\n[✗] ERROR (Validation Failed) '_disabled' DOES NOT EXIST"
+      show_docs
     fi
    #Validator (No Empty Entries)
     unset SBUILD_EMPTIES ; SBUILD_EMPTIES="$(grep '""' "${SRC_SBUILD}")"
@@ -77,7 +112,7 @@ sbuild_linter()
     if [ -n "${SBUILD_DUPES}" ]; then
       echo -e "\n[✗] ERROR (Validation Failed) Duplicate Entries, Please recheck @ https://www.yamllint.com/\n"
       echo -e "${SBUILD_DUPES}\n"
-      export CONTINUE_SBUILD="NO"
+      export CONTINUE_SBUILD="NO" && return 1
     else
       echo -e "[✓] ${SRC_SBUILD} contains No Duplicate Entries"
       export CONTINUE_SBUILD="YES"
@@ -93,38 +128,131 @@ sbuild_linter()
     done
     if [ ${#MISSING_FIELDS[@]} -ne 0 ]; then
       echo -e "[✗] ERROR (Validation Failed) Missing Fields (or Empty Value): ${MISSING_FIELDS[*]}"
-      export CONTINUE_SBUILD="NO"
+      export CONTINUE_SBUILD="NO" && return 1
     else
       echo -e "[✓] ${SRC_SBUILD_TMP} contains ALL ENFORCED Fields"
       export CONTINUE_SBUILD="YES"
     fi
+   #Validator (Fields containing single Values)
+   SINGLE_VALUES=(".pkg" ".pkg_id" ".pkg_type" ".description")
+   for VALUE in "${SINGLE_VALUES[@]}"; do
+      VALUE_CHECK="$(yq eval "${VALUE} | type" "${SRC_SBUILD_TMP}")"
+      VALUE_CHECK="$(echo "${VALUE_CHECK}" | sed 's/^!!//')"
+     if [[ "${VALUE_CHECK}" == "array" || "${VALUE_CHECK}" == "seq" ]]; then
+        echo -e "[✗] ERROR (Validation Failed) '${VALUE}' contains Multiple Entries (Array/Sequence):"
+        yq eval "${VALUE}" "${SRC_SBUILD_TMP}"
+        export CONTINUE_SBUILD="NO" && return 1
+     #elif [[ "${VALUE_CHECK}" == "null" ]]; then
+     #   echo -e "[-] WARNING '${VALUE}' NOT Found in ${SRC_SBUILD_TMP}"
+     elif [[ "${VALUE_CHECK}" != "str" ]]; then
+        echo -e "[✗] ERROR (Validation Failed) '${VALUE}' is NOT A STRING (is ${VALUE_CHECK} ?)"
+        export CONTINUE_SBUILD="NO" && return 1
+     elif [[ "${VALUE_CHECK}" != "null" && "${VALUE_CHECK}" != "str" && "${VALUE_CHECK}" != "array" ]]; then
+       echo -e "[✗] ERROR YQ Parser is broken (Was Checking Single Values for '${VALUE}', Found ${VALUE_CHECK})"
+       export CONTINUE_SBUILD="NO" && return 1
+     else
+       export CONTINUE_SBUILD="YES"
+     fi
+   done
    #Validator (ENFORCED Values match a pattern)
-    #EMPTY SPACES/CHARS (.pkg)
-    unset EMPTIES ; EMPTIES="$(yq eval '.pkg | select(test("^[a-zA-Z0-9-_+]+$") | not) | . as $value | $value | match("[^a-zA-Z0-9-_+]";"g") | select(.string == " ") | .offset' "${SRC_SBUILD_TMP}" | paste -sd ' ' -)"
-    if [ ${#EMPTIES[@]} -ne 0 ]; then
-       VALUE="$(yq eval '.pkg' ${SRC_SBUILD_TMP})"
-       echo -e "[✗] ERROR (Validation Failed) '.pkg' Contains Empty WhiteSpaces/TabChars == (${VALUE}) @Positions: ${EMPTIES}"
-       export CONTINUE_SBUILD="NO"
-    fi
-    #IF NOT Exists, create, if exist, Validate
+    #EMPTY SPACES & SPECIAL CHARS
+     for FIELD in ".pkg" ".pkg_id" ".pkg_type"; do
+         CHARS="$(yq eval "${FIELD}" "${SRC_SBUILD_TMP}")"
+         INVALID_CHARS=""
+         for i in $(seq 0 $((${#CHARS} - 1))); do
+             CHAR="${CHARS:i:1}"
+             [[ "${CHAR}" =~ [[:space:][:punct:]] && ! "${CHAR}" =~ [\+\-_\.] ]] && INVALID_CHARS+="${CHAR// /[SPACE]} "
+         done
+         if [[ -n "${INVALID_CHARS}" ]]; then
+             echo -e "[✗] ERROR (Validation Failed) '${FIELD}' == (${CHARS}) has Invalid Characters : ${INVALID_CHARS}"
+             export CONTINUE_SBUILD="NO" && return 1
+         else
+           export CONTINUE_SBUILD="YES"
+         fi
+     done
+    #Only Accepted (.pkg_type)
+     readarray -t PKG_TYPES < <(echo -e "appbundle\nappimage\narchive\ndynamic\nflatimage\ngameimage\nnixappimage\nrunimage\nstatic")
+     PKG_TYPE="$(yq eval '.pkg_type' "${SRC_SBUILD_TMP}" 2>/dev/null)"
+     VALID_PKGTYPE=false
+     for TYPE in "${PKG_TYPES[@]}"; do
+         if [[ "${PKG_TYPE}" == "${TYPE}" ]]; then
+             VALID_PKGTYPE=true
+             break
+         fi
+     done
+     if [[ "${VALID_PKGTYPE}" == false ]]; then
+       echo -e "[✗] ERROR (Validation Failed) '.pkg_type' has Invalid Type: ${PKG_TYPE}"
+       echo -e "[-] Correct Types (Only 1): ${PKG_TYPES[*]}"
+       export CONTINUE_SBUILD="NO" && return 1
+     else
+       export CONTINUE_SBUILD="YES"
+     fi
+    #IF NOT Exists, create, if exist, Validate (.category)
      #https://specifications.freedesktop.org/menu-spec/latest/category-registry.html#main-category-registry
      #https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html
-    CATEGORIES="$(curl -qfsSL 'https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/assets/category.json' | jq -r '.[] | keys[]' | sort -u | paste -sd ' ' -)"
-
-
-
-
-
-    
+     unset CATEGORIES ; CATEGORIES="$(curl -qfsSL 'https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/assets/category.json' | jq -r '.[] | keys[]' | sort -u)"
+     if [ -n "${CATEGORIES}" ]; then
+        CATS="$(yq eval '.category | join("\n")' "${SRC_SBUILD_TMP}" 2>/dev/null)"
+        if [ -n "${CATS}" ]; then
+          CATS=($(echo "${CATS}" | awk 'NF'))
+          INVALID_CAT=()
+          for CAT in "${CATS[@]}"; do
+             if ! echo "${CATEGORIES}" | grep -qx "${CAT}"; then
+                 INVALID_CAT+=("${CAT}")
+             fi
+          done
+          if [ ${#INVALID_CAT[@]} -ne 0 ]; then
+            echo -e "[✗] ERROR (Validation Failed) Invalid Categories"
+            echo -e "[-] Main Categories: https://specifications.freedesktop.org/menu-spec/latest/category-registry.html#main-category-registry"
+            echo -e "[-] Additional Categories: https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html"
+            echo -e "[-] Remove or Leave this field empty to AutoUse 'Utility' (Put this value in 'tag' Instead):"
+            for I_CAT in "${INVALID_CAT[@]}"; do
+                echo " - \"${I_CAT}\""
+            done
+            export CONTINUE_SBUILD="NO" && return 1
+          else
+           export CONTINUE_SBUILD="YES"
+          fi
+        else
+          echo -e "[-] No Categories Found... Setting it to 'Utility'"
+          echo -e "[-] Main Categories: https://specifications.freedesktop.org/menu-spec/latest/category-registry.html#main-category-registry"
+          echo -e "[-] Additional Categories: https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html"
+          sed '/^category:/,/^description:/ { /^description:/!d }' -i "${SRC_SBUILD_TMP}"
+          sed '/description:/i category:\n  - "Utility"' -i "${SRC_SBUILD_TMP}"
+          CATS="$(yq eval '.category | join("\n")' "${SRC_SBUILD_TMP}" 2>/dev/null)"
+          if [ -z "${CATS// }" ]; then
+            echo -e "[✗] ERROR (Validation Failed) Could NOT Append Category, Add Manually"
+            export CONTINUE_SBUILD="NO" && return 1
+          fi
+        fi
+     else
+        echo -e "\n[✗] FATAL: Couldn't Fetch Categories from Remote"
+        export CONTINUE_SBUILD="NO" && return 1
+     fi
+    #INVALID URLS (.homepage)
+     unset SRC_URLS ; SRC_URLS="$(yq eval '.homepage[] | select(. != null and . != "")' ${SRC_SBUILD_TMP} | paste -sd ' ' -)"
+     if [[ -n "${SRC_URLS}" ]]; then
+       unset NOT_URLS ; NOT_URLS="$(echo "${SRC_URLS}" | awk '{for(i=1;i<=NF;i++) if ($i !~ /^https?:\/\//) print $i}')"
+       if [[ -n "${NOT_URLS}" ]]; then
+         echo -e "[✗] ERROR (Validation Failed) 'homepage:' Contains Invalid URLs:"
+         echo -e "${NOT_URLS}\n"
+         export CONTINUE_SBUILD="NO" && return 1
+       else
+         export CONTINUE_SBUILD="YES"
+       fi
+     fi
     #INVALID URLS (.src_url)
-    unset SRC_URLS ; SRC_URLS="$(yq eval '.src_url[] | select(. != null and . != "")' ${SRC_SBUILD_TMP} | paste -sd ' ' -)"
-    unset NOT_URLS ; NOT_URLS="$(echo "${SRC_URLS}" | awk '{for(i=1;i<=NF;i++) if ($i !~ /^https?:\/\//) print $i}')"
-    if [[ -n "${NOT_URLS}" ]]; then
-      echo -e "[✗] ERROR (Validation Failed) src_url Contains Invalid URLs:"
-      echo -e "${NOT_URLS}\n"
-      export CONTINUE_SBUILD="NO"
-    fi
-   #Validator (ENFORCED Values match a pattern)
+     unset SRC_URLS ; SRC_URLS="$(yq eval '.src_url[] | select(. != null and . != "")' ${SRC_SBUILD_TMP} | paste -sd ' ' -)"
+     if [[ -n "${SRC_URLS}" ]]; then
+       unset NOT_URLS ; NOT_URLS="$(echo "${SRC_URLS}" | awk '{for(i=1;i<=NF;i++) if ($i !~ /^https?:\/\//) print $i}')"
+       if [[ -n "${NOT_URLS}" ]]; then
+         echo -e "[✗] ERROR (Validation Failed) 'src_url:' Contains Invalid URLs:"
+         echo -e "${NOT_URLS}\n"
+         export CONTINUE_SBUILD="NO" && return 1
+       else
+         export CONTINUE_SBUILD="YES"
+       fi
+     fi
   }
   export -f validate_yaml
  #shell
@@ -159,26 +287,38 @@ sbuild_linter()
   }
   export -f validate_shell
  ##Check
-  echo -e "\n[+] Validating YAML"
+  echo -e "\n[+] Validating YAML..."
   validate_yaml
   if [ "${CONTINUE_SBUILD}" == "NO" ]; then
     echo -e "[✗] ERROR (Validation Failed) Please correct all Mistakes & Try Again"
     echo -e "[+] TEMP_FILE: ${SRC_SBUILD_TMP}"
-    echo -e "[-] Build Docs: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md"
-    echo -e "[-] Spec Docs: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md\n"
+    show_docs
    return 1
   else
-    echo -e "\n[+] Validating Shell"
-    validate_shell
+   #ShellCheck 
+    if [ "${SHELLCHECK}" = "0" ] || [ "${SHELLCHECK}" = "OFF" ]; then
+     echo -e "[-] Skipping Shellcheck... (Assuming You Checked it Manually)"
+     echo -e "[+] unset SHELLCHECK || SHELLCHECK=ON , and ReRun to Enable it"
+    else
+     echo -e "\n[+] Validating Shell..."
+     validate_shell
+    fi
+   #After All Checks 
     if [ "${CONTINUE_SBUILD}" != "NO" ]; then
       echo -e "[✓] ${SRC_SBUILD} Passed All Checks"
       mv -f "${SRC_SBUILD_TMP}" "${SRC_SBUILD}.validated"
-      echo -e "[✓] Compare ${SRC_SBUILD}.validated with ${SRC_SBUILD} again"
-      echo -e "\n" ; diff -y "${SRC_SBUILD}" "${SRC_SBUILD}.validated" 2>/dev/null ; echo -e "\n"
+      echo -e "[+] Compare ${SRC_SBUILD}.validated with ${SRC_SBUILD} again"
+      if [ "${SHOW_DIFF}" = "1" ] || [ "${SHOW_DIFF}" = "ON" ]; then
+         echo -e "\n" ; diff -y "${SRC_SBUILD}" "${SRC_SBUILD}.validated" 2>/dev/null ; echo -e "\n"
+      fi
       echo -e "[+] Create a PR @ https://github.com/pkgforge/soarpkgs/compare"
-      echo -e "[+] Build Docs: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md"
-      echo -e "[+] Spec Docs: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md\n"
+      echo -e "[+] Create an Issue @ https://github.com/pkgforge/soarpkgs/issues/new"
+      show_docs
     fi
+  fi
+  #Disable Debug
+  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
+    set +x
   fi
 }
 export -f sbuild_linter
