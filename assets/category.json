@@ -49,27 +49,27 @@
     "Art":
     {
       "Description": "Software to teach arts",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "ArtificialIntelligence":
     {
       "Description": "Artificial Intelligence software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Astronomy":
     {
       "Description": "Astronomy software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "AudioVideoEditing":
     {
       "Description": "Application to edit audio/video files",
-      "Related": "Audio or Video or AudioVideo"
+      "Related": "Audio;Video;AudioVideo"
     },
     "Biology":
     {
       "Description": "Biology software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "BlocksGame":
     {
@@ -114,7 +114,7 @@
     "Chemistry":
     {
       "Description": "Chemistry software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Clock":
     {
@@ -129,7 +129,7 @@
     "ComputerScience":
     {
       "Description": "Software related to computer science",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "ConsoleOnly":
     {
@@ -139,7 +139,7 @@
     "Construction":
     {
       "Description": "",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "ContactManagement":
     {
@@ -159,12 +159,12 @@
     "Database":
     {
       "Description": "Application to manage a database",
-      "Related": "Office or Development or AudioVideo"
+      "Related": "Office;Development;AudioVideo"
     },
     "DataVisualization":
     {
       "Description": "Application to visualize data",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "DDE":
     {
@@ -189,7 +189,7 @@
     "Dictionary":
     {
       "Description": "A dictionary",
-      "Related": "Office or TextTools"
+      "Related": "Office;TextTools"
     },
     "DiscBurning":
     {
@@ -204,12 +204,12 @@
     "Economy":
     {
       "Description": "Economy software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Electricity":
     {
       "Description": "Electricity software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Electronics":
     {
@@ -219,7 +219,12 @@
     "Email":
     {
       "Description": "Email application",
-      "Related": "Office or Network"
+      "Related": "Office;Network"
+    },
+    "Emulator":
+    {
+      "Description": "Emulator of another platform, such as a DOS emulator",
+      "Related": "System;Game"
     },
     "Feed":
     {
@@ -259,17 +264,17 @@
     "Geography":
     {
       "Description": "Geography software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Geology":
     {
       "Description": "Geology software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Geoscience":
     {
       "Description": "Geoscience software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "GNOME":
     {
@@ -289,7 +294,7 @@
     "HamRadio":
     {
       "Description": "HAM radio software",
-      "Related": "Network or Audio"
+      "Related": "Network;Audio"
     },
     "HardwareSettings":
     {
@@ -299,12 +304,12 @@
     "History":
     {
       "Description": "History software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Humanities":
     {
       "Description": "Humanities software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "IDE":
     {
@@ -314,7 +319,7 @@
     "ImageProcessing":
     {
       "Description": "Software to process images",
-      "Related": "Graphics or Science"
+      "Related": "Graphics;Science"
     },
     "InstantMessaging":
     {
@@ -344,12 +349,12 @@
     "Languages":
     {
       "Description": "Software to learn foreign languages",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Literature":
     {
       "Description": "Software for literature",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "LogicGame":
     {
@@ -359,17 +364,17 @@
     "Maps":
     {
       "Description": "Software to visualize or create maps",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Math":
     {
       "Description": "Math software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "MedicalSoftware":
     {
       "Description": "Medical software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Midi":
     {
@@ -394,7 +399,7 @@
     "Music":
     {
       "Description": "Musical software",
-      "Related": "AudioVideo or Education"
+      "Related": "AudioVideo;Education"
     },
     "News":
     {
@@ -404,7 +409,7 @@
     "NumericalAnalysis":
     {
       "Description": "Numerical analysis software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "OCR":
     {
@@ -424,7 +429,7 @@
     "ParallelComputing":
     {
       "Description": "Software for parallel computing",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "PDA":
     {
@@ -434,17 +439,17 @@
     "Photography":
     {
       "Description": "Camera tools, etc.",
-      "Related": "Graphics or Office"
+      "Related": "Graphics;Office"
     },
     "Physics":
     {
       "Description": "Physics software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "Player":
     {
       "Description": "Application to play audio/video files",
-      "Related": "Audio or Video or AudioVideo"
+      "Related": "Audio;Video;AudioVideo"
     },
     "Presentation":
     {
@@ -469,7 +474,7 @@
     "Publishing":
     {
       "Description": "Desktop Publishing applications and Color Management tools",
-      "Related": "Graphics or Office"
+      "Related": "Graphics;Office"
     },
     "Qt":
     {
@@ -484,7 +489,7 @@
     "Recorder":
     {
       "Description": "Application to record audio/video files",
-      "Related": "Audio or Video or AudioVideo"
+      "Related": "Audio;Video;AudioVideo"
     },
     "RemoteAccess":
     {
@@ -499,7 +504,7 @@
     "Robotics":
     {
       "Description": "Robotics software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "RolePlaying":
     {
@@ -534,7 +539,7 @@
     "Sports":
     {
       "Description": "Sports software",
-      "Related": "Education or Science"
+      "Related": "Education;Science"
     },
     "SportsGame":
     {
@@ -604,7 +609,7 @@
     "Viewer":
     {
       "Description": "Tool to view e.g. a graphic or pdf file",
-      "Related": "Graphics or Office"
+      "Related": "Graphics;Office"
     },
     "WebBrowser":
     {
@@ -614,7 +619,7 @@
     "WebDevelopment":
     {
       "Description": "A tool for web developers",
-      "Related": "Network or Development"
+      "Related": "Network;Development"
     },
     "WordProcessor":
     {
