@@ -1,13 +1,34 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.0]
+#[VERSION=1.0.1]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-runner")
 # sbuild-runner example.SBUILD
 # DEBUG=1|ON sbuild-runner example.SBUILD --> runs with set -x
 #-------------------------------------------------------#
 
+#-------------------------------------------------------#
+## SOAR REF
+# SBUILD_SUCCESSFUL=YES|NO --> Whether to proceed at all or exit early
+# SBUILD_PKG --> .pkg (or .name|.bin_name as it used to be called)
+# PKG_TYPE --> One of appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static
+#  --> If this is empty, check using magic bytes
+#  --> Even if this isn't empty, check using magic bytes regardless
+#  --> dynamic|static are binaries (cli), don't need integration
+#  --> UNKNOWN means, the pkg_type value was empty, so check using magic bytes
+# SBUILD_OUTDIR --> $TMPDIR soar will try to look for files In
+#  --> ${SBUILD_OUTDIR}/${SBUILD_PKG} (Actual Binary)
+#  --> ${SBUILD_OUTDIR}/.DirIcon (DirIcon Main location)
+#  --> ${SBUILD_OUTDIR}/${SBUILD_PKG}.DirIcon (DirIcon Alt location)
+#  --> ${SBUILD_OUTDIR}/${SBUILD_PKG}.png (Icon location)
+#  --> ${SBUILD_OUTDIR}/${SBUILD_PKG}.svg (Icon location)
+#  --> ${SBUILD_OUTDIR}/${SBUILD_PKG}.appdata.xml (AppStream Location)
+#  --> ${SBUILD_OUTDIR}/${SBUILD_PKG}.metainfo.xml (AppStream Location)
+# SBUILD_TMPDIR --> $TMPDIR ($SBUILD_OUTDIR/SBUILD_TEMP) that can be used to store unrelated files
+# SBUILD_META --> Metadata JSON, soar will parse & get all values from (for soar info|query)
+#-------------------------------------------------------#
 
 #-------------------------------------------------------#
+unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -51,7 +72,7 @@
  source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
  if declare -F sbuild_linter &>/dev/null || declare -F sbuild-linter &>/dev/null; then
    echo -e "\n[+] Validating ${INPUT} ..."
-   SBUILD_MODE="ON" sbuild_linter "${INPUT}"
+   INSTALL_DEPS="ON" SBUILD_MODE="ON" sbuild_linter "${INPUT}"
  else
    echo -e "\n[✗] FATAL: sbuild-validator could NOT BE Found\n"
    exit 1
@@ -137,9 +158,9 @@
    yq . "${SRC_SBUILD_IN}" | yj -yj | jq 'del(.x_exec)' > "${SBUILD_META}"
    if [[ -s "${SBUILD_META}" ]] && jq --exit-status '.' "${SBUILD_META}" > /dev/null 2>&1; then
     #Get pkg
-     pkg="$(jq -r '"\(.pkg | select(. != "null") // "")"' "${SBUILD_META}" | sed 's/\.$//' | tr -d '[:space:]')"
-     pkg_id="$(jq -r '"\(.pkg_id | select(. != "null") // "")"' "${SBUILD_META}" | sed 's/\.$//' | tr -d '[:space:]')"
-     pkg_type="$(jq -r '"\(.pkg_type | select(. != "null") // "")"' "${SBUILD_META}" | sed 's/\.$//' | tr -d '[:space:]')"
+     pkg="$(jq -r '"\(.pkg | select(. != "null") // "")"' "${SBUILD_META}" | sed 's/\.$//' | tr -d '[:space:]')" ; export PKG="${pkg}"
+     pkg_id="$(jq -r '"\(.pkg_id | select(. != "null") // "")"' "${SBUILD_META}" | sed 's/\.$//' | tr -d '[:space:]')" ; export PKG_ID="${pkg_id}"
+     pkg_type="$(jq -r '"\(.pkg_type | select(. != "null") // "")"' "${SBUILD_META}" | sed 's/\.$//' | tr -d '[:space:]')" ; export PKG_TYPE="${pkg_type}"
      SBUILD_PKG="$(echo "${pkg}.${pkg_type}" | sed 's/\.$//' | tr -d '[:space:]')"
      export pkg pkg_id pkg_type SBUILD_PKG
      if [ "$(echo "${SBUILD_PKG}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -le 1 ]; then
@@ -322,6 +343,15 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
          cp -fv "${DIRICON_PATH}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.png"
        fi
      fi
+     #Version (12c if doesn't Exists)
+     if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
+       echo -e "[✓] Version Exists as "$(cat ${SBUILD_OUTDIR}/${SBUILD_PKG}.version)" ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+     else
+       #echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using b3sum as Version)"
+       #b3sum "${SBUILD_OUTDIR}/${SBUILD_PKG}" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' | head -c 8 > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+       echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using date as Version)"
+       date --utc +"%Y%m%d-%H%M%S" | tr -d '[:space:]' > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+     fi
     #Check for required files for
      #AppBundle
      if echo "${PKG_TYPE}" | grep -qiE '(appbundle)$'; then
@@ -369,11 +399,11 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
       #Attempt to fetch/fix media
        if [[ "${HAS_DESKTOP}" != "YES" ]]; then
          echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE '.DirIcon|Icon' (Attempting to Extract Automatically)"
-         unset SQUISHY_ICON ; SQUISHY_FILTER="${SBUILD_PKG%%-*}" SQUISHY_DESKTOP="ON" use_squishy
+         unset SQUISHY_ICON ; SQUISHY_FILTER="${PKG%%-*}" SQUISHY_DESKTOP="ON" use_squishy
        fi
        if [[ "${HAS_DIRICON}" != "YES" ]] && [[ "${HAS_ICON}" != "YES" ]]; then
          echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE '.DirIcon|Icon' (Attempting to Extract Automatically)"
-         unset SQUISHY_DESKTOP ; SQUISHY_FILTER="${SBUILD_PKG%%-*}" SQUISHY_ICON="ON" use_squishy
+         unset SQUISHY_DESKTOP ; SQUISHY_FILTER="${PKG%%-*}" SQUISHY_ICON="ON" use_squishy
        fi
      #RunImage
      elif echo "${PKG_TYPE}" | grep -qiE '(runimage)$'; then
@@ -407,9 +437,9 @@ fi
 
 #-------------------------------------------------------#
 ##Cleanup & Keep Only Needed ENV
-if [ "${SBUILD_SUCCESSFUL}" == "YES" ]; then
-
-elif [ "${SBUILD_SUCCESSFUL}" == "NO" ]; then
-
-fi
+ unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files sbuild_linter SBUILD_MODE SELF_NAME SQUISHY_DESKTOP SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_PKG_TYPE SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
+##Disable Debug
+ if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
+   set +x
+ fi
 #-------------------------------------------------------#
