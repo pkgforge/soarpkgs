@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.4]
+#[VERSION=1.0.5]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
@@ -59,6 +59,7 @@ sbuild_linter()
   fi
   SYSTMP="$(dirname $(mktemp -u))"
  ##CMD
+ #b3sum: Needed for Checksums
  #jq: Needed for some validators, yq's json support is limited (https://github.com/jqlang/jq)
  #Shellcheck: Needed for checking x_exec.run (https://github.com/koalaman/shellcheck)
  #Yj: Needed to convert Yaml <--> Json (https://github.com/sclevine/yj)
@@ -70,10 +71,10 @@ sbuild_linter()
      return 1
    else
      soar env
-     soar add grep jq sed shellcheck yj yq --yes
+     soar add b3sum grep jq sed shellcheck yj yq --yes
    fi
  fi
- for DEP_CMD in grep jq sed yq; do
+ for DEP_CMD in b3sum grep jq sed yq; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
         "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\nInstall: soar add ${DEP_CMD} --yes\n"
             export CONTINUE_SBUILD="NO"
