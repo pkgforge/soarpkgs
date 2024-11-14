@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.2]
+#[VERSION=1.0.3]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
@@ -118,7 +118,7 @@ sbuild_linter()
        sed 's/[[:space:]]*$//' "${SRC_SBUILD}" | yq 'del(.. | select(. == "" or . == []))' | yq eval 'del(.[] | select(. == null or . == ""))' | yq . > "${SRC_SBUILD_TMP}"
     fi
    #Validator (No Dupes) #Yq manages to figure it out if at top level, however chokes if deeper
-    unset SBUILD_DUPES ; SBUILD_DUPES="$(awk -F: '/run:/ {exit} !/^\s*-/ && $1 != "" {count[$1]++; lines[$1]=lines[$1] ? lines[$1] FS NR : NR; if (count[$1] == 2) order[++i] = $1} END {for (j = 1; j <= i; j++) {key = order[j]; print key, "(" count[key] ")", "on lines:", lines[key]}}' "${SRC_SBUILD_TMP}")"
+    unset SBUILD_DUPES ; SBUILD_DUPES="$(awk -F: '/run:/ {exit} /^[[:space:]]*- url/ || /^[[:space:]]*out/ {next} !/^\s*-/ && $1 != "" {count[$1]++; lines[$1]=lines[$1] ? lines[$1] FS NR : NR; if (count[$1] == 2) order[++i] = $1} END {for (j = 1; j <= i; j++) {key = order[j]; print key, "(" count[key] ")", "on lines:", lines[key]}}' "${SRC_SBUILD_TMP}")"
     if [ -n "${SBUILD_DUPES}" ]; then
       echo -e "\n[✗] ERROR (Validation Failed) Duplicate Entries, Please recheck @ https://www.yamllint.com/\n"
       echo -e "${SBUILD_DUPES}\n"
