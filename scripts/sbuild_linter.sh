@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.3]
+#[VERSION=1.0.4]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
@@ -16,8 +16,27 @@ sbuild_linter()
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
- fi 
- ##ENV
+ fi
+ ##Get/Set ENVS (from Host)
+ #User
+ case "${USER}" in
+   "" )
+     echo "WARNING: \$USER is Unknown"
+     USER="$(whoami)"
+     export USER
+     if [ -z "${USER}" ]; then
+       echo -e "[-] INFO: Setting USER --> ${USER}"
+     else
+       echo -e "[-] WARNING: FAILED to find \$USER"
+     fi
+     ;;
+ esac
+ #Home
+ if [ -z "${HOME}" ] || [ "${HOME}" = "" ]; then
+    echo "WARNING: HOME Directory is empty/unset"
+    HOME="$(getent passwd "${USER}" | cut -d: -f6)" ; export HOME
+ fi
+ ##Set ENV for Linter
   #INPUT="${1:-$(cat)}"
   INPUT="${1:-$(echo "$@" | tr -d '[:space:]')}"
   SELF_NAME="${ARGV0:-${0##*/}}" ; export SELF_NAME
