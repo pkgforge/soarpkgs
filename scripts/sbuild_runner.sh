@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.1]
-# source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh")
-# source <(curl -qfsSL "https://l.ajam.dev/sbuild-runner")
+#[VERSION=1.0.2]
+# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh") example.SBUILD
+# bash <(curl -qfsSL "https://l.ajam.dev/sbuild-runner") example.SBUILD
 # sbuild-runner example.SBUILD
 # DEBUG=1|ON sbuild-runner example.SBUILD --> runs with set -x
 #-------------------------------------------------------#
@@ -40,7 +40,7 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
      echo "WARNING: \$USER is Unknown"
      USER="$(whoami)"
      export USER
-     if [ -z "${USER}" ]; then
+     if [ -n "${USER}" ]; then
        echo -e "[-] INFO: Setting USER --> ${USER}"
      else
        echo -e "[-] WARNING: FAILED to find \$USER"
@@ -77,6 +77,10 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
    echo -e "\n[✗] FATAL: sbuild-validator could NOT BE Found\n"
    exit 1
  fi
+##Enable Debug (again)
+ if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
+    set -x
+ fi 
 #-------------------------------------------------------#
 
 
@@ -124,6 +128,44 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
      rm -rf "${SRC_BUILD_SCRIPT}" 2>/dev/null
    }
    export -f cleanup_files
+   #Repack with Static RunTime
+   repack_appimage()
+   {
+     curl -qfsSL "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$(uname -m).AppImage" -o "${SBUILD_TMPDIR}/appimagetool" && chmod +x "${SBUILD_TMPDIR}/appimagetool"
+     if [[ -s "${SBUILD_TMPDIR}/appimagetool" && $(stat -c%s "${SBUILD_TMPDIR}/appimagetool") -gt 1024 ]]; then
+        AI_OFFSET="$(grep -abom2 'hsqs' "${SBUILD_OUTDIR}/${SBUILD_PKG}" | sed -n '2s/:.*//p' | tr -cd '0-9' | tr -d '[:space:]')"
+        soar run unsquashfs -offset "${AI_OFFSET}" -force -dest "${SBUILD_TMPDIR}/squash_tmp/" "${SBUILD_OUTDIR}/${SBUILD_PKG}"
+        if [ -d "${SBUILD_TMPDIR}/squash_tmp" ] && [ $(du -s "${SBUILD_TMPDIR}/squash_tmp" | cut -f1) -gt 100 ]; then
+           printf '#!/bin/sh\nexit 0' > "${SBUILD_TMPDIR}/desktop-file-validate" && chmod +x "${SBUILD_TMPDIR}/desktop-file-validate"
+           PATH="${SBUILD_TMPDIR}:${PATH}" ARCH="$(uname -m)" appimagetool --comp "zstd" \
+           --mksquashfs-opt -root-owned \
+           --mksquashfs-opt -no-xattrs \
+           --mksquashfs-opt -noappend \
+           --mksquashfs-opt -b --mksquashfs-opt "1M" \
+           --mksquashfs-opt -mkfs-time --mksquashfs-opt "0" \
+           --mksquashfs-opt -Xcompression-level --mksquashfs-opt "22" \
+           --no-appstream "${SBUILD_TMPDIR}/squash_tmp" "${SBUILD_TMPDIR}/${SBUILD_PKG}"
+          if [[ -f "${SBUILD_TMPDIR}/${SBUILD_PKG}" ]] && [[ $(stat -c%s "${SBUILD_TMPDIR}/${SBUILD_PKG}") -gt 1024 ]]; then
+            AI_TYPE="$(file ${SBUILD_TMPDIR}/${SBUILD_PKG})"
+            if echo "${AI_TYPE}" | grep -qi 'static'; then
+              echo -e "[✓] Repacked ${SBUILD_PKG} (Static Runtime) ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}"
+              mv -fv "${SBUILD_TMPDIR}/${SBUILD_PKG}" "${SBUILD_OUTDIR}/${SBUILD_PKG}"
+            elif echo "${AI_TYPE}" | grep -qi 'dynamic'; then
+              echo -e "[✗] FATAL: Failed to Repack ${SBUILD_PKG} (Static Runtime)"
+            else
+              echo -e "[✗] FATAL: Failed to Repack ${SBUILD_PKG} (Static Runtime)"
+              echo "[-] File: ${AI_TYPE}"
+            fi
+          fi
+        else
+           echo -e "\n[✗] FATAL: Failed to Extract ${SBUILD_OUTDIR}/${SBUILD_PKG} using UnSquashFS\n"
+        fi
+     else
+        echo -e "\n[✗] FATAL: Failed to Download AppImageTool (Maybe Try Again?)\n"
+     fi
+     unset AI_OFFSET AI_TYPE
+   }
+   export -f repack_appimage
    #Squishy
    install_squishy(){
      soar add squishy-cli --yes
@@ -275,7 +317,14 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
   pushd "${SBUILD_OUTDIR}" >/dev/null 2>&1
   #Run [MAIN]
    "${SRC_BUILD_SCRIPT}"
-  #POSTRUN
+  #POSTRUN 
+   if [[ -f "${SBUILD_OUTDIR}/${PKG}" ]] && [[ $(stat -c%s "${SBUILD_OUTDIR}/${PKG}") -gt 1024 ]]; then
+     if [[ ! -f "${SBUILD_OUTDIR}/${SBUILD_PKG}" ]] || [[ $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}") -le 1024 ]]; then
+       cp -fv "${SBUILD_OUTDIR}/${PKG}" "${SBUILD_OUTDIR}/${SBUILD_PKG}"
+       SBUILD_PKG="$(realpath ${SBUILD_OUTDIR}/${PKG})" ; export SBUILD_PKG
+     fi
+   fi
+   #Main Checks
    if [[ -f "${SBUILD_OUTDIR}/${SBUILD_PKG}" ]] && [[ $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}") -gt 1024 ]]; then
      export SBUILD_SUCCESSFUL="YES" ; chmod +x "${SBUILD_OUTDIR}/${SBUILD_PKG}"
      echo -e "[✓] SuccessFully Built ${SBUILD_PKG} using ${SRC_SBUILD_IN}"
@@ -343,14 +392,19 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
          cp -fv "${DIRICON_PATH}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.png"
        fi
      fi
+     #Json
+     jq . "${SBUILD_META}" >  "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
      #Version (12c if doesn't Exists)
      if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
        echo -e "[✓] Version Exists as "$(cat ${SBUILD_OUTDIR}/${SBUILD_PKG}.version)" ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
-     else
-       #echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using b3sum as Version)"
-       #b3sum "${SBUILD_OUTDIR}/${SBUILD_PKG}" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' | head -c 8 > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
-       echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using date as Version)"
-       date --utc +"%Y%m%d-%H%M%S" | tr -d '[:space:]' > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+     elif [[ -s "${SBUILD_OUTDIR}/${PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.version") -gt 3 ]]; then
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+       if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
+         #echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using b3sum as Version)"
+         #b3sum "${SBUILD_OUTDIR}/${SBUILD_PKG}" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' | head -c 8 > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+         echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using date as Version)"
+         date --utc +"%Y%m%d-%H%M%S" | tr -d '[:space:]' > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+       fi
      fi
     #Check for required files for
      #AppBundle
@@ -366,6 +420,11 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        fi
      #AppImage
      elif echo "${PKG_TYPE}" | grep -qiE '(appimage)$'; then
+      #Attempt to fix Dynamic Runtime AppImages
+       if echo "$(file ${SBUILD_OUTDIR}/${SBUILD_PKG})" | grep -qi 'dynamic'; then
+         echo -e "[✗] FATAL: ${SBUILD_PKG} is using a Dynamic Runtime (Attempting Conversion --> Static Runtime)"
+         repack_appimage
+       fi
       #Attempt to fetch/fix media
        if [[ "${HAS_DESKTOP}" != "YES" ]]; then
          echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE '.DirIcon|Icon' (Attempting to Extract Automatically)"
@@ -437,7 +496,7 @@ fi
 
 #-------------------------------------------------------#
 ##Cleanup & Keep Only Needed ENV
- unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files sbuild_linter SBUILD_MODE SELF_NAME SQUISHY_DESKTOP SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_PKG_TYPE SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
+ unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files repack_appimage sbuild_linter SBUILD_MODE SELF_NAME SQUISHY_DESKTOP SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_PKG_TYPE SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
 ##Disable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
    set +x

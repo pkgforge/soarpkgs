@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.5]
+#[VERSION=1.0.6]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
@@ -71,7 +71,7 @@ sbuild_linter()
      return 1
    else
      soar env
-     soar add b3sum grep jq sed shellcheck yj yq --yes
+     soar add 'b3sum#bin' 'grep/grep#base' 'jq#bin' 'sed#bin' 'shellcheck#bin' 'yj#bin' 'yq#bin' --yes
    fi
  fi
  for DEP_CMD in b3sum grep jq sed yq; do
