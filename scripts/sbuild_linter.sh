@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.1]
+#[VERSION=1.0.2]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
 # DEBUG=1|ON sbuild-linter example.SBUILD --> runs with set -x
+# INSTALL_DEPS=1|ON sbuild-linter example.SBUILD --> Installs all deps via soar
 # SHOW_DIFF=1|ON sbuild-linter example.SBUILD --> shows diff between example.SBUILD & example.SBUILD.validated
 # SHELLCHECK=0|OFF sbuild-linter example.SBUILD --> Disables Shellcheck
 # SBUILD_MODE=1|ON sbuild-linter example.SBUILD --> Exports needed ENV Vars to sbuild-runner
@@ -39,9 +40,20 @@ sbuild_linter()
   fi
   SYSTMP="$(dirname $(mktemp -u))"
  ##CMD
- #jq: Needed for some validators, yq's json support is limited
- #Shellcheck: Needed for checking x_exec.run
- #Yq: The main parser & validator
+ #jq: Needed for some validators, yq's json support is limited (https://github.com/jqlang/jq)
+ #Shellcheck: Needed for checking x_exec.run (https://github.com/koalaman/shellcheck)
+ #Yj: Needed to convert Yaml <--> Json (https://github.com/sclevine/yj)
+ #Yq: The main parser & validator (https://github.com/mikefarah/yq)
+ if [ "${INSTALL_DEPS}" = "1" ] || [ "${INSTALL_DEPS}" = "ON" ]; then
+   if ! command -v "soar" >/dev/null 2>&1; then
+     echo -e "\n[✗] FATAL: soar is NOT INSTALLED\nInstall: https://github.com/pkgforge/soar#-installation\n"
+     export CONTINUE_SBUILD="NO"
+     return 1
+   else
+     soar env
+     soar add grep jq sed shellcheck yj yq --yes
+   fi
+ fi
  for DEP_CMD in grep jq sed yq; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
         "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\nInstall: soar add ${DEP_CMD} --yes\n"
@@ -128,7 +140,7 @@ sbuild_linter()
       echo -e "[✗] ERROR (Validation Failed) Missing Fields (or Empty Value): ${MISSING_FIELDS[*]}"
       export CONTINUE_SBUILD="NO" && return 1
     else
-      echo -e "[✓] ${SRC_SBUILD_TMP} contains ALL ENFORCED Fields"
+      echo -e "[✓] ${SRC_SBUILD} contains ALL ENFORCED Fields"
       export CONTINUE_SBUILD="YES"
     fi
    #Validator (Fields containing single Values)
