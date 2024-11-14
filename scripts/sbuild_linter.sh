@@ -271,7 +271,7 @@ sbuild_linter()
         if shellcheck --severity="error" "${SRC_BUILD_SCRIPT}"; then
           echo -e "[✓] x_exec.run is a Valid ${SBUILD_SHELL} Script\n"
           shellcheck --severity="warning" "${SRC_BUILD_SCRIPT}"
-          if [ "${SBUILD_MODE}" != "1" ] || [ "${SBUILD_MODE}" != "ON" ]; then
+          if [ "${SBUILD_MODE}" != "1" ] && [ "${SBUILD_MODE}" != "ON" ]; then
              rm -f "${SRC_BUILD_SCRIPT}" 2>/dev/null
           fi
           export CONTINUE_SBUILD="YES"
