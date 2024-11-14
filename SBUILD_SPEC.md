@@ -405,7 +405,8 @@ See some examples:
 >  - "You need to download ROMS: https://86box.readthedocs.io/en/latest/usage/roms.html"
 > repology:
 >  - "86box"
-> src_url: "https://github.com/86Box/86Box"
+> src_url:
+>  - "https://github.com/86Box/86Box"
 > tag:
 >   - "app-emulation"
 >   - "emulators"
