@@ -5,8 +5,8 @@
 # DEBUG=1|ON sbuild-linter example.SBUILD --> runs with set -x
 # SHOW_DIFF=1|ON sbuild-linter example.SBUILD --> shows diff between example.SBUILD & example.SBUILD.validated
 # SHELLCHECK=0|OFF sbuild-linter example.SBUILD --> Disables Shellcheck
+# SBUILD_MODE=1|ON sbuild-linter example.SBUILD --> Exports needed ENV Vars to sbuild-runner
 #-------------------------------------------------------#
-
 
 #-------------------------------------------------------#
 sbuild_linter()
@@ -271,7 +271,9 @@ sbuild_linter()
         if shellcheck --severity="error" "${SRC_BUILD_SCRIPT}"; then
           echo -e "[✓] x_exec.run is a Valid ${SBUILD_SHELL} Script\n"
           shellcheck --severity="warning" "${SRC_BUILD_SCRIPT}"
-          rm -f "${SRC_BUILD_SCRIPT}" 2>/dev/null
+          if [ "${SBUILD_MODE}" != "1" ] || [ "${SBUILD_MODE}" != "ON" ]; then
+             rm -f "${SRC_BUILD_SCRIPT}" 2>/dev/null
+          fi
           export CONTINUE_SBUILD="YES"
         else
           echo -e "\n[✗] FATAL: x_exec.shell is NOT a Valid Script"
@@ -308,9 +310,17 @@ sbuild_linter()
       if [ "${SHOW_DIFF}" = "1" ] || [ "${SHOW_DIFF}" = "ON" ]; then
          echo -e "\n" ; diff -y "${SRC_SBUILD}" "${SRC_SBUILD}.validated" 2>/dev/null ; echo -e "\n"
       fi
-      echo -e "[+] Create a PR @ https://github.com/pkgforge/soarpkgs/compare"
-      echo -e "[+] Create an Issue @ https://github.com/pkgforge/soarpkgs/issues/new"
-      show_docs
+      if [ "${SBUILD_MODE}" = "1" ] || [ "${SBUILD_MODE}" = "ON" ]; then
+       echo -e "[+] Exporting ENV VARS for sbuild-runner..."
+       export CONTINUE_SBUILD SRC_BUILD_SCRIPT SRC_SBUILD_TMP
+       unset CATEGORIES CATS CHAR DEP_CMD ENFORCE_FIELDS INPUT INVALID_CAT INVALID_CHARS MISSING_FIELDS NOT_URLS PKG_TYPES SBUILD_DUPES SBUILD_EMPTIES SBUILD_SHELL SELF_NAME SHELLCHECK SINGLE_VALUES SRC_SBUILD SRC_URLS VALID_PKGTYPE VALUE VALUE_CHECK
+      else
+       echo -e "[+] Cleaning ENV VARS..."
+       unset CATEGORIES CATS CHAR CONTINUE_SBUILD DEP_CMD ENFORCE_FIELDS INPUT INVALID_CAT INVALID_CHARS MISSING_FIELDS NOT_URLS PKG_TYPES SBUILD_DUPES SBUILD_EMPTIES SBUILD_SHELL SELF_NAME SHELLCHECK SINGLE_VALUES SRC_SBUILD SRC_BUILD_SCRIPT SRC_SBUILD_TMP SRC_URLS VALID_PKGTYPE VALUE VALUE_CHECK
+       echo -e "[+] Create a PR @ https://github.com/pkgforge/soarpkgs/compare"
+       echo -e "[+] Create an Issue @ https://github.com/pkgforge/soarpkgs/issues/new"
+       show_docs
+      fi
     fi
   fi
   #Disable Debug
