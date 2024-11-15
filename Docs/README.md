@@ -27,3 +27,20 @@
 > - Read the [SPEC](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md), the [Build Guide](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md) & [Some Examples](https://github.com/pkgforge/soarpkgs/tree/main/packages/86box) at least once to Understand what's what.
 > - Once you think you have a rough idea, feel free to [create an Issue](https://github.com/pkgforge/soarpkgs/issues/new/choose), [Discussion](https://github.com/pkgforge/soarpkgs/discussions/new/choose) or [Pull Request](https://github.com/pkgforge/soarpkgs/compare)
 > - We will `edit/fix/patch` any `errors/mistakes` you make along with providing helpful & detailed explaination of what went wrong or what could be better, so feel free to spam us.
+---
+
+- #### Package Request GuideLines
+> ℹ️ There's no strict rules, however if you put in some effort, it will be Resolved Sooner
+> - Read the Build Guide](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
+> - Find out as much Information about the package you want to add including:
+> > - Name (`.pkg`) : NAME_OF_PKG, This is what it will be installed as, so be extra sure
+> > - ID (`.pkg_id`) : APPSTREAM_APP_ID, You can leave this empty if you don't know
+> > - Type (`.pkg_type`) : Choose One: `(appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static)`
+> > - Description (`.description`) : DESCRIPTION_SUMMARY_ABOUT_PKG
+> > - Homepage (`.homepage`) : WEBSITE_LINK_TO_MAIN_PROJECT_PAGE, you can add multiple links
+> > - Repology (`.repology`) : REPOLOGY_PROJECT_LINK, Search here: https://repology.org/projects/
+> > - Source (`.src_url`) : WEBSITE_LINK_TO_DOWNLOAD_PAGE, this page where we will download the package from, you can add multiple links
+> > - Tag (`.tag`) : TAGS_CATEGORIES, comma separated list of tags
+> - Once You have gathered this information, Create an Issue: https://github.com/pkgforge/soarpkgs/issues/new/choose >> `Package Request (Generic)`
+> - Title: `[Package Request] NAME_OF_PKG (TYPE_OF_PKG)`
+> - Body: Fill with correct/Relevant Values
