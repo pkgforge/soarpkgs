@@ -44,3 +44,13 @@
 > - Once You have gathered this information, Create an Issue: https://github.com/pkgforge/soarpkgs/issues/new/choose >> `Package Request (Generic)`
 > - Title: `[Package Request] NAME_OF_PKG (TYPE_OF_PKG)`
 > - Body: Fill with correct/Relevant Values
+---
+
+- #### `DMCA`, `Copyright` & `Cease & Desist`
+> - This Repository DOES NOT DISTRIBUTE ANY `BINARIES` OF ANY KIND.
+> - This Repository DOES NOT STORE ANY `PREBUILT ARTIFACTS` ANYWHERE.
+> - This Repository DOES NOT DISTRIBUTE ANY `CONTENTS` OTHER THAN BUILD RECIPES (SBUILD).
+> - As such, this repository does not infringe upon any copyright laws by its very nature.
+> - If you believe a copyright violation has occurred, please direct your concerns to the original source of the content, rather than this repository or its maintainers.
+> - We respectfully request that any DMCA takedown notices or cease and desist demands be addressed appropriately and not directed at this repository without valid grounds.
+ 
