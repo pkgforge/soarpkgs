@@ -53,4 +53,9 @@
 > - As such, this repository does not infringe upon any copyright laws by its very nature.
 > - If you believe a copyright violation has occurred, please direct your concerns to the original source of the content, rather than this repository or its maintainers.
 > - We respectfully request that any DMCA takedown notices or cease and desist demands be addressed appropriately and not directed at this repository without valid grounds.
- 
+--- 
+
+- #### Contact Us
+> - <a href="https://t.me/official_loonix/63949"><img src="https://github.com/user-attachments/assets/2edc90b9-606e-4bfc-89f3-2a758b2f0377" width="18" height="18"><code>Loonix (<img src="https://github.com/user-attachments/assets/abc35eee-c9c9-4023-9035-d440b56cac4c" width="18" height="18">) Telegram</code></a> `➼` [`https://t.me/official_loonix/63949`](https://t.me/official_loonix/63949)
+> - <a href="https://matrix.to/#/#loonix:matrix.org"><img src="https://github.com/user-attachments/assets/1dcd4a64-2fec-4f4f-926a-e61313b6b646" width="18" height="18"><code>Loonix (<img src="https://github.com/user-attachments/assets/abc35eee-c9c9-4023-9035-d440b56cac4c" width="18" height="18">) Matrix </code></a> `➼` [`https://matrix.to/#/#loonix:matrix.org`](https://matrix.to/#/#loonix:matrix.org) **`ABANDONED & NOT ACTIVE`** 
+---
