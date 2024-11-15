@@ -2488,12 +2488,15 @@
 4.0K   │ │ ├── numtide_nix-gl-host.nix
 4.0K   │ │ └── nix-community_nixGL.nix
 4.0K   │ └── category.md
- 52K   ├─┬ scripts
+ 56K   ├─┬ scripts
  28K   │ ├── sbuild_runner.sh
- 20K   │ └── sbuild_linter.sh
+ 20K   │ ├── sbuild_linter.sh
+4.0K   │ └── repology_fetcher.sh
  24K   ├── SBUILD_SPEC.md
+ 12K   ├─┬ templates
+8.0K   │ └── generic.SBUILD.yaml
  12K   ├─┬ packages
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.SBUILD.yaml
-4.0K   ├── SBUILD.md
+8.0K   ├── SBUILD.md
 4.0K   └── LICENSE
