@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5
+#SELF: This contains the github raw url to itself, so it can be downloaded with curl etc: 
+_disabled: false #We want this SBUILD to run
+
+#! We Assume you have read the SPEC at least twice, so we won't repeat things to keep this template small
+#! If you haven't or need a refresher: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md
+
+pkg: "<FILL ME>" #pkg is canonical name & is Necessary
+
+#This field specifies what tools soar will install before running the final x_exec.run
+#You can delete this & it's subfields
+build_util:
+ #Squishy-Cli is bare-minimum for Portable packages like AppImage
+  - "squishy-cli"
+
+#Use the repology fetcher to see possible values
+description: "<FILL ME>"
+
+#This is Important, you should fill the exact download page from where you will be getting the package 
+src_url:
+  - "<FILL ME>"
+  
+#This is the important part
+x_exec:
+  shell: bash #Because bash is available everywhere, and we don't want users to install an esoteric shell
+  run: |
+    ##Download the file
+    #IMPORTANT: ALWAYS try to save the main output file & related files with '${SBUILD_PKG}' variable
+    #Based on uname, so we don't have to maintain duplicate scripts, however if your pkg only has one architecture support, change this accordingly
+    case "$(uname -m)" in
+      aarch64)
+       #This is an example of using soar dl to download gh release
+        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage" --match "arm64" --exclude "x64" --exclude "x86" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        ;;
+      x86_64)
+        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        ;;
+    esac
+    #In our example abv, we downloaded 86box AppImage, now to get icons etc, we can just run squishy-cli on it (ASSUMING you added this on build_util part)
+    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write #This is better than appimage-extract and will auto rename the files
+    #It has additional features, see: https://github.com/pkgforge/squishy-rs
+    #Version, here we just use curl + gh api to fetch it, you may have other ways
+    curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
+    #Verify, this just runs file & checksum checks on all the files
+    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
