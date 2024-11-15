@@ -2494,8 +2494,9 @@
  20K   │ ├── sbuild_linter.sh
 4.0K   │ └── repology_fetcher.sh
  24K   ├── SBUILD_SPEC.md
- 12K   ├─┬ templates
-8.0K   │ └── generic.SBUILD.yaml
+ 16K   ├─┬ templates
+8.0K   │ ├── generic.SBUILD.yaml
+4.0K   │ └── minimal.SBUILD.yaml
  12K   ├─┬ packages
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.SBUILD.yaml
