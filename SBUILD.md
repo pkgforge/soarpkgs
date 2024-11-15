@@ -93,11 +93,11 @@
 > > - `Use this dir to do Additional Steps, keep the main ${SBUILD_OUTDIR} clutter free` 
 > - `${USER_AGENT}`
 > > - Description: `USER_AGENT from Host <Empty if not Available>`
-> - `${GITHUB_TOKEN}` | `${GH_TOKEN}`
+> - [`${GITHUB_TOKEN}`](https://cli.github.com/) | [`${GH_TOKEN}`](https://cli.github.com/)
 > > - Description: `GITHUB TOKEN from Host <Empty if not Available>`
-> - `${GITLAB_TOKEN}` | `${GL_TOKEN}`
+> - [`${GITLAB_TOKEN}`](https://gitlab.com/gitlab-org/cli) | [`${GL_TOKEN}`](https://gitlab.com/gitlab-org/cli)
 > > - Description: `GITLAB TOKEN from Host <Empty if not Available>`
-> - `${HF_TOKEN}`
+> - [`${HF_TOKEN}`](https://huggingface.co/docs/huggingface_hub/en/guides/cli)
 > > - Description: `HuggingFaceHub Token from Host <Empty if not Available>`
 ---
 - #### [`ENV VARS (Runner)`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh)
