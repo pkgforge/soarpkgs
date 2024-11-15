@@ -7,14 +7,15 @@ See some examples:
 
 ### Prerequisite
 - We start by learning:
-> - `Interpreter` is just a name given to the soar parser which will parse & run the `.SBUILD` Script
+> - `Interpreter` is just a name given to the soar parser which will parse & run the `.SBUILD` Script. Also Reffered as `Runner` Sometimes.
 > - `ENFORCED` means the field is NOT Skippable & MUST Exist
 > - `NON_ENFORCED` means the field is Skippable & NOT Mandatory
 > - `RECOMMENDED` means, it can be skipped, but best to try to include it if possible
-> - `$TMPDIR` is a temporary directory the `Interpreter` uses to run the `.SBUILD` Script in.
+> - `$SBUILD_OUTDIR` is a temporary directory the `Interpreter` uses to run the `.SBUILD` Script in. Also Reffered as `$TMPDIR` Sometimes.
+> - `$SBUILD_TMPDIR` is a dir inside `$SBUILD_OUTDIR` (PATH: `$SBUILD_OUTDIR/SBUILD_TEMP`) that can be used to store [NON-NEEDED Files](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#needed-files)
 > - `x_exec.run` refers to the raw/vanilla shell cmds that are run
 - It is always RECOMMENDED to check your `.SBUILD` with [yamllint](https://www.yamllint.com/) & the `x_exec.run` with [shellcheck](https://www.shellcheck.net/)
-
+- For more [Detailed Guide](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe
 
 ### Sections
 > ℹ️ Make sure to `Click ▶` to **Expand**
@@ -33,15 +34,16 @@ See some examples:
 
   ```yaml
   #Example ONLY
-  #soar will add these using soar dl to $TMPDIR/$OUT prior to running the x_exec part
+  #All of the files will be downloaded & added to "${SBUILD_OUTDIR/SBUILD_TEMP}" (Also Known as $SBUILD_TMPDIR prior to running the x_exec part
   build_asset:
-    - url: "https://example.com/fileA.tar" #soar dl downloads it
-      out: "example_01.tar" #It's saved as $TMPDIR/example_01.tar
-    - url: "https://example.com/abc.gif" #soar dl downloads it
-      out: "xyz.gif" #It's saved as xyz.gif
+    - url: "https://example.com/fileA.tar" #Downloaded
+      out: "example_01.tar" #Saved as $SBUILD_OUTDIR/SBUILD_TEMP/example_01.tar
+    - url: "https://example.com/abc.gif" #Downloaded
+      out: "xyz.gif" #Saved as $SBUILD_OUTDIR/SBUILD_TEMP/xyz.gif
   ```
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
-  - This can be used to pull in Static Assets needed for `x_exec.run` part
+  - This can be used to pull in Static Assets needed for `x_exec.run` part.
+  - Accessible using `${SBUILD_TMPDIR}/$FILE` OR `$SBUILD_OUTDIR/SBUILD_TEMP/$FILE` [`ENV VARS`]().
   - The benefit of using this over doing it manually in `x_exec.run` is that it's parallelized & pre-downloaded
   - Can have single or multiple entries
 </details>
@@ -56,8 +58,8 @@ See some examples:
   #if these are already installed/cached by soar, soar will skip them (Unless Upgrade is found)
   build_util:
     - "curl" #for web stuff
-    - "eget" #to dl from github without curl + jq
     - "ouch" #to extract archives easily without remembering flags
+    - "squishy-cli" #to extract appimages/squashfs archives for Desktop, icon Files etc
   ```
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - This can be used to pull in Static Binaries if some extra tools are being used
@@ -121,7 +123,8 @@ See some examples:
   description: "A short summary about the pkg"
   ``` 
   - Short Summarized Description about the `$pkg` `(TYPE:ENFORCED)`
-  - Use [search.nixos.org](https://search.nixos.org/packages) as they have best Descriptions
+  - [repology-fetcher](https://github.com/pkgforge/soarpkgs/blob/main/scripts/repology_fetcher.sh) will Autogenerate Multiple Description from [Repology](https://repology.org/projects/), Pick the Best one.
+  - [search.nixos.org](https://search.nixos.org/packages) also has Saner Descriptions
   - Otherwise Use abridged version from the `$pkg`'s Homepage etc
 </details> 
 <!--  -->
@@ -141,7 +144,7 @@ See some examples:
 <details id="distro_pkg"><summary><b><code>8. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
  
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
-  - Use [repology/projects/$pkg](https://repology.org/projects/) to quickly fetch this Information
+  - Use [repology/projects/$pkg](https://repology.org/projects/) to quickly fetch this Information, Or You can [Automate It](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
   ```yaml
   #Example ONLY
   distro_pkg:
@@ -190,8 +193,8 @@ See some examples:
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - Only One entry is supported
   - If `$pkg_type` is a NON portable format, then this is used only for `soar query/info`
-  - If `$pkg_type` is a portable format like `AppImage`, `FlatImage` , then it is downloaded & saved as `.DirIcon` inside `$TMPDIR`
-  - This MAY BE OVERWRITTEN, if `x_exec.run` does something to the file, otherwise is used as the default `.DirIcon` & `$pkg.png` file
+  - If `$pkg_type` is a portable format like `AppImage`, `FlatImage` , then it is downloaded & saved as `.DirIcon` as `${SBUILD_OUTDIR}/.DirIcon`
+  - This MAY BE OVERWRITTEN, if `x_exec.run` does something to the file, otherwise is used as the default `.DirIcon` & `${SBUILD_OUTDIR}/${SBUILD_PKG}.png` file
   - If the `icon` file is NOT a `png` File, it MUST BE RENAMED to correct `$pkg.format` in the `x_exec.run` step.
 </details>
 <!--  -->
@@ -314,60 +317,54 @@ See some examples:
   - This is the Core part, & what actually does all the work. `(TYPE:ENFORCED)`
   - `shell` set's the real interpreter using `/usr/bin/env ${SHELL}`, this can be any shell: `sh` `bash` `fish` `nu` `oils` `zsh`
   - `run` block's shell script MUST not have errors, use [Shellcheck](https://www.shellcheck.net/) to check for it.
-  - `Interpreter` will run the shell session with `$pkg` `$pkg_id` env variables pre set & configured.
-  - `Interpreter` will also setup `GITHUB_TOKEN` `GITLAB_TOKEN` `HF_TOKEN` if they were exported prior to running `soar build` (Useful for using [gh cli](https://cli.github.com/), [glab](https://gitlab.com/gitlab-org/cli), [eget](https://github.com/zyedidia/eget), [HF CLI](https://huggingface.co/docs/huggingface_hub/en/guides/cli) etc)
-  - `Interpreter` will setup a `$TMPDIR` & set it as Current Working Dir `CWD`
-  - The Shell CMDs here can be anything but MUST, at end, produce the following files:
-  > - `$pkg` file (`>100KB`), this is the main Pkg we are trying to Install
-  > - `$pkg.desktop` file (`>3B`) if `$pkg_type` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `desktop`]
-  > - `.DirIcon` file (`>1KB`) if `$pkg_type` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `icon`, but may need to rename it to correct `$pkg.format`]
-  > - `$pkg.png` file (`>1KB`) if `$pkg_type` is a Portable Format like AppImage & `.DirIcon` doesn't exist
-  > - `$pkg.version` file (`>3B`) containing the `$version` information, Otherwise considered `latest`
-  - At END, `soar` will copy all the needed files from this `$TMPDIR` to relevant dirs & cleanup (Unless used `--no-clean`)
-  - At END, `soar` will also save the entire build log in "${SOAR_DIR}/.cache/logs"
+  - [`Runner`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh) will run the [`Linter|Validator`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_linter.sh), if & only if the `.SBUILD` is validated, it will proceed further.
+  - [`Runner`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh) will run the shell session with [a list of ENV_VARS](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#env-vars-x_execrun) pre set & configured. [More Details](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#env-vars-x_execrun): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#env-vars-x_execrun
+  - [`Runner`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh) will setup a `$TMPDIR` & set it as Current Working Dir `${SBUILD_OUTDIR}`
+  - The Shell CMDs here can be anything but MUST, at end, produce these [`NEEDED FILES`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#needed-files):
+  > - `${SBUILD_OUTDIR}/${SBUILD_PKG}` file (`>100KB`), this is the main Pkg we are trying to Install
+  > - `${SBUILD_OUTDIR}/${SBUILD_PKG}.desktop` file (`>3B`) if `${PKG_TYPE}` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `desktop`]
+  > - `${SBUILD_OUTDIR}/.DirIcon` file (`>1KB`) if `${PKG_TYPE}` is a Portable Format like AppImage, Otherwise Skipped [Not Needed, if used `icon`, but may need to rename it to correct `$pkg.format`]
+  > - `${SBUILD_OUTDIR}/${SBUILD_PKG}.png` file (`>1KB`) if `${PKG_TYPE}` is a Portable Format like AppImage & `.DirIcon` doesn't exist
+  > - `${SBUILD_OUTDIR}/${SBUILD_PKG}.svg` file (`>1KB`) if `${PKG_TYPE}` is a Portable Format like AppImage & both `.DirIcon` & `${SBUILD_OUTDIR}/${SBUILD_PKG}.png` don't exist
+  > - `${SBUILD_OUTDIR}/${SBUILD_PKG}.version` file (`>3B`) containing the `$version` information, Otherwise Auto Determined using `Date|BSUM`
+  - At END, `soar` will copy all the needed files from this `${SBUILD_OUTDIR}` to relevant dirs & cleanup (Unless used `--no-clean`)
+  - At END, `soar` will also save the entire build log in "${SOAR_ROOT}/packages/${PKG}/${PKG_NAME}.log"
 </details>
 <!--  -->
 
 ### Examples
-- ##### Minimal (Bare Minimum)
+> ℹ️ Read the [Dedicated Guide](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe
+- ##### [Minimal (Bare Minimum)](https://github.com/pkgforge/soarpkgs/blob/main/templates/minimal.SBUILD.yaml)
 > ```yaml
 > #!/SBUILD ver @v0.4.5
 > _disabled: false
 > pkg: "86box"
+> build_util:
+>   - "squishy-cli"
 > description: "Emulator of x86-based machines"
 > x_exec:
 >   shell: bash
 >   run: |
->     #Remember we are inside some random dir and we have got the env vars injected ($pkg etc)
->     #We use eget to download the AppImage
+>     #Remember we are inside some random dir and we have got the env vars injected ($SBUILD_PKG etc)
+>     ##Download the file
 >     case "$(uname -m)" in
 >       aarch64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         soar dl "https://github.com/86Box/86Box" --match "appimage|arm64" --exclude "x64|x86|zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
 >         ;;
 >       x86_64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         soar dl "https://github.com/86Box/86Box" --match "appimage|x86_64" --exclude "aarch64|arm|zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
 >         ;;
 >     esac
->     #We extract the needed files soar wants
->     "./${pkg}" --appimage-extract *.desktop 1>/dev/null && mv "./squashfs-root/"*.desktop "./${pkg}.desktop"
->     "./${pkg}" --appimage-extract .DirIcon 1>/dev/null && mv "./squashfs-root/.DirIcon" "./.DirIcon"
->     cp "./.DirIcon" "./${pkg}.png"
+>     #We extract the needed files Runner Wants (All of the Files are saved with ${SBUILD_PKG}.$file Prefix)
+>     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
 >     #We get Version Using Curl
->     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${pkg}.version"
+>     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
 >     #We do a final sanity check to ensure we have all the needed files
->     if [[ -s "./${pkg}" && $(stat -c%s "./${pkg}") -gt 1024 ]] && \
->        [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 3 ]] && \
->        [[ -s "./.DirIcon" && $(stat -c%s "./.DirIcon") -gt 1024 ]] && \
->        [[ -s "./${pkg}.png" && $(stat -c%s "./${pkg}.png") -gt 1024 ]] && \
->        [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 3 ]]; then
->       echo "All files exist"
->     else
->        echo "One or more files are missing or less than 1KB."
->     fi
->     #We are done and can let soar take it from here
+>     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
+>     #We are done and can let the Runner take it from here
 > ```
 
-- ##### Generic (Recommended)
+- ##### [Generic (Recommended)](https://github.com/pkgforge/soarpkgs/blob/main/templates/generic.SBUILD.yaml)
 > ```yaml
 > #!/SBUILD ver @v0.4.5
 > _disabled: false
@@ -375,6 +372,8 @@ See some examples:
 > pkg: "86box"
 > pkg_id: "net._86box._86Box"
 > pkg_type: "AppImage"
+> build_util:
+>   - "squishy-cli"
 > category:
 >   - "Emulator"
 > description: "Emulator of x86-based machines"
@@ -415,31 +414,21 @@ See some examples:
 > x_exec:
 >   shell: bash
 >   run: |
->     #Remember we are inside some random dir and we have got the env vars injected ($pkg etc)
->     #We use eget to download the AppImage
+>     #Remember we are inside some random dir and we have got the env vars injected ($SBUILD_PKG etc)
+>     ##Download the file
 >     case "$(uname -m)" in
 >       aarch64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "arm64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         soar dl "https://github.com/86Box/86Box" --match "appimage|arm64" --exclude "x64|x86|zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
 >         ;;
 >       x86_64)
->         timeout 3m eget "https://github.com/86Box/86Box" --asset "x86_64" --asset "AppImage" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+>         soar dl "https://github.com/86Box/86Box" --match "appimage|x86_64" --exclude "aarch64|arm|zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
 >         ;;
 >     esac
->     #We extract the needed files soar wants
->     "./${pkg}" --appimage-extract *.desktop 1>/dev/null && mv "./squashfs-root/"*.desktop "./${pkg}.desktop"
->     "./${pkg}" --appimage-extract .DirIcon 1>/dev/null && mv "./squashfs-root/.DirIcon" "./.DirIcon"
->     cp "./.DirIcon" "./${pkg}.png"
+>     #We extract the needed files Runner Wants (All of the Files are saved with ${SBUILD_PKG}.$file Prefix)
+>     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
 >     #We get Version Using Curl
->     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${pkg}.version"
+>     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
 >     #We do a final sanity check to ensure we have all the needed files
->     if [[ -s "./${pkg}" && $(stat -c%s "./${pkg}") -gt 1024 ]] && \
->        [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 3 ]] && \
->        [[ -s "./.DirIcon" && $(stat -c%s "./.DirIcon") -gt 1024 ]] && \
->        [[ -s "./${pkg}.png" && $(stat -c%s "./${pkg}.png") -gt 1024 ]] && \
->        [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 3 ]]; then
->       echo "All files exist"
->     else
->        echo "One or more files are missing or less than 1KB."
->     fi
->     #We are done and can let soar take it from here
+>     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
+>     #We are done and can let the Runner take it from here
 > ```
