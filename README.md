@@ -1,4 +1,3 @@
-WORK IN PROGRESS
 <div align="center">
 
 [stars-shield]: https://img.shields.io/github/stars/pkgforge/soarpkgs.svg
@@ -24,16 +23,16 @@ WORK IN PROGRESS
 ---
 #### Contents
 - [**📖 Docs & FAQs 📖**](./tree/main/Docs)
-> - [**`What is this?`**]()
+> - [**`What is this?`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#intro)
 > - [**`What is an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#intro)
 > - [**`How to Write an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
 > - [**`How to Build & Install an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#buildinstallrun-an-sbuild-recipe)
-> - [**`How To Contribute/Donate`**](./tree/main/Docs#how-to-contribute)
-> - [**`Request a new PKG/Tool`**](./tree/main/Docs#how-to-add-request-a-new-a-pkgtool)
-> - [**`Differences from PkgCache`**](./blob/main/Docs/README.md#why-not-host-on-github)
-> - [**`Requirements for PkgCache`**](./blob/main/Docs/README.md#why-not-host-on-github)
-> - [**`DMCA & Copyright`**](./blob/main/Docs/README.md#dmca-copyright--cease--desist)
-> - [**`Contact Us`**](./blob/main/Docs/README.md#contact)
-- [**📦 Status 🔖**](./tree/main#-status-)
-- [**🚧 Security ⚙️**](./blob/main/Docs/README.md#-security-%EF%B8%8F)
+> - [**`Contribution Guidelines`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#contribution-guidelines)
+> - [**`Request a New Package`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#package-request-guidelines)
+> - [**`Differences from BinCache/PkgCache`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#differences-from-bincachepkgcache)
+> - [**`Requirements to add a PKG to BinCache/PkgCache`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#criteria-for-addition-to-bincachepkgcache)
+> - [**`DMCA & Copyright`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#dmca-copyright--cease--desist)
+> - [**`Contact Us`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#contact-us)
+- [**Status 🔖**](./tree/main#-status-)
+> [![🐧🧹 HealthChecks 🖳🗑](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml/badge.svg)](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml)
 - [**Community 💬**](https://t.me/official_loonix/63949)
