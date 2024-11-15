@@ -22,7 +22,7 @@
 > > But if Possible, Use your Distro's own PKG Manager to avoid breaking stuff
 ---
 
-- ### Write a `.SBUILD` Recipe
+- ### Write an `.SBUILD` Recipe
 > 1. Read the [`Spec`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md
 > 2. View [Some Examples](https://github.com/pkgforge/soarpkgs/tree/main/packages): https://github.com/pkgforge/soarpkgs/tree/main/packages
 > 3. Copy the [Generic Template](https://github.com/pkgforge/soarpkgs/blob/main/templates/generic.SBUILD.yaml): https://github.com/pkgforge/soarpkgs/blob/main/templates/generic.SBUILD.yaml
