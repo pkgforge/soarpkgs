@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/pkgcache/main/.github/scripts/repology_fetcher.sh")
+# source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/repology_fetcher.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/repology-fetcher")
 #set -x
 #-------------------------------------------------------#
