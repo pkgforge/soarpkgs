@@ -74,6 +74,10 @@
 > >
 ---
 
+- #### `Build|Install|Run` an `.SBUILD` Recipe
+> TODO
+---
+
 - #### [`ENV VARS (x_exec.run)`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#x_exec)
 > List of Environment Variables that are Accessible Inside `x_exec.run`
 > - `${pkg}` | `{PKG}`
@@ -100,6 +104,7 @@
 > - [`${HF_TOKEN}`](https://huggingface.co/docs/huggingface_hub/en/guides/cli)
 > > - Description: `HuggingFaceHub Token from Host <Empty if not Available>`
 ---
+
 - #### [`ENV VARS (Runner)`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh)
 > - `${SBUILD_SUCCESSFUL}`
 > > - Description: `If the Build Was Successful or Failed, if It Failed (SBUILD_SUCCESSFUL==NO) Bail & Exit Immediately`
@@ -118,6 +123,7 @@
 > - `${SBUILD_META}`
 > > - Description: `JSON Metadata file, is also available at ${SBUILD_OUTDIR}/${SBUILD_PKG}.json`
 ---
+
 - #### `NEEDED FILES`
 > - `${SBUILD_OUTDIR}/${SBUILD_PKG}`
 > > - Description: `The actual binary/package that was built`
@@ -172,3 +178,4 @@
 > > - Description: `Version File, Contains Version, if empty, then Use Version based on Date/BSUM`
 > > - Min_Size: `> 3B`
 > > - `Available for ALL Packages`
+---
