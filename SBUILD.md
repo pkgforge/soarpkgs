@@ -73,3 +73,102 @@
 > > ```
 > >
 ---
+
+- #### [`ENV VARS (x_exec.run)`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#x_exec)
+> List of Environment Variables that are Accessible Inside `x_exec.run`
+> - `${pkg}` | `{PKG}`
+> > - Description: `The raw value of .pkg from .SBUILD <ALWAYS Available>`
+> - `${pkg_id}` |  `${PKG_ID}`
+> > - Description: `The raw value of .pkg_id from .SBUILD <Empty if not Available>`
+> - `${pkg_type}` | `${PKG_TYPE}`
+> > - Description: `The raw value of .pkg_type from .SBUILD <Empty if not Available>`
+> - `${SBUILD_PKG}`
+> > - Description: `The raw value of .pkg + .pkg_type from .SBUILD <ALWAYS Available>`
+> > - `ALWAYS USE ${SBUILD_PKG} for output, example: ${SBUILD_PKG} (Main Binary), ${SBUILD_PKG}.png (Icon), ${SBUILD_PKG}.desktop (Desktop) etc`
+> - `${SBUILD_OUTDIR}`
+> > - Description: `The Root (Temporary) Working Directory x_exec.run is Run From <ALWAYS Available>`
+> > - `All NEEDED Files must exist in this Directory`
+> - `${SBUILD_TMPDIR}`
+> > - Description: `The SBUILD_TEMP Directory inside ${SBUILD_OUTDIR} (PATH: ${SBUILD_OUTDIR}/SBUILD_TEMP), used for storing NON-NEEDED Files <ALWAYS Available>`
+> > - `Use this dir to do Additional Steps, keep the main ${SBUILD_OUTDIR} clutter free` 
+> - `${USER_AGENT}`
+> > - Description: `USER_AGENT from Host <Empty if not Available>`
+> - `${GITHUB_TOKEN}` | `${GH_TOKEN}`
+> > - Description: `GITHUB TOKEN from Host <Empty if not Available>`
+> - `${GITLAB_TOKEN}` | `${GL_TOKEN}`
+> > - Description: `GITLAB TOKEN from Host <Empty if not Available>`
+> - `${HF_TOKEN}`
+> > - Description: `HuggingFaceHub Token from Host <Empty if not Available>`
+---
+- #### [`ENV VARS (Runner)`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh)
+> - `${SBUILD_SUCCESSFUL}`
+> > - Description: `If the Build Was Successful or Failed, if It Failed (SBUILD_SUCCESSFUL==NO) Bail & Exit Immediately`
+> > - Values: `YES | NO`
+> - `${SBUILD_PKG}`
+> > - Description: `The Package Name, used as Prefix for ALL NEEDED Files <ALWAYS Available>`
+> - `${PKG_TYPE}`
+> > - Description: `One of appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static`
+> > - `ALWAYS Re-Checked using Magic Bytes for Utmost Sanity`
+> > - `dynamic|static are binaries (cli), don't need Integration (Desktop,Icons etc)`
+> > - `UNKNOWN means, the pkg_type value was empty, Rechecked anyway`
+> - `${SBUILD_OUTDIR}`
+> > - Description: `The Root (Temporary) Working Directory where ${SBUILD_PKG} & ALL NEEDED Files are Stored <ALWAYS Available>`
+> - `${SBUILD_TMPDIR}`
+> > - Description: `The SBUILD_TEMP Directory inside ${SBUILD_OUTDIR} (PATH: ${SBUILD_OUTDIR}/SBUILD_TEMP), used for storing NON-NEEDED Files <ALWAYS Available>`
+> - `${SBUILD_META}`
+> > - Description: `JSON Metadata file, is also available at ${SBUILD_OUTDIR}/${SBUILD_PKG}.json`
+---
+- #### `NEEDED FILES`
+> - `${SBUILD_OUTDIR}/${SBUILD_PKG}`
+> > - Description: `The actual binary/package that was built`
+> > - Min_Size: `> 100KB`
+> - `${SBUILD_OUTDIR}/.desktop` | `${SBUILD_OUTDIR}/${SBUILD_PKG}.desktop`
+> > - Description: `Desktop File, Is Edited/Fixed during Integration`
+> > - Min_Size: `> 3B`
+> > - `Only Available for Portable Packages`
+> - `${SBUILD_OUTDIR}/.DirIcon` | `${SBUILD_OUTDIR}/${SBUILD_PKG}.DirIcon`
+> > - Description: `DirIcon, Preferred as 'Icon' if '${SBUILD_OUTDIR}/${SBUILD_PKG}.png' OR '${SBUILD_OUTDIR}/${SBUILD_PKG}.svg' DO NOT Exist`
+> > - Min_Size: `> 1KB`
+> > - `Only Available for Portable Packages`
+> - `${SBUILD_OUTDIR}/${SBUILD_PKG}.png` | `${SBUILD_OUTDIR}/${SBUILD_PKG}.svg`
+> > - Description: `Preferred even if '${SBUILD_OUTDIR}/${SBUILD_PKG}.png' OR '${SBUILD_OUTDIR}/${SBUILD_PKG}.svg' Exists due to Higher Resolution`
+> > - Min_Size: `> 1KB`
+> > - `Only Available for Portable Packages`
+> - `${SBUILD_OUTDIR}/${SBUILD_PKG}.appdata.xml` | `${SBUILD_OUTDIR}/${SBUILD_PKG}.metainfo.xml`
+> > - Description: `Prefer metainfo.xml over appdata.xml as appdata.xml is now Legacy`
+> > - Min_Size: `> 3B`
+> > - `Only Available for Portable Packages`
+> - `${SBUILD_OUTDIR}/metadata.json` | `${SBUILD_OUTDIR}/${SBUILD_PKG}.json` | `${SBUILD_META}`
+> > - Description: `JSON Metadata file, if empty, create based on this Template`
+> > > ```json
+> > > {
+> > >   "_disabled": true,
+> > >   "pkg": "${value SBUILD_PKG or filename}",
+> > >   "pkg_type": "${PKG_TYPE, determine using magic bytes}",
+> > >   "category": [
+> > >     "Utility"
+> > >   ],
+> > >   "description": "This Package has Incomplete Metadata",
+> > >   "icon": "/path/to/icon otherwise /path/to/local/default/icon",
+> > >   "maintainer": [
+> > >     "Soar (https://github.com/pkgforge/soar)"
+> > >   ],
+> > >   "note": [
+> > >     "No Metadata was found for this Package, so Please Fix it Manually"
+> > >   ],
+> > >   "src_url": [
+> > >     "https://unknown.unknown/fix-me"
+> > >   ],
+> > >   "tag": [
+> > >     "broken-pkg",
+> > >     "invalid-metadata",
+> > >     "no-metadata"
+> > >   ]
+> > > }
+> > > ```
+> > - Min_Size: `> 3B`
+> > - `Available for ALL Packages` 
+> - `${SBUILD_OUTDIR}/.version` | `${SBUILD_OUTDIR}/${SBUILD_PKG}.version`
+> > - Description: `Version File, Contains Version, if empty, then Use Version based on Date/BSUM`
+> > - Min_Size: `> 3B`
+> > - `Available for ALL Packages`
