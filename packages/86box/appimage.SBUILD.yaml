@@ -8,9 +8,10 @@ pkg_type: "appimage"
 build_util:
   - "7z"
   - "curl"
-  - "eget"
+  - "gh"
   - "jq"
   - "rsync"
+  - "squishy-cli"
   - "wget"
 category:
   - "Emulator"
@@ -43,7 +44,8 @@ note:
  - "You need to download ROMS: https://86box.readthedocs.io/en/latest/usage/roms.html"
 repology:
  - "86box"
-src_url: "https://github.com/86Box/86Box"
+src_url:
+  - "https://github.com/86Box/86Box"
 tag:
   - "app-emulation"
   - "emulators"
@@ -52,25 +54,18 @@ tag:
 x_exec:
   shell: bash
   run: |
+    #Download
     case "$(uname -m)" in
       aarch64)
-        timeout 3m eget "https://github.com/86Box/86Box" --asset "AppImage" --asset "^x64" --asset "^x86" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+        soar dl "https://github.com/86Box/86Box" --match "appimage" --match "arm64" --exclude "x64" --exclude "x86" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
         ;;
       x86_64)
-        timeout 3m eget "https://github.com/86Box/86Box" --asset "AppImage" --asset "^aarch64" --asset "^arm" --asset "^.zsync" --to "./${pkg}" && chmod +x "./${pkg}"
+        soar dl "https://github.com/86Box/86Box" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
         ;;
     esac
-    pkgforger fetch "./${pkg}" --desktop --regexp "${pkg}" --output "./${pkg}.desktop"
-    pkgforger fetch "./${pkg}" --icon --regexp "${pkg}" --output "./.DirIcon" && cp "./.DirIcon" "./${pkg}.png"
-    sed -E 's/\s+setup\s+/ /Ig' -i "./${pkg}.desktop"
-    sed "s/Icon=[^ ]*/Icon=${pkg}/" -i "./${pkg}.desktop"
-    curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${pkg}.version"
-    if [[ -s "./${pkg}" && $(stat -c%s "./${pkg}") -gt 1024 ]] && \
-       [[ -s "./${pkg}.desktop" && $(stat -c%s "./${pkg}.desktop") -gt 3 ]] && \
-       [[ -s "./.DirIcon" && $(stat -c%s "./.DirIcon") -gt 1024 ]] && \
-       [[ -s "./${pkg}.png" && $(stat -c%s "./${pkg}.png") -gt 1024 ]] && \
-       [[ -s "./${pkg}.version" && $(stat -c%s "./${pkg}.version") -gt 3 ]]; then
-      echo "All files exist"
-    else
-       echo "One or more files are missing or less than 1KB."
-    fi
+    #Extract
+    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
+    #Version
+    curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
+    #Verify
+    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
