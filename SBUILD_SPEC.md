@@ -342,6 +342,8 @@ See some examples:
 > build_util:
 >   - "squishy-cli"
 > description: "Emulator of x86-based machines"
+> src_url:
+>  - "https://github.com/86Box/86Box"
 > x_exec:
 >   shell: bash
 >   run: |
