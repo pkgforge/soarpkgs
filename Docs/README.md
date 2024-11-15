@@ -1,0 +1,3 @@
+- #### Intro
+> - [`Soarpkgs`](https://github.com/pkgforge/soarpkgs) is the Official Community Repository for [`Building`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe), [`Installing`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#buildinstallrun-an-sbuild-recipe) & [`Running`](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#buildinstallrun-an-sbuild-recipe) `Communtiy Submitted`, `Local` or [`UnCached`](https://github.com/pkgforge/pkgcache) Packages with [Soar](https://github.com/pkgforge/soar).
+> - Think of it as Alpine's Community or better Arch's AUR.
