@@ -162,7 +162,7 @@ See some examples:
       #suggest extra has it
         - "mypkg"
     #suggests debian has it    
-    deb:
+    debian:
       - "mypkg"
     #suggests nixpkg has it
     nixpkgs:
