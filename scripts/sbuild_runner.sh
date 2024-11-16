@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.2" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.3" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -342,6 +342,25 @@ SBR_VERSION="1.1.2" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
  echo -e "\n[+] Running ${SRC_SBUILD_IN} [x_exec.run == ${SRC_BUILD_SCRIPT}] using DIR ${SBUILD_OUTDIR}\n"
   pushd "${SBUILD_OUTDIR}" >/dev/null 2>&1
+  #Run [VERSION]
+   pkgver="$(jq -r 'try .pkgver // empty' "${SBUILD_META}" | tr -d '[:space:]')" ; export PKG_VER="${pkgver}"
+   if [ "$(echo "${PKG_VER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -le 1 ]; then
+     SRC_BUILD_VERSION="$(realpath $(mktemp))" ; export SRC_BUILD_VERSION
+     SBUILD_SHELL="$(yq '.x_exec.shell' "${SRC_SBUILD_IN}")" ; export SBUILD_SHELL
+     echo -e '#!/usr/bin/env '"${SBUILD_SHELL}"'\n\n' > "${SRC_BUILD_VERSION}"
+     yq '.x_exec.pkgver' "${SRC_SBUILD_IN}" >> "${SRC_BUILD_VERSION}" && chmod +x "${SRC_BUILD_VERSION}"
+     PKG_VER="$(timeout 10 ${SRC_BUILD_VERSION} 2>/dev/null | tr -d '[:space:]' | sed -e 's/[/\\!& ]//g' -e 's/\${[^}]*}//g' | tr -d '[:space:]')"
+     if [ "$(echo "${PKG_VER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -gt 1 ]; then
+       export PKG_VER
+       echo -e "[+] Fetched Version ('.x_exec.pkgver') --> (${PKG_VER}) [Saving to \$PKG.version]"
+       echo "${PKG_VER}" > "${SBUILD_OUTDIR}/${PKG}.version"
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+     fi
+     rm "${SRC_BUILD_VERSION}" 2>/dev/null
+     unset  SBUILD_SHELL SRC_BUILD_VERSION
+   else
+     echo -e "[-] WARNING: Version ('.pkgver') is HardCoded as: ${PKG_VER}"
+   fi
   #Run [MAIN]
    "${SRC_BUILD_SCRIPT}"
   #POSTRUN 
@@ -428,7 +447,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        echo -e "[✓] Version Exists as "$(cat ${SBUILD_OUTDIR}/${SBUILD_PKG}.version)" ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
      elif [[ -s "${SBUILD_OUTDIR}/${PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.version") -gt 3 ]]; then
        cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
-       if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
+       if [[ ! -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" || $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -le 3 ]]; then
          #echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using b3sum as Version)"
          #b3sum "${SBUILD_OUTDIR}/${SBUILD_PKG}" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' | head -c 8 > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
          echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using date as Version)"
@@ -513,10 +532,13 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
     #List Dirs & Files
      list_dirs ; list_files
      export SBUILD_SUCCESSFUL="YES"
+    #Update Metadata
+     jq --arg pkgver "${PKG_VER}" '. | .pkgver = $pkgver | .' "${SBUILD_META}" | jq 'to_entries | sort_by(.key) | from_entries' > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
     #Write to ${SOAR_CACHEPATH}
      rm -rvf "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" 2>/dev/null
      echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
      echo "SBUILD_PKG='${SBUILD_PKG}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "PKG_VER='${PKG_VER}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
      echo "PKG_TYPE='${PKG_TYPE}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
      echo "SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
      echo "SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
@@ -530,8 +552,15 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      echo -e "\n[✗] FATAL: CAN NOT Find ${SBUILD_PKG} in ${SBUILD_OUTDIR}\n"
      list_dirs ; list_files
      export SBUILD_SUCCESSFUL="NO"
-    # Cleanup ${SOAR_CACHEPATH}
+    #Write to ${SOAR_CACHEPATH}
      rm -rvf "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" 2>/dev/null
+     echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "SBUILD_PKG='${SBUILD_PKG}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "PKG_VER='${PKG_VER}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "PKG_TYPE='${PKG_TYPE}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     echo "SBUILD_META='${SBUILD_META}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
    fi
   popd >/dev/null 2>&1
 fi

@@ -87,6 +87,8 @@ tag:
   - "video"
 x_exec:
   shell: bash
+  pkgver:
+    curl -qfsSL "https://kdenlive.org/en/download/" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' | grep -Ei "AppImage" | grep -Eiv 'aarch|arm|zsync' | sort --version-sort | tail -n 1 | tr -d '[:space:]' | grep -o '[0-9]\+\(\.[0-9]\+\)\+' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
@@ -102,7 +104,5 @@ x_exec:
     esac
     #Extract
     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Version
-    echo "${DOWNLOAD_URL}" | grep -o '[0-9]\+\(\.[0-9]\+\)\+' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]' > "./${SBUILD_PKG}.version"
     #Verify
     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

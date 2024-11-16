@@ -34,9 +34,11 @@ tag:
   - "web-browser"
 x_exec:
   shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ttalvitie/browservice/releases" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
     #Tag
-    RELEASE_TAG="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/ttalvitie/browservice/releases" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]')"
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
     export RELEASE_TAG
     #Download
     case "$(uname -m)" in
@@ -49,7 +51,5 @@ x_exec:
     esac
     #Extract
     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Version
-    echo "${RELEASE_TAG}" > "./${SBUILD_PKG}.version"
     #Verify
     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

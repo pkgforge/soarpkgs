@@ -51,6 +51,8 @@ tag:
   - "games"
 x_exec:
   shell: bash
+  pkgver:
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
@@ -64,7 +66,5 @@ x_exec:
     esac
     #Extract
     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Version
-    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]' > "./${SBUILD_PKG}.version"
     #Verify
     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
