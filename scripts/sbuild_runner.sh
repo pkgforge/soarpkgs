@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.5]
 # bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh") example.SBUILD
 # bash <(curl -qfsSL "https://l.ajam.dev/sbuild-runner") example.SBUILD
 # sbuild-runner example.SBUILD
@@ -29,6 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
+SBR_VERSION="1.0.5" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.8]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
@@ -13,6 +12,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
+ SBL_VERSION="1.0.8" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
