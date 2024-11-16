@@ -29,7 +29,7 @@
 > 4. Use the [Repology Fetcher](https://github.com/pkgforge/soarpkgs/blob/main/scripts/repology_fetcher.sh): https://github.com/pkgforge/soarpkgs/blob/main/scripts/repology_fetcher.sh
 > > ```bash
 > > !#Assuming You have READ & VERIFIED what the script contains
-> > source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/pkgcache/main/.github/scripts/repology_fetcher.sh")
+> > source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/repology_fetcher.sh")
 > > #The function itself is `repology_fetcher` but is aliased to `repology-fetcher` for convenience
 > > 
 > > !#Run it with the app/pkg_name
