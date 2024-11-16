@@ -66,6 +66,6 @@ x_exec:
     #Extract
     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
     #Version
-    curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
     #Verify
     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
