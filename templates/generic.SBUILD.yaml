@@ -5,9 +5,9 @@ _disabled: false #We want this SBUILD to run
 #! We Assume you have read the SPEC at least twice, so we won't repeat things to keep this template small
 #! If you haven't or need a refresher: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md
 
-pkg: "<FILL ME>" #pkg is canonical name & is Necessary
-pkg_id: "<FILL ME>" #Leave this empty or delete it if not needed
-pkg_type: "<FILL ME>" #What kind of package it is: appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static etc
+pkg: "REPLACE_ME" #pkg is canonical name & is Necessary
+pkg_id: "REPLACE_ME" #Leave this empty or delete it if not needed
+pkg_type: "REPLACE_ME" #What kind of package it is: appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static etc
 
 #This field specifies what tools soar will install before running the final x_exec.run
 #You can delete this & it's subfields
@@ -26,56 +26,56 @@ build_util:
  # https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html 
  #If you aren't sure, then leave this empty or delete it & use tag: instead
 category:
-  - "<FILL ME>"
-  - "<FILL ME>"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
   
 #Use the repology fetcher to see possible values
-description: "<FILL ME>"
+description: "REPLACE_ME"
 #Delete what you can't fill along with its parent
 distro_pkg:
   alpine:
-    - "<FILL ME>"
+    - "REPLACE_ME"
   archlinux:
     aur:
-      - "<FILL ME>"
-      - "<FILL ME>"
+      - "REPLACE_ME"
+      - "REPLACE_ME"
     extras:
-      - "<FILL ME>"
+      - "REPLACE_ME"
   deb:
-    - "<FILL ME>"
+    - "REPLACE_ME"
   nixpkgs:
-    - "<FILL ME>"
+    - "REPLACE_ME"
 homepage:
-  - "<FILL ME>"
-  - "<FILL ME>"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
 license:
-  - "<FILL ME>"
-  - "<FILL ME>"
-  - "<FILL ME>"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
 #Replace this with your own profile, you can also attach links to your email, discord, web etc
 maintainer:
   - "PkgForge (https://github.com/pkgforge)"
   
 #If there's any special note you want to tell users, otherwise delete it & it's parent
 note:
- - "<FILL ME>"
- - "<FILL ME>"
+ - "REPLACE_ME"
+ - "REPLACE_ME"
 
 #The search term you used when using repology-fetcher or from the site: https://repology.org/projects/ 
 repology:
- - "<FILL ME>"
+ - "REPLACE_ME"
 
 #This is Important, you should fill the exact download page from where you will be getting the package 
 src_url:
-  - "<FILL ME>"
+  - "REPLACE_ME"
  #If it has multiple download links, you can add them here, otherwise delete it
-  - "<FILL ME>"
+  - "REPLACE_ME"
 
 #This has no strict requirement like the category field, so you can fill this with anything, however do be sensible  
 tag:
-  - "<FILL ME>"
-  - "<FILL ME>"
-  - "<FILL ME>"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
   
 #This is the important part
 x_exec:
