@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.1" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.2" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -155,7 +155,7 @@ SBR_VERSION="1.1.1" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
    {
      curl -qfsSL "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$(uname -m).AppImage" -o "${SBUILD_TMPDIR}/appimagetool" && chmod +x "${SBUILD_TMPDIR}/appimagetool"
      if [[ -s "${SBUILD_TMPDIR}/appimagetool" && $(stat -c%s "${SBUILD_TMPDIR}/appimagetool") -gt 1024 ]]; then
-        AI_OFFSET="$(grep -abom2 'hsqs' "${SBUILD_OUTDIR}/${SBUILD_PKG}" | sed -n '2s/:.*//p' | tr -cd '0-9' | tr -d '[:space:]')"
+        AI_OFFSET="$(grep -abom2 'hsqs' "${SBUILD_OUTDIR}/${SBUILD_PKG}" | awk -F: 'NR==1{f=$1} NR==2{s=$1} END{print s?s:f}' | tr -cd '0-9' | tr -d '[:space:]')"
         soar run unsquashfs -offset "${AI_OFFSET}" -force -dest "${SBUILD_TMPDIR}/squash_tmp/" "${SBUILD_OUTDIR}/${SBUILD_PKG}"
         if [ -d "${SBUILD_TMPDIR}/squash_tmp" ] && [ $(du -s "${SBUILD_TMPDIR}/squash_tmp" | cut -f1) -gt 100 ]; then
           pushd "${SBUILD_TMPDIR}" >/dev/null 2>&1
