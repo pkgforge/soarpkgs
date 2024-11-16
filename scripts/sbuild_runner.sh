@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.2]
+#[VERSION=1.0.3]
 # bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh") example.SBUILD
 # bash <(curl -qfsSL "https://l.ajam.dev/sbuild-runner") example.SBUILD
 # sbuild-runner example.SBUILD
@@ -58,8 +58,10 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
    exit 1
  else
   #Check if SOAR's path is in USER's PATH
-  if [[ "${PATH}" != *"soar/bin"* ]]; then
-   echo -e "\n[✗] FATAL: soar/bin is NOT in \$PATH\n$(soar env)\n"
+  SOAR_BINPATH="$(soar env 2>/dev/null | grep -oP '^SOAR_BIN=\K.*' | tr -d '[:space:]')"
+  if [[ "${PATH}" != *"${SOAR_BINPATH}"* ]]; then
+   echo -e "\n[✗] FATAL: ${SOAR_BINPATH} is NOT in \$PATH\n$(soar env)\n"
+   exit 1
   else
    echo -e "\n[+] Printing Soar's ENV_VARS...\n$(soar env)\n"
   fi
@@ -232,7 +234,7 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
         if [[ -n "${USER_AGENT}" ]]; then
          curl -A "${USER_AGENT}" -qfsSL "${SBUILD_ICON_URL}" -o "${SBUILD_OUTDIR}/${SBUILD_PKG}.icon"
         else
-         curl -qfsSL "${SBUILD_DESKTOP_URL}" -o "${SBUILD_OUTDIR}/${SBUILD_PKG}.icon"
+         curl -qfsSL "${SBUILD_ICON_URL}" -o "${SBUILD_OUTDIR}/${SBUILD_PKG}.icon"
         fi
        #Verify 
         if [[ -f "${SBUILD_OUTDIR}/${SBUILD_PKG}.icon" ]] && [[ $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.icon") -gt 100 ]]; then
@@ -393,7 +395,9 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        fi
      fi
      #Json
-     jq . "${SBUILD_META}" >  "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
+     jq . "${SBUILD_META}" > "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
+     #Sbuild
+     yq . "${SRC_SBUILD_IN}" > "${SBUILD_OUTDIR}/${SBUILD_PKG}.sbuild"
      #Version (12c if doesn't Exists)
      if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
        echo -e "[✓] Version Exists as "$(cat ${SBUILD_OUTDIR}/${SBUILD_PKG}.version)" ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
@@ -496,7 +500,7 @@ fi
 
 #-------------------------------------------------------#
 ##Cleanup & Keep Only Needed ENV
- unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files repack_appimage sbuild_linter SBUILD_MODE SELF_NAME SQUISHY_DESKTOP SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_PKG_TYPE SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
+ unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files repack_appimage sbuild_linter SBUILD_MODE SELF_NAME SQUISHY_DESKTOP SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_PKG_TYPE SOAR_BINPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
 ##Disable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
    set +x
