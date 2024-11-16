@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.3]
+#[VERSION=1.0.4]
 # bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh") example.SBUILD
 # bash <(curl -qfsSL "https://l.ajam.dev/sbuild-runner") example.SBUILD
 # sbuild-runner example.SBUILD
@@ -79,6 +79,14 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
    echo -e "\n[✗] FATAL: sbuild-validator could NOT BE Found\n"
    exit 1
  fi
+##Fail if no Deps
+ for DEP_CMD in awk b3sum file find grep jq sed xargs yj yq; do
+   case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
+       "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\nRead: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#prerequisite\n"
+           export CONTINUE_SBUILD="NO"
+           exit 1 ;;
+   esac
+ done
 ##Enable Debug (again)
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x

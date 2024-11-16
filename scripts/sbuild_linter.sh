@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.6]
+#[VERSION=1.0.7]
 # source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 # source <(curl -qfsSL "https://l.ajam.dev/sbuild-linter")
 # sbuild-linter example.SBUILD
@@ -74,7 +74,7 @@ sbuild_linter()
      soar add 'b3sum#bin' 'grep/grep#base' 'jq#bin' 'sed#bin' 'shellcheck#bin' 'yj#bin' 'yq#bin' --yes
    fi
  fi
- for DEP_CMD in b3sum grep jq sed yq; do
+ for DEP_CMD in b3sum file grep jq sed yj yq; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
         "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\nInstall: soar add ${DEP_CMD} --yes\n"
             export CONTINUE_SBUILD="NO"
