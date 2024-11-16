@@ -20,7 +20,7 @@ repology_fetcher()
   #Fetch
    rm -rf "${TMP_JSON}" 2>/dev/null
    echo -e "\n[+] Package: ${REPOLOGY_PKG} (${TMP_JSON})"
-   curl -A "${USER_AGENT}" -qfsSL "https://repology.org/api/v1/project/${REPOLOGY_PKG}" -o "${TMP_JSON}"
+   curl -A "${USER_AGENT}" -qfsSL "https://repology.org/api/v1/project/${REPOLOGY_PKG}" -o "${TMP_JSON}" || curl -qfsSL "https://api.rl.pkgforge.dev/api/v1/project/${REPOLOGY_PKG}" -o "${TMP_JSON}"
    if [[ -f "${TMP_JSON}" ]] && [[ $(stat -c%s "${TMP_JSON}") -gt 100 ]]; then
      #Description
       jq -r '.[] | select(.summary != null and .summary != "") | .summary' "${TMP_JSON}" | sed -e 's/["'\''`|]//g' -e 's/^[ \t]*//;s/[ \t]*$//' | sort -u | grep -viE 'l10n|ICU data|language pack' | awk '{print "description: \"" $0 "\""}' ; echo
