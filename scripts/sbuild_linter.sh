@@ -12,7 +12,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.1.1" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.1.2" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -129,12 +129,12 @@ sbuild_linter()
       show_docs
     fi
    #Validator (No Empty Entries)
-    unset SBUILD_EMPTIES ; SBUILD_EMPTIES="$(grep '""' "${SRC_SBUILD}")"
+    unset SBUILD_EMPTIES ; SBUILD_EMPTIES="$(grep -xE '[[:space:]-]*""[[:space:]-]*' "${SRC_SBUILD}")"
     if [ -n "${SBUILD_EMPTIES}" ]; then
        echo -e "[-] WARNING EMPTY Entries found, Please recheck ${SRC_SBUILD}"
        echo -e "\n${SBUILD_EMPTIES}\n"
        echo -e "[-] Removing Empty Entries..."
-       grep -iv '""' "${SRC_SBUILD}" | yq 'del(.. | select(. == "" or . == []))' | yq eval 'del(.[] | select(. == null or . == ""))' | yq . > "${SRC_SBUILD_TMP}"
+       awk '/x_exec/ {flag=1} !flag && /""/ {next} {print}' "${SRC_SBUILD}" | yq 'del(.. | select(. == "" or . == []))' | yq eval 'del(.[] | select(. == null or . == ""))' | yq . > "${SRC_SBUILD_TMP}"
     else
       #Remove all trailing space, empty fields & Copy to tmp
        echo -e "[✓] ${SRC_SBUILD} contains no Empty Entries"
@@ -297,7 +297,8 @@ sbuild_linter()
       export CONTINUE_SBUILD="NO" && return 1
     else
       echo -e "[+] x_exec.shell == ${SBUILD_SHELL}"
-      echo -e '#!/usr/bin/env '"${SBUILD_SHELL}"'\n\n'"$(yq '.x_exec.run' "${SRC_SBUILD}")" > "${SRC_BUILD_SCRIPT}"
+      echo -e '#!/usr/bin/env '"${SBUILD_SHELL}"'\n\n' > "${SRC_BUILD_SCRIPT}"
+      yq '.x_exec.run' "${SRC_SBUILD}" >> "${SRC_BUILD_SCRIPT}"
       chmod +x "${SRC_BUILD_SCRIPT}"
       if [ ! -f "${SRC_BUILD_SCRIPT}" ] || [ ! -s "${SRC_BUILD_SCRIPT}" ]; then
         echo -e "\n[✗] FATAL: ${SRC_BUILD_SCRIPT} (Temp .x_exec.run) is NOT an executable file\n"
