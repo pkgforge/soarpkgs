@@ -534,6 +534,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      export SBUILD_SUCCESSFUL="YES"
     #Update Metadata
      jq --arg pkgver "${PKG_VER}" '. | .pkgver = $pkgver | .' "${SBUILD_META}" | jq 'to_entries | sort_by(.key) | from_entries' > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
+     cp -f "${SBUILD_META}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
     #Write to ${SOAR_CACHEPATH}
      rm -rvf "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" 2>/dev/null
      echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
