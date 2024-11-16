@@ -2493,12 +2493,16 @@
  32K   │ ├── sbuild_runner.sh
  20K   │ ├── sbuild_linter.sh
 4.0K   │ └── repology_fetcher.sh
- 24K   ├── SBUILD_SPEC.md
- 20K   ├─┬ packages
+ 36K   ├─┬ packages
+8.0K   │ ├─┬ steam
+4.0K   │ │ └── appimage.yaml
 8.0K   │ ├─┬ kdenlive
+4.0K   │ │ └── appimage.yaml
+8.0K   │ ├─┬ browservice
 4.0K   │ │ └── appimage.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.yaml
+ 24K   ├── SBUILD_SPEC.md
  16K   ├─┬ templates
 8.0K   │ ├── generic.SBUILD.yaml
 4.0K   │ └── minimal.SBUILD.yaml
