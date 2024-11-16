@@ -5,7 +5,7 @@ _disabled: false #We want this SBUILD to run
 #! We Assume you have read the SPEC at least twice, so we won't repeat things to keep this template small
 #! If you haven't or need a refresher: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md
 
-pkg: "<FILL ME>" #pkg is canonical name & is Necessary
+pkg: "REPLACE_ME" #pkg is canonical name & is Necessary
 
 #This field specifies what tools soar will install before running the final x_exec.run
 #You can delete this & it's subfields
@@ -14,11 +14,11 @@ build_util:
   - "squishy-cli"
 
 #Use the repology fetcher to see possible values
-description: "<FILL ME>"
+description: "REPLACE_ME"
 
 #This is Important, you should fill the exact download page from where you will be getting the package 
 src_url:
-  - "<FILL ME>"
+  - "REPLACE_ME"
   
 #This is the important part
 x_exec:
