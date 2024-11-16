@@ -1,0 +1,59 @@
+#!/SBUILD ver @v0.4.5
+#SELF: 
+_disabled: false
+
+pkg: "browservice"
+pkg_id: "org.browservice.browservice"
+pkg_type: "appimage"
+build_util:
+  - "7z#bin"
+  - "curl#bin"
+  - "gh#bin"
+  - "jq#bin"
+  - "rsync#bin"
+  - "squishy-cli#bin"
+  - "wget#bin"
+category:
+ - "WebBrowser"
+description: "Browse the modern web on historical browsers"
+distro_pkg:
+  archlinux:
+    aur:
+      - "browservice"
+homepage:
+  - "https://github.com/ttalvitie/browservice"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Officially Created AppImage. Check/Report @ https://github.com/ttalvitie/browservice"
+repology:
+ - "browservice"
+src_url:
+  - "https://github.com/ttalvitie/browservice"
+tag:
+  - "browser"
+  - "internet"
+  - "web-browser"
+x_exec:
+  shell: bash
+  run: |
+    #Tag
+    RELEASE_TAG="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/ttalvitie/browservice/releases" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]')"
+    export RELEASE_TAG
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ttalvitie/browservice@${RELEASE_TAG}" --match "appimage" --match "aarch64" --exclude "x64" --exclude "x86" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        ;;
+      x86_64)
+        soar dl "https://github.com/ttalvitie/browservice@${RELEASE_TAG}" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        ;;
+    esac
+    #Extract
+    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
+    #Version
+    echo "${RELEASE_TAG}" > "./${SBUILD_PKG}.version"
+    #Verify
+    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
