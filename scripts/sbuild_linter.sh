@@ -12,7 +12,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.0.9" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.1.0" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -37,7 +37,8 @@ sbuild_linter()
     HOME="$(getent passwd "${USER}" | cut -d: -f6)" ; export HOME
  fi
  #TMPDIR
- SYSTMP="$(dirname $(mktemp -u))"
+ mkdir -p "$(dirname $(mktemp -u))"
+ SYSTMP="$(dirname $(realpath $(mktemp -u)))"
  mkdir -p "${SYSTMP}" 2>/dev/null
  ##Set ENV for Linter
   #INPUT="${1:-$(cat)}"
