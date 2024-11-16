@@ -12,7 +12,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.0.8" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.0.9" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -36,6 +36,9 @@ sbuild_linter()
     echo "WARNING: HOME Directory is empty/unset"
     HOME="$(getent passwd "${USER}" | cut -d: -f6)" ; export HOME
  fi
+ #TMPDIR
+ SYSTMP="$(dirname $(mktemp -u))"
+ mkdir -p "${SYSTMP}" 2>/dev/null
  ##Set ENV for Linter
   #INPUT="${1:-$(cat)}"
   INPUT="${1:-$(echo "$@" | tr -d '[:space:]')}"
@@ -57,7 +60,6 @@ sbuild_linter()
       export CONTINUE_SBUILD="NO" && return 1
     fi
   fi
-  SYSTMP="$(dirname $(mktemp -u))"
  ##CMD
  #b3sum: Needed for Checksums
  #jq: Needed for some validators, yq's json support is limited (https://github.com/jqlang/jq)

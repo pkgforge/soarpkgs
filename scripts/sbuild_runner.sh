@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.0.5" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.0.6" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -52,6 +52,9 @@ SBR_VERSION="1.0.5" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
     echo "WARNING: HOME Directory is empty/unset"
     HOME="$(getent passwd "${USER}" | cut -d: -f6)" ; export HOME
  fi
+ #TMPDIR
+ SYSTMP="$(dirname $(mktemp -u))"
+ mkdir -p "${SYSTMP}" 2>/dev/null
 ##Fail if no Soar
  if ! command -v "soar" >/dev/null 2>&1; then
    echo -e "\n[✗] FATAL: soar is NOT INSTALLED\nInstall: https://github.com/pkgforge/soar#-installation\n"
