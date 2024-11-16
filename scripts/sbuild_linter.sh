@@ -12,7 +12,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.1.0" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.1.1" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -50,8 +50,8 @@ sbuild_linter()
   else
     if [ -f "${INPUT}" ] && [ -s "${INPUT}" ]; then
       SRC_SBUILD="$(realpath ${INPUT})"
-      SRC_SBUILD_TMP="$(mktemp)"
-      SRC_BUILD_SCRIPT="$(mktemp)"
+      SRC_SBUILD_TMP="$(realpath $(mktemp))"
+      SRC_BUILD_SCRIPT="$(realpath $(mktemp))"
       export SRC_SBUILD SRC_SBUILD_TMP
       chmod +xwr "${SRC_SBUILD}"
       echo -e "\n[+] FILE: ${SRC_SBUILD}"

@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.0.7" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.0.8" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -108,7 +108,7 @@ SBR_VERSION="1.0.7" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
      exit 1
    fi
    chmod +x "${SRC_BUILD_SCRIPT}"
-   SBUILD_META="$(mktemp)" ; SBUILD_OUTDIR="$(mktemp -d)"
+   SBUILD_META="$(realpath $(mktemp))" ; SBUILD_OUTDIR="$(realpath $(mktemp -d))"
    export SBUILD_META SBUILD_OUTDIR
    SBUILD_TMPDIR="${SBUILD_OUTDIR}/SBUILD_TEMP" ; export SBUILD_TMPDIR ; mkdir -p "${SBUILD_TMPDIR}"
    echo -e "[+] SBUILD (Recipe) == ${SRC_SBUILD_IN}"
