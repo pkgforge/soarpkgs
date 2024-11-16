@@ -1,0 +1,78 @@
+#!/SBUILD ver @v0.4.5
+#SELF: 
+_disabled: false
+
+pkg: "steam"
+pkg_id: "com.valvesoftware.Steam"
+pkg_type: "appimage"
+build_util:
+  - "7z#bin"
+  - "curl#bin"
+  - "gh#bin"
+  - "jq#bin"
+  - "rsync#bin"
+  - "squishy-cli#bin"
+  - "wget#bin"
+category:
+ - "Game"
+description: "A video game digital distribution service and storefront from Valve"
+distro_pkg:
+  archlinux:
+    multilib:
+      - "steam"
+  nixpkgs:
+    - "steam-unwrapped"    
+homepage:
+  - "https://steamcommunity.com/linux"
+  - "https://store.steampowered.com"
+  - "https://github.com/ValveSoftware/steam-for-linux"
+license:
+  - "ALT-Steam"
+  - "Distributable"
+  - "Freeware"
+  - "Proprietary"
+  - "SUSE-Freeware"
+  - "Steam License Agreement"
+  - "Steam License Agreement and MIT"
+  - "Unfree redistributable"
+  - "Valve Corporation"
+  - "custom"
+  - "custom: Proprietary license"
+  - "no OSI Approved"
+  - "proprietary license"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Community Created AppImage based on Conty (ArchLinux). Check/Report @ https://github.com/ivan-hc/Steam-appimage"
+repology:
+ - "steam"
+src_url:
+  - "https://github.com/ivan-hc/Steam-appimage"
+tag:
+  - "Amusements/Games/Other"
+  - "Games"
+  - "Games/Other"
+  - "distribution"
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    #Tag
+    RELEASE_TAG="$(curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]')"
+    export RELEASE_TAG
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported: https://github.com/ValveSoftware/steam-for-linux/issues/4061/\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Steam-appimage" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        ;;
+    esac
+    #Extract
+    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
+    #Version
+    echo "${RELEASE_TAG}" > "./${SBUILD_PKG}.version"
+    #Verify
+    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
