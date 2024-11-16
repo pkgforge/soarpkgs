@@ -12,7 +12,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.1.2" && echo -e "[+] Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.1.3" && echo -e "[+] SBUILD Linter Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
