@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.0" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.1" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -206,10 +206,10 @@ SBR_VERSION="1.1.0" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
      if [[ "${HAS_SQUISHY}" == "YES" ]]; then
        #Only Desktop
        if [ -n "${SQUISHY_DESKTOP}" ]; then
-        squishy-cli appimage --desktop --appstream --write "${SBUILD_OUTDIR}"
+        squishy-cli appimage "${SBUILD_OUTDIR}/${SBUILD_PKG}" --desktop --appstream --write "${SBUILD_OUTDIR}"
        #Only Icon 
        elif [ -n "${SQUISHY_ICON}" ]; then
-        squishy-cli appimage --icon --appstream --write "${SBUILD_OUTDIR}"
+        squishy-cli appimage "${SBUILD_OUTDIR}/${SBUILD_PKG}" --icon --appstream --write "${SBUILD_OUTDIR}"
        #Mostly for NixAppImages 
        elif [ -n "${SQUISHY_FILTER}" ]; then
         squishy-cli appimage "${SBUILD_OUTDIR}/${SBUILD_PKG}" --filter "${SQUISHY_FILTER}" --icon --desktop --appstream --write "${SBUILD_OUTDIR}"
@@ -444,7 +444,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
          timeout 10 "${SBUILD_OUTDIR}/${SBUILD_PKG}" --pbundle_desktop | base64 -d > "${SBUILD_OUTDIR}/${SBUILD_PKG}.desktop"
        fi
        if [[ "${HAS_DIRICON}" != "YES" ]] && [[ "${HAS_ICON}" != "YES" ]]; then
-         echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE '.DirIcon|Icon' (Attempting to Extract Automatically)"
+         echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE '.DirIcon' (Attempting to Extract Automatically)"
          timeout 10 "${SBUILD_OUTDIR}/${SBUILD_PKG}" --pbundle_pngIcon | base64 -d > "${SBUILD_OUTDIR}/${SBUILD_PKG}.DirIcon"
        fi
      #AppImage
@@ -456,7 +456,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        fi
       #Attempt to fetch/fix media
        if [[ "${HAS_DESKTOP}" != "YES" ]]; then
-         echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE '.DirIcon|Icon' (Attempting to Extract Automatically)"
+         echo -e "[-] WARNING: ${SBUILD_PKG} DOES NOT HAVE 'Desktop(.desktop)' (Attempting to Extract Automatically)"
          unset SQUISHY_ICON SQUISHY_FILTER; SQUISHY_DESKTOP="ON" use_squishy
        fi
        if [[ "${HAS_DIRICON}" != "YES" ]] && [[ "${HAS_ICON}" != "YES" ]]; then
