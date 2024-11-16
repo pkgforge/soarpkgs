@@ -6,13 +6,9 @@ pkg: "kdenlive"
 pkg_id: "org.kde.kdenlive"
 pkg_type: "appimage"
 build_util:
-  - "7z#bin"
   - "curl#bin"
-  - "gh#bin"
   - "jq#bin"
-  - "rsync#bin"
   - "squishy-cli#bin"
-  - "wget#bin"
 category:
  - "AudioVideoEditing"
 description: "FOSS video editor, based on MLT Framework and KDE Frameworks"
