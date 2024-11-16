@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.0.8" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.0.9" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -110,7 +110,8 @@ SBR_VERSION="1.0.8" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
    chmod +x "${SRC_BUILD_SCRIPT}"
    SBUILD_META="$(realpath $(mktemp))" ; SBUILD_OUTDIR="$(realpath $(mktemp -d))"
    export SBUILD_META SBUILD_OUTDIR
-   SBUILD_TMPDIR="${SBUILD_OUTDIR}/SBUILD_TEMP" ; export SBUILD_TMPDIR ; mkdir -p "${SBUILD_TMPDIR}"
+   SBUILD_TMPDIR="${SBUILD_OUTDIR}/SBUILD_TEMP" ; mkdir -p "${SBUILD_TMPDIR}"
+   SBUILD_TMPDIR="$(realpath ${SBUILD_TMPDIR})" ; export SBUILD_TMPDIR
    echo -e "[+] SBUILD (Recipe) == ${SRC_SBUILD_IN}"
    echo -e "[+] SBUILD (Metadata) == ${SBUILD_META}"
    echo -e "[+] SBUILD (OUTDIR) == ${SBUILD_OUTDIR}"
@@ -150,6 +151,7 @@ SBR_VERSION="1.0.8" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
         AI_OFFSET="$(grep -abom2 'hsqs' "${SBUILD_OUTDIR}/${SBUILD_PKG}" | sed -n '2s/:.*//p' | tr -cd '0-9' | tr -d '[:space:]')"
         soar run unsquashfs -offset "${AI_OFFSET}" -force -dest "${SBUILD_TMPDIR}/squash_tmp/" "${SBUILD_OUTDIR}/${SBUILD_PKG}"
         if [ -d "${SBUILD_TMPDIR}/squash_tmp" ] && [ $(du -s "${SBUILD_TMPDIR}/squash_tmp" | cut -f1) -gt 100 ]; then
+          pushd "${SBUILD_TMPDIR}" >/dev/null 2>&1
            printf '#!/bin/sh\nexit 0' > "${SBUILD_TMPDIR}/desktop-file-validate" && chmod +x "${SBUILD_TMPDIR}/desktop-file-validate"
            PATH="${SBUILD_TMPDIR}:${PATH}" ARCH="$(uname -m)" appimagetool --comp "zstd" \
            --mksquashfs-opt -root-owned \
@@ -171,6 +173,7 @@ SBR_VERSION="1.0.8" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
               echo "[-] File: ${AI_TYPE}"
             fi
           fi
+          popd >/dev/null 2>&1
         else
            echo -e "\n[✗] FATAL: Failed to Extract ${SBUILD_OUTDIR}/${SBUILD_PKG} using UnSquashFS\n"
         fi
@@ -319,7 +322,10 @@ SBR_VERSION="1.0.8" && echo -e "[+] Version: ${SBR_VERSION}" ; unset SBR_VERSION
    echo -e "\n[✗] FATAL: CAN NOT CONTINUE\n"
    export CONTINUE_SBUILD="NO" ; exit 1
   else
-   export CONTINUE_SBUILD="YES" ; set +x
+   export CONTINUE_SBUILD="YES"
+    if [ "${DEBUG}" != "1" ] && [ "${DEBUG}" != "ON" ]; then
+      set +x
+    fi
   fi
 #-------------------------------------------------------#
 
