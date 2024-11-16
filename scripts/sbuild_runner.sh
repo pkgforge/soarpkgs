@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#[VERSION=1.0.4]
+#[VERSION=1.0.5]
 # bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_runner.sh") example.SBUILD
 # bash <(curl -qfsSL "https://l.ajam.dev/sbuild-runner") example.SBUILD
 # sbuild-runner example.SBUILD
@@ -55,13 +55,13 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
 ##Fail if no Soar
  if ! command -v "soar" >/dev/null 2>&1; then
    echo -e "\n[✗] FATAL: soar is NOT INSTALLED\nInstall: https://github.com/pkgforge/soar#-installation\n"
-   exit 1
+   return 1 || exit 1
  else
   #Check if SOAR's path is in USER's PATH
   SOAR_BINPATH="$(soar env 2>/dev/null | grep -oP '^SOAR_BIN=\K.*' | tr -d '[:space:]')"
   if [[ "${PATH}" != *"${SOAR_BINPATH}"* ]]; then
    echo -e "\n[✗] FATAL: ${SOAR_BINPATH} is NOT in \$PATH\n$(soar env)\n"
-   exit 1
+   return 1 || exit 1
   else
    echo -e "\n[+] Printing Soar's ENV_VARS...\n$(soar env)\n"
   fi
@@ -77,14 +77,14 @@ unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
    INSTALL_DEPS="ON" SBUILD_MODE="ON" sbuild_linter "${INPUT}"
  else
    echo -e "\n[✗] FATAL: sbuild-validator could NOT BE Found\n"
-   exit 1
+   return 1 || exit 1
  fi
 ##Fail if no Deps
  for DEP_CMD in awk b3sum file find grep jq sed xargs yj yq; do
    case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
        "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\nRead: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#prerequisite\n"
            export CONTINUE_SBUILD="NO"
-           exit 1 ;;
+           return 1 || exit 1 ;;
    esac
  done
 ##Enable Debug (again)
