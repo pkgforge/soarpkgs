@@ -11,9 +11,11 @@ See some examples:
 > - `ENFORCED` means the field is NOT Skippable & MUST Exist
 > - `NON_ENFORCED` means the field is Skippable & NOT Mandatory
 > - `RECOMMENDED` means, it can be skipped, but best to try to include it if possible
+> - `NOT-RECOMMENDED` means, you shouldn't use it as there's better way, but if you want, you can
 > - `$SBUILD_OUTDIR` is a temporary directory the `Interpreter` uses to run the `.SBUILD` Script in. Also Reffered as `$TMPDIR` Sometimes.
 > - `$SBUILD_TMPDIR` is a dir inside `$SBUILD_OUTDIR` (PATH: `$SBUILD_OUTDIR/SBUILD_TEMP`) that can be used to store [NON-NEEDED Files](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#needed-files)
-> - `x_exec.run` refers to the raw/vanilla shell cmds that are run
+> - `x_exec.pkgver` refers to the raw/vanilla shell cmds that are run to get the Version of the Package
+> - `x_exec.run` refers to the raw/vanilla shell cmds that are run to download, build & fetch the Package
 - It is always RECOMMENDED to check your `.SBUILD` with [yamllint](https://www.yamllint.com/) & the `x_exec.run` with [shellcheck](https://www.shellcheck.net/)
 - For more [Detailed Guide](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe
 
@@ -48,26 +50,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="build_util"><summary><b><code>3. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
-
-  ```yaml
-  #Example ONLY
-  #WARNING: DO NOT USE THIS TO INSTALL STUFF LIKE GIT as that is known not to work as static binary
-  #This should only be used for static bins, (use build_dep instead CURRENTLY NOT IMPLEMENTED)
-  #soar will add these using soar dl temporarily in cache prior to running the x_exec part
-  #if these are already installed/cached by soar, soar will skip them (Unless Upgrade is found)
-  build_util:
-    - "curl" #for web stuff
-    - "ouch" #to extract archives easily without remembering flags
-    - "squishy-cli" #to extract appimages/squashfs archives for Desktop, icon Files etc
-  ```
-  - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
-  - This can be used to pull in Static Binaries if some extra tools are being used
-  - Use this only if your distro doesn't provide it or you need the latest version of a tool
-  - Can have single or multiple entries
-</details>
-<!--  -->
-<details id="pkg"><summary><b><code>4. Pkg (TYPE:ENFORCED)</code></a></b></summary>
+<details id="pkg"><summary><b><code>3. Pkg (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -100,7 +83,38 @@ See some examples:
   > - `Note:` Interpreter will read the magic bytes to determine correct format in case this field is empty.
 </details>
 <!--  -->
-<details id="category"><summary><b><code>5. Category (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="description"><summary><b><code>4. Version (pkgver) (TYPE:NOT-RECOMMENDED)</code></a></b></summary>
+ 
+  ```yaml
+  #Example ONLY
+  pkgver: "Exact Version, AlphaNumeric or Release Tag"
+  ``` 
+  - Exact Version of `$pkg` `(TYPE:NOT-RECOMMENDED)`
+  - This is `NOT-RECOMMENDED` unless you want to enforce a fixed version & plan to update it manually
+  - `x_exec.pkgver` exists, which takes care of determining latest versions automatically.
+  - If you use both `.pkgver` & `x_exec.pkgver`, `x_exec.pkgver` WILL BE IGNORED, and `.pkgver` will always be used
+</details> 
+<!--  -->
+<details id="build_util"><summary><b><code>5. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
+
+  ```yaml
+  #Example ONLY
+  #WARNING: DO NOT USE THIS TO INSTALL STUFF LIKE GIT as that is known not to work as static binary
+  #This should only be used for static bins, (use build_dep instead CURRENTLY NOT IMPLEMENTED)
+  #soar will add these using soar dl temporarily in cache prior to running the x_exec part
+  #if these are already installed/cached by soar, soar will skip them (Unless Upgrade is found)
+  build_util:
+    - "curl" #for web stuff
+    - "ouch" #to extract archives easily without remembering flags
+    - "squishy-cli" #to extract appimages/squashfs archives for Desktop, icon Files etc
+  ```
+  - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
+  - This can be used to pull in Static Binaries if some extra tools are being used
+  - Use this only if your distro doesn't provide it or you need the latest version of a tool
+  - Can have single or multiple entries
+</details>
+<!--  -->
+<details id="category"><summary><b><code>6. Category (TYPE:RECOMMENDED)</code></a></b></summary>
 
   - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
   - If it is left empty or doesn't exist, It is set to `Utility` by default.
@@ -116,7 +130,7 @@ See some examples:
   > ```
 </details>
 <!--  -->
-<details id="description"><summary><b><code>6. Description (TYPE:ENFORCED)</code></a></b></summary>
+<details id="description"><summary><b><code>7. Description (TYPE:ENFORCED)</code></a></b></summary>
  
   ```yaml
   #Example ONLY
@@ -128,7 +142,7 @@ See some examples:
   - Otherwise Use abridged version from the `$pkg`'s Homepage etc
 </details> 
 <!--  -->
-<details id="desktop"><summary><b><code>7. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="desktop"><summary><b><code>8. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -141,7 +155,7 @@ See some examples:
   - This MAY BE OVERWRITTEN, if `x_exec.run` does something to the file, otherwise is used as the default `.Desktop` file
 </details>
 <!--  -->
-<details id="distro_pkg"><summary><b><code>8. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="distro_pkg"><summary><b><code>9. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
  
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - Use [repology/projects/$pkg](https://repology.org/projects/) to quickly fetch this Information, Or You can [Automate It](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
@@ -170,7 +184,7 @@ See some examples:
   ``` 
 </details> 
 <!--  -->
-<details id="homepage"><summary><b><code>9. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="homepage"><summary><b><code>10. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -185,7 +199,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details id="icon"><summary><b><code>10. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="icon"><summary><b><code>11. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   icon: "#A Direct RAW URL to download a icon/logo file"
@@ -198,7 +212,7 @@ See some examples:
   - If the `icon` file is NOT a `png` File, it MUST BE RENAMED to correct `$pkg.format` in the `x_exec.run` step.
 </details>
 <!--  -->
-<details id="license"><summary><b><code>11. License (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="license"><summary><b><code>12. License (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -217,7 +231,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details id="maintainer"><summary><b><code>12. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="maintainer"><summary><b><code>13. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -232,7 +246,7 @@ See some examples:
   - You will usually add yourself to this field
 </details>
 <!--  -->
-<details id="note"><summary><b><code>13. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="note"><summary><b><code>14. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -245,7 +259,7 @@ See some examples:
   - Can have single or multiple entries 
 </details>
 <!--  -->
-<details id="provides"><summary><b><code>14. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="provides"><summary><b><code>15. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -263,7 +277,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="repology"><summary><b><code>15. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="repology"><summary><b><code>16. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -276,7 +290,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="src_url"><summary><b><code>16. Source (Download) URL (TYPE:ENFORCED)</code></a></b></summary>
+<details id="src_url"><summary><b><code>17. Source (Download) URL (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -290,7 +304,7 @@ See some examples:
   - Can have only single or multiple entries
 </details>
 <!--  -->
-<details id="tag"><summary><b><code>17. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="tag"><summary><b><code>18. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -305,17 +319,23 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="x_exec"><summary><b><code>18. x_exec (TYPE:ENFORCED)</code></a></b></summary>
+<details id="x_exec"><summary><b><code>19. x_exec (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
   x_exec:
     shell: bash #Invokes /usr/bin/env ${SHELL}, bash in this case
+    pkgver: |
+      ${RAW SHELL CMDS TO FETCH VERSION}
     run: |
-     ${RAW SHELL CMDS}
+     ${RAW SHELL CMDS TO BUILD|DOWNLOAD|FETCH PACKAGE}
   ```  
   - This is the Core part, & what actually does all the work. `(TYPE:ENFORCED)`
   - `shell` set's the real interpreter using `/usr/bin/env ${SHELL}`, this can be any shell: `sh` `bash` `fish` `nu` `oils` `zsh`
+  - `pkgver` block's shell script must not have errors, and must produce (echo|output) only the version
+  > - This will save the version in `${SBUILD_OUTDIR}/${SBUILD_PKG}.version` & also export as ENV VAR `${PKG_VER}`
+  > - You can reuse or overwrite it in `run` part so be careful
+  > - You can just do `echo 1.1.1` if you want to hardcode a particular version, though for that `.pkgver` exist
   - `run` block's shell script MUST not have errors, use [Shellcheck](https://www.shellcheck.net/) to check for it.
   - [`Runner`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh) will run the [`Linter|Validator`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_linter.sh), if & only if the `.SBUILD` is validated, it will proceed further.
   - [`Runner`](https://github.com/pkgforge/soarpkgs/blob/main/scripts/sbuild_runner.sh) will run the shell session with [a list of ENV_VARS](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#env-vars-x_execrun) pre set & configured. [More Details](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#env-vars-x_execrun): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#env-vars-x_execrun
@@ -346,6 +366,9 @@ See some examples:
 >  - "https://github.com/86Box/86Box"
 > x_exec:
 >   shell: bash
+>   pkgver: |
+>     #This will fetch the version and save it as "./${SBUILD_PKG}.version" and env ${PKG_VER}
+>     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name'
 >   run: |
 >     #Remember we are inside some random dir and we have got the env vars injected ($SBUILD_PKG etc)
 >     ##Download the file
@@ -359,8 +382,6 @@ See some examples:
 >     esac
 >     #We extract the needed files Runner Wants (All of the Files are saved with ${SBUILD_PKG}.$file Prefix)
 >     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
->     #We get Version Using Curl
->     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
 >     #We do a final sanity check to ensure we have all the needed files
 >     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
 >     #We are done and can let the Runner take it from here
@@ -415,6 +436,9 @@ See some examples:
 >   - "system"
 > x_exec:
 >   shell: bash
+>   pkgver: |
+>     #This will fetch the version and save it as "./${SBUILD_PKG}.version" and env ${PKG_VER}
+>     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name'
 >   run: |
 >     #Remember we are inside some random dir and we have got the env vars injected ($SBUILD_PKG etc)
 >     ##Download the file
@@ -428,8 +452,6 @@ See some examples:
 >     esac
 >     #We extract the needed files Runner Wants (All of the Files are saved with ${SBUILD_PKG}.$file Prefix)
 >     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
->     #We get Version Using Curl
->     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name' > "./${SBUILD_PKG}.version"
 >     #We do a final sanity check to ensure we have all the needed files
 >     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
 >     #We are done and can let the Runner take it from here
