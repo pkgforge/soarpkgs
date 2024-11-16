@@ -6,13 +6,8 @@ pkg: "steam"
 pkg_id: "com.valvesoftware.Steam"
 pkg_type: "appimage"
 build_util:
-  - "7z#bin"
   - "curl#bin"
-  - "gh#bin"
-  - "jq#bin"
-  - "rsync#bin"
   - "squishy-cli#bin"
-  - "wget#bin"
 category:
  - "Game"
 description: "A video game digital distribution service and storefront from Valve"
@@ -57,9 +52,6 @@ tag:
 x_exec:
   shell: bash
   run: |
-    #Tag
-    RELEASE_TAG="$(curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]')"
-    export RELEASE_TAG
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -73,6 +65,6 @@ x_exec:
     #Extract
     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
     #Version
-    echo "${RELEASE_TAG}" > "./${SBUILD_PKG}.version"
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]' > "./${SBUILD_PKG}.version"
     #Verify
     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

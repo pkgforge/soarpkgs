@@ -6,13 +6,9 @@ pkg: "browservice"
 pkg_id: "org.browservice.browservice"
 pkg_type: "appimage"
 build_util:
-  - "7z#bin"
   - "curl#bin"
-  - "gh#bin"
   - "jq#bin"
-  - "rsync#bin"
   - "squishy-cli#bin"
-  - "wget#bin"
 category:
  - "WebBrowser"
 description: "Browse the modern web on historical browsers"
