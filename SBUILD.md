@@ -42,6 +42,8 @@
 > > !#Assuming You have READ & VERIFIED what the script contains
 > > source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
 > > #The function itself is `sbuild_linter` but is aliased to `sbuild-linter` for convenience
+> > #It can be downloaded and run:
+> > curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh" -o "./sbuild-linter" && chmod +x "./sbuild-linter"
 > > 
 > > !#Run it with /path/to/your/SBUILD
 > > sbuild-linter ./example.SBUILD
@@ -55,6 +57,7 @@
 > > DEBUG=1|ON sbuild-linter example.SBUILD --> runs with set -x
 > > INSTALL_DEPS=1|ON sbuild-linter example.SBUILD --> Installs all deps via soar
 > > SHOW_DIFF=1|ON sbuild-linter example.SBUILD --> shows diff between example.SBUILD & example.SBUILD.validated
+> > SHOW_PKGVER=1|ON sbuild-linter example.SBUILD --> fetches Version (Using .pkgver or .x_exec.pkgver), writes to example.SBUILD.pkgver 
 > > SHELLCHECK=0|OFF sbuild-linter example.SBUILD --> Disables Shellcheck
 > > SBUILD_MODE=1|ON sbuild-linter example.SBUILD --> Exports needed ENV Vars to sbuild-runner
 > > ```
@@ -70,6 +73,9 @@
 > > !#Extra options
 > > sbuild-runner example.SBUILD
 > > DEBUG=1|ON sbuild-runner example.SBUILD --> runs with set -x
+> > SBUILD_ID="test123" sbuild-runner example.SBUILD --> Saves the env as ${SOAR_CACHEPATH}/test123.SBUILD.env
+> > # By default, it will save as ${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env (SBUILD_ID == .pkg + .pkg_type)
+> > # Regardless, it will also always save the env file next to example.SBUILD as example.SBUILD.env
 > > ```
 > >
 ---
