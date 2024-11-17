@@ -31,7 +31,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.7" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.8" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -360,8 +360,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        if [ "$(echo "${PKG_VER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -gt 1 ]; then
          export PKG_VER
          echo -e "[+] Fetched Version ('.x_exec.pkgver') --> (${PKG_VER}) [Saving to \$PKG.version]"
-         echo "${PKG_VER}" > "${SBUILD_OUTDIR}/${PKG}.version"
-         cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+         echo "${PKG_VER}" > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
        fi
        rm "${SRC_BUILD_VERSION}" 2>/dev/null
      fi
@@ -454,7 +453,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
        echo -e "[✓] Version Exists as "$(cat ${SBUILD_OUTDIR}/${SBUILD_PKG}.version)" ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
      elif [[ -s "${SBUILD_OUTDIR}/${PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.version") -gt 3 ]]; then
-       cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+       mv -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
        if [[ ! -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" || $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -le 3 ]]; then
          #echo -e "[-] WARNING: ${SBUILD_OUTDIR}/${SBUILD_PKG}.version is Empty/NonExistent (Using b3sum as Version)"
          #b3sum "${SBUILD_OUTDIR}/${SBUILD_PKG}" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' | head -c 8 > "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
@@ -545,8 +544,77 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
     #Status 
      export SBUILD_SUCCESSFUL="YES"
     #Update Metadata
-     jq --arg pkgver "${PKG_VER}" '. | .pkgver = $pkgver | .' "${SBUILD_META}" | jq 'to_entries | sort_by(.key) | from_entries' > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
-     cp -f "${SBUILD_META}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
+     #jq --arg pkgver "${PKG_VER}" '. | .pkgver = $pkgver | .' "${SBUILD_META}" | jq 'to_entries | sort_by(.key) | from_entries' > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
+     VALID_PKGSRC="$(echo "${SBUILD_PKG}" | awk '{if ($0 ~ /\./ && $0 ~ /\.[^.]+$/) {n=split($0,arr,"."); print substr($0,1,length($0)-length(arr[n])-1) "/" arr[n] ".yaml"} else {sub(/\.*$/,""); print $0 "/unknown.yaml"}}')" ; export VALID_PKGSRC
+     jq --arg PKG_VERSION "${PKG_VER:-}" \
+     --arg VALID_PKGSRC "${VALID_PKGSRC:-}" \
+     '{
+       "_disabled": ._disabled,
+       "pkg": .pkg,
+       "pkg_id": (.pkg_id // ""),
+       "pkg_type": (.pkg_type // ""),
+       "description": .description,
+       "note": (.note // []),
+       "version": $PKG_VERSION,
+       "download_url": ("https://soarpkgs.pkgforge.dev/packages/" + $VALID_PKGSRC),
+       "size": "",
+       "bsum": "",
+       "shasum": "",
+       "build_date": "",
+       "repology": (.repology // ""),
+       "src_url": (.src_url // []),
+       "homepage": (.homepage // []),
+       "build_script": ("https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/" + $VALID_PKGSRC),
+       "build_log": "",
+       "appstream": "",
+       "category": (.category // []),
+       "desktop": "",
+       "icon": "",
+       "license" : (.license // []),
+       "provides": (.provides // []),
+       "snapshots": (.snapshots // []),
+       "tag": (.tag // [])
+     }' "${SBUILD_META}" | jq . > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
+     if [[ -s "${SBUILD_META}" ]] && jq --exit-status '.' "${SBUILD_META}" > /dev/null 2>&1; then
+       mv -f "${SBUILD_META}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.json" ; unset VALID_PKGSRC
+     else
+       jq -n --arg PKG_VERSION "${PKG_VER:-}" \
+       --arg VALID_PKGSRC "${VALID_PKGSRC%.*}" \
+      '{
+        "_disabled": true,
+        "pkg": $VALID_PKGSRC,
+        "pkg_id": "",
+        "pkg_type": "",
+        "description": "This Package has Incomplete Metadata, Please Check SBUILD & Build Logs",
+        "note": [
+         "No Metadata was found for this Package, so Please Fix it Manually"
+        ],
+        "version": $PKG_VERSION,
+        "download_url": "",
+        "size": "",
+        "bsum": "",
+        "shasum": "",
+        "build_date": "",
+        "repology": "",
+        "src_url": [ 
+         "https://unknown.unknown/fix-me"
+        ],
+        "homepage": [ 
+         "https://unknown.unknown/fix-me"
+        ],
+        "build_script": "https://unknown.unknown/fix-me",
+        "build_log": "",
+        "appstream": "",
+        "category": [],
+        "desktop": "",
+        "icon": "",
+        "license" : [],
+        "provides": [],
+        "snapshots": [],
+        "tag": []
+      }' | jq . > "${SBUILD_META}"
+      mv -f "${SBUILD_META}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.json" ; unset VALID_PKGSRC
+     fi
     #Write to ${SOAR_CACHEPATH}
      save_env()
      {
@@ -559,7 +627,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        echo "PKG_TYPE='${PKG_TYPE}'" >> "${SBUILD_OUTENV}"
        echo "SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${SBUILD_OUTENV}"
        echo "SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${SBUILD_OUTENV}"
-       echo "SBUILD_META='${SBUILD_META}'" >> "${SBUILD_OUTENV}"
+       echo "SBUILD_META='${SBUILD_OUTDIR}/${SBUILD_PKG}.json'" >> "${SBUILD_OUTENV}"
     }
     export -f save_env
      if [ -n "${SBUILD_ID}" ]; then
