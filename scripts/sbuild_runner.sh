@@ -31,7 +31,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.6" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.7" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -539,6 +539,10 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      fi
     #List Dirs & Files
      list_dirs ; list_files
+    #Calc final Checksum
+     #SBUILD_CHECKSUM="$(find "${SBUILD_OUTDIR}" -type f -exec b3sum "{}" + | sort | b3sum | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]')" ; export SBUILD_CHECKSUM
+     find "${SBUILD_OUTDIR}" -maxdepth 1 -type f ! -iname "*CHECKSUM*" -exec b3sum "{}" + | awk '{gsub(".*/", "", $2); print $1 ":" $2}' > "${SBUILD_OUTDIR}/CHECKSUM"
+    #Status 
      export SBUILD_SUCCESSFUL="YES"
     #Update Metadata
      jq --arg pkgver "${PKG_VER}" '. | .pkgver = $pkgver | .' "${SBUILD_META}" | jq 'to_entries | sort_by(.key) | from_entries' > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
@@ -548,6 +552,8 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      {
        rm -rvf "${SBUILD_OUTENV}" 2>/dev/null
        echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SBUILD_OUTENV}"
+       #echo "SBUILD_CHECKSUM='${SBUILD_CHECKSUM}'" >> "${SBUILD_OUTENV}"
+       echo "SBUILD_CHECKSUM='${SBUILD_OUTDIR}/CHECKSUM'" >> "${SBUILD_OUTENV}"
        echo "SBUILD_PKG='${SBUILD_PKG}'" >> "${SBUILD_OUTENV}"
        echo "PKG_VER='${PKG_VER}'" >> "${SBUILD_OUTENV}"
        echo "PKG_TYPE='${PKG_TYPE}'" >> "${SBUILD_OUTENV}"
@@ -573,6 +579,8 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
    else
      echo -e "\n[✗] FATAL: CAN NOT Find ${SBUILD_PKG} in ${SBUILD_OUTDIR}\n"
      list_dirs ; list_files
+     #SBUILD_CHECKSUM="$(find "${SBUILD_OUTDIR}" -type f -exec b3sum "{}" + | sort | b3sum | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]')" ; export SBUILD_CHECKSUM
+     find "${SBUILD_OUTDIR}" -maxdepth 1 -type f ! -iname "*CHECKSUM*" -exec b3sum "{}" + | awk '{gsub(".*/", "", $2); print $1 ":" $2}' > "${SBUILD_OUTDIR}/CHECKSUM"
      export SBUILD_SUCCESSFUL="NO"
      save_env
    fi
@@ -583,7 +591,7 @@ fi
 
 #-------------------------------------------------------#
 ##Cleanup & Keep Only Needed ENV
- unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT INPUT_PATH install_squishy list_dirs list_files repack_appimage save_env sbuild_linter SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_MODE SELF_NAME SBUILD_OUTENV SQUISHY_DESKTOP SBUILD_PKG_TYPE SOAR_BINPATH SOAR_CACHEPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
+ unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT INPUT_PATH install_squishy list_dirs list_files repack_appimage save_env sbuild_linter SBUILD_CHECKSUM SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_MODE SBUILD_OUTENV SELF_NAME SQUISHY_DESKTOP SBUILD_PKG_TYPE SOAR_BINPATH SOAR_CACHEPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
 ##Disable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
    set +x
