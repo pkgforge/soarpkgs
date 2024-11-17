@@ -50,10 +50,10 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/86Box/86Box" --match "appimage" --match "arm64" --exclude "x64" --exclude "x86" --exclude "zsync" -o "./${SBUILD_PKG}" --yes
+        soar dl "https://github.com/86Box/86Box" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/86Box/86Box" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes
+        soar dl "https://github.com/86Box/86Box" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
     #Extract
