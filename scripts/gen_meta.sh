@@ -54,7 +54,7 @@ for SBUILD in "${VALID_PKGS[@]}"; do
    "repology": (.repology // ""),
    "src_url": (.src_url // []),
    "homepage": (.homepage // []),
-   "build_script": ("https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/" + $VALID_PKGSRC),
+   "build_script": ("https://github.com/pkgforge/soarpkgs/blob/main/packages/" + $VALID_PKGSRC),
    "build_log": "",
    "appstream": "",
    "category": (.category // []),
