@@ -1,5 +1,5 @@
 ```mathematica
- 33M └─┬ main
+ 34M └─┬ main
  33M   ├─┬ assets
  33M   │ ├─┬ icons
 2.4M   │ │ ├── steam_scr.png
@@ -2505,6 +2505,13 @@
 4.0K   │ │ └── appimage.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.yaml
+ 32K   ├─┬ metadata
+8.0K   │ ├── METADATA.json
+4.0K   │ ├── METADATA.json.zstd.bsum
+4.0K   │ ├── METADATA.json.zstd
+4.0K   │ ├── METADATA.json.xz.bsum
+4.0K   │ ├── METADATA.json.xz
+4.0K   │ └── METADATA.json.bsum
  24K   ├── SBUILD_SPEC.md
  16K   ├─┬ templates
 8.0K   │ ├── generic.SBUILD.yaml
@@ -2512,7 +2519,6 @@
  12K   ├── SBUILD.md
  12K   ├─┬ Docs
 8.0K   │ └── README.md
-4.0K   ├── metadata
 4.0K   ├── README.md
 4.0K   └── LICENSE
 ```
