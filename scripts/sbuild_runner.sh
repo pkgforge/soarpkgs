@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.4" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.5" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -80,12 +80,13 @@ SBR_VERSION="1.1.4" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; uns
 ##Get Input
  #INPUT="${1:-$(cat)}"
  INPUT="${1:-$(echo "$@" | tr -d '[:space:]')}" ; export INPUT
+ INPUT_PATH="$(realpath ${INPUT})" ; export INPUT_PATH
  SELF_NAME="${ARGV0:-${0##*/}}" ; export SELF_NAME
 ##Get Linter & Validate
  source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh")
  if declare -F sbuild_linter &>/dev/null || declare -F sbuild-linter &>/dev/null; then
-   echo -e "\n[+] Validating ${INPUT} ..."
-   INSTALL_DEPS="ON" SBUILD_MODE="ON" sbuild_linter "${INPUT}"
+   echo -e "\n[+] Validating ${INPUT_PATH} ..."
+   INSTALL_DEPS="ON" SBUILD_MODE="ON" sbuild_linter "${INPUT_PATH}"
  else
    echo -e "\n[✗] FATAL: sbuild-validator could NOT BE Found\n"
    return 1 || exit 1
@@ -446,7 +447,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      jq . "${SBUILD_META}" > "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
      #Sbuild
      yq . "${SRC_SBUILD_IN}" > "${SBUILD_OUTDIR}/${SBUILD_PKG}.sbuild"
-     #Version (12c if doesn't Exists)
+     #Version (Create if doesn't Exists)
      if [[ -s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${SBUILD_PKG}.version") -gt 3 ]]; then
        echo -e "[✓] Version Exists as "$(cat ${SBUILD_OUTDIR}/${SBUILD_PKG}.version)" ==> ${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
      elif [[ -s "${SBUILD_OUTDIR}/${PKG}.version" && $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.version") -gt 3 ]]; then
@@ -561,8 +562,10 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      fi
      if [ -s "${SBUILD_OUTENV}" ] && grep -q 'SBUILD_OUTDIR' "${SBUILD_OUTENV}"; then
        echo -e "\n[✓] Wrote ENV VARS for ${SBUILD_PKG} ==> ${SBUILD_OUTENV}\n$(cat ${SBUILD_OUTENV})\n"
+       cp -fv "${SBUILD_OUTENV}" "${INPUT_PATH}.env"
      else
        echo -e "\n[✗] FATAL: ${SBUILD_OUTENV} Appears to be Invalid...\n$(cat ${SBUILD_OUTENV})\n"
+       cp -fv "${SBUILD_OUTENV}" "${INPUT_PATH}.env"
      fi
    else
      echo -e "\n[✗] FATAL: CAN NOT Find ${SBUILD_PKG} in ${SBUILD_OUTDIR}\n"
@@ -577,7 +580,7 @@ fi
 
 #-------------------------------------------------------#
 ##Cleanup & Keep Only Needed ENV
- unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files repack_appimage save_env sbuild_linter SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_MODE SELF_NAME SBUILD_OUTENV SQUISHY_DESKTOP SBUILD_PKG_TYPE SOAR_BINPATH SOAR_CACHEPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
+ unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT INPUT_PATH install_squishy list_dirs list_files repack_appimage save_env sbuild_linter SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_MODE SELF_NAME SBUILD_OUTENV SQUISHY_DESKTOP SBUILD_PKG_TYPE SOAR_BINPATH SOAR_CACHEPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
 ##Disable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
    set +x
