@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.3" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.4" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -349,15 +349,19 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      SBUILD_SHELL="$(yq '.x_exec.shell' "${SRC_SBUILD_IN}")" ; export SBUILD_SHELL
      echo -e '#!/usr/bin/env '"${SBUILD_SHELL}"'\n\n' > "${SRC_BUILD_VERSION}"
      yq '.x_exec.pkgver' "${SRC_SBUILD_IN}" >> "${SRC_BUILD_VERSION}" && chmod +x "${SRC_BUILD_VERSION}"
-     PKG_VER="$(timeout 10 ${SRC_BUILD_VERSION} 2>/dev/null | tr -d '[:space:]' | sed -e 's/[/\\!& ]//g' -e 's/\${[^}]*}//g' | tr -d '[:space:]')"
-     if [ "$(echo "${PKG_VER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -gt 1 ]; then
-       export PKG_VER
-       echo -e "[+] Fetched Version ('.x_exec.pkgver') --> (${PKG_VER}) [Saving to \$PKG.version]"
-       echo "${PKG_VER}" > "${SBUILD_OUTDIR}/${PKG}.version"
-       cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+     CMD_OUTPUT="$(timeout 10 ${SRC_BUILD_VERSION})"
+     CMD_EXIT_STATUS=$?
+     if [ "${CMD_EXIT_STATUS}" -eq 0 ]; then
+       PKG_VER="$(echo ${CMD_OUTPUT} 2>/dev/null | tr -d '[:space:]' | sed -e 's/[/\\!& ]//g' -e 's/\${[^}]*}//g' | tr -d '[:space:]')"
+       if [ "$(echo "${PKG_VER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -gt 1 ]; then
+         export PKG_VER
+         echo -e "[+] Fetched Version ('.x_exec.pkgver') --> (${PKG_VER}) [Saving to \$PKG.version]"
+         echo "${PKG_VER}" > "${SBUILD_OUTDIR}/${PKG}.version"
+         cp -fv "${SBUILD_OUTDIR}/${PKG}.version" "${SBUILD_OUTDIR}/${SBUILD_PKG}.version"
+       fi
+       rm "${SRC_BUILD_VERSION}" 2>/dev/null
      fi
-     rm "${SRC_BUILD_VERSION}" 2>/dev/null
-     unset  SBUILD_SHELL SRC_BUILD_VERSION
+      unset CMD_EXIT_STATUS CMD_OUTPUT SBUILD_SHELL SRC_BUILD_VERSION
    else
      echo -e "[-] WARNING: Version ('.pkgver') is HardCoded as: ${PKG_VER}"
    fi
@@ -536,32 +540,35 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      jq --arg pkgver "${PKG_VER}" '. | .pkgver = $pkgver | .' "${SBUILD_META}" | jq 'to_entries | sort_by(.key) | from_entries' > "${SBUILD_META}.tmp" && mv "${SBUILD_META}.tmp" "${SBUILD_META}"
      cp -f "${SBUILD_META}" "${SBUILD_OUTDIR}/${SBUILD_PKG}.json"
     #Write to ${SOAR_CACHEPATH}
-     rm -rvf "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" 2>/dev/null
-     echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_PKG='${SBUILD_PKG}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "PKG_VER='${PKG_VER}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "PKG_TYPE='${PKG_TYPE}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_META='${SBUILD_META}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     if [ -s "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" ] && grep -q 'SBUILD_OUTDIR' "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"; then
-       echo -e "\n[✓] Wrote ENV VARS for ${SBUILD_PKG} ==> ${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env\n$(cat ${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env)\n"
+     save_env()
+     {
+       rm -rvf "${SBUILD_OUTENV}" 2>/dev/null
+       echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SBUILD_OUTENV}"
+       echo "SBUILD_PKG='${SBUILD_PKG}'" >> "${SBUILD_OUTENV}"
+       echo "PKG_VER='${PKG_VER}'" >> "${SBUILD_OUTENV}"
+       echo "PKG_TYPE='${PKG_TYPE}'" >> "${SBUILD_OUTENV}"
+       echo "SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${SBUILD_OUTENV}"
+       echo "SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${SBUILD_OUTENV}"
+       echo "SBUILD_META='${SBUILD_META}'" >> "${SBUILD_OUTENV}"
+    }
+    export -f save_env
+     if [ -n "${SBUILD_ID}" ]; then
+      SBUILD_OUTENV="${SOAR_CACHEPATH}/${SBUILD_ID}.SBUILD.env" ; export SBUILD_OUTENV
+      save_env
      else
-       echo -e "\n[✗] FATAL: ${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env Appears to be Invalid...\n$(cat ${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env)\n"
+      SBUILD_OUTENV="${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" ; export SBUILD_OUTENV
+      save_env
+     fi
+     if [ -s "${SBUILD_OUTENV}" ] && grep -q 'SBUILD_OUTDIR' "${SBUILD_OUTENV}"; then
+       echo -e "\n[✓] Wrote ENV VARS for ${SBUILD_PKG} ==> ${SBUILD_OUTENV}\n$(cat ${SBUILD_OUTENV})\n"
+     else
+       echo -e "\n[✗] FATAL: ${SBUILD_OUTENV} Appears to be Invalid...\n$(cat ${SBUILD_OUTENV})\n"
      fi
    else
      echo -e "\n[✗] FATAL: CAN NOT Find ${SBUILD_PKG} in ${SBUILD_OUTDIR}\n"
      list_dirs ; list_files
      export SBUILD_SUCCESSFUL="NO"
-    #Write to ${SOAR_CACHEPATH}
-     rm -rvf "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env" 2>/dev/null
-     echo "SBUILD_SUCCESSFUL='${SBUILD_SUCCESSFUL}'" > "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_PKG='${SBUILD_PKG}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "PKG_VER='${PKG_VER}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "PKG_TYPE='${PKG_TYPE}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
-     echo "SBUILD_META='${SBUILD_META}'" >> "${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env"
+     save_env
    fi
   popd >/dev/null 2>&1
 fi
@@ -570,7 +577,7 @@ fi
 
 #-------------------------------------------------------#
 ##Cleanup & Keep Only Needed ENV
- unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files repack_appimage sbuild_linter SBUILD_MODE SELF_NAME SQUISHY_DESKTOP SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_PKG_TYPE SOAR_BINPATH SOAR_CACHEPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
+ unset cleanup_dirs cleanup_files CONTINUE_SBUILD DIRICON_PATH DIRICON_TYPE HAS_APPSTREAM HAS_DESKTOP HAS_DIRICON HAS_ICON HAS_SQUISHY ICON_PATH ICON_TYPE INPUT install_squishy list_dirs list_files repack_appimage save_env sbuild_linter SBUILD_DESKTOP_URL SBUILD_ICON_URL SBUILD_MODE SELF_NAME SBUILD_OUTENV SQUISHY_DESKTOP SBUILD_PKG_TYPE SOAR_BINPATH SOAR_CACHEPATH SQUISHY_FILTER SQUISHY_ICON SRC_SBUILD_IN SRC_BUILD_SCRIPT URL use_squishy
 ##Disable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
    set +x
