@@ -41,6 +41,8 @@ jobs:
           #temp
           SYSTMP="$(dirname $(mktemp -u))" && export SYSTMP="${SYSTMP}"
           echo "SYSTMP=${SYSTMP}" >> "${GITHUB_ENV}"
+          ##Setup GHDIRS
+          mkdir -pv "${GITHUB_WORKSPACE}/main/metadata"
           ##Setup rClone
           mkdir -p "${HOME}/.config/rclone"
           echo "${{ secrets.RCLONE_CF_R2_PUB }}" > "${HOME}/.config/rclone/rclone.conf"
@@ -107,38 +109,72 @@ jobs:
           echo '```' >> "${GITHUB_WORKSPACE}/main/.github/SIZE.md"
         continue-on-error: true
 
+      - name: Generate Repo Metadata (git-sizer)
+        run: |
+          #Presets
+          set +x ; set +e
+          #--------------#
+          pushd "$(mktemp -d)" >/dev/null 2>&1
+           curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/gen_meta.sh" -o "./gen_meta.sh"
+           dos2unix --quiet "./gen_meta.sh" ; chmod +x "./gen_meta.sh"
+           bash "./gen_meta.sh"
+           if [[ -s "${SYSTMP}/SBUILD_METADATA.json" ]] && jq --exit-status '.' "${SYSTMP}/SBUILD_METADATA.json" > /dev/null 2>&1; then
+            ##Json
+             cp -fv "${SYSTMP}/SBUILD_METADATA.json" "${GITHUB_WORKSPACE}/main/metadata/METADATA.json"
+             b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.bsum"
+             7z a -t7z -mx="9" -mmt="$(($(nproc)+1))" -bsp1 -bt "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz" "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" 2>/dev/null
+             b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz.bsum"
+             zstd --ultra -22 --force "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" -o "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd"
+             b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd.bsum"
+           else
+             echo -e "\n[-] FATAL: Metadata Generation Failed"
+           fi
+          popd >/dev/null 2>&1
+        continue-on-error: true
+
       - name: Git Pull
         run: |
           cd "${GITHUB_WORKSPACE}/main" && git pull origin main
         continue-on-error: true
 
-      - name: Ensure Healthy Commit Nums (RESET ON >= 100000)
+      #- name: Ensure Healthy Commit Nums (RESET ON >= 100000)
+      #  run: |
+      #    #Presets
+      #    set +x ; set +e
+      #    #--------------#
+      #    pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter="blob:none" "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
+      #    cd "$(find . -maxdepth 1 -type d -exec basename {} \; | grep -Ev '^\.$' | xargs -I {} realpath {})"
+      #    CLONED_DIR="$(realpath .)" && export CLONED_DIR="${CLONED_DIR}"
+      #    COMMIT_NUMS="$(git rev-list --count HEAD)" && export COMMIT_NUMS="${COMMIT_NUMS}"
+      #    popd >/dev/null 2>&1 ; rm -rf "${CLONED_DIR}" 2>/dev/null
+      #    cd "${GITHUB_WORKSPACE}/main"
+      #    if [ "${COMMIT_NUMS}" -gt 100000 ]; then
+      #        echo -e "\n[+] Total number of commits exceeds 100000. (${COMMIT_NUMS})\n"
+      #        cd "${GITHUB_WORKSPACE}/main"
+      #        git config "user.name" "Azathothas"
+      #        git config "user.email" "AjamX101@gmail.com"
+      #        git checkout --orphan temp
+      #        git add --all --verbose && git commit -m "Purge (Re:Init)"
+      #        git branch -D "main"
+      #        git branch -m "main"
+      #        git push --set-upstream origin main --force
+      #        echo "RESET_HISTORY=YES" >> "${GITHUB_ENV}"
+      #    else
+      #        echo -e "\n[+] Total number of commits looks healthy. (${COMMIT_NUMS})\n"
+      #        echo "RESET_HISTORY=NO" >> "${GITHUB_ENV}"
+      #    fi
+      #    pushd "${GITHUB_WORKSPACE}/main" >/dev/null 2>&1 && git pull origin main && popd >/dev/null 2>&1
+      #  continue-on-error: true
+
+      - name: Get DateTime & Purge files (=> 95 MB)
         run: |
           #Presets
           set +x ; set +e
           #--------------#
-          pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter="blob:none" "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
-          cd "$(find . -maxdepth 1 -type d -exec basename {} \; | grep -Ev '^\.$' | xargs -I {} realpath {})"
-          CLONED_DIR="$(realpath .)" && export CLONED_DIR="${CLONED_DIR}"
-          COMMIT_NUMS="$(git rev-list --count HEAD)" && export COMMIT_NUMS="${COMMIT_NUMS}"
-          popd >/dev/null 2>&1 ; rm -rf "${CLONED_DIR}" 2>/dev/null
-          cd "${GITHUB_WORKSPACE}/main"
-          if [ "${COMMIT_NUMS}" -gt 100000 ]; then
-              echo -e "\n[+] Total number of commits exceeds 1000. (${COMMIT_NUMS})\n"
-              cd "${GITHUB_WORKSPACE}/main"
-              git config "user.name" "Azathothas"
-              git config "user.email" "AjamX101@gmail.com"
-              git checkout --orphan temp
-              git add --all --verbose && git commit -m "Purge (Re:Init)"
-              git branch -D "main"
-              git branch -m "main"
-              git push --set-upstream origin main --force
-              echo "RESET_HISTORY=YES" >> "${GITHUB_ENV}"
-          else
-              echo -e "\n[+] Total number of commits looks healthy. (${COMMIT_NUMS})\n"
-              echo "RESET_HISTORY=NO" >> "${GITHUB_ENV}"
-          fi
-          pushd "${GITHUB_WORKSPACE}/main" >/dev/null 2>&1 && git pull origin main && popd >/dev/null 2>&1
+          UTC_TIME="$(TZ='UTC' date +'%Y-%m-%d (%I:%M:%S %p)')"
+          echo "UTC_TIME=$UTC_TIME" >> $GITHUB_ENV
+          #Purge
+          find "${GITHUB_WORKSPACE}/main" -path "${GITHUB_WORKSPACE}/main/.git" -prune -o -type f -size +95M -exec rm -rvf "{}" + 2>/dev/null
         continue-on-error: true
 
       - uses: stefanzweifel/git-auto-commit-action@v5
@@ -146,8 +182,8 @@ jobs:
           repository: ./main        
           commit_user_name: Azathothas
           commit_user_email: AjamX101@gmail.com
-          #commit_message: "✅ 🐧🧹 🖳🗑️"
-          commit_message: "‎‎‏‏‎ ‎"
+          #commit_message: "‎‎‏‏‎ ‎"
+          commit_message: "✅ Updated (Metadata) 🛍️ <-- ${{ env.UTC_TIME }} ⌚"
           #push_options: '--force'
         continue-on-error: true
 #------------------------------------------------------------------------------------#
