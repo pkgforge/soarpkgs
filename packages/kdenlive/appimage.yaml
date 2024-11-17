@@ -74,7 +74,7 @@ x_exec:
       x86_64)
         DOWNLOAD_URL="$(curl -qfsSL "https://kdenlive.org/en/download/" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' | grep -Ei "AppImage" | grep -Eiv 'aarch|arm|zsync' | sort --version-sort | tail -n 1 | tr -d '[:space:]')"
         export DOWNLOAD_URL
-        curl -qfSL "${DOWNLOAD_URL}" -o "./${SBUILD_PKG}"
+        curl -qfSL "${DOWNLOAD_URL}" -o "./${SBUILD_PKG}" && chmod +x "./${SBUILD_PKG}"
         ;;
     esac
     #Extract

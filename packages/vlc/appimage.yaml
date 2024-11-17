@@ -62,7 +62,7 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/ivan-hc/VLC-appimage" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        soar dl "https://github.com/ivan-hc/VLC-appimage" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
     #Extract
