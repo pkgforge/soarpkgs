@@ -1,4 +1,4 @@
- 33M └─┬ main
+ 34M └─┬ main
  33M   ├─┬ assets
  33M   │ ├─┬ icons
 2.4M   │ │ ├── steam_scr.png
@@ -2488,10 +2488,11 @@
 4.0K   │ │ ├── numtide_nix-gl-host.nix
 4.0K   │ │ └── nix-community_nixGL.nix
 4.0K   │ └── category.md
- 60K   ├─┬ scripts
- 32K   │ ├── sbuild_runner.sh
+ 68K   ├─┬ scripts
+ 36K   │ ├── sbuild_runner.sh
  20K   │ ├── sbuild_linter.sh
-4.0K   │ └── repology_fetcher.sh
+4.0K   │ ├── repology_fetcher.sh
+4.0K   │ └── gen_meta.sh
  44K   ├─┬ packages
 8.0K   │ ├─┬ vlc
 4.0K   │ │ └── appimage.yaml
@@ -2503,6 +2504,13 @@
 4.0K   │ │ └── appimage.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.yaml
+ 32K   ├─┬ metadata
+8.0K   │ ├── METADATA.json
+4.0K   │ ├── METADATA.json.zstd.bsum
+4.0K   │ ├── METADATA.json.zstd
+4.0K   │ ├── METADATA.json.xz.bsum
+4.0K   │ ├── METADATA.json.xz
+4.0K   │ └── METADATA.json.bsum
  24K   ├── SBUILD_SPEC.md
  16K   ├─┬ templates
 8.0K   │ ├── generic.SBUILD.yaml
