@@ -36,4 +36,8 @@ repology_fetcher()
   }
 export -f repology_fetcher
 alias repology-fetcher="repology_fetcher"
+#Call func directly if not being sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+   repology_fetcher "$@" <&0
+fi
 #-------------------------------------------------------#

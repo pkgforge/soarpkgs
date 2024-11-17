@@ -3,6 +3,9 @@
 # bash <(curl -qfsSL "https://l.ajam.dev/sbuild-runner") example.SBUILD
 # sbuild-runner example.SBUILD
 # DEBUG=1|ON sbuild-runner example.SBUILD --> runs with set -x
+# SBUILD_ID="test123" sbuild-runner example.SBUILD --> Saves the env as ${SOAR_CACHEPATH}/test123.SBUILD.env
+# By default, it will save as ${SOAR_CACHEPATH}/${SBUILD_PKG}.SBUILD.env (SBUILD_ID == .pkg + .pkg_type)
+# Regardless, it will also always save the env file next to example.SBUILD as example.SBUILD.env
 #-------------------------------------------------------#
 
 #-------------------------------------------------------#
