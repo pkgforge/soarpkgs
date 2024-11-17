@@ -28,7 +28,7 @@
 
 #-------------------------------------------------------#
 unset CONTINUE_SBUILD SBUILD_SUCCESSFUL
-SBR_VERSION="1.1.5" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
+SBR_VERSION="1.1.6" && echo -e "[+] SBUILD Runner Version: ${SBR_VERSION}" ; unset SBR_VERSION
 ##Enable Debug
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -349,7 +349,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      SRC_BUILD_VERSION="$(realpath $(mktemp))" ; export SRC_BUILD_VERSION
      SBUILD_SHELL="$(yq '.x_exec.shell' "${SRC_SBUILD_IN}")" ; export SBUILD_SHELL
      echo -e '#!/usr/bin/env '"${SBUILD_SHELL}"'\n\n' > "${SRC_BUILD_VERSION}"
-     yq '.x_exec.pkgver' "${SRC_SBUILD_IN}" >> "${SRC_BUILD_VERSION}" && chmod +x "${SRC_BUILD_VERSION}"
+     yq eval '.x_exec.pkgver | select(. != null and . != "")' "${SRC_SBUILD_IN}" >> "${SRC_BUILD_VERSION}" && chmod +x "${SRC_BUILD_VERSION}"
      CMD_OUTPUT="$(timeout 10 ${SRC_BUILD_VERSION})"
      CMD_EXIT_STATUS=$?
      if [ "${CMD_EXIT_STATUS}" -eq 0 ]; then

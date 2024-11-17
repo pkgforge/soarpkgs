@@ -5,6 +5,7 @@
 # DEBUG=1|ON sbuild-linter example.SBUILD --> runs with set -x
 # INSTALL_DEPS=1|ON sbuild-linter example.SBUILD --> Installs all deps via soar
 # SHOW_DIFF=1|ON sbuild-linter example.SBUILD --> shows diff between example.SBUILD & example.SBUILD.validated
+# SHOW_PKGVER=1|ON sbuild-linter example.SBUILD --> fetches Version
 # SHELLCHECK=0|OFF sbuild-linter example.SBUILD --> Disables Shellcheck
 # SBUILD_MODE=1|ON sbuild-linter example.SBUILD --> Exports needed ENV Vars to sbuild-runner
 #-------------------------------------------------------#
@@ -12,7 +13,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.1.3" && echo -e "[+] SBUILD Linter Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.1.4" && echo -e "[+] SBUILD Linter Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -309,7 +310,7 @@ sbuild_linter()
           echo -e "[✓] x_exec.run is a Valid ${SBUILD_SHELL} Script\n"
           shellcheck --severity="warning" "${SRC_BUILD_SCRIPT}"
           if [ "${SBUILD_MODE}" != "1" ] && [ "${SBUILD_MODE}" != "ON" ]; then
-             rm -f "${SRC_BUILD_SCRIPT}" 2>/dev/null
+           rm -f "${SRC_BUILD_SCRIPT}" 2>/dev/null
           fi
           export CONTINUE_SBUILD="YES"
         else
@@ -344,9 +345,43 @@ sbuild_linter()
       echo -e "[✓] ${SRC_SBUILD} Passed All Checks"
       mv -f "${SRC_SBUILD_TMP}" "${SRC_SBUILD}.validated"
       echo -e "[+] Compare ${SRC_SBUILD}.validated with ${SRC_SBUILD} again"
+     #If should show diff 
       if [ "${SHOW_DIFF}" = "1" ] || [ "${SHOW_DIFF}" = "ON" ]; then
          echo -e "\n" ; diff -y "${SRC_SBUILD}" "${SRC_SBUILD}.validated" 2>/dev/null ; echo -e "\n"
       fi
+     #If should fetch/print version (Saved as ${SRC_SBUILD}.pkgver)
+      if [ "${SHOW_PKGVER}" = "1" ] || [ "${SHOW_PKGVER}" = "ON" ]; then
+       unset PKGVER ; PKGVER="$(yq eval '.pkgver | select(. != null and . != "")' "${SRC_SBUILD}.validated" | tr -d '[:space:]')" ; export PKGVER
+       if [ "$(echo "${PKGVER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -le 1 ]; then
+         SRC_BUILD_VERSION="$(realpath $(mktemp))" ; export SRC_BUILD_VERSION
+         SBUILD_SHELL="$(yq '.x_exec.shell' "${SRC_SBUILD}.validated")" ; export SBUILD_SHELL
+         echo -e '#!/usr/bin/env '"${SBUILD_SHELL}"'\n\n' > "${SRC_BUILD_VERSION}"
+         yq eval '.x_exec.pkgver | select(. != null and . != "")' "${SRC_SBUILD}.validated" >> "${SRC_BUILD_VERSION}" && chmod +x "${SRC_BUILD_VERSION}"
+         CMD_OUTPUT="$(timeout 10 ${SRC_BUILD_VERSION})"
+         CMD_EXIT_STATUS=$?
+         if [ "${CMD_EXIT_STATUS}" -eq 0 ]; then
+           PKGVER="$(echo ${CMD_OUTPUT} 2>/dev/null | tr -d '[:space:]' | sed -e 's/[/\\!& ]//g' -e 's/\${[^}]*}//g' | tr -d '[:space:]')"
+           if [ "$(echo "${PKGVER}" | tr -d '[:space:]' | wc -c | tr -cd '0-9')" -gt 1 ]; then
+             export PKGVER
+             echo -e "[+] Fetched Version ('.x_exec.pkgver') --> (${PKGVER}) [Saving to ${SRC_SBUILD}.pkgver]"
+             echo "${PKGVER}" > "${SRC_SBUILD}.pkgver"
+           else
+             echo -e "[✗] ERROR (PkgVer Fetch Failed): Please recheck '.x_exec.pkgver'\n$(cat ${SRC_BUILD_VERSION})\n"
+           fi
+         else
+           echo -e "[✗] ERROR (PkgVer Fetch Failed): Please recheck '.x_exec.pkgver'\n$(cat ${SRC_BUILD_VERSION})\n"
+         fi
+       else
+        echo -e "[+] Fetched Version ('.pkgver') --> (${PKGVER}) [Saving to ${SRC_SBUILD}.pkgver]"
+        echo "${PKGVER}" > "${SRC_SBUILD}.pkgver"
+       fi
+       if [ ! -f "${SRC_SBUILD}.pkgver" ] || [ ! -s "${SRC_SBUILD}.pkgver" ]; then
+        echo -e "[✗] ERROR (PkgVer Fetch Failed): Tried both '.pkgver' & '.x_exec.pkgver'"
+       fi
+       unset CMD_EXIT_STATUS CMD_OUTPUT PKGVER PKG_VER SBUILD_SHELL SRC_BUILD_VERSION
+       rm "${SRC_BUILD_VERSION}" 2>/dev/null
+      fi
+     #If should preserve & export ENV VARS for sbuild-runner 
       if [ "${SBUILD_MODE}" = "1" ] || [ "${SBUILD_MODE}" = "ON" ]; then
        echo -e "[+] Exporting ENV VARS for sbuild-runner..."
        SRC_SBUILD_IN="$(realpath "${SRC_SBUILD}.validated")"
@@ -368,4 +403,8 @@ sbuild_linter()
 }
 export -f sbuild_linter
 alias sbuild-linter="sbuild_linter"
+#Call func directly if not being sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+   sbuild_linter "$@" <&0
+fi
 #-------------------------------------------------------#
