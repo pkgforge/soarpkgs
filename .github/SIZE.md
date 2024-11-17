@@ -2489,10 +2489,11 @@
 4.0K   │ │ ├── numtide_nix-gl-host.nix
 4.0K   │ │ └── nix-community_nixGL.nix
 4.0K   │ └── category.md
- 60K   ├─┬ scripts
- 32K   │ ├── sbuild_runner.sh
+ 68K   ├─┬ scripts
+ 36K   │ ├── sbuild_runner.sh
  20K   │ ├── sbuild_linter.sh
-4.0K   │ └── repology_fetcher.sh
+4.0K   │ ├── repology_fetcher.sh
+4.0K   │ └── gen_meta.sh
  44K   ├─┬ packages
 8.0K   │ ├─┬ vlc
 4.0K   │ │ └── appimage.yaml
@@ -2511,6 +2512,7 @@
  12K   ├── SBUILD.md
  12K   ├─┬ Docs
 8.0K   │ └── README.md
+4.0K   ├── metadata
 4.0K   ├── README.md
 4.0K   └── LICENSE
 ```
