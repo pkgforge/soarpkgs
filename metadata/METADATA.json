@@ -2,15 +2,122 @@
   [
     {
       "_disabled": false,
+      "pkg": "0ad",
+      "pkg_id": "github.0ad-matters.0ad-appimage.stable",
+      "pkg_type": "appimage",
+      "description": "A FOSS historical Real Time Strategy (RTS) game where As the leader of an ancient civilization, you must gather the resources you need to raise a military force and dominate your enemies.",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/0ad-matters/0ad-appimage"
+      ],
+      "version": "v0.0.26-alpha",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/0ad/appimage.0ad-matters.stable.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "0ad"
+      ],
+      "src_url": [
+        "https://github.com/0ad-matters/0ad-appimage"
+      ],
+      "homepage": [
+        "https://play0ad.com",
+        "https://wildfiregames.com/0ad",
+        "https://www.wildfiregames.com/0ad",
+        "https://github.com/0ad/0ad",
+        "https://play0ad.com",
+        "https://sourceforge.net/projects/zero-ad"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/0ad/appimage.0ad-matters.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Game"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Amusements/Games",
+        "Amusements/Games/Strategy/Real Time",
+        "Games",
+        "Games/Strategy",
+        "age-of-empires",
+        "games",
+        "games-strategy",
+        "games.strategy",
+        "universe/games"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "0ad-latest",
+      "pkg_id": "github.0ad-matters.0ad-appimage.latest",
+      "pkg_type": "appimage",
+      "description": "A FOSS historical Real Time Strategy (RTS) game where As the leader of an ancient civilization, you must gather the resources you need to raise a military force and dominate your enemies.",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/0ad-matters/0ad-appimage",
+        "If you have a GPU that has a chipset other than Nvidia, the  Vulkan backend may be automatically disabled in some cases",
+        "This  version is based on the latest Ubuntu LTS, so it should not work on older distros",
+        "In case of problems, install '0ad' instead"
+      ],
+      "version": "v0.0.27-rc1-27645-alpha",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/0ad/appimage.0ad-matters.latest.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "0ad"
+      ],
+      "src_url": [
+        "https://github.com/0ad-matters/0ad-appimage"
+      ],
+      "homepage": [
+        "https://play0ad.com",
+        "https://wildfiregames.com/0ad",
+        "https://www.wildfiregames.com/0ad",
+        "https://github.com/0ad/0ad",
+        "https://play0ad.com",
+        "https://sourceforge.net/projects/zero-ad"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/0ad/appimage.0ad-matters.latest.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Game"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Amusements/Games",
+        "Amusements/Games/Strategy/Real Time",
+        "Games",
+        "Games/Strategy",
+        "age-of-empires",
+        "games",
+        "games-strategy",
+        "games.strategy",
+        "universe/games"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "browservice",
-      "pkg_id": "org.browservice.browservice",
+      "pkg_id": "github.com.ttalvitie.browservice.stable",
       "pkg_type": "appimage",
       "description": "Browse the modern web on historical browsers",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/ttalvitie/browservice"
       ],
       "version": "v0.9.10.0",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/browservice/appimage.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/browservice/appimage.official.stable.yaml",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -24,7 +131,7 @@
       "homepage": [
         "https://github.com/ttalvitie/browservice"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/browservice/appimage.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/browservice/appimage.official.stable.yaml",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -45,77 +152,15 @@
     },
     {
       "_disabled": false,
-      "pkg": "kdenlive",
-      "pkg_id": "org.kde.kdenlive",
-      "pkg_type": "appimage",
-      "description": "FOSS video editor, based on MLT Framework and KDE Frameworks",
-      "note": [
-        "Officially Created AppImage. Check/Report @ https://invent.kde.org/multimedia/kdenlive"
-      ],
-      "version": "24.08.3",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/kdenlive/appimage.yaml",
-      "size": "",
-      "bsum": "",
-      "shasum": "",
-      "build_date": "",
-      "repology": [
-        "kdenlive"
-      ],
-      "src_url": [
-        "https://kdenlive.org/en/download/"
-      ],
-      "homepage": [
-        "https://kdenlive.org/en",
-        "https://apps.kde.org/kdenlive",
-        "https://invent.kde.org/multimedia/kdenlive"
-      ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/kdenlive/appimage.yaml",
-      "build_log": "",
-      "appstream": "",
-      "category": [
-        "AudioVideoEditing"
-      ],
-      "desktop": "",
-      "icon": "",
-      "license": [],
-      "provides": [],
-      "snapshots": [],
-      "tag": [
-        "Graphical",
-        "Graphical",
-        "Graphical",
-        "Productivity/Multimedia/Video/Editors",
-        "Video",
-        "Video/Editors",
-        "clip",
-        "debug",
-        "editor",
-        "extra/office",
-        "kde",
-        "kde-apps",
-        "kdePackages",
-        "libsForQt5",
-        "libsForQt512",
-        "libsForQt514",
-        "media-video",
-        "multimedia",
-        "multimedia.video",
-        "programming.devel",
-        "universe/graphics",
-        "video"
-      ]
-    },
-    {
-      "_disabled": false,
       "pkg": "vlc",
-      "pkg_id": "org.videolan.VLC",
+      "pkg_id": "github.com.ivan-hc.VLC-appimage.stable",
       "pkg_type": "appimage",
       "description": "Cross-platform media player and streaming server",
       "note": [
         "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/VLC-appimage"
       ],
       "version": "3.0.21",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.ivan-hc.stable.yaml",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -131,7 +176,60 @@
         "https://github.com/videolan/vlc/",
         "https://code.videolan.org/videolan/vlc"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.ivan-hc.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Music",
+        "Player",
+        "TV"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Multimedia",
+        "Applications/Sound",
+        "Productivity/Multimedia/Video/Players",
+        "Video",
+        "Video/Players",
+        "audio",
+        "media",
+        "media-video",
+        "multimedia",
+        "multimedia.video",
+        "video"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "vlc",
+      "pkg_id": "github.com.lucasmz1.VLC_AppImage.nightly",
+      "pkg_type": "appimage",
+      "description": "Cross-platform media player and streaming server",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/lucasmz1/VLC_AppImage"
+      ],
+      "version": "20241119-0227",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.lucasmz1.nightly.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "vlc"
+      ],
+      "src_url": [
+        "https://github.com/lucasmz1/VLC_AppImage"
+      ],
+      "homepage": [
+        "https://www.videolan.org",
+        "https://github.com/videolan/vlc/",
+        "https://code.videolan.org/videolan/vlc"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.lucasmz1.nightly.yaml",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -161,7 +259,7 @@
     {
       "_disabled": false,
       "pkg": "86box",
-      "pkg_id": "net._86box._86Box",
+      "pkg_id": "github.com.86Box.86Box.stable",
       "pkg_type": "appimage",
       "description": "Emulator of x86-based machines",
       "note": [
@@ -169,7 +267,7 @@
         "You need to download ROMS: https://86box.readthedocs.io/en/latest/usage/roms.html"
       ],
       "version": "v4.2.1",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/86box/appimage.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/86box/appimage.official.stable.yaml",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -184,7 +282,7 @@
         "https://86box.net",
         "https://86box.readthedocs.io"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/86box/appimage.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/86box/appimage.official.stable.yaml",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -205,14 +303,14 @@
     {
       "_disabled": false,
       "pkg": "steam",
-      "pkg_id": "com.valvesoftware.Steam",
+      "pkg_id": "github.com.ivan-hc.Steam-appimage",
       "pkg_type": "appimage",
       "description": "A video game digital distribution service and storefront from Valve",
       "note": [
         "Community Created AppImage based on Conty (ArchLinux). Check/Report @ https://github.com/ivan-hc/Steam-appimage"
       ],
       "version": "1.0.0.81",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/steam/appimage.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/steam/appimage.official.stable.yaml",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -228,7 +326,7 @@
         "https://store.steampowered.com",
         "https://github.com/ValveSoftware/steam-for-linux"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/steam/appimage.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/steam/appimage.official.stable.yaml",
       "build_log": "",
       "appstream": "",
       "category": [
