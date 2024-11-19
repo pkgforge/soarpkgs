@@ -59,10 +59,10 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        echo -e "\n[✗] aarch64 is Not Yet Supported/\n"
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/ivan-hc/VLC-appimage" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        soar dl "https://github.com/ivan-hc/VLC-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac

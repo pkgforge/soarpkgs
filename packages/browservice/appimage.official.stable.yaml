@@ -47,7 +47,7 @@ x_exec:
         soar dl "https://github.com/ttalvitie/browservice@${RELEASE_TAG}" --match "appimage,aarch64" --exclude "x64,x86,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/ttalvitie/browservice@${RELEASE_TAG}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        soar dl "https://github.com/ttalvitie/browservice@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
     #Extract

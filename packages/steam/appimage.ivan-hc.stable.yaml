@@ -48,6 +48,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/ivan-hc/Steam-appimage" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        soar dl "https://github.com/ivan-hc/Steam-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac

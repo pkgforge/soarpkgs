@@ -1,0 +1,49 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/amdgpu_top/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "amdgpu_top"
+pkg_id: "github.com.Umio-Yasuno.amdgpu_top.stable"
+pkg_type: "appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+ - "Monitor"
+ - "Utility"
+description: "Tool to display AMDGPU usage"
+distro_pkg:
+  archlinux:
+    aur:
+      - "amdgpu_top"
+      - "amdgpu_top-git"
+  nixpkgs:
+    - "amdgpu_top"
+homepage:
+  - "https://github.com/Umio-Yasuno/amdgpu_top"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Officially Created AppImage. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"
+repology:
+ - "amdgpu-top"
+src_url:
+  - "https://github.com/Umio-Yasuno/amdgpu_top"
+tag:
+  - "sys-apps"
+  - "system.utils"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Umio-Yasuno/amdgpu_top/releases/latest" | jq -r '.tag_name'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        ;;
+      x86_64)
+        soar dl "https://github.com/Umio-Yasuno/amdgpu_top" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac
