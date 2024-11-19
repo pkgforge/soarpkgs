@@ -32,7 +32,70 @@ See some examples:
   ```
 </details>
 <!--  -->
-<details id="build_asset"><summary><b><code>2. Build Assets (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="pkg"><summary><b><code>2. Pkg (TYPE:ENFORCED)</code></a></b></summary>
+
+  ```yaml
+  #Example ONLY
+  pkg: "Real Name, It will be Installed & Integrated based on this Value"
+  pkg_id: "Unique Identifier, Based on src_url, used for identifying this .pkg"
+  pkg_type: "Pkg Format, if empty or nonexistent, Interpreter reads Magic Bytes to determine format"
+  ```
+  - `pkg` is Canonical name of the Package. It will be installed as this regardless of the actual filename. Desktop entry will also show this name `(TYPE:ENFORCED)`
+  - `pkg_id` is like an `ID`, It is `Unique` & `NOT SHARED` with any other `pkg_id` from other packages
+  > - `pkg_id` is to make it seamless to add multiple binaries from multiple sources for the same pkg
+  > - `pkg_id` is just `src_url` without `http|https` schema along with some extra params
+  > > - Example: `src_url = "https://github.com/AppImager/example-appimage"` --> `github.com.AppImager.example-appimage`
+  > > - Notice how, all special chars like `/` --> `.` and `http://|https://` was removed
+  > > Another example, where the repo has multiple appimages:
+  > > > - `latest` --> `github.com.AppImager.example-appimage.latest`
+  > > > - `stable` --> `github.com.AppImager.example-appimage.stable`
+  > > > - `nightly` --> `github.com.AppImager.example-appimage.nightly`
+  > > > - `alpha` --> `github.com.AppImager.example-appimage.alpha`
+  > > - It's just `$tag` or some other identifier added at last
+  > > - If you don't specify a `pkg_id`, the first entry of `src_url` is auto converted & added as `pkg_id`
+  > - `pkg_type` is the Package Format, it can be one of the following (`lowercase`) `(TYPE:RECOMMENDED)` :
+  > > - [`AppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPIMAGES.md) denotes it is an [AppImage](https://appimage.org/) `pkg_type: "appimage"`
+  > > - [`AppBundle`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPBUNDLES.md) denotes it is an [AppBundle](https://github.com/xplshn/pelf/) `pkg_type: "appbundle"`
+  > > - [`archive`](https://github.com/ouch-org/ouch?tab=readme-ov-file#supported-formats) denotes it is an archive (`SELF-EXTRACTABLE`) format: `.7z` `.bz` `.bz2` `.gz` `.lz4` `.lzma` `.rar` `.sz` `.tar` `.xz` `.zst` or a mix-mash of these. This includes formats like [alpix](https://github.com/QaidVoid/alpix), [staticx](https://github.com/JonathonReinhart/staticx) etc. `pkg_type: "archive"`
+  > > - [`dynamic`]() denotes it is a Dynamic Binary `pkg_type: "dynamic"`
+  > > - [`FlatImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/FLATIMAGES.md) denotes it is a [FlatImage](https://github.com/ruanformigoni/flatimage) `pkg_type: "flatimage"`
+  > > - [`GameImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/GAMEIMAGES.md) denotes it is a [GameImage](https://github.com/ruanformigoni/gameimage) `pkg_type: "gameimage"`
+  > > - [`NixAppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/NIXAPPIMAGES.md) denotes it is a [NixAppImage](https://github.com/ralismark/nix-appimage) `pkg_type: "nixappimage"`
+  > > - [`RunImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/RUNIMAGES.md) denotes it is a [RunImage](https://github.com/VHSgunzo/runimage) `pkg_type: "runimage"`
+  > > - [`static`](https://en.wikipedia.org/wiki/Static_build) denotes it is a Static Binary `pkg_type: "static"`
+  > - `Note:` Interpreter will read the magic bytes to determine correct format in case this field is empty.
+</details>
+<!--  -->
+<details id="version"><summary><b><code>3. Version (pkgver) (TYPE:NOT-RECOMMENDED)</code></a></b></summary>
+ 
+  ```yaml
+  #Example ONLY
+  pkgver: "Exact Version, AlphaNumeric or Release Tag"
+  ``` 
+  - Exact Version of `$pkg` `(TYPE:NOT-RECOMMENDED)`
+  - This is `NOT-RECOMMENDED` unless you want to enforce a fixed version & plan to update it manually
+  - `x_exec.pkgver` exists, which takes care of determining latest versions automatically.
+  - If you use both `.pkgver` & `x_exec.pkgver`, `x_exec.pkgver` WILL BE IGNORED, and `.pkgver` will always be used
+</details> 
+<!--  -->
+<details id="appid"><summary><b><code>4. AppStream ID (app_id) (TYPE:RECOMMENDED)</code></a></b></summary>
+ 
+  ```yaml
+  #Example ONLY
+  app_id: "Appstream App Id, flatpak's scheme preferred, otherwise can be empty"
+  ```
+  - `app_id` is [AppStream App Id](https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic). `(TYPE:RECOMMENDED)`
+  > - You can find the `app_id` by searching it on [Flathub](https://flathub.org/)
+  > > ![image](https://github.com/user-attachments/assets/877263b5-8cbd-4a76-bcb6-1df738643fa2)
+  > - You can also find it in Appstream `Appdata.xml` or `Metainfo.xml` files
+  > > ![image](https://github.com/user-attachments/assets/0f4d2c3e-95a9-4ad0-b57d-05bbca6f3748)
+  > - Sometimes, this id can also be found in `.Desktop` file.
+  > - If you can't ind the `app_id` at all, Just DO NOT USE IT or JUST LEAVE EMPTY
+  - `app_id` is USED FOR `DESKTOP INTEGRATION`
+  - This is NOT TO BE CONFUSED with `pkg_id`, `pkg_id` is to identify the pkg, it is NOT FOR DESKTOP Integration
+</details>
+<!--  -->
+<details id="build_asset"><summary><b><code>5. Build Assets (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -50,52 +113,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="pkg"><summary><b><code>3. Pkg (TYPE:ENFORCED)</code></a></b></summary>
-
-  ```yaml
-  #Example ONLY
-  pkg: "Real Name, It will be Installed & Integrated based on this Value"
-  pkg_id: "Appstream App Id, flatpak's scheme preferred, otherwise can be empty"
-  pkg_type: "Pkg Format, if empty or nonexistent, Interpreter reads Magic Bytes to determine format"
-  ```
-  - `pkg` is Canonical name of the Package. It will be installed as this regardless of the actual filename. Desktop entry will also show this name `(TYPE:ENFORCED)`
-  - `pkg_id` is [AppStream App Id](https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic). `(TYPE:RECOMMENDED)`
-  > - You can find the `pkg_id` by searching it on [Flathub](https://flathub.org/)
-  > > ![image](https://github.com/user-attachments/assets/877263b5-8cbd-4a76-bcb6-1df738643fa2)
-  > - You can also find it in Appstream `Appdata.xml` or `Metainfo.xml` files
-  > > ![image](https://github.com/user-attachments/assets/0f4d2c3e-95a9-4ad0-b57d-05bbca6f3748)
-  > - Sometimes, this id can also be found in `.Desktop` file.
-  > - If you can't ind the `pkg_id` at all, you may create a dummy one in `xxx.${TLD}.${DOMAIN}.${PROJECT_NAME}` format
-  > > ```bash
-  > > xxx.io.github.SuperApp --> #Created from a the site's Homepage: SuperApp.github.io
-  > > xxx.com.github.CoolApp --> #Created from https://github.com/CoolApp
-  > > ```
-  > - `pkg_type` is the Package Format, it can be one of the following (`lowercase`) `(TYPE:RECOMMENDED)` :
-  > > - [`AppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPIMAGES.md) denotes it is an [AppImage](https://appimage.org/) `pkg_type: "appimage"`
-  > > - [`AppBundle`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/APPBUNDLES.md) denotes it is an [AppBundle](https://github.com/xplshn/pelf/) `pkg_type: "appbundle"`
-  > > - [`archive`](https://github.com/ouch-org/ouch?tab=readme-ov-file#supported-formats) denotes it is an archive (`SELF-EXTRACTABLE`) format: `.7z` `.bz` `.bz2` `.gz` `.lz4` `.lzma` `.rar` `.sz` `.tar` `.xz` `.zst` or a mix-mash of these. This includes formats like [alpix](https://github.com/QaidVoid/alpix), [staticx](https://github.com/JonathonReinhart/staticx) etc. `pkg_type: "archive"`
-  > > - [`dynamic`]() denotes it is a Dynamic Binary `pkg_type: "dynamic"`
-  > > - [`FlatImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/FLATIMAGES.md) denotes it is a [FlatImage](https://github.com/ruanformigoni/flatimage) `pkg_type: "flatimage"`
-  > > - [`GameImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/GAMEIMAGES.md) denotes it is a [GameImage](https://github.com/ruanformigoni/gameimage) `pkg_type: "gameimage"`
-  > > - [`NixAppImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/NIXAPPIMAGES.md) denotes it is a [NixAppImage](https://github.com/ralismark/nix-appimage) `pkg_type: "nixappimage"`
-  > > - [`RunImage`](https://github.com/Azathothas/Toolpacks-Extras/blob/main/Docs/RUNIMAGES.md) denotes it is a [RunImage](https://github.com/VHSgunzo/runimage) `pkg_type: "runimage"`
-  > > - [`static`](https://en.wikipedia.org/wiki/Static_build) denotes it is a Static Binary `pkg_type: "static"`
-  > - `Note:` Interpreter will read the magic bytes to determine correct format in case this field is empty.
-</details>
-<!--  -->
-<details id="description"><summary><b><code>4. Version (pkgver) (TYPE:NOT-RECOMMENDED)</code></a></b></summary>
- 
-  ```yaml
-  #Example ONLY
-  pkgver: "Exact Version, AlphaNumeric or Release Tag"
-  ``` 
-  - Exact Version of `$pkg` `(TYPE:NOT-RECOMMENDED)`
-  - This is `NOT-RECOMMENDED` unless you want to enforce a fixed version & plan to update it manually
-  - `x_exec.pkgver` exists, which takes care of determining latest versions automatically.
-  - If you use both `.pkgver` & `x_exec.pkgver`, `x_exec.pkgver` WILL BE IGNORED, and `.pkgver` will always be used
-</details> 
-<!--  -->
-<details id="build_util"><summary><b><code>5. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="build_util"><summary><b><code>6. Build Utils (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -114,7 +132,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="category"><summary><b><code>6. Category (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="category"><summary><b><code>7. Category (TYPE:RECOMMENDED)</code></a></b></summary>
 
   - This is Optional & can be left empty or removed completely `(TYPE:RECOMMENDED)`
   - If it is left empty or doesn't exist, It is set to `Utility` by default.
@@ -130,7 +148,7 @@ See some examples:
   > ```
 </details>
 <!--  -->
-<details id="description"><summary><b><code>7. Description (TYPE:ENFORCED)</code></a></b></summary>
+<details id="description"><summary><b><code>8. Description (TYPE:ENFORCED)</code></a></b></summary>
  
   ```yaml
   #Example ONLY
@@ -142,7 +160,7 @@ See some examples:
   - Otherwise Use abridged version from the `$pkg`'s Homepage etc
 </details> 
 <!--  -->
-<details id="desktop"><summary><b><code>8. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="desktop"><summary><b><code>9. Desktop (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -155,7 +173,7 @@ See some examples:
   - This MAY BE OVERWRITTEN, if `x_exec.run` does something to the file, otherwise is used as the default `.Desktop` file
 </details>
 <!--  -->
-<details id="distro_pkg"><summary><b><code>9. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="distro_pkg"><summary><b><code>10. Distro Packages (TYPE:NON_ENFORCED)</code></a></b></summary>
  
   - This is Optional & can be left empty or removed completely `(TYPE:NON_ENFORCED)`
   - Use [repology/projects/$pkg](https://repology.org/projects/) to quickly fetch this Information, Or You can [Automate It](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
@@ -184,7 +202,7 @@ See some examples:
   ``` 
 </details> 
 <!--  -->
-<details id="homepage"><summary><b><code>10. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="homepage"><summary><b><code>11. Homepage (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -199,7 +217,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details id="icon"><summary><b><code>11. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="icon"><summary><b><code>12. Icon (.DirIcon) (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   icon: "#A Direct RAW URL to download a icon/logo file"
@@ -212,7 +230,7 @@ See some examples:
   - If the `icon` file is NOT a `png` File, it MUST BE RENAMED to correct `$pkg.format` in the `x_exec.run` step.
 </details>
 <!--  -->
-<details id="license"><summary><b><code>12. License (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="license"><summary><b><code>13. License (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -231,7 +249,7 @@ See some examples:
   - Use [repology/projects/$pkg/information](https://repology.org/projects/) to quickly fetch this Information
 </details>
 <!--  -->
-<details id="maintainer"><summary><b><code>13. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="maintainer"><summary><b><code>14. Maintainer (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -246,7 +264,7 @@ See some examples:
   - You will usually add yourself to this field
 </details>
 <!--  -->
-<details id="note"><summary><b><code>14. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="note"><summary><b><code>15. Note (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -259,7 +277,7 @@ See some examples:
   - Can have single or multiple entries 
 </details>
 <!--  -->
-<details id="provides"><summary><b><code>15. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
+<details id="provides"><summary><b><code>16. Provides (TYPE:NON_ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -277,7 +295,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="repology"><summary><b><code>16. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="repology"><summary><b><code>17. Repology (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -290,7 +308,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="src_url"><summary><b><code>17. Source (Download) URL (TYPE:ENFORCED)</code></a></b></summary>
+<details id="src_url"><summary><b><code>18. Source (Download) URL (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -304,7 +322,7 @@ See some examples:
   - Can have only single or multiple entries
 </details>
 <!--  -->
-<details id="tag"><summary><b><code>18. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
+<details id="tag"><summary><b><code>19. Tags (TYPE:RECOMMENDED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -319,7 +337,7 @@ See some examples:
   - Can have single or multiple entries
 </details>
 <!--  -->
-<details id="x_exec"><summary><b><code>19. x_exec (TYPE:ENFORCED)</code></a></b></summary>
+<details id="x_exec"><summary><b><code>20. x_exec (TYPE:ENFORCED)</code></a></b></summary>
 
   ```yaml
   #Example ONLY
@@ -380,10 +398,6 @@ See some examples:
 >         soar dl "https://github.com/86Box/86Box" --match "appimage|x86_64" --exclude "aarch64|arm|zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
 >         ;;
 >     esac
->     #We extract the needed files Runner Wants (All of the Files are saved with ${SBUILD_PKG}.$file Prefix)
->     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
->     #We do a final sanity check to ensure we have all the needed files
->     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
 >     #We are done and can let the Runner take it from here
 > ```
 
@@ -393,8 +407,9 @@ See some examples:
 > _disabled: false
 > 
 > pkg: "86box"
-> pkg_id: "net._86box._86Box"
+> pkg_id: "github.com.86Box.86Box"
 > pkg_type: "AppImage"
+> app_id: "net._86box._86Box"
 > build_util:
 >   - "squishy-cli"
 > category:
@@ -450,9 +465,5 @@ See some examples:
 >         soar dl "https://github.com/86Box/86Box" --match "appimage|x86_64" --exclude "aarch64|arm|zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
 >         ;;
 >     esac
->     #We extract the needed files Runner Wants (All of the Files are saved with ${SBUILD_PKG}.$file Prefix)
->     squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
->     #We do a final sanity check to ensure we have all the needed files
->     find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
 >     #We are done and can let the Runner take it from here
 > ```
