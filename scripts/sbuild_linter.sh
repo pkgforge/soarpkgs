@@ -13,7 +13,7 @@
 #-------------------------------------------------------#
 sbuild_linter()
  {
- SBL_VERSION="1.1.4" && echo -e "[+] SBUILD Linter Version: ${SBL_VERSION}" ; unset SBL_VERSION 
+ SBL_VERSION="1.1.5" && echo -e "[+] SBUILD Linter Version: ${SBL_VERSION}" ; unset SBL_VERSION 
  ##Enable Debug 
  if [ "${DEBUG}" = "1" ] || [ "${DEBUG}" = "ON" ]; then
     set -x
@@ -118,7 +118,7 @@ sbuild_linter()
       export CONTINUE_SBUILD="YES"
     fi
    #Validator (_disabled)
-    if yq eval 'has("_disabled")' "${SRC_SBUILD}" >/dev/null 2>&1; then
+    if [[ "$(yq eval 'has("_disabled")' "${SRC_SBUILD}")" == "true" ]]; then
      if ! yq eval '.["_disabled"] == true or .["_disabled"] == false' "${SRC_SBUILD}" >/dev/null 2>&1; then
        echo -e "\n[✗] ERROR (Validation Failed) '_disabled' must either be '_disabled: false' OR '_disabled: true'"
        show_docs
@@ -128,6 +128,7 @@ sbuild_linter()
     else
       echo -e "\n[✗] ERROR (Validation Failed) '_disabled' DOES NOT EXIST"
       show_docs
+      export CONTINUE_SBUILD="NO" && return 1
     fi
    #Validator (No Empty Entries)
     unset SBUILD_EMPTIES ; SBUILD_EMPTIES="$(grep -xE '[[:space:]-]*""[[:space:]-]*' "${SRC_SBUILD}")"
