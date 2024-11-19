@@ -1,5 +1,5 @@
 #!/SBUILD ver @v0.4.5
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kdenlive/appimage.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kdenlive/appimage.official.stable.yaml
 _disabled: false
 
 pkg: "kdenlive"
@@ -65,6 +65,10 @@ x_exec:
   shell: bash
   pkgver:
     curl -qfsSL "https://kdenlive.org/en/download/" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' | grep -Ei "AppImage" | grep -Eiv 'aarch|arm|zsync' | sort --version-sort | tail -n 1 | tr -d '[:space:]' | grep -o '[0-9]\+\(\.[0-9]\+\)\+' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+
+
+    curl -qfsSL "https://artifacts.videolan.org/vlc-3.0/nightly-snap/" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+
   run: |
     #Download
     case "$(uname -m)" in
