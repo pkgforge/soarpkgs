@@ -3,8 +3,9 @@
 _disabled: false
 
 pkg: "kdenlive"
-pkg_id: "org.kde.kdenlive"
+pkg_id: "apps.kde.org.kdenlive.stable"
 pkg_type: "appimage"
+app_id: "org.kde.kdenlive"
 build_util:
   - "curl#bin"
   - "jq#bin"
@@ -77,7 +78,3 @@ x_exec:
         curl -qfSL "${DOWNLOAD_URL}" -o "./${SBUILD_PKG}" && chmod +x "./${SBUILD_PKG}"
         ;;
     esac
-    #Extract
-    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Verify
-    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

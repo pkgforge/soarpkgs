@@ -3,8 +3,9 @@
 _disabled: false
 
 pkg: "browservice"
-pkg_id: "org.browservice.browservice"
+pkg_id: "github.com.ttalvitie.browservice.stable"
 pkg_type: "appimage"
+app_id: "org.browservice.browservice"
 build_util:
   - "curl#bin"
   - "jq#bin"

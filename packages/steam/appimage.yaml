@@ -3,10 +3,11 @@
 _disabled: false
 
 pkg: "steam"
-pkg_id: "com.valvesoftware.Steam"
+pkg_id: "github.com.ivan-hc.Steam-appimage"
 pkg_type: "appimage"
 build_util:
   - "curl#bin"
+  - "jq#bin"
   - "squishy-cli#bin"
 category:
  - "Game"
@@ -16,7 +17,7 @@ distro_pkg:
     multilib:
       - "steam"
   nixpkgs:
-    - "steam-unwrapped"    
+    - "steam-unwrapped"
 homepage:
   - "https://steamcommunity.com/linux"
   - "https://store.steampowered.com"
@@ -50,7 +51,3 @@ x_exec:
         soar dl "https://github.com/ivan-hc/Steam-appimage" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
-    #Extract
-    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Verify
-    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

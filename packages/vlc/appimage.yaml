@@ -3,8 +3,9 @@
 _disabled: false
 
 pkg: "vlc"
-pkg_id: "org.videolan.VLC"
+pkg_id: "github.com.ivan-hc.VLC-appimage.stable"
 pkg_type: "appimage"
+app_id: "org.videolan.VLC"
 build_util:
   - "curl#bin"
   - "squishy-cli#bin"
@@ -65,7 +66,3 @@ x_exec:
         soar dl "https://github.com/ivan-hc/VLC-appimage" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
-    #Extract
-    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Verify
-    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

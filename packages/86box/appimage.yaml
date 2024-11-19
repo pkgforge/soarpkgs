@@ -3,16 +3,13 @@
 _disabled: false
 
 pkg: "86box"
-pkg_id: "net._86box._86Box"
+pkg_id: "github.com.86Box.86Box.stable"
 pkg_type: "appimage"
+app_id: "net._86box._86Box"
 build_util:
-  - "7z#bin"
   - "curl#bin"
-  - "gh#bin"
   - "jq#bin"
-  - "rsync#bin"
   - "squishy-cli#bin"
-  - "wget#bin"
 category:
   - "Emulator"
 description: "Emulator of x86-based machines"
@@ -56,7 +53,3 @@ x_exec:
         soar dl "https://github.com/86Box/86Box" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
-    #Extract
-    squishy-cli appimage "./${SBUILD_PKG}" --icon --desktop --appstream --write
-    #Verify
-    find "." -type f -iname "*${PKG%%-*}*" -print | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
