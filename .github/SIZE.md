@@ -2519,8 +2519,8 @@
  20K   │ ├── sbuild_linter.sh
 4.0K   │ ├── repology_fetcher.sh
 4.0K   │ └── gen_meta.sh
- 36K   ├─┬ metadata
- 12K   │ ├── METADATA.json
+ 40K   ├─┬ metadata
+ 16K   │ ├── METADATA.json
 4.0K   │ ├── METADATA.json.zstd.bsum
 4.0K   │ ├── METADATA.json.zstd
 4.0K   │ ├── METADATA.json.xz.bsum
