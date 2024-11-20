@@ -5,12 +5,13 @@
       "pkg": "0ad",
       "pkg_id": "github.0ad-matters.0ad-appimage.stable",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "A FOSS historical Real Time Strategy (RTS) game where As the leader of an ancient civilization, you must gather the resources you need to raise a military force and dominate your enemies.",
       "note": [
         "Community Created AppImage. Check/Report @ https://github.com/0ad-matters/0ad-appimage"
       ],
       "version": "v0.0.26-alpha",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/0ad/appimage.0ad-matters.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/0ad/appimage.0ad-matters.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -29,7 +30,7 @@
         "https://play0ad.com",
         "https://sourceforge.net/projects/zero-ad"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/0ad/appimage.0ad-matters.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/0ad/appimage.0ad-matters.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -57,6 +58,7 @@
       "pkg": "0ad-latest",
       "pkg_id": "github.0ad-matters.0ad-appimage.latest",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "A FOSS historical Real Time Strategy (RTS) game where As the leader of an ancient civilization, you must gather the resources you need to raise a military force and dominate your enemies.",
       "note": [
         "Community Created AppImage. Check/Report @ https://github.com/0ad-matters/0ad-appimage",
@@ -65,7 +67,7 @@
         "In case of problems, install '0ad' instead"
       ],
       "version": "v0.0.27-rc1-27645-alpha",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/0ad/appimage.0ad-matters.latest.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/0ad/appimage.0ad-matters.latest.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -84,7 +86,7 @@
         "https://play0ad.com",
         "https://sourceforge.net/projects/zero-ad"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/0ad/appimage.0ad-matters.latest.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/0ad/appimage.0ad-matters.latest.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -112,12 +114,13 @@
       "pkg": "browservice",
       "pkg_id": "github.com.ttalvitie.browservice.stable",
       "pkg_type": "appimage",
+      "app_id": "org.browservice.browservice",
       "description": "Browse the modern web on historical browsers",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/ttalvitie/browservice"
       ],
       "version": "v0.9.10.0",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/browservice/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/browservice/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -131,7 +134,7 @@
       "homepage": [
         "https://github.com/ttalvitie/browservice"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/browservice/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/browservice/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -152,15 +155,241 @@
     },
     {
       "_disabled": false,
+      "pkg": "czkawka",
+      "pkg_id": "github.com.qarmin.czkawka.stable",
+      "pkg_type": "appimage",
+      "app_id": "com.github.qarmin.czkawka",
+      "description": "Multi functional app to find duplicates, empty folders, similar images, broken files etc.",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/qarmin/czkawka"
+      ],
+      "version": "8.0.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/czkawka/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "czkawka"
+      ],
+      "src_url": [
+        "https://github.com/qarmin/czkawka"
+      ],
+      "homepage": [
+        "https://github.com/qarmin/czkawka"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/czkawka/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "cleaner",
+        "File",
+        "system.utils",
+        "sysutils"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "cemu",
+      "pkg_id": "github.com.cemu-project.Cemu.stable",
+      "pkg_type": "appimage",
+      "app_id": "info.cemu.Cemu",
+      "description": "An emulator for the Nintendo Wii U",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/cemu-project/Cemu"
+      ],
+      "version": "v2.2",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/cemu/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "cemu-wii-u-emulator"
+      ],
+      "src_url": [
+        "https://github.com/cemu-project/Cemu"
+      ],
+      "homepage": [
+        "https://cemu.info",
+        "https://github.com/cemu-project/Cemu"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/cemu/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Emulator",
+        "Game"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Emulators/Games",
+        "extra/emulator",
+        "games.emulator"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "discord-ptb",
+      "pkg_id": "github.com.srevinsaju.discord-AppImage.ptb",
+      "pkg_type": "appimage",
+      "app_id": "com.discordapp.Discord",
+      "description": "All-in-one cross-platform voice and text chat for gamers (Public Test Beta)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/discord-appimage"
+      ],
+      "version": "0.0.116",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/discord/appimage.srevinsaju.ptb.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "discord"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/discord-appimage"
+      ],
+      "homepage": [
+        "https://discordapp.com",
+        "https://github.com/srevinsaju/discord-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/discord/appimage.srevinsaju.ptb.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Chat",
+        "InstantMessaging"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "chat",
+        "Communications",
+        "net-im",
+        "network.im",
+        "Networking/Chat"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "discord",
+      "pkg_id": "github.com.srevinsaju.discord-AppImage.stable",
+      "pkg_type": "appimage",
+      "app_id": "com.discordapp.Discord",
+      "description": "All-in-one cross-platform voice and text chat for gamers",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/discord-appimage"
+      ],
+      "version": "0.0.75",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/discord/appimage.srevinsaju.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "discord"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/discord-appimage"
+      ],
+      "homepage": [
+        "https://discordapp.com",
+        "https://github.com/srevinsaju/discord-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/discord/appimage.srevinsaju.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Chat",
+        "InstantMessaging"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "chat",
+        "Communications",
+        "net-im",
+        "network.im",
+        "Networking/Chat"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "discord-canary",
+      "pkg_id": "github.com.srevinsaju.discord-AppImage.canary",
+      "pkg_type": "appimage",
+      "app_id": "com.discordapp.Discord",
+      "description": "All-in-one cross-platform voice and text chat for gamers (Canary)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/discord-appimage"
+      ],
+      "version": "0.0.523",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/discord/appimage.srevinsaju.canary.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "discord"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/discord-appimage"
+      ],
+      "homepage": [
+        "https://discordapp.com",
+        "https://github.com/srevinsaju/discord-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/discord/appimage.srevinsaju.canary.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Chat",
+        "InstantMessaging"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "chat",
+        "Communications",
+        "net-im",
+        "network.im",
+        "Networking/Chat"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "affine",
       "pkg_id": "github.com.affine-mirror.affine.stable",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "FOSS Knowledge Base with fully merged docs, whiteboards and databases",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/toeverything/AFFiNE"
       ],
       "version": "v0.18.0",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/affine/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/affine/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -175,7 +404,7 @@
         "https://affine.pro",
         "https://github.com/toeverything/AFFiNE"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/affine/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/affine/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -194,15 +423,516 @@
     },
     {
       "_disabled": false,
+      "pkg": "brave",
+      "pkg_id": "github.com.srevinsaju.Brave-AppImage.stable",
+      "pkg_type": "appimage",
+      "app_id": "com.brave.Browser",
+      "description": "Privacy-oriented browser for Desktop and Laptop computers (Stable)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "version": "v1.73.90",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/brave/appimage.srevinsaju.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "brave"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "homepage": [
+        "https://brave.com",
+        "https://github.com/brave/browser-laptop",
+        "https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/brave/appimage.srevinsaju.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser",
+        "Networking/WWW",
+        "network.web.browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "brave-nightly",
+      "pkg_id": "github.com.srevinsaju.Brave-AppImage.nightly",
+      "pkg_type": "appimage",
+      "app_id": "com.brave.Browser",
+      "description": "Privacy-oriented browser for Desktop and Laptop computers (Nightly)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "version": "v1.75.33",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/brave/appimage.srevinsaju.nightly.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "brave"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "homepage": [
+        "https://brave.com",
+        "https://github.com/brave/browser-laptop",
+        "https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/brave/appimage.srevinsaju.nightly.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser",
+        "Networking/WWW",
+        "network.web.browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "brave-beta",
+      "pkg_id": "github.com.srevinsaju.Brave-AppImage.beta",
+      "pkg_type": "appimage",
+      "app_id": "com.brave.Browser",
+      "description": "Privacy-oriented browser for Desktop and Laptop computers (Beta)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "version": "v1.74.8",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/brave/appimage.srevinsaju.beta.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "brave"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "homepage": [
+        "https://brave.com",
+        "https://github.com/brave/browser-laptop",
+        "https://github.com/srevinsaju/Brave-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/brave/appimage.srevinsaju.beta.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser",
+        "Networking/WWW",
+        "network.web.browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "chromium",
+      "pkg_id": "github.com.ivan-hc.Chromium-Web-Browser-appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.chromium.Chromium",
+      "description": "Open source web browser from Google (Stable)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "version": "130.0.6723.116",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/chromium/appimage.ivan-hc.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "chromium"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "homepage": [
+        "https://www.chromium.org",
+        "https://chromium.googlesource.com/chromium/src",
+        "https://github.com/chromium/chromium",
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/chromium/appimage.ivan-hc.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "chromium-edge",
+      "pkg_id": "github.com.ivan-hc.Chromium-Web-Browser-appimage.edge",
+      "pkg_type": "appimage",
+      "app_id": "org.chromium.Chromium",
+      "description": "Open source web browser from Google (Edge)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "version": "132.0.6821.2",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/chromium/appimage.ivan-hc.edge.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "chromium"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "homepage": [
+        "https://www.chromium.org",
+        "https://chromium.googlesource.com/chromium/src",
+        "https://github.com/chromium/chromium",
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/chromium/appimage.ivan-hc.edge.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "chromium-candidate",
+      "pkg_id": "github.com.ivan-hc.Chromium-Web-Browser-appimage.candidate",
+      "pkg_type": "appimage",
+      "app_id": "org.chromium.Chromium",
+      "description": "Open source web browser from Google (Candidate)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "version": "130.0.6723.116",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/chromium/appimage.ivan-hc.candidate.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "chromium"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "homepage": [
+        "https://www.chromium.org",
+        "https://chromium.googlesource.com/chromium/src",
+        "https://github.com/chromium/chromium",
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/chromium/appimage.ivan-hc.candidate.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "chromium-beta",
+      "pkg_id": "github.com.ivan-hc.Chromium-Web-Browser-appimage.beta",
+      "pkg_type": "appimage",
+      "app_id": "org.chromium.Chromium",
+      "description": "Open source web browser from Google (Beta)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "version": "130.0.6723.44",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/chromium/appimage.ivan-hc.beta.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "chromium"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "homepage": [
+        "https://www.chromium.org",
+        "https://chromium.googlesource.com/chromium/src",
+        "https://github.com/chromium/chromium",
+        "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/chromium/appimage.ivan-hc.beta.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "kdenlive",
+      "pkg_id": "apps.kde.org.kdenlive.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.kde.kdenlive",
+      "description": "FOSS video editor, based on MLT Framework and KDE Frameworks",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://invent.kde.org/multimedia/kdenlive"
+      ],
+      "version": "24.08.3",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/kdenlive/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "kdenlive"
+      ],
+      "src_url": [
+        "https://kdenlive.org/en/download/"
+      ],
+      "homepage": [
+        "https://kdenlive.org/en",
+        "https://apps.kde.org/kdenlive",
+        "https://invent.kde.org/multimedia/kdenlive"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/kdenlive/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "AudioVideoEditing"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Graphical",
+        "Graphical",
+        "Graphical",
+        "Productivity/Multimedia/Video/Editors",
+        "Video",
+        "Video/Editors",
+        "clip",
+        "debug",
+        "editor",
+        "extra/office",
+        "kde",
+        "kde-apps",
+        "kdePackages",
+        "libsForQt5",
+        "libsForQt512",
+        "libsForQt514",
+        "media-video",
+        "multimedia",
+        "multimedia.video",
+        "programming.devel",
+        "universe/graphics",
+        "video"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "cpu-x",
+      "pkg_id": "github.com.TheTumultuousUnicornOfDarkness.CPU-X.stable",
+      "pkg_type": "appimage",
+      "app_id": "io.github.thetumultuousunicornofdarkness.cpu-x",
+      "description": "A FOSS tool to gather information on CPU, motherboard and more",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+      ],
+      "version": "v5.1.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/cpu-x/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "cpu-x"
+      ],
+      "src_url": [
+        "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+      ],
+      "homepage": [
+        "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/cpu-x/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Monitor",
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "sys-apps",
+        "system.utils"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "android-platform-tools",
+      "pkg_id": "github.com.Samueru-sama.android-tools-AppImage.stable",
+      "pkg_type": "appimage",
+      "app_id": "",
+      "description": "Android SDK Platform-Tools (adb, fastboot & more)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/Samueru-sama/android-tools-AppImage"
+      ],
+      "version": "2024.3.1-1",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/android-platform-tools/appimage.Samueru-sama.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "android-platform-tools"
+      ],
+      "src_url": [
+        "https://github.com/Samueru-sama/android-tools-AppImage"
+      ],
+      "homepage": [
+        "https://android.googlesource.com/platform/tools/base",
+        "https://github.com/Samueru-sama/android-tools-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/android-platform-tools/appimage.Samueru-sama.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "ConsoleOnly",
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "adb",
+        "android-tools",
+        "devel",
+        "development",
+        "java",
+        "utils"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "anydesk",
+      "pkg_id": "github.com.ivan-hc.anydesk-appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "com.anydesk.Anydesk",
+      "description": "Desktop sharing application, providing remote support and online meetings",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Anydesk-appimage"
+      ],
+      "version": "6.4.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/anydesk/appimage.ivan-hc.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "anydesk"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Anydesk-appimage"
+      ],
+      "homepage": [
+        "https://www.anydesk.com",
+        "https://github.com/ivan-hc/Anydesk-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/anydesk/appimage.ivan-hc.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "RemoteAccess",
+        "VideoConference"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "deskutils",
+        "Networking/Remote",
+        "rdp"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "vlc",
       "pkg_id": "github.com.ivan-hc.VLC-appimage.stable",
       "pkg_type": "appimage",
+      "app_id": "org.videolan.VLC",
       "description": "Cross-platform media player and streaming server",
       "note": [
         "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/VLC-appimage"
       ],
       "version": "3.0.21",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.ivan-hc.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.ivan-hc.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -218,7 +948,7 @@
         "https://github.com/videolan/vlc/",
         "https://code.videolan.org/videolan/vlc"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.ivan-hc.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.ivan-hc.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -250,12 +980,13 @@
       "pkg": "vlc",
       "pkg_id": "github.com.lucasmz1.VLC_AppImage.nightly",
       "pkg_type": "appimage",
+      "app_id": "org.videolan.VLC",
       "description": "Cross-platform media player and streaming server",
       "note": [
         "Community Created AppImage. Check/Report @ https://github.com/lucasmz1/VLC_AppImage"
       ],
       "version": "20241120-0224",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.lucasmz1.nightly.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.lucasmz1.nightly.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -271,7 +1002,7 @@
         "https://github.com/videolan/vlc/",
         "https://code.videolan.org/videolan/vlc"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.lucasmz1.nightly.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/vlc/appimage.lucasmz1.nightly.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -303,12 +1034,13 @@
       "pkg": "amdgpu_top",
       "pkg_id": "github.com.Umio-Yasuno.amdgpu_top.stable",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "Tool to display AMDGPU usage",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"
       ],
       "version": "v0.9.2",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/amdgpu_top/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/amdgpu_top/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -322,7 +1054,7 @@
       "homepage": [
         "https://github.com/Umio-Yasuno/amdgpu_top"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/amdgpu_top/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/amdgpu_top/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -344,12 +1076,13 @@
       "pkg": "acreom",
       "pkg_id": "github.com.Acreom.releases.stable",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "An IDE based Knowledge Base using Markdown",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/Acreom/releases"
       ],
       "version": "v1.20.2",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/acreom/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/acreom/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -364,7 +1097,7 @@
         "https://acreom.com",
         "https://github.com/Acreom/releases"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/acreom/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/acreom/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -387,12 +1120,13 @@
       "pkg": "advanced-passgen",
       "pkg_id": "github.com.CodeDead.Advanced-PassGen.stable",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "Advanced Password Generator",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/CodeDead/Advanced-PassGen"
       ],
       "version": "v2.5.2",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/advanced-passgen/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/advanced-passgen/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -407,7 +1141,7 @@
         "https://advancedpassgen.codedead.com",
         "https://github.com/CodeDead/Advanced-PassGen"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/advanced-passgen/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/advanced-passgen/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -430,13 +1164,14 @@
       "pkg": "86box",
       "pkg_id": "github.com.86Box.86Box.stable",
       "pkg_type": "appimage",
+      "app_id": "net._86box._86Box",
       "description": "Emulator of x86-based machines",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/86Box/86Box",
         "You need to download ROMS: https://86box.readthedocs.io/en/latest/usage/roms.html"
       ],
       "version": "v4.2.1",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/86box/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/86box/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -451,7 +1186,7 @@
         "https://86box.net",
         "https://86box.readthedocs.io"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/86box/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/86box/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -471,15 +1206,61 @@
     },
     {
       "_disabled": false,
+      "pkg": "desktopeditors",
+      "pkg_id": "github.com.ONLYOFFICE.DesktopEditors.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.onlyoffice.desktopeditors",
+      "description": "Office suite with text, spreadsheet and presentation editors",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/ONLYOFFICE/DesktopEditors"
+      ],
+      "version": "v8.2.1",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/desktopeditors/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "onlyoffice-desktopeditors"
+      ],
+      "src_url": [
+        "https://github.com/ONLYOFFICE/DesktopEditors"
+      ],
+      "homepage": [
+        "https://www.onlyoffice.com",
+        "https://github.com/ONLYOFFICE/DesktopEditors"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/desktopeditors/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Education",
+        "Office",
+        "TextEditor"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Office",
+        "app-office",
+        "Office"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "actual",
       "pkg_id": "github.com.actualbudget.actual.stable",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "A local-first personal finance app",
       "note": [
         "Officially Created AppImage. Check/Report @ https://github.com/actualbudget/actual"
       ],
       "version": "v24.11.0",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/actual/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/actual/appimage.official.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -495,7 +1276,7 @@
         "https://actualbudget.com",
         "https://github.com/actualbudget/actual"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/actual/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/actual/appimage.official.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -514,15 +1295,155 @@
     },
     {
       "_disabled": false,
+      "pkg": "dolphin-emu",
+      "pkg_id": "github.com.lucasmz1.Dolphin_emu_Appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.DolphinEmu.dolphin-emu",
+      "description": "A GameCube / Wii emulator",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/lucasmz1/Dolphin_emu_Appimage"
+      ],
+      "version": "20241116_003120-continuous-stable",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/dolphin-emu/appimage.lucasmz1.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "dolphin"
+      ],
+      "src_url": [
+        "https://github.com/lucasmz1/Dolphin_emu_Appimage"
+      ],
+      "homepage": [
+        "https://dolphin-emu.org",
+        "https://github.com/dolphin-emu/dolphin",
+        "https://github.com/lucasmz1/Dolphin_emu_Appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/dolphin-emu/appimage.lucasmz1.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Emulator"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "emulators",
+        "Emulators",
+        "extra/game",
+        "Games",
+        "games-emulation",
+        "games.emulator",
+        "System/Emulators/Other"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "dolphin-emu",
+      "pkg_id": "github.com.qurious-pixel.dolphin.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.DolphinEmu.dolphin-emu",
+      "description": "A GameCube / Wii emulator",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/qurious-pixel/dolphin"
+      ],
+      "version": "20240718_151759-continuous",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/dolphin-emu/appimage.qurious-pixel.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "dolphin"
+      ],
+      "src_url": [
+        "https://github.com/qurious-pixel/dolphin"
+      ],
+      "homepage": [
+        "https://dolphin-emu.org",
+        "https://github.com/dolphin-emu/dolphin",
+        "https://github.com/qurious-pixel/dolphin"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/dolphin-emu/appimage.qurious-pixel.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Emulator"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "emulators",
+        "Emulators",
+        "extra/game",
+        "Games",
+        "games-emulation",
+        "games.emulator",
+        "System/Emulators/Other"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "bottles",
+      "pkg_id": "github.com.ivan-hc.Bottles-appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "com.usebottles.bottles",
+      "description": "An easy-to-use wineprefix manager to Run Windows software and games on Linux",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Bottles-appimage"
+      ],
+      "version": "51.15",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/bottles/appimage.ivan-hc.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "bottles"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Bottles-appimage"
+      ],
+      "homepage": [
+        "https://usebottles.com",
+        "https://github.com/ivan-hc/Bottles-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/bottles/appimage.ivan-hc.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Emulator"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "deskutils",
+        "Networking/Remote",
+        "rdp"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "steam",
       "pkg_id": "github.com.ivan-hc.Steam-appimage",
       "pkg_type": "appimage",
+      "app_id": "",
       "description": "A video game digital distribution service and storefront from Valve",
       "note": [
         "Community Created AppImage based on Conty (ArchLinux). Check/Report @ https://github.com/ivan-hc/Steam-appimage"
       ],
       "version": "1.0.0.81",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/steam/appimage.ivan-hc.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/steam/appimage.ivan-hc.stable.yaml.validated",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -538,7 +1459,7 @@
         "https://store.steampowered.com",
         "https://github.com/ValveSoftware/steam-for-linux"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/steam/appimage.ivan-hc.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/steam/appimage.ivan-hc.stable.yaml.validated",
       "build_log": "",
       "appstream": "",
       "category": [
@@ -555,6 +1476,106 @@
         "Games/Other",
         "distribution",
         "games"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "deadbeef",
+      "pkg_id": "github.com.Samueru-sama.DeaDBeeF-AppImage.stable",
+      "pkg_type": "appimage",
+      "app_id": "io.sourceforge.deadbeefStable",
+      "description": "A Modular (Extensible with Plugins) Audio Player that can play & convert almost all Audio Formats (Stable)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+      ],
+      "version": "1.9.6-1",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/deadbeef/appimage.Samueru-sama.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "deadbeef"
+      ],
+      "src_url": [
+        "https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+      ],
+      "homepage": [
+        "https://deadbeef.sourceforge.io",
+        "https://github.com/DeaDBeeF-Player/deadbeef",
+        "https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/deadbeef/appimage.Samueru-sama.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Music",
+        "Player"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "audio",
+        "audio-player",
+        "media-sound",
+        "multimedia",
+        "multimedia.audio",
+        "Music",
+        "Productivity/Multimedia/Sound/Players",
+        "Sound/Players"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "deadbeef-nightly",
+      "pkg_id": "github.com.Samueru-sama.DeaDBeeF-AppImage.nightly",
+      "pkg_type": "appimage",
+      "app_id": "io.sourceforge.deadbeefStable",
+      "description": "A Modular (Extensible with Plugins) Audio Player that can play & convert almost all Audio Formats (Nightly)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+      ],
+      "version": "2024-11-16",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/deadbeef/appimage.Samueru-sama.nightly.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "deadbeef"
+      ],
+      "src_url": [
+        "https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+      ],
+      "homepage": [
+        "https://deadbeef.sourceforge.io",
+        "https://github.com/DeaDBeeF-Player/deadbeef",
+        "https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/deadbeef/appimage.Samueru-sama.nightly.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Music",
+        "Player"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "audio",
+        "audio-player",
+        "media-sound",
+        "multimedia",
+        "multimedia.audio",
+        "Music",
+        "Productivity/Multimedia/Sound/Players",
+        "Sound/Players"
       ]
     }
   ]
