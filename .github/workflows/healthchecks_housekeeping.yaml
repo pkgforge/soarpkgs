@@ -139,7 +139,7 @@ jobs:
           #--------------#
           cd "${GITHUB_WORKSPACE}/main" && git pull origin main || git pull origin main --ff-only || git merge --no-ff -m "Merge & Sync"
           ##PKG Num
-          PKG_NAME="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/soarpkgs/contents/packages" | jq -r '.[] | select(.type == "dir") | .name' | sort -u | wc -l | tr -d '[:space:]')" ; export PKG_NAME
+          PKG_NUM="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/soarpkgs/contents/packages" | jq -r '.[] | select(.type == "dir") | .name' | sort -u | wc -l | tr -d '[:space:]')" ; export PKG_NUM
           sed "s|img.shields.io/badge/Packages-[^/]*-blue|img.shields.io/badge/Packages-${PKG_NUM}-blue|g" -i "${GITHUB_WORKSPACE}/main/README.md"
         continue-on-error: true
 
