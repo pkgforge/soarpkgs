@@ -152,6 +152,48 @@
     },
     {
       "_disabled": false,
+      "pkg": "affine",
+      "pkg_id": "github.com.affine-mirror.affine.stable",
+      "pkg_type": "appimage",
+      "description": "FOSS Knowledge Base with fully merged docs, whiteboards and databases",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/toeverything/AFFiNE"
+      ],
+      "version": "v0.18.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/affine/appimage.official.stable.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "affine-whiteboard"
+      ],
+      "src_url": [
+        "https://github.com/toeverything/AFFiNE"
+      ],
+      "homepage": [
+        "https://affine.pro",
+        "https://github.com/toeverything/AFFiNE"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/affine/appimage.official.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Database",
+        "Education"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "knowledge-base",
+        "wiki"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "vlc",
       "pkg_id": "github.com.ivan-hc.VLC-appimage.stable",
       "pkg_type": "appimage",
@@ -212,7 +254,7 @@
       "note": [
         "Community Created AppImage. Check/Report @ https://github.com/lucasmz1/VLC_AppImage"
       ],
-      "version": "20241119-0227",
+      "version": "20241120-0224",
       "download_url": "https://soarpkgs.pkgforge.dev/packages/vlc/appimage.lucasmz1.nightly.yaml",
       "size": "",
       "bsum": "",
@@ -254,6 +296,133 @@
         "multimedia",
         "multimedia.video",
         "video"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "amdgpu_top",
+      "pkg_id": "github.com.Umio-Yasuno.amdgpu_top.stable",
+      "pkg_type": "appimage",
+      "description": "Tool to display AMDGPU usage",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"
+      ],
+      "version": "v0.9.2",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/amdgpu_top/appimage.official.stable.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "amdgpu-top"
+      ],
+      "src_url": [
+        "https://github.com/Umio-Yasuno/amdgpu_top"
+      ],
+      "homepage": [
+        "https://github.com/Umio-Yasuno/amdgpu_top"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/amdgpu_top/appimage.official.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Monitor",
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "sys-apps",
+        "system.utils"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "acreom",
+      "pkg_id": "github.com.Acreom.releases.stable",
+      "pkg_type": "appimage",
+      "description": "An IDE based Knowledge Base using Markdown",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/Acreom/releases"
+      ],
+      "version": "v1.20.2",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/acreom/appimage.official.stable.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "acreom"
+      ],
+      "src_url": [
+        "https://github.com/Acreom/releases"
+      ],
+      "homepage": [
+        "https://acreom.com",
+        "https://github.com/Acreom/releases"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/acreom/appimage.official.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Database",
+        "Education",
+        "IDE"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "knowledge-base",
+        "wiki"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "advanced-passgen",
+      "pkg_id": "github.com.CodeDead.Advanced-PassGen.stable",
+      "pkg_type": "appimage",
+      "description": "Advanced Password Generator",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/CodeDead/Advanced-PassGen"
+      ],
+      "version": "v2.5.2",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/advanced-passgen/appimage.official.stable.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "advanced-passgen"
+      ],
+      "src_url": [
+        "https://github.com/CodeDead/Advanced-PassGen"
+      ],
+      "homepage": [
+        "https://advancedpassgen.codedead.com",
+        "https://github.com/CodeDead/Advanced-PassGen"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/advanced-passgen/appimage.official.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Security",
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [
+        "GPL-3.0-only"
+      ],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "password-manager"
       ]
     },
     {
@@ -302,6 +471,49 @@
     },
     {
       "_disabled": false,
+      "pkg": "actual",
+      "pkg_id": "github.com.actualbudget.actual.stable",
+      "pkg_type": "appimage",
+      "description": "A local-first personal finance app",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/actualbudget/actual"
+      ],
+      "version": "v24.11.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/actual/appimage.official.stable.yaml",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "actual"
+      ],
+      "src_url": [
+        "https://github.com/actualbudget/actual"
+      ],
+      "homepage": [
+        "https://actualbudget.org",
+        "https://actualbudget.com",
+        "https://github.com/actualbudget/actual"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/actual/appimage.official.stable.yaml",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Finance"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [
+        "MIT"
+      ],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "finance"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "steam",
       "pkg_id": "github.com.ivan-hc.Steam-appimage",
       "pkg_type": "appimage",
@@ -310,7 +522,7 @@
         "Community Created AppImage based on Conty (ArchLinux). Check/Report @ https://github.com/ivan-hc/Steam-appimage"
       ],
       "version": "1.0.0.81",
-      "download_url": "https://soarpkgs.pkgforge.dev/packages/steam/appimage.official.stable.yaml",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/steam/appimage.ivan-hc.stable.yaml",
       "size": "",
       "bsum": "",
       "shasum": "",
@@ -326,7 +538,7 @@
         "https://store.steampowered.com",
         "https://github.com/ValveSoftware/steam-for-linux"
       ],
-      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/steam/appimage.official.stable.yaml",
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/steam/appimage.ivan-hc.stable.yaml",
       "build_log": "",
       "appstream": "",
       "category": [
