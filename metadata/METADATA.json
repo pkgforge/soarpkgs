@@ -380,6 +380,49 @@
     },
     {
       "_disabled": false,
+      "pkg": "duckstation",
+      "pkg_id": "github.com.stenzek.duckstation.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.duckstation.DuckStation",
+      "description": "A fast Simulator/Emulator of the Sony PlayStation(TM) Console",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/stenzek/duckstation"
+      ],
+      "version": "20241112_035317-latest",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/duckstation/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "duckstation"
+      ],
+      "src_url": [
+        "https://github.com/stenzek/duckstation"
+      ],
+      "homepage": [
+        "https://www.duckstation.org",
+        "https://github.com/stenzek/duckstation"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/duckstation/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Emulator"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Emulators",
+        "games",
+        "games-emulation"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "affine",
       "pkg_id": "github.com.affine-mirror.affine.stable",
       "pkg_type": "appimage",

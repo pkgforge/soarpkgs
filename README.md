@@ -7,7 +7,7 @@
 [license-shield]: https://img.shields.io/github/license/pkgforge/soarpkgs.svg
 [license-url]: https://github.com/pkgforge/soarpkgs/blob/main/LICENSE
  
-<a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-23-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
+<a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-24-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
 [![Issues][issues-shield]][issues-url]
 [![License: MIT][license-shield]][license-url]
 [![Stars][stars-shield]][stars-url]
