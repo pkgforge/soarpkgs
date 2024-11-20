@@ -1,0 +1,52 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/duckstation/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "duckstation"
+pkg_id: "github.com.stenzek.duckstation.stable"
+pkg_type: "appimage"
+app_id: "org.duckstation.DuckStation"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+ - "Emulator"
+description: "A fast Simulator/Emulator of the Sony PlayStation(TM) Console"
+distro_pkg:
+  archlinux:
+    aur:
+      - "duckstation"
+      - "duckstation-git"
+  nixpkgs:
+    - "duckstation"
+homepage:
+  - "https://www.duckstation.org"
+  - "https://github.com/stenzek/duckstation"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Officially Created AppImage. Check/Report @ https://github.com/stenzek/duckstation"
+repology:
+ - "duckstation"
+src_url:
+  - "https://github.com/stenzek/duckstation"
+tag:
+  - "Emulators"
+  - "games"
+  - "games-emulation"
+x_exec:
+  shell: bash
+  pkgver: |
+    #curl -qfsSL "https://api.gh.pkgforge.dev/repos/stenzek/duckstation/releases/latest?per_page=100" | jq -r '.tag_name'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stenzek/duckstation/releases/latest?per_page=100" | jq -r '(.created_at | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%Y%m%d_%H%M%S")) + "-" + .tag_name' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        ;;
+      x86_64)
+        soar dl "https://github.com/stenzek/duckstation" --match "appimage" --exclude "sse2" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac
