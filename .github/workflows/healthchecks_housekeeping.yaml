@@ -140,7 +140,9 @@ jobs:
           cd "${GITHUB_WORKSPACE}/main" && git pull origin main || git pull origin main --ff-only || git merge --no-ff -m "Merge & Sync"
           ##PKG Num
           PKG_NUM="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/soarpkgs/contents/packages" | jq -r '.[] | select(.type == "dir") | .name' | sort -u | wc -l | tr -d '[:space:]')" ; export PKG_NUM
-          sed "s|img.shields.io/badge/Packages-[^/]*-blue|img.shields.io/badge/Packages-${PKG_NUM}-blue|g" -i "${GITHUB_WORKSPACE}/main/README.md"
+          SUBPKG_NUM="$(find "${GITHUB_WORKSPACE}/main/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -printf '.' | wc -c | tr -d '[:space:]')" ; export SUBPKG_NUM
+          sed -E "s#(https://img\.shields\.io/badge/Packages-)[^?]*#\1${PKG_NUM}%20(${SUBPKG_NUM})-blue#" -i "${GITHUB_WORKSPACE}/main/README.md"
+          #sed "s|img.shields.io/badge/Packages-[^/]*-blue|img.shields.io/badge/Packages-${PKG_NUM}-blue|g" -i "${GITHUB_WORKSPACE}/main/README.md"
         continue-on-error: true
 
       #- name: Ensure Healthy Commit Nums (RESET ON >= 100000)
