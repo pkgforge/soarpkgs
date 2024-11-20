@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "tt"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " A simple Time Tracker. It aims to stay basic and intuitive, with a focus on keyboard usage."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "tt"
+src_url:
+  - "https://github.com/pm98zz-c/tTpm98zz-c/tT"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

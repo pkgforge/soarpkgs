@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "transmissionic"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Remote for Transmission Daemon."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "transmissionic"
+src_url:
+  - "https://github.com/6c65726f79/Transmissionic6c65726f79/Transmissionic"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

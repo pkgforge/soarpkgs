@@ -1,0 +1,38 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "kdegames"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Games for KDE (meta port)"
+homepage:
+  - "https://www.kde.org/applications/games/"
+license:
+  - "GPLv2"
+  - "GPLv2+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "kdegames"
+src_url:
+  - "https://github.com/ivan-hc/KDE-games-suite-appimage"
+tag:
+  - "Amusements/Games"
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

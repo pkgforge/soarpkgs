@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "real-video-enhancer"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Interpolate and Upscale easily on Linux/MacOS/Windows."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "real-video-enhancer"
+src_url:
+  - "https://github.com/TNTwise/REAL-Video-EnhancerTNTwise/REAL-Video-Enhancer"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

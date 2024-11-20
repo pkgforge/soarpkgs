@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "neanes"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " A free and open source scorewriter for notating Byzantine chant  in Byzantine notation."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "neanes"
+src_url:
+  - "https://github.com/neanes/neanesneanes/neanes"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

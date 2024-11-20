@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "westeroscraftlauncher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Custom launcher for modded minecraft written in Electron and Node.js."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "westeroscraftlauncher"
+src_url:
+  - "https://github.com/WesterosCraftCode/ElectronLauncherWesterosCraftCode/ElectronLauncher"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

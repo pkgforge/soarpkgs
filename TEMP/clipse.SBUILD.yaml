@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "clipse"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A configurable TUI clipboard manager for Unix"
+distro_pkg:
+  archlinux:
+    aur:
+      - "clipse"
+      - "clipse-bin"   
+  nixpkgs:
+    - "clipse"
+homepage:
+  - "https://github.com/savedra1/clipse"
+license:
+  - "GPL-3.0-or-later"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "clipse"
+src_url:
+  - "https://github.com/savedra1/clipse"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

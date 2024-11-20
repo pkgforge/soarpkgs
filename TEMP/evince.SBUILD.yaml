@@ -1,0 +1,87 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "evince"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Document viewer for Multiple Document Formats"
+distro_pkg:
+  alpine:
+    - "evince"
+  archlinux:
+    aur:
+      - "evince-git"
+    extra:
+      - "evince"  
+  deb:
+    - "evince"    
+  nixpkgs:
+    - "evince"
+homepage:
+  - ""
+license:
+  - "CC-BY-SA-3.0"
+  - "GNU General Public License"
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0"
+  - "GNU GPLv3"
+  - "GPL"
+  - "gpl2"
+  - "GPL-2+"
+  - "GPL2"
+  - "GPL-2.0+"
+  - "GPL-2.0+ AND MIT AND BSD-3-Clause AND LGPL-2.0+ AND X11 AND LGPL-3.0-only AND Public-Domain AND LGPL-2.1+"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND X11 AND MIT AND Afmparse"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and GFDL"
+  - "GPLv2+ and GFDL+"
+  - "GPLv2+ and GPLv3+ and LGPLv2+ and MIT and Afmparse"
+  - "spdx:GPL-2.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "evince"
+src_url:
+  - "https://github.com/ivan-hc/Evince-appimage"
+tag:
+  - "Applications/Publishing"
+  - "app-text"
+  - "debug"
+  - "Debug"
+  - "development"
+  - "extra/desktop/gnome"
+  - "gnome"
+  - "gnome-desktop"
+  - "Graphical"
+  - "Graphical"
+  - "graphics"
+  - "Graphics"
+  - "Libs"
+  - "office"
+  - "Office"
+  - "office.viewers"
+  - "pantheon"
+  - "print"
+  - "Productivity/Office/Other"
+  - "programming.devel"
+  - "Publishing"
+  - "Tools"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

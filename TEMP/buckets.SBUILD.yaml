@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "buckets"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Private budgeting with the envelope budgeting method"
+distro_pkg:
+  archlinux:
+    aur:
+      - "buckets-bin"
+homepage:
+  - "https://www.budgetwithbuckets.com"
+  - "https://github.com/buckets/application"
+license:
+  - "custom: commercial"
+  - "Proprietary"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "buckets"
+src_url:
+  - "https://github.com/buckets/application"
+tag:
+  - "budgeting"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

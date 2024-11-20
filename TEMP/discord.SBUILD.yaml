@@ -1,0 +1,64 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "discord"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "All-in-one cross-platform voice and text chat for gamers"
+distro_pkg:
+  archlinux:
+    aur:
+      - "discord_arch_electron"
+    extra:
+      - "discord"     
+  nixpkgs:
+    - "discord"
+homepage:
+  - "https://discord.com"
+  - "https://discordapp.com"
+license:
+  - "all-rights-reserved"
+  - "custom"
+  - "Distributable"
+  - "Freeware"
+  - "https://discord.com/terms"
+  - "proprietary"
+  - "Proprietary"
+  - "proprietary license"
+  - "SUSE-NonFree"
+  - "Unfree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "discord"
+src_url:
+  - "https://github.com/srevinsaju/discord-appimages"
+tag:
+  - "Amusements/Games/Other"
+  - "Applications/Internet"
+  - "chat"
+  - "chat"
+  - "Communications"
+  - "net-im"
+  - "network"
+  - "network.im"
+  - "Networking/Chat"
+  - "non-free/web"
+  - "Productivity/Networking/Instant"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

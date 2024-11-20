@@ -1,0 +1,95 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "audacity"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Free, Cross-Platform Digital Audio Editor"
+distro_pkg:
+  alpine:
+    - "audacity"
+  archlinux:
+    aur:
+      - "audacity-git"
+    extra:
+      - "audacity"  
+  deb:
+    - "audacity"    
+  nixpkgs:
+    - "audacity"
+homepage:
+  - "https://audacity.sourceforge.net/"
+  - "https://github.com/audacity/audacity"
+  - "https://tenacityaudio.org/"
+license:
+  - "BSD"
+  - "CC-BY-3.0"
+  - "CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only"
+  - "CC-BY-SA-3.0"
+  - "CCPL"
+  - "GNU GPL"
+  - "GNU General Public License, version 3.0"
+  - "GNU Public License v2"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2+ GPL-3 audiocom? "
+  - "GPL-2+ GPL-3 doc? "
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND GPL-3.0-only AND CC-BY-3.0"
+  - "GPL-2.0-or-laterGPL-3.0-onlyCC-BY-3.0"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL2"
+  - "GPL3"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "audacity"
+src_url:
+  - "https://github.com/audacity/audacityaudacity/audacity"
+tag:
+  - "Applications/Multimedia"
+  - "Applications/Sound"
+  - "Audio"
+  - "Debug"
+  - "Graphical"
+  - "Music"
+  - "Productivity/Multimedia/Sound/Editors"
+  - "Productivity/Multimedia/Sound/Utilities"
+  - "Sound"
+  - "Sound/Editors"
+  - "app-doc"
+  - "audacity"
+  - "audio"
+  - "debug"
+  - "extra/multimedia"
+  - "media-sound"
+  - "multimedia"
+  - "multimedia.audio"
+  - "sound"
+  - "universe/sound"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

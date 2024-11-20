@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deckboard"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Control your PC with your phone in easy way possible"
+distro_pkg:
+  archlinux:
+    aur:
+      - "deckboard-bin"
+homepage:
+  - "https://deckboard.app/"
+  - "https://github.com/rivafarabi/deckboard/"
+license:
+  - "LicenseRef-custom"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deckboard"
+src_url:
+  - "https://github.com/rivafarabi/deckboard"
+tag:
+  - "electron"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

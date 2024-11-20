@@ -1,0 +1,50 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "caprine"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An elegant, privacy-focused Facebook Messenger app"
+distro_pkg:
+  alpine:
+    - "caprine"
+  archlinux:
+    aur:
+      - "caprine"  
+  nixpkgs:
+    - "caprine"
+    - "caprine-bin"
+homepage:
+  - "https://github.com/sindresorhus/caprine"
+license:
+  - "MIT"
+  - "MIT license"
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "caprine"
+src_url:
+  - "https://github.com/sindresorhus/caprines"
+tag:
+  - "chat"
+  - "Communications"
+  - "facebook"
+  - "Networking/WWW"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

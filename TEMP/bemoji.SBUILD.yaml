@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bemoji"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Emoji picker with support for bemenu/wofi/rofi/dmenu and wayland/X11"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bemoji"   
+  nixpkgs:
+    - "bemoji"
+homepage:
+  - "https://github.com/marty-oehme/bemoji"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bemoji"
+src_url:
+  - "https://github.com/marty-oehme/bemoji"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

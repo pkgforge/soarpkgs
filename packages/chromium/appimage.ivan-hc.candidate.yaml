@@ -1,0 +1,54 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/chromium/appimage.ivan-hc.candidate.yaml
+_disabled: false
+
+pkg: "chromium-candidate"
+pkg_id: "github.com.ivan-hc.Chromium-Web-Browser-appimage.candidate"
+pkg_type: "appimage"
+app_id: "org.chromium.Chromium"
+build_util:
+  - "curl#bin"
+  - "squishy-cli#bin"
+category:
+ - "WebBrowser"
+description: "Open source web browser from Google (Candidate)"
+distro_pkg:
+  alpine:
+    - "chromium"
+  archlinux:
+    extra:
+      - "chromium"
+  debian:
+    - "chromium"
+  nixpkgs:
+    - "chromium"
+homepage:
+  - "https://www.chromium.org"
+  - "https://chromium.googlesource.com/chromium/src"
+  - "https://github.com/chromium/chromium"
+  - "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+repology:
+ - "chromium"
+src_url:
+  - "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+tag:
+  - "browser"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Chromium-Web-Browser-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -i 'candidate' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | grep "\." | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Chromium-Web-Browser-appimage" --match "appimage" --match "candidate" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

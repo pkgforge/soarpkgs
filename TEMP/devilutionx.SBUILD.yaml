@@ -1,0 +1,55 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "devilutionx"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Modern open source Engine to play Diablo"
+distro_pkg:
+  archlinux:
+    aur:
+      - "devilutionx"
+      - "devilutionx-git"
+  nixpkgs:
+    - "devilutionx"
+homepage:
+  - "https://github.com/diasurgical/devilutionX"
+license:
+  - "BUSL-1.1 AND SUSE-Public-Domain AND MIT"
+  - "custom:UNLICENSE"
+  - "GPL"
+  - "Public Domain"
+  - "SUSE-Public-Domain"
+  - "Unlicense"
+  - "Unlicense BSD CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1"
+  - "Unlicense CC-BY-4.0 GPL-2+ LGPL-2.1+ MIT OFL-1.1"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "devilutionx"
+src_url:
+  - "https://github.com/diasurgical/devilutionX"
+tag:
+  - "Amusements/Games/RPG"
+  - "game/roleplaying"
+  - "games"
+  - "Games/Adventure"
+  - "games-engines"
+  - "games-rpg"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

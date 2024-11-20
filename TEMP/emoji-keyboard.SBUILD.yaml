@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "emoji-keyboard"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Virtual keyboard-like emoji palette"
+distro_pkg:
+  archlinux:
+    aur:
+      - "emoji-keyboard-appimage"
+      - "emoji-keyboard-bin"
+homepage:
+  - "https://github.com/OzymandiasTheGreat/emoji-keyboard"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "emoji-keyboard"
+src_url:
+  - "https://github.com/OzymandiasTheGreat/emoji-keyboard"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

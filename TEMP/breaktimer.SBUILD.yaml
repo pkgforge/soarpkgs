@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "breaktimer"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Manage periodic breaks. Avoid eye-strain and RSI"
+distro_pkg:
+  archlinux:
+    aur:
+      - "breaktimer-appimage"
+      - "breaktimer-bin"
+homepage:
+  - "https://breaktimer.app"
+  - "https://github.com/tom-james-watson/breaktimer-app"
+license:
+  - "GPL3"
+  - "GPLv3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "breaktimer"
+src_url:
+  - "https://github.com/tom-james-watson/breaktimer-app"
+tag:
+  - "cross-platform"
+  - "timer"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

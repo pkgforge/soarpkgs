@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/anydesk/appimage.ivan-hc.stable.yaml
+_disabled: false
+
+pkg: "anydesk"
+pkg_id: "github.com.ivan-hc.anydesk-appimage.stable"
+pkg_type: "appimage"
+app_id: "com.anydesk.Anydesk"
+build_util:
+  - "curl#bin"
+  - "squishy-cli#bin"
+category:
+ - "RemoteAccess"
+ - "VideoConference"
+description: "Desktop sharing application, providing remote support and online meetings"
+distro_pkg:
+  archlinux:
+    aur:
+      - "anydesk-bin"
+  nixpkgs:
+    - "anydesk"
+homepage:
+  - "https://www.anydesk.com"
+  - "https://github.com/ivan-hc/Anydesk-appimage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Anydesk-appimage"
+repology:
+ - "anydesk"
+src_url:
+  - "https://github.com/ivan-hc/Anydesk-appimage"
+tag:
+  - "deskutils"
+  - "Networking/Remote"
+  - "rdp"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=anydesk-bin" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Anydesk-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

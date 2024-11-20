@@ -1,0 +1,47 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "celeste64"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Celeste 64: Fragments of the Mountain"
+distro_pkg:
+  archlinux:
+    aur:
+      - "celeste64"
+      - "celeste64-bin"
+      - "celeste64-git"
+  nixpkgs:
+    - "celeste64"
+homepage:
+  - "https://github.com/ExOK/Celeste64"
+  - "https://maddymakesgamesinc.itch.io/celeste64"
+license:
+  - "custom:celeste64"
+  - "MIT"
+  - "Unfree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "celeste64"
+src_url:
+  - "https://github.com/ExOK/Celeste64"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

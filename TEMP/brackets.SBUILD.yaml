@@ -1,0 +1,47 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "brackets"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A modern, open source text editor that understands web design"
+homepage:
+  - "https://brackets.io"
+  - "https://github.com/adobe/brackets"
+  - "https://github.com/brackets-cont/brackets"
+license:
+  - "BSD-like with copyright notice"
+  - "MIT"
+  - "MIT License"
+  - "MIT license"
+  - "MITL"
+  - "MPL-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "brackets"
+src_url:
+  - "https://github.com/zaggino/brackets-electron"
+tag:
+  - "Development"
+  - "Development/Other"
+  - "Development/Tools/Other"
+  - "brackets"
+  - "electron"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

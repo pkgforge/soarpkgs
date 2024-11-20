@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dstask"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Git-powered personal task tracker"
+distro_pkg:
+  alpine:
+    - "dstask"
+  archlinux:
+    aur:
+      - "dstask-bin" 
+  nixpkgs:
+    - "dstask"
+homepage:
+  - "https://github.com/naggie/dstask"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dstask"
+src_url:
+  - "https://github.com/naggie/dstask"
+tag:
+  - "deskutils"
+  - "office"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

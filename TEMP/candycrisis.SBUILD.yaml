@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "candycrisis"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An exciting combination of pure action and puzzle gaming"
+distro_pkg:
+  archlinux:
+    aur:
+      - "candycrisis"
+homepage:
+  - "https://github.com/jorio/CandyCrisis"
+license:
+  - "GPL2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "candycrisis"
+src_url:
+  - "https://github.com/jorio/CandyCrisis"
+tag:
+  - "game/puzzle"
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

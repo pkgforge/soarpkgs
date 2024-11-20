@@ -1,0 +1,56 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cutechess"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Commandline and graphical interface for playing chess"
+distro_pkg:
+  alpine:
+    - "cutechess"
+  archlinux:
+    aur:
+      - "cutechess"
+      - "cutechess-git"  
+  nixpkgs:
+    - "cutechess"
+homepage:
+  - "https://cutechess.com/"
+  - "https://github.com/cutechess/cutechess"
+license:
+  - "GPL"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND MIT"
+  - "GPLv3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cutechess"
+src_url:
+  - "https://github.com/cutechess/cutechess"
+tag:
+  - "Amusements/Games/Board/Chess"
+  - "c-plus-plus"
+  - "extra/game"
+  - "games-board"
+  - "Other"
+  - "universe/games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

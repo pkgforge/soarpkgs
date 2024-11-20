@@ -1,0 +1,63 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/dolphin-emu/appimage.qurious-pixel.stable.yaml
+_disabled: false
+
+pkg: "dolphin-emu"
+pkg_id: "github.com.qurious-pixel.dolphin.stable"
+pkg_type: "appimage"
+app_id: "org.DolphinEmu.dolphin-emu"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+ - "Emulator"
+description: "A GameCube / Wii emulator"
+distro_pkg:
+  alpine:
+    - "dolphin-emu"
+  archlinux:
+    aur:
+      - "dolphin-emu-git"
+    extra:
+      - "dolphin"
+  debian:
+    - "dolphin-emu"
+  nixpkgs:
+    - "dolphin-emu"
+homepage:
+  - "https://dolphin-emu.org"
+  - "https://github.com/dolphin-emu/dolphin"
+  - "https://github.com/qurious-pixel/dolphin"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Community Created AppImage. Check/Report @ https://github.com/qurious-pixel/dolphin"
+repology:
+ - "dolphin"
+src_url:
+  - "https://github.com/qurious-pixel/dolphin"
+tag:
+  - "emulators"
+  - "Emulators"
+  - "extra/game"
+  - "Games"
+  - "games-emulation"
+  - "games.emulator"
+  - "System/Emulators/Other"
+x_exec:
+  shell: bash
+  pkgver: |
+    #curl -qfsSL "https://api.gh.pkgforge.dev/repos/qurious-pixel/dolphin/actions/runs" | jq -r '[.workflow_runs[] | select(.status == "completed") | {id, created_at}] | .[0] | (.created_at | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%Y%m%d_%H%M%S")) + "-" + (.id|tostring)' | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/qurious-pixel/dolphin/releases/latest?per_page=100" | jq -r '(.created_at | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%Y%m%d_%H%M%S")) + "-" + .tag_name' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/qurious-pixel/dolphin" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

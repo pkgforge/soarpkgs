@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "aniship"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops"
+distro_pkg:
+  archlinux:
+    aur:
+      - "aniship-bin"
+homepage:
+  - "https://t.me/aniship"
+  - "https://github.com/progzone122/AniShip"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "aniship"
+src_url:
+  - "https://github.com/progzone122/AniShip"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

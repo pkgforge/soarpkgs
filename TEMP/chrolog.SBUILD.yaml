@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "chrolog"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An automated time tracking tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "chrolog-bin"
+homepage:
+  - "https://github.com/Lukylix/Chrolog"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "chrolog"
+src_url:
+  - "https://github.com/Lukylix/Chrolog"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

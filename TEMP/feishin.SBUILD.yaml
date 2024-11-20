@@ -1,0 +1,48 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "feishin"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A music player client for self-hosted streaming services"
+distro_pkg:
+  archlinux:
+    aur:
+      - "feishin"
+      - "feishin-git"
+  nixpkgs:
+    - "feishin"
+homepage:
+  - "https://github.com/jeffvli/feishin"
+license:
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "feishin"
+src_url:
+  - "https://github.com/jeffvli/feishin"
+tag:
+  - "album"
+  - "sound"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "archisteamfarm"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Application with primary purpose of idling Steam cards from multiple accounts simultaneously"
+distro_pkg:   
+  nixpkgs:
+    - "ArchiSteamFarm"
+homepage:
+  - ""
+license:
+  - "Apache"
+  - "Apache-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "archisteamfarm"
+src_url:
+  - "https://github.com/JustArchiNET/ArchiSteamFarm"
+tag:
+  - "automation"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "animos"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Animos - Clean and minimal Anime-streaming desktop application without any ads"
+distro_pkg:
+  archlinux:
+    aur:
+      - "animos-appimage"
+homepage:
+  - "https://github.com/keerthivasansa/animos"
+license:
+  - "LicenseRef-custom"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "animos"
+src_url:
+  - "https://github.com/keerthivasansa/animos"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

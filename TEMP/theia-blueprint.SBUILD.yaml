@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "theia-blueprint"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Eclipse Theia Blueprint is a template for building desktop-based  products based on the Eclipse Theia platform, as well as to  showcase Eclipse Theia capabilities.  It is made up of a subset of existing Eclipse Theia features and  extensions and can be easily downloaded and installed on all  major operating system platforms."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "theia-blueprint"
+src_url:
+  - "https://www.eclipse.orghttps://www.eclipse.org"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

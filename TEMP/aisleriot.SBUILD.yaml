@@ -1,0 +1,65 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "aisleriot"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A collection of card games (solitaire)"
+distro_pkg:
+  alpine:
+    - "aisleriot"
+  archlinux:
+    extra:
+      - "aisleriot"
+  deb:
+    - "aisleriot"    
+  nixpkgs:
+    - "aisleriot"
+homepage:
+  - "https://gitlab.gnome.org/GNOME/aisleriot"
+  - "https://wiki.gnome.org/Aisleriot"
+license:
+  - "GFDL-1.1"
+  - "GFDL-1.1-or-later"
+  - "GFDL-1.3-only"
+  - "GNU Free Documentation License, version 1.1 or later"
+  - "GNU General Public License, version 3.0 or later"
+  - "GNU Lesser General Public License, version 3.0 or later"
+  - "GPL"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later and GFDL-1.3-or-later"
+  - "GPLv3+"
+  - "GPLv3+ and LGPLv3+ and GFDL"
+  - "LGPL-3.0-or-later"
+  - "gpl3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "aisleriot"
+src_url:
+  - "https://github.com/ivan-hc/Aisleriot-appimage"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Board/Card"
+  - "Games/Cards"
+  - "games"
+  - "games-board"
+  - "games.card"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

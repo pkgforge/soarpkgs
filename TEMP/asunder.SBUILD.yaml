@@ -1,0 +1,67 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "asunder"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Graphical Audio CD ripper and encoder with support for many output formats"
+distro_pkg:
+  archlinux:
+    aur:
+      - "asunder-svn"
+    extra:
+      - "asunder"  
+  deb:
+    - "asunder"    
+  nixpkgs:
+    - "asunder"
+homepage:
+  - "http://littlesvr.ca/asunder/"
+  - "http://www.littlesvr.ca/asunder/"
+license:
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "asunder"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Applications/Multimedia"
+  - "Archiving/Cd"
+  - "Productivity/Multimedia/CD/Grabbers"
+  - "Sound"
+  - "audio"
+  - "debug"
+  - "extra/multimedia"
+  - "media-sound"
+  - "multimedia"
+  - "multimedia.audio"
+  - "sound"
+  - "universe/sound"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

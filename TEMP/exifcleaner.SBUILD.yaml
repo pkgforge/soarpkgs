@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "exifcleaner"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Clean metadata from images, videos, PDFs, and other files"
+distro_pkg:
+  archlinux:
+    aur:
+      - "exifcleaner-bin"
+homepage:
+  - "https://exifcleaner.com/"
+  - "https://github.com/szTheory/exifcleaner"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "exifcleaner"
+src_url:
+  - "https://github.com/szTheory/exifcleaner"
+tag:
+  - "clean"
+  - "electron
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

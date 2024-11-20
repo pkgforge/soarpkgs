@@ -1,0 +1,77 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "digikam"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Advanced digital photo management application"
+distro_pkg:
+  alpine:
+    - "digikam"
+  archlinux:
+    aur:
+      - "digikam-git"
+    extra:
+      - "digikam"  
+  deb:
+    - "digikam"    
+  nixpkgs:
+    - "digikam"
+homepage:
+  - "https://digikam.org/"
+  - "https://invent.kde.org/graphics/digikam"
+  - "https://invent.kde.org/kde/digikam"
+license:
+  - "GNU General Public License, version 2.0 or later"
+  - "GNU GPL"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "LGPL-2.1-or-later"
+  - "LGPL-2.1-or-later AND GPL-2.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "digikam"
+src_url:
+  - "https://files.kde.org/digikam"
+tag:
+  - "Applications/Multimedia"
+  - "debug"
+  - "extra/multimedia"
+  - "Graphical"
+  - "graphics"
+  - "Graphics"
+  - "Graphics/Photography"
+  - "image"
+  - "kde"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "Photo"
+  - "Productivity/Graphics/Viewers"
+  - "programming.devel"
+  - "universe/graphics"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

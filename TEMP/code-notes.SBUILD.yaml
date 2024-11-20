@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "code-notes"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A simple code snippet and gist manager for developers built with Electron and Vue.js"
+distro_pkg:
+  archlinux:
+    aur:
+      - "code-notes-appimage"
+      - "code-notes-bin"
+homepage:
+  - "https://lauthieb.github.io/code-notes/"
+  - "https://github.com/lauthieb/code-notes"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "code-notes"
+src_url:
+  - "https://github.com/lauthieb/code-notes"
+tag:
+  - "developer"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

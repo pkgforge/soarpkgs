@@ -1,0 +1,76 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "darktable-nightly"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A virtual lighttable and darkroom for photographers to develop RAW images (Nightly)"
+distro_pkg:
+  alpine:
+    - "darktable"
+  archlinux:
+    aur:
+      - "darktable-git"
+    extra:
+      - "darktable"  
+  deb:
+    - "darktable"    
+  nixpkgs:
+    - "darktable"
+homepage:
+  - "https://darktable.org/"
+  - "https://github.com/darktable-org/darktable"
+license:
+  - "CC-BY-3.0"
+  - "Freeware"
+  - "GNU General Public License, version 3"
+  - "GNU General Public License, version 3.0 or later"
+  - "GNU GPLv3"
+  - "GPL"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv3+"
+  - "spdx:GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "darktable"
+src_url:
+  - "https://github.com/darktable-org/darktable"
+tag:
+  - "darkroom"
+  - "darktable"
+  - "debug"
+  - "extra/multimedia"
+  - "Graphical"
+  - "graphics"
+  - "Graphics"
+  - "Graphics/Photography"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "Photo"
+  - "photography"
+  - "Productivity/Graphics/Viewers"
+  - "universe/graphics"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

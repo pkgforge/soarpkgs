@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "devhub"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "GitHub Notifications & Activities on the desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "devhub"
+      - "devhub-appimage"
+homepage:
+  - "https://devhubapp.com/"
+  - "https://github.com/devhubapp/devhub"
+license:
+  - "AGPL3"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "GNU Affero General Public License v3.0"
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "devhub"
+src_url:
+  - "https://github.com/devhubapp/devhub"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

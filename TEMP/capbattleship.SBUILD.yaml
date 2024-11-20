@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "capbattleship"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A pirate-themed battleship game"
+distro_pkg:
+  archlinux:
+    aur:
+      - "capbattleship-git"
+homepage:
+  - "https://forge.tedomum.net/captnfab/capbattleship"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "capbattleship"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

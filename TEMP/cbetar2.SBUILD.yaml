@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cbetar2"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Buddhist text reader using CBETA APIs"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cbetar2"
+homepage:
+  - "https://github.com/MrMYHuang/cbetar2"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cbetar2"
+src_url:
+  - "https://github.com/MrMYHuang/cbetar2"
+tag:
+  - "backend"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

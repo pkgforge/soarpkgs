@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "visipics"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " VisiPics is a software for Windows PCs designed specifically to find and remove duplicate pictures. It can be a handy tool if you have a large collection of photos and suspect there might be a lot of redundancy. Here’s a breakdown of what VisiPics does:"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "being a software to be executed manually through "wine" during the assembly, this AppImage package has been manually uploaded among the releases of the repository indicated below, and not automatically through github actions, so the code for the compilation is not available except through the guide for "wine32-deploy", with which you can compile it yourself, in the same way, following the instructions."
+repology:
+ - "visipics"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packagesivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

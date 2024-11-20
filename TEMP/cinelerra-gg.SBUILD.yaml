@@ -1,0 +1,48 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cinelerra-gg"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Professional video editing and compositing environment"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cinelerra-gg"
+      - "cinelerra-gg-git"
+homepage:
+  - "https://www.cinelerra-gg.org/"
+license:
+  - "GPL-2"
+  - "GPL2"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+  - "GPLv2+ and CeCILL and BSD and CC-BY and Public Domain"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cinelerra-gg"
+src_url:
+  - "https://cinelerra-gg.org"
+tag:
+  - "debug"
+  - "media-video"
+  - "multimedia.video"
+  - "Video"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

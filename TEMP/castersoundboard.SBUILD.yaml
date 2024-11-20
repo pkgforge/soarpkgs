@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "castersoundboard"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Soundboard for hot-keying and playing back sounds"
+distro_pkg:
+  archlinux:
+    aur:
+      - "castersoundboard-git"
+homepage:
+  - "https://github.com/JupiterBroadcasting/CasterSoundboard"
+license:
+  - "LGPL3"
+  - "LGPL-3.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "castersoundboard"
+src_url:
+  - "https://github.com/covarianttensor/CasterSoundboard"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

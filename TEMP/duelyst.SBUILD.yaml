@@ -1,0 +1,37 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "duelyst"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Digital collectible Card Game and turn-based Strategy Hybrid"
+homepage:
+  - "https://github.com/open-duelyst/duelyst"
+  - "https://duelyst.org/"
+license:
+  - "CC0-1.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "duelyst"
+src_url:
+  - "https://github.com/open-duelyst/duelyst"
+tag:
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

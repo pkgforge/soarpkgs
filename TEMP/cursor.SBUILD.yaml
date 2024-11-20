@@ -1,0 +1,47 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cursor"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Write, edit, and chat about your code with AI"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "cursor-appimage"
+      - "cursor-bin"  
+  nixpkgs:
+    - "code-cursor"
+homepage:
+  - "https://www.cursor.com/"
+license:
+  - "custom"
+  - "custom:proprietary"
+  - "Unfree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cursor"
+src_url:
+  - "https://www.cursor.com/"
+tag:
+  - "ai"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

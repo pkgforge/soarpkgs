@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "432hz-player"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Plays music in 432hz"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "player432hz-appimage"
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - "https://github.com/mysteryx93/HanumanInstituteApps/wiki/432hz-Player"
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "432hz-player"
+src_url:
+  - "https://github.com/mysteryx93/HanumanInstituteApps"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

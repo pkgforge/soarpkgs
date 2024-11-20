@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "riichi-city"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Riichi City is a competitive urban-style Anime mahjong game, featuring beginner-friendly mahjong tutorials, Ranked Matches and tournaments crowded with masters! Spice up the experience with our ACG characters voiced by famous CVs, and attractive items and decorations! Set off for Riichi City now!"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "riichi-city"
+src_url:
+  - "https://www.mahjong-jp.comhttps://www.mahjong-jp.com"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

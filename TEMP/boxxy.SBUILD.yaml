@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "boxxy"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Put bad Linux applications in a box with only their files"
+distro_pkg:
+  archlinux:
+    aur:
+      - "boxxy-git"
+    extra:
+      - "boxxy"  
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - "https://github.com/queer/boxxy"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "boxxy"
+src_url:
+  - "https://github.com/queer/boxxy"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

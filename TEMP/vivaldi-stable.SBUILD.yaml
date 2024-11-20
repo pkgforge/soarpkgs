@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "vivaldi-stable"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Vivaldi is an advanced chromium-based web browser made with the power user in mind."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "This database provides an installation script for aarch64 (which only  extracts the official deb package for ARM) and one for x86_64 (which points  to the unofficial AppImage package built from the official deb package for  amd64/64bit)."
+repology:
+ - "vivaldi-stable"
+src_url:
+  - "https://github.com/ivan-hc/Vivaldi-appimageivan-hc/Vivaldi-appimage"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

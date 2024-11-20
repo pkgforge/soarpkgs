@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "ferdium"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Multi-platform multi-messaging app"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ferdium"
+      - "ferdium-git" 
+  nixpkgs:
+    - "ferdium"
+homepage:
+  - "https://ferdium.org/"
+  - "https://github.com/ferdium/ferdium-app"
+license:
+  - "Apache"
+  - "Apache-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "ferdium"
+src_url:
+  - "https://github.com/ferdium/ferdium-app"
+tag:
+  - "hacktoberfest"
+  - "network"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

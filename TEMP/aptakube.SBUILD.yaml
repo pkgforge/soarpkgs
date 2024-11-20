@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "aptakube"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters"
+distro_pkg:
+  archlinux:
+    aur:
+      - "aptakube-appimage"
+homepage:
+  - "https://aptakube.com/"
+license:
+  - "proprietary"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "aptakube"
+src_url:
+  - "https://github.com/aptakube/aptakube"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

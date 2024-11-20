@@ -1,0 +1,54 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "colobot"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A real-time strategy game, where you can program your bots"
+distro_pkg:
+  deb:
+    - "colobot"    
+  nixpkgs:
+    - "colobot"
+homepage:
+  - "https://colobot.info/"
+  - "https://github.com/colobot/colobot"
+license:
+  - "GNU General Public License, version 3.0"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv3"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "colobot"
+src_url:
+  - "https://colobot.info"
+tag:
+  - "Amusements/Games/Strategy/Real"
+  - "educational"
+  - "games"
+  - "Games/Arcade"
+  - "games-strategy"
+  - "Games/Strategy"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "apifox"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Platform for API documentation, debugging, and testing"
+distro_pkg:
+  archlinux:
+    aur:
+      - "apifox"
+      - "apifox-bin"
+homepage:
+  - "https://apifox.com"
+  - "https://www.apifox.cn/"
+license:
+  - "Freeware"
+  - "LicenseRef-custom"
+  - "custom"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "apifox"
+src_url:
+  - "https://apifox.com"
+tag:
+  - "api"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,57 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dotto"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A DOS emulator that allows you to run DOS and many DOS programs"
+distro_pkg:
+  archlinux:
+    extra:
+      - "dosemu"
+homepage:
+  - "http://www.dosemu.org/"
+  - "https://dosemu.sourceforge.net/"
+  - "https://sourceforge.net/projects/dosemu/"
+license:
+  - "custom"
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "LGPL"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dotto"
+src_url:
+  - "https://github.com/LibreSprite/Dotto"
+tag:
+  - "app-emulation"
+  - "Applications/Emulators"
+  - "contrib/otherosfs"
+  - "Emulators"
+  - "extra/emulator"
+  - "multiverse/otherosfs"
+  - "system"
+  - "System/Emulators/PC"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

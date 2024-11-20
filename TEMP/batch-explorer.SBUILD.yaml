@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "batch-explorer"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " A client tool to help create, debug and monitor Azure Batch Applications."
+distro_pkg:
+  archlinux:
+    aur:
+      - "batch-explorer-bin"
+homepage:
+  - "https://azure.github.io/BatchExplorer"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "batch-explorer"
+src_url:
+  - "https://github.com/Azure/BatchExplorer"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

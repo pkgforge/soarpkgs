@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bottles/appimage.ivan-hc.stable.yaml
+_disabled: false
+
+pkg: "bottles"
+pkg_id: "github.com.ivan-hc.Bottles-appimage.stable"
+pkg_type: "appimage"
+app_id: "com.usebottles.bottles"
+build_util:
+  - "curl#bin"
+  - "squishy-cli#bin"
+category:
+ - "Emulator"
+description: "An easy-to-use wineprefix manager to Run Windows software and games on Linux"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bottles"
+      - "bottles-git"
+  nixpkgs:
+    - "bottles-unwrapped"
+homepage:
+  - "https://usebottles.com"
+  - "https://github.com/ivan-hc/Bottles-appimage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Bottles-appimage"
+repology:
+ - "bottles"
+src_url:
+  - "https://github.com/ivan-hc/Bottles-appimage"
+tag:
+  - "deskutils"
+  - "Networking/Remote"
+  - "rdp"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=bottles" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Bottles-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

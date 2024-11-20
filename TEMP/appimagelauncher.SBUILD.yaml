@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "appimagelauncher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Helper application for running and integrating AppImages"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "appimagelauncher"
+      - "appimagelauncher-bin"
+      - "appimagelauncher-git"
+homepage:
+  - "https://github.com/TheAssassin/AppImageLauncher"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "appimagelauncher"
+src_url:
+  - "https://github.com/TheAssassin/AppImageLauncher"
+tag:
+  - "Development/Debug"
+  - "utils"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -37,7 +37,7 @@ tag:
 x_exec:
   shell: bash
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/toeverything/AFFiNE/releases/latest" | jq -r '.tag_name'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/toeverything/AFFiNE/releases/latest?per_page=100" | jq -r '.tag_name'
   run: |
     #Download
     case "$(uname -m)" in

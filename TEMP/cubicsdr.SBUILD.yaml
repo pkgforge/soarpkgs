@@ -1,0 +1,57 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cubicsdr"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Cross-Platform Software-Defined Radio Application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cubicsdr"
+  deb:
+    - "cubicsdr"    
+  nixpkgs:
+    - "cubicsdr"
+homepage:
+  - "https://cubicsdr.com/"
+  - "https://github.com/cjcliffe/CubicSDR"
+license:
+  - "GPL-2"
+  - "GPL2"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND LicenseRef-Callaway-MIT AND Zlib"
+  - "GPLv2+ and MIT and zlib"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cubicsdr"
+src_url:
+  - "https://github.com/cjcliffe/CubicSDR"
+tag:
+  - "comms"
+  - "debug"
+  - "ham"
+  - "hamradio"
+  - "multimedia.audio"
+  - "Productivity/Hamradio/Other"
+  - "science"
+  - "software-defined-radio"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

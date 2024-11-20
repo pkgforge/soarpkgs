@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "eternal-lands"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A free 3D MMORPG Game"
+distro_pkg:
+  archlinux:
+    aur:
+      - "eternallands"
+homepage:
+  - "https://www.eternal-lands.com/"
+  - "https://github.com/raduprv/Eternal-Lands"
+license:
+  - "custom"
+  - "eternal_lands"
+  - "QTPL-based"
+  - "SUSE-Freeware"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "eternal-lands"
+src_url:
+  - "https://github.com/raduprv/Eternal-Lands"
+tag:
+  - "Amusements/Games/Other"
+  - "games"
+  - "games-rpg"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

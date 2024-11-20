@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "file-commander"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Qt-based cross-platform Total Commander-like orthodox File Manager"
+distro_pkg:
+  archlinux:
+    aur:
+      - "file-commander-git"
+homepage:
+  - "https://github.com/VioletGiraffe/file-commander"
+license:
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "file-commander"
+src_url:
+  - "https://github.com/VioletGiraffe/file-commander"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

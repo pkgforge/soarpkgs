@@ -1,0 +1,36 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deerportal"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Open source hybrid game which utilize board and card games mechanisms"
+homepage:
+  - "https://devcarpet.net/deerportal"
+license:
+  - "Zlib"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deerportal"
+src_url:
+  - "https://github.com/deerportal/deerportaldeerportal/deerportal"
+tag:
+  - "Amusements/Games/Board/Card"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

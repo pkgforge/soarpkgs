@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bookmarks-manager"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Edit bookmarks, check url."
+distro_pkg:
+  archlinux:
+    aur:
+      - "bookmarks-manager-bin"
+homepage:
+  - "https://github.com/Hunlongyu/bookmarks-manager"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bookmarks-manager"
+src_url:
+  - "https://github.com/Hunlongyu/bookmarks-manager"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

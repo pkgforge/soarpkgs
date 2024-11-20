@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "coal-launcher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A client to view and play games from the AB Coal website"
+distro_pkg:
+  archlinux:
+    aur:
+      - "coal-launcher-bin"
+homepage:
+  - "https://bobuxstation.github.io/Coal-Web/launcher.html"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "coal-launcher"
+src_url:
+  - "https://github.com/Bobuxstation/Coal-Launcher"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

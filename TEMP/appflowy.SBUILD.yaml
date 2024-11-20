@@ -1,0 +1,50 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "appflowy"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Bring projects, wikis, and teams together with AI. AppFlowy is an AI collaborative workspace where you achieve more without losing control of your data. The best open source alternative to Notion."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "appflowy-bin"
+      - "appflowy-git"
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - "https://github.com/AppFlowy-IO/AppFlowy"
+license:
+  - "AGPL"
+  - "AGPL-3.0"
+  - "AGPL-3.0-only"
+  - "AGPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "appflowy"
+src_url:
+  - "https://github.com/AppFlowy-IO/AppFlowy"
+tag:
+  - "content-management"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "chatall"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Concurrently chat with ChatGPT, Bing Chat, Bard, Claude, ChatGLM and more"
+distro_pkg:
+  archlinux:
+    aur:
+      - "chatall"
+      - "chatall-bin"
+      - "chatall-git"
+homepage:
+  - "https://github.com/sunner/ChatALL"
+license:
+  - "Apache-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "chatall"
+src_url:
+  - "https://github.com/sunner/ChatALL"
+tag:
+  - "ai"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

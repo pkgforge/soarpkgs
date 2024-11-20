@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "alexandria"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A minimalistic cross-platform eBook reader built with Tauri, Epub.js, and Typescript"
+homepage:
+  - ""
+license:
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later AND GPL-2.0-or-later"
+  - "GPLv2+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "alexandria"
+src_url:
+  - "https://github.com/btpf/Alexandria"
+tag:
+  - "Applications/Productivity"
+  - "Databases"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

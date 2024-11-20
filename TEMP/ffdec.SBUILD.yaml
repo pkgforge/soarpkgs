@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "ffdec"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Open source Flash SWF decompiler and editor"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ffdec"
+      - "ffdec-bin"
+homepage:
+  - "https://github.com/jindrapetrik/jpexs-decompiler"
+license:
+  - "GPL3"
+  - "GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "ffdec"
+src_url:
+  - "https://github.com/jindrapetrik/jpexs-decompiler"
+tag:
+  - "abc"
+  - "multimedia"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

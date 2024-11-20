@@ -1,0 +1,78 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "filezilla"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A GUI FTP and SFTP Client"
+distro_pkg:
+  alpine:
+    - "filezilla"
+  archlinux:
+    aur:
+      - "filezilla-svn"
+    extra:
+      - "filezilla"  
+  deb:
+    - "filezilla"    
+  nixpkgs:
+    - "filezilla"
+homepage:
+  - "https://filezilla-project.org/"
+  - "https://sourceforge.net/projects/filezilla/"
+license:
+  - "GNU General Public License"
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0 or later"
+  - "GNU GPL"
+  - "GPL"
+  - "gpl2"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL2"
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "spdx:GPL-2.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "filezilla"
+src_url:
+  - "https://filezilla-project.org"
+tag:
+  - "Applications/Internet"
+  - "Communications"
+  - "debug"
+  - "Debug"
+  - "ftp"
+  - "Graphical"
+  - "localization"
+  - "net"
+  - "Net"
+  - "net-ftp"
+  - "network"
+  - "network.clients"
+  - "Networking/File"
+  - "Productivity/Networking/Ftp/Clients"
+  - "universe/net"
+  - "www"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

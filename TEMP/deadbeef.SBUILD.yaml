@@ -1,0 +1,88 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deadbeef"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A modular cross-platform audio player"
+distro_pkg:
+  alpine:
+    - "deadbeef"
+  archlinux:
+    aur:
+      - "deadbeef"
+      - "deadbeef-git"  
+  nixpkgs:
+    - "deadbeef"
+homepage:
+  - "https://deadbeef.sourceforge.io/"
+  - "https://sourceforge.net/projects/deadbeef"
+license:
+  - "BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later"
+  - "GNU General Public License"
+  - "GNU LGPLv3"
+  - "GPL"
+  - "GPL-2"
+  - "GPL2"
+  - "GPL-2.0"
+  - "GPL-2.0,..."
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or later AND LGPL-2.0-or-later and BSD and MIT AND Zlib"
+  - "GPL-2.0-or-later AND LGPL-2.1-or-later AND Zlib AND BSD-2-Clause"
+  - "GPL-2 LGPL-2.1 MIT wavpack? "
+  - "GPL-2 LGPL-2.1 wavpack? "
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and LGPLv2+ and BSD and MIT and zlib"
+  - "LGPL-2.1"
+  - "LGPL2.1"
+  - "LGPL-2.1-only"
+  - "LGPL-2.1-or-later"
+  - "LGPLv2.1"
+  - "zlib"
+  - "Zlib"
+  - "Zlib and GPL-2.0+ and LGPL-2.1+ and BSD-3-Clause"
+  - "Zlib AND GPL-2.0+ AND LGPL-2.1+ AND BSD-3-Clause"
+  - "Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause"
+  - "Zlib and GPLv2 and LGPLv2.1"
+  - "Zlib GPL-2.0-or-later LGPL-2.1-or-later"
+  - "zlib, GPLv2, LGPLv2.1"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deadbeef"
+src_url:
+  - "https://deadbeef.sourceforge.io"
+tag:
+  - "Applications/Multimedia"
+  - "audio"
+  - "audio-player"
+  - "debug"
+  - "development"
+  - "media-sound"
+  - "multimedia"
+  - "multimedia.audio"
+  - "Music"
+  - "Productivity/Multimedia/Sound/Players"
+  - "programming.devel"
+  - "sound"
+  - "Sound"
+  - "Sound/Players"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

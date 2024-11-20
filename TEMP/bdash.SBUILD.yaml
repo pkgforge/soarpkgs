@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bdash"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Simple SQL Client for lightweight data analysis"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bdash"
+      - "bdash-bin"
+homepage:
+  - "https://github.com/bdash-app/bdash"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bdash"
+src_url:
+  - "https://github.com/bdash-app/bdash"
+tag:
+  - "electron"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

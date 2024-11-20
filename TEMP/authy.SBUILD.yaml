@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "authy"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Twilio Authy two factor authentication desktop application"
+distro_pkg: 
+  nixpkgs:
+    - "authy"
+homepage:
+  - "https://authy.com/"
+license:
+  - "Freeware"
+  - "Unfree"
+  - "Unlicense"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "authy"
+src_url:
+  - "https://github.com/ryuuzaki42/Authy_AppImage"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,37 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "billyfrontier"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Quicktime Space-age Spaghetti Western Arcade style Action Game"
+homepage:
+  - "https://pangeasoft.net/billy"
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "billyfrontier"
+src_url:
+  - "https://github.com/jorio/BillyFrontierjorio/BillyFrontier"
+tag:
+  - "game/action"
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

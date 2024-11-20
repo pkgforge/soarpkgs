@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "lxtask"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " LXTask - lightweight and desktop-independent task manager derived  from xfce4-taskmanager with all dependencies on Xfce removed, new  features, and some improvement of the user interface.   LXTask is based on GTK+ toolkit. It allows monitoring and  controlling of running processes. "
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "lxtask"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packagesivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

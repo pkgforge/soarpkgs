@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bauh"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bauh"
+homepage:
+  - "https://github.com/vinifmor/bauh"
+license:
+  - "zlib/libpng"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bauh"
+src_url:
+  - "https://github.com/vinifmor/bauh"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

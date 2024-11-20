@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bforartists"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A fully integrated 3D graphics creation suite"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bforartists"
+      - "bforartists-git"
+homepage:
+  - "https://www.bforartists.de"
+license:
+  - "GPL"
+  - "GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bforartists"
+src_url:
+  - "https://github.com/Bforartists/Bforartists"
+tag:
+  - "Graphics"
+  - "addon"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

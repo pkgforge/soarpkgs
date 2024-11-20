@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "electorrent"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge"
+distro_pkg:
+  archlinux:
+    aur:
+      - "electorrent"
+      - "electorrent-bin"
+homepage:
+  - "https://github.com/Tympanix/Electorrent"
+  - "https://www.electronjs.org/apps/electorrent"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "electorrent"
+src_url:
+  - "https://github.com/Tympanix/Electorrent"
+tag:
+  - "bittorrent-client"
+  - "torrent"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

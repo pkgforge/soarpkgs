@@ -1,0 +1,88 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "audacious"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A playlist-oriented media player with multiple interfaces"
+distro_pkg:
+  alpine:
+    - "audacious"
+  archlinux:
+    aur:
+      - "audacious-git"
+    exra:
+      - "audacious"  
+  deb:
+    - "audacious"    
+  nixpkgs:
+    - "audacious"
+homepage:
+  - "https://audacious-media-player.org"
+  - "https://github.com/audacious-media-player/audacious"
+license:
+  - "2-clause BSD License"
+  - "BSD"
+  - "BSD-2"
+  - "BSD-2-Clause"
+  - "BSD-2-Clause AND BSD-3-Clause"
+  - "BSD-2-Clause AND ISC"
+  - "BSD-3-Clause"
+  - "BSDL-2"
+  - "GNU General Public License, version 2"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPLv3"
+  - "GPLv3+"
+  - "ISC"
+  - "LGPL-2.0-or-later"
+  - "LicenseRef-Callaway-BSD"
+  - "Public Domain"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "audacious"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packagesivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Applications/Multimedia"
+  - "Audio"
+  - "Debug"
+  - "Graphical"
+  - "Music"
+  - "Productivity/Multimedia/Sound/Players"
+  - "Sound"
+  - "Sound/Players"
+  - "audio"
+  - "audio/play"
+  - "debug"
+  - "extra/multimedia"
+  - "media-sound"
+  - "meta"
+  - "multimedia"
+  - "multimedia.audio"
+  - "multimedia.library"
+  - "programming.devel"
+  - "sound"
+  - "universe/sound"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

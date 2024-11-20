@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "artisan-roaster-scope"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A software that helps coffee roasters record, analyze, and control roast profiless"
+distro_pkg:
+  archlinux:
+    aur:
+      - "artisan-roaster-scope"
+homepage:
+  - "https://github.com/artisan-roaster-scope/artisan"
+license:
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "artisan-roaster-scope"
+src_url:
+  - "https://github.com/artisan-roaster-scope/artisan"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

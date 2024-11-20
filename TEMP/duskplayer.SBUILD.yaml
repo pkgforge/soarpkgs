@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "duskplayer"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A minimalistic music player, designed for simplicity"
+distro_pkg:
+  archlinux:
+    aur:
+      - "duskplayer-bin"
+homepage:
+  - "https://github.com/Aveek-Saha/DuskPlayer"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "duskplayer"
+src_url:
+  - "https://github.com/Aveek-Saha/DuskPlayer"
+tag:
+  - "angularjs"
+  - "Sound"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

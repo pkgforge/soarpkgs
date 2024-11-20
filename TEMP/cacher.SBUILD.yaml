@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cacher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "The code snippet organizer for professional developers"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cacher"
+homepage:
+  - "hhttps://www.cacher.io"
+license:
+  - "custom:cacher"
+  - "Shareware"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cacher"
+src_url:
+  - "hhttps://www.cacher.io"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

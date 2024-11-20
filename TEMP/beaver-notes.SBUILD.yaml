@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "beaver-notes"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A privacy-focused, cross-platform note-taking application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "beaver-notes"
+      - "beaver-notes-bin"
+      - "beaver-notes-git"
+homepage:
+  - "https://beavernotes.com"
+  - "https://github.com/Daniele-rolli/Beaver-Notes"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "beaver-notes"
+src_url:
+  - "https://github.com/Daniele-rolli/Beaver-Notes"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

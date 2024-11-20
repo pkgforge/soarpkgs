@@ -1,0 +1,75 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "avidemux"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Free video editor designed for simple video editing tasks"
+distro_pkg:
+  archlinux:
+    aur:
+      - "avidemux-git"
+    extra:
+      - "avidemux"  
+  deb:
+    - "avidemux"    
+  nixpkgs:
+    - "avidemux"
+homepage:
+  - "https://avidemux.org/"
+  - "https://avidemux.sourceforge.net/"
+  - "https://github.com/mean00/avidemux2"
+license:
+  - "GNU General Public License, version 2.0 or later"
+  - "GNU GPL"
+  - "GPL"
+  - "GPL-2"
+  - "GPL2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL v2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "LGPL-2"
+  - "MIT"
+  - "OFL-1.1"
+  - "PSF-2"
+  - "Public Domain"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "avidemux"
+src_url:
+  - "https://github.com/ivan-hc/Avidemux-unofficial-appimage"
+tag:
+  - "debug"
+  - "Graphical"
+  - "media-libs"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "non-free/video"
+  - "Productivity/Multimedia/Video/Editors"
+  - "programming.devel"
+  - "video"
+  - "Video"
+  - "video-editor"
+  - "Video/Editors"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

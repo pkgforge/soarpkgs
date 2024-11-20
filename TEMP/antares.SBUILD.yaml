@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "antares"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Modern, fast and productivity driven SQL client with a focus in UX"
+distro_pkg:
+  archlinux:
+    aur:
+      - "antares-git"
+homepage:
+  - "https://antares-sql.app"
+  - "https://arescentral.org/antares"
+  - "https://github.com/antares-sql/antares"
+license:
+  - "GPL-2.0-only AND LGPL-3.0-only AND CC-BY-NC-SA-3.0"
+  - "GPL3"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "antares"
+src_url:
+  - "https://github.com/antares-sql/antares"
+tag:
+  - "sql"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

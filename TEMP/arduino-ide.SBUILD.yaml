@@ -1,0 +1,48 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "arduino-ide"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "FOSS IDE, which is used to write, compile and upload code to the Arduino boards"
+distro_pkg:
+  archlinux:
+    aur:
+      - "arduino-ide-bin"
+    extra:
+      - "arduino-ide"
+  nixpkgs:
+    - "arduino-ide"
+homepage:
+  - "https://www.arduino.cc/en/software"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL3"
+  - "AGPLv3"
+  - "GPL"
+  - "GPL-2, LGPL-2.1 and CC-BY-SA-3.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "arduino-ide"
+src_url:
+  - "https://github.com/arduino/arduino-ide"
+tag:
+  - "Development"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

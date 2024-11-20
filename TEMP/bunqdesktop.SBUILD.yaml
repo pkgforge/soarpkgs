@@ -1,0 +1,37 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bunqdesktop"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "The unofficial, free and open source desktop application for the bunq API"
+homepage:
+  - "https://bunqdesk.top/"
+  - "https://github.com/BunqCommunity/BunqDesktop"
+license:
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bunqdesktop"
+src_url:
+  - "https://github.com/BunqCommunity/BunqDesktop"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

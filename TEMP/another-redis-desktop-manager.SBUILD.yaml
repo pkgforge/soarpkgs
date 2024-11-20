@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "another-redis-desktop-manager"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A faster, better and more stable Redis desktop manager"
+distro_pkg:
+  archlinux:
+    aur:
+      - "another-redis-desktop-manager-appimage"
+      - "another-redis-desktop-manager-git"
+homepage:
+  - "A faster, better and more stable Redis desktop manager"
+license:
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "another-redis-desktop-manager"
+src_url:
+  - "https://github.com/qishibo/AnotherRedisDesktopManager"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

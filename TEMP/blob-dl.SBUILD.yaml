@@ -1,0 +1,38 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "blob-dl"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A yt-dlp interface used to download video and audio files from YouTube"
+homepage:
+  - "https://github.com/MicheleCioccarelli/blob-dl"
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "blob-dl"
+src_url:
+  - "https://github.com/MicheleCioccarelli/blob-dl"
+tag:
+  - "youtube-dl"
+  - "video-downloader"
+  - "youtube-downloader"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

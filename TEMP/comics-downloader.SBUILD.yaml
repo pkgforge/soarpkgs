@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "comics-downloader"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Tool to download comics and manga in pdf/epub/cbr/cbz from a website"
+distro_pkg:
+  alpine:
+    - "comics-downloader"
+  archlinux:
+    aur:
+      - "comics-downloader-git"
+homepage:
+  - "https://github.com/Girbons/comics-downloader"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "comics-downloader"
+src_url:
+  - "https://github.com/Girbons/comics-downloader"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

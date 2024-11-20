@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "blacknut"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Cloud gaming client (binary AppImage)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "blacknut-appimage"
+homepage:
+  - "https://www.blacknut.com"
+license:
+  - "unknown"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "blacknut"
+src_url:
+  - "https://www.blacknut.com"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

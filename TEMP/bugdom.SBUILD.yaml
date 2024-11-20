@@ -1,0 +1,48 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bugdom"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Bug-themed 3D action/adventure game from Pangea Software"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bugdom"   
+  nixpkgs:
+    - "bugdom"
+homepage:
+  - "https://pangeasoft.net/bug/"
+  - "https://jorio.itch.io/bugdom"
+  - "https://github.com/jorio/Bugdom"
+license:
+  - "CC-BY-NC-SA-4.0"
+  - "CC-BY-SA-4.0"
+  - "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
+  - "custom:cc-by-nc-sa-4.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bugdom"
+src_url:
+  - "https://github.com/jorio/Bugdomjorio/Bugdom"
+tag:
+  - "games"
+  - "games-action"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

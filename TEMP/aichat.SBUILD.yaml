@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "aichat"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "All-in-one LLM CLI tool featuring Shell Assistant, Chat-REPL, RAG, AI tools & agents, with access to OpenAI, Claude, Gemini, Ollama, Groq, and more"
+distro_pkg:
+  archlinux:
+    extra:
+      - "aichat"
+homepage:
+  - "https://github.com/sigoden/aichat"
+license:
+  - "Apache"
+  - "Apache-2"
+  - "MIT"
+  - "MIT OR Apache-2.0"
+  - "MIT|Apache"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "aichat"
+src_url:
+  - "https://github.com/sigoden/aichat"
+tag:
+  - "textproc"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

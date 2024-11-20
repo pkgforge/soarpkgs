@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dingtalk"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description:  "DingTalk -- Make Work and Study Easy"
+distro_pkg:
+  archlinux:
+    aur:
+      - "dingtalk-bin"
+homepage:
+  - "https://www.dingtalk.com/"
+  - "https://github.com/nashaofu/dingtalk"
+license:
+  - "custom"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dingtalk"
+src_url:
+  - "https://github.com/nashaofu/dingtalk"
+tag:
+  - "attendance"
+  - "dingding"
+  - "electron"
+  - "office"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

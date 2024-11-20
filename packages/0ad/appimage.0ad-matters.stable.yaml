@@ -50,7 +50,7 @@ tag:
 x_exec:
   shell: bash
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/0ad-matters/0ad-appimage/releases" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/0ad-matters/0ad-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
     RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
     #Download

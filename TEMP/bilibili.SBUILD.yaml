@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bilibili"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Bilibili official desktop client"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bilibili"
+      - "bilibili-appimage"
+  nixpkgs:
+    - "bilibili"
+homepage:
+  - "https://app.bilibili.com"
+license:
+  - "MIT"
+  - "Unfree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bilibili"
+src_url:
+  - "https://github.com/msojocs/bilibili-linux"
+tag:
+  - "animation"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

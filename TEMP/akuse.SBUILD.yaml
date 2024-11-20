@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "akuse"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "🌸 Simple and easy to use anime streaming desktop app without ads"
+distro_pkg:
+  archlinux:
+    aur:
+      - "akuse"
+      - "akuse-git"
+homepage:
+  - ""
+license:
+  - "GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "akuse"
+src_url:
+  - "https://github.com/akuse-app/akuse"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

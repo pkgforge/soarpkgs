@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bridge"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Scripts for configuring network bridge interfaces"
+distro_pkg:
+  alpine:
+    - "bridge"
+homepage:
+  - "https://quixel.com/bridge"
+  - "http://wiki.alpinelinux.org/wiki/Bridge"
+license:
+  - "GPL"
+  - "GPL-2.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bridge"
+src_url:
+  - "https://quixel.com/bridge"
+tag:
+  - "Drivers/Networking"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

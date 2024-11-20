@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "eqonomize"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Personal accounting software, with focus on efficiency and ease of use"
+distro_pkg:
+  archlinux:
+    aur:
+      - "eqonomize"
+      - "eqonomize-git"
+  deb:
+    - "eqonomize"    
+homepage:
+  - "https://eqonomize.github.io/"
+  - "https://eqonomize.sourceforge.net/"
+license:
+  - "GPL3"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "eqonomize"
+src_url:
+  - "https://github.com/Eqonomize/Eqonomize"
+tag:
+  - "debug"
+  - "kde"
+  - "Office"
+  - "office.finance"
+  - "programming.docs"
+  - "universe/kde"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

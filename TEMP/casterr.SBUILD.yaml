@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "casterr"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Easy to user Screen Recorder"
+distro_pkg:
+  archlinux:
+    aur:
+      - "casterr-bin"
+homepage:
+  - "https://casterr.sbond.co/"
+license:
+  - "GPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "casterr"
+src_url:
+  - "https://github.com/sbondCo/Casterr"
+tag:
+  - "Video"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

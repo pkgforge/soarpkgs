@@ -1,0 +1,49 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cpeditor"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An IDE specially designed for competitive programming"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cpeditor"
+      - "cpeditor-bin"
+      - "cpeditor-git"
+  nixpkgs:
+    - "cpeditor"
+homepage:
+  - "https://cpeditor.org/"
+  - "https://github.com/cpeditor/cpeditor"
+license:
+  - "GPL3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND Apache-2.0 AND LGPL-2.1-only AND MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cpeditor"
+src_url:
+  - "https://github.com/cpeditor/cpeditor"
+tag:
+  - "algorithm"
+  - "editors"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

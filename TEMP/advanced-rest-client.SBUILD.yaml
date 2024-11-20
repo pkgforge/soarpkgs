@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "advanced-rest-client"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A developer tool to test a HTTP request"
+distro_pkg:
+  archlinux:
+    aur:
+      - "advanced-rest-client"
+      - "advanced-rest-client-appimage"
+homepage:
+  - "https://github.com/advanced-rest-client/arc-electron"
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "advanced-rest-client"
+src_url:
+  - "https://github.com/advanced-rest-client/arc-electron"
+tag:
+  - "Apache"
+  - "Apache-2.0"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

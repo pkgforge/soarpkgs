@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "kwave"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Kwave is a sound editor designed for the KDE Desktop Environment. With Kwave you can record, play back, import and edit many sorts  of audio files including multi-channel files. Kwave includes some plugins to transform audio files in several  ways and presents a graphical view with a complete zoom- and  scroll capability. "
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "kwave"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packagesivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

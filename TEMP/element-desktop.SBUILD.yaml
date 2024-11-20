@@ -1,0 +1,61 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "element-desktop"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A glossy Matrix collaboration client"
+distro_pkg:
+  alpine:
+    - "element-desktop"
+  archlinux:
+    aur:
+      - "element-desktop-git"
+  nixpkgs:
+    - "element-desktop"
+    - "element-web"
+homepage:
+  - "https://element.io/"
+  - "https://github.com/vector-im/element-desktop"
+license:
+  - "AGPL-3.0-only or GPL-3.0-only"
+  - "Apache"
+  - "Apache 2.0"
+  - "Apache-2.0"
+  - "Apache Software License 2.0"
+  - "ASL 2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "element-desktop"
+src_url:
+  - "https://github.com/srevinsaju/element-appimages"
+tag:
+  - "chat"
+  - "debug"
+  - "foss"
+  - "net-im"
+  - "network"
+  - "network.im"
+  - "Networking/Instant"
+  - "Networking/IRC"
+  - "Productivity/Networking/Talk/Clients"
+  - "www"
+  - "www-apps"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

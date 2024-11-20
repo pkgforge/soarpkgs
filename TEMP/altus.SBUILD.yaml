@@ -1,0 +1,48 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "altus"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Desktop client for WhatsApp Web with themes, notifications and multiple account support"
+distro_pkg:
+  archlinux:
+    aur:
+      - "altus"
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - "https://github.com/amanharwara/altus"
+  - "https://gitlab.com/amanharwara/altus"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "altus"
+src_url:
+  - "https://github.com/amanharwara/altus"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

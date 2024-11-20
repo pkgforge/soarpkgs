@@ -1,0 +1,50 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cinny"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Instant messaging and collaboration software based on the Matrix protocol"
+distro_pkg:
+  alpine:
+    - "cinny"
+  archlinux:
+    aur:
+      - "cinny"   
+  nixpkgs:
+    - "cinny"
+homepage:
+  - "https://cinny.in"
+  - "https://github.com/cinnyapp/cinny"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "Creative Commons Attribution 4.0 International"
+  - "GNU Affero General Public License, version 3.0"
+  - "MIT"
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cinny"
+src_url:
+  - "https://github.com/cinnyapp/cinny-desktopc"
+tag:
+  - "www"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

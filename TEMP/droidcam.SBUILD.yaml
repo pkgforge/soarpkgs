@@ -1,0 +1,53 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "droidcam"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Program to turn a mobile device into a webcam"
+distro_pkg:
+  alpine:
+    - "droidcam"
+  archlinux:
+    aur:
+      - "droidcam"    
+  nixpkgs:
+    - "droidcam"
+homepage:
+  - "https://www.dev47apps.com/"
+  - "https://github.com/dev47apps/droidcam-linux-client"
+license:
+  - "GPL-2"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "droidcam"
+src_url:
+  - "https://github.com/popsUlfr/droidcam-steam-deck-appimagepops"
+tag:
+  - "debug"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "System/Kernel"
+  - "Video"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

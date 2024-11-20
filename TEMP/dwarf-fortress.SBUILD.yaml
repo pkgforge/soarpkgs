@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dwarf-fortress"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A single-player fantasy game with a randomly generated adventure world"
+distro_pkg:
+  archlinux:
+    extra:
+      - "dwarf-fortress"  
+  nixpkgs:
+    - "dwarf-fortress"
+homepage:
+  - "https://bay12games.com/dwarves/"
+license:
+  - "BitstreamVera"
+  - "BSD"
+  - "Custom"
+  - "custom:dwarffortress"
+  - "custom: Proprietary"
+  - "Dwarf Fortress"
+  - "free-noncomm"
+  - "freeware"
+  - "Unfree redistributable"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dwarf-fortress"
+src_url:
+  - "https://github.com/McArcady/lnp-forge"
+tag:
+  - "games"
+  - "games-roguelike"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

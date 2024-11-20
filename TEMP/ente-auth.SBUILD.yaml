@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "ente-auth"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Open source 2FA authenticator, with end-to-end encrypted backups"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ente-auth"
+      - "ente-auth-git"
+  nixpkgs:
+    - "ente-auth"
+homepage:
+  - "https://ente.io/auth/"
+  - "https://github.com/ente-io/ente"
+license:
+  - "AGPL-3.0"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "ente-auth"
+src_url:
+  - "https://github.com/ente-io/enteente-io/ente"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

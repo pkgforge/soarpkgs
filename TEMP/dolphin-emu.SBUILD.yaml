@@ -1,0 +1,75 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dolphin-emu"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Emulator to play Nintendo GameCube and Wii games"
+distro_pkg:
+  alpine:
+    - "dolphin-emu"
+  archlinux:
+    aur:
+      - "dolphin-emu-git"
+    extra:
+      - "dolphin-emu"  
+  deb:
+    - "dolphin-emu"    
+  nixpkgs:
+    - "dolphin-emu"
+homepage:
+  - "https://dolphin-emu.org"
+  - "https://github.com/dolphin-emu/dolphin"
+license:
+  - " AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later"
+  - "BSD"
+  - "BSD-2"
+  - "GNU General Public License, version 2.0 or later"
+  - "GNU GPL v2+"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL2"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND LicenseRef-Callaway-BSD AND LicenseRef-Callaway-MIT AND Zlib"
+  - "GPL-2+ BSD BSD-2 LGPL-2.1+ MIT ZLIB MIT ZLIB ZLIB MIT MIT MIT MIT BSD-2 BSD MPL-2.0 GPL-2+ FatFs   MIT LGPL-2.1+ LGPL-2.1+ MIT ZLIB"
+  - "GPL-3.0-only"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and BSD and MIT and zlib"
+  - "LGPL-2.1+"
+  - "MIT"
+  - "ZLIB"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dolphin-emu"
+src_url:
+  - "https://github.com/mantralunar/dolphin"
+tag:
+  - "debug"
+  - "dolphin"
+  - "emulators"
+  - "Emulators"
+  - "extra/game"
+  - "games"
+  - "Games"
+  - "games-emulation"
+  - "games.emulator"
+  - "System/Emulators/Other"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

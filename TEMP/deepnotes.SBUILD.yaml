@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deepnotes"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "End-to-end encrypted visual note-taking tool with deep page navigation"
+distro_pkg:
+  archlinux:
+    aur:
+      - "deepnotes-bin"
+homepage:
+  - "https://deepnotes.app"
+license:
+  - "AGPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deepnotes"
+src_url:
+  - "https://github.com/DeepNotesApp/DeepNotes"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

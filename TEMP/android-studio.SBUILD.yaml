@@ -1,0 +1,68 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "android-studio"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Android Studio is the official IDE for Android development"
+distro_pkg:
+  archlinux:
+    aur:
+      - "android-studio"
+  nixpkgs:
+    - "android-studio-stable"
+homepage:
+  - "https://developer.android.com/studio"
+  - "https://android.googlesource.com/platform/tools/adt/idea"
+license:
+  - "APACHE"
+  - "Apache"
+  - "Apache License 2.0"
+  - "Apache Software License 2.0"
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-2"
+  - "CDDL-1.1"
+  - "CPL-0.5"
+  - "EPL-1.0"
+  - "Freeware"
+  - "GPL-2"
+  - "GPL-2+""
+  - "IJG"
+  - "JDOM"
+  - "LGPL-2.1"
+  - "MIT"
+  - "MPL-1.1"
+  - "MPL-2.0"
+  - "NPL-1.1"
+  - "OFL"
+  - "OFL-1.1"
+  - "Unfree"
+  - "ZLIB"
+  - "android"
+  - "freeware"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "android-studio"
+src_url:
+  - "https://github.com/zyrouge/android-studio-appimages"
+tag:
+  - "Development"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

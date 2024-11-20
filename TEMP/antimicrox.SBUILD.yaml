@@ -1,0 +1,56 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "antimicrox"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Graphical program used to map keyboard buttons & mouse controls to a gamepad"
+distro_pkg:
+  archlinux:
+    aur:
+      - "antimicrox-git"
+  nixpkgs:
+    - "antimicrox"
+homepage:
+  - ""
+license:
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND Zlib AND LGPL-3.0-or-later AND LGPL-2.1-or-later"
+  - "GPL-3.0-or-later and Zlib"
+  - "GPL3"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "antimicrox"
+src_url:
+  - "https://github.com/AntiMicroX/antimicrox"
+tag:
+  - "Hardware/Joystick"
+  - "System/Configuration/Hardware"
+  - "Unspecified"
+  - "controller"
+  - "debug"
+  - "games"
+  - "games-util"
+  - "x11"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

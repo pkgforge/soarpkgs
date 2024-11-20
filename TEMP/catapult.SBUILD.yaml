@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "catapult"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A cross-platform launcher for Cataclysm: DDA and BN"
+distro_pkg:
+  archlinux:
+    aur:
+      - "catapult"
+      - "catapult-bin"
+homepage:
+  - "https://otsaloma.io/catapult"
+  - "https://github.com/qrrk/Catapult"
+license:
+  - "GPL 3.0"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "catapult"
+src_url:
+  - "https://github.com/qrrk/Catapult"
+tag:
+  - "emulators"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

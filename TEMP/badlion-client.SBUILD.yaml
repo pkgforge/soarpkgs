@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "badlion-client"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " The Most Complete All-In-One Mod Library for Minecraft with 100+ Mods, FPS Improvements, and more."
+distro_pkg:
+  archlinux:
+    aur:
+      - "badlion-client"  
+  nixpkgs:
+    - "badlion-client"
+homepage:
+  - "https://client.badlion.net"
+license:
+  - "Unfree"
+  - "custom"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "badlion"
+src_url:
+  - "https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/games/badlion-client/default.nix"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

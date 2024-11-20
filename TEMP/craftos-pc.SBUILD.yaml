@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "craftos-pc"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Advanced ComputerCraft emulator written in C++"
+distro_pkg:
+  archlinux:
+    aur:
+      - "craftos-pc"
+      - "craftos-pc-git" 
+  nixpkgs:
+    - "craftos-pc"
+homepage:
+  - "https://www.craftos-pc.cc/"
+  - "https://github.com/MCJack123/craftos2"
+license:
+  - "MIT"
+  - "Unspecified free software license"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "craftos-pc"
+src_url:
+  - "https://github.com/MCJack123/craftos2"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "thunderbird-nightly"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Thunderbird is an mail client suitable for free distribution.  The goal of Thunderbird is to produce a cross platform stand-alone  mail application using the XUL user interface language. It supports  different mail accounts, no matter of the used protocol like POP(s)  or IMAP(s), has an integrated learning Spam filter, and offers easy  organization of mails with tagging and virtual folders. Also, more  features can be added by installing extensions."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "thunderbird-nightly"
+src_url:
+  - "https://github.com/"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

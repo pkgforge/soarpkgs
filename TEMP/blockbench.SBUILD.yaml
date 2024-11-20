@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "blockbench"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "3D model editor for boxy models and pixel art textures"
+distro_pkg:
+  archlinux:
+    aur:
+      - "blockbench" 
+  nixpkgs:
+    - "blockbench"
+homepage:
+  - "https://blockbench.net"
+license:
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "blockbench"
+src_url:
+  - "https://github.com/JannisX11/blockbench"
+tag:
+  - "3d"
+  - "electron"
+  - "graphics"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

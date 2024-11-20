@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "ecode"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ecode"
+      - "ecode-bin"
+homepage:
+  - "https://github.com/SpartanJ/ecode"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "ecode"
+src_url:
+  - "https://github.com/SpartanJ/ecode"
+tag:
+  - "app-editors"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

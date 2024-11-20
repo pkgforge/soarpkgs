@@ -1,0 +1,54 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "etcher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Flash OS images to SD cards and USB drives, safely and easily"
+distro_pkg:
+  archlinux:
+    aur:
+      - "balena-etcher"
+      - "etcher-bin"
+      - "etcher-git"
+homepage:
+  - "https://etcher.balena.io"
+  - "https://github.com/balena-io/etcher"
+license:
+  - "apache"
+  - "Apache"
+  - "Apache-2.0"
+  - "Apache License 2.0"
+  - "GPL2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "etcher"
+src_url:
+  - "https://github.com/balena-io/etcher"
+tag:
+  - "boot"
+  - "cross-platform"
+  - "debug"
+  - "flash"
+  - "foss"
+  - "System/Configuration/Other"
+  - "system.utils"
+  - "Tools"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

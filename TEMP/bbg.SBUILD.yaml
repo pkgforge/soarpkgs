@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bbg"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A static blog generator based on Electron Technology"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bbg"
+      - "bbg-bin"
+      - "bbg-git"
+homepage:
+  - "https://bbg.nekomoe.xyz"
+license:
+  - "Unlicense"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bbg"
+src_url:
+  - "https://github.com/bbg-contributors/bbg"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "en-croissant"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Ultimate Chess Toolkit"
+distro_pkg:
+  archlinux:
+    aur:
+      - "en-croissant"
+      - "en-croissant-bin"  
+  nixpkgs:
+    - "en-croissant"
+homepage:
+  - "https://encroissant.org/"
+  - "https://github.com/franciscoBSalgueiro/en-croissant"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "en-croissant"
+src_url:
+  - "https://github.com/franciscoBSalgueiro/en-croissant"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

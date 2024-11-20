@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "ankama-launcher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A multi-game portal for all Ankama games"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ankama-launcher"
+homepage:
+  - "https://www.ankama.com/en/launche"
+license:
+  - "custom:Ankama License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "ankama-launcher"
+src_url:
+  - "https://ankama.com"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

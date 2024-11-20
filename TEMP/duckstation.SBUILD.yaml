@@ -1,0 +1,52 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "duckstation"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Sony PlayStation (PSX) emulator, focusing on Playability & Speed"
+distro_pkg:
+  archlinux:
+    aur:
+      - "duckstation"
+      - "duckstation-git"   
+  nixpkgs:
+    - "duckstation"
+homepage:
+  - "https://duckstation.org/"
+  - "https://github.com/stenzek/duckstation/"
+license:
+  - "cc-by-nc-nd-4.0"
+  - "CC-BY-NC-ND-4.0"
+  - "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International"
+  - "GPL-3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "duckstation"
+src_url:
+  - "https://github.com/stenzek/duckstation"
+tag:
+  - "emulators"
+  - "Emulators"
+  - "games"
+  - "games-emulation"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

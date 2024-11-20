@@ -1,0 +1,39 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "electron-mail"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "ElectronMail is an Electron-based unofficial desktop client for ProtonMail"
+distro_pkg:  
+  nixpkgs:
+    - "electron-mail"
+homepage:
+  - "https://github.com/vladimiry/ElectronMail"
+license:
+  - "GPL-3.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "electron-mail"
+src_url:
+  - "https://github.com/vladimiry/ElectronMail"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

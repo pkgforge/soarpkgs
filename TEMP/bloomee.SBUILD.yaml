@@ -1,0 +1,38 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bloomee"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "🌸Bloomee is a cross-platform music app designed to bring you ad-free tunes from various sources. 🌼🎵"
+homepage:
+  - "https://github.com/HemantKArya/BloomeeTunes"
+license:
+  - "GPL-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bloomee"
+src_url:
+  - "https://github.com/HemantKArya/BloomeeTunes"
+tag:
+  - "music"
+  - "downloader"
+  - "youtube"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

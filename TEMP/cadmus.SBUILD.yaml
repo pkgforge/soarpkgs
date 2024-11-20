@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cadmus"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A GUI frontend for @wermans Pulse Audio real-time noise suppression plugin"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cadmus-appimage"
+homepage:
+  - "https://github.com/josh-richardson/cadmus"
+license:
+  - "GPL-3.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cadmus"
+src_url:
+  - "https://github.com/josh-richardson/cadmus"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

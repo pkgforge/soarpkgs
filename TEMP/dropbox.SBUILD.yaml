@@ -1,0 +1,53 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dropbox"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A free service that lets you bring your photos, docs, and videos anywhere and share them easily"
+distro_pkg:
+  archlinux:
+    aur:
+      - "dropbox"
+homepage:
+  - "https://www.dropbox.com/"
+license:
+  - "BSD-2"
+  - "CC-BY-ND-3.0"
+  - "custom"
+  - "dropbox"
+  - "Dropbox license"
+  - "FTL"
+  - "GPL3+"
+  - "GPL-3.0-or-later"
+  - "LGPL-2"
+  - "MIT"
+  - "openssl"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dropbox"
+src_url:
+  - "https://github.com/ivan-hc/Dropbox-appimage"
+tag:
+  - "cloud"
+  - "network"
+  - "Networking/Remote"
+  - "Tools"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

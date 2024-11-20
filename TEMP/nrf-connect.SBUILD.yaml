@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "nrf-connect"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " nRF Connect for Desktop is a cross-platform framework for desktop apps for development kits or dongles from Nordic Semiconductor. The framework provides a launcher and the general layout for selecting devices, navigation menus, logging, etc. Apps can decorate the standard components and use built-in libraries in order to create end-user tools."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "nrf-connect"
+src_url:
+  - "https://github.com/NordicSemiconductor/pc-nrfconnect-coreNordicSemiconductor/pc-nrfconnect-core"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

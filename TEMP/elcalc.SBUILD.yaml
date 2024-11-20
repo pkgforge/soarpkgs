@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "elcalc"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Simple, Cross-Platform calculator built with Electron"
+distro_pkg:
+  archlinux:
+    aur:
+      - "elcalc"
+homepage:
+  - "https://github.com/elcalc/elcalc/"
+license:
+  - "MIT"
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "elcalc"
+src_url:
+  - "https://github.com/elcalc/elcalc"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

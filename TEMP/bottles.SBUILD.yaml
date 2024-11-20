@@ -1,0 +1,52 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bottles"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: An easy-to-use wineprefix manager to Run Windows Software & Games"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bottles"
+      - "bottles-git"
+  nixpkgs:
+    - "bottles-unwrapped"
+homepage:
+  - "https://usebottles.com"
+  - "https://github.com/bottlesdevs/Bottles"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND MIT"
+  - "GPL3"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bottles"
+src_url:
+  - "https://github.com/ivan-hc/Bottles-appimage"
+tag:
+  - "Other"
+  - "System/Emulators/Other"
+  - "desktop"
+  - "utils"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,60 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "czkawka"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A simple, fast and easy to use app to remove unnecessary files from your computer"
+distro_pkg:
+  alpine:
+    - "czkawka"
+  archlinux:
+    aur:
+      - "czkawka"
+      - "czkawka-git"  
+  nixpkgs:
+    - "czkawka"
+homepage:
+  - "https://qarmin.github.io/czkawka/"
+  - "https://github.com/qarmin/czkawka"
+license:
+  - "CC-BY-4.0"
+  - "GNU GPLv3"
+  - "LicenseRef-MIT"
+  - "LicenseRef-MIT AND CC-BY-4.0"
+  - "LicenseRef-MIT AND GPL-3.0-only"
+  - "MIT"
+  - "MIT AND CC-BY-4.0"
+  - "MIT, CC-BY-4.0, Unknown"
+  - "spdx:MIT"
+  - "spdx:MIT AND CC-BY-4.0"
+  - "spdx:MIT AND GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "czkawka"
+src_url:
+  - "https://github.com/qarmin/czkawka"
+tag:
+  - "cleaner"
+  - "debug"
+  - "File"
+  - "system.utils"
+  - "sysutils"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

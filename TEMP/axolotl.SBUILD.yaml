@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "axolotl"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Signal compatible cross plattform client"
+distro_pkg:
+  archlinux:
+    aur:
+      - "axolotl-bin"
+homepage:
+  - ""
+license:
+  - "GPL-3"
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "axolotl"
+src_url:
+  - "https://github.com/nanu-c/axolotl"
+tag:
+  - "net-im"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

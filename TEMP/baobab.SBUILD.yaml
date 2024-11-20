@@ -1,0 +1,78 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "baobab"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A graphical directory tree analyzer"
+distro_pkg:
+  alpine:
+    - "baobab"
+  archlinux:
+    aur:
+      - "baobab-git"
+  deb:
+    - "baobab"    
+  nixpkgs:
+    - "baobab"
+homepage:
+  - "https://apps.gnome.org/Baobab"
+  - "https://wiki.gnome.org/Apps/Baobab"
+  - "https://gitlab.gnome.org/GNOME/baobab"
+license:
+  - "FDL-1.1+"
+  - "GFDL-1.1-or-later"
+  - "GNU General Public License, version 2.0"
+  - "GPL-2+"
+  - "GPL-2+ and FDL-1.1+"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND CC-BY-SA-3.0 AND CC0-1.0"
+  - "GPL-2.0-or-later AND GFDL-1.1"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and GFDL"
+  - "LGPL"
+  - "gpl2"
+  - "spdx:GPL-2.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "baobab-gtk3"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Applications/System"
+  - "Debug"
+  - "File"
+  - "GNOME"
+  - "Graphical"
+  - "System/GUI/GNOME"
+  - "debug"
+  - "desktop"
+  - "desktop.gnome"
+  - "deskutils"
+  - "extra/shell"
+  - "gnome"
+  - "gnome-desktop"
+  - "library"
+  - "sys-apps"
+  - "x11/gnome"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

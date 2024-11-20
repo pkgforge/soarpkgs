@@ -1,0 +1,59 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "drawpile"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A collaborative drawing program that allows multiple users to sketch on the same canvas simultaneously"
+distro_pkg:
+  alpine:
+    - "drawpile"
+  archlinux:
+    aur:
+      - "drawpile"
+  nixpkgs:
+    - "drawpile"
+homepage:
+  - "https://drawpile.net/"
+  - "https://drawpile.sourceforge.net/"
+license:
+  - "GNU General Public License version 2"
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "drawpile"
+src_url:
+  - "https://github.com/drawpile/Drawpile"
+tag:
+  - "Amusements/Graphics"
+  - "art"
+  - "drawing"
+  - "graphics"
+  - "Graphics"
+  - "Graphics/Editors"
+  - "media-gfx"
+  - "Photo"
+  - "Productivity/Graphics/Other"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

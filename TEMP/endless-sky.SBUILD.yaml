@@ -1,0 +1,83 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "endless-sky"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A sandbox-style space exploration game similar to Elite, Escape Velocity, or Star Control"
+distro_pkg:
+  alpine:
+    - "endless-sky"
+  archlinux:
+    extra:
+      - "endless-sky"
+  deb:
+    - "endless-sky"    
+  nixpkgs:
+    - "endless-sky"
+homepage:
+  - "https://endless-sky.github.io/"
+  - "https://github.com/endless-sky/endless-sky"
+license:
+  - "CC0-1.0"
+  - "CC-BY-2.0"
+  - "CC-BY-3.0"
+  - "CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only"
+  - "CC-BY-4.0"
+  - "CC-BY-NC-3.0"
+  - "CC-BY-SA-3.0"
+  - "CC-BY-SA-4.0"
+  - "CCPL"
+  - "custom:CC-BY-3.0"
+  - "custom:CC-BY-4.0"
+  - "custom:CC-BY-NC-3.0"
+  - "custom:CC-BY-SA-3.0"
+  - "custom:CC-BY-SA-4.0"
+  - "custom:public domain"
+  - "custom:public-domain"
+  - "GNU General Public License, version 3.0"
+  - "GPL-3+"
+  - "GPL3"
+  - "GPL-3.0 and CC-BY-SA-4.0 and CC-BY-SA-3.0 and CC-BY-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND CC-BY-SA-4.0 AND CC-BY-SA-3.0 AND CC-BY-3.0"
+  - "GPLv3"
+  - "GPLv3+"
+  - "GPLv3+ and CC-BY-SA 3.0 and CC-BY-SA 4.0 and CC-BY 4.0 and Public Domain"
+  - "LicenseRef-public-domain"
+  - "public-domain"
+  - "Public Domain"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "endless-sky"
+src_url:
+  - "https://github.com/endless-sky/endless-sky"
+tag:
+  - "Amusements/Games/Action/Arcade"
+  - "debug"
+  - "games"
+  - "Games"
+  - "games-action"
+  - "games.arcade"
+  - "Games/Simulation"
+  - "games-strategy"
+  - "Games/Strategy"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

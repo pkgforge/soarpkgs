@@ -1,0 +1,53 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cryptomator"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Multi-platform client-side cloud file encryption tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cryptomator"
+  nixpkgs:
+    - "cryptomator"
+homepage:
+  - "https://cryptomator.org/"
+  - "https://github.com/cryptomator/cryptomator/"
+license:
+  - "GNU General Public License"
+  - "GNU General Public License v3.0"
+  - "GPL3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "MIT"
+  - "proprietary license"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cryptomator"
+src_url:
+  - "https://github.com/cryptomator/cryptomator"
+tag:
+  - "Archiving/Backup"
+  - "cloud-storage"
+  - "security"
+  - "security.crypto"
+  - "utils"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

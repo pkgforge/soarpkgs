@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "chatpad-ai"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Not just another ChatGPT user-interface!"
+distro_pkg:
+  archlinux:
+    aur:
+      - "chatpad-ai-bin"
+homepage:
+  - "https://chatpad.ai"
+license:
+  - "AGPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "chatpad-ai"
+src_url:
+  - "https://chatpad.ai"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

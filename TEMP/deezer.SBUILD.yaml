@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deezer"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A proprietary music streaming service"
+distro_pkg:
+  archlinux:
+    aur:
+      - "deezer"
+homepage:
+  - "https://www.deezer.com/"
+  - "https://github.com/aunetx/deezer-linux"
+license:
+  - "custom:Copyright  2006-2024 Deezer S.A."
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deezer"
+src_url:
+  - "https://github.com/aunetx/deezer-linux"
+tag:
+  - "deezer"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

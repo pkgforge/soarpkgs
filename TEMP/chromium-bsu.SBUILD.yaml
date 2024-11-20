@@ -1,0 +1,63 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "chromium-bsu"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A fast paced, arcade-style, top-scrolling space shooter"
+distro_pkg:
+  archlinux:
+    extra:
+      - "chromium-bsu"
+  deb:
+    - "chromium-bsu"    
+  nixpkgs:
+    - "chromium-bsu"
+homepage:
+  - ""
+license:
+  - "Artistic"
+  - "Artistic-1.0"
+  - "Artistic clarified"
+  - "Artistic License"
+  - "chromium-bsu"
+  - "Clarified-Artistic"
+  - "ClArtistic and MIT"
+  - "ClArtistic AND MIT"
+  - "custom:artistic"
+  - "GPL"
+  - "MIT"
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "chromium-bsu"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Action/Shoot"
+  - "Applications/Games"
+  - "extra/game"
+  - "games"
+  - "games-action"
+  - "Games/Arcade"
+  - "game/shmup"
+  - "universe/games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

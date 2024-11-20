@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "amazingmarvin"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Personal productivity app that incorporates principles from behavioral  psychology to help you beat procrastination, feel in control and finish your to-do list."
+distro_pkg:
+  archlinux:
+    aur:
+      - "amazingmarvin-appimage"
+homepage:
+  - "https://amazingmarvin.com/"
+license:
+  - "custom:commercial"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "amazingmarvin"
+src_url:
+  - "https://amazingmarvin.com"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

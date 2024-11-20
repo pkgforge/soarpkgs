@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "aaaaxy"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - "Game"
+description: "A nonlinear 2D puzzle platformer taking place in impossible spaces"
+distro_pkg:
+  alpine:
+    - "aaaaxy"
+  archlinux:
+    aur:
+      - "aaaaxy" 
+  nixpkgs:
+    - "aaaaxy"
+homepage:
+  - "https://divverent.github.io/aaaaxy"
+  - "https://github.com/divVerent/aaaaxy"
+license:
+  - "Apache"
+  - "Apache-2.0"
+  - "BSD"
+  - "FTL"
+  - "MIT"
+  - "OFL-1.1"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+repology:
+ - "aaaaxy"
+src_url:
+  - "https://github.com/divVerent/aaaaxy"
+tag:
+  - "2d"
+  - "Games"
+  - "games"
+  - "games-puzzle"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

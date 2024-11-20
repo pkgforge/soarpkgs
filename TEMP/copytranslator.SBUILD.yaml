@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "copytranslator"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Tool that translates text in real-time while copying"
+distro_pkg:
+  archlinux:
+    aur:
+      - "copytranslator"
+      - "copytranslator-bin"
+homepage:
+  - "https://copytranslator.github.io/"
+license:
+  - "GPL2"
+  - "GPL-2.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "copytranslator"
+src_url:
+  - "https://github.com/CopyTranslator/CopyTranslator"
+tag:
+  - "copy"
+  - "pdf"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

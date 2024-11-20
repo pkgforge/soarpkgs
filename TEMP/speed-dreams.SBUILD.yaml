@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "speed-dreams"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Speed Dreams is a 3d cross-platform, open source motorsport simulation and racing game. It is a fork of the open racing car simulator Torcs, aiming to implement exciting new features, cars, tracks and AI opponents to make a more enjoyable game for the player, as well as constantly improving visual and physics realism."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "speed-dreams"
+src_url:
+  - "https://sourceforge.net/projects/speed-dreamshttps://sourceforge.net/projects/speed-dreams"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

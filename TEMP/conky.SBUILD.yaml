@@ -1,0 +1,90 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "conky"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Advanced, highly configurable System Monitor"
+distro_pkg:
+  alpine:
+    - "conky"
+  archlinux:
+    aur:
+      - "conky-git"
+    extra:
+      - "conky"  
+  deb:
+    - "conky"    
+  nixpkgs:
+    - "conky"
+homepage:
+  - "https://conky.cc/"
+  - "https://conky.sourceforge.net/"
+  - "https://github.com/brndnmtthws/conky"
+  - "https://sourceforge.net/projects/conky/"
+license:
+  - "Boost"
+  - "BSD"
+  - "BSD3"
+  - "BSD-3-Clause"
+  - "BSD, GPL, LGPL"
+  - "BSD licenses"
+  - "custom"
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-3"
+  - "GPL3"
+  - "GPL-3.0+ and LGPL-3.0+ and MIT"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-2.1-or-later AND MIT-open-group AND BSD-3-Clause"
+  - "GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT"
+  - "GPLv3+"
+  - "GPLv3 with various free software licenses "
+  - "ISC"
+  - "LGPL"
+  - "LGPL-2.1"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "conky"
+src_url:
+  - "https://github.com/brndnmtthws/conky"
+tag:
+  - "admin"
+  - "app"
+  - "app-admin"
+  - "contrib/utils"
+  - "debug"
+  - "extra/tool"
+  - "Monitoring"
+  - "multiverse/utils"
+  - "oldlibs"
+  - "programming.devel"
+  - "system"
+  - "System/Monitoring"
+  - "system-tools"
+  - "system.utils"
+  - "System/X11"
+  - "sysutils"
+  - "universe/utils"
+  - "User"
+  - "utils"
+  - "x11-monitoring"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

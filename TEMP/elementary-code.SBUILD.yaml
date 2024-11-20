@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "elementary-code"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Code editor designed for elementary OS"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pantheon-code-git"
+    extra:
+      - "pantheon-code"     
+  nixpkgs:
+    - "pantheon.elementary-code"
+homepage:
+  - "https://github.com/elementary/code"
+license:
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND GPL-2.0-or-later"
+  - "GPLv3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "elementary-code"
+src_url:
+  - "https://github.com/titenko/elementary-code"
+tag:
+  - "Development/Debug"
+  - "editors"
+  - "pantheon"
+  - "x11"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

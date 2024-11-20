@@ -1,0 +1,63 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "clamtk"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+description: "Easy to use, light-weight, on-demand virus scanner for Linux systems"
+distro_pkg:
+  archlinux:
+    extra:
+      - "clamtk"
+  deb:
+    - "clamtk"    
+homepage:
+  - "https://bitbucket.org/davem_/clamtk/"
+  - "https://gitlab.com/dave_m/clamtk/-/wikis/home"
+  - "https://sourceforge.net/projects/clamtk/"
+license:
+  - "artistic"
+  - "Artistic"
+  - "Artistic-1.0 OR GPL-1.0-or-later"
+  - "BSD-3-Clause"
+  - "gpl+"
+  - "GPL"
+  - "GPL-1+"
+  - "GPL-1.0+ or Artistic-1.0"
+  - "GPL-1.0-or-later"
+  - "GPL-1.0-or-later AND Artistic-2.0"
+  - "GPL, Artistic"
+  - "GPL+ or Artistic 2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "clamtk"
+src_url:
+  - "https://github.com/dave-theunsub/clamtk"
+tag:
+  - "app-antivirus"
+  - "Applications/System"
+  - "File"
+  - "Graphical"
+  - "network"
+  - "Productivity/Security"
+  - "security"
+  - "system"
+  - "universe/utils"
+  - "utils"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

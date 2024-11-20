@@ -1,0 +1,74 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "celestia"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Space simulation for exploring the universe in three dimensions"
+distro_pkg:
+  archlinux:
+    aur:
+      - "celestia"
+      - "celestia-appimage" 
+  nixpkgs:
+    - "celestia"
+homepage:
+  - "https://celestia.space/"
+  - "https://github.com/CelestiaProject/Celestia"
+  - "https://sourceforge.net/projects/celestia/"
+license:
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND MIT AND Unlicense"
+  - "GPL-2.0-or-later AND MIT AND Zlib"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and CC-BY"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "celestia"
+src_url:
+  - "https://celestiaproject.space"
+tag:
+  - "academic"
+  - "Applications/Emulators"
+  - "astro"
+  - "celestia"
+  - "debug"
+  - "Debug"
+  - "Education"
+  - "extra/graphic"
+  - "games"
+  - "Graphical"
+  - "multiverse/science"
+  - "non-free/science"
+  - "office.scientific"
+  - "Productivity/Scientific/Astronomy"
+  - "sci-astronomy"
+  - "Science"
+  - "Sciences/Astronomy"
+  - "universe/kde"
+  - "utility/scientific"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

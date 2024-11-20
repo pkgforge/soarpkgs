@@ -1,0 +1,65 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dvdisaster"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Data loss/scratch/aging protection for CD/DVD media"
+distro_pkg:
+  archlinux:
+    aur:
+      - "dvdisaster"
+  deb:
+    - "dvdisaster"    
+  nixpkgs:
+    - "dvdisaster"
+homepage:
+  - "https://dvdisaster.jcea.es/"
+  - "https://sourceforge.net/projects/dvdisaster/"
+license:
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPL v2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dvdisaster"
+src_url:
+  - "https://github.com/speed47/dvdisaster"
+tag:
+  - "app-cdr"
+  - "Applications/Archiving"
+  - "Archiving/Backup"
+  - "Archiving/Cd"
+  - "base/system"
+  - "File"
+  - "otherosfs"
+  - "Productivity/Multimedia/Other"
+  - "system"
+  - "System/Tools"
+  - "sysutils"
+  - "universe/otherosfs"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

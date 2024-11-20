@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "allusion"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Allusion is a tool built for artists, aimed to help you organize your Visual Library"
+distro_pkg:
+  archlinux:
+    aur:
+      - "allusion-appimage"
+homepage:
+  - "https://allusion-app.github.io/"
+license:
+  - "GNU"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "allusion"
+src_url:
+  - "https://github.com/allusion-app/Allusionallusion-app/Allusion"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

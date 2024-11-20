@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bunnyfetch"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Tiny system info fetch utility"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bunnyfetch"
+      - "bunnyfetch-git"   
+  nixpkgs:
+    - "bunnyfetch"
+homepage:
+  - "https://github.com/Rosettea/bunnyfetch"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bunnyfetch"
+src_url:
+  - "https://github.com/Rosettea/bunnyfetch"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

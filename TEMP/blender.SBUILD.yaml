@@ -1,0 +1,79 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "blender"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A fully integrated 3D graphics creation suite (Stable)"
+distro_pkg:
+  alpine:
+    - "blender"
+  archlinux:
+    extra:
+      - "blender"
+  deb:
+    - "blender"    
+  nixpkgs:
+    - "blender"
+homepage:
+  - "https://blender.org"
+license:
+  - "Apache-2.0"
+  - "BSD-2-Clause"
+  - "BSD-3-Clause"
+  - "EULA"
+  - "GNU GPL"
+  - "GNU General Public License "
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPL-3+ cycles? "
+  - "GPL-3.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv3+"
+  - "LGPL-2.1-or-later"
+  - "MIT"
+  - "MPL-2.0"
+  - "Zlib"
+  - "spdx:GPL-2.0-or-later"
+  - "zlib"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "blender"
+src_url:
+  - "https://projects.blender.org/blender/blender"
+tag:
+  - "3d"
+  - "Applications/Multimedia"
+  - "Graphics"
+  - "Graphics/3D"
+  - "Productivity"
+  - "Productivity/Graphics/3D"
+  - "debug"
+  - "extra/multimedia"
+  - "graphics"
+  - "graphics/raytrace"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "universe/graphics"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

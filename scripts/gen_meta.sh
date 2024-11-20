@@ -34,7 +34,8 @@ find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated$' > "${TMPDIR}/va
 readarray -t "VALID_PKGS" < "${TMPDIR}/valid_pkgs.txt"
 ##Loop & Generate
 for SBUILD in "${VALID_PKGS[@]}"; do
-    VALID_PKGSRC="$(echo "${SBUILD}" | sed -E 's|.*/packages/||; s|\.validated$||')"
+    #VALID_PKGSRC="$(echo "${SBUILD}" | sed -E 's|.*/packages/||; s|\.validated$||' | tr -d '[:space:]')"
+    VALID_PKGSRC="$(echo "${SBUILD##*/packages/}" | tr -d '[:space:]')"
     PKG_VERSION="$(echo "${SBUILD}" | sed 's/\.validated$/.pkgver/' | xargs cat | tr -d '[:space:]')"
     yq . "${SBUILD}" | yj -yj | jq 'del(.x_exec)' | jq --arg PKG_VERSION "${PKG_VERSION:-}" \
       --arg VALID_PKGSRC "${VALID_PKGSRC:-}" \
@@ -43,6 +44,7 @@ for SBUILD in "${VALID_PKGS[@]}"; do
    "pkg": .pkg,
    "pkg_id": (.pkg_id // ""),
    "pkg_type": (.pkg_type // ""),
+   "app_id": (.app_id // ""),
    "description": .description,
    "note": (.note // []),
    "version": $PKG_VERSION,

@@ -1,0 +1,38 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "diffuse"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A music player that connects to your cloud/distributed storage"
+distro_pkg:
+  archlinux:
+    aur:
+      - "diffuse-player-bin"
+homepage:
+  - "https://github.com/icidasset/diffuse"
+license:
+  - "LicenseRef-PPL-2.0.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "diffuse"
+src_url:
+  - "https://github.com/icidasset/diffuse"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

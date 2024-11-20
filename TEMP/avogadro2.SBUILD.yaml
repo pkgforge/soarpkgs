@@ -1,0 +1,60 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "avogadro2"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An advanced molecular editor for chemical purposes"
+distro_pkg:
+  archlinux:
+    aur:
+      - "avogadro2-bin"
+      - "avogadro2-git"
+  deb:
+    - "avogadro"    
+  nixpkgs:
+    - "avogadro2"
+homepage:
+  - "https://avogadro.cc"
+  - "https://www.openchemistry.org"
+license:
+  - "BSD"
+  - "BSD-3-Clause"
+  - "GPL-2+"
+  - "GPL-2.0-only"
+  - "GPLv2+"
+  - "Kitware"
+  - "LicenseRef-Callaway-BSD"
+  - "spdx:BSD-3-Clause"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "avogadro2"
+src_url:
+  - "https://github.com/OpenChemistry/avogadroapp"
+tag:
+  - "Productivity/Scientific/Chemistry"
+  - "Sciences/Chemistry"
+  - "System/Libraries"
+  - "academic"
+  - "avogadro"
+  - "sci-chemistry"
+  - "science"
+  - "universe/science"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

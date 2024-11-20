@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "anklang"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A digital audio synthesis application for live creation and composition of music and other audio material"
+distro_pkg:
+  archlinux:
+    aur:
+      - "anklang-bin"
+homepage:
+  - "https://github.com/tim-janik/anklang"
+license:
+  - "MPL-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "anklang"
+src_url:
+  - "https://github.com/tim-janik/anklang"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

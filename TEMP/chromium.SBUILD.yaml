@@ -1,0 +1,80 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "chromium"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An open source web browser developed by Google"
+distro_pkg:
+  alpine:
+    - "chromium"
+  archlinux:
+    aur:
+      - "chromium"
+    extra:
+      - "chromium"  
+  deb:
+    - "chromium"    
+  nixpkgs:
+    - "chromium"
+homepage:
+  - "https://www.chromium.org/"
+license:
+  - "3-clause BSD License"
+  - "Apache License"
+  - "BSD"
+  - "bsd3"
+  - "BSD-3-Clause"
+  - "BSD-3-Clause and LGPL-2.1+"
+  - "BSD-3-Clause AND LGPL-2.1+"
+  - "BSD-3-Clause AND LGPL-2.1-or-later"
+  - "BSD-3-Clause AND LGPL-2.1-or-later AND Apache-2.0 AND IJG AND MIT AND GPL-2.0-or-later AND ISC AND OpenSSL AND "
+  - "BSD and GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and NCSA and MIT"
+  - "BSD and LGPLv2+"
+  - "BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and "
+  - "BSD, LGPL"
+  - "custom"
+  - "GNU General Public License"
+  - "GNU Lesser General Public License"
+  - "GPL-2.0"
+  - "GPLv2"
+  - "lgpl2.1"
+  - "LGPL2.1"
+  - "Microsoft Public License"
+  - "MIT License"
+  - "Mozilla Public License"
+  - "mpl"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+repology:
+ - "chromium"
+src_url:
+  - "https://github.com/ivan-hc/Chromium-Web-Browser-appimage"
+tag:
+  - "Applications/Internet"
+  - "blink"
+  - "browser"
+  - "extra/office"
+  - "Graphical"
+  - "Networking/WWW"
+  - "net-www"
+  - "Productivity/Networking/Web/Browsers"
+  - "universe/web"
+  - "web"
+  - "www"
+  - "www-client"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

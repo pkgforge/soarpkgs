@@ -1,0 +1,56 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "aranym"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "32-bit Atari personal computer (Falcon030/TT030) virtual machine"
+distro_pkg:
+  archlinux:
+    aur:
+      - "aranym"
+  deb:
+    - "aranym"    
+  nixpkgs:
+    - "aranym"
+homepage:
+  - "https://aranym.github.io"
+license:
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0+ and LGPL-2.1+"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND LGPL-2.1-or-later"
+  - "GPLv2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "aranym"
+src_url:
+  - "https://github.com/aranym/aranym"
+tag:
+  - "Console/Emulators"
+  - "Emulators"
+  - "System/Emulators/Other"
+  - "app-emulation"
+  - "emulators"
+  - "otherosfs"
+  - "universe/otherosfs"
+  - "utils"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

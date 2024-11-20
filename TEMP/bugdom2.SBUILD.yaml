@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bugdom2"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Bug-themed 3D action/adventure game sequel from Pangea Software"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bugdom2"
+homepage:
+  - "https://jorio.itch.io/bugdom2"
+  - "https://pangeasoft.net/bug2"
+  - "https://github.com/jorio/Bugdom2"
+license:
+  - "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
+  - "custom:cc-by-nc-sa-4.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bugdom2"
+src_url:
+  - "https://github.com/jorio/Bugdom2"
+tag:
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

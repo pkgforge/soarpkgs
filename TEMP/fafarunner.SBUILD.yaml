@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "fafarunner"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "RPG game developed using flutter and flame"
+distro_pkg:
+  archlinux:
+    aur:
+      - "fafarunner-bin"
+homepage:
+  - "https://fafarunner.com/"
+  - "https://github.com/fafarunner/fafarunner"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "fafarunner"
+src_url:
+  - "https://github.com/fafarunner/fafarunner"
+tag:
+  - "fafarunner"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

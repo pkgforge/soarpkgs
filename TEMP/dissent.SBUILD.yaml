@@ -1,0 +1,48 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dissent"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description:  "Lightweight and modern Discord client"
+distro_pkg:
+  alpine:
+    - "dissent"
+  archlinux:
+    aur:
+      - "dissent"
+      - "dissent-git" 
+  nixpkgs:
+    - "dissent"
+homepage:
+  - "https://libdb.so/dissent"
+  - https://github.com/diamondburned/dissent
+license:
+  - "CC0-1.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dissent"
+src_url:
+  - "https://github.com/diamondburned/dissent"
+tag:
+  - "net-im"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "agregore"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A minimal web browser for the distributed web"
+distro_pkg:
+  archlinux:
+    aur:
+      - "agregore-browser-bin"
+homepage:
+  - "https://github.com/AgregoreWeb/agregore-browser"
+license:
+  - "AGPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "agregore"
+src_url:
+  - "https://github.com/AgregoreWeb/agregore-browser"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

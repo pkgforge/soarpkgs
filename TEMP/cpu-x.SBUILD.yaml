@@ -1,0 +1,66 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cpu-x"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A Free software that gathers information on CPU, motherboard and more"
+distro_pkg:
+  alpine:
+    - "cpu-x"
+  archlinux:
+    aur:
+      - "cpu-x"
+      - "cpu-x-git"
+  deb:
+    - "cpu-x"    
+  nixpkgs:
+    - "cpu-x"
+homepage:
+  - "https://thetumultuousunicornofdarkness.github.io/CPU-X/"
+  - "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+license:
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv3"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cpu-x"
+src_url:
+  - "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+tag:
+  - "debug"
+  - "Development/Other"
+  - "extra/tool"
+  - "Monitoring"
+  - "sys-apps"
+  - "system"
+  - "System/Kernel"
+  - "system.utils"
+  - "System/X11/Utilities"
+  - "sysutils"
+  - "Utilities"
+  - "x11"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

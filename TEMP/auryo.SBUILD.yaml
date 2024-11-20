@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "auryo"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A SoundCloud client for your desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "auryo"
+homepage:
+  - "https://auryo.com/"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3.0"
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "auryo"
+src_url:
+  - "https://github.com/Superjo149/auryo/"
+tag:
+  - "Music"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

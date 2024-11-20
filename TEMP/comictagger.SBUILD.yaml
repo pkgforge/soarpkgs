@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "comictagger"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A multi-platform app for writing metadata to digital comics"
+distro_pkg:
+  archlinux:
+    aur:
+      - "comictagger"
+homepage:
+  - "https://github.com/comictagger/comictagger"
+license:
+  - "Apache"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "comictagger"
+src_url:
+  - "https://github.com/comictagger/comictagger"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

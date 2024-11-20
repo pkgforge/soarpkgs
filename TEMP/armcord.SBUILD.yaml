@@ -1,0 +1,38 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "armcord"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Custom lightweight Discord client designed to enhance your experience"
+homepage:
+  - "https://github.com/ArmCord/ArmCord"
+license:
+  - "OSL-3.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "armcord"
+src_url:
+  - "https://github.com/ArmCord/ArmCord"
+tag:
+  - "Applications/Internet"
+  - "arm"
+  - "network"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

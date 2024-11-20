@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cpod"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A simple, beautiful podcast app"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "cpod"
+      - "cpod-appimage"
+      - "cpod-git"
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - "https://github.com/z-------------/CPod"
+license:
+  - "Apache"
+  - "Apache-2.0"
+  - "LGPL"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cpod"
+src_url:
+  - "https://github.com/z-------------/CPod"
+tag:
+  - "audio"
+  - "electron"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

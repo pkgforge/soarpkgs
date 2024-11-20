@@ -53,7 +53,7 @@ tag:
   - "video"
 x_exec:
   shell: bash
-  pkgver:
+  pkgver: |
     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/vlc/-/raw/main/PKGBUILD" | sed -n 's/^_vlcver=//p' | tr -d '[:space:]'
   run: |
     #Download

@@ -1,0 +1,37 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bodhi"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A modular framework that facilitates publishing software updates"
+homepage:
+  - "https://fedorahosted.org/bodhi"
+  - "https://github.com/fedora-infra/bodhi"
+license:
+  - "GPLv2+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bodhi"
+src_url:
+  - "https://github.com/bodhiproject/bodhi-app"
+tag:
+  - "Applications/Internet"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

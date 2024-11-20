@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bitfighter"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A fast-paced team-based outer-space multi-player combat game"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bitfighter"
+homepage:
+  - "https://bitfighter.org"
+license:
+  - "GPL"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPLv2+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bitfighter"
+src_url:
+  - "https://bitfighter.org"
+tag:
+  - "Amusements/Games/Action/Arcade"
+  - "Games/Arcade"
+  - "games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

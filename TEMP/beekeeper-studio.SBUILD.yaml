@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "beekeeper-studio"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more"
+distro_pkg:
+  archlinux:
+    aur:
+      - "beekeeper-studio"
+      - "beekeeper-studio-git"
+homepage:
+  - "https://beekeeperstudio.io"
+  - "https://docs.beekeeperstudio.io"
+license:
+  - "GPL-3.0-only"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "beekeeper-studio"
+src_url:
+  - "https://github.com/beekeeper-studio/beekeeper-studio"
+tag:
+  - "databases"
+  - "electron"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

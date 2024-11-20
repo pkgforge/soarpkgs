@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "freefilesync"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " FreeFileSync is a folder comparison and synchronization software that  creates and manages backup copies of all your important files. Instead  of copying every file every time, FreeFileSync determines the differences  between a source and a target folder and transfers only the minimum  amount of data needed. FreeFileSync is Open Source software, available  for Windows, macOS, and Linux."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "freefilesync"
+src_url:
+  - "https://github.com/hkneptune/FreeFileSynchkneptune/FreeFileSync"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

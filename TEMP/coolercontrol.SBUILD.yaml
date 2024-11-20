@@ -1,0 +1,44 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "coolercontrol"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A program to monitor and control your cooling devices"
+distro_pkg:
+  archlinux:
+    aur:
+      - "coolercontrol"
+      - "coolercontrol-bin"  
+  nixpkgs:
+    - "coolercontrol.coolercontrol-gui"
+homepage:
+  - "https://gitlab.com/coolercontrol/coolercontrol"
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "requires "coolercontrold" (with final "d") to work."
+repology:
+ - "coolercontrol"
+src_url:
+  - "https://gitlab.com/coolercontrol"
+tag:
+  - "coolercontrol"
+  - "Development/Debug"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

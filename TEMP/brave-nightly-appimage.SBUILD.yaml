@@ -1,0 +1,63 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "brave-nightly"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A browser focused on privacy that blocks ads and trackers by default (Nightly)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "brave-bin"
+      - "brave-beta-bin"
+      - "brave-nightly-bin"
+  nixpkgs:
+    - "brave"
+homepage:
+  - "https://brave.com"
+  - "https://github.com/brave/browser-laptop" 
+license:
+  - "BSD"
+  - "Freeware,BSD-3-Clause,GPL-3.0-only,..."
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-or-later"
+  - "MPL-2"
+  - "MPL-2.0"
+  - "MPL2"
+  - "MPLv2.0"
+  - "Mozilla Public License 2.0"
+  - "Mozilla Public License 2.0 "
+  - "Mozilla Public License, version 2.0"
+  - "custom:chromium"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "brave"
+src_url:
+  - "https://github.com/srevinsaju/Brave-AppImage"
+tag:
+  - "Applications/Internet"
+  - "Communications"
+  - "Networking/WWW"
+  - "browser"
+  - "debug"
+  - "network"
+  - "network.web.browser"
+  - "www-client"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

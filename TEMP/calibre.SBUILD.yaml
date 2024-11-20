@@ -1,0 +1,74 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "calibre"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A free and open source e-book library management application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "calibre-git"
+    extra:
+      - "calibre"  
+  deb:
+    - "calibre"    
+  nixpkgs:
+    - "calibre"
+homepage:
+  - "https://calibre-ebook.com"
+  - "https://github.com/kovidgoyal/calibre"
+license:
+  - "GNU General Public License, version 3.0"
+  - "GNU GPLv3"
+  - "GPL"
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only AND LicenseRef-Fedora-Public-Domain AND BSD-3-clause AND Apache-2.0 AND PSF-2.0 AND ImageMagick"
+  - "GPL-3.0-or-later"
+  - "GPL-3+ GPL-3 GPL-2+ GPL-2 GPL-1+ LGPL-3+ LGPL-2.1+ LGPL-2.1 BSD MIT Old-MIT Apache-2.0 public-domain   CC-BY-3.0 OFL-1.1 PSF-2"
+  - "GPLv2"
+  - "GPLv3"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "calibre"
+src_url:
+  - "https://github.com/kovidgoyal/calibre"
+tag:
+  - "Applications/Multimedia"
+  - "app-text"
+  - "calibre"
+  - "debug"
+  - "deskutils"
+  - "doc"
+  - "ebook"
+  - "File"
+  - "Graphical"
+  - "Office"
+  - "Office/Utilities"
+  - "office.viewers"
+  - "Productivity/Other"
+  - "text"
+  - "Text"
+  - "textproc"
+  - "universe/text"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

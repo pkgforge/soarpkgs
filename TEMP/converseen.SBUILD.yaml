@@ -1,0 +1,58 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "converseen"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Batch image converter and resizer"
+distro_pkg:
+  archlinux:
+    extra:
+      - "converseen"
+  deb:
+    - "converseen"    
+  nixpkgs:
+    - "converseen"
+homepage:
+  - "https://converseen.fasterland.net/"
+  - "https://github.com/Faster3ck/Converseen"
+license:
+  - "GNU GPLv3"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL3"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv3"
+  - "GPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "converseen"
+src_url:
+  - "https://github.com/Faster3ck/ConverseenFaster3ck/Converseen"
+tag:
+  - "Amusements/Graphics"
+  - "graphics"
+  - "Graphics"
+  - "Graphics/Editors"
+  - "media-gfx"
+  - "Productivity/Graphics/Convertors"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

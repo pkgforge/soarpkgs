@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cabal-desktop"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Desktop client for Cabal, the p2p/decentralized/local-first chat platform"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cabal-desktop-git"
+homepage:
+  - "https://github.com/cabal-club/cabal-desktop"
+license:
+  - "AGPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cabal-desktop"
+src_url:
+  - "https://github.com/cabal-club/cabal-desktop"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

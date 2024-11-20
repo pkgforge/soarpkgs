@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "blobdrop"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Drag and drop files directly out of the terminal"
+distro_pkg:
+  archlinux:
+    aur:
+      - "blobdrop-git"  
+  nixpkgs:
+    - "blobdrop"
+homepage:
+  - "https://github.com/vimpostor/blobdrop"
+license:
+  - "GPL-3.0-only"
+  - "GPL3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "blobdrop"
+src_url:
+  - "https://github.com/vimpostor/blobdrop"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

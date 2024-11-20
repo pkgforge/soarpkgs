@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "carnet"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Carnet is a complete and rich note taking app for Android and Linux with sync capabilities"
+distro_pkg:
+  archlinux:
+    aur:
+      - "carnet"
+homepage:
+  - "https://github.com/PhieF/CarnetDocumentation"
+license:
+  - "GPLv3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "carnet"
+src_url:
+  - "https://getcarnet.app"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

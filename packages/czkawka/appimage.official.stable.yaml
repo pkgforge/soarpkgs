@@ -1,0 +1,55 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/czkawka/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "czkawka"
+pkg_id: "github.com.qarmin.czkawka.stable"
+pkg_type: "appimage"
+app_id: "com.github.qarmin.czkawka"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+ - "Utility"
+description: "Multi functional app to find duplicates, empty folders, similar images, broken files etc."
+distro_pkg:
+  alpine:
+    - "czkawka"
+  archlinux:
+    aur:
+      - "czkawka"
+      - "czkawka-git"
+  debian:
+    - "czkawka"    
+  nixpkgs:
+    - "czkawka"
+homepage:
+  - "https://github.com/qarmin/czkawka"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - "Officially Created AppImage. Check/Report @ https://github.com/qarmin/czkawka"
+repology:
+ - "czkawka"
+src_url:
+  - "https://github.com/qarmin/czkawka"
+tag:
+  - "cleaner"
+  - "File"
+  - "system.utils"
+  - "sysutils"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/qarmin/czkawka/releases/latest?per_page=100" | jq -r '.tag_name'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        ;;
+      x86_64)
+        soar dl "https://github.com/qarmin/czkawka" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

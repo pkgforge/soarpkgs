@@ -1,0 +1,65 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dunst"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Customizable and lightweight notification-daemon"
+distro_pkg:
+  alpine:
+    - "dunst"
+  archlinux:
+    aur:
+      - "dunst-git"
+    extra:
+      - "dunst"  
+  deb:
+    - "dunst"    
+  nixpkgs:
+    - "dunst"
+homepage:
+  - "https://dunst-project.org/"
+  - "https://github.com/dunst-project/dunst"
+license:
+  - "BSD"
+  - "BSD-3-Clause"
+  - "BSD and MIT"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dunst"
+src_url:
+  - "https://github.com/Samueru-sama/dunst-AppImage"
+tag:
+  - "debug"
+  - "desktop"
+  - "desktop.i3"
+  - "extra/x11"
+  - "Graphical"
+  - "service"
+  - "System/GUI/Other"
+  - "System/Libraries"
+  - "sysutils"
+  - "universe/x11"
+  - "User"
+  - "utils"
+  - "x11"
+  - "x11-apps"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

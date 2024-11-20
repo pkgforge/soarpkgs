@@ -1,0 +1,47 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "chrysalis"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A graphical configurator for Kaleidoscope-powered keyboards"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "chrysalis"
+      - "chrysalis-git"
+  nixpkgs:
+    - "chrysalis"
+homepage:
+  - ""
+license:
+  - "GPL3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "chrysalis"
+src_url:
+  - "https://github.com/keyboardio/Chrysalis"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

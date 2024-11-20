@@ -1,0 +1,46 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "nordvpn-appimage"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " NordVPN Linux (nordvpn-linux), a nicer way to connect to NordVPN on Linux. Be warned, this app will make connecting to NordVPN as easy as on windows and macos.  It uses Electron and NordVPN-cli under the hood, so be sure that NordVPN is installed on the system."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "nordvpn-appimage"
+src_url:
+  - "https://github.com/martijnmichel/nordvpn-linuxmartijnmichel/nordvpn-linux"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

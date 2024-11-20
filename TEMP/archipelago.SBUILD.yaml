@@ -1,0 +1,39 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "archipelago"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Multi-Game Randomizer and Server"
+distro_pkg: 
+  nixpkgs:
+    - "archipelago"
+homepage:
+  - "https://archipelago.gg"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "archipelago"
+src_url:
+  - "https://github.com/ArchipelagoMW/Archipelago"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

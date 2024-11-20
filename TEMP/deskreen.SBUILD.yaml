@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deskreen"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Turn any device into a secondary screen for your computer"
+distro_pkg:
+  archlinux:
+    aur:
+      - "deskreen"
+      - "deskreen-bin"   
+  nixpkgs:
+    - "deskreen"
+homepage:
+  - "https://github.com/pavlobu/deskreen"
+license:
+  - "Affero GPLv3"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deskreen"
+src_url:
+  - "https://github.com/pavlobu/deskreen"
+tag:
+  - "electron"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

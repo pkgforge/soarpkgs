@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "arma3-unix-launcher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " ArmA 3 Launcher for Linux and Mac."
+distro_pkg:
+  archlinux:
+    aur:
+      - "arma3-unix-launcher-bin" 
+  nixpkgs:
+    - "arma3-unix-launcher"
+homepage:
+  - "https://github.com/muttleyxd/arma3-unix-launcher"
+license:
+  - "MIT"
+  - "Unfree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "arma3-unix-launcher"
+src_url:
+  - "https://github.com/muttleyxd/arma3-unix-launcher"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

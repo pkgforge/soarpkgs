@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "bulkurlopener"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An application that provides the user with multiple utilities to help with managing and using large amounts of urls"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bulkurlopener-bin"
+homepage:
+  - "https://bulkurlopener.com"
+  - "https://github.com/EuanRiggans/BulkURLOpener"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "bulkurlopener"
+src_url:
+  - "https://github.com/EuanRiggans/BulkURLOpener"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cromagrally"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "The wildest racing game since man invented the wheel!"
+distro_pkg:  
+  nixpkgs:
+    - "cro-mag-rally"
+homepage:
+  - "https://github.com/jorio/CroMagRally"
+  - "https://pangeasoft.net/cromag/"
+license:
+  - "CC-BY-SA-4.0"
+  - "Creative Commons Attribution-NonCommercialShare Alike 4.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cromagrally"
+src_url:
+  - "https://github.com/jorio/CroMagRally"
+tag:
+  - "game/driving"
+  - "games"
+  - "Games/Arcade"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

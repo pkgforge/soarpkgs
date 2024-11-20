@@ -1,0 +1,54 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "clipgrab"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Libre software for downloading videos from popular websites"
+distro_pkg:
+  archlinux:
+    extra:
+      - "clipgrab"   
+  nixpkgs:
+    - "clipgrab"
+homepage:
+  - "https://clipgrab.org"
+license:
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL-3"
+  - "GPL3"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv3"
+  - "GPLv3+"
+  - "GPLv3 and Non-Commercial Use Only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "clipgrab"
+src_url:
+  - "https://clipgrab.org"
+tag:
+  - "net"
+  - "network"
+  - "Productivity/Multimedia/Video/Editors"
+  - "Video"
+  - "Video/Editors"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

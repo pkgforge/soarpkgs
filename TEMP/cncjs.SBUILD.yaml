@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cncjs"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Web-based interface for CNC controllers running Grbl, Marlin, Smoothieware, or TinyG"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cncjs"
+homepage:
+  - "https://cnc.js.org"
+  - "https://github.com/cncjs/cncjs"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cncjs"
+src_url:
+  - "https://github.com/cncjs/cncjs"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

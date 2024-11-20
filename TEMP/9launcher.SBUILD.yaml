@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "9launcher"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An actively maintained and cross platform remake of Touhou Relauncher"
+distro_pkg:
+  archlinux:
+    aur:
+      - "9launcher"
+homepage:
+  - "https://github.com/wearrrrr/9Launcher"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "9launcher"
+src_url:
+  - "https://github.com/wearrrrr/9Launcher"
+tag:
+  - ""
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

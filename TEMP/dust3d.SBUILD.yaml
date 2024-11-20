@@ -1,0 +1,45 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dust3d"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Open-source 3D modeling software"
+distro_pkg:
+  archlinux:
+    aur:
+      - "dust3d"
+      - "dust3d-git"
+homepage:
+  - "https://dust3d.org/"
+  - "https://github.com/huxingyi/dust3d"
+license:
+  - "MIT"
+  - "MITL"
+  - "MIT License"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dust3d"
+src_url:
+  - "https://github.com/huxingyi/dust3d"
+tag:
+  - "graphics"
+  - "Graphics/3D"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

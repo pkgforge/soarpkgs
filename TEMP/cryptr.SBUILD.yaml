@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cryptr"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "GUI for Hashicorps Vault"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cryptr-bin"
+homepage:
+  - "https://github.com/adobe/cryptr"
+license:
+  - "Apache"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cryptr"
+src_url:
+  - "https://github.com/adobe/cryptr"
+tag:
+  - "gui"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

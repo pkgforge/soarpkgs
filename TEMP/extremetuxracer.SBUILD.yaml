@@ -1,0 +1,64 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "extremetuxracer"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Open source racing game featuring Tux the Linux Penguin"
+distro_pkg:
+  alpine:
+    - "extremetuxracer"
+  archlinux:
+    aur:
+      - "extremetuxracer"
+  deb:
+    - "extremetuxracer"    
+  nixpkgs:
+    - "extremetuxracer"
+homepage:
+  - "https://sourceforge.net/p/extremetuxracer/wiki/Home/"
+  - "https://sourceforge.net/projects/extremetuxracer"
+  - "https://github.com/RKSimon/extremetuxracer"
+license:
+  - "GPL"
+  - "GPL 2"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "spdx:GPL-2.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "extremetuxracer"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/3D/Race"
+  - "games"
+  - "games-action"
+  - "Games/Arcade"
+  - "Graphical"
+  - "tux"
+  - "universe/games"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

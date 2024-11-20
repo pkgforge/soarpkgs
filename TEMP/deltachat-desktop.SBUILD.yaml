@@ -1,0 +1,47 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "deltachat-desktop"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Email-based instant messaging for Desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "deltachat-desktop-git"
+    extra:
+      - "deltachat-desktop"    
+  nixpkgs:
+    - "deltachat-desktop"
+homepage:
+  - "https://delta.chat/"
+  - "https://github.com/deltachat/deltachat-desktop"
+license:
+  - "GPL"
+  - "GPL-3.0-or-later"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "deltachat-desktop"
+src_url:
+  - "https://github.com/deltachat/deltachat-desktop"
+tag:
+  - "autocrypt"
+  - "network"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

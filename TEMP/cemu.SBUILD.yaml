@@ -1,0 +1,51 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cemu"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "An emulator for the Nintendo Wii U"
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - "cemu"
+      - "cemu-bin"
+      - "cemu-git"
+  nixpkgs:
+    - "cemu"
+homepage:
+  - "https://cemu.info"
+license:
+  - "MPL"
+  - "MPL2"
+  - "MPL-2.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cemu"
+src_url:
+  - "https://github.com/cemu-project/Cemu"
+tag:
+  - "debug"
+  - "Emulators/Games"
+  - "extra/emulator"
+  - "games.emulator"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

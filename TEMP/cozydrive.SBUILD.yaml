@@ -1,0 +1,40 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cozydrive"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Cozy Drive is a synchronization tool for your files and folders with Cozy Cloud"
+distro_pkg: 
+  nixpkgs:
+    - "cozy-drive"
+homepage:
+  - "https://cozy.io/"
+  - "https://cozy-labs.github.io/cozy-desktop/"
+license:
+  - "GPL-3.0-only"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cozydrive"
+src_url:
+  - "https://github.com/cozy-labs/cozy-desktop"
+tag:
+  - "backup"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

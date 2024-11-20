@@ -1,0 +1,43 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cutepeaks"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A simple viewer for Sanger sequencing files"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cutepeaks"
+      - "cutepeaks-git"
+homepage:
+  - "https://labsquare.github.io/CutePeaks/"
+  - "https://github.com/labsquare/CutePeaks"
+license:
+  - "GPL3"
+  - "GPL-3.0"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cutepeaks"
+src_url:
+  - "https://github.com/labsquare/CutePeaks"
+tag:
+  - "Productivity/Scientific/Biology"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

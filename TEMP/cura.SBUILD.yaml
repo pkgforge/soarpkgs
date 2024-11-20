@@ -1,0 +1,60 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cura"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "State-of-the-art slicer app to prepare your 3D models for your 3D printer"
+distro_pkg:
+  alpine:
+    - "cura"
+  archlinux:
+    aur:
+      - "cura"
+  deb:
+    - "cura"    
+  nixpkgs:
+    - "cura"
+homepage:
+  - "https://github.com/Ultimaker/Cura"
+license:
+  - "AGPL-3.0"
+  - "AGPLv3+"
+  - "AGPLv3 and CC-BY-SA"
+  - "GNU Lesser General Public License, version 3.0"
+  - "GPL3"
+  - "LGPL"
+  - "LGPL3"
+  - "LGPL-3.0-only"
+  - "LGPL-3.0-or-later"
+  - "LGPLv3+"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cura"
+src_url:
+  - "https://github.com/Ultimaker/Cura"
+tag:
+  - "3d-printing"
+  - "cad"
+  - "Engineering"
+  - "Hardware/Printing"
+  - "office"
+  - "System/Printing"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

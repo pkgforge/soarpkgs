@@ -1,0 +1,92 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "firefox"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Firefox is a powerful, extensible web browser with support for modern web application technologies."
+distro_pkg:
+  alpine:
+    - ""
+  archlinux:
+    aur:
+      - ""
+  deb:
+    - ""    
+  nixpkgs:
+    - ""
+homepage:
+  - ""
+license:
+  - "GPL"
+  - "gpl2"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-only AND MPL-2.0"
+  - "GPL LGPL MPL"
+  - "GPL, LGPL, MPL 1.1"
+  - "GPLv2"
+  - "GPLv2+"
+  - "LGPL"
+  - "LGPL-2.1"
+  - "LGPL-2.1-or-later"
+  - "LicenseRef-Callaway-MPLv1.1 OR GPL-2.0-or-later OR LicenseRef-Callaway-LGPLv2+"
+  - "LicenseRef-Public-Domain"
+  - "Mozilla Firefox license 2.0"
+  - "Mozilla Public License 2.0 "
+  - "Mozilla Public License, version 2.0"
+  - "mpl"
+  - "MPL"
+  - "MPL-1.1"
+  - "MPL-1.1 or GPL-2.0-or-later or LGPL-2.0-or-later"
+  - "MPL2"
+  - "MPL-2.0"
+  - "MPL-2.0, GPL-2 and LGPL-2.1"
+  - "MPL/GPL/LGPL"
+  - "MPLv1+"
+  - "MPLv1.1 or GPLv2+ or LGPLv2+"
+  - "NPL-1.1"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "firefox"
+src_url:
+  - "https://github.com/"
+tag:
+  - "Applications/Internet"
+  - "browser"
+  - "Communications"
+  - "debug"
+  - "devel"
+  - "development"
+  - "extra/office"
+  - "Graphical"
+  - "localization"
+  - "meta"
+  - "mozilla"
+  - "network"
+  - "Networking/WWW"
+  - "network.web.browser"
+  - "net-www"
+  - "Productivity/Networking/Web/Browsers"
+  - "web"
+  - "www"
+  - "www-client"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

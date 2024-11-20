@@ -1,0 +1,42 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "escrcpy"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "📱 Graphical Scrcpy to display and control Android, devices powered by Electron"
+distro_pkg:
+  archlinux:
+    aur:
+      - "escrcpy"
+      - "escrcpy-bin"
+homepage:
+  - "https://github.com/viarotel-org/escrcpy"
+license:
+  - "Apache-2.0"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "escrcpy"
+src_url:
+  - "https://github.com/viarotel-org/escrcpy"
+tag:
+  - "adb"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,71 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "cherrytree"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Hierarchical note taking application featuring rich text and syntax highlighting"
+distro_pkg:
+  alpine:
+    - "cherrytree"
+  archlinux:
+    aur:
+      - "cherrytree-git"
+    extra:
+      - "cherrytree"  
+  deb:
+    - "cherrytree"    
+  nixpkgs:
+    - "cherrytree"
+homepage:
+  - "https://www.giuspen.com/cherrytree/"
+  - "https://github.com/giuspen/cherrytree"
+license:
+  - "GNU GPLv3"
+  - "GPL2"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL3"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-2.1-only"
+  - "GPLv2+"
+  - "GPLv3+"
+  - "LGPL-2.1"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "cherrytree"
+src_url:
+  - "https://github.com/giuspen/cherrytree"
+tag:
+  - "Applications/Productivity"
+  - "app-text"
+  - "debug"
+  - "deskutils"
+  - "editor"
+  - "editors"
+  - "office"
+  - "Office"
+  - "office.notes"
+  - "Office/Utilities"
+  - "Productivity/Office/Other"
+  - "universe/editors"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

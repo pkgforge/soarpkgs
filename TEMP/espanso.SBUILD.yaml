@@ -1,0 +1,61 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "espanso"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "A cross-platform Text Expander written in Rust"
+distro_pkg:
+  archlinux:
+    aur:
+      - "espanso"
+      - "espanso-git"
+  nixpkgs:
+    - "espanso"
+homepage:
+  - "https://espanso.org/"
+  - "https://github.com/espanso/espanso"
+license:
+  - "0BSD"
+  - "Apache-2.0"
+  - "Apache-2.0-with-LLVM-exceptions"
+  - "Boost-1.0"
+  - "BSD"
+  - "BSD-2"
+  - "CC0-1.0"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "ISC"
+  - "MIT"
+  - "MPL-2.0"
+  - "Unlicense"
+  - "ZLIB"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "espanso"
+src_url:
+  - "https://github.com/espanso/espanso"
+tag:
+  - "Development/Debug"
+  - "gui-apps"
+  - "productivity"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

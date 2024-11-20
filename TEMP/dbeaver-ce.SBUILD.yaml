@@ -1,0 +1,58 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "dbeaver-ce"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: "Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more"
+distro_pkg:
+  archlinux:
+    aur:
+      - "dbeaver-git"
+    extra:
+      - "dbeaver"  
+homepage:
+  - "https://dbeaver.io/"
+  - "https://github.com/dbeaver/dbeaver/"
+license:
+  - "Apache-2.0"
+  - "Apache License"
+  - "Apache License 2.0"
+  - "BSD"
+  - "EPL-1.0"
+  - "GNU GPL"
+  - "GPLv2"
+  - "GPLv3"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "dbeaver-ce"
+src_url:
+  - "https://github.com/valicm/dbeaver-ce-appimage"
+tag:
+  - "apache-hive"
+  - "database"
+  - "Databases"
+  - "debug"
+  - "dev-db"
+  - "devel"
+  - "Development"
+  - "Development/Tools"
+  - "Graphical"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}

@@ -1,0 +1,41 @@
+#!/SBUILD ver @v0.4.5    
+#SELF:
+_disabled: false
+
+pkg: "biliup-app"
+pkg_id: ""
+pkg_type: "appimage"
+build_util:
+  - "7z"
+  - "curl"
+  - "eget"
+  - "jq"
+  - "rsync"
+  - "squishy-cli"
+  - "wget"
+category:
+  - ""
+description: " Bilibili uploader, supports Windows, Linux, macOS."
+distro_pkg:
+  archlinux:
+    aur:
+      - "biliup-app-appimage"
+      - "biliup-app-bin"
+homepage:
+  - "https://github.com/ForgQi/biliup-app"
+license:
+  - ""
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+ - ""
+repology:
+ - "biliup-app"
+src_url:
+  - "https://github.com/ForgQi/biliup-app"
+tag:
+  - "bilibili"
+x_exec:
+  shell: bash
+  run: |
+    {doodly-doooo}
