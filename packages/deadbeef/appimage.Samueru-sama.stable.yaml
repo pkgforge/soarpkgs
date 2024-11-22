@@ -8,6 +8,7 @@ pkg_type: "appimage"
 app_id: "io.sourceforge.deadbeefStable"
 build_util:
   - "curl#bin"
+  - "jq#bin"
   - "squishy-cli#bin"
 category:
  - "Music"
