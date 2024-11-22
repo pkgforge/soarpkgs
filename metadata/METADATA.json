@@ -966,6 +966,138 @@
     },
     {
       "_disabled": false,
+      "pkg": "brave",
+      "pkg_id": "github.com.srevinsaju.Firefox-Appimage.esr",
+      "pkg_type": "appimage",
+      "app_id": "org.mozilla.firefox",
+      "description": "A web browser built from Firefox source tree (ESR)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "version": "firefox-esr-v128.4.r20241021193311",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/firefox/appimage.srevinsaju.esr.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "firefox"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "homepage": [
+        "http://www.mozilla.com",
+        "https://hg.mozilla.org/mozilla-central",
+        "https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/firefox/appimage.srevinsaju.esr.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser",
+        "Networking/WWW",
+        "network.web.browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "brave",
+      "pkg_id": "github.com.srevinsaju.Firefox-Appimage.dev",
+      "pkg_type": "appimage",
+      "app_id": "org.mozilla.firefox",
+      "description": "A web browser built from Firefox source tree (DEV)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "version": "firefox-devedition-v133.0.r20241115091843",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/firefox/appimage.srevinsaju.dev.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "firefox"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "homepage": [
+        "http://www.mozilla.com",
+        "https://hg.mozilla.org/mozilla-central",
+        "https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/firefox/appimage.srevinsaju.dev.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser",
+        "Networking/WWW",
+        "network.web.browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "brave",
+      "pkg_id": "github.com.srevinsaju.Firefox-Appimage.nightly",
+      "pkg_type": "appimage",
+      "app_id": "org.mozilla.firefox",
+      "description": "A web browser built from Firefox source tree (Nightly)",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "version": "firefox-nightly-v134.0.r20241121092921",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/firefox/appimage.srevinsaju.nightly.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "firefox"
+      ],
+      "src_url": [
+        "https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "homepage": [
+        "http://www.mozilla.com",
+        "https://hg.mozilla.org/mozilla-central",
+        "https://github.com/srevinsaju/Firefox-Appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/firefox/appimage.srevinsaju.nightly.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "browser",
+        "Networking/WWW",
+        "network.web.browser"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "vlc",
       "pkg_id": "github.com.ivan-hc.VLC-appimage.stable",
       "pkg_type": "appimage",
@@ -1430,6 +1562,53 @@
         "games-emulation",
         "games.emulator",
         "System/Emulators/Other"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "dunst",
+      "pkg_id": "github.com.Samueru-sama.dunst-AppImage.stable",
+      "pkg_type": "appimage",
+      "app_id": "io.sourceforge.dunstStable",
+      "description": "Lightweight and customizable notification daemon",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/Samueru-sama/dunst-AppImage"
+      ],
+      "version": "1.11.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/dunst/appimage.Samueru-sama.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "dunst"
+      ],
+      "src_url": [
+        "https://github.com/Samueru-sama/dunst-AppImage"
+      ],
+      "homepage": [
+        "https://dunst-project.org",
+        "https://github.com/dunst-project/dunst",
+        "https://github.com/Samueru-sama/dunst-AppImage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/dunst/appimage.Samueru-sama.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "System",
+        "Monitor"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "desktop",
+        "desktop.i3",
+        "sysutils",
+        "utils",
+        "x11-apps"
       ]
     },
     {
