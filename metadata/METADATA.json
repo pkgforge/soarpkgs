@@ -380,6 +380,49 @@
     },
     {
       "_disabled": false,
+      "pkg": "heroic",
+      "pkg_id": "github.com.Heroic-Games-Launcher.HeroicGamesLauncher.stable",
+      "pkg_type": "appimage",
+      "app_id": "com.heroicgameslauncher.hgl",
+      "description": "A Native GOG, Epic, and Amazon Games Launcher",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+      ],
+      "version": "v2.15.2",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/heroicgameslauncher/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "heroicgameslauncher"
+      ],
+      "src_url": [
+        "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+      ],
+      "homepage": [
+        "https://heroicgameslauncher.com",
+        "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/heroicgameslauncher/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Game",
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "gaming",
+        "launcher"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "duckstation",
       "pkg_id": "github.com.stenzek.duckstation.stable",
       "pkg_type": "appimage",
@@ -766,6 +809,57 @@
       "snapshots": [],
       "tag": [
         "browser"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "gimp",
+      "pkg_id": "github.com.ivan-hc.GIMP-appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.gimp.GIMP",
+      "description": "The GNU Image Manipulation Program",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/GIMP-appimage"
+      ],
+      "version": "2.10.38",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/gimp/appimage.ivan-hc.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "gimp"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/GIMP-appimage"
+      ],
+      "homepage": [
+        "https://www.gimp.org",
+        "https://gitlab.gnome.org/GNOME/gimp",
+        "https://github.com/ivan-hc/GIMP-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/gimp/appimage.ivan-hc.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Graphics",
+        "ImageProcessing"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Graphics",
+        "editor",
+        "extra/multimedia",
+        "Graphical",
+        "Graphics",
+        "Graphics/Editors",
+        "media-gfx",
+        "Photo",
+        "Productivity/Graphics/Bitmap"
       ]
     },
     {
@@ -1248,6 +1342,51 @@
     },
     {
       "_disabled": false,
+      "pkg": "gnome-boxes",
+      "pkg_id": "github.com.ivan-hc.Boxes-appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.gnome.Boxes",
+      "description": "Simple GNOME application to access remote or virtual systems",
+      "note": [
+        "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/Boxes-appimage"
+      ],
+      "version": "47.0",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/gnome-boxes/appimage.ivan-hc.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "gnome-boxes"
+      ],
+      "src_url": [
+        "https://github.com/ivan-hc/Boxes-appimage"
+      ],
+      "homepage": [
+        "https://apps.gnome.org/Boxes/",
+        "https://gitlab.gnome.org/GNOME/gnome-boxes",
+        "https://github.com/ivan-hc/Boxes-appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/gnome-boxes/appimage.ivan-hc.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Emulator",
+        "Monitor"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Emulators",
+        "Graphical",
+        "System/GUI/GNOME"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "acreom",
       "pkg_id": "github.com.Acreom.releases.stable",
       "pkg_type": "appimage",
@@ -1377,6 +1516,51 @@
         "emulators",
         "game",
         "system"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "librewolf",
+      "pkg_id": "gitlab.com.librewolf-community.browser.appimage.stable",
+      "pkg_type": "appimage",
+      "app_id": "io.gitlab.librewolf-community",
+      "description": "A fork of Firefox, focused on privacy, security and freedom",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://gitlab.com/librewolf-community/browser/appimage"
+      ],
+      "version": "v132.0.2-1",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/librewolf/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "librewolf"
+      ],
+      "src_url": [
+        "https://gitlab.com/librewolf-community/browser/appimage"
+      ],
+      "homepage": [
+        "https://librewolf.net",
+        "https://librewolf-community.gitlab.io",
+        "https://gitlab.com/librewolf-community/browser/appimage"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/librewolf/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Internet",
+        "browser",
+        "Networking/WWW",
+        "www-client"
       ]
     },
     {
@@ -1566,6 +1750,53 @@
     },
     {
       "_disabled": false,
+      "pkg": "imagemagick",
+      "pkg_id": "github.com.ImageMagick.ImageMagick.stable",
+      "pkg_type": "appimage",
+      "app_id": "",
+      "description": "FOSS suite for editing and manipulating Digital Images & Files",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/ImageMagick/ImageMagick"
+      ],
+      "version": "7.1.1-41",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/imagemagick/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "imagemagick"
+      ],
+      "src_url": [
+        "https://github.com/ImageMagick/ImageMagick"
+      ],
+      "homepage": [
+        "https://imagemagick.org",
+        "https://github.com/ImageMagick/ImageMagick"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/imagemagick/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "ConsoleOnly",
+        "Graphics",
+        "ImageProcessing",
+        "Utility"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Graphics",
+        "Graphics/Editors",
+        "Photo",
+        "Productivity/Graphics/Other"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "dunst",
       "pkg_id": "github.com.Samueru-sama.dunst-AppImage.stable",
       "pkg_type": "appimage",
@@ -1656,6 +1887,50 @@
     },
     {
       "_disabled": false,
+      "pkg": "firedragon",
+      "pkg_id": "gitlab.com.garuda-linux.firedragon.stable",
+      "pkg_type": "appimage",
+      "app_id": "org.garudalinux.firedragon",
+      "description": "A browser based on Floorp browser",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://gitlab.com/garuda-linux/firedragon/builder"
+      ],
+      "version": "v11.20.0-1",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/firedragon/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "firedragon"
+      ],
+      "src_url": [
+        "https://gitlab.com/garuda-linux/firedragon/builder"
+      ],
+      "homepage": [
+        "https://firedragon.garudalinux.org",
+        "https://gitlab.com/garuda-linux/firedragon/builder"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/firedragon/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "WebBrowser"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "Applications/Internet",
+        "browser",
+        "Networking/WWW",
+        "www-client"
+      ]
+    },
+    {
+      "_disabled": false,
       "pkg": "steam",
       "pkg_id": "github.com.ivan-hc.Steam-appimage",
       "pkg_type": "appimage",
@@ -1698,6 +1973,51 @@
         "Games/Other",
         "distribution",
         "games"
+      ]
+    },
+    {
+      "_disabled": false,
+      "pkg": "freetube",
+      "pkg_id": "github.com.FreeTubeApp.FreeTube.stable",
+      "pkg_type": "appimage",
+      "app_id": "io.freetubeapp.FreeTube",
+      "description": "An Open Source YouTube app for privacy",
+      "note": [
+        "Officially Created AppImage. Check/Report @ https://github.com/FreeTubeApp/FreeTube"
+      ],
+      "version": "v0.22.0-beta",
+      "download_url": "https://soarpkgs.pkgforge.dev/packages/freetube/appimage.official.stable.yaml.validated",
+      "size": "",
+      "bsum": "",
+      "shasum": "",
+      "build_date": "",
+      "repology": [
+        "freetube"
+      ],
+      "src_url": [
+        "https://github.com/FreeTubeApp/FreeTube"
+      ],
+      "homepage": [
+        "https://freetubeapp.io",
+        "https://github.com/FreeTubeApp/FreeTube"
+      ],
+      "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/freetube/appimage.official.stable.yaml.validated",
+      "build_log": "",
+      "appstream": "",
+      "category": [
+        "Player",
+        "TV"
+      ],
+      "desktop": "",
+      "icon": "",
+      "license": [],
+      "provides": [],
+      "snapshots": [],
+      "tag": [
+        "multimedia",
+        "privacy",
+        "Video",
+        "youtube"
       ]
     },
     {
