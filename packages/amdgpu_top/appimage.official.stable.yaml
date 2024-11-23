@@ -10,8 +10,8 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
- - "Monitor"
- - "Utility"
+  - "Monitor"
+  - "Utility"
 description: "Tool to display AMDGPU usage"
 distro_pkg:
   archlinux:
@@ -25,9 +25,9 @@ homepage:
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
- - "Officially Created AppImage. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"
+  - "Officially Created AppImage. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"
 repology:
- - "amdgpu-top"
+  - "amdgpu-top"
 src_url:
   - "https://github.com/Umio-Yasuno/amdgpu_top"
 tag:

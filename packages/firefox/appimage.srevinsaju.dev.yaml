@@ -11,7 +11,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
- - "WebBrowser"
+  - "WebBrowser"
 description: "A web browser built from Firefox source tree (DEV)"
 distro_pkg:
   alpine:
@@ -29,9 +29,9 @@ homepage:
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
- - "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Firefox-Appimage"
+  - "Community Created AppImage. Check/Report @ https://github.com/srevinsaju/Firefox-Appimage"
 repology:
- - "firefox"
+  - "firefox"
 src_url:
   - "https://github.com/srevinsaju/Firefox-Appimage"
 tag:

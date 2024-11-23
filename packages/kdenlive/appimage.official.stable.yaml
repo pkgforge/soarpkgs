@@ -11,7 +11,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
- - "AudioVideoEditing"
+  - "AudioVideoEditing"
 description: "FOSS video editor, based on MLT Framework and KDE Frameworks"
 distro_pkg:
   alpine:
@@ -33,9 +33,9 @@ homepage:
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
- - "Officially Created AppImage. Check/Report @ https://invent.kde.org/multimedia/kdenlive"
+  - "Officially Created AppImage. Check/Report @ https://invent.kde.org/multimedia/kdenlive"
 repology:
- - "kdenlive"
+  - "kdenlive"
 src_url:
   - "https://kdenlive.org/en/download/"
 tag:

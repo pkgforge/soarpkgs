@@ -1,0 +1,55 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/librewolf/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "librewolf"
+pkg_id: "gitlab.com.librewolf-community.browser.appimage.stable"
+pkg_type: "appimage"
+app_id: "io.gitlab.librewolf-community"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "WebBrowser"
+description: "A fork of Firefox, focused on privacy, security and freedom"
+distro_pkg:
+  archlinux:
+    aur:
+      - "librewolf"
+      - "librewolf-bin"
+      - "librewolf-hg"
+  nixpkgs:
+    - "librewolf"
+homepage:
+  - "https://librewolf.net"
+  - "https://librewolf-community.gitlab.io"
+  - "https://gitlab.com/librewolf-community/browser/appimage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Officially Created AppImage. Check/Report @ https://gitlab.com/librewolf-community/browser/appimage"
+repology:
+  - "librewolf"
+src_url:
+  - "https://gitlab.com/librewolf-community/browser/appimage"
+tag:
+  - "Applications/Internet"
+  - "browser"
+  - "Networking/WWW"
+  - "www-client"
+x_exec:
+  shell: bash
+  pkgver: |
+    #curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/24386000/releases/" | jq -r '.[0].tag_name' | tr -d '[:space:]'
+    echo "librewolf-community/browser/appimage" | jq -Rr "@uri" | xargs -I "{}" curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/{}/releases" | jq -r 'sort_by(.released_at) | last | .tag_name' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        ;;
+      x86_64)
+        soar dl "https://gitlab.com/librewolf-community/browser/appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac
