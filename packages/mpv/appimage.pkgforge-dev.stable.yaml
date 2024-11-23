@@ -1,0 +1,61 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/mpv/appimage.pkgforge-dev.stable.yaml
+_disabled: false
+
+pkg: "mpv"
+pkg_id: "github.com.pkgforge-dev.mpv-AppImage.stable"
+pkg_type: "appimage"
+app_id: "io.mpv.Mpv"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Music"
+  - "Player"
+  - "TV"
+description: "🎥 Command line video player (AnyLinux)"
+distro_pkg:
+  alpine:
+    - "mpv"
+  archlinux:
+    aur:
+      - "mpv-full"
+      - "mpv-full-git"
+    extra:
+      - "mpv"  
+  nixpkgs:
+    - "mpv"
+homepage:
+  - "https://obsproject.com"
+  - "https://github.com/mpv-player/mpv"
+  - "https://github.com/pkgforge-dev/mpv-AppImage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/mpv-AppImage"
+repology:
+  - "mpv"
+src_url:
+  - "https://github.com/pkgforge-dev/mpv-AppImage"
+tag:
+  - "Graphical"
+  - "media-video"
+  - "Productivity/Multimedia/Video/Players"
+  - "Video"
+  - "Video/Utilities"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mpv-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/pkgforge-dev/mpv-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

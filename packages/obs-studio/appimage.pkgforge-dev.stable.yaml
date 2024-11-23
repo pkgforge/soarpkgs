@@ -1,0 +1,61 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/obs-studio/appimage.pkgforge-dev.stable.yaml
+_disabled: false
+
+pkg: "obs-studio"
+pkg_id: "github.com.pkgforge-dev.OBS-Studio-AppImage.stable"
+pkg_type: "appimage"
+app_id: "com.obsproject.Studio"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "AudioVideoEditing"
+  - "Recorder"
+description: "FOSS cross-platform screencasting and streaming app (AnyLinux)"
+distro_pkg:
+  alpine:
+    - "obs-studio"
+  archlinux:
+    aur:
+      - "obs-studio-git"
+    extra:
+      - "obs-studio"
+  debian:
+    - "obs-studio"    
+  nixpkgs:
+    - "obs-studio"
+homepage:
+  - "https://obsproject.com"
+  - "https://github.com/obsproject/obs-studio"
+  - "https://github.com/pkgforge-dev/OBS-Studio-AppImage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OBS-Studio-AppImage"
+repology:
+  - "obs-studio"
+src_url:
+  - "https://github.com/pkgforge-dev/OBS-Studio-AppImage"
+tag:
+  - "Graphical"
+  - "media-video"
+  - "Productivity/Multimedia/Video/Editors"
+  - "Video"
+  - "Video/Utilities"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/OBS-Studio-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

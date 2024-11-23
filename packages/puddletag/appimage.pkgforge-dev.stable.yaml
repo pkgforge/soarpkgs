@@ -1,0 +1,56 @@
+#!/SBUILD ver @v0.4.5
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/puddletag/appimage.pkgforge-dev.stable.yaml
+_disabled: false
+
+pkg: "puddletag"
+pkg_id: "github.com.pkgforge-dev.puddletag-AppImage.stable"
+pkg_type: "appimage"
+app_id: "net.puddletag.puddletag"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "AudioVideoEditing"
+  - "Music"
+description: "Powerful, simple, audio tag editor for GNU/Linux (AnyLinux)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "puddletag"
+      - "puddletag-git"
+  debian:
+    - "puddletag"    
+  nixpkgs:
+    - "puddletag"
+homepage:
+  - "https://docs.puddletag.net"
+  - "https://github.com/puddletag/puddletag"
+  - "https://github.com/pkgforge-dev/puddletag-AppImage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/puddletag-AppImage"
+repology:
+  - "puddletag"
+src_url:
+  - "https://github.com/pkgforge-dev/puddletag-AppImage"
+tag:
+  - "Applications/Multimedia"
+  - "Productivity/Multimedia/Sound/Utilities"
+  - "Sound/Utilities"
+x_exec:
+  shell: bash
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/puddletag-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/pkgforge-dev/puddletag-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

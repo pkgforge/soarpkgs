@@ -1,9 +1,9 @@
 #!/SBUILD ver @v0.4.5
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/deadbeef/appimage.Samueru-sama.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/deadbeef/appimage.pkgforge-dev.stable.yaml
 _disabled: false
 
 pkg: "deadbeef"
-pkg_id: "github.com.Samueru-sama.DeaDBeeF-AppImage.stable"
+pkg_id: "github.com.pkgforge-dev.DeaDBeeF-AppImage.stable"
 pkg_type: "appimage"
 app_id: "io.sourceforge.deadbeefStable"
 build_util:
@@ -13,7 +13,7 @@ build_util:
 category:
   - "Music"
   - "Player"
-description: "A Modular (Extensible with Plugins) Audio Player that can play & convert almost all Audio Formats (Stable)"
+description: "A Modular (Extensible with Plugins) Audio Player that can play & convert almost all Audio Formats (Stable) (AnyLinux)"
 distro_pkg:
   alpine:
     - "deadbeef"
@@ -25,15 +25,15 @@ distro_pkg:
 homepage:
   - "https://deadbeef.sourceforge.io"
   - "https://github.com/DeaDBeeF-Player/deadbeef"
-  - "https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+  - "https://github.com/pkgforge-dev/DeaDBeeF-AppImage"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
-  - "Community Created AppImage. Check/Report @ https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+  - "Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DeaDBeeF-AppImage"
 repology:
   - "deadbeef"
 src_url:
-  - "https://github.com/Samueru-sama/DeaDBeeF-AppImage"
+  - "https://github.com/pkgforge-dev/DeaDBeeF-AppImage"
 tag:
   - "audio"
   - "audio-player"
@@ -46,7 +46,7 @@ tag:
 x_exec:
   shell: bash
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Samueru-sama/DeaDBeeF-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -iv 'nightly' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/DeaDBeeF-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -iv 'nightly' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
@@ -55,6 +55,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/Samueru-sama/DeaDBeeF-AppImage" --match "appimage" --exclude "nightly" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        soar dl "https://github.com/pkgforge-dev/DeaDBeeF-AppImage" --match "appimage" --exclude "nightly" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
         ;;
     esac
