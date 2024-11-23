@@ -4613,7 +4613,7 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-264K   ├─┬ packages
+320K   ├─┬ packages
  20K   │ ├─┬ chromium
 4.0K   │ │ ├── appimage.ivan-hc.stable.yaml
 4.0K   │ │ ├── appimage.ivan-hc.edge.yaml
@@ -4645,7 +4645,21 @@
 4.0K   │ │ └── appimage.0ad-matters.latest.yaml
 8.0K   │ ├─┬ steam
 4.0K   │ │ └── appimage.ivan-hc.stable.yaml
+8.0K   │ ├─┬ librewolf
+4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ ├─┬ kdenlive
+4.0K   │ │ └── appimage.official.stable.yaml
+8.0K   │ ├─┬ imagemagick
+4.0K   │ │ └── appimage.official.stable.yaml
+8.0K   │ ├─┬ heroicgameslauncher
+4.0K   │ │ └── appimage.official.stable.yaml
+8.0K   │ ├─┬ gnome-boxes
+4.0K   │ │ └── appimage.ivan-hc.stable.yaml
+8.0K   │ ├─┬ gimp
+4.0K   │ │ └── appimage.ivan-hc.stable.yaml
+8.0K   │ ├─┬ freetube
+4.0K   │ │ └── appimage.official.stable.yaml
+8.0K   │ ├─┬ firedragon
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ ├─┬ dunst
 4.0K   │ │ └── appimage.Samueru-sama.stable.yaml
