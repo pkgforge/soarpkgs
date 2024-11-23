@@ -4613,7 +4613,7 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-320K   ├─┬ packages
+368K   ├─┬ packages
  20K   │ ├─┬ chromium
 4.0K   │ │ ├── appimage.ivan-hc.stable.yaml
 4.0K   │ │ ├── appimage.ivan-hc.edge.yaml
@@ -4643,8 +4643,20 @@
  12K   │ ├─┬ 0ad
 4.0K   │ │ ├── appimage.0ad-matters.stable.yaml
 4.0K   │ │ └── appimage.0ad-matters.latest.yaml
+8.0K   │ ├─┬ strawberry
+4.0K   │ │ └── appimage.pkgforge-dev.stable.yaml
 8.0K   │ ├─┬ steam
 4.0K   │ │ └── appimage.ivan-hc.stable.yaml
+8.0K   │ ├─┬ rofi
+4.0K   │ │ └── appimage.pkgforge-dev.stable.yaml
+8.0K   │ ├─┬ puddletag
+4.0K   │ │ └── appimage.pkgforge-dev.stable.yaml
+8.0K   │ ├─┬ ppsspp
+4.0K   │ │ └── appimage.pkgforge-dev.stable.yaml
+8.0K   │ ├─┬ obs-studio
+4.0K   │ │ └── appimage.pkgforge-dev.stable.yaml
+8.0K   │ ├─┬ mpv
+4.0K   │ │ └── appimage.pkgforge-dev.stable.yaml
 8.0K   │ ├─┬ librewolf
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ ├─┬ kdenlive
@@ -4693,8 +4705,8 @@
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.official.stable.yaml
- 88K   ├─┬ metadata
- 56K   │ ├── METADATA.json
+ 96K   ├─┬ metadata
+ 64K   │ ├── METADATA.json
 8.0K   │ ├── METADATA.json.zstd
 8.0K   │ ├── METADATA.json.xz
 4.0K   │ ├── METADATA.json.zstd.bsum
