@@ -4705,8 +4705,8 @@
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.official.stable.yaml
- 96K   ├─┬ metadata
- 64K   │ ├── METADATA.json
+104K   ├─┬ metadata
+ 72K   │ ├── METADATA.json
 8.0K   │ ├── METADATA.json.zstd
 8.0K   │ ├── METADATA.json.xz
 4.0K   │ ├── METADATA.json.zstd.bsum
