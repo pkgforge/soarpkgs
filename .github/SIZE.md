@@ -4613,12 +4613,16 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-240K   ├─┬ packages
+264K   ├─┬ packages
  20K   │ ├─┬ chromium
 4.0K   │ │ ├── appimage.ivan-hc.stable.yaml
 4.0K   │ │ ├── appimage.ivan-hc.edge.yaml
 4.0K   │ │ ├── appimage.ivan-hc.candidate.yaml
 4.0K   │ │ └── appimage.ivan-hc.beta.yaml
+ 16K   │ ├─┬ firefox
+4.0K   │ │ ├── appimage.srevinsaju.nightly.yaml
+4.0K   │ │ ├── appimage.srevinsaju.esr.yaml
+4.0K   │ │ └── appimage.srevinsaju.dev.yaml
  16K   │ ├─┬ discord
 4.0K   │ │ ├── appimage.srevinsaju.stable.yaml
 4.0K   │ │ ├── appimage.srevinsaju.ptb.yaml
@@ -4643,6 +4647,8 @@
 4.0K   │ │ └── appimage.ivan-hc.stable.yaml
 8.0K   │ ├─┬ kdenlive
 4.0K   │ │ └── appimage.official.stable.yaml
+8.0K   │ ├─┬ dunst
+4.0K   │ │ └── appimage.Samueru-sama.stable.yaml
 8.0K   │ ├─┬ duckstation
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ ├─┬ desktopeditors
@@ -4673,8 +4679,8 @@
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.official.stable.yaml
- 80K   ├─┬ metadata
- 48K   │ ├── METADATA.json
+ 88K   ├─┬ metadata
+ 56K   │ ├── METADATA.json
 8.0K   │ ├── METADATA.json.zstd
 8.0K   │ ├── METADATA.json.xz
 4.0K   │ ├── METADATA.json.zstd.bsum
