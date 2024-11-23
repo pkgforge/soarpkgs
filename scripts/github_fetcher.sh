@@ -60,7 +60,7 @@ github_fetcher()
            fi
           #x_exec.pkgver 
            echo -e "x_exec:\n  shell: "bash"\n  pkgver: |" >> "${SYSTMP}/github.tmp.yaml"
-           if [[ "$(echo "${RELEASE_TAG}" | tr '[:upper:]' '[:lower:]')" == "continuous" ]]; then
+           if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
              echo "    curl -qfsSL \"https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases/latest?per_page=100\" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'" >> "${SYSTMP}/github.tmp.yaml"
            else
              echo "    curl -qfsSL \"https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases?per_page=100\" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub(\"\\\\s+\"; \"\")' | tr -d '[:space:]'" >> "${SYSTMP}/github.tmp.yaml"
@@ -80,7 +80,7 @@ github_fetcher()
                HAS_AARCH64="YES"
              fi
              echo -e "x_exec:\n  shell: "bash"\n  pkgver: |" >> "${SYSTMP}/github.tmp.yaml"
-             if [[ "$(echo "${RELEASE_TAG}" | tr '[:upper:]' '[:lower:]')" == "continuous" ]]; then
+             if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
                echo "    curl -qfsSL \"https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases/latest?per_page=100\" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'" >> "${SYSTMP}/github.tmp.yaml"
              else
                echo "    curl -qfsSL \"https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases?per_page=100\" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub(\"\\\\s+\"; \"\")' | tr -d '[:space:]'" >> "${SYSTMP}/github.tmp.yaml"
@@ -93,7 +93,7 @@ github_fetcher()
     if [ "${HAS_RELEASE}" == "YES" ]; then
      #x_exec.run 
       echo -e "  run: |" >> "${SYSTMP}/github.tmp.yaml"
-      if cat "${SYSTMP}/github.tmp.yaml" | grep -q "sed -Eq 's/(x86_64|aarch64)//'"; then
+      if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
        echo '    #Tag' >> "${SYSTMP}/github.tmp.yaml"
        echo '    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"' >> "${SYSTMP}/github.tmp.yaml"
       fi
@@ -101,10 +101,10 @@ github_fetcher()
       echo '    case "$(uname -m)" in' >> "${SYSTMP}/github.tmp.yaml"
       if [ "${HAS_AARCH64}" == "YES" ]; then
        echo '      aarch64)' >> "${SYSTMP}/github.tmp.yaml"
-       if cat "${SYSTMP}/github.tmp.yaml" | grep -q "sed -Eq 's/(x86_64|aarch64)//'"; then
-         echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
-       else
+       if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
          echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       else
+         echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
        fi
       else
        echo '      aarch64)' >> "${SYSTMP}/github.tmp.yaml"
@@ -113,10 +113,10 @@ github_fetcher()
       fi
       echo '        ;;' >> "${SYSTMP}/github.tmp.yaml"
       echo '      x86_64)' >> "${SYSTMP}/github.tmp.yaml"
-       if cat "${SYSTMP}/github.tmp.yaml" | grep -q "sed -Eq 's/(x86_64|aarch64)//'"; then
-         echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
-       else
+       if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
          echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       else
+         echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
        fi
       echo '        ;;' >> "${SYSTMP}/github.tmp.yaml"
       echo '    esac' >> "${SYSTMP}/github.tmp.yaml"
