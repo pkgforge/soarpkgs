@@ -93,13 +93,19 @@ github_fetcher()
     if [ "${HAS_RELEASE}" == "YES" ]; then
      #x_exec.run 
       echo -e "  run: |" >> "${SYSTMP}/github.tmp.yaml"
-      echo '    #Tag' >> "${SYSTMP}/github.tmp.yaml"
-      echo '    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"' >> "${SYSTMP}/github.tmp.yaml"
+      if cat "${SYSTMP}/github.tmp.yaml" | grep -q "sed -Eq 's/(x86_64|aarch64)//'"; then
+       echo '    #Tag' >> "${SYSTMP}/github.tmp.yaml"
+       echo '    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"' >> "${SYSTMP}/github.tmp.yaml"
+      fi
       echo '    #Download' >> "${SYSTMP}/github.tmp.yaml"
       echo '    case "$(uname -m)" in' >> "${SYSTMP}/github.tmp.yaml"
       if [ "${HAS_AARCH64}" == "YES" ]; then
        echo '      aarch64)' >> "${SYSTMP}/github.tmp.yaml"
-       echo "        soar dl \"https://github.com/${REPO_NAME}\${RELEASE_TAG}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       if cat "${SYSTMP}/github.tmp.yaml" | grep -q "sed -Eq 's/(x86_64|aarch64)//'"; then
+         echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       else
+         echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       fi
       else
        echo '      aarch64)' >> "${SYSTMP}/github.tmp.yaml"
        echo '        echo -e "\n[✗] aarch64 is Not Yet Supported\n"' >> "${SYSTMP}/github.tmp.yaml"
@@ -107,7 +113,11 @@ github_fetcher()
       fi
       echo '        ;;' >> "${SYSTMP}/github.tmp.yaml"
       echo '      x86_64)' >> "${SYSTMP}/github.tmp.yaml"
-      echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       if cat "${SYSTMP}/github.tmp.yaml" | grep -q "sed -Eq 's/(x86_64|aarch64)//'"; then
+         echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       else
+         echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
+       fi
       echo '        ;;' >> "${SYSTMP}/github.tmp.yaml"
       echo '    esac' >> "${SYSTMP}/github.tmp.yaml"
     #Print ReleaseUrl
