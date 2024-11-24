@@ -4705,6 +4705,13 @@
 4.0K   │ │ └── appimage.official.stable.yaml
 8.0K   │ └─┬ 86box
 4.0K   │   └── appimage.official.stable.yaml
+112K   ├─┬ scripts
+ 36K   │ ├── sbuild_runner.sh
+ 24K   │ ├── gen_sbuild.sh
+ 20K   │ ├── sbuild_linter.sh
+ 12K   │ ├── github_fetcher.sh
+8.0K   │ ├── repology_fetcher.sh
+8.0K   │ └── gen_meta.sh
 104K   ├─┬ metadata
  72K   │ ├── METADATA.json
 8.0K   │ ├── METADATA.json.zstd
@@ -4712,12 +4719,6 @@
 4.0K   │ ├── METADATA.json.zstd.bsum
 4.0K   │ ├── METADATA.json.xz.bsum
 4.0K   │ └── METADATA.json.bsum
- 84K   ├─┬ scripts
- 36K   │ ├── sbuild_runner.sh
- 20K   │ ├── sbuild_linter.sh
- 12K   │ ├── github_fetcher.sh
-8.0K   │ ├── repology_fetcher.sh
-4.0K   │ └── gen_meta.sh
  24K   ├── SBUILD_SPEC.md
  16K   ├─┬ templates
 8.0K   │ ├── generic.SBUILD.yaml
