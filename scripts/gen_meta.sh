@@ -37,7 +37,7 @@ readarray -t "VALID_PKGS" < "${TMPDIR}/valid_pkgs.txt"
 ##Loop & Generate
 for SBUILD in "${VALID_PKGS[@]}"; do
     #VALID_PKGSRC="$(echo "${SBUILD}" | sed -E 's|.*/packages/||; s|\.validated$||' | tr -d '[:space:]')"
-    VALID_PKGSRC="$(echo "${SBUILD##*/packages/}" | tr -d '[:space:]')"
+    VALID_PKGSRC="$(echo "${SBUILD##*/packages/}" | sed -E 's|\.validated$||' | tr -d '[:space:]')"
     PKG_VERSION="$(echo "${SBUILD}" | sed 's/\.validated$/.pkgver/' | xargs cat | tr -d '[:space:]')"
     yq . "${SBUILD}" | yj -yj | jq 'del(.x_exec)' | jq --arg PKG_VERSION "${PKG_VERSION:-}" \
       --arg VALID_PKGSRC "${VALID_PKGSRC:-}" \
