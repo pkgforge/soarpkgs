@@ -48,12 +48,29 @@ github_fetcher()
       jq -r '.topics[]' "${TMP_JSON}" | sed 's/, /, /g' | sed 's/,/, /g' | sed 's/|//g' | sed 's/"//g' | sed -e 's/["'\''`|]//g' -e 's/^[ \t]*//;s/[ \t]*$//' | sort -u | grep -viE 'hackathon|hacktober' | awk 'BEGIN {print "tag:"} {print "  - \"" $1 "\""}'
      } 2>/dev/null >> "${SYSTMP}/github.tmp.yaml"
   #Fetch Release
+   if [ -n "${RELEASE_TAG}" ]; then
+    #Fixed Release
+     curl -qfsSL "https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases/tags/${RELEASE_TAG}" -o "${TMP_JSON}" || curl -qfsSL "https://api.github.com/repos/${REPO_NAME}/releases/tags/${RELEASE_TAG}" -o "${TMP_JSON}"
+     if [[ -s "${TMP_JSON}" ]] && [[ $(stat -c%s "${TMP_JSON}") -gt 100 ]]; then
+       if jq -r '.assets[].browser_download_url' "${TMP_JSON}" | grep -Eiv "\.zsync$" | grep -Eiq 'appimage'; then
+         echo -e "[+] Using PreDefined Release Tag: ${RELEASE_TAG}"
+         HAS_RELEASE="YES" ; export HAS_RELEASE ; unset HAS_AARCH64
+         if jq -r '.assets[].browser_download_url' "${TMP_JSON}" | grep -Eiq 'aarch64|arm64'; then
+           HAS_AARCH64="YES"
+         fi
+        #x_exec.pkgver 
+         echo -e "x_exec:\n  shell: "bash"\n  pkgver: |" >> "${SYSTMP}/github.tmp.yaml"
+         echo "    curl -qfsSL \"https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases?per_page=100\" | jq -r '[.[] | select(.draft == false and .prerelease == true and (.name | test(\"(?i)${RELEASE_TAG}\")))] | .[0].tag_name | select(. != null)' | tr -d '[:space:]'" >> "${SYSTMP}/github.tmp.yaml"
+       fi
+     fi
+   else
     #Latest Release
      RELEASE_TAG="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]')" ; unset HAS_RELEASE
      if [ -n "${RELEASE_TAG}" ]; then
        curl -qfsSL "https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases/tags/${RELEASE_TAG}" -o "${TMP_JSON}" || curl -qfsSL "https://api.github.com/repos/${REPO_NAME}/releases/tags/${RELEASE_TAG}" -o "${TMP_JSON}"
        if [[ -s "${TMP_JSON}" ]] && [[ $(stat -c%s "${TMP_JSON}") -gt 100 ]]; then
          if jq -r '.assets[].browser_download_url' "${TMP_JSON}" | grep -Eiv "\.zsync$" | grep -Eiq 'appimage'; then
+           echo -e "[+] Using Latest Stable-Release Tag: ${RELEASE_TAG}"
            HAS_RELEASE="YES" ; export HAS_RELEASE ; unset HAS_AARCH64
            if jq -r '.assets[].browser_download_url' "${TMP_JSON}" | grep -Eiq 'aarch64|arm64'; then
              HAS_AARCH64="YES"
@@ -75,6 +92,7 @@ github_fetcher()
          curl -qfsSL "https://api.gh.pkgforge.dev/repos/${REPO_NAME}/releases/tags/${RELEASE_TAG}" -o "${TMP_JSON}" || curl -qfsSL "https://api.github.com/repos/${REPO_NAME}/releases/tags/${RELEASE_TAG}" -o "${TMP_JSON}" 
          if [[ -s "${TMP_JSON}" ]] && [[ $(stat -c%s "${TMP_JSON}") -gt 100 ]]; then
            if jq -r '.assets[].browser_download_url' "${TMP_JSON}" | grep -Eiv "\.zsync$" | grep -Eiq 'appimage'; then
+             echo -e "[+] Using PreDefined Pre-Release Tag: ${RELEASE_TAG}"
              HAS_RELEASE="YES" ; export HAS_RELEASE
              if jq -r '.assets[].browser_download_url' "${TMP_JSON}" | grep -Eiq 'aarch64|arm64'; then
                HAS_AARCH64="YES"
@@ -89,11 +107,13 @@ github_fetcher()
          fi
        fi
      fi
+   fi
     #Append x_exec.run
     if [ "${HAS_RELEASE}" == "YES" ]; then
      #x_exec.run 
       echo -e "  run: |" >> "${SYSTMP}/github.tmp.yaml"
-      if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
+      #if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
+      if cat "${SYSTMP}/github.tmp.yaml" | grep -q -e "'s/(x86_64|aarch64)//'" -e "\.name | test(\"(?i\")"; then
        echo '    #Tag' >> "${SYSTMP}/github.tmp.yaml"
        echo '    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"' >> "${SYSTMP}/github.tmp.yaml"
       fi
@@ -101,7 +121,8 @@ github_fetcher()
       echo '    case "$(uname -m)" in' >> "${SYSTMP}/github.tmp.yaml"
       if [ "${HAS_AARCH64}" == "YES" ]; then
        echo '      aarch64)' >> "${SYSTMP}/github.tmp.yaml"
-       if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
+       #if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
+       if cat "${SYSTMP}/github.tmp.yaml" | grep -q -e "'s/(x86_64|aarch64)//'" -e "\.name | test(\"(?i\")"; then
          echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
        else
          echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"x86,x64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
@@ -113,7 +134,8 @@ github_fetcher()
       fi
       echo '        ;;' >> "${SYSTMP}/github.tmp.yaml"
       echo '      x86_64)' >> "${SYSTMP}/github.tmp.yaml"
-       if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
+       #if [[ "${RELEASE_TAG}" =~ ^[a-zA-Z]+$ ]]; then
+       if cat "${SYSTMP}/github.tmp.yaml" | grep -q -e "'s/(x86_64|aarch64)//'" -e "\.name | test(\"(?i\")"; then
          echo "        soar dl \"https://github.com/${REPO_NAME}@\${RELEASE_TAG}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
        else
          echo "        soar dl \"https://github.com/${REPO_NAME}\" --match \"appimage\" --exclude \"aarch64,arm,zsync\" -o \"./\${SBUILD_PKG}\" --yes" >> "${SYSTMP}/github.tmp.yaml"
