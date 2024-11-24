@@ -18,9 +18,10 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
   GH_REPO_PATH="$(realpath .)" ; export GH_REPO_PATH
  popd >/dev/null 2>&1
 ##Progs
- curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh" -o "${TMPDIR}/sbuild-linter"
- dos2unix --quiet "${TMPDIR}/sbuild-linter" ; chmod +x "${TMPDIR}/sbuild-linter"
- if [[ ! -s "${TMPDIR}/sbuild-linter" || $(stat -c%s "${TMPDIR}/sbuild-linter") -le 3 ]]; then
+ #curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh" -o "${TMPDIR}/sbuild-linter"
+ curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" curl -qfsSL "{}" -o "${TMPDIR}/sbuild-linter"
+ chmod +x "${TMPDIR}/sbuild-linter"
+ if [[ ! -s "${TMPDIR}/sbuild-linter" || $(stat -c%s "${TMPDIR}/sbuild-linter") -le 1024 ]]; then
    echo -e "\n[✗] FATAL: sbuild-linter Appears to be NOT INSTALLED...\n"
   exit 1 
  fi
@@ -28,7 +29,8 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
 
 #-------------------------------------------------------#
 ##Validate everything
-find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 -I{} -P0 sh -c 'SHOW_PKGVER="1" "${TMPDIR}/sbuild-linter" "{}"'
+#find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 -I{} -P0 sh -c 'SHOW_PKGVER="1" "${TMPDIR}/sbuild-linter" "{}"'
+find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 "${TMPDIR}/sbuild-linter" --parallel "1000" --pkgver
 ##Store Validated files
 find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated$' > "${TMPDIR}/valid_pkgs.txt"
 readarray -t "VALID_PKGS" < "${TMPDIR}/valid_pkgs.txt"
