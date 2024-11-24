@@ -73,7 +73,7 @@ repology_fetcher()
        #Requires Xq 
         #curl -A "${USER_AGENT}" -qfsSL "https://repology.org/project/${REPOLOGY_PKG}/information" | xq --xpath="//section[@id='Homepage_links']//a[not(contains(@href, '/link/'))]/@href" | grep -oP 'http[^\s]+' | sed 's/\/$//' | awk 'BEGIN {print "homepage:"} {print "  - \"" $1 "\""}' | yq 'del(.. | select(tag == "!!seq" and length == 0))' -P -oyaml | sed 's/- \(.*\)/- "\1"/' ; echo
        #Just sed 
-        curl -A "${USER_AGENT}" -qfsSL "https://repology.org/project/${REPOLOGY_PKG}/information" | sed -n '/<section id="Homepage_links">/,/<\/section>/p' | sed -n 's/.*<a href="\([^"]*\)".*/\1/p' | grep -oP 'http[^\s]+' | sed 's/\/$//' | awk 'BEGIN {print "homepage:"} {print "  - \"" $1 "\""}' | yq 'del(.. | select(tag == "!!seq" and length == 0))' -P -oyaml | sed 's/- \(.*\)/- "\1"/' ; echo
+        curl -A "${USER_AGENT}" -qfsSL "https://repology.org/project/${REPOLOGY_PKG}/information" | sed -n '/<section id="Homepage_links">/,/<\/section>/p' | sed -n 's/.*<a href="\([^"]*\)".*/\1/p' | grep -oP 'http[^\s]+' | grep -Eiv "archive\.org" | sed 's/\/$//' | awk 'BEGIN {print "homepage:"} {print "  - \"" $1 "\""}' | yq 'del(.. | select(tag == "!!seq" and length == 0))' -P -oyaml | sed 's/- \(.*\)/- "\1"/' ; echo
       } 2>/dev/null >> "${SYSTMP}/repology.tmp.yaml"
      #license
      { 
