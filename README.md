@@ -23,7 +23,7 @@
 
 ---
 #### Contents
-- [**📖 Docs & FAQs 📖**](./tree/main/Docs)
+- [**📖 Docs & FAQs 📖**](https://github.com/pkgforge/soarpkgs/tree/main/Docs)
 > - [**`What is this?`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#intro)
 > - [**`What is an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#intro)
 > - [**`How to Write an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
