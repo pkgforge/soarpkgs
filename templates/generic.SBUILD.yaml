@@ -3,7 +3,7 @@
 _disabled: false #We want this SBUILD to run
 
 #! We Assume you have read the SPEC at least twice, so we won't repeat things to keep this template small
-#! If you haven't or need a refresher: https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md
+#! If you haven't or need a refresher: https://docs.pkgforge.dev/sbuild/introduction
 
 pkg: "REPLACE_ME" #pkg is canonical name & is Necessary
 pkg_id: "REPLACE_ME" #Leave this empty or delete it if not needed
@@ -85,10 +85,10 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
        #This is an example of using soar dl to download gh release
-        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage" --match "arm64" --exclude "x64" --exclude "x86" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
         ;;
       x86_64)
-        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage" --match "x86_64" --exclude "aarch64" --exclude "arm" --exclude "zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
         ;;
     esac
     #We are done and can let the Runner take it from here
