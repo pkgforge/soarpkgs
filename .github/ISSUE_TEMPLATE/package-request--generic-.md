@@ -8,7 +8,7 @@ assignees: Azathothas
 ---
 
 - Name (`.pkg`) : NAME_OF_PKG
-- ID (`.pkg_id`) : APPSTREAM_APP_ID
+- ID (`.app_id`) : APPSTREAM_APP_ID
 - Type (`.pkg_type`) : CHOOSE_ONE (appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static)
 - Description (`.description) : DESCRIPTION_SUMMARY_ABOUT_PKG
 - Homepage (`.homepage`) : WEBSITE_LINK_TO_MAIN_PROJECT_PAGE

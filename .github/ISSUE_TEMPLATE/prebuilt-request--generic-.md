@@ -2,7 +2,7 @@
 name: Prebuilt Request (Generic)
 about: Ask a package to be added to Pkgcache
 title: "[PkgCache Request] NAME_OF_PKG"
-labels: ''
+labels: pkgcache
 assignees: Azathothas
 
 ---
