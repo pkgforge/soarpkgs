@@ -6,8 +6,11 @@
 [issues-url]: https://github.com/pkgforge/soarpkgs/issues
 [license-shield]: https://img.shields.io/github/license/pkgforge/soarpkgs.svg
 [license-url]: https://github.com/pkgforge/soarpkgs/blob/main/LICENSE
- 
+[doc-shield]: https://img.shields.io/badge/docs.pkgforge.dev-blue
+[doc-url]: https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs
+
 <a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-39%20(52)-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
+[![Documentation][doc-shield]][doc-url]
 [![Issues][issues-shield]][issues-url]
 [![License: MIT][license-shield]][license-url]
 [![Stars][stars-shield]][stars-url]
@@ -17,23 +20,23 @@
     <a href="https://github.com/pkgforge/soar">
         <img src="https://github.com/user-attachments/assets/220ce7b3-55b3-496e-b3b8-2556123193a2" width="100"></a>
     <br>
-    <b><strong> <a href="https://github.com/pkgforge/soar">Package Forge Community Repo</a></code></strong></b>
+    <b><strong> <a href="https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs">Package Forge Community Repo</a></code></strong></b>
     <br>
 </p>
 
 ---
 #### Contents
-- [**📖 Docs & FAQs 📖**](https://github.com/pkgforge/soarpkgs/tree/main/Docs)
-> - [**`What is this?`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#intro)
-> - [**`What is an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD_SPEC.md#intro)
-> - [**`How to Write an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe)
-> - [**`How to Build & Install an .SBUILD Recipe`**](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#buildinstallrun-an-sbuild-recipe)
-> - [**`Contribution Guidelines`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#contribution-guidelines)
-> - [**`Request a New Package`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#package-request-guidelines)
-> - [**`Differences from BinCache/PkgCache`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#differences-from-bincachepkgcache)
-> - [**`Requirements to add a PKG to BinCache/PkgCache`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#criteria-for-addition-to-bincachepkgcache)
-> - [**`DMCA & Copyright`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#dmca-copyright--cease--desist)
-> - [**`Contact Us`**](https://github.com/pkgforge/soarpkgs/blob/main/Docs/README.md#contact-us)
-- [**Status 🔖**](./tree/main#-status-)
+- [**📖 Docs & FAQs 📖**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs)
+> - [**`What is this?`**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs)
+> - [**`What is an .SBUILD Recipe`**](https://docs.pkgforge.dev/sbuild/introduction)
+> - [**`How to Write an .SBUILD Recipe`**](https://docs.pkgforge.dev/sbuild/instructions)
+> - [**`How to Build & Install an .SBUILD Recipe`**](https://docs.pkgforge.dev/sbuild/instructions#build)
+> - [**`Contribution Guidelines`**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs/contribution)
+> - [**`Request a New Package`**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs/package-request)
+> - [**`Differences from BinCache/PkgCache`**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs/differences)
+> - [**`Requirements to add a PKG to BinCache/PkgCache`**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/pkgcache/package-request#criteria)
+> - [**`DMCA & Copyright`**](https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs/dmca-or-copyright-cease-and-desist)
+> - [**`Contact Us`**](https://docs.pkgforge.dev/contact/chat)
+- [**Status 🔖**](./)
 > [![🐧🧹 HealthChecks 🖳🗑](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml/badge.svg)](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml)
 - [**Community 💬**](https://t.me/official_loonix/63949)
