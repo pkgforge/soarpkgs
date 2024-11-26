@@ -27,7 +27,7 @@ See some examples:
   - It starts with `#!/SBUILD ver @${VERSION}` `(TYPE:RECOMMENDED)`
   - It is followed by `_disabled: boolean`, which can either be `true` or `false` which will disable or enable the entire script respectively. `(TYPE:ENFORCED)`
   ```yaml
-  #!/SBUILD ver @v0.4.5 #Tells the Interpreter the version
+  #!/SBUILD ver @v1.0.0 #Tells the Interpreter the version
   _disabled: false #Tells the Interpreter to run it
   ```
 </details>
@@ -374,7 +374,7 @@ See some examples:
 > ℹ️ Read the [Dedicated Guide](https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe): https://github.com/pkgforge/soarpkgs/blob/main/SBUILD.md#write-an-sbuild-recipe
 - ##### [Minimal (Bare Minimum)](https://github.com/pkgforge/soarpkgs/blob/main/templates/minimal.SBUILD.yaml)
 > ```yaml
-> #!/SBUILD ver @v0.4.5
+> #!/SBUILD ver @v1.0.0
 > _disabled: false
 > pkg: "86box"
 > build_util:
@@ -403,7 +403,7 @@ See some examples:
 
 - ##### [Generic (Recommended)](https://github.com/pkgforge/soarpkgs/blob/main/templates/generic.SBUILD.yaml)
 > ```yaml
-> #!/SBUILD ver @v0.4.5
+> #!/SBUILD ver @v1.0.0
 > _disabled: false
 > 
 > pkg: "86box"
