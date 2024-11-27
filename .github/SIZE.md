@@ -4719,7 +4719,6 @@
 4.0K   │ ├── METADATA.json.zstd.bsum
 4.0K   │ ├── METADATA.json.xz.bsum
 4.0K   │ └── METADATA.json.bsum
- 24K   ├── SBUILD_SPEC.md
  12K   ├─┬ templates
 4.0K   │ ├── minimal.SBUILD.yaml
 4.0K   │ └── generic.SBUILD.yaml
