@@ -2,7 +2,7 @@
 # DO NOT RUN DIRECTLY
 # export GITHUB_TOKEN="NON_PRIVS_READ_ONLY_TOKEN"
 # bash <(curl -qfsSL "https://pub.ajam.dev/repos/pkgforge/soarpkgs/scripts/scrape_pub_issues.sh")
-# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main//scripts/scrape_pub_issues.sh")
+# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/scrape_pub_issues.sh")
 #-------------------------------------------------------#
 
 #-------------------------------------------------------#
