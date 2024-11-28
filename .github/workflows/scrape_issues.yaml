@@ -11,7 +11,7 @@ jobs:
   IssuesScraper:
     runs-on: ubuntu-latest
     permissions:
-      issues: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
