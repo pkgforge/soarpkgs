@@ -36,42 +36,42 @@ echo -e "\n[+] Using Temp Dir : ${TEMP_ISSUES}"
 #Fetch: `appbundle`
 (for page in {1..10}; do
     echo -e "\n[+] GH API: AppBundle ($page/10)\n"
-     curl -qfsSL -A "${USER_AGENT}" "https://${GH_APIURL}/search/issues?q=appbundle+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
+     curl -qfsSL "https://${GH_APIURL}/search/issues?q=appbundle+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
      #sleep 2
 done) &
 #wait ; echo
 #Fetch: `appimage`
 (for page in {1..10}; do
     echo -e "\n[+] GH API: AppImage ($page/10)\n"
-     curl -qfsSL -A "${USER_AGENT}" "https://${GH_APIURL}/search/issues?q=appimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
+     curl -qfsSL "https://${GH_APIURL}/search/issues?q=appimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
      #sleep 2
 done) &
 #wait ; echo
 #Fetch: `conty`
 (for page in {1..10}; do
     echo -e "\n[+] GH API: Conty ($page/10)\n"
-     curl -qfsSL -A "${USER_AGENT}" "https://${GH_APIURL}/search/issues?q=conty+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
+     curl -qfsSL "https://${GH_APIURL}/search/issues?q=conty+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
      #sleep 2
 done) &
 #wait ; echo
 #Fetch: `flatimage`
 (for page in {1..10}; do
     echo -e "\n[+] GH API: FlatImage ($page/10)\n"
-     curl -qfsSL -A "${USER_AGENT}" "https://${GH_APIURL}/search/issues?q=flatimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
+     curl -qfsSL "https://${GH_APIURL}/search/issues?q=flatimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
      #sleep 2
 done) &
 #wait ; echo
 #Fetch: `gameimage`
 (for page in {1..10}; do
     echo -e "\n[+] GH API: GameImage ($page/10)\n"
-     curl -qfsSL -A "${USER_AGENT}" "https://${GH_APIURL}/search/issues?q=gameimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
+     curl -qfsSL "https://${GH_APIURL}/search/issues?q=gameimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
      #sleep 2
 done) &
 #wait ; echo
 #Fetch: `runimage`
 (for page in {1..10}; do
     echo -e "\n[+] GH API: RunImage ($page/10)\n"
-     curl -qfsSL -A "${USER_AGENT}" "https://${GH_APIURL}/search/issues?q=runimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
+     curl -qfsSL "https://${GH_APIURL}/search/issues?q=runimage+state:open+is:issue&filter=all&since=${DATE_CUTOFF}&sort=created&direction=desc&per_page=100&page=$page" | jq -r '.items | sort_by(.created_at)[] | "\(.created_at // "NA") \(.title // "NA") --> \(.html_url // "NA") (\(.user.login // "NA"))"' | tee -a "${TEMP_ISSUES}/$(openssl rand -hex 3).txt"
      #sleep 2
 done) &
 #wait ; echo
