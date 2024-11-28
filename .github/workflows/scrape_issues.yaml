@@ -1,0 +1,68 @@
+#https://github.com/pkgforge/soarpkgs/blob/main/scripts/scrape_pub_issues.sh
+name: 🔎 Scrape Public Issues 🕸️
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 0 * * *" #12:30 AM UTC --> 06:15 AM NPT
+
+jobs:
+  IssuesScraper:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main
+          filter: "blob:none"
+          
+      - name: Setup Env
+        run: |
+          ##presets
+          set +x ; set +e
+          #-------------#
+          ##CoreUtils
+          sudo apt update -y
+          sudo apt install bc coreutils curl dos2unix fdupes jq moreutils wget -y
+          sudo apt-get install apt-transport-https apt-utils ca-certificates coreutils dos2unix gnupg2 jq moreutils p7zip-full rename rsync software-properties-common texinfo tmux util-linux wget -y 2>/dev/null ; sudo apt-get update -y 2>/dev/null
+          ##User-Agent
+          USER_AGENT="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/User-Agents/ua_chrome_macos_latest.txt')" && export USER_AGENT="${USER_AGENT}"
+          echo "USER_AGENT=${USER_AGENT}" >> "${GITHUB_ENV}"
+          ##Tools
+          #PARALLEL="1" bash <(curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Arsenal/main/misc/Linux/install_dev_tools.sh")
+        continue-on-error: true
+
+      - name: Scrape
+        run: |
+          ##presets
+          set +x ; set +e
+          #-------------#
+          #bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/scrape_pub_issues.sh")
+          dos2unix --quiet "${GITHUB_WORKSPACE}/main/scripts/scrape_pub_issues.sh"
+          chmod +x "${GITHUB_WORKSPACE}/main/scripts/scrape_pub_issues.sh"
+          bash "${GITHUB_WORKSPACE}/main/scripts/scrape_pub_issues.sh"
+          wc -l "${GITHUB_WORKSPACE}/main/.github/pub_issues.txt"
+        continue-on-error: true
+
+      - name: Get DateTime & Purge files (=> 95 MB)
+        run: |
+          #Presets
+          set +x ; set +e
+          #--------------#
+          UTC_TIME="$(TZ='UTC' date +'%Y-%m-%d (%I:%M:%S %p)')"
+          echo "UTC_TIME=$UTC_TIME" >> $GITHUB_ENV
+          #Purge
+          find "${GITHUB_WORKSPACE}/main" -path "${GITHUB_WORKSPACE}/main/.git" -prune -o -type f -size +95M -exec rm -rvf "{}" + 2>/dev/null
+        continue-on-error: true
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: ./main        
+          commit_user_name: Azathothas
+          commit_user_email: AjamX101@gmail.com
+          #commit_message: "‎‎‏‏‎ ‎"
+          commit_message: "✅ Scraped Public GH Issues 🕸️"
+          #push_options: '--force'
+        continue-on-error: true
