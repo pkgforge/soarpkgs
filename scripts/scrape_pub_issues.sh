@@ -76,6 +76,7 @@ done) &
 done) &
 #wait ; echo
 #Sort
+wait ; echo
 find "${TEMP_ISSUES}" -name "*.txt" -exec cat {} + | grep '^[0-9]' | grep -v '\[bot\])' | sort --unique --reverse -o "${OUTDIR}/pub_issues.txt"
 #find "${TEMP_ISSUES}" -name "*.txt" -exec cat {} + | grep '^[0-9]' | grep -v '\[bot\])' | sort --numeric-sort --reverse --unique -o "${OUTDIR}/pub_issues.txt"
 #find "${TEMP_ISSUES}" -name "*.txt" -exec cat {} + | grep '^[0-9]' | grep -v '\[bot\])' | sort --version-sort --reverse --unique -o "${OUTDIR}/pub_issues.txt"
