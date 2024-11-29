@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ecode"
+pkg_id: "github.com.SpartanJ.ecode"
+pkg_type: "appimage"
+app_id: "github.com.SpartanJ.ecode"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
+distro_pkg:
+  archlinux:
+    aur:
+      - "ecode"
+      - "ecode-bin"
+homepage:
+  - "https://github.com/SpartanJ/ecode"
+  - "https://github.com/SpartanJ/eepp"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/SpartanJ/ecode"
+tag:
+  - "app-editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SpartanJ/ecode/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/SpartanJ/ecode" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/SpartanJ/ecode" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

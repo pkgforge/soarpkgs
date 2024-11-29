@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tts-now"
+pkg_id: "github.com.funnyzak.tts-now"
+pkg_type: "appimage"
+app_id: "github.com.funnyzak.tts-now"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "跨平台基于云平台(阿里云、讯飞等)语音合成 API 的文字转语音助手。支持单文本快速合成和批量合成。支持windows、macOS、Linux。"
+distro_pkg:
+  archlinux:
+    aur:
+      - "tts-now-bin"
+homepage:
+  - "https://tts.yycc.dev"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+src_url:
+  - "https://github.com/funnyzak/tts-now"
+tag:
+  - "aliyun"
+  - "electron"
+  - "nls"
+  - "react"
+  - "tts"
+  - "typescript"
+  - "xf"
+  - "xunfei"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/funnyzak/tts-now/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/funnyzak/tts-now" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

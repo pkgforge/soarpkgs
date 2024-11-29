@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "affine"
+pkg_id: "github.com.toeverything.AFFiNE"
+pkg_type: "appimage"
+app_id: "github.com.toeverything.AFFiNE"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
+homepage:
+  - "https://github.com/toeverything/AFFiNE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/toeverything/AFFiNE"
+tag:
+  - "app"
+  - "crdt"
+  - "editor"
+  - "electron"
+  - "knowledge-base"
+  - "markdown"
+  - "miro"
+  - "notes"
+  - "notion"
+  - "notion-alternative"
+  - "rust"
+  - "rust-lang"
+  - "rust-language"
+  - "table"
+  - "tableview"
+  - "whiteboard"
+  - "wiki"
+  - "workspace"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/toeverything/AFFiNE/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/toeverything/AFFiNE" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/toeverything/AFFiNE" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

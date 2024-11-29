@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS"
 distro_pkg:
   archlinux:
@@ -21,7 +22,7 @@ homepage:
   - "https://www.dingtalk.com"
   - "https://www.dingtalk.com/en"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "custom"
 src_url:

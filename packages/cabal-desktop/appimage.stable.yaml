@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cabal-desktop"
+pkg_id: "github.com.cabal-club.cabal-desktop"
+pkg_type: "appimage"
+app_id: "github.com.cabal-club.cabal-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Desktop client for Cabal, the p2p/decentralized/local-first chat platform."
+distro_pkg:
+  archlinux:
+    aur:
+      - "cabal-desktop-git"
+homepage:
+  - "https://github.com/cabal-club/cabal-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL3"
+src_url:
+  - "https://github.com/cabal-club/cabal-desktop"
+tag:
+  - "chat"
+  - "desktop"
+  - "distributed"
+  - "instant-messaging"
+  - "p2p"
+  - "slack"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cabal-club/cabal-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/cabal-club/cabal-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

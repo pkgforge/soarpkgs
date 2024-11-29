@@ -1,0 +1,76 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "simplescreenrecorder"
+pkg_id: "github.com.ivan-hc.Database-of-pkg2appimaged-packages"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Database-of-pkg2appimaged-packages"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Various AppImage packages for AM and AppMan"
+distro_pkg:
+  alpine:
+    - "simplescreenrecorder"
+  archlinux:
+    aur:
+      - "lib32-simplescreenrecorder"
+      - "lib32-simplescreenrecorder-git"
+      - "simplescreenrecorder"
+      - "simplescreenrecorder-bin"
+      - "simplescreenrecorder-git"
+  debian:
+    - "simplescreenrecorder"
+  nixpkgs:
+    - "simplescreenrecorder"
+homepage:
+  - "http://www.maartenbaert.be/simplescreenrecorder"
+  - "https://github.com/MaartenBaert/ssr"
+  - "https://www.maartenbaert.be/simplescreenrecorder"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-3"
+  - "GPL-3.0 and ISC and GPL-3.0+ and Zlib"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+  - "LGPLv3"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Graphical"
+  - "System/X11/Utilities"
+  - "Video"
+  - "Video/Utilities"
+  - "app"
+  - "debug"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "video"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Database-of-pkg2appimaged-packages/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

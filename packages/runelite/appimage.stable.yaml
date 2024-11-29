@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "runelite"
+pkg_id: "github.com.runelite.launcher"
+pkg_type: "appimage"
+app_id: "github.com.runelite.launcher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Launcher for RuneLite"
+distro_pkg:
+  archlinux:
+    aur:
+      - "runelite"
+      - "runelite-git"
+  nixpkgs:
+    - "runelite"
+homepage:
+  - "https://github.com/runelite/launcher"
+  - "https://github.com/runelite/runelite"
+  - "https://runelite.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+  - "BSD-2-Clause"
+src_url:
+  - "https://github.com/runelite/launcher"
+tag:
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/runelite/launcher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/runelite/launcher" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/runelite/launcher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "switchhosts"
+pkg_id: "github.com.oldj.SwitchHosts"
+pkg_type: "appimage"
+app_id: "github.com.oldj.SwitchHosts"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Switch hosts quickly!"
+distro_pkg:
+  archlinux:
+    aur:
+      - "switchhosts"
+      - "switchhosts-appimage"
+      - "switchhosts-bin"
+      - "switchhosts-git"
+homepage:
+  - "https://github.com/oldj/SwitchHosts"
+  - "https://oldj.github.io/SwitchHosts"
+  - "https://swh.app"
+  - "https://switchhosts.vercel.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache-2.0"
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/oldj/SwitchHosts"
+tag:
+  - "hosts"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/oldj/SwitchHosts/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/oldj/SwitchHosts" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/oldj/SwitchHosts" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

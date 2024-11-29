@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "memospot"
+pkg_id: "github.com.memospot.memospot"
+pkg_type: "appimage"
+app_id: "github.com.memospot.memospot"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Memospot is a self-contained desktop version of Memos -a privacy-first, lightweight note-taking service."
+distro_pkg:
+  archlinux:
+    aur:
+      - "memospot-bin"
+homepage:
+  - "https://memospot.github.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/memospot/memospot"
+tag:
+  - "desktop-app"
+  - "memo"
+  - "memos"
+  - "microblog"
+  - "note-taking"
+  - "rust"
+  - "self-hosted"
+  - "tauri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/memospot/memospot/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/memospot/memospot" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/memospot/memospot" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

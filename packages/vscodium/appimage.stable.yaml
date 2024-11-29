@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "binary releases of VS Code without MS branding/telemetry/licensing"
 distro_pkg:
   archlinux:
@@ -26,7 +27,7 @@ homepage:
   - "https://github.com/VSCodium/vscodium.git"
   - "https://vscodium.com"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Apache-2.0"
   - "BSD"

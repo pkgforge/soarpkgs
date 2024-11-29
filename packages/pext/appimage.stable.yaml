@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pext"
+pkg_id: "github.com.Pext.Pext"
+pkg_type: "appimage"
+app_id: "github.com.Pext.Pext"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Python-based extendable tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pext"
+      - "pext-git"
+homepage:
+  - "https://github.com/Pext/Pext"
+  - "https://pext.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/Pext/Pext"
+tag:
+  - "extendable"
+  - "extensible"
+  - "extensions"
+  - "linux"
+  - "macos"
+  - "modular"
+  - "modules"
+  - "pext"
+  - "python"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Pext/Pext/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Pext/Pext" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

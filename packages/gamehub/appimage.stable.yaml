@@ -1,0 +1,62 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gamehub"
+pkg_id: "github.com.tkashkin.GameHub"
+pkg_type: "appimage"
+app_id: "github.com.tkashkin.GameHub"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "All your games in one place"
+distro_pkg:
+  archlinux:
+    aur:
+      - "gamehub"
+      - "gamehub-bin"
+      - "gamehub-git"
+  debian:
+    - "gamehub"
+  nixpkgs:
+    - "gamehub"
+homepage:
+  - "https://github.com/tkashkin/GameHub"
+  - "https://github.com/tkashkin/gamehub"
+  - "https://tkashkin.github.io/projects/gamehub"
+  - "https://tkashkin.tk/projects/gamehub"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/tkashkin/GameHub"
+tag:
+  - "Games"
+  - "Games/Arcade"
+  - "debug"
+  - "games"
+  - "games-util"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/tkashkin/GameHub/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/tkashkin/GameHub" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

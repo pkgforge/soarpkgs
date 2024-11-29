@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wthrr"
+pkg_id: "github.com.ttytm.wthrr-the-weathercrab"
+pkg_type: "appimage"
+app_id: "github.com.ttytm.wthrr-the-weathercrab"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "🌞 🦀 🌙 Weather companion for the terminal. Rust app."
+distro_pkg:
+  archlinux:
+    aur:
+      - "wthrr"
+      - "wthrr-git"
+  nixpkgs:
+    - "wthrr"
+homepage:
+  - "https://crates.io/crates/wthrr"
+  - "https://github.com/tobealive/wthrr-the-weathercrab"
+  - "https://github.com/ttytm/wthrr-the-weathercrab"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/ttytm/wthrr-the-weathercrab"
+tag:
+  - "cli-tool"
+  - "rust"
+  - "weather"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ttytm/wthrr-the-weathercrab/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ttytm/wthrr-the-weathercrab" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ttytm/wthrr-the-weathercrab" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

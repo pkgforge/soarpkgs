@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "novelWriter is an open source plain text editor designed for writing novels. It supports a minimal markdown-like syntax for formatting text. It is written with Python 3 (3.9+) and Qt 5 (5.15) for cross-platform support."
 distro_pkg:
   archlinux:
@@ -22,7 +23,7 @@ homepage:
   - "https://github.com/vkbo/novelWriter"
   - "https://novelwriter.io"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GPL"
   - "GPL-3.0"

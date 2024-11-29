@@ -1,0 +1,69 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kcov"
+pkg_id: "github.com.julien-montmartin.kcov-appimage"
+pkg_type: "appimage"
+app_id: "github.com.julien-montmartin.kcov-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Produce a Linux AppImage of kcov code coverage tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "kcov-git"
+    extra:
+      - "kcov"
+  debian:
+    - "kcov"
+  nixpkgs:
+    - "kcov"
+homepage:
+  - "http://simonkagstrom.github.io/kcov"
+  - "http://simonkagstrom.github.io/kcov/index.html"
+  - "https://github.com/SimonKagstrom/kcov"
+  - "https://github.com/simonkagstrom/kcov"
+  - "https://simonkagstrom.github.io/kcov"
+  - "https://simonkagstrom.github.io/kcov/index.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "APSL-2.0 AND GPL-2.0-only"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-only AND MIT AND "
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2 and BSD and MIT"
+  - "MIT"
+src_url:
+  - "https://github.com/julien-montmartin/kcov-appimage"
+tag:
+  - "Development/Tools"
+  - "Development/Tools/Other"
+  - "dev-util"
+  - "devel"
+  - "development"
+  - "universe/devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/julien-montmartin/kcov-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/julien-montmartin/kcov-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

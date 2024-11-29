@@ -1,0 +1,90 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pcsx2"
+pkg_id: "github.com.PCSX2.pcsx2"
+pkg_type: "appimage"
+app_id: "github.com.PCSX2.pcsx2"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "PCSX2 - The Playstation 2 Emulator"
+distro_pkg:
+  alpine:
+    - "pcsx2"
+  archlinux:
+    aur:
+      - "pcsx2"
+      - "pcsx2-avx-git"
+      - "pcsx2-git"
+  debian:
+    - "pcsx2"
+  nixpkgs:
+    - "pcsx2"
+homepage:
+  - "https://github.com/PCSX2/pcsx2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-2"
+  - "BSD-4"
+  - "Boost-1.0"
+  - "CC0-1.0"
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-3.0-or-later"
+  - "GPLv2 and GPLv3+ and LGPLv2+ and LGPLv3"
+  - "GPLv2+"
+  - "GPLv3"
+  - "GPLv3 and LGPLv3"
+  - "ISC"
+  - "LGPL-2.1+"
+  - "LGPL-2.1-or-later"
+  - "LGPL-3+"
+  - "LGPL-3.0"
+  - "LGPL-3.0-or-later"
+  - "MIT"
+  - "OFL-1.1"
+  - "Unspecified free software license"
+  - "ZLIB"
+  - "public-domain"
+src_url:
+  - "https://github.com/PCSX2/pcsx2"
+tag:
+  - "Emulators"
+  - "Games"
+  - "System/Emulators/Other"
+  - "debug"
+  - "emulator"
+  - "emulators"
+  - "extra/emulator"
+  - "games"
+  - "games-emulation"
+  - "games.emulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/PCSX2/pcsx2/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/PCSX2/pcsx2" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

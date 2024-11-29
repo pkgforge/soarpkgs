@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "stoplight"
+pkg_id: "github.com.stoplightio.desktop"
+pkg_type: "appimage"
+app_id: "github.com.stoplightio.desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "The Stoplight desktop app + issues repository."
+homepage:
+  - "https://github.com/stoplightio/desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/stoplightio/desktop"
+tag:
+  - "api-documentation"
+  - "api-management"
+  - "api-testing"
+  - "documentation-tool"
+  - "modeling"
+  - "raml"
+  - "swagger"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stoplightio/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/stoplightio/desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "appimageupdatetool"
+pkg_id: "github.com.AppImage.AppImageUpdate"
+pkg_type: "appimage"
+app_id: "github.com.AppImage.AppImageUpdate"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "AppImageUpdate lets you update AppImages in a decentral way using information embedded in the AppImage itself."
+homepage:
+  - "https://github.com/AppImage/AppImageUpdate"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/AppImage/AppImageUpdate"
+tag:
+  - "appimage"
+  - "applications"
+  - "delta"
+  - "delta-updates"
+  - "deployment"
+  - "linux"
+  - "linux-app"
+  - "packaging"
+  - "update"
+  - "updater"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AppImage/AppImageUpdate/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AppImage/AppImageUpdate" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

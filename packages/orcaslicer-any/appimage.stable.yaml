@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "orcaslicer-any"
+pkg_id: "github.com.SoftFever.OrcaSlicer"
+pkg_type: "appimage"
+app_id: "github.com.SoftFever.OrcaSlicer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
+homepage:
+  - "https://github.com/SoftFever/OrcaSlicer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/SoftFever/OrcaSlicer"
+tag:
+  - "3d-printer"
+  - "3d-printing"
+  - "makers"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SoftFever/OrcaSlicer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/SoftFever/OrcaSlicer" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/SoftFever/OrcaSlicer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

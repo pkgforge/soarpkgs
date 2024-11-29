@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements."
 distro_pkg:
   alpine:
@@ -35,7 +36,7 @@ homepage:
   - "https://hr.dolphin-emu.org"
   - "https://www.dolphin-emu.org"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - " AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later"
   - "BSD"

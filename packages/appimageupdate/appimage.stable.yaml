@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "AppImageUpdate lets you update AppImages in a decentral way using information embedded in the AppImage itself."
 distro_pkg:
   archlinux:
@@ -21,7 +22,7 @@ distro_pkg:
 homepage:
   - "https://github.com/AppImageCommunity/AppImageUpdate"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "MIT"
 src_url:

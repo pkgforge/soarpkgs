@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "quicknote"
+pkg_id: "github.com.srilakshmikanthanp.quicknote"
+pkg_type: "appimage"
+app_id: "github.com.srilakshmikanthanp.quicknote"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "QuickNote helps to paste some random text or take some notes right from your taskbar!"
+distro_pkg:
+  archlinux:
+    aur:
+      - "quicknote"
+      - "quicknote-bin"
+      - "quicknote-git"
+homepage:
+  - "https://github.com/srilakshmikanthanp/quicknote"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/srilakshmikanthanp/quicknote"
+tag:
+  - "electron-app"
+  - "notes"
+  - "quicknote"
+  - "reactjs"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/srilakshmikanthanp/quicknote/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/srilakshmikanthanp/quicknote" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

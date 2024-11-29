@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "OBS Studio AppImage built on top of JuNest, the lightweight Arch Linux based distro that runs on top of any other Linux distro."
 distro_pkg:
   alpine:
@@ -49,7 +50,7 @@ homepage:
   - "https://obsproject.com/uk"
   - "https://obsproject.com/zh-cn"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Boost-1.0"
   - "FDK-AAC"

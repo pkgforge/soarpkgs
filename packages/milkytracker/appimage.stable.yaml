@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "An FT2 compatible music tracker"
 distro_pkg:
   alpine:
@@ -33,7 +34,7 @@ homepage:
   - "https://milkytracker.org"
   - "https://milkytracker.titandemo.org"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - " AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT"
   - "BSD-3-Clause"

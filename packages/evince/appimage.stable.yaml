@@ -1,0 +1,103 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "evince"
+pkg_id: "github.com.ivan-hc.Evince-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Evince-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Document viewer for popular document formats."
+distro_pkg:
+  alpine:
+    - "evince"
+  archlinux:
+    aur:
+      - "evince-git"
+      - "evince-no-gnome"
+    extra:
+      - "evince"
+  debian:
+    - "evince"
+  nixpkgs:
+    - "evince"
+    - "pantheon.evince"
+homepage:
+  - "http://projects.gnome.org/evince"
+  - "http://www.gnome.org"
+  - "http://www.gnome.org/projects/evince"
+  - "https://apps.gnome.org/Evince"
+  - "https://apps.gnome.org/en/Evince"
+  - "https://download.gnome.org/sources/evince"
+  - "https://gitlab.gnome.org/GNOME/evince"
+  - "https://wiki.gnome.org/Apps"
+  - "https://wiki.gnome.org/Apps/Evince"
+  - "https://www.gnome.org"
+  - "https://www.gnome.org/projects/evince"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-SA-3.0"
+  - "GNU GPLv3"
+  - "GNU General Public License"
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2.0+"
+  - "GPL-2.0+ AND MIT AND BSD-3-Clause AND LGPL-2.0+ AND X11 AND LGPL-3.0-only AND Public-Domain AND LGPL-2.1+"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND X11 AND MIT AND Afmparse"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and GFDL"
+  - "GPLv2+ and GFDL+"
+  - "GPLv2+ and GPLv3+ and LGPLv2+ and MIT and Afmparse"
+  - "gpl2"
+  - "spdx:GPL-2.0-or-later"
+src_url:
+  - "https://github.com/ivan-hc/Evince-appimage"
+tag:
+  - "Applications/Publishing"
+  - "Debug"
+  - "Graphical"
+  - "Graphics"
+  - "Libs"
+  - "Office"
+  - "Productivity/Office/Other"
+  - "Publishing"
+  - "Tools"
+  - "app-text"
+  - "debug"
+  - "development"
+  - "extra/desktop/gnome"
+  - "gnome"
+  - "gnome-desktop"
+  - "graphics"
+  - "office"
+  - "office.viewers"
+  - "pantheon"
+  - "print"
+  - "programming.devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Evince-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Evince-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

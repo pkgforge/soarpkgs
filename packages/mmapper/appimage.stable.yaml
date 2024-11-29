@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mmapper"
+pkg_id: "github.com.MUME.MMapper"
+pkg_type: "appimage"
+app_id: "github.com.MUME.MMapper"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "🧙‍♂️MMapper is a graphical client designed for the MUME (Multi-Users in Middle-earth) game"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mmapper"
+      - "mmapper-git"
+homepage:
+  - "https://github.com/MUME/MMapper"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/MUME/MMapper"
+tag:
+  - "Amusements/Games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/MUME/MMapper/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/MUME/MMapper" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

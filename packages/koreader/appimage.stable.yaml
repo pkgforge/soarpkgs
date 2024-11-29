@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "koreader"
+pkg_id: "github.com.koreader.koreader"
+pkg_type: "appimage"
+app_id: "github.com.koreader.koreader"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"
+distro_pkg:
+  archlinux:
+    aur:
+      - "koreader-appimage"
+      - "koreader-bin"
+  nixpkgs:
+    - "koreader"
+homepage:
+  - "https://github.com/koreader/koreader"
+  - "https://koreader.rocks"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL3"
+src_url:
+  - "https://github.com/koreader/koreader"
+tag:
+  - "cbz"
+  - "djvu"
+  - "djvu-reflow"
+  - "ebook"
+  - "ebook-reader"
+  - "eink"
+  - "epub"
+  - "ereader"
+  - "fb2"
+  - "kindle"
+  - "kobo"
+  - "luajit"
+  - "opds"
+  - "pdf"
+  - "pdf-reflow"
+  - "pocketbook"
+  - "reader"
+  - "reflow"
+  - "remarkable-tablet"
+  - "ubuntu-touch"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/koreader/koreader/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/koreader/koreader" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/koreader/koreader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

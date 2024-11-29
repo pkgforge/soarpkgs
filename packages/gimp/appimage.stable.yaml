@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A place to create AppImage packages for 32-bit architecture."
 distro_pkg:
   alpine:
@@ -35,7 +36,7 @@ homepage:
   - "https://www.gimp.org"
   - "https://www.gimp.org/downloads/devel"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU GPLv3"
   - "GNU General Public License, version 3.0"

@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "qpdf: A content-preserving PDF document transformer"
 distro_pkg:
   alpine:
@@ -29,7 +30,7 @@ homepage:
   - "https://qpdf.sourceforge.net"
   - "https://sourceforge.net/projects/qpdf"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - " and MIT"
   - "Apache"

@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "deeptags"
+pkg_id: "github.com.SZinedine.DeepTags"
+pkg_type: "appimage"
+app_id: "github.com.SZinedine.DeepTags"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "DeepTags is a markdown notes manager with support for nested tags"
+distro_pkg:
+  archlinux:
+    aur:
+      - "deeptags"
+homepage:
+  - "https://github.com/SZinedine/DeepTags"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/SZinedine/DeepTags"
+tag:
+  - "cpp"
+  - "markdown"
+  - "nested-tags"
+  - "productivity"
+  - "qt5"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SZinedine/DeepTags/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/SZinedine/DeepTags" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

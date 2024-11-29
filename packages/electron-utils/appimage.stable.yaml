@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "electron-utils"
+pkg_id: "github.com.SamTV12345.DevRustPilot"
+pkg_type: "appimage"
+app_id: "github.com.SamTV12345.DevRustPilot"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Electron Utils for every day usage as a dev."
+distro_pkg:
+  archlinux:
+    aur:
+      - "electron-utils-bin"
+homepage:
+  - "https://github.com/SamTV12345/DevRustPilot"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LicenseRef-custom"
+src_url:
+  - "https://github.com/SamTV12345/DevRustPilot"
+tag:
+  - "desktop"
+  - "development"
+  - "docker"
+  - "rust"
+  - "tauri-app"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SamTV12345/DevRustPilot/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/SamTV12345/DevRustPilot" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

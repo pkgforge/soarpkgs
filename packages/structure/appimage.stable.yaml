@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "structure"
+pkg_id: "github.com.neopostmodern.structure"
+pkg_type: "appimage"
+app_id: "github.com.neopostmodern.structure"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Structure is a knowledge management tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "structure"
+      - "structure-bin"
+homepage:
+  - "http://web.stanford.edu/group/pritchardlab/structure.html"
+  - "https://structure.love"
+  - "https://web.stanford.edu/group/pritchardlab/structure.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "GPL"
+src_url:
+  - "https://github.com/neopostmodern/structure"
+tag:
+  - "bookmarking"
+  - "electron"
+  - "knowledge-base"
+  - "note-taking"
+  - "react"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/neopostmodern/structure/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/neopostmodern/structure" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/neopostmodern/structure" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Helper application for Linux distributions serving as a kind of entry point for running and integrating AppImages"
 distro_pkg:
   archlinux:
@@ -20,7 +21,7 @@ distro_pkg:
 homepage:
   - "https://github.com/TheAssassin/AppImageLauncher"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "MIT"
 src_url:

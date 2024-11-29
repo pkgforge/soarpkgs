@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Unofficial AppImage of Android Platform Tools (adb, fastboot, etc). Can also install udev rules. [Maintainer=@Samueru-sama]"
 distro_pkg:
   alpine:
@@ -43,7 +44,7 @@ homepage:
   - "https://sites.google.com/a/android.com/tools"
   - "https://wiki.debian.org/AndroidTools"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "APL"
   - "ASL 2.0 and "

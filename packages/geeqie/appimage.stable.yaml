@@ -1,0 +1,82 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "geeqie"
+pkg_id: "github.com.BestImageViewer.geeqie"
+pkg_type: "appimage"
+app_id: "github.com.BestImageViewer.geeqie"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "claiming to be the best image viewer / photo collection browser"
+distro_pkg:
+  alpine:
+    - "geeqie"
+  archlinux:
+    aur:
+      - "geeqie-git"
+      - "geeqie-gtk2"
+      - "geeqie15"
+    extra:
+      - "geeqie"
+  debian:
+    - "geeqie"
+  nixpkgs:
+    - "geeqie"
+homepage:
+  - "http://geeqie.org"
+  - "http://geeqie.sourceforge.net"
+  - "http://sourceforge.net/projects/geeqie"
+  - "http://www.geeqie.org"
+  - "https://geeqie.sourceforge.net"
+  - "https://github.com/BestImageViewer/geeqie"
+  - "https://www.geeqie.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL v2.0"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2+"
+  - "gpl2+"
+src_url:
+  - "https://github.com/BestImageViewer/geeqie"
+tag:
+  - "Applications/Graphics"
+  - "Graphical"
+  - "Graphics"
+  - "Graphics/Viewers"
+  - "Productivity/Graphics/Viewers"
+  - "debug"
+  - "extra/multimedia"
+  - "graphics"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "universe/graphics"
+  - "utilities"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/BestImageViewer/geeqie/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/BestImageViewer/geeqie@${RELEASE_TAG}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/BestImageViewer/geeqie@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

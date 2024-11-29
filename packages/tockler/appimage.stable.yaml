@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "An application that tracks your time by monitoring your active window title and idle time."
 distro_pkg:
   archlinux:
@@ -18,7 +19,7 @@ distro_pkg:
 homepage:
   - "https://github.com/MayGo/tockler"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GPL-2.0-only"
   - "GPLv2"

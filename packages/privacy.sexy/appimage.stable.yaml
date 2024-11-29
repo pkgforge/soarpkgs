@@ -1,0 +1,58 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "privacy.sexy"
+pkg_id: "github.com.undergroundwires.privacy.sexy"
+pkg_type: "appimage"
+app_id: "github.com.undergroundwires.privacy.sexy"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Open-source tool to enforce privacy & security best-practices on Windows, macOS and Linux, because privacy is sexy"
+homepage:
+  - "https://github.com/undergroundwires/privacy.sexy"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/undergroundwires/privacy.sexy"
+tag:
+  - "bloatware"
+  - "bloatware-removal"
+  - "cleanup"
+  - "cybersecurity"
+  - "debloat"
+  - "debloater"
+  - "debotnet"
+  - "domain-driven-design"
+  - "linux"
+  - "macos"
+  - "privacy"
+  - "privacy-protection"
+  - "privacy-tools"
+  - "security"
+  - "security-hardening"
+  - "security-tool"
+  - "security-tools"
+  - "tweaks-collection"
+  - "windows10"
+  - "windows11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/undergroundwires/privacy.sexy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/undergroundwires/privacy.sexy" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

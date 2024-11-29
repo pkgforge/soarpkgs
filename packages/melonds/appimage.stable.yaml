@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "DS emulator, sorta"
 distro_pkg:
   alpine:
@@ -28,7 +29,7 @@ homepage:
   - "https://github.com/melonDS-emu/melonDS"
   - "https://melonds.kuribo64.net"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "BSD-2"
   - "GNU General Public License, version 3.0 or later"

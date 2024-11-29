@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cpod"
+pkg_id: "github.com.z-------------.CPod"
+pkg_type: "appimage"
+app_id: "github.com.z-------------.CPod"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "(UNMAINTAINED) A simple, beautiful podcast app for Windows, macOS, and Linux."
+distro_pkg:
+  archlinux:
+    aur:
+      - "cpod"
+      - "cpod-appimage"
+      - "cpod-git"
+homepage:
+  - "https://github.com/z-------------/CPod"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache-2.0"
+  - "LGPL"
+src_url:
+  - "https://github.com/z-------------/CPod"
+tag:
+  - "audio"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/z-------------/CPod/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/z-------------/CPod" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

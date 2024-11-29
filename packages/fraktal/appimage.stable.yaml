@@ -1,0 +1,37 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fraktal"
+pkg_id: "github.com.Fraktal-JS.fraktal"
+pkg_type: "appimage"
+app_id: "github.com.Fraktal-JS.fraktal"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Podcast Manager in Electron"
+homepage:
+  - "https://github.com/Fraktal-JS/fraktal"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/Fraktal-JS/fraktal"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Fraktal-JS/fraktal/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Fraktal-JS/fraktal" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

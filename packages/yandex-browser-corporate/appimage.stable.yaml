@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Unofficial Yandex Browsers AppImage built from the official .deb packages."
 distro_pkg:
   archlinux:
@@ -21,7 +22,7 @@ homepage:
   - "https://browser.yandex.com"
   - "https://browser.yandex.ru"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Unfree"
   - "custom:yandex-browser"

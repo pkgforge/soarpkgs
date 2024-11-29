@@ -1,0 +1,63 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xemu"
+pkg_id: "github.com.xemu-project.xemu"
+pkg_type: "appimage"
+app_id: "github.com.xemu-project.xemu"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Original Xbox Emulator for Windows, macOS, and Linux (Active Development)"
+distro_pkg:
+  alpine:
+    - "xemu"
+  archlinux:
+    aur:
+      - "xemu"
+      - "xemu-bin"
+      - "xemu-git"
+  nixpkgs:
+    - "xemu"
+homepage:
+  - "https://github.com/mborgerson/xemu"
+  - "https://github.com/xemu-project/xemu"
+  - "https://xemu.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD-2-Clause"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-only AND GPL-2.0-or-later AND MIT AND LGPL-2.1-or-later AND MIT"
+  - "GPL-2.0-only AND LGPL-2.1-only"
+  - "GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+  - "MIT"
+src_url:
+  - "https://github.com/xemu-project/xemu"
+tag:
+  - "Emulators"
+  - "debug"
+  - "game"
+  - "game.emulator"
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/xemu-project/xemu/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/xemu-project/xemu" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

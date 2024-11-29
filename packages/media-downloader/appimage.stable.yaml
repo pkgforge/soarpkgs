@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "media-downloader"
+pkg_id: "github.com.gaeljacquin.media-downloader"
+pkg_type: "appimage"
+app_id: "github.com.gaeljacquin.media-downloader"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Cross-platform audio/video downloader"
+distro_pkg:
+  archlinux:
+    aur:
+      - "media-downloader"
+      - "media-downloader-git"
+  nixpkgs:
+    - "media-downloader"
+homepage:
+  - "https://github.com/mhogomchungu/media-downloader"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL-2.0"
+  - "GPL-2.0-only OR GPL-3.0-or-later"
+  - "GPL-2.0-or-later"
+src_url:
+  - "https://github.com/gaeljacquin/media-downloader"
+tag:
+  - "File"
+  - "Video"
+  - "Video/Utilities"
+  - "admin"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/gaeljacquin/media-downloader/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/gaeljacquin/media-downloader" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/gaeljacquin/media-downloader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

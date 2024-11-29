@@ -1,0 +1,73 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "chromium-bsu"
+pkg_id: "github.com.ivan-hc.Database-of-pkg2appimaged-packages"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Database-of-pkg2appimaged-packages"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Various AppImage packages for AM and AppMan"
+distro_pkg:
+  archlinux:
+    extra:
+      - "chromium-bsu"
+  debian:
+    - "chromium-bsu"
+  nixpkgs:
+    - "chromium-bsu"
+homepage:
+  - "http://chromium-bsu.sourceforge.net"
+  - "http://sourceforge.net/projects/chromium-bsu"
+  - "http://www.reptilelabour.com/software/chromium"
+  - "https://chromium-bsu.sourceforge.io"
+  - "https://chromium-bsu.sourceforge.net"
+  - "https://sourceforge.net/projects/chromium-bsu"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Artistic"
+  - "Artistic License"
+  - "Artistic clarified"
+  - "Artistic-1.0"
+  - "ClArtistic AND MIT"
+  - "ClArtistic and MIT"
+  - "Clarified-Artistic"
+  - "GPL"
+  - "MIT"
+  - "MIT License"
+  - "chromium-bsu"
+  - "custom:artistic"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Action/Shoot"
+  - "Applications/Games"
+  - "Games/Arcade"
+  - "extra/game"
+  - "game/shmup"
+  - "games"
+  - "games-action"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Database-of-pkg2appimaged-packages/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

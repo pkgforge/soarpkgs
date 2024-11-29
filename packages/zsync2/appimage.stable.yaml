@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Rewrite of https://github.com/AppImage/zsync-curl, using modern C++, providing both a library and standalone tools."
 distro_pkg:
   archlinux:
@@ -20,7 +21,7 @@ distro_pkg:
 homepage:
   - "https://github.com/AppImageCommunity/zsync2"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Artistic-2.0"
   - "PerlArtistic"

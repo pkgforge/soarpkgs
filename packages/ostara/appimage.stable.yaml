@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Ostara is a cross-platform desktop app for managing and monitoring Spring Boot applications using the Actuator API, providing comprehensive insights and effortless control."
 distro_pkg:
   archlinux:
@@ -18,7 +19,7 @@ distro_pkg:
 homepage:
   - "https://ostara.dev"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Apache-2.0"
 src_url:

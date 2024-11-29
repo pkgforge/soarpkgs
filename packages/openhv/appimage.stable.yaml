@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openhv"
+pkg_id: "github.com.OpenHV.OpenHV"
+pkg_type: "appimage"
+app_id: "github.com.OpenHV.OpenHV"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "An Open Source Pixelart Science-Fiction Real-Time-Strategy game"
+distro_pkg:
+  archlinux:
+    aur:
+      - "openhv"
+      - "openhv-git"
+homepage:
+  - "https://openhv.itch.io/openhv"
+  - "https://www.openhv.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/OpenHV/OpenHV"
+tag:
+  - "game"
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OpenHV/OpenHV/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/OpenHV/OpenHV" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

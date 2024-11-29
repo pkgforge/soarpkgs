@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A web-based interface for CNC milling controller running Grbl, Marlin, Smoothieware, or TinyG."
 distro_pkg:
   archlinux:
@@ -19,7 +20,7 @@ homepage:
   - "https://cnc.js.org"
   - "https://github.com/cncjs/cncjs"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "MIT"
 src_url:

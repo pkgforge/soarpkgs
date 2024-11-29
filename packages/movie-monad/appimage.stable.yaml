@@ -1,0 +1,62 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "movie-monad"
+pkg_id: "github.com.lettier.movie-monad"
+pkg_type: "appimage"
+app_id: "github.com.lettier.movie-monad"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: ":tv: A free and simple to use video player made with Haskell."
+distro_pkg:
+  archlinux:
+    aur:
+      - "movie-monad"
+homepage:
+  - "https://github.com/lettier/movie-monad"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD3"
+src_url:
+  - "https://github.com/lettier/movie-monad"
+tag:
+  - "appimage"
+  - "desktop-video-player"
+  - "fedora"
+  - "gdk"
+  - "gst"
+  - "gstreamer"
+  - "gtk"
+  - "haskell"
+  - "haskell-gi"
+  - "linux"
+  - "linux-mint"
+  - "macos"
+  - "mplayer"
+  - "mpv"
+  - "multimedia-player"
+  - "ubuntu"
+  - "video"
+  - "video-playback"
+  - "video-player"
+  - "vlc"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lettier/movie-monad/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lettier/movie-monad" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

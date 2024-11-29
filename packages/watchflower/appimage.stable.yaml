@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A plant monitoring application that reads and plots data from compatible Bluetooth sensors and thermometers like Xiaomi Flower Care or Parrot Flower Power"
 distro_pkg:
   archlinux:
@@ -18,7 +19,7 @@ distro_pkg:
 homepage:
   - "https://github.com/emericg/WatchFlower"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GPL3"
 src_url:

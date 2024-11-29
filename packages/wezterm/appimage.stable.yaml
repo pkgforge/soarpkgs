@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust"
 distro_pkg:
   alpine:
@@ -27,7 +28,7 @@ homepage:
   - "https://wezfurlong.org"
   - "https://wezfurlong.org/wezterm"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - " AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-2.1-only AND MIT AND MPL-2.0 AND WTFPL AND Zlib AND MIT"
   - "0BSD"

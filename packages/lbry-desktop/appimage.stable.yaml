@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lbry-desktop"
+pkg_id: "github.com.lbryio.lbry-desktop"
+pkg_type: "appimage"
+app_id: "github.com.lbryio.lbry-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A browser and wallet for LBRY, the decentralized, user-controlled content marketplace."
+distro_pkg:
+  archlinux:
+    aur:
+      - "lbry-desktop"
+      - "lbry-desktop-bin"
+      - "lbry-desktop-git"
+  nixpkgs:
+    - "lbry"
+homepage:
+  - "https://github.com/lbryio/lbry-desktop"
+  - "https://github.com/lbryio/lbry-desktop.git"
+  - "https://lbry.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/lbryio/lbry-desktop"
+tag:
+  - "blockchain"
+  - "cool"
+  - "electron"
+  - "javascript"
+  - "lbry"
+  - "react"
+  - "translation"
+  - "ui"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lbryio/lbry-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lbryio/lbry-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

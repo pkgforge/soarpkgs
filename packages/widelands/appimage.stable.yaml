@@ -1,0 +1,75 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "widelands"
+pkg_id: "github.com.widelands.widelands"
+pkg_type: "appimage"
+app_id: "github.com.widelands.widelands"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Widelands is a free, open source real-time strategy game with singleplayer campaigns and a multiplayer mode. The game was inspired by Settlers II™ (© Bluebyte) but has significantly more variety and depth to it."
+distro_pkg:
+  alpine:
+    - "widelands"
+  archlinux:
+    aur:
+      - "widelands-git"
+    extra:
+      - "widelands"
+  debian:
+    - "widelands"
+  nixpkgs:
+    - "widelands"
+homepage:
+  - "http://widelands.org"
+  - "http://www.widelands.org"
+  - "https://github.com/widelands/widelands"
+  - "https://launchpad.net/widelands"
+  - "https://widelands.org"
+  - "https://wl.widelands.org"
+  - "https://www.widelands.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2+   BitstreamVera BSD CC-BY-SA-3.0 MIT OFL-1.1"
+  - "GPL-2+   BitstreamVera CC-BY-SA-3.0 MIT OFL-1.1"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/widelands/widelands"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Strategy/Other"
+  - "Games/Other"
+  - "Games/Strategy"
+  - "Graphical"
+  - "debug"
+  - "game/strategy"
+  - "games"
+  - "games-strategy"
+  - "games.strategy"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/widelands/widelands/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/widelands/widelands" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/widelands/widelands" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

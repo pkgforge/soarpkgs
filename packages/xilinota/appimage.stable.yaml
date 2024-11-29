@@ -1,0 +1,64 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xilinota"
+pkg_id: "github.com.XilinJia.Xilinota"
+pkg_type: "appimage"
+app_id: "github.com.XilinJia.Xilinota"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Xilinota, an open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files. The application runs on Linux, MacOS, Windows, Android and iOS."
+distro_pkg:
+  archlinux:
+    aur:
+      - "xilinota-bin"
+      - "xilinota-git"
+homepage:
+  - "https://github.com/XilinJia/Xilinota"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+src_url:
+  - "https://github.com/XilinJia/Xilinota"
+tag:
+  - "android"
+  - "electron"
+  - "evernote"
+  - "instant-messaging"
+  - "ios"
+  - "java"
+  - "javascript"
+  - "joplin"
+  - "linux"
+  - "macos"
+  - "markdown"
+  - "multi-platform"
+  - "nodejs"
+  - "note-taking"
+  - "obsidian"
+  - "react"
+  - "react-native"
+  - "synchronization"
+  - "typescript"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/XilinJia/Xilinota/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/XilinJia/Xilinota" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

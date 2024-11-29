@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "appimagepool"
+pkg_id: "github.com.prateekmedia.appimagepool"
+pkg_type: "appimage"
+app_id: "github.com.prateekmedia.appimagepool"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A simple, modern AppImageHub Client, powered by flutter."
+distro_pkg:
+  archlinux:
+    aur:
+      - "appimagepool-appimage"
+      - "appimagepool-bin"
+homepage:
+  - "https://github.com/prateekmedia/appimagepool"
+  - "https://www.pling.com/p/1547076"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/prateekmedia/appimagepool"
+tag:
+  - "appimage"
+  - "appimagehub"
+  - "applications"
+  - "flutter"
+  - "gnome"
+  - "gtk"
+  - "linux"
+  - "linux-app"
+  - "unviersal-store"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/prateekmedia/appimagepool/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/prateekmedia/appimagepool" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

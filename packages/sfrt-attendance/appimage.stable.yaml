@@ -1,0 +1,35 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sfrt-attendance"
+pkg_id: "github.com.Saint-Francis-Robotics-Team2367.Attendance"
+pkg_type: "appimage"
+app_id: "github.com.Saint-Francis-Robotics-Team2367.Attendance"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "the attendance tracking program for robotics"
+homepage:
+  - "https://github.com/Saint-Francis-Robotics-Team2367/Attendance"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/Saint-Francis-Robotics-Team2367/Attendance"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Saint-Francis-Robotics-Team2367/Attendance/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Saint-Francis-Robotics-Team2367/Attendance" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

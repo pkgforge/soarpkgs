@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "User-mode driver and GTK3 based GUI for Steam Controller"
 distro_pkg:
   alpine:
@@ -25,7 +26,7 @@ homepage:
   - "https://github.com/Ryochan7/sc-controller"
   - "https://github.com/kozec/sc-controller"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "BSD"
   - "CC-BY-3.0"

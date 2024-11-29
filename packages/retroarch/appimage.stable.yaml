@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "An attempt to use CI for nightly builds of RetroArch for Windows and Linux (via AppImage)"
 distro_pkg:
   alpine:
@@ -35,7 +36,7 @@ homepage:
   - "https://www.retroarch.com"
   - "https://www.retroarch.com/?page=platforms"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU General Public License, version 3.0"
   - "GPL"

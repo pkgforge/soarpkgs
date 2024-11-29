@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rmg"
+pkg_id: "github.com.Rosalie241.RMG"
+pkg_type: "appimage"
+app_id: "github.com.Rosalie241.RMG"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Rosalies Mupen GUI"
+distro_pkg:
+  archlinux:
+    aur:
+      - "rmg"
+      - "rmg-git"
+  nixpkgs:
+    - "rmg"
+    - "rmg-wayland"
+homepage:
+  - "https://github.com/Rosalie241/RMG"
+  - "https://github.com/Rosalie241/rmg"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD-2 CC0-1.0 GPL-2 GPL-3 MIT ZLIB public-domain angrylion-plugin? "
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/Rosalie241/RMG"
+tag:
+  - "Emulators"
+  - "games"
+  - "games-emulation"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Rosalie241/RMG/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Rosalie241/RMG" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

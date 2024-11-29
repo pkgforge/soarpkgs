@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "3D printer / slicing GUI built on top of the Uranium framework"
 distro_pkg:
   alpine:
@@ -30,7 +31,7 @@ homepage:
   - "https://github.com/Ultimaker/Cura/wiki"
   - "https://github.com/daid/Cura"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "AGPL-3.0"
   - "AGPLv3 and CC-BY-SA"

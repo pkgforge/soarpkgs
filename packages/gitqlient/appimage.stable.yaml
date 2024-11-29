@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gitqlient"
+pkg_id: "github.com.francescmm.GitQlient"
+pkg_type: "appimage"
+app_id: "github.com.francescmm.GitQlient"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "GitQlient: Multi-platform Git client written with Qt."
+distro_pkg:
+  archlinux:
+    aur:
+      - "gitqlient"
+      - "gitqlient-git"
+  nixpkgs:
+    - "gitqlient"
+homepage:
+  - "https://francescmm.github.io/GitQlient"
+  - "https://github.com/francescmm/GitQlient"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU LGPLv3"
+  - "LGPL"
+  - "LGPL-2.0-or-later"
+  - "LGPL-2.1"
+  - "LGPL-2.1-or-later"
+  - "LGPLv2+"
+  - "lgpl2.1"
+src_url:
+  - "https://github.com/francescmm/GitQlient"
+tag:
+  - "dev-vcs"
+  - "devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/francescmm/GitQlient/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/francescmm/GitQlient" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/francescmm/GitQlient" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

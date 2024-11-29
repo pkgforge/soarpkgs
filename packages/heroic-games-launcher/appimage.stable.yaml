@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "heroic-games-launcher"
+pkg_id: "github.com.Heroic-Games-Launcher.HeroicGamesLauncher"
+pkg_type: "appimage"
+app_id: "github.com.Heroic-Games-Launcher.HeroicGamesLauncher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A games launcher for GOG, Amazon and Epic Games for Linux, Windows and macOS."
+distro_pkg:
+  archlinux:
+    aur:
+      - "heroic-games-launcher"
+      - "heroic-games-launcher-bin"
+      - "heroic-games-launcher-git"
+homepage:
+  - "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+  - "https://heroicgameslauncher.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+tag:
+  - "Graphical"
+  - "debug"
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

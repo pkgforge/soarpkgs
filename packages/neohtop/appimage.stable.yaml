@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "neohtop"
+pkg_id: "github.com.Abdenasser.neohtop"
+pkg_type: "appimage"
+app_id: "github.com.Abdenasser.neohtop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "💪🏻 htop on steroids"
+distro_pkg:
+  archlinux:
+    aur:
+      - "neohtop"
+      - "neohtop-bin"
+homepage:
+  - "https://abdenasser.github.io/neohtop"
+  - "https://github.com/Abdenasser/neohtop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/Abdenasser/neohtop"
+tag:
+  - "Monitoring"
+  - "sysutils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Abdenasser/neohtop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Abdenasser/neohtop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Abdenasser/neohtop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

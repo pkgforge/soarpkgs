@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Creates an AppImage for fish shell."
 distro_pkg:
   alpine:
@@ -31,7 +32,7 @@ homepage:
   - "https://ridiculousfish.com/shell"
   - "https://sourceforge.net/projects/fish"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "BSD"
   - "BSD-2"

@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Qt-based digital signal analyzer, using Suscan core and Sigutils DSP library"
 distro_pkg:
   archlinux:
@@ -23,7 +24,7 @@ homepage:
   - "https://batchdrake.github.io/SigDigger"
   - "https://github.com/BatchDrake/SigDigger"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU GPLv3"
   - "GPL-3"

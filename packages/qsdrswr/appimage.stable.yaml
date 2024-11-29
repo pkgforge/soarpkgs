@@ -1,0 +1,37 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qsdrswr"
+pkg_id: "github.com.PTDreamer.qSdrSwr"
+pkg_type: "appimage"
+app_id: "github.com.PTDreamer.qSdrSwr"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Qt SWR analyser using an SDR and soapy_power"
+homepage:
+  - "https://github.com/PTDreamer/qSdrSwr"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Lesser General Public License v3.0"
+src_url:
+  - "https://github.com/PTDreamer/qSdrSwr"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/PTDreamer/qSdrSwr/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/PTDreamer/qSdrSwr" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

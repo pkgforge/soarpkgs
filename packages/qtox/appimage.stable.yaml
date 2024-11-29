@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Repository for qTox nightly builds"
 distro_pkg:
   alpine:
@@ -26,7 +27,7 @@ homepage:
   - "https://tox.chat"
   - "https://wiki.tox.chat/clients/qtox"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU General Public License v3.0"
   - "GNU General Public License, version 3.0 or later"

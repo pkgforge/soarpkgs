@@ -1,0 +1,76 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openshot"
+pkg_id: "github.com.OpenShot.openshot-qt"
+pkg_type: "appimage"
+app_id: "github.com.OpenShot.openshot-qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "OpenShot Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and is dedicated to delivering high quality video editing and animation solutions to the world."
+distro_pkg:
+  archlinux:
+    aur:
+      - "openshot-git"
+    extra:
+      - "openshot"
+  debian:
+    - "openshot-qt"
+  nixpkgs:
+    - "openshot-qt"
+homepage:
+  - "http://openshot.org"
+  - "http://www.openshot.org"
+  - "http://www.openshotvideo.com"
+  - "https://github.com/OpenShot/openshot-qt"
+  - "https://openshot.org"
+  - "https://www.openshot.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-Only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later and Apache-2.0 and MIT and CC-BY-SA-4.0"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/OpenShot/openshot-qt"
+tag:
+  - "Applications/Multimedia"
+  - "Productivity/Multimedia/Video/Editors"
+  - "Video"
+  - "Video/Editors"
+  - "editing"
+  - "extra/multimedia"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "oldlibs"
+  - "universe/video"
+  - "video"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OpenShot/openshot-qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/OpenShot/openshot-qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

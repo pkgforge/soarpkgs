@@ -1,0 +1,74 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "goldendict"
+pkg_id: "github.com.Abs62.goldendict"
+pkg_type: "appimage"
+app_id: "github.com.Abs62.goldendict"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A feature-rich dictionary lookup program, supporting multiple dictionary formats (StarDict/Babylon/Lingvo/Dictd) and online dictionaries, featuring perfect article rendering with the complete markup, illustrations and other content retained, and allowing you to type in words without any accents or correct case."
+distro_pkg:
+  archlinux:
+    aur:
+      - "goldendict"
+      - "goldendict-git"
+  debian:
+    - "goldendict"
+  nixpkgs:
+    - "goldendict"
+homepage:
+  - "http://goldendict.berlios.de"
+  - "http://goldendict.org"
+  - "http://www.goldendict.org"
+  - "https://github.com/goldendict/goldendict"
+  - "https://sourceforge.net/projects/goldendict"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/Abs62/goldendict"
+tag:
+  - "Applications/System"
+  - "Education"
+  - "Office"
+  - "Office/Dictionary"
+  - "Productivity/Office/Dictionary"
+  - "Tools"
+  - "app-text"
+  - "dictionary"
+  - "localization"
+  - "office"
+  - "textproc"
+  - "universe/utils"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Abs62/goldendict/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Abs62/goldendict@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

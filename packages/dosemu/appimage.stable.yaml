@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Build dosemu2 and AppImage"
 distro_pkg:
   archlinux:
@@ -23,7 +24,7 @@ homepage:
   - "https://dosemu.sourceforge.net"
   - "https://sourceforge.net/projects/dosemu"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU General Public License"
   - "GPL"

@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fasttrack"
+pkg_id: "github.com.FastTrackOrg.FastTrack"
+pkg_type: "appimage"
+app_id: "github.com.FastTrackOrg.FastTrack"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "FastTrack is a cross-platform application designed to track multiple objects in video recording."
+distro_pkg:
+  archlinux:
+    aur:
+      - "fasttrack"
+homepage:
+  - "https://github.com/FastTrackOrg/FastTrack"
+  - "https://www.fasttrack.sh"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/FastTrackOrg/FastTrack"
+tag:
+  - "computer-vision"
+  - "image-processing"
+  - "linux"
+  - "macos"
+  - "opencv"
+  - "opencv4"
+  - "qt"
+  - "qt6"
+  - "research"
+  - "science"
+  - "tracking"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FastTrackOrg/FastTrack/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/FastTrackOrg/FastTrack" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

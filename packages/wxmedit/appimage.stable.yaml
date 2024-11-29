@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wxmedit"
+pkg_id: "github.com.VinnyVynce.wxMEdit.AppImage"
+pkg_type: "appimage"
+app_id: "github.com.VinnyVynce.wxMEdit.AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "AppImage for wxMEdit"
+distro_pkg:
+  archlinux:
+    aur:
+      - "wxmedit"
+      - "wxmedit-git"
+homepage:
+  - "http://wxmedit.github.io"
+  - "https://github.com/wxMEdit/wxMEdit"
+  - "https://wxmedit.github.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GPL"
+  - "GPL-3.0-only"
+  - "GPLv3"
+src_url:
+  - "https://github.com/VinnyVynce/wxMEdit.AppImage"
+tag:
+  - "Editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/VinnyVynce/wxMEdit.AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/VinnyVynce/wxMEdit.AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "speaky-miniplayer"
+pkg_id: "github.com.fjrd84.speaky-miniplayer"
+pkg_type: "appimage"
+app_id: "github.com.fjrd84.speaky-miniplayer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Miniplayer and synthetic radio speaker for Spotify"
+homepage:
+  - "https://github.com/fjrd84/speaky-miniplayer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/fjrd84/speaky-miniplayer"
+tag:
+  - "electron"
+  - "music"
+  - "spotify"
+  - "tts"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/fjrd84/speaky-miniplayer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/fjrd84/speaky-miniplayer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

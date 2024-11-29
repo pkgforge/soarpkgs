@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Outline Server, developed by Jigsaw. The Outline Server is a proxy server that runs a Shadowsocks instance and provides a REST API for access key management."
 distro_pkg:
   archlinux:
@@ -19,7 +20,7 @@ homepage:
   - "https://github.com/Jigsaw-Code/outline-server"
   - "https://www.getoutline.org"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Apache"
 src_url:

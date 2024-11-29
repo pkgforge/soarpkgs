@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zulip"
+pkg_id: "github.com.zulip.zulip-desktop"
+pkg_type: "appimage"
+app_id: "github.com.zulip.zulip-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Zulip Desktop client for Mac, Windows and Linux."
+homepage:
+  - "https://github.com/zulip/zulip-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/zulip/zulip-desktop"
+tag:
+  - "chat"
+  - "communication"
+  - "desktop"
+  - "electron"
+  - "javascript"
+  - "linux"
+  - "macos"
+  - "windows"
+  - "zulip"
+  - "zulip-desktop"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zulip/zulip-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/zulip/zulip-desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/zulip/zulip-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "notemaster"
+pkg_id: "github.com.LiamRiddell.NoteMaster"
+pkg_type: "appimage"
+app_id: "github.com.LiamRiddell.NoteMaster"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "NoteMaster is an smart minimalistic persistent note-taking app to help boost productivity."
+homepage:
+  - "https://github.com/LiamRiddell/NoteMaster"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/LiamRiddell/NoteMaster"
+tag:
+  - "app"
+  - "dark-theme"
+  - "electron"
+  - "javascript"
+  - "monaco-editor"
+  - "node"
+  - "note-taking"
+  - "notes-app"
+  - "open-source"
+  - "productivity"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LiamRiddell/NoteMaster/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/LiamRiddell/NoteMaster" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

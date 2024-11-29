@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "thorium-client"
+pkg_id: "github.com.Thorium-Sim.thorium-kiosk"
+pkg_type: "appimage"
+app_id: "github.com.Thorium-Sim.thorium-kiosk"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A locked-down electron kiosk for Thorium"
+homepage:
+  - "https://github.com/Thorium-Sim/thorium-kiosk"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/Thorium-Sim/thorium-kiosk"
+tag:
+  - "electron"
+  - "kiosk"
+  - "thorium"
+  - "thorium-kiosk"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Thorium-Sim/thorium-kiosk/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Thorium-Sim/thorium-kiosk" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

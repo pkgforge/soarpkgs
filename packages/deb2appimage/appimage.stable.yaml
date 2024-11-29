@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Build AppImages from deb packages on any distro with simple json configuration"
 distro_pkg:
   archlinux:
@@ -18,7 +19,7 @@ distro_pkg:
 homepage:
   - "http://www.simonizor.net"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "MIT"
 src_url:

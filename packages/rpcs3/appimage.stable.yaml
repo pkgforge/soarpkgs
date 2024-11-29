@@ -1,0 +1,59 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rpcs3"
+pkg_id: "github.com.RPCS3.rpcs3-binaries-linux"
+pkg_type: "appimage"
+app_id: "github.com.RPCS3.rpcs3-binaries-linux"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Repository for Linux x64 binaries"
+distro_pkg:
+  archlinux:
+    aur:
+      - "rpcs3"
+      - "rpcs3-bin"
+      - "rpcs3-git"
+  nixpkgs:
+    - "rpcs3"
+homepage:
+  - "https://github.com/RPCS3/rpcs3"
+  - "https://rpcs3.net"
+  - "https://www.rpcs3.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL2"
+  - "GPLv2"
+src_url:
+  - "https://github.com/RPCS3/rpcs3-binaries-linux"
+tag:
+  - "Emulators"
+  - "emulators"
+  - "extra/emulator"
+  - "games"
+  - "games-emulation"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/RPCS3/rpcs3-binaries-linux/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/RPCS3/rpcs3-binaries-linux" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

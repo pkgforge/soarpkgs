@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "TeXstudio is a fully featured LaTeX editor. Our goal is to make writing LaTeX documents as easy and comfortable as possible."
 distro_pkg:
   alpine:
@@ -33,7 +34,7 @@ homepage:
   - "https://texstudio.sourceforge.net"
   - "https://www.texstudio.org"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1"
   - "GNU GPL"

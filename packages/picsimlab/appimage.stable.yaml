@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "picsimlab"
+pkg_id: "github.com.lcgamboa.picsimlab"
+pkg_type: "appimage"
+app_id: "github.com.lcgamboa.picsimlab"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "PICsimLab - Programmable IC Simulator Laboratory"
+distro_pkg:
+  archlinux:
+    aur:
+      - "picsimlab"
+      - "picsimlab-bin"
+homepage:
+  - "https://github.com/lcgamboa/picsimlab"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL2"
+src_url:
+  - "https://github.com/lcgamboa/picsimlab"
+tag:
+  - "arduino"
+  - "avr"
+  - "education"
+  - "emulator"
+  - "esp32"
+  - "esp32c3"
+  - "microcontoller"
+  - "pic16"
+  - "pic18"
+  - "simulator"
+  - "stm32"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lcgamboa/picsimlab/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lcgamboa/picsimlab" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

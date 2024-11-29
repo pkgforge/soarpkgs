@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "asgardex"
+pkg_id: "github.com.thorchain.asgardex-electron"
+pkg_type: "appimage"
+app_id: "github.com.thorchain.asgardex-electron"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "ASGARDEX desktop wallet and decentralized exchange for THORChain, 100% open-source"
+distro_pkg:
+  archlinux:
+    aur:
+      - "asgardex-appimage"
+homepage:
+  - "https://github.com/asgardex/asgardex-desktop"
+  - "https://github.com/thorchain/asgardex-electron"
+  - "https://github.com/thorchain/asgardex-electron/releases"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/thorchain/asgardex-electron"
+tag:
+  - "dex"
+  - "thorchain,dex,electron,wallet"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/thorchain/asgardex-electron/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/thorchain/asgardex-electron" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

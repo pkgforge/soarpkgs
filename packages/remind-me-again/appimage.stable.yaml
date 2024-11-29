@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "remind-me-again"
+pkg_id: "github.com.probablykasper.remind-me-again"
+pkg_type: "appimage"
+app_id: "github.com.probablykasper.remind-me-again"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Toggleable cron reminders app for Mac, Linux and Windows"
+homepage:
+  - "https://github.com/probablykasper/remind-me-again"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/probablykasper/remind-me-again"
+tag:
+  - "linux"
+  - "macos"
+  - "notifications"
+  - "reminder"
+  - "tauri"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/probablykasper/remind-me-again/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/probablykasper/remind-me-again" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "smartservogui"
+pkg_id: "github.com.emericg.SmartServoFramework"
+pkg_type: "appimage"
+app_id: "github.com.emericg.SmartServoFramework"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A multi-platform C++ framework used to drive Dynamixel and HerkuleX smart actuators, and its control GUI."
+distro_pkg:
+  archlinux:
+    aur:
+      - "smartservogui"
+homepage:
+  - "https://github.com/emericg/SmartServoFramework"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/emericg/SmartServoFramework"
+tag:
+  - "actuator"
+  - "dynamixel"
+  - "dynamixel-devices"
+  - "dynamixel-servos"
+  - "herkulex"
+  - "herkulex-devices"
+  - "herkulex-servos"
+  - "robotics"
+  - "servo"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/emericg/SmartServoFramework/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/emericg/SmartServoFramework" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

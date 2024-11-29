@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A GTK+ utility to extract cursors, icons and png images previews from MS Windows resource files (like .exe, .dll, .ocx, .cpl)"
 distro_pkg:
   archlinux:
@@ -22,7 +23,7 @@ homepage:
   - "http://code.google.com/p/gextractwinicons"
   - "http://www.muflone.com/gextractwinicons"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GPL3"
 src_url:

@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "watchit"
+pkg_id: "github.com.ZorrillosDev.watchit-app"
+pkg_type: "appimage"
+app_id: "github.com.ZorrillosDev.watchit-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Open movies everywhere"
+distro_pkg:
+  archlinux:
+    aur:
+      - "watchit-appimage"
+homepage:
+  - "https://github.com/WatchItDev/watchit-app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0"
+src_url:
+  - "https://github.com/ZorrillosDev/watchit-app"
+tag:
+  - "decentralization"
+  - "film3"
+  - "helia"
+  - "ipfs"
+  - "movies"
+  - "react"
+  - "web3"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ZorrillosDev/watchit-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ZorrillosDev/watchit-app" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ZorrillosDev/watchit-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

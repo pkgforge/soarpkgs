@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Official home of the DB Browser for SQLite (DB4S) project. Previously known as SQLite Database Browser and Database Browser for SQLite. Website at:"
 distro_pkg:
   alpine:
@@ -34,7 +35,7 @@ homepage:
   - "https://github.com/sqlitebrowser/sqlitebrowser"
   - "https://sqlitebrowser.org"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU General Public License, version 3.0 or later"
   - "GPL"

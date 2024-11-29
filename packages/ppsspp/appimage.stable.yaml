@@ -1,0 +1,74 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ppsspp"
+pkg_id: "github.com.mantralunar.ppsspp"
+pkg_type: "appimage"
+app_id: "github.com.mantralunar.ppsspp"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A PSP emulator for Android, Windows, Mac and Linux, written in C++. Want to contribute? Join us on Discord at https://discord.gg/5NJB6dD or just send pull requests / issues. For discussion use the forums at forums.ppsspp.org."
+distro_pkg:
+  alpine:
+    - "ppsspp"
+  archlinux:
+    aur:
+      - "ppsspp-git"
+    extra:
+      - "ppsspp"
+  nixpkgs:
+    - "ppsspp"
+    - "ppsspp-qt"
+homepage:
+  - "http://www.ppsspp.org"
+  - "https://github.com/hrydgard/ppsspp"
+  - "https://ppsspp.org"
+  - "https://www.ppsspp.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "Apache-2.0 AND BSD-1-Clause AND BSL-1.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND  AND CC0-1.0 AND GPL-2.0-or-later WITH Autoconf-exception-3.0 AND GPL-3.0-or-later WITH Bison-exception-2.2 AND Libpng AND ISC AND IJG AND Zlib AND MIT AND CC-BY-4.0 AND FTL"
+  - "BSD"
+  - "BSD and GPLv2+"
+  - "BSD-2"
+  - "BSD-3-Clause"
+  - "GNU General Public License, version 2.0"
+  - "GPL-2"
+  - "GPL-2.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2+"
+  - "JSON"
+  - "MIT"
+src_url:
+  - "https://github.com/mantralunar/ppsspp"
+tag:
+  - "Emulators"
+  - "System/Emulators/Other"
+  - "debug"
+  - "emulator"
+  - "emulators"
+  - "games"
+  - "games-emulation"
+  - "games.emulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mantralunar/ppsspp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mantralunar/ppsspp" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Continuous Integration to create Discord AppImages directly from source"
 distro_pkg:
   archlinux:
@@ -27,7 +28,7 @@ homepage:
   - "https://discord.com/download"
   - "https://discordapp.com"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "Distributable"
   - "Freeware"

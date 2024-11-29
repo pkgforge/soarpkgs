@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fidias-database-migration-app"
+pkg_id: "github.com.open-fidias.db-migration-app"
+pkg_type: "appimage"
+app_id: "github.com.open-fidias.db-migration-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Desktop app to migrate databases based on SQL files"
+homepage:
+  - "https://github.com/open-fidias/db-migration-app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/open-fidias/db-migration-app"
+tag:
+  - "desktop"
+  - "migration"
+  - "postgresql"
+  - "sqlite"
+  - "sqlite3"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/open-fidias/db-migration-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/open-fidias/db-migration-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

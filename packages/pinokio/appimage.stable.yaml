@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pinokio"
+pkg_id: "github.com.pinokiocomputer.pinokio"
+pkg_type: "appimage"
+app_id: "github.com.pinokiocomputer.pinokio"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "AI Browser"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pinokio-bin"
+  nixpkgs:
+    - "pinokio"
+homepage:
+  - "https://github.com/pinokiocomputer/pinokio"
+  - "https://pinokio.computer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/pinokiocomputer/pinokio"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pinokiocomputer/pinokio/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/pinokiocomputer/pinokio" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/pinokiocomputer/pinokio" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

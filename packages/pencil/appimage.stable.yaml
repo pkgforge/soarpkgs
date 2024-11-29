@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pencil"
+pkg_id: "github.com.pencil2d.pencil"
+pkg_type: "appimage"
+app_id: "github.com.pencil2d.pencil"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Pencil2D is an easy, intuitive tool to make 2D hand-drawn animations. Pencil2D is open source and cross-platform."
+distro_pkg:
+  archlinux:
+    aur:
+      - "pencil"
+      - "pencil-bin"
+      - "pencil-git"
+  nixpkgs:
+    - "pencil"
+homepage:
+  - "http://code.google.com/p/evoluspencil"
+  - "http://pencil.evolus.vn"
+  - "https://evolus.vn"
+  - "https://github.com/evolus/pencil"
+  - "https://github.com/pencil2d/pencil"
+  - "https://github.com/prikhi/pencil"
+  - "https://pencil.evolus.vn"
+  - "https://www.pencil2d.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2"
+src_url:
+  - "https://github.com/pencil2d/pencil"
+tag:
+  - "Development/Tools"
+  - "Productivity"
+  - "Productivity/Graphics/Other"
+  - "debug"
+  - "graphics"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pencil2d/pencil/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/pencil2d/pencil" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

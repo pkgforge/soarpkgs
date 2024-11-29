@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "appimagetool"
+pkg_id: "github.com.AppImage.AppImageKit"
+pkg_type: "appimage"
+app_id: "github.com.AppImage.AppImageKit"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, openSUSE, SLED, Ubuntu, Fedora, debian and derivatives. Join #AppImage on irc.libera.chat"
+homepage:
+  - "https://github.com/AppImage/AppImageKit"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/AppImage/AppImageKit"
+tag:
+  - "appimage"
+  - "applications"
+  - "deployment"
+  - "linux"
+  - "linux-app"
+  - "packaging"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AppImage/AppImageKit/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/AppImage/AppImageKit" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/AppImage/AppImageKit" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

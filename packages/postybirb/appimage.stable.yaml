@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "postybirb"
+pkg_id: "github.com.mvdicarlo.postybirb"
+pkg_type: "appimage"
+app_id: "github.com.mvdicarlo.postybirb"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "PostyBirb is an application that helps artists post art and other multimedia to multiple websites more quickly. The overall goal of PostyBirb is to cut down on the time it takes to post submissions to multiple websites."
+distro_pkg:
+  archlinux:
+    aur:
+      - "postybirb"
+      - "postybirb-bin"
+      - "postybirb-git"
+homepage:
+  - "https://github.com/mvdicarlo/postybirb"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD-3-Clause"
+src_url:
+  - "https://github.com/mvdicarlo/postybirb"
+tag:
+  - "electron"
+  - "javascript"
+  - "postybirb"
+  - "react"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mvdicarlo/postybirb/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mvdicarlo/postybirb" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

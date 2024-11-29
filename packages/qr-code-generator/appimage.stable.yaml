@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Create custom QR Codes. You can save them as PNG image. You can change the size of the image."
 distro_pkg:
   archlinux:
@@ -26,7 +27,7 @@ homepage:
   - "https://github.com/nayuki/QR-Code-generator"
   - "https://www.nayuki.io/page/qr-code-generator-library"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "MIT"
 src_url:

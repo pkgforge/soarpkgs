@@ -1,0 +1,63 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "github-desktop"
+pkg_id: "github.com.shiftkey.desktop"
+pkg_type: "appimage"
+app_id: "github.com.shiftkey.desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Fork of GitHub Desktop to support various Linux distributions"
+distro_pkg:
+  archlinux:
+    aur:
+      - "github-desktop"
+      - "github-desktop-bin"
+      - "github-desktop-git"
+  nixpkgs:
+    - "github-desktop"
+homepage:
+  - "https://desktop.github.com"
+  - "https://github.com/shiftkey/desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AFL-2.1"
+  - "APSL-2"
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-2"
+  - "BSD-4"
+  - "CC-BY-SA-3.0"
+  - "GPL-2"
+  - "LGPL-2.1"
+  - "MIT"
+  - "MPL-2.0"
+  - "Ms-PL"
+  - "OFL-1.1"
+  - "all-rights-reserved"
+  - "android"
+  - "public-domain"
+  - "unRAR"
+src_url:
+  - "https://github.com/shiftkey/desktop"
+tag:
+  - "development"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/shiftkey/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/shiftkey/desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/shiftkey/desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

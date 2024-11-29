@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "iheartradio-webapp"
+pkg_id: "github.com.ItzSwirlz.iheartradio-webapp"
+pkg_type: "appimage"
+app_id: "github.com.ItzSwirlz.iheartradio-webapp"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Election WebApp for iHeartRadio"
+homepage:
+  - "https://github.com/ItzSwirlz/iheartradio-webapp"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/ItzSwirlz/iheartradio-webapp"
+tag:
+  - "appimage"
+  - "dmg"
+  - "electron"
+  - "electron-builder"
+  - "electron-packager"
+  - "eslint"
+  - "iheartradio"
+  - "iheartradio-webapp"
+  - "jake"
+  - "javascript"
+  - "linux"
+  - "nodejs"
+  - "snap"
+  - "snapcraft"
+  - "webapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ItzSwirlz/iheartradio-webapp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ItzSwirlz/iheartradio-webapp" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

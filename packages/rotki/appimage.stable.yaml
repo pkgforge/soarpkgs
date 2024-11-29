@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rotki"
+pkg_id: "github.com.rotki.rotki"
+pkg_type: "appimage"
+app_id: "github.com.rotki.rotki"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A portfolio tracking, analytics, accounting and management application that protects your privacy"
+distro_pkg:
+  archlinux:
+    aur:
+      - "rotki-bin"
+homepage:
+  - "https://rotki.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+src_url:
+  - "https://github.com/rotki/rotki"
+tag:
+  - "accounting"
+  - "analytics"
+  - "bitcoin"
+  - "blockchain"
+  - "cryptocurrencies"
+  - "cryptocurrency-exchanges"
+  - "cryptocurrency-portfolio"
+  - "cryptocurrency-portfolio-tracking"
+  - "ethereum"
+  - "management"
+  - "management-system"
+  - "portfolio-tracker"
+  - "tracking"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rotki/rotki/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/rotki/rotki" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/rotki/rotki" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

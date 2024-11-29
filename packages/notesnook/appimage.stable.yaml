@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "notesnook"
+pkg_id: "github.com.streetwriters.notesnook"
+pkg_type: "appimage"
+app_id: "github.com.streetwriters.notesnook"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A fully open source & end-to-end encrypted note taking alternative to Evernote."
+distro_pkg:
+  archlinux:
+    aur:
+      - "notesnook"
+      - "notesnook-bin"
+      - "notesnook-git"
+  nixpkgs:
+    - "notesnook"
+homepage:
+  - "https://github.com/streetwriters/notesnook"
+  - "https://notesnook.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GPL-3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/streetwriters/notesnook"
+tag:
+  - "app-office"
+  - "asp-net-core"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/streetwriters/notesnook/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/streetwriters/notesnook" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/streetwriters/notesnook" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

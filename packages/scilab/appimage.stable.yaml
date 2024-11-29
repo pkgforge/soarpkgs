@@ -1,0 +1,86 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "scilab"
+pkg_id: "github.com.davidcl.Scilab.AppDir"
+pkg_type: "appimage"
+app_id: "github.com.davidcl.Scilab.AppDir"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Scilab binary as an AppImage"
+distro_pkg:
+  archlinux:
+    aur:
+      - "scilab"
+      - "scilab-bin"
+      - "scilab-git"
+  debian:
+    - "scilab"
+  nixpkgs:
+    - "scilab"
+    - "scilab-bin"
+homepage:
+  - "http://www.scilab.org"
+  - "https://www.scilab.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-3-Clause"
+  - "CECILL"
+  - "CECILL-2.0 and BSD-3-Clause"
+  - "CeCILL"
+  - "CeCILL version 2"
+  - "CeCILL, GPL"
+  - "CeCILL-2.1"
+  - "Free-to-use"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0-only"
+  - "GPL-2.0-only AND BSD-3-Clause"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "MIT"
+  - "MPL-1.0"
+  - "SciLab"
+  - "Scilab"
+  - "custom:CeCILL"
+  - "jing"
+  - "sun-bcla-jhall"
+src_url:
+  - "https://github.com/davidcl/Scilab.AppDir"
+tag:
+  - "Applications/Engineering"
+  - "Graphical"
+  - "Productivity/Scientific/Math"
+  - "Sciences/Engineering"
+  - "Sciences/Mathematics"
+  - "academic"
+  - "computation"
+  - "extra/scientific"
+  - "math"
+  - "mathematics"
+  - "office"
+  - "sci-mathematics"
+  - "universe/math"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/davidcl/Scilab.AppDir/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/davidcl/Scilab.AppDir" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

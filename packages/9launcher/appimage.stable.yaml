@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "9launcher"
+pkg_id: "github.com.wearrrrr.9Launcher"
+pkg_type: "appimage"
+app_id: "github.com.wearrrrr.9Launcher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "9Launcher is an actively maintained and cross platform remake of Touhou Relauncher!"
+distro_pkg:
+  archlinux:
+    aur:
+      - "9launcher-bin"
+homepage:
+  - "https://github.com/wearrrrr/9Launcher"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/wearrrrr/9Launcher"
+tag:
+  - "game-launcher"
+  - "linux"
+  - "proton"
+  - "tauri"
+  - "tauri-app"
+  - "touhou"
+  - "touhou-project"
+  - "windows"
+  - "wine"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/wearrrrr/9Launcher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/wearrrrr/9Launcher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

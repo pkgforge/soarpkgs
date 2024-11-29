@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qucs-s"
+pkg_id: "github.com.ra3xdh.qucs_s"
+pkg_type: "appimage"
+app_id: "github.com.ra3xdh.qucs_s"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Qucs-S is a circuit simulation program with Qt-based GUI"
+distro_pkg:
+  alpine:
+    - "qucs-s"
+  archlinux:
+    aur:
+      - "qucs-s"
+      - "qucs-s-git"
+  nixpkgs:
+    - "qucs-s"
+homepage:
+  - "http://qucs.sourceforge.net"
+  - "https://github.com/ra3xdh/qucs"
+  - "https://github.com/ra3xdh/qucs_s"
+  - "https://ra3xdh.github.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPLv2+"
+  - "QPL"
+  - "spdx:gpl-2.0"
+src_url:
+  - "https://github.com/ra3xdh/qucs_s"
+tag:
+  - "Education"
+  - "Productivity/Scientific/Electronics"
+  - "Sciences/Other"
+  - "academic"
+  - "cad"
+  - "circuit"
+  - "mingw-w64-clang-x86_64-eda"
+  - "mingw-w64-ucrt-x86_64-eda"
+  - "mingw-w64-x86_64-eda"
+  - "simulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ra3xdh/qucs_s/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ra3xdh/qucs_s" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

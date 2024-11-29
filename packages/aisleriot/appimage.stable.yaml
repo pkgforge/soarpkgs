@@ -1,0 +1,84 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "aisleriot"
+pkg_id: "github.com.ivan-hc.Aisleriot-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Aisleriot-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Aisleriot, also known as sol or solitaire. A card game that features over 80 different solitaire-type card games."
+distro_pkg:
+  alpine:
+    - "aisleriot"
+  archlinux:
+    aur:
+      - "aisleriot-git"
+    extra:
+      - "aisleriot"
+  debian:
+    - "aisleriot"
+  nixpkgs:
+    - "aisleriot"
+    - "gnome.aisleriot"
+homepage:
+  - "http://live.gnome.org/Aisleriot"
+  - "http://www.gnome.org"
+  - "https://apps.gnome.org"
+  - "https://download.gnome.org/sources/aisleriot"
+  - "https://gitlab.gnome.org/GNOME/aisleriot"
+  - "https://live.gnome.org/Aisleriot"
+  - "https://wiki.gnome.org/Aisleriot"
+  - "https://wiki.gnome.org/Apps/Aisleriot"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GFDL-1.1"
+  - "GFDL-1.1-or-later"
+  - "GFDL-1.3-only"
+  - "GNU Free Documentation License, version 1.1 or later"
+  - "GNU General Public License, version 3.0 or later"
+  - "GNU Lesser General Public License, version 3.0 or later"
+  - "GPL"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-3.0-or-later AND LicenseRef-Callaway-GFDL"
+  - "GPL-3.0-or-later and GFDL-1.3-or-later"
+  - "GPLv3+"
+  - "GPLv3+ and LGPLv3+ and GFDL"
+  - "LGPL-3.0-or-later"
+  - "gpl3"
+src_url:
+  - "https://github.com/ivan-hc/Aisleriot-appimage"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Board/Card"
+  - "Games/Cards"
+  - "Games/Other"
+  - "debug"
+  - "games"
+  - "games-board"
+  - "games.card"
+  - "gnome"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Aisleriot-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Aisleriot-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

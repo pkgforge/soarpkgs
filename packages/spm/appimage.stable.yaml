@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "spm"
+pkg_id: "github.com.simoniz0r.spm"
+pkg_type: "appimage"
+app_id: "github.com.simoniz0r.spm"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "spm is a simple commandline package manager written in bash"
+homepage:
+  - "https://github.com/simoniz0r/spm"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/simoniz0r/spm"
+tag:
+  - "appimage"
+  - "appimages"
+  - "bash-script"
+  - "linux"
+  - "package-manager"
+  - "spm"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/simoniz0r/spm/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/simoniz0r/spm" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

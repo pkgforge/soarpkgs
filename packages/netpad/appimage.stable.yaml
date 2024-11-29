@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "netpad"
+pkg_id: "github.com.tareqimbasher.NetPad"
+pkg_type: "appimage"
+app_id: "github.com.tareqimbasher.NetPad"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "A cross-platform C# editor and playground."
+distro_pkg:
+  archlinux:
+    aur:
+      - "netpad-bin"
+homepage:
+  - "https://github.com/tareqimbasher/NetPad"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/tareqimbasher/NetPad"
+tag:
+  - "aurelia"
+  - "cross-platform"
+  - "csharp"
+  - "database"
+  - "desktop"
+  - "dotnet"
+  - "editor"
+  - "electron"
+  - "ide"
+  - "linux"
+  - "macos"
+  - "playground"
+  - "roslyn"
+  - "tauri"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/tareqimbasher/NetPad/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/tareqimbasher/NetPad" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/tareqimbasher/NetPad" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

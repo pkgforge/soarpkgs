@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "aphototoollibre"
+pkg_id: "github.com.aphototool.A-Photo-Tool-Libre"
+pkg_type: "appimage"
+app_id: "github.com.aphototool.A-Photo-Tool-Libre"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Photo editing app for GNU/Linux"
+distro_pkg:
+  archlinux:
+    aur:
+      - "aphototoollibre"
+homepage:
+  - "https://www.ahola.me/aphototoollibre.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/aphototool/A-Photo-Tool-Libre"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/aphototool/A-Photo-Tool-Libre/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/aphototool/A-Photo-Tool-Libre" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/aphototool/A-Photo-Tool-Libre" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

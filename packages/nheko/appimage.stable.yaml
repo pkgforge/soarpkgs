@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Desktop client for Matrix using Qt and C++20."
 distro_pkg:
   alpine:
@@ -33,7 +34,7 @@ homepage:
   - "https://nheko-reborn.github.io"
   - "https://nheko.im/nheko-reborn/nheko"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GNU General Public License, version 3.0"
   - "GPL-2.0-or-later"

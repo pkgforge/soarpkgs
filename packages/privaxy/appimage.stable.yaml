@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Privaxy is the next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic. Also check out my new project, https://www.merklemap.com/"
 distro_pkg:
   archlinux:
@@ -20,7 +21,7 @@ distro_pkg:
 homepage:
   - "https://github.com/Barre/privaxy"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "AGPL"
   - "AGPL-3.0-only"

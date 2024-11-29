@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "subtitle-composer"
+pkg_id: "github.com.maxrd2.subtitlecomposer"
+pkg_type: "appimage"
+app_id: "github.com.maxrd2.subtitlecomposer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Subtitle Composer - KF5/Qt Video Subtitle Editor"
+homepage:
+  - "https://github.com/maxrd2/subtitlecomposer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/maxrd2/subtitlecomposer"
+tag:
+  - "subtitle-conversion"
+  - "subtitle-correction"
+  - "subtitle-editor"
+  - "subtitle-ocr"
+  - "subtitle-translation"
+  - "vobsub-rip"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/maxrd2/subtitlecomposer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/maxrd2/subtitlecomposer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

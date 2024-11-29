@@ -1,0 +1,37 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mazesolver"
+pkg_id: "github.com.Arquanite.MazeSolver"
+pkg_type: "appimage"
+app_id: "github.com.Arquanite.MazeSolver"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Create and solve mazes using DFS or BFS algorithm"
+homepage:
+  - "https://github.com/Arquanite/MazeSolver"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Lesser General Public License v3.0"
+src_url:
+  - "https://github.com/Arquanite/MazeSolver"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Arquanite/MazeSolver/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Arquanite/MazeSolver" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

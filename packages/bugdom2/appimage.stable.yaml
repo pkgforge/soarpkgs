@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bugdom2"
+pkg_id: "github.com.jorio.Bugdom2"
+pkg_type: "appimage"
+app_id: "github.com.jorio.Bugdom2"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Pangea Software’s Bugdom 2 for modern systems 🦗"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bugdom2"
+homepage:
+  - "https://github.com/jorio/Bugdom2"
+  - "https://jorio.itch.io/bugdom2"
+  - "https://pangeasoft.net/bug2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
+  - "custom:cc-by-nc-sa-4.0"
+src_url:
+  - "https://github.com/jorio/Bugdom2"
+tag:
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jorio/Bugdom2/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jorio/Bugdom2" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jorio/Bugdom2" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

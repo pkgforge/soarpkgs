@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "localsend"
+pkg_id: "github.com.localsend.localsend"
+pkg_type: "appimage"
+app_id: "github.com.localsend.localsend"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "An open-source cross-platform alternative to AirDrop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "localsend"
+      - "localsend-appimage"
+      - "localsend-bin"
+      - "localsend-git"
+  nixpkgs:
+    - "localsend"
+homepage:
+  - "https://github.com/localsend/localsend"
+  - "https://localsend.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "MIT"
+src_url:
+  - "https://github.com/localsend/localsend"
+tag:
+  - "Networking/File"
+  - "cross-platform"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/localsend/localsend/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/localsend/localsend" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/localsend/localsend" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

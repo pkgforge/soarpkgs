@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sigma-file-manager"
+pkg_id: "github.com.aleksey-hoffman.sigma-file-manager"
+pkg_type: "appimage"
+app_id: "github.com.aleksey-hoffman.sigma-file-manager"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Sigma File Manager is a free, open-source, quickly evolving, modern file manager (explorer / browser) app for Windows and Linux."
+distro_pkg:
+  archlinux:
+    aur:
+      - "sigma-file-manager"
+      - "sigma-file-manager-bin"
+      - "sigma-file-manager-git"
+homepage:
+  - "https://github.com/aleksey-hoffman/sigma-file-manager"
+  - "https://sigma-file-manager.vercel.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/aleksey-hoffman/sigma-file-manager"
+tag:
+  - "File"
+  - "cross-platform"
+  - "explorer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/aleksey-hoffman/sigma-file-manager/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/aleksey-hoffman/sigma-file-manager" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

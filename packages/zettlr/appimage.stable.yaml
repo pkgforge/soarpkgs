@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zettlr"
+pkg_id: "github.com.Zettlr.Zettlr"
+pkg_type: "appimage"
+app_id: "github.com.Zettlr.Zettlr"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Your One-Stop Publication Workbench"
+distro_pkg:
+  archlinux:
+    aur:
+      - "zettlr-git"
+    extra:
+      - "zettlr"
+  nixpkgs:
+    - "zettlr"
+homepage:
+  - "https://github.com/Zettlr/Zettlr"
+  - "https://www.zettlr.com"
+  - "https://zettlr.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/Zettlr/Zettlr"
+tag:
+  - "editor"
+  - "editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Zettlr/Zettlr/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Zettlr/Zettlr" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Zettlr/Zettlr" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openosrs-launcher"
+pkg_id: "github.com.open-osrs.launcher"
+pkg_type: "appimage"
+app_id: "github.com.open-osrs.launcher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Keeps the OpenOSRS client up to date for those who dont want to build."
+homepage:
+  - "https://github.com/open-osrs/launcher"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD 2-Clause Simplified License"
+src_url:
+  - "https://github.com/open-osrs/launcher"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/open-osrs/launcher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/open-osrs/launcher" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/open-osrs/launcher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

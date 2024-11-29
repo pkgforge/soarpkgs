@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Tmux AppImage build via Docker"
 distro_pkg:
   alpine:
@@ -31,7 +32,7 @@ homepage:
   - "https://github.com/tmux/tmux/wiki"
   - "https://tmux.github.io"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "0BSD"
   - "BSD"

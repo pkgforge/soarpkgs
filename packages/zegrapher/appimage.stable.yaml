@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zegrapher"
+pkg_id: "github.com.AdelKS.ZeGrapher"
+pkg_type: "appimage"
+app_id: "github.com.AdelKS.ZeGrapher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "2D Math and Data plotter."
+distro_pkg:
+  archlinux:
+    aur:
+      - "zegrapher"
+  debian:
+    - "zegrapher"
+  nixpkgs:
+    - "zegrapher"
+homepage:
+  - "http://www.zegrapher.com"
+  - "http://zegrapher.com"
+  - "https://www.zegrapher.com"
+  - "https://zegrapher.com"
+  - "https://zegrapher.com/en"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL-3.0-or-later"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/AdelKS/ZeGrapher"
+tag:
+  - "academic"
+  - "math"
+  - "science"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AdelKS/ZeGrapher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AdelKS/ZeGrapher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

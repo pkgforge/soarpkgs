@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "caprine"
+pkg_id: "github.com.sindresorhus.caprine"
+pkg_type: "appimage"
+app_id: "github.com.sindresorhus.caprine"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Elegant Facebook Messenger desktop app"
+distro_pkg:
+  alpine:
+    - "caprine"
+  archlinux:
+    aur:
+      - "caprine"
+      - "caprine-bin"
+      - "caprine-git"
+  nixpkgs:
+    - "caprine"
+    - "caprine-bin"
+homepage:
+  - "https://github.com/sindresorhus/caprine"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+  - "MIT license"
+src_url:
+  - "https://github.com/sindresorhus/caprine"
+tag:
+  - "Communications"
+  - "Networking/WWW"
+  - "chat"
+  - "facebook"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/sindresorhus/caprine/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/sindresorhus/caprine" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/sindresorhus/caprine" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

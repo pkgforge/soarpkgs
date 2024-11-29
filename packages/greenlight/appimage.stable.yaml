@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "greenlight"
+pkg_id: "github.com.unknownskl.greenlight"
+pkg_type: "appimage"
+app_id: "github.com.unknownskl.greenlight"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Greenlight is an open-source client for xCloud and Xbox home streaming made in Typescript."
+distro_pkg:
+  archlinux:
+    aur:
+      - "greenlight-bin"
+      - "greenlight-git"
+homepage:
+  - "https://github.com/unknownskl/greenlight"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/unknownskl/greenlight"
+tag:
+  - "streaming"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/unknownskl/greenlight/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/unknownskl/greenlight" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

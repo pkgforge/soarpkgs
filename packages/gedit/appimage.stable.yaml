@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "ArchImage of the popular text editor Gedit."
 distro_pkg:
   alpine:
@@ -43,7 +44,7 @@ homepage:
   - "https://wiki.gnome.org/Apps/Gedit"
   - "https://www.gnome.org/projects/gedit"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "CC-BY-SA-3.0"
   - "GNU General Public License version 2"

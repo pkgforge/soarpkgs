@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "enoseannotator"
+pkg_id: "github.com.Tilagiho.eNoseAnnotator"
+pkg_type: "appimage"
+app_id: "github.com.Tilagiho.eNoseAnnotator"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "eNoseAnnotator is a program used to view, annotate and store measurements of the eNose sensor."
+homepage:
+  - "https://github.com/Tilagiho/eNoseAnnotator"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/Tilagiho/eNoseAnnotator"
+tag:
+  - "annotation"
+  - "annotation-tool"
+  - "appimage"
+  - "enose-sensor"
+  - "graph"
+  - "labeling"
+  - "labeling-tool"
+  - "measurements"
+  - "sensor"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Tilagiho/eNoseAnnotator/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Tilagiho/eNoseAnnotator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

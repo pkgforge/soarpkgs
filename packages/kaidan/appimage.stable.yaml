@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "[Replaced by https://invent.kde.org/network/kaidan] Kaidan, a simple and user-friendly Jabber/XMPP client for every device and platform."
 distro_pkg:
   alpine:
@@ -31,7 +32,7 @@ homepage:
   - "https://kaidan.im"
   - "https://www.kaidan.im"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0"
   - "Apache Software License 2.0"

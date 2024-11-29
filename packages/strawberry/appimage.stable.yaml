@@ -1,0 +1,86 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "strawberry"
+pkg_id: "github.com.Samueru-sama.strawberry-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.Samueru-sama.strawberry-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Unofficial AppImage of the strawberry music player [Maintainer=@Samueru-sama]"
+distro_pkg:
+  alpine:
+    - "strawberry"
+  archlinux:
+    aur:
+      - "strawberry-full-git"
+      - "strawberry-git"
+      - "strawberry-lite"
+      - "strawberry-lite-git"
+      - "strawberry-qt5"
+    extra:
+      - "strawberry"
+  debian:
+    - "strawberry"
+  nixpkgs:
+    - "strawberry"
+    - "strawberry-qt6"
+homepage:
+  - "http://www.strawbs.org"
+  - "https://github.com/strawberrymusicplayer/strawberry"
+  - "https://strawberrymusicplayer.org"
+  - "https://www.strawberrymusicplayer.org"
+  - "https://www.strawbs.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later"
+  - "Apache-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT"
+  - "Freeware"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL"
+  - "GPL-2.0-or-later and GPL-3.0-or-later and LGPL-2.1 and APSL-2.0 and MIT and BSL"
+  - "GPL-3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later and Apache-2.0 and LGPL-2.0-or-later and BSD"
+  - "GPL-3.0-or-later and BSD-3-Clause and APSL-2.0 and MIT"
+  - "GPL3"
+  - "GPLv2 and GPLv3+ amd LGPLv2 and ASL 2.0 and MIT and Boost"
+  - "GPLv2 and GPLv3+ amd LGPLv2 and ASL 2.0 and MIT and Boost and CC-BY-SA"
+  - "GPLv2 and GPLv3+ and LGPLv2 and ASL 2.0 and MIT and Boost"
+  - "MIT AND Apache-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later"
+src_url:
+  - "https://github.com/Samueru-sama/strawberry-AppImage"
+tag:
+  - "Music"
+  - "Productivity/Multimedia/Sound/Players"
+  - "Sound"
+  - "Sound/Players"
+  - "audio"
+  - "debug"
+  - "media-sound"
+  - "multimedia"
+  - "multimedia.audio"
+  - "sound"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Samueru-sama/strawberry-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Samueru-sama/strawberry-AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

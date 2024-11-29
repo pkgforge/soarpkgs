@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tusk"
+pkg_id: "github.com.klauscfhq.tusk"
+pkg_type: "appimage"
+app_id: "github.com.klauscfhq.tusk"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Refined Evernote desktop app"
+distro_pkg:
+  archlinux:
+    aur:
+      - "tusk"
+  nixpkgs:
+    - "tusk"
+homepage:
+  - "https://github.com/klaudiosinani/tusk"
+  - "https://github.com/klaussinani/tusk"
+  - "https://rliebz.github.io/tusk"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/klauscfhq/tusk"
+tag:
+  - "Building"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/klauscfhq/tusk/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/klauscfhq/tusk" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

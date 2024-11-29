@@ -10,11 +10,12 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A script that generates a custom AppImage from Debian or from a PPA of your choice for the previous (not the oldest) and still supported Ubuntu LTS"
 homepage:
   - "https://github.com/ivan-hc/AppImaGen"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 src_url:
   - "https://github.com/ivan-hc/AppImaGen"
 tag:

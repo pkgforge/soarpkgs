@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Build an AppImage of the glulxe interactive fiction interpreter"
 distro_pkg:
   archlinux:
@@ -18,7 +19,7 @@ distro_pkg:
 homepage:
   - "https://www.eblong.com/zarf/glulx"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 src_url:
   - "https://github.com/dino-/glulxe-appimage-build"
 tag:

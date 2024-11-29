@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "imageplay"
+pkg_id: "github.com.cpvrlab.ImagePlay"
+pkg_type: "appimage"
+app_id: "github.com.cpvrlab.ImagePlay"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "ImagePlay is a rapid prototyping application for image processing"
+distro_pkg:
+  archlinux:
+    aur:
+      - "imageplay-git"
+homepage:
+  - "http://cpvrlab.github.io/ImagePlay"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/cpvrlab/ImagePlay"
+tag:
+  - "media-gfx"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cpvrlab/ImagePlay/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/cpvrlab/ImagePlay" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

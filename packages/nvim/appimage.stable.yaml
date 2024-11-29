@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nvim"
+pkg_id: "github.com.neovim.neovim"
+pkg_type: "appimage"
+app_id: "github.com.neovim.neovim"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Vim-fork focused on extensibility and usability"
+homepage:
+  - "https://github.com/neovim/neovim"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/neovim/neovim"
+tag:
+  - "api"
+  - "c"
+  - "lua"
+  - "neovim"
+  - "nvim"
+  - "text-editor"
+  - "vim"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/neovim/neovim/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/neovim/neovim" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/neovim/neovim" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

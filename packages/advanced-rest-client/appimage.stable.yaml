@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "advanced-rest-client"
+pkg_id: "github.com.advanced-rest-client.arc-electron"
+pkg_type: "appimage"
+app_id: "github.com.advanced-rest-client.arc-electron"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Advanced REST Client - Desktop application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "advanced-rest-client"
+      - "advanced-rest-client-appimage"
+homepage:
+  - "https://github.com/advanced-rest-client/arc-electron"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache-2.0"
+src_url:
+  - "https://github.com/advanced-rest-client/arc-electron"
+tag:
+  - "advanced-rest-client"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/advanced-rest-client/arc-electron/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/advanced-rest-client/arc-electron" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

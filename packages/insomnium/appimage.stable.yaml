@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "insomnium"
+pkg_id: "github.com.ArchGPT.insomnium"
+pkg_type: "appimage"
+app_id: "github.com.ArchGPT.insomnium"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia"
+distro_pkg:
+  archlinux:
+    aur:
+      - "insomnium"
+      - "insomnium-bin"
+      - "insomnium-git"
+homepage:
+  - "https://github.com/ArchGPT/insomnium"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/ArchGPT/insomnium"
+tag:
+  - "api-client"
+  - "electron"
+  - "insomnia"
+  - "privacy-preserving"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ArchGPT/insomnium/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ArchGPT/insomnium" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

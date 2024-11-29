@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "simplex-chat"
+pkg_id: "github.com.simplex-chat.simplex-chat"
+pkg_type: "appimage"
+app_id: "github.com.simplex-chat.simplex-chat"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "SimpleX - the first messaging network operating without user identifiers of any kind - 100% private by design! iOS, Android and desktop apps 📱!"
+distro_pkg:
+  archlinux:
+    aur:
+      - "simplex-chat-bin"
+      - "simplex-chat-git"
+homepage:
+  - "https://github.com/simplex-chat/simplex-chat"
+  - "https://simplex.chat"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPL3"
+src_url:
+  - "https://github.com/simplex-chat/simplex-chat"
+tag:
+  - "chat"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/simplex-chat/simplex-chat/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/simplex-chat/simplex-chat" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/simplex-chat/simplex-chat" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

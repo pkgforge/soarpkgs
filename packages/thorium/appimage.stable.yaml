@@ -1,0 +1,58 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "thorium"
+pkg_id: "github.com.Alex313031.Thorium"
+pkg_type: "appimage"
+app_id: "github.com.Alex313031.Thorium"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Chromium fork named after radioactive element No. 90. Windows and MacOS/Raspi/Android/Special builds are in different repositories, links are towards the top of the README.md."
+homepage:
+  - "https://github.com/Alex313031/Thorium"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD 3-Clause New or Revised License"
+src_url:
+  - "https://github.com/Alex313031/Thorium"
+tag:
+  - "aes"
+  - "avx"
+  - "avx-instructions"
+  - "chrome"
+  - "chrome-devtools"
+  - "chromedriver"
+  - "chromium"
+  - "chromium-browser"
+  - "content-shell"
+  - "jpeg-xl"
+  - "jpegxl"
+  - "jxl"
+  - "libjxl"
+  - "linux"
+  - "thorium"
+  - "thorium-browser"
+  - "thoriumos"
+  - "web-browser"
+  - "web-platform"
+  - "webbrowser"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Alex313031/Thorium/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Alex313031/Thorium" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

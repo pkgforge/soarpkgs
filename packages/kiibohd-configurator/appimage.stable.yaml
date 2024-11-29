@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kiibohd-configurator"
+pkg_id: "github.com.kiibohd.configurator"
+pkg_type: "appimage"
+app_id: "github.com.kiibohd.configurator"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Client-side component of the configurator"
+distro_pkg:
+  archlinux:
+    aur:
+      - "kiibohd-configurator-bin"
+homepage:
+  - "https://github.com/kiibohd/configurator"
+  - "https://kiibohd.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+src_url:
+  - "https://github.com/kiibohd/configurator"
+tag:
+  - "boot"
+  - "clojure"
+  - "electron"
+  - "keyboard"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kiibohd/configurator/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/kiibohd/configurator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

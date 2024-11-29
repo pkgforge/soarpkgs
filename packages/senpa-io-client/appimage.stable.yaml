@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "senpa-io-client"
+pkg_id: "github.com.NullDev.senpa-io-client"
+pkg_type: "appimage"
+app_id: "github.com.NullDev.senpa-io-client"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "🟣 Official Client for Senpa.io"
+homepage:
+  - "https://github.com/NullDev/senpa-io-client"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/NullDev/senpa-io-client"
+tag:
+  - "nulldev"
+  - "official"
+  - "senpai-io"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/NullDev/senpa-io-client/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/NullDev/senpa-io-client" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/NullDev/senpa-io-client" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

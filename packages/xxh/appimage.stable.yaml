@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xxh"
+pkg_id: "github.com.xxh.xxh"
+pkg_type: "appimage"
+app_id: "github.com.xxh.xxh"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "🚀 Bring your favorite shell wherever you go through the ssh. Xonsh shell, fish, zsh, osquery and so on."
+distro_pkg:
+  archlinux:
+    aur:
+      - "xxh-appimage"
+      - "xxh-git"
+  nixpkgs:
+    - "python310Packages.xxh"
+    - "python39Packages.xxh"
+    - "xxh"
+homepage:
+  - "https://github.com/xxh/xxh"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+  - "BSD-2-Clause"
+src_url:
+  - "https://github.com/xxh/xxh"
+tag:
+  - "python310Packages"
+  - "python39Packages"
+  - "sysutils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/xxh/xxh/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/xxh/xxh" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

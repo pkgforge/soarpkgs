@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "no-fwl"
+pkg_id: "github.com.lencx.nofwl"
+pkg_type: "appimage"
+app_id: "github.com.lencx.nofwl"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "NoFWL Desktop Application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "no-fwl-bin"
+homepage:
+  - "https://nofwl.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/lencx/nofwl"
+tag:
+  - "application"
+  - "chatgpt"
+  - "desktop"
+  - "linux"
+  - "macos"
+  - "tauri"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lencx/nofwl/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/lencx/nofwl" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/lencx/nofwl" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

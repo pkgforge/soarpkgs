@@ -1,0 +1,37 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qaddapp"
+pkg_id: "github.com.smokejohn.qaddapp"
+pkg_type: "appimage"
+app_id: "github.com.smokejohn.qaddapp"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+  - "Utility"
+description: "Qt5 Gui app that helps you add AppImages and binary archives into your Desktop environment"
+homepage:
+  - "https://github.com/smokejohn/qaddapp"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/smokejohn/qaddapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/smokejohn/qaddapp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/smokejohn/qaddapp" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A place to create AppImage packages for 32-bit architecture."
 distro_pkg:
   alpine:
@@ -47,7 +48,7 @@ homepage:
   - "https://www.chromium.org/Home"
   - "https://www.cryptopro.ru/products/chromium-gost"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "3-clause BSD License"
   - "Apache License"

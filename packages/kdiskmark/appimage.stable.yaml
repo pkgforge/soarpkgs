@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "A simple open-source disk benchmark tool for Linux distros"
 distro_pkg:
   alpine:
@@ -26,7 +27,7 @@ distro_pkg:
 homepage:
   - "https://github.com/JonMagon/KDiskMark"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "GPL-3"
   - "GPL-3.0"

@@ -10,6 +10,7 @@ build_util:
   - "jq#bin"
   - "squishy-cli#bin"
 category:
+  - "Utility"
 description: "Simple cross platform GUI for rclone. Supports macOS, GNU/Linux, BSD family and Windows."
 distro_pkg:
   alpine:
@@ -29,7 +30,7 @@ homepage:
   - "https://martins.ninja/RcloneBrowser"
   - "https://mmozeiko.github.io/RcloneBrowser"
 maintainer:
-  - "runner"
+  - "Azathothas (https://github.com/Azathothas)"
 license:
   - "MIT"
   - "MIT License"
