@@ -9,7 +9,7 @@
 [doc-shield]: https://img.shields.io/badge/docs.pkgforge.dev-blue
 [doc-url]: https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs
 
-<a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-904%20(938)-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
+<a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-1000%20(1635)-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
 [![Documentation][doc-shield]][doc-url]
 [![Issues][issues-shield]][issues-url]
 [![License: MIT][license-shield]][license-url]
