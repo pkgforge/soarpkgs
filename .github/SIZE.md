@@ -1,5 +1,5 @@
 ```mathematica
- 49M └─┬ main
+ 50M └─┬ main
  33M   ├─┬ assets
  33M   │ ├─┬ icons
 2.4M   │ │ ├── steam_scr.png
@@ -6456,6 +6456,13 @@
 4.0K   │ │ └── appimage.stable.yaml
 8.0K   │ └─┬ aaaaxy
 4.0K   │   └── appimage.stable.yaml
+1.3M   ├─┬ metadata
+1.0M   │ ├── METADATA.json
+104K   │ ├── METADATA.json.zstd
+104K   │ ├── METADATA.json.xz
+4.0K   │ ├── METADATA.json.zstd.bsum
+4.0K   │ ├── METADATA.json.xz.bsum
+4.0K   │ └── METADATA.json.bsum
 120K   ├─┬ scripts
  36K   │ ├── sbuild_runner.sh
  24K   │ ├── sbuild_creator.sh
@@ -6464,13 +6471,6 @@
 8.0K   │ ├── scrape_pub_issues.sh
 8.0K   │ ├── repology_fetcher.sh
 8.0K   │ └── gen_meta.sh
-100K   ├─┬ metadata
- 68K   │ ├── METADATA.json
-8.0K   │ ├── METADATA.json.zstd
-8.0K   │ ├── METADATA.json.xz
-4.0K   │ ├── METADATA.json.zstd.bsum
-4.0K   │ ├── METADATA.json.xz.bsum
-4.0K   │ └── METADATA.json.bsum
  12K   ├─┬ templates
 4.0K   │ ├── minimal.SBUILD.yaml
 4.0K   │ └── generic.SBUILD.yaml
