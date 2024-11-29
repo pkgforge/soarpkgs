@@ -1,5 +1,5 @@
 ```mathematica
- 56M └─┬ main
+ 57M └─┬ main
  33M   ├─┬ assets
  33M   │ ├─┬ icons
 2.4M   │ │ ├── steam_scr.png
@@ -7827,10 +7827,10 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-1.3M   ├─┬ metadata
-1.0M   │ ├── METADATA.json
-104K   │ ├── METADATA.json.zstd
-104K   │ ├── METADATA.json.xz
+2.1M   ├─┬ metadata
+1.8M   │ ├── METADATA.json
+168K   │ ├── METADATA.json.xz
+164K   │ ├── METADATA.json.zstd
 4.0K   │ ├── METADATA.json.zstd.bsum
 4.0K   │ ├── METADATA.json.xz.bsum
 4.0K   │ └── METADATA.json.bsum
