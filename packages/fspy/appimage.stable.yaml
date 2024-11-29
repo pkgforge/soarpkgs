@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fspy"
+pkg_id: "github.com.stuffmatic.fSpy"
+pkg_type: "appimage"
+app_id: "github.com.stuffmatic.fSpy"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A cross platform app for quick and easy still image camera matching"
+distro_pkg:
+  archlinux:
+    aur:
+      - "fspy"
+  debian:
+    - "fspy"
+  nixpkgs:
+    - "fspy"
+homepage:
+  - "https://code.google.com/p/fspy"
+  - "https://fspy.io"
+  - "https://github.com/stuffmatic/fSpy"
+maintainer:
+  - "runner"
+license:
+  - "GPL"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/stuffmatic/fSpy"
+tag:
+  - "3d-graphics"
+  - "blender"
+  - "camera-calibration"
+  - "fspy"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stuffmatic/fSpy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/stuffmatic/fSpy" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

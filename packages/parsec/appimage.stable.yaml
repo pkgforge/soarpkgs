@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "parsec"
+pkg_id: "github.com.Scille.parsec-cloud"
+pkg_type: "appimage"
+app_id: "github.com.Scille.parsec-cloud"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Open source Dropbox-like file sharing with full client encryption !"
+homepage:
+  - "https://github.com/Scille/parsec-cloud"
+maintainer:
+  - "runner"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/Scille/parsec-cloud"
+tag:
+  - "cloud"
+  - "dropbox"
+  - "file-sharing"
+  - "privacy"
+  - "security"
+  - "sharing-data"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Scille/parsec-cloud/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Scille/parsec-cloud" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

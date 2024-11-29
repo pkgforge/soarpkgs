@@ -1,0 +1,98 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "conky"
+pkg_id: "github.com.brndnmtthws.conky"
+pkg_type: "appimage"
+app_id: "github.com.brndnmtthws.conky"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Light-weight system monitor for X, Wayland (sort of), and other things, too"
+distro_pkg:
+  alpine:
+    - "conky"
+  archlinux:
+    aur:
+      - "conky-cairo"
+      - "conky-cli"
+      - "conky-git"
+      - "conky-lua-nv"
+    extra:
+      - "conky"
+  debian:
+    - "conky"
+  nixpkgs:
+    - "conky"
+homepage:
+  - "http://conky.sf.net"
+  - "http://conky.sourceforge.net"
+  - "https://conky.cc"
+  - "https://conky.sourceforge.net"
+  - "https://github.com/brndnmtthws/conky"
+  - "https://github.com/brndnmtthws/conky/wiki"
+  - "https://sourceforge.net/projects/conky"
+maintainer:
+  - "runner"
+license:
+  - "BSD"
+  - "BSD licenses"
+  - "BSD, GPL, LGPL"
+  - "BSD-3-Clause"
+  - "BSD3"
+  - "Boost"
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-3"
+  - "GPL-3.0+ and LGPL-3.0+ and MIT"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-2.1-or-later AND MIT-open-group AND BSD-3-Clause"
+  - "GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT"
+  - "GPL3"
+  - "GPLv3 with various free software licenses "
+  - "GPLv3+"
+  - "ISC"
+  - "LGPL"
+  - "LGPL-2.1"
+  - "MIT"
+  - "custom"
+src_url:
+  - "https://github.com/brndnmtthws/conky"
+tag:
+  - "Monitoring"
+  - "System/Monitoring"
+  - "System/X11"
+  - "User"
+  - "admin"
+  - "app"
+  - "app-admin"
+  - "contrib/utils"
+  - "debug"
+  - "extra/tool"
+  - "multiverse/utils"
+  - "oldlibs"
+  - "programming.devel"
+  - "system"
+  - "system-tools"
+  - "system.utils"
+  - "sysutils"
+  - "universe/utils"
+  - "utils"
+  - "x11-monitoring"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/brndnmtthws/conky/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/brndnmtthws/conky" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

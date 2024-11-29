@@ -1,0 +1,73 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vscodium"
+pkg_id: "github.com.VSCodium.vscodium"
+pkg_type: "appimage"
+app_id: "github.com.VSCodium.vscodium"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "binary releases of VS Code without MS branding/telemetry/licensing"
+distro_pkg:
+  archlinux:
+    aur:
+      - "vscodium"
+      - "vscodium-bin"
+      - "vscodium-electron"
+      - "vscodium-electron-bin"
+      - "vscodium-git"
+  nixpkgs:
+    - "vscodium"
+homepage:
+  - "https://github.com/VSCodium/vscodium"
+  - "https://github.com/VSCodium/vscodium.git"
+  - "https://vscodium.com"
+maintainer:
+  - "runner"
+license:
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-1"
+  - "BSD-2"
+  - "BSD-4"
+  - "CC-BY-4.0"
+  - "ISC"
+  - "LGPL-2.1+"
+  - "MIT"
+  - "MIT License"
+  - "MITL"
+  - "MPL-2.0"
+  - "PYTHON"
+  - "TextMate-bundle"
+  - "Unlicense"
+  - "UoI-NCSA"
+  - "W3C"
+  - "openssl"
+src_url:
+  - "https://github.com/VSCodium/vscodium"
+tag:
+  - "Development/Other"
+  - "Development/Tools"
+  - "app-editors"
+  - "code-oss"
+  - "cross-platform"
+  - "devel"
+  - "development"
+  - "editor"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/VSCodium/vscodium/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/VSCodium/vscodium" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/VSCodium/vscodium" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

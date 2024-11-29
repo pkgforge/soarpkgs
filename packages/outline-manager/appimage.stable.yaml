@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "outline-manager"
+pkg_id: "github.com.Jigsaw-Code.outline-server"
+pkg_type: "appimage"
+app_id: "github.com.Jigsaw-Code.outline-server"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Outline Server, developed by Jigsaw. The Outline Server is a proxy server that runs a Shadowsocks instance and provides a REST API for access key management."
+distro_pkg:
+  archlinux:
+    aur:
+      - "outline-manager-appimage"
+homepage:
+  - "https://github.com/Jigsaw-Code/outline-server"
+  - "https://www.getoutline.org"
+maintainer:
+  - "runner"
+license:
+  - "Apache"
+src_url:
+  - "https://github.com/Jigsaw-Code/outline-server"
+tag:
+  - "docker"
+  - "linux"
+  - "outline"
+  - "outline-vpn"
+  - "proxy-server"
+  - "shadowsocks"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Jigsaw-Code/outline-server/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Jigsaw-Code/outline-server" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

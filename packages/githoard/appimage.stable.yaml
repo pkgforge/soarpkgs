@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "githoard"
+pkg_id: "github.com.jojobyte.githoard"
+pkg_type: "appimage"
+app_id: "github.com.jojobyte.githoard"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Desktop app that enables users to quickly clone git repositories"
+homepage:
+  - "https://github.com/jojobyte/githoard"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/jojobyte/githoard"
+tag:
+  - "electron"
+  - "git"
+  - "less"
+  - "vue"
+  - "vuex"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jojobyte/githoard/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/jojobyte/githoard" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

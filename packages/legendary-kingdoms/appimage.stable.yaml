@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "legendary-kingdoms"
+pkg_id: "github.com.daelsepara.legendary-kingdoms"
+pkg_type: "appimage"
+app_id: "github.com.daelsepara.legendary-kingdoms"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An Implementation of Legendary Kingdoms gamebook series in C++ and SDL. Only book 1, The Valley of Bones has been implemented as of now."
+homepage:
+  - "https://github.com/daelsepara/legendary-kingdoms"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/daelsepara/legendary-kingdoms"
+tag:
+  - "computer-games"
+  - "crpg"
+  - "game"
+  - "gamebook"
+  - "gamebooks"
+  - "games"
+  - "legendary-kingdoms"
+  - "roleplaying-games"
+  - "rpg"
+  - "sdl"
+  - "sdl2"
+  - "the-valley-of-bones"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/daelsepara/legendary-kingdoms/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/daelsepara/legendary-kingdoms" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

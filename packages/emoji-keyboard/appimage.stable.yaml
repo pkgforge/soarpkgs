@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "emoji-keyboard"
+pkg_id: "github.com.OzymandiasTheGreat.emoji-keyboard"
+pkg_type: "appimage"
+app_id: "github.com.OzymandiasTheGreat.emoji-keyboard"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Type emoji easily! Virtual keyboard-like emoji palette for Linux with [fewer] of features."
+distro_pkg:
+  archlinux:
+    aur:
+      - "emoji-keyboard-appimage"
+      - "emoji-keyboard-bin"
+homepage:
+  - "https://github.com/OzymandiasTheGreat/emoji-keyboard"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/OzymandiasTheGreat/emoji-keyboard"
+tag:
+  - "emoji"
+  - "emoji-keyboard"
+  - "emoji-picker"
+  - "expo"
+  - "react-native"
+  - "tauri"
+  - "virtual-keyboard"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OzymandiasTheGreat/emoji-keyboard/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/OzymandiasTheGreat/emoji-keyboard" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

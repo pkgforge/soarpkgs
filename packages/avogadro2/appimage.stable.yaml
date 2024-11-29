@@ -1,0 +1,76 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "avogadro2"
+pkg_id: "github.com.OpenChemistry.avogadroapp"
+pkg_type: "appimage"
+app_id: "github.com.OpenChemistry.avogadroapp"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
+distro_pkg:
+  archlinux:
+    aur:
+      - "avogadro2-bin"
+      - "avogadro2-git"
+      - "avogadroapp"
+  debian:
+    - "avogadro"
+  nixpkgs:
+    - "avogadro2"
+homepage:
+  - "http://avogadro.cc"
+  - "http://avogadro.openmolecules.net"
+  - "http://openchemistry.org/projects/avogadro2"
+  - "http://www.openchemistry.org/projects/avogadro2"
+  - "https://avogadro.cc"
+  - "https://github.com/OpenChemistry/avogadroapp"
+  - "https://sourceforge.net/projects/avogadro"
+  - "https://two.avogadro.cc"
+  - "https://two.avogadro.cc/index.html"
+  - "https://two.avogadro.cc/install/index.html"
+  - "https://www.openchemistry.org"
+  - "https://www.openchemistry.org/projects/avogadro2"
+maintainer:
+  - "runner"
+license:
+  - "3-clause BSD License"
+  - "Artistic License"
+  - "BSD"
+  - "BSD-3-Clause"
+  - "GNU General Public License, version 2.0"
+  - "GNU Library General Public License, version 2.0 or later"
+  - "GPL-2+"
+  - "GPL-2.0-only"
+  - "GPLv2+"
+  - "Kitware"
+  - "LicenseRef-Callaway-BSD"
+  - "spdx:BSD-3-Clause"
+src_url:
+  - "https://github.com/OpenChemistry/avogadroapp"
+tag:
+  - "Productivity/Scientific/Chemistry"
+  - "Sciences/Chemistry"
+  - "System/Libraries"
+  - "academic"
+  - "avogadro"
+  - "sci-chemistry"
+  - "science"
+  - "universe/science"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OpenChemistry/avogadroapp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/OpenChemistry/avogadroapp" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/OpenChemistry/avogadroapp" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

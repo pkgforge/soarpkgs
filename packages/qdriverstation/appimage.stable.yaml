@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qdriverstation"
+pkg_id: "github.com.FRC-Utilities.QDriverStation"
+pkg_type: "appimage"
+app_id: "github.com.FRC-Utilities.QDriverStation"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Cross-platform clone of the FRC Driver Station"
+distro_pkg:
+  archlinux:
+    aur:
+      - "qdriverstation"
+      - "qdriverstation-appimage"
+      - "qdriverstation-git"
+homepage:
+  - "https://frc-utilities.github.io"
+  - "https://github.com/FRC-Utilities/QDriverStation"
+  - "https://github.com/FRC-Utilities/qdriverstation"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/FRC-Utilities/QDriverStation"
+tag:
+  - "debug"
+  - "desktop"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FRC-Utilities/QDriverStation/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/FRC-Utilities/QDriverStation" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

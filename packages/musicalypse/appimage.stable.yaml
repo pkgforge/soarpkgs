@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "musicalypse"
+pkg_id: "github.com.tgambet.musicalypse"
+pkg_type: "appimage"
+app_id: "github.com.tgambet.musicalypse"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A modern audio player built with Web technologies."
+homepage:
+  - "https://github.com/tgambet/musicalypse"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/tgambet/musicalypse"
+tag:
+  - "akka-http"
+  - "angular"
+  - "electron"
+  - "music"
+  - "music-player"
+  - "ngrx"
+  - "streaming-audio"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/tgambet/musicalypse/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/tgambet/musicalypse" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

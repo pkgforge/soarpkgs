@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "brisqi"
+pkg_id: "github.com.Brisqi.releases"
+pkg_type: "appimage"
+app_id: "github.com.Brisqi.releases"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Offline-first personal Kanban app. Elegantly designed & passionately built. Keeping you productive anywhere — whether online or off the grid."
+distro_pkg:
+  archlinux:
+    aur:
+      - "brisqi-bin"
+homepage:
+  - "https://brisqi.com"
+maintainer:
+  - "runner"
+license:
+  - "LicenseRef-custom"
+src_url:
+  - "https://github.com/Brisqi/releases"
+tag:
+  - "kanban"
+  - "kanban-application"
+  - "kanban-board-application"
+  - "kanban-boards"
+  - "offline-app"
+  - "offline-first"
+  - "offline-kanban-board"
+  - "productivity"
+  - "productivity-app"
+  - "task-management"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Brisqi/releases/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Brisqi/releases" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Brisqi/releases" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

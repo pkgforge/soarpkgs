@@ -1,0 +1,60 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "yank-note"
+pkg_id: "github.com.purocean.yn"
+pkg_type: "appimage"
+app_id: "github.com.purocean.yn"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A highly extensible Markdown editor. Version control, AI Copilot, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
+distro_pkg:
+  archlinux:
+    aur:
+      - "yank-note"
+      - "yank-note-bin"
+      - "yank-note-git"
+homepage:
+  - "https://yank-note.com"
+maintainer:
+  - "runner"
+license:
+  - "AGPL-3.0-only"
+src_url:
+  - "https://github.com/purocean/yn"
+tag:
+  - "chatgpt"
+  - "drawio"
+  - "editor"
+  - "electron"
+  - "gemini"
+  - "koa2"
+  - "markdown"
+  - "markdown-editor"
+  - "markdown-it"
+  - "mermaid"
+  - "monaco-editor"
+  - "notebook"
+  - "openai"
+  - "plantuml"
+  - "reveal-js"
+  - "revealjs"
+  - "vscode"
+  - "vue"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/purocean/yn/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/purocean/yn" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/purocean/yn" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

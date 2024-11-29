@@ -1,0 +1,60 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "imgbrd-grabber"
+pkg_id: "github.com.Bionus.imgbrd-grabber"
+pkg_type: "appimage"
+app_id: "github.com.Bionus.imgbrd-grabber"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Very customizable imageboard/booru downloader with powerful filenaming features."
+distro_pkg:
+  alpine:
+    - "imgbrd-grabber"
+  archlinux:
+    aur:
+      - "imgbrd-grabber"
+      - "imgbrd-grabber-appimage"
+      - "imgbrd-grabber-bin"
+      - "imgbrd-grabber-git"
+  nixpkgs:
+    - "imgbrd-grabber"
+homepage:
+  - "https://bionus.github.io/imgbrd-grabber"
+  - "https://github.com/Bionus/imgbrd-grabber"
+maintainer:
+  - "runner"
+license:
+  - "Apache-2.0"
+  - "Apache-2.0 License"
+src_url:
+  - "https://github.com/Bionus/imgbrd-grabber"
+tag:
+  - "android"
+  - "booru"
+  - "danbooru"
+  - "downloader"
+  - "gelbooru"
+  - "grabber"
+  - "imageboard"
+  - "linux"
+  - "macos"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Bionus/imgbrd-grabber/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Bionus/imgbrd-grabber" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qfsm"
+pkg_id: "github.com.AaronErhardt.qfsm"
+pkg_type: "appimage"
+app_id: "github.com.AaronErhardt.qfsm"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Official repsitory of Qfsm, a graphical Finite State Machine (FSM) designer"
+distro_pkg:
+  archlinux:
+    aur:
+      - "qfsm"
+  nixpkgs:
+    - "qfsm"
+homepage:
+  - "http://qfsm.sourceforge.net"
+  - "http://qfsm.sourceforge.net/index.html"
+  - "https://github.com/AaronErhardt/qfsm"
+  - "https://qfsm.sourceforge.net"
+maintainer:
+  - "runner"
+license:
+  - "GPL"
+  - "GPL-2"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/AaronErhardt/qfsm"
+tag:
+  - "Education"
+  - "science"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AaronErhardt/qfsm/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AaronErhardt/qfsm" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

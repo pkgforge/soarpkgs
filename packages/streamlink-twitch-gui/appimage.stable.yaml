@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "streamlink-twitch-gui"
+pkg_id: "github.com.streamlink.streamlink-twitch-gui"
+pkg_type: "appimage"
+app_id: "github.com.streamlink.streamlink-twitch-gui"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A multi platform Twitch.tv browser for Streamlink"
+distro_pkg:
+  archlinux:
+    aur:
+      - "streamlink-twitch-gui"
+      - "streamlink-twitch-gui-bin"
+      - "streamlink-twitch-gui-git"
+homepage:
+  - "https://github.com/streamlink/streamlink-twitch-gui"
+  - "https://streamlink.github.io/streamlink-twitch-gui"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/streamlink/streamlink-twitch-gui"
+tag:
+  - "network.web"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/streamlink/streamlink-twitch-gui/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/streamlink/streamlink-twitch-gui" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

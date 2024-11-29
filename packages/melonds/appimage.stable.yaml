@@ -1,0 +1,64 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "melonds"
+pkg_id: "github.com.melonDS-emu.melonDS"
+pkg_type: "appimage"
+app_id: "github.com.melonDS-emu.melonDS"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "DS emulator, sorta"
+distro_pkg:
+  alpine:
+    - "melonds"
+  archlinux:
+    aur:
+      - "melonds"
+      - "melonds-bin"
+      - "melonds-git"
+  nixpkgs:
+    - "melonDS"
+homepage:
+  - "http://melonds.kuribo64.net"
+  - "https://github.com/Arisotura/melonDS"
+  - "https://github.com/Arisotura/melonds"
+  - "https://github.com/melonDS-emu/melonDS"
+  - "https://melonds.kuribo64.net"
+maintainer:
+  - "runner"
+license:
+  - "BSD-2"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL-2"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "Unlicense"
+src_url:
+  - "https://github.com/melonDS-emu/melonDS"
+tag:
+  - "Emulators"
+  - "debug"
+  - "emulators"
+  - "games"
+  - "games-emulation"
+  - "games.emulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/melonDS-emu/melonDS/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/melonDS-emu/melonDS" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/melonDS-emu/melonDS" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

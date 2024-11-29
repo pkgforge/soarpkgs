@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "snippetstore"
+pkg_id: "github.com.ZeroX-DG.SnippetStore"
+pkg_type: "appimage"
+app_id: "github.com.ZeroX-DG.SnippetStore"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: ":tada: A snippet management app for developers :rocket:"
+homepage:
+  - "https://github.com/ZeroX-DG/SnippetStore"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/ZeroX-DG/SnippetStore"
+tag:
+  - "dark-theme"
+  - "electron"
+  - "i18n"
+  - "language"
+  - "light-theme"
+  - "linux"
+  - "mobx"
+  - "mobx-react"
+  - "react"
+  - "react-router"
+  - "reactjs"
+  - "sass"
+  - "snippet-manager"
+  - "snippets"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ZeroX-DG/SnippetStore/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ZeroX-DG/SnippetStore" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

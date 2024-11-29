@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "inkdown"
+pkg_id: "github.com.1943time.inkdown"
+pkg_type: "appimage"
+app_id: "github.com.1943time.inkdown"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way."
+distro_pkg:
+  archlinux:
+    aur:
+      - "inkdown"
+      - "inkdown-bin"
+      - "inkdown-git"
+homepage:
+  - "https://github.com/1943time/inkdown"
+  - "https://www.inkdown.me"
+maintainer:
+  - "runner"
+license:
+  - "AGPL-3.0-only"
+src_url:
+  - "https://github.com/1943time/inkdown"
+tag:
+  - "docs-generator"
+  - "electron"
+  - "mardown-editor"
+  - "markdown"
+  - "notes-app"
+  - "slatejs"
+  - "wysiwyg"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/1943time/inkdown/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/1943time/inkdown" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/1943time/inkdown" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

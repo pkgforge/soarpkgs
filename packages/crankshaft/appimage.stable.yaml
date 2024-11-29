@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "crankshaft"
+pkg_id: "github.com.KraXen72.crankshaft"
+pkg_type: "appimage"
+app_id: "github.com.KraXen72.crankshaft"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "a fast, feature-rich krunker client written in typescript"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/KraXen72/crankshaft"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/KraXen72/crankshaft"
+tag:
+  - "electron"
+  - "gatoclient"
+  - "krunker"
+  - "krunkerio"
+  - "lightweight"
+  - "typescript"
+  - "userscripts"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/KraXen72/crankshaft/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/KraXen72/crankshaft" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "freetube"
+pkg_id: "github.com.FreeTubeApp.FreeTube"
+pkg_type: "appimage"
+app_id: "github.com.FreeTubeApp.FreeTube"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An Open Source YouTube app for privacy"
+distro_pkg:
+  alpine:
+    - "freetube"
+  archlinux:
+    aur:
+      - "freetube"
+      - "freetube-bin"
+      - "freetube-git"
+  nixpkgs:
+    - "freetube"
+homepage:
+  - "https://freetubeapp.io"
+  - "https://github.com/FreeTubeApp/FreeTube"
+maintainer:
+  - "runner"
+license:
+  - "AGPL-3+"
+  - "AGPL-3.0"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPL3"
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/FreeTubeApp/FreeTube"
+tag:
+  - "Video"
+  - "cross-platform"
+  - "multimedia"
+  - "privacy"
+  - "youtube"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FreeTubeApp/FreeTube/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/FreeTubeApp/FreeTube" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/FreeTubeApp/FreeTube" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

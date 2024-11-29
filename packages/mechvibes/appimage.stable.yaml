@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mechvibes"
+pkg_id: "github.com.hainguyents13.mechvibes"
+pkg_type: "appimage"
+app_id: "github.com.hainguyents13.mechvibes"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Mechvibes"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mechvibes"
+homepage:
+  - "https://mechvibes.com"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/hainguyents13/mechvibes"
+tag:
+  - "keycaps"
+  - "mechanical-keyboard"
+  - "productivity"
+  - "sound"
+  - "switch"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hainguyents13/mechvibes/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hainguyents13/mechvibes" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

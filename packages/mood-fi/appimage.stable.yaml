@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mood-fi"
+pkg_id: "github.com.KaykyDeSouzaDias.Mood-Fi"
+pkg_type: "appimage"
+app_id: "github.com.KaykyDeSouzaDias.Mood-Fi"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Mood-Fi is the best place to relax and listen to a lo-fi live stream. Its a free software app with 30+ lo-fi live streams between 8 different lo-fi types. Take a break, relax and be mood, be Mood-Fi."
+homepage:
+  - "https://github.com/KaykyDeSouzaDias/Mood-Fi"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/KaykyDeSouzaDias/Mood-Fi"
+tag:
+  - "desktop-application"
+  - "html"
+  - "lo-fi"
+  - "lo-fi-radio"
+  - "music-player"
+  - "react"
+  - "sass"
+  - "tauri"
+  - "typescript"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/KaykyDeSouzaDias/Mood-Fi/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/KaykyDeSouzaDias/Mood-Fi" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

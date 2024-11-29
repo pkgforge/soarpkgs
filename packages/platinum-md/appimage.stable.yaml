@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "platinum-md"
+pkg_id: "github.com.gavinbenda.platinum-md"
+pkg_type: "appimage"
+app_id: "github.com.gavinbenda.platinum-md"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Minidisc NetMD Conversion and Upload"
+distro_pkg:
+  archlinux:
+    aur:
+      - "platinum-md-appimage"
+homepage:
+  - "https://platinum-md.app"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/gavinbenda/platinum-md"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/gavinbenda/platinum-md/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/gavinbenda/platinum-md" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

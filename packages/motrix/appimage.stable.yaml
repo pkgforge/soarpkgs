@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "motrix"
+pkg_id: "github.com.agalwood.Motrix"
+pkg_type: "appimage"
+app_id: "github.com.agalwood.Motrix"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A full-featured download manager."
+distro_pkg:
+  archlinux:
+    aur:
+      - "motrix"
+      - "motrix-bin"
+      - "motrix-git"
+  nixpkgs:
+    - "motrix"
+homepage:
+  - "https://github.com/agalwood/Motrix"
+  - "https://motrix.app"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/agalwood/Motrix"
+tag:
+  - "Networking/WWW"
+  - "download-manager"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/agalwood/Motrix/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/agalwood/Motrix" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/agalwood/Motrix" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

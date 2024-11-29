@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lumi"
+pkg_id: "github.com.lumieducation.lumi"
+pkg_type: "appimage"
+app_id: "github.com.lumieducation.lumi"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Lumi is a Desktop App that offers a collection of tools to create, edit and share digital content with your class."
+distro_pkg:
+  archlinux:
+    aur:
+      - "lumi"
+homepage:
+  - "https://lumi.education"
+maintainer:
+  - "runner"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/lumieducation/lumi"
+tag:
+  - "desktop"
+  - "education"
+  - "lumi"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lumieducation/lumi/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/lumieducation/lumi" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/lumieducation/lumi" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

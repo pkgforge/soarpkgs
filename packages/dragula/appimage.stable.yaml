@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dragula"
+pkg_id: "github.com.sarthology.dragula"
+pkg_type: "appimage"
+app_id: "github.com.sarthology.dragula"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🦇 Free Stock Images on Steroids"
+homepage:
+  - "https://github.com/sarthology/dragula"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/sarthology/dragula"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/sarthology/dragula/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/sarthology/dragula" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,107 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "chromium"
+pkg_id: "github.com.ivan-hc.32-bit-AppImage-packages-database"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.32-bit-AppImage-packages-database"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A place to create AppImage packages for 32-bit architecture."
+distro_pkg:
+  alpine:
+    - "chromium"
+  archlinux:
+    aur:
+      - "chromium-dev"
+      - "chromium-docker"
+      - "chromium-no-extras"
+      - "chromium-snapshot-bin"
+    extra:
+      - "chromium"
+  debian:
+    - "chromium"
+  nixpkgs:
+    - "chromium"
+    - "chromiumBeta"
+    - "chromiumDev"
+homepage:
+  - "http://code.google.com/chromium"
+  - "http://code.google.com/p/chromium"
+  - "http://src.chromium.org/viewvc/native_client"
+  - "http://www.chromium.org"
+  - "http://www.chromium.org/Home"
+  - "https://blog.chromium.org"
+  - "https://build.chromium.org"
+  - "https://chromium.googlesource.com/chromium/src"
+  - "https://ffmpeg.org"
+  - "https://github.com/HenningThiemann/docker-chromium-armhf"
+  - "https://github.com/Hibbiki/chromium-win64"
+  - "https://github.com/chromium/chromium"
+  - "https://github.com/deemru/Chromium-Gost"
+  - "https://gitlab.com/Matt.Jolly/chromium-patches"
+  - "https://www.chromium.org"
+  - "https://www.chromium.org/Home"
+  - "https://www.cryptopro.ru/products/chromium-gost"
+maintainer:
+  - "runner"
+license:
+  - "3-clause BSD License"
+  - "Apache License"
+  - "BSD"
+  - "BSD and GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and NCSA and MIT"
+  - "BSD and LGPLv2+"
+  - "BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and "
+  - "BSD, LGPL"
+  - "BSD-3-Clause"
+  - "BSD-3-Clause AND LGPL-2.1+"
+  - "BSD-3-Clause AND LGPL-2.1-or-later"
+  - "BSD-3-Clause AND LGPL-2.1-or-later AND Apache-2.0 AND IJG AND MIT AND GPL-2.0-or-later AND ISC AND OpenSSL AND "
+  - "BSD-3-Clause and LGPL-2.1+"
+  - "GNU General Public License"
+  - "GNU Lesser General Public License"
+  - "GPL-2.0"
+  - "GPLv2"
+  - "LGPL2.1"
+  - "MIT License"
+  - "Microsoft Public License"
+  - "Mozilla Public License"
+  - "bsd3"
+  - "custom"
+  - "lgpl2.1"
+  - "mpl"
+src_url:
+  - "https://github.com/ivan-hc/32-bit-AppImage-packages-database"
+tag:
+  - "Applications/Internet"
+  - "Graphical"
+  - "Networking/WWW"
+  - "Productivity/Networking/Web/Browsers"
+  - "blink"
+  - "browser"
+  - "extra/office"
+  - "net-www"
+  - "universe/web"
+  - "web"
+  - "www"
+  - "www-client"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/32-bit-AppImage-packages-database/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/32-bit-AppImage-packages-database@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

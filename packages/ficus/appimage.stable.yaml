@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ficus"
+pkg_id: "github.com.Thysrael.Ficus"
+pkg_type: "appimage"
+app_id: "github.com.Thysrael.Ficus"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Ficus is a software for editing and managing markdown documents, developed by the  gg=G team."
+distro_pkg:
+  archlinux:
+    aur:
+      - "ficus-bin"
+homepage:
+  - "https://ficus.world"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/Thysrael/Ficus"
+tag:
+  - "electron"
+  - "javascript"
+  - "markdown-editor"
+  - "notes-app"
+  - "vue"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Thysrael/Ficus/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Thysrael/Ficus" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

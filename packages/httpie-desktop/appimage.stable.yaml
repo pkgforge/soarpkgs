@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "httpie-desktop"
+pkg_id: "github.com.httpie.desktop"
+pkg_type: "appimage"
+app_id: "github.com.httpie.desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🚀 HTTPie Desktop — cross-platform API testing client for humans. Painlessly test REST, GraphQL, and HTTP APIs."
+distro_pkg:
+  archlinux:
+    aur:
+      - "httpie-desktop-appimage"
+      - "httpie-desktop-bin"
+  nixpkgs:
+    - "httpie-desktop"
+homepage:
+  - "https://github.com/httpie/desktop"
+  - "https://httpie.io/product"
+maintainer:
+  - "runner"
+license:
+  - "Unfree"
+  - "custom"
+  - "unknown"
+src_url:
+  - "https://github.com/httpie/desktop"
+tag:
+  - "api"
+  - "api-client"
+  - "api-testing"
+  - "desktop"
+  - "developer-tools"
+  - "httpie"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/httpie/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/httpie/desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/httpie/desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

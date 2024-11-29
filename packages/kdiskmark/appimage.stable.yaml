@@ -1,0 +1,63 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kdiskmark"
+pkg_id: "github.com.JonMagon.KDiskMark"
+pkg_type: "appimage"
+app_id: "github.com.JonMagon.KDiskMark"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A simple open-source disk benchmark tool for Linux distros"
+distro_pkg:
+  alpine:
+    - "kdiskmark"
+  archlinux:
+    aur:
+      - "kdiskmark-git"
+    extra:
+      - "kdiskmark"
+  debian:
+    - "kdiskmark"
+  nixpkgs:
+    - "kdiskmark"
+homepage:
+  - "https://github.com/JonMagon/KDiskMark"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/JonMagon/KDiskMark"
+tag:
+  - "Development/Other"
+  - "Monitoring"
+  - "Other"
+  - "System/Kernel"
+  - "app-benchmarks"
+  - "benchmarks"
+  - "devel"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/JonMagon/KDiskMark/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/JonMagon/KDiskMark" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

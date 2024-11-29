@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "imagemagick-clang"
+pkg_id: "github.com.ImageMagick.ImageMagick"
+pkg_type: "appimage"
+app_id: "github.com.ImageMagick.ImageMagick"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🧙‍♂️ ImageMagick 7"
+homepage:
+  - "https://github.com/ImageMagick/ImageMagick"
+maintainer:
+  - "runner"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/ImageMagick/ImageMagick"
+tag:
+  - "command-line-image-tool"
+  - "digital-image-editing"
+  - "image-conversion"
+  - "image-manipulation"
+  - "image-processing"
+  - "imagemagick"
+  - "mastering-digital-image-alchemy"
+  - "open-source-software"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ImageMagick/ImageMagick/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ImageMagick/ImageMagick" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

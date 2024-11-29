@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rmw"
+pkg_id: "github.com.theimpossibleastronaut.rmw"
+pkg_type: "appimage"
+app_id: "github.com.theimpossibleastronaut.rmw"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "trashcan/recycle bin utility for the command line"
+distro_pkg:
+  archlinux:
+    aur:
+      - "rmw"
+  nixpkgs:
+    - "rmw"
+homepage:
+  - "https://github.com/theimpossibleastronaut/rmw"
+  - "https://remove-to-waste.info"
+  - "https://theimpossibleastronaut.com/rmw-website"
+  - "https://theimpossibleastronaut.github.io/rmw-website"
+maintainer:
+  - "runner"
+license:
+  - "GNU GPLv3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/theimpossibleastronaut/rmw"
+tag:
+  - "System/Management"
+  - "system"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/theimpossibleastronaut/rmw/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/theimpossibleastronaut/rmw" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/theimpossibleastronaut/rmw" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "onnx2bnn"
+pkg_id: "github.com.JDAI-CV.dabnn"
+pkg_type: "appimage"
+app_id: "github.com.JDAI-CV.dabnn"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "dabnn is an accelerated binary neural networks inference framework for mobile platform"
+homepage:
+  - "https://github.com/JDAI-CV/dabnn"
+maintainer:
+  - "runner"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/JDAI-CV/dabnn"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/JDAI-CV/dabnn/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/JDAI-CV/dabnn" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

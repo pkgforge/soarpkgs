@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "whirlpool-gui"
+pkg_id: "github.com.Samourai-Wallet.whirlpool-gui"
+pkg_type: "appimage"
+app_id: "github.com.Samourai-Wallet.whirlpool-gui"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "GUI wrapper for Whirlpool-cli"
+distro_pkg:
+  archlinux:
+    aur:
+      - "whirlpool-gui-appimage"
+      - "whirlpool-gui-bin"
+  nixpkgs:
+    - "whirlpool-gui"
+homepage:
+  - "https://github.com/Samourai-Wallet/whirlpool-gui"
+  - "https://www.samouraiwallet.com/whirlpool"
+maintainer:
+  - "runner"
+license:
+  - "Unlicense"
+  - "custom:UNLICENSE"
+src_url:
+  - "https://github.com/Samourai-Wallet/whirlpool-gui"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Samourai-Wallet/whirlpool-gui/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Samourai-Wallet/whirlpool-gui" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

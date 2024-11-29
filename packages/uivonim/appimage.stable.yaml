@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "uivonim"
+pkg_id: "github.com.smolck.uivonim"
+pkg_type: "appimage"
+app_id: "github.com.smolck.uivonim"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Fork of the Veonim Neovim GUI"
+distro_pkg:
+  archlinux:
+    aur:
+      - "uivonim"
+      - "uivonim-bin"
+      - "uivonim-git"
+  nixpkgs:
+    - "uivonim"
+homepage:
+  - "https://github.com/smolck/uivonim"
+maintainer:
+  - "runner"
+license:
+  - "AGPL"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+src_url:
+  - "https://github.com/smolck/uivonim"
+tag:
+  - "electron"
+  - "gui"
+  - "neovim"
+  - "neovim-guis"
+  - "typescript"
+  - "webgl2"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/smolck/uivonim/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/smolck/uivonim" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

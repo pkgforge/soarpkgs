@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "scavengers"
+pkg_id: "github.com.RomainL972.Scavengers"
+pkg_type: "appimage"
+app_id: "github.com.RomainL972.Scavengers"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Unity Roguelike tutorial"
+homepage:
+  - "https://github.com/RomainL972/Scavengers"
+maintainer:
+  - "runner"
+license:
+  - "Mozilla Public License 2.0"
+src_url:
+  - "https://github.com/RomainL972/Scavengers"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/RomainL972/Scavengers/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/RomainL972/Scavengers" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ryujinx"
+pkg_id: "github.com.GreemDev.Ryujinx"
+pkg_type: "appimage"
+app_id: "github.com.GreemDev.Ryujinx"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Experimental Switch emulator written in C#"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ryujinx"
+      - "ryujinx-git"
+  nixpkgs:
+    - "ryujinx"
+homepage:
+  - "https://github.com/GreemDev/Ryujinx"
+  - "https://github.com/Ryujinx/Ryujinx"
+  - "https://ryujinx.org"
+  - "https://www.ryujinx.org"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/GreemDev/Ryujinx"
+tag:
+  - "games-emulation"
+  - "games.emulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/GreemDev/Ryujinx/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/GreemDev/Ryujinx" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/GreemDev/Ryujinx" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

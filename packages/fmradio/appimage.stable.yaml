@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fmradio"
+pkg_id: "github.com.dmooney65.fmradio"
+pkg_type: "appimage"
+app_id: "github.com.dmooney65.fmradio"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: ":radio: An Electron app to listen to FM radio using an RTL2832U based USB dongle. Linux and Windows, Intel and ARM"
+homepage:
+  - "https://github.com/dmooney65/fmradio"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/dmooney65/fmradio"
+tag:
+  - "electron"
+  - "electron-app"
+  - "flac"
+  - "fm"
+  - "radio-frequency"
+  - "rtl-sdr"
+  - "rtl2832u"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dmooney65/fmradio/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dmooney65/fmradio" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

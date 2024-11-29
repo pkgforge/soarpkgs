@@ -1,0 +1,58 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "flawesome"
+pkg_id: "github.com.ashishBharadwaj.flawesome"
+pkg_type: "appimage"
+app_id: "github.com.ashishBharadwaj.flawesome"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Productivity Tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "flawesome-bin"
+homepage:
+  - "https://github.com/ashishBharadwaj/flawesome"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/ashishBharadwaj/flawesome"
+tag:
+  - "diary"
+  - "digital-diary"
+  - "note-taking"
+  - "notebook"
+  - "notes"
+  - "notes-app"
+  - "organiser"
+  - "productivity"
+  - "productivity-app"
+  - "productivity-apps"
+  - "productivity-tool"
+  - "productivity-tools"
+  - "smart-diary"
+  - "sticky-notes"
+  - "tasks"
+  - "todo-app"
+  - "utility"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ashishBharadwaj/flawesome/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ashishBharadwaj/flawesome" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

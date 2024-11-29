@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "scraper"
+pkg_id: "github.com.cedoor.scraper"
+pkg_type: "appimage"
+app_id: "github.com.cedoor.scraper"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: ":tractor: Simple desktop scraper app."
+distro_pkg:
+  archlinux:
+  nixpkgs:
+    - "scraper"
+homepage:
+  - "https://github.com/causal-agent/scraper"
+maintainer:
+  - "runner"
+license:
+  - "ISC"
+src_url:
+  - "https://github.com/cedoor/scraper"
+tag:
+  - "scraper"
+  - "web-scraping"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cedoor/scraper/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/cedoor/scraper" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

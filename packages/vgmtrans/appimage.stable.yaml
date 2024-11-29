@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vgmtrans"
+pkg_id: "github.com.vgmtrans.vgmtrans"
+pkg_type: "appimage"
+app_id: "github.com.vgmtrans.vgmtrans"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "VGMTrans - a tool to convert proprietary, sequenced videogame music to industry-standard formats"
+distro_pkg:
+  archlinux:
+    aur:
+      - "vgmtrans-bin"
+      - "vgmtrans-git"
+  nixpkgs:
+    - "vgmtrans"
+homepage:
+  - "https://github.com/vgmtrans/vgmtrans"
+maintainer:
+  - "runner"
+license:
+  - "BSD-3-Clause"
+  - "Libpng"
+  - "Zlib"
+  - "libpng"
+  - "zlib"
+src_url:
+  - "https://github.com/vgmtrans/vgmtrans"
+tag:
+  - "dls"
+  - "instrument-formats"
+  - "midi"
+  - "music-files"
+  - "soundfont2"
+  - "vgmusic"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/vgmtrans/vgmtrans/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/vgmtrans/vgmtrans" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "julius"
+pkg_id: "github.com.bvschaik.julius"
+pkg_type: "appimage"
+app_id: "github.com.bvschaik.julius"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An open source re-implementation of Caesar III"
+homepage:
+  - "https://github.com/bvschaik/julius"
+maintainer:
+  - "runner"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/bvschaik/julius"
+tag:
+  - "citybuilder"
+  - "clone"
+  - "game"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bvschaik/julius/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bvschaik/julius" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,78 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "redeclipse"
+pkg_id: "github.com.redeclipse.deploy"
+pkg_type: "appimage"
+app_id: "github.com.redeclipse.deploy"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Official repository for Red Eclipse deployment files."
+distro_pkg:
+  archlinux:
+    aur:
+      - "redeclipse"
+      - "redeclipse-bin"
+  debian:
+    - "redeclipse"
+    - "redeclipse-data"
+  nixpkgs:
+    - "redeclipse"
+homepage:
+  - "http://redeclipse.net"
+  - "http://www.redeclipse.net"
+  - "https://redeclipse.net"
+  - "https://www.redeclipse.net"
+maintainer:
+  - "runner"
+license:
+  - "CC-BY-3.0"
+  - "CC-BY-SA"
+  - "CC-BY-SA and zlib and OFL"
+  - "CC-BY-SA-3"
+  - "CC-BY-SA-3.0"
+  - "CC-BY-SA-3.0 AND Zlib"
+  - "CC-BY-SA-4.0"
+  - "CC0-1.0"
+  - "CCPL:by"
+  - "CCPL:by-sa"
+  - "Public-Domain"
+  - "ZLIB"
+  - "Zlib"
+  - "Zlib AND CC-BY-SA-3.0"
+  - "Zlib and CC-BY-SA-3.0"
+  - "custom"
+  - "zlib"
+  - "zlib and CC-BY-SA"
+  - "zlib/libpng License"
+src_url:
+  - "https://github.com/redeclipse/deploy"
+tag:
+  - "Amusements/Games/3D/Shoot"
+  - "Games/Arcade"
+  - "Games/Shooter"
+  - "debug"
+  - "game"
+  - "games"
+  - "games-fps"
+  - "games.action"
+  - "multiverse/games"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/redeclipse/deploy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/redeclipse/deploy" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

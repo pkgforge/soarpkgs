@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "quentier"
+pkg_id: "github.com.d1vanov.quentier"
+pkg_type: "appimage"
+app_id: "github.com.d1vanov.quentier"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Cross-platform desktop Evernote client"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/d1vanov/quentier"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0-only"
+  - "GPLv3"
+src_url:
+  - "https://github.com/d1vanov/quentier"
+tag:
+  - "application"
+  - "cplusplus"
+  - "desktop"
+  - "evernote"
+  - "evernote-client"
+  - "note-taking"
+  - "qt"
+  - "qt5"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/d1vanov/quentier/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/d1vanov/quentier" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

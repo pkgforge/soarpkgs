@@ -1,0 +1,72 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "leocad"
+pkg_id: "github.com.leozide.leocad"
+pkg_type: "appimage"
+app_id: "github.com.leozide.leocad"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A CAD application for creating virtual LEGO models"
+distro_pkg:
+  alpine:
+    - "leocad"
+  archlinux:
+    aur:
+      - "leocad-git"
+    extra:
+      - "leocad"
+  debian:
+    - "leocad"
+  nixpkgs:
+    - "leocad"
+homepage:
+  - "http://leocad.org"
+  - "http://www.leocad.org"
+  - "https://github.com/leozide/leocad"
+  - "https://leocad.org"
+  - "https://www.leocad.org"
+maintainer:
+  - "runner"
+license:
+  - "CC-BY-2.0"
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLV2+"
+  - "GPLv2"
+src_url:
+  - "https://github.com/leozide/leocad"
+tag:
+  - "Education"
+  - "Games/Puzzles"
+  - "Toys"
+  - "brick"
+  - "cad"
+  - "debug"
+  - "games"
+  - "graphics"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/leozide/leocad/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/leozide/leocad" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

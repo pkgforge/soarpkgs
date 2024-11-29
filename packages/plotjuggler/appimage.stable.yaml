@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "plotjuggler"
+pkg_id: "github.com.facontidavide.PlotJuggler"
+pkg_type: "appimage"
+app_id: "github.com.facontidavide.PlotJuggler"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "The Time Series Visualization Tool that you deserve."
+distro_pkg:
+  archlinux:
+    aur:
+      - "plotjuggler"
+homepage:
+  - "https://github.com/facontidavide/PlotJuggler"
+maintainer:
+  - "runner"
+license:
+  - "MPL-2.0"
+src_url:
+  - "https://github.com/facontidavide/PlotJuggler"
+tag:
+  - "chart"
+  - "csv"
+  - "labstreaminglayer"
+  - "lua"
+  - "mqtt"
+  - "plot"
+  - "px4"
+  - "qt5"
+  - "ros"
+  - "rosbag"
+  - "time-series"
+  - "ulog"
+  - "visualize-data"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/facontidavide/PlotJuggler/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/facontidavide/PlotJuggler" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

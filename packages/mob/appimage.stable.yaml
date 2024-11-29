@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mob"
+pkg_id: "github.com.zenghongtu.Mob"
+pkg_type: "appimage"
+app_id: "github.com.zenghongtu.Mob"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Mob - 一个有颜值的喜马拉雅桌面客户端，支持 Mac、Win 和 Linux"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mob"
+      - "mob-bin"
+  nixpkgs:
+    - "mob"
+homepage:
+  - "https://github.com/remotemobprogramming/mob"
+  - "https://github.com/zenghongtu/Mob"
+  - "https://mob.sh"
+maintainer:
+  - "runner"
+license:
+  - "GPL"
+  - "MIT"
+src_url:
+  - "https://github.com/zenghongtu/Mob"
+tag:
+  - "devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zenghongtu/Mob/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/zenghongtu/Mob" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

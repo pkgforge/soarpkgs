@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shuttle"
+pkg_id: "github.com.ShuttleBrowser.Shuttle"
+pkg_type: "appimage"
+app_id: "github.com.ShuttleBrowser.Shuttle"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "The fastest access to your favorite applications."
+homepage:
+  - "https://github.com/ShuttleBrowser/Shuttle"
+maintainer:
+  - "runner"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/ShuttleBrowser/Shuttle"
+tag:
+  - "bookmark"
+  - "browser"
+  - "css3"
+  - "electron"
+  - "electron-app"
+  - "favorite-applications"
+  - "javascript"
+  - "js"
+  - "nodejs"
+  - "shortcut"
+  - "shuttle"
+  - "svelte"
+  - "webapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ShuttleBrowser/Shuttle/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ShuttleBrowser/Shuttle" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

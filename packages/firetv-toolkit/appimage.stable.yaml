@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "firetv-toolkit"
+pkg_id: "github.com.AnthonyGress.Android-Toolkit"
+pkg_type: "appimage"
+app_id: "github.com.AnthonyGress.Android-Toolkit"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A cross platform desktop app written in Typescript/Node using React and Electron. Android-Toolkit is a GUI for adb and can be used to modify android devices such as phones, firesticks and google TVs."
+homepage:
+  - "https://github.com/AnthonyGress/Android-Toolkit"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/AnthonyGress/Android-Toolkit"
+tag:
+  - "android"
+  - "electron"
+  - "electron-app"
+  - "firestick"
+  - "firetv"
+  - "linux"
+  - "macos"
+  - "node"
+  - "nodejs"
+  - "react"
+  - "sideload"
+  - "typescript"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AnthonyGress/Android-Toolkit/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/AnthonyGress/Android-Toolkit" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/AnthonyGress/Android-Toolkit" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

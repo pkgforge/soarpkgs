@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "embedded-ide"
+pkg_id: "github.com.martinribelotta.embedded-ide"
+pkg_type: "appimage"
+app_id: "github.com.martinribelotta.embedded-ide"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "IDE for C embedded development centered on bare-metal ARM systems"
+homepage:
+  - "https://github.com/martinribelotta/embedded-ide"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/martinribelotta/embedded-ide"
+tag:
+  - "c-plus-plus"
+  - "clang"
+  - "cortex-m"
+  - "embedded"
+  - "embedded-systems"
+  - "gcc"
+  - "ide"
+  - "integrated-development-environment"
+  - "makefile"
+  - "qt"
+  - "qt5"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/martinribelotta/embedded-ide/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/martinribelotta/embedded-ide" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

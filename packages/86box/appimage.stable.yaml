@@ -1,0 +1,58 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "86box"
+pkg_id: "github.com.86Box.86Box"
+pkg_type: "appimage"
+app_id: "github.com.86Box.86Box"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Emulator of x86-based machines."
+distro_pkg:
+  archlinux:
+    aur:
+      - "86box"
+      - "86box-appimage"
+      - "86box-git"
+      - "86box-qt5-git"
+  nixpkgs:
+    - "_86Box"
+    - "_86Box-with-roms"
+homepage:
+  - "https://86box.net"
+  - "https://github.com/86Box/86Box"
+maintainer:
+  - "runner"
+license:
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv3"
+  - "Unfree"
+  - "spdx:GPL-2.0-or-later"
+src_url:
+  - "https://github.com/86Box/86Box"
+tag:
+  - "Emulators"
+  - "app-emulation"
+  - "emulators"
+  - "system"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/86Box/86Box/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/86Box/86Box" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/86Box/86Box" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

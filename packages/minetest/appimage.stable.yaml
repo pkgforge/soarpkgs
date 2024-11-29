@@ -1,0 +1,37 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "minetest"
+pkg_id: "github.com.An0n3m0us.Minetest-AppImages"
+pkg_type: "appimage"
+app_id: "github.com.An0n3m0us.Minetest-AppImages"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Minetest Appimages"
+homepage:
+  - "https://github.com/An0n3m0us/Minetest-AppImages"
+maintainer:
+  - "runner"
+src_url:
+  - "https://github.com/An0n3m0us/Minetest-AppImages"
+tag:
+  - "appimages"
+  - "minetest"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/An0n3m0us/Minetest-AppImages/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/An0n3m0us/Minetest-AppImages" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

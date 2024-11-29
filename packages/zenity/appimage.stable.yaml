@@ -1,0 +1,98 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zenity"
+pkg_id: "github.com.Samueru-sama.Zenity-GTK3-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.Samueru-sama.Zenity-GTK3-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "AppImage of Zenity (GTK3 Version)."
+distro_pkg:
+  alpine:
+    - "zenity"
+  archlinux:
+    aur:
+      - "zenity-git"
+      - "zenity-gtk3"
+    extra:
+      - "zenity"
+  debian:
+    - "zenity"
+  nixpkgs:
+    - "gnome.zenity"
+    - "zenity"
+homepage:
+  - "http://directory.fsf.org/zenity.html"
+  - "http://live.gnome.org/Zenity"
+  - "http://www.gnome.org"
+  - "https://apps.gnome.org"
+  - "https://download.gnome.org/sources/zenity"
+  - "https://gitlab.gnome.org/GNOME/zenity"
+  - "https://gitlab.gnome.org/GNOME/zenity.git"
+  - "https://gnome.org"
+  - "https://help.gnome.org/users/zenity"
+  - "https://help.gnome.org/users/zenity/stable"
+  - "https://wiki.gnome.org/Projects/Gjs"
+  - "https://wiki.gnome.org/Projects/Zenity"
+  - "https://www.gnome.org"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0"
+  - "GPL-2"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-or-later"
+  - "LGPL"
+  - "LGPL-2+"
+  - "LGPL-2.0-or-later"
+  - "LGPL-2.1"
+  - "LGPL-2.1+"
+  - "LGPL-2.1-or-later"
+  - "LGPL2"
+  - "LGPLv2"
+  - "LGPLv2+"
+  - "lgpl"
+src_url:
+  - "https://github.com/Samueru-sama/Zenity-GTK3-AppImage"
+tag:
+  - "Applications/System"
+  - "Debug"
+  - "Development/GNOME"
+  - "Graphical"
+  - "Shells"
+  - "System/GUI/GNOME"
+  - "System/Tools"
+  - "debug"
+  - "desktop"
+  - "desktop.gnome"
+  - "development"
+  - "extra/tool"
+  - "gnome"
+  - "gnome-desktop"
+  - "gnome-extra"
+  - "x-window"
+  - "x11"
+  - "x11/gnome"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Samueru-sama/Zenity-GTK3-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Samueru-sama/Zenity-GTK3-AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

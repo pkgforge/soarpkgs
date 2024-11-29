@@ -1,0 +1,34 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gimp-dev"
+pkg_id: "github.com.ivan-hc.GIMP-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.GIMP-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "GNU Image Manipulation Program Stable & Developer Edition."
+homepage:
+  - "https://github.com/ivan-hc/GIMP-appimage"
+maintainer:
+  - "runner"
+src_url:
+  - "https://github.com/ivan-hc/GIMP-appimage"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/GIMP-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/GIMP-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wnr"
+pkg_id: "github.com.RoderickQiu.wnr"
+pkg_type: "appimage"
+app_id: "github.com.RoderickQiu.wnr"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "⏱️ Work/Rest Timer. Stricter. Prettier. More features. Win/Mac/Linux. (NEW UPDATES PAUSED.)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "wnr-bin"
+homepage:
+  - "https://getwnr.com"
+  - "https://github.com/RoderickQiu/wnr"
+maintainer:
+  - "runner"
+license:
+  - "MPL-2.0"
+  - "Mozilla Public License 2.0"
+src_url:
+  - "https://github.com/RoderickQiu/wnr"
+tag:
+  - "time-management"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/RoderickQiu/wnr/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/RoderickQiu/wnr" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/RoderickQiu/wnr" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

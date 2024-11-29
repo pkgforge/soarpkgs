@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kdeutils"
+pkg_id: "github.com.ivan-hc.KDE-utils-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.KDE-utils-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Arch Linux suite of KDE utilities: 27 apps in one AppImage (juNests ArchImage)"
+distro_pkg:
+  archlinux:
+homepage:
+  - "http://www.kde.org"
+  - "https://www.kde.org/applications/utilities"
+maintainer:
+  - "runner"
+license:
+  - "GPLv2"
+  - "GPLv2 and LGPLv2 and MIT and BSD"
+src_url:
+  - "https://github.com/ivan-hc/KDE-utils-appimage"
+tag:
+  - "Applications/System"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/KDE-utils-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/KDE-utils-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

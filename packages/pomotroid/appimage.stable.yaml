@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pomotroid"
+pkg_id: "github.com.Splode.pomotroid"
+pkg_type: "appimage"
+app_id: "github.com.Splode.pomotroid"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: ":tomato: Simple and visually-pleasing Pomodoro timer"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pomotroid-bin"
+  nixpkgs:
+    - "pomotroid"
+homepage:
+  - "https://github.com/Splode/pomotroid"
+  - "https://splode.github.io/pomotroid"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/Splode/pomotroid"
+tag:
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Splode/pomotroid/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Splode/pomotroid" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

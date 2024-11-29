@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "schildichat"
+pkg_id: "github.com.SchildiChat.schildichat-desktop"
+pkg_type: "appimage"
+app_id: "github.com.SchildiChat.schildichat-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Matrix client / Element Web/Desktop fork"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/SchildiChat/schildichat-desktop"
+  - "https://schildi.chat/desktop"
+maintainer:
+  - "runner"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/SchildiChat/schildichat-desktop"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SchildiChat/schildichat-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/SchildiChat/schildichat-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

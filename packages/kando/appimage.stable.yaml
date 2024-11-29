@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kando"
+pkg_id: "github.com.kando-menu.kando"
+pkg_type: "appimage"
+app_id: "github.com.kando-menu.kando"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🥧 The Cross-Platform Pie Menu."
+distro_pkg:
+  archlinux:
+    aur:
+      - "kando-bin"
+  nixpkgs:
+    - "kando"
+homepage:
+  - "https://github.com/kando-menu/kando"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/kando-menu/kando"
+tag:
+  - "cross-platform"
+  - "electron"
+  - "gestures"
+  - "linux"
+  - "macos"
+  - "marking-menu"
+  - "pie-menu"
+  - "ux-design"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kando-menu/kando/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kando-menu/kando" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kando-menu/kando" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

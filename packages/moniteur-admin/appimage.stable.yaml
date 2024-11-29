@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "moniteur-admin"
+pkg_id: "github.com.aueb-cslabs.moniteur-admin"
+pkg_type: "appimage"
+app_id: "github.com.aueb-cslabs.moniteur-admin"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🖥️🍷 The admin panel for the lightweight info screen solution."
+homepage:
+  - "https://github.com/aueb-cslabs/moniteur-admin"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/aueb-cslabs/moniteur-admin"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/aueb-cslabs/moniteur-admin/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/aueb-cslabs/moniteur-admin" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

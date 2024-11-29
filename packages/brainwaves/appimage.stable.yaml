@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "brainwaves"
+pkg_id: "github.com.makebrainwaves.BrainWaves"
+pkg_type: "appimage"
+app_id: "github.com.makebrainwaves.BrainWaves"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An easy-to-use platform for EEG experimentation in the classroom"
+homepage:
+  - "https://github.com/makebrainwaves/BrainWaves"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/makebrainwaves/BrainWaves"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/makebrainwaves/BrainWaves/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/makebrainwaves/BrainWaves" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

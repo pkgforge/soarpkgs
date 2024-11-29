@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "window-pet"
+pkg_id: "github.com.SeakMengs.WindowPet"
+pkg_type: "appimage"
+app_id: "github.com.SeakMengs.WindowPet"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Pet overlay app built with tauri and react that lets you have adorable companion such as pets, anime characters on your screen."
+homepage:
+  - "https://github.com/SeakMengs/WindowPet"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/SeakMengs/WindowPet"
+tag:
+  - "companion"
+  - "cross-platform"
+  - "html"
+  - "learn"
+  - "mantine"
+  - "overlay"
+  - "pet"
+  - "productivity"
+  - "react"
+  - "react-query"
+  - "rust"
+  - "tauri"
+  - "typescript"
+  - "zustand"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SeakMengs/WindowPet/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/SeakMengs/WindowPet" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/SeakMengs/WindowPet" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

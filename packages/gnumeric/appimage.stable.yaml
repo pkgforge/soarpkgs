@@ -1,0 +1,96 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gnumeric"
+pkg_id: "github.com.ivan-hc.Gnumeric-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Gnumeric-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "AppImage built from JuNest."
+distro_pkg:
+  alpine:
+    - "gnumeric"
+  archlinux:
+    aur:
+      - "gnumeric-minimal"
+    extra:
+      - "gnumeric"
+  debian:
+    - "gnumeric"
+  nixpkgs:
+    - "gnumeric"
+homepage:
+  - "http://gnumeric.org"
+  - "http://projects.gnome.org/gnumeric"
+  - "http://www.gnome.org/projects/gnumeric"
+  - "http://www.gnumeric.org"
+  - "https://apps.gnome.org"
+  - "https://gitlab.gnome.org/GNOME/gnumeric"
+  - "https://projects.gnome.org/gnumeric"
+  - "https://www.gnome.org"
+  - "https://www.gnome.org/projects/gnumeric"
+  - "https://www.gnumeric.org"
+maintainer:
+  - "runner"
+license:
+  - "GNU GPL"
+  - "GNU General Public License, version 2.0"
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL v2"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0 or GPL-3.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-only AND GPL-3.0-only AND LicenseRef-Callaway-LGPLv2+"
+  - "GPL-2.0-only OR GPL-3.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later OR GPL-3.0-or-later"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ GPLv3+"
+  - "GPLv2+ and GPLv3+ and LGPLv2+"
+  - "gpl2"
+src_url:
+  - "https://github.com/ivan-hc/Gnumeric-appimage"
+tag:
+  - "Applications/Office"
+  - "Applications/Productivity"
+  - "Debug"
+  - "Math"
+  - "Office"
+  - "Office/Spreadsheet"
+  - "Productivity/Office/Spreadsheets"
+  - "app-office"
+  - "debug"
+  - "extra/office"
+  - "gnome"
+  - "introspection"
+  - "math"
+  - "office"
+  - "office/spreadsheet"
+  - "programming.devel"
+  - "universe/math"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Gnumeric-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Gnumeric-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

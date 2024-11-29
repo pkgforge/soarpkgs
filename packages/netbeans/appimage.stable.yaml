@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "netbeans"
+pkg_id: "github.com.codelerity.netbeans-installers"
+pkg_type: "appimage"
+app_id: "github.com.codelerity.netbeans-installers"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Apache NetBeans installers"
+distro_pkg:
+  archlinux:
+    aur:
+      - "netbeans-bin"
+    extra:
+      - "netbeans"
+  debian:
+    - "netbeans"
+  nixpkgs:
+    - "netbeans"
+homepage:
+  - "http://netbeans.org"
+  - "https://netbeans.apache.org"
+  - "https://netbeans.apache.org/front/main/index.html"
+  - "https://netbeans.org"
+  - "https://www.netbeans.org"
+maintainer:
+  - "runner"
+license:
+  - "Apache"
+  - "Apache Software License 2.0"
+  - "Apache-2"
+  - "Apache-2.0"
+  - "Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1"
+  - "GPLv2"
+  - "GPLv2 with Classpath Exception & CDDL"
+  - "apache2"
+src_url:
+  - "https://github.com/codelerity/netbeans-installers"
+tag:
+  - "Development"
+  - "Development/Other"
+  - "System/Text"
+  - "aqua"
+  - "dev-util"
+  - "devel"
+  - "development"
+  - "java"
+  - "universe/java"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/codelerity/netbeans-installers/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/codelerity/netbeans-installers" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/codelerity/netbeans-installers" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

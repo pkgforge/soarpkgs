@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "miru"
+pkg_id: "github.com.ThaUnknown.miru"
+pkg_type: "appimage"
+app_id: "github.com.ThaUnknown.miru"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Bittorrent streaming software for cats. Stream anime torrents, real-time with no waiting for downloads."
+distro_pkg:
+  archlinux:
+    aur:
+      - "miru-bin"
+      - "miru-git"
+  nixpkgs:
+    - "miru"
+homepage:
+  - "https://github.com/ThaUnknown/miru"
+  - "https://miru.watch"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/ThaUnknown/miru"
+tag:
+  - "anime"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ThaUnknown/miru/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ThaUnknown/miru" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "video-hub"
+pkg_id: "github.com.whyboris.Video-Hub-App"
+pkg_type: "appimage"
+app_id: "github.com.whyboris.Video-Hub-App"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Official repository for Video Hub App"
+homepage:
+  - "https://github.com/whyboris/Video-Hub-App"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/whyboris/Video-Hub-App"
+tag:
+  - "angular"
+  - "electron"
+  - "electron-app"
+  - "ffmpeg"
+  - "file-browser"
+  - "file-manager"
+  - "filebrowser"
+  - "filemanager"
+  - "javascript"
+  - "linux"
+  - "linux-app"
+  - "mac"
+  - "macos"
+  - "open-source"
+  - "opensource"
+  - "typescript"
+  - "video"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/whyboris/Video-Hub-App/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/whyboris/Video-Hub-App" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/whyboris/Video-Hub-App" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

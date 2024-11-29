@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "music-player"
+pkg_id: "github.com.LucasHazardous.music-player"
+pkg_type: "appimage"
+app_id: "github.com.LucasHazardous.music-player"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Desktop Electron app for playing and downloading music."
+distro_pkg:
+  archlinux:
+    aur:
+      - "music-player"
+      - "music-player-bin"
+  nixpkgs:
+    - "music-player"
+homepage:
+  - "https://github.com/tsirysndr/music-player"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/LucasHazardous/music-player"
+tag:
+  - "auto-update"
+  - "bulma"
+  - "electron"
+  - "javascript"
+  - "lightweight"
+  - "linux"
+  - "music"
+  - "music-player"
+  - "music-player-application"
+  - "nodejs"
+  - "windows"
+  - "youtube"
+  - "yt-dlp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LucasHazardous/music-player/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/LucasHazardous/music-player" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

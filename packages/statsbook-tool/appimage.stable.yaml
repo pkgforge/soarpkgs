@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "statsbook-tool"
+pkg_id: "github.com.AdamSmasherDerby.Statsbook-Tool"
+pkg_type: "appimage"
+app_id: "github.com.AdamSmasherDerby.Statsbook-Tool"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A tool for error-checking WFTDA Statsbooks"
+homepage:
+  - "https://github.com/AdamSmasherDerby/Statsbook-Tool"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/AdamSmasherDerby/Statsbook-Tool"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AdamSmasherDerby/Statsbook-Tool/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AdamSmasherDerby/Statsbook-Tool" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

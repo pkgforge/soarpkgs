@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gitlight"
+pkg_id: "github.com.colinlienard.gitlight"
+pkg_type: "appimage"
+app_id: "github.com.colinlienard.gitlight"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🐙 GitHub & GitLab notifications on your desktop"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://gitlight.app"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/colinlienard/gitlight"
+tag:
+  - "github"
+  - "gitlab"
+  - "notifications"
+  - "svelte"
+  - "sveltekit"
+  - "tauri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/colinlienard/gitlight/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/colinlienard/gitlight" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/colinlienard/gitlight" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

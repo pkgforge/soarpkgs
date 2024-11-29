@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kopia"
+pkg_id: "github.com.kopia.kopia"
+pkg_type: "appimage"
+app_id: "github.com.kopia.kopia"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Cross-platform backup tool for Windows, macOS & Linux with fast, incremental backups, client-side end-to-end encryption, compression and data deduplication. CLI and GUI included."
+distro_pkg:
+  alpine:
+    - "kopia"
+  archlinux:
+    aur:
+      - "kopia"
+      - "kopia-bin"
+  nixpkgs:
+    - "kopia"
+homepage:
+  - "https://github.com/kopia/kopia"
+  - "https://kopia.io"
+maintainer:
+  - "runner"
+license:
+  - "Apache"
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-2"
+  - "CC0-1.0"
+  - "MIT"
+src_url:
+  - "https://github.com/kopia/kopia"
+tag:
+  - "Archiving/Backup"
+  - "app-backup"
+  - "sysutils"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kopia/kopia/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kopia/kopia" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kopia/kopia" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

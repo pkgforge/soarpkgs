@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mqttx"
+pkg_id: "github.com.emqx.MQTTX"
+pkg_type: "appimage"
+app_id: "github.com.emqx.MQTTX"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
+distro_pkg:
+  archlinux:
+    aur:
+      - "mqttx-appimage"
+      - "mqttx-bin"
+      - "mqttx-git"
+  nixpkgs:
+    - "mqttx"
+homepage:
+  - "https://github.com/emqx/MQTTX"
+  - "https://mqttx.app"
+maintainer:
+  - "runner"
+license:
+  - "Apache"
+  - "Apache 2.0"
+  - "Apache-2.0"
+src_url:
+  - "https://github.com/emqx/MQTTX"
+tag:
+  - "emqx"
+  - "mqtt"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/emqx/MQTTX/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/emqx/MQTTX" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/emqx/MQTTX" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

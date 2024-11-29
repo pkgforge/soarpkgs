@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fluent-reader"
+pkg_id: "github.com.yang991178.fluent-reader"
+pkg_type: "appimage"
+app_id: "github.com.yang991178.fluent-reader"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Modern desktop RSS reader built with Electron, React, and Fluent UI"
+distro_pkg:
+  archlinux:
+    aur:
+      - "fluent-reader"
+      - "fluent-reader-bin"
+      - "fluent-reader-git"
+  nixpkgs:
+    - "fluent-reader"
+homepage:
+  - "https://github.com/yang991178/fluent-reader"
+  - "https://hyliu.me/fluent-reader"
+maintainer:
+  - "runner"
+license:
+  - "BSD"
+  - "BSD-3-Clause"
+  - "custom:BSD3"
+src_url:
+  - "https://github.com/yang991178/fluent-reader"
+tag:
+  - "Networking/News"
+  - "cross-platform"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/yang991178/fluent-reader/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/yang991178/fluent-reader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

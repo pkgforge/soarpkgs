@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sonicvisualiser"
+pkg_id: "github.com.sonic-visualiser.sonic-visualiser"
+pkg_type: "appimage"
+app_id: "github.com.sonic-visualiser.sonic-visualiser"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Visualisation, analysis, and annotation of music audio recordings"
+homepage:
+  - "https://github.com/sonic-visualiser/sonic-visualiser"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/sonic-visualiser/sonic-visualiser"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/sonic-visualiser/sonic-visualiser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/sonic-visualiser/sonic-visualiser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

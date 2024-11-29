@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "archipelago"
+pkg_id: "github.com.ArchipelagoMW.Archipelago"
+pkg_type: "appimage"
+app_id: "github.com.ArchipelagoMW.Archipelago"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Archipelago Multi-Game Randomizer and Server"
+homepage:
+  - "https://github.com/ArchipelagoMW/Archipelago"
+maintainer:
+  - "runner"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/ArchipelagoMW/Archipelago"
+tag:
+  - "alttp"
+  - "archipelago"
+  - "factorio"
+  - "minecraft"
+  - "multiworld"
+  - "randomizer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ArchipelagoMW/Archipelago/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ArchipelagoMW/Archipelago" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

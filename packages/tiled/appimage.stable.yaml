@@ -1,0 +1,89 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tiled"
+pkg_id: "github.com.bjorn.tiled"
+pkg_type: "appimage"
+app_id: "github.com.bjorn.tiled"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Flexible level editor"
+distro_pkg:
+  alpine:
+    - "tiled"
+  archlinux:
+    aur:
+      - "tiled-git"
+    extra:
+      - "tiled"
+  debian:
+    - "tiled-qt"
+  nixpkgs:
+    - "tiled"
+homepage:
+  - "http://mapeditor.org"
+  - "http://www.mapeditor.org"
+  - "https://github.com/bjorn/tiled"
+  - "https://github.com/mapeditor/tiled"
+  - "https://www.mapeditor.org"
+maintainer:
+  - "runner"
+license:
+  - "Apache Software License 2.0"
+  - "Apache-2.0"
+  - "Apache-2.0 AND BSD-2-Clause AND GPL-2.0-only"
+  - "BSD"
+  - "BSD licenses"
+  - "BSD-2"
+  - "BSD-2-Clause"
+  - "BSD-3-Clause"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2.0+"
+  - "GPL-2.0-onlyBSD-2-Clause"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND BSD-2-Clause"
+  - "GPLv2"
+  - "GPLv2+ and BSD"
+  - "spdx:GPL-2.0-or-later"
+  - "unknown"
+src_url:
+  - "https://github.com/bjorn/tiled"
+tag:
+  - "Games"
+  - "Graphics"
+  - "Graphics/Editors"
+  - "Productivity/Graphics/Other"
+  - "cross-platform"
+  - "debug"
+  - "dev-games"
+  - "devel"
+  - "development"
+  - "editors"
+  - "game/utility"
+  - "graphics"
+  - "libdevel"
+  - "multimedia.graphics"
+  - "programming.devel"
+  - "tiled"
+  - "universe/utils"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bjorn/tiled/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bjorn/tiled" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

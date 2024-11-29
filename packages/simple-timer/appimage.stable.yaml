@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "simple-timer"
+pkg_id: "github.com.fliegwerk.simple-timer"
+pkg_type: "appimage"
+app_id: "github.com.fliegwerk.simple-timer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A really simple timer with a customizable logo and heading"
+homepage:
+  - "https://github.com/fliegwerk/simple-timer"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/fliegwerk/simple-timer"
+tag:
+  - "react"
+  - "timer"
+  - "typescript"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/fliegwerk/simple-timer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/fliegwerk/simple-timer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

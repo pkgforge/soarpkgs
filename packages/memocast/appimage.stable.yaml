@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "memocast"
+pkg_id: "github.com.TankNee.Memocast"
+pkg_type: "appimage"
+app_id: "github.com.TankNee.Memocast"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Yet another elegant Wiz Note Client, which was built with Quasar UI Framework and based on Electron."
+distro_pkg:
+  archlinux:
+    aur:
+      - "memocast-bin"
+homepage:
+  - "https://github.com/TankNee/Memocast"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/TankNee/Memocast"
+tag:
+  - "editor"
+  - "electron"
+  - "github"
+  - "markdown"
+  - "memocast"
+  - "neeto-vue"
+  - "quasar-framework"
+  - "vue"
+  - "wiz-community"
+  - "wiznote"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/TankNee/Memocast/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/TankNee/Memocast" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/TankNee/Memocast" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

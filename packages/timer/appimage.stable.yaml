@@ -1,0 +1,34 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "timer"
+pkg_id: "github.com.tdeo.timer"
+pkg_type: "appimage"
+app_id: "github.com.tdeo.timer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "null"
+homepage:
+  - "https://github.com/tdeo/timer"
+maintainer:
+  - "runner"
+src_url:
+  - "https://github.com/tdeo/timer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/tdeo/timer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/tdeo/timer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

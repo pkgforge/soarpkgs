@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "breaktimer"
+pkg_id: "github.com.tom-james-watson.breaktimer-app"
+pkg_type: "appimage"
+app_id: "github.com.tom-james-watson.breaktimer-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Manage periodic breaks. Avoid eye-strain and RSI."
+distro_pkg:
+  archlinux:
+    aur:
+      - "breaktimer-appimage"
+      - "breaktimer-bin"
+homepage:
+  - "https://breaktimer.app"
+maintainer:
+  - "runner"
+license:
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/tom-james-watson/breaktimer-app"
+tag:
+  - "cross-platform"
+  - "timer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/tom-james-watson/breaktimer-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/tom-james-watson/breaktimer-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

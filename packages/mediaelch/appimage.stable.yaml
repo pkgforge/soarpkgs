@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mediaelch"
+pkg_id: "github.com.Komet.MediaElch"
+pkg_type: "appimage"
+app_id: "github.com.Komet.MediaElch"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Media Manager for Kodi"
+distro_pkg:
+  alpine:
+    - "mediaelch"
+  archlinux:
+    aur:
+      - "mediaelch-git"
+    extra:
+      - "mediaelch"
+  nixpkgs:
+    - "mediaelch"
+    - "mediaelch-qt6"
+homepage:
+  - "http://www.kvibes.de/en/mediaelch"
+  - "http://www.kvibes.de/mediaelch"
+  - "https://github.com/Komet/MediaElch"
+  - "https://mediaelch.de/mediaelch"
+  - "https://mediaelch.github.io"
+  - "https://mediaelch.github.io/mediaelch-doc/about.html"
+  - "https://www.kvibes.de/en/mediaelch"
+  - "https://www.kvibes.de/mediaelch"
+  - "https://www.mediaelch.de"
+  - "https://www.mediaelch.de/mediaelch"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0+"
+  - "LGPL-3"
+  - "LGPL-3.0"
+  - "LGPL-3.0-only"
+  - "LGPL-3.0-or-later"
+  - "LGPL3"
+src_url:
+  - "https://github.com/Komet/MediaElch"
+tag:
+  - "Video"
+  - "debug"
+  - "desktop.multimedia"
+  - "media-video"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Komet/MediaElch/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Komet/MediaElch" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

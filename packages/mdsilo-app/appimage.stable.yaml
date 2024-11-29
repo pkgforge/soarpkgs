@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mdsilo-app"
+pkg_id: "github.com.mdSilo.mdSilo-app"
+pkg_type: "appimage"
+app_id: "github.com.mdSilo.mdSilo-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Lightweight Knowledge Base and Feed Reader."
+homepage:
+  - "https://github.com/mdSilo/mdSilo-app"
+maintainer:
+  - "runner"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/mdSilo/mdSilo-app"
+tag:
+  - "echarts"
+  - "kanban"
+  - "knowledge-base"
+  - "knowledge-graph"
+  - "markdown-editor"
+  - "mdsilo"
+  - "mermaid-diagrams"
+  - "mindmap"
+  - "note-taking"
+  - "podcast"
+  - "prosemirror"
+  - "rss"
+  - "tauri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mdSilo/mdSilo-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mdSilo/mdSilo-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,35 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qortal-ui"
+pkg_id: "github.com.Qortal.qortal-ui"
+pkg_type: "appimage"
+app_id: "github.com.Qortal.qortal-ui"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Qortal Project UI - decentralize the world - Data storage, communications, web hosting, decentralized trading, complete infrastructure for the future blockchain based Internet"
+homepage:
+  - "https://github.com/Qortal/qortal-ui"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/Qortal/qortal-ui"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Qortal/qortal-ui/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Qortal/qortal-ui" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Qortal/qortal-ui" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

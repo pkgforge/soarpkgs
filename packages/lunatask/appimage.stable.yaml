@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lunatask"
+pkg_id: "github.com.lunatask.lunatask"
+pkg_type: "appimage"
+app_id: "github.com.lunatask.lunatask"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "All-in-one encrypted to-do list, habit and mood tracker, journaling and notes app"
+distro_pkg:
+  archlinux:
+    aur:
+      - "lunatask"
+  nixpkgs:
+    - "lunatask"
+homepage:
+  - "https://lunatask.app"
+maintainer:
+  - "runner"
+license:
+  - "Unfree"
+  - "proprietary"
+src_url:
+  - "https://github.com/lunatask/lunatask"
+tag:
+  - "habit-tracker"
+  - "journal"
+  - "journaling"
+  - "kanban"
+  - "linux"
+  - "macos"
+  - "note-taking"
+  - "notes"
+  - "pomodoro"
+  - "productivity"
+  - "task-manager"
+  - "todo"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lunatask/lunatask/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lunatask/lunatask" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

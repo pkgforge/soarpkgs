@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "freezer"
+pkg_id: "github.com.eNV25.freezer-releases"
+pkg_type: "appimage"
+app_id: "github.com.eNV25.freezer-releases"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "WARNING: This page archives copies of last versions of Freezer from the Telegram channel, before it was abandoned. Do not contact me about this since I am not the developer."
+distro_pkg:
+  archlinux:
+  debian:
+    - "freezer"
+homepage:
+  - "https://wiki.openstack.org/wiki/Freezer"
+maintainer:
+  - "runner"
+license:
+  - "Creative Commons Zero v1.0 Universal"
+src_url:
+  - "https://github.com/eNV25/freezer-releases"
+tag:
+  - "doc"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/eNV25/freezer-releases/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/eNV25/freezer-releases" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

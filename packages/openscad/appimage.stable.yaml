@@ -1,0 +1,86 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openscad"
+pkg_id: "github.com.openscad.openscad"
+pkg_type: "appimage"
+app_id: "github.com.openscad.openscad"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "OpenSCAD - The Programmers Solid 3D CAD Modeller"
+distro_pkg:
+  alpine:
+    - "openscad"
+  archlinux:
+    aur:
+      - "openscad-git"
+    extra:
+      - "openscad"
+  debian:
+    - "openscad"
+  nixpkgs:
+    - "openscad"
+    - "openscad-unstable"
+homepage:
+  - "http://openscad.org"
+  - "http://www.openscad.org"
+  - "https://github.com/openscad/openscad"
+  - "https://openscad.org"
+  - "https://www.openscad.org"
+  - "https://www.openscad.org/downloads.html"
+maintainer:
+  - "runner"
+license:
+  - "GNU GPL"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-only WITH CGAL-linking-exception AND CC0-1.0"
+  - "GPL-2.0-or-later"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2 with exceptions and CC0"
+  - "GPLv3+"
+  - "LGPL-2.1"
+  - "spdx:GPL-2.0-or-later"
+src_url:
+  - "https://github.com/openscad/openscad"
+tag:
+  - "3d"
+  - "Applications/Engineering"
+  - "Engineering"
+  - "Graphics"
+  - "Graphics/3D"
+  - "Productivity"
+  - "Productivity/Graphics/CAD"
+  - "Sciences/Computer"
+  - "cad"
+  - "debug"
+  - "graphics"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "science"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/openscad/openscad/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/openscad/openscad" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

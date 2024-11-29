@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wsjtz"
+pkg_id: "github.com.SP5D.wsjtz-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.SP5D.wsjtz-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "AppImage of WSJT-Z – fork of WSJT-X with automation features."
+distro_pkg:
+  archlinux:
+    aur:
+      - "wsjtz"
+      - "wsjtz-appimage"
+homepage:
+  - "https://github.com/SP5D/wsjtz-AppImage"
+  - "https://sourceforge.net/projects/wsjt-z"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3"
+  - "GPL3"
+src_url:
+  - "https://github.com/SP5D/wsjtz-AppImage"
+tag:
+  - "comms"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/SP5D/wsjtz-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/SP5D/wsjtz-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

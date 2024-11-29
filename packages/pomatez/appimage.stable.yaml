@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pomatez"
+pkg_id: "github.com.zidoro.pomatez"
+pkg_type: "appimage"
+app_id: "github.com.zidoro.pomatez"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Stay Focused. Take a Break."
+distro_pkg:
+  archlinux:
+    aur:
+      - "pomatez"
+homepage:
+  - "https://github.com/zidoro/pomatez"
+  - "https://zidoro.github.io/pomatez"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/zidoro/pomatez"
+tag:
+  - "productivity"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zidoro/pomatez/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/zidoro/pomatez" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/zidoro/pomatez" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

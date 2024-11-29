@@ -1,0 +1,99 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "android-tools"
+pkg_id: "github.com.Samueru-sama.android-tools-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.Samueru-sama.android-tools-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Unofficial AppImage of Android Platform Tools (adb, fastboot, etc). Can also install udev rules. [Maintainer=@Samueru-sama]"
+distro_pkg:
+  alpine:
+    - "android-tools"
+  archlinux:
+    extra:
+      - "android-tools"
+  debian:
+    - "android-platform-system-core"
+    - "android-platform-system-extras"
+    - "android-tools"
+  nixpkgs:
+    - "android-tools"
+homepage:
+  - "http://android.googlesource.com"
+  - "http://developer.android.com/guide/developing/tools"
+  - "http://developer.android.com/guide/developing/tools/adb.html"
+  - "http://developer.android.com/sdk"
+  - "http://developer.android.com/tools"
+  - "http://tools.android.com"
+  - "https://android.googlesource.com/platform/system/core"
+  - "https://android.googlesource.com/platform/system/extras"
+  - "https://developer.android.com"
+  - "https://developer.android.com/studio"
+  - "https://developer.android.com/studio/releases/platform-tools"
+  - "https://developer.android.com/tools"
+  - "https://developer.android.com/tools/help/adb.html"
+  - "https://github.com/android/platform_system_core"
+  - "https://github.com/neelchauhan/freebsd-android-tools"
+  - "https://github.com/nmeum/android-tools"
+  - "https://sites.google.com/a/android.com/tools"
+  - "https://wiki.debian.org/AndroidTools"
+maintainer:
+  - "runner"
+license:
+  - "APL"
+  - "ASL 2.0 and "
+  - "ASL 2.0 and  and GPLv3"
+  - "Apache"
+  - "Apache 2.0"
+  - "Apache License 2.0, BSD"
+  - "Apache Software License and BSD"
+  - "Apache-2.0"
+  - "Apache-2.0 AND ISC AND GPL-2.0-only AND MIT"
+  - "Apache-2.0 AND MIT"
+  - "Apache-2.0 MIT"
+  - "Apache-2.0 and BSD-3-Clause"
+  - "BSD-2"
+  - "Custom"
+  - "GPL-2.0-only"
+  - "GPL-3.0-or-later"
+  - "ISC"
+  - "MIT"
+  - "Unicode-DFS-2015"
+  - "spdx:Apache-2.0"
+src_url:
+  - "https://github.com/Samueru-sama/android-tools-AppImage"
+tag:
+  - "Applications/System"
+  - "Development/Tools"
+  - "Hardware/Mobile"
+  - "System/Tools"
+  - "base/x11"
+  - "debug"
+  - "dev-util"
+  - "devel"
+  - "development"
+  - "libs"
+  - "programming.tools"
+  - "universe/devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Samueru-sama/android-tools-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Samueru-sama/android-tools-AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,76 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "retroarch"
+pkg_id: "github.com.hizzlekizzle.RetroArch-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.hizzlekizzle.RetroArch-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An attempt to use CI for nightly builds of RetroArch for Windows and Linux (via AppImage)"
+distro_pkg:
+  alpine:
+    - "retroarch"
+  archlinux:
+    aur:
+      - "retroarch-git"
+    extra:
+      - "retroarch"
+  debian:
+    - "retroarch"
+  nixpkgs:
+    - "retroarch"
+    - "retroarchFull"
+homepage:
+  - "http://www.libretro.com"
+  - "http://www.libretro.org"
+  - "http://www.retroarch.com"
+  - "https://github.com/libretro/RetroArch"
+  - "https://libretro.com"
+  - "https://retroarch.com"
+  - "https://www.libretro.com"
+  - "https://www.retroarch.com"
+  - "https://www.retroarch.com/?page=platforms"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2.0-only"
+  - "GPL-3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later and GPL-2.0-only and CC-BY-3.0 and CC-BY-4.0 and CC0-1.0 and BSD-2-Clause and BSD-3-Clause and Apache-2.0 and MIT"
+  - "GPLv3+"
+  - "GPLv3+ and GPLv2 and CC-BY and CC0 and BSD and ASL 2.0 and MIT"
+src_url:
+  - "https://github.com/hizzlekizzle/RetroArch-AppImage"
+tag:
+  - "Emulators"
+  - "Games"
+  - "System/Emulators/Other"
+  - "debug"
+  - "emu"
+  - "emulators"
+  - "games"
+  - "games-emulation"
+  - "games.emulator"
+  - "otherosfs"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hizzlekizzle/RetroArch-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hizzlekizzle/RetroArch-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

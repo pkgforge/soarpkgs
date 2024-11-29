@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cutepeaks"
+pkg_id: "github.com.labsquare.CutePeaks"
+pkg_type: "appimage"
+app_id: "github.com.labsquare.CutePeaks"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "CutePeaks is a standalone Sanger trace viewer steered by a modern and user-friendly UI."
+distro_pkg:
+  archlinux:
+    aur:
+      - "cutepeaks"
+      - "cutepeaks-git"
+homepage:
+  - "https://github.com/labsquare/CutePeaks"
+  - "https://labsquare.github.io/CutePeaks"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0"
+  - "GPL3"
+src_url:
+  - "https://github.com/labsquare/CutePeaks"
+tag:
+  - "Productivity/Scientific/Biology"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/labsquare/CutePeaks/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/labsquare/CutePeaks" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

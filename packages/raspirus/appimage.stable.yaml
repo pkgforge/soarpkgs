@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "raspirus"
+pkg_id: "github.com.Raspirus.Raspirus"
+pkg_type: "appimage"
+app_id: "github.com.Raspirus.Raspirus"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A user- and resources-friendly rules-based malware scanner"
+distro_pkg:
+  archlinux:
+    aur:
+      - "raspirus"
+homepage:
+  - "https://github.com/Raspirus/Raspirus"
+  - "https://raspirus.deno.dev"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/Raspirus/Raspirus"
+tag:
+  - "antivirus"
+  - "rust"
+  - "usb-scan"
+  - "virus-scanning"
+  - "yara"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Raspirus/Raspirus/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Raspirus/Raspirus" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Raspirus/Raspirus" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

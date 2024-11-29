@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "e2-sat-editor"
+pkg_id: "github.com.ctlcltd.e2-sat-editor"
+pkg_type: "appimage"
+app_id: "github.com.ctlcltd.e2-sat-editor"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Satellite channel lists editor with tab navigation 📡 for Enigma2, Neutrino, Lamedb, dreambox lists"
+distro_pkg:
+  archlinux:
+    aur:
+      - "e2-sat-editor"
+homepage:
+  - "https://github.com/ctlcltd/e2-sat-editor"
+maintainer:
+  - "runner"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/ctlcltd/e2-sat-editor"
+tag:
+  - "bouquet"
+  - "channels"
+  - "cpp17"
+  - "dreambox"
+  - "dvb"
+  - "editor"
+  - "enigma2"
+  - "lamedb"
+  - "list"
+  - "neutrino"
+  - "qt-gui"
+  - "set-top-box"
+  - "settings"
+  - "stb"
+  - "tv"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ctlcltd/e2-sat-editor/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ctlcltd/e2-sat-editor" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

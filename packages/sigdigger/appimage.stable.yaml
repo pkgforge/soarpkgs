@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sigdigger"
+pkg_id: "github.com.BatchDrake.SigDigger"
+pkg_type: "appimage"
+app_id: "github.com.BatchDrake.SigDigger"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Qt-based digital signal analyzer, using Suscan core and Sigutils DSP library"
+distro_pkg:
+  archlinux:
+    aur:
+      - "sigdigger-git"
+    extra:
+      - "sigdigger"
+  nixpkgs:
+    - "sigdigger"
+homepage:
+  - "https://batchdrake.github.io/SigDigger"
+  - "https://github.com/BatchDrake/SigDigger"
+maintainer:
+  - "runner"
+license:
+  - "GNU GPLv3"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "custom"
+src_url:
+  - "https://github.com/BatchDrake/SigDigger"
+tag:
+  - "Productivity/Hamradio/Other"
+  - "Sciences/Engineering"
+  - "comms"
+  - "net-wireless"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/BatchDrake/SigDigger/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/BatchDrake/SigDigger" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

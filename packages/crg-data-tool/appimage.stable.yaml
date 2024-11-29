@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "crg-data-tool"
+pkg_id: "github.com.AdamSmasherDerby.CRG-To-Statsbook"
+pkg_type: "appimage"
+app_id: "github.com.AdamSmasherDerby.CRG-To-Statsbook"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A utility for facilitating the export of data from CRG Scoreboard to the WFTDA StatsBook"
+homepage:
+  - "https://github.com/AdamSmasherDerby/CRG-To-Statsbook"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/AdamSmasherDerby/CRG-To-Statsbook"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AdamSmasherDerby/CRG-To-Statsbook/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AdamSmasherDerby/CRG-To-Statsbook" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

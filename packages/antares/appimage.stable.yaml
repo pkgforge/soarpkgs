@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "antares"
+pkg_id: "github.com.antares-sql.antares"
+pkg_type: "appimage"
+app_id: "github.com.antares-sql.antares"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A modern, fast and productivity driven SQL client with a focus in UX"
+distro_pkg:
+  archlinux:
+    aur:
+      - "antares-git"
+  nixpkgs:
+    - "antares"
+homepage:
+  - "https://antares-sql.app"
+  - "https://arescentral.org/antares"
+  - "https://github.com/Fabio286/antares"
+  - "https://github.com/antares-sql/antares"
+maintainer:
+  - "runner"
+license:
+  - "GPL-2.0-only AND LGPL-3.0-only AND CC-BY-NC-SA-3.0"
+  - "GPL3"
+  - "MIT"
+src_url:
+  - "https://github.com/antares-sql/antares"
+tag:
+  - "Amusements/Games/Strategy/Real"
+  - "cross-platform"
+  - "games"
+  - "sql"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/antares-sql/antares/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/antares-sql/antares" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/antares-sql/antares" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

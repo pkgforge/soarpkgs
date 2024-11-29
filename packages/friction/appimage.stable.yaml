@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "friction"
+pkg_id: "github.com.friction2d.friction"
+pkg_type: "appimage"
+app_id: "github.com.friction2d.friction"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Friction Graphics"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://friction.graphics/releases/friction-094.html"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/friction2d/friction"
+tag:
+  - "Graphics"
+  - "game/puzzle"
+  - "open-source"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/friction2d/friction/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/friction2d/friction" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

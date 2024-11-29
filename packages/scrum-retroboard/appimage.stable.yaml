@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "scrum-retroboard"
+pkg_id: "github.com.stefanDeveloper.scrum-retroboard"
+pkg_type: "appimage"
+app_id: "github.com.stefanDeveloper.scrum-retroboard"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Electron App to enhance the Sprint Retrospective of Scrum"
+homepage:
+  - "https://github.com/stefanDeveloper/scrum-retroboard"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/stefanDeveloper/scrum-retroboard"
+tag:
+  - "babel"
+  - "electron"
+  - "electron-app"
+  - "eslint"
+  - "flowtype"
+  - "reactjs"
+  - "redux"
+  - "scrum"
+  - "scrum-board"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stefanDeveloper/scrum-retroboard/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/stefanDeveloper/scrum-retroboard" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mastervyrn"
+pkg_id: "github.com.LightouchDev.MasterVyrn"
+pkg_type: "appimage"
+app_id: "github.com.LightouchDev.MasterVyrn"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "MasterVyrn is a clean dedicated GBF loader build on top of electron."
+homepage:
+  - "https://github.com/LightouchDev/MasterVyrn"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/LightouchDev/MasterVyrn"
+tag:
+  - "electron"
+  - "gbf"
+  - "granbluefantasy"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LightouchDev/MasterVyrn/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/LightouchDev/MasterVyrn" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

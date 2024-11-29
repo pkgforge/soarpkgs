@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "weakauras"
+pkg_id: "github.com.WeakAuras.WeakAuras-Companion"
+pkg_type: "appimage"
+app_id: "github.com.WeakAuras.WeakAuras-Companion"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A cross-platform application built to provide the missing link between Wago.io and World of Warcraft"
+homepage:
+  - "https://github.com/WeakAuras/WeakAuras-Companion"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/WeakAuras/WeakAuras-Companion"
+tag:
+  - "electron"
+  - "electron-app"
+  - "electron-vue"
+  - "vite"
+  - "vue"
+  - "wago"
+  - "warcraft"
+  - "weakauras"
+  - "weakauras-companion"
+  - "world-of-warcraft"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/WeakAuras/WeakAuras-Companion/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/WeakAuras/WeakAuras-Companion" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

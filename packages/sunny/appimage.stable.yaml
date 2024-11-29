@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sunny"
+pkg_id: "github.com.XMuli.SunnyPages"
+pkg_type: "appimage"
+app_id: "github.com.XMuli.SunnyPages"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Simple and beautiful screenshot software that supports Windows, macOS, and Linux. It also supports OCR and image translation features.    Sunny是一款简洁且漂亮的截图软件，支持Windows、MacOS和Linux系统，亦支持 OCR 和图片翻译"
+homepage:
+  - "https://github.com/XMuli/SunnyPages"
+maintainer:
+  - "runner"
+src_url:
+  - "https://github.com/XMuli/SunnyPages"
+tag:
+  - "capture"
+  - "image"
+  - "ocr"
+  - "screen"
+  - "screenshot"
+  - "snapshot"
+  - "translate"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/XMuli/SunnyPages/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/XMuli/SunnyPages" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

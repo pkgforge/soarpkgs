@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bugdom"
+pkg_id: "github.com.jorio.Bugdom"
+pkg_type: "appimage"
+app_id: "github.com.jorio.Bugdom"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🐛 Pangea Softwares Bugdom for modern systems"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bugdom"
+  nixpkgs:
+    - "bugdom"
+homepage:
+  - "https://github.com/jorio/Bugdom"
+  - "https://jorio.itch.io/bugdom"
+  - "https://pangeasoft.net/bug"
+maintainer:
+  - "runner"
+license:
+  - "CC-BY-NC-SA-4.0"
+  - "CC-BY-SA-4.0"
+  - "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
+  - "custom:cc-by-nc-sa-4.0"
+src_url:
+  - "https://github.com/jorio/Bugdom"
+tag:
+  - "games"
+  - "games-action"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jorio/Bugdom/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jorio/Bugdom" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jorio/Bugdom" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

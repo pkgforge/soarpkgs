@@ -1,0 +1,99 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "0ad"
+pkg_id: "github.com.0ad-matters.0ad-appimage"
+pkg_type: "appimage"
+app_id: "github.com.0ad-matters.0ad-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "@0ad appimage"
+distro_pkg:
+  archlinux:
+    aur:
+      - "0ad-git"
+    extra:
+      - "0ad"
+      - "0ad-data"
+  debian:
+    - "0ad"
+    - "0ad-data"
+  nixpkgs:
+    - "zeroad"
+homepage:
+  - "http://play0ad.com"
+  - "http://wildfiregames.com/0ad"
+  - "http://www.wildfiregames.com/0ad"
+  - "https://github.com/0ad/0ad"
+  - "https://play0ad.com"
+  - "https://sourceforge.net/projects/zero-ad"
+maintainer:
+  - "runner"
+license:
+  - "BSD-2-Clause"
+  - "BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT AND ISC AND MPL-2.0"
+  - "BitstreamVera"
+  - "CC-BY-SA"
+  - "CC-BY-SA-3.0"
+  - "CC-BY-SA-3.0 AND LPPL-1.3c+ AND GPL-3.0+"
+  - "CC-BY-SA-3.0 AND LPPL-1.3c+ AND GPL-3.0-or-later"
+  - "CC-BY-SA-3.0 and LPPL-1.3c+ and GPL-3.0+"
+  - "CCPL"
+  - "Creative Commons Attribution-ShareAlike 3.0 Unported"
+  - "Freeware"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0+ and LGPL-3.0+ and CC-BY-SA-3.0 and MIT and ISC and MPL-2.0 and BSD-3-Clause"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND LGPL-3.0-or-later AND CC-BY-SA-3.0 AND MIT AND ISC AND MPL-2.0 AND BSD-3-Clause"
+  - "GPL-2.0-or-later AND LicenseRef-Callaway-BSD AND LicenseRef-Callaway-MIT AND IPL-1.0 AND MPL-2.0"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2 MIT"
+  - "GPLv2+ and BSD and MIT and IBM"
+  - "GPLv2+ and BSD and MIT and IBM and MPLv2.0"
+  - "GPLv2+ and LGPLv2"
+  - "ISC"
+  - "LGPL-2.1"
+  - "LGPLv2"
+  - "LPPL-1.3c"
+  - "LicenseRef-CCPL"
+  - "MIT"
+  - "MPL-2.0"
+  - "Mixed"
+  - "Public Domain CC-BY-SA"
+  - "Various "
+  - "ZLIB"
+  - "Zlib"
+src_url:
+  - "https://github.com/0ad-matters/0ad-appimage"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Strategy/Real"
+  - "Games"
+  - "Games/Strategy"
+  - "age-of-empires"
+  - "debug"
+  - "games"
+  - "games-strategy"
+  - "games.strategy"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/0ad-matters/0ad-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/0ad-matters/0ad-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

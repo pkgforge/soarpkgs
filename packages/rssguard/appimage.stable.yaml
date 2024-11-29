@@ -1,0 +1,70 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rssguard"
+pkg_id: "github.com.martinrotter.rssguard"
+pkg_type: "appimage"
+app_id: "github.com.martinrotter.rssguard"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Feed reader (and podcast player) which supports RSS/ATOM/JSON and many web-based feed services."
+distro_pkg:
+  archlinux:
+    aur:
+      - "rssguard-git"
+    extra:
+      - "rssguard"
+  debian:
+    - "rssguard"
+  nixpkgs:
+    - "rssguard"
+homepage:
+  - "https://github.com/martinrotter/rssguard"
+maintainer:
+  - "runner"
+license:
+  - " AGPL-3+ BSD GPL-3+ MIT"
+  - "AGPL-3.0-or-later AND GPL-3.0-only"
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-only AND AGPL-3.0-or-later"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND BSD-3-Clause"
+  - "GPL-3.0-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND BSD-4-Clause AND MIT"
+  - "GPL3"
+  - "GPLv3+ and BSD and AGPLv3"
+  - "spdx:GPL-3.0-only"
+src_url:
+  - "https://github.com/martinrotter/rssguard"
+tag:
+  - "Networking/News"
+  - "Productivity/Networking/News/Clients"
+  - "Productivity/Networking/News/Utilities"
+  - "aggregator"
+  - "debug"
+  - "desktop"
+  - "kde"
+  - "net"
+  - "net-news"
+  - "network.news"
+  - "programming.devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/martinrotter/rssguard/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/martinrotter/rssguard" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

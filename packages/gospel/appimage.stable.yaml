@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gospel"
+pkg_id: "github.com.ksharindam.gospel-pdf-viewer"
+pkg_type: "appimage"
+app_id: "github.com.ksharindam.gospel-pdf-viewer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Poppler based fast pdf viewer written in PyQt5"
+homepage:
+  - "https://github.com/ksharindam/gospel-pdf-viewer"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/ksharindam/gospel-pdf-viewer"
+tag:
+  - "pdf-viewer"
+  - "poppler"
+  - "pyqt5"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ksharindam/gospel-pdf-viewer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ksharindam/gospel-pdf-viewer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

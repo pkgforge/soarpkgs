@@ -1,0 +1,71 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "brave"
+pkg_id: "github.com.srevinsaju.Brave-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.srevinsaju.Brave-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "null"
+distro_pkg:
+  archlinux:
+    aur:
+      - "brave-beta-bin"
+      - "brave-bin"
+      - "brave-nightly-bin"
+  nixpkgs:
+    - "brave"
+homepage:
+  - "https://brave.com"
+  - "https://brave.com/download"
+  - "https://brave.com/download-beta"
+  - "https://brave.com/download-dev"
+  - "https://brave.com/download-nightly"
+  - "https://brave.com/features"
+  - "https://github.com/brave/browser-laptop"
+  - "https://www.brave.com"
+maintainer:
+  - "runner"
+license:
+  - "BSD"
+  - "Freeware,BSD-3-Clause,GPL-3.0-only,..."
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-or-later"
+  - "MPL-2"
+  - "MPL-2.0"
+  - "MPL2"
+  - "MPLv2.0"
+  - "Mozilla Public License 2.0"
+  - "Mozilla Public License 2.0 "
+  - "Mozilla Public License, version 2.0"
+  - "custom:chromium"
+src_url:
+  - "https://github.com/srevinsaju/Brave-AppImage"
+tag:
+  - "Applications/Internet"
+  - "Communications"
+  - "Networking/WWW"
+  - "browser"
+  - "debug"
+  - "network"
+  - "network.web.browser"
+  - "www-client"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/Brave-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/srevinsaju/Brave-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

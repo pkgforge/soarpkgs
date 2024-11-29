@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ubports-installer"
+pkg_id: "github.com.ubports.ubports-installer"
+pkg_type: "appimage"
+app_id: "github.com.ubports.ubports-installer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A simple tool to install Ubuntu Touch on UBports devices"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ubports-installer"
+      - "ubports-installer-bin"
+      - "ubports-installer-git"
+homepage:
+  - "https://github.com/ubports/ubports-installer"
+  - "https://ubports.com"
+  - "https://ubuntu-touch.io//ubuntu-touch.io"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/ubports/ubports-installer"
+tag:
+  - "desktop-tool"
+  - "electron"
+  - "nodejs"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ubports/ubports-installer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ubports/ubports-installer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

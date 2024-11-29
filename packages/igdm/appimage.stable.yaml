@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "igdm"
+pkg_id: "github.com.ifedapoolarewaju.igdm"
+pkg_type: "appimage"
+app_id: "github.com.ifedapoolarewaju.igdm"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Desktop application for Instagram DMs"
+distro_pkg:
+  archlinux:
+    aur:
+      - "igdm"
+      - "igdm-bin"
+homepage:
+  - "https://github.com/igdmapps/igdm"
+  - "https://igdm.me"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/ifedapoolarewaju/igdm"
+tag:
+  - "chat"
+  - "chat-application"
+  - "desktop-app"
+  - "direct-message"
+  - "electron"
+  - "electron-app"
+  - "instagram"
+  - "instagram-client"
+  - "instagram-dm"
+  - "messenger"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ifedapoolarewaju/igdm/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ifedapoolarewaju/igdm" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

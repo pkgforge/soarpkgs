@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "book-manager"
+pkg_id: "github.com.bdTechies.book-manager"
+pkg_type: "appimage"
+app_id: "github.com.bdTechies.book-manager"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A simple personal library management application."
+homepage:
+  - "https://github.com/bdTechies/book-manager"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/bdTechies/book-manager"
+tag:
+  - "electron"
+  - "electron-app"
+  - "nedb"
+  - "react-router"
+  - "reactjs"
+  - "redux"
+  - "styled-components"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bdTechies/book-manager/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bdTechies/book-manager" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

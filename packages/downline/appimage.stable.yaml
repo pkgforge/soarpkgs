@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "downline"
+pkg_id: "github.com.stefnotch.downline"
+pkg_type: "appimage"
+app_id: "github.com.stefnotch.downline"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Free cross-platform desktop application for downloading video and audio from YouTube and many other sites"
+distro_pkg:
+  archlinux:
+    aur:
+      - "downline-bin"
+homepage:
+  - "https://github.com/stefnotch/downline"
+maintainer:
+  - "runner"
+license:
+  - "unknown"
+src_url:
+  - "https://github.com/stefnotch/downline"
+tag:
+  - "tauri"
+  - "video-downloader"
+  - "youtube-dl"
+  - "yt-dlp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stefnotch/downline/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/stefnotch/downline" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

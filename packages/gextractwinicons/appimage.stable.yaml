@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gextractwinicons"
+pkg_id: "github.com.muflone.gextractwinicons"
+pkg_type: "appimage"
+app_id: "github.com.muflone.gextractwinicons"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A GTK+ utility to extract cursors, icons and png images previews from MS Windows resource files (like .exe, .dll, .ocx, .cpl)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "gextractwinicons"
+      - "gextractwinicons-git"
+  debian:
+    - "gextractwinicons"
+homepage:
+  - "http://code.google.com/p/gextractwinicons"
+  - "http://www.muflone.com/gextractwinicons"
+maintainer:
+  - "runner"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/muflone/gextractwinicons"
+tag:
+  - "Graphics"
+  - "graphics"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/muflone/gextractwinicons/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/muflone/gextractwinicons" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

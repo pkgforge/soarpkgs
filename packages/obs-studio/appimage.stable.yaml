@@ -1,0 +1,110 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "obs-studio"
+pkg_id: "github.com.ivan-hc.OBS-Studio-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.OBS-Studio-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "OBS Studio AppImage built on top of JuNest, the lightweight Arch Linux based distro that runs on top of any other Linux distro."
+distro_pkg:
+  alpine:
+    - "obs-studio"
+  archlinux:
+    aur:
+      - "obs-studio-git"
+    extra:
+      - "obs-studio"
+  debian:
+    - "obs-studio"
+  nixpkgs:
+    - "obs-studio"
+    - "obs-studio-plugins.obs-3d-effect"
+homepage:
+  - "https://github.com/exeldro/obs-3d-effect"
+  - "https://github.com/jp9000/obs-studio"
+  - "https://github.com/jp9000/obs-studio.git"
+  - "https://github.com/obsproject/obs-browser"
+  - "https://github.com/obsproject/obs-studio"
+  - "https://obsproject.com"
+  - "https://obsproject.com/cs"
+  - "https://obsproject.com/da"
+  - "https://obsproject.com/de"
+  - "https://obsproject.com/es"
+  - "https://obsproject.com/eu"
+  - "https://obsproject.com/fi"
+  - "https://obsproject.com/forum/list/test-builds.20"
+  - "https://obsproject.com/fr"
+  - "https://obsproject.com/hu"
+  - "https://obsproject.com/ja"
+  - "https://obsproject.com/ko"
+  - "https://obsproject.com/pt-br"
+  - "https://obsproject.com/ru"
+  - "https://obsproject.com/sv"
+  - "https://obsproject.com/tr"
+  - "https://obsproject.com/uk"
+  - "https://obsproject.com/zh-cn"
+maintainer:
+  - "runner"
+license:
+  - "Boost-1.0"
+  - "FDK-AAC"
+  - "GNU GPL version 2"
+  - "GNU GPLv3"
+  - "GNU General Public License v2.0"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later and ISC and MIT and BSD-1-Clause and BSD-2-Clause and BSD-3-Clause and BSL-1.0 and LGPL-2.1-or-later and CC0-1.0 and "
+  - "GPL-2.0-or-later and MIT and BSD-1-Clause and BSD-2-Clause and BSD-3-Clause and BSL-1.0 and LGPL-2.1-or-later and CC0-1.0 and "
+  - "GPL-2.0-or-later and MIT and BSD-2-Clause and BSD-3-Clause and BSL-1.0 and LGPL-2.1-or-later and CC0-1.0 and "
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "LGPL"
+  - "MIT"
+  - "Unlicense"
+src_url:
+  - "https://github.com/ivan-hc/OBS-Studio-appimage"
+tag:
+  - "Applications/Multimedia"
+  - "Graphical"
+  - "Productivity/Multimedia/Video/Editors"
+  - "Video"
+  - "Video/Utilities"
+  - "debug"
+  - "extra/multimedia"
+  - "foss"
+  - "libdevel"
+  - "live"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "obs-studio-plugins"
+  - "programming.devel"
+  - "video"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/OBS-Studio-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/OBS-Studio-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

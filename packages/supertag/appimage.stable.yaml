@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "supertag"
+pkg_id: "github.com.amoffat.supertag"
+pkg_type: "appimage"
+app_id: "github.com.amoffat.supertag"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A tag-based filesystem"
+distro_pkg:
+  archlinux:
+    aur:
+      - "supertag-appimage"
+  nixpkgs:
+    - "supertag"
+homepage:
+  - "https://github.com/amoffat/supertag"
+maintainer:
+  - "runner"
+license:
+  - "AGPL 3.0"
+  - "AGPL-3.0-or-later"
+src_url:
+  - "https://github.com/amoffat/supertag"
+tag:
+  - "filesystem"
+  - "fuse"
+  - "fuse-filesystem"
+  - "tagging"
+  - "tags"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/amoffat/supertag/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/amoffat/supertag" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jellyamp"
+pkg_id: "github.com.m0ngr31.jellyamp"
+pkg_type: "appimage"
+app_id: "github.com.m0ngr31.jellyamp"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Desktop client for listening to music from a Jellyfin server"
+distro_pkg:
+  archlinux:
+    aur:
+      - "jellyamp-appimage"
+homepage:
+  - "https://github.com/m0ngr31/jellyamp"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/m0ngr31/jellyamp"
+tag:
+  - "electron"
+  - "jellyfin"
+  - "music-player"
+  - "vue"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/m0ngr31/jellyamp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/m0ngr31/jellyamp" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/m0ngr31/jellyamp" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

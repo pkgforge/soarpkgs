@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "app-outlet"
+pkg_id: "github.com.AppOutlet.AppOutlet"
+pkg_type: "appimage"
+app_id: "github.com.AppOutlet.AppOutlet"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A Universal linux app store"
+distro_pkg:
+  archlinux:
+    aur:
+      - "app-outlet-bin"
+homepage:
+  - "https://github.com/AppOutlet/AppOutlet"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/AppOutlet/AppOutlet"
+tag:
+  - "angular"
+  - "appimage"
+  - "deb"
+  - "debian"
+  - "electron"
+  - "flatpak"
+  - "javascript"
+  - "linux"
+  - "outlet"
+  - "snap"
+  - "store"
+  - "typescript"
+  - "ubuntu"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AppOutlet/AppOutlet/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AppOutlet/AppOutlet" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

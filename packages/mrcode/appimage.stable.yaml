@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mrcode"
+pkg_id: "github.com.zokugun.MrCode"
+pkg_type: "appimage"
+app_id: "github.com.zokugun.MrCode"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An opinionated editor based on VSCodium / VSCode"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mrcode"
+      - "mrcode-bin"
+      - "mrcode-git"
+homepage:
+  - "https://github.com/zokugun/MrCode"
+  - "https://github.com/zokugun/MrCode.git"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/zokugun/MrCode"
+tag:
+  - "developer"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zokugun/MrCode/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/zokugun/MrCode" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/zokugun/MrCode" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

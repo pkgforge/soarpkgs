@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "isolate"
+pkg_id: "github.com.seenaburns.isolate"
+pkg_type: "appimage"
+app_id: "github.com.seenaburns.isolate"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Lightweight image browser"
+distro_pkg:
+  archlinux:
+    aur:
+      - "isolate"
+      - "isolate-git"
+  nixpkgs:
+    - "isolate"
+homepage:
+  - "https://github.com/ioi/isolate"
+maintainer:
+  - "runner"
+license:
+  - "GPL-2.0-or-later"
+  - "GPL2"
+src_url:
+  - "https://github.com/seenaburns/isolate"
+tag:
+  - "art"
+  - "design"
+  - "desktop-app"
+  - "electron"
+  - "image-viewer"
+  - "productivity"
+  - "react"
+  - "reason-react"
+  - "reasonml"
+  - "tool"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/seenaburns/isolate/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/seenaburns/isolate" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

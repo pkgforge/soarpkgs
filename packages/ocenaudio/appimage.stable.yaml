@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ocenaudio"
+pkg_id: "github.com.ivan-hc.ocenaudio-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.ocenaudio-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "One of the best audio editors on GNU/Linux"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ocenaudio-bin"
+  nixpkgs:
+    - "ocenaudio"
+homepage:
+  - "http://www.ocenaudio.com.br"
+  - "https://www.ocenaudio.com"
+  - "https://www.ocenaudio.com/en"
+maintainer:
+  - "runner"
+license:
+  - "EULA"
+  - "Freeware"
+  - "Proprietary"
+  - "Unfree"
+  - "Unknown"
+  - "custom"
+src_url:
+  - "https://github.com/ivan-hc/ocenaudio-appimage"
+tag:
+  - "Music"
+  - "Sound"
+  - "audio"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/ocenaudio-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/ocenaudio-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,76 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "steam"
+pkg_id: "github.com.ivan-hc.Steam-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Steam-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Unofficial Steam AppImage built on top of Conty (Arch Linux)."
+distro_pkg:
+  archlinux:
+    multilib:
+      - "steam"
+  debian:
+    - "steam"
+  nixpkgs:
+    - "steam-unwrapped"
+homepage:
+  - "http://store.steampowered.com"
+  - "http://www.steampowered.com"
+  - "https://github.com/ValveSoftware/steam-for-linux"
+  - "https://steamcommunity.com/linux"
+  - "https://steampowered.com"
+  - "https://store.steampowered.com"
+  - "https://store.steampowered.com/about"
+  - "https://www.steampowered.com"
+maintainer:
+  - "runner"
+license:
+  - "ALT-Steam"
+  - "Distributable"
+  - "Freeware"
+  - "Proprietary"
+  - "SUSE-Freeware"
+  - "Steam License Agreement"
+  - "Steam License Agreement and MIT"
+  - "Unfree redistributable"
+  - "Valve Corporation"
+  - "custom"
+  - "custom: Proprietary license"
+  - "no OSI Approved"
+  - "proprietary license"
+src_url:
+  - "https://github.com/ivan-hc/Steam-appimage"
+tag:
+  - "Amusements/Games/Other"
+  - "Games"
+  - "Games/Other"
+  - "Graphical"
+  - "app"
+  - "community"
+  - "distribution"
+  - "games"
+  - "multiverse/games"
+  - "non-free/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Steam-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Steam-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qtox"
+pkg_id: "github.com.qTox.qTox-nightly-releases"
+pkg_type: "appimage"
+app_id: "github.com.qTox.qTox-nightly-releases"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Repository for qTox nightly builds"
+distro_pkg:
+  alpine:
+    - "qtox"
+  archlinux:
+  debian:
+    - "qtox"
+  nixpkgs:
+    - "qtox"
+homepage:
+  - "https://github.com/qTox/qTox"
+  - "https://github.com/tux3/qTox"
+  - "https://qtox.github.io"
+  - "https://tox.chat"
+  - "https://wiki.tox.chat/clients/qtox"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL+"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+  - "GPLv3+ and BSD and CC-BY and CC-BY-SA"
+src_url:
+  - "https://github.com/qTox/qTox-nightly-releases"
+tag:
+  - "Communications"
+  - "Networking/Instant"
+  - "Productivity/Networking/Instant"
+  - "net"
+  - "net-im"
+  - "network"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/qTox/qTox-nightly-releases/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/qTox/qTox-nightly-releases" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,59 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "goofcord"
+pkg_id: "github.com.Milkshiift.GoofCord"
+pkg_type: "appimage"
+app_id: "github.com.Milkshiift.GoofCord"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: ":shield: Take control of your Discord experience with GoofCord – a highly configurable and privacy minded discord client."
+distro_pkg:
+  archlinux:
+    aur:
+      - "goofcord-bin"
+  nixpkgs:
+    - "goofcord"
+homepage:
+  - "https://github.com/Milkshiift/GoofCord"
+maintainer:
+  - "runner"
+license:
+  - "OSL-3.0"
+src_url:
+  - "https://github.com/Milkshiift/GoofCord"
+tag:
+  - "anonymity"
+  - "armcord"
+  - "configurable"
+  - "discord"
+  - "discord-client"
+  - "discord-client-mod"
+  - "discord-mod"
+  - "discord-plugin"
+  - "discord-theme"
+  - "electron"
+  - "goofcord"
+  - "nodejs"
+  - "open-source"
+  - "privacy"
+  - "private"
+  - "shelter"
+  - "vencord"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Milkshiift/GoofCord/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Milkshiift/GoofCord" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Milkshiift/GoofCord" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

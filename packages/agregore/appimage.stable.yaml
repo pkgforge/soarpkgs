@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "agregore"
+pkg_id: "github.com.AgregoreWeb.agregore-browser"
+pkg_type: "appimage"
+app_id: "github.com.AgregoreWeb.agregore-browser"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A minimal browser for the distributed web (Desktop version)"
+homepage:
+  - "https://github.com/AgregoreWeb/agregore-browser"
+maintainer:
+  - "runner"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/AgregoreWeb/agregore-browser"
+tag:
+  - "browser"
+  - "decentralization"
+  - "dweb"
+  - "hypercore-protocol"
+  - "ipfs"
+  - "p2p"
+  - "ssb"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AgregoreWeb/agregore-browser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AgregoreWeb/agregore-browser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

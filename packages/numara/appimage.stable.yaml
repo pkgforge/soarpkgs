@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "numara"
+pkg_id: "github.com.bornova.numara-calculator"
+pkg_type: "appimage"
+app_id: "github.com.bornova.numara-calculator"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Simple notepad calculator built on Electron, powered by Math.js"
+distro_pkg:
+  archlinux:
+    aur:
+      - "numara-bin"
+homepage:
+  - "https://github.com/bornova/numara-calculator"
+  - "https://numara.io"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/bornova/numara-calculator"
+tag:
+  - "calculator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bornova/numara-calculator/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/bornova/numara-calculator" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/bornova/numara-calculator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

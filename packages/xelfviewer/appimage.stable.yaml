@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xelfviewer"
+pkg_id: "github.com.horsicq.XELFViewer"
+pkg_type: "appimage"
+app_id: "github.com.horsicq.XELFViewer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "ELF file viewer/editor for Windows, Linux and MacOS."
+distro_pkg:
+  archlinux:
+    aur:
+      - "xelfviewer-appimage"
+      - "xelfviewer-bin"
+homepage:
+  - "https://github.com/horsicq/XELFViewer"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/horsicq/XELFViewer"
+tag:
+  - "devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/horsicq/XELFViewer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/horsicq/XELFViewer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

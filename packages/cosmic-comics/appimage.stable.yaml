@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cosmic-comics"
+pkg_id: "github.com.Nytuo.CosmicComics"
+pkg_type: "appimage"
+app_id: "github.com.Nytuo.CosmicComics"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Web Server based Comics / Manga Collectionner & viewer"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/Nytuo/CosmicComics"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/Nytuo/CosmicComics"
+tag:
+  - "comics"
+  - "comics-reader"
+  - "cosmic"
+  - "cosmic-comics"
+  - "javascript"
+  - "linux"
+  - "manga"
+  - "manga-reader"
+  - "nodejs"
+  - "reader"
+  - "snap"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Nytuo/CosmicComics/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Nytuo/CosmicComics" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Nytuo/CosmicComics" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

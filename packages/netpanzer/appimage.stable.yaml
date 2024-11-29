@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "netpanzer"
+pkg_id: "github.com.netpanzer.netpanzer"
+pkg_type: "appimage"
+app_id: "github.com.netpanzer.netpanzer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "NetPanzer is an online multiplayer tactical warfare game designed for fast action combat. Join us on Discord: https://discord.gg/kCAB2CMswd"
+distro_pkg:
+  archlinux:
+    aur:
+      - "netpanzer-appimage"
+  debian:
+    - "netpanzer"
+homepage:
+  - "http://netpanzer.berlios.de"
+  - "https://github.com/netpanzer/netpanzer"
+  - "https://netpanzer.com"
+  - "https://netpanzer.io"
+maintainer:
+  - "runner"
+license:
+  - "GPL-2+"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/netpanzer/netpanzer"
+tag:
+  - "Amusements/Games"
+  - "Games/Arcade"
+  - "Games/Strategy"
+  - "game/strategy"
+  - "games"
+  - "games-strategy"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/netpanzer/netpanzer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/netpanzer/netpanzer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

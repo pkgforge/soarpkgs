@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rustdesk"
+pkg_id: "github.com.rustdesk.rustdesk"
+pkg_type: "appimage"
+app_id: "github.com.rustdesk.rustdesk"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer."
+distro_pkg:
+  archlinux:
+    aur:
+      - "rustdesk"
+      - "rustdesk-appimage"
+      - "rustdesk-bin"
+      - "rustdesk-git"
+  nixpkgs:
+    - "rustdesk"
+    - "rustdesk-flutter"
+homepage:
+  - "https://github.com/rustdesk/rustdesk"
+  - "https://rustdesk.com"
+maintainer:
+  - "runner"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPLv3"
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/rustdesk/rustdesk"
+tag:
+  - "Communications"
+  - "Networking/Remote"
+  - "control"
+  - "home-office"
+  - "network"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rustdesk/rustdesk/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/rustdesk/rustdesk" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/rustdesk/rustdesk" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

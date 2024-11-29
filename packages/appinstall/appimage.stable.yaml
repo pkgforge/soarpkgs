@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "appinstall"
+pkg_id: "github.com.Drosaca.appImageInstaller"
+pkg_type: "appimage"
+app_id: "github.com.Drosaca.appImageInstaller"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "AppImage Installer is an easy to use and install tool to create app shrotcuts and integrate AppImage binaries to a linux desktop environment (Launcher)"
+distro_pkg:
+  archlinux:
+homepage:
+  - "http://www.altlinux.org"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0+"
+src_url:
+  - "https://github.com/Drosaca/appImageInstaller"
+tag:
+  - "System/Configuration/Packaging"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Drosaca/appImageInstaller/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Drosaca/appImageInstaller" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

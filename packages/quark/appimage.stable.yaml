@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "quark"
+pkg_id: "github.com.Nishkalkashyap.Quark-electron"
+pkg_type: "appimage"
+app_id: "github.com.Nishkalkashyap.Quark-electron"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Quark is a cross-platform, integrated development environment for rapidly building - functional , prototypal projects, written in HTML, CSS and JavaScript with native desktop app like capabilities."
+distro_pkg:
+  archlinux:
+    aur:
+      - "quark-git"
+  nixpkgs:
+    - "quark"
+homepage:
+  - "http://tools.suckless.org/quark"
+  - "https://github.com/sde-gui/qk"
+  - "https://tools.suckless.org/quark"
+  - "https://www.quark.cn"
+maintainer:
+  - "runner"
+license:
+  - "ISC"
+  - "LGPL-2.1"
+  - "custom:ISC"
+src_url:
+  - "https://github.com/Nishkalkashyap/Quark-electron"
+tag:
+  - "browser"
+  - "www"
+  - "www-servers"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Nishkalkashyap/Quark-electron/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Nishkalkashyap/Quark-electron" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

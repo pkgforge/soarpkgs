@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lagrange"
+pkg_id: "github.com.skyjake.lagrange"
+pkg_type: "appimage"
+app_id: "github.com.skyjake.lagrange"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A Beautiful Gemini Client"
+distro_pkg:
+  alpine:
+    - "lagrange"
+  archlinux:
+    aur:
+      - "lagrange"
+      - "lagrange-bin"
+      - "lagrange-git"
+  nixpkgs:
+    - "lagrange"
+    - "lagrange-tui"
+homepage:
+  - "https://git.skyjake.fi/gemini/lagrange"
+  - "https://git.skyjake.fi/skyjake/lagrange"
+  - "https://github.com/skyjake/lagrange"
+  - "https://gmi.skyjake.fi/lagrange"
+maintainer:
+  - "runner"
+license:
+  - " Apache-2.0 BSD-2 CC-BY-SA-4.0 OFL-1.1"
+  - "2-clause BSD License"
+  - "BSD"
+  - "BSD-2-Clause"
+  - "BSD-3-Clause"
+  - "BSD2"
+  - "MIT"
+src_url:
+  - "https://github.com/skyjake/lagrange"
+tag:
+  - "Networking/WWW"
+  - "client"
+  - "debug"
+  - "extra/office"
+  - "gemini"
+  - "net"
+  - "net-client"
+  - "network"
+  - "network.clients"
+  - "www"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/skyjake/lagrange/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/skyjake/lagrange" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/skyjake/lagrange" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

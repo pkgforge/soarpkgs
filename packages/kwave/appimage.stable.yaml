@@ -1,0 +1,92 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kwave"
+pkg_id: "github.com.ivan-hc.Database-of-pkg2appimaged-packages"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Database-of-pkg2appimaged-packages"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Various AppImage packages for AM and AppMan"
+distro_pkg:
+  alpine:
+    - "kwave"
+  archlinux:
+    aur:
+      - "kwave-git"
+    extra:
+      - "kwave"
+  debian:
+    - "kwave"
+  nixpkgs:
+    - "kdePackages.kwave"
+    - "libsForQt5.kwave"
+    - "libsForQt512.kwave"
+    - "libsForQt514.kwave"
+homepage:
+  - "http://kwave.sourceforge.net"
+  - "http://www.kde.org"
+  - "https://apps.kde.org/en/kwave"
+  - "https://apps.kde.org/kwave"
+  - "https://invent.kde.org/multimedia/kwave"
+  - "https://kde.org"
+  - "https://kde.org/applications/en/multimedia/org.kde.kwave"
+  - "https://kde.org/applications/multimedia/org.kde.kwave"
+  - "https://kwave.sourceforge.net"
+  - "https://www.kde.org"
+  - "https://www.kde.org/applications/multimedia/kwave"
+maintainer:
+  - "runner"
+license:
+  - "BSD-2-Clause"
+  - "CC-BY-SA-3.0 CC0-1.0 GPL-2+ LGPL-2+ handbook? "
+  - "CC0-1.0"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND LicenseRef-Callaway-BSD AND LicenseRef-Callaway-CC-BY-SA"
+  - "GPLv2+"
+  - "GPLv2+ / LGPLv2+"
+  - "GPLv2+ and BSD and CC-BY-SA"
+src_url:
+  - "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages"
+tag:
+  - "Audio"
+  - "Debug"
+  - "Graphical"
+  - "Productivity/Multimedia/Sound/Editors"
+  - "Sound"
+  - "Sound/Editors"
+  - "audio"
+  - "debug"
+  - "extra/office"
+  - "kde"
+  - "kde-apps"
+  - "kde-base"
+  - "kdePackages"
+  - "libsForQt5"
+  - "libsForQt512"
+  - "libsForQt514"
+  - "multimedia.audio"
+  - "universe/kde"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Database-of-pkg2appimaged-packages/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Database-of-pkg2appimaged-packages@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

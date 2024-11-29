@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "surrealist"
+pkg_id: "github.com.surrealdb.surrealist"
+pkg_type: "appimage"
+app_id: "github.com.surrealdb.surrealist"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Surrealist is the ultimate way to visually manage your SurrealDB database"
+distro_pkg:
+  archlinux:
+    aur:
+      - "surrealist-bin"
+  nixpkgs:
+    - "surrealist"
+homepage:
+  - "https://github.com/StarlaneStudios/Surrealist"
+  - "https://github.com/surrealdb/surrealist"
+  - "https://surrealdb.com/surrealist"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/surrealdb/surrealist"
+tag:
+  - "Database"
+  - "SurrealDB"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/surrealdb/surrealist/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/surrealdb/surrealist" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/surrealdb/surrealist" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

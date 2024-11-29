@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mayo"
+pkg_id: "github.com.fougue.mayo"
+pkg_type: "appimage"
+app_id: "github.com.fougue.mayo"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "3D CAD viewer and converter based on Qt + OpenCascade"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mayo-git"
+homepage:
+  - "https://github.com/fougue/mayo"
+maintainer:
+  - "runner"
+license:
+  - "BSD-2"
+  - "BSD-2-Clause"
+src_url:
+  - "https://github.com/fougue/mayo"
+tag:
+  - "media-gfx"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/fougue/mayo/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/fougue/mayo" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,73 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "milkytracker"
+pkg_id: "github.com.milkytracker.MilkyTracker"
+pkg_type: "appimage"
+app_id: "github.com.milkytracker.MilkyTracker"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An FT2 compatible music tracker"
+distro_pkg:
+  alpine:
+    - "milkytracker"
+  archlinux:
+    aur:
+      - "milkytracker-git"
+    extra:
+      - "milkytracker"
+  debian:
+    - "milkytracker"
+  nixpkgs:
+    - "milkytracker"
+homepage:
+  - "http://milkytracker.github.io"
+  - "http://milkytracker.org"
+  - "http://milkytracker.titandemo.org"
+  - "http://www.milkytracker.org"
+  - "https://github.com/milkytracker/MilkyTracker"
+  - "https://milkytracker.github.io"
+  - "https://milkytracker.org"
+  - "https://milkytracker.titandemo.org"
+maintainer:
+  - "runner"
+license:
+  - " AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT"
+  - "BSD-3-Clause"
+  - "GNU General Public License"
+  - "GPL v3.0, New-BSD "
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv2+"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/milkytracker/MilkyTracker"
+tag:
+  - "Applications/Multimedia"
+  - "Sound"
+  - "audio"
+  - "audio/tracker/milky"
+  - "debug"
+  - "media-sound"
+  - "multimedia.audio"
+  - "sound"
+  - "universe/sound"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/milkytracker/MilkyTracker/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/milkytracker/MilkyTracker" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

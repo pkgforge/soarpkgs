@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ecency-surfer"
+pkg_id: "github.com.ecency.ecency-vision"
+pkg_type: "appimage"
+app_id: "github.com.ecency.ecency-vision"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ecency-surfer-appimage"
+      - "ecency-surfer-bin"
+homepage:
+  - "https://github.com/ecency/ecency-vision"
+maintainer:
+  - "runner"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/ecency/ecency-vision"
+tag:
+  - "blockchain"
+  - "dapp"
+  - "decentralized"
+  - "desktop"
+  - "ecency"
+  - "hive"
+  - "wallet"
+  - "website"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ecency/ecency-vision/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ecency/ecency-vision" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

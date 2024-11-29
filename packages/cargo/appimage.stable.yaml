@@ -1,0 +1,67 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cargo"
+pkg_id: "github.com.StratusFearMe21.cargo-appimage"
+pkg_type: "appimage"
+app_id: "github.com.StratusFearMe21.cargo-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Converts your crate into an AppImage"
+distro_pkg:
+  archlinux:
+  debian:
+    - "cargo"
+    - "rust-cargo"
+  nixpkgs:
+    - "cargo"
+homepage:
+  - "http://www.rust-lang.org"
+  - "https://crates.io"
+  - "https://crates.io/crates/cargo"
+  - "https://crates.io/crates/cargo-lts"
+  - "https://doc.rust-lang.org/cargo"
+  - "https://doc.rust-lang.org/cargo/index.html"
+  - "https://github.com/rust-lang/cargo"
+  - "https://rust-lang.org"
+maintainer:
+  - "runner"
+license:
+  - "ASL 2.0 or MIT"
+  - "Apache Software License 2.0"
+  - "Apache-2"
+  - "Apache-2.0"
+  - "Apache-2.0 OR MIT"
+  - "GPL"
+  - "MIT"
+  - "MIT License"
+  - "MIT OR Apache-2.0"
+  - "MIT or ASL 2.0"
+  - "MIT or Apache-2.0"
+src_url:
+  - "https://github.com/StratusFearMe21/cargo-appimage"
+tag:
+  - "Development/Languages/Other"
+  - "Development/Other"
+  - "base/tool"
+  - "devel"
+  - "rust"
+  - "universe/devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/StratusFearMe21/cargo-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/StratusFearMe21/cargo-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

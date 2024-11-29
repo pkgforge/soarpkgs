@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "imagine"
+pkg_id: "github.com.meowtec.Imagine"
+pkg_type: "appimage"
+app_id: "github.com.meowtec.Imagine"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "🖼️ PNG/JPEG optimization app for macOS, Windows and Linux."
+distro_pkg:
+  archlinux:
+    aur:
+      - "imagine-bin"
+      - "imagine-git"
+homepage:
+  - "http://www.nyam.pe.kr/dev/imagine"
+  - "https://github.com/meowtec/Imagine"
+  - "https://github.com/meowtec/imagine"
+  - "https://www.nyam.pe.kr/dev/imagine"
+maintainer:
+  - "runner"
+license:
+  - "Freeware"
+  - "MIT"
+src_url:
+  - "https://github.com/meowtec/Imagine"
+tag:
+  - "Photo"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/meowtec/Imagine/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/meowtec/Imagine" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/meowtec/Imagine" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

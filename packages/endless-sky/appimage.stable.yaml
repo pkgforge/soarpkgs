@@ -1,0 +1,90 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "endless-sky"
+pkg_id: "github.com.endless-sky.endless-sky"
+pkg_type: "appimage"
+app_id: "github.com.endless-sky.endless-sky"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Space exploration, trading, and combat game."
+distro_pkg:
+  alpine:
+    - "endless-sky"
+  archlinux:
+    aur:
+      - "endless-sky-git"
+    extra:
+      - "endless-sky"
+  debian:
+    - "endless-sky"
+  nixpkgs:
+    - "endless-sky"
+homepage:
+  - "http://endless-sky.github.io"
+  - "https://endless-sky.github.io"
+  - "https://github.com/SolraBizna/endless-sky"
+  - "https://github.com/endless-sky/endless-sky"
+  - "https://github.com/thewierdnut/endless-mobile"
+maintainer:
+  - "runner"
+license:
+  - "CC-BY-2.0"
+  - "CC-BY-3.0"
+  - "CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only"
+  - "CC-BY-4.0"
+  - "CC-BY-NC-3.0"
+  - "CC-BY-SA-3.0"
+  - "CC-BY-SA-4.0"
+  - "CC0-1.0"
+  - "CCPL"
+  - "GNU General Public License, version 3.0"
+  - "GPL-3+"
+  - "GPL-3.0 and CC-BY-SA-4.0 and CC-BY-SA-3.0 and CC-BY-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND CC-BY-SA-4.0 AND CC-BY-SA-3.0 AND CC-BY-3.0"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+  - "GPLv3+ and CC-BY-SA 3.0 and CC-BY-SA 4.0 and CC-BY 4.0 and Public Domain"
+  - "LicenseRef-public-domain"
+  - "Public Domain"
+  - "custom:CC-BY-3.0"
+  - "custom:CC-BY-4.0"
+  - "custom:CC-BY-NC-3.0"
+  - "custom:CC-BY-SA-3.0"
+  - "custom:CC-BY-SA-4.0"
+  - "custom:public domain"
+  - "custom:public-domain"
+  - "public-domain"
+src_url:
+  - "https://github.com/endless-sky/endless-sky"
+tag:
+  - "Amusements/Games/Action/Arcade"
+  - "Games"
+  - "Games/Simulation"
+  - "Games/Strategy"
+  - "debug"
+  - "games"
+  - "games-action"
+  - "games-strategy"
+  - "games.arcade"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/endless-sky/endless-sky/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/endless-sky/endless-sky" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "smuview"
+pkg_id: "github.com.knarfS.smuview"
+pkg_type: "appimage"
+app_id: "github.com.knarfS.smuview"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "SmuView is a GUI for sigrok that supports power supplies, electronic loads and all sorts of measurement devices like multimeters, LCR meters and so on."
+distro_pkg:
+  archlinux:
+    aur:
+      - "smuview-appimage"
+      - "smuview-git"
+  nixpkgs:
+    - "smuview"
+homepage:
+  - "https://github.com/knarfS/smuview"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/knarfS/smuview"
+tag:
+  - "dmm"
+  - "electronic-load"
+  - "electronicload"
+  - "graph"
+  - "instrument-control"
+  - "instrumentation"
+  - "load"
+  - "multimeter"
+  - "power-supply"
+  - "powersupply"
+  - "psu"
+  - "sigrok"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/knarfS/smuview/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/knarfS/smuview" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wireguard-gui"
+pkg_id: "github.com.leon3s.wireguard-gui"
+pkg_type: "appimage"
+app_id: "github.com.leon3s.wireguard-gui"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A wireguard client GUI for Linux made with nextauri"
+homepage:
+  - "https://github.com/leon3s/wireguard-gui"
+maintainer:
+  - "runner"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/leon3s/wireguard-gui"
+tag:
+  - "linux"
+  - "security"
+  - "vpn"
+  - "vpn-client"
+  - "wireguard"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/leon3s/wireguard-gui/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/leon3s/wireguard-gui" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/leon3s/wireguard-gui" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

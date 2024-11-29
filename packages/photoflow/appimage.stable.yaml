@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "photoflow"
+pkg_id: "github.com.aferrero2707.PhotoFlow"
+pkg_type: "appimage"
+app_id: "github.com.aferrero2707.PhotoFlow"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "A fully non-destructive photo retouching program providing a complete layer-based workflow including RAW image development."
+distro_pkg:
+  archlinux:
+    aur:
+      - "photoflow"
+      - "photoflow-git"
+  debian:
+    - "photoflow"
+  nixpkgs:
+    - "photoflow"
+homepage:
+  - "http://aferrero2707.github.io/PhotoFlow"
+  - "https://aferrero2707.github.io/PhotoFlow"
+  - "https://github.com/aferrero2707/PhotoFlow"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License, version 3.0"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/aferrero2707/PhotoFlow"
+tag:
+  - "Graphics"
+  - "Productivity/Graphics/Viewers"
+  - "graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/aferrero2707/PhotoFlow/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/aferrero2707/PhotoFlow" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,97 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "musescore"
+pkg_id: "github.com.musescore.MuseScore"
+pkg_type: "appimage"
+app_id: "github.com.musescore.MuseScore"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "MuseScore is an open source and free music notation software. For support, contribution, bug reports, visit MuseScore.org. Fork and make pull requests!"
+distro_pkg:
+  alpine:
+    - "musescore"
+  archlinux:
+    aur:
+      - "musescore-bin"
+      - "musescore-git"
+      - "musescore-midi"
+      - "musescore3"
+      - "musescore3-git"
+    extra:
+      - "musescore"
+  debian:
+    - "musescore"
+    - "musescore-snapshot"
+    - "musescore2"
+    - "musescore3"
+  nixpkgs:
+    - "musescore"
+homepage:
+  - "http://musescore.org"
+  - "http://musescore.org/en"
+  - "http://www.musescore.org"
+  - "https://github.com/musescore/MuseScore"
+  - "https://musescore.org"
+  - "https://musescore.org/en"
+  - "https://musescore.org/zh-hans"
+  - "https://sourceforge.net/projects/mscore"
+  - "https://www.musescore.org"
+  - "https://www.musescore.org/en"
+maintainer:
+  - "runner"
+license:
+  - "Apache-2.0 AND BSD-3-Clause AND FTL AND GPL-2.0-only AND GPL-3.0-only WITH Font-exception-2.0 AND GPL-2.0-or-later AND GFDL-1.2-only AND LGPL-2.0-only AND LGPL-2.1-only AND  AND MIT"
+  - "Apache-2.0 AND BSD-3-Clause AND FTL AND GPL-2.0-only AND SUSE-GPL-3.0-with-font-exception AND GPL-2.0-or-later AND GFDL-1.2-only AND LGPL-2.0-only AND LGPL-2.1-only AND  AND MIT"
+  - "GNU GPLv2"
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND MIT"
+  - "GPL-2.0-only WITH Font-exception-2.0 AND LGPL-2.1-or-later AND  AND LGPL-3.0-only AND MIT"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-only"
+  - "GPL-3.0-only WITH Font-exception-2.0 AND GPL-2.0-or-later AND "
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2 and LGPLv2+ and LGPLv3"
+  - "GPLv2 and LGPLv2+ and LGPLv3 and CC-BY and MIT and OFL"
+  - "GPLv2 and LGPLv2+ and LGPLv3 and MIT"
+  - "GPLv2+ and LGPLv2+ and LGPLv3 and CC-BY and MIT and OFL"
+  - "GPLv2+ and LGPLv2+ and LGPLv3+"
+src_url:
+  - "https://github.com/musescore/MuseScore"
+tag:
+  - "Applications/Multimedia"
+  - "Graphical"
+  - "Music"
+  - "Productivity/Multimedia/Sound/Editors"
+  - "Publishing"
+  - "Sound"
+  - "audio"
+  - "debug"
+  - "media-sound"
+  - "midi"
+  - "multimedia"
+  - "multimedia.audio"
+  - "sound"
+  - "universe/sound"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/musescore/MuseScore/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/musescore/MuseScore" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/musescore/MuseScore" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

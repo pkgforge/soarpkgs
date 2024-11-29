@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "notepad++"
+pkg_id: "github.com.mmtrt.notepad-plus-plus_AppImage"
+pkg_type: "appimage"
+app_id: "github.com.mmtrt.notepad-plus-plus_AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "null"
+distro_pkg:
+  archlinux:
+    aur:
+      - "notepad"
+homepage:
+  - "https://github.com/alexkdeveloper/notepad"
+  - "https://kaosx.us"
+maintainer:
+  - "runner"
+license:
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/mmtrt/notepad-plus-plus_AppImage"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mmtrt/notepad-plus-plus_AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/mmtrt/notepad-plus-plus_AppImage" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/mmtrt/notepad-plus-plus_AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

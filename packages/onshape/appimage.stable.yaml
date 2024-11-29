@@ -1,0 +1,38 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "onshape"
+pkg_id: "github.com.develar.onshape-desktop-shell"
+pkg_type: "appimage"
+app_id: "github.com.develar.onshape-desktop-shell"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Onshape desktop app (web application shell). Unofficial."
+homepage:
+  - "https://github.com/develar/onshape-desktop-shell"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/develar/onshape-desktop-shell"
+tag:
+  - "onshape"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/develar/onshape-desktop-shell/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/develar/onshape-desktop-shell" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

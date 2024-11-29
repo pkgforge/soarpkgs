@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jitsi-meet"
+pkg_id: "github.com.jitsi.jitsi-meet-electron"
+pkg_type: "appimage"
+app_id: "github.com.jitsi.jitsi-meet-electron"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Jitsi Meet desktop application powered by :electron:"
+distro_pkg:
+  alpine:
+    - "jitsi-meet"
+  archlinux:
+    aur:
+      - "jitsi-meet"
+      - "jitsi-meet-bin"
+      - "jitsi-meet-git"
+      - "jitsi-meet-nightly"
+      - "jitsi-meet-nightly-bin"
+  nixpkgs:
+    - "jitsi-meet"
+homepage:
+  - "http://www.jitsi.org"
+  - "https://github.com/jitsi/jitsi-meet"
+  - "https://github.com/jitsi/jitsi-meet-electron"
+  - "https://jitsi.org/jitsi-meet"
+  - "https://jitsi.org/meet"
+maintainer:
+  - "runner"
+license:
+  - "Apache"
+  - "Apache-2.0"
+src_url:
+  - "https://github.com/jitsi/jitsi-meet-electron"
+tag:
+  - "System/Servers"
+  - "net"
+  - "net-im"
+  - "www"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jitsi/jitsi-meet-electron/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jitsi/jitsi-meet-electron" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jitsi/jitsi-meet-electron" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

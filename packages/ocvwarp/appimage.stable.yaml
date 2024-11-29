@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ocvwarp"
+pkg_id: "github.com.hn-88.OCVWarp"
+pkg_type: "appimage"
+app_id: "github.com.hn-88.OCVWarp"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Warping images and videos for planetarium fulldome display using OpenCV"
+homepage:
+  - "https://github.com/hn-88/OCVWarp"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/hn-88/OCVWarp"
+tag:
+  - "360-video"
+  - "cpp"
+  - "equirectanguar-projection"
+  - "fisheye-image"
+  - "fulldome"
+  - "image-processing"
+  - "opencv"
+  - "planetarium"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hn-88/OCVWarp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hn-88/OCVWarp" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

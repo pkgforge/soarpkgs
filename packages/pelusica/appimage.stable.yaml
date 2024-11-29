@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pelusica"
+pkg_id: "github.com.VitoVan.pelusica"
+pkg_type: "appimage"
+app_id: "github.com.VitoVan.pelusica"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "An action game in which you can control the blue dot with your keyboard to create music and avoid colliding with other dots."
+homepage:
+  - "https://github.com/VitoVan/pelusica"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/VitoVan/pelusica"
+tag:
+  - "calm"
+  - "common-lisp"
+  - "game"
+  - "jscl"
+  - "lisp"
+  - "sdl2"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/VitoVan/pelusica/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/VitoVan/pelusica" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

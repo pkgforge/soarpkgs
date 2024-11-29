@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "autoedit2"
+pkg_id: "github.com.OpenNewsLabs.autoEdit_2"
+pkg_type: "appimage"
+app_id: "github.com.OpenNewsLabs.autoEdit_2"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Fast text based video editing, node Electron Os X desktop app, with Backbone front end."
+homepage:
+  - "https://github.com/OpenNewsLabs/autoEdit_2"
+maintainer:
+  - "runner"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/OpenNewsLabs/autoEdit_2"
+tag:
+  - "autoedit"
+  - "backbone"
+  - "backbonejs"
+  - "desktop"
+  - "dmg"
+  - "edl"
+  - "electron"
+  - "gentle"
+  - "gentle-stt"
+  - "ibm-watson"
+  - "ibm-watson-speech"
+  - "mac"
+  - "osx"
+  - "speech-to-text"
+  - "speechmatics"
+  - "stt"
+  - "transcription"
+  - "video-editing"
+  - "video-sequences"
+  - "watson"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OpenNewsLabs/autoEdit_2/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/OpenNewsLabs/autoEdit_2" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

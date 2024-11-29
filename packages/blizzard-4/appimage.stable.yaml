@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "blizzard-4"
+pkg_id: "github.com.danielfspencer.blizzard-4"
+pkg_type: "appimage"
+app_id: "github.com.danielfspencer.blizzard-4"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Blizzard 4 is a 16-bit computer I designed. This repo contains the compiler, assembler and emulator needed to develop and test programs for it. Try online at:"
+homepage:
+  - "https://github.com/danielfspencer/blizzard-4"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/danielfspencer/blizzard-4"
+tag:
+  - "compiler"
+  - "css3"
+  - "electron-app"
+  - "emulator"
+  - "hardware"
+  - "html5"
+  - "javascript"
+  - "material-design"
+  - "risc"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/danielfspencer/blizzard-4/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/danielfspencer/blizzard-4" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

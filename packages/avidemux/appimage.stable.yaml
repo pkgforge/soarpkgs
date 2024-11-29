@@ -1,0 +1,81 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "avidemux"
+pkg_id: "github.com.mean00.avidemux2"
+pkg_type: "appimage"
+app_id: "github.com.mean00.avidemux2"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Avidemux2, simple video editor"
+distro_pkg:
+  archlinux:
+    aur:
+      - "avidemux-git"
+    extra:
+      - "avidemux"
+  nixpkgs:
+    - "avidemux"
+homepage:
+  - "http://avidemux.org"
+  - "http://avidemux.sourceforge.net"
+  - "http://fixounet.free.fr/avidemux"
+  - "http://www.avidemux.org"
+  - "https://avidemux.org"
+  - "https://avidemux.sourceforge.net"
+  - "https://github.com/mean00/avidemux2"
+  - "https://sourceforge.net/projects/avidemux"
+  - "https://www.avidemux.org"
+maintainer:
+  - "runner"
+license:
+  - "GNU GPL"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL v2"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "LGPL-2"
+  - "MIT"
+  - "OFL-1.1"
+  - "PSF-2"
+  - "Public Domain"
+src_url:
+  - "https://github.com/mean00/avidemux2"
+tag:
+  - "Graphical"
+  - "Productivity/Multimedia/Video/Editors"
+  - "Video"
+  - "Video/Editors"
+  - "debug"
+  - "media-libs"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "non-free/video"
+  - "programming.devel"
+  - "video"
+  - "video-editor"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mean00/avidemux2/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mean00/avidemux2" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pingviewer"
+pkg_id: "github.com.bluerobotics.ping-viewer"
+pkg_type: "appimage"
+app_id: "github.com.bluerobotics.ping-viewer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Ping Viewer is an open-source application to view and record data from the Blue Robotics Ping Echosounder and Ping360 Scanning Sonar."
+homepage:
+  - "https://github.com/bluerobotics/ping-viewer"
+maintainer:
+  - "runner"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/bluerobotics/ping-viewer"
+tag:
+  - "echosounder"
+  - "ping"
+  - "qt"
+  - "rangefinder"
+  - "sonar"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bluerobotics/ping-viewer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bluerobotics/ping-viewer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

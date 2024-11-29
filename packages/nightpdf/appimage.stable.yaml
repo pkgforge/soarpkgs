@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nightpdf"
+pkg_id: "github.com.Lunarequest.NightPDF"
+pkg_type: "appimage"
+app_id: "github.com.Lunarequest.NightPDF"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Dark Mode PDF Reader built using Electron and PDF.js"
+distro_pkg:
+  archlinux:
+    aur:
+      - "nightpdf"
+      - "nightpdf-git"
+homepage:
+  - "https://github.com/Lunarequest/NightPDF"
+maintainer:
+  - "runner"
+license:
+  - "GPL-2.0-only"
+src_url:
+  - "https://github.com/Lunarequest/NightPDF"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Lunarequest/NightPDF/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Lunarequest/NightPDF" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Lunarequest/NightPDF" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wonderwall"
+pkg_id: "github.com.keshavbhatt.WonderWall-Packaging"
+pkg_type: "appimage"
+app_id: "github.com.keshavbhatt.WonderWall-Packaging"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+category:
+description: "Wonderwall Wallpaper manager, releases for Linux and Windows 10"
+distro_pkg:
+  archlinux:
+    aur:
+      - "wonderwall"
+homepage:
+  - "https://snapcraft.io/wonderwall"
+maintainer:
+  - "runner"
+license:
+  - "proprietary"
+src_url:
+  - "https://github.com/keshavbhatt/WonderWall-Packaging"
+tag:
+  - "gnome"
+  - "kde"
+  - "linux"
+  - "wallpaper-changer"
+  - "wallpaper-manager"
+  - "windows-10"
+  - "wonderwall"
+  - "wonderwall-application"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/keshavbhatt/WonderWall-Packaging/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/keshavbhatt/WonderWall-Packaging" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        ;;
+    esac
