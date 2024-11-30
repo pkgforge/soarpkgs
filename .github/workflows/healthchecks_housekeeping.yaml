@@ -109,7 +109,7 @@ jobs:
           echo '```' >> "${GITHUB_WORKSPACE}/main/.github/SIZE.md"
         continue-on-error: true
 
-      - name: Generate Repo Metadata (git-sizer)
+      - name: Generate Repo Metadata (sbuild-linter)
         run: |
           #Presets
           set +x ; set +e
@@ -126,6 +126,13 @@ jobs:
              b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz.bsum"
              zstd --ultra -22 --force "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" -o "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd"
              b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd.bsum"
+            ##Failed SBUILDS
+            if [[ -s "${SYSTMP}/INVALID_SBUILDS.txt" || $(stat -c%s "${SYSTMP}/INVALID_SBUILDS.txt") -gt 10 ]]; then
+             sed 's|.*/packages|https://github.com/pkgforge/soarpkgs/blob/main/packages|' -i  "${SYSTMP}/INVALID_SBUILDS.txt"
+             sed 's|^|- |' -i  "${SYSTMP}/INVALID_SBUILDS.txt"
+             export HAS_INVALID="TRUE"
+             echo "HAS_INVALID=${HAS_INVALID}" >> "${GITHUB_ENV}"
+            fi
            else
              echo -e "\n[-] FATAL: Metadata Generation Failed"
            fi
@@ -196,6 +203,14 @@ jobs:
           commit_message: "✅ Updated (Metadata) 🛍️ <-- ${{ env.UTC_TIME }} ⌚"
           #push_options: '--force'
         continue-on-error: true
+
+      - name: Create Issue From File
+        if: env.HAS_INVALID == 'TRUE'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: SBUILDS (Failed Validation)
+          content-filepath: "/tmp/INVALID_SBUILDS.txt"
+          labels: report, automated issue
 #------------------------------------------------------------------------------------#
       - name: rClone BackUp Repo ("https://pub.ajam.dev/repos/${GITHUB_REPOSITORY}")
         run: |
