@@ -48617,83 +48617,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "tiled",
-    "pkg_id": "github.com.bjorn.tiled",
-    "pkg_type": "appimage",
-    "app_id": "github.com.bjorn.tiled",
-    "description": "Flexible level editor",
-    "note": [],
-    "version": "v1.11.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/tiled/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/bjorn/tiled"
-    ],
-    "homepage": [
-      "http://mapeditor.org",
-      "http://www.mapeditor.org",
-      "https://github.com/bjorn/tiled",
-      "https://github.com/mapeditor/tiled",
-      "https://www.mapeditor.org"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/tiled/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "Apache Software License 2.0",
-      "Apache-2.0",
-      "Apache-2.0 AND BSD-2-Clause AND GPL-2.0-only",
-      "BSD",
-      "BSD licenses",
-      "BSD-2",
-      "BSD-2-Clause",
-      "BSD-3-Clause",
-      "GNU General Public License, version 2.0",
-      "GPL",
-      "GPL-2+",
-      "GPL-2.0+",
-      "GPL-2.0-onlyBSD-2-Clause",
-      "GPL-2.0-or-later",
-      "GPL-2.0-or-later AND BSD-2-Clause",
-      "GPLv2",
-      "GPLv2+ and BSD",
-      "spdx:GPL-2.0-or-later",
-      "unknown"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "Games",
-      "Graphics",
-      "Graphics/Editors",
-      "Productivity/Graphics/Other",
-      "cross-platform",
-      "debug",
-      "dev-games",
-      "devel",
-      "development",
-      "editors",
-      "game/utility",
-      "graphics",
-      "libdevel",
-      "multimedia.graphics",
-      "programming.devel",
-      "tiled",
-      "universe/utils",
-      "utils"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "brave-appimage",
     "pkg_id": "github.com.srevinsaju.Brave-AppImage",
     "pkg_type": "appimage",
@@ -53461,46 +53384,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "apphub",
-    "pkg_id": "github.com.francesco-gaglione.AppHub",
-    "pkg_type": "appimage",
-    "app_id": "github.com.francesco-gaglione.AppHub",
-    "description": "AppHub is a Linux desktop application that simplifies the installation and management of .appImage packages",
-    "note": [],
-    "version": "v0.1.0-beta.5",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/apphub/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/francesco-gaglione/AppHub"
-    ],
-    "homepage": [
-      "https://github.com/cosmic-utils/app-hub"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/apphub/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "appimagetool",
-      "cosmic",
-      "rust"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "s3drive",
     "pkg_id": "github.com.s3drive.app",
     "pkg_type": "appimage",
@@ -57559,9 +57442,7 @@
     "provides": [],
     "snapshots": [],
     "tag": []
-  }
-]
-[
+  },
   {
     "_disabled": false,
     "pkg": "code-notes",
@@ -57638,7 +57519,9 @@
     "tag": [
       "games"
     ]
-  },
+  }
+]
+[
   {
     "_disabled": false,
     "pkg": "retroarch",
@@ -62267,6 +62150,44 @@
   },
   {
     "_disabled": false,
+    "pkg": "akasha",
+    "pkg_id": "github.com.AkashaProject.Community",
+    "pkg_type": "appimage",
+    "app_id": "github.com.AkashaProject.Community",
+    "description": "Community",
+    "note": [],
+    "version": "0.7.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/akasha/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/AkashaProject/Community"
+    ],
+    "homepage": [
+      "https://github.com/AkashaProject/node-app"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/akasha/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "Apache 2.0"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "Networking/Instant"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "ai-bot-workspace",
     "pkg_id": "github.com.jmerle.ai-bot-workspace",
     "pkg_type": "appimage",
@@ -62300,6 +62221,51 @@
     "provides": [],
     "snapshots": [],
     "tag": []
+  },
+  {
+    "_disabled": false,
+    "pkg": "bilibilivideodownload",
+    "pkg_id": "github.com.blogwy.BilibiliVideoDownload",
+    "pkg_type": "appimage",
+    "app_id": "github.com.blogwy.BilibiliVideoDownload",
+    "description": "Cross-platform download bilibili video desktop software, support windows, macOS, Linux",
+    "note": [],
+    "version": "v3.3.3",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/bilibilivideodownload/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/blogwy/BilibiliVideoDownload"
+    ],
+    "homepage": [
+      "https://github.com/blogwy/BilibiliVideoDownload"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/bilibilivideodownload/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "ant-design-vue",
+      "bilibili-download",
+      "electron",
+      "electron-builder",
+      "ffmpeg-installer",
+      "node-js",
+      "typescript",
+      "vuejs"
+    ]
   },
   {
     "_disabled": false,
