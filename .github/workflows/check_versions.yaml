@@ -36,10 +36,10 @@ jobs:
           set +x ; set +e
           #-------------#
           echo '- ### Empty/Non-Existent' > "${SYSTMP}/VERSION.md"
-          jq -r '["| Package | SBUILD |", "|----------|----------|"] + (map(select(.version | length == 0 or . == null)) | map("| \(.pkg) | \(.build_script) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' >> "${SYSTMP}/VERSION.md"
+          jq -r '["| Package | SBUILD |", "|----------|----------|"] + (map(select(type == "object" and .version != null and ((.version | length == 0) or .version == null) and ._disabled == false)) | map("| \(.pkg) | \(.build_script) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' >> "${SYSTMP}/VERSION.md"
           echo -e '---\n' >> "${SYSTMP}/VERSION.md"
           echo -e '- ### Only Words' >> "${SYSTMP}/VERSION.md"
-          jq -r '["| Package | Version |", "|----------|----------|"] + (map(select(.version | test("^[a-zA-Z-_+.]+$"))) | map("| [\(.pkg)](\(.build_script)) | \(.version) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' >> "${SYSTMP}/VERSION.md"
+          jq -r '["| Package | Version |", "|----------|----------|"] + (map(select(type == "object" and (.version | type == "string" and test("^[a-zA-Z-_+.]+$")) and ._disabled == false)) | map("| [\(.pkg)](\(.build_script)) | \(.version) |")) | .[]' | awk '!seen[$0]++' >> "${SYSTMP}/VERSION.md"
         continue-on-error: true
 
       - name: Create Issue From File
