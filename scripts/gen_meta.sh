@@ -29,7 +29,22 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
 
 #-------------------------------------------------------#
 ##Validate everything
-find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${SYSTMP}/INVALID_SBUILDS.txt" --pkgver
+#First Run
+find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_01.txt" --pkgver
+#Retry
+cat "${TMPDIR}/INVALID_SBUILDS_01.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_02.txt" --pkgver
+#Retry without --pkgver
+cat "${TMPDIR}/INVALID_SBUILDS_02.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_03.txt"
+#Log Output & Gen metadata
+readarray -t "FAILED_SBUILD" < "${TMPDIR}/INVALID_SBUILDS_03.txt"
+{
+  for F_SBUILD in "${FAILED_SBUILD[@]}"; do
+  echo '```bash'
+   "${TMPDIR}/sbuild-linter" "${F_SBUILD}"
+  echo '```'
+  done
+} >> "${TMPDIR}/INVALID_SBUILDS_log.txt" 2>&1
+sed 's|.*/packages|https://github.com/pkgforge/soarpkgs/blob/main/packages|' "${TMPDIR}/INVALID_SBUILDS_log.txt" | ansi2txt | tee "${SYSTMP}/INVALID_SBUILDS.txt"
 ##Store Validated files
 find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated$' > "${TMPDIR}/valid_pkgs.txt"
 readarray -t "VALID_PKGS" < "${TMPDIR}/valid_pkgs.txt"
