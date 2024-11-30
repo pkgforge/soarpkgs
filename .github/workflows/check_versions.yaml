@@ -35,13 +35,17 @@ jobs:
           ##presets
           set +x ; set +e
           #-------------#
-          jq -r '["| Package | SBUILD |", "|----------|----------|"] + (map(select(.version | length == 0 or . == null)) | map("| \(.pkg) | \(.build_script) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' > "${SYSTMP}/NO_VERSION.md"
+          echo '- ### Empty/Non-Existent' > "${SYSTMP}/VERSION.md"
+          jq -r '["| Package | SBUILD |", "|----------|----------|"] + (map(select(.version | length == 0 or . == null)) | map("| \(.pkg) | \(.build_script) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' >> "${SYSTMP}/VERSION.md"
+          echo -e '---\n' >> "${SYSTMP}/VERSION.md"
+          echo -e '- ### Only Words' >> "${SYSTMP}/VERSION.md"
+          jq -r '["| Package | Version |", "|----------|----------|"] + (map(select(.version | test("^[a-zA-Z-_+.]+$"))) | map("| [\(.pkg)](\(.build_script)) | \(.version) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' >> "${SYSTMP}/VERSION.md"
         continue-on-error: true
 
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v5
         with:
-          title: SBUILDS (Empty/Non-Existent Versions)
-          content-filepath: "/tmp/NO_VERSION.md"
+          title: SBUILDS (Empty/Non-Existent/Weird Versions)
+          content-filepath: "/tmp/VERSION.md"
           labels: report, automated issue
         continue-on-error: false

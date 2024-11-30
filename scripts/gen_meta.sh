@@ -29,8 +29,7 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
 
 #-------------------------------------------------------#
 ##Validate everything
-#find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 -I{} -P0 sh -c 'SHOW_PKGVER="1" "${TMPDIR}/sbuild-linter" "{}"'
-find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 "${TMPDIR}/sbuild-linter" --parallel "1000" --pkgver
+find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 "${TMPDIR}/sbuild-linter" --parallel "100" --pkgver
 ##Store Validated files
 find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated$' > "${TMPDIR}/valid_pkgs.txt"
 readarray -t "VALID_PKGS" < "${TMPDIR}/valid_pkgs.txt"
