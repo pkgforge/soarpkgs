@@ -21,7 +21,7 @@
         <img src="https://github.com/user-attachments/assets/220ce7b3-55b3-496e-b3b8-2556123193a2" width="100">
     </a><br> -->
     <a href="https://github.com/pkgforge/soar">
-        <img src="https://bin.pkgforge.dev/list.gif?tmp.XrUq6qqY6y=tmp.s7ikjYj3Tf" alt="soar-list" width="500">
+        <img src="https://bin.pkgforge.dev/list.gif?tmp.XzqRrBLvme=tmp.CSOdj8zYUN" alt="soar-list" width="500">
     </a><br> 
     <b><strong> <a href="https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs">Package Forge Community Repo</a></code></strong></b>
     <br>
