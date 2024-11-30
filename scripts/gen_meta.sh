@@ -74,7 +74,7 @@ done
 find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated.json$' -exec jq -s '.' {} + > "${TMPDIR}/METADATA.json.bak"
 ##Check
 if jq --exit-status . "${TMPDIR}/METADATA.json.bak" >/dev/null 2>&1; then
-   cat "${TMPDIR}/METADATA.json.bak" | jq '.' | jq 'walk(if type == "string" and . == "null" then "" else . end)' > "${TMPDIR}/METADATA.json"
+   cat "${TMPDIR}/METADATA.json.bak" | jq '.' | jq 'walk(if type == "string" and . == "null" then "" else . end)' | jq 'sort_by(.pkg)' > "${TMPDIR}/METADATA.json"
 fi
 ##Recheck
 if jq --exit-status . "${TMPDIR}/METADATA.json" >/dev/null 2>&1; then

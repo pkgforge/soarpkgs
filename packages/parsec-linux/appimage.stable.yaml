@@ -8,7 +8,6 @@ app_id: "github.com.E5ten.parsec-linux-AppImage"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "AppImage for Parsec, built using deb2appimage https://github.com/simoniz0r/deb2appimage"

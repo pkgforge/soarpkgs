@@ -8,7 +8,6 @@ app_id: "github.com.Maverobot.fish.AppImage"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "Creates an AppImage for fish shell."

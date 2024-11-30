@@ -8,7 +8,6 @@ app_id: "github.com.zevlee.passphraser"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "Phrase-based password generator that can use your own list of words available on Windows, macOS, and Linux"

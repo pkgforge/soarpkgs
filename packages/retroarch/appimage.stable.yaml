@@ -8,7 +8,6 @@ app_id: "github.com.hizzlekizzle.RetroArch-AppImage"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "An attempt to use CI for nightly builds of RetroArch for Windows and Linux (via AppImage)"

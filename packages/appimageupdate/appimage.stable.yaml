@@ -8,7 +8,6 @@ app_id: "github.com.AppImage.AppImageUpdate"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "AppImageUpdate lets you update AppImages in a decentral way using information embedded in the AppImage itself."

@@ -8,7 +8,6 @@ app_id: "github.com.btargac.excel-parser-processor"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "Automate downloads from Excel files in seconds. Simply does the tedious, repetitive operations for rows of Excel files and reports the results. It downloads files from URL(s) in column A, if a new filename is provided at column B it will rename before saving. It will even create sub folders if column C is filled with a valid folder name."

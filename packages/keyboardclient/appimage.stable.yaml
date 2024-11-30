@@ -8,7 +8,6 @@ app_id: "github.com.chrisandreae.keyboard-firmware"
 build_util:
   - "curl#bin"
   - "jq#bin"
-  - "squishy-cli#bin"
 category:
   - "Utility"
 description: "Replacement firmware for various keyboards (Kinesis, Ergodox) using an Atmel AVR microcontroller"
