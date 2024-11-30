@@ -7829,8 +7829,8 @@
 4.0K   │ └── 432hz-player.SBUILD.yaml
 2.1M   ├─┬ metadata
 1.8M   │ ├── METADATA.json
-168K   │ ├── METADATA.json.xz
-164K   │ ├── METADATA.json.zstd
+164K   │ ├── METADATA.json.xz
+160K   │ ├── METADATA.json.zstd
 4.0K   │ ├── METADATA.json.zstd.bsum
 4.0K   │ ├── METADATA.json.xz.bsum
 4.0K   │ └── METADATA.json.bsum
