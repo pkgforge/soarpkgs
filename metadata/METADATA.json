@@ -2425,6 +2425,53 @@
   },
   {
     "_disabled": false,
+    "pkg": "appimageupdate",
+    "pkg_id": "github.com.AppImage.AppImageUpdate",
+    "pkg_type": "appimage",
+    "app_id": "github.com.AppImage.AppImageUpdate",
+    "description": "AppImageUpdate lets you update AppImages in a decentral way using information embedded in the AppImage itself.",
+    "note": [],
+    "version": "2.0.0-alpha-1-20241016",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/appimageupdate/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/AppImage/AppImageUpdate"
+    ],
+    "homepage": [
+      "https://github.com/AppImageCommunity/AppImageUpdate"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/appimageupdate/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "appimage",
+      "applications",
+      "delta",
+      "delta-updates",
+      "deployment",
+      "linux",
+      "linux-app",
+      "packaging",
+      "update",
+      "updater"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "appimageupdater",
     "pkg_id": "github.com.antony-jr.AppImageUpdater",
     "pkg_type": "appimage",
@@ -9146,45 +9193,6 @@
       "javascript",
       "launcher",
       "open-source"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "code-notes",
-    "pkg_id": "github.com.lauthieb.code-notes",
-    "pkg_type": "appimage",
-    "app_id": "github.com.lauthieb.code-notes",
-    "description": "(No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀",
-    "note": [],
-    "version": "1.2.4",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/code-notes/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/lauthieb/code-notes"
-    ],
-    "homepage": [
-      "https://github.com/lauthieb/code-notes",
-      "https://lauthieb.github.io/code-notes"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/code-notes/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "developer"
     ]
   },
   {
@@ -57556,52 +57564,6 @@
 [
   {
     "_disabled": false,
-    "pkg": "432hz-player",
-    "pkg_id": "github.com.mysteryx93.NaturalGroundingPlayer",
-    "pkg_type": "appimage",
-    "app_id": "github.com.mysteryx93.NaturalGroundingPlayer",
-    "description": "432Hz Player, 432Hz Batch Converter, Powerliminals Player, Yang YouTube Downloader",
-    "note": [],
-    "version": "v3.3.2",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/432hz-player/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/mysteryx93/NaturalGroundingPlayer"
-    ],
-    "homepage": [
-      "https://github.com/mysteryx93/NaturalGroundingPlayer"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/432hz-player/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT License"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "encoding-videos",
-      "media-encoder",
-      "natural-grounding-player",
-      "quality",
-      "svp",
-      "video-downloader",
-      "video-player",
-      "video-processing",
-      "youtube-downloader"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "aaaaxy",
     "pkg_id": "github.com.divVerent.aaaaxy",
     "pkg_type": "appimage",
@@ -59371,6 +59333,45 @@
       "vue-cli",
       "vue-router",
       "vuex"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "code-notes",
+    "pkg_id": "github.com.lauthieb.code-notes",
+    "pkg_type": "appimage",
+    "app_id": "github.com.lauthieb.code-notes",
+    "description": "(No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀",
+    "note": [],
+    "version": "1.2.4",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/code-notes/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/lauthieb/code-notes"
+    ],
+    "homepage": [
+      "https://github.com/lauthieb/code-notes",
+      "https://lauthieb.github.io/code-notes"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/code-notes/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "developer"
     ]
   },
   {
@@ -62552,40 +62553,6 @@
     "tag": [
       "graphics"
     ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "iagoncloudapp",
-    "pkg_id": "github.com.Iagonorg.Iagon-storage-node",
-    "pkg_type": "appimage",
-    "app_id": "github.com.Iagonorg.Iagon-storage-node",
-    "description": "Iagon Storage Node Applications.",
-    "note": [],
-    "version": "v1.1.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/iagoncloudapp/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/Iagonorg/Iagon-storage-node"
-    ],
-    "homepage": [
-      "https://github.com/Iagonorg/Iagon-storage-node"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/iagoncloudapp/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [],
-    "provides": [],
-    "snapshots": [],
-    "tag": []
   },
   {
     "_disabled": false,
