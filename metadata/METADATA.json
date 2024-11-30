@@ -3677,52 +3677,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "baijimangaviewer",
-    "pkg_id": "github.com.shizkun.manga-viewer",
-    "pkg_type": "appimage",
-    "app_id": "github.com.shizkun.manga-viewer",
-    "description": "",
-    "note": [],
-    "version": "v1.2.3",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/baijimangaviewer/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/shizkun/manga-viewer"
-    ],
-    "homepage": [
-      "https://github.com/shizkun/manga-viewer"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/baijimangaviewer/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "GNU General Public License v3.0"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "electron",
-      "es6",
-      "javascript",
-      "knockoutjs",
-      "manga",
-      "manga-viewer",
-      "offline",
-      "rar-formats",
-      "sass"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "bambustudio",
     "pkg_id": "github.com.bambulab.BambuStudio",
     "pkg_type": "appimage",
@@ -9197,6 +9151,45 @@
   },
   {
     "_disabled": false,
+    "pkg": "code-notes",
+    "pkg_id": "github.com.lauthieb.code-notes",
+    "pkg_type": "appimage",
+    "app_id": "github.com.lauthieb.code-notes",
+    "description": "(No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀",
+    "note": [],
+    "version": "1.2.4",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/code-notes/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/lauthieb/code-notes"
+    ],
+    "homepage": [
+      "https://github.com/lauthieb/code-notes",
+      "https://lauthieb.github.io/code-notes"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/code-notes/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "developer"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "code-oss",
     "pkg_id": "github.com.zilti.code-oss.AppImage",
     "pkg_type": "appimage",
@@ -13283,53 +13276,6 @@
   {
     "_disabled": false,
     "pkg": "dunst",
-    "pkg_id": "github.com.Samueru-sama.dunst-AppImage.stable",
-    "pkg_type": "appimage",
-    "app_id": "io.sourceforge.dunstStable",
-    "description": "Lightweight and customizable notification daemon",
-    "note": [
-      "Community Created AppImage. Check/Report @ https://github.com/Samueru-sama/dunst-AppImage"
-    ],
-    "version": "1.11.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/dunst/appimage.Samueru-sama.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": [
-      "dunst"
-    ],
-    "src_url": [
-      "https://github.com/Samueru-sama/dunst-AppImage"
-    ],
-    "homepage": [
-      "https://dunst-project.org",
-      "https://github.com/dunst-project/dunst",
-      "https://github.com/Samueru-sama/dunst-AppImage"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/dunst/appimage.Samueru-sama.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "System",
-      "Monitor"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "desktop",
-      "desktop.i3",
-      "sysutils",
-      "utils",
-      "x11-apps"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "dunst",
     "pkg_id": "github.com.Samueru-sama.dunst-AppImage",
     "pkg_type": "appimage",
     "app_id": "github.com.Samueru-sama.dunst-AppImage",
@@ -14151,6 +14097,44 @@
       "styled-components",
       "typescript",
       "windows"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "electrumfair",
+    "pkg_id": "github.com.faircoin.electrumfair",
+    "pkg_type": "appimage",
+    "app_id": "github.com.faircoin.electrumfair",
+    "description": "Electrum for FairCoin",
+    "note": [],
+    "version": "3.3.4",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/electrumfair/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/faircoin/electrumfair"
+    ],
+    "homepage": [
+      "https://github.com/faircoin/electrumfair"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/electrumfair/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT License"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "faircoin"
     ]
   },
   {
@@ -15161,91 +15145,6 @@
       "flash",
       "foss",
       "system.utils"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "eternalmodmanager",
-    "pkg_id": "github.com.PowerBall253.EternalModManager-Avalonia",
-    "pkg_type": "appimage",
-    "app_id": "github.com.PowerBall253.EternalModManager-Avalonia",
-    "description": "A cross platform mod manager for DOOM Eternal.",
-    "note": [],
-    "version": "v4.2.1",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/eternalmodmanager/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/PowerBall253/EternalModManager-Avalonia"
-    ],
-    "homepage": [
-      "https://github.com/brunoanc/EternalModManager"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/eternalmodmanager/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": []
-  },
-  {
-    "_disabled": false,
-    "pkg": "etherealengine-cc",
-    "pkg_id": "github.com.EtherealEngine.etherealengine-control-center",
-    "pkg_type": "appimage",
-    "app_id": "github.com.EtherealEngine.etherealengine-control-center",
-    "description": "One stop solution for all your Metaverse needs. A desktop app for installing and launching iR Engine. 🤖 🚀 🚀 🚀 👓",
-    "note": [],
-    "version": "v0.4.6",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/etherealengine-cc/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/EtherealEngine/etherealengine-control-center"
-    ],
-    "homepage": [
-      "https://github.com/EtherealEngine/etherealengine-control-center"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/etherealengine-cc/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "Other"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "augmented-reality",
-      "docker",
-      "electron",
-      "etherealengine",
-      "kubernetes",
-      "metaverse",
-      "microk8s",
-      "minikube",
-      "nodejs",
-      "react",
-      "virtual-reality",
-      "xr"
     ]
   },
   {
@@ -16423,6 +16322,47 @@
     "tag": [
       "album",
       "sound"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "ferdium",
+    "pkg_id": "github.com.ferdium.ferdium-app",
+    "pkg_type": "appimage",
+    "app_id": "github.com.ferdium.ferdium-app",
+    "description": "All your services in one place, built by the community",
+    "note": [],
+    "version": "v7.0.0",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/ferdium/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/ferdium/ferdium-app"
+    ],
+    "homepage": [
+      "https://ferdium.org",
+      "https://github.com/ferdium/ferdium-app"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/ferdium/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "Apache",
+      "Apache-2.0"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "hacktoberfest",
+      "network"
     ]
   },
   {
@@ -18343,6 +18283,99 @@
       "spritesheet",
       "texture-packer",
       "texturepacker"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "freetube",
+    "pkg_id": "github.com.FreeTubeApp.FreeTube.stable",
+    "pkg_type": "appimage",
+    "app_id": "io.freetubeapp.FreeTube",
+    "description": "An Open Source YouTube app for privacy",
+    "note": [
+      "Officially Created AppImage. Check/Report @ https://github.com/FreeTubeApp/FreeTube"
+    ],
+    "version": "v0.22.0-beta",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/freetube/appimage.official.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": [
+      "freetube"
+    ],
+    "src_url": [
+      "https://github.com/FreeTubeApp/FreeTube"
+    ],
+    "homepage": [
+      "https://freetubeapp.io",
+      "https://github.com/FreeTubeApp/FreeTube"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/freetube/appimage.official.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Player",
+      "TV"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "multimedia",
+      "privacy",
+      "Video",
+      "youtube"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "freetube",
+    "pkg_id": "github.com.FreeTubeApp.FreeTube",
+    "pkg_type": "appimage",
+    "app_id": "github.com.FreeTubeApp.FreeTube",
+    "description": "An Open Source YouTube app for privacy",
+    "note": [],
+    "version": "v0.22.0-beta",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/freetube/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/FreeTubeApp/FreeTube"
+    ],
+    "homepage": [
+      "https://freetubeapp.io",
+      "https://github.com/FreeTubeApp/FreeTube"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/freetube/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "AGPL-3+",
+      "AGPL-3.0",
+      "AGPL-3.0-only",
+      "AGPL-3.0-or-later",
+      "AGPL3",
+      "GNU General Public License v3.0"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "Video",
+      "cross-platform",
+      "multimedia",
+      "privacy",
+      "youtube"
     ]
   },
   {
@@ -24844,6 +24877,42 @@
     "icon": "",
     "license": [
       "MIT License"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": []
+  },
+  {
+    "_disabled": false,
+    "pkg": "kade",
+    "pkg_id": "github.com.shawnbanasick.kade",
+    "pkg_type": "appimage",
+    "app_id": "github.com.shawnbanasick.kade",
+    "description": "KADE is an open-source application for the analysis of Q methodology data. See detailed description below.  ⬇️",
+    "note": [],
+    "version": "v1.3.1",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/kade/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/shawnbanasick/kade"
+    ],
+    "homepage": [
+      "https://github.com/shawnbanasick/kade"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/kade/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "GNU General Public License v3.0"
     ],
     "provides": [],
     "snapshots": [],
@@ -32080,6 +32149,56 @@
   },
   {
     "_disabled": false,
+    "pkg": "netpanzer",
+    "pkg_id": "github.com.netpanzer.netpanzer",
+    "pkg_type": "appimage",
+    "app_id": "github.com.netpanzer.netpanzer",
+    "description": "NetPanzer is an online multiplayer tactical warfare game designed for fast action combat. Join us on Discord: https://discord.gg/kCAB2CMswd",
+    "note": [],
+    "version": "0.9.0-RC-7",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/netpanzer/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/netpanzer/netpanzer"
+    ],
+    "homepage": [
+      "http://netpanzer.berlios.de",
+      "https://github.com/netpanzer/netpanzer",
+      "https://netpanzer.com",
+      "https://netpanzer.io"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/netpanzer/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "GPL-2+",
+      "GPL-2.0-or-later",
+      "GPL2",
+      "GPLv2+"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "Amusements/Games",
+      "Games/Arcade",
+      "Games/Strategy",
+      "game/strategy",
+      "games",
+      "games-strategy",
+      "universe/games"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "newlogic",
     "pkg_id": "github.com.ericm.newlogic",
     "pkg_type": "appimage",
@@ -32780,49 +32899,6 @@
     "provides": [],
     "snapshots": [],
     "tag": []
-  },
-  {
-    "_disabled": false,
-    "pkg": "notable",
-    "pkg_id": "github.com.fabiospampinato.notable",
-    "pkg_type": "appimage",
-    "app_id": "github.com.fabiospampinato.notable",
-    "description": "The Markdown-based note-taking app that doesnt suck.",
-    "note": [],
-    "version": "v1.8.4",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/notable/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/fabiospampinato/notable"
-    ],
-    "homepage": [
-      "https://github.com/fabiospampinato/notable",
-      "https://github.com/notable/notable",
-      "https://notable.app",
-      "https://notable.md"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/notable/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "Freeware",
-      "GNU Affero General Public License v3.0",
-      "Unfree"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "electron"
-    ]
   },
   {
     "_disabled": false,
@@ -36913,6 +36989,44 @@
   },
   {
     "_disabled": false,
+    "pkg": "planet-blupi",
+    "pkg_id": "github.com.blupi-games.planetblupi-dev",
+    "pkg_type": "appimage",
+    "app_id": "github.com.blupi-games.planetblupi-dev",
+    "description": "Planet Blupi development bundle (main repository)",
+    "note": [],
+    "version": "v1.15.1",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/planet-blupi/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/blupi-games/planetblupi-dev"
+    ],
+    "homepage": [
+      "https://blupi.org/planet/index.html"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/planet-blupi/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "GNU General Public License v3.0"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "games"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "platinum-md",
     "pkg_id": "github.com.gavinbenda.platinum-md",
     "pkg_type": "appimage",
@@ -38900,70 +39014,6 @@
       "Applications/Multimedia",
       "Productivity/Multimedia/Sound/Utilities",
       "Sound/Utilities"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "puddletag",
-    "pkg_id": "github.com.Samueru-sama.puddletag-AppImage",
-    "pkg_type": "appimage",
-    "app_id": "github.com.Samueru-sama.puddletag-AppImage",
-    "description": "Unofficial AppImage of puddletag. [Maintainer=@Samueru-sama]",
-    "note": [],
-    "version": "2.4.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/puddletag/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/Samueru-sama/puddletag-AppImage"
-    ],
-    "homepage": [
-      "http://docs.puddletag.net",
-      "http://puddletag.sourceforge.net",
-      "https://docs.puddletag.net",
-      "https://github.com/puddletag/puddletag",
-      "https://puddletag.sourceforge.net",
-      "https://sourceforge.net/projects/puddletag"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/puddletag/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "GNU General Public License",
-      "GPL-2",
-      "GPL-3",
-      "GPL-3.0",
-      "GPL-3.0-only",
-      "GPL-3.0-or-later",
-      "GPL3",
-      "GPLv2 and GPLv3+",
-      "GPLv2+",
-      "GPLv2+ and GPLv3",
-      "GPLv2+ and GPLv3+",
-      "GPLv3+"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "Applications/Multimedia",
-      "File",
-      "Productivity/Multimedia/Sound/Utilities",
-      "Sound",
-      "Sound/Utilities",
-      "audio",
-      "media-sound",
-      "multimedia",
-      "multimedia.audio",
-      "sound",
-      "universe/sound"
     ]
   },
   {
@@ -41655,6 +41705,69 @@
       "ux-design",
       "vector",
       "vector-graphics"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "retroarch",
+    "pkg_id": "github.com.hizzlekizzle.RetroArch-AppImage",
+    "pkg_type": "appimage",
+    "app_id": "github.com.hizzlekizzle.RetroArch-AppImage",
+    "description": "An attempt to use CI for nightly builds of RetroArch for Windows and Linux (via AppImage)",
+    "note": [],
+    "version": "Linux_LTS_Nightlies",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/retroarch/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/hizzlekizzle/RetroArch-AppImage"
+    ],
+    "homepage": [
+      "http://www.libretro.com",
+      "http://www.libretro.org",
+      "http://www.retroarch.com",
+      "https://github.com/libretro/RetroArch",
+      "https://libretro.com",
+      "https://retroarch.com",
+      "https://www.libretro.com",
+      "https://www.retroarch.com",
+      "https://www.retroarch.com/?page=platforms"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/retroarch/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "GNU General Public License, version 3.0",
+      "GPL",
+      "GPL-2.0-only",
+      "GPL-3",
+      "GPL-3.0-only",
+      "GPL-3.0-or-later",
+      "GPL-3.0-or-later and GPL-2.0-only and CC-BY-3.0 and CC-BY-4.0 and CC0-1.0 and BSD-2-Clause and BSD-3-Clause and Apache-2.0 and MIT",
+      "GPLv3+",
+      "GPLv3+ and GPLv2 and CC-BY and CC0 and BSD and ASL 2.0 and MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "Emulators",
+      "Games",
+      "System/Emulators/Other",
+      "debug",
+      "emu",
+      "emulators",
+      "games",
+      "games-emulation",
+      "games.emulator",
+      "otherosfs"
     ]
   },
   {
@@ -50588,83 +50701,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "tiled",
-    "pkg_id": "github.com.bjorn.tiled",
-    "pkg_type": "appimage",
-    "app_id": "github.com.bjorn.tiled",
-    "description": "Flexible level editor",
-    "note": [],
-    "version": "v1.11.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/tiled/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/bjorn/tiled"
-    ],
-    "homepage": [
-      "http://mapeditor.org",
-      "http://www.mapeditor.org",
-      "https://github.com/bjorn/tiled",
-      "https://github.com/mapeditor/tiled",
-      "https://www.mapeditor.org"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/tiled/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "Apache Software License 2.0",
-      "Apache-2.0",
-      "Apache-2.0 AND BSD-2-Clause AND GPL-2.0-only",
-      "BSD",
-      "BSD licenses",
-      "BSD-2",
-      "BSD-2-Clause",
-      "BSD-3-Clause",
-      "GNU General Public License, version 2.0",
-      "GPL",
-      "GPL-2+",
-      "GPL-2.0+",
-      "GPL-2.0-onlyBSD-2-Clause",
-      "GPL-2.0-or-later",
-      "GPL-2.0-or-later AND BSD-2-Clause",
-      "GPLv2",
-      "GPLv2+ and BSD",
-      "spdx:GPL-2.0-or-later",
-      "unknown"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "Games",
-      "Graphics",
-      "Graphics/Editors",
-      "Productivity/Graphics/Other",
-      "cross-platform",
-      "debug",
-      "dev-games",
-      "devel",
-      "development",
-      "editors",
-      "game/utility",
-      "graphics",
-      "libdevel",
-      "multimedia.graphics",
-      "programming.devel",
-      "tiled",
-      "universe/utils",
-      "utils"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "timer",
     "pkg_id": "github.com.tdeo.timer",
     "pkg_type": "appimage",
@@ -51654,42 +51690,6 @@
       "tweet",
       "twitter"
     ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "twetter",
-    "pkg_id": "github.com.NiewidzialnyCzlowiek.pubsub-webapp",
-    "pkg_type": "appimage",
-    "app_id": "github.com.NiewidzialnyCzlowiek.pubsub-webapp",
-    "description": "",
-    "note": [],
-    "version": "2.1.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/twetter/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/NiewidzialnyCzlowiek/pubsub-webapp"
-    ],
-    "homepage": [
-      "https://github.com/NiewidzialnyCzlowiek/pubsub-webapp"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/twetter/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT License"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": []
   },
   {
     "_disabled": false,
@@ -54212,40 +54212,6 @@
       "https://github.com/webrecorder/webrecorder-desktop"
     ],
     "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/webrecorder/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [],
-    "provides": [],
-    "snapshots": [],
-    "tag": []
-  },
-  {
-    "_disabled": false,
-    "pkg": "westeroscraftlauncher",
-    "pkg_id": "github.com.WesterosCraftCode.ElectronLauncher",
-    "pkg_type": "appimage",
-    "app_id": "github.com.WesterosCraftCode.ElectronLauncher",
-    "description": "Custom launcher for modded minecraft written in Electron and Node.js",
-    "note": [],
-    "version": "v1.8.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/westeroscraftlauncher/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/WesterosCraftCode/ElectronLauncher"
-    ],
-    "homepage": [
-      "https://github.com/WesterosCraftCode/ElectronLauncher"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/westeroscraftlauncher/appimage.stable.yaml",
     "build_log": "",
     "appstream": "",
     "category": [
@@ -57564,6 +57530,52 @@
 [
   {
     "_disabled": false,
+    "pkg": "432hz-player",
+    "pkg_id": "github.com.mysteryx93.NaturalGroundingPlayer",
+    "pkg_type": "appimage",
+    "app_id": "github.com.mysteryx93.NaturalGroundingPlayer",
+    "description": "432Hz Player, 432Hz Batch Converter, Powerliminals Player, Yang YouTube Downloader",
+    "note": [],
+    "version": "v3.3.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/432hz-player/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/mysteryx93/NaturalGroundingPlayer"
+    ],
+    "homepage": [
+      "https://github.com/mysteryx93/NaturalGroundingPlayer"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/432hz-player/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT License"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "encoding-videos",
+      "media-encoder",
+      "natural-grounding-player",
+      "quality",
+      "svp",
+      "video-downloader",
+      "video-player",
+      "video-processing",
+      "youtube-downloader"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "aaaaxy",
     "pkg_id": "github.com.divVerent.aaaaxy",
     "pkg_type": "appimage",
@@ -57777,6 +57789,44 @@
     "tag": [
       "desktop",
       "electron"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "akasha",
+    "pkg_id": "github.com.AkashaProject.Community",
+    "pkg_type": "appimage",
+    "app_id": "github.com.AkashaProject.Community",
+    "description": "Community",
+    "note": [],
+    "version": "0.7.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/akasha/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/AkashaProject/Community"
+    ],
+    "homepage": [
+      "https://github.com/AkashaProject/node-app"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/akasha/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "Apache 2.0"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "Networking/Instant"
     ]
   },
   {
@@ -58709,6 +58759,51 @@
   },
   {
     "_disabled": false,
+    "pkg": "bilibilivideodownload",
+    "pkg_id": "github.com.blogwy.BilibiliVideoDownload",
+    "pkg_type": "appimage",
+    "app_id": "github.com.blogwy.BilibiliVideoDownload",
+    "description": "Cross-platform download bilibili video desktop software, support windows, macOS, Linux",
+    "note": [],
+    "version": "v3.3.3",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/bilibilivideodownload/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/blogwy/BilibiliVideoDownload"
+    ],
+    "homepage": [
+      "https://github.com/blogwy/BilibiliVideoDownload"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/bilibilivideodownload/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "ant-design-vue",
+      "bilibili-download",
+      "electron",
+      "electron-builder",
+      "ffmpeg-installer",
+      "node-js",
+      "typescript",
+      "vuejs"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "binglite",
     "pkg_id": "github.com.I-Info.BingLite",
     "pkg_type": "appimage",
@@ -58748,6 +58843,49 @@
       "gpt-4",
       "new-bing",
       "tauri"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "bitbox-wallet",
+    "pkg_id": "github.com.digitalbitbox.bitbox-wallet-app",
+    "pkg_type": "appimage",
+    "app_id": "github.com.digitalbitbox.bitbox-wallet-app",
+    "description": "The BitBoxApp for desktop and mobile.",
+    "note": [],
+    "version": "v4.46.3",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/bitbox-wallet/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/digitalbitbox/bitbox-wallet-app"
+    ],
+    "homepage": [
+      "https://github.com/digitalbitbox/bitbox-wallet-app"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/bitbox-wallet/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "Apache License 2.0"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "bech32",
+      "bitcoin",
+      "hardware-wallet",
+      "litecoin",
+      "segwit",
+      "wallet"
     ]
   },
   {
@@ -58861,6 +58999,49 @@
     "provides": [],
     "snapshots": [],
     "tag": []
+  },
+  {
+    "_disabled": false,
+    "pkg": "brs-emu-app",
+    "pkg_id": "github.com.lvcabral.brs-emu-app",
+    "pkg_type": "appimage",
+    "app_id": "github.com.lvcabral.brs-emu-app",
+    "description": "Roku device simulator as a desktop app (macOS, Windows and Linux)",
+    "note": [],
+    "version": "v1.3.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/brs-emu-app/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/lvcabral/brs-emu-app"
+    ],
+    "homepage": [
+      "https://github.com/lvcabral/brs-emu-app"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/brs-emu-app/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT License"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "desktop",
+      "electron-app",
+      "emulator",
+      "roku",
+      "roku-development",
+      "simulator"
+    ]
   },
   {
     "_disabled": false,
@@ -59337,45 +59518,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "code-notes",
-    "pkg_id": "github.com.lauthieb.code-notes",
-    "pkg_type": "appimage",
-    "app_id": "github.com.lauthieb.code-notes",
-    "description": "(No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀",
-    "note": [],
-    "version": "1.2.4",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/code-notes/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/lauthieb/code-notes"
-    ],
-    "homepage": [
-      "https://github.com/lauthieb/code-notes",
-      "https://lauthieb.github.io/code-notes"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/code-notes/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "developer"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "comictagger",
     "pkg_id": "github.com.comictagger.comictagger",
     "pkg_type": "appimage",
@@ -59492,6 +59634,52 @@
       "universe/utils",
       "utils",
       "x11-monitoring"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "converter432hz",
+    "pkg_id": "github.com.mysteryx93.NaturalGroundingPlayer",
+    "pkg_type": "appimage",
+    "app_id": "github.com.mysteryx93.NaturalGroundingPlayer",
+    "description": "432Hz Player, 432Hz Batch Converter, Powerliminals Player, Yang YouTube Downloader",
+    "note": [],
+    "version": "v3.3.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/converter432hz/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/mysteryx93/NaturalGroundingPlayer"
+    ],
+    "homepage": [
+      "https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/432hz-Batch-Converter"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/converter432hz/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "encoding-videos",
+      "media-encoder",
+      "natural-grounding-player",
+      "quality",
+      "svp",
+      "video-downloader",
+      "video-player",
+      "video-processing",
+      "youtube-downloader"
     ]
   },
   {
@@ -60586,44 +60774,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "electrumfair",
-    "pkg_id": "github.com.faircoin.electrumfair",
-    "pkg_type": "appimage",
-    "app_id": "github.com.faircoin.electrumfair",
-    "description": "Electrum for FairCoin",
-    "note": [],
-    "version": "3.3.4",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/electrumfair/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/faircoin/electrumfair"
-    ],
-    "homepage": [
-      "https://github.com/faircoin/electrumfair"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/electrumfair/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT License"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "faircoin"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "element",
     "pkg_id": "github.com.srevinsaju.element-appimage",
     "pkg_type": "appimage",
@@ -61109,48 +61259,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "fchat-rising",
-    "pkg_id": "github.com.mrstallion.fchat-rising",
-    "pkg_type": "appimage",
-    "app_id": "github.com.mrstallion.fchat-rising",
-    "description": "A heavily modded F-Chat 3.0 client for F-List",
-    "note": [],
-    "version": "v1.27.3",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/fchat-rising/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/mrstallion/fchat-rising"
-    ],
-    "homepage": [
-      "https://github.com/mrstallion/fchat-rising"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/fchat-rising/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "f-chat",
-      "f-list",
-      "fchat",
-      "flist",
-      "furry"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "fdc3-sail",
     "pkg_id": "github.com.finos.FDC3-Sail",
     "pkg_type": "appimage",
@@ -61186,47 +61294,6 @@
     "tag": [
       "electron",
       "fdc3"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "ferdium",
-    "pkg_id": "github.com.ferdium.ferdium-app",
-    "pkg_type": "appimage",
-    "app_id": "github.com.ferdium.ferdium-app",
-    "description": "All your services in one place, built by the community",
-    "note": [],
-    "version": "v7.0.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/ferdium/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/ferdium/ferdium-app"
-    ],
-    "homepage": [
-      "https://ferdium.org",
-      "https://github.com/ferdium/ferdium-app"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/ferdium/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "Apache",
-      "Apache-2.0"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "hacktoberfest",
-      "network"
     ]
   },
   {
@@ -61701,99 +61768,6 @@
       "office",
       "science",
       "universe/science"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "freetube",
-    "pkg_id": "github.com.FreeTubeApp.FreeTube.stable",
-    "pkg_type": "appimage",
-    "app_id": "io.freetubeapp.FreeTube",
-    "description": "An Open Source YouTube app for privacy",
-    "note": [
-      "Officially Created AppImage. Check/Report @ https://github.com/FreeTubeApp/FreeTube"
-    ],
-    "version": "v0.22.0-beta",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/freetube/appimage.official.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": [
-      "freetube"
-    ],
-    "src_url": [
-      "https://github.com/FreeTubeApp/FreeTube"
-    ],
-    "homepage": [
-      "https://freetubeapp.io",
-      "https://github.com/FreeTubeApp/FreeTube"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/freetube/appimage.official.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Player",
-      "TV"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "multimedia",
-      "privacy",
-      "Video",
-      "youtube"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "freetube",
-    "pkg_id": "github.com.FreeTubeApp.FreeTube",
-    "pkg_type": "appimage",
-    "app_id": "github.com.FreeTubeApp.FreeTube",
-    "description": "An Open Source YouTube app for privacy",
-    "note": [],
-    "version": "v0.22.0-beta",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/freetube/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/FreeTubeApp/FreeTube"
-    ],
-    "homepage": [
-      "https://freetubeapp.io",
-      "https://github.com/FreeTubeApp/FreeTube"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/freetube/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "AGPL-3+",
-      "AGPL-3.0",
-      "AGPL-3.0-only",
-      "AGPL-3.0-or-later",
-      "AGPL3",
-      "GNU General Public License v3.0"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "Video",
-      "cross-platform",
-      "multimedia",
-      "privacy",
-      "youtube"
     ]
   },
   {
@@ -62556,40 +62530,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "iagoncloudapp",
-    "pkg_id": "github.com.Iagonorg.Iagon-storage-node",
-    "pkg_type": "appimage",
-    "app_id": "github.com.Iagonorg.Iagon-storage-node",
-    "description": "Iagon Storage Node Applications.",
-    "note": [],
-    "version": "v1.1.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/iagoncloudapp/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/Iagonorg/Iagon-storage-node"
-    ],
-    "homepage": [
-      "https://github.com/Iagonorg/Iagon-storage-node"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/iagoncloudapp/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [],
-    "provides": [],
-    "snapshots": [],
-    "tag": []
-  },
-  {
-    "_disabled": false,
     "pkg": "ibus-rime",
     "pkg_id": "github.com.hchunhui.ibus-rime.AppImage",
     "pkg_type": "appimage",
@@ -63074,42 +63014,6 @@
       "clone",
       "game"
     ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "kade",
-    "pkg_id": "github.com.shawnbanasick.kade",
-    "pkg_type": "appimage",
-    "app_id": "github.com.shawnbanasick.kade",
-    "description": "KADE is an open-source application for the analysis of Q methodology data. See detailed description below.  ⬇️",
-    "note": [],
-    "version": "v1.3.1",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/kade/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/shawnbanasick/kade"
-    ],
-    "homepage": [
-      "https://github.com/shawnbanasick/kade"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/kade/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "GNU General Public License v3.0"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": []
   },
   {
     "_disabled": false,
@@ -64977,56 +64881,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "netpanzer",
-    "pkg_id": "github.com.netpanzer.netpanzer",
-    "pkg_type": "appimage",
-    "app_id": "github.com.netpanzer.netpanzer",
-    "description": "NetPanzer is an online multiplayer tactical warfare game designed for fast action combat. Join us on Discord: https://discord.gg/kCAB2CMswd",
-    "note": [],
-    "version": "0.9.0-RC-7",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/netpanzer/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/netpanzer/netpanzer"
-    ],
-    "homepage": [
-      "http://netpanzer.berlios.de",
-      "https://github.com/netpanzer/netpanzer",
-      "https://netpanzer.com",
-      "https://netpanzer.io"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/netpanzer/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "GPL-2+",
-      "GPL-2.0-or-later",
-      "GPL2",
-      "GPLv2+"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "Amusements/Games",
-      "Games/Arcade",
-      "Games/Strategy",
-      "game/strategy",
-      "games",
-      "games-strategy",
-      "universe/games"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "nimbus-weather",
     "pkg_id": "github.com.tgrowden.nimbus-weather",
     "pkg_type": "appimage",
@@ -66540,44 +66394,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "planet-blupi",
-    "pkg_id": "github.com.blupi-games.planetblupi-dev",
-    "pkg_type": "appimage",
-    "app_id": "github.com.blupi-games.planetblupi-dev",
-    "description": "Planet Blupi development bundle (main repository)",
-    "note": [],
-    "version": "v1.15.1",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/planet-blupi/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/blupi-games/planetblupi-dev"
-    ],
-    "homepage": [
-      "https://blupi.org/planet/index.html"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/planet-blupi/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "GNU General Public License v3.0"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "games"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "plotly-orca",
     "pkg_id": "github.com.plotly.orca",
     "pkg_type": "appimage",
@@ -67858,69 +67674,6 @@
   },
   {
     "_disabled": false,
-    "pkg": "retroarch",
-    "pkg_id": "github.com.hizzlekizzle.RetroArch-AppImage",
-    "pkg_type": "appimage",
-    "app_id": "github.com.hizzlekizzle.RetroArch-AppImage",
-    "description": "An attempt to use CI for nightly builds of RetroArch for Windows and Linux (via AppImage)",
-    "note": [],
-    "version": "Linux_LTS_Nightlies",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/retroarch/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/hizzlekizzle/RetroArch-AppImage"
-    ],
-    "homepage": [
-      "http://www.libretro.com",
-      "http://www.libretro.org",
-      "http://www.retroarch.com",
-      "https://github.com/libretro/RetroArch",
-      "https://libretro.com",
-      "https://retroarch.com",
-      "https://www.libretro.com",
-      "https://www.retroarch.com",
-      "https://www.retroarch.com/?page=platforms"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/retroarch/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "GNU General Public License, version 3.0",
-      "GPL",
-      "GPL-2.0-only",
-      "GPL-3",
-      "GPL-3.0-only",
-      "GPL-3.0-or-later",
-      "GPL-3.0-or-later and GPL-2.0-only and CC-BY-3.0 and CC-BY-4.0 and CC0-1.0 and BSD-2-Clause and BSD-3-Clause and Apache-2.0 and MIT",
-      "GPLv3+",
-      "GPLv3+ and GPLv2 and CC-BY and CC0 and BSD and ASL 2.0 and MIT"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "Emulators",
-      "Games",
-      "System/Emulators/Other",
-      "debug",
-      "emu",
-      "emulators",
-      "games",
-      "games-emulation",
-      "games.emulator",
-      "otherosfs"
-    ]
-  },
-  {
-    "_disabled": false,
     "pkg": "retroshare",
     "pkg_id": "github.com.RetroShare.RetroShare",
     "pkg_type": "appimage",
@@ -68834,6 +68587,45 @@
   },
   {
     "_disabled": false,
+    "pkg": "singlebox",
+    "pkg_id": "github.com.atomery.singlebox",
+    "pkg_type": "appimage",
+    "app_id": "github.com.atomery.singlebox",
+    "description": "All Your Apps in One Single Window",
+    "note": [],
+    "version": "v9.8.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/singlebox/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/atomery/singlebox"
+    ],
+    "homepage": [
+      "https://singlebox.app/en",
+      "https://webcatalog.io/singlebox"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/singlebox/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "Networking/Chat"
+    ]
+  },
+  {
+    "_disabled": false,
     "pkg": "slippi",
     "pkg_id": "github.com.project-slippi.slippi-desktop-app",
     "pkg_type": "appimage",
@@ -69058,47 +68850,6 @@
     "provides": [],
     "snapshots": [],
     "tag": []
-  },
-  {
-    "_disabled": false,
-    "pkg": "speaky-miniplayer",
-    "pkg_id": "github.com.fjrd84.speaky-miniplayer",
-    "pkg_type": "appimage",
-    "app_id": "github.com.fjrd84.speaky-miniplayer",
-    "description": "Miniplayer and synthetic radio speaker for Spotify",
-    "note": [],
-    "version": "v1.0.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/speaky-miniplayer/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/fjrd84/speaky-miniplayer"
-    ],
-    "homepage": [
-      "https://github.com/fjrd84/speaky-miniplayer"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/speaky-miniplayer/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "MIT License"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "electron",
-      "music",
-      "spotify",
-      "tts"
-    ]
   },
   {
     "_disabled": false,
@@ -69793,6 +69544,52 @@
       "sysutils",
       "utilities",
       "utils"
+    ]
+  },
+  {
+    "_disabled": false,
+    "pkg": "tomatox",
+    "pkg_id": "github.com.yanjiaxuan.TOMATOX",
+    "pkg_type": "appimage",
+    "app_id": "github.com.yanjiaxuan.TOMATOX",
+    "description": "基于Electron、React开发的全网在线免费VIP视频解析播放器，美剧、韩剧、日剧全资源，全平台（Windows、Linux、MacOS）可用",
+    "note": [],
+    "version": "v2.0.2",
+    "download_url": "https://soarpkgs.pkgforge.dev/packages/tomatox/appimage.stable.yaml",
+    "size": "",
+    "bsum": "",
+    "shasum": "",
+    "build_date": "",
+    "repology": "",
+    "src_url": [
+      "https://github.com/yanjiaxuan/TOMATOX"
+    ],
+    "homepage": [
+      "https://github.com/yanjiaxuan/TOMATOX"
+    ],
+    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/tomatox/appimage.stable.yaml",
+    "build_log": "",
+    "appstream": "",
+    "category": [
+      "Utility"
+    ],
+    "desktop": "",
+    "icon": "",
+    "license": [
+      "MIT"
+    ],
+    "provides": [],
+    "snapshots": [],
+    "tag": [
+      "antd",
+      "electron",
+      "husky",
+      "nodejs",
+      "online-video-player",
+      "react",
+      "typescript",
+      "webpack",
+      "xgplayer"
     ]
   },
   {
@@ -70606,50 +70403,6 @@
       "vterm",
       "webpack",
       "xterm"
-    ]
-  },
-  {
-    "_disabled": false,
-    "pkg": "watchit",
-    "pkg_id": "github.com.ZorrillosDev.watchit-app",
-    "pkg_type": "appimage",
-    "app_id": "github.com.ZorrillosDev.watchit-app",
-    "description": "Open movies everywhere",
-    "note": [],
-    "version": "v1.0.0-beta.0",
-    "download_url": "https://soarpkgs.pkgforge.dev/packages/watchit/appimage.stable.yaml",
-    "size": "",
-    "bsum": "",
-    "shasum": "",
-    "build_date": "",
-    "repology": "",
-    "src_url": [
-      "https://github.com/ZorrillosDev/watchit-app"
-    ],
-    "homepage": [
-      "https://github.com/WatchItDev/watchit-app"
-    ],
-    "build_script": "https://github.com/pkgforge/soarpkgs/blob/main/packages/watchit/appimage.stable.yaml",
-    "build_log": "",
-    "appstream": "",
-    "category": [
-      "Utility"
-    ],
-    "desktop": "",
-    "icon": "",
-    "license": [
-      "AGPL-3.0"
-    ],
-    "provides": [],
-    "snapshots": [],
-    "tag": [
-      "decentralization",
-      "film3",
-      "helia",
-      "ipfs",
-      "movies",
-      "react",
-      "web3"
     ]
   },
   {
