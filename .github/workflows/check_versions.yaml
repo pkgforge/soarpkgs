@@ -1,0 +1,47 @@
+name: 🔎 Check Versions 🧬
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 0 * * *" #12:30 AM UTC --> 06:15 AM NPT
+
+jobs:
+  versionChecker:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main
+          filter: "blob:none"
+          
+      - name: Setup Env
+        run: |
+          ##presets
+          set +x ; set +e
+          #-------------#
+          ##CoreUtils
+          sudo apt update -y -qq
+          sudo apt install bc coreutils curl dos2unix fdupes jq moreutils rsync util-linux wget -y -qq
+          #temp
+          SYSTMP="$(dirname $(mktemp -u))" && export SYSTMP="${SYSTMP}"
+          echo "SYSTMP=${SYSTMP}" >> "${GITHUB_ENV}"
+        continue-on-error: true
+
+      - name: Version Checker
+        run: |
+          ##presets
+          set +x ; set +e
+          #-------------#
+          jq -r '["| Package | SBUILD |", "|----------|----------|"] + (map(select(.version | length == 0 or . == null)) | map("| \(.pkg) | \(.build_script) |")) | .[]' "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | awk '!seen[$0]++' > "${SYSTMP}/NO_VERSION.md"
+        continue-on-error: true
+
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: SBUILDS (Empty/Non-Existent Versions)
+          content-filepath: "/tmp/NO_VERSION.md"
+          labels: report, automated issue
+        continue-on-error: false
