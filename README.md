@@ -21,7 +21,7 @@
         <img src="https://github.com/user-attachments/assets/220ce7b3-55b3-496e-b3b8-2556123193a2" width="100">
     </a><br> -->
     <a href="https://github.com/pkgforge/soar">
-        <img src="https://bin.pkgforge.dev/list.gif?tmp.7VoJDoDY5n=tmp.clMo6c3Olw" alt="soar-list" width="500">
+        <img src="https://bin.pkgforge.dev/list.gif?tmp.1R74ZxM7eZ=tmp.vRvaza8cWw" alt="soar-list" width="500">
     </a><br> 
     <b><strong> <a href="https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs">Package Forge Community Repo</a></code></strong></b>
     <br>
@@ -42,4 +42,6 @@
 > - [**`Contact Us`**](https://docs.pkgforge.dev/contact/chat)
 - [**Status 🔖**](./)
 > [![🐧🧹 HealthChecks 🖳🗑](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml/badge.svg)](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml)
-- [**Community 💬**](https://t.me/official_loonix/63949)
+- [**Community 💬**](https://docs.pkgforge.dev/contact/chat)
+> - <a href="https://matrix.to/#/#loonix:matrix.org"><img src="https://github.com/user-attachments/assets/1dcd4a64-2fec-4f4f-926a-e61313b6b646" width="18" height="18"><code>Loonix (<img src="https://github.com/user-attachments/assets/abc35eee-c9c9-4023-9035-d440b56cac4c" width="18" height="18">) Matrix </code></a> `➼` [`https://matrix.to/#/#loonix:matrix.org`](https://matrix.to/#/#loonix:matrix.org)
+> - <a href="https://t.me/official_loonix/63949"><img src="https://github.com/user-attachments/assets/2edc90b9-606e-4bfc-89f3-2a758b2f0377" width="18" height="18"><code>Loonix (<img src="https://github.com/user-attachments/assets/abc35eee-c9c9-4023-9035-d440b56cac4c" width="18" height="18">) Telegram</code></a> `➼` [`https://t.me/official_loonix/63949`](https://t.me/official_loonix/63949)
