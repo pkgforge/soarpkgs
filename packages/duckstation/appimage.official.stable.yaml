@@ -35,7 +35,7 @@ tag:
   - "games"
   - "games-emulation"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     #curl -qfsSL "https://api.gh.pkgforge.dev/repos/stenzek/duckstation/releases/latest?per_page=100" | jq -r '.tag_name'
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/stenzek/duckstation/releases/latest?per_page=100" | jq -r '(.created_at | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%Y%m%d_%H%M%S")) + "-" + .tag_name' | tr -d '[:space:]'
@@ -44,6 +44,7 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
         ;;
       x86_64)
         soar dl "https://github.com/stenzek/duckstation" --match "appimage" --exclude "sse2" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes

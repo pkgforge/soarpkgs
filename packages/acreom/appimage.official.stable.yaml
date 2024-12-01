@@ -32,7 +32,7 @@ tag:
   - "knowledge-base"
   - "wiki"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/Acreom/releases/releases/latest?per_page=100" | jq -r '.tag_name'
   run: |
@@ -40,6 +40,7 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
         ;;
       x86_64)
         soar dl "https://github.com/Acreom/releases" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes

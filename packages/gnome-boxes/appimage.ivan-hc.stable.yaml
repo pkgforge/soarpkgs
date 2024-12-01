@@ -42,7 +42,7 @@ tag:
   - "Graphical"
   - "System/GUI/GNOME"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-boxes/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
   run: |

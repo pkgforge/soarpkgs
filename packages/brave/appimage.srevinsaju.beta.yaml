@@ -35,7 +35,7 @@ tag:
   - "Networking/WWW"
   - "network.web.browser"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/Brave-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true and (.name | test("(?i)beta")))] | .[0].tag_name | select(. != null)' | tr -d '[:space:]'
   run: |

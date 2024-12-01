@@ -34,7 +34,7 @@ tag:
   - "java"
   - "utils"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     git ls-remote --tags "https://android.googlesource.com/platform/tools/base" | awk -F/ '/tags/ && !/{}$/ {print $NF}' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | grep "\." | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |

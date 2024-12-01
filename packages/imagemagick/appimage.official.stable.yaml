@@ -42,7 +42,7 @@ tag:
   - "Photo"
   - "Productivity/Graphics/Other"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/ImageMagick/ImageMagick/releases/latest?per_page=100" | jq -r '.tag_name' | tr -d '[:space:]'
   run: |
@@ -50,6 +50,7 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
         ;;
       x86_64)
         soar dl "https://github.com/ImageMagick/ImageMagick" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes

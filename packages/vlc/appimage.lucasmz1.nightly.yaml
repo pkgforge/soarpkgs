@@ -52,7 +52,7 @@ tag:
   - "multimedia.video"
   - "video"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://artifacts.videolan.org/vlc-3.0/nightly-snap/" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |

@@ -61,7 +61,7 @@ tag:
   - "universe/graphics"
   - "video"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://kdenlive.org/en/download/" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' | grep -Ei "AppImage" | grep -Eiv 'aarch|arm|zsync' | sort --version-sort | tail -n 1 | tr -d '[:space:]' | grep -o '[0-9]\+\(\.[0-9]\+\)\+' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |

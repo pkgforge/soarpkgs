@@ -48,7 +48,7 @@ tag:
   - "Photo"
   - "Productivity/Graphics/Bitmap"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gimp/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
   run: |

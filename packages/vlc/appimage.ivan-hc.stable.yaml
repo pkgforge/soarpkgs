@@ -52,7 +52,7 @@ tag:
   - "multimedia.video"
   - "video"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/vlc/-/raw/main/PKGBUILD" | sed -n 's/^_vlcver=//p' | tr -d '[:space:]'
   run: |

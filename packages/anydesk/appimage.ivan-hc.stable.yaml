@@ -35,7 +35,7 @@ tag:
   - "Networking/Remote"
   - "rdp"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=anydesk-bin" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
   run: |

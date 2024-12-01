@@ -39,7 +39,7 @@ tag:
   - "game"
   - "system"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/86Box/86Box/releases/latest?per_page=100" | jq -r '.tag_name'
   run: |

@@ -38,7 +38,7 @@ tag:
   - "Networking/WWW"
   - "www-client"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     #curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/24386000/releases/" | jq -r '.[0].tag_name' | tr -d '[:space:]'
     echo "librewolf-community/browser/appimage" | jq -Rr "@uri" | xargs -I "{}" curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/{}/releases" | jq -r 'sort_by(.released_at) | last | .tag_name' | tr -d '[:space:]'
@@ -47,6 +47,7 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
         ;;
       x86_64)
         soar dl "https://gitlab.com/librewolf-community/browser/appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes

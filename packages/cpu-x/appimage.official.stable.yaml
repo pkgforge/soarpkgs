@@ -38,7 +38,7 @@ tag:
   - "sys-apps"
   - "system.utils"
 x_exec:
-  shell: bash
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/TheTumultuousUnicornOfDarkness/CPU-X/releases/latest?per_page=100" | jq -r '.tag_name'
   run: |
@@ -46,6 +46,7 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
         ;;
       x86_64)
         soar dl "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
