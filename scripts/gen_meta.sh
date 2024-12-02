@@ -49,22 +49,24 @@ find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | x
   #Retry without --pkgver
    if [ -s "${TMPDIR}/INVALID_SBUILDS_02.txt" ]; then
      cat "${TMPDIR}/INVALID_SBUILDS_02.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_03.txt"
+    #Log Output for Issue 
+     if [ -s "${TMPDIR}/INVALID_SBUILDS_03.txt" ]; then
+       readarray -t "FAILED_SBUILD" < "${TMPDIR}/INVALID_SBUILDS_03.txt"
+       {
+         for F_SBUILD in "${FAILED_SBUILD[@]}"; do
+         echo '```bash'
+          "${TMPDIR}/sbuild-linter" "${F_SBUILD}"
+         echo '```'
+         done
+       } >> "${TMPDIR}/INVALID_SBUILDS_log.txt" 2>&1
+       sed 's|.*/packages|https://github.com/pkgforge/soarpkgs/blob/main/packages|' "${TMPDIR}/INVALID_SBUILDS_log.txt" | ansi2txt | tee "${SYSTMP}/INVALID_SBUILDS.txt"
+     fi
    fi
  fi
-#Log Output & Gen metadata
-readarray -t "FAILED_SBUILD" < "${TMPDIR}/INVALID_SBUILDS_03.txt"
-{
-  for F_SBUILD in "${FAILED_SBUILD[@]}"; do
-  echo '```bash'
-   "${TMPDIR}/sbuild-linter" "${F_SBUILD}"
-  echo '```'
-  done
-} >> "${TMPDIR}/INVALID_SBUILDS_log.txt" 2>&1
-sed 's|.*/packages|https://github.com/pkgforge/soarpkgs/blob/main/packages|' "${TMPDIR}/INVALID_SBUILDS_log.txt" | ansi2txt | tee "${SYSTMP}/INVALID_SBUILDS.txt"
 ##Store Validated files
 find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated$' > "${TMPDIR}/valid_pkgs.txt"
 readarray -t "VALID_PKGS" < "${TMPDIR}/valid_pkgs.txt"
-##Loop & Generate
+##Loop & Generate Meta
 for SBUILD in "${VALID_PKGS[@]}"; do
     #VALID_PKGSRC="$(echo "${SBUILD}" | sed -E 's|.*/packages/||; s|\.validated$||' | tr -d '[:space:]')"
     VALID_PKGSRC="$(echo "${SBUILD##*/packages/}" | sed -E 's|\.validated$||' | tr -d '[:space:]')"
@@ -112,8 +114,8 @@ if jq --exit-status . "${TMPDIR}/METADATA.json" >/dev/null 2>&1; then
    cp -fv "${TMPDIR}/METADATA.json" "${SYSTMP}/SBUILD_METADATA.json"
   #Convert to Sqlite
    jq -c '.[]' "${SYSTMP}/SBUILD_METADATA.json" > "${TMPDIR}/SBUILD_METADATA.jsonl"
-   "${TMPDIR}/qsv" jsonl "${TMPDIR}/SBUILD_METADATA.jsonl" > "${TMPDIR}/SBUILD_METADATA.csv"
-   "${TMPDIR}/qsv" to sqlite "${SYSTMP}/SBUILD_METADATA.db" "${TMPDIR}/SBUILD_METADATA.csv"
+   qsv jsonl "${TMPDIR}/SBUILD_METADATA.jsonl" > "${TMPDIR}/SBUILD_METADATA.csv"
+   qsv to sqlite "${SYSTMP}/SBUILD_METADATA.db" "${TMPDIR}/SBUILD_METADATA.csv"
 fi
 ##END
 ls -lah "${TMPDIR}"
