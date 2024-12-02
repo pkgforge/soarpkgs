@@ -39,9 +39,13 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
 #First Run
 find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.\(yml\|yaml\)$' -print0 | xargs -0 "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_01.txt" --pkgver
 #Retry
-cat "${TMPDIR}/INVALID_SBUILDS_01.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_02.txt" --pkgver
-#Retry without --pkgver
-cat "${TMPDIR}/INVALID_SBUILDS_02.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_03.txt"
+ if [ -s "${TMPDIR}/INVALID_SBUILDS_01.txt" ]; then
+   cat "${TMPDIR}/INVALID_SBUILDS_01.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_02.txt" --pkgver
+  #Retry without --pkgver
+   if [ -s "${TMPDIR}/INVALID_SBUILDS_02.txt" ]; then
+     cat "${TMPDIR}/INVALID_SBUILDS_02.txt" | xargs "${TMPDIR}/sbuild-linter" --parallel "50" --fail "${TMPDIR}/INVALID_SBUILDS_03.txt"
+   fi
+ fi
 #Log Output & Gen metadata
 readarray -t "FAILED_SBUILD" < "${TMPDIR}/INVALID_SBUILDS_03.txt"
 {
@@ -99,13 +103,12 @@ if jq --exit-status . "${TMPDIR}/METADATA.json.bak" >/dev/null 2>&1; then
 fi
 ##Recheck
 if jq --exit-status . "${TMPDIR}/METADATA.json" >/dev/null 2>&1; then
+  #Copy
    cp -fv "${TMPDIR}/METADATA.json" "${SYSTMP}/SBUILD_METADATA.json"
-   if [[ -s "${SYSTMP}/SBUILD_METADATA.json" ]] && jq --exit-status '.' "${SYSTMP}/SBUILD_METADATA.json" > /dev/null 2>&1; then
-    #Convert to Sqlite
-     jq -c '.[]' "${SYSTMP}/SBUILD_METADATA.json" > "${TMPDIR}/SBUILD_METADATA.jsonl"
-     "${TMPDIR}/qsv" jsonl "${TMPDIR}/SBUILD_METADATA.jsonl" > "${TMPDIR}/SBUILD_METADATA.csv"
-     "${TMPDIR}/qsv" to sqlite "${SYSTMP}/SBUILD_METADATA.db" "${TMPDIR}/SBUILD_METADATA.csv"
-   fi
+  #Convert to Sqlite
+   jq -c '.[]' "${SYSTMP}/SBUILD_METADATA.json" > "${TMPDIR}/SBUILD_METADATA.jsonl"
+   "${TMPDIR}/qsv" jsonl "${TMPDIR}/SBUILD_METADATA.jsonl" > "${TMPDIR}/SBUILD_METADATA.csv"
+   "${TMPDIR}/qsv" to sqlite "${SYSTMP}/SBUILD_METADATA.db" "${TMPDIR}/SBUILD_METADATA.csv"
 fi
 ##END
 ls -lah "${TMPDIR}"
