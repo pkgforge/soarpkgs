@@ -7827,13 +7827,17 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-2.1M   ├─┬ metadata
+2.2M   ├─┬ metadata
 1.8M   │ ├── METADATA.json
 168K   │ ├── METADATA.json.xz
 164K   │ ├── METADATA.json.zstd
 4.0K   │ ├── METADATA.json.zstd.bsum
 4.0K   │ ├── METADATA.json.xz.bsum
-4.0K   │ └── METADATA.json.bsum
+4.0K   │ ├── METADATA.json.bsum
+4.0K   │ ├── METADATA.db.xz.bsum
+4.0K   │ ├── METADATA.db.xz
+  0B   │ ├── METADATA.db.zstd.bsum
+  0B   │ └── METADATA.db.bsum
 120K   ├─┬ scripts
  36K   │ ├── sbuild_runner.sh
  24K   │ ├── sbuild_creator.sh
