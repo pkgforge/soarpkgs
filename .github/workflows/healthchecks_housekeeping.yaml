@@ -127,6 +127,13 @@ jobs:
              b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.xz.bsum"
              zstd --ultra -22 --force "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" -o "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd"
              b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.json.zstd.bsum"
+            ##Sqlite DB
+             cp -fv "${SYSTMP}/SBUILD_METADATA.db" "${GITHUB_WORKSPACE}/main/metadata/METADATA.db"
+             b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.db" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.bsum"
+             7z a -t7z -mx="9" -mmt="$(($(nproc)+1))" -bsp1 -bt "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.xz" "${GITHUB_WORKSPACE}/main/metadata/METADATA.db" 2>/dev/null
+             b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.xz" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.xz.bsum"
+             zstd --ultra -22 --force "${GITHUB_WORKSPACE}/main/metadata/METADATA.db" -o "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.zstd"
+             b3sum "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.zstd" | grep -oE '^[a-f0-9]{64}' | tr -d '[:space:]' > "${GITHUB_WORKSPACE}/main/metadata/METADATA.db.zstd.bsum"
             ##Failed SBUILDS
             if [[ -s "${SYSTMP}/INVALID_SBUILDS.txt" || $(stat -c%s "${SYSTMP}/INVALID_SBUILDS.txt") -gt 10 ]]; then
              #sed 's|.*/packages|https://github.com/pkgforge/soarpkgs/blob/main/packages|' -i  "${SYSTMP}/INVALID_SBUILDS.txt"
