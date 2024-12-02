@@ -39,6 +39,11 @@ jobs:
           sudo apt install libguestfs-tools -y
           #qemu
           sudo apt install qemu qemu-user-static qemu-utils -y
+          #qsv: https://github.com/dathere/qsv/tree/master?tab=readme-ov-file#option-2-package-managers--distributions
+          wget -O - https://dathere.github.io/qsv-deb-releases/qsv-deb.gpg | sudo gpg --dearmor -o /usr/share/keyrings/qsv-deb.gpg
+          echo "deb [signed-by=/usr/share/keyrings/qsv-deb.gpg] https://dathere.github.io/qsv-deb-releases ./" | sudo tee "/etc/apt/sources.list.d/qsv.list"
+          sudo apt update -y -qq
+          sudo apt install qsv -y -qq
           #temp
           SYSTMP="$(dirname $(mktemp -u))" && export SYSTMP="${SYSTMP}"
           echo "SYSTMP=${SYSTMP}" >> "${GITHUB_ENV}"

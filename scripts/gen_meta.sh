@@ -19,11 +19,14 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
  popd >/dev/null 2>&1
 ##Progs
  #QSV
- timeout 30 eget "https://github.com/dathere/qsv" --asset "qsv" --asset "$(uname -m)" --asset "gnu" --asset "zip" --file "qsv" --to "${TMPDIR}/qsv"
- chmod +x "${TMPDIR}/qsv"
- if [[ ! -s "${TMPDIR}/qsv" || $(stat -c%s "${TMPDIR}/qsv") -le 1024 ]]; then
+ #timeout 30 eget "https://github.com/dathere/qsv" --asset "qsv" --asset "$(uname -m)" --asset "gnu" --asset "zip" --file "qsv" --to "${TMPDIR}/qsv"
+ #chmod +x "${TMPDIR}/qsv"
+ #if [[ ! -s "${TMPDIR}/qsv" || $(stat -c%s "${TMPDIR}/qsv") -le 1024 ]]; then
+ if ! command -v "qsv" >/dev/null 2>&1; then
    echo -e "\n[✗] FATAL: qsv Appears to be NOT INSTALLED...\n"
   exit 1
+ else
+   timeout 10 qsv --help
  fi
  #curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh" -o "${TMPDIR}/sbuild-linter"
  curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" curl -qfsSL "{}" -o "${TMPDIR}/sbuild-linter"
@@ -31,6 +34,8 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
  if [[ ! -s "${TMPDIR}/sbuild-linter" || $(stat -c%s "${TMPDIR}/sbuild-linter") -le 1024 ]]; then
    echo -e "\n[✗] FATAL: sbuild-linter Appears to be NOT INSTALLED...\n"
   exit 1
+ else
+   timeout 10 sbuild-linter --help
  fi
 #-------------------------------------------------------#
 
