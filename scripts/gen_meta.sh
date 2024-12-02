@@ -108,4 +108,5 @@ if jq --exit-status . "${TMPDIR}/METADATA.json" >/dev/null 2>&1; then
    fi
 fi
 ##END
+ls -lah "${TMPDIR}"
 #-------------------------------------------------------#
