@@ -27,6 +27,7 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
   exit 1
  else
    timeout 10 qsv --help
+   timeout 10 qsv --version
  fi
  #curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/sbuild_linter.sh" -o "${TMPDIR}/sbuild-linter"
  curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" curl -qfsSL "{}" -o "${TMPDIR}/sbuild-linter"
@@ -35,7 +36,8 @@ TMPDIR="$(mktemp -d)" && export TMPDIR="${TMPDIR}" ; echo -e "\n[+] Using TEMP: 
    echo -e "\n[✗] FATAL: sbuild-linter Appears to be NOT INSTALLED...\n"
   exit 1
  else
-   timeout 10 sbuild-linter --help
+   timeout 10 "${TMPDIR}/sbuild-linter" --help
+   timeout 10 "${TMPDIR}/sbuild-linter" --version
  fi
 #-------------------------------------------------------#
 
