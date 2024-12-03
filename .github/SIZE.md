@@ -7851,6 +7851,6 @@
   12K   ├─┬ templates
  4.0K   │ ├── minimal.SBUILD.yaml
  4.0K   │ └── generic.SBUILD.yaml
- 4.0K   ├── README.md
+ 8.0K   ├── README.md
  4.0K   └── LICENSE
 ```
