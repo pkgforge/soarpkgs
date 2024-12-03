@@ -22,7 +22,7 @@
     </a><br> -->
     <a href="https://github.com/pkgforge/soar">
         <img src="https://bin.pkgforge.dev/list.gif?tmp.N4NMuOLVt6=tmp.8NNJOOEsOd" alt="soar-list" width="500">
-    </a><br> 
+    </a><br>
     <b><strong> <a href="https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs">Package Forge Community Repo</a></code></strong></b>
     <br>
 </p>
