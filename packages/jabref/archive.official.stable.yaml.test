@@ -1,0 +1,65 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jabref/archive.official.stable.yaml
+_disabled: false
+
+pkg: "jabref"
+pkg_id: "github.com.JabRef.jabref.stable"
+pkg_type: "archive"
+build_util:
+  - "busybox/tree#base"
+  - "curl#bin"
+  - "jq#bin"
+  - "tar/tar#base"
+category:
+  - "Office"
+description: "Reference manager to edit, manage and search BibTeX and other bibliographies"
+distro_pkg:
+  archlinux:
+    aur:
+      - "jabref"
+      - "jabref-bin"
+      - "jabref-git"
+  debian:
+    - "jabref"
+  nixpkgs:
+    - "jabref"
+homepage:
+  - "http://jabref.sourceforge.net"
+  - "https://github.com/JabRef/jabref"
+  - "https://jabref.org"
+  - "https://sourceforge.net/projects/jabref"
+icon:
+  dir: "/lib"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Officially Created Archive. Check/Report @ https://github.com/JabRef/jabref"
+repology:
+  - "jabref"
+src_url:
+  - "https://github.com/JabRef/jabref"
+tag:
+  - "Applications/Publishing"
+  - "biblatex"
+  - "office"
+  - "tex"
+x_exec:
+  arch:
+    - "x86_64"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/JabRef/jabref/releases/latest?per_page=100" | jq -r '.tag_name'
+  entrypoint: "/bin/JabRef"
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/JabRef/jabref" --match "portable,linux" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes
+        tar -xzf "./${SBUILD_PKG}" --strip-components="1" && rm -rvf "./${SBUILD_PKG}"
+        tree "./"
+        ;;
+    esac
