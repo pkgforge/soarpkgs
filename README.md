@@ -9,7 +9,7 @@
 [doc-shield]: https://img.shields.io/badge/docs.pkgforge.dev-blue
 [doc-url]: https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs
 
-<a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-1579%20(1635)-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
+<a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-1580%20(1635)-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
 [![Documentation][doc-shield]][doc-url]
 [![Issues][issues-shield]][issues-url]
 [![License: MIT][license-shield]][license-url]
@@ -21,7 +21,7 @@
         <img src="https://github.com/user-attachments/assets/220ce7b3-55b3-496e-b3b8-2556123193a2" width="100">
     </a><br> -->
     <a href="https://github.com/pkgforge/soar">
-        <img src="https://bin.pkgforge.dev/list.gif?tmp.ddiRy133ge=tmp.wCCiKA97bG" alt="soar-list" width="500">
+        <img src="https://bin.pkgforge.dev/list.gif?tmp.xJgyCjTW1L=tmp.nPl4WIhZbN" alt="soar-list" width="500">
     </a><br>
     <b><strong> <a href="https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs">Package Forge Community Repo</a></code></strong></b>
     <br>
