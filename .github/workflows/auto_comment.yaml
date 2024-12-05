@@ -12,9 +12,22 @@ jobs:
   auto-respond:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug GitHub Context
-        run: echo "${{ toJson(github) }}"
-
+      - name: Get GitHub context
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "This is a pull request event. Comments URL: ${{ github.event.pull_request.comments_url }}"
+          elif [[ "${{ github.event_name }}" == "issues" ]]; then
+            echo "This is an issue event. Comments URL: ${{ github.event.issue.comments_url }}"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            echo "This is a push event. No comments URL available."
+          else
+            echo "Unknown event: ${{ github.event_name }}"
+          fi
+          
       - uses: actions/github-script@v7
         with:
           script: |
