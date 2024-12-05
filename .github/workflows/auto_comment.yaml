@@ -11,6 +11,10 @@ on:
 jobs:
   auto-respond:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      discussions: write
     steps:
       - name: Get GitHub context
         run: |
@@ -76,6 +80,7 @@ jobs:
                   message = messages.issue;
                   break;
                 case 'pull_request':
+                  // For pull requests, use the pull request's associated issue number
                   number = context.payload.pull_request.number;
                   message = messages.pullRequest;
                   break;
@@ -88,7 +93,7 @@ jobs:
                   return;
               }
       
-              // Use the appropriate method based on event type
+              // Use issues.createComment for both issues and pull requests
               if (context.eventName === 'discussion') {
                 await github.rest.discussions.createComment({
                   owner: context.repo.owner,
@@ -96,16 +101,7 @@ jobs:
                   discussion_number: number,
                   body: message
                 });
-              } else if (context.eventName === 'pull_request') {
-                // Use pulls.createComment for pull request comments
-                await github.rest.pulls.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: number,
-                  body: message
-                });
               } else {
-                // For issues, use the existing issues.createComment method
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
