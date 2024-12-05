@@ -1,0 +1,16 @@
+on:
+  issues:
+    types: [opened]
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🤖 **Automated Issue Response** <br> Thanks for creating this issue! <br> **Quick Details:** <br> - 📋 We'll review your issue shortly <br> - 🕒 Typical response time is 12-24 hours <br> *Want faster resolution or more community support?* <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`
+            })
