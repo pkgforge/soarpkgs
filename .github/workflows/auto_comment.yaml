@@ -20,25 +20,53 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
-            // Extract the issue or pull request number based on the event type
-            const issueNumber = context.payload.issue?.number || context.payload.pull_request?.number;
-            const isIssue = !!context.payload.issue;
+            const issueNumber = context.issue.number || context.pullRequest.number;
+            const isIssue = context.eventName === 'issues';
+            
             const responseMessage = isIssue
-              ? `🤖 **Automated Issue Response** <br> Thanks for creating this issue! <br> **Quick Details:** <br> - 📋 We'll review your issue shortly <br> - 🕒 Typical response time is 12-24 hours <br> Want faster resolution or more community support? <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`
-              : `🤖 **Automated Pull Request Response** <br> Thanks for submitting this pull request! <br> **Quick Details:** <br> - 📋 We'll review your PR shortly <br> - 🕒 Typical review time is 12-24 hours <br> Want faster resolution or more community support? <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`;
-
-            if (!issueNumber) {
-              console.error('Could not determine issue or pull request number.');
-              throw new Error('Issue or pull request number is undefined.');
-            }
-
+              ? `🤖 **Automated Issue Response**
+                
+                Thanks for creating this issue!
+                
+                **Quick Details:**
+                - 📋 We'll review your issue shortly
+                - 🕒 Typical response time is 12-24 hours
+                
+                Want faster resolution or more community support?
+                
+                **Join Our Discord:** https://discord.gg/djJUs48Zbu
+                
+                Connect directly with our team, get quicker responses, and engage with our community!`
+              : `🤖 **Automated Pull Request Response**
+                
+                Thanks for submitting this pull request!
+                
+                **Quick Details:**
+                - 📋 We'll review your PR shortly
+                - 🕒 Typical review time is 12-24 hours
+                
+                Want faster resolution or more community support?
+                
+                **Join Our Discord:** https://discord.gg/djJUs48Zbu
+                
+                Connect directly with our team, get quicker responses, and engage with our community!`;
+            
             try {
-              await github.rest.issues.createComment({
-                owner,
-                repo,
-                issue_number: issueNumber,
-                body: responseMessage
-              });
+              if (isIssue) {
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  body: responseMessage
+                });
+              } else {
+                await github.rest.pulls.createReviewComment({
+                  owner,
+                  repo,
+                  pull_number: issueNumber,
+                  body: responseMessage
+                });
+              }
               console.log(`Successfully created comment on ${isIssue ? 'issue' : 'pull request'} #${issueNumber}`);
             } catch (error) {
               console.error('Failed to create comment:', error);
