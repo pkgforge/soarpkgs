@@ -1,0 +1,115 @@
+name: 🤖 Auto Respond [Discussions|Issues|PRs]ℹ️
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+  discussion:
+    types: [created]
+
+jobs:
+  auto-respond:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      discussions: write
+    steps:
+      - name: Get GitHub context
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "This is a pull request event. Comments URL: ${{ github.event.pull_request.comments_url }}"
+          elif [[ "${{ github.event_name }}" == "issues" ]]; then
+            echo "This is an issue event. Comments URL: ${{ github.event.issue.comments_url }}"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            echo "This is a push event. No comments URL available."
+          else
+            echo "Unknown event: ${{ github.event_name }}"
+          fi
+
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const isIssue = context.eventName === 'issues';
+            const isPR = context.eventName === 'pull_request';
+            const isDiscussion = context.eventName === 'discussion';
+            
+            console.log('Event Name:', context.eventName);
+            console.log('Payload:', JSON.stringify(context.payload, null, 2));
+      
+            const messages = {
+              issue: `🤖 **Automated Response** <br> 
+              Thanks for opening this issue! <br> 
+              **Quick Details:** <br> 
+              - 📋 We'll review it shortly <br> 
+              - 🕒 Typical response time is 12-24 hours <br> 
+              *Want faster resolution or more community support?* <br> 
+              **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> 
+              Connect directly with our team, get quicker responses, and engage with our community!`,
+              
+              pullRequest: `🤖 **Automated Response** <br> 
+              Thanks for opening this pull request! <br> 
+              **Quick Details:** <br> 
+              - 📋 We'll review it shortly <br> 
+              - 🕒 Typical response time is 12-24 hours <br> 
+              *Want faster resolution or more community support?* <br> 
+              **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> 
+              Connect directly with our team, get quicker responses, and engage with our community!`,
+              
+              discussion: `🤖 **Automated Response** <br> 
+              Thanks for starting this discussion! <br> 
+              **Quick Details:** <br> 
+              - 💬 We're excited to hear your thoughts <br> 
+              - 🕒 Typical response time is 12-24 hours <br> 
+              *Want to connect more with our team and community?* <br> 
+              **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> 
+              Dive deeper with us and get involved!`
+            };
+      
+            let number, message;
+            try {
+              switch (context.eventName) {
+                case 'issues':
+                  number = context.payload.issue.number;
+                  message = messages.issue;
+                  break;
+                case 'pull_request':
+                  // For pull requests, use the pull request's associated issue number
+                  number = context.payload.pull_request.number;
+                  message = messages.pullRequest;
+                  break;
+                case 'discussion':
+                  number = context.payload.discussion.number;
+                  message = messages.discussion;
+                  break;
+                default:
+                  console.log(`Unsupported event type: ${context.eventName}`);
+                  return;
+              }
+      
+              // Use issues.createComment for both issues and pull requests
+              if (context.eventName === 'discussion') {
+                await github.rest.discussions.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  discussion_number: number,
+                  body: message
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: number,
+                  body: message
+                });
+              }
+            } catch (error) {
+              console.error('Error in script:', error);
+              throw error;
+            }
