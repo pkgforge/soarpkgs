@@ -1,4 +1,7 @@
 name: 🤖 Auto Respond [Issues|PRs]ℹ️
+permissions:
+  issues: write
+  pull-requests: write
 on:
   issues:
     types: [opened]
