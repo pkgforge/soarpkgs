@@ -32,8 +32,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            // Directly use context from the first argument
-            const { context } = require('@actions/github');
+            const isIssue = context.eventName === 'issues';
+            const isPR = context.eventName === 'pull_request';
+            const isDiscussion = context.eventName === 'discussion';
             
             console.log('Event Name:', context.eventName);
             console.log('Payload:', JSON.stringify(context.payload, null, 2));
