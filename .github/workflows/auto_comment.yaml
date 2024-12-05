@@ -21,34 +21,36 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const { context, github } = require('@actions/github');
-            
-            const body = `🤖 **Automated Response** <br> Thanks for your ${context.eventName === 'issues' ? 'issue' : context.eventName === 'pull_request' ? 'pull request' : 'discussion'}! <br> **Quick Details:** <br> - 📋 We'll review your ${context.eventName === 'issues' ? 'issue' : context.eventName === 'pull_request' ? 'pull request' : 'discussion'} shortly <br> - 🕒 Typical response time is 12-24 hours <br> *Want faster resolution or more community support?* <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`;
-            
-            try {
-              if (context.eventName === 'issues') {
-                await github.rest.issues.createComment({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: body
-                });
-              } else if (context.eventName === 'pull_request') {
-                await github.rest.pulls.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: context.issue.number,
-                  body: body
-                });
-              } else if (context.eventName === 'discussion') {
-                await github.rest.discussions.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  discussion_number: context.issue.number,
-                  body: body
-                });
+            const createComment = async (github, ctx) => {
+              const body = `🤖 **Automated Response** <br> Thanks for your ${ctx.eventName === 'issues' ? 'issue' : ctx.eventName === 'pull_request' ? 'pull request' : 'discussion'}! <br> **Quick Details:** <br> - 📋 We'll review your ${ctx.eventName === 'issues' ? 'issue' : ctx.eventName === 'pull_request' ? 'pull request' : 'discussion'} shortly <br> - 🕒 Typical response time is 12-24 hours <br> *Want faster resolution or more community support?* <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`;
+              
+              try {
+                if (ctx.eventName === 'issues') {
+                  await github.rest.issues.createComment({
+                    issue_number: ctx.issue.number,
+                    owner: ctx.repo.owner,
+                    repo: ctx.repo.repo,
+                    body: body
+                  });
+                } else if (ctx.eventName === 'pull_request') {
+                  await github.rest.pulls.createComment({
+                    owner: ctx.repo.owner,
+                    repo: ctx.repo.repo,
+                    pull_number: ctx.issue.number,
+                    body: body
+                  });
+                } else if (ctx.eventName === 'discussion') {
+                  await github.rest.discussions.createComment({
+                    owner: ctx.repo.owner,
+                    repo: ctx.repo.repo,
+                    discussion_number: ctx.issue.number,
+                    body: body
+                  });
+                }
+              } catch (error) {
+                console.error('Error creating comment:', error);
+                throw error;
               }
-            } catch (error) {
-              console.error('Error creating comment:', error);
-              throw error;
-            }
+            };
+
+            await createComment(github, context);
