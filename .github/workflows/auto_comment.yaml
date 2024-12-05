@@ -96,7 +96,16 @@ jobs:
                   discussion_number: number,
                   body: message
                 });
+              } else if (context.eventName === 'pull_request') {
+                // Use pulls.createComment for pull request comments
+                await github.rest.pulls.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: number,
+                  body: message
+                });
               } else {
+                // For issues, use the existing issues.createComment method
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
