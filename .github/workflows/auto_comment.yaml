@@ -1,6 +1,5 @@
 name: 🤖 Auto Respond [Issues|PRs|Discussions]ℹ️
 
-# Define permissions at the workflow level
 permissions:
   issues: write
   pull-requests: write
@@ -24,19 +23,7 @@ jobs:
           script: |
             const { context, github } = require('@actions/github');
             
-            const body = `🤖 **Automated Response** 
-
-Thanks for your ${context.eventName === 'issues' ? 'issue' : context.eventName === 'pull_request' ? 'pull request' : 'discussion'}! 
-
-**Quick Details:** 
-- 📋 We'll review your ${context.eventName === 'issues' ? 'issue' : context.eventName === 'pull_request' ? 'pull request' : 'discussion'} shortly 
-- 🕒 Typical response time is 12-24 hours 
-
-*Want faster resolution or more community support?* 
-
-**Join Our Discord:** https://discord.gg/djJUs48Zbu 
-
-Connect directly with our team, get quicker responses, and engage with our community!`;
+            const body = `🤖 **Automated Response** <br> Thanks for your ${context.eventName === 'issues' ? 'issue' : context.eventName === 'pull_request' ? 'pull request' : 'discussion'}! <br> **Quick Details:** <br> - 📋 We'll review your ${context.eventName === 'issues' ? 'issue' : context.eventName === 'pull_request' ? 'pull request' : 'discussion'} shortly <br> - 🕒 Typical response time is 12-24 hours <br> *Want faster resolution or more community support?* <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`;
             
             try {
               if (context.eventName === 'issues') {
