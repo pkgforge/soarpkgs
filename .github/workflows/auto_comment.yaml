@@ -1,18 +1,12 @@
-name: 🤖 Auto Respond [Issues|PRs|Discussions]ℹ️
-
+name: 🤖 Auto Respond [Issues|PRs]ℹ️
 permissions:
   issues: write
   pull-requests: write
-  discussions: write
-
 on:
   issues:
     types: [opened]
   pull_request:
     types: [opened]
-  discussion:
-    types: [created]
-
 jobs:
   comment:
     runs-on: ubuntu-latest
@@ -22,7 +16,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const createComment = async (github, ctx) => {
-              const body = `🤖 **Automated Response** <br> Thanks for your ${ctx.eventName === 'issues' ? 'issue' : ctx.eventName === 'pull_request' ? 'pull request' : 'discussion'}! <br> **Quick Details:** <br> - 📋 We'll review your ${ctx.eventName === 'issues' ? 'issue' : ctx.eventName === 'pull_request' ? 'pull request' : 'discussion'} shortly <br> - 🕒 Typical response time is 12-24 hours <br> *Want faster resolution or more community support?* <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`;
+              const body = `🤖 **Automated Response** <br> Thanks for your ${ctx.eventName === 'issues' ? 'issue' : 'pull request'}! <br> **Quick Details:** <br> - 📋 We'll review your ${ctx.eventName === 'issues' ? 'issue' : 'pull request'} shortly <br> - 🕒 Typical response time is 12-24 hours <br> Want faster resolution or more community support? <br> **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> Connect directly with our team, get quicker responses, and engage with our community!`;
               
               try {
                 if (ctx.eventName === 'issues') {
@@ -39,18 +33,10 @@ jobs:
                     pull_number: ctx.issue.number,
                     body: body
                   });
-                } else if (ctx.eventName === 'discussion') {
-                  await github.rest.discussions.createComment({
-                    owner: ctx.repo.owner,
-                    repo: ctx.repo.repo,
-                    discussion_number: ctx.issue.number,
-                    body: body
-                  });
                 }
               } catch (error) {
                 console.error('Error creating comment:', error);
                 throw error;
               }
             };
-
             await createComment(github, context);
