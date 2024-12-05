@@ -25,7 +25,7 @@ jobs:
             *Want faster resolution or more community support?* <br> 
             **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> 
             Connect directly with our team, get quicker responses, and engage with our community!`;
-            
+
             const discussionMessage = `🤖 **Automated Response** <br> 
             Thanks for starting this discussion! <br> 
             **Quick Details:** <br> 
@@ -35,9 +35,18 @@ jobs:
             **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> 
             Dive deeper with us and get involved!`;
 
-            github.rest.issues.createComment({
-              issue_number: context.payload[isDiscussion ? 'discussion' : isIssue ? 'issue' : 'pull_request'].number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: isDiscussion ? discussionMessage : issueOrPRMessage,
-            });
+            if (isDiscussion) {
+              github.rest.discussions.createComment({
+                discussion_number: context.payload.discussion.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: discussionMessage,
+              });
+            } else {
+              github.rest.issues.createComment({
+                issue_number: context.payload[isIssue ? 'issue' : 'pull_request'].number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: issueOrPRMessage,
+              });
+            }
