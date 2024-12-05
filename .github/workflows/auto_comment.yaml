@@ -12,6 +12,9 @@ jobs:
   auto-respond:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug GitHub Context
+        run: echo "${{ toJson(github) }}"
+
       - uses: actions/github-script@v7
         with:
           script: |
@@ -44,7 +47,11 @@ jobs:
               Dive deeper with us and get involved!`
             };
 
-            // Determine the event type and get the appropriate number and message
+            // Ensure the event context is available
+            if (!github.context.eventName) {
+              throw new Error('Event context is undefined.');
+            }
+
             let number, message;
             switch (github.context.eventName) {
               case 'issues':
@@ -60,12 +67,10 @@ jobs:
                 message = messages.discussion;
                 break;
               default:
-                return; // Exit if not a recognized event type
+                return;
             }
 
-            // Select the correct API endpoint based on event type
             if (github.context.eventName === 'discussion') {
-              // Use discussions API for discussions
               github.rest.discussions.createComment({
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
@@ -73,7 +78,6 @@ jobs:
                 body: message
               });
             } else {
-              // Use issues API for issues and pull requests
               github.rest.issues.createComment({
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
