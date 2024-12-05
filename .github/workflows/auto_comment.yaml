@@ -27,10 +27,21 @@ jobs:
           else
             echo "Unknown event: ${{ github.event_name }}"
           fi
-          
+
       - uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            // Debug: Log the entire context
+            console.log('Full GitHub Context:', JSON.stringify(github, null, 2));
+            
+            // Explicitly extract event name and payload
+            const eventName = github.context.eventName || process.env.GITHUB_EVENT_NAME;
+            const payload = github.context.payload;
+            
+            console.log('Event Name:', eventName);
+            console.log('Payload:', JSON.stringify(payload, null, 2));
+      
             const messages = {
               issue: `🤖 **Automated Response** <br> 
               Thanks for opening this issue! <br> 
@@ -59,42 +70,44 @@ jobs:
               **Join Our Discord:** https://discord.gg/djJUs48Zbu <br> 
               Dive deeper with us and get involved!`
             };
-
-            // Ensure the event context is available
-            if (!github.context.eventName) {
-              throw new Error('Event context is undefined.');
-            }
-
+      
             let number, message;
-            switch (github.context.eventName) {
-              case 'issues':
-                number = github.context.payload.issue.number;
-                message = messages.issue;
-                break;
-              case 'pull_request':
-                number = github.context.payload.pull_request.number;
-                message = messages.pullRequest;
-                break;
-              case 'discussion':
-                number = github.context.payload.discussion.number;
-                message = messages.discussion;
-                break;
-              default:
-                return;
-            }
-
-            if (github.context.eventName === 'discussion') {
-              github.rest.discussions.createComment({
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
-                discussion_number: number,
-                body: message
-              });
-            } else {
-              github.rest.issues.createComment({
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
-                issue_number: number,
-                body: message
-              });
+            try {
+              switch (eventName) {
+                case 'issues':
+                  number = payload.issue.number;
+                  message = messages.issue;
+                  break;
+                case 'pull_request':
+                  number = payload.pull_request.number;
+                  message = messages.pullRequest;
+                  break;
+                case 'discussion':
+                  number = payload.discussion.number;
+                  message = messages.discussion;
+                  break;
+                default:
+                  console.log(`Unsupported event type: ${eventName}`);
+                  return;
+              }
+      
+              // Use the appropriate method based on event type
+              if (eventName === 'discussion') {
+                await github.rest.discussions.createComment({
+                  owner: github.context.repo.owner,
+                  repo: github.context.repo.repo,
+                  discussion_number: number,
+                  body: message
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: github.context.repo.owner,
+                  repo: github.context.repo.repo,
+                  issue_number: number,
+                  body: message
+                });
+              }
+            } catch (error) {
+              console.error('Error in script:', error);
+              throw error;
             }
