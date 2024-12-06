@@ -4,11 +4,11 @@
 | [0neGal](https://github.com/0neGal) | [viper](https://github.com/0neGal/viper) | 152 | Launcher+Updater for TF2 Northstar | 2024-11-01T14:15:42Z |
 | [0xzer0x](https://github.com/0xzer0x) | [quran-companion](https://github.com/0xzer0x/quran-companion) | 112 | Free and open-source desktop Quran reader and player 💻 | 2024-12-06T00:07:32Z |
 | [1595901624](https://github.com/1595901624) | [gpt-aggregated-edition](https://github.com/1595901624/gpt-aggregated-edition) | 745 | 聚合ChatGPT官方版、ChatGPT免费版、文心一言、Poe、chatchat等多平台，支持自定义导入平台 | 2024-12-05T13:20:55Z |
-| [1943time](https://github.com/1943time) | [inkdown](https://github.com/1943time/inkdown) | 980 | A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way. | 2024-12-06T12:16:22Z |
+| [1943time](https://github.com/1943time) | [inkdown](https://github.com/1943time/inkdown) | 981 | A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way. | 2024-12-06T13:52:53Z |
 | [42infi](https://github.com/42infi) | [better-kirka-client](https://github.com/42infi/better-kirka-client) | 4 | a electron js based client for the game kirka.io | 2024-08-20T16:05:30Z |
 | [4gray](https://github.com/4gray) | [iptvnator](https://github.com/4gray/iptvnator) | 3591 | :tv: Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more. | 2024-12-06T12:13:04Z |
 | [6c65726f79](https://github.com/6c65726f79) | [Transmissionic](https://github.com/6c65726f79/Transmissionic) | 457 | Remote for Transmission Daemon | 2024-11-30T03:26:40Z |
-| [86Box](https://github.com/86Box) | [86Box](https://github.com/86Box/86Box) | 2835 | Emulator of x86-based machines. | 2024-12-06T09:38:46Z |
+| [86Box](https://github.com/86Box) | [86Box](https://github.com/86Box/86Box) | 2836 | Emulator of x86-based machines. | 2024-12-06T14:08:56Z |
 | [AAGaming00](https://github.com/AAGaming00) | [xcloud-desktop](https://github.com/AAGaming00/xcloud-desktop) | 13 | A Desktop app for the XCloud web beta. | 2024-10-16T13:58:01Z |
 | [AIIX](https://github.com/AIIX) | [Mycroft-Ai-QtApplication](https://github.com/AIIX/Mycroft-Ai-QtApplication) | 27 | Qt5 Frontend for Mycroft Ai | 2024-10-19T13:06:03Z |
 | [ARPA-SIMC](https://github.com/ARPA-SIMC) | [CRITERIA1D](https://github.com/ARPA-SIMC/CRITERIA1D) | 13 | CRITERIA 1D is a one-dimensional agro-hydrological model. It includes soil water fluxes, crop development and crop water needs, a GIS interface (CRITERIA GEO) for geographical simulations and tools to manage crop and soil parameters. The software is written in C++ using Qt libraries, so cross-platform building is possible (Windows, Linux, MacOS) | 2024-12-04T15:20:07Z |
@@ -43,8 +43,8 @@
 | [AppImageCommunity](https://github.com/AppImageCommunity) | [zsync2](https://github.com/AppImageCommunity/zsync2) | 132 | Rewrite of https://github.com/AppImage/zsync-curl, using modern C++, providing both a library and standalone tools. | 2024-11-28T12:20:28Z |
 | [AppImageCrafters](https://github.com/AppImageCrafters) | [appimage-builder](https://github.com/AppImageCrafters/appimage-builder) | 316 | GNU/Linux packaging solution using the AppImage format | 2024-12-04T19:23:16Z |
 | [AppOutlet](https://github.com/AppOutlet) | [AppOutlet](https://github.com/AppOutlet/AppOutlet) | 391 | A Universal linux app store | 2024-12-05T23:09:02Z |
-| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3419 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-06T01:03:57Z |
-| [ArchipelagoMW](https://github.com/ArchipelagoMW) | [Archipelago](https://github.com/ArchipelagoMW/Archipelago) | 528 | Archipelago Multi-Game Randomizer and Server | 2024-12-06T06:15:32Z |
+| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3420 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-06T13:16:09Z |
+| [ArchipelagoMW](https://github.com/ArchipelagoMW) | [Archipelago](https://github.com/ArchipelagoMW/Archipelago) | 527 | Archipelago Multi-Game Randomizer and Server | 2024-12-06T13:46:38Z |
 | [ArkEcosystem](https://github.com/ArkEcosystem) | [desktop-wallet](https://github.com/ArkEcosystem/desktop-wallet) | 292 | :computer: Archived, please use ARKVault | 2024-10-01T19:07:47Z |
 | [Legcord](https://github.com/Legcord) | [Legcord](https://github.com/Legcord/Legcord) | 1708 | Legcord is a custom client designed to enhance your Discord experience while keeping everything lightweight. | 2024-12-06T08:14:01Z |
 | [ArmagetronAd](https://github.com/ArmagetronAd) | [armagetronad](https://github.com/ArmagetronAd/armagetronad) | 47 | No description provided. | 2024-10-13T09:42:50Z |
@@ -61,7 +61,7 @@
 | [BehaviorTree](https://github.com/BehaviorTree) | [Groot](https://github.com/BehaviorTree/Groot) | 746 | Graphical Editor to create BehaviorTrees. Compliant with BehaviorTree.CPP | 2024-12-06T13:01:03Z |
 | [BestImageViewer](https://github.com/BestImageViewer) | [geeqie](https://github.com/BestImageViewer/geeqie) | 491 | claiming to be the best image viewer / photo collection browser | 2024-12-04T10:06:52Z |
 | [Bforartists](https://github.com/Bforartists) | [Bforartists](https://github.com/Bforartists/Bforartists) | 584 | Bforartists is a fork of the popular 3D software Blender, with the goal to improve the UI. | 2024-12-04T17:02:24Z |
-| [Bin-Huang](https://github.com/Bin-Huang) | [chatbox](https://github.com/Bin-Huang/chatbox) | 23452 | User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...) | 2024-12-06T12:21:15Z |
+| [Bin-Huang](https://github.com/Bin-Huang) | [chatbox](https://github.com/Bin-Huang/chatbox) | 23454 | User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...) | 2024-12-06T13:39:09Z |
 | [Bionus](https://github.com/Bionus) | [imgbrd-grabber](https://github.com/Bionus/imgbrd-grabber) | 2591 | Very customizable imageboard/booru downloader with powerful filenaming features. | 2024-12-05T16:28:49Z |
 | [BirthdayResearch](https://github.com/BirthdayResearch) | [defichain-app](https://github.com/BirthdayResearch/defichain-app) | 158 | DeFi Blockchain desktop app for Windows, Linux and Mac. | 2024-12-04T02:46:38Z |
 | [Bithack](https://github.com/Bithack) | [principia](https://github.com/Bithack/principia) | 290 | Open source physics-based sandbox game. | 2024-12-05T15:36:39Z |
@@ -85,7 +85,7 @@
 | [CarVac](https://github.com/CarVac) | [filmulator-gui](https://github.com/CarVac/filmulator-gui) | 680 | Filmulator --- Simplified raw editing with the power of film | 2024-11-27T19:12:10Z |
 | [Carlos-CDM](https://github.com/Carlos-CDM) | [Keibo-MoneyTracker](https://github.com/Carlos-CDM/Keibo-MoneyTracker) | 1 | Track your income and expenses easily | 2024-10-14T18:18:23Z |
 | [CatalystDevOrg](https://github.com/CatalystDevOrg) | [Catalyst](https://github.com/CatalystDevOrg/Catalyst) | 61 | A minimal, functional, and customizable user-focused FOSS web browser | 2024-12-05T04:46:17Z |
-| [ChatGPTNextWeb](https://github.com/ChatGPTNextWeb) | [ChatGPT-Next-Web](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | 77315 | A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。 | 2024-12-06T12:50:20Z |
+| [ChatGPTNextWeb](https://github.com/ChatGPTNextWeb) | [ChatGPT-Next-Web](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | 77320 | A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。 | 2024-12-06T14:06:45Z |
 | [Chatterino](https://github.com/Chatterino) | [chatterino2](https://github.com/Chatterino/chatterino2) | 2072 | Chat client for https://twitch.tv | 2024-12-06T08:46:30Z |
 | [Chhekur](https://github.com/Chhekur) | [colon-ide](https://github.com/Chhekur/colon-ide) | 99 | Colon is a flexible text editor, built on Electron, and based on everything we love about our favorite editors. We are trying to designe it to be fully customizable. | 2024-09-19T11:51:46Z |
 | [Chhekur](https://github.com/Chhekur) | [local-browser](https://github.com/Chhekur/local-browser) | 45 | Share your localhost in a new way (peer to peer browser) | 2024-10-23T16:29:23Z |
@@ -106,7 +106,7 @@
 | [DECODEproject](https://github.com/DECODEproject) | [zenroom-studio](https://github.com/DECODEproject/zenroom-studio) | 2 | Zenroom Studio is an extensible IDE which targets multiple platforms :electron: designed specifically for Zenroom/Zencode development | 2021-07-19T20:20:37Z |
 | [DEgITx](https://github.com/DEgITx) | [rats-search](https://github.com/DEgITx/rats-search) | 1619 | BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client. | 2024-12-03T13:39:08Z |
 | [DarkGuy10](https://github.com/DarkGuy10) | [BotClient](https://github.com/DarkGuy10/BotClient) | 185 | A discord botclient built with Electron, React and discord.js. | 2024-12-03T06:39:12Z |
-| [DavidoTek](https://github.com/DavidoTek) | [ProtonUp-Qt](https://github.com/DavidoTek/ProtonUp-Qt) | 1284 | Install and manage GE-Proton, Luxtorpeda & more for Steam and Wine-GE & more for Lutris with this graphical user interface. | 2024-12-05T14:30:11Z |
+| [DavidoTek](https://github.com/DavidoTek) | [ProtonUp-Qt](https://github.com/DavidoTek/ProtonUp-Qt) | 1285 | Install and manage GE-Proton, Luxtorpeda & more for Steam and Wine-GE & more for Lutris with this graphical user interface. | 2024-12-06T13:11:22Z |
 | [DeDop](https://github.com/DeDop) | [dedop-studio](https://github.com/DeDop/dedop-studio) | 4 | DeDop Desktop Application | 2019-07-08T13:46:51Z |
 | [DeepNotesApp](https://github.com/DeepNotesApp) | [DeepNotes](https://github.com/DeepNotesApp/DeepNotes) | 427 | End-to-end encrypted visual note-taking tool with deep page navigation. | 2024-12-05T15:06:15Z |
 | [DevTeamSCH](https://github.com/DevTeamSCH) | [printer-client](https://github.com/DevTeamSCH/printer-client) | 0 | No description provided. | 2019-04-10T00:06:09Z |
@@ -128,7 +128,7 @@
 | [Eroica](https://github.com/Eroica) | [Paletti](https://github.com/Eroica/Paletti) | 37 | Paletti reduces an image into fewer colors to simplify it visually or to create color palettes. | 2024-12-05T20:54:28Z |
 | [EtherealEngine](https://github.com/EtherealEngine) | [ir-engine-launcher](https://github.com/EtherealEngine/ir-engine-launcher) | 33 | One stop solution for all your Metaverse needs. A desktop app for installing and launching iR Engine. 🤖 🚀 🚀 🚀 👓 | 2024-08-19T23:49:16Z |
 | [EuanRiggans](https://github.com/EuanRiggans) | [BulkURLOpener](https://github.com/EuanRiggans/BulkURLOpener) | 89 | Bulk URL Opener is an application that provides the user with multiple utilities to help with managing and using large amounts of urls | 2024-12-05T15:55:57Z |
-| [Eugeny](https://github.com/Eugeny) | [tabby](https://github.com/Eugeny/tabby) | 59907 | A terminal for a more modern age | 2024-12-06T12:53:29Z |
+| [Eugeny](https://github.com/Eugeny) | [tabby](https://github.com/Eugeny/tabby) | 59910 | A terminal for a more modern age | 2024-12-06T14:07:43Z |
 | [Eximchain](https://github.com/Eximchain) | [EximchainWallet](https://github.com/Eximchain/EximchainWallet) | 5 | A specialized wallet client to connect to the Eximchain Network | 2023-05-29T17:47:20Z |
 | [FPGAwars](https://github.com/FPGAwars) | [icestudio](https://github.com/FPGAwars/icestudio) | 1723 | :snowflake: Visual editor for open FPGA boards | 2024-12-03T13:36:09Z |
 | [FPurchess](https://github.com/FPurchess) | [blank](https://github.com/FPurchess/blank) | 169 | :pencil: Blank is a minimalist, opinionated markdown editor made for writing | 2024-12-04T02:39:51Z |
@@ -145,24 +145,24 @@
 | [Fraktal-JS](https://github.com/Fraktal-JS) | [fraktal](https://github.com/Fraktal-JS/fraktal) | 8 | Podcast Manager in Electron | 2023-09-30T01:02:03Z |
 | [FreeCAD](https://github.com/FreeCAD) | [FreeCAD-Bundle](https://github.com/FreeCAD/FreeCAD-Bundle) | 344 | Stand-alone repo to Build and Deploy installable FreeCAD images. Do not open general FreeCAD issues here. | 2024-12-06T01:23:52Z |
 | [FreeLanguageTools](https://github.com/FreeLanguageTools) | [vocabsieve](https://github.com/FreeLanguageTools/vocabsieve) | 395 | Simple sentence mining tool for language learning | 2024-12-02T08:18:23Z |
-| [FreeTubeApp](https://github.com/FreeTubeApp) | [FreeTube](https://github.com/FreeTubeApp/FreeTube) | 13731 | An Open Source YouTube app for privacy | 2024-12-06T13:00:36Z |
+| [FreeTubeApp](https://github.com/FreeTubeApp) | [FreeTube](https://github.com/FreeTubeApp/FreeTube) | 13733 | An Open Source YouTube app for privacy | 2024-12-06T13:51:16Z |
 | [Fulgen301](https://github.com/Fulgen301) | [LCEdit](https://github.com/Fulgen301/LCEdit) | 1 | No description provided. | 2021-01-19T14:34:38Z |
 | [GAMS-dev](https://github.com/GAMS-dev) | [studio](https://github.com/GAMS-dev/studio) | 36 | GAMS Studio | 2024-11-22T09:33:54Z |
 | [GenesisKernel](https://github.com/GenesisKernel) | [genesis-front](https://github.com/GenesisKernel/genesis-front) | 13 | No description provided. | 2019-11-06T07:30:58Z |
 | [GetScatter](https://github.com/GetScatter) | [ScatterDesktop](https://github.com/GetScatter/ScatterDesktop) | 501 | Connect to applications on EOS, Ethereum, and Tron. Exchange tokens with ease. Manage your assets safely. All in a simple to use interface. | 2024-10-22T09:47:51Z |
 | [GiovanH](https://github.com/GiovanH) | [unofficial-homestuck-collection](https://github.com/GiovanH/unofficial-homestuck-collection) | 37 | An offline collection of Homestuck and its related works. | 2024-11-07T20:11:44Z |
 | [GitJournal](https://github.com/GitJournal) | [GitJournal](https://github.com/GitJournal/GitJournal) | 3511 | Mobile first Note Taking integrated with Git | 2024-11-30T15:33:17Z |
-| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40904 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-06T12:37:15Z |
+| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40905 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-06T14:00:58Z |
 | [GoldenCheetah](https://github.com/GoldenCheetah) | [GoldenCheetah](https://github.com/GoldenCheetah/GoldenCheetah) | 1843 | Performance Software for Cyclists, Runners, Triathletes and Coaches | 2024-12-04T14:34:59Z |
 | [GooBox](https://github.com/GooBox) | [file-share-desktop](https://github.com/GooBox/file-share-desktop) | 13 | 💻 Goobox file share desktop app (Moved to https://github.com/storewise/file-share-desktop) | 2023-01-28T06:24:59Z |
-| [GopeedLab](https://github.com/GopeedLab) | [gopeed](https://github.com/GopeedLab/gopeed) | 17197 | A modern download manager that supports all platforms.  Built with Golang and Flutter. | 2024-12-06T10:28:48Z |
+| [GopeedLab](https://github.com/GopeedLab) | [gopeed](https://github.com/GopeedLab/gopeed) | 17198 | A modern download manager that supports all platforms.  Built with Golang and Flutter. | 2024-12-06T13:53:28Z |
 | [GordonSmith](https://github.com/GordonSmith) | [dashy-app](https://github.com/GordonSmith/dashy-app) | 0 | Dashy Electron App | 2022-01-20T16:58:29Z |
 | [Graviton-Code-Editor](https://github.com/Graviton-Code-Editor) | [Graviton-App](https://github.com/Graviton-Code-Editor/Graviton-App) | 1167 | 🚀 A modern-looking Code Editor | 2024-12-05T14:26:20Z |
-| [GreemDev](https://github.com/GreemDev) | [Ryujinx](https://github.com/GreemDev/Ryujinx) | 5575 | Experimental Switch emulator written in C# | 2024-12-06T13:06:32Z |
+| [GreemDev](https://github.com/GreemDev) | [Ryujinx](https://github.com/GreemDev/Ryujinx) | 5577 | Experimental Switch emulator written in C# | 2024-12-06T13:29:23Z |
 | [GrinPlusPlus](https://github.com/GrinPlusPlus) | [GrinPlusPlus](https://github.com/GrinPlusPlus/GrinPlusPlus) | 131 | A C++ Grin Node & Wallet For Windows, Mac OS X, & Linux | 2024-11-10T12:59:44Z |
 | [HR](https://github.com/HR) | [Crypter](https://github.com/HR/Crypter) | 461 | 🔓✨🔒 An innovative, convenient and secure encryption app | 2024-12-03T15:31:02Z |
 | [HermesMessenger](https://github.com/HermesMessenger) | [HermesDesktop](https://github.com/HermesMessenger/HermesDesktop) | 2 | Desktop applications of Hermes Messenger created using Electron. (You can use the PWA instead for the notifications, this is not faster than a browser). | 2019-06-05T19:08:40Z |
-| [Heroic-Games-Launcher](https://github.com/Heroic-Games-Launcher) | [HeroicGamesLauncher](https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher) | 8334 | A games launcher for GOG, Amazon and Epic Games for Linux, Windows and macOS. | 2024-12-06T09:30:15Z |
+| [Heroic-Games-Launcher](https://github.com/Heroic-Games-Launcher) | [HeroicGamesLauncher](https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher) | 8335 | A games launcher for GOG, Amazon and Epic Games for Linux, Windows and macOS. | 2024-12-06T13:33:24Z |
 | [HuakunShen](https://github.com/HuakunShen) | [EzUp](https://github.com/HuakunShen/EzUp) | 21 | Easy File Upload to Cloud Storage | 2024-12-04T02:39:54Z |
 | [HuakunShen](https://github.com/HuakunShen) | [devclean](https://github.com/HuakunShen/devclean) | 10 | A CLI and Desktop GUI app to clean dev dependencies (node_modules, cache) and more. | 2024-10-27T07:20:04Z |
 | [HubertK05](https://github.com/HubertK05) | [banban](https://github.com/HubertK05/banban) | 56 | A productivity app inspired by GitHub Projects Kanban | 2024-12-04T02:39:55Z |
@@ -193,7 +193,7 @@
 | [JinayJain](https://github.com/JinayJain) | [gpt-anywhere](https://github.com/JinayJain/gpt-anywhere) | 171 | Use GPT anywhere with just one shortcut. Available for Mac, Windows, and Linux. Over 1,800 downloads. | 2024-11-12T16:48:03Z |
 | [Jisco](https://github.com/Jisco) | [VisualFamilyTree](https://github.com/Jisco/VisualFamilyTree) | 68 | With this app you can create a family tree with extensive information and pictures about the individual family members. | 2024-09-08T14:04:15Z |
 | [Jminding](https://github.com/Jminding) | [GeoFS-Desktop](https://github.com/Jminding/GeoFS-Desktop) | 8 | GeoFS flight sim as a desktop application; supported on macOS, Windows, and Linux! | 2024-10-09T18:34:56Z |
-| [JonMagon](https://github.com/JonMagon) | [KDiskMark](https://github.com/JonMagon/KDiskMark) | 1122 | A simple open-source disk benchmark tool for Linux distros | 2024-12-06T12:28:47Z |
+| [JonMagon](https://github.com/JonMagon) | [KDiskMark](https://github.com/JonMagon/KDiskMark) | 1123 | A simple open-source disk benchmark tool for Linux distros | 2024-12-06T13:46:02Z |
 | [JustJoostNL](https://github.com/JustJoostNL) | [F1MV-Lights-Integration](https://github.com/JustJoostNL/F1MV-Lights-Integration) | 24 | The best way to connect your smart home lights to MultiViewer. | 2024-10-30T09:38:25Z |
 | [JvanKatwijk](https://github.com/JvanKatwijk) | [qt-dab](https://github.com/JvanKatwijk/qt-dab) | 301 | Qt-DAB, a general software DAB (DAB+) decoder with a (slight) focus on showing the signal | 2024-12-06T07:49:37Z |
 | [JvanKatwijk](https://github.com/JvanKatwijk) | [swradio-8](https://github.com/JvanKatwijk/swradio-8) | 76 | shortwave receiver for use with sdrplay, hackrf, dabsticks and pmsdr | 2024-09-11T18:18:31Z |
@@ -205,7 +205,7 @@
 | [khrj](https://github.com/khrj) | [teledrive](https://github.com/khrj/teledrive) | 196 | TeleDrive lets you automatically backup all your files to telegram saved messages - this means FREE, UNLIMITED storage | 2024-12-01T21:48:05Z |
 | [Kilian](https://github.com/Kilian) | [fromscratch](https://github.com/Kilian/fromscratch) | 719 | Autosaving Scratchpad. A simple but smart note-taking app | 2024-11-12T12:26:20Z |
 | [Komet](https://github.com/Komet) | [MediaElch](https://github.com/Komet/MediaElch) | 857 | Media Manager for Kodi | 2024-12-05T21:01:48Z |
-| [Kong](https://github.com/Kong) | [insomnia](https://github.com/Kong/insomnia) | 35078 | The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage. | 2024-12-06T09:26:46Z |
+| [Kong](https://github.com/Kong) | [insomnia](https://github.com/Kong/insomnia) | 35079 | The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage. | 2024-12-06T14:10:34Z |
 | [KraXen72](https://github.com/KraXen72) | [crankshaft](https://github.com/KraXen72/crankshaft) | 43 | a fast, feature-rich krunker client written in typescript | 2024-11-09T00:39:49Z |
 | [Kthulu120](https://github.com/Kthulu120) | [Cryplicity](https://github.com/Kthulu120/Cryplicity) | 13 | A Crypto Portfolio Tracker Tool | 2024-09-19T11:51:19Z |
 | [Kuingsmile](https://github.com/Kuingsmile) | [PicList](https://github.com/Kuingsmile/PicList) | 2242 | An image upload and manage tool, base on PicGo | 2024-12-06T13:06:34Z |
@@ -233,11 +233,11 @@
 | [Levminer](https://github.com/Levminer) | [authme](https://github.com/Levminer/authme) | 367 | Simple cross-platform two-factor (2FA) authenticator app for desktop. | 2024-12-05T08:57:35Z |
 | [LiamRiddell](https://github.com/LiamRiddell) | [NoteMaster](https://github.com/LiamRiddell/NoteMaster) | 61 | NoteMaster is an smart minimalistic persistent note-taking app to help boost productivity. | 2024-11-16T07:31:37Z |
 | [LiberTEM](https://github.com/LiberTEM) | [LiberTEM](https://github.com/LiberTEM/LiberTEM) | 113 | Open pixelated STEM framework | 2024-11-20T15:42:35Z |
-| [LibreCAD](https://github.com/LibreCAD) | [LibreCAD](https://github.com/LibreCAD/LibreCAD) | 4529 | LibreCAD is a cross-platform 2D CAD program written in C++17. It can read DXF/DWG files and can write DXF/PDF/SVG files. It supports point/line/circle/ellipse/parabola/spline primitives. The user interface is highly customizable, and has dozens of translations. | 2024-12-06T02:40:51Z |
+| [LibreCAD](https://github.com/LibreCAD) | [LibreCAD](https://github.com/LibreCAD/LibreCAD) | 4530 | LibreCAD is a cross-platform 2D CAD program written in C++17. It can read DXF/DWG files and can write DXF/PDF/SVG files. It supports point/line/circle/ellipse/parabola/spline primitives. The user interface is highly customizable, and has dozens of translations. | 2024-12-06T13:54:26Z |
 | [LibreSprite](https://github.com/LibreSprite) | [Dotto](https://github.com/LibreSprite/Dotto) | 697 | A portable and modern pixelart editor, written from scratch. | 2024-12-04T15:38:05Z |
 | [LightouchDev](https://github.com/LightouchDev) | [MasterVyrn](https://github.com/LightouchDev/MasterVyrn) | 4 | MasterVyrn is a clean dedicated GBF loader build on top of electron. | 2023-01-28T21:02:43Z |
 | [LinwoodDev](https://github.com/LinwoodDev) | [Butterfly](https://github.com/LinwoodDev/Butterfly) | 1085 | 🎨 Powerful, minimalistic, cross-platform, opensource note-taking app | 2024-12-05T14:15:59Z |
-| [LizardByte](https://github.com/LizardByte) | [Sunshine](https://github.com/LizardByte/Sunshine) | 20334 | Self-hosted game stream host for Moonlight. | 2024-12-06T12:59:29Z |
+| [LizardByte](https://github.com/LizardByte) | [Sunshine](https://github.com/LizardByte/Sunshine) | 20335 | Self-hosted game stream host for Moonlight. | 2024-12-06T13:51:06Z |
 | [Lonsfor](https://github.com/Lonsfor) | [srb2k-appimage](https://github.com/Lonsfor/srb2k-appimage) | 6 | AppImage Packages for SRB2Kart | 2023-07-13T23:44:55Z |
 | [LoveLiveMusicPlayer](https://github.com/LoveLiveMusicPlayer) | [LoveLiveMusicPlayer](https://github.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer) | 176 | [ラブライブ] A LoveLiver Music Player | 2024-11-17T15:10:08Z |
 | [LucasHazardous](https://github.com/LucasHazardous) | [music-player](https://github.com/LucasHazardous/music-player) | 9 | Desktop Electron app for playing and downloading music. | 2024-10-08T23:33:40Z |
@@ -259,7 +259,7 @@
 | [MillenniumEarl](https://github.com/MillenniumEarl) | [YAM](https://github.com/MillenniumEarl/YAM) | 49 | Unofficial Game Updater for the F95Zone platform | 2024-11-23T12:40:39Z |
 | [MiniZinc](https://github.com/MiniZinc) | [MiniZincIDE](https://github.com/MiniZinc/MiniZincIDE) | 144 | The MiniZinc IDE | 2024-10-02T08:12:48Z |
 | [Mohammadreza99A](https://github.com/Mohammadreza99A) | [mp3-tagger](https://github.com/Mohammadreza99A/mp3-tagger) | 6 | An Electron app to edit metadata of mp3 files with online search capability | 2024-04-07T18:50:06Z |
-| [Molunerfinn](https://github.com/Molunerfinn) | [PicGo](https://github.com/Molunerfinn/PicGo) | 24284 | :rocket:A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder | 2024-12-06T09:41:52Z |
+| [Molunerfinn](https://github.com/Molunerfinn) | [PicGo](https://github.com/Molunerfinn/PicGo) | 24285 | :rocket:A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder | 2024-12-06T14:00:27Z |
 | [Moosync](https://github.com/Moosync) | [Moosync](https://github.com/Moosync/Moosync) | 1244 | Music player capable of playing local audio or from Youtube, Spotify and many more | 2024-12-04T07:47:08Z |
 | [MrMYHuang](https://github.com/MrMYHuang) | [cbetar2](https://github.com/MrMYHuang/cbetar2) | 35 | A frontend + backend ePub viewer supporting fetching and displaying HTML as ePub. This (unofficial) app is also a Buddhist text viewer using CBETA backend API or offline DB. | 2024-11-18T02:25:32Z |
 | [MuhammedKalkan](https://github.com/MuhammedKalkan) | [OpenLens](https://github.com/MuhammedKalkan/OpenLens) | 4074 | OpenLens Binary Build Repository | 2024-12-05T16:19:28Z |
@@ -290,18 +290,18 @@
 | [OlivierLDff](https://github.com/OlivierLDff) | [QaterialGallery](https://github.com/OlivierLDff/QaterialGallery) | 103 | 🖼️  Qaterial Library Showcase. | 2024-11-11T11:31:13Z |
 | [Open-Typer](https://github.com/Open-Typer) | [Open-Typer](https://github.com/Open-Typer/Open-Typer) | 28 | A free and open source typing tutor program | 2024-11-15T15:27:40Z |
 | [OpenAcousticDevices](https://github.com/OpenAcousticDevices) | [AudioMoth-Configuration-App](https://github.com/OpenAcousticDevices/AudioMoth-Configuration-App) | 34 | An Electron-based application capable of configuring the functionality of the AudioMoth recording device and setting the onboard clock. | 2024-11-12T15:39:41Z |
-| [OpenChemistry](https://github.com/OpenChemistry) | [avogadroapp](https://github.com/OpenChemistry/avogadroapp) | 189 | Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. | 2024-12-05T19:08:43Z |
+| [OpenChemistry](https://github.com/OpenChemistry) | [avogadroapp](https://github.com/OpenChemistry/avogadroapp) | 190 | Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas. | 2024-12-06T13:29:06Z |
 | [OpenHV](https://github.com/OpenHV) | [OpenHV](https://github.com/OpenHV/OpenHV) | 866 | An Open Source Pixelart Science-Fiction Real-Time-Strategy game | 2024-12-06T04:01:46Z |
 | [OpenNewsLabs](https://github.com/OpenNewsLabs) | [autoEdit_2](https://github.com/OpenNewsLabs/autoEdit_2) | 421 | Fast text based video editing, node Electron Os X desktop app, with Backbone front end. | 2024-10-10T05:56:35Z |
 | [OpenOP2](https://github.com/OpenOP2) | [OpenOP2](https://github.com/OpenOP2/OpenOP2) | 11 | OpenOP2 is a re-implementation of the gameplay inspired by colony building games like Outpost 2, using the OpenRA engine. The gameplay follows the colony simulation and combat flow, concepts and gameplay mechanics. It features the modernized controls and customization of the OpenRA engine. Find us in | 2024-10-30T23:09:08Z |
-| [OpenRA](https://github.com/OpenRA) | [OpenRA](https://github.com/OpenRA/OpenRA) | 14797 | Open Source real-time strategy game engine for early Westwood games such as Command & Conquer: Red Alert written in C# using SDL and OpenGL. Runs on Windows, Linux, *BSD and Mac OS X. | 2024-12-06T07:24:17Z |
+| [OpenRA](https://github.com/OpenRA) | [OpenRA](https://github.com/OpenRA/OpenRA) | 14798 | Open Source real-time strategy game engine for early Westwood games such as Command & Conquer: Red Alert written in C# using SDL and OpenGL. Runs on Windows, Linux, *BSD and Mac OS X. | 2024-12-06T13:22:13Z |
 | [OpenRA](https://github.com/OpenRA) | [OpenRAModSDK](https://github.com/OpenRA/OpenRAModSDK) | 123 | Software Development Kit for building your own games using the OpenRA engine. | 2024-12-06T07:24:27Z |
 | [OpenShot](https://github.com/OpenShot) | [openshot-qt](https://github.com/OpenShot/openshot-qt) | 4391 | OpenShot Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and is dedicated to delivering high quality video editing and animation solutions to the world. | 2024-12-06T12:10:24Z |
 | [Opentrons](https://github.com/Opentrons) | [opentrons](https://github.com/Opentrons/opentrons) | 430 | Software for writing protocols and running them on the Opentrons Flex and Opentrons OT-2 | 2024-12-06T00:21:16Z |
 | [Optimizory](https://github.com/Optimizory) | [vrest-ng](https://github.com/Optimizory/vrest-ng) | 11 | vREST NG - Zero code API test automation solution | 2024-11-27T13:32:59Z |
 | [OzymandiasTheGreat](https://github.com/OzymandiasTheGreat) | [Joy2DroidX-server](https://github.com/OzymandiasTheGreat/Joy2DroidX-server) | 24 | [ARCHIVED] Use your Android phone as a virtual Xbox 360 controller or DualShock 4 gamepad on your Windows or Linux PC. This is the server that runs on Windows or Linux. | 2024-07-21T15:05:56Z |
 | [OzymandiasTheGreat](https://github.com/OzymandiasTheGreat) | [emoji-keyboard](https://github.com/OzymandiasTheGreat/emoji-keyboard) | 285 | Type emoji easily! Virtual keyboard-like emoji palette for Linux with [fewer] of features. | 2024-09-15T23:41:50Z |
-| [PCSX2](https://github.com/PCSX2) | [pcsx2](https://github.com/PCSX2/pcsx2) | 11917 | PCSX2 - The Playstation 2 Emulator | 2024-12-06T11:10:11Z |
+| [PCSX2](https://github.com/PCSX2) | [pcsx2](https://github.com/PCSX2/pcsx2) | 11918 | PCSX2 - The Playstation 2 Emulator | 2024-12-06T13:29:54Z |
 | [PTDreamer](https://github.com/PTDreamer) | [qSdrSwr](https://github.com/PTDreamer/qSdrSwr) | 1 | Qt SWR analyser using an SDR and soapy_power | 2018-12-19T12:57:38Z |
 | [PaulCombal](https://github.com/PaulCombal) | [SamRewritten](https://github.com/PaulCombal/SamRewritten) | 354 | Steam Achievement Manager For Linux. Rewritten in C++. | 2024-11-23T14:38:52Z |
 | [Paullux](https://github.com/Paullux) | [FranceTV](https://github.com/Paullux/FranceTV) | 1 | le site france.tv dans une application. | 2022-05-16T18:56:58Z |
@@ -357,7 +357,7 @@
 | [SchildiChat](https://github.com/SchildiChat) | [schildichat-desktop](https://github.com/SchildiChat/schildichat-desktop) | 396 | Matrix client / Element Web/Desktop fork | 2024-12-06T05:12:25Z |
 | [Scille](https://github.com/Scille) | [parsec-cloud](https://github.com/Scille/parsec-cloud) | 273 | Open source Dropbox-like file sharing with full client encryption ! | 2024-12-06T12:56:26Z |
 | [SeakMengs](https://github.com/SeakMengs) | [WindowPet](https://github.com/SeakMengs/WindowPet) | 155 | Pet overlay app built with tauri and react that lets you have adorable companion such as pets, anime characters on your screen. | 2024-12-05T19:15:57Z |
-| [Serial-Studio](https://github.com/Serial-Studio) | [Serial-Studio](https://github.com/Serial-Studio/Serial-Studio) | 4569 | Flexible data visualization software for embedded devices and projects | 2024-12-06T11:49:03Z |
+| [Serial-Studio](https://github.com/Serial-Studio) | [Serial-Studio](https://github.com/Serial-Studio/Serial-Studio) | 4570 | Flexible data visualization software for embedded devices and projects | 2024-12-06T13:53:25Z |
 | [Shabang-Systems](https://github.com/Shabang-Systems) | [Condution](https://github.com/Shabang-Systems/Condution) | 492 | Tasks? Done. That was quick. | 2024-12-03T23:16:53Z |
 | [ShuttleBrowser](https://github.com/ShuttleBrowser) | [Shuttle](https://github.com/ShuttleBrowser/Shuttle) | 54 | The fastest access to your favorite applications. | 2024-05-20T13:46:14Z |
 | [SimonBrandner](https://github.com/SimonBrandner) | [TaskizerDesktop](https://github.com/SimonBrandner/TaskizerDesktop) | 4 | A task management app | 2023-01-28T11:29:15Z |
@@ -396,7 +396,7 @@
 | [UniversalMediaServer](https://github.com/UniversalMediaServer) | [UniversalMediaServer](https://github.com/UniversalMediaServer/UniversalMediaServer) | 2344 | A DLNA, UPnP and HTTP(S) Media Server. | 2024-12-06T09:44:21Z |
 | [V-Paranoiaque](https://github.com/V-Paranoiaque) | [Ellas-War](https://github.com/V-Paranoiaque/Ellas-War) | 3 | Official App & Web client for the Ellas War game | 2024-11-28T14:36:08Z |
 | [VOICEVOX](https://github.com/VOICEVOX) | [voicevox](https://github.com/VOICEVOX/voicevox) | 2541 | 無料で使える中品質なテキスト読み上げソフトウェア、VOICEVOXのエディター | 2024-12-06T03:28:16Z |
-| [VSCodium](https://github.com/VSCodium) | [vscodium](https://github.com/VSCodium/vscodium) | 25709 | binary releases of VS Code without MS branding/telemetry/licensing | 2024-12-06T13:05:08Z |
+| [VSCodium](https://github.com/VSCodium) | [vscodium](https://github.com/VSCodium/vscodium) | 25710 | binary releases of VS Code without MS branding/telemetry/licensing | 2024-12-06T13:17:36Z |
 | [ValdikSS](https://github.com/ValdikSS) | [windows2usb](https://github.com/ValdikSS/windows2usb) | 693 | Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS) | 2024-12-03T22:35:03Z |
 | [Vencord](https://github.com/Vencord) | [Vesktop](https://github.com/Vencord/Vesktop) | 4523 | Vesktop is a custom Discord App aiming to give you better performance and improve linux support | 2024-12-06T11:07:19Z |
 | [Venipa](https://github.com/Venipa) | [ytmdesktop2](https://github.com/Venipa/ytmdesktop2) | 511 | Unofficial Youtube Music Desktop App, with LastFM support. | 2024-12-05T18:48:43Z |
@@ -412,7 +412,7 @@
 | [Wallby](https://github.com/Wallby) | [file-to-c](https://github.com/Wallby/file-to-c) | 0 | Tool for generating a C header (i.e. a .h containing an array variable) from a spir-v binary file | 2023-10-28T14:14:00Z |
 | [WeakAuras](https://github.com/WeakAuras) | [WeakAuras-Companion](https://github.com/WeakAuras/WeakAuras-Companion) | 160 | A cross-platform application built to provide the missing link between Wago.io and World of Warcraft | 2024-12-01T20:57:15Z |
 | [Webdeskme](https://github.com/Webdeskme) | [wdOS](https://github.com/Webdeskme/wdOS) | 29 | The GUI for WebDesk OS | 2024-12-05T09:00:11Z |
-| [WerWolv](https://github.com/WerWolv) | [ImHex](https://github.com/WerWolv/ImHex) | 45366 | 🔍 A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. | 2024-12-06T11:38:12Z |
+| [WerWolv](https://github.com/WerWolv) | [ImHex](https://github.com/WerWolv/ImHex) | 45367 | 🔍 A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. | 2024-12-06T13:27:03Z |
 | [WesterosCraft](https://github.com/WesterosCraft) | [ElectronLauncher](https://github.com/WesterosCraft/ElectronLauncher) | 13 | Custom launcher for modded minecraft written in Electron and Node.js | 2024-09-06T13:58:33Z |
 | [WootingKb](https://github.com/WootingKb) | [wooting-analog-midi](https://github.com/WootingKb/wooting-analog-midi) | 58 | Cross-platform virtual MIDI device for (Wooting) analog keyboards! | 2024-11-19T17:12:11Z |
 | [WootingKb](https://github.com/WootingKb) | [wooting-macros](https://github.com/WootingKb/wooting-macros) | 168 | The official Wooting Macros software. | 2024-11-29T19:06:57Z |
@@ -431,7 +431,7 @@
 | [aandrew-me](https://github.com/aandrew-me) | [ytDownloader](https://github.com/aandrew-me/ytDownloader) | 1122 | A modern GUI App for downloading Videos and Audios from hundreds of sites | 2024-12-05T09:19:21Z |
 | [abdularis](https://github.com/abdularis) | [LAN-Share](https://github.com/abdularis/LAN-Share) | 544 | Cross platform LAN File transfer application built with Qt C++ framework | 2024-12-02T11:14:54Z |
 | [acarl005](https://github.com/acarl005) | [toerings](https://github.com/acarl005/toerings) | 47 | A clone of Conky Seamod using Tauri | 2024-11-27T14:46:16Z |
-| [actualbudget](https://github.com/actualbudget) | [actual](https://github.com/actualbudget/actual) | 15894 | A local-first personal finance app | 2024-12-06T10:40:02Z |
+| [actualbudget](https://github.com/actualbudget) | [actual](https://github.com/actualbudget/actual) | 15893 | A local-first personal finance app | 2024-12-06T13:31:19Z |
 | [actualbudget](https://github.com/actualbudget) | [releases](https://github.com/actualbudget/releases) | 116 | Hosts official releases for Actual | 2024-03-11T17:54:59Z |
 | [adil192](https://github.com/adil192) | [ricochlime](https://github.com/adil192/ricochlime) | 91 | Satisfying monster shooter | 2024-10-30T03:34:35Z |
 | [saber-notes](https://github.com/saber-notes) | [saber](https://github.com/saber-notes/saber) | 2343 | The cross-platform open-source app built for handwriting | 2024-12-06T07:36:48Z |
@@ -447,7 +447,7 @@
 | [akaJes](https://github.com/akaJes) | [marlin-config](https://github.com/akaJes/marlin-config) | 389 | Marlin firmware instant configurator | 2024-10-14T03:06:42Z |
 | [aklos](https://github.com/aklos) | [slogidex](https://github.com/aklos/slogidex) | 11 | Task management and automation tool | 2024-01-02T13:25:00Z |
 | [akuse-app](https://github.com/akuse-app) | [akuse](https://github.com/akuse-app/akuse) | 625 | 🌸 Simple and easy to use anime streaming desktop app without ads. | 2024-12-05T16:29:55Z |
-| [aleksey-hoffman](https://github.com/aleksey-hoffman) | [sigma-file-manager](https://github.com/aleksey-hoffman/sigma-file-manager) | 4528 | Sigma File Manager is a free, open-source, quickly evolving, modern file manager (explorer / browser) app for Windows and Linux. | 2024-12-06T12:26:51Z |
+| [aleksey-hoffman](https://github.com/aleksey-hoffman) | [sigma-file-manager](https://github.com/aleksey-hoffman/sigma-file-manager) | 4529 | Sigma File Manager is a free, open-source, quickly evolving, modern file manager (explorer / browser) app for Windows and Linux. | 2024-12-06T13:13:38Z |
 | [alephium](https://github.com/alephium) | [desktop-wallet](https://github.com/alephium/desktop-wallet) | 79 | The official Alephium wallet for desktop | 2024-10-19T15:32:07Z |
 | [alex-spataru](https://github.com/alex-spataru) | [HiDPI-Fixer](https://github.com/alex-spataru/HiDPI-Fixer) | 139 | Qt app that automates fractional scaling configuration on X11 desktops | 2024-11-12T12:51:57Z |
 | [alexcroox](https://github.com/alexcroox) | [jira-timer-menubar](https://github.com/alexcroox/jira-timer-menubar) | 55 | macOS and Linux menubar app for JIRA time logging. Built with React and Electron | 2023-09-29T05:23:50Z |
@@ -490,7 +490,7 @@
 | [azagaya](https://github.com/azagaya) | [laigter](https://github.com/azagaya/laigter) | 907 | Laigter: automatic normal map generator for sprites! | 2024-12-04T18:31:11Z |
 | [b00f](https://github.com/b00f) | [dana](https://github.com/b00f/dana) | 19 | Dana, Symbol of Wisdom | 2023-09-19T20:15:53Z |
 | [backmeupplz](https://github.com/backmeupplz) | [todorant-releases](https://github.com/backmeupplz/todorant-releases) | 1 | Todorant releases | 2023-11-21T21:27:53Z |
-| [balena-io](https://github.com/balena-io) | [etcher](https://github.com/balena-io/etcher) | 30030 | Flash OS images to SD cards & USB drives, safely and easily. | 2024-12-06T12:42:52Z |
+| [balena-io](https://github.com/balena-io) | [etcher](https://github.com/balena-io/etcher) | 30031 | Flash OS images to SD cards & USB drives, safely and easily. | 2024-12-06T13:20:48Z |
 | [ballessay](https://github.com/ballessay) | [quokkagit](https://github.com/ballessay/quokkagit) | 1 | A small, TortoiseGit inspired git log viewer for linux | 2023-06-11T11:43:23Z |
 | [ballessay](https://github.com/ballessay) | [snomcontrol](https://github.com/ballessay/snomcontrol) | 0 | An application to control snom (D)3xx phones from the desktop | 2019-07-17T16:00:17Z |
 | [bambulab](https://github.com/bambulab) | [BambuStudio](https://github.com/bambulab/BambuStudio) | 2261 | PC Software for BambuLab and other 3D printers | 2024-12-06T03:52:48Z |
@@ -498,7 +498,7 @@
 | [bdash-app](https://github.com/bdash-app) | [bdash](https://github.com/bdash-app/bdash) | 1500 | Simple SQL Client for lightweight data analysis. | 2024-12-02T13:40:25Z |
 | [bearlyai](https://github.com/bearlyai) | [releases](https://github.com/bearlyai/releases) | 6 | No description provided. | 2023-04-11T04:35:27Z |
 | [bedrich-schindler](https://github.com/bedrich-schindler) | [e-osvc](https://github.com/bedrich-schindler/e-osvc) | 1 | No description provided. | 2021-05-01T21:23:55Z |
-| [beekeeper-studio](https://github.com/beekeeper-studio) | [beekeeper-studio](https://github.com/beekeeper-studio/beekeeper-studio) | 16904 | Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows. | 2024-12-06T13:02:52Z |
+| [beekeeper-studio](https://github.com/beekeeper-studio) | [beekeeper-studio](https://github.com/beekeeper-studio/beekeeper-studio) | 16905 | Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows. | 2024-12-06T13:50:10Z |
 | [beeware](https://github.com/beeware) | [podium](https://github.com/beeware/podium) | 182 | A Markdown-based native presentation tool | 2024-10-26T05:11:19Z |
 | [belltown](https://github.com/belltown) | [violetbug](https://github.com/belltown/violetbug) | 22 | Roku Debugger Graphical Interface | 2024-09-03T02:24:07Z |
 | [bengtmartensson](https://github.com/bengtmartensson) | [IrScrutinizer](https://github.com/bengtmartensson/IrScrutinizer) | 341 | IrScrutinizer is a program for IR signal analysis, decoding, generation and much more. | 2024-12-05T16:35:44Z |
@@ -527,9 +527,9 @@
 | [bpozdena](https://github.com/bpozdena) | [OneDriveGUI](https://github.com/bpozdena/OneDriveGUI) | 786 | A simple GUI for OneDrive Linux client with multi-account support. | 2024-12-05T06:19:59Z |
 | [breadthe](https://github.com/breadthe) | [seismic](https://github.com/breadthe/seismic) | 18 | A taskbar app for displaying USGS magnitude 2.5+ earthquakes from the past day. | 2024-07-12T04:38:43Z |
 | [breuleux](https://github.com/breuleux) | [buche](https://github.com/breuleux/buche) | 5 | Tool to display rich logs. | 2021-08-12T15:57:10Z |
-| [brndnmtthws](https://github.com/brndnmtthws) | [conky](https://github.com/brndnmtthws/conky) | 7333 | Light-weight system monitor for X, Wayland (sort of), and other things, too | 2024-12-06T13:01:01Z |
+| [brndnmtthws](https://github.com/brndnmtthws) | [conky](https://github.com/brndnmtthws/conky) | 7334 | Light-weight system monitor for X, Wayland (sort of), and other things, too | 2024-12-06T13:11:03Z |
 | [btargac](https://github.com/btargac) | [excel-parser-processor](https://github.com/btargac/excel-parser-processor) | 224 | Automate downloads from Excel files in seconds. Simply does the tedious, repetitive operations for rows of Excel files and reports the results. It downloads files from URL(s) in column A, if a new filename is provided at column B it will rename before saving. It will even create sub folders if column C is filled with a valid folder name. | 2024-11-26T08:12:54Z |
-| [btpf](https://github.com/btpf) | [Alexandria](https://github.com/btpf/Alexandria) | 2190 | A minimalistic cross-platform eBook reader built with Tauri, Epub.js, and Typescript | 2024-12-06T05:56:14Z |
+| [btpf](https://github.com/btpf) | [Alexandria](https://github.com/btpf/Alexandria) | 2191 | A minimalistic cross-platform eBook reader built with Tauri, Epub.js, and Typescript | 2024-12-06T13:52:49Z |
 | [bubio](https://github.com/bubio) | [xm8mac](https://github.com/bubio/xm8mac) | 12 | PC-8801 emulator for macOS and other platforms | 2024-10-28T00:32:54Z |
 | [buddhi1980](https://github.com/buddhi1980) | [mandelbulber2](https://github.com/buddhi1980/mandelbulber2) | 912 | Official repository for Mandelbulber v2 | 2024-12-05T13:05:04Z |
 | [bugbakery](https://github.com/bugbakery) | [audapolis](https://github.com/bugbakery/audapolis) | 1700 | an editor for spoken-word audio with automatic transcription | 2024-12-05T04:04:42Z |
@@ -599,7 +599,7 @@
 | [d1vanov](https://github.com/d1vanov) | [quentier](https://github.com/d1vanov/quentier) | 135 | Cross-platform desktop Evernote client | 2024-11-12T12:52:26Z |
 | [daald](https://github.com/daald) | [beurerscalemanager-appimage](https://github.com/daald/beurerscalemanager-appimage) | 0 | AppImage packaging project for BeurerScaleManager | 2023-05-03T01:49:26Z |
 | [daelsepara](https://github.com/daelsepara) | [legendary-kingdoms](https://github.com/daelsepara/legendary-kingdoms) | 6 | An Implementation of Legendary Kingdoms gamebook series in C++ and SDL. Only book 1, The Valley of Bones has been implemented as of now. | 2024-08-16T06:37:30Z |
-| [dail8859](https://github.com/dail8859) | [NotepadNext](https://github.com/dail8859/NotepadNext) | 9301 | A cross-platform, reimplementation of Notepad++ | 2024-12-06T08:17:58Z |
+| [dail8859](https://github.com/dail8859) | [NotepadNext](https://github.com/dail8859/NotepadNext) | 9300 | A cross-platform, reimplementation of Notepad++ | 2024-12-06T13:22:16Z |
 | [dalboris](https://github.com/dalboris) | [vpaint](https://github.com/dalboris/vpaint) | 737 | Experimental vector graphics and 2D animation editor | 2024-11-28T04:21:53Z |
 | [dangeredwolf](https://github.com/dangeredwolf) | [ModernDeck](https://github.com/dangeredwolf/ModernDeck) | 316 | A beautiful, powerful Twitter client for desktop. | 2024-11-05T07:07:14Z |
 | [danielfspencer](https://github.com/danielfspencer) | [blizzard-4](https://github.com/danielfspencer/blizzard-4) | 5 | Blizzard 4 is a 16-bit computer I designed. This repo contains the compiler, assembler and emulator needed to develop and test programs for it. Try online at: | 2023-12-08T08:23:17Z |
@@ -609,7 +609,7 @@
 | [davegallant](https://github.com/davegallant) | [pocketcasts-electron](https://github.com/davegallant/pocketcasts-electron) | 3 | Pocket Casts wrapper with mapped media keys | 2023-09-09T08:55:13Z |
 | [davidcl](https://github.com/davidcl) | [Scilab.AppDir](https://github.com/davidcl/Scilab.AppDir) | 4 | Scilab binary as an AppImage | 2024-01-17T18:24:03Z |
 | [davidsmorais](https://github.com/davidsmorais) | [kuro](https://github.com/davidsmorais/kuro) | 356 | An elegant Microsoft ToDo desktop client for Linux (a fork of Ao) | 2024-12-04T17:20:06Z |
-| [dbgate](https://github.com/dbgate) | [dbgate](https://github.com/dbgate/dbgate) | 5544 | Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application | 2024-12-06T09:07:12Z |
+| [dbgate](https://github.com/dbgate) | [dbgate](https://github.com/dbgate/dbgate) | 5544 | Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application | 2024-12-06T13:37:08Z |
 | [decent-bet](https://github.com/decent-bet) | [platform-wallet](https://github.com/decent-bet/platform-wallet) | 1 | Decent.bet Wallet | 2019-05-20T17:06:36Z |
 | [deep5050](https://github.com/deep5050) | [Mr.Dclutterer](https://github.com/deep5050/Mr.Dclutterer) | 40 | A minimal looking cross-platform desktop application made with Electron that handles quick file aggregation and bulk renaming. | 2024-05-27T07:52:07Z |
 | [deep5050](https://github.com/deep5050) | [qikQR](https://github.com/deep5050/qikQR) | 26 | minimal desktop app to create QR codes. | 2024-12-03T09:59:26Z |
@@ -623,14 +623,14 @@
 | [digidem](https://github.com/digidem) | [mapeo-desktop](https://github.com/digidem/mapeo-desktop) | 262 | Local-first mapping and monitoring in remote environments | 2024-11-24T02:33:21Z |
 | [digimezzo](https://github.com/digimezzo) | [knowte](https://github.com/digimezzo/knowte) | 305 | Cross platform note taking application | 2024-11-29T12:53:56Z |
 | [digimezzo](https://github.com/digimezzo) | [vitomu](https://github.com/digimezzo/vitomu) | 69 | Easy to use video to audio converter | 2024-12-06T09:44:41Z |
-| [BitBoxSwiss](https://github.com/BitBoxSwiss) | [bitbox-wallet-app](https://github.com/BitBoxSwiss/bitbox-wallet-app) | 256 | The BitBoxApp for desktop and mobile. | 2024-12-05T20:06:02Z |
+| [BitBoxSwiss](https://github.com/BitBoxSwiss) | [bitbox-wallet-app](https://github.com/BitBoxSwiss/bitbox-wallet-app) | 255 | The BitBoxApp for desktop and mobile. | 2024-12-06T13:19:53Z |
 | [dineug](https://github.com/dineug) | [vuerd-electron](https://github.com/dineug/vuerd-electron) | 20 | desktop ERD app | 2024-10-24T07:56:05Z |
 | [dino-](https://github.com/dino-) | [glulxe-appimage-build](https://github.com/dino-/glulxe-appimage-build) | 0 | Build an AppImage of the glulxe interactive fiction interpreter | 2018-11-09T14:10:00Z |
 | [dino-](https://github.com/dino-) | [hsinstall](https://github.com/dino-/hsinstall) | 11 | Pack a haskell project into a deployable directory structure | 2024-12-04T15:56:25Z |
 | [dino-](https://github.com/dino-) | [photoname](https://github.com/dino-/photoname) | 8 | Rename photo image files based on EXIF shoot date | 2024-11-23T11:57:29Z |
 | [divVerent](https://github.com/divVerent) | [aaaaxy](https://github.com/divVerent/aaaaxy) | 222 | A nonlinear 2D puzzle platformer taking place in impossible spaces. | 2024-12-02T04:45:59Z |
 | [dmooney65](https://github.com/dmooney65) | [fmradio](https://github.com/dmooney65/fmradio) | 26 | :radio: An Electron app to listen to FM radio using an RTL2832U based USB dongle. Linux and Windows, Intel and ARM | 2024-12-04T08:41:39Z |
-| [docmirror](https://github.com/docmirror) | [dev-sidecar](https://github.com/docmirror/dev-sidecar) | 15753 | 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速 | 2024-12-06T12:02:55Z |
+| [docmirror](https://github.com/docmirror) | [dev-sidecar](https://github.com/docmirror/dev-sidecar) | 15756 | 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速 | 2024-12-06T13:56:20Z |
 | [dominiksta](https://github.com/dominiksta) | [wournal](https://github.com/dominiksta/wournal) | 69 | Simple digitial paper for note taking and PDF annotation. Heavily inspired by Xournal. | 2024-11-24T12:33:05Z |
 | [dragotin](https://github.com/dragotin) | [pdfquirk](https://github.com/dragotin/pdfquirk) | 20 | Creating PDFs from images or scanner made easy. | 2024-10-19T05:55:17Z |
 | [drex44](https://github.com/drex44) | [martian](https://github.com/drex44/martian) | 10 | Websocket testing tool | 2021-10-04T17:30:26Z |
@@ -660,13 +660,13 @@
 | [elzabrowser](https://github.com/elzabrowser) | [elza](https://github.com/elzabrowser/elza) | 78 | Private, fast and minimal web browser based on electron with built-in tor. | 2024-11-03T09:01:52Z |
 | [emericg](https://github.com/emericg) | [SmartServoFramework](https://github.com/emericg/SmartServoFramework) | 52 | A multi-platform C++ framework used to drive Dynamixel and HerkuleX smart actuators, and its control GUI. | 2024-11-07T09:05:23Z |
 | [emericg](https://github.com/emericg) | [WatchFlower](https://github.com/emericg/WatchFlower) | 199 | A plant monitoring application that reads and plots data from compatible Bluetooth sensors and thermometers like Xiaomi Flower Care or Parrot Flower Power | 2024-12-01T00:05:53Z |
-| [emqx](https://github.com/emqx) | [MQTTX](https://github.com/emqx/MQTTX) | 3959 | A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket. | 2024-12-06T09:54:48Z |
+| [emqx](https://github.com/emqx) | [MQTTX](https://github.com/emqx/MQTTX) | 3960 | A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket. | 2024-12-06T13:50:00Z |
 | [endless-sky](https://github.com/endless-sky) | [endless-sky](https://github.com/endless-sky/endless-sky) | 6229 | Space exploration, trading, and combat game. | 2024-12-06T05:17:37Z |
-| [ente-io](https://github.com/ente-io) | [ente](https://github.com/ente-io/ente) | 16486 | Fully open source, End to End Encrypted alternative to Google Photos and Apple Photos | 2024-12-06T12:26:16Z |
+| [ente-io](https://github.com/ente-io) | [ente](https://github.com/ente-io/ente) | 16489 | Fully open source, End to End Encrypted alternative to Google Photos and Apple Photos | 2024-12-06T14:00:13Z |
 | [eoscafe](https://github.com/eoscafe) | [bloks-desktop](https://github.com/eoscafe/bloks-desktop) | 20 | Bloks.io Desktop Client - Block Explorer + Wallet | 2023-03-11T02:00:27Z |
 | [eosrio](https://github.com/eosrio) | [simpleos](https://github.com/eosrio/simpleos) | 164 | EOSIO Blockchain Interface & Wallet | 2024-11-18T23:48:21Z |
 | [ericm](https://github.com/ericm) | [newlogic](https://github.com/ericm/newlogic) | 34 | Circuit Builder Desktop Application (like mmlogic) made with Electron + React Typescript. Compatible with Windows, Mac and Linux. | 2024-03-30T15:27:40Z |
-| [espanso](https://github.com/espanso) | [espanso](https://github.com/espanso/espanso) | 10158 | Cross-platform Text Expander written in Rust | 2024-12-06T09:25:08Z |
+| [espanso](https://github.com/espanso) | [espanso](https://github.com/espanso/espanso) | 10159 | Cross-platform Text Expander written in Rust | 2024-12-06T13:12:08Z |
 | [esternin](https://github.com/esternin) | [eXtrema](https://github.com/esternin/eXtrema) | 6 | No description provided. | 2024-04-19T21:07:28Z |
 | [evoplex](https://github.com/evoplex) | [evoplex](https://github.com/evoplex/evoplex) | 134 | Evoplex is a fast, robust and extensible platform for developing agent-based models and multi-agent systems on networks. Its available for Windows, Linux and macOS. | 2024-11-28T07:01:59Z |
 | [evpo](https://github.com/evpo) | [EncryptPad](https://github.com/evpo/EncryptPad) | 438 | Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format: symmetrically encrypted, compressed and integrity protected. The editor can protect files with passwords, key files or both. | 2024-12-05T01:17:45Z |
@@ -721,7 +721,7 @@
 | [getstation](https://github.com/getstation) | [desktop-app](https://github.com/getstation/desktop-app) | 1473 | One app to rule them all! | 2024-12-05T18:00:06Z |
 | [open-source-labs](https://github.com/open-source-labs) | [Swell](https://github.com/open-source-labs/Swell) | 977 | Swell: API development tool that enables developers to test endpoints served over streaming technologies including Server-Sent Events (SSE), WebSockets, HTTP2, GraphQL, gRPC, and tRPC.. | 2024-11-30T19:11:25Z |
 | [gingko](https://github.com/gingko) | [client](https://github.com/gingko/client) | 362 | Gingko Writer. Tree-based writing software, written in Elm. | 2024-12-06T05:46:16Z |
-| [gitify-app](https://github.com/gitify-app) | [gitify](https://github.com/gitify-app/gitify) | 4577 | GitHub notifications on your menu bar. Available on macOS, Windows & Linux. | 2024-12-06T11:17:58Z |
+| [gitify-app](https://github.com/gitify-app) | [gitify](https://github.com/gitify-app/gitify) | 4577 | GitHub notifications on your menu bar. Available on macOS, Windows & Linux. | 2024-12-06T13:22:19Z |
 | [giuspen](https://github.com/giuspen) | [cherrytree](https://github.com/giuspen/cherrytree) | 3463 | cherrytree | 2024-12-05T19:25:06Z |
 | [glyphr-studio](https://github.com/glyphr-studio) | [Glyphr-Studio-Desktop](https://github.com/glyphr-studio/Glyphr-Studio-Desktop) | 439 | A desktop client for Glyphr Studio built in electron | 2024-11-29T12:48:01Z |
 | [gmagno](https://github.com/gmagno) | [tmon](https://github.com/gmagno/tmon) | 10 | Temperature Monitor -- a simple CLI tool for monitoring/reporting CPU temperatures. | 2023-11-23T19:33:00Z |
@@ -772,7 +772,7 @@
 | [huwdp](https://github.com/huwdp) | [huwinterpreter](https://github.com/huwdp/huwinterpreter) | 11 | Huwinterpreter | 2023-03-12T09:02:13Z |
 | [huxingyi](https://github.com/huxingyi) | [dust3d](https://github.com/huxingyi/dust3d) | 2989 | Dust3D is a cross-platform 3D modeling software that makes it easy to create low poly 3D models for video games, 3D printing, and more. | 2024-12-05T02:57:26Z |
 | [hvdwolf](https://github.com/hvdwolf) | [jExifToolGUI](https://github.com/hvdwolf/jExifToolGUI) | 466 | jExifToolGUI is a multi-platform java/Swing graphical frontend for the excellent command-line ExifTool application by Phil Harvey | 2024-12-03T08:50:11Z |
-| [hydralauncher](https://github.com/hydralauncher) | [hydra](https://github.com/hydralauncher/hydra) | 11486 | Hydra is a game launcher with its own embedded bittorrent client | 2024-12-06T12:06:14Z |
+| [hydralauncher](https://github.com/hydralauncher) | [hydra](https://github.com/hydralauncher/hydra) | 11487 | Hydra is a game launcher with its own embedded bittorrent client | 2024-12-06T13:39:35Z |
 | [hydrogen-music](https://github.com/hydrogen-music) | [hydrogen](https://github.com/hydrogen-music/hydrogen) | 1074 | The advanced drum machine for Linux, macOS, and Windows | 2024-12-03T18:51:57Z |
 | [iambpn](https://github.com/iambpn) | [YTS-Streaming](https://github.com/iambpn/YTS-Streaming) | 12 | An electronJS based desktop app to stream or play yts and torrent movies in desktop without downloading. | 2024-04-02T05:37:10Z |
 | [ic005k](https://github.com/ic005k) | [Knot](https://github.com/ic005k/Knot) | 10 | Record everything. | 2024-12-03T23:22:49Z |
@@ -848,7 +848,7 @@
 | [jessedp](https://github.com/jessedp) | [tablo-tools-electron](https://github.com/jessedp/tablo-tools-electron) | 29 | A desktop app to help manage your Tablo devices | 2024-10-06T19:27:26Z |
 | [jfuica](https://github.com/jfuica) | [bingada](https://github.com/jfuica/bingada) | 8 | Bingo application in GTKAda | 2024-07-15T18:14:17Z |
 | [jgaa](https://github.com/jgaa) | [f-crm](https://github.com/jgaa/f-crm) | 28 | Customer Relations Management for Freelancers and Individual Contractors. | 2024-10-10T01:58:20Z |
-| [jgraph](https://github.com/jgraph) | [drawio-desktop](https://github.com/jgraph/drawio-desktop) | 51181 | Official electron build of draw.io | 2024-12-06T12:56:54Z |
+| [jgraph](https://github.com/jgraph) | [drawio-desktop](https://github.com/jgraph/drawio-desktop) | 51183 | Official electron build of draw.io | 2024-12-06T14:05:04Z |
 | [jimevins](https://github.com/jimevins) | [glabels-qt](https://github.com/jimevins/glabels-qt) | 335 | gLabels Label Designer (Qt/C++) | 2024-12-06T03:02:48Z |
 | [jitsi](https://github.com/jitsi) | [jitsi-meet-electron](https://github.com/jitsi/jitsi-meet-electron) | 1514 | Jitsi Meet desktop application powered by :electron: | 2024-11-29T01:36:28Z |
 | [jjoshm](https://github.com/jjoshm) | [nightwave-plaza-electron](https://github.com/jjoshm/nightwave-plaza-electron) | 2 | https://plaza.one/ desktop app | 2024-11-22T21:39:45Z |
@@ -897,7 +897,7 @@
 | [karjonas](https://github.com/karjonas) | [Linedancer](https://github.com/karjonas/Linedancer) | 2 | Arcade game | 2023-02-01T17:43:25Z |
 | [karwler](https://github.com/karwler) | [sfbrename](https://github.com/karwler/sfbrename) | 3 | Bulk file renamer | 2024-08-08T17:04:49Z |
 | [kawuchuu](https://github.com/kawuchuu) | [firetail](https://github.com/kawuchuu/firetail) | 14 | An open source music player. | 2024-12-02T05:32:38Z |
-| [kbumsik](https://github.com/kbumsik) | [VirtScreen](https://github.com/kbumsik/VirtScreen) | 1676 | Make your iPad/tablet/computer into a secondary monitor on Linux. | 2024-12-04T20:11:34Z |
+| [kbumsik](https://github.com/kbumsik) | [VirtScreen](https://github.com/kbumsik/VirtScreen) | 1677 | Make your iPad/tablet/computer into a secondary monitor on Linux. | 2024-12-06T13:25:27Z |
 | [keepassxreboot](https://github.com/keepassxreboot) | [keepassxc](https://github.com/keepassxreboot/keepassxc) | 21508 | KeePassXC is a cross-platform community-driven port of the Windows application “Keepass Password Safe”. | 2024-12-06T03:34:50Z |
 | [keerthivasansa](https://github.com/keerthivasansa) | [animos](https://github.com/keerthivasansa/animos) | 203 | Animos - Clean and minimal Anime-streaming desktop application without any ads. | 2024-11-19T17:59:50Z |
 | [keeweb](https://github.com/keeweb) | [keeweb](https://github.com/keeweb/keeweb) | 12371 | Free cross-platform password manager compatible with KeePass | 2024-12-05T22:42:37Z |
@@ -940,7 +940,7 @@
 | [labsquare](https://github.com/labsquare) | [FastQt](https://github.com/labsquare/FastQt) | 111 | FastQC port to Qt5: A quality control tool for high throughput sequence data. | 2024-12-06T00:52:29Z |
 | [laggykiller](https://github.com/laggykiller) | [sticker-convert](https://github.com/laggykiller/sticker-convert) | 302 | Convert (animated) stickers to/from WhatsApp, Telegram, Signal, Line, Kakao, Viber, Discord, iMessage. Written in Python. | 2024-12-04T21:30:48Z |
 | [larygwil](https://github.com/larygwil) | [caesium-image-compressor](https://github.com/larygwil/caesium-image-compressor) | 8 | Linux build of it | 2024-10-10T17:26:06Z |
-| [laurent22](https://github.com/laurent22) | [joplin](https://github.com/laurent22/joplin) | 46413 | Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS. | 2024-12-06T12:42:00Z |
+| [laurent22](https://github.com/laurent22) | [joplin](https://github.com/laurent22/joplin) | 46414 | Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS. | 2024-12-06T14:13:31Z |
 | [lauthieb](https://github.com/lauthieb) | [code-notes](https://github.com/lauthieb/code-notes) | 1073 | (No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀 | 2024-11-27T02:18:42Z |
 | [lbryio](https://github.com/lbryio) | [lbry-desktop](https://github.com/lbryio/lbry-desktop) | 3556 | A browser and wallet for LBRY, the decentralized, user-controlled content marketplace. | 2024-12-01T23:49:09Z |
 | [lcgamboa](https://github.com/lcgamboa) | [picsimlab](https://github.com/lcgamboa/picsimlab) | 478 | PICsimLab - Programmable IC Simulator Laboratory | 2024-12-01T01:14:28Z |
@@ -950,7 +950,7 @@
 | [leo60228](https://github.com/leo60228) | [everinst](https://github.com/leo60228/everinst) | 1 | No description provided. | 2023-09-13T18:50:17Z |
 | [leon3s](https://github.com/leon3s) | [wireguard-gui](https://github.com/leon3s/wireguard-gui) | 104 | A wireguard client GUI for Linux made with nextauri | 2024-11-29T03:02:11Z |
 | [leozide](https://github.com/leozide) | [leocad](https://github.com/leozide/leocad) | 2499 | A CAD application for creating virtual LEGO models | 2024-12-06T00:30:54Z |
-| [lettier](https://github.com/lettier) | [gifcurry](https://github.com/lettier/gifcurry) | 1358 | 😎 The open-source, Haskell-built video editor for GIF makers. | 2024-12-02T01:11:30Z |
+| [lettier](https://github.com/lettier) | [gifcurry](https://github.com/lettier/gifcurry) | 1359 | 😎 The open-source, Haskell-built video editor for GIF makers. | 2024-12-06T13:34:17Z |
 | [lettier](https://github.com/lettier) | [lambda-lantern](https://github.com/lettier/lambda-lantern) | 164 | 🧙 ‎‎ A 3D game about functional programming patterns. Uses PureScript Native, C++, and Panda3D. | 2024-10-18T11:53:10Z |
 | [lettier](https://github.com/lettier) | [movie-monad](https://github.com/lettier/movie-monad) | 423 | :tv: A free and simple to use video player made with Haskell. | 2024-12-01T13:37:26Z |
 | [lightninglabs](https://github.com/lightninglabs) | [lightning-app](https://github.com/lightninglabs/lightning-app) | 899 | An easy-to-use cross-platform Lightning wallet | 2024-11-30T16:04:37Z |
@@ -959,10 +959,10 @@
 | [linuxhw](https://github.com/linuxhw) | [hw-probe](https://github.com/linuxhw/hw-probe) | 760 | Probe for hardware, check operability and find drivers | 2024-12-04T11:41:42Z |
 | [lite-xl](https://github.com/lite-xl) | [lite-xl](https://github.com/lite-xl/lite-xl) | 4875 | A lightweight text editor written in Lua | 2024-12-06T08:01:56Z |
 | [lluisrojass](https://github.com/lluisrojass) | [tumblr-scraper](https://github.com/lluisrojass/tumblr-scraper) | 24 | Scrape a Tumblr blog for personal posts | 2024-09-16T06:05:57Z |
-| [localsend](https://github.com/localsend) | [localsend](https://github.com/localsend/localsend) | 54020 | An open-source cross-platform alternative to AirDrop | 2024-12-06T12:16:40Z |
-| [logseq](https://github.com/logseq) | [logseq](https://github.com/logseq/logseq) | 33351 | A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: http://trello.com/b/8txSM12G/roadmap | 2024-12-06T12:36:45Z |
+| [localsend](https://github.com/localsend) | [localsend](https://github.com/localsend/localsend) | 54021 | An open-source cross-platform alternative to AirDrop | 2024-12-06T13:14:44Z |
+| [logseq](https://github.com/logseq) | [logseq](https://github.com/logseq/logseq) | 33353 | A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: http://trello.com/b/8txSM12G/roadmap | 2024-12-06T13:51:06Z |
 | [lostdesign](https://github.com/lostdesign) | [linked](https://github.com/lostdesign/linked) | 901 | 🧾  Daily journaling without distraction. An easy, distraction-free way to record your thoughts, declutter your mind and keep the things you want to remember. Join the discord at https://discord.gg/uNjJzZvccr | 2024-12-01T11:22:46Z |
-| [love2d](https://github.com/love2d) | [love](https://github.com/love2d/love) | 5238 | LÖVE is an awesome 2D game framework for Lua. | 2024-12-06T09:26:41Z |
+| [love2d](https://github.com/love2d) | [love](https://github.com/love2d/love) | 5239 | LÖVE is an awesome 2D game framework for Lua. | 2024-12-06T13:22:23Z |
 | [lpdswing](https://github.com/lpdswing) | [GPTFusion](https://github.com/lpdswing/GPTFusion) | 126 | GPT聚合版是一个聚合了多个GPT聊天机器人的跨平台聊天工具, 支持多个免费GPT镜像, 支持自定义导入镜像, 支持POE,文心一言等多个平台. | 2024-09-16T15:01:22Z |
 | [lucasmz1](https://github.com/lucasmz1) | [Dolphin_emu_Appimage](https://github.com/lucasmz1/Dolphin_emu_Appimage) | 31 | Dolphin emu is a Nintendo Game Cube and Wii emulator, it allows the computer gammers enjoy both Consoles in the computer with the capability of 1080p | 2024-12-02T16:24:03Z |
 | [lucasmz1](https://github.com/lucasmz1) | [Game_Conqueror_AppImage](https://github.com/lucasmz1/Game_Conqueror_AppImage) | 2 | Memory scanner designed to isolate the adress of an arbitrary variable in an executing process (gtk GUI) | 2024-11-17T19:26:35Z |
@@ -995,13 +995,13 @@
 | [marcogrecopriolo](https://github.com/marcogrecopriolo) | [guglielmo](https://github.com/marcogrecopriolo/guglielmo) | 78 | Qt based FM / Dab tuner | 2024-12-06T11:53:31Z |
 | [margual56](https://github.com/margual56) | [nix-bucks](https://github.com/margual56/nix-bucks) | 10 | A money tracker: Your income and expenses at your control | 2024-10-26T19:45:25Z |
 | [mario33881](https://github.com/mario33881) | [betterSIS](https://github.com/mario33881/betterSIS) | 8 | The modern shell for SIS (the circuit simulator and optimizer) | 2024-10-25T18:33:43Z |
-| [marktext](https://github.com/marktext) | [marktext](https://github.com/marktext/marktext) | 47805 | 📝A simple and elegant markdown editor, available for Linux, macOS and Windows. | 2024-12-06T11:56:13Z |
+| [marktext](https://github.com/marktext) | [marktext](https://github.com/marktext/marktext) | 47807 | 📝A simple and elegant markdown editor, available for Linux, macOS and Windows. | 2024-12-06T14:01:47Z |
 | [martijnmichel](https://github.com/martijnmichel) | [nordvpn-linux](https://github.com/martijnmichel/nordvpn-linux) | 21 | A nicer way to connect to NordVPN on Linux. | 2024-09-20T11:57:36Z |
 | [martinribelotta](https://github.com/martinribelotta) | [embedded-ide](https://github.com/martinribelotta/embedded-ide) | 155 | IDE for C embedded development centered on bare-metal ARM systems | 2024-09-19T17:12:21Z |
 | [martinribelotta](https://github.com/martinribelotta) | [embedded-ide-builder](https://github.com/martinribelotta/embedded-ide-builder) | 5 | Embedded IDE automated build system | 2020-02-10T19:15:56Z |
 | [martinrotter](https://github.com/martinrotter) | [rssguard](https://github.com/martinrotter/rssguard) | 1654 | Feed reader (and podcast player) which supports RSS/ATOM/JSON and many web-based feed services. | 2024-12-06T00:28:04Z |
 | [martinrotter](https://github.com/martinrotter) | [textosaurus](https://github.com/martinrotter/textosaurus) | 285 | Cross-platform text editor based on Qt and Scintilla. | 2024-11-23T16:18:04Z |
-| [mattermost](https://github.com/mattermost) | [desktop](https://github.com/mattermost/desktop) | 2038 | Mattermost Desktop application for Windows, Mac and Linux | 2024-12-05T17:30:41Z |
+| [mattermost](https://github.com/mattermost) | [desktop](https://github.com/mattermost/desktop) | 2038 | Mattermost Desktop application for Windows, Mac and Linux | 2024-12-06T14:00:58Z |
 | [matthew-matvei](https://github.com/matthew-matvei) | [freeman](https://github.com/matthew-matvei/freeman) | 291 | A free, extensible, cross-platform file manager for power users | 2024-07-02T19:49:33Z |
 | [matthieuy](https://github.com/matthieuy) | [feedseries](https://github.com/matthieuy/feedseries) | 1 | FeedSeries est une application qui permet de suivre les sorties de vos séries | 2020-07-11T05:12:13Z |
 | [mavlink](https://github.com/mavlink) | [qgroundcontrol](https://github.com/mavlink/qgroundcontrol) | 3353 | Cross-platform ground control station for drones (Android, iOS, Mac OS, Linux, Windows) | 2024-12-05T12:11:47Z |
@@ -1014,7 +1014,7 @@
 | [mean00](https://github.com/mean00) | [avidemux2](https://github.com/mean00/avidemux2) | 715 | Avidemux2, simple video editor | 2024-12-04T05:21:20Z |
 | [melonDS-emu](https://github.com/melonDS-emu) | [melonDS](https://github.com/melonDS-emu/melonDS) | 3339 | DS emulator, sorta | 2024-12-05T20:39:45Z |
 | [memospot](https://github.com/memospot) | [memospot](https://github.com/memospot/memospot) | 136 | Memospot is a self-contained desktop version of Memos -a privacy-first, lightweight note-taking service. | 2024-12-04T09:21:57Z |
-| [meowtec](https://github.com/meowtec) | [Imagine](https://github.com/meowtec/Imagine) | 3728 | 🖼️ PNG/JPEG optimization app for macOS, Windows and Linux. | 2024-12-06T10:30:28Z |
+| [meowtec](https://github.com/meowtec) | [Imagine](https://github.com/meowtec/Imagine) | 3729 | 🖼️ PNG/JPEG optimization app for macOS, Windows and Linux. | 2024-12-06T14:07:53Z |
 | [metacoma](https://github.com/metacoma) | [silverkey](https://github.com/metacoma/silverkey) | 10 | No description provided. | 2021-12-03T22:10:18Z |
 | [mgba-emu](https://github.com/mgba-emu) | [mgba](https://github.com/mgba-emu/mgba) | 5760 | mGBA Game Boy Advance Emulator | 2024-12-05T16:30:45Z |
 | [mgechev](https://github.com/mgechev) | [ngrev](https://github.com/mgechev/ngrev) | 1578 | Tool for reverse engineering of Angular applications | 2024-11-23T09:15:47Z |
@@ -1044,7 +1044,7 @@
 | [mockoon](https://github.com/mockoon) | [mockoon](https://github.com/mockoon/mockoon) | 6627 | Mockoon is the easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source. | 2024-12-06T12:51:47Z |
 | [modernben](https://github.com/modernben) | [iptracker](https://github.com/modernben/iptracker) | 57 | Desktop tool to keep track of your IP address and update you when it changes | 2024-11-22T13:50:59Z |
 | [mooltipass](https://github.com/mooltipass) | [moolticute](https://github.com/mooltipass/moolticute) | 144 | Mooltipass crossplatform daemon/tools | 2024-12-04T21:57:50Z |
-| [moonlight-stream](https://github.com/moonlight-stream) | [moonlight-qt](https://github.com/moonlight-stream/moonlight-qt) | 11062 | GameStream client for PCs (Windows, Mac, Linux, and Steam Link) | 2024-12-06T12:33:42Z |
+| [moonlight-stream](https://github.com/moonlight-stream) | [moonlight-qt](https://github.com/moonlight-stream/moonlight-qt) | 11063 | GameStream client for PCs (Windows, Mac, Linux, and Steam Link) | 2024-12-06T13:52:00Z |
 | [moonline](https://github.com/moonline) | [Utility.PdfCompress](https://github.com/moonline/Utility.PdfCompress) | 0 | A utility to compress PDF documentas based on Ghostscript and YAD. | 2022-01-02T11:28:57Z |
 | [morrolinux](https://github.com/morrolinux) | [ChimeraDesk](https://github.com/morrolinux/ChimeraDesk) | 288 | Simple, fast and flexible DIY Remote Desktop software | 2024-12-05T02:24:53Z |
 | [mortbopet](https://github.com/mortbopet) | [Ripes](https://github.com/mortbopet/Ripes) | 2614 | A graphical processor simulator and assembly editor for the RISC-V ISA | 2024-12-06T07:48:56Z |
@@ -1060,7 +1060,7 @@
 | [muntorg](https://github.com/muntorg) | [munt-official](https://github.com/muntorg/munt-official) | 135 | Munt is a witness-secured decentralized network for payments, digital assets, finance and more | 2024-07-15T16:48:15Z |
 | [murilopereirame](https://github.com/murilopereirame) | [Whatstron](https://github.com/murilopereirame/Whatstron) | 4 | Unofficial WhatsApp desktop client for Linux | 2024-07-17T19:19:57Z |
 | [muse-sequencer](https://github.com/muse-sequencer) | [muse](https://github.com/muse-sequencer/muse) | 663 | MusE is a digital audio workstation with support for both Audio and MIDI | 2024-12-05T00:40:36Z |
-| [musescore](https://github.com/musescore) | [MuseScore](https://github.com/musescore/MuseScore) | 12395 | MuseScore is an open source and free music notation software. For support, contribution, bug reports, visit MuseScore.org. Fork and make pull requests! | 2024-12-06T13:12:06Z |
+| [musescore](https://github.com/musescore) | [MuseScore](https://github.com/musescore/MuseScore) | 12395 | MuseScore is an open source and free music notation software. For support, contribution, bug reports, visit MuseScore.org. Fork and make pull requests! | 2024-12-06T13:24:02Z |
 | [music-assistant](https://github.com/music-assistant) | [companion](https://github.com/music-assistant/companion) | 43 | Music Assistant Companion App | 2024-11-25T13:27:43Z |
 | [muttleyxd](https://github.com/muttleyxd) | [arma3-unix-launcher](https://github.com/muttleyxd/arma3-unix-launcher) | 210 | Launcher for Linux and Mac ArmA 3 | 2024-12-05T22:04:25Z |
 | [mvdicarlo](https://github.com/mvdicarlo) | [postybirb](https://github.com/mvdicarlo/postybirb) | 309 | PostyBirb is an application that helps artists post art and other multimedia to multiple websites more quickly. The overall goal of PostyBirb is to cut down on the time it takes to post submissions to multiple websites. | 2024-12-04T11:37:58Z |
@@ -1082,7 +1082,7 @@
 | [nbebaw](https://github.com/nbebaw) | [boostchanger](https://github.com/nbebaw/boostchanger) | 127 | With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux | 2024-12-01T00:04:45Z |
 | [nelsonenzo](https://github.com/nelsonenzo) | [tmux-appimage](https://github.com/nelsonenzo/tmux-appimage) | 125 | Tmux AppImage build via Docker | 2024-12-04T15:58:05Z |
 | [neopostmodern](https://github.com/neopostmodern) | [structure](https://github.com/neopostmodern/structure) | 17 | Structure is a knowledge management tool | 2024-11-24T16:41:40Z |
-| [neovim](https://github.com/neovim) | [neovim](https://github.com/neovim/neovim) | 83890 | Vim-fork focused on extensibility and usability | 2024-12-06T12:57:26Z |
+| [neovim](https://github.com/neovim) | [neovim](https://github.com/neovim/neovim) | 83891 | Vim-fork focused on extensibility and usability | 2024-12-06T13:51:35Z |
 | [nest-desktop](https://github.com/nest-desktop) | [nest-desktop-AppImage](https://github.com/nest-desktop/nest-desktop-AppImage) | 0 | An AppImage of NEST Desktop | 2024-08-06T16:21:07Z |
 | [netpanzer](https://github.com/netpanzer) | [netpanzer](https://github.com/netpanzer/netpanzer) | 17 | NetPanzer is an online multiplayer tactical warfare game designed for fast action combat. Join us on Discord: https://discord.gg/kCAB2CMswd | 2024-11-14T05:59:52Z |
 | [neuro-sys](https://github.com/neuro-sys) | [tumblr-likes-downloader](https://github.com/neuro-sys/tumblr-likes-downloader) | 104 | Download Tumblr posts that you liked | 2024-05-07T21:06:51Z |
@@ -1098,7 +1098,7 @@
 | [nuttyartist](https://github.com/nuttyartist) | [plume-public](https://github.com/nuttyartist/plume-public) | 49 | Write beautifully. Effortlessly. A note-taking app written in Qt C++ and QML. | 2024-11-19T12:14:09Z |
 | [nvpopov](https://github.com/nvpopov) | [qppcad](https://github.com/nvpopov/qppcad) | 12 | molecule and crystal editor written in c++ | 2024-08-19T06:25:38Z |
 | [nxshell](https://github.com/nxshell) | [nxshell](https://github.com/nxshell/nxshell) | 1064 | An easy to use new terminal. | 2024-12-06T07:25:18Z |
-| [obsidianmd](https://github.com/obsidianmd) | [obsidian-releases](https://github.com/obsidianmd/obsidian-releases) | 9852 | Community plugins list, theme list, and releases of Obsidian. | 2024-12-06T13:12:01Z |
+| [obsidianmd](https://github.com/obsidianmd) | [obsidian-releases](https://github.com/obsidianmd/obsidian-releases) | 9853 | Community plugins list, theme list, and releases of Obsidian. | 2024-12-06T14:12:43Z |
 | [odrick](https://github.com/odrick) | [free-tex-packer](https://github.com/odrick/free-tex-packer) | 956 | Free texture packer | 2024-12-03T10:30:51Z |
 | [ogri-la](https://github.com/ogri-la) | [strongbox](https://github.com/ogri-la/strongbox) | 169 | a World of Warcraft Addon Manager aimed at Linux players | 2024-11-10T13:41:43Z |
 | [oguzhaninan](https://github.com/oguzhaninan) | [Stacer](https://github.com/oguzhaninan/Stacer) | 8895 | Linux System Optimizer and Monitoring - https://oguzhaninan.github.io/Stacer-Web | 2024-12-05T14:08:59Z |
@@ -1111,7 +1111,7 @@
 | [open-fidias](https://github.com/open-fidias) | [db-migration-app](https://github.com/open-fidias/db-migration-app) | 5 | Desktop app to migrate databases based on SQL files | 2021-12-13T15:22:34Z |
 | [open-osrs](https://github.com/open-osrs) | [launcher](https://github.com/open-osrs/launcher) | 31 | Keeps the OpenOSRS client up to date for those who dont want to build. | 2024-01-04T15:51:21Z |
 | [openaudible](https://github.com/openaudible) | [openaudible](https://github.com/openaudible/openaudible) | 1593 | Audiobook Manager for Audible Users | 2024-12-05T10:18:23Z |
-| [openscad](https://github.com/openscad) | [openscad](https://github.com/openscad/openscad) | 7157 | OpenSCAD - The Programmers Solid 3D CAD Modeller | 2024-12-06T08:50:55Z |
+| [openscad](https://github.com/openscad) | [openscad](https://github.com/openscad/openscad) | 7158 | OpenSCAD - The Programmers Solid 3D CAD Modeller | 2024-12-06T13:53:01Z |
 | [openscopeproject](https://github.com/openscopeproject) | [TrguiNG](https://github.com/openscopeproject/TrguiNG) | 393 | Remote GUI for Transmission torrent daemon | 2024-12-05T11:58:22Z |
 | [opensourcecheemsburgers](https://github.com/opensourcecheemsburgers) | [ubiquity](https://github.com/opensourcecheemsburgers/ubiquity) | 183 | A cross-platform markdown editor. | 2024-12-04T02:39:54Z |
 | [openstenoproject](https://github.com/openstenoproject) | [plover](https://github.com/openstenoproject/plover) | 2372 | Open source stenotype engine | 2024-12-05T23:11:44Z |
@@ -1131,7 +1131,7 @@
 | [pathephone](https://github.com/pathephone) | [pathephone-desktop](https://github.com/pathephone/pathephone-desktop) | 247 | Distributed audio player | 2024-05-30T09:34:39Z |
 | [patrikx3](https://github.com/patrikx3) | [onenote](https://github.com/patrikx3/onenote) | 1882 | 📚 Linux Electron Onenote - A Linux compatible version of OneNote | 2024-12-06T03:27:57Z |
 | [paustint](https://github.com/paustint) | [record-compare](https://github.com/paustint/record-compare) | 2 | No description provided. | 2019-06-12T03:14:29Z |
-| [pavlobu](https://github.com/pavlobu) | [deskreen](https://github.com/pavlobu/deskreen) | 17610 | Deskreen turns any device with a web browser into a secondary screen for your computer. ⭐️ Star to support our work! | 2024-12-06T13:06:34Z |
+| [pavlobu](https://github.com/pavlobu) | [deskreen](https://github.com/pavlobu/deskreen) | 17611 | Deskreen turns any device with a web browser into a secondary screen for your computer. ⭐️ Star to support our work! | 2024-12-06T13:29:27Z |
 | [pdf2htmlEX](https://github.com/pdf2htmlEX) | [pdf2htmlEX](https://github.com/pdf2htmlEX/pdf2htmlEX) | 4583 | Convert PDF to HTML without losing text or format. | 2024-12-05T14:20:17Z |
 | [pegvin](https://github.com/pegvin) | [bread](https://github.com/pegvin/bread) | 35 | :bread: Install, update and remove AppImage from your CLI. | 2024-10-06T20:04:53Z |
 | [pencil2d](https://github.com/pencil2d) | [pencil](https://github.com/pencil2d/pencil) | 1479 | Pencil2D is an easy, intuitive tool to make 2D hand-drawn animations. Pencil2D is open source and cross-platform. | 2024-12-06T11:17:14Z |
@@ -1152,11 +1152,11 @@
 | [pocketnetteam](https://github.com/pocketnetteam) | [pocketnet.gui](https://github.com/pocketnetteam/pocketnet.gui) | 85 | Decentralized social network based on the blockchain | 2024-11-30T16:54:36Z |
 | [poooi](https://github.com/poooi) | [poi](https://github.com/poooi/poi) | 1709 | Scalable KanColle browser and tool. | 2024-12-05T19:46:51Z |
 | [pop-os](https://github.com/pop-os) | [popsicle](https://github.com/pop-os/popsicle) | 661 | Multiple USB File Flasher | 2024-12-05T11:53:16Z |
-| [popcorn-official](https://github.com/popcorn-official) | [popcorn-desktop](https://github.com/popcorn-official/popcorn-desktop) | 9507 | Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player ( Windows / Mac / Linux ) A Butter-Project Fork | 2024-12-05T22:23:19Z |
+| [popcorn-official](https://github.com/popcorn-official) | [popcorn-desktop](https://github.com/popcorn-official/popcorn-desktop) | 9508 | Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player ( Windows / Mac / Linux ) A Butter-Project Fork | 2024-12-06T13:43:56Z |
 | [popsUlfr](https://github.com/popsUlfr) | [droidcam-steam-deck-appimage](https://github.com/popsUlfr/droidcam-steam-deck-appimage) | 11 | A DroidCam AppImage for the Steam Deck/SteamOS 3.0 | 2024-07-30T03:28:17Z |
 | [popsUlfr](https://github.com/popsUlfr) | [podman-appimage](https://github.com/popsUlfr/podman-appimage) | 30 | AppImage of podman | 2024-10-18T22:08:49Z |
-| [pot-app](https://github.com/pot-app) | [pot-desktop](https://github.com/pot-app/pot-desktop) | 10683 | 🌈一个跨平台的划词翻译和OCR软件  A cross-platform software for text translation and recognition. | 2024-12-06T09:49:48Z |
-| [ppy](https://github.com/ppy) | [osu](https://github.com/ppy/osu) | 15551 | rhythm is just a *click* away! | 2024-12-06T12:32:53Z |
+| [pot-app](https://github.com/pot-app) | [pot-desktop](https://github.com/pot-app/pot-desktop) | 10684 | 🌈一个跨平台的划词翻译和OCR软件  A cross-platform software for text translation and recognition. | 2024-12-06T13:47:31Z |
+| [ppy](https://github.com/ppy) | [osu](https://github.com/ppy/osu) | 15552 | rhythm is just a *click* away! | 2024-12-06T13:44:47Z |
 | [pragtical](https://github.com/pragtical) | [pragtical](https://github.com/pragtical/pragtical) | 476 | The practical and pragmatic code editor. | 2024-12-01T06:29:19Z |
 | [prateekmedia](https://github.com/prateekmedia) | [appimagepool](https://github.com/prateekmedia/appimagepool) | 652 | A simple, modern AppImageHub Client, powered by flutter. | 2024-11-27T06:23:59Z |
 | [prateekmedia](https://github.com/prateekmedia) | [pstube](https://github.com/prateekmedia/pstube) | 491 | Watch and download videos without ads | 2024-12-05T19:41:03Z |
@@ -1171,7 +1171,7 @@
 | [probonopd](https://github.com/probonopd) | [linuxdeployqt](https://github.com/probonopd/linuxdeployqt) | 2223 | Makes Linux applications self-contained by copying in the libraries and plugins that the application uses, and optionally generates an AppImage. Can be used for Qt and other applications | 2024-12-06T09:39:57Z |
 | [project-slippi](https://github.com/project-slippi) | [slippi-launcher](https://github.com/project-slippi/slippi-launcher) | 246 | The way to play Slippi Online and watch replays. | 2024-10-28T02:26:06Z |
 | [unofficial-protonmail-desktop](https://github.com/unofficial-protonmail-desktop) | [application](https://github.com/unofficial-protonmail-desktop/application) | 534 | :envelope: Unofficial desktop client for ProtonMail | 2024-11-14T20:01:20Z |
-| [prusa3d](https://github.com/prusa3d) | [PrusaSlicer](https://github.com/prusa3d/PrusaSlicer) | 7802 | G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) | 2024-12-06T08:47:46Z |
+| [prusa3d](https://github.com/prusa3d) | [PrusaSlicer](https://github.com/prusa3d/PrusaSlicer) | 7803 | G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) | 2024-12-06T14:07:15Z |
 | [ptitSeb](https://github.com/ptitSeb) | [stuntcarremake](https://github.com/ptitSeb/stuntcarremake) | 72 | A port of Stunt Car Remake to OpenPandora, Linux and Emscripten. Status: Working | 2024-12-05T09:13:03Z |
 | [ptkdev-boilerplate](https://github.com/ptkdev-boilerplate) | [svelte-electron-boilerplate](https://github.com/ptkdev-boilerplate/svelte-electron-boilerplate) | 127 | 🧬 Create a desktop app with this user-friendly Svelte boilerplate for electron | 2024-10-08T04:20:13Z |
 | [pulsar-edit](https://github.com/pulsar-edit) | [pulsar](https://github.com/pulsar-edit/pulsar) | 3358 | A Community-led Hyper-Hackable Text Editor | 2024-12-05T17:27:59Z |
@@ -1182,8 +1182,8 @@
 | [qarmin](https://github.com/qarmin) | [czkawka](https://github.com/qarmin/czkawka) | 20513 | Multi functional app to find duplicates, empty folders, similar images etc. | 2024-12-06T08:52:20Z |
 | [qarmin](https://github.com/qarmin) | [szyszka](https://github.com/qarmin/szyszka) | 850 | Szyszka is fast and powerful file renamer | 2024-11-29T17:32:18Z |
 | [qelectrotech](https://github.com/qelectrotech) | [qelectrotech-source-mirror](https://github.com/qelectrotech/qelectrotech-source-mirror) | 294 | Main QET repository, Bugtracker: https://qelectrotech.org/bugtracker/ | 2024-12-04T04:58:37Z |
-| [qier222](https://github.com/qier222) | [YesPlayMusic](https://github.com/qier222/YesPlayMusic) | 29843 | 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: | 2024-12-06T11:55:44Z |
-| [qishibo](https://github.com/qishibo) | [AnotherRedisDesktopManager](https://github.com/qishibo/AnotherRedisDesktopManager) | 30929 | 🚀🚀🚀A faster, better and more stable Redis desktop manager [GUI client], compatible with Linux, Windows, Mac. | 2024-12-06T11:46:20Z |
+| [qier222](https://github.com/qier222) | [YesPlayMusic](https://github.com/qier222/YesPlayMusic) | 29844 | 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: | 2024-12-06T13:42:31Z |
+| [qishibo](https://github.com/qishibo) | [AnotherRedisDesktopManager](https://github.com/qishibo/AnotherRedisDesktopManager) | 30930 | 🚀🚀🚀A faster, better and more stable Redis desktop manager [GUI client], compatible with Linux, Windows, Mac. | 2024-12-06T13:42:25Z |
 | [qpdf](https://github.com/qpdf) | [qpdf](https://github.com/qpdf/qpdf) | 3562 | qpdf: A content-preserving PDF document transformer | 2024-12-06T10:42:47Z |
 | [quick123official](https://github.com/quick123official) | [quick_redis_blog](https://github.com/quick123official/quick_redis_blog) | 1708 | QuickRedis is a free forever Redis Desktop manager. It supports direct connection, sentinel, and cluster mode, supports multiple languages, supports hundreds of millions of keys, and has an amazing UI. Supports both Windows, Mac OS X and Linux platform. | 2024-12-05T02:06:31Z |
 | [quickemu-project](https://github.com/quickemu-project) | [quickgui](https://github.com/quickemu-project/quickgui) | 1015 | An elegant virtual machine manager for the desktop | 2024-12-06T03:46:43Z |
@@ -1217,7 +1217,7 @@
 | [ridaamirini](https://github.com/ridaamirini) | [ImapSyncClient](https://github.com/ridaamirini/ImapSyncClient) | 103 | ImapSync Desktop Client | 2024-11-21T12:59:33Z |
 | [ritz078](https://github.com/ritz078) | [moose](https://github.com/ritz078/moose) | 834 | 🦌  An application to stream, cast and download torrents. | 2024-12-02T04:45:50Z |
 | [rivafarabi](https://github.com/rivafarabi) | [deckboard](https://github.com/rivafarabi/deckboard) | 570 | Control your PC with your phone in easy way possible. News and updates on @DeckboardApp. | 2024-12-04T00:42:38Z |
-| [rizinorg](https://github.com/rizinorg) | [cutter](https://github.com/rizinorg/cutter) | 15945 | Free and Open Source Reverse Engineering Platform powered by rizin | 2024-12-06T11:31:53Z |
+| [rizinorg](https://github.com/rizinorg) | [cutter](https://github.com/rizinorg/cutter) | 15946 | Free and Open Source Reverse Engineering Platform powered by rizin | 2024-12-06T13:27:53Z |
 | [rkclark](https://github.com/rkclark) | [pullp](https://github.com/rkclark/pullp) | 124 | A Github pull request monitoring tool for Mac, Linux and Windows | 2024-02-07T06:02:59Z |
 | [robert7](https://github.com/robert7) | [nixnote2](https://github.com/robert7/nixnote2) | 296 | Nixnote - Evernote desktop client for Linux | 2024-11-29T00:42:23Z |
 | [robiot](https://github.com/robiot) | [xclicker](https://github.com/robiot/xclicker) | 480 | XClicker - Fast gui autoclicker for x11 linux desktops | 2024-11-29T18:07:18Z |
@@ -1225,11 +1225,11 @@
 | [rodrigorc](https://github.com/rodrigorc) | [papercraft](https://github.com/rodrigorc/papercraft) | 137 | Papercraft is a tool to unwrap 3D models. | 2024-12-04T22:10:43Z |
 | [rosenloecher-it](https://github.com/rosenloecher-it) | [roloviewer](https://github.com/rosenloecher-it/roloviewer) | 0 | Image slideshow viewer | 2022-12-29T10:08:59Z |
 | [rossprogram](https://github.com/rossprogram) | [circle-z](https://github.com/rossprogram/circle-z) | 18 | An IRC client for online math courses, with video conferencing and a collaborative TeX editor | 2024-09-30T23:33:05Z |
-| [rotki](https://github.com/rotki) | [rotki](https://github.com/rotki/rotki) | 2917 | A portfolio tracking, analytics, accounting and management application that protects your privacy | 2024-12-06T12:34:48Z |
+| [rotki](https://github.com/rotki) | [rotki](https://github.com/rotki/rotki) | 2918 | A portfolio tracking, analytics, accounting and management application that protects your privacy | 2024-12-06T13:27:56Z |
 | [runelite](https://github.com/runelite) | [launcher](https://github.com/runelite/launcher) | 68 | Launcher for RuneLite | 2024-11-30T23:25:53Z |
 | [ruralad](https://github.com/ruralad) | [notedown](https://github.com/ruralad/notedown) | 25 | Note taking with react + rust. For windows, mac and linux. | 2024-12-04T20:53:14Z |
 | [ruslang02](https://github.com/ruslang02) | [discord-qt](https://github.com/ruslang02/discord-qt) | 208 | Discord client powered by Node.JS and Qt Widgets. | 2024-09-27T13:59:38Z |
-| [rustdesk](https://github.com/rustdesk) | [rustdesk](https://github.com/rustdesk/rustdesk) | 77171 | An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer. | 2024-12-06T13:10:48Z |
+| [rustdesk](https://github.com/rustdesk) | [rustdesk](https://github.com/rustdesk/rustdesk) | 77173 | An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer. | 2024-12-06T14:01:11Z |
 | [rvpanoz](https://github.com/rvpanoz) | [luna](https://github.com/rvpanoz/luna) | 1010 | Manage npm dependencies through a modern UI. | 2024-12-01T07:26:09Z |
 | [ryo-currency](https://github.com/ryo-currency) | [ryo-wallet](https://github.com/ryo-currency/ryo-wallet) | 24 | Next Generation GUI Wallet for Ryo-currency | 2024-11-04T04:26:07Z |
 | [ryujinx-mirror](https://github.com/ryujinx-mirror) | [ryujinx](https://github.com/ryujinx-mirror/ryujinx) | 2149 | Hard-fork of the Ryujinx project | 2024-12-06T04:18:18Z |
@@ -1274,7 +1274,7 @@
 | [simplex-chat](https://github.com/simplex-chat) | [simplex-chat](https://github.com/simplex-chat/simplex-chat) | 7411 | SimpleX - the first messaging network operating without user identifiers of any kind - 100% private by design! iOS, Android and desktop apps 📱! | 2024-12-06T12:19:45Z |
 | [sindresorhus](https://github.com/sindresorhus) | [caprine](https://github.com/sindresorhus/caprine) | 7047 | Elegant Facebook Messenger desktop app | 2024-12-05T16:03:29Z |
 | [sithlord48](https://github.com/sithlord48) | [blackchocobo](https://github.com/sithlord48/blackchocobo) | 95 | Save Editor For Final Fantasy VII | 2024-11-26T23:46:39Z |
-| [siyuan-note](https://github.com/siyuan-note) | [siyuan](https://github.com/siyuan-note/siyuan) | 23316 | A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang. | 2024-12-06T13:06:49Z |
+| [siyuan-note](https://github.com/siyuan-note) | [siyuan](https://github.com/siyuan-note/siyuan) | 23320 | A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang. | 2024-12-06T14:03:25Z |
 | [skyjake](https://github.com/skyjake) | [lagrange](https://github.com/skyjake/lagrange) | 1219 | A Beautiful Gemini Client | 2024-12-06T12:53:40Z |
 | [slic3r](https://github.com/slic3r) | [Slic3r](https://github.com/slic3r/Slic3r) | 3357 | Open Source toolpath generator for 3D printers | 2024-12-06T12:37:07Z |
 | [smallbasic](https://github.com/smallbasic) | [SmallBASIC](https://github.com/smallbasic/SmallBASIC) | 211 | SmallBASIC is a fast and easy to learn BASIC language interpreter ideal for everyday calculations, scripts and prototypes. SmallBASIC includes trigonometric, matrices and algebra functions, a built in IDE, a powerful string library, system, sound, and graphic commands along with structured programming syntax | 2024-11-25T20:02:56Z |
@@ -1296,7 +1296,7 @@
 | [spluxx](https://github.com/spluxx) | [Protoman](https://github.com/spluxx/Protoman) | 447 | Postman for protobuf APIs | 2024-11-15T21:17:54Z |
 | [spotzero](https://github.com/spotzero) | [spacewars](https://github.com/spotzero/spacewars) | 6 | A re-imagining of the classic game Spacewar! in Rust using the Amethyst game engine. | 2024-07-02T19:14:02Z |
 | [spyglass-search](https://github.com/spyglass-search) | [spyglass](https://github.com/spyglass-search/spyglass) | 2596 | A personal search engine:  Create a searchable library from your personal documents, interests, and more! | 2024-12-04T07:57:52Z |
-| [sqlitebrowser](https://github.com/sqlitebrowser) | [sqlitebrowser](https://github.com/sqlitebrowser/sqlitebrowser) | 21456 | Official home of the DB Browser for SQLite (DB4S) project. Previously known as SQLite Database Browser and Database Browser for SQLite. Website at: | 2024-12-06T09:03:35Z |
+| [sqlitebrowser](https://github.com/sqlitebrowser) | [sqlitebrowser](https://github.com/sqlitebrowser/sqlitebrowser) | 21458 | Official home of the DB Browser for SQLite (DB4S) project. Previously known as SQLite Database Browser and Database Browser for SQLite. Website at: | 2024-12-06T14:17:24Z |
 | [srevinsaju](https://github.com/srevinsaju) | [Brave-AppImage](https://github.com/srevinsaju/Brave-AppImage) | 49 | No description provided. | 2024-12-03T11:53:11Z |
 | [srevinsaju](https://github.com/srevinsaju) | [Firefox-Appimage](https://github.com/srevinsaju/Firefox-Appimage) | 139 | Mozilla Firefox Stable AppImages by Continuous Integration | 2024-11-29T20:25:28Z |
 | [srevinsaju](https://github.com/srevinsaju) | [discord-appimage](https://github.com/srevinsaju/discord-appimage) | 62 | Continuous Integration to create Discord AppImages directly from source | 2024-11-14T20:16:54Z |
@@ -1317,7 +1317,7 @@
 | [story-apps](https://github.com/story-apps) | [starc](https://github.com/story-apps/starc) | 240 | Reinventing the screenwriting software. | 2024-12-06T11:12:19Z |
 | [straightcurve](https://github.com/straightcurve) | [better-osuskills](https://github.com/straightcurve/better-osuskills) | 1 | gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials | 2023-05-24T09:01:33Z |
 | [streamlink](https://github.com/streamlink) | [streamlink-twitch-gui](https://github.com/streamlink/streamlink-twitch-gui) | 2700 | A multi platform Twitch.tv browser for Streamlink | 2024-12-03T13:15:14Z |
-| [streetwriters](https://github.com/streetwriters) | [notesnook](https://github.com/streetwriters/notesnook) | 10424 | A fully open source & end-to-end encrypted note taking alternative to Evernote. | 2024-12-06T13:10:26Z |
+| [streetwriters](https://github.com/streetwriters) | [notesnook](https://github.com/streetwriters/notesnook) | 10425 | A fully open source & end-to-end encrypted note taking alternative to Evernote. | 2024-12-06T13:24:11Z |
 | [studioLaCosaNostra](https://github.com/studioLaCosaNostra) | [qr-code-generator-desktop](https://github.com/studioLaCosaNostra/qr-code-generator-desktop) | 12 | Create custom QR Codes. You can save them as PNG image. You can change the size of the image. | 2024-08-12T19:46:54Z |
 | [stuffmatic](https://github.com/stuffmatic) | [fSpy](https://github.com/stuffmatic/fSpy) | 2255 | A cross platform app for quick and easy still image camera matching | 2024-12-01T16:00:32Z |
 | [sudo-give-me-coffee](https://github.com/sudo-give-me-coffee) | [wine32-deploy](https://github.com/sudo-give-me-coffee/wine32-deploy) | 61 | A tool to creating AppImages for  32-bit Microsoft Windows® applications | 2024-10-09T07:34:39Z |
@@ -1330,7 +1330,7 @@
 | [synfig](https://github.com/synfig) | [synfig](https://github.com/synfig/synfig) | 1854 | This is the Official source code repository of the Synfig project | 2024-12-06T11:17:34Z |
 | [synthein](https://github.com/synthein) | [synthein](https://github.com/synthein/synthein) | 22 | A space ship building and combat game | 2024-10-31T22:18:56Z |
 | [szTheory](https://github.com/szTheory) | [exifcleaner](https://github.com/szTheory/exifcleaner) | 1940 | Cross-platform desktop GUI app to clean image metadata | 2024-12-06T10:25:14Z |
-| [tagspaces](https://github.com/tagspaces) | [tagspaces](https://github.com/tagspaces/tagspaces) | 3864 | TagSpaces is an offline, open source, document manager with tagging support | 2024-12-06T13:03:30Z |
+| [tagspaces](https://github.com/tagspaces) | [tagspaces](https://github.com/tagspaces/tagspaces) | 3864 | TagSpaces is an offline, open source, document manager with tagging support | 2024-12-06T13:43:03Z |
 | [vnotex](https://github.com/vnotex) | [vnote](https://github.com/vnotex/vnote) | 11899 | A pleasant note-taking platform in native C++. | 2024-12-06T08:11:57Z |
 | [CleepDevice](https://github.com/CleepDevice) | [cleep-desktop](https://github.com/CleepDevice/cleep-desktop) | 3 | Cleep desktop application | 2024-10-31T13:57:52Z |
 | [tareqimbasher](https://github.com/tareqimbasher) | [NetPad](https://github.com/tareqimbasher/NetPad) | 1412 | A cross-platform C# editor and playground. | 2024-12-06T03:48:17Z |
@@ -1362,8 +1362,8 @@
 | [titenko](https://github.com/titenko) | [elementary-code](https://github.com/titenko/elementary-code) | 1 | AppImage version of Elementary OS Code (unofficial) from Maksym Titenko | 2022-10-23T16:30:01Z |
 | [tkashkin](https://github.com/tkashkin) | [GameHub](https://github.com/tkashkin/GameHub) | 2256 | All your games in one place | 2024-12-03T14:54:28Z |
 | [tmstieff](https://github.com/tmstieff) | [Woke](https://github.com/tmstieff/Woke) | 18 | A native multiplatform desktop REST client with grand ambitions and limited scope | 2023-07-12T15:53:40Z |
-| [toasterofbread](https://github.com/toasterofbread) | [spmp](https://github.com/toasterofbread/spmp) | 1174 | A YouTube Music client with a focus on customisation of colours and song metadata. Built with Compose Multiplatform for Android and desktop. | 2024-12-06T09:57:37Z |
-| [toeverything](https://github.com/toeverything) | [AFFiNE](https://github.com/toeverything/AFFiNE) | 43101 | There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. | 2024-12-06T12:49:47Z |
+| [toasterofbread](https://github.com/toasterofbread) | [spmp](https://github.com/toasterofbread/spmp) | 1175 | A YouTube Music client with a focus on customisation of colours and song metadata. Built with Compose Multiplatform for Android and desktop. | 2024-12-06T13:33:24Z |
+| [toeverything](https://github.com/toeverything) | [AFFiNE](https://github.com/toeverything/AFFiNE) | 43100 | There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. | 2024-12-06T14:18:11Z |
 | [tom-james-watson](https://github.com/tom-james-watson) | [breaktimer-app](https://github.com/tom-james-watson/breaktimer-app) | 1069 | Manage periodic breaks. Avoid eye-strain and RSI. | 2024-12-05T15:07:48Z |
 | [tomas](https://github.com/tomas) | [pixelhopper](https://github.com/tomas/pixelhopper) | 12 | Animated GIF player for Linux (X11) and eventually macOS and Windows | 2024-10-31T13:50:15Z |
 | [tonquer](https://github.com/tonquer) | [picacg-qt](https://github.com/tonquer/picacg-qt) | 3765 | 哔咔漫画, PicACG comic PC client(Windows, Linux, MacOS) | 2024-12-06T04:09:04Z |
@@ -1384,7 +1384,7 @@
 | [ttytm](https://github.com/ttytm) | [wthrr-the-weathercrab](https://github.com/ttytm/wthrr-the-weathercrab) | 396 | 🌞 🦀 🌙 Weather companion for the terminal. Rust app. | 2024-12-04T18:42:59Z |
 | [tue-robotics](https://github.com/tue-robotics) | [hero-display](https://github.com/tue-robotics/hero-display) | 0 | Display sink for the hero display that presents information to the user | 2024-12-05T07:11:29Z |
 | [tunepack](https://github.com/tunepack) | [tunepack-desktop](https://github.com/tunepack/tunepack-desktop) | 27 | Tunepack - Desktop | 2024-08-06T19:01:35Z |
-| [tw93](https://github.com/tw93) | [Pake](https://github.com/tw93/Pake) | 33406 | 🤱🏻 Turn any webpage into a desktop app with Rust.  🤱🏻 利用 Rust 轻松构建轻量级多端桌面应用 | 2024-12-06T12:43:46Z |
+| [tw93](https://github.com/tw93) | [Pake](https://github.com/tw93/Pake) | 33408 | 🤱🏻 Turn any webpage into a desktop app with Rust.  🤱🏻 利用 Rust 轻松构建轻量级多端桌面应用 | 2024-12-06T14:14:09Z |
 | [tx00100xt](https://github.com/tx00100xt) | [SeriousSamClassic](https://github.com/tx00100xt/SeriousSamClassic) | 120 | Open source game engine version developed by Croteam for Serious Sam Classic (Windows, Linux, FreeBSD, OpenBSD, NetBSD, macOS, Raspberry Pi OS). Based on https://github.com/Croteam-official/Serious-Engine and linux port https://github.com/icculus/Serious-Engine | 2024-10-19T09:24:24Z |
 | [tx00100xt](https://github.com/tx00100xt) | [SeriousSamClassic-VK](https://github.com/tx00100xt/SeriousSamClassic-VK) | 106 | Open source game engine version developed by Croteam for Serious Sam Classic with Vulkan support (Windows, Linux, FreeBSD,  OpenBSD, macOS, Raspberry Pi OS). Based on https://github.com/sultim-t/Serious-Engine-Vk and linux port https://github.com/icculus/Serious-Engine | 2024-11-16T06:33:31Z |
 | [tywil04](https://github.com/tywil04) | [parchment](https://github.com/tywil04/parchment) | 18 | A minimal minimal text editor written using web technologies for Windows, Linux and MacOS | 2024-09-22T14:41:51Z |
@@ -1395,10 +1395,10 @@
 | [unruhschuh](https://github.com/unruhschuh) | [MrWriter](https://github.com/unruhschuh/MrWriter) | 105 | Notetaking and blackboard replacement application. Inspired by Xournal. Written in C++/Qt for Linux / Windows / Mac. | 2024-12-04T15:36:05Z |
 | [upnotes-io](https://github.com/upnotes-io) | [upnotes-website](https://github.com/upnotes-io/upnotes-website) | 12 | A notes app for software developers | 2024-11-18T05:28:05Z |
 | [upscayl](https://github.com/upscayl) | [upscayl](https://github.com/upscayl/upscayl) | 31579 | 🆙 Upscayl - #1 Free and Open Source AI Image Upscaler for Linux, MacOS and Windows. | 2024-12-06T11:37:51Z |
-| [usebruno](https://github.com/usebruno) | [bruno](https://github.com/usebruno/bruno) | 28201 | Opensource IDE For Exploring and Testing Apis (lightweight alternative to postman/insomnia) | 2024-12-06T12:22:01Z |
+| [usebruno](https://github.com/usebruno) | [bruno](https://github.com/usebruno/bruno) | 28202 | Opensource IDE For Exploring and Testing Apis (lightweight alternative to postman/insomnia) | 2024-12-06T14:03:57Z |
 | [bloomrpc](https://github.com/bloomrpc) | [bloomrpc](https://github.com/bloomrpc/bloomrpc) | 9014 | Former GUI client for gRPC services. No longer maintained. | 2024-12-03T05:00:16Z |
 | [valicm](https://github.com/valicm) | [dbeaver-ce-appimage](https://github.com/valicm/dbeaver-ce-appimage) | 9 | Unofficial / Community provided Dbeaver Community Edition AppImage | 2024-11-27T20:27:12Z |
-| [variar](https://github.com/variar) | [klogg](https://github.com/variar/klogg) | 2412 | Really fast log explorer based on glogg project | 2024-12-06T12:10:56Z |
+| [variar](https://github.com/variar) | [klogg](https://github.com/variar/klogg) | 2413 | Really fast log explorer based on glogg project | 2024-12-06T13:40:45Z |
 | [vcync](https://github.com/vcync) | [modV](https://github.com/vcync/modV) | 451 | modular audio visualisation powered by JavaScript | 2024-12-01T03:17:46Z |
 | [vechain](https://github.com/vechain) | [thor-sync.electron](https://github.com/vechain/thor-sync.electron) | 55 | A browser that empowers DApps on VeChain | 2024-08-28T14:59:47Z |
 | [vercel](https://github.com/vercel) | [hyper](https://github.com/vercel/hyper) | 43478 | A terminal built on web technologies | 2024-12-06T01:37:24Z |
@@ -1419,7 +1419,7 @@
 | [vodka2](https://github.com/vodka2) | [vk-music-fs](https://github.com/vodka2/vk-music-fs) | 37 | FUSE file system for VK audios | 2024-11-09T00:08:15Z |
 | [volar-is](https://github.com/volar-is) | [volaris-gui](https://github.com/volar-is/volaris-gui) | 3 | Volaris-Gui is the wrapper for Volaris, a secure file encryption software. | 2024-11-06T14:57:59Z |
 | [vterm](https://github.com/vterm) | [vterm](https://github.com/vterm/vterm) | 92 | :fire: Extensible terminal emulator written with the web languages of the future. Today. | 2024-11-07T00:02:39Z |
-| [vup-app](https://github.com/vup-app) | [vup](https://github.com/vup-app/vup) | 113 | No description provided. | 2024-09-20T19:46:55Z |
+| [vup-app](https://github.com/vup-app) | [vup](https://github.com/vup-app/vup) | 112 | No description provided. | 2024-12-06T13:21:15Z |
 | [vzhd1701](https://github.com/vzhd1701) | [gridplayer](https://github.com/vzhd1701/gridplayer) | 1239 | Play videos side-by-side | 2024-12-05T05:31:31Z |
 | [w3finance](https://github.com/w3finance) | [PolkaKey](https://github.com/w3finance/PolkaKey) | 3 | Generate Polkadot/Kusama/Edgeware addresses safely | 2020-05-27T07:47:12Z |
 | [w3yden](https://github.com/w3yden) | [ultrascreen](https://github.com/w3yden/ultrascreen) | 53 | Share your screen | 2024-07-27T12:37:11Z |
@@ -1428,7 +1428,7 @@
 | [wearrrrr](https://github.com/wearrrrr) | [9Launcher](https://github.com/wearrrrr/9Launcher) | 34 | 9Launcher is an actively maintained and cross platform remake of Touhou Relauncher! | 2024-12-04T02:39:55Z |
 | [webrecorder](https://github.com/webrecorder) | [webrecorder-desktop](https://github.com/webrecorder/webrecorder-desktop) | 202 | Webrecorder Desktop App! | 2024-07-28T09:59:07Z |
 | [wexond](https://github.com/wexond) | [browser-base](https://github.com/wexond/browser-base) | 2680 | Modern and feature-rich web browser base based on Electron | 2024-12-02T00:41:42Z |
-| [wez](https://github.com/wez) | [wezterm](https://github.com/wez/wezterm) | 18202 | A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust | 2024-12-06T11:21:11Z |
+| [wez](https://github.com/wez) | [wezterm](https://github.com/wez/wezterm) | 18203 | A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust | 2024-12-06T14:07:10Z |
 | [whyboris](https://github.com/whyboris) | [Simplest-File-Renamer](https://github.com/whyboris/Simplest-File-Renamer) | 102 | Simplest file renamer - rename your files quickly and easily | 2024-12-03T10:10:54Z |
 | [whyboris](https://github.com/whyboris) | [Video-Hub-App](https://github.com/whyboris/Video-Hub-App) | 595 | Official repository for Video Hub App | 2024-12-05T08:55:06Z |
 | [widelands](https://github.com/widelands) | [widelands](https://github.com/widelands/widelands) | 2015 | Widelands is a free, open source real-time strategy game with singleplayer campaigns and a multiplayer mode. The game was inspired by Settlers II™ (© Bluebyte) but has significantly more variety and depth to it. | 2024-12-06T08:55:58Z |
@@ -1459,7 +1459,7 @@
 | [z-------------](https://github.com/z-------------) | [CPod](https://github.com/z-------------/CPod) | 749 | (UNMAINTAINED) A simple, beautiful podcast app for Windows, macOS, and Linux. | 2024-12-03T04:31:13Z |
 | [z17](https://github.com/z17) | [home-accounting-system](https://github.com/z17/home-accounting-system) | 64 | Personal finance accounting system | 2024-04-12T06:47:39Z |
 | [brackets-userland](https://github.com/brackets-userland) | [brackets-electron](https://github.com/brackets-userland/brackets-electron) | 81 | An open source code editor for the web, written in JavaScript, HTML and CSS. | 2023-08-06T10:15:52Z |
-| [zen-browser](https://github.com/zen-browser) | [desktop](https://github.com/zen-browser/desktop) | 19949 | 🌀 Experience tranquillity while browsing the web without people tracking you! | 2024-12-06T13:15:52Z |
+| [zen-browser](https://github.com/zen-browser) | [desktop](https://github.com/zen-browser/desktop) | 19954 | 🌀 Experience tranquillity while browsing the web without people tracking you! | 2024-12-06T14:15:37Z |
 | [zenghongtu](https://github.com/zenghongtu) | [Mob](https://github.com/zenghongtu/Mob) | 967 | Mob - 一个有颜值的喜马拉雅桌面客户端，支持 Mac、Win 和 Linux | 2024-12-04T14:40:32Z |
 | [zenghongtu](https://github.com/zenghongtu) | [PPet](https://github.com/zenghongtu/PPet) | 1931 | 👻在你的桌面放一个萌妹子，多一点乐趣😏~（支持Mac、Win和Linux） | 2024-12-06T08:16:44Z |
 | [zevlee](https://github.com/zevlee) | [passphraser](https://github.com/zevlee/passphraser) | 8 | Phrase-based password generator that can use your own list of words available on Windows, macOS, and Linux | 2024-10-27T09:56:58Z |
