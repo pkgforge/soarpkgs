@@ -53,7 +53,12 @@ jobs:
           #-------------#
           pushd "$(mktemp -d)" >/dev/null 2>&1
            sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)/notify" -o "/usr/local/bin/notify" && sudo chmod +x "/usr/local/bin/notify"
-           echo "${{ secrets.PORTABLE_APPS_NOTIFY }}" | awk '{gsub(/^'\''|'\''$/, ""); print}' > "./notify.yaml"
+           echo 'discord:' > "./notify.yaml"
+           echo '  - id: "portable-apps"' >> "./notify.yaml"
+           echo '    discord_channel: "portable-apps"' >> "./notify.yaml"
+           echo '    discord_username: "pkgforge-bot"' >> "./notify.yaml"
+           echo '    discord_format: "{{data}}"' >> "./notify.yaml"
+           echo "    discord_webhook_url: \"${PORTABLE_APPS_NOTIFY}\"" >> "./notify.yaml"
            grep -E "$(date --utc +%Y-%m-%d)T|$(date --utc --date='yesterday' +%Y-%m-%d)T" "${GITHUB_WORKSPACE}/main/.github/pub_issues.txt" | notify -provider-config "./notify.yaml" -bulk -disable-update-check
           popd >/dev/null 2>&1
         continue-on-error: true
