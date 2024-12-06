@@ -53,7 +53,7 @@ jobs:
           #-------------#
           pushd "$(mktemp -d)" >/dev/null 2>&1
            sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)/notify" -o "/usr/local/bin/notify" && sudo chmod +x "/usr/local/bin/notify"
-           echo "${{ secrets.PORTABLE_APPS_NOTIFY }}" > "./notify.yaml"
+           printf "%s\n" "${{ secrets.PORTABLE_APPS_NOTIFY }}" > "./notify.yaml"
            grep -E "$(date --utc +%Y-%m-%d)T|$(date --utc --date='yesterday' +%Y-%m-%d)T" "${GITHUB_WORKSPACE}/main/.github/pub_issues.txt" | notify -provider-config "./notify.yaml" -bulk -disable-update-check
           popd >/dev/null 2>&1
         continue-on-error: true
