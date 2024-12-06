@@ -7829,13 +7829,15 @@
  4.0K   │ ├── aaaaxy.SBUILD.yaml
  4.0K   │ ├── 9launcher.SBUILD.yaml
  4.0K   │ └── 432hz-player.SBUILD.yaml
- 3.5M   ├─┬ metadata
+ 3.9M   ├─┬ metadata
  1.8M   │ ├── METADATA.json
 1020K   │ ├── METADATA.db
+ 296K   │ ├── GH_REPO.md
  184K   │ ├── METADATA.db.zstd
  176K   │ ├── METADATA.db.xz
  168K   │ ├── METADATA.json.xz
  164K   │ ├── METADATA.json.zstd
+  60K   │ ├── URLS.txt
  4.0K   │ ├── METADATA.json.zstd.bsum
  4.0K   │ ├── METADATA.json.xz.bsum
  4.0K   │ ├── METADATA.json.bsum
