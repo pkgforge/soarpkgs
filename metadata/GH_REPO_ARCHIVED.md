@@ -3,18 +3,18 @@
 | [Acreom](https://github.com/Acreom) | [releases](https://github.com/Acreom/releases) | 19 | acreom desktop app releases | 2024-12-05T13:59:59Z |
 | [AKASHAorg](https://github.com/AKASHAorg) | [Community](https://github.com/AKASHAorg/Community) | 124 | Community | 2023-04-01T00:44:17Z |
 | [AppOutlet](https://github.com/AppOutlet) | [AppOutlet](https://github.com/AppOutlet/AppOutlet) | 391 | A Universal linux app store | 2024-12-05T23:09:02Z |
-| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3420 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-06T13:16:09Z |
+| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3421 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-06T18:29:28Z |
 | [ArkEcosystem](https://github.com/ArkEcosystem) | [desktop-wallet](https://github.com/ArkEcosystem/desktop-wallet) | 292 | :computer: Archived, please use ARKVault | 2024-10-01T19:07:47Z |
 | [BlueBrain](https://github.com/BlueBrain) | [RTNeuron](https://github.com/BlueBrain/RTNeuron) | 30 | Interactive visualization framework for geometrically detailed neuron simulations | 2023-12-20T03:19:00Z |
 | [bunqCommunity](https://github.com/bunqCommunity) | [bunqDesktop](https://github.com/bunqCommunity/bunqDesktop) | 272 | The unofficial, free and open source desktop application for the bunq API | 2024-10-31T07:43:14Z |
 | [software-challenge](https://github.com/software-challenge) | [gui-electron](https://github.com/software-challenge/gui-electron) | 4 | Electron GUI for the Software-Challenge Germany 2016 - 2020 (Source code publicized 2018) | 2023-11-26T00:28:18Z |
 | [CCI-Tools](https://github.com/CCI-Tools) | [cate-desktop](https://github.com/CCI-Tools/cate-desktop) | 16 | Desktop GUI for the ESA CCI Toolbox (Cate) | 2024-11-05T11:04:32Z |
 | [CircuitMess](https://github.com/CircuitMess) | [CircuitBlocks](https://github.com/CircuitMess/CircuitBlocks) | 88 | A graphical programming interface that helps newbies get into embedded programming. Its based on Googles Blockly and turns blocks into arduino-compatible code. | 2024-12-05T09:30:21Z |
-| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 14969 | Sourcetrail - free and open-source interactive source explorer | 2024-12-06T05:59:17Z |
+| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 14971 | Sourcetrail - free and open-source interactive source explorer | 2024-12-06T19:03:41Z |
 | [ColinDuquesnoy](https://github.com/ColinDuquesnoy) | [MellowPlayer](https://github.com/ColinDuquesnoy/MellowPlayer) | 234 | Moved to gitlab | 2024-11-29T15:34:04Z |
 | [DokiDokiModManager](https://github.com/DokiDokiModManager) | [Mod-Manager](https://github.com/DokiDokiModManager/Mod-Manager) | 51 | Doki Doki Mod Manager - A mod manager for Doki Doki Literature Club! | 2024-08-04T16:39:46Z |
 | [EtherealEngine](https://github.com/EtherealEngine) | [ir-engine-launcher](https://github.com/EtherealEngine/ir-engine-launcher) | 33 | One stop solution for all your Metaverse needs. A desktop app for installing and launching iR Engine. 🤖 🚀 🚀 🚀 👓 | 2024-08-19T23:49:16Z |
-| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40906 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-06T15:58:25Z |
+| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40906 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-06T22:37:33Z |
 | [GooBox](https://github.com/GooBox) | [file-share-desktop](https://github.com/GooBox/file-share-desktop) | 13 | 💻 Goobox file share desktop app (Moved to https://github.com/storewise/file-share-desktop) | 2023-01-28T06:24:59Z |
 | [HR](https://github.com/HR) | [Crypter](https://github.com/HR/Crypter) | 461 | 🔓✨🔒 An innovative, convenient and secure encryption app | 2024-12-03T15:31:02Z |
 | [Janglee123](https://github.com/Janglee123) | [eplee](https://github.com/Janglee123/eplee) | 361 | Sweet, simple epub reader | 2024-11-11T11:53:53Z |
@@ -120,4 +120,4 @@
 | [yafp](https://github.com/yafp) | [media-dupes](https://github.com/yafp/media-dupes) | 55 | a minimal content duplicator for common media services like youtube | 2024-06-12T20:51:31Z |
 | [yafp](https://github.com/yafp) | [ttth](https://github.com/yafp/ttth) | 123 | ttth (talk to the hand) is an electron based desktop app for online services like WhatsApp, Threema, Telegram, Twitter, Google and several others. | 2024-08-12T19:48:11Z |
 | [zenghongtu](https://github.com/zenghongtu) | [Mob](https://github.com/zenghongtu/Mob) | 967 | Mob - 一个有颜值的喜马拉雅桌面客户端，支持 Mac、Win 和 Linux | 2024-12-04T14:40:32Z |
-| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21512 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-06T15:40:05Z |
+| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21514 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-06T18:53:33Z |
