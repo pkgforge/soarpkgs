@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -102,7 +103,7 @@ jobs:
           title: SBUILDS (Archived Repos)
           content-filepath: "/tmp/ARCHIVED.md"
           labels: report, automated issue
-        continue-on-error: false
+        continue-on-error: true
 
       - name: Get DateTime & Purge files (=> 95 MB)
         run: |
