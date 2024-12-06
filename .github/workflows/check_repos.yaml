@@ -62,7 +62,9 @@ jobs:
                  repo_url="https://github.com/$user/$repo"
                  stars=$(jq -r '.stargazers_count' <<< "$response")
                  user_url="https://github.com/$user"
-                 echo "| [$user]($user_url) | [$repo]($repo_url) | $stars | $description | $last_updated |"
+                 if [[ "$user" != "null" && "$repo" != "null" ]]; then
+                  echo "| [$user]($user_url) | [$repo]($repo_url) | $stars | $description | $last_updated |"
+                 fi
                 fi
              done
            } | tee "./GH_REPO.md"
