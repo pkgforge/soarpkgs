@@ -56,7 +56,7 @@ jobs:
                  repo_url="https://github.com/$user/$repo"
                  description=$(jq -r '.description // "No description provided."' <<< "$response" | sed 's/`//g' | sed 's/^[ \t]*//;s/[ \t]*$//' | sed ':a;N;$!ba;s/\r\n//g; s/\n//g' | sed 's/["'\'']//g' | sed 's/|//g' | sed 's/`//g')
                  last_updated=$(jq -r '.updated_at' <<< "$response")
-                 stars=$(jq -r '.stargazers_count' <<< "$response")               
+                 stars=$(jq -r '.stargazers_count' <<< "$response")
                  archived=$(jq -r '.archived' <<< "$response")
                  if [[ "$archived" == "true" ]]; then
                      echo "$REPOS" >> "/tmp/ARCHIVED.txt"
@@ -69,9 +69,9 @@ jobs:
              cp -fv "./GH_REPO.md" "${GITHUB_WORKSPACE}/main/metadata/GH_REPO.md"
            fi
           ##Archived 
-           if [[ -s "./ARCHIVED.txt" ]] && [[ $(stat -c%s "./ARCHIVED.txt") -gt 100 ]]; then
+           if [[ -s "/tmp/ARCHIVED.txt" ]] && [[ $(stat -c%s "/tmp/ARCHIVED.txt") -gt 100 ]]; then
            {
-             readarray -t "REPOS" < "./ARCHIVED.txt"
+             readarray -t "REPOS" < "/tmp/ARCHIVED.txt"
              echo "| User | Repo | Stars | Description | Last Updated |"
              echo "|------|------|-------|-------------|--------------|"
              for repo_url in "${REPOS[@]}"; do
@@ -115,9 +115,17 @@ jobs:
           find "${GITHUB_WORKSPACE}/main" -path "${GITHUB_WORKSPACE}/main/.git" -prune -o -type f -size +95M -exec rm -rvf "{}" + 2>/dev/null
         continue-on-error: true
 
+      - name: Git Pull & Update Readme
+        run: |
+          #Presets
+          set +x ; set +e
+          #--------------#
+          cd "${GITHUB_WORKSPACE}/main" && git pull origin main || git pull origin main --ff-only || git merge --no-ff -m "Merge & Sync"
+        continue-on-error: true
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          repository: ./main        
+          repository: ./main
           commit_user_name: Azathothas
           commit_user_email: AjamX101@gmail.com
           #commit_message: "‎‎‏‏‎ ‎"
