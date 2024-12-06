@@ -1,0 +1,126 @@
+name: ✅ Check GH Repos 🎋
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 23 * * *" #11:30 PM UTC --> 05:15 AM NPT
+
+jobs:
+  RepoChecker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main
+          filter: "blob:none"
+          
+      - name: Setup Env
+        run: |
+          ##presets
+          set +x ; set +e
+          #-------------#
+          ##CoreUtils
+          sudo apt update -y
+          sudo apt install bc coreutils curl dos2unix fdupes jq moreutils wget -y
+          sudo apt-get install apt-transport-https apt-utils ca-certificates coreutils dos2unix gnupg2 jq moreutils p7zip-full rename rsync software-properties-common texinfo tmux util-linux wget -y 2>/dev/null ; sudo apt-get update -y 2>/dev/null
+          ##User-Agent
+          USER_AGENT="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/User-Agents/ua_chrome_macos_latest.txt')" && export USER_AGENT="${USER_AGENT}"
+          echo "USER_AGENT=${USER_AGENT}" >> "${GITHUB_ENV}"
+          ##Tools
+          #PARALLEL="1" bash <(curl -qfsSL "https://raw.githubusercontent.com/Azathothas/Arsenal/main/misc/Linux/install_dev_tools.sh")
+        continue-on-error: true
+
+      - name: Gen Markdown (Main + Archived)
+        run: |
+          ##presets
+          set +x ; set +e
+          #-------------#
+          pushd "$(mktemp -d)" >/dev/null 2>&1
+           rm -rvf "/tmp/ARCHIVED.txt" 2>/dev/null
+           #curl -qfsSL "https://soarpkgs.pkgforge.dev/metadata/METADATA.json" | jq -r '.[] | select(._disabled == false) | .src_url[]' | sort -u -o "${GITHUB_WORKSPACE}/main/metadata/URLS.txt"
+           cat "${GITHUB_WORKSPACE}/main/metadata/METADATA.json" | jq -r '.[] | select(._disabled == false) | .src_url[]' | sort -u -o "${GITHUB_WORKSPACE}/main/metadata/URLS.txt"
+           grep -Ei "github.com" "${GITHUB_WORKSPACE}/main/metadata/URLS.txt" | sed 's|https://github.com/\(.*\)/\(.*\)|https://api.gh.pkgforge.dev/repos/\1/\2|' | sort -u -o "./repos.txt"
+           {
+             readarray -t "REPOS" < "./repos.txt"
+             echo "| User | Repo | Stars | Description | Last Updated |"
+             echo "|------|------|-------|-------------|--------------|"
+             for repo_url in "${REPOS[@]}"; do
+                unset response ; response=$(curl -qsL "$repo_url")
+                if [ -n "${response}" ]; then 
+                 user=$(jq -r '.owner.login' <<< "$response")
+                 user_url="https://github.com/$user"
+                 repo=$(jq -r '.name' <<< "$response")
+                 repo_url="https://github.com/$user/$repo"
+                 description=$(jq -r '.description // "No description provided."' <<< "$response" | sed 's/`//g' | sed 's/^[ \t]*//;s/[ \t]*$//' | sed ':a;N;$!ba;s/\r\n//g; s/\n//g' | sed 's/["'\'']//g' | sed 's/|//g' | sed 's/`//g')
+                 last_updated=$(jq -r '.updated_at' <<< "$response")
+                 stars=$(jq -r '.stargazers_count' <<< "$response")               
+                 archived=$(jq -r '.archived' <<< "$response")
+                 if [[ "$archived" == "true" ]]; then
+                     echo "$REPOS" >> "/tmp/ARCHIVED.txt"
+                 fi
+                 echo "| [$user]($user_url) | [$repo]($repo_url) | $stars | $description | $last_updated |"
+                fi
+             done
+           } | tee "./GH_REPO.md"
+           if [[ -s "./GH_REPO.md" ]] && [[ $(stat -c%s "./GH_REPO.md") -gt 100 ]]; then
+             cp -fv "./GH_REPO.md" "${GITHUB_WORKSPACE}/main/metadata/GH_REPO.md"
+           fi
+          ##Archived 
+           if [[ -s "./ARCHIVED.txt" ]] && [[ $(stat -c%s "./ARCHIVED.txt") -gt 100 ]]; then
+           {
+             readarray -t "REPOS" < "./ARCHIVED.txt"
+             echo "| User | Repo | Stars | Description | Last Updated |"
+             echo "|------|------|-------|-------------|--------------|"
+             for repo_url in "${REPOS[@]}"; do
+                unset response ; response=$(curl -qsL "$repo_url")
+                if [ -n "${response}" ]; then 
+                 user=$(jq -r '.owner.login' <<< "$response")
+                 user_url="https://github.com/$user"
+                 repo=$(jq -r '.name' <<< "$response")
+                 repo_url="https://github.com/$user/$repo"
+                 description=$(jq -r '.description // "No description provided."' <<< "$response" | sed 's/`//g' | sed 's/^[ \t]*//;s/[ \t]*$//' | sed ':a;N;$!ba;s/\r\n//g; s/\n//g' | sed 's/["'\'']//g' | sed 's/|//g' | sed 's/`//g')
+                 last_updated=$(jq -r '.updated_at' <<< "$response")
+                 stars=$(jq -r '.stargazers_count' <<< "$response")               
+                 echo "| [$user]($user_url) | [$repo]($repo_url) | $stars | $description | $last_updated |"
+                fi
+             done
+           } | tee "./ARCHIVED.md"
+           fi
+           if [[ -s "./ARCHIVED.md" ]] && [[ $(stat -c%s "./ARCHIVED.md") -gt 100 ]]; then
+             cp -fv "./ARCHIVED.md" "${GITHUB_WORKSPACE}/main/metadata/GH_REPO_ARCHIVED.md"
+             cp -fv "${GITHUB_WORKSPACE}/main/metadata/GH_REPO_ARCHIVED.md" "/tmp/ARCHIVED.md"
+           fi
+          popd "$(mktemp -d)" >/dev/null 2>&1
+        continue-on-error: true
+
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: SBUILDS (Archived Repos)
+          content-filepath: "/tmp/ARCHIVED.md"
+          labels: report, automated issue
+        continue-on-error: false
+
+      - name: Get DateTime & Purge files (=> 95 MB)
+        run: |
+          #Presets
+          set +x ; set +e
+          #--------------#
+          UTC_TIME="$(TZ='UTC' date +'%Y-%m-%d (%I:%M:%S %p)')"
+          echo "UTC_TIME=$UTC_TIME" >> $GITHUB_ENV
+          #Purge
+          find "${GITHUB_WORKSPACE}/main" -path "${GITHUB_WORKSPACE}/main/.git" -prune -o -type f -size +95M -exec rm -rvf "{}" + 2>/dev/null
+        continue-on-error: true
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: ./main        
+          commit_user_name: Azathothas
+          commit_user_email: AjamX101@gmail.com
+          #commit_message: "‎‎‏‏‎ ‎"
+          commit_message: "✅ Checked GH Repos 🎋"
+          #push_options: '--force'
+        continue-on-error: true
