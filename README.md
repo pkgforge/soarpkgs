@@ -1,5 +1,7 @@
 <div align="center">
 
+[discord-shield]: https://img.shields.io/discord/1313385177703256064?logo=%235865F2&label=Discord
+[discord-url]: https://discord.gg/djJUs48Zbu
 [stars-shield]: https://img.shields.io/github/stars/pkgforge/soarpkgs.svg
 [stars-url]: https://github.com/pkgforge/soarpkgs/stargazers
 [issues-shield]: https://img.shields.io/github/issues/pkgforge/soarpkgs.svg
@@ -10,6 +12,7 @@
 [doc-url]: https://docs.pkgforge.dev/orgs/pkgforge-core/projects/soarpkgs
 
 <a href="https://github.com/pkgforge/soarpkgs/tree/main/packages"><img src="https://img.shields.io/badge/Packages-1580%20(1635)-blue?labelColor=orange&style=flat&link=https://github.com/pkgforge/soarpkgs/tree/main/packages" alt="Packages" /></a>
+[![Discord][discord-shield]][discord-url]
 [![Documentation][doc-shield]][doc-url]
 [![Issues][issues-shield]][issues-url]
 [![License: MIT][license-shield]][license-url]
@@ -44,5 +47,3 @@
 > [![🐧🧹 HealthChecks 🖳🗑](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml/badge.svg)](https://github.com/pkgforge/soarpkgs/actions/workflows/healthchecks_housekeeping.yaml)
 - [**Community 💬**](https://docs.pkgforge.dev/contact/chat)
 > - <a href="https://discord.gg/djJUs48Zbu"><img src="https://github.com/user-attachments/assets/5a336d72-6342-4ca5-87a4-aa8a35277e2f" width="18" height="18"><code>PkgForge (<img src="https://github.com/user-attachments/assets/a08a20e6-1795-4ee6-87e6-12a8ab2a7da6" width="18" height="18">) Discord </code></a> `➼` [`https://discord.gg/djJUs48Zbu`](https://discord.gg/djJUs48Zbu)
-> - <a href="https://matrix.to/#/#loonix:matrix.org"><img src="https://github.com/user-attachments/assets/1dcd4a64-2fec-4f4f-926a-e61313b6b646" width="18" height="18"><code>Loonix (<img src="https://github.com/user-attachments/assets/abc35eee-c9c9-4023-9035-d440b56cac4c" width="18" height="18">) Matrix </code></a> `➼` [`https://matrix.to/#/#loonix:matrix.org`](https://matrix.to/#/#loonix:matrix.org)
-> - <a href="https://t.me/official_loonix/63949"><img src="https://github.com/user-attachments/assets/2edc90b9-606e-4bfc-89f3-2a758b2f0377" width="18" height="18"><code>Loonix (<img src="https://github.com/user-attachments/assets/abc35eee-c9c9-4023-9035-d440b56cac4c" width="18" height="18">) Telegram</code></a> `➼` [`https://t.me/official_loonix/63949`](https://t.me/official_loonix/63949)
