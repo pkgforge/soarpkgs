@@ -3,18 +3,18 @@
 | [Acreom](https://github.com/Acreom) | [releases](https://github.com/Acreom/releases) | 19 | acreom desktop app releases | 2024-12-05T13:59:59Z |
 | [AKASHAorg](https://github.com/AKASHAorg) | [Community](https://github.com/AKASHAorg/Community) | 124 | Community | 2023-04-01T00:44:17Z |
 | [AppOutlet](https://github.com/AppOutlet) | [AppOutlet](https://github.com/AppOutlet/AppOutlet) | 391 | A Universal linux app store | 2024-12-05T23:09:02Z |
-| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3420 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-08T15:58:08Z |
+| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3421 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-09T03:11:25Z |
 | [ArkEcosystem](https://github.com/ArkEcosystem) | [desktop-wallet](https://github.com/ArkEcosystem/desktop-wallet) | 292 | :computer: Archived, please use ARKVault | 2024-10-01T19:07:47Z |
 | [BlueBrain](https://github.com/BlueBrain) | [RTNeuron](https://github.com/BlueBrain/RTNeuron) | 30 | Interactive visualization framework for geometrically detailed neuron simulations | 2023-12-20T03:19:00Z |
 | [bunqCommunity](https://github.com/bunqCommunity) | [bunqDesktop](https://github.com/bunqCommunity/bunqDesktop) | 272 | The unofficial, free and open source desktop application for the bunq API | 2024-10-31T07:43:14Z |
 | [software-challenge](https://github.com/software-challenge) | [gui-electron](https://github.com/software-challenge/gui-electron) | 4 | Electron GUI for the Software-Challenge Germany 2016 - 2020 (Source code publicized 2018) | 2023-11-26T00:28:18Z |
 | [CCI-Tools](https://github.com/CCI-Tools) | [cate-desktop](https://github.com/CCI-Tools/cate-desktop) | 16 | Desktop GUI for the ESA CCI Toolbox (Cate) | 2024-11-05T11:04:32Z |
 | [CircuitMess](https://github.com/CircuitMess) | [CircuitBlocks](https://github.com/CircuitMess/CircuitBlocks) | 88 | A graphical programming interface that helps newbies get into embedded programming. Its based on Googles Blockly and turns blocks into arduino-compatible code. | 2024-12-05T09:30:21Z |
-| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 14973 | Sourcetrail - free and open-source interactive source explorer | 2024-12-08T18:39:35Z |
+| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 14973 | Sourcetrail - free and open-source interactive source explorer | 2024-12-09T16:42:29Z |
 | [ColinDuquesnoy](https://github.com/ColinDuquesnoy) | [MellowPlayer](https://github.com/ColinDuquesnoy/MellowPlayer) | 234 | Moved to gitlab | 2024-11-29T15:34:04Z |
 | [DokiDokiModManager](https://github.com/DokiDokiModManager) | [Mod-Manager](https://github.com/DokiDokiModManager/Mod-Manager) | 52 | Doki Doki Mod Manager - A mod manager for Doki Doki Literature Club! | 2024-12-08T01:50:43Z |
 | [EtherealEngine](https://github.com/EtherealEngine) | [ir-engine-launcher](https://github.com/EtherealEngine/ir-engine-launcher) | 33 | One stop solution for all your Metaverse needs. A desktop app for installing and launching iR Engine. 🤖 🚀 🚀 🚀 👓 | 2024-08-19T23:49:16Z |
-| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40916 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-08T15:47:53Z |
+| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40919 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-09T19:57:36Z |
 | [GooBox](https://github.com/GooBox) | [file-share-desktop](https://github.com/GooBox/file-share-desktop) | 13 | 💻 Goobox file share desktop app (Moved to https://github.com/storewise/file-share-desktop) | 2023-01-28T06:24:59Z |
 | [HR](https://github.com/HR) | [Crypter](https://github.com/HR/Crypter) | 461 | 🔓✨🔒 An innovative, convenient and secure encryption app | 2024-12-03T15:31:02Z |
 | [Janglee123](https://github.com/Janglee123) | [eplee](https://github.com/Janglee123/eplee) | 362 | Sweet, simple epub reader | 2024-12-08T01:30:03Z |
@@ -72,7 +72,7 @@
 | [foucdeg](https://github.com/foucdeg) | [x-plane-map-electron](https://github.com/foucdeg/x-plane-map-electron) | 29 | X-Plane-Map packaged into Electron | 2024-12-05T18:08:16Z |
 | [harshkhandeparkar](https://github.com/harshkhandeparkar) | [rainbow-board](https://github.com/harshkhandeparkar/rainbow-board) | 64 | Cross-platform electron-based Whiteboard app. | 2024-08-31T08:01:48Z |
 | [haxzie](https://github.com/haxzie) | [instagram-live-streamer](https://github.com/haxzie/instagram-live-streamer) | 470 | [Unofficial] Broadcast to Instagram Live from your Windows/Mac/Linux | 2024-11-28T03:26:57Z |
-| [hello-efficiency-inc](https://github.com/hello-efficiency-inc) | [raven-reader](https://github.com/hello-efficiency-inc/raven-reader) | 2763 | 📖 All your articles in one place. Beautiful. | 2024-12-07T10:56:52Z |
+| [hello-efficiency-inc](https://github.com/hello-efficiency-inc) | [raven-reader](https://github.com/hello-efficiency-inc/raven-reader) | 2765 | 📖 All your articles in one place. Beautiful. | 2024-12-09T18:11:34Z |
 | [holochain](https://github.com/holochain) | [n3h](https://github.com/holochain/n3h) | 48 | nodejs implementation of holochain networking / p2p backend process | 2024-04-16T09:52:31Z |
 | [improbable-eng](https://github.com/improbable-eng) | [Dragoman](https://github.com/improbable-eng/Dragoman) | 24 | GUI for polyglot | 2023-01-28T14:41:36Z |
 | [irccloud](https://github.com/irccloud) | [irccloud-desktop](https://github.com/irccloud/irccloud-desktop) | 237 | IRCCloud Desktop App | 2024-10-24T17:36:19Z |
@@ -82,7 +82,7 @@
 | [jukben](https://github.com/jukben) | [keyboardio-led-custom-palette](https://github.com/jukben/keyboardio-led-custom-palette) | 12 | 🎨🦋LED Custom Palette – design the lights on your Model01 with an ease | 2023-09-10T21:22:20Z |
 | [kremalicious](https://github.com/kremalicious) | [blowfish](https://github.com/kremalicious/blowfish) | 6 | 🐡 Simple Electron-based desktop app to retrieve and display your total Ocean Token balances. | 2023-10-06T09:14:38Z |
 | [l3laze](https://github.com/l3laze) | [ReliefValve](https://github.com/l3laze/ReliefValve) | 16 | A tool to help manage the Steam client. | 2024-01-27T03:45:38Z |
-| [lauthieb](https://github.com/lauthieb) | [code-notes](https://github.com/lauthieb/code-notes) | 1073 | (No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀 | 2024-11-27T02:18:42Z |
+| [lauthieb](https://github.com/lauthieb) | [code-notes](https://github.com/lauthieb/code-notes) | 1072 | (No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀 | 2024-12-09T16:59:46Z |
 | [lightninglabs](https://github.com/lightninglabs) | [lightning-app](https://github.com/lightninglabs/lightning-app) | 898 | An easy-to-use cross-platform Lightning wallet | 2024-12-07T04:21:47Z |
 | [lluisrojass](https://github.com/lluisrojass) | [tumblr-scraper](https://github.com/lluisrojass/tumblr-scraper) | 24 | Scrape a Tumblr blog for personal posts | 2024-09-16T06:05:57Z |
 | [lxndr](https://github.com/lxndr) | [impact](https://github.com/lxndr/impact) | 0 | A simple music library and player. | 2023-02-16T20:23:54Z |
@@ -103,8 +103,8 @@
 | [samuelmeuli](https://github.com/samuelmeuli) | [mini-diary](https://github.com/samuelmeuli/mini-diary) | 1038 | 📘 Simple and secure journal app | 2024-12-07T18:40:01Z |
 | [sentinel-official](https://github.com/sentinel-official) | [desktop-client](https://github.com/sentinel-official/desktop-client) | 47 | This is the official repository of the Sentinel Desktop Client which interfaces with the entire Sentinel Network | 2024-07-20T03:48:33Z |
 | [shadowsocks](https://github.com/shadowsocks) | [shadowsocks-qt5](https://github.com/shadowsocks/shadowsocks-qt5) | 7978 | A cross-platform shadowsocks GUI client | 2024-12-08T15:41:28Z |
-| [srevinsaju](https://github.com/srevinsaju) | [guiscrcpy](https://github.com/srevinsaju/guiscrcpy) | 2872 | A full fledged GUI integration for the award winning open-source android screen mirroring system -- scrcpy located on https://github.com/genymobile/scrcpy/ by @rom1v | 2024-12-07T14:25:59Z |
-| [ssbc](https://github.com/ssbc) | [patchwork](https://github.com/ssbc/patchwork) | 3584 | A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB). | 2024-11-22T15:52:26Z |
+| [srevinsaju](https://github.com/srevinsaju) | [guiscrcpy](https://github.com/srevinsaju/guiscrcpy) | 2873 | A full fledged GUI integration for the award winning open-source android screen mirroring system -- scrcpy located on https://github.com/genymobile/scrcpy/ by @rom1v | 2024-12-09T13:54:27Z |
+| [ssbc](https://github.com/ssbc) | [patchwork](https://github.com/ssbc/patchwork) | 3583 | A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB). | 2024-12-09T03:37:55Z |
 | [stoplightio](https://github.com/stoplightio) | [desktop](https://github.com/stoplightio/desktop) | 78 | The Stoplight desktop app + issues repository. | 2024-12-02T10:04:41Z |
 | [tenacityteam](https://github.com/tenacityteam) | [saucedacity](https://github.com/tenacityteam/saucedacity) | 149 | THIS REPO IS NOT MAINTAINED ANYMORE. Please see https://codeberg.org/tenacityteam/tenacity for Tenacity, which is maintained. | 2024-11-16T23:35:59Z |
 | [thecoder75](https://github.com/thecoder75) | [liveme-pro-tools](https://github.com/thecoder75/liveme-pro-tools) | 34 | LiveMe Pro Tools | 2024-09-25T23:18:07Z |
@@ -120,4 +120,4 @@
 | [yafp](https://github.com/yafp) | [media-dupes](https://github.com/yafp/media-dupes) | 55 | a minimal content duplicator for common media services like youtube | 2024-06-12T20:51:31Z |
 | [yafp](https://github.com/yafp) | [ttth](https://github.com/yafp/ttth) | 123 | ttth (talk to the hand) is an electron based desktop app for online services like WhatsApp, Threema, Telegram, Twitter, Google and several others. | 2024-08-12T19:48:11Z |
 | [zenghongtu](https://github.com/zenghongtu) | [Mob](https://github.com/zenghongtu/Mob) | 967 | Mob - 一个有颜值的喜马拉雅桌面客户端，支持 Mac、Win 和 Linux | 2024-12-04T14:40:32Z |
-| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21524 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-08T20:28:57Z |
+| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21524 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-09T16:30:51Z |
