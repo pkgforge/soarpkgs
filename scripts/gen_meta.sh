@@ -80,7 +80,7 @@ for SBUILD in "${VALID_PKGS[@]}"; do
     elif [ -s "$(dirname ${SBUILD})/assets/default.png" ]; then
        ICON="https://soarpkgs.pkgforge.dev/packages/$(basename $(dirname ${SBUILD}))/assets/default.png"
     else
-       ICON=""
+       ICON="\"\""
     fi
     yq . "${SBUILD}" | yj -yj | jq 'del(.x_exec)' | jq --arg PKG_VERSION "${PKG_VERSION:-}" \
       --arg ICON "${ICON}" --arg VALID_PKGSRC "${VALID_PKGSRC:-}" \
@@ -111,10 +111,10 @@ for SBUILD in "${VALID_PKGS[@]}"; do
    "provides": (.provides // []),
    "snapshots": (.snapshots // []),
    "tag": (.tag // []),
-  }' | jq . > "${SBUILD}.json"
+  }' | jq -c 'if type == "array" then .[] else . end' > "${SBUILD}.json"
 done
 ##Merge
-find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated.json$' -exec jq -s '.' {} + > "${TMPDIR}/METADATA.json.bak"
+find "${GH_REPO_PATH}/packages" -type f -iregex '.*\.validated.json$' -print0 | xargs -0 jq -s '.' | sed -z 's/  }\n]\n\[\n  {/},{/g' | jq . > "${TMPDIR}/METADATA.json.bak"
 ##Check
 if jq --exit-status . "${TMPDIR}/METADATA.json.bak" >/dev/null 2>&1; then
    cat "${TMPDIR}/METADATA.json.bak" | jq '.' | jq 'walk(if type == "string" and . == "null" then "" else . end)' | jq 'sort_by(.pkg)' > "${TMPDIR}/METADATA.json"
@@ -126,7 +126,10 @@ if jq --exit-status . "${TMPDIR}/METADATA.json" >/dev/null 2>&1; then
   #Convert to Sqlite
    jq -c '.[]' "${SYSTMP}/SBUILD_METADATA.json" > "${TMPDIR}/SBUILD_METADATA.jsonl"
    qsv jsonl "${TMPDIR}/SBUILD_METADATA.jsonl" > "${TMPDIR}/SBUILD_METADATA.csv"
-   qsv to sqlite "${SYSTMP}/SBUILD_METADATA.db" "${TMPDIR}/SBUILD_METADATA.csv"
+   qsv to sqlite "${TMPDIR}/SBUILD_METADATA.db" "${TMPDIR}/SBUILD_METADATA.csv"
+   if [[ -s "${TMPDIR}/SBUILD_METADATA.db" || $(stat -c%s "${TMPDIR}/SBUILD_METADATA.db") -gt 1024 ]]; then
+     cp -fv "${TMPDIR}/SBUILD_METADATA.db" "${SYSTMP}/SBUILD_METADATA.db"
+   fi
 fi
 ##END
 ls -lah "${TMPDIR}"
