@@ -73,8 +73,17 @@ for SBUILD in "${VALID_PKGS[@]}"; do
     #VALID_PKGSRC="$(echo "${SBUILD}" | sed -E 's|.*/packages/||; s|\.validated$||' | tr -d '[:space:]')"
     VALID_PKGSRC="$(echo "${SBUILD##*/packages/}" | sed -E 's|\.validated$||' | tr -d '[:space:]')"
     PKG_VERSION="$(echo "${SBUILD}" | sed 's/\.validated$/.pkgver/' | xargs cat | tr -d '[:space:]')"
+    if [ -s "$(dirname ${SBUILD})/assets/$(basename ${SBUILD}).png" ]; then
+       ICON="https://soarpkgs.pkgforge.dev/packages/$(basename $(dirname ${SBUILD}))/assets/$(basename ${SBUILD}).png"
+    elif [ -s "$(dirname ${SBUILD})/assets/$(basename ${SBUILD}).svg" ]; then
+       ICON="https://soarpkgs.pkgforge.dev/packages/$(basename $(dirname ${SBUILD}))/assets/$(basename ${SBUILD}).svg"
+    elif [ -s "$(dirname ${SBUILD})/assets/default.png" ]; then
+       ICON="https://soarpkgs.pkgforge.dev/packages/$(basename $(dirname ${SBUILD}))/assets/default.png"
+    else
+       ICON=""
+    fi
     yq . "${SBUILD}" | yj -yj | jq 'del(.x_exec)' | jq --arg PKG_VERSION "${PKG_VERSION:-}" \
-      --arg VALID_PKGSRC "${VALID_PKGSRC:-}" \
+      --arg ICON "${ICON}" --arg VALID_PKGSRC "${VALID_PKGSRC:-}" \
   '{
    "_disabled": ._disabled,
    "pkg": .pkg,
@@ -97,7 +106,7 @@ for SBUILD in "${VALID_PKGS[@]}"; do
    "appstream": "",
    "category": (.category // []),
    "desktop": "",
-   "icon": "",
+   "icon": $ICON,
    "license" : (.license // []),
    "provides": (.provides // []),
    "snapshots": (.snapshots // []),
