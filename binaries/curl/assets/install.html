@@ -1,4 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none';
+                    connect-src https://D9HG3G8GS4-dsn.algolia.net;
+                    font-src data: https://fonts.gstatic.com;
+                    img-src 'self' https://avatars2.githubusercontent.com https://avatars.githubusercontent.com;
+                    object-src 'none';
+                    
+                    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+                    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+                    
+                    ">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>curl — Homebrew Formulae</title>
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.4">
+<meta property="og:title" content="curl">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Homebrew’s package index">
+<meta property="og:description" content="Homebrew’s package index">
+<meta property="og:site_name" content="Homebrew Formulae">
+<meta property="og:image" content="/assets/img/homebrew-256x256.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/assets/img/homebrew-256x256.png">
+<meta property="twitter:title" content="curl">
+<meta name="twitter:site" content="@MacHomebrew">
+<meta property="article:publisher" content="https://www.facebook.com/machomebrew/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Homebrew’s package index","headline":"curl","image":"/assets/img/homebrew-256x256.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/homebrew.svg"}},"url":"/formula/curl"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="/assets/img/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/assets/img/homebrew.svg" sizes="any" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" media="screen">
+    <link rel="preconnect" href="https://D9HG3G8GS4-dsn.algolia.net" crossorigin>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3/dist/style.min.css" as="style" media="screen" onload="this.onload=null;this.rel='stylesheet'">
+    </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <img alt="Homebrew Formulae logo" src="/assets/img/homebrew.svg" width="128" height="128">
+        <h1><a href="/">Homebrew Formulae</a></h1>
+        <div id="search-container"></div>
+
+        </div>
+
+      <div id="default">
+  <h2>
+    curl</h2>
 <div class="install">
     <span class="label">Install command: </span>
-    <div class="copyable"><figure class="highlight"><pre><code class="language-bash" data-lang="bash">soar <span class="nb">install </span>curl#bincache</code></pre></figure></div>
+    <div class="copyable"><figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew <span class="nb">install </span>curl</code></pre></figure></div>
 </div>
+
+<p class="oldnames">Formerly known as:
+        <strong>curl-openssl</strong>
+</p>
+<p class="desc">Get a file from an HTTP, HTTPS or FTP server</p>
+<p class="homepage"><a href="https://curl.se">https://curl.se</a></p>
+<p>License:
+        <strong>curl</strong>
+</p>
+
+<p>Formula JSON API: <a href="/api/formula/curl.json"><code>/api/formula/curl.json</code></a></p>
+
+<p>Formula code: <a target="_blank" href="https://github.com/Homebrew/homebrew-core/blob/36aa94813604ac7234f8794f6587674c0c50aac0/Formula/c/curl.rb"><code>curl.rb</code></a> on GitHub</p>
+
+<p>Bottle (binary package) installation support provided for:</p>
+<table>
+        <tr><th rowspan="3" scope="rowgroup">Apple Silicon</th>
+            <td style="text-transform:capitalize;">
+                sequoia</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-transform:capitalize;">
+                sonoma</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-transform:capitalize;">
+                ventura</td>
+            <td>✅</td>
+        </tr>
+    <tr><th colspan="3"></th></tr>
+        <tr><th rowspan="3" scope="rowgroup">Intel</th>
+            <td style="text-transform:capitalize;">
+                sonoma</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-transform:capitalize;">
+                ventura</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-transform:capitalize;">
+                64-bit&nbsp;linux</td>
+            <td>✅</td>
+        </tr></table>
+
+<p>Current versions:</p>
+<table>
+    <tr>
+        <td><strong>stable</strong></td>
+        <td>✅</td>
+        <td>8.11.1</td>
+    </tr>
+    <tr>
+        <td><strong>head</strong></td>
+        <td>⚡️</td>
+        <td>HEAD</td>
+    </tr>
+</table>
+<p>Keg-only</p>
+<p>Depends on:</p>
+<table><tr>
+        <td><a href="/formula/brotli">brotli</a></td>
+        <td>1.1.0</td>
+        <td>Generic-purpose lossless compression algorithm by Google</td>
+</tr><tr>
+        <td><a href="/formula/libnghttp2">libnghttp2</a></td>
+        <td>1.64.0</td>
+        <td>HTTP/2 C Library</td>
+</tr><tr>
+        <td><a href="/formula/libssh2">libssh2</a></td>
+        <td>1.11.1</td>
+        <td>C library implementing the SSH2 protocol</td>
+</tr><tr>
+        <td><a href="/formula/openssl@3">openssl@3</a></td>
+        <td>3.4.0</td>
+        <td>Cryptography and SSL/TLS Toolkit</td>
+</tr><tr>
+        <td><a href="/formula/rtmpdump">rtmpdump</a></td>
+        <td>2.4-20151223</td>
+        <td>Tool for downloading RTMP streaming media</td>
+</tr><tr>
+        <td><a href="/formula/zstd">zstd</a></td>
+        <td>1.5.6</td>
+        <td>Zstandard is a real-time compression algorithm</td>
+</tr></table>
+<p>Depends on when building from source:</p>
+<table><tr>
+        <td><a href="/formula/pkgconf">pkgconf</a></td>
+        <td>2.3.0</td>
+        <td>Package compiler and linker metadata toolkit</td>
+</tr></table><p>Analytics:</p>
+<table><tr>
+        <th colspan="2">Installs (30 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">84,235</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">157</td>
+    </tr><tr>
+        <th colspan="2">Installs on Request (30 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">54,557</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">157</td>
+    </tr><tr>
+        <th colspan="2">Build Errors (30 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">3,167</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">1</td>
+    </tr><tr>
+        <th colspan="2">Installs (90 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">266,576</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">540</td>
+    </tr><tr>
+        <th colspan="2">Installs on Request (90 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">178,231</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">540</td>
+    </tr><tr>
+        <th colspan="2">Installs (365 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">1,019,735</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">2,058</td>
+    </tr><tr>
+        <th colspan="2">Installs on Request (365 days)</th>
+    </tr><tr>
+        <td><code>curl</code></td>
+        <td class="number-data">680,950</td>
+    </tr><tr>
+        <td><code>curl --HEAD</code></td>
+        <td class="number-data">2,051</td>
+    </tr>
+</table>
+
+</div>
+
+      </div>
+
+    <a href="https://github.com/Homebrew/formulae.brew.sh"><img id="forkme" src="/assets/img/forkme_right_gray_6d6d6d.svg" alt="Fork me on GitHub"></a>
+    <script>
+      function loadLanguage(lang) {
+        if (lang === null) {
+          return;
+        } else if (lang === 'en') {
+          window.location.assign('/');
+        } else {
+          window.location.assign('/' + lang);
+        }
+      }
+
+      function loadAnchors() {
+        anchors.options = {
+          placement: 'left',
+          visible: 'hover',
+        };
+        anchors.add('#page > h2, #page > h3, #page > h4, #page > h5, #page > h6');
+      };
+
+      function loadSearch(lang, site) {
+        docsearch(Object.assign(
+          { searchParameters: { facetFilters: ['site: ' + site] } },
+          { initialQuery: new URLSearchParams(window.location.search).get('search') },
+          { placeholder: "Search Homebrew Formulae" },
+          {"apiKey":"e3369d62b2366b374c54b2c5a2835a00","indexName":"brew_all","appId":"D9HG3G8GS4","container":"#search-container"}
+        ));
+      };
+
+      
+
+      let escapeHTML = (identity) => identity;
+
+      if (window.trustedTypes && window.trustedTypes.createPolicy) {
+        let policy = trustedTypes.createPolicy(
+          "forceInner",
+          {
+            createHTML: (to_escape) => to_escape
+          }
+        );
+        escapeHTML = (html) => policy.createHTML(html);
+      };
+
+      async function setupCopyables() {
+        if (navigator.clipboard) {
+          for (const element of document.getElementsByClassName('copyable')) {
+            let text = element.innerText.trim();
+            if (text.startsWith('$')) {
+              text = text.substr(1).trimLeft();
+            }
+
+
+            const button = document.createElement('button');
+            button.innerHTML = escapeHTML('📋');
+            button.setAttribute('aria-label', 'Copy to clipboard');
+            button.onclick = () => {
+              navigator.clipboard.writeText(text);
+              button.innerHTML = escapeHTML('✅');
+              setTimeout(() => button.innerHTML=escapeHTML('📋'), 1000);
+            }
+            element.appendChild(button);
+          }
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", function() {
+        setupCopyables();
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"
+            integrity="sha256-aQmOEF2ZD4NM/xt4hthzREIo/2PFkOX/g01WjxEV7Ys="
+            crossorigin="anonymous"
+            onload="loadAnchors()"
+            async></script>
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js"
+            onload="loadSearch('', 'formulae')"
+            async></script>
+  </body>
+</html>
