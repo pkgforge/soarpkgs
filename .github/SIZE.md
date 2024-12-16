@@ -10682,6 +10682,10 @@
 8.0K   │ ├── scrape_pub_issues.sh
 8.0K   │ ├── repology_fetcher.sh
 8.0K   │ └── gen_meta.sh
+ 24K   ├─┬ binaries
+ 20K   │ └─┬ curl
+ 16K   │   └─┬ assets
+ 12K   │     └── install.html
  12K   ├─┬ templates
 4.0K   │ ├── minimal.SBUILD.yaml
 4.0K   │ └── generic.SBUILD.yaml
