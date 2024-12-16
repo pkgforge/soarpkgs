@@ -54,9 +54,3 @@ x_exec:
     while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
     #Copy
     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
-    #Strip
-    find "${SBUILD_OUTDIR}" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
-    find "${SBUILD_OUTDIR}" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \;
-    #Sanity
-    find "${SBUILD_OUTDIR}" -type f -exec touch "{}" \;
-    find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -print | xargs -I "{}" sh -c 'echo -e "\nFile: {}\n  Type: $(file -b {})\n  B3sum: $(b3sum {} | cut -d" " -f1)\n  SHA256sum: $(sha256sum {} | cut -d" " -f1)\n  Size: $(du -sh {} | cut -f1)"'
