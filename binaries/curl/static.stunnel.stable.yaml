@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/curl/static.stunnel.stable.yaml
+_disabled: false
+
+pkg: "curl"
+pkg_id: "github.com.stunnel.static-curl"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description:
+  curl: "A command line tool for transferring files with URL syntax"
+  trurl: "A command line tool for URL parsing and Manipulation"
+homepage:
+  - "https://curl.se"
+  - "https://github.com/curl/curl"
+  - "https://github.com/curl/trurl"
+  - "https://github.com/stunnel/static-curl"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Community Created Binary. Check/Report @ https://github.com/stunnel/static-curl"
+provides:
+  - "curl"
+  - "trurl"
+repology:
+  - "curl"
+  - "trurl"
+src_url:
+  - "https://github.com/stunnel/static-curl"
+tag:
+  - "curl"
+  - "http-client"
+  - "http3"
+  - "http3-client"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stunnel/static-curl/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/stunnel/static-curl@${RELEASE_TAG}" --match "linux,musl,aarch64,tar" --exclude "x86,x64" --exclude "dev" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/stunnel/static-curl@${RELEASE_TAG}" --match "linux,musl,x86_64,tar" --exclude "aarch,arm" --exclude "dev" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+    #Strip
+    find "${SBUILD_OUTDIR}" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+    find "${SBUILD_OUTDIR}" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \;
+    #Sanity
+    find "${SBUILD_OUTDIR}" -type f -exec touch "{}" \;
+    find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -print | xargs -I "{}" sh -c 'echo -e "\nFile: {}\n  Type: $(file -b {})\n  B3sum: $(b3sum {} | cut -d" " -f1)\n  SHA256sum: $(sha256sum {} | cut -d" " -f1)\n  Size: $(du -sh {} | cut -f1)"'
