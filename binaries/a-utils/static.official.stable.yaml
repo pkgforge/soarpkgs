@@ -1,1 +1,87 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/a-utils/static.official.stable.yaml
+_disabled: false
 
+pkg: "a-utils"
+pkg_id: "github.com.xplshn.a-utils"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description:
+  a-utils: "Multicall Binary with All Core Utilities of https://github.com/xplshn/Andes"
+  cal: "an implementation of the POSIX cal command, as described in the OpenBSD manpage, that strives to have the same alignment as Busybox's and has (or tries to have) the Toybox's cal option to highlight specified days"
+  catv: "the harmful features of cat"
+  ccat: "syntax highlighted cat"
+  dial: "dials a network endpoint, ported from Torgo"
+  ed: "Ed with syntax highlighting (ed from u-root but with syntax highlighting)"
+  envsubst: "works like the built-in that many shells have. https://manned.org/man/alpine/envsubst"
+  fin: "file info command, from Torgo"
+  fortune: "the cookie reader program, it gives you a random quote each time you execute it"
+  hpwd: "an implementation of pwd that replaces your $HOME with a prefix such as ~ or something else"
+  importenv: "lets you access variables defined in the namespace/scope of another process"
+  isainfo: "like the SunOS command, it will show info about your architecture, capabilities, bits, etc."
+  issue: "reads an 'issue' file (/etc/issue or a user-suplied one)"
+  listen: "listens and announces on a network port, ported from Torgo"
+  noroot-do: "lets you chroot into a rootfs without root"
+  printf: "the POSIX printf command"
+  relf: "a program that shows you the sections of an ELF file and can also guess what the unknown sections contain"
+  test: "the POSIX test command with some extensions for compatibility with extended shells and their scripts"
+  walk: "walk command, from Torgo, this command walks a directory based on various rules and it print each file's full path to STDOUT"
+  wttr: "gets weather info from wttr.in"
+homepage:
+  - "https://github.com/xplshn/a-utils"
+  - "https://github.com/xplshn/Andes"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Officially Created Binary. Check/Report @ https://github.com/xplshn/a-utils"
+provides:
+  - "cal"
+  - "catv"
+  - "ccat"
+  - "dial"
+  - "ed"
+  - "envsubst"
+  - "fin"
+  - "fortune"
+  - "hpwd"
+  - "importenv"
+  - "isainfo"
+  - "issue"
+  - "listen"
+  - "noroot-do"
+  - "printf"
+  - "relf"
+  - "test"
+  - "walk"
+  - "wttr"
+  - "xo"
+src_url:
+  - "https://github.com/xplshn/a-utils"
+tag:
+  - "coreutils"
+  - "moreutils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/xplshn/a-utils/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,arm64" --exclude "amd64,x86,x64" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}" --yes
+        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,arm64,tar.gz" --exclude "amd64,x86,x64" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,amd64" --exclude "aarch,arm" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}" --yes
+        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,amd64,tar.gz" --exclude "aarch,arm" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
