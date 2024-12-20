@@ -26,6 +26,9 @@ tag:
   - "downloader"
   - "download-manager"
 x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \

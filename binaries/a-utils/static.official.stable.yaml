@@ -64,6 +64,9 @@ tag:
   - "coreutils"
   - "moreutils"
 x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/xplshn/a-utils/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
