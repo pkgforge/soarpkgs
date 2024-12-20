@@ -10674,15 +10674,12 @@
 4.0K   │ ├── METADATA.db.zstd.bsum
 4.0K   │ ├── METADATA.db.xz.bsum
 4.0K   │ └── METADATA.db.bsum
-120K   ├─┬ scripts
- 36K   │ ├── sbuild_runner.sh
- 24K   │ ├── sbuild_creator.sh
- 20K   │ ├── sbuild_linter.sh
- 12K   │ ├── github_fetcher.sh
-8.0K   │ ├── scrape_pub_issues.sh
-8.0K   │ ├── repology_fetcher.sh
-8.0K   │ └── gen_meta.sh
- 44K   ├─┬ binaries
+148K   ├─┬ binaries
+104K   │ ├─┬ soar
+ 96K   │ │ ├─┬ assets
+ 88K   │ │ │ ├── default.png
+4.0K   │ │ │ └── default.svg
+4.0K   │ │ └── static.official.stable.yaml
  20K   │ ├─┬ curl
  12K   │ │ ├─┬ assets
 8.0K   │ │ │ └── default.svg
@@ -10691,6 +10688,14 @@
 8.0K   │ │ └── static.official.stable.yaml
 8.0K   │ └─┬ axel
 4.0K   │   └── static.official.stable.yaml
+120K   ├─┬ scripts
+ 36K   │ ├── sbuild_runner.sh
+ 24K   │ ├── sbuild_creator.sh
+ 20K   │ ├── sbuild_linter.sh
+ 12K   │ ├── github_fetcher.sh
+8.0K   │ ├── scrape_pub_issues.sh
+8.0K   │ ├── repology_fetcher.sh
+8.0K   │ └── gen_meta.sh
  12K   ├─┬ templates
 4.0K   │ ├── minimal.SBUILD.yaml
 4.0K   │ └── generic.SBUILD.yaml
