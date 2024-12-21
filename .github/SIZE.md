@@ -10674,7 +10674,7 @@
 4.0K   │ ├── METADATA.db.zstd.bsum
 4.0K   │ ├── METADATA.db.xz.bsum
 4.0K   │ └── METADATA.db.bsum
-148K   ├─┬ binaries
+156K   ├─┬ binaries
 104K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10686,6 +10686,8 @@
 4.0K   │ │ └── static.stunnel.stable.yaml
  12K   │ ├─┬ a-utils
 8.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ toru
+4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ └─┬ axel
 4.0K   │   └── static.official.stable.yaml
 120K   ├─┬ scripts
