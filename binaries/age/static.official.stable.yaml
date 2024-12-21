@@ -71,8 +71,8 @@ x_exec:
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
        git clone --filter "blob:none" --quiet "https://github.com/FiloSottile/age" "./TEMPREPO" && cd "./TEMPREPO"
-       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\"\n"
-       echo -e "\n[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+       echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" "./cmd/age"
        go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" "./cmd/age-keygen"
       #Copy

@@ -1,27 +1,39 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/airixss/static.official.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/amass/static.official.stable.yaml
 _disabled: false
 
-pkg: "airixss"
-pkg_id: "github.com.ferreiraklet.airixss"
+pkg: "amass"
+pkg_id: "github.com.owasp-amass.amass"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Finding XSS during recon"
+description: "In-depth attack surface mapping and asset discovery"
+distro_pkg:
+  archlinux:
+    aur:
+      - "amass"
+      - "amass-bin"
+  nixpkgs:
+    - "amass"
 homepage:
-  - "https://github.com/ferreiraklet/airixss"
+  - "https://github.com/owasp-amass/amass"
+  - "https://www.owasp.org/index.php/OWASP_Amass_Project" 
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source. Check/Report @ https://github.com/ferreiraklet/airixss"
+  - "Built From Source. Check/Report @ https://github.com/owasp-amass/amass"
 repology:
-  - "airixss"
+  - "amass"
 src_url:
-  - "https://github.com/ferreiraklet/airixss"
+  - "https://github.com/owasp-amass/amass"
 tag:
-  - "Utility"
+  - "enumeration"
+  - "information-gathering"
+  - "owasp"
+  - "recon"
+  - "security"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -29,7 +41,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/ferreiraklet/airixss" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/owasp-amass/amass" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     popd >/dev/null 2>&1
   run: |
@@ -45,11 +57,10 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/ferreiraklet/airixss" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/owasp-amass/amass" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go mod init "github.com/ferreiraklet/airixss" ; go mod tidy
-       go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''"
+       go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" "./cmd/amass"
       #Copy
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"
       #Strip 
