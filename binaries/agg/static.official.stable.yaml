@@ -1,34 +1,38 @@
-#!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.stunnel.stable.yaml
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/agg/static.official.stable.yaml
 _disabled: false
 
-pkg: "soar"
-pkg_id: "github.com.pkgforge.soar"
+pkg: "agg"
+pkg_id: "github.com.asciinema.agg"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More"
+description: "Asciicast (Asciinema) to GIF converter"
 distro_pkg:
   archlinux:
     aur:
-      - "soar-bin"
+      - "asciinema-agg"
+      - "asciinema-agg-bin"
+  nixpkgs:
+    - "asciinema-agg"
 homepage:
-  - "https://soar.qaidvoid.dev"
-  - "https://github.com/pkgforge/soar"
+  - "https://github.com/asciinema/agg"
 license:
-  - "MIT"
+  - "Apache"
+  - "Apache-2.0"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source. Check/Report @ https://github.com/pkgforge/soar"
+  - "Built From Source. Check/Report @ https://github.com/asciinema/agg"
 repology:
-  - "soar"
+  - "agg-asciinema"
 src_url:
-  - "https://github.com/pkgforge/soar"
+  - "https://github.com/asciinema/agg"
 tag:
-  - "package-manager"
+  - "asciicast"
+  - "asciinema"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -36,7 +40,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/pkgforge/soar" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/asciinema/agg" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     popd >/dev/null 2>&1
   run: |
@@ -51,7 +55,7 @@ x_exec:
        rustup target add "${RUST_TARGET}"
        export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/pkgforge/soar" && cd "./soar"
+       git clone --filter "blob:none" --quiet "https://github.com/asciinema/agg" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: ${RUST_TARGET}\n"
        echo -e "\n[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"

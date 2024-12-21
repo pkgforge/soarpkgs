@@ -1,34 +1,29 @@
-#!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.stunnel.stable.yaml
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/aggligator/static.official.stable.yaml
 _disabled: false
 
-pkg: "soar"
-pkg_id: "github.com.pkgforge.soar"
+pkg: "aggligator"
+pkg_id: "github.com.surban.aggligator"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More"
-distro_pkg:
-  archlinux:
-    aur:
-      - "soar-bin"
+description: "Aggregates multiple links (TCP, Bluetooth, USB or similar) into one connection having their combined bandwidth and provides resiliency against failure of individual links."
 homepage:
-  - "https://soar.qaidvoid.dev"
-  - "https://github.com/pkgforge/soar"
-license:
-  - "MIT"
+  - "https://github.com/surban/aggligator"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source. Check/Report @ https://github.com/pkgforge/soar"
-repology:
-  - "soar"
+  - "Built From Source. Check/Report @ https://github.com/surban/aggligator"  
+provides:
+  - "agg-speed"
+  - "agg-tunnel"
 src_url:
-  - "https://github.com/pkgforge/soar"
+  - "https://github.com/surban/aggligator"
 tag:
-  - "package-manager"
+  - "utility"
+  - "bluetooth"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -36,7 +31,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/pkgforge/soar" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/surban/aggligator" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     popd >/dev/null 2>&1
   run: |
@@ -51,7 +46,7 @@ x_exec:
        rustup target add "${RUST_TARGET}"
        export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/pkgforge/soar" && cd "./soar"
+       git clone --filter "blob:none" --quiet "https://github.com/surban/aggligator" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}\n"
        echo -e "\n[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"

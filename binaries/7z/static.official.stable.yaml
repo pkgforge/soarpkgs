@@ -1,0 +1,79 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/7z/static.official.stable.yaml
+_disabled: false
+
+pkg: "7z"
+pkg_id: "github.com.ip7z.7zip"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Command line archiver utility"
+distro_pkg:
+  alpine:
+    - "7zip"
+  archlinux:
+    aur:
+      - "7-zip"
+      - "7-zip-bin"
+      - "7-zip-full"
+  debian:
+    - "7zip"
+  nixpkgs:
+    - "_7zz"
+    - "_7zz-rar"
+homepage:
+  - "https://7-zip.org"
+  - "https://github.com/ip7z/7zip"
+  - "https://sourceforge.net/projects/sevenzip"
+  - "https://www.7-zip.org"
+license:
+  - "7-zip license"
+  - "BSD"
+  - "BSD-2-Clause"
+  - "BSD-3-Clause"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/ip7z/7zip"
+repology:
+  - "7z"
+src_url:
+  - "https://github.com/ip7z/7zip"
+tag:
+  - "7zip"
+  - "archive"
+  - "archiver"
+  - "archivers"
+  - "Archiving/Compression"
+  - "Productivity/Archiving/Compression"
+  - "system"
+  - "Tools"
+  - "utils"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ip7z/7zip/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        #curl -qfsSL "https://www.7-zip.org/$(curl -qfsSL "https://www.7-zip.org/download.html" | grep -o 'href="[^"]*"' | sed 's/href="//' | grep 'linux-arm64.tar.xz' | sed 's/"$//' | sort | tail -n 1)" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive"
+        soar dl "https://github.com/ip7z/7zip@${RELEASE_TAG}" --match "linux,arm64,tar.xz" --exclude "amd64,x86,x64" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+      x86_64)
+        #curl -qfsSL "https://www.7-zip.org/$(curl -qfsSL "https://www.7-zip.org/download.html" | grep -o 'href="[^"]*"' | sed 's/href="//' | grep 'linux-x64.tar.xz' | sed 's/"$//' | sort | tail -n 1)" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive"
+        soar dl "https://github.com/ip7z/7zip@${RELEASE_TAG}" --match "linux,x64,tar.xz" --exclude "aarch,arm" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
+    #Copy
+    #find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -name '7zzs' -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/7z"
