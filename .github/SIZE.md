@@ -10674,7 +10674,7 @@
 4.0K   │ ├── METADATA.db.zstd.bsum
 4.0K   │ ├── METADATA.db.xz.bsum
 4.0K   │ └── METADATA.db.bsum
-292K   ├─┬ binaries
+516K   ├─┬ binaries
 104K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10684,11 +10684,66 @@
  12K   │ │ ├─┬ assets
 8.0K   │ │ │ └── default.svg
 4.0K   │ │ └── static.stunnel.stable.yaml
+ 12K   │ ├─┬ aria2
+4.0K   │ │ ├── static.abcfy2.stable.yaml
+4.0K   │ │ └── static.abcfy2.continuous.yaml
+ 12K   │ ├─┬ archey
+8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ a-utils
 8.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ toru
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ axel
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ aws-wire-lengths
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ aws-nuke
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ awk
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ atuin
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ assh
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ assetfinder
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ asnmap
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ asn
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ aretext
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ arduino-cli
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ archlinux
+4.0K   │ │ └── static.azathothas.stable.yaml
+8.0K   │ ├─┬ arc
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ aptly
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ appstreamcli
+4.0K   │ │ └── static.probonopd.stable.yaml
+8.0K   │ ├─┬ apkeep
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ apk.sh
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ apk-static
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ ani-cli
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ anewer
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ anew-rs
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ anew
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ analyticsrelationships
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ anakin
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ amp
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ amazonlinux
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ amass
 4.0K   │ │ └── static.official.stable.yaml
