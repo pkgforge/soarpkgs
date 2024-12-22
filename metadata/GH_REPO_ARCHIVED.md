@@ -3,25 +3,25 @@
 | [Acreom](https://github.com/Acreom) | [releases](https://github.com/Acreom/releases) | 19 | acreom desktop app releases | 2024-12-05T13:59:59Z |
 | [AKASHAorg](https://github.com/AKASHAorg) | [Community](https://github.com/AKASHAorg/Community) | 124 | Community | 2023-04-01T00:44:17Z |
 | [AppOutlet](https://github.com/AppOutlet) | [AppOutlet](https://github.com/AppOutlet/AppOutlet) | 391 | A Universal linux app store | 2024-12-05T23:09:02Z |
-| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3420 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-21T19:43:38Z |
+| [ArchGPT](https://github.com/ArchGPT) | [insomnium](https://github.com/ArchGPT/insomnium) | 3419 | Insomnium is a fast local API testing tool that is privacy-focused and 100% local. For testing GraphQL, REST, WebSockets and gRPC. This is a fork of Kong/insomnia | 2024-12-22T13:29:46Z |
 | [ArkEcosystem](https://github.com/ArkEcosystem) | [desktop-wallet](https://github.com/ArkEcosystem/desktop-wallet) | 293 | :computer: Archived, please use ARKVault | 2024-12-18T10:02:11Z |
 | [BlueBrain](https://github.com/BlueBrain) | [RTNeuron](https://github.com/BlueBrain/RTNeuron) | 30 | Interactive visualization framework for geometrically detailed neuron simulations | 2023-12-20T03:19:00Z |
 | [bunqCommunity](https://github.com/bunqCommunity) | [bunqDesktop](https://github.com/bunqCommunity/bunqDesktop) | 272 | The unofficial, free and open source desktop application for the bunq API | 2024-10-31T07:43:14Z |
 | [software-challenge](https://github.com/software-challenge) | [gui-electron](https://github.com/software-challenge/gui-electron) | 4 | Electron GUI for the Software-Challenge Germany 2016 - 2020 (Source code publicized 2018) | 2023-11-26T00:28:18Z |
 | [CCI-Tools](https://github.com/CCI-Tools) | [cate-desktop](https://github.com/CCI-Tools/cate-desktop) | 16 | Desktop GUI for the ESA CCI Toolbox (Cate) | 2024-11-05T11:04:32Z |
 | [CircuitMess](https://github.com/CircuitMess) | [CircuitBlocks](https://github.com/CircuitMess/CircuitBlocks) | 89 | A graphical programming interface that helps newbies get into embedded programming. Its based on Googles Blockly and turns blocks into arduino-compatible code. | 2024-12-20T14:36:45Z |
-| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 14997 | Sourcetrail - free and open-source interactive source explorer | 2024-12-21T07:34:43Z |
+| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 14997 | Sourcetrail - free and open-source interactive source explorer | 2024-12-22T13:35:58Z |
 | [ColinDuquesnoy](https://github.com/ColinDuquesnoy) | [MellowPlayer](https://github.com/ColinDuquesnoy/MellowPlayer) | 234 | Moved to gitlab | 2024-11-29T15:34:04Z |
 | [DokiDokiModManager](https://github.com/DokiDokiModManager) | [Mod-Manager](https://github.com/DokiDokiModManager/Mod-Manager) | 52 | Doki Doki Mod Manager - A mod manager for Doki Doki Literature Club! | 2024-12-08T01:50:43Z |
 | [EtherealEngine](https://github.com/EtherealEngine) | [ir-engine-launcher](https://github.com/EtherealEngine/ir-engine-launcher) | 33 | One stop solution for all your Metaverse needs. A desktop app for installing and launching iR Engine. 🤖 🚀 🚀 🚀 👓 | 2024-08-19T23:49:16Z |
-| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40989 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-21T22:04:27Z |
+| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 40991 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-22T22:53:15Z |
 | [GooBox](https://github.com/GooBox) | [file-share-desktop](https://github.com/GooBox/file-share-desktop) | 13 | 💻 Goobox file share desktop app (Moved to https://github.com/storewise/file-share-desktop) | 2023-01-28T06:24:59Z |
 | [HR](https://github.com/HR) | [Crypter](https://github.com/HR/Crypter) | 461 | 🔓✨🔒 An innovative, convenient and secure encryption app | 2024-12-19T11:24:42Z |
 | [Janglee123](https://github.com/Janglee123) | [eplee](https://github.com/Janglee123/eplee) | 362 | Sweet, simple epub reader | 2024-12-08T01:30:03Z |
 | [LINCnil](https://github.com/LINCnil) | [pia-app](https://github.com/LINCnil/pia-app) | 52 | Exécutable permettant de lancer l’application (front office) PIA sur son ordinateur. C’est une version portable de l’outil PIA.  Executable to launch the PIA application on your computer. It is a stand-alone version of the PIA application. | 2024-11-20T10:01:02Z |
 | [LN-Zap](https://github.com/LN-Zap) | [zap-desktop](https://github.com/LN-Zap/zap-desktop) | 1273 | Zap Wallet - Cross platform Lightning Network wallet focused on user experience and ease of use ⚡️ | 2024-12-16T07:00:25Z |
 | [Lateralus138](https://github.com/Lateralus138) | [bench-cli](https://github.com/Lateralus138/bench-cli) | 4 | Cross-platform command line tool to benchmark commands and other executables/scripts in command lines written in Fortran. Very precise and fast. | 2023-09-13T22:13:49Z |
-| [LazyT](https://github.com/LazyT) | [rrcc](https://github.com/LazyT/rrcc) | 574 | RoboRock Control Center | 2024-12-08T11:16:39Z |
+| [LazyT](https://github.com/LazyT) | [rrcc](https://github.com/LazyT/rrcc) | 573 | RoboRock Control Center | 2024-12-22T17:11:02Z |
 | [LiamRiddell](https://github.com/LiamRiddell) | [NoteMaster](https://github.com/LiamRiddell/NoteMaster) | 61 | NoteMaster is an smart minimalistic persistent note-taking app to help boost productivity. | 2024-11-16T07:31:37Z |
 | [LightouchDev](https://github.com/LightouchDev) | [MasterVyrn](https://github.com/LightouchDev/MasterVyrn) | 4 | MasterVyrn is a clean dedicated GBF loader build on top of electron. | 2023-01-28T21:02:43Z |
 | [Lunarequest](https://github.com/Lunarequest) | [NightPDF](https://github.com/Lunarequest/NightPDF) | 233 | Dark Mode PDF Reader built using Electron and PDF.js | 2024-12-19T11:56:50Z |
@@ -56,7 +56,7 @@
 | [cennznet](https://github.com/cennznet) | [cennz-node-release](https://github.com/cennznet/cennz-node-release) | 3 | rUN releases | 2023-01-28T10:55:12Z |
 | [cjdenio](https://github.com/cjdenio) | [playbox](https://github.com/cjdenio/playbox) | 9 | An audio playback system for the live production industry. | 2024-02-20T06:16:53Z |
 | [clipr](https://github.com/clipr) | [clipr](https://github.com/clipr/clipr) | 2 | The clipboard that syncs! | 2023-01-28T17:29:19Z |
-| [crow-translate](https://github.com/crow-translate) | [crow-translate](https://github.com/crow-translate/crow-translate) | 1839 | A simple and lightweight translator that allows you to translate and speak text using Google, Yandex Bing, LibreTranslate and Lingva. | 2024-12-21T09:33:15Z |
+| [crow-translate](https://github.com/crow-translate) | [crow-translate](https://github.com/crow-translate/crow-translate) | 1837 | A simple and lightweight translator that allows you to translate and speak text using Google, Yandex Bing, LibreTranslate and Lingva. | 2024-12-22T04:24:55Z |
 | [dangeredwolf](https://github.com/dangeredwolf) | [ModernDeck](https://github.com/dangeredwolf/ModernDeck) | 316 | A beautiful, powerful Twitter client for desktop. | 2024-11-05T07:07:14Z |
 | [darteil](https://github.com/darteil) | [POELadder](https://github.com/darteil/POELadder) | 1 | Path of Exile ladder viewer | 2023-01-28T07:01:32Z |
 | [davegallant](https://github.com/davegallant) | [pocketcasts-electron](https://github.com/davegallant/pocketcasts-electron) | 3 | Pocket Casts wrapper with mapped media keys | 2023-09-09T08:55:13Z |
@@ -112,12 +112,12 @@
 | [thorchain](https://github.com/thorchain) | [asgardex-electron](https://github.com/thorchain/asgardex-electron) | 112 | ASGARDEX desktop wallet and decentralized exchange for THORChain, 100% open-source | 2024-05-30T16:27:36Z |
 | [trazyn](https://github.com/trazyn) | [weweChat](https://github.com/trazyn/weweChat) | 5754 | 💬 Unofficial WeChat client built with React, MobX and Electron. | 2024-12-13T01:07:33Z |
 | [trufflesuite](https://github.com/trufflesuite) | [ganache-ui](https://github.com/trufflesuite/ganache-ui) | 4676 | Personal blockchain for Ethereum development | 2024-12-20T14:05:30Z |
-| [bloomrpc](https://github.com/bloomrpc) | [bloomrpc](https://github.com/bloomrpc/bloomrpc) | 9011 | Former GUI client for gRPC services. No longer maintained. | 2024-12-21T09:57:18Z |
+| [bloomrpc](https://github.com/bloomrpc) | [bloomrpc](https://github.com/bloomrpc/bloomrpc) | 9011 | Former GUI client for gRPC services. No longer maintained. | 2024-12-22T14:21:01Z |
 | [vechain](https://github.com/vechain) | [thor-sync.electron](https://github.com/vechain/thor-sync.electron) | 55 | A browser that empowers DApps on VeChain | 2024-08-28T14:59:47Z |
 | [vterm](https://github.com/vterm) | [vterm](https://github.com/vterm/vterm) | 92 | :fire: Extensible terminal emulator written with the web languages of the future. Today. | 2024-11-07T00:02:39Z |
 | [webrecorder](https://github.com/webrecorder) | [webrecorder-desktop](https://github.com/webrecorder/webrecorder-desktop) | 202 | Webrecorder Desktop App! | 2024-07-28T09:59:07Z |
-| [wexond](https://github.com/wexond) | [browser-base](https://github.com/wexond/browser-base) | 2682 | Modern and feature-rich web browser base based on Electron | 2024-12-21T08:43:28Z |
+| [wexond](https://github.com/wexond) | [browser-base](https://github.com/wexond/browser-base) | 2683 | Modern and feature-rich web browser base based on Electron | 2024-12-22T16:18:18Z |
 | [yafp](https://github.com/yafp) | [media-dupes](https://github.com/yafp/media-dupes) | 55 | a minimal content duplicator for common media services like youtube | 2024-06-12T20:51:31Z |
 | [yafp](https://github.com/yafp) | [ttth](https://github.com/yafp/ttth) | 123 | ttth (talk to the hand) is an electron based desktop app for online services like WhatsApp, Threema, Telegram, Twitter, Google and several others. | 2024-08-12T19:48:11Z |
 | [zenghongtu](https://github.com/zenghongtu) | [Mob](https://github.com/zenghongtu/Mob) | 967 | Mob - 一个有颜值的喜马拉雅桌面客户端，支持 Mac、Win 和 Linux | 2024-12-04T14:40:32Z |
-| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21555 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-21T16:21:26Z |
+| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21550 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-22T17:28:40Z |
