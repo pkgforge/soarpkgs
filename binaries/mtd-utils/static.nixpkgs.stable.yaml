@@ -1,0 +1,158 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/mtd-utils/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "mtdutils"
+pkg_id: "nixpkgs.mtdutils"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tools for MTD filesystems"
+distro_pkg:
+  alpine:
+    - "mtd-utils"
+  archlinux:
+    extra:
+      - "mtd-utils"
+  debian:
+    - "mtd-utils"
+  nixpkgs:
+    - "mtdutils"
+homepage:
+  - "http://www.linux-mtd.infradead.org/"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "checkfs"
+  - "docfdisk"
+  - "doc_loadbios"
+  - "fectest"
+  - "filljffs2.sh"
+  - "flashcp"
+  - "flash_erase"
+  - "flash_eraseall"
+  - "flash_lock"
+  - "flash_otp_dump"
+  - "flash_otp_erase"
+  - "flash_otp_info"
+  - "flash_otp_lock"
+  - "flash_otp_write"
+  - "flash_readtest"
+  - "flash_speed"
+  - "flash_stress"
+  - "flash_torture"
+  - "flash_unlock"
+  - "free_space"
+  - "fs_help_all.sh"
+  - "fs_run_all.sh"
+  - "fs_stress00.sh"
+  - "fs_stress01.sh"
+  - "fstest_monitor"
+  - "ftl_check"
+  - "ftl_format"
+  - "ftrunc"
+  - "fwrite00"
+  - "gcd_hupper"
+  - "integ"
+  - "integck"
+  - "io_basic"
+  - "io_paral"
+  - "io_read"
+  - "io_update"
+  - "jffs2dump"
+  - "jffs2reader"
+  - "JitterTest"
+  - "load_nandsim.sh"
+  - "lsmtd"
+  - "makefiles"
+  - "mkfs.jffs2"
+  - "mkfs.ubifs"
+  - "mkvol_bad"
+  - "mkvol_basic"
+  - "mkvol_paral"
+  - "mount.ubifs"
+  - "mtd_debug"
+  - "mtdinfo"
+  - "mtdpart"
+  - "nandbiterrs"
+  - "nanddump"
+  - "nandflipbits"
+  - "nandpagetest"
+  - "nandsubpagetest"
+  - "nandtest"
+  - "nandwrite"
+  - "nftldump"
+  - "nftl_format"
+  - "orph"
+  - "pdfrun"
+  - "perf"
+  - "plotJittervsFill"
+  - "recv_image"
+  - "rfddump"
+  - "rfdformat"
+  - "rmdir00"
+  - "rndrm00"
+  - "rndrm99"
+  - "rndwrite00"
+  - "rsvol"
+  - "runubitests.sh"
+  - "serve_image"
+  - "stress_1"
+  - "stress_2"
+  - "stress_3"
+  - "sumtool"
+  - "test_1"
+  - "test_2"
+  - "ubiattach"
+  - "ubiblock"
+  - "ubicrc32"
+  - "ubidetach"
+  - "ubiformat"
+  - "ubihealthd"
+  - "ubimkvol"
+  - "ubinfo"
+  - "ubinize"
+  - "ubirename"
+  - "ubirmvol"
+  - "ubirsvol"
+  - "ubiscan"
+  - "ubi-stress-test.sh"
+  - "ubiupdatevol"
+  - "volrefcnt"  
+repology:
+  - "mtdutils"
+src_url:
+  - "https://git.infradead.org/mtd-utils.git"
+tag:
+  - "mtd"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#mtdutils" --impure --refresh --quiet 2>&1 | jq -r '.. | objects | select(has("version")) | .version' | tr -d '[:space:]'
+  run: |
+    #Build
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.mtdutils" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "${SBUILD_TMPDIR}/nixbuild" | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}/nixbuild" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find "{}" -type d -iname "*bin*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
