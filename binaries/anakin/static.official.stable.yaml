@@ -1,26 +1,28 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/agrind/static.official.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/anakin/static.official.stable.yaml
 _disabled: false
 
-pkg: "agrind"
-pkg_id: "github.com.rcoh.angle-grinder"
+pkg: "anakin"
+pkg_id: "github.com.Timmmm.anakin"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Slice and dice logs on the command line"
+description: "Kill orphan processes"
 homepage:
-  - "https://github.com/rcoh/angle-grinder"
+  - "https://github.com/Timmmm/anakin"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source. Check/Report @ https://github.com/rcoh/angle-grinder"
+  - "Built From Source. Check/Report @ https://github.com/Timmmm/anakin"
+repology:
+  - "anakin"
 src_url:
-  - "https://github.com/rcoh/angle-grinder"
+  - "https://github.com/Timmmm/anakin"
 tag:
-  - "analytics"
-  - "logging"
+  - "process-killer"
+  - "process-manager"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -28,7 +30,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/rcoh/angle-grinder" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/Timmmm/anakin" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -43,13 +45,13 @@ x_exec:
        rustup target add "${RUST_TARGET}"
        export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/rcoh/angle-grinder" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/Timmmm/anakin" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm rust-toolchain* 2>/dev/null
        cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going
-      #Copy
+      #Copy 
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"
       #Strip 
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;

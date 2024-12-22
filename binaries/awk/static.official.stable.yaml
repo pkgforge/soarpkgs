@@ -1,40 +1,29 @@
-#!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/axel/static.official.stable.yaml
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/awk/static.official.stable.yaml
 _disabled: false
 
-pkg: "axel"
-pkg_id: "github.com.axel-download-accelerator.axel"
+pkg: "awk"
+pkg_id: "github.com.onetrueawk.awk"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Lightweight CLI download accelerator"
-distro_pkg:
-  alpine:
-    - "axel"
-  archlinux:
-    extra:
-      - "axel"
-  debian:
-    - "axel"
-  nixpkgs:
-    - "axel"
+description: "One true awk, as described in The AWK Programming Language book with Support for UTF-8 and CSV Input"
 homepage:
-  - "https://github.com/axel-download-accelerator/axel"
+  - "https://github.com/onetrueawk/awk"
 license:
-  - "GPL-2.0"  
+  - "BSD"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source. Check/Report @ https://github.com/axel-download-accelerator/axel"
+  - "Built From Source. Check/Report @ https://github.com/onetrueawk/awk"
 repology:
-  - "axel"
+  - "awk"
 src_url:
-  - "https://github.com/axel-download-accelerator/axel"
+  - "https://github.com/onetrueawk/awk"
 tag:
-  - "downloader"
-  - "download-manager"
+  - "string-manipulation"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -42,7 +31,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/axel-download-accelerator/axel" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/onetrueawk/awk" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -53,16 +42,15 @@ x_exec:
       #Setup ENV
        mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/axel-download-accelerator/axel" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/onetrueawk/awk" "./TEMPREPO" && cd "./TEMPREPO"
        export CFLAGS="-O2 -flto=auto -static -w -pipe"
        export CXXFLAGS="${CFLAGS}"
        export CPPFLAGS="${CFLAGS}"
        export LDFLAGS="-static -s -Wl,-S -Wl,--build-id=none"
-       autoreconf -iv ; "./configure" --disable-shared --disable-Werror --enable-static --enable-year2038 --enable-compile-warnings="no" --with-ssl="openssl"
        make --jobs="$(($(nproc)+1))" --keep-going
       #Copy
-       #cp "./axel" "/build-bins/axel"
-       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"
+       cp -fv "./a.out" "/build-bins/awk"
+       #find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"
       #strip & info 
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1

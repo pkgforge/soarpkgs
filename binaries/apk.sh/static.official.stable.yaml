@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/apk.sh/static.official.stable.yaml
+_disabled: false
+
+pkg: "apk.sh"
+pkg_id: "github.com.ax.apk.sh"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "apk.sh makes reverse engineering Android apps easier"
+homepage:
+  - "https://github.com/ax/apk.sh"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Fetched from Upstream. Check/Report @ https://github.com/ax/apk.sh"  
+src_url:
+  - "https://github.com/ax/apk.sh"
+tag:
+  - "utility"
+  - "android"
+  - "android-reverse-engineering"
+  - "apk"
+  - "frida"
+  - "reverse-engineering"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/ax/apk.sh" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Download
+     soar dl "https://raw.githubusercontent.com/ax/apk.sh/main/apk.sh" -o "${SBUILD_OUTDIR}/apk.sh" --yes

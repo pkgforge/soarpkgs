@@ -42,7 +42,7 @@ x_exec:
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
     git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/asciinema/agg" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
-    popd >/dev/null 2>&1
+    [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
      docker stop "alpine-builder" >/dev/null 2>&1 ; docker rm "alpine-builder" >/dev/null 2>&1

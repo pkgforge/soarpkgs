@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/appstreamcli/static.probonopd.stable.yaml
+_disabled: false
+
+pkg: "appstreamcli"
+pkg_id: "github.com.probonopd.static-tools"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tool to work with AppStream metadata"
+distro_pkg:
+  alpine:
+    - "appstream"
+  archlinux:
+    extra:
+      - "appstream"
+  debian:
+    - "appstream"
+  nixpkgs:
+    - "appstream"
+    - "kdePackages.appstream-qt"
+    - "libsForQt5.appstream-qt"
+    - "libsForQt512.appstream-qt"
+    - "libsForQt514.appstream-qt"
+homepage:
+  - "https://github.com/ximion/appstream"
+  - "https://distributions.freedesktop.org/wiki/AppStream"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Third-Party. Check/Report @ https://github.com/probonopd/static-tools"    
+repology:
+  - "appstreamcli"
+src_url:
+  - "https://github.com/probonopd/static-tools"
+tag:
+  - "desktop"
+  - "desktop-util"
+  - "System/Tools"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://raw.githubusercontent.com/probonopd/static-tools/refs/heads/master/build.sh" | grep -oP '(?<=ximion/appstream/archive/)v\d+\.\d+\.\d+(?=\.tar\.gz)' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/probonopd/static-tools@continuous" --match "aarch64,appstream" --exclude "amd64,x86,x64" -o "${SBUILD_TMPDIR}/appstreamcli" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/probonopd/static-tools@continuous" --match "x86_64,appstream" --exclude "aarch,arm,i386,i686" -o "${SBUILD_TMPDIR}/appstreamcli" --yes
+        ;;
+    esac
+    #Extract
+    while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

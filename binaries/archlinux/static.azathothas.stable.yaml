@@ -1,0 +1,34 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/archlinux/static.azathothas.stable.yaml
+_disabled: false
+
+pkg: "archlinux"
+pkg_id: "github.com.Azathothas.docker-archlinux"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Portable Ephemeral ArchLinux Docker Image (DockerC)"
+homepage:
+  - "https://wiki.archlinux.org/title/Docker"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Created using DockerC, might require ROOT (Details: https://hub.docker.com/_/archlinux)"
+src_url:
+  - "https://github.com/Azathothas/docker-archlinux"
+tag:
+  - "archlinux"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    docker manifest inspect "archlinux:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
+  run: |
+    #Build
+     sudo dockerc --image "docker://archlinux:latest" --output "${SBUILD_OUTDIR}/archlinux.no_strip"
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_OUTDIR}/archlinux.no_strip" && chmod -R 755 "${SBUILD_OUTDIR}/archlinux.no_strip"
+     file "${SBUILD_OUTDIR}/archlinux.no_strip" && du -sh "${SBUILD_OUTDIR}/archlinux.no_strip"
