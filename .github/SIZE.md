@@ -1,5 +1,5 @@
 ```mathematica
- 82M └─┬ main
+ 83M └─┬ main
  55M   ├─┬ packages
 1.1M   │ ├─┬ imagemagick
 1.1M   │ │ ├─┬ assets
@@ -10674,7 +10674,7 @@
 4.0K   │ ├── METADATA.db.zstd.bsum
 4.0K   │ ├── METADATA.db.xz.bsum
 4.0K   │ └── METADATA.db.bsum
-220K   ├─┬ binaries
+292K   ├─┬ binaries
 104K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10689,6 +10689,24 @@
 8.0K   │ ├─┬ toru
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ axel
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ amass
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ alterx
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ alpine
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ almalinux
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ allxfr
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ alist
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ algernon
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ albafetch
+4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ aix
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ airixss
 4.0K   │ │ └── static.official.stable.yaml
