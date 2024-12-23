@@ -10658,7 +10658,7 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-7.9M   ├─┬ binaries
+7.8M   ├─┬ binaries
 104K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10686,17 +10686,7 @@
  16K   │ │ └── static.official.stable.yaml
  20K   │ ├─┬ coreutils
  16K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ zstd
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ xz
- 12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ xbps-void
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ wirelesstools
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ vim
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ util-linux
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ unlink
  12K   │ │ └── static.official.stable.yaml
@@ -10704,27 +10694,9 @@
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ tor
  12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ tar
- 12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ sysstat
  12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ sudo
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ squashfstools
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ squashfs-tools-ng
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ sharutils
- 12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ sbase-box
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ s6-rc
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ s6-portable-utils
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ s6-networking
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ s6-linux-utils
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ radare2
  12K   │ │ └── static.official.stable.yaml
@@ -10764,6 +10736,8 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ wezterm
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ util-linux
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ ulexec
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ tun2proxy
@@ -10941,8 +10915,10 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ a-utils
 8.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ zstd
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ zsh
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ zoxide
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ zigup
@@ -10977,6 +10953,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ yabs.sh
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ xz
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ xurls
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ xq
@@ -11005,6 +10983,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ wireproxy
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ wireless-tools
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ wireguard-tools
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ wireguard-rs
@@ -11012,9 +10992,9 @@
 8.0K   │ ├─┬ wireguard-go
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ whois
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ which
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ wego
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ websocat
@@ -11051,6 +11031,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ viu
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ vim
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ viewgen
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ viddy
@@ -11124,7 +11106,7 @@
 8.0K   │ ├─┬ tok
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tmux
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ tmate
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tlsx
@@ -11134,7 +11116,7 @@
 8.0K   │ ├─┬ tldr
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tio
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ tinja
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ timer
@@ -11158,7 +11140,9 @@
 8.0K   │ ├─┬ tdl
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tcpdump
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ tar
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ tailspin
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ taierspeed-cli
@@ -11187,6 +11171,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sudo-rs
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ sudo
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ subxtract
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ subjs
@@ -11200,11 +11186,11 @@
 8.0K   │ ├─┬ sttr
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ stress-ng
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ stree
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ strace
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ stew
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ step
@@ -11226,9 +11212,13 @@
 8.0K   │ ├─┬ sshesame
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ squashfuse
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ sqlite3
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ squashfs-tools-ng
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ squashfs-tools
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ sqlite
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ sqlc
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sq
@@ -11246,7 +11236,7 @@
 8.0K   │ ├─┬ soft-serve
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ socat
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ sns
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sn0int
@@ -11264,7 +11254,7 @@
 8.0K   │ ├─┬ sliver
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ slirp4netns
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ skupper
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ skim
@@ -11293,10 +11283,12 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ shc
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ sharutils
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ sessionprobe
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sed
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.gnused.yaml
 8.0K   │ ├─┬ sd
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ screenfetch
@@ -11313,8 +11305,16 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sake
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ s6-rc
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ s6-portable-utils
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ s6-networking
+4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ s6-linux-utils
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ s6-linux-init
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ s6-dns
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ s6
