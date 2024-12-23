@@ -48,7 +48,7 @@ x_exec:
     #Build
      NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
      nix-build '<nixpkgs>' --impure --attr "pkgsStatic.sqlite" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
-     find -L "${SBUILD_TMPDIR}/nixbuild" | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+     find -L "${SBUILD_TMPDIR}/nixbuild" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}/nixbuild" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
      xargs -I{} find "{}" -type d -iname "*bin*" | \
