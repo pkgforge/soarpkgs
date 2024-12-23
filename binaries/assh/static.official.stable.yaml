@@ -65,8 +65,8 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/moul/assh" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       rm -rvf "./go.mod" "./go.sum" 2>/dev/null
-       go mod init "github.com/moul/assh" ; go mod tidy
+       #rm -rvf "./go.mod" "./go.sum" 2>/dev/null
+       #go mod init "github.com/moul/assh" ; go mod tidy
        go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "./assh"
       #Copy
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"

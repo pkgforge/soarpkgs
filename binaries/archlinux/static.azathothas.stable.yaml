@@ -29,6 +29,6 @@ x_exec:
     docker manifest inspect "archlinux:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
   run: |
     #Build
-     sudo dockerc --image "docker://archlinux:latest" --output "${SBUILD_OUTDIR}/archlinux.no_strip"
+     sudo dockerc --image "docker://azathothas/archlinux:latest" --output "${SBUILD_OUTDIR}/archlinux.no_strip"
      sudo chown -R "$(whoami):$(whoami)" "${SBUILD_OUTDIR}/archlinux.no_strip" && chmod -R 755 "${SBUILD_OUTDIR}/archlinux.no_strip"
      file "${SBUILD_OUTDIR}/archlinux.no_strip" && du -sh "${SBUILD_OUTDIR}/archlinux.no_strip"
