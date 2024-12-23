@@ -80,7 +80,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          #https://github.com/dathere/qsv/blob/master/docs/FEATURES.md
          #polars makes it slooow
          cargo build --target "${RUST_TARGET}" --features "feature_capable,to" --release --jobs="$(($(nproc)+1))" --keep-going
-         find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"
+         find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null
          file "/build-bins/"* && du -sh "/build-bins/"*

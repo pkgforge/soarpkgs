@@ -85,7 +85,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
             ninja -C "./STATIC_BUILD" -j "$(($(nproc)+1))" install
         #Copy
          #cp "./STATIC_BUILD/bwrap" "/build-bins/bwrap"
-         find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/"
+         find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
         #Build (Patched) #Allows nested bubblewraps with capabilities
          pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter "blob:none" --quiet "https://github.com/containers/bubblewrap" && cd "./bubblewrap"
          sed '\''/real_uid != 0 && has_caps ()/,/^[[:space:]]*else/!b; /real_uid != 0 && has_caps/s/^/\/\/ /; /^[[:space:]]*else/!s/^/\/\/ /'\'' -i "./bubblewrap.c"

@@ -74,7 +74,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
          rm rust-toolchain* 2>/dev/null
          cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going
-         find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/sbuild-linter"
+         find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/sbuild-linter"
         #Build Builder
          #pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter "blob:none" --quiet "https://github.com/pkgforge/sbuilder" && cd "./sbuilder/sbuild-linter"
          #echo -e "\n[+] Target: ${RUST_TARGET}\n"
@@ -82,7 +82,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          #sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
          #rm rust-toolchain* 2>/dev/null
          #cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going
-         #find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} rsync -achvL "{}" "/build-bins/sbuild-builder"
+         #find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/sbuild-builder"
         #Strip
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null
