@@ -65,7 +65,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
         sh -c '
         #Setup ENV
          tempdir="$(mktemp -d)" ; mkdir -p "$tempdir" && cd "$tempdir"
-         mkdir -p "/build-bins" ; source "$HOME/.cargo/env"
+         mkdir -p "/build-bins" ; source "${HOME}/.cargo/env"
         #Build
          git clone --filter "blob:none" --quiet "https://github.com/zerotier/ZeroTierOne" && cd "./ZeroTierOne"
          export CFLAGS="-O2 -flto=auto -static -w -pipe"

@@ -8,7 +8,6 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "agent, bot, c2, cyber, cybersecurity, golang, graphql, implant, react, redteam, redteam-tools, redteaming, rust, teamserver, typescript, webui"
 description: "parallel | xargs in rust"
 homepage:
   - "https://github.com/spellshift/realm"
@@ -16,71 +15,51 @@ maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-repology:
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/spellshift/realm"
+
+repology:s
   - "realm-tavern"
 src_url:
   - "https://github.com/spellshift/realm"
 tag:
-  - "utility"
-  - "agent, bot, c2, cyber, cybersecurity, golang, graphql, implant, react, redteam, redteam-tools, redteaming, rust, teamserver, typescript, webui"
+  - "cybersecurity"
+  - "redteam"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    {EMPTY}
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/spellshift/realm" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
-    #!/usr/bin/env bash
-
-#-------------------------------------------------------#
-#Sanity Checks
-if [ "${BUILD}" != "YES" ] || \
-   [ -z "${BINDIR}" ] || \
-   [ -z "${EGET_EXCLUDE}" ] || \
-   [ -z "${EGET_TIMEOUT}" ] || \
-   [ -z "${GIT_TERMINAL_PROMPT}" ] || \
-   [ -z "${GIT_ASKPASS}" ] || \
-   [ -z "${GITHUB_TOKEN}" ] || \
-   [ -z "${SYSTMP}" ] || \
-   [ -z "${TMPDIRS}" ]; then
- #exit
-  echo -e "\n[+]Skipping Builds...\n"
-  exit 1
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Main
-export SKIP_BUILD="NO" #YES, in case of deleted repos, broken builds etc
-if [ "${SKIP_BUILD}" == "NO" ]; then
-    #realm : parallel | xargs in rust
-     export BIN="realm" #Name of final binary/pkg/cli, sometimes differs from $REPO
-     export SOURCE_URL="https://github.com/spellshift/realm" #github/gitlab/homepage/etc for $BIN
-     echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
+    #Build
+     docker stop "alpine-builder" >/dev/null 2>&1 ; docker rm "alpine-builder" >/dev/null 2>&1
+     docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       source "${HOME}/.cargo/env"
+       export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+       rustup target add "${RUST_TARGET}"
+       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       pushd "$($TMPDIRS)" >/dev/null 2>&1 && git clone --quiet --filter "blob:none" "https://github.com/spellshift/realm" && cd "./realm"
-      #Server
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./tavern-bin" "./tavern" ; cp "./tavern-bin" "$BINDIR/tavern" ; go clean -cache -fuzzcache -modcache -testcache 
-      #Agent
-       cd "./implants"
-       export RUST_TARGET="x86_64-unknown-linux-musl" && rustup target add "$RUST_TARGET"
-       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=3 -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
-       sed '/^\[profile\.release\]/,/^$/d' -i "./Cargo.toml" ; echo -e '\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true' >> "./Cargo.toml"
-       cargo build --target "$RUST_TARGET" --release --jobs="$(($(nproc)+1))" --keep-going
-       cp "./target/$RUST_TARGET/release/golem" "$BINDIR/golem"
-       cp "./target/$RUST_TARGET/release/imix" "$BINDIR/imix"
+       git clone --filter "blob:none" --quiet "https://github.com/spellshift/realm" "./TEMPREPO" && cd "./TEMPREPO/"
+       echo -e "\n[+] Target: ${RUST_TARGET}"
+       echo -e "[+] Flags: ${RUSTFLAGS}\n"
+       sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
+       rm rust-toolchain* 2>/dev/null
+       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going
+      #Copy
+       find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+      #Strip 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+       file "/build-bins/"* && du -sh "/build-bins/"*
        popd >/dev/null 2>&1
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Cleanup
-unset SKIP_BUILD ; export BUILT="YES"
-#In case of zig polluted env
-unset AR CC CFLAGS CXX CPPFLAGS CXXFLAGS DLLTOOL HOST_CC HOST_CXX LDFLAGS LIBS OBJCOPY RANLIB
-#In case of go polluted env
-unset GOARCH GOOS CGO_ENABLED CGO_CFLAGS
-#PKG Config
-unset PKG_CONFIG_PATH PKG_CONFIG_LIBDIR PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_SYSTEM_INCLUDE_PATH PKG_CONFIG_SYSTEM_LIBRARY_PATH
-#-------------------------------------------------------#
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
