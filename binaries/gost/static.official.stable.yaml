@@ -66,7 +66,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
-         mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
          pushd "$(mktemp -d)" >/dev/null ; echo "yes" | bash <(curl -qfsSL "https://git.io/go-installer") ; popd >/dev/null
         #Build
          git clone --quiet --filter "blob:none" "https://github.com/ginuerzh/gost" && cd "./gost"

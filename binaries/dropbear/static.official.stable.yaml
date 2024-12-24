@@ -73,7 +73,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
-         mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
         #Build : https://github.com/mkj/dropbear/blob/master/INSTALL.md
          git clone --filter "blob:none" --quiet "https://github.com/mkj/dropbear" && cd "./dropbear"
          export CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"

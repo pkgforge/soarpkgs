@@ -75,7 +75,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
         bash -l -c '
         #Get SRC
-         mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
          #curl -qfsSLJO "https://ftp.gnu.org/gnu/coreutils/$(curl -qfsSL "https://ftp.gnu.org/gnu/coreutils/" | grep -oP "(?<=href=\")[^\"]+\.tar\.xz(?=\")" | sort -V | tail -n 1)"
          #find "./" -type f -iname "*tar.xz" -exec tar -xvf {} \; && find "./" -type f -iname "*tar.xz" -exec rm -rf {} \;
          #cd $(find . -maxdepth 1 -type d | grep -v "^.$")

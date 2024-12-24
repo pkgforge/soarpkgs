@@ -62,7 +62,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" "azathothas/debian-builder-unstable:latest" \
         bash -l -c '
         #Setup ENV
-         mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
         #Build
          git clone --filter "blob:none" --quiet "https://github.com/VHSgunzo/ptyspawn" && cd "./ptyspawn"
          export CC="$(which musl-gcc)"
@@ -74,6 +74,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
         #Copy
          #cp "./ptyspawn" "/build-bins/ptyspawn"
          find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r '.. | objects | .path? // empty' | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
         #strip & info 
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null

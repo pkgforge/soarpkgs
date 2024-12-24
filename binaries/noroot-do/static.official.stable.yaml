@@ -62,7 +62,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
-         mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
         #Build
          git clone --quiet --filter "blob:none" "https://github.com/xplshn/a-utils" && cd "./a-utils/cmd/noroot-do"
          chmod +x "./cbuild.sh" && "./cbuild.sh" build

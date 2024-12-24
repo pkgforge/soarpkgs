@@ -75,7 +75,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
         bash -l -c '
         #Get SRC
-         mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
          git clone --filter "blob:none" --quiet "https://git.busybox.net/busybox" && cd "./busybox"
         #Configure
          export CFLAGS="-O2 -flto=auto -static -w -pipe ${CFLAGS}"
