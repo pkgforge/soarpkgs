@@ -10658,7 +10658,7 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-7.8M   ├─┬ binaries
+7.6M   ├─┬ binaries
 104K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10754,23 +10754,13 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ squishy-cli
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ sic
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ sharun
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ serverstatus
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ sbuilder
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ rustcat
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ runimage-run
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ rippkgs
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ rclone
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ qsv
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ qemu
 8.0K   │ │ └── static.official.stable.yaml
@@ -10780,17 +10770,9 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ proot
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ pls
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ pixterm
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ pingmole
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ php
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ ox
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ otree
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ onionpipe
 8.0K   │ │ └── static.official.stable.yaml
@@ -10798,29 +10780,19 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ nvme-cli
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ notify-send
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ noseyparker
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ nix-index
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ nezha
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ netstat
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ netscanner
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ netexec
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ netcat
 4.0K   │ │ ├── static.nixpkgs.libressl.yaml
 4.0K   │ │ └── static.nixpkgs.gnu.yaml
- 12K   │ ├─┬ ncgopher
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ mtd-utils
 8.0K   │ │ └── static.nixpkgs.stable.yaml
- 12K   │ ├─┬ monolith
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ mitmproxy
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ lit-bb-hack-tools
@@ -10829,30 +10801,14 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ kitty
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ kalc
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ job-security
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ ironrdp
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ iperf3
 4.0K   │ │ ├── static.userdocs.stable.yaml
 4.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ ipa-server
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ importenv
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ imgcat
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ iamb
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ hwatch
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ htop
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ headless-terminal
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ handlr
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ gocryptfs
 8.0K   │ │ └── static.official.stable.yaml
@@ -10860,23 +10816,18 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ goaccess
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ git-xet
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ geonet
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ fyne
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ flawz
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ flatimage
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ findutils
+4.0K   │ │ ├── static.uutils.source.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ fastfetch
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ exatorrent
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ esbuild
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ encrypted-dns-server
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ daytona
 8.0K   │ │ └── static.official.stable.yaml
@@ -11184,7 +11135,7 @@
 8.0K   │ ├─┬ sslsearch
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sshx
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ sshportal
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sshpass
@@ -11240,7 +11191,7 @@
 8.0K   │ ├─┬ skupper
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ skim
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ sj
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sish
@@ -11249,6 +11200,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ siegfried
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ sic
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ shuffledns
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ shortscan
@@ -11258,7 +11211,7 @@
 8.0K   │ ├─┬ shellz
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ shellharden
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ shellcheck
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ shell2http
@@ -11314,13 +11267,13 @@
 8.0K   │ ├─┬ rustypaste-cli
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rustypaste
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rustscan
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
+8.0K   │ ├─┬ rustcat
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rust-parallel
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ rust-hypervisor-firmware
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rush
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ruri
@@ -11328,7 +11281,7 @@
 8.0K   │ ├─┬ runme
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ runiq
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ runc
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ruff
@@ -11336,13 +11289,13 @@
 8.0K   │ ├─┬ rsync
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ rshijack
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rqbit
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rospo
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ropr
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rootlesskit
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rockylinux
@@ -11350,11 +11303,11 @@
 8.0K   │ ├─┬ roboxtractor
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rnr
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ripgrep
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ripgen
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rga
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ revive
@@ -11382,13 +11335,13 @@
 8.0K   │ ├─┬ regclient
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ redive
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ redguard
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ recollapse
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rebuilderd
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ realm-tavern
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ realm
@@ -11404,11 +11357,13 @@
 8.0K   │ ├─┬ rate-limit-checker
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rage
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ quotes-escaper
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ quickcert
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ qsv
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ qsreplace
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ qbittorrent-nox
@@ -11420,7 +11375,7 @@
 8.0K   │ ├─┬ python3
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ pwninit
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ pwait
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ puredns
@@ -11438,7 +11393,7 @@
 8.0K   │ ├─┬ progress
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ procs
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ procps
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ prettyping
@@ -11450,13 +11405,15 @@
 8.0K   │ ├─┬ pping
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ppfuzz
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ppath
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ podsync
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ podman
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ pls
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ planor
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ pktstat
@@ -11467,12 +11424,14 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ pingtunnel
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ pingmole
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ pigz
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ pier
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ phantun
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ pgweb
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ pgrok
@@ -11487,12 +11446,12 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ pax-utils
 4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ pathbuster
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ patchelf
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ passdetective
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ ox
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ overmind
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ov
@@ -11501,6 +11460,8 @@
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ ouch
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ otree
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ osmedeus
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ orbiton
@@ -11518,11 +11479,11 @@
 8.0K   │ ├─┬ opengfw
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ openapi-tui
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ooniprobe
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ onetun
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ oksh
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ oha
@@ -11530,7 +11491,7 @@
 8.0K   │ ├─┬ ockam
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ nushell
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ numactl
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ nuclei
@@ -11539,6 +11500,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ notify
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ noseyparker
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ noroot-do
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ nomore403
@@ -11567,6 +11530,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ nettools
 4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ netscanner
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ netmaker
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ netbird
@@ -11575,10 +11540,12 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ neofetch
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ ncgopher
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ncdu
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ navi
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ namegen
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ naabu
@@ -11588,9 +11555,11 @@
 8.0K   │ ├─┬ mtr
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ mqttui
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ mosh
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ monolith
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ moac
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ mmv
@@ -11620,15 +11589,15 @@
 8.0K   │ ├─┬ mergerfs
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ meli
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ melange
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ mdsh
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ mdp
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ mdcat
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ mcfly
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ mc
@@ -11654,7 +11623,7 @@
 8.0K   │ ├─┬ maddy
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ macchina
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ mabel
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ lux
@@ -11718,21 +11687,23 @@
 8.0K   │ ├─┬ kopia
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ kondo
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ kmon
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.kmon.yaml
 8.0K   │ ├─┬ kmod
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ killport
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ katana
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ kanha
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ kalker
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ kalilinux
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ kalc
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ kakoune
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ kadeessh
@@ -11745,6 +11716,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ just
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ jujutsu
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ jsmug
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ jr
@@ -11757,16 +11730,16 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ joker
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ job-security
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ jnv
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ jless
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ jj
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ jira-cli
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ jen
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ jc
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ jaq
@@ -11795,10 +11768,14 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ indextree
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ hysp
-4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ importenv
+4.0K   │ │ └── static.official.source.yaml
+8.0K   │ ├─┬ iamb
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ hyperfine
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
+8.0K   │ ├─┬ hwatch
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ husarnet
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ hurl
@@ -11812,27 +11789,29 @@
 8.0K   │ ├─┬ httprobe
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ htmlq
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ html-xml-utils
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ htb-cli
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ hrekt
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ hostctl
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ horust
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ himalaya
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ hexyl
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ hex
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ hednsextractor
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ headtail
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
+8.0K   │ ├─┬ headless-terminal
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ hcxtools
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ hcxdumptool
@@ -11845,6 +11824,8 @@
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ hardeningmeter
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ handlr
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ halp
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ hakrevdns
@@ -11874,11 +11855,11 @@
 8.0K   │ ├─┬ gron
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ grex
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gping
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gpg-tui
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gowitness
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gotty
@@ -11894,7 +11875,7 @@
 8.0K   │ ├─┬ gosec
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gorilla
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gopass
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ goop
@@ -11932,13 +11913,13 @@
 8.0K   │ ├─┬ glow
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gitui
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gitql
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gitpod-cli
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gitoxide
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gitleaks
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gitlab-subdomains
@@ -11962,7 +11943,7 @@
 8.0K   │ ├─┬ git-cliff
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gip
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gickup
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ghorg
@@ -11985,6 +11966,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ getJS
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ geonet
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ gentoo
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ genact
@@ -12019,14 +12002,12 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ fnm
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ flawz
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ fingerprintx
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ findutils_uutils
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ findutils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ findomain
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ findlargedir
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ filebrowser
@@ -12044,21 +12025,21 @@
 8.0K   │ ├─┬ ffmpeg
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ feroxbuster
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ fedora
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ fdupes
 4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ fd
-4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ fd-find
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ fclones
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ fblog
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ falconhound
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ eza
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ exiflooter
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ exfatprogs
@@ -12077,6 +12058,8 @@
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ enola
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ encrypted-dns-server
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ encode
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ enc
@@ -12086,7 +12069,7 @@
 8.0K   │ ├─┬ elinks
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ elfcat
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ehole
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ eget2
