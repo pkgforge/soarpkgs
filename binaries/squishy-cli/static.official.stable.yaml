@@ -73,7 +73,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          echo -e "\n[+] Flags: ${RUSTFLAGS}\n"
          sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
          rm rust-toolchain* 2>/dev/null
-         cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going
+         cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
          find "../target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/squishy-cli"
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null

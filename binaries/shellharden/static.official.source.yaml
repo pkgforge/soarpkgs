@@ -60,7 +60,8 @@ x_exec:
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm rust-toolchain* 2>/dev/null
-       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going
+       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r '.. | objects | .path? // empty' | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
