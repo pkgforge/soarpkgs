@@ -62,7 +62,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       ##Build (alpine-musl)
        pushd "$($TMPDIRS)" >/dev/null 2>&1
        docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
-       docker run --privileged --net="host" --name "alpine-builder" --pull="always" "azathothas/alpine-builder:latest" \
+       docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
          set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
@@ -86,7 +86,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
         #Copy
          #cp "./STATIC_BUILD/bwrap" "/build-bins/bwrap"
          find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
-       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r '.. | objects | .path? // empty' | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
         #Build (Patched) #Allows nested bubblewraps with capabilities
          pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter "blob:none" --quiet "https://github.com/containers/bubblewrap" && cd "./bubblewrap"
          sed '\''/real_uid != 0 && has_caps ()/,/^[[:space:]]*else/!b; /real_uid != 0 && has_caps/s/^/\/\/ /; /^[[:space:]]*else/!s/^/\/\/ /'\'' -i "./bubblewrap.c"
