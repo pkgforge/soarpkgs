@@ -10659,11 +10659,11 @@
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
 7.6M   ├─┬ binaries
-104K   │ ├─┬ soar
+108K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
 4.0K   │ │ │ └── default.svg
-4.0K   │ │ └── static.official.source.yaml
+8.0K   │ │ └── static.official.source.yaml
  32K   │ ├─┬ coreutils_uutils
  28K   │ │ └── static.official.stable.yaml
  24K   │ ├─┬ coreutils-vlang
@@ -10728,30 +10728,18 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ xdo
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ wrappe
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ wormhole-rs
-8.0K   │ │ └── static.official.stable.yaml
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ wget
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ wezterm
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ util-linux
 8.0K   │ │ └── static.nixpkgs.stable.yaml
- 12K   │ ├─┬ ulexec
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ tun2proxy
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ tracexec
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ tokei
-8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ taplo
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ tailscale
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ syncat
-8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ system-info-collector
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ squishy-cli
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ skim
@@ -10762,6 +10750,8 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ rippkgs
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ ripgrep
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ rclone
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ qemu
@@ -10782,6 +10772,8 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ nvme-cli
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ noseyparker
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ nix-index
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ nezha
@@ -10820,6 +10812,8 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ goaccess
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ gitlab-cli
+8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ fyne
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ flatimage
@@ -10833,12 +10827,18 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ esbuild
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ encrypted-dns-server
+8.0K   │ │ └── static.official.source.yaml
+ 12K   │ ├─┬ dotenv-linter
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ daytona
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ czkawka
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ cpu
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ cocogitto
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ ciopfs
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ chafa
@@ -10847,6 +10847,8 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ bpftrace
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ atuin
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ aria2
 4.0K   │ │ ├── static.abcfy2.stable.yaml
 4.0K   │ │ └── static.abcfy2.continuous.yaml
@@ -10869,7 +10871,7 @@
 8.0K   │ ├─┬ zfind
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ zenith
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ zellij
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ zdns
@@ -10877,7 +10879,7 @@
 8.0K   │ ├─┬ zapper
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ z-tokens
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ yq
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ yj
@@ -10885,7 +10887,7 @@
 8.0K   │ ├─┬ yip
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ yazi
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ yataf
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ yalis
@@ -10899,17 +10901,17 @@
 8.0K   │ ├─┬ xq
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ xplr
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ xmrig
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ xh
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ xcp
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ xan
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ x8
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ wush
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ wth
@@ -10918,6 +10920,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ wstunnel
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ wrappe
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ wiretap
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ wireproxy
@@ -10927,7 +10931,7 @@
 8.0K   │ ├─┬ wireguard-tools
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ wireguard-rs
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ wireguard-go
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ whois
@@ -10958,12 +10962,10 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ vtm
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ vproxy
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ vopono
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ volta
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ void
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ vnstat
@@ -10997,7 +10999,7 @@
 8.0K   │ ├─┬ unfurl
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ unf
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ uncover
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ uip
@@ -11018,6 +11020,8 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tusd
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ tun2proxy
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ tuiarchiver
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ttyd
@@ -11031,17 +11035,21 @@
 8.0K   │ ├─┬ trufflehog
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ trippy
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ transmission
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ traefik
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ tracexec
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ toybox
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ toru
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tor-socks-proxy
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ tokei
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ tok
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tmux
@@ -11051,7 +11059,7 @@
 8.0K   │ ├─┬ tlsx
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tlrc
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ tldr
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tio
@@ -11061,7 +11069,7 @@
 8.0K   │ ├─┬ timer
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tidy-viewer
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ tgpt
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tget
@@ -11071,7 +11079,7 @@
 8.0K   │ ├─┬ termshark
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tere
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ teldrive
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ tealdeer
@@ -11082,8 +11090,10 @@
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ tar
 4.0K   │ │ └── static.nixpkgs.stable.yaml
+8.0K   │ ├─┬ taplo
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ tailspin
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ taierspeed-cli
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ t-rec-rs
@@ -11091,15 +11101,15 @@
 8.0K   │ ├─┬ systeroid
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ systemctl-tui
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ system-info-collector
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ sysbox
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ syncthing
 4.0K   │ │ └── static.official.stable.yaml
+8.0K   │ ├─┬ syncat
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ svg-hush
-4.0K   │ │ └── static.official.stable.yaml
+4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ surf
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ supervisord
@@ -11308,8 +11318,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rnr
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ ripgrep
-4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ripgen
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ rga
@@ -11504,8 +11512,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ notify
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ noseyparker
-4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ noroot-do
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ nomore403
@@ -11926,8 +11932,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gitlab-subdomains
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ gitlab-cli
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ github-subdomains
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ github-regexp
@@ -12060,8 +12064,6 @@
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ enola
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ encrypted-dns-server
-4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ encode
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ enc
@@ -12100,8 +12102,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ dperf
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ dotenv-linter
-4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ dos2unix
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ doggo
@@ -12222,8 +12222,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ colorized-logs
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ cocogitto
-4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ cobalt-cli
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ cntb
@@ -12371,8 +12369,6 @@
 8.0K   │ ├─┬ aws-nuke
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ awk
-4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ atuin
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ assh
 4.0K   │ │ └── static.official.source.yaml
