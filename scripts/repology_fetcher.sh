@@ -60,6 +60,10 @@ repology_fetcher()
               [ .[] | select(.repo | test("^debian_")) ]
               | map(.srcname) | unique
             ),
+            homebrew: (
+              [ .[] | select(.repo | test("homebrew")) ]
+              | map(.srcname) | unique
+            ),
             nixpkgs: (
               [ .[] | select(.repo | test("^nix_")) ]
               | map(.srcname) | unique
