@@ -44,7 +44,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/bvaisvil/zenith" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/bvaisvil/zenith" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |

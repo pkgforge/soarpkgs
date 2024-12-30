@@ -61,10 +61,10 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       #Build 
        pushd "$($TMPDIRS)" >/dev/null 2>&1 && git clone --quiet --filter "blob:none" "https://github.com/u-root/cpu" && cd "./cpu"
        #cpu
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./bin/cpu" "./cmds/cpu/." ; cp "./bin/cpu" "$BINDIR/cpu"
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./bin/cpud" "./cmds/cpud/." ; cp "./bin/cpud" "$BINDIR/cpud"
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./bin/decpu" "./cmds/decpu/." ; cp "./bin/decpu" "$BINDIR/decpu"
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -v -ldflags="-buildid= -s -w -extldflags '-static'" -tags "mDNS" -o "./bin/decpud" "./cmds/cpud/." ; cp "./bin/decpud" "$BINDIR/decpud"
+       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./bin/cpu" "./cmds/cpu/." ; cp "./bin/cpu" "$BINDIR/cpu"
+       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./bin/cpud" "./cmds/cpud/." ; cp "./bin/cpud" "$BINDIR/cpud"
+       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./bin/decpu" "./cmds/decpu/." ; cp "./bin/decpu" "$BINDIR/decpu"
+       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -tags "mDNS" -o "./bin/decpud" "./cmds/cpud/." ; cp "./bin/decpud" "$BINDIR/decpud"
        popd >/dev/null 2>&1 ; go clean -cache -fuzzcache -modcache -testcache
        #p9cpu
        pushd "$($TMPDIRS)" >/dev/null 2>&1

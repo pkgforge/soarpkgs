@@ -62,7 +62,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        pushd "$($TMPDIRS)" >/dev/null 2>&1 && mkdir -p "./cutlines" && cd "./cutlines"
        curl -qfsSLJO "https://raw.githubusercontent.com/Azathothas/Arsenal/main/cutlines/main.go"
        go mod init "github.com/Azathothas/Arsenal/cutlines" ; go mod tidy
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./cutlines" ; cp "./cutlines" "$BINDIR/cutlines" ; popd >/dev/null 2>&1 ; go clean -cache -fuzzcache -modcache -testcache
+       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./cutlines" ; cp "./cutlines" "$BINDIR/cutlines" ; popd >/dev/null 2>&1 ; go clean -cache -fuzzcache -modcache -testcache
 fi
 #-------------------------------------------------------#
 

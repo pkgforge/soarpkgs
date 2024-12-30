@@ -71,13 +71,13 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          git clone --quiet --filter "blob:none" "https://github.com/naiba/nezha" && cd "./nezha"
          rm -rf "./go.mod" "./go.sum" 2>/dev/null
          go mod init "github.com/naiba/nezha" ; go mod tidy
-         GOOS="linux" GOARCH="amd64" CGO_ENABLED="1" CGO_CFLAGS="-D_LARGEFILE64_SOURCE -O2 -flto=auto -fPIE -fpie -static -w -pipe" go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "./nezha-dashboard" "./cmd/dashboard"
+         GOOS="linux" GOARCH="amd64" CGO_ENABLED="1" CGO_CFLAGS="-D_LARGEFILE64_SOURCE -O2 -flto=auto -fPIE -fpie -static -w -pipe" go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "./nezha-dashboard" "./cmd/dashboard"
          strip "./nezha-dashboard" ; cp "./nezha-dashboard" "/build-bins/nezha-dashboard"
          #Agent
          git clone --quiet --filter "blob:none" "https://github.com/nezhahq/agent" && cd "./agent"
          rm -rf "./go.mod" "./go.sum" 2>/dev/null
          go mod init "github.com/nezhahq/agent" ; go mod tidy
-         GOOS="linux" GOARCH="amd64" CGO_ENABLED="1" CGO_CFLAGS="-D_LARGEFILE64_SOURCE -O2 -flto=auto -fPIE -fpie -static -w -pipe" go build -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "./nezha-agent" "./cmd/agent"
+         GOOS="linux" GOARCH="amd64" CGO_ENABLED="1" CGO_CFLAGS="-D_LARGEFILE64_SOURCE -O2 -flto=auto -fPIE -fpie -static -w -pipe" go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "./nezha-agent" "./cmd/agent"
          strip "./nezha-agent" ; cp "./nezha-agent" "/build-bins/nezha-agent"
         '
       #Addons
