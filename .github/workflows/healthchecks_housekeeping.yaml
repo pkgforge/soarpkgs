@@ -100,7 +100,7 @@ jobs:
           set +x ; set +e
           #--------------#
           cd "${GITHUB_WORKSPACE}/main"
-          find "packages" -type f -iregex '.*\.\(yml\|yaml\)$' -exec sh -c 'for file; do if ! yq eval "." "$file" > /dev/null 2>&1; then echo "Invalid YAML: $file"; fi; done' sh {} + | tee "${GITHUB_WORKSPACE}/main/.github/yamlcheck.txt"
+          find "./binaries" "./packages" -type f -iregex '.*\.\(yml\|yaml\)$' -exec sh -c 'for file; do if ! yq eval "." "$file" > /dev/null 2>&1; then echo "Invalid YAML: $file"; fi; done' sh "{}" + | tee "${GITHUB_WORKSPACE}/main/.github/yamlcheck.txt"
         continue-on-error: true
 
       - name: Generate Repo Metadata (git-sizer)
