@@ -8,9 +8,12 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Aggregates multiple links (TCP, Bluetooth, USB or similar) into one connection having their combined bandwidth and provides resiliency against failure of individual links."
+description: "Aggregates multiple links (TCP, Bluetooth, USB or similar) into one connection"
 homepage:
   - "https://github.com/surban/aggligator"
+license:
+  - id : "Apache"
+    url: "https://github.com/surban/aggligator/raw/509782bf790c4aba6ab4e08466d688d1d27eb5c2/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
