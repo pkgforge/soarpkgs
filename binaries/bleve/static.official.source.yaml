@@ -1,34 +1,30 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/certgraph/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bleve/static.official.source.yaml
 _disabled: false
 
-pkg: "certgraph"
-pkg_id: "github.com.lanrat.certgraph"
+pkg: "bleve"
+pkg_id: "github.com.blevesearch.bleve"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "An open source intelligence tool to crawl the graph of certificate Alternate Names"
-distro_pkg:
-  nixpkgs:
-    - "certgraph"
+description: "CLI for interacting with a Bleve index"
 homepage:
-  - "https://lanrat.github.io/certgraph"
-  - "https://github.com/lanrat/certgraph"
+  - "https://github.com/blevesearch/bleve"
 license:
-  - "GPL3"
+  - id : "Apache-2.0"
+    url: "https://github.com/blevesearch/bleve/raw/77458c40dd23a67175e321f1ec2216d44500d166/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/lanrat/certgraph"  
-repology:
-  - "certgraph"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/blevesearch/bleve"  
+#repology:
+#  - "bleve"
 src_url:
-  - "https://github.com/lanrat/certgraph"
+  - "https://github.com/blevesearch/bleve"
 tag:
-  - "certificate"
-  - "certstream"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -36,7 +32,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/lanrat/certgraph" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/blevesearch/bleve" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -52,10 +48,10 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/lanrat/certgraph" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/blevesearch/bleve" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/certgraph"
+       go build -C "./cmd/bleve" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/bleve"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 

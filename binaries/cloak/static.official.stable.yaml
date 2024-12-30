@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/cloak.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/cloak/static.official.stable.yaml
 _disabled: false
 
 pkg: "cloak"
@@ -8,69 +8,55 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "censorship, censorship-circumvention, gfw, openvpn, pluggable-transports, proxy, shadowsocks, tor, vpn"
 description: "A censorship circumvention tool to evade detection by authoritarian state adversaries"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cloak-obfuscation"
+      - "cloak-obfuscation-bin"
+      - "cloak-obfuscation-git"
 homepage:
   - "https://github.com/cbeuw/Cloak"
+license:
+  - id : "GPL-3.0"
+    url: "https://github.com/cbeuw/Cloak/raw/d229d8b3dc0e026680c035d2b4a4d7af799557b3/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/cbeuw/Cloak"
+provides:
+  - "cloak-client"
+  - "cloak-server"
 repology:
-  - "cloak"
+  - "cloak-obfuscation"
 src_url:
   - "https://github.com/cbeuw/Cloak"
 tag:
-  - "utility"
-  - "censorship, censorship-circumvention, gfw, openvpn, pluggable-transports, proxy, shadowsocks, tor, vpn"
+  - "censorship"
+  - "gfw"
+  - "proxy"
+  - "socks"
+  - "tor"
+  - "vpn"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    {EMPTY}
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cbeuw/Cloak/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #!/usr/bin/env bash
-
-#-------------------------------------------------------#
-#Sanity Checks
-if [ "${BUILD}" != "YES" ] || \
-   [ -z "${BINDIR}" ] || \
-   [ -z "${EGET_EXCLUDE}" ] || \
-   [ -z "${EGET_TIMEOUT}" ] || \
-   [ -z "${GIT_TERMINAL_PROMPT}" ] || \
-   [ -z "${GIT_ASKPASS}" ] || \
-   [ -z "${GITHUB_TOKEN}" ] || \
-   [ -z "${SYSTMP}" ] || \
-   [ -z "${TMPDIRS}" ]; then
- #exit
-  echo -e "\n[+]Skipping Builds...\n"
-  exit 1
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Main
-export SKIP_BUILD="NO" #YES, in case of deleted repos, broken builds etc
-if [ "${SKIP_BUILD}" == "NO" ]; then
-   #cloak : A censorship circumvention tool to evade detection by authoritarian state adversaries 
-     export BIN="cloak" #Name of final binary/pkg/cli, sometimes differs from $REPO
-     export SOURCE_URL="https://github.com/cbeuw/Cloak" #github/gitlab/homepage/etc for $BIN
-     echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
-      #Fetch
-       eval "$EGET_TIMEOUT" eget "$SOURCE_URL" --asset "client" --asset "amd64" --asset "linux" "$EGET_EXCLUDE" --to "$BINDIR/cloak-client"
-       eval "$EGET_TIMEOUT" eget "$SOURCE_URL" --asset "server" --asset "amd64" --asset "linux" "$EGET_EXCLUDE" --to "$BINDIR/cloak-server"
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Cleanup
-unset SKIP_BUILD ; export BUILT="YES"
-#In case of zig polluted env
-unset AR CC CFLAGS CXX CPPFLAGS CXXFLAGS DLLTOOL HOST_CC HOST_CXX LDFLAGS LIBS OBJCOPY RANLIB
-#In case of go polluted env
-unset GOARCH GOOS CGO_ENABLED CGO_CFLAGS
-#PKG Config
-unset PKG_CONFIG_PATH PKG_CONFIG_LIBDIR PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_SYSTEM_INCLUDE_PATH PKG_CONFIG_SYSTEM_LIBRARY_PATH
-#-------------------------------------------------------#
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/cbeuw/Cloak@${RELEASE_TAG}" --match "client" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_OUTDIR}/cloak-client" --yes
+        soar dl "https://github.com/cbeuw/Cloak@${RELEASE_TAG}" --match "server" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_OUTDIR}/cloak-server" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/cbeuw/Cloak@${RELEASE_TAG}" --match "client" --match "linux,amd64" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_OUTDIR}/cloak-client" --yes
+        soar dl "https://github.com/cbeuw/Cloak@${RELEASE_TAG}" --match "server" --match "linux,amd64" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_OUTDIR}/cloak-server" --yes
+        ;;
+    esac

@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/cmd-wrapped.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/cmd-wrapped/static.official.stable.yaml
 _disabled: false
 
 pkg: "cmd-wrapped"
@@ -8,68 +8,50 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "atuin, bash, cli, commandline, fish, rust, shell, zsh"
-description: "A CLI Tool for Command Line Insights"
+description: "A CLI tool to view Unix shell history statistics, with support for zsh, bash, fish, and atuin"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cmd-wrapped"
+      - "cmd-wrapped-bin"
 homepage:
   - "https://github.com/YiNNx/cmd-wrapped"
+license:
+  - id : "MIT"
+    url: "https://github.com/YiNNx/cmd-wrapped/raw/07c5366dd2c5b6fcd9d5beaa2b13cf7a2f22c9bc/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/YiNNx/cmd-wrapped"
 repology:
   - "cmd-wrapped"
 src_url:
   - "https://github.com/YiNNx/cmd-wrapped"
 tag:
-  - "utility"
-  - "atuin, bash, cli, commandline, fish, rust, shell, zsh"
+  - "atuin"
+  - "history"
+  - "shell"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    {EMPTY}
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/YiNNx/cmd-wrapped/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #!/usr/bin/env bash
-
-#-------------------------------------------------------#
-#Sanity Checks
-if [ "${BUILD}" != "YES" ] || \
-   [ -z "${BINDIR}" ] || \
-   [ -z "${EGET_EXCLUDE}" ] || \
-   [ -z "${EGET_TIMEOUT}" ] || \
-   [ -z "${GIT_TERMINAL_PROMPT}" ] || \
-   [ -z "${GIT_ASKPASS}" ] || \
-   [ -z "${GITHUB_TOKEN}" ] || \
-   [ -z "${SYSTMP}" ] || \
-   [ -z "${TMPDIRS}" ]; then
- #exit
-  echo -e "\n[+]Skipping Builds...\n"
-  exit 1
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Main
-export SKIP_BUILD="NO" #YES, in case of deleted repos, broken builds etc
-if [ "${SKIP_BUILD}" == "NO" ]; then
-  #cmd-wrapped : A CLI Tool for Command Line Insights
-     export BIN="cmd-wrapped"
-     export SOURCE_URL="https://github.com/YiNNx/cmd-wrapped"
-     echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
-      #Fetch
-       eval "$EGET_TIMEOUT" eget "$SOURCE_URL" --asset "linux" --asset "x86_64" --asset ".zip" --to "$BINDIR/cmd-wrapped"
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Cleanup
-unset SKIP_BUILD ; export BUILT="YES"
-#In case of zig polluted env
-unset AR CC CFLAGS CXX CPPFLAGS CXXFLAGS DLLTOOL HOST_CC HOST_CXX LDFLAGS LIBS OBJCOPY RANLIB
-#In case of go polluted env
-unset GOARCH GOOS CGO_ENABLED CGO_CFLAGS
-#PKG Config
-unset PKG_CONFIG_PATH PKG_CONFIG_LIBDIR PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_SYSTEM_INCLUDE_PATH PKG_CONFIG_SYSTEM_LIBRARY_PATH
-#-------------------------------------------------------#
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/YiNNx/cmd-wrapped@${RELEASE_TAG}" --match "linux,aarch64,zip" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/YiNNx/cmd-wrapped@${RELEASE_TAG}" --match "linux,x86_64,zip" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/cmd-wrapped"

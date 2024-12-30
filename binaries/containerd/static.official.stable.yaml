@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/containerd.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/containerd/static.official.stable.yaml
 _disabled: false
 
 pkg: "containerd"
@@ -8,68 +8,56 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "cncf, containerd, containers, cri, docker, hacktoberfest, kubernetes, oci"
 description: "An open and reliable container runtime"
+distro_pkg:
+  alpine:
+    - "containerd"
+  archlinux:
+    aur:
+      - "containerd-git"
+    extra:
+      - "containerd"
+  debian:
+    - "containerd"
+  nixpkgs:
+    - "containerd"
 homepage:
   - "https://github.com/containerd/containerd"
+license:
+  - id : "Apache-2.0"
+    url: "https://github.com/containerd/containerd/raw/c3efa0cb339ffc2d6c9f03d7fb4e5e6577d0194b/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/containerd/containerd"
 repology:
   - "containerd"
 src_url:
   - "https://github.com/containerd/containerd"
 tag:
-  - "utility"
-  - "cncf, containerd, containers, cri, docker, hacktoberfest, kubernetes, oci"
+  - "container"
+  - "oci"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    {EMPTY}
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/containerd/containerd/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #!/usr/bin/env bash
-
-#-------------------------------------------------------#
-#Sanity Checks
-if [ "${BUILD}" != "YES" ] || \
-   [ -z "${BINDIR}" ] || \
-   [ -z "${EGET_EXCLUDE}" ] || \
-   [ -z "${EGET_TIMEOUT}" ] || \
-   [ -z "${GIT_TERMINAL_PROMPT}" ] || \
-   [ -z "${GIT_ASKPASS}" ] || \
-   [ -z "${GITHUB_TOKEN}" ] || \
-   [ -z "${SYSTMP}" ] || \
-   [ -z "${TMPDIRS}" ]; then
- #exit
-  echo -e "\n[+]Skipping Builds...\n"
-  exit 1
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Main
-export SKIP_BUILD="NO" #YES, in case of deleted repos, broken builds etc
-if [ "${SKIP_BUILD}" == "NO" ]; then
-     #containerd : An open and reliable container runtime
-     export BIN="containerd" #Name of final binary/pkg/cli, sometimes differs from $REPO
-     export SOURCE_URL="https://github.com/containerd/containerd" #github/gitlab/homepage/etc for $BIN
-     echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
-      #Fetch
-       eval "$EGET_TIMEOUT" eget "$SOURCE_URL" --asset "linux" --asset "static" --asset "amd" --asset "64" "$EGET_EXCLUDE" --to "$BINDIR/$BIN"
-fi
-#-------------------------------------------------------#
-
-#-------------------------------------------------------#
-##Cleanup
-unset SKIP_BUILD ; export BUILT="YES"
-#In case of zig polluted env
-unset AR CC CFLAGS CXX CPPFLAGS CXXFLAGS DLLTOOL HOST_CC HOST_CXX LDFLAGS LIBS OBJCOPY RANLIB
-#In case of go polluted env
-unset GOARCH GOOS CGO_ENABLED CGO_CFLAGS
-#PKG Config
-unset PKG_CONFIG_PATH PKG_CONFIG_LIBDIR PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_SYSTEM_INCLUDE_PATH PKG_CONFIG_SYSTEM_LIBRARY_PATH
-#-------------------------------------------------------#
+    #Tag
+    RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/containerd/containerd@${RELEASE_TAG}" --match "linux,arm64,static" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/containerd/containerd@${RELEASE_TAG}" --match "linux,amd64,static" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while ARCHIVE_EXT="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file | grep -E "archive|compressed" | cut -d: -f1 | head -n1)"; [ -n "${ARCHIVE_EXT}" ]; do 7z e "${ARCHIVE_EXT}" -o"${SBUILD_TMPDIR}/." -y && rm "${ARCHIVE_EXT}"; done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/containerd"

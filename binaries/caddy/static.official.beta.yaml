@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/caddy/static.official.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/caddy/static.official.beta.yaml
 _disabled: false
 
 pkg: "caddy"
@@ -8,7 +8,7 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A powerful, enterprise-ready, and extensible HTTP/2 + HTTP/3 web server with automatic HTTPS"
+description: "A powerful, enterprise-ready, and extensible HTTP/2 + HTTP/3 web server with automatic HTTPS (Beta)"
 distro_pkg:
   alpine:
     - "caddy"
@@ -48,7 +48,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/caddyserver/caddy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/caddyserver/caddy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
     #Tag
     RELEASE_TAG="$(cat ./${SBUILD_PKG}.version)"

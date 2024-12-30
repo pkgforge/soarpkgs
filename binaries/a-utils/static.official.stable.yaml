@@ -9,6 +9,7 @@ category:
   - "ConsoleOnly"
   - "Utility"
 description:
+  _default: "Core Utilities of https://github.com/xplshn/Andes"
   a-utils: "Multicall Binary with All Core Utilities of https://github.com/xplshn/Andes"
   cal: "an implementation of the POSIX cal command, as described in the OpenBSD manpage, that strives to have the same alignment as Busybox's and has (or tries to have) the Toybox's cal option to highlight specified days"
   catv: "the harmful features of cat"
@@ -79,8 +80,8 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,arm64" --exclude "amd64,x86,x64" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}" --yes
-        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,arm64,tar.gz" --exclude "amd64,x86,x64" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
+        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}" --yes
+        soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,arm64,tar.gz" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}.archive" --yes
         ;;
       x86_64)
         soar dl "https://github.com/xplshn/a-utils@${RELEASE_TAG}" --match "linux,amd64" --exclude "aarch,arm" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${SBUILD_PKG}" --yes

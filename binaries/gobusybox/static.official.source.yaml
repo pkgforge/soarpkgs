@@ -9,6 +9,7 @@ category:
   - "ConsoleOnly"
   - "Utility"
 description:
+  _default: "Tools for compiling many Go commands into one binary to save space"
   busybox: "Core u-root cmds into a Single Busybox like Multicall Binary"
   gencmddeps: "Generates a command dependency Go file"
   goanywhere: "Creates a Go workspace & executes command after '--'"
