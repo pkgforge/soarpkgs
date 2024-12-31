@@ -54,7 +54,7 @@ x_exec:
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
     git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/rclone/rclone" "./TEMPREPO" >/dev/null 2>&1 && \
-    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'latest.%cd.%h' --date=format:'%y%m%dT%H%M%S' && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)"/*T*REPO* ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
