@@ -8,7 +8,27 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A Collection of utilities for controlling TCP/IP networking and traffic control in Linux"
+description:
+  _default: "A Collection of utilities for controlling TCP/IP networking and traffic control in Linux"
+  arpd: "Userspace arp daemon [iproute2]"
+  bridge: "Show/Manipulate bridge addresses and devices [iproute2]"
+  ctstat: "Unified linux network connection tracking statistics [iproute2]"
+  dcb: "Show/Manipulate DCB (Data Center Bridging) settings [iproute2]"
+  devlink: "Manage/Monitor network device links [iproute2]"
+  genl: "Generic netlink utility frontend [iproute2]"
+  ifstat: "Handy utility to read network interface statistics [iproute2]"
+  ip: "Show/Manipulate routing, network devices, interfaces and tunnels [iproute2]"
+  lnstat: "Unified linux network interface/route statistics [iproute2]"
+  nstat: "Display network statistics for network interfaces, protocols, and sockets [iproute2]"
+  rdma: "Manage Remote Direct Memory Access (RDMA) devices and connections for high-performance networking [iproute2]"
+  routel: "List routes with pretty output format [iproute2]"
+  rtacct: "Display and monitors the accounting information of routing tables [iproute2]"
+  rtmon: "Listen to and monitor RTnetlink [iproute2]"
+  rtstat: "Display routing table statistics, including the number of routes and related metrics [iproute2]"
+  ss: "Utility to dump/investigate sockets [iproute2]"
+  tc: "Show/Manipulate traffic control settings [iproute2]"
+  tipc: "A TIPC configuration and management tool [iproute2]"
+  vdpa: "vDPA management tool [iproute2]"
 distro_pkg:
   alpine:
     - "iproute2"
@@ -75,6 +95,7 @@ x_exec:
      xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
     #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
            sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
            sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
@@ -83,4 +104,4 @@ x_exec:
            sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
        '
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

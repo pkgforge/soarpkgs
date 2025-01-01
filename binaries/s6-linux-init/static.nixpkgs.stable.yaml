@@ -8,7 +8,18 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A set of minimalistic tools used to create a s6-based init system, including a /sbin/init binary, on a Linux kernel"
+description: 
+  _default: "A set of minimalistic tools used to create a s6-based init system"
+  s6-linux-init: "A program that is meant to run as pid 1 as a stage 1 init [s6-linux-init]"
+  s6-linux-init-echo: "Writes its arguments to stdout [s6-linux-init]"
+  s6-linux-init-hpr: "Triggers a software or (with -f) hardware shutdown, typically via halt, poweroff, or reboot [s6-linux-init]"
+  s6-linux-init-logouthookd: "Cleans up its client's utmp record when it dies [s6-linux-init]"
+  s6-linux-init-maker: "Generates a directory with an /sbin/init script and necessary files to boot and set up an s6 infrastructure [s6-linux-init]"
+  s6-linux-init-nuke: "Kills all processes immediately [s6-linux-init]"
+  s6-linux-init-shutdown: "Triggers the system shutdown procedure [s6-linux-init]"
+  s6-linux-init-shutdownd: "The daemon that manages the shutdown procedure for an s6-linux-init installation [s6-linux-init]"
+  s6-linux-init-telinit: "Changes runlevels, i.e. changes the system state [s6-linux-init]"
+  s6-linux-init-umountall: "Unmounts all filesystems [s6-linux-init]"
 distro_pkg:
   alpine:
     - "s6-linux-init"
@@ -60,6 +71,7 @@ x_exec:
      xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
     #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
            sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
            sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
@@ -68,4 +80,4 @@ x_exec:
            sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
        '
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

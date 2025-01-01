@@ -8,7 +8,12 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Convert text between DOS, UNIX, and Mac formats"
+description: 
+  _default: "Convert text between DOS, UNIX, and Mac formats"
+  dos2unix: "DOS to Unix and vice versa text file format (line endings) converter [dos2unix]"
+  mac2unix: "MAC to Unix and vice versa text file format (line endings) converter [dos2unix]"
+  unix2dos: "Unix to DOS and vice versa text file format (line endings) converter [dos2unix]"
+  unix2mac: "Unix to MAC and vice versa text file format (line endings) converter [dos2unix]"
 distro_pkg:
   alpine:
     - "dos2unix"
@@ -62,6 +67,7 @@ x_exec:
      xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
     #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
            sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
            sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
@@ -70,4 +76,4 @@ x_exec:
            sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
        '
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

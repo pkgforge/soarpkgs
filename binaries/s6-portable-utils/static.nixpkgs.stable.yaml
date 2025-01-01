@@ -8,7 +8,51 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A set of tiny general Unix utilities optimized for simplicity and small size"
+description: 
+  _default: "A set of tiny general Unix utilities optimized for simplicity and small size"
+  s6-basename: "Prints the basename of a pathname [s6-portable-utils]"
+  s6-cat: "Transfers data from stdin to stdout, until it receives EOF or gets killed [s6-portable-utils]"
+  s6-chmod: "Changes the permissions of a file [s6-portable-utils]"
+  s6-chown: "Changes the owner and/or group of a file [s6-portable-utils]"
+  s6-clock: "Gets/Sets the system clock [s6-portable-utils]"
+  s6-cut: "Prints selected portions of the lines of its input [s6-portable-utils]"
+  s6-dirname: "Prints the dirname of a path [s6-portable-utils]"
+  s6-dumpenv: "Stores environment variables into a directory [s6-portable-utils]"
+  s6-echo: "Writes its arguments to stdout [s6-portable-utils]"
+  s6-env: "Prints the current environment or modifies the environment before running a program [s6-portable-utils]"
+  s6-expr: "Evaluates an expression and writes the result to stdout [s6-portable-utils]"
+  s6-false: "Returns 1 [s6-portable-utils]"
+  s6-format-filter: "Processes lines according to its arguments, and prints the result [s6-portable-utils]"
+  s6-grep: "Matches its input against a pattern [s6-portable-utils]"
+  s6-head: "Prints the first lines of its input files [s6-portable-utils]"
+  s6-hiercopy: "Copies a directory structure recursively [s6-portable-utils]"
+  s6-linkname: "Gives the content of a symbolic link or resolves a path [s6-portable-utils]"
+  s6-ln: "Creates a link to a file [s6-portable-utils]"
+  s6-ls: "Lists the contents of a directory [s6-portable-utils]"
+  s6-maximumtime: "Executes a program with a time limit [s6-portable-utils]"
+  s6-mkdir: "Creates directories [s6-portable-utils]"
+  s6-mkfifo: "Creates FIFOs, a.k.a. named pipes [s6-portable-utils]"
+  s6-nice: "Executes into a program with an altered nice value [s6-portable-utils]"
+  s6-nuke: "Sends signals to every process it is allowed to send [s6-portable-utils]"
+  s6-pause: "Blocks until it is killed [s6-portable-utils]"
+  s6-printenv: "Prints its environment variables [s6-portable-utils]"
+  s6-quote: "Quotes a string and writes it to stdout [s6-portable-utils]"
+  s6-quote-filter: "Acts as a filter, quoting lines it reads on stdin and writing the quoted lines to stdout [s6-portable-utils]"
+  s6-rename: "Atomically renames a file [s6-portable-utils]"
+  s6-rmrf: "Removes a file or directory tree entirely [s6-portable-utils]"
+  s6-seq: "Prints a sequence of numbers [s6-portable-utils]"
+  s6-sleep: "Sleeps for a given time, then optionally executes a program [s6-portable-utils]"
+  s6-sort: "Sorts its input [s6-portable-utils]"
+  s6-sync: "Flushes all the dirty system buffers, and blocks until they're clean [s6-portable-utils]"
+  s6-tai64ndiff: "Acts as a filter, reading from stdin and writing to stdout [s6-portable-utils]"
+  s6-tail: "Prints a file or its stdin after a certain number of bytes or lines [s6-portable-utils]"
+  s6-touch: "Changes the modification and access times of a file, creating it if it does not exist [s6-portable-utils]"
+  s6-true: "Returns 0 [s6-portable-utils]"
+  s6-uniquename: "Creates a guaranteed unique file name and prints it to stdout [s6-portable-utils]"
+  s6-unquote: "Unquotes a quoted string and writes it to stdout [s6-portable-utils]"
+  s6-unquote-filter: Aacts as a filter, reading quoted strings on stdin, unquoting them and writing the results to stdout [s6-portable-utils]"
+  s6-update-symlinks: "Links the content of several similar directory trees under a single tree [s6-portable-utils]"
+  seekablepipe: "Turns the reading end of a pipe into a seekable file descriptor, using a temporary file [s6-portable-utils]"
 distro_pkg:
   alpine:
     - "s6-portable-utils"
@@ -95,6 +139,7 @@ x_exec:
      xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
     #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
            sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
            sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
@@ -103,4 +148,4 @@ x_exec:
            sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
        '
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

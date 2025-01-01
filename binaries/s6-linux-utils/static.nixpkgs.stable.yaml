@@ -8,7 +8,19 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A set of minimalistic Linux-specific system utilities"
+description: 
+  _default: "A set of minimalistic Linux-specific system utilities"
+  rngseed: "Manipulates the Linux kernel's entropy pool [s6-linux-utils]"
+  s6-chroot: "Executes a program in a chroot jail [s6-linux-utils]"
+  s6-freeramdisk: "Frees the memory occupied by a RAM disk [s6-linux-utils]"
+  s6-hostname: "Gets/Sets the machine hostname [s6-linux-utils]"
+  s6-logwatch: "Watches the current file of a logdir, printing it in real time [s6-linux-utils]"
+  s6-mount: "Mounts filesystems [s6-linux-utils]"
+  s6-pivotchroot: "Performs a pivot_root system call, then changes root to the new root filesystem and executes a program [s6-linux-utils]"
+  s6-ps: "Shows a list of processes on the system [s6-linux-utils]"
+  s6-swapoff: "Deactivates swap partitions [s6-linux-utils]"
+  s6-swapon: "Activates swap partitions [s6-linux-utils]"
+  s6-umount: "Unmounts filesystems [s6-linux-utils]"
 distro_pkg:
   alpine:
     - "s6-linux-utils"
@@ -60,6 +72,7 @@ x_exec:
      xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
     #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
            sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
            sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
@@ -68,4 +81,4 @@ x_exec:
            sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
        '
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
