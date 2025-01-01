@@ -10,11 +10,11 @@
 | [software-challenge](https://github.com/software-challenge) | [gui-electron](https://github.com/software-challenge/gui-electron) | 4 | Electron GUI for the Software-Challenge Germany 2016 - 2020 (Source code publicized 2018) | 2023-11-26T00:28:18Z |
 | [CCI-Tools](https://github.com/CCI-Tools) | [cate-desktop](https://github.com/CCI-Tools/cate-desktop) | 16 | Desktop GUI for the ESA CCI Toolbox (Cate) | 2024-11-05T11:04:32Z |
 | [CircuitMess](https://github.com/CircuitMess) | [CircuitBlocks](https://github.com/CircuitMess/CircuitBlocks) | 89 | A graphical programming interface that helps newbies get into embedded programming. Its based on Googles Blockly and turns blocks into arduino-compatible code. | 2024-12-25T05:44:13Z |
-| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 15009 | Sourcetrail - free and open-source interactive source explorer | 2024-12-30T07:33:21Z |
+| [CoatiSoftware](https://github.com/CoatiSoftware) | [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) | 15008 | Sourcetrail - free and open-source interactive source explorer | 2024-12-31T06:27:22Z |
 | [ColinDuquesnoy](https://github.com/ColinDuquesnoy) | [MellowPlayer](https://github.com/ColinDuquesnoy/MellowPlayer) | 234 | Moved to gitlab | 2024-11-29T15:34:04Z |
 | [DokiDokiModManager](https://github.com/DokiDokiModManager) | [Mod-Manager](https://github.com/DokiDokiModManager/Mod-Manager) | 52 | Doki Doki Mod Manager - A mod manager for Doki Doki Literature Club! | 2024-12-08T01:50:43Z |
 | [EtherealEngine](https://github.com/EtherealEngine) | [ir-engine-launcher](https://github.com/EtherealEngine/ir-engine-launcher) | 33 | One stop solution for all your Metaverse needs. A desktop app for installing and launching iR Engine. 🤖 🚀 🚀 🚀 👓 | 2024-08-19T23:49:16Z |
-| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 41031 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-30T22:00:52Z |
+| [GitSquared](https://github.com/GitSquared) | [edex-ui](https://github.com/GitSquared/edex-ui) | 41033 | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | 2024-12-31T21:22:51Z |
 | [GooBox](https://github.com/GooBox) | [file-share-desktop](https://github.com/GooBox/file-share-desktop) | 13 | 💻 Goobox file share desktop app (Moved to https://github.com/storewise/file-share-desktop) | 2023-01-28T06:24:59Z |
 | [HR](https://github.com/HR) | [Crypter](https://github.com/HR/Crypter) | 461 | 🔓✨🔒 An innovative, convenient and secure encryption app | 2024-12-19T11:24:42Z |
 | [Janglee123](https://github.com/Janglee123) | [eplee](https://github.com/Janglee123/eplee) | 363 | Sweet, simple epub reader | 2024-12-24T12:17:36Z |
@@ -26,7 +26,7 @@
 | [LightouchDev](https://github.com/LightouchDev) | [MasterVyrn](https://github.com/LightouchDev/MasterVyrn) | 4 | MasterVyrn is a clean dedicated GBF loader build on top of electron. | 2023-01-28T21:02:43Z |
 | [Lunarequest](https://github.com/Lunarequest) | [NightPDF](https://github.com/Lunarequest/NightPDF) | 234 | Dark Mode PDF Reader built using Electron and PDF.js | 2024-12-25T09:08:35Z |
 | [Moosync](https://github.com/Moosync) | [Moosync](https://github.com/Moosync/Moosync) | 1261 | Music player capable of playing local audio or from Youtube, Spotify and many more | 2024-12-30T23:16:01Z |
-| [NyaomiDEV](https://github.com/NyaomiDEV) | [Sunamu](https://github.com/NyaomiDEV/Sunamu) | 408 | Show your currently playing song in a stylish way! | 2024-12-28T00:12:15Z |
+| [NyaomiDEV](https://github.com/NyaomiDEV) | [Sunamu](https://github.com/NyaomiDEV/Sunamu) | 407 | Show your currently playing song in a stylish way! | 2024-12-31T17:01:18Z |
 | [OzymandiasTheGreat](https://github.com/OzymandiasTheGreat) | [Joy2DroidX-server](https://github.com/OzymandiasTheGreat/Joy2DroidX-server) | 24 | [ARCHIVED] Use your Android phone as a virtual Xbox 360 controller or DualShock 4 gamepad on your Windows or Linux PC. This is the server that runs on Windows or Linux. | 2024-07-21T15:05:56Z |
 | [Pext](https://github.com/Pext) | [Pext](https://github.com/Pext/Pext) | 408 | Python-based extendable tool | 2024-12-11T14:13:41Z |
 | [Pong420](https://github.com/Pong420) | [Comic-Reader](https://github.com/Pong420/Comic-Reader) | 14 | An Electron based comic reader. | 2023-06-11T11:42:52Z |
@@ -35,7 +35,7 @@
 | [SandwichFox](https://github.com/SandwichFox) | [MBCord](https://github.com/SandwichFox/MBCord) | 29 | An Emby/Jellyfin rich presence client for Discord ✨ | 2024-11-21T06:09:02Z |
 | [SimonBrandner](https://github.com/SimonBrandner) | [TaskizerDesktop](https://github.com/SimonBrandner/TaskizerDesktop) | 4 | A task management app | 2023-01-28T11:29:15Z |
 | [Davis-Software](https://github.com/Davis-Software) | [swc_mclauncher_old](https://github.com/Davis-Software/swc_mclauncher_old) | 1 | Start your Minecraft via a beatiful and easy to use Interface and play all Software City Modpacks. | 2023-01-27T20:32:00Z |
-| [TheGoddessInari](https://github.com/TheGoddessInari) | [hamsket](https://github.com/TheGoddessInari/hamsket) | 881 | Free and Open Source messaging and emailing app that combines common web applications into one. | 2024-12-18T07:42:38Z |
+| [TheGoddessInari](https://github.com/TheGoddessInari) | [hamsket](https://github.com/TheGoddessInari/hamsket) | 880 | Free and Open Source messaging and emailing app that combines common web applications into one. | 2024-12-31T01:17:57Z |
 | [Wallby](https://github.com/Wallby) | [file-to-c](https://github.com/Wallby/file-to-c) | 0 | Tool for generating a C header (i.e. a .h containing an array variable) from a spir-v binary file | 2023-10-28T14:14:00Z |
 | [ZeroX-DG](https://github.com/ZeroX-DG) | [SnippetStore](https://github.com/ZeroX-DG/SnippetStore) | 871 | :tada: A snippet management app for developers :rocket: | 2024-12-11T14:53:53Z |
 | [ZeusWPI](https://github.com/ZeusWPI) | [MOZAIC](https://github.com/ZeusWPI/MOZAIC) | 13 | MOZAIC is the Massive Online Zeus Artificial Intelligence Competition platform | 2023-03-26T22:04:11Z |
@@ -47,7 +47,7 @@
 | [amoffat](https://github.com/amoffat) | [supertag](https://github.com/amoffat/supertag) | 596 | A tag-based filesystem | 2024-12-29T01:07:00Z |
 | [anatasluo](https://github.com/anatasluo) | [ant](https://github.com/anatasluo/ant) | 328 | A lightweight, feature-rich, easy-to-use and nice-looking BitTorrent Client developed by golang, angular 7, and electron. | 2024-10-23T02:34:40Z |
 | [anupam-git](https://github.com/anupam-git) | [paper](https://github.com/anupam-git/paper) | 6 | A CLI Tool to set a random wallpaper from Unsplash.com | 2024-04-20T11:08:09Z |
-| [appium](https://github.com/appium) | [appium-desktop](https://github.com/appium/appium-desktop) | 4739 | Appium Server in Desktop GUIs for Mac, Windows, and Linux | 2024-12-29T17:38:29Z |
+| [appium](https://github.com/appium) | [appium-desktop](https://github.com/appium/appium-desktop) | 4740 | Appium Server in Desktop GUIs for Mac, Windows, and Linux | 2024-12-31T13:55:26Z |
 | [quanglam2807](https://github.com/quanglam2807) | [singlebox-legacy](https://github.com/quanglam2807/singlebox-legacy) | 36 | All Your Apps in One Single Window | 2024-10-11T06:32:50Z |
 | [webcatalog](https://github.com/webcatalog) | [translatium-legacy](https://github.com/webcatalog/translatium-legacy) | 198 | Legacy code of Translatium app for desktop. | 2024-12-25T05:32:43Z |
 | [bguyl](https://github.com/bguyl) | [x-loc](https://github.com/bguyl/x-loc) | 14 | Extra localizations/translations manager for Stardew Valley | 2024-03-12T13:29:49Z |
@@ -73,18 +73,18 @@
 | [foucdeg](https://github.com/foucdeg) | [x-plane-map-electron](https://github.com/foucdeg/x-plane-map-electron) | 29 | X-Plane-Map packaged into Electron | 2024-12-05T18:08:16Z |
 | [harshkhandeparkar](https://github.com/harshkhandeparkar) | [rainbow-board](https://github.com/harshkhandeparkar/rainbow-board) | 64 | Cross-platform electron-based Whiteboard app. | 2024-08-31T08:01:48Z |
 | [haxzie](https://github.com/haxzie) | [instagram-live-streamer](https://github.com/haxzie/instagram-live-streamer) | 472 | [Unofficial] Broadcast to Instagram Live from your Windows/Mac/Linux | 2024-12-17T00:12:16Z |
-| [hello-efficiency-inc](https://github.com/hello-efficiency-inc) | [raven-reader](https://github.com/hello-efficiency-inc/raven-reader) | 2774 | 📖 All your articles in one place. Beautiful. | 2024-12-30T15:51:49Z |
+| [hello-efficiency-inc](https://github.com/hello-efficiency-inc) | [raven-reader](https://github.com/hello-efficiency-inc/raven-reader) | 2774 | 📖 All your articles in one place. Beautiful. | 2024-12-31T12:50:59Z |
 | [holochain](https://github.com/holochain) | [n3h](https://github.com/holochain/n3h) | 48 | nodejs implementation of holochain networking / p2p backend process | 2024-04-16T09:52:31Z |
 | [improbable-eng](https://github.com/improbable-eng) | [Dragoman](https://github.com/improbable-eng/Dragoman) | 24 | GUI for polyglot | 2023-01-28T14:41:36Z |
-| [irccloud](https://github.com/irccloud) | [irccloud-desktop](https://github.com/irccloud/irccloud-desktop) | 237 | IRCCloud Desktop App | 2024-12-29T00:18:38Z |
-| [jeffvli](https://github.com/jeffvli) | [sonixd](https://github.com/jeffvli/sonixd) | 1864 | A full-featured Subsonic/Jellyfin compatible desktop music player | 2024-12-28T22:34:41Z |
+| [irccloud](https://github.com/irccloud) | [irccloud-desktop](https://github.com/irccloud/irccloud-desktop) | 238 | IRCCloud Desktop App | 2024-12-31T21:18:06Z |
+| [jeffvli](https://github.com/jeffvli) | [sonixd](https://github.com/jeffvli/sonixd) | 1863 | A full-featured Subsonic/Jellyfin compatible desktop music player | 2024-12-31T17:01:14Z |
 | [jonathontoon](https://github.com/jonathontoon) | [tweet-tray](https://github.com/jonathontoon/tweet-tray) | 280 | Tweet quickly from the desktop without any  distractions. | 2024-09-21T19:13:33Z |
 | [jscad](https://github.com/jscad) | [jscad-desktop](https://github.com/jscad/jscad-desktop) | 23 | DEPRECATED : Experimental desktop app for JSCAD (See the link below) | 2024-06-27T04:40:56Z |
 | [jukben](https://github.com/jukben) | [keyboardio-led-custom-palette](https://github.com/jukben/keyboardio-led-custom-palette) | 12 | 🎨🦋LED Custom Palette – design the lights on your Model01 with an ease | 2023-09-10T21:22:20Z |
 | [kremalicious](https://github.com/kremalicious) | [blowfish](https://github.com/kremalicious/blowfish) | 6 | 🐡 Simple Electron-based desktop app to retrieve and display your total Ocean Token balances. | 2023-10-06T09:14:38Z |
 | [l3laze](https://github.com/l3laze) | [ReliefValve](https://github.com/l3laze/ReliefValve) | 16 | A tool to help manage the Steam client. | 2024-01-27T03:45:38Z |
-| [lauthieb](https://github.com/lauthieb) | [code-notes](https://github.com/lauthieb/code-notes) | 1073 | (No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀 | 2024-12-29T00:03:36Z |
-| [lightninglabs](https://github.com/lightninglabs) | [lightning-app](https://github.com/lightninglabs/lightning-app) | 899 | An easy-to-use cross-platform Lightning wallet | 2024-12-13T15:01:04Z |
+| [lauthieb](https://github.com/lauthieb) | [code-notes](https://github.com/lauthieb/code-notes) | 1074 | (No longer maintained) A simple code snippet & gist manager for developers built with Electron & Vue.js 🚀 | 2024-12-31T13:00:22Z |
+| [lightninglabs](https://github.com/lightninglabs) | [lightning-app](https://github.com/lightninglabs/lightning-app) | 900 | An easy-to-use cross-platform Lightning wallet | 2024-12-31T09:30:15Z |
 | [lluisrojass](https://github.com/lluisrojass) | [tumblr-scraper](https://github.com/lluisrojass/tumblr-scraper) | 24 | Scrape a Tumblr blog for personal posts | 2024-09-16T06:05:57Z |
 | [lxndr](https://github.com/lxndr) | [impact](https://github.com/lxndr/impact) | 0 | A simple music library and player. | 2023-02-16T20:23:54Z |
 | [matthew-matvei](https://github.com/matthew-matvei) | [freeman](https://github.com/matthew-matvei/freeman) | 290 | A free, extensible, cross-platform file manager for power users | 2024-12-26T18:50:47Z |
@@ -111,14 +111,14 @@
 | [thecoder75](https://github.com/thecoder75) | [liveme-pro-tools](https://github.com/thecoder75/liveme-pro-tools) | 34 | LiveMe Pro Tools | 2024-09-25T23:18:07Z |
 | [TheMarlboroMan](https://github.com/TheMarlboroMan) | [pigs-n-cows](https://github.com/TheMarlboroMan/pigs-n-cows) | 1 | Casual endless game | 2024-03-30T19:34:26Z |
 | [thorchain](https://github.com/thorchain) | [asgardex-electron](https://github.com/thorchain/asgardex-electron) | 112 | ASGARDEX desktop wallet and decentralized exchange for THORChain, 100% open-source | 2024-05-30T16:27:36Z |
-| [trazyn](https://github.com/trazyn) | [weweChat](https://github.com/trazyn/weweChat) | 5753 | 💬 Unofficial WeChat client built with React, MobX and Electron. | 2024-12-28T15:24:14Z |
-| [trufflesuite](https://github.com/trufflesuite) | [ganache-ui](https://github.com/trufflesuite/ganache-ui) | 4677 | Personal blockchain for Ethereum development | 2024-12-25T00:46:43Z |
+| [trazyn](https://github.com/trazyn) | [weweChat](https://github.com/trazyn/weweChat) | 5752 | 💬 Unofficial WeChat client built with React, MobX and Electron. | 2024-12-31T13:34:17Z |
+| [trufflesuite](https://github.com/trufflesuite) | [ganache-ui](https://github.com/trufflesuite/ganache-ui) | 4678 | Personal blockchain for Ethereum development | 2024-12-31T10:15:28Z |
 | [bloomrpc](https://github.com/bloomrpc) | [bloomrpc](https://github.com/bloomrpc/bloomrpc) | 9011 | Former GUI client for gRPC services. No longer maintained. | 2024-12-30T05:57:13Z |
 | [vechain](https://github.com/vechain) | [thor-sync.electron](https://github.com/vechain/thor-sync.electron) | 55 | A browser that empowers DApps on VeChain | 2024-08-28T14:59:47Z |
 | [vterm](https://github.com/vterm) | [vterm](https://github.com/vterm/vterm) | 92 | :fire: Extensible terminal emulator written with the web languages of the future. Today. | 2024-11-07T00:02:39Z |
 | [webrecorder](https://github.com/webrecorder) | [webrecorder-desktop](https://github.com/webrecorder/webrecorder-desktop) | 202 | Webrecorder Desktop App! | 2024-07-28T09:59:07Z |
-| [wexond](https://github.com/wexond) | [browser-base](https://github.com/wexond/browser-base) | 2683 | Modern and feature-rich web browser base based on Electron | 2024-12-28T01:21:22Z |
+| [wexond](https://github.com/wexond) | [browser-base](https://github.com/wexond/browser-base) | 2682 | Modern and feature-rich web browser base based on Electron | 2024-12-31T21:55:09Z |
 | [yafp](https://github.com/yafp) | [media-dupes](https://github.com/yafp/media-dupes) | 55 | a minimal content duplicator for common media services like youtube | 2024-06-12T20:51:31Z |
 | [yafp](https://github.com/yafp) | [ttth](https://github.com/yafp/ttth) | 122 | ttth (talk to the hand) is an electron based desktop app for online services like WhatsApp, Threema, Telegram, Twitter, Google and several others. | 2024-12-29T12:37:41Z |
 | [zenghongtu](https://github.com/zenghongtu) | [Mob](https://github.com/zenghongtu/Mob) | 967 | Mob - 一个有颜值的喜马拉雅桌面客户端，支持 Mac、Win 和 Linux | 2024-12-04T14:40:32Z |
-| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21583 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-30T16:57:11Z |
+| [zzzgydi](https://github.com/zzzgydi) | [clash-verge](https://github.com/zzzgydi/clash-verge) | 21582 | A Clash GUI based on tauri. Supports Windows, macOS and Linux. | 2024-12-31T22:25:46Z |

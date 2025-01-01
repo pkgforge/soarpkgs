@@ -10831,6 +10831,8 @@
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ ciopfs
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ chisel
+8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ chafa
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ cfssl
@@ -12240,8 +12242,6 @@
 8.0K   │ ├─┬ circumflex
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ cidr
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ chisel
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ cherrybomb
 4.0K   │ │ └── static.official.source.yaml
