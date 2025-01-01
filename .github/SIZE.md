@@ -10658,7 +10658,7 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-7.4M   ├─┬ binaries
+7.5M   ├─┬ binaries
 108K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10699,8 +10699,12 @@
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ sbase-box
  12K   │ │ └── static.official.stable.yaml
+ 16K   │ ├─┬ s6
+ 12K   │ │ └── static.nixpkgs.stable.yaml
  16K   │ ├─┬ radare2
  12K   │ │ └── static.official.stable.yaml
+ 16K   │ ├─┬ mtd-utils
+ 12K   │ │ └── static.nixpkgs.stable.yaml
  16K   │ ├─┬ lkl
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ huggingface-cli
@@ -10752,6 +10756,14 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ serverstatus
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ s6-portable-utils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ s6-networking
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ s6-linux-init
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ s6-dns
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ rippkgs
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ ripgrep
@@ -10762,8 +10774,12 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ proot
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ procps
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ php
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ outils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ onioncat
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ nvme-cli
@@ -10772,6 +10788,8 @@
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ nix-index
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ nfs-utils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ nezha
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ netstat
@@ -10781,7 +10799,7 @@
  12K   │ ├─┬ netcat
 4.0K   │ │ ├── static.nixpkgs.libressl.yaml
 4.0K   │ │ └── static.nixpkgs.gnu.yaml
- 12K   │ ├─┬ mtd-utils
+ 12K   │ ├─┬ net-tools
 8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ mitmproxy
 8.0K   │ │ └── static.official.stable.yaml
@@ -10791,17 +10809,27 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ jwt-cracker
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ iproute2
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ iperf3
 4.0K   │ │ ├── static.userdocs.stable.yaml
 4.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ htop
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ html-xml-utils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ hashcat-utils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ gzip
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ gobusybox
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ goaccess
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ go-git
 8.0K   │ │ └── static.official.source.yaml
+ 12K   │ ├─┬ gettext
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ findutils
 4.0K   │ │ ├── static.uutils.source.yaml
 4.0K   │ │ └── static.nixpkgs.stable.yaml
@@ -10809,10 +10837,14 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ encrypted-dns-server
 8.0K   │ │ └── static.official.source.yaml
+ 12K   │ ├─┬ e2fsprogs
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ dotenv-linter
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ daytona
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ dateutils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ czkawka
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ cpu
@@ -10832,8 +10864,14 @@
 4.0K   │ │ └── static.official.beta.yaml
  12K   │ ├─┬ bubblewrap
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ btrfs-progs
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ bpftrace
 8.0K   │ │ └── static.official.stable.yaml
+ 12K   │ ├─┬ binutils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ bintools
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ bat
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ atuin
@@ -11229,17 +11267,7 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ s6-rc
 4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ s6-portable-utils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ s6-networking
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ s6-linux-utils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ s6-linux-init
-4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ s6-dns
-4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ s6
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ s5cmd
 4.0K   │ │ └── static.official.stable.yaml
@@ -11371,8 +11399,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ procs
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ procps
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ prettyping
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ pretender
@@ -11435,8 +11461,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ov
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ outils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ ouch
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ otree
@@ -11503,12 +11527,8 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ nginx
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ nfs-utils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ nfpm
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ nettools
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ netscanner
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ netmaker
@@ -11727,8 +11747,6 @@
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ ipt2socks
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ iproute2
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ ipinfo
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ ipa-server
@@ -11767,8 +11785,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ htmlq
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ html-xml-utils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ htb-cli
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ hrekt
@@ -11797,8 +11813,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ haylxon
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ hashcat-utils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ hardeningmeter
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ handlr
@@ -11817,8 +11831,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ hacker-scoper
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ gzip
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ gup
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gum
@@ -11933,8 +11945,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gf
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ gettext
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ getghrel
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ geonet
@@ -12051,8 +12061,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ ecoji
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ e2fsprogs
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ dysk
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ dwarfs
@@ -12123,8 +12131,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ dbbench
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ dateutils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ datadash
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ dasel
@@ -12249,8 +12255,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ bucketloot
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ btrfs-progs
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ btop
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ brutespray
@@ -12281,10 +12285,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ bita
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ binutils
-4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ bintools
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ binocle
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ bingrep
