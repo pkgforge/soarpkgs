@@ -10658,7 +10658,7 @@
 4.0K   │ ├── aaaaxy.SBUILD.yaml
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
-7.5M   ├─┬ binaries
+7.4M   ├─┬ binaries
 108K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
@@ -10706,8 +10706,6 @@
  16K   │ ├─┬ huggingface-cli
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ grep
- 12K   │ │ └── static.official.stable.yaml
- 16K   │ ├─┬ git
  12K   │ │ └── static.official.stable.yaml
  16K   │ ├─┬ firejail
  12K   │ │ └── static.official.stable.yaml
@@ -10762,8 +10760,6 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ pv
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ ptyspawn
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ proot
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ php
@@ -10793,8 +10789,6 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ legba
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ kitty
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ jwt-cracker
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ iperf3
@@ -10808,13 +10802,9 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ go-git
 8.0K   │ │ └── static.official.source.yaml
- 12K   │ ├─┬ flatimage
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ findutils
 4.0K   │ │ ├── static.uutils.source.yaml
 4.0K   │ │ └── static.nixpkgs.stable.yaml
- 12K   │ ├─┬ fget
-8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ fastfetch
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ encrypted-dns-server
@@ -11185,8 +11175,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ smap
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ slskd
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ sliver
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ slirp4netns
@@ -11230,10 +11218,6 @@
 8.0K   │ ├─┬ sd
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ screenfetch
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ scopeview
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ scopegen
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ scilla
 4.0K   │ │ └── static.official.source.yaml
@@ -11319,8 +11303,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ restic
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ resdns
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ rescope
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ reptyr
@@ -11366,8 +11348,6 @@
 8.0K   │ ├─┬ qbittorrent-nox
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ q
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ pyxet
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ python3
 4.0K   │ │ └── static.nixpkgs.stable.yaml
@@ -11619,8 +11599,6 @@
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ mailpit
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ magick
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ maddy
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ macchina
@@ -11658,8 +11636,6 @@
 8.0K   │ ├─┬ listmonk
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ linuxwave
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ linuxdeploy
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ linutil
 4.0K   │ │ └── static.official.stable.yaml
@@ -11764,8 +11740,6 @@
 8.0K   │ ├─┬ intermodal
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ interactsh
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ inscope
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ indextree
 4.0K   │ │ └── static.official.stable.yaml
@@ -11909,8 +11883,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ go-audit
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ go-appimage
-4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ glow
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ gitui
@@ -11964,8 +11936,6 @@
 8.0K   │ ├─┬ gettext
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ getghrel
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ getJS
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ geonet
 4.0K   │ │ └── static.official.source.yaml
@@ -12170,8 +12140,6 @@
 8.0K   │ ├─┬ cwe_checker
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ cvemap
-4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ cutlines
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ cut-cdn
 4.0K   │ │ └── static.official.source.yaml
