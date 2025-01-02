@@ -10659,16 +10659,18 @@
 4.0K   │ ├── 9launcher.SBUILD.yaml
 4.0K   │ └── 432hz-player.SBUILD.yaml
 7.5M   ├─┬ binaries
-108K   │ ├─┬ soar
+104K   │ ├─┬ soar
  96K   │ │ ├─┬ assets
  88K   │ │ │ ├── default.png
 4.0K   │ │ │ └── default.svg
-8.0K   │ │ └── static.official.source.yaml
+4.0K   │ │ └── static.official.source.yaml
  32K   │ ├─┬ coreutils_uutils
  28K   │ │ └── static.official.stable.yaml
  28K   │ ├── to-add.txt
  24K   │ ├─┬ coreutils-vlang
  20K   │ │ └── static.official.stable.yaml
+ 20K   │ ├─┬ util-linux
+ 16K   │ │ └── static.nixpkgs.stable.yaml
  20K   │ ├─┬ unionfs-fuse3
  16K   │ │ └── static.official.stable.yaml
  20K   │ ├─┬ unionfs-fuse
@@ -10725,6 +10727,8 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ yazi
 8.0K   │ │ └── static.official.source.yaml
+ 12K   │ ├─┬ xz
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ xhost
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ xdotool
@@ -10740,8 +10744,6 @@
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ wezterm
 8.0K   │ │ └── static.official.stable.yaml
- 12K   │ ├─┬ util-linux
-8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ unix
 8.0K   │ │ └── static.rsc-v6unix.source.yaml
  12K   │ ├─┬ tailscale
@@ -10921,8 +10923,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ yabs.sh
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ xz
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ xurls
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ xq
