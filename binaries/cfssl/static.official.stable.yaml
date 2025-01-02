@@ -8,15 +8,16 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: 
-  cfssl: "CLI to issue/sign/bundle client certificates & a HTTP server to do them remotely"
-  cfssl-bundle: "CLI to bundle local/remote certificate files"
-  cfssl-certinfo: "CLI to output certinfo about the given cert"
-  cfssl-newkey: "CLI to generate a new key and CSR"
-  cfssl-scan: "CLI to scan a host for certificate issues"
-  cfssljson: "CLI to split out JSON with cert, csr, and key fields to separate files"
-  mkbundle: "CLI for building certificate pool bundles"
-  multirootca: "CLI certificate authority server that can use multiple signing keys"
+description:
+  _default: "Cloudflare's PKI and TLS toolkit"
+  cfssl: "CLI to issue/sign/bundle client certificates & a HTTP server to do them remotely [cfssl]"
+  cfssl-bundle: "CLI to bundle local/remote certificate files [cfssl]"
+  cfssl-certinfo: "CLI to output certinfo about the given cert [cfssl]"
+  cfssl-newkey: "CLI to generate a new key and CSR [cfssl]"
+  cfssl-scan: "CLI to scan a host for certificate issues [cfssl]"
+  cfssljson: "CLI to split out JSON with cert, csr, and key fields to separate files [cfssl]"
+  mkbundle: "CLI for building certificate pool bundles [cfssl]"
+  multirootca: "CLI certificate authority server that can use multiple signing keys [cfssl]"
 distro_pkg:
   alpine:
     - "cfssl"
