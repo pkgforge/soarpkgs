@@ -8,7 +8,11 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "SOcket CAT, a utility for Bidirectional data relay between two data channels"
+description: 
+  _default: "Utilities for Bidirectional data relay between two data channels"
+  filan: "Prints information about files/file descriptors meant for debugging socat [soact]"
+  procan: "Prints information about process parameters to stdout meant for debugging socat [soact]"
+  socat: "SOcket CAT, a utility for Bidirectional data relay between two data channels [soact]"
 distro_pkg:
   alpine:
     - "socat"

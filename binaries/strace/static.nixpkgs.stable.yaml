@@ -8,7 +8,7 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "strace is a diagnostic, debugging and instructional userspace utility for Linux"
+description: "A Diagnostic, Debugging and Instructional Userspace utility for Linux"
 distro_pkg:
   alpine:
     - "strace"
@@ -32,7 +32,10 @@ maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"  
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs" 
+provides:
+  - "strace"
+  - "strace-log-merge"
 repology:
   - "strace"
 src_url:

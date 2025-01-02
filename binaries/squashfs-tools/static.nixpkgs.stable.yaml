@@ -8,7 +8,12 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Tool for creating and unpacking squashfs filesystems"
+description: 
+  _default: "Tools for creating and unpacking squashfs filesystems"
+  mksquashfs: "Create and append to squashfs filesystems [squashfstools]"
+  sqfscat: "Cat files from a squashfs filesystem to stdout [squashfstools]"
+  sqfstar: "Create a squashfs filesystem from a tar archive [squashfstools]"
+  unsquashfs: "Uncompress, extract and list squashfs filesystems [squashfstools]"
 distro_pkg:
   alpine:
     - "squashfs-tools"

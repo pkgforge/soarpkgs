@@ -8,7 +8,13 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "New Set of Tools for working with SquashFS Images"
+description: 
+  _default: "New Set of Tools for working with SquashFS Images [alias=squashfstools-ng:squashfstoolsng]"
+  gensquashfs: "Generate squashfs images [squashfs-tools-ng]"
+  rdsquashfs: "Examine/Uncompress SquashFS filesystems [squashfs-tools-ng]"
+  sqfs2tar: "Turn a SquashFS image into a tar archive [squashfs-tools-ng]"
+  sqfsdiff: "Compare two squashfs images by contents and metadata [squashfs-tools-ng]"
+  tar2sqfs: "Create a SquashFS image from a tar archive [squashfs-tools-ng]"
 distro_pkg:
   alpine:
     - "squashfs-tools-ng"

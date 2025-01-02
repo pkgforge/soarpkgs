@@ -8,7 +8,15 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Zstandard (Zstd) compression utilities"
+description: 
+  _default: "Zstandard (Zstd) compression utilities"
+  pzstd: "Parallelized zstd, a la pigz [zstd]"
+  unzstd: "Decompress .zst files [alias=zstd -d] [zstd]"
+  zstd: "Zstandard Compression/Decompression Utility [zstd]"
+  zstdcat: "Output Zstandard compressed files to stdout [alias=zstd -dcf] [zstd]"
+  zstdgrep: "Search Zstandard compressed files using regular expressions [zstd]"
+  zstdless: "View Zstandard compressed files with less [zstd]"
+  zstdmt: "Multi-threaded zstd [alias=zstd -T0] [zstd]"
 distro_pkg:
   alpine:
     - "zstd"
@@ -28,6 +36,7 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
 provides:
+  - "pzstd"
   - "unzstd"
   - "zstd"
   - "zstdcat"

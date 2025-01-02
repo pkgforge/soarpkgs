@@ -8,7 +8,19 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A command to run commands as root"
+description: 
+  _default: "Tools for privilege escalation, secure command execution, and sudo policy management"
+  cvtsudoers: "Convert between sudoers file formats [sudo]"
+  sudo: "Execute a command as another user [sudo]"
+  sudo.conf: "Configuration for sudo front-end [sudo]"
+  sudo_logsrvd: "sudo event and I/O log server [sudo]"
+  sudo_logsrvd.conf: "Configuration for sudo_logsrvd [sudo]"
+  sudo_sendlog: "Send sudo I/O log to log server [sudo]"
+  sudoedit: "An extension of the sudo -e command to edit a file [sudo]"
+  sudoers: "Default sudo security policy plugin [sudo]"
+  sudoers.dist: "Default configuration file for sudoers [sudo]"
+  sudoreplay: "Replay sudo session logs [sudo]"
+  visudo: "Edit the sudoers file [sudo]"
 distro_pkg:
   alpine:
     - "sudo"

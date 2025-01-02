@@ -8,7 +8,10 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Utility for creation, extraction, and manipulation of archives"
+description: 
+  _default: "Utilities for creation, extraction, and manipulation of archives"
+  rmt: "Remote magnetic tape server [tar]"
+  tar: "Utility for archiving and extracting files [tar]"
 distro_pkg:
   alpine:
     - "tar"
@@ -30,7 +33,7 @@ note:
   - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
 provides:
   - "rmt"
-  - "tar"  
+  - "tar"
 repology:
   - "tar"
 src_url:

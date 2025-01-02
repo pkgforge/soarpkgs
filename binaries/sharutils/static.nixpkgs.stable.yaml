@@ -8,7 +8,12 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "The GNU shar utilities for packaging and unpackaging shell archives"
+description: 
+  _default: "The GNU shar utilities for packaging and unpackaging shell archives"
+  shar: "Create a shell archive [sharutils]"
+  unshar: "Unpack a shar archive [sharutils]"
+  uudecode: "Decode an uuencoded file [sharutils]"
+  uuencode: "Encode a binary file to ASCII data [sharutils]"
 distro_pkg:
   alpine:
     - "sharutils"

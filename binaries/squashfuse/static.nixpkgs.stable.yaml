@@ -8,7 +8,10 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "FUSE filesystem to mount squashfs archives"
+description: 
+  _default: "FUSE filesystem tools to mount squashfs archives"
+  squashfuse: "Mount a SquashFS archive with FUSE"
+  squashfuse_ll: "Mount a SquashFS archive with low-level FUSE"
 distro_pkg:
   alpine:
     - "squashfuse"
@@ -30,6 +33,9 @@ maintainer:
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "squashfuse"
+  - "squashfuse_ll"
 repology:
   - "squashfuse"
 src_url:
