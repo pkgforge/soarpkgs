@@ -10750,6 +10750,8 @@
 8.0K   │ │ └── static.official.source.yaml
  12K   │ ├─┬ system-info-collector
 8.0K   │ │ └── static.official.source.yaml
+ 12K   │ ├─┬ sudo
+8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ squishy-cli
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ skim
@@ -10761,6 +10763,8 @@
  12K   │ ├─┬ s6-portable-utils
 8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ s6-networking
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ s6-linux-utils
 8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ s6-linux-init
 8.0K   │ │ └── static.nixpkgs.stable.yaml
@@ -10819,6 +10823,8 @@
  12K   │ ├─┬ htop
 8.0K   │ │ └── static.official.stable.yaml
  12K   │ ├─┬ html-xml-utils
+8.0K   │ │ └── static.nixpkgs.stable.yaml
+ 12K   │ ├─┬ hcxtools
 8.0K   │ │ └── static.nixpkgs.stable.yaml
  12K   │ ├─┬ hashcat-utils
 8.0K   │ │ └── static.nixpkgs.stable.yaml
@@ -11137,8 +11143,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ sudo-rs
 4.0K   │ │ └── static.official.stable.yaml
-8.0K   │ ├─┬ sudo
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ subjs
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ subfinder
@@ -11266,8 +11270,6 @@
 8.0K   │ ├─┬ sake
 4.0K   │ │ └── static.official.stable.yaml
 8.0K   │ ├─┬ s6-rc
-4.0K   │ │ └── static.nixpkgs.stable.yaml
-8.0K   │ ├─┬ s6-linux-utils
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ s5cmd
 4.0K   │ │ └── static.official.stable.yaml
@@ -11805,8 +11807,6 @@
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ headless-terminal
 4.0K   │ │ └── static.official.source.yaml
-8.0K   │ ├─┬ hcxtools
-4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ hcxdumptool
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ hcloud
@@ -11958,7 +11958,7 @@
 8.0K   │ ├─┬ gdb
 4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ gawk
-4.0K   │ │ └── static.nixpkg.stable.yaml
+4.0K   │ │ └── static.nixpkgs.stable.yaml
 8.0K   │ ├─┬ gau
 4.0K   │ │ └── static.official.source.yaml
 8.0K   │ ├─┬ fzf
