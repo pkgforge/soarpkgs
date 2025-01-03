@@ -53,16 +53,16 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    nix derivation show "nixpkgs#iputils" --impure --refresh --quiet 2>&1 | jq -r '.. | objects | select(has("version")) | .version' | tr -d '[:space:]'
+    nix derivation show "nixpkgs#iputils" --impure --refresh --quiet 2>&1 | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
      NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
      nix-build '<nixpkgs>' --impure --attr "pkgsStatic.iputils" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
-     find -L "${SBUILD_TMPDIR}/nixbuild" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
-     find "${SBUILD_TMPDIR}/nixbuild" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
-     xargs -I{} find "{}" -type d -iname "*bin*" | \
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
      xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
     #Fix Shell Scripts
