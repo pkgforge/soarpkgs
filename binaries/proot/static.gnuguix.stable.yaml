@@ -1,66 +1,55 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bash/static.gnuguix.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/proot/static.gnuguix.stable.yaml
 _disabled: false
 
-pkg: "bash"
-pkg_id: "gnuguix.bash"
+pkg: "proot"
+pkg_id: "gnuguix.proot-static"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "GNU Bourne-Again Shell, the de facto standard shell on Linux"
+description: "User-space implementation of chroot, bind mount, and binfmt_misc"
 distro_pkg:
   alpine:
-    - "bash"
+    - "proot"
   archlinux:
     aur:
-      - "bash-devel-git"
-      - "bash-devel-static-git"
-      - "bash-git"
-      - "bash3"
-      - "bash4"
+      - "proot"
+      - "proot-git"
   debian:
-    - "bash"
+    - "proot"
   gnuguix:
-    - "bash"
-    - "bash-minimal"
-    - "bash-static"
-  homebrew:
-    - "bash"
+    - "proot"
+    - "proot-static"
   nixpkgs:
-    - "bash"
+    - "proot"
 homepage:
-  - "https://www.gnu.org/software/bash/"
-  - "https://git.savannah.gnu.org/cgit/bash.git"
-  - "https://savannah.gnu.org/projects/bash"
+  - "https://proot-me.github.io/"
 license:
-  - id : "GPL-3.0"
-    url: "https://git.savannah.gnu.org/cgit/bash.git/plain/COPYING"
+  - "GPL-2.0"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Guix. Check/Report @ https://issues.guix.gnu.org/search?query=bash-static"
+  - "Built Using Guix. Check/Report @ https://issues.guix.gnu.org/search?query=proot-static"
 repology:
-  - "bash"
-provides:
-  - "bash==sh"
+  - "proot"
 src_url:
-  - "https://git.savannah.gnu.org/cgit/bash.git"
+  - "https://github.com/proot-me/proot"
 tag:
-  - "bash"
-  - "shell"
+  - "chroot"
+  - "rootfs"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    guix package --show="bash-static" 2>/dev/null | grep -oP 'version:\s*\K[\S]+' | tr -d '[:space:]'
+    guix package --show="proot-static" 2>/dev/null | grep -oP 'version:\s*\K[\S]+' | tr -d '[:space:]'
   run: |
     #Build
-     echo -e "\n" ; guix package --show="bash-static" 2>/dev/null ; echo -e "\n"
-     guix build "bash-static" --fallback --keep-failed --keep-going --verbosity="3" --root="${SBUILD_TMPDIR}/guixbuild"
+     echo -e "\n" ; guix package --show="proot-static" 2>/dev/null ; echo -e "\n"
+     guix build "proot-static" --fallback --keep-failed --keep-going --verbosity="3" --root="${SBUILD_TMPDIR}/guixbuild"
      find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | awk '{l[NR]=$0;len[NR]=length($0)} END{for(i=1;i<=NR;i++)for(j=i+1;j<=NR;j++)if(len[i]>len[j]){tmp=len[i];len[i]=len[j];len[j]=tmp;tmp=l[i];l[i]=l[j];l[j]=tmp} for(i=1;i<=NR;i++)print l[i]}' | head -n 1)" | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
