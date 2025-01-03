@@ -1,9 +1,9 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bash/static.nixpkgs.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bash/static.gnuguix.stable.yaml
 _disabled: false
 
 pkg: "bash"
-pkg_id: "nixpkgs.bash"
+pkg_id: "gnuguix.bash"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
@@ -40,12 +40,11 @@ maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+  - "Built Using Guix. Check/Report @ https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/packages/bash.scm"
 repology:
   - "bash"
 provides:
-  - "bash"
-  - "sh"  
+  - "bash==sh"
 src_url:
   - "https://git.savannah.gnu.org/cgit/bash.git"
 tag:
@@ -57,13 +56,12 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    nix derivation show "nixpkgs#bash" --impure --refresh --quiet 2>&1 | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+    guix package --show="bash-static" 2>/dev/null | grep -oP 'version:\s*\K[\S]+' | tr -d '[:space:]'
   run: |
     #Build
-     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
-     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.bash" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
-     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+     echo -e "\n" ; guix package --show="bash-static" 2>/dev/null ; echo -e "\n"
+     guix build "bash-static" --fallback --keep-failed --keep-going --verbosity="3" --root="${SBUILD_TMPDIR}/guixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | awk '{l[NR]=$0;len[NR]=length($0)} END{for(i=1;i<=NR;i++)for(j=i+1;j<=NR;j++)if(len[i]>len[j]){tmp=len[i];len[i]=len[j];len[j]=tmp;tmp=l[i];l[i]=l[j];l[j]=tmp} for(i=1;i<=NR;i++)print l[i]}' | head -n 1)" | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
      xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
@@ -72,11 +70,12 @@ x_exec:
     #Fix Shell Scripts
      find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
-           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
-           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
-           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
-           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
-           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+           sed "s|^#!/gnu/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/gnu/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/gnu/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/gnu/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/gnu/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
        '
     #Copy
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/x-executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
