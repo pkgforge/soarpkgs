@@ -20,7 +20,7 @@ body:
   - type: checkboxes
     id: search
     attributes:
-      label: Package Exists
+      label: Package Does Not Exists
       description: "Are you sure, this package doesn't already exist? Search: https://pkgs.pkgforge.dev/?repo=soarpkgs"
       options:
         - label: "I have already searched the [Index Page](https://pkgs.pkgforge.dev/?repo=soarpkgs)"
@@ -28,7 +28,7 @@ body:
   - type: checkboxes
     id: issue
     attributes:
-      label: Package Request Exists
+      label: Package Request Does Not Exists
       description: "Are you sure, this package hasn't already been requested? [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Apkg-request+)"
       options:
         - label: "I have already searched the [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Apkg-request+)"
