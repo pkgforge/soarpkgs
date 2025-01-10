@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rbdoom-3"
+pkg_id: "github.com.mantralunar.RBDOOM-3-BFG"
+pkg_type: "appimage"
+app_id: "github.com.mantralunar.RBDOOM-3-BFG"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Doom 3 BFG Edition source port with updated DX12 / Vulkan renderer and modern game engine features"
+homepage:
+  - "https://github.com/mantralunar/RBDOOM-3-BFG"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/mantralunar/RBDOOM-3-BFG"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mantralunar/RBDOOM-3-BFG/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mantralunar/RBDOOM-3-BFG" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

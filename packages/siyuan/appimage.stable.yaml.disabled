@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "siyuan"
+pkg_id: "github.com.siyuan-note.siyuan"
+pkg_type: "appimage"
+app_id: "github.com.siyuan-note.siyuan"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
+distro_pkg:
+  archlinux:
+    aur:
+      - "siyuan"
+      - "siyuan-appimage"
+      - "siyuan-bin"
+      - "siyuan-git"
+  nixpkgs:
+    - "siyuan"
+homepage:
+  - "https://b3log.org/siyuan"
+  - "https://b3log.org/siyuan/en"
+  - "https://github.com/siyuan-note/siyuan"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+src_url:
+  - "https://github.com/siyuan-note/siyuan"
+tag:
+  - "backlink"
+  - "notes"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/siyuan-note/siyuan/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/siyuan-note/siyuan" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/siyuan-note/siyuan" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

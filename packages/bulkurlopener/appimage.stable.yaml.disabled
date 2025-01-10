@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bulkurlopener"
+pkg_id: "github.com.EuanRiggans.BulkURLOpener"
+pkg_type: "appimage"
+app_id: "github.com.EuanRiggans.BulkURLOpener"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Bulk URL Opener is an application that provides the user with multiple utilities to help with managing and using large amounts of urls"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bulkurlopener-bin"
+homepage:
+  - "https://bulkurlopener.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/EuanRiggans/BulkURLOpener"
+tag:
+  - "chrome"
+  - "chrome-extension"
+  - "context-menus"
+  - "desktop"
+  - "electron"
+  - "firefox"
+  - "firefox-addon"
+  - "javascript"
+  - "opera-extension"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/EuanRiggans/BulkURLOpener/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/EuanRiggans/BulkURLOpener" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

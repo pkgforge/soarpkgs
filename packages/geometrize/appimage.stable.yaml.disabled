@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "geometrize"
+pkg_id: "github.com.Tw1ddle.geometrize"
+pkg_type: "appimage"
+app_id: "github.com.Tw1ddle.geometrize"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: ":white_square_button: Geometrize is a desktop app that geometrizes images into geometric primitives"
+distro_pkg:
+  archlinux:
+    aur:
+      - "geometrize-bin"
+homepage:
+  - "https://www.geometrize.co.uk"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+src_url:
+  - "https://github.com/Tw1ddle/geometrize"
+tag:
+  - "art"
+  - "chaiscript"
+  - "cpp"
+  - "geometrize"
+  - "geometry-processing"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Tw1ddle/geometrize/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Tw1ddle/geometrize" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

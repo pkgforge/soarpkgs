@@ -1,0 +1,62 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "joplin"
+pkg_id: "github.com.laurent22.joplin"
+pkg_type: "appimage"
+app_id: "github.com.laurent22.joplin"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS."
+distro_pkg:
+  archlinux:
+    aur:
+      - "joplin"
+      - "joplin-appimage"
+      - "joplin-beta"
+      - "joplin-beta-appimage"
+      - "joplin-electron"
+  nixpkgs:
+    - "joplin"
+    - "joplin-desktop"
+    - "nodePackages_latest.joplin"
+homepage:
+  - "https://github.com/laurent22/joplin"
+  - "https://joplinapp.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3+"
+  - "AGPL-3.0"
+  - "AGPL-3.0-or-later"
+  - "Affero GPLv3"
+  - "Affero General Public License"
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/laurent22/joplin"
+tag:
+  - "Writing"
+  - "app-office"
+  - "checklist"
+  - "cross-platform"
+  - "joplin"
+  - "nodePackages_latest"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/laurent22/joplin/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/laurent22/joplin" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/laurent22/joplin" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

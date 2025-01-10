@@ -1,0 +1,59 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "logseq"
+pkg_id: "github.com.logseq.logseq"
+pkg_type: "appimage"
+app_id: "github.com.logseq.logseq"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: http://trello.com/b/8txSM12G/roadmap"
+distro_pkg:
+  archlinux:
+    aur:
+      - "logseq-desktop"
+      - "logseq-desktop-bin"
+      - "logseq-desktop-git"
+      - "logseq-desktop-wayland-bin"
+  nixpkgs:
+    - "logseq"
+homepage:
+  - "https://github.com/logseq/logseq"
+  - "https://logseq.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPL3"
+  - "Affero GPLv3"
+src_url:
+  - "https://github.com/logseq/logseq"
+tag:
+  - "Writing"
+  - "app-editors"
+  - "backlink"
+  - "debug"
+  - "graph"
+  - "logseq"
+  - "markdown"
+  - "office"
+  - "outliner"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/logseq/logseq/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/logseq/logseq" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/logseq/logseq" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,87 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "abiword"
+pkg_id: "github.com.ivan-hc.Abiword-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Abiword-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "AppImage built from JuNest."
+distro_pkg:
+  alpine:
+    - "abiword"
+  archlinux:
+    aur:
+      - "abiword-git"
+      - "abiword-gtk2"
+    extra:
+      - "abiword"
+  debian:
+    - "abiword"
+  nixpkgs:
+    - "abiword"
+homepage:
+  - "https://gitlab.gnome.org/World/AbiWord"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL v2.0"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL2"
+  - "GPLv2+"
+  - "GPLv3"
+  - "gpl2"
+src_url:
+  - "https://github.com/ivan-hc/Abiword-appimage"
+tag:
+  - "Applications/Editors"
+  - "Applications/Office"
+  - "Debug"
+  - "Documentation"
+  - "Editors"
+  - "Graphical"
+  - "Libs"
+  - "Office"
+  - "Office/Word"
+  - "Productivity/Office/Word"
+  - "Text"
+  - "app-office"
+  - "debug"
+  - "development"
+  - "editors"
+  - "extra/office"
+  - "gnome"
+  - "office"
+  - "office/wordprocessing"
+  - "programming.devel"
+  - "universe/gnome"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Abiword-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Abiword-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

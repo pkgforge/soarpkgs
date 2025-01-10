@@ -1,0 +1,92 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dbus/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "dbus"
+pkg_id: "nixpkgs.dbus"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Simple interprocess messaging system"
+  dbus-cleanup-sockets: "Clean up leftover sockets in a directory [dbus]"
+  dbus-daemon: "The D-Bus message bus daemon [dbus]"
+  dbus-daemon-launch-helper: "DBus SUID launch helper for autospawning [dbus]"
+  dbus-launch: "Utility to start a message bus from a shell script [dbus]"
+  dbus-monitor: "Monitor messages going through a D-Bus message bus [dbus]"
+  dbus-run-session: "Start a process as a new D-Bus session [dbus]"
+  dbus-send: "Send a message to a message bus [dbus]"
+  dbus-test-tool: "D-Bus traffic generator and test tool [dbus]"
+  dbus-update-activation-environment: "Update environment used for D-Bus session services [dbus]"
+  dbus-uuidgen: "Utility to generate UUIDs [dbus]"
+distro_pkg:
+  alpine:
+    - "dbus"
+  archlinux:
+    aur:
+      - "dbus-git"
+      - "dbus-selinux"
+      - "mingw-w64-dbus"
+    multilib:
+      - "lib32-dbus"
+  debian:
+    - "dbus"
+  nixpkgs:
+    - "dbus"
+homepage:
+  - "https://dbus.freedesktop.org"
+  - "https://freedesktop.org/wiki/Software/dbus"
+  - "https://gitlab.freedesktop.org/dbus/dbus"
+  - "https://wiki.freedesktop.org/www/Software/dbus"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"  
+provides:
+  - "dbus-cleanup-sockets"
+  - "dbus-daemon"
+  - "dbus-daemon-launch-helper"
+  - "dbus-launch"
+  - "dbus-monitor"
+  - "dbus-run-session"
+  - "dbus-send"
+  - "dbus-test-tool"
+  - "dbus-update-activation-environment"
+  - "dbus-uuidgen"  
+repology:
+  - "dbus"
+src_url:
+  - "https://gitlab.freedesktop.org/dbus/dbus"
+tag:
+  - "dbus"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#dbus" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.dbus" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null 

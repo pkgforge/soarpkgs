@@ -1,0 +1,79 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shotcut"
+pkg_id: "github.com.mltframework.shotcut"
+pkg_type: "appimage"
+app_id: "github.com.mltframework.shotcut"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "cross-platform (Qt), open-source (GPLv3) video editor"
+distro_pkg:
+  alpine:
+    - "shotcut"
+  archlinux:
+    aur:
+      - "shotcut-git"
+    extra:
+      - "shotcut"
+  debian:
+    - "shotcut"
+  nixpkgs:
+    - "shotcut"
+homepage:
+  - "http://shotcut.org"
+  - "http://www.shotcut.org"
+  - "https://github.com/mltframework/shotcut"
+  - "https://shotcut.org"
+  - "https://www.shotcut.org"
+  - "https://www.shotcutapp.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GNU General Public License v3.0"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL-3+"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-2.1-only AND Apache-2.0 AND MIT"
+  - "GPL-3.0-or-later AND LGPL-2.1-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+  - "GPLv3+ and LGPLv2+"
+  - "spdx:GPL-3.0-or-later"
+src_url:
+  - "https://github.com/mltframework/shotcut"
+tag:
+  - "Applications/Multimedia"
+  - "Graphical"
+  - "Productivity/Multimedia/Video/Editors"
+  - "Video"
+  - "Video/Editors"
+  - "clip"
+  - "debug"
+  - "editor"
+  - "extra/multimedia"
+  - "media-video"
+  - "multimedia"
+  - "multimedia.video"
+  - "video"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mltframework/shotcut/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mltframework/shotcut" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

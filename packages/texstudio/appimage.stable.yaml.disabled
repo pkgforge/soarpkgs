@@ -1,0 +1,84 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "texstudio"
+pkg_id: "github.com.texstudio-org.texstudio"
+pkg_type: "appimage"
+app_id: "github.com.texstudio-org.texstudio"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "TeXstudio is a fully featured LaTeX editor. Our goal is to make writing LaTeX documents as easy and comfortable as possible."
+distro_pkg:
+  alpine:
+    - "texstudio"
+  archlinux:
+    aur:
+      - "texstudio-dark-git"
+      - "texstudio-git"
+    extra:
+      - "texstudio"
+  debian:
+    - "texstudio"
+  nixpkgs:
+    - "texstudio"
+homepage:
+  - "http://texstudio.sf.net"
+  - "http://texstudio.sourceforge.net"
+  - "http://www.texstudio.org"
+  - "https://github.com/texstudio-org/texstudio"
+  - "https://texstudio.org"
+  - "https://texstudio.sourceforge.net"
+  - "https://www.texstudio.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1"
+  - "GNU GPL"
+  - "GNU General Public License"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0-only AND GPL-3.0-only AND Apache-2.0 AND MPL-1.1"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND GPL-3.0-only"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and GPLv3"
+  - "GPLv3"
+  - "spdx:GPL-3.0-or-later"
+src_url:
+  - "https://github.com/texstudio-org/texstudio"
+tag:
+  - "Applications/Publishing"
+  - "Graphical"
+  - "Productivity/Publishing/TeX/Frontends"
+  - "Publishing"
+  - "Text"
+  - "app-office"
+  - "debug"
+  - "editor"
+  - "editors"
+  - "office"
+  - "tex"
+  - "universe/editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/texstudio-org/texstudio/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/texstudio-org/texstudio" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cncjs"
+pkg_id: "github.com.cncjs.cncjs"
+pkg_type: "appimage"
+app_id: "github.com.cncjs.cncjs"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A web-based interface for CNC milling controller running Grbl, Marlin, Smoothieware, or TinyG."
+distro_pkg:
+  archlinux:
+    aur:
+      - "cncjs"
+homepage:
+  - "https://cnc.js.org"
+  - "https://github.com/cncjs/cncjs"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/cncjs/cncjs"
+tag:
+  - "cnc"
+  - "cnc-milling-controller"
+  - "cncjs"
+  - "g2core"
+  - "gcode"
+  - "grbl"
+  - "linux"
+  - "marlin"
+  - "pendant"
+  - "raspberry-pi"
+  - "serial"
+  - "smoothie"
+  - "smoothieware"
+  - "tinyg"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cncjs/cncjs/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/cncjs/cncjs" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/cncjs/cncjs" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

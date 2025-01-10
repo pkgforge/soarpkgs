@@ -1,0 +1,34 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tipitaka-pali-reader"
+pkg_id: "github.com.bksubhuti.tipitaka-pali-reader"
+pkg_type: "appimage"
+app_id: "github.com.bksubhuti.tipitaka-pali-reader"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A Pali Reading app made in Flutter"
+homepage:
+  - "https://github.com/bksubhuti/tipitaka-pali-reader"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/bksubhuti/tipitaka-pali-reader"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bksubhuti/tipitaka-pali-reader/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bksubhuti/tipitaka-pali-reader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

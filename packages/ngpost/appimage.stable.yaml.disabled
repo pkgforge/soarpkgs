@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ngpost"
+pkg_id: "github.com.mbruel.ngPost"
+pkg_type: "appimage"
+app_id: "github.com.mbruel.ngPost"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Command Line (or minimalist GUI) usenet poster for binaries developped in C++/QT designed to be as fast as possible and offer all the main features to post data easily and safely. Releases for Linux, Windows and MacOS are available."
+homepage:
+  - "https://github.com/mbruel/ngPost"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/mbruel/ngPost"
+tag:
+  - "cmd"
+  - "cpp11"
+  - "gui"
+  - "multithread"
+  - "nntp"
+  - "nzb"
+  - "obfuscation"
+  - "qt5"
+  - "usenet"
+  - "usenet-posters"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mbruel/ngPost/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mbruel/ngPost" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

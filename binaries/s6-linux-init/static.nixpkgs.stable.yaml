@@ -1,0 +1,84 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/s6-linux-init/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "s6-linux-init"
+pkg_id: "nixpkgs.s6-linux-init"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "A set of minimalistic tools used to create a s6-based init system"
+  s6-linux-init: "A program that is meant to run as pid 1 as a stage 1 init [s6-linux-init]"
+  s6-linux-init-echo: "Writes its arguments to stdout [s6-linux-init]"
+  s6-linux-init-hpr: "Triggers a software or (with -f) hardware shutdown, typically via halt, poweroff, or reboot [s6-linux-init]"
+  s6-linux-init-logouthookd: "Cleans up its client's utmp record when it dies [s6-linux-init]"
+  s6-linux-init-maker: "Generates a directory with an /sbin/init script and necessary files to boot and set up an s6 infrastructure [s6-linux-init]"
+  s6-linux-init-nuke: "Kills all processes immediately [s6-linux-init]"
+  s6-linux-init-shutdown: "Triggers the system shutdown procedure [s6-linux-init]"
+  s6-linux-init-shutdownd: "The daemon that manages the shutdown procedure for an s6-linux-init installation [s6-linux-init]"
+  s6-linux-init-telinit: "Changes runlevels, i.e. changes the system state [s6-linux-init]"
+  s6-linux-init-umountall: "Unmounts all filesystems [s6-linux-init]"
+distro_pkg:
+  alpine:
+    - "s6-linux-init"
+  nixpkgs:
+    - "s6-linux-init"
+homepage:
+  - "https://skarnet.org/software/s6-linux-init/"
+  - "https://github.com/skarnet/s6-linux-init"
+license:
+  - "ISC"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "s6-linux-init"
+  - "s6-linux-init-echo"
+  - "s6-linux-init-hpr"
+  - "s6-linux-init-logouthookd"
+  - "s6-linux-init-maker"
+  - "s6-linux-init-nuke"
+  - "s6-linux-init-shutdown"
+  - "s6-linux-init-shutdownd"
+  - "s6-linux-init-telinit"
+  - "s6-linux-init-umountall"
+repology:
+  - "s6-linux-init"
+src_url:
+  - "https://github.com/skarnet/s6-linux-init"
+tag:
+  - "sys-apps"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#s6-linux-init" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.s6-linux-init" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null 

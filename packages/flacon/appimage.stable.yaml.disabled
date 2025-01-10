@@ -1,0 +1,65 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "flacon"
+pkg_id: "github.com.flacon.flacon"
+pkg_type: "appimage"
+app_id: "github.com.flacon.flacon"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
+distro_pkg:
+  archlinux:
+    aur:
+      - "flacon"
+      - "flacon-git"
+  nixpkgs:
+    - "flacon"
+homepage:
+  - "http://flacon.github.io"
+  - "https://flacon.github.io"
+  - "https://github.com/flacon/flacon"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU LGPL"
+  - "GPL"
+  - "GPLv3"
+  - "GPLv3+"
+  - "LGPL-2.1"
+  - "LGPL-2.1+"
+  - "LGPL-2.1-or-later"
+  - "LGPL2.1"
+  - "LGPLv2+"
+  - "LGPLv2.1"
+src_url:
+  - "https://github.com/flacon/flacon"
+tag:
+  - "Audio"
+  - "Graphical"
+  - "Productivity/Multimedia/Sound/Editors"
+  - "Sound"
+  - "Sound/Editors"
+  - "audio"
+  - "debug"
+  - "media-sound"
+  - "multimedia.audio"
+  - "sound"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/flacon/flacon/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/flacon/flacon" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

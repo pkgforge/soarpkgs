@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mattermost-desktop"
+pkg_id: "github.com.mattermost.desktop"
+pkg_type: "appimage"
+app_id: "github.com.mattermost.desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Mattermost Desktop application for Windows, Mac and Linux"
+distro_pkg:
+  alpine:
+    - "mattermost-desktop"
+  archlinux:
+    aur:
+      - "mattermost-desktop-git"
+    extra:
+      - "mattermost-desktop"
+  nixpkgs:
+    - "mattermost-desktop"
+homepage:
+  - "https://github.com/mattermost/desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache Software License 2.0"
+  - "Apache-2.0"
+  - "GPL-2+"
+  - "LGPL-2.1+"
+  - "MIT"
+src_url:
+  - "https://github.com/mattermost/desktop"
+tag:
+  - "chat"
+  - "net-im"
+  - "network"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mattermost/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/mattermost/desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/mattermost/desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

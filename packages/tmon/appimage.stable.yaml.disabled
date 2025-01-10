@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tmon"
+pkg_id: "github.com.gmagno.tmon"
+pkg_type: "appimage"
+app_id: "github.com.gmagno.tmon"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Temperature Monitor -- a simple CLI tool for monitoring/reporting CPU temperatures."
+homepage:
+  - "https://github.com/gmagno/tmon"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/gmagno/tmon"
+tag:
+  - "cli"
+  - "cpu-temperature"
+  - "linux"
+  - "python3"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/gmagno/tmon/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/gmagno/tmon" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

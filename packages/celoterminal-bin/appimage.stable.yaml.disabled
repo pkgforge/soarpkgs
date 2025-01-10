@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "celoterminal-bin"
+pkg_id: "github.com.zviadm.celoterminal"
+pkg_type: "appimage"
+app_id: "github.com.zviadm.celoterminal"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Celo Terminal: Manage accounts and interact with the decentralized apps on Celo platform."
+homepage:
+  - "https://github.com/zviadm/celoterminal"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/zviadm/celoterminal"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zviadm/celoterminal/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/zviadm/celoterminal" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

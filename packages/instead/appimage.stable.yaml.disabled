@@ -1,0 +1,63 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "instead"
+pkg_id: "github.com.instead-hub.instead"
+pkg_type: "appimage"
+app_id: "github.com.instead-hub.instead"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "INSTEAD - Simple Text Adventure Interpreter"
+distro_pkg:
+  archlinux:
+    aur:
+      - "instead"
+      - "instead-git"
+  debian:
+    - "instead"
+  nixpkgs:
+    - "instead"
+homepage:
+  - "http://instead-hub.github.io"
+  - "http://instead.sourceforge.net"
+  - "http://instead.syscall.ru"
+  - "http://instead.syscall.ru/index.html"
+  - "https://github.com/instead-hub/instead"
+  - "https://instead-hub.github.io"
+  - "https://instead-hub.github.io/en"
+  - "https://instead.hugeping.ru"
+  - "https://instead.syscall.ru"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License"
+  - "GPL-2.0"
+  - "GPLv2"
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/instead-hub/instead"
+tag:
+  - "Amusements/Games/Other"
+  - "Games/Adventure"
+  - "games"
+  - "games-engines"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/instead-hub/instead/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/instead-hub/instead" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

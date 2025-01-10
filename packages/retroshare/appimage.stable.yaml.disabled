@@ -1,0 +1,77 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "retroshare"
+pkg_id: "github.com.RetroShare.RetroShare"
+pkg_type: "appimage"
+app_id: "github.com.RetroShare.RetroShare"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "RetroShare is a Free and Open Source cross-platform, Friend-2-Friend and secure decentralised communication platform."
+distro_pkg:
+  archlinux:
+    aur:
+      - "retroshare"
+      - "retroshare-bin"
+      - "retroshare-git"
+  nixpkgs:
+    - "retroshare"
+homepage:
+  - "http://retroshare.cc"
+  - "http://retroshare.sourceforge.net"
+  - "https://github.com/RetroShare/RetroShare"
+  - "https://github.com/retroshare/retroshare"
+  - "https://retroshare.cc"
+  - "https://retroshare.github.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL"
+  - "AGPL-3"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPL3"
+  - "Apache-2.0"
+  - "CC-BY-SA-4.0"
+  - "CC0-1.0"
+  - "GNU Affero General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-3"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+  - "LGPL"
+  - "LGPL-3"
+  - "LGPL-3.0-or-later"
+  - "MIT"
+src_url:
+  - "https://github.com/RetroShare/RetroShare"
+tag:
+  - "Networking/File"
+  - "Productivity/Networking/Other"
+  - "chat"
+  - "debug"
+  - "net-p2p"
+  - "network"
+  - "network.clients"
+  - "web"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/RetroShare/RetroShare/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/RetroShare/RetroShare" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cemu/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "cemu"
+pkg_id: "github.com.cemu-project.Cemu.stable"
+pkg_type: "appimage"
+app_id: "info.cemu.Cemu"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Emulator"
+  - "Game"
+description: "An emulator for the Nintendo Wii U"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cemu"
+      - "cemu-bin"
+      - "cemu-git"
+  nixpkgs:
+    - "cemu"
+homepage:
+  - "https://cemu.info"
+  - "https://github.com/cemu-project/Cemu"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Officially Created AppImage. Check/Report @ https://github.com/cemu-project/Cemu"
+repology:
+  - "cemu-wii-u-emulator"
+src_url:
+  - "https://github.com/cemu-project/Cemu"
+tag:
+  - "Emulators/Games"
+  - "extra/emulator"
+  - "games.emulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cemu-project/Cemu/releases/latest?per_page=100" | jq -r '.tag_name'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/cemu-project/Cemu" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

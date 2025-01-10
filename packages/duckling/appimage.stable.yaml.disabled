@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "duckling"
+pkg_id: "github.com.l1xnan.duckling"
+pkg_type: "appimage"
+app_id: "github.com.l1xnan.duckling"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A fast viewer for CSV/Parquet files and databases such as DuckDB, SQLite, PostgreSQL, MySQL, Clickhouse, etc., base on Tauri"
+homepage:
+  - "https://github.com/l1xnan/duckling"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/l1xnan/duckling"
+tag:
+  - "clickhouse"
+  - "duckdb"
+  - "mysql"
+  - "parquet"
+  - "postgresql"
+  - "rust"
+  - "sqlite"
+  - "tauri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/l1xnan/duckling/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/l1xnan/duckling" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/l1xnan/duckling" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

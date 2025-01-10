@@ -1,0 +1,62 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sc-controller"
+pkg_id: "github.com.kozec.sc-controller"
+pkg_type: "appimage"
+app_id: "github.com.kozec.sc-controller"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "User-mode driver and GTK3 based GUI for Steam Controller"
+distro_pkg:
+  alpine:
+    - "sc-controller"
+  archlinux:
+    aur:
+      - "sc-controller"
+      - "sc-controller-git"
+  nixpkgs:
+    - "sc-controller"
+homepage:
+  - "https://github.com/C0rn3j/sc-controller"
+  - "https://github.com/Ryochan7/sc-controller"
+  - "https://github.com/kozec/sc-controller"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+  - "CC-BY-3.0"
+  - "CC0-1.0"
+  - "GPL-2"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "LGPL-2.1"
+  - "MIT"
+  - "PSF-2"
+  - "ZLIB"
+src_url:
+  - "https://github.com/kozec/sc-controller"
+tag:
+  - "Hardware/Joystick"
+  - "System/Libraries"
+  - "game"
+  - "games-util"
+  - "input"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kozec/sc-controller/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/kozec/sc-controller" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

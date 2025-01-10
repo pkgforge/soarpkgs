@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "streamdock"
+pkg_id: "github.com.jtvberg.StreamDock"
+pkg_type: "appimage"
+app_id: "github.com.jtvberg.StreamDock"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Streaming service viewer."
+distro_pkg:
+  archlinux:
+    aur:
+      - "streamdock-bin"
+homepage:
+  - "https://github.com/jtvberg/StreamDock"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/jtvberg/StreamDock"
+tag:
+  - "disney-plus"
+  - "electron"
+  - "evs"
+  - "hbo"
+  - "hulu"
+  - "netflix"
+  - "prime-video"
+  - "streaming"
+  - "streaming-services"
+  - "widevine"
+  - "youtube"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jtvberg/StreamDock/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jtvberg/StreamDock" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jtvberg/StreamDock" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ottomatic"
+pkg_id: "github.com.jorio.OttoMatic"
+pkg_type: "appimage"
+app_id: "github.com.jorio.OttoMatic"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Pangea Software’s Otto Matic 🤖"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ottomatic"
+  nixpkgs:
+    - "otto-matic"
+homepage:
+  - "https://github.com/jorio/CroMagRally"
+  - "https://github.com/jorio/OttoMatic"
+  - "https://github.com/jorio/ottomatic"
+  - "https://pangeasoft.net/otto"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-SA-4.0"
+  - "Creative Commons Attribution-NonCommercialShare Alike 4.0"
+  - "custom:cc-by-nc-sa-4.0"
+src_url:
+  - "https://github.com/jorio/OttoMatic"
+tag:
+  - "Games/Arcade"
+  - "game/adventure"
+  - "games"
+  - "games-action"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jorio/OttoMatic/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jorio/OttoMatic" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jorio/OttoMatic" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "whatstron"
+pkg_id: "github.com.murilopereirame.Whatstron"
+pkg_type: "appimage"
+app_id: "github.com.murilopereirame.Whatstron"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Unofficial WhatsApp desktop client for Linux"
+distro_pkg:
+  archlinux:
+    aur:
+      - "whatstron-bin"
+homepage:
+  - "https://github.com/murilopereirame/Whatstron"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LicenseRef-custom"
+src_url:
+  - "https://github.com/murilopereirame/Whatstron"
+tag:
+  - "electron"
+  - "javascript"
+  - "linux"
+  - "typescript"
+  - "whatsapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/murilopereirame/Whatstron/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/murilopereirame/Whatstron" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

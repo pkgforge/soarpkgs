@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pia"
+pkg_id: "github.com.LINCnil.pia-app"
+pkg_type: "appimage"
+app_id: "github.com.LINCnil.pia-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Exécutable permettant de lancer l’application (front office) PIA sur son ordinateur. C’est une version portable de l’outil PIA.  Executable to launch the PIA application on your computer. It is a stand-alone version of the PIA application."
+distro_pkg:
+  archlinux:
+    aur:
+      - "pia-bin"
+homepage:
+  - "https://github.com/LINCnil/pia"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+src_url:
+  - "https://github.com/LINCnil/pia-app"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LINCnil/pia-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/LINCnil/pia-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

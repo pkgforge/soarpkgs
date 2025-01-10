@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "calm-mondrian"
+pkg_id: "github.com.VitoVan.calm"
+pkg_type: "appimage"
+app_id: "github.com.VitoVan.calm"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Calm down and draw something, in Lisp."
+homepage:
+  - "https://github.com/VitoVan/calm"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/VitoVan/calm"
+tag:
+  - "appimage"
+  - "cairo"
+  - "calm"
+  - "gui"
+  - "lisp"
+  - "macos-app"
+  - "sdl2"
+  - "windows-installer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/VitoVan/calm/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/VitoVan/calm" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

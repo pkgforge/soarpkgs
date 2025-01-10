@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "textosaurus"
+pkg_id: "github.com.martinrotter.textosaurus"
+pkg_type: "appimage"
+app_id: "github.com.martinrotter.textosaurus"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Cross-platform text editor based on Qt and Scintilla."
+distro_pkg:
+  archlinux:
+    aur:
+      - "textosaurus"
+homepage:
+  - "https://github.com/martinrotter/textosaurus"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/martinrotter/textosaurus"
+tag:
+  - "cross-platform"
+  - "lightweight"
+  - "qt5"
+  - "scintilla"
+  - "text-editor"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/martinrotter/textosaurus/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/martinrotter/textosaurus" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

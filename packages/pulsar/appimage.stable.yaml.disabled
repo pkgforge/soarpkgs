@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pulsar"
+pkg_id: "github.com.pulsar-edit.pulsar"
+pkg_type: "appimage"
+app_id: "github.com.pulsar-edit.pulsar"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A Community-led Hyper-Hackable Text Editor"
+homepage:
+  - "https://github.com/pulsar-edit/pulsar"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/pulsar-edit/pulsar"
+tag:
+  - "electron"
+  - "javascript"
+  - "pulsar"
+  - "pulsar-edit"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pulsar-edit/pulsar/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/pulsar-edit/pulsar" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/pulsar-edit/pulsar" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "polkakey"
+pkg_id: "github.com.w3finance.PolkaKey"
+pkg_type: "appimage"
+app_id: "github.com.w3finance.PolkaKey"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Generate Polkadot/Kusama/Edgeware addresses safely"
+homepage:
+  - "https://github.com/w3finance/PolkaKey"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/w3finance/PolkaKey"
+tag:
+  - "desktop-application"
+  - "linux"
+  - "macos"
+  - "polkadot-js"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/w3finance/PolkaKey/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/w3finance/PolkaKey" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

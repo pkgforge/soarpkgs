@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "brainverse"
+pkg_id: "github.com.ReproNim.brainverse"
+pkg_type: "appimage"
+app_id: "github.com.ReproNim.brainverse"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "BrainVerse is an electronic laboratory notebook built as an open-source, cross-platform desktop application to help researchers manage, track and share information in a comprehensive format."
+homepage:
+  - "https://github.com/ReproNim/brainverse"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/ReproNim/brainverse"
+tag:
+  - "electron"
+  - "javascript"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ReproNim/brainverse/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ReproNim/brainverse" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

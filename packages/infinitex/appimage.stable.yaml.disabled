@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "infinitex"
+pkg_id: "github.com.fetacore.Infinitex"
+pkg_type: "appimage"
+app_id: "github.com.fetacore.Infinitex"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A LaTeX and WYSIWYG editor with academic search functionality and other helpful tools"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/fetacore/Infinitex"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/fetacore/Infinitex"
+tag:
+  - "ace-editor"
+  - "electron"
+  - "electron-builder"
+  - "katex"
+  - "material-ui"
+  - "quilljs"
+  - "react"
+  - "uglify-js"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/fetacore/Infinitex/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/fetacore/Infinitex" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

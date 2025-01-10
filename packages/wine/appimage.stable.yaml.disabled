@@ -1,0 +1,112 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wine"
+pkg_id: "github.com.mmtrt.WINE_AppImage"
+pkg_type: "appimage"
+app_id: "github.com.mmtrt.WINE_AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "null"
+distro_pkg:
+  alpine:
+    - "wine"
+    - "wine-staging"
+  archlinux:
+    aur:
+      - "mingw-w64-wine"
+      - "wine-git"
+      - "wine-stable"
+      - "wine-stable-next"
+      - "wine-staging-git"
+    multilib:
+      - "wine"
+      - "wine-staging"
+  debian:
+    - "wine"
+    - "wine-development"
+  nixpkgs:
+    - "wine"
+    - "wine-staging"
+    - "wine64"
+homepage:
+  - "http://fedoraproject.org/wiki/MinGW"
+  - "http://winehq.org"
+  - "http://www.winehq.com"
+  - "http://www.winehq.org"
+  - "https://github.com/wine-staging"
+  - "https://github.com/wine-staging/wine-staging"
+  - "https://gitlab.winehq.org/wine/wine"
+  - "https://gitlab.winehq.org/wine/wine-staging"
+  - "https://sourceforge.net/projects/wine"
+  - "https://wiki.winehq.org/MacOS"
+  - "https://wiki.winehq.org/Wine-Staging"
+  - "https://www.altlinux.org/Wine"
+  - "https://www.winehq.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+  - "BSD-2"
+  - "GNU LGPL"
+  - "GNU Lesser General Public License"
+  - "GNU Lesser General Public License version 2.1"
+  - "GPL-2.0-or-later"
+  - "IJG"
+  - "LGPL"
+  - "LGPL-2.0-or-later"
+  - "LGPL-2.1"
+  - "LGPL-2.1+"
+  - "LGPL-2.1-or-later"
+  - "LGPL2.1"
+  - "LGPLv2+"
+  - "LGPLv2.1"
+  - "MIT"
+  - "OPENLDAP"
+  - "ZLIB"
+  - "gsm"
+  - "lgpl2.1"
+  - "lgpl3"
+  - "libpng2"
+  - "libtiff"
+src_url:
+  - "https://github.com/mmtrt/WINE_AppImage"
+tag:
+  - "Applications/Emulators"
+  - "Applications/System"
+  - "Development/Libraries/C"
+  - "Emulators"
+  - "System/Emulators/PC"
+  - "app-emulation"
+  - "app:console"
+  - "debug"
+  - "emul32"
+  - "emulators"
+  - "extra/emulator"
+  - "fonts"
+  - "libs"
+  - "otherosfs"
+  - "programming.devel"
+  - "system"
+  - "system-tools"
+  - "universe/otherosfs"
+  - "utils"
+  - "virt"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mmtrt/WINE_AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mmtrt/WINE_AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

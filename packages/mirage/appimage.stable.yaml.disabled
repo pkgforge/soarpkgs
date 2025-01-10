@@ -1,0 +1,62 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mirage"
+pkg_id: "github.com.mirukana.mirage"
+pkg_type: "appimage"
+app_id: "github.com.mirukana.mirage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A fancy, customizable, keyboard-operable Qt/QML & Python Matrix chat client for encrypted and decentralized communication."
+distro_pkg:
+  alpine:
+    - "mirage"
+  archlinux:
+    aur:
+      - "mirage"
+  debian:
+    - "mirage"
+  nixpkgs:
+    - "mirage-im"
+homepage:
+  - "http://mirageiv.berlios.de"
+  - "http://mirageiv.sourceforge.net"
+  - "https://github.com/mirukana/mirage"
+  - "https://gitlab.com/thomasross/mirage"
+  - "https://mirageiv.sourceforge.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL v3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv2+"
+  - "GPLv3+"
+  - "LGPL-3.0-or-later"
+src_url:
+  - "https://github.com/mirukana/mirage"
+tag:
+  - "Amusements/Graphics"
+  - "Graphics"
+  - "graphics"
+  - "universe/graphics"
+  - "universe/x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mirukana/mirage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mirukana/mirage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

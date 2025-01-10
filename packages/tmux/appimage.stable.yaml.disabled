@@ -1,0 +1,83 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tmux"
+pkg_id: "github.com.nelsonenzo.tmux-appimage"
+pkg_type: "appimage"
+app_id: "github.com.nelsonenzo.tmux-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Tmux AppImage build via Docker"
+distro_pkg:
+  alpine:
+    - "tmux"
+  archlinux:
+    aur:
+      - "tmux-git"
+    extra:
+      - "tmux"
+  debian:
+    - "tmux"
+  nixpkgs:
+    - "tmux"
+homepage:
+  - "http://sourceforge.net/projects/tmux"
+  - "http://tmux.github.io"
+  - "http://tmux.sourceforge.net"
+  - "https://github.com/tmux/tmux"
+  - "https://github.com/tmux/tmux/wiki"
+  - "https://tmux.github.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "0BSD"
+  - "BSD"
+  - "BSD ISC"
+  - "BSD-2-Clause"
+  - "BSD-3-Clause"
+  - "ISC"
+  - "ISC AND BSD-2-Clause AND BSD-3-Clause AND SSH-short AND LicenseRef-Fedora-Public-Domain"
+  - "ISC AND BSD-3-Clause AND BSD-2-Clause"
+  - "ISC and BSD"
+  - "ISC and BSD-3-Clause and BSD-2-Clause"
+  - "ISC license"
+  - "MIT"
+  - "gpl2"
+  - "iscl"
+src_url:
+  - "https://github.com/nelsonenzo/tmux-appimage"
+tag:
+  - "Applications/System"
+  - "Debug"
+  - "Development/Languages"
+  - "System/Console"
+  - "Terminal"
+  - "Terminals"
+  - "Utils"
+  - "admin"
+  - "app-terminal"
+  - "app:console"
+  - "debug"
+  - "extra/tool"
+  - "system.utils"
+  - "sysutils"
+  - "utilities"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/nelsonenzo/tmux-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/nelsonenzo/tmux-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

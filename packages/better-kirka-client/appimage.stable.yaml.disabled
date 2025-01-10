@@ -1,0 +1,35 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "better-kirka-client"
+pkg_id: "github.com.42infi.better-kirka-client"
+pkg_type: "appimage"
+app_id: "github.com.42infi.better-kirka-client"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "a electron js based client for the game kirka.io"
+homepage:
+  - "https://github.com/42infi/better-kirka-client"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/42infi/better-kirka-client"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/42infi/better-kirka-client/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/42infi/better-kirka-client" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/42infi/better-kirka-client" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

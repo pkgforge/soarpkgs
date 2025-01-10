@@ -1,0 +1,92 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wireshark"
+pkg_id: "github.com.ryuuzaki42.Wireshark_AppImage"
+pkg_type: "appimage"
+app_id: "github.com.ryuuzaki42.Wireshark_AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Wireshark in AppImage"
+distro_pkg:
+  alpine:
+    - "wireshark"
+  archlinux:
+    aur:
+      - "wireshark-git"
+      - "wireshark-gtk2"
+    extra:
+      - "wireshark"
+  debian:
+    - "wireshark"
+  nixpkgs:
+    - "tshark"
+    - "wireshark"
+    - "wireshark-cli"
+homepage:
+  - "http://www.wireshark.org"
+  - "https://github.com/wireshark/wireshark"
+  - "https://gitlab.com/wireshark/wireshark"
+  - "https://www.wireshark.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT AND GPL-2.0-or-later AND LGPL-2.0-or-later AND Zlib AND ISC AND "
+  - "BSD-2-Clause"
+  - "BSD-3-Clause"
+  - "GNU GPL"
+  - "GNU GPL v2"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL+"
+  - "GPL+ and GPL-2.0+ and GPL-3.0 and GPL-3.0+ and BSD and ISC"
+  - "GPL-2"
+  - "GPL-2.0+ AND GPL-3.0+"
+  - "GPL-2.0+ and GPL-3.0+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND GPL-3.0-or-later"
+  - "GPL-3"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+ and GPLv3"
+  - "GPLv2+ and GPLv3+"
+  - "gpl2"
+  - "spdx:GPL-2.0-only"
+  - "wireshark license"
+src_url:
+  - "https://github.com/ryuuzaki42/Wireshark_AppImage"
+tag:
+  - "Applications/Internet"
+  - "Monitoring"
+  - "Network/Monitoring"
+  - "Networking"
+  - "Productivity/Networking/Diagnostic"
+  - "Security"
+  - "analyzer"
+  - "debug"
+  - "extra/network"
+  - "libs"
+  - "net"
+  - "net-analyzer"
+  - "network"
+  - "network.util"
+  - "universe/net"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ryuuzaki42/Wireshark_AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ryuuzaki42/Wireshark_AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

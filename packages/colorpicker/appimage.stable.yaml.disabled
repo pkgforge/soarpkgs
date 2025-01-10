@@ -1,0 +1,64 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "colorpicker"
+pkg_id: "github.com.Toinane.colorpicker"
+pkg_type: "appimage"
+app_id: "github.com.Toinane.colorpicker"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A mininal but complete colorpicker desktop app"
+distro_pkg:
+  alpine:
+    - "colorpicker"
+  archlinux:
+    aur:
+      - "colorpicker"
+      - "colorpicker-git"
+  debian:
+    - "colorpicker"
+  nixpkgs:
+    - "colorpicker"
+homepage:
+  - "https://colorpicker.fr"
+  - "https://evoluteur.github.io/colorpicker"
+  - "https://github.com/Ancurio/colorpicker"
+  - "https://github.com/Jack12816/colorpicker"
+  - "https://github.com/RonnyDo"
+  - "https://github.com/Toinane/colorpicker"
+  - "https://github.com/dheid/colorpicker"
+  - "https://github.com/martinchrzan/ColorPicker"
+  - "https://github.com/mistyhands/colorpicker"
+  - "https://github.com/ym1234/colorpicker"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3.0-or-later"
+  - "MIT"
+  - "MITL"
+src_url:
+  - "https://github.com/Toinane/colorpicker"
+tag:
+  - "Productivity/Graphics/Visualization/Other"
+  - "color"
+  - "extra/base"
+  - "java"
+  - "universe/java"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Toinane/colorpicker/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Toinane/colorpicker" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Toinane/colorpicker" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

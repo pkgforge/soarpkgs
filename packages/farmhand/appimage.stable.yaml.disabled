@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "farmhand"
+pkg_id: "github.com.jeremyckahn.farmhand"
+pkg_type: "appimage"
+app_id: "github.com.jeremyckahn.farmhand"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A resource management game that puts a farm in your hand"
+homepage:
+  - "https://github.com/jeremyckahn/farmhand"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/jeremyckahn/farmhand"
+tag:
+  - "farming-game"
+  - "game"
+  - "multiplayer-game"
+  - "pwa"
+  - "react"
+  - "trystero"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jeremyckahn/farmhand/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/jeremyckahn/farmhand" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

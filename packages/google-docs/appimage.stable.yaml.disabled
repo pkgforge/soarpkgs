@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "google-docs"
+pkg_id: "github.com.Comp-Labs.Google-Docs"
+pkg_type: "appimage"
+app_id: "github.com.Comp-Labs.Google-Docs"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Google Docs Desktop App made with :electron:. Includes Google Docs, Sheets, Slides, Forms, and Drive."
+distro_pkg:
+  archlinux:
+    aur:
+      - "google-docs-bin"
+homepage:
+  - "https://github.com/Comp-Labs/Google-Docs"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/Comp-Labs/Google-Docs"
+tag:
+  - "app"
+  - "electron"
+  - "google-docs"
+  - "google-drive"
+  - "google-forms"
+  - "google-sheets"
+  - "google-slides"
+  - "linux-desktop"
+  - "macos"
+  - "office"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Comp-Labs/Google-Docs/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Comp-Labs/Google-Docs" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "singlebox"
+pkg_id: "github.com.atomery.singlebox"
+pkg_type: "appimage"
+app_id: "github.com.atomery.singlebox"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "All Your Apps in One Single Window"
+distro_pkg:
+  archlinux:
+    aur:
+      - "singlebox-appimage"
+homepage:
+  - "https://singlebox.app/en"
+  - "https://webcatalog.io/singlebox"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/atomery/singlebox"
+tag:
+  - "Networking/Chat"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/atomery/singlebox/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/atomery/singlebox" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

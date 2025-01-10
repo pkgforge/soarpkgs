@@ -1,0 +1,93 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "freecad"
+pkg_id: "github.com.FreeCAD.FreeCAD-Bundle"
+pkg_type: "appimage"
+app_id: "github.com.FreeCAD.FreeCAD-Bundle"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Stand-alone repo to Build and Deploy installable FreeCAD images. Do not open general FreeCAD issues here."
+distro_pkg:
+  archlinux:
+    aur:
+      - "freecad-appimage"
+      - "freecad-git"
+      - "freecad-linkstage3-bin"
+      - "freecad-linkstage3-git"
+      - "freecad-weekly-appimage"
+    extra:
+      - "freecad"
+  debian:
+    - "freecad"
+  nixpkgs:
+    - "freecad"
+    - "freecad-wayland"
+homepage:
+  - "http://free-cad.sourceforge.net"
+  - "http://freecadweb.org"
+  - "http://sourceforge.net/apps/mediawiki/free-cad"
+  - "http://www.freecadweb.org"
+  - "https://freecad.org"
+  - "https://freecadweb.org"
+  - "https://github.com/FreeCAD/FreeCAD"
+  - "https://www.freecad.org"
+  - "https://www.freecad.org/downloads.php"
+  - "https://www.freecadweb.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-SA-4.0"
+  - "Freeware"
+  - "GNU LGPL"
+  - "GNU Library General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL and LGPL"
+  - "GPL-2"
+  - "GPL-2.0-or-later AND LGPL-2.0-or-later"
+  - "GPLv2+"
+  - "GPLv2+ and LGPLv2+"
+  - "LGPL"
+  - "LGPL-2"
+  - "LGPL-2+"
+  - "LGPL-2.0+"
+  - "LGPL-2.0+ and GPL-2.0+"
+  - "LGPL-2.0-or-later"
+  - "LGPL-2.0-or-later AND GPL-2.0-or-later"
+  - "spdx:GPL-2.0-or-later"
+src_url:
+  - "https://github.com/FreeCAD/FreeCAD-Bundle"
+tag:
+  - "3d-modeler"
+  - "Applications/Engineering"
+  - "Graphical"
+  - "Graphics"
+  - "Graphics/3D"
+  - "Productivity"
+  - "Productivity/Graphics/CAD"
+  - "cad"
+  - "debug"
+  - "extra/cad"
+  - "freecad"
+  - "graphics"
+  - "media-gfx"
+  - "office"
+  - "science"
+  - "universe/science"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FreeCAD/FreeCAD-Bundle/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/FreeCAD/FreeCAD-Bundle" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/FreeCAD/FreeCAD-Bundle" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

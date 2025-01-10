@@ -1,0 +1,131 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/html-xml-utils/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "html-xml-utils"
+pkg_id: "nixpkgs.html-xml-utils"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Utilities for manipulating HTML and XML files"
+  asc2xml: "Convert &#nnn; entities to UTF-8 [html-xml-utils]"
+  hxaddid: "Add IDs to selected elements [html-xml-utils]"
+  hxcite: "Replace bibliographic references by hyperlinks [html-xml-utils]"
+  hxcite-mkbib: "Expand references and create bibliography [html-xml-utils]"
+  hxclean: "Apply heuristics to correct an HTML file [html-xml-utils]"
+  hxcopy: "Copy an HTML file and update its relative links [html-xml-utils]"
+  hxcount: "Count elements and attributes in HTML or XML files [html-xml-utils]"
+  hxextract: "Extract selected elements from a HTML or XML file [html-xml-utils]"
+  hxincl: "Expand included HTML or XML files [html-xml-utils]"
+  hxindex: "Insert an index into an HTML document [html-xml-utils]"
+  hxmkbib: "Create bibliography from a template [html-xml-utils]"
+  hxmultitoc: "Create a table of content for a set of HTML files [html-xml-utils]"
+  hxname2id: "Move some NAME and ID attributes from an A to its parent [html-xml-utils]"
+  hxnormalize: "Pretty-print an HTML file [html-xml-utils]"
+  hxnsxml: "Convert output of hxxmlns back to XML [html-xml-utils]"
+  hxnum: "Number section headings in an HTML file [html-xml-utils]"
+  hxpipe: "Convert XML file to a format easier to parse with Perl or AWK [html-xml-utils]"
+  hxprintlinks: "Add a numbered list of links at the end of an HTML file [html-xml-utils]"
+  hxprune: "Remove marked elements from an HTML file [html-xml-utils]"
+  hxref: "Generate cross-references inside and between HTML files [html-xml-utils]"
+  hxremove: "Remove elements from an XML file by means of a CSS selector [html-xml-utils]"
+  hxselect: "Extract elements or attributes that match a (CSS) selector [html-xml-utils]"
+  hxtabletrans: "Transpose an HTML or XHTML table [html-xml-utils]"
+  hxtoc: "Insert a table of contents in an HTML file [html-xml-utils]"
+  hxuncdata: "Replace CDATA sections by character entities [html-xml-utils]"
+  hxunent: "Replace HTML predefined character entities by UTF-8 [html-xml-utils]"
+  hxunpipe: "Convert output of hxpipe back to XML format [html-xml-utils]"
+  hxunxmlns: "Replace XML global names by Namespace prefixes [html-xml-utils]"
+  hxwls: "List links in an HTML file [html-xml-utils]"
+  hxxmlns: "Replace XML Namespace prefixes by global names [html-xml-utils]"
+  xml2asc: "Convert UTF-8 to &#nnn; entities [html-xml-utils]"
+distro_pkg:
+  alpine:
+    - "html-xml-utils"
+  archlinux:
+    extra:
+      - "html-xml-utils"
+  debian:
+    - "html-xml-utils"
+  nixpkgs:
+    - "html-xml-utils"
+homepage:
+  - "https://www.w3.org/Tools/HTML-XML-utils/"
+license:
+  - "W3C"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "asc2xml"
+  - "hxaddid"
+  - "hxcite"
+  - "hxcite-mkbib"
+  - "hxclean"
+  - "hxcopy"
+  - "hxcount"
+  - "hxextract"
+  - "hxincl"
+  - "hxindex"
+  - "hxmkbib"
+  - "hxmultitoc"
+  - "hxname2id"
+  - "hxnormalize"
+  - "hxnsxml"
+  - "hxnum"
+  - "hxpipe"
+  - "hxprintlinks"
+  - "hxprune"
+  - "hxref"
+  - "hxremove"
+  - "hxselect"
+  - "hxtabletrans"
+  - "hxtoc"
+  - "hxuncdata"
+  - "hxunent"
+  - "hxunpipe"
+  - "hxunxmlns"
+  - "hxwls"
+  - "hxxmlns"
+  - "xml2asc"  
+repology:
+  - "html-xml-utils"
+src_url:
+  - "https://www.w3.org/Tools/HTML-XML-utils/"
+tag:
+  - "text"
+  - "textproc"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#html-xml-utils" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.html-xml-utils" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null 

@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "trezor-suite"
+pkg_id: "github.com.trezor.trezor-suite"
+pkg_type: "appimage"
+app_id: "github.com.trezor.trezor-suite"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Trezor Suite Monorepo"
+distro_pkg:
+  archlinux:
+    aur:
+      - "trezor-suite-appimage"
+      - "trezor-suite-bin"
+  nixpkgs:
+    - "trezor-suite"
+homepage:
+  - "https://github.com/trezor/trezor-suite"
+  - "https://suite.trezor.io"
+  - "https://trezor.io/trezor-suite"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LicenseRef-T-RSL"
+  - "Unfree"
+  - "custom:Trezor Reference Source License"
+src_url:
+  - "https://github.com/trezor/trezor-suite"
+tag:
+  - "bitcoin"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/trezor/trezor-suite/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/trezor/trezor-suite" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/trezor/trezor-suite" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

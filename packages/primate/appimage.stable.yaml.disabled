@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "primate"
+pkg_id: "github.com.getprimate.primate"
+pkg_type: "appimage"
+app_id: "github.com.getprimate.primate"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A modern dashboard for Kong Gateway admins"
+distro_pkg:
+  archlinux:
+    aur:
+      - "primate-bin"
+homepage:
+  - "https://www.getprimate.xyz"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/getprimate/primate"
+tag:
+  - "admin"
+  - "dashboard"
+  - "electron"
+  - "kong"
+  - "kongdash"
+  - "primate"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/getprimate/primate/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/getprimate/primate" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

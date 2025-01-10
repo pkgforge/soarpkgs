@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xplist"
+pkg_id: "github.com.ic005k.Xplist"
+pkg_type: "appimage"
+app_id: "github.com.ic005k.Xplist"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Cross-platform Plist Editor"
+distro_pkg:
+  archlinux:
+    aur:
+      - "xplist-bin"
+homepage:
+  - "https://github.com/ic005k/Xplist"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/ic005k/Xplist"
+tag:
+  - "plist"
+  - "plisteditor"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ic005k/Xplist/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ic005k/Xplist" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

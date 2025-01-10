@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "polar-bookshelf"
+pkg_id: "github.com.burtonator.polar-app-public"
+pkg_type: "appimage"
+app_id: "github.com.burtonator.polar-app-public"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Public npm modules used with polar."
+distro_pkg:
+  archlinux:
+    aur:
+      - "polar-bookshelf-bin"
+  nixpkgs:
+    - "polar-bookshelf"
+homepage:
+  - "https://github.com/burtonator/polar-app-public"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/burtonator/polar-app-public"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/burtonator/polar-app-public/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/burtonator/polar-app-public" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

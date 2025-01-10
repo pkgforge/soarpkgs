@@ -1,0 +1,71 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wire"
+pkg_id: "github.com.wireapp.wire-desktop"
+pkg_type: "appimage"
+app_id: "github.com.wireapp.wire-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: ":computer: Wire for desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "wire"
+      - "wire-desktop-git"
+    extra:
+      - "wire-desktop"
+  nixpkgs:
+    - "wire"
+    - "wire-desktop"
+homepage:
+  - "https://github.com/google/wire"
+  - "https://github.com/google/wire.git"
+  - "https://github.com/nark/wired"
+  - "https://github.com/wireapp/wire-desktop"
+  - "https://wire.com"
+  - "https://wire.com/download"
+  - "https://wire.com/en"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "BSD"
+  - "GNU Affero General Public License, version 3.0 or later"
+  - "GNU General Public License v3.0"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "custom:BSD-2-clause"
+src_url:
+  - "https://github.com/wireapp/wire-desktop"
+tag:
+  - "Development/Languages/Go"
+  - "Development/Other"
+  - "Networking/Instant"
+  - "Networking/Remote"
+  - "debug"
+  - "desktop"
+  - "net"
+  - "network"
+  - "network.im"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/wireapp/wire-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/wireapp/wire-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

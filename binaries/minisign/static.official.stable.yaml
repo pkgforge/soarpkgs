@@ -1,0 +1,86 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/minisign/static.official.stable.yaml
+_disabled: false
+
+pkg: "minisign"
+pkg_id: "github.com.jedisct1.minisign"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A dead simple tool to sign files and verify signatures"
+distro_pkg:
+  alpine:
+    - "minisign"
+  archlinux:
+    aur:
+      - "minisign-git"
+    extra:
+      - "minisign"
+  debian:
+    - "minisign"
+  nixpkgs:
+    - "minisign"
+homepage:
+  - "https://github.com/jedisct1/minisign"
+  - "https://jedisct1.github.io/minisign"
+license:
+  - "custom:ISC"
+  - "ISC"
+  - "spdx:ISC"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/jedisct1/minisign"
+repology:
+  - "minisign"
+src_url:
+  - "https://github.com/jedisct1/minisign"
+tag:
+  - "app-crypt"
+  - "crypto"
+  - "extra/security"
+  - "Productivity/Networking/Security"
+  - "Security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/jedisct1/minisign" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1
+     docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+      bash -l -c '
+      #Setup ENV
+       mkdir -p "/build-bins"
+      #Build
+       pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter "blob:none" --quiet "https://github.com/jedisct1/minisign" && cd "./minisign"
+       cmake -DCMAKE_C_FLAGS="-O2 -flto=auto -static -w -pipe" \
+       -DCMAKE_EXE_LINKER_FLAGS="-static -s -Wl,-S -Wl,--build-id=none" \
+       -DCMAKE_BUILD_TYPE="Release" \
+       -DCMAKE_INSTALL_PREFIX="/usr" \
+       -DBUILD_SHARED_LIBS="OFF" \
+       -DBUILD_STATIC_EXECUTABLES="1" \
+       -GNinja \
+       -B "./STATIC_BUILD"
+       cmake --build "./STATIC_BUILD" -j"$(($(nproc)+1))"
+       cmake --install "./STATIC_BUILD"
+       #Copy
+       find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achLv "{}" "/build-bins/"
+       #Strip
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+       '
+    #Copy & Meta
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

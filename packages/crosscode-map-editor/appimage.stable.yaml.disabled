@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "crosscode-map-editor"
+pkg_id: "github.com.CCDirectLink.crosscode-map-editor"
+pkg_type: "appimage"
+app_id: "github.com.CCDirectLink.crosscode-map-editor"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Map Editor for CrossCode"
+homepage:
+  - "https://github.com/CCDirectLink/crosscode-map-editor"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/CCDirectLink/crosscode-map-editor"
+tag:
+  - "ccmodding-tool"
+  - "crosscode"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/CCDirectLink/crosscode-map-editor/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/CCDirectLink/crosscode-map-editor" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

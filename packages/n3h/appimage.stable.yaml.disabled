@@ -1,0 +1,33 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "n3h"
+pkg_id: "github.com.holochain.n3h"
+pkg_type: "appimage"
+app_id: "github.com.holochain.n3h"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "nodejs implementation of holochain networking / p2p backend process"
+homepage:
+  - "https://github.com/holochain/n3h"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/holochain/n3h"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/holochain/n3h/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/holochain/n3h" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/holochain/n3h" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

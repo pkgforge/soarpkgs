@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "moyu"
+pkg_id: "github.com.trueleaf.moyu"
+pkg_type: "appimage"
+app_id: "github.com.trueleaf.moyu"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "基于 Vue 和 Electron 的在线协同api接口管理工具。接口文档管理工具、接口工具、接口文档、api文档、api工具、快乐摸鱼"
+distro_pkg:
+  archlinux:
+    aur:
+      - "moyu-bin"
+homepage:
+  - "https://online.jobtool.cn"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/trueleaf/moyu"
+tag:
+  - "api"
+  - "api-management"
+  - "api-manager"
+  - "api-test"
+  - "electron"
+  - "restful"
+  - "vue-electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/trueleaf/moyu/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/trueleaf/moyu" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

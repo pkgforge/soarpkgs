@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "electorrent"
+pkg_id: "github.com.Tympanix.Electorrent"
+pkg_type: "appimage"
+app_id: "github.com.Tympanix.Electorrent"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge"
+distro_pkg:
+  archlinux:
+    aur:
+      - "electorrent"
+      - "electorrent-bin"
+homepage:
+  - "https://github.com/Tympanix/Electorrent"
+  - "https://github.com/tympanix/Electorrent"
+  - "https://www.electronjs.org/apps/electorrent"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL3"
+src_url:
+  - "https://github.com/Tympanix/Electorrent"
+tag:
+  - "bittorrent-client"
+  - "torrent"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Tympanix/Electorrent/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Tympanix/Electorrent" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mapton"
+pkg_id: "github.com.trixon.mapton"
+pkg_type: "appimage"
+app_id: "github.com.trixon.mapton"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Some kind of map application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mapton"
+homepage:
+  - "https://mapton.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+src_url:
+  - "https://github.com/trixon/mapton"
+tag:
+  - "desktop"
+  - "gis"
+  - "map"
+  - "netbeans-platform"
+  - "worldwind"
+  - "worldwindjava"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/trixon/mapton/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/trixon/mapton" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

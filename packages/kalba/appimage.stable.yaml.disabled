@@ -1,0 +1,38 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kalba"
+pkg_id: "github.com.BrewingWeasel.Kalba"
+pkg_type: "appimage"
+app_id: "github.com.BrewingWeasel.Kalba"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "sentence mining tool"
+homepage:
+  - "https://github.com/BrewingWeasel/Kalba"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/BrewingWeasel/Kalba"
+tag:
+  - "language-learning"
+  - "sentence-mining"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/BrewingWeasel/Kalba/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/BrewingWeasel/Kalba" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/BrewingWeasel/Kalba" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

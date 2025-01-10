@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "foobar2000"
+pkg_id: "github.com.mmtrt.foobar2000_AppImage"
+pkg_type: "appimage"
+app_id: "github.com.mmtrt.foobar2000_AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "null"
+distro_pkg:
+  archlinux:
+    aur:
+      - "foobar2000"
+homepage:
+  - "http://www.foobar2000.org"
+  - "https://www.foobar2000.org"
+  - "https://www.foobar2000.org/mac"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Freeware"
+  - "custom"
+  - "foobar2000 license"
+  - "freeware"
+src_url:
+  - "https://github.com/mmtrt/foobar2000_AppImage"
+tag:
+  - "Music"
+  - "audio"
+  - "audio-player"
+  - "music"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mmtrt/foobar2000_AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mmtrt/foobar2000_AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

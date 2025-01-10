@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "muse"
+pkg_id: "github.com.muse-sequencer.muse"
+pkg_type: "appimage"
+app_id: "github.com.muse-sequencer.muse"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "MusE is a digital audio workstation with support for both Audio and MIDI"
+homepage:
+  - "https://github.com/muse-sequencer/muse"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/muse-sequencer/muse"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/muse-sequencer/muse/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/muse-sequencer/muse" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

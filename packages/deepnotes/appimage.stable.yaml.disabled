@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "deepnotes"
+pkg_id: "github.com.DeepNotesApp.DeepNotes"
+pkg_type: "appimage"
+app_id: "github.com.DeepNotesApp.DeepNotes"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "End-to-end encrypted visual note-taking tool with deep page navigation."
+distro_pkg:
+  archlinux:
+    aur:
+      - "deepnotes-bin"
+homepage:
+  - "https://deepnotes.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+src_url:
+  - "https://github.com/DeepNotesApp/DeepNotes"
+tag:
+  - "encryption"
+  - "end-to-end-encryption"
+  - "note-taking"
+  - "note-taking-app"
+  - "notes"
+  - "notes-app"
+  - "privacy"
+  - "productivity"
+  - "realtime-collaboration"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/DeepNotesApp/DeepNotes/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/DeepNotesApp/DeepNotes" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

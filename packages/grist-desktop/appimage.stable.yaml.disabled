@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "grist-desktop"
+pkg_id: "github.com.gristlabs.grist-desktop"
+pkg_type: "appimage"
+app_id: "github.com.gristlabs.grist-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Desktop Grist, packaged with Electron"
+distro_pkg:
+  archlinux:
+    aur:
+      - "grist-desktop-bin"
+homepage:
+  - "https://github.com/gristlabs/grist-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+src_url:
+  - "https://github.com/gristlabs/grist-desktop"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/gristlabs/grist-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/gristlabs/grist-desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/gristlabs/grist-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

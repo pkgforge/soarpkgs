@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nixnote"
+pkg_id: "github.com.robert7.nixnote2"
+pkg_type: "appimage"
+app_id: "github.com.robert7.nixnote2"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Nixnote - Evernote desktop client for Linux"
+homepage:
+  - "https://github.com/robert7/nixnote2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/robert7/nixnote2"
+tag:
+  - "client"
+  - "evernote"
+  - "linux"
+  - "note-taking"
+  - "notes"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/robert7/nixnote2/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/robert7/nixnote2@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

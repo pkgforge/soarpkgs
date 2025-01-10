@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tc"
+pkg_id: "github.com.mccxiv.tc"
+pkg_type: "appimage"
+app_id: "github.com.mccxiv.tc"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A desktop chat client for Twitch"
+distro_pkg:
+  archlinux:
+homepage:
+  - "http://openlab.ring.gr.jp/tcode/tc2/index.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "ISC License"
+src_url:
+  - "https://github.com/mccxiv/tc"
+tag:
+  - "japanese"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mccxiv/tc/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mccxiv/tc" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

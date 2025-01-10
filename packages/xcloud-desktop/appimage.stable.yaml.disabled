@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xcloud-desktop"
+pkg_id: "github.com.AAGaming00.xcloud-desktop"
+pkg_type: "appimage"
+app_id: "github.com.AAGaming00.xcloud-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A Desktop app for the XCloud web beta."
+distro_pkg:
+  archlinux:
+    aur:
+      - "xcloud-desktop-appimage"
+homepage:
+  - "https://github.com/AAGaming00/xcloud-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/AAGaming00/xcloud-desktop"
+tag:
+  - "electron"
+  - "gamestreaming"
+  - "xbox"
+  - "xcloud"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AAGaming00/xcloud-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/AAGaming00/xcloud-desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/AAGaming00/xcloud-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

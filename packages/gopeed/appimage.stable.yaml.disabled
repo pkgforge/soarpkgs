@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gopeed"
+pkg_id: "github.com.GopeedLab.gopeed"
+pkg_type: "appimage"
+app_id: "github.com.GopeedLab.gopeed"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A modern download manager that supports all platforms.  Built with Golang and Flutter."
+distro_pkg:
+  archlinux:
+    aur:
+      - "gopeed-bin"
+homepage:
+  - "https://github.com/GopeedLab/gopeed"
+  - "https://github.com/monkeyWie/gopeed"
+  - "https://gopeed.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/GopeedLab/gopeed"
+tag:
+  - "download"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/GopeedLab/gopeed/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/GopeedLab/gopeed" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/GopeedLab/gopeed" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

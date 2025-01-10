@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "packetsender"
+pkg_id: "github.com.dannagle.PacketSender"
+pkg_type: "appimage"
+app_id: "github.com.dannagle.PacketSender"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Network utility for sending / receiving TCP, UDP, SSL, HTTP"
+distro_pkg:
+  archlinux:
+    aur:
+      - "packetsender"
+  debian:
+    - "packetsender"
+homepage:
+  - "http://packetsender.com"
+  - "https://github.com/dannagle/PacketSender"
+  - "https://packetsender.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL2"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/dannagle/PacketSender"
+tag:
+  - "Networking/Other"
+  - "client"
+  - "net"
+  - "tcp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dannagle/PacketSender/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dannagle/PacketSender" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

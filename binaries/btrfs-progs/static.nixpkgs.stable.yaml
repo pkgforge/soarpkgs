@@ -1,0 +1,92 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/btrfs-progs/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "btrfs-progs"
+pkg_id: "nixpkgs.btrfs-progs"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "File system utilities for Btrfs"
+  btrfs: "Toolbox for managing btrfs filesystems [btrfs-progs]"
+  btrfsck: "btrfs filesystem checker to verify structural integrity & repair (alias of btrfs check) [btrfs-progs]"
+  btrfs-convert: "Convert existing source filesystem image to a btrfs filesystem in-place [btrfs-progs]"
+  btrfs-find-root: "Find the satisfied root by root tree, objectid, generation, level [btrfs-progs]"
+  btrfs-image: "Create an image of a btrfs filesystem [btrfs-progs]"
+  btrfs-map-logical: "Tool to get physical offsets [btrfs-progs]"
+  btrfs-select-super: "Destructively overwrite all copies of the superblock with a specified copy [btrfs-progs]"
+  btrfs-snap: "Creates and Maintains the history of snapshots of btrfs filesystems [btrfs-progs]"
+  btrfstune: "Enable, Disable, or set various filesystem parameters [btrfs-progs]"
+  fsck.btrfs: "A stub command that does nothing (use btrfs check instead) [btrfs-progs]"
+  mkfs.btrfs: "Tool  to create btrfs filesystem on a single or multiple devices [btrfs-progs]"
+distro_pkg:
+  alpine:
+    - "btrfs-progs"
+  archlinux:
+    aur:
+      - "btrfs-progs-git"
+  debian:
+    - "btrfs-progs"
+  nixpkgs:
+    - "btrfs-progs"
+homepage:
+  - "http://btrfs.wiki.kernel.org"
+  - "https://btrfs.readthedocs.io/en/latest"
+  - "https://github.com/kdave/btrfs-progs"
+license:
+  - "GPL"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"  
+provides:
+  - "btrfs"
+  - "btrfsck"
+  - "btrfs-convert"
+  - "btrfs-find-root"
+  - "btrfs-image"
+  - "btrfs-map-logical"
+  - "btrfs-select-super"
+  - "btrfs-snap"
+  - "btrfstune"
+  - "fsck.btrfs"
+  - "mkfs.btrfs"
+repology:
+  - "btrfs-progs"
+src_url:
+  - "https://github.com/kdave/btrfs-progs"
+tag:
+  - "btrfs"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#btrfs-progs" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.btrfs-progs" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "${SBUILD_TMPDIR}/nixbuild" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent "  "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null 

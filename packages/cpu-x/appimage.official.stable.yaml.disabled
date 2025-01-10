@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cpu-x/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "cpu-x"
+pkg_id: "github.com.TheTumultuousUnicornOfDarkness.CPU-X.stable"
+pkg_type: "appimage"
+app_id: "io.github.thetumultuousunicornofdarkness.cpu-x"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+ - "Monitor"
+ - "Utility"
+description: "A FOSS tool to gather information on CPU, motherboard and more"
+distro_pkg:
+  alpine:
+    - "cpu-x"
+  archlinux:
+    aur:
+      - "cpu-x"
+      - "cpu-x-git"
+  debian:
+    - "cpu-x"    
+  nixpkgs:
+    - "cpu-x"
+homepage:
+  - "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Officially Created AppImage. Check/Report @ https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+repology:
+  - "cpu-x"
+src_url:
+  - "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+tag:
+  - "sys-apps"
+  - "system.utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/TheTumultuousUnicornOfDarkness/CPU-X/releases/latest?per_page=100" | jq -r '.tag_name'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

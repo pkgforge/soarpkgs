@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hydrogen-music"
+pkg_id: "github.com.hydrogen-music.hydrogen"
+pkg_type: "appimage"
+app_id: "github.com.hydrogen-music.hydrogen"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "The advanced drum machine for Linux, macOS, and Windows"
+homepage:
+  - "https://github.com/hydrogen-music/hydrogen"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v2.0"
+src_url:
+  - "https://github.com/hydrogen-music/hydrogen"
+tag:
+  - "audio"
+  - "drum-machine"
+  - "jack"
+  - "midi"
+  - "music"
+  - "qt5"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hydrogen-music/hydrogen/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hydrogen-music/hydrogen" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

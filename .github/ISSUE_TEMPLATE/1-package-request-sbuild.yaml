@@ -1,0 +1,126 @@
+name: Package Request (SBUILD)
+description: Request a package (.SBUILD) to be added to Soar User Repository
+title: "PkgReq: name_of_the_package"
+labels: ["pkg-request"]
+assignees:
+  - Azathothas
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide as much Information as possible for **Quicker Addition**<br>
+  - type: checkboxes
+    id: guide
+    attributes:
+      label: Package Request Guide
+      description: "Are you sure, you have read the [Guide](https://docs.pkgforge.dev/repositories/soarpkgs/package-request): https://docs.pkgforge.dev/repositories/soarpkgs/package-request"
+      options:
+        - label: "I have read the [Package Request Guide](https://docs.pkgforge.dev/repositories/soarpkgs/package-request)"
+          required: true
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Package Exists
+      description: "Are you sure, this package doesn't already exist? Search: https://pkgs.pkgforge.dev/?repo=soarpkgs"
+      options:
+        - label: "I have already searched the [Index Page](https://pkgs.pkgforge.dev/?repo=soarpkgs)"
+          required: true
+  - type: checkboxes
+    id: issue
+    attributes:
+      label: Package Request Exists
+      description: "Are you sure, this package hasn't already been requested? [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Apkg-request+)"
+      options:
+        - label: "I have already searched the [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Apkg-request+)"
+          required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Types
+      description: "Select the [types of SBUILDs](https://docs.pkgforge.dev/formats/) you're requesting"
+      multiple: true
+      options:
+        - appimage (AppImage ==> https://docs.pkgforge.dev/formats/packages/appimage)
+        - appbundle (AppBundle ==> https://docs.pkgforge.dev/formats/packages/appbundle)
+        - archive (Archives ==> https://docs.pkgforge.dev/formats/packages/archive)
+        - binary (Static Binary ==> https://docs.pkgforge.dev/formats/binaries/static)
+        - flatimage (FlatImage ==> https://docs.pkgforge.dev/formats/packages/flatimage)
+        - nixappimage (NixAppImage ==> https://docs.pkgforge.dev/formats/packages/nixappimage)
+        - runimage (RunImage ==> https://docs.pkgforge.dev/formats/packages/runimage-tbd)
+  - type: textarea
+    id: pkg
+    attributes:
+      label: PKG (Package Name)
+      description: "Provide the [Name of the Package](https://docs.pkgforge.dev/sbuild/specification/2.pkg) (It will be installed as this)"
+    validations:
+      required: true
+  - type: textarea
+    id: host
+    attributes:
+      label: Platform (Architecture & OS)
+      description: "Choose among `aarch64-Linux`, `x86_64-Linux` or [others](https://docs.pkgforge.dev/sbuild/specification/20.x_exec#host)"
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (Summary)
+      description: "Provide a brief summary about the Package ([Docs](https://docs.pkgforge.dev/sbuild/specification/8.description))"
+    validations:
+      required: true
+  - type: textarea
+    id: packaging
+    attributes:
+      label: Packaging Guide
+      description: "Describe if we need to build this package from source (How?) or download a prebuilt artifact/binary (Where?)"
+    validations:
+      required: true         
+  - type: textarea
+    id: homepage
+    attributes:
+      label: Homepage (Website)
+      description: "Provide the Package's [homepage url](https://docs.pkgforge.dev/sbuild/specification/11.homepage) (or a list of urls)"
+    validations:
+      required: true
+  - type: textarea
+    id: src_url
+    attributes:
+      label: Source/Download URL (Github/Gitlab etc)
+      description: "Provide the URL (or a list of URLs) that contain Links to Binary or Source ([Docs](https://docs.pkgforge.dev/sbuild/specification/18.sourceurl))"
+    validations:
+      required: true
+  - type: textarea
+    id: repology
+    attributes:
+      label: Repology (https://repology.org/projects/)
+      description: "Provide the Package's [Repology Page](https://docs.pkgforge.dev/sbuild/specification/17.repology)"
+    validations:
+      required: false
+  - type: textarea
+    id: category
+    attributes:
+      label: Category (Open Desktop Spec)
+      description: "Please leave this empty if you are unsure OR: https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html"
+    validations:
+      required: false
+  - type: textarea
+    id: license
+    attributes:
+      label: License (SPDX-ID)
+      description: "Provide the [Package's License](https://docs.pkgforge.dev/sbuild/specification/13.license) (Use [SPDX-ID](https://spdx.org/licenses/), or a URL to COPYING/LICENSE File)"
+    validations:
+      required: false
+  - type: textarea
+    id: tag
+    attributes:
+      label: Tags (A list of categories/tags)
+      description: "If you skipped category, please fill this at least ([What?](https://docs.pkgforge.dev/sbuild/specification/19.tag))"
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Information
+      description: "Anything else you want to tell us about?<br> You can also reach us at Discord: https://docs.pkgforge.dev/contact/chat"
+    validations:
+      required: false

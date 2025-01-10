@@ -1,0 +1,35 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gmappimager"
+pkg_id: "github.com.time-killer-games.GMAppImager"
+pkg_type: "appimage"
+app_id: "github.com.time-killer-games.GMAppImager"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Graphically Converts GameMaker Studio 2 Linux Games to AppImage Bundles."
+homepage:
+  - "https://github.com/time-killer-games/GMAppImager"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/time-killer-games/GMAppImager"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/time-killer-games/GMAppImager/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/time-killer-games/GMAppImager" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/time-killer-games/GMAppImager" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

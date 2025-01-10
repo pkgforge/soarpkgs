@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jag"
+pkg_id: "github.com.seleznevae.jag"
+pkg_type: "appimage"
+app_id: "github.com.seleznevae.jag"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Simple interactive grapher for 2D plots"
+distro_pkg:
+  archlinux:
+  debian:
+    - "jag"
+homepage:
+  - "https://github.com/coringao/jag/wiki"
+  - "https://gitlab.com/coringao/jag"
+  - "https://gitlab.com/coringao/jag/wikis"
+  - "https://salsa.debian.org/games-team/jag"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/seleznevae/jag"
+tag:
+  - "Amusements/Games/Logic"
+  - "Games/Puzzles"
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/seleznevae/jag/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/seleznevae/jag" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

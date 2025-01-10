@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "realm-studio"
+pkg_id: "github.com.realm.realm-studio"
+pkg_type: "appimage"
+app_id: "github.com.realm.realm-studio"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Realm Studio"
+distro_pkg:
+  archlinux:
+    aur:
+      - "realm-studio-appimage"
+      - "realm-studio-bin"
+      - "realm-studio-git"
+  nixpkgs:
+    - "realm-studio"
+homepage:
+  - "https://github.com/realm/realm-studio"
+  - "https://realm.io/products/realm-studio"
+  - "https://www.mongodb.com/docs/atlas/device-sdks/studio"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache-2.0"
+src_url:
+  - "https://github.com/realm/realm-studio"
+tag:
+  - "electron-app"
+  - "reactjs"
+  - "realm"
+  - "realm-js"
+  - "synchronization"
+  - "typescript"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/realm/realm-studio/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/realm/realm-studio" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

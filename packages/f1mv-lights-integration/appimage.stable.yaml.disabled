@@ -1,0 +1,60 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "f1mv-lights-integration"
+pkg_id: "github.com.JustJoostNL.F1MV-Lights-Integration"
+pkg_type: "appimage"
+app_id: "github.com.JustJoostNL.F1MV-Lights-Integration"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "The best way to connect your smart home lights to MultiViewer."
+distro_pkg:
+  archlinux:
+    aur:
+      - "f1mv-lights-integration-bin"
+homepage:
+  - "https://github.com/JustJoostNL/F1MV-Lights-Integration"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/JustJoostNL/F1MV-Lights-Integration"
+tag:
+  - "electron"
+  - "f1"
+  - "f1-connect-lights"
+  - "f1-lights"
+  - "f1-multiviewer"
+  - "f1mv"
+  - "f1viewer"
+  - "formula1"
+  - "govee"
+  - "homeassistant"
+  - "hue"
+  - "ikea"
+  - "justjoostnl"
+  - "lights"
+  - "multiviewer"
+  - "multiviewer-for-f1"
+  - "mvf1"
+  - "philips-hue"
+  - "race-control"
+  - "tradfri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/JustJoostNL/F1MV-Lights-Integration/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/JustJoostNL/F1MV-Lights-Integration" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/JustJoostNL/F1MV-Lights-Integration" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

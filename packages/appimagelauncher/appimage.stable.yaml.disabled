@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "appimagelauncher"
+pkg_id: "github.com.TheAssassin.AppImageLauncher"
+pkg_type: "appimage"
+app_id: "github.com.TheAssassin.AppImageLauncher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Helper application for Linux distributions serving as a kind of entry point for running and integrating AppImages"
+distro_pkg:
+  archlinux:
+    aur:
+      - "appimagelauncher"
+      - "appimagelauncher-bin"
+      - "appimagelauncher-git"
+homepage:
+  - "https://github.com/TheAssassin/AppImageLauncher"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/TheAssassin/AppImageLauncher"
+tag:
+  - "Development/Debug"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/TheAssassin/AppImageLauncher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/TheAssassin/AppImageLauncher" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/TheAssassin/AppImageLauncher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "etichetta"
+pkg_id: "github.com.trikko.etichetta"
+pkg_type: "appimage"
+app_id: "github.com.trikko.etichetta"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A YOLO annotator, for human beings"
+homepage:
+  - "https://github.com/trikko/etichetta"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/trikko/etichetta"
+tag:
+  - "ai"
+  - "annotation-tool"
+  - "annotations"
+  - "annotator"
+  - "d"
+  - "dlang"
+  - "labeling-tool"
+  - "labelling"
+  - "yolo"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/trikko/etichetta/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/trikko/etichetta" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

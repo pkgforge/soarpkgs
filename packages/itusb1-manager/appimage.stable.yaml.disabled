@@ -1,0 +1,38 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "itusb1-manager"
+pkg_id: "github.com.bloguetronica.itusb1-mngr"
+pkg_type: "appimage"
+app_id: "github.com.bloguetronica.itusb1-mngr"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "ITUSB1 Manager (itusb1-mngr) is a standalone graphical application to control the ITUSB1 USB Test Switch. It can access multiple devices at a time, and log the captured data to a CSV file."
+homepage:
+  - "https://github.com/bloguetronica/itusb1-mngr"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/bloguetronica/itusb1-mngr"
+tag:
+  - "itusb1"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bloguetronica/itusb1-mngr/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bloguetronica/itusb1-mngr" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

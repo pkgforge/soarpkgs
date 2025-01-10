@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jan"
+pkg_id: "github.com.janhq.jan"
+pkg_type: "appimage"
+app_id: "github.com.janhq.jan"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "jan"
+      - "jan-appimage"
+      - "jan-bin"
+      - "jan-git"
+  nixpkgs:
+    - "jan"
+homepage:
+  - "https://github.com/janhq/jan"
+  - "https://jan.ai"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+src_url:
+  - "https://github.com/janhq/jan"
+tag:
+  - "ai"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/janhq/jan/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/janhq/jan" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/janhq/jan" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

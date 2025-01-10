@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "alexandria"
+pkg_id: "github.com.btpf.Alexandria"
+pkg_type: "appimage"
+app_id: "github.com.btpf.Alexandria"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A minimalistic cross-platform eBook reader built with Tauri, Epub.js, and Typescript"
+distro_pkg:
+  archlinux:
+  nixpkgs:
+    - "alexandria"
+homepage:
+  - "https://github.com/btpf/Alexandria"
+  - "https://github.com/mvz/alexandria-book-collection-manager"
+  - "https://rubygems.org/gems/alexandria-book-collection-manager"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later AND GPL-2.0-or-later"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/btpf/Alexandria"
+tag:
+  - "Applications/Productivity"
+  - "Databases"
+  - "Development/Ruby"
+  - "GNOME"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/btpf/Alexandria/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/btpf/Alexandria" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/btpf/Alexandria" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

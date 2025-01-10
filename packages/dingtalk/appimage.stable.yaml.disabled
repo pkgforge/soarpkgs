@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dingtalk"
+pkg_id: "github.com.nashaofu.dingtalk"
+pkg_type: "appimage"
+app_id: "github.com.nashaofu.dingtalk"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS"
+distro_pkg:
+  archlinux:
+    aur:
+      - "dingtalk-bin"
+homepage:
+  - "https://github.com/nashaofu/dingtalk"
+  - "https://page.dingtalk.com/wow/dingtalk/act/en-download"
+  - "https://www.dingtalk.com"
+  - "https://www.dingtalk.com/en"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "custom"
+src_url:
+  - "https://github.com/nashaofu/dingtalk"
+tag:
+  - "attendance"
+  - "dingding"
+  - "electron"
+  - "office"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/nashaofu/dingtalk/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/nashaofu/dingtalk" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/nashaofu/dingtalk" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

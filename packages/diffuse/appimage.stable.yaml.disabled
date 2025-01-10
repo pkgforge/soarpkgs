@@ -1,0 +1,65 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "diffuse"
+pkg_id: "github.com.icidasset.diffuse"
+pkg_type: "appimage"
+app_id: "github.com.icidasset.diffuse"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A music player that connects to your cloud/distributed storage."
+distro_pkg:
+  archlinux:
+    extra:
+      - "diffuse"
+  debian:
+    - "diffuse"
+  nixpkgs:
+    - "diffuse"
+homepage:
+  - "http://diffuse.sourceforge.net"
+  - "https://diffuse.sourceforge.net"
+  - "https://github.com/MightyCreak/diffuse"
+  - "https://kde.org/it/plasma-desktop"
+  - "https://mightycreak.github.io/diffuse"
+  - "https://sourceforge.net/projects/diffuse"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "FSFAP"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/icidasset/diffuse"
+tag:
+  - "Development/Tools"
+  - "File"
+  - "Graphical"
+  - "dev-util"
+  - "devel"
+  - "development"
+  - "editors"
+  - "universe/editors"
+  - "utilities"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/icidasset/diffuse/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/icidasset/diffuse" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/icidasset/diffuse" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

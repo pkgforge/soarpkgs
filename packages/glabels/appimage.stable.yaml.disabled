@@ -1,0 +1,89 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "glabels"
+pkg_id: "github.com.jimevins.glabels-qt"
+pkg_type: "appimage"
+app_id: "github.com.jimevins.glabels-qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "gLabels Label Designer (Qt/C++)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "glabels-light"
+      - "glabels-qt-git"
+      - "glabels3-gnubarcode"
+    extra:
+      - "glabels"
+  debian:
+    - "glabels"
+  nixpkgs:
+    - "glabels"
+    - "glabels-qt"
+homepage:
+  - "http://glabels.org"
+  - "http://glabels.sourceforge.net"
+  - "http://www.glabels.org"
+  - "https://github.com/jimevins/glabels"
+  - "https://github.com/jimevins/glabels-qt"
+  - "https://gitlab.gnome.org/Archive/glabels"
+  - "https://glabels.sourceforge.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-SA-3.0"
+  - "GNU General Public License"
+  - "GNU General Public License version 2"
+  - "GPL"
+  - "GPL-3+"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-3.0-or-later AND CC-BY-NC-SA-3.0 AND X11"
+  - "GPL3"
+  - "GPLv2+"
+  - "GPLv3+"
+  - "LGPL"
+  - "LGPL-3+"
+  - "LGPL-3.0-or-later"
+  - "MIT"
+  - "gpl2"
+  - "unknown"
+src_url:
+  - "https://github.com/jimevins/glabels-qt"
+tag:
+  - "Applications/Publishing"
+  - "Debug"
+  - "Doc"
+  - "Graphics"
+  - "Office"
+  - "Office/Utilities"
+  - "Productivity/Office/Other"
+  - "Publishing"
+  - "app-office"
+  - "desktop"
+  - "deskutils"
+  - "extra/tool"
+  - "gnome"
+  - "print"
+  - "productivity"
+  - "universe/gnome"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jimevins/glabels-qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/jimevins/glabels-qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

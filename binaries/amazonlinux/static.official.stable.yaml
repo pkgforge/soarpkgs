@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/amazonlinux/static.official.stable.yaml
+_disabled: false
+
+pkg: "amazonlinux"
+pkg_id: "github.com.aws.amazon-linux-docker-images"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Portable Ephemeral AmazonLinux Docker Image (DockerC)"
+homepage:
+  - "https://github.com/aws/amazon-linux-docker-images"
+license:
+  - id : "GPL-2.0"
+    url: "https://github.com/amazonlinux/container-images/raw/a3932af1e532aed65eb663940f68f4ba0b607a3b/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Created using DockerC, might require ROOT (Details: https://hub.docker.com/_/amazonlinux)"
+provides:
+  - "amazonlinux"
+src_url:
+  - "https://github.com/aws/amazon-linux-docker-images"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    docker manifest inspect "amazonlinux:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
+  run: |
+    #Build
+     sudo dockerc --image "docker://amazonlinux:latest" --output "${SBUILD_OUTDIR}/amazonlinux.no_strip"
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_OUTDIR}/amazonlinux.no_strip" && chmod -R 755 "${SBUILD_OUTDIR}/amazonlinux.no_strip"
+     file "${SBUILD_OUTDIR}/amazonlinux.no_strip" && du -sh "${SBUILD_OUTDIR}/amazonlinux.no_strip"

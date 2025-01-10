@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kanri"
+pkg_id: "github.com.kanriapp.kanri"
+pkg_type: "appimage"
+app_id: "github.com.kanriapp.kanri"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "🪐 Modern offline Kanban board app for Windows, MacOS and Linux. Built with simplicity and user experience in mind."
+distro_pkg:
+  archlinux:
+    aur:
+      - "kanri-bin"
+homepage:
+  - "https://github.com/kanriapp/kanri"
+  - "https://www.kanriapp.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/kanriapp/kanri"
+tag:
+  - "kanban"
+  - "kanban-board"
+  - "kanban-board-application"
+  - "nuxt"
+  - "nuxt3"
+  - "nuxtjs"
+  - "offline"
+  - "offline-app"
+  - "offline-first"
+  - "offline-kanban-board"
+  - "tauri"
+  - "typescript"
+  - "vue3"
+  - "vuejs"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kanriapp/kanri/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kanriapp/kanri" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kanriapp/kanri" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "phreshplayer"
+pkg_id: "github.com.Phreshhh.PhreshPlayer"
+pkg_type: "appimage"
+app_id: "github.com.Phreshhh.PhreshPlayer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Electron based media player app."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/Phreshhh/PhreshPlayer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/Phreshhh/PhreshPlayer"
+tag:
+  - "Video"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Phreshhh/PhreshPlayer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Phreshhh/PhreshPlayer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

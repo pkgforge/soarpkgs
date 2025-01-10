@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bambustudio"
+pkg_id: "github.com.bambulab.BambuStudio"
+pkg_type: "appimage"
+app_id: "github.com.bambulab.BambuStudio"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "PC Software for BambuLab and other 3D printers"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bambustudio-bin"
+      - "bambustudio-git"
+  nixpkgs:
+    - "bambu-studio"
+homepage:
+  - "https://bambulab.com"
+  - "https://bambulab.com/de/download/studio"
+  - "https://bambulab.com/en/download/studio"
+  - "https://github.com/bambulab/BambuStudio"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3"
+  - "AGPL-3.0"
+  - "AGPL-3.0-or-later"
+  - "AGPL3"
+  - "AGPLv3"
+src_url:
+  - "https://github.com/bambulab/BambuStudio"
+tag:
+  - "media-gfx"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bambulab/BambuStudio/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bambulab/BambuStudio" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

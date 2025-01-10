@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "comic-reader"
+pkg_id: "github.com.Pong420.Comic-Reader"
+pkg_type: "appimage"
+app_id: "github.com.Pong420.Comic-Reader"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An Electron based comic reader."
+homepage:
+  - "https://github.com/Pong420/Comic-Reader"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/Pong420/Comic-Reader"
+tag:
+  - "comic"
+  - "comic-books"
+  - "comics-reader"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Pong420/Comic-Reader/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Pong420/Comic-Reader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

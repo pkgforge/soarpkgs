@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "marktext"
+pkg_id: "github.com.marktext.marktext"
+pkg_type: "appimage"
+app_id: "github.com.marktext.marktext"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "📝A simple and elegant markdown editor, available for Linux, macOS and Windows."
+distro_pkg:
+  archlinux:
+    aur:
+      - "marktext"
+      - "marktext-bin"
+      - "marktext-git"
+  nixpkgs:
+    - "marktext"
+homepage:
+  - "https://github.com/marktext/marktext"
+  - "https://marktext.app"
+  - "https://www.marktext.cc"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/marktext/marktext"
+tag:
+  - "editor"
+  - "markdown"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/marktext/marktext/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/marktext/marktext" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/marktext/marktext" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

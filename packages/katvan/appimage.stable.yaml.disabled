@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "katvan"
+pkg_id: "github.com.IgKh.katvan"
+pkg_type: "appimage"
+app_id: "github.com.IgKh.katvan"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A bare-bones editor for Typst files, with a bias for Right-to-Left editing"
+distro_pkg:
+  archlinux:
+    aur:
+      - "katvan"
+homepage:
+  - "https://github.com/IgKh/katvan"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/IgKh/katvan"
+tag:
+  - "hebrew"
+  - "qt"
+  - "typst"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/IgKh/katvan/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/IgKh/katvan" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

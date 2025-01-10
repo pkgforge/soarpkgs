@@ -1,0 +1,35 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shannon-calculator"
+pkg_id: "github.com.kuiperzone.Shannon-Calculator"
+pkg_type: "appimage"
+app_id: "github.com.kuiperzone.Shannon-Calculator"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Shannon Calculator is a cross-platform application which calculates the Shannon self-information content of a message text or file byte data."
+homepage:
+  - "https://github.com/kuiperzone/Shannon-Calculator"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/kuiperzone/Shannon-Calculator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kuiperzone/Shannon-Calculator/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kuiperzone/Shannon-Calculator" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kuiperzone/Shannon-Calculator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

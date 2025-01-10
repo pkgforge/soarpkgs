@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cryptomator"
+pkg_id: "github.com.cryptomator.cryptomator"
+pkg_type: "appimage"
+app_id: "github.com.cryptomator.cryptomator"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Cryptomator for Windows, macOS, and Linux: Secure client-side encryption for your cloud storage, ensuring privacy and control over your data."
+distro_pkg:
+  archlinux:
+    aur:
+      - "cryptomator"
+      - "cryptomator-bin"
+  nixpkgs:
+    - "cryptomator"
+homepage:
+  - "https://cryptomator.org"
+  - "https://github.com/cryptomator/cryptomator"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License"
+  - "GNU General Public License v3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "MIT"
+  - "proprietary license"
+src_url:
+  - "https://github.com/cryptomator/cryptomator"
+tag:
+  - "Archiving/Backup"
+  - "cloud-storage"
+  - "security"
+  - "security.crypto"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cryptomator/cryptomator/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/cryptomator/cryptomator" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/cryptomator/cryptomator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

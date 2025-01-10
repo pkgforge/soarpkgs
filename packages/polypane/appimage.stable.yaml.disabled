@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "polypane"
+pkg_id: "github.com.firstversionist.polypane"
+pkg_type: "appimage"
+app_id: "github.com.firstversionist.polypane"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "null"
+distro_pkg:
+  archlinux:
+    aur:
+      - "polypane"
+  nixpkgs:
+    - "polypane"
+homepage:
+  - "https://polypane.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Unfree"
+  - "https://polypane.app/legal/"
+src_url:
+  - "https://github.com/firstversionist/polypane"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/firstversionist/polypane/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/firstversionist/polypane" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/firstversionist/polypane" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

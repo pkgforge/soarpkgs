@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "protonmail-desktop"
+pkg_id: "github.com.protonmail-desktop.application"
+pkg_type: "appimage"
+app_id: "github.com.protonmail-desktop.application"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: ":envelope: Unofficial desktop client for ProtonMail"
+homepage:
+  - "https://github.com/protonmail-desktop/application"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/protonmail-desktop/application"
+tag:
+  - "desktop-app"
+  - "electron"
+  - "protonmail"
+  - "protonmail-desktop"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/protonmail-desktop/application/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/protonmail-desktop/application" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,73 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "meshlab"
+pkg_id: "github.com.cnr-isti-vclab.meshlab"
+pkg_type: "appimage"
+app_id: "github.com.cnr-isti-vclab.meshlab"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "The open source mesh processing system"
+distro_pkg:
+  archlinux:
+    aur:
+      - "meshlab"
+      - "meshlab-appimage"
+      - "meshlab-git"
+  debian:
+    - "meshlab"
+  nixpkgs:
+    - "meshlab"
+homepage:
+  - "http://meshlab.sourceforge.net"
+  - "http://www.meshlab.net"
+  - "https://github.com/cnr-isti-vclab/meshlab"
+  - "https://www.meshlab.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GNU General Public License"
+  - "GPL-2"
+  - "GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Fedora-Public-Domain AND Apache-2.0 AND BSL-1.0"
+  - "GPL-2.0-or-later AND BSD-3-Clause"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL2"
+  - "GPL3"
+  - "GPLv2+ and BSD"
+  - "GPLv2+ and BSD and Public Domain"
+  - "GPLv2+ and BSD and Public Domain and ASL 2.0"
+  - "GPLv2+ and BSD and Public Domain and ASL 2.0 AND BSL-1.0"
+  - "GPLv2+ and BSD and Public Domain and ASL 2.0 and Boost"
+src_url:
+  - "https://github.com/cnr-isti-vclab/meshlab"
+tag:
+  - "3d"
+  - "Applications/Multimedia"
+  - "Graphics"
+  - "Graphics/3D"
+  - "Productivity/Graphics/3D"
+  - "cad"
+  - "graphics"
+  - "media-gfx"
+  - "mesh"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cnr-isti-vclab/meshlab/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/cnr-isti-vclab/meshlab" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

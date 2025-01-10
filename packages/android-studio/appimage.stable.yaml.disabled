@@ -1,0 +1,81 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "android-studio"
+pkg_id: "github.com.zyrouge.android-studio-appimages"
+pkg_type: "appimage"
+app_id: "github.com.zyrouge.android-studio-appimages"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Android Studio as AppImages."
+distro_pkg:
+  archlinux:
+    aur:
+      - "android-studio"
+      - "android-studio-beta"
+      - "android-studio-canary"
+      - "android-studio-dummy"
+  nixpkgs:
+    - "android-studio"
+    - "android-studio-full"
+homepage:
+  - "http://developer.android.com/sdk/installing/studio.html"
+  - "http://tools.android.com"
+  - "https://developer.android.com"
+  - "https://developer.android.com/studio"
+  - "https://developer.android.com/studio/index.html"
+  - "https://developer.android.com/studio/preview"
+  - "https://www.pardus.org.tr"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "APACHE"
+  - "Apache"
+  - "Apache License 2.0"
+  - "Apache Software License 2.0"
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-2"
+  - "CDDL-1.1"
+  - "CPL-0.5"
+  - "EPL-1.0"
+  - "Freeware"
+  - "GPL-2"
+  - "GPL-2+"
+  - "IJG"
+  - "JDOM"
+  - "LGPL-2.1"
+  - "MIT"
+  - "MPL-1.1"
+  - "MPL-2.0"
+  - "NPL-1.1"
+  - "OFL-1.1"
+  - "Unfree"
+  - "ZLIB"
+  - "android"
+  - "freeware"
+src_url:
+  - "https://github.com/zyrouge/android-studio-appimages"
+tag:
+  - "Development"
+  - "aab"
+  - "dev-util"
+  - "development"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zyrouge/android-studio-appimages/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/zyrouge/android-studio-appimages" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "yts-streaming"
+pkg_id: "github.com.iambpn.YTS-Streaming"
+pkg_type: "appimage"
+app_id: "github.com.iambpn.YTS-Streaming"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An electronJS based desktop app to stream or play yts and torrent movies in desktop without downloading."
+distro_pkg:
+  archlinux:
+    aur:
+      - "yts-streaming-bin"
+homepage:
+  - "https://github.com/iambpn/YTS-Streaming"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LicenseRef-unknown"
+src_url:
+  - "https://github.com/iambpn/YTS-Streaming"
+tag:
+  - "desktop"
+  - "desktop-app"
+  - "electron"
+  - "electron-app"
+  - "movie"
+  - "movie-str"
+  - "movies"
+  - "nodejs"
+  - "streaming"
+  - "torrent"
+  - "torrent-movies"
+  - "windows"
+  - "yts"
+  - "yts-api"
+  - "yts-movies"
+  - "yts-torrent"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/iambpn/YTS-Streaming/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/iambpn/YTS-Streaming" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

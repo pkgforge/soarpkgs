@@ -1,0 +1,92 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "neon"
+pkg_id: "github.com.CityOfZion.neon-wallet"
+pkg_type: "appimage"
+app_id: "github.com.CityOfZion.neon-wallet"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Light wallet for the NEO blockchain"
+distro_pkg:
+  alpine:
+    - "neon"
+  archlinux:
+    aur:
+      - "lib32-neon"
+    extra:
+      - "neon"
+  debian:
+    - "neon27"
+  nixpkgs:
+    - "neon"
+    - "neon_0_29"
+homepage:
+  - "http://www.webdav.org/neon"
+  - "https://github.com/notroj/neon"
+  - "https://notroj.github.io/neon"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Lesser General Public License"
+  - "GPL"
+  - "GPL LGPL"
+  - "GPL-2"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+ and LGPLv2+"
+  - "LGPL"
+  - "LGPL-2+"
+  - "LGPL-2.0"
+  - "LGPL-2.0+"
+  - "LGPL-2.0+ "
+  - "LGPL-2.0-or-later"
+  - "LGPL-2.1"
+  - "LGPL-3.0-or-later"
+  - "LGPLv2+"
+  - "gpl2"
+  - "spdx:LGPL-2.0-or-later"
+src_url:
+  - "https://github.com/CityOfZion/neon-wallet"
+tag:
+  - "Applications/Publishing"
+  - "Debug"
+  - "Devel"
+  - "Development/Libraries/Other"
+  - "Development/Other"
+  - "Libs"
+  - "System"
+  - "System/Libraries"
+  - "Web"
+  - "base/library"
+  - "debug"
+  - "development"
+  - "libdevel"
+  - "libraries"
+  - "library"
+  - "libs"
+  - "net"
+  - "net-libs"
+  - "network.library"
+  - "programming.devel"
+  - "universe/net"
+  - "www"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/CityOfZion/neon-wallet/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/CityOfZion/neon-wallet" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/CityOfZion/neon-wallet" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

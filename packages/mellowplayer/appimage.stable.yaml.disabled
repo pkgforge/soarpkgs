@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mellowplayer"
+pkg_id: "github.com.ColinDuquesnoy.MellowPlayer"
+pkg_type: "appimage"
+app_id: "github.com.ColinDuquesnoy.MellowPlayer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Moved to gitlab"
+distro_pkg:
+  alpine:
+    - "mellowplayer"
+  archlinux:
+  nixpkgs:
+    - "mellowplayer"
+homepage:
+  - "https://colinduquesnoy.github.io/MellowPlayer"
+  - "https://colinduquesnoy.gitlab.io/MellowPlayer"
+  - "https://gitlab.com/ColinDuquesnoy/MellowPlayer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL-2.0"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-or-later"
+  - "GPLv2"
+src_url:
+  - "https://github.com/ColinDuquesnoy/MellowPlayer"
+tag:
+  - "Sound"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ColinDuquesnoy/MellowPlayer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ColinDuquesnoy/MellowPlayer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

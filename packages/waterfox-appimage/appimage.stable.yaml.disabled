@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "waterfox-appimage"
+pkg_id: "github.com.hawkeye116477.waterfox-deb-rpm-arch-AppImage"
+pkg_type: "appimage"
+app_id: "github.com.hawkeye116477.waterfox-deb-rpm-arch-AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Unofficial repository with Waterfox Web Browser packages for Ubuntu, Debian (deb), Arch Linux (pkg.tar.xz), Fedora, CentOS 7, Alma, Rocky and openSUSE (rpm) and AppImage packages for all distros following with CentOS 7."
+homepage:
+  - "https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage"
+tag:
+  - "waterfox"
+  - "waterfox-alma"
+  - "waterfox-appimage"
+  - "waterfox-apt"
+  - "waterfox-centos"
+  - "waterfox-classic"
+  - "waterfox-deb"
+  - "waterfox-debian"
+  - "waterfox-fedora"
+  - "waterfox-kde"
+  - "waterfox-kde-arch"
+  - "waterfox-linux"
+  - "waterfox-mageia"
+  - "waterfox-mint"
+  - "waterfox-opensuse"
+  - "waterfox-pkg"
+  - "waterfox-ppa"
+  - "waterfox-rocky"
+  - "waterfox-rpm"
+  - "waterfox-ubuntu"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hawkeye116477/waterfox-deb-rpm-arch-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openlens"
+pkg_id: "github.com.MuhammedKalkan.OpenLens"
+pkg_type: "appimage"
+app_id: "github.com.MuhammedKalkan.OpenLens"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "OpenLens Binary Build Repository"
+distro_pkg:
+  archlinux:
+    aur:
+      - "openlens-bin"
+  nixpkgs:
+    - "openlens"
+homepage:
+  - "https://github.com/MuhammedKalkan/OpenLens"
+  - "https://k8slens.dev"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Freeware"
+  - "MIT"
+src_url:
+  - "https://github.com/MuhammedKalkan/OpenLens"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/MuhammedKalkan/OpenLens/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/MuhammedKalkan/OpenLens" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/MuhammedKalkan/OpenLens" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

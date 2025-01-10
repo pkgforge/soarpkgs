@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "die-engine"
+pkg_id: "github.com.horsicq.DIE-engine"
+pkg_type: "appimage"
+app_id: "github.com.horsicq.DIE-engine"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "DIE engine"
+homepage:
+  - "https://github.com/horsicq/DIE-engine"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/horsicq/DIE-engine"
+tag:
+  - "binary-analysis"
+  - "disassembler"
+  - "elf"
+  - "entropy"
+  - "program-analysis"
+  - "reverse-engineering"
+  - "signature"
+  - "unpacker"
+  - "yara"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/horsicq/DIE-engine/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/horsicq/DIE-engine" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/horsicq/DIE-engine" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

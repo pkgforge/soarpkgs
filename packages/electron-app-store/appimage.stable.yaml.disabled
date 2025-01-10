@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "electron-app-store"
+pkg_id: "github.com.Electron-Store.electron-app-store"
+pkg_type: "appimage"
+app_id: "github.com.Electron-Store.electron-app-store"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A Cross-Platform App Store for Electron.js Apps"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/Electron-Store/electron-app-store"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/Electron-Store/electron-app-store"
+tag:
+  - "appstore"
+  - "electron"
+  - "electronjs"
+  - "vuejs"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Electron-Store/electron-app-store/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Electron-Store/electron-app-store" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

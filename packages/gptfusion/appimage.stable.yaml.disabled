@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gptfusion"
+pkg_id: "github.com.lpdswing.GPTFusion"
+pkg_type: "appimage"
+app_id: "github.com.lpdswing.GPTFusion"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "GPT聚合版是一个聚合了多个GPT聊天机器人的跨平台聊天工具, 支持多个免费GPT镜像, 支持自定义导入镜像, 支持POE,文心一言等多个平台."
+distro_pkg:
+  archlinux:
+    aur:
+      - "gptfusion-appimage"
+homepage:
+  - "https://github.com/lpdswing/GPTFusion"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/lpdswing/GPTFusion"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lpdswing/GPTFusion/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lpdswing/GPTFusion" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

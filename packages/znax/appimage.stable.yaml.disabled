@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "znax"
+pkg_id: "github.com.joyrider3774.Znax"
+pkg_type: "appimage"
+app_id: "github.com.joyrider3774.Znax"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Znax is a cross platform puzzle / arcade game using SDL2 libraries"
+homepage:
+  - "https://github.com/joyrider3774/Znax"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/joyrider3774/Znax"
+tag:
+  - "cross-platform"
+  - "game"
+  - "puzzle-game"
+  - "raspberry-pi"
+  - "sdl2"
+  - "touchscreen"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/joyrider3774/Znax/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/joyrider3774/Znax" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zmninja"
+pkg_id: "github.com.ZoneMinder.zmNinja"
+pkg_type: "appimage"
+app_id: "github.com.ZoneMinder.zmNinja"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "High performance, cross platform ionic app for Home/Commerical Security Surveillance using ZoneMinder"
+distro_pkg:
+  archlinux:
+    aur:
+      - "zmninja-bin"
+homepage:
+  - "https://github.com/ZoneMinder/zmNinja"
+  - "https://github.com/pliablepixels/zmNinja"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+  - "custom"
+src_url:
+  - "https://github.com/ZoneMinder/zmNinja"
+tag:
+  - "angularjs"
+  - "cctv"
+  - "desktop-app"
+  - "dvr"
+  - "home"
+  - "ionic"
+  - "iot"
+  - "javascript"
+  - "machine-learning"
+  - "mobile-app"
+  - "nvr"
+  - "security"
+  - "video"
+  - "zmninja"
+  - "zoneminder"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ZoneMinder/zmNinja/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ZoneMinder/zmNinja" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ZoneMinder/zmNinja" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hamsket"
+pkg_id: "github.com.TheGoddessInari.hamsket"
+pkg_type: "appimage"
+app_id: "github.com.TheGoddessInari.hamsket"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Free and Open Source messaging and emailing app that combines common web applications into one."
+distro_pkg:
+  archlinux:
+    aur:
+      - "hamsket"
+      - "hamsket-git"
+  nixpkgs:
+    - "hamsket"
+homepage:
+  - "https://github.com/TheGoddessInari/hamsket"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/TheGoddessInari/hamsket"
+tag:
+  - "combine"
+  - "email"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/TheGoddessInari/hamsket/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/TheGoddessInari/hamsket" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

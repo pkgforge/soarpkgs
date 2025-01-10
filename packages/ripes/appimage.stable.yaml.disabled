@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ripes"
+pkg_id: "github.com.mortbopet.Ripes"
+pkg_type: "appimage"
+app_id: "github.com.mortbopet.Ripes"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A graphical processor simulator and assembly editor for the RISC-V ISA"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ripes-bin"
+      - "ripes-git"
+  nixpkgs:
+    - "ripes"
+homepage:
+  - "https://github.com/mortbopet/Ripes"
+  - "https://github.com/mortbopet/ripes"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/mortbopet/Ripes"
+tag:
+  - "Emulators"
+  - "emulators"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mortbopet/Ripes/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mortbopet/Ripes" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

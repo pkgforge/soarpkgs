@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "goverlay"
+pkg_id: "github.com.benjamimgois.goverlay"
+pkg_type: "appimage"
+app_id: "github.com.benjamimgois.goverlay"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "GOverlay is an opensource project that aims to create a Graphical UI to help manage Linux overlays."
+distro_pkg:
+  archlinux:
+    aur:
+      - "goverlay-git"
+    extra:
+      - "goverlay"
+  debian:
+    - "goverlay"
+  nixpkgs:
+    - "goverlay"
+homepage:
+  - "https://github.com/benjamimgois/goverlay"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/benjamimgois/goverlay"
+tag:
+  - "Graphics"
+  - "Graphics/Utilities"
+  - "System/Configuration/Hardware"
+  - "debug"
+  - "games"
+  - "system.utils"
+  - "utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/benjamimgois/goverlay/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/benjamimgois/goverlay" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

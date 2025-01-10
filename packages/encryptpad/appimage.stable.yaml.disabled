@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "encryptpad"
+pkg_id: "github.com.evpo.EncryptPad"
+pkg_type: "appimage"
+app_id: "github.com.evpo.EncryptPad"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format: symmetrically encrypted, compressed and integrity protected. The editor can protect files with passwords, key files or both."
+distro_pkg:
+  archlinux:
+    aur:
+      - "encryptpad"
+homepage:
+  - "https://evpo.net/encryptpad"
+  - "https://github.com/evpo/EncryptPad"
+  - "https://github.com/evpo/encryptpad"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-2.0-only"
+  - "GPL2"
+  - "GPLv2"
+src_url:
+  - "https://github.com/evpo/EncryptPad"
+tag:
+  - "Editors"
+  - "Office"
+  - "editors"
+  - "util"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/evpo/EncryptPad/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/evpo/EncryptPad" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

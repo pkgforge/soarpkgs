@@ -1,0 +1,37 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "music-assistant-companion"
+pkg_id: "github.com.music-assistant.companion"
+pkg_type: "appimage"
+app_id: "github.com.music-assistant.companion"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Music Assistant Companion App"
+homepage:
+  - "https://github.com/music-assistant/companion"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/music-assistant/companion"
+tag:
+  - "tauri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/music-assistant/companion/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/music-assistant/companion" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/music-assistant/companion" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

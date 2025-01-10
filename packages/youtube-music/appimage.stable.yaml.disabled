@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "youtube-music"
+pkg_id: "github.com.th-ch.youtube-music"
+pkg_type: "appimage"
+app_id: "github.com.th-ch.youtube-music"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "youtube-music"
+      - "youtube-music-bin"
+      - "youtube-music-git"
+  nixpkgs:
+    - "youtube-music"
+homepage:
+  - "https://github.com/th-ch/youtube-music"
+  - "https://th-ch.github.io/youtube-music"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/th-ch/youtube-music"
+tag:
+  - "media-sound"
+  - "multimedia"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/th-ch/youtube-music/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/th-ch/youtube-music" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/th-ch/youtube-music" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wooting-analog-midi"
+pkg_id: "github.com.WootingKb.wooting-analog-midi"
+pkg_type: "appimage"
+app_id: "github.com.WootingKb.wooting-analog-midi"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Cross-platform virtual MIDI device for (Wooting) analog keyboards!"
+homepage:
+  - "https://github.com/WootingKb/wooting-analog-midi"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/WootingKb/wooting-analog-midi"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/WootingKb/wooting-analog-midi/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/WootingKb/wooting-analog-midi" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

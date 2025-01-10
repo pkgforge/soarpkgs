@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hsinstall"
+pkg_id: "github.com.dino-.hsinstall"
+pkg_type: "appimage"
+app_id: "github.com.dino-.hsinstall"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Pack a haskell project into a deployable directory structure"
+distro_pkg:
+  archlinux:
+    aur:
+      - "hsinstall"
+homepage:
+  - "https://github.com/dino-/hsinstall"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "ISC"
+src_url:
+  - "https://github.com/dino-/hsinstall"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dino-/hsinstall/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dino-/hsinstall" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

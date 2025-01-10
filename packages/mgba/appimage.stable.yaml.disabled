@@ -1,0 +1,67 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mgba"
+pkg_id: "github.com.mgba-emu.mgba"
+pkg_type: "appimage"
+app_id: "github.com.mgba-emu.mgba"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "mGBA Game Boy Advance Emulator"
+distro_pkg:
+  alpine:
+    - "mgba"
+  archlinux:
+    aur:
+      - "mgba-git"
+    extra:
+      - "mgba"
+  debian:
+    - "mgba"
+  nixpkgs:
+    - "mgba"
+homepage:
+  - "http://mgba.io"
+  - "https://github.com/mgba-emu/mgba"
+  - "https://mgba.io"
+  - "https://www.mgba.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MPL"
+  - "MPL-2.0"
+  - "MPL-2.0 BSD LGPL-2.1+ public-domain discord? "
+  - "MPLv2.0"
+  - "custom:MPL2"
+src_url:
+  - "https://github.com/mgba-emu/mgba"
+tag:
+  - "Emulators"
+  - "System/Emulators/Other"
+  - "debug"
+  - "emulation/gamesystem"
+  - "emulator"
+  - "emulators"
+  - "games"
+  - "games-emulation"
+  - "games.emulator"
+  - "libdevel"
+  - "programming.devel"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mgba-emu/mgba/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mgba-emu/mgba" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,58 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dwarf-fortress"
+pkg_id: "github.com.McArcady.lnp-forge"
+pkg_type: "appimage"
+app_id: "github.com.McArcady.lnp-forge"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A Dwarf Fortress starter pack builder for Linux & MacOS"
+distro_pkg:
+  archlinux:
+    extra:
+      - "dwarffortress"
+  debian:
+    - "dwarf-fortress"
+  nixpkgs:
+    - "dwarf-fortress"
+homepage:
+  - "http://bay12games.com/dwarves"
+  - "http://www.bay12games.com/dwarves"
+  - "https://bay12games.com/dwarves"
+  - "https://www.bay12games.com/dwarves"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+  - "BitstreamVera"
+  - "Custom"
+  - "Dwarf Fortress"
+  - "Unfree redistributable"
+  - "custom: Proprietary"
+  - "custom:dwarffortress"
+  - "free-noncomm"
+  - "freeware"
+src_url:
+  - "https://github.com/McArcady/lnp-forge"
+tag:
+  - "games"
+  - "games-roguelike"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/McArcady/lnp-forge/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/McArcady/lnp-forge" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nault-bin"
+pkg_id: "github.com.Nault.Nault"
+pkg_type: "appimage"
+app_id: "github.com.Nault.Nault"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "⚡ The most advanced Nano wallet with focus on security, speed and robustness"
+homepage:
+  - "https://github.com/Nault/Nault"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/Nault/Nault"
+tag:
+  - "cryptocurrency"
+  - "cryptocurrency-wallet"
+  - "desktop-wallet"
+  - "ledger"
+  - "nano"
+  - "nano-rpc"
+  - "nano-wallet"
+  - "nanocurrency"
+  - "wallet"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Nault/Nault/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Nault/Nault" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

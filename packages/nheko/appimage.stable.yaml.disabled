@@ -1,0 +1,75 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nheko"
+pkg_id: "github.com.Nheko-Reborn.nheko"
+pkg_type: "appimage"
+app_id: "github.com.Nheko-Reborn.nheko"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Desktop client for Matrix using Qt and C++20."
+distro_pkg:
+  alpine:
+    - "nheko"
+  archlinux:
+    aur:
+      - "nheko-appimage"
+      - "nheko-git"
+    extra:
+      - "nheko"
+  debian:
+    - "nheko"
+  nixpkgs:
+    - "nheko"
+homepage:
+  - "https://github.com/Nheko-Reborn/nheko"
+  - "https://github.com/Nheko-Reborn/nheko.git"
+  - "https://github.com/Nheko-Reborn/nheko/releases"
+  - "https://github.com/mujx/nheko"
+  - "https://github.com/nheko-reborn/nheko"
+  - "https://nheko-reborn.github.io"
+  - "https://nheko.im/nheko-reborn/nheko"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 3.0"
+  - "GPL-2.0-or-later"
+  - "GPL-3"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND MIT"
+  - "GPLv3"
+  - "GPLv3+"
+  - "GPLv3+ and MIT and Boost"
+  - "GPLv3+ and Public Domain and MIT and Boost and ASL 2.0 and CC-BY"
+  - "MIT"
+src_url:
+  - "https://github.com/Nheko-Reborn/nheko"
+tag:
+  - "Applications/Internet"
+  - "Development/Other"
+  - "Networking/Instant"
+  - "chat"
+  - "debug"
+  - "net"
+  - "net-im"
+  - "network"
+  - "network.im"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Nheko-Reborn/nheko/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Nheko-Reborn/nheko" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

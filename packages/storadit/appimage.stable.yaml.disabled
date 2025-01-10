@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "storadit"
+pkg_id: "github.com.josippapez.StoRadit"
+pkg_type: "appimage"
+app_id: "github.com.josippapez.StoRadit"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Minimalistic Todo list/notes taking app"
+homepage:
+  - "https://github.com/josippapez/StoRadit"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/josippapez/StoRadit"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/josippapez/StoRadit/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/josippapez/StoRadit" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

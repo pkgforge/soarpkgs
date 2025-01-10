@@ -1,0 +1,34 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "radioit"
+pkg_id: "github.com.blackPantherOS.radioit"
+pkg_type: "appimage"
+app_id: "github.com.blackPantherOS.radioit"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Multiplatform Radio Automation Software formerly Radit."
+homepage:
+  - "https://github.com/blackPantherOS/radioit"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/blackPantherOS/radioit"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/blackPantherOS/radioit/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/blackPantherOS/radioit" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

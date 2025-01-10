@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "standard-notes"
+pkg_id: "github.com.standardnotes.app"
+pkg_type: "appimage"
+app_id: "github.com.standardnotes.app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Think fearlessly with end-to-end encrypted notes and files. For issues, visit https://standardnotes.com/forum or https://standardnotes.com/help."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/standardnotes/desktop"
+  - "https://standardnotes.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Affero General Public License v3.0"
+src_url:
+  - "https://github.com/standardnotes/app"
+tag:
+  - "Office"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/standardnotes/app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/standardnotes/app" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/standardnotes/app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

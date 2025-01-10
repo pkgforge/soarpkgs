@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "exeqt"
+pkg_id: "github.com.AlexandruIstrate.ExeQt"
+pkg_type: "appimage"
+app_id: "github.com.AlexandruIstrate.ExeQt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A nifty little utility for pinning commands, applications or links to the system tray"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/AlexandruIstrate/ExeQt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/AlexandruIstrate/ExeQt"
+tag:
+  - "Graphical"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AlexandruIstrate/ExeQt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AlexandruIstrate/ExeQt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

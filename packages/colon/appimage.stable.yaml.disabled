@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "colon"
+pkg_id: "github.com.Chhekur.colon-ide"
+pkg_type: "appimage"
+app_id: "github.com.Chhekur.colon-ide"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Colon is a flexible text editor, built on Electron, and based on everything we love about our favorite editors. We are trying to designe it to be fully customizable."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://chhekur.github.io/colon-ide"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/Chhekur/colon-ide"
+tag:
+  - "colon"
+  - "editor"
+  - "favorite-editors"
+  - "hybrid-editor"
+  - "hybrid-ide"
+  - "ide"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Chhekur/colon-ide/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Chhekur/colon-ide" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

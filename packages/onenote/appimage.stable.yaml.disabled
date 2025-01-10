@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "onenote"
+pkg_id: "github.com.patrikx3.onenote"
+pkg_type: "appimage"
+app_id: "github.com.patrikx3.onenote"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "📚 Linux Electron Onenote - A Linux compatible version of OneNote"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://www.onenote.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/patrikx3/onenote"
+tag:
+  - "electron"
+  - "frame"
+  - "hack"
+  - "linux"
+  - "microsoft"
+  - "nodejs"
+  - "office"
+  - "onenote"
+  - "tray"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/patrikx3/onenote/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/patrikx3/onenote" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/patrikx3/onenote" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

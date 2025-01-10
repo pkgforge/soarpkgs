@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pot-desktop"
+pkg_id: "github.com.pot-app.pot-desktop"
+pkg_type: "appimage"
+app_id: "github.com.pot-app.pot-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "🌈一个跨平台的划词翻译和OCR软件  A cross-platform software for text translation and recognition."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://pot-app.com/en"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+src_url:
+  - "https://github.com/pot-app/pot-desktop"
+tag:
+  - "linux"
+  - "macos"
+  - "ocr"
+  - "pot"
+  - "pot-app"
+  - "recognize"
+  - "tauri"
+  - "translate"
+  - "translation"
+  - "tts"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pot-app/pot-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/pot-app/pot-desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/pot-app/pot-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

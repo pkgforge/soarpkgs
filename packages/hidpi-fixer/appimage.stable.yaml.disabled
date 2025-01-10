@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hidpi-fixer"
+pkg_id: "github.com.alex-spataru.HiDPI-Fixer"
+pkg_type: "appimage"
+app_id: "github.com.alex-spataru.HiDPI-Fixer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Qt app that automates fractional scaling configuration on X11 desktops"
+homepage:
+  - "https://github.com/alex-spataru/HiDPI-Fixer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/alex-spataru/HiDPI-Fixer"
+tag:
+  - "gnome"
+  - "hidpi"
+  - "linux"
+  - "qt"
+  - "x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/alex-spataru/HiDPI-Fixer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/alex-spataru/HiDPI-Fixer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

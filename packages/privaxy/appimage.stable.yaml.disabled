@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "privaxy"
+pkg_id: "github.com.Barre.privaxy"
+pkg_type: "appimage"
+app_id: "github.com.Barre.privaxy"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Privaxy is the next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic. Also check out my new project, https://www.merklemap.com/"
+distro_pkg:
+  archlinux:
+    aur:
+      - "privaxy"
+      - "privaxy-bin"
+      - "privaxy-git"
+homepage:
+  - "https://github.com/Barre/privaxy"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL"
+  - "AGPL-3.0-only"
+src_url:
+  - "https://github.com/Barre/privaxy"
+tag:
+  - "ad-blocker"
+  - "adblock"
+  - "adblocker"
+  - "adblocking"
+  - "blocker"
+  - "blocker-proxy"
+  - "http-proxy"
+  - "mitm"
+  - "proxy"
+  - "servers"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Barre/privaxy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Barre/privaxy" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Barre/privaxy" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

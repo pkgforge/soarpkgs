@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qtads"
+pkg_id: "github.com.realnc.qtads"
+pkg_type: "appimage"
+app_id: "github.com.realnc.qtads"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A cross-platform, multimedia interpreter for TADS adventure games."
+distro_pkg:
+  archlinux:
+    aur:
+      - "qtads"
+  debian:
+    - "qtads"
+  nixpkgs:
+    - "qtads"
+homepage:
+  - "http://qtads.sourceforge.net"
+  - "https://github.com/realnc/qtads"
+  - "https://qtads.sourceforge.net"
+  - "https://realnc.github.io/qtads"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3+"
+  - "GPL-3.0-or-later"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/realnc/qtads"
+tag:
+  - "Amusements/Games/Other"
+  - "Games/Adventure"
+  - "games"
+  - "games-engines"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/realnc/qtads/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/realnc/qtads" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/realnc/qtads" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

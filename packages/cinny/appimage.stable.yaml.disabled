@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cinny"
+pkg_id: "github.com.cinnyapp.cinny-desktop"
+pkg_type: "appimage"
+app_id: "github.com.cinnyapp.cinny-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Yet another matrix client for desktop"
+distro_pkg:
+  alpine:
+    - "cinny"
+  archlinux:
+    aur:
+      - "cinny"
+  nixpkgs:
+    - "cinny"
+    - "cinny-unwrapped"
+homepage:
+  - "https://cinny.in"
+  - "https://github.com/cinnyapp/cinny"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "Creative Commons Attribution 4.0 International"
+  - "GNU Affero General Public License, version 3.0"
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/cinnyapp/cinny-desktop"
+tag:
+  - "www"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cinnyapp/cinny-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/cinnyapp/cinny-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

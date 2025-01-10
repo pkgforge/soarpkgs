@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pocket-browser"
+pkg_id: "github.com.PocketStudios.Pocket-Browser"
+pkg_type: "appimage"
+app_id: "github.com.PocketStudios.Pocket-Browser"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An open-source browser made for privacy and going towards security."
+homepage:
+  - "https://github.com/PocketStudios/Pocket-Browser"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/PocketStudios/Pocket-Browser"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/PocketStudios/Pocket-Browser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/PocketStudios/Pocket-Browser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

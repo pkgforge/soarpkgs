@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/actual/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "actual"
+pkg_id: "github.com.actualbudget.actual.stable"
+pkg_type: "appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Finance"
+description: "A local-first personal finance app"
+distro_pkg:
+  archlinux:
+    aur:
+      - "actual-appimage"
+homepage:
+  - "https://actualbudget.org"
+  - "https://actualbudget.com"
+  - "https://github.com/actualbudget/actual"
+license:
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Officially Created AppImage. Check/Report @ https://github.com/actualbudget/actual"
+repology:
+  - "actual"
+src_url:
+  - "https://github.com/actualbudget/actual"
+tag:
+  - "finance"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/actualbudget/actual/releases/latest?per_page=100" | jq -r '.tag_name'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/actualbudget/actual" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

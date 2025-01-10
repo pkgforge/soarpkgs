@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vterm"
+pkg_id: "github.com.vterm.vterm"
+pkg_type: "appimage"
+app_id: "github.com.vterm.vterm"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: ":fire: Extensible terminal emulator written with the web languages of the future. Today."
+distro_pkg:
+  archlinux:
+    aur:
+      - "vterm-git"
+homepage:
+  - "https://github.com/nuIIpointerexception/vterm"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MPL-2.0"
+src_url:
+  - "https://github.com/vterm/vterm"
+tag:
+  - "desktop-app"
+  - "electron"
+  - "emulator"
+  - "javascript"
+  - "jsx"
+  - "mobx"
+  - "preact"
+  - "react"
+  - "terminal"
+  - "terminal-emulators"
+  - "vterm"
+  - "webpack"
+  - "xterm"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/vterm/vterm/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/vterm/vterm" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

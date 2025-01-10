@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "biliup-app"
+pkg_id: "github.com.ForgQi.biliup-app"
+pkg_type: "appimage"
+app_id: "github.com.ForgQi.biliup-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "b站全平台投稿客户端，支持多p投稿，稿件编辑"
+distro_pkg:
+  archlinux:
+    aur:
+      - "biliup-app-appimage"
+      - "biliup-app-bin"
+homepage:
+  - "https://github.com/ForgQi/biliup-app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "unknown"
+src_url:
+  - "https://github.com/ForgQi/biliup-app"
+tag:
+  - "bilibili"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ForgQi/biliup-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ForgQi/biliup-app" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ForgQi/biliup-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

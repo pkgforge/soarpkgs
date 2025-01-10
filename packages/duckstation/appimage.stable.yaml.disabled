@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "duckstation"
+pkg_id: "github.com.stenzek.duckstation"
+pkg_type: "appimage"
+app_id: "github.com.stenzek.duckstation"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Fast PlayStation 1 emulator for x86-64/AArch32/AArch64/RV64"
+distro_pkg:
+  archlinux:
+    aur:
+      - "duckstation"
+      - "duckstation-git"
+  nixpkgs:
+    - "duckstation"
+homepage:
+  - "https://duckstation.org"
+  - "https://github.com/stenzek/duckstation"
+  - "https://www.duckstation.org"
+  - "https://www.duckstation.org/jpindex.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-NC-ND-4.0"
+  - "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "cc-by-nc-nd-4.0"
+src_url:
+  - "https://github.com/stenzek/duckstation"
+tag:
+  - "Emulators"
+  - "emulators"
+  - "games"
+  - "games-emulation"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/stenzek/duckstation/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/stenzek/duckstation@${RELEASE_TAG}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/stenzek/duckstation@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

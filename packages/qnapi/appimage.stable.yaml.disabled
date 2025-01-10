@@ -1,0 +1,59 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qnapi"
+pkg_id: "github.com.QNapi.qnapi"
+pkg_type: "appimage"
+app_id: "github.com.QNapi.qnapi"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Qt-based, multi-engine, multi-platform subtitle downloader"
+distro_pkg:
+  archlinux:
+    aur:
+      - "qnapi-git"
+    extra:
+      - "qnapi"
+  debian:
+    - "qnapi"
+homepage:
+  - "http://qnapi.github.io"
+  - "https://qnapi.github.io"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause"
+  - "GPL"
+  - "GPL-2.0+"
+  - "GPL-2.0+ and BSD-2-Clause and BSD-3-Clause"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause"
+  - "GPL2"
+src_url:
+  - "https://github.com/QNapi/qnapi"
+tag:
+  - "Productivity/Multimedia/Other"
+  - "Video"
+  - "debug"
+  - "multimedia.video"
+  - "net"
+  - "polish"
+  - "universe/net"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/QNapi/qnapi/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/QNapi/qnapi" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

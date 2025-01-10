@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "moonlight"
+pkg_id: "github.com.moonlight-stream.moonlight-qt"
+pkg_type: "appimage"
+app_id: "github.com.moonlight-stream.moonlight-qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "GameStream client for PCs (Windows, Mac, Linux, and Steam Link)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "moonlight-git"
+homepage:
+  - "https://github.com/IYStoychev21/Moonlight"
+  - "https://github.com/moonlight-stream/moonlight-qt"
+  - "https://moonlight-stream.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3"
+  - "GPL-3.0-only"
+  - "MIT"
+src_url:
+  - "https://github.com/moonlight-stream/moonlight-qt"
+tag:
+  - "client"
+  - "games"
+  - "games-stream"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/moonlight-stream/moonlight-qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/moonlight-stream/moonlight-qt" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/moonlight-stream/moonlight-qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

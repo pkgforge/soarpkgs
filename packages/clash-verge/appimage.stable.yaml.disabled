@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "clash-verge"
+pkg_id: "github.com.zzzgydi.clash-verge"
+pkg_type: "appimage"
+app_id: "github.com.zzzgydi.clash-verge"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A Clash GUI based on tauri. Supports Windows, macOS and Linux."
+distro_pkg:
+  archlinux:
+    aur:
+      - "clash-verge"
+      - "clash-verge-bin"
+  nixpkgs:
+    - "clash-verge"
+homepage:
+  - "https://github.com/clash-verge-rev/clash-verge-rev"
+  - "https://github.com/zzzgydi/clash-verge"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/zzzgydi/clash-verge"
+tag:
+  - "clash"
+  - "cross-platform"
+  - "react"
+  - "rust"
+  - "tauri"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zzzgydi/clash-verge/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/zzzgydi/clash-verge" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/zzzgydi/clash-verge" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

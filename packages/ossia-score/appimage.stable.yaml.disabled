@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ossia-score"
+pkg_id: "github.com.OSSIA.score"
+pkg_type: "appimage"
+app_id: "github.com.OSSIA.score"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "ossia score, an interactive sequencer for the intermedia arts"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ossia-score"
+      - "ossia-score-appimage"
+      - "ossia-score-bin"
+      - "ossia-score-git"
+  nixpkgs:
+    - "ossia-score"
+homepage:
+  - "https://github.com/ossia/score"
+  - "https://ossia.io"
+  - "https://ossia.io/score/about.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GPL-3.0-only"
+  - "GPL3"
+  - "GPLv3"
+  - "spdx:GPL-3.0-or-later"
+src_url:
+  - "https://github.com/OSSIA/score"
+tag:
+  - "art"
+  - "multimedia"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OSSIA/score/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/OSSIA/score" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/OSSIA/score" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

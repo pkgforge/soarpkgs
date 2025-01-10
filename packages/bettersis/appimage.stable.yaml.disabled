@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bettersis"
+pkg_id: "github.com.mario33881.betterSIS"
+pkg_type: "appimage"
+app_id: "github.com.mario33881.betterSIS"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "The modern shell for SIS (the circuit simulator and optimizer)"
+homepage:
+  - "https://github.com/mario33881/betterSIS"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/mario33881/betterSIS"
+tag:
+  - "blif"
+  - "python"
+  - "sis"
+  - "univr"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mario33881/betterSIS/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mario33881/betterSIS" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

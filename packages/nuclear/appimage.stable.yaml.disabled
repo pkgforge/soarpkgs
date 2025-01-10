@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nuclear"
+pkg_id: "github.com.nukeop.nuclear"
+pkg_type: "appimage"
+app_id: "github.com.nukeop.nuclear"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Streaming music player that finds free music for you"
+distro_pkg:
+  archlinux:
+    aur:
+      - "nuclear-git"
+  nixpkgs:
+    - "nuclear"
+homepage:
+  - "https://github.com/Fastcode/NUClear"
+  - "https://github.com/nukeop/nuclear"
+  - "https://nuclear.js.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3"
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "GNU Affero General Public License v3.0"
+  - "MIT"
+src_url:
+  - "https://github.com/nukeop/nuclear"
+tag:
+  - "Sound"
+  - "cross-platform"
+  - "media-sound"
+  - "music"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/nukeop/nuclear/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/nukeop/nuclear" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/nukeop/nuclear" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

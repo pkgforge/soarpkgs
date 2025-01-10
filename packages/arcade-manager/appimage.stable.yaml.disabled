@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "arcade-manager"
+pkg_id: "github.com.cosmo0.arcade-manager"
+pkg_type: "appimage"
+app_id: "github.com.cosmo0.arcade-manager"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Arcade management tool to handle your MAME/FBA romsets"
+homepage:
+  - "https://github.com/cosmo0/arcade-manager"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/cosmo0/arcade-manager"
+tag:
+  - "arcade"
+  - "arcade-management"
+  - "best-game"
+  - "emulation"
+  - "fba"
+  - "filter"
+  - "game"
+  - "mame"
+  - "recalbox"
+  - "retropie"
+  - "rom-management"
+  - "romset"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/cosmo0/arcade-manager/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/cosmo0/arcade-manager" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/cosmo0/arcade-manager" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

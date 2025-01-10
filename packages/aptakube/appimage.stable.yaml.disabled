@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "aptakube"
+pkg_id: "github.com.aptakube.aptakube"
+pkg_type: "appimage"
+app_id: "github.com.aptakube.aptakube"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Modern, lightweight and multi-cluster Kubernetes GUI. Available on Windows, macOS and Linux."
+distro_pkg:
+  archlinux:
+    aur:
+      - "aptakube-appimage"
+homepage:
+  - "https://aptakube.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "proprietary"
+src_url:
+  - "https://github.com/aptakube/aptakube"
+tag:
+  - "gui"
+  - "kubectl"
+  - "kubernetes"
+  - "kubernetes-cluster"
+  - "kubernetes-desktop-client"
+  - "linux"
+  - "macos"
+  - "tauri"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/aptakube/aptakube/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/aptakube/aptakube" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zxinfo-file-browser"
+pkg_id: "github.com.thomasheckmann.zxinfo-file-browser"
+pkg_type: "appimage"
+app_id: "github.com.thomasheckmann.zxinfo-file-browser"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Organize and manage your emulator files for ZX Spectrum, ZX81, ZX80 & Lambda 8300 -  powered by the web"
+distro_pkg:
+  archlinux:
+    aur:
+      - "zxinfo-file-browser-bin"
+      - "zxinfo-file-browser-git"
+homepage:
+  - "https://github.com/thomasheckmann/zxinfo-file-browser"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/thomasheckmann/zxinfo-file-browser"
+tag:
+  - "desktop-application"
+  - "electron"
+  - "lambda8300"
+  - "react"
+  - "zx-spectrum"
+  - "zx80"
+  - "zx81"
+  - "zxdb"
+  - "zxinfo"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/thomasheckmann/zxinfo-file-browser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/thomasheckmann/zxinfo-file-browser" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/thomasheckmann/zxinfo-file-browser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qemu-appimage"
+pkg_id: "github.com.lucasmz1.Qemu_Appimage"
+pkg_type: "appimage"
+app_id: "github.com.lucasmz1.Qemu_Appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "QEMU (Quick Emulator) is a free and open-source emulator that uses dynamic binary translation to emulate the processor of a computer."
+homepage:
+  - "https://github.com/lucasmz1/Qemu_Appimage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/lucasmz1/Qemu_Appimage"
+tag:
+  - "appimage"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lucasmz1/Qemu_Appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lucasmz1/Qemu_Appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

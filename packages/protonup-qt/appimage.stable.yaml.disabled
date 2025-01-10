@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "protonup-qt"
+pkg_id: "github.com.DavidoTek.ProtonUp-Qt"
+pkg_type: "appimage"
+app_id: "github.com.DavidoTek.ProtonUp-Qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Install and manage GE-Proton, Luxtorpeda & more for Steam and Wine-GE & more for Lutris with this graphical user interface."
+distro_pkg:
+  archlinux:
+    aur:
+      - "protonup-qt"
+      - "protonup-qt-bin"
+  nixpkgs:
+    - "protonup-qt"
+homepage:
+  - "https://davidotek.github.io/protonup-qt"
+  - "https://github.com/DavidoTek/ProtonUp-Qt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/DavidoTek/ProtonUp-Qt"
+tag:
+  - "games-util"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/DavidoTek/ProtonUp-Qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/DavidoTek/ProtonUp-Qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

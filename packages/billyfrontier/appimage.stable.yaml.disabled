@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "billyfrontier"
+pkg_id: "github.com.jorio.BillyFrontier"
+pkg_type: "appimage"
+app_id: "github.com.jorio.BillyFrontier"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Pangea Software’s Billy Frontier for modern systems"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://pangeasoft.net/billy"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/jorio/BillyFrontier"
+tag:
+  - "game/action"
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jorio/BillyFrontier/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jorio/BillyFrontier" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jorio/BillyFrontier" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

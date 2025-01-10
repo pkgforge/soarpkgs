@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pragtical"
+pkg_id: "github.com.pragtical.pragtical"
+pkg_type: "appimage"
+app_id: "github.com.pragtical.pragtical"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "The practical and pragmatic code editor."
+distro_pkg:
+  archlinux:
+    aur:
+      - "pragtical"
+      - "pragtical-git"
+  nixpkgs:
+    - "pragtical"
+homepage:
+  - "https://github.com/pragtical/pragtical"
+  - "https://pragtical.dev"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "spdx:MIT"
+src_url:
+  - "https://github.com/pragtical/pragtical"
+tag:
+  - "editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pragtical/pragtical/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/pragtical/pragtical" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/pragtical/pragtical" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

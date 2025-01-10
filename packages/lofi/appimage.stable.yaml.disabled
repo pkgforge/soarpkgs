@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lofi"
+pkg_id: "github.com.dvx.lofi"
+pkg_type: "appimage"
+app_id: "github.com.dvx.lofi"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "🎵🔉 A mini Spotify player with WebGL visualizations."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://www.lofi.rocks"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/dvx/lofi"
+tag:
+  - "audio-player"
+  - "media"
+  - "mini-spotify-player"
+  - "spotify"
+  - "spotify-desktop"
+  - "tiny-spotify-player"
+  - "webgl"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dvx/lofi/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dvx/lofi" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vial"
+pkg_id: "github.com.vial-kb.vial-gui"
+pkg_type: "appimage"
+app_id: "github.com.vial-kb.vial-gui"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."
+distro_pkg:
+  archlinux:
+    aur:
+      - "vial-appimage"
+  nixpkgs:
+    - "vial"
+homepage:
+  - "https://get.vial.today"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+src_url:
+  - "https://github.com/vial-kb/vial-gui"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/vial-kb/vial-gui/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/vial-kb/vial-gui" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

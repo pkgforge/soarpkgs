@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bidirectional"
+pkg_id: "github.com.samirdjelal.bidirectional"
+pkg_type: "appimage"
+app_id: "github.com.samirdjelal.bidirectional"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Write Arabic text on apps that dont support the bidirectional text."
+homepage:
+  - "https://github.com/samirdjelal/bidirectional"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/samirdjelal/bidirectional"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/samirdjelal/bidirectional/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/samirdjelal/bidirectional" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

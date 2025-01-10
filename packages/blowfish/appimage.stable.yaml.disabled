@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "blowfish"
+pkg_id: "github.com.kremalicious.blowfish"
+pkg_type: "appimage"
+app_id: "github.com.kremalicious.blowfish"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "🐡 Simple Electron-based desktop app to retrieve and display your total Ocean Token balances."
+homepage:
+  - "https://github.com/kremalicious/blowfish"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/kremalicious/blowfish"
+tag:
+  - "cryptocurrency"
+  - "desktop"
+  - "electron"
+  - "erc20"
+  - "erc20token"
+  - "linux"
+  - "macos"
+  - "nextjs"
+  - "ocean"
+  - "ocean-token"
+  - "oceanprotocol"
+  - "react"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kremalicious/blowfish/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/kremalicious/blowfish" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

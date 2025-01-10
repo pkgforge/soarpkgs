@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qr-code-generator"
+pkg_id: "github.com.studioLaCosaNostra.qr-code-generator-desktop"
+pkg_type: "appimage"
+app_id: "github.com.studioLaCosaNostra.qr-code-generator-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Create custom QR Codes. You can save them as PNG image. You can change the size of the image."
+distro_pkg:
+  archlinux:
+    aur:
+      - "qrcodegen"
+  debian:
+    - "qr-code-generator"
+    - "rust-qrcodegen"
+  nixpkgs:
+    - "qrcodegen"
+homepage:
+  - "https://crates.io/crates/qrcodegen"
+  - "https://github.com/EasyCoding/qrcodegen-cmake"
+  - "https://github.com/nayuki/QR-Code-generator"
+  - "https://www.nayuki.io/page/qr-code-generator-library"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/studioLaCosaNostra/qr-code-generator-desktop"
+tag:
+  - "System/Libraries"
+  - "dev-libs"
+  - "graphics"
+  - "libdevel"
+  - "libraries"
+  - "rust"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/studioLaCosaNostra/qr-code-generator-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/studioLaCosaNostra/qr-code-generator-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

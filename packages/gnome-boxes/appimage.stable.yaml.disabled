@@ -1,0 +1,86 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gnome-boxes"
+pkg_id: "github.com.ivan-hc.Boxes-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Boxes-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Unofficial GNOME Boxes AppImage built on top of Conty (Arch Linux)."
+distro_pkg:
+  alpine:
+    - "gnome-boxes"
+  archlinux:
+    aur:
+      - "gnome-boxes-git"
+    extra:
+      - "gnome-boxes"
+  debian:
+    - "gnome-boxes"
+  nixpkgs:
+    - "gnome-boxes"
+    - "gnome.gnome-boxes"
+homepage:
+  - "https://apps.gnome.org/Boxes"
+  - "https://apps.gnome.org/app/org.gnome.Boxes"
+  - "https://download.gnome.org/sources/gnome-boxes"
+  - "https://gitlab.gnome.org/GNOME/gnome-boxes"
+  - "https://gnomeboxes.org"
+  - "https://live.gnome.org/Boxes"
+  - "https://live.gnome.org/Design/Apps/Boxes"
+  - "https://wiki.gnome.org/Apps/Boxes"
+  - "https://wiki.gnome.org/Boxes"
+  - "https://wiki.gnome.org/Design/Apps/Boxes"
+  - "https://www.gnome.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-2.0"
+  - "GNU Library General Public License, version 2.0"
+  - "GPL-2.0-only"
+  - "GPLv2+"
+  - "LGPL"
+  - "LGPL-2+"
+  - "LGPL-2.0"
+  - "LGPL-2.0+"
+  - "LGPL-2.0-or-later"
+  - "LGPL-2.0-or-later AND CC0-1.0 AND CC-BY-SA-3.0"
+  - "LGPLv2+"
+  - "LGPLv3+"
+src_url:
+  - "https://github.com/ivan-hc/Boxes-appimage"
+tag:
+  - "Applications/Emulators"
+  - "Emulators"
+  - "Graphical"
+  - "System/GUI/GNOME"
+  - "app-virtualization"
+  - "debug"
+  - "desktop"
+  - "extra/shell"
+  - "gnome"
+  - "gnome-extra"
+  - "programming.devel"
+  - "universe/gnome"
+  - "virt"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Boxes-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Boxes-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

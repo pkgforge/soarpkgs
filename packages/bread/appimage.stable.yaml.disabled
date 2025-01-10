@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bread"
+pkg_id: "github.com.pegvin.bread"
+pkg_type: "appimage"
+app_id: "github.com.pegvin.bread"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: ":bread: Install, update and remove AppImage from your CLI."
+distro_pkg:
+  archlinux:
+    aur:
+      - "bread-bin"
+homepage:
+  - "https://github.com/rhmodding/Bread"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+src_url:
+  - "https://github.com/pegvin/bread"
+tag:
+  - "appimage"
+  - "go"
+  - "golang"
+  - "linux"
+  - "package-manager"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pegvin/bread/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/pegvin/bread" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

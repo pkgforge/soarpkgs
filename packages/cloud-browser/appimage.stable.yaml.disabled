@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cloud-browser"
+pkg_id: "github.com.lemourin.libcloudstorage"
+pkg_type: "appimage"
+app_id: "github.com.lemourin.libcloudstorage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Official libcloudstorage repository."
+homepage:
+  - "https://github.com/lemourin/libcloudstorage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/lemourin/libcloudstorage"
+tag:
+  - "amazondrive"
+  - "amazons3"
+  - "box"
+  - "cloud-providers"
+  - "dropbox"
+  - "fuse-filesystem"
+  - "googledrive"
+  - "mega"
+  - "onedrive"
+  - "webdav"
+  - "yandexdisk"
+  - "youtube"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lemourin/libcloudstorage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lemourin/libcloudstorage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

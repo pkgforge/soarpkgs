@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "evoplex"
+pkg_id: "github.com.evoplex.evoplex"
+pkg_type: "appimage"
+app_id: "github.com.evoplex.evoplex"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Evoplex is a fast, robust and extensible platform for developing agent-based models and multi-agent systems on networks. Its available for Windows, Linux and macOS."
+homepage:
+  - "https://github.com/evoplex/evoplex"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/evoplex/evoplex"
+tag:
+  - "abm"
+  - "agent"
+  - "agent-based"
+  - "agent-based-model"
+  - "agent-based-modeling"
+  - "agent-based-simulation"
+  - "biological-simulations"
+  - "cellular-automata"
+  - "cpp"
+  - "cross-platform"
+  - "evolution-simulator"
+  - "evolutionary-algorithms"
+  - "evolutionary-computation"
+  - "evolutionary-game-theory"
+  - "evoplex"
+  - "graph"
+  - "mas"
+  - "monte-carlo-simulation"
+  - "multi-agent"
+  - "simulation"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/evoplex/evoplex/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/evoplex/evoplex" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

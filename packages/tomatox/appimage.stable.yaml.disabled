@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tomatox"
+pkg_id: "github.com.yanjiaxuan.TOMATOX"
+pkg_type: "appimage"
+app_id: "github.com.yanjiaxuan.TOMATOX"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "基于Electron、React开发的全网在线免费VIP视频解析播放器，美剧、韩剧、日剧全资源，全平台（Windows、Linux、MacOS）可用"
+distro_pkg:
+  archlinux:
+    aur:
+      - "tomatox-bin"
+homepage:
+  - "https://github.com/yanjiaxuan/TOMATOX"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/yanjiaxuan/TOMATOX"
+tag:
+  - "antd"
+  - "electron"
+  - "husky"
+  - "nodejs"
+  - "online-video-player"
+  - "react"
+  - "typescript"
+  - "webpack"
+  - "xgplayer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/yanjiaxuan/TOMATOX/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/yanjiaxuan/TOMATOX" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

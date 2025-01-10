@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/affine/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "affine"
+pkg_id: "github.com.affine-mirror.affine.stable"
+pkg_type: "appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Database"
+  - "Education"
+description: "FOSS Knowledge Base with fully merged docs, whiteboards and databases"
+distro_pkg:
+  archlinux:
+    aur:
+      - "affine-bin"
+      - "affine-canary-bin"
+  nixpkgs:
+    - "affine"
+homepage:
+  - "https://affine.pro"
+  - "https://github.com/toeverything/AFFiNE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Officially Created AppImage. Check/Report @ https://github.com/toeverything/AFFiNE"
+repology:
+  - "affine-whiteboard"
+src_url:
+  - "https://github.com/toeverything/AFFiNE"
+tag:
+  - "knowledge-base"
+  - "wiki"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/toeverything/AFFiNE/releases/latest?per_page=100" | jq -r '.tag_name'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/toeverything/AFFiNE" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

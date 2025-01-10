@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "draw.io"
+pkg_id: "github.com.jgraph.drawio-desktop"
+pkg_type: "appimage"
+app_id: "github.com.jgraph.drawio-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Official electron build of draw.io"
+homepage:
+  - "https://github.com/jgraph/drawio-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/jgraph/drawio-desktop"
+tag:
+  - "diagram-editor"
+  - "electron-app"
+  - "graphics"
+  - "javascript-applications"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jgraph/drawio-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jgraph/drawio-desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jgraph/drawio-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

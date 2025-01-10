@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mycrypto"
+pkg_id: "github.com.MyCryptoHQ.MyCrypto"
+pkg_type: "appimage"
+app_id: "github.com.MyCryptoHQ.MyCrypto"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "MyCrypto is an open-source tool that allows you to manage your Ethereum accounts privately and securely. Developed by and for the community since 2015, we’re focused on building awesome products that put the power in people’s hands."
+distro_pkg:
+  archlinux:
+    aur:
+      - "mycrypto-bin"
+  nixpkgs:
+    - "mycrypto"
+homepage:
+  - "https://github.com/MyCryptoHQ/MyCrypto"
+  - "https://mycrypto.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/MyCryptoHQ/MyCrypto"
+tag:
+  - "client-side"
+  - "electron"
+  - "ethereum"
+  - "mit-license"
+  - "mycrypto"
+  - "react"
+  - "redux"
+  - "redux-saga"
+  - "typescript"
+  - "wallet"
+  - "wallet-generator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/MyCryptoHQ/MyCrypto/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/MyCryptoHQ/MyCrypto" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "discord-qt"
+pkg_id: "github.com.ruslang02.discord-qt"
+pkg_type: "appimage"
+app_id: "github.com.ruslang02.discord-qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Discord client powered by Node.JS and Qt Widgets."
+distro_pkg:
+  archlinux:
+    aur:
+      - "discord-qt"
+      - "discord-qt-appimage"
+homepage:
+  - "https://github.com/ruslang02/discord-qt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+src_url:
+  - "https://github.com/ruslang02/discord-qt"
+tag:
+  - "discord"
+  - "discord-desktop"
+  - "discord-qt"
+  - "discordjs"
+  - "javascript"
+  - "nodegui"
+  - "overlay"
+  - "qt"
+  - "typescript"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ruslang02/discord-qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ruslang02/discord-qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

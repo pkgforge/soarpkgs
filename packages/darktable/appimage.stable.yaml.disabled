@@ -1,0 +1,81 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "darktable"
+pkg_id: "github.com.darktable-org.darktable"
+pkg_type: "appimage"
+app_id: "github.com.darktable-org.darktable"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "darktable is an open source photography workflow application and raw developer"
+distro_pkg:
+  alpine:
+    - "darktable"
+  archlinux:
+    aur:
+      - "darktable-git"
+    extra:
+      - "darktable"
+  debian:
+    - "darktable"
+  nixpkgs:
+    - "darktable"
+homepage:
+  - "http://darktable.org"
+  - "http://darktable.sourceforge.net"
+  - "http://www.darktable.org"
+  - "https://darktable.org"
+  - "https://github.com/darktable-org/darktable"
+  - "https://www.darktable.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-3.0"
+  - "Freeware"
+  - "GNU GPLv3"
+  - "GNU General Public License, version 3"
+  - "GNU General Public License, version 3.0 or later"
+  - "GPL"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3+"
+  - "spdx:GPL-3.0-or-later"
+src_url:
+  - "https://github.com/darktable-org/darktable"
+tag:
+  - "Graphical"
+  - "Graphics"
+  - "Graphics/Photography"
+  - "Photo"
+  - "Productivity/Graphics/Viewers"
+  - "darkroom"
+  - "darktable"
+  - "debug"
+  - "extra/multimedia"
+  - "graphics"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "photography"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/darktable-org/darktable/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/darktable-org/darktable" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/darktable-org/darktable" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

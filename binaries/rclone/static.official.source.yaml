@@ -1,0 +1,87 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/rclone/static.official.source.yaml
+_disabled: false
+
+pkg: "rclone"
+pkg_id: "github.com.rclone.rclone"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A program to sync files to and from various cloud storage providers"
+distro_pkg:
+  alpine:
+    - "rclone"
+  archlinux:
+    aur:
+      - "rclone-beta-bin"
+      - "rclone-git"
+    extra:
+      - "rclone"
+  debian:
+    - "rclone"
+  homebrew:
+    - "rclone"
+  nixpkgs:
+    - "rclone"
+homepage:
+  - "https://rclone.org"
+  - "https://github.com/rclone/rclone"
+license:
+  - "BSD"
+  - "ISC"
+  - "MIT"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/rclone/rclone"  
+repology:
+  - "rclone"
+src_url:
+  - "https://github.com/rclone/rclone"
+tag:
+  - "cloud"
+  - "mount"
+  - "rsync"
+  - "s3"
+  - "sync"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/rclone/rclone" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1
+     docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       CGO_ENABLED="1"
+       CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+       GOOS="linux"
+       export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+      #Build:https://github.com/rclone/rclone/blob/master/.github/workflows/build.yml
+       git clone --filter "blob:none" --quiet "https://github.com/rclone/rclone" "./TEMPREPO" && cd "./TEMPREPO"
+       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+       echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -tags "cmount" -o "/build-bins/rclone"
+      #Copy
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #Strip 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

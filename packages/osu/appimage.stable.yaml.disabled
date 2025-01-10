@@ -1,0 +1,65 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "osu"
+pkg_id: "github.com.ppy.osu"
+pkg_type: "appimage"
+app_id: "github.com.ppy.osu"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "rhythm is just a *click* away!"
+distro_pkg:
+  archlinux:
+    aur:
+      - "osu"
+      - "osu-lazer"
+      - "osu-lazer-bin"
+      - "osu-lazer-extracted-bin"
+      - "osu-lazer-git"
+  nixpkgs:
+    - "osu-lazer"
+    - "osu-lazer-bin"
+homepage:
+  - "http://osu.ppy.sh"
+  - "https://github.com/ppy/osu"
+  - "https://osu.ppy.sh"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "BSD-2"
+  - "CC-BY-NC-4.0"
+  - "LGPL-2.1"
+  - "LGPL-3+"
+  - "LicenseRef-custom"
+  - "MIT"
+  - "MIT AND CC-BY-NC-4.0"
+  - "MIT License"
+  - "Unfree redistributable"
+  - "all-rights-reserved"
+  - "custom"
+  - "custom:CC-BY-NC 4.0"
+src_url:
+  - "https://github.com/ppy/osu"
+tag:
+  - "Games"
+  - "beatmap-parser"
+  - "games"
+  - "games-arcade"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ppy/osu/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ppy/osu" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ppy/osu" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

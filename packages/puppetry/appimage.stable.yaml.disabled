@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "puppetry"
+pkg_id: "github.com.dsheiko.puppetry"
+pkg_type: "appimage"
+app_id: "github.com.dsheiko.puppetry"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Web testing solution for non-developers on top of Puppeteer and Jest"
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/dsheiko/puppetry"
+  - "https://puppetry.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/dsheiko/puppetry"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dsheiko/puppetry/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dsheiko/puppetry" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

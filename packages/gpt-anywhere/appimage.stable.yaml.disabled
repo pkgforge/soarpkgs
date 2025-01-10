@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gpt-anywhere"
+pkg_id: "github.com.JinayJain.gpt-anywhere"
+pkg_type: "appimage"
+app_id: "github.com.JinayJain.gpt-anywhere"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Use GPT anywhere with just one shortcut. Available for Mac, Windows, and Linux. Over 1,800 downloads."
+distro_pkg:
+  archlinux:
+    aur:
+      - "gpt-anywhere-bin"
+homepage:
+  - "http://jinay.dev/gpt-anywhere"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/JinayJain/gpt-anywhere"
+tag:
+  - "ai"
+  - "chatgpt"
+  - "desktop"
+  - "desktop-application"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/JinayJain/gpt-anywhere/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/JinayJain/gpt-anywhere" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

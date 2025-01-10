@@ -1,0 +1,55 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "piclist"
+pkg_id: "github.com.Kuingsmile.PicList"
+pkg_type: "appimage"
+app_id: "github.com.Kuingsmile.PicList"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An image upload and manage tool, base on PicGo"
+distro_pkg:
+  archlinux:
+    aur:
+      - "piclist-bin"
+homepage:
+  - "https://piclist.cn"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/Kuingsmile/PicList"
+tag:
+  - "alioss"
+  - "electron"
+  - "element-plus"
+  - "github"
+  - "imgur"
+  - "imgur-uploader"
+  - "picgo"
+  - "qiniu"
+  - "s3"
+  - "smms"
+  - "tencent-cos"
+  - "upyun"
+  - "vue"
+  - "webdav"
+  - "webdav-client"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Kuingsmile/PicList/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Kuingsmile/PicList" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Kuingsmile/PicList" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

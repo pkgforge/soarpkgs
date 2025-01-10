@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "minimal-podcasts-player"
+pkg_id: "github.com.son-link.minimal-podcasts-player"
+pkg_type: "appimage"
+app_id: "github.com.son-link.minimal-podcasts-player"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Subscribe, listen and (in the future) download your favorite podcasts, quickly and easily."
+distro_pkg:
+  archlinux:
+    aur:
+      - "minimal-podcasts-player"
+homepage:
+  - "https://github.com/son-link/minimal-podcasts-player"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/son-link/minimal-podcasts-player"
+tag:
+  - "podcast-player"
+  - "podcasts"
+  - "pyqt5"
+  - "python"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/son-link/minimal-podcasts-player/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/son-link/minimal-podcasts-player" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

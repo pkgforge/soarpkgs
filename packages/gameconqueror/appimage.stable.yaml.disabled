@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gameconqueror"
+pkg_id: "github.com.lucasmz1.Game_Conqueror_AppImage"
+pkg_type: "appimage"
+app_id: "github.com.lucasmz1.Game_Conqueror_AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Memory scanner designed to isolate the adress of an arbitrary variable in an executing process (gtk GUI)"
+homepage:
+  - "https://github.com/lucasmz1/Game_Conqueror_AppImage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/lucasmz1/Game_Conqueror_AppImage"
+tag:
+  - "appimage"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lucasmz1/Game_Conqueror_AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lucasmz1/Game_Conqueror_AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

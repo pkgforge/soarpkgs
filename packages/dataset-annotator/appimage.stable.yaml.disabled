@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dataset-annotator"
+pkg_id: "github.com.omenyayl.dataset-annotator"
+pkg_type: "appimage"
+app_id: "github.com.omenyayl.dataset-annotator"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Scalable, cross-platform ion-electron app that allows the user to annotate an image dataset."
+homepage:
+  - "https://github.com/omenyayl/dataset-annotator"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/omenyayl/dataset-annotator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/omenyayl/dataset-annotator/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/omenyayl/dataset-annotator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

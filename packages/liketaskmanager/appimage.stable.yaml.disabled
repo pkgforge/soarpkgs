@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "liketaskmanager"
+pkg_id: "github.com.rejuce.LikeTaskManager"
+pkg_type: "appimage"
+app_id: "github.com.rejuce.LikeTaskManager"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Linux AppImage that should mimik the funktionality and feel of Windows Task Manager Perfomance Tab"
+distro_pkg:
+  archlinux:
+    aur:
+      - "liketaskmanager-bin"
+      - "liketaskmanager-git"
+homepage:
+  - "https://github.com/rejuce/LikeTaskManager"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+  - "GPL3"
+src_url:
+  - "https://github.com/rejuce/LikeTaskManager"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rejuce/LikeTaskManager/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/rejuce/LikeTaskManager" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

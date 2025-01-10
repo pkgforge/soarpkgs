@@ -1,0 +1,56 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "chatgpt-next-web"
+pkg_id: "github.com.ChatGPTNextWeb.ChatGPT-Next-Web"
+pkg_type: "appimage"
+app_id: "github.com.ChatGPTNextWeb.ChatGPT-Next-Web"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。"
+homepage:
+  - "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web"
+tag:
+  - "calclaude"
+  - "chatgpt"
+  - "claude"
+  - "cross-platform"
+  - "desktop"
+  - "fe"
+  - "gemini"
+  - "gemini-pro"
+  - "gemini-server"
+  - "gemini-ultra"
+  - "gpt-4o"
+  - "groq"
+  - "nextjs"
+  - "ollama"
+  - "react"
+  - "tauri"
+  - "tauri-app"
+  - "vercel"
+  - "webui"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ChatGPTNextWeb/ChatGPT-Next-Web/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

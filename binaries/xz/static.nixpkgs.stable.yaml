@@ -1,0 +1,117 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/xz/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "xz"
+pkg_id: "nixpkgs.xz"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "XZ Compression/Decompression utilities for the .xz and .lzma formats [alias=xz-utils]"
+  lzcat: "Decompress LZMA files to stdout [alias=xz --format=lzma --decompress --stdout] [xz]"
+  lzcmp: "Compare LZMA compressed files [xz]"
+  lzdiff: "Diff LZMA compressed files [xz]"
+  lzegrep: "Search LZMA compressed files using extended regular expressions [xz]"
+  lzfgrep: "Search LZMA compressed files using fixed strings [xz]"
+  lzgrep: "Search LZMA compressed files using regular expressions [xz]"
+  lzless: "View LZMA compressed files with less [xz]"
+  lzma: "Compress/Decompress files using LZMA format [alias=xz --format=lzma] [xz]"
+  lzmadec: "Small and fast decoder for LZMA compressed files [xz]"
+  lzmainfo: "Show information stored in the .lzma file header [xz]"
+  lzmore: "View LZMA compressed files with more [xz]"
+  unlzma: "Decompress files in LZMA format [alias=xz --format=lzma --decompress] [xz]"
+  unxz: "Decompress files in XZ format [alias=xz --decompress] [xz]"
+  xz: "Compress/Decompress files using XZ format [xz]"
+  xzcat: "Decompress XZ files to stdout [alias=xz --decompress --stdout] [xz]"
+  xzcmp: "Compare XZ compressed files [xz]"
+  xzdec: "Small and fast decoder for XZ compressed files [xz]"
+  xzdiff: "Diff XZ compressed files [xz]"
+  xzegrep: "Search XZ compressed files using extended regular expressions [xz]"
+  xzfgrep: "Search XZ compressed files using fixed strings [xz]"
+  xzgrep: "Search XZ compressed files using regular expressions [xz]"
+  xzless: "View XZ compressed files with less [xz]"
+  xzmore: "View XZ compressed files with more [xz]"
+distro_pkg:
+  alpine:
+    - "xz"
+  archlinux:
+    aur:
+      - "xz-git"
+      - "xz-static"
+  debian:
+    - "xz-utils"
+  nixpkgs:
+    - "xz"
+homepage:
+  - "https://tukaani.org/xz/"
+license:
+  - "0BSD"
+  - "GPL"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+bins:
+  - "lzcat"
+  - "lzcmp"
+  - "lzdiff"
+  - "lzegrep"
+  - "lzfgrep"
+  - "lzgrep"
+  - "lzless"
+  - "lzma"
+  - "lzmadec"
+  - "lzmainfo"
+  - "lzmore"
+  - "unlzma"
+  - "unxz"
+  - "xz"
+  - "xzcat"
+  - "xzcmp"
+  - "xzdec"
+  - "xzdiff"
+  - "xzegrep"
+  - "xzfgrep"
+  - "xzgrep"
+  - "xzless"
+  - "xzmore"  
+repology:
+  - "xz"
+src_url:
+  - "https://github.com/tukaani-project/xz"
+tag:
+  - "Archiving/Compression"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#xz" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.xz" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null 

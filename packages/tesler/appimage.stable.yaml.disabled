@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tesler"
+pkg_id: "github.com.j-catania.TeslaSentinelViewer"
+pkg_type: "appimage"
+app_id: "github.com.j-catania.TeslaSentinelViewer"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "TesLEr - Tesla sentineL viewEr"
+distro_pkg:
+  archlinux:
+    aur:
+      - "tesler-bin"
+homepage:
+  - "https://github.com/j-catania/TeslaSentinelViewer"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/j-catania/TeslaSentinelViewer"
+tag:
+  - "electron"
+  - "linux"
+  - "macos"
+  - "react"
+  - "reactjs"
+  - "snapcraft"
+  - "vitejs"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/j-catania/TeslaSentinelViewer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/j-catania/TeslaSentinelViewer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

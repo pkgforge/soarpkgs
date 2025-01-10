@@ -1,0 +1,73 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "powder-toy"
+pkg_id: "github.com.mgord9518.Powder_Toy.AppImage"
+pkg_type: "appimage"
+app_id: "github.com.mgord9518.Powder_Toy.AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "AppImage build of The Powder Toy built from source"
+distro_pkg:
+  alpine:
+    - "powder-toy"
+  archlinux:
+    aur:
+      - "powder-toy"
+      - "powder-toy-beta"
+      - "powder-toy-git"
+      - "powder-toy-snapshot"
+      - "powdertoy-bin"
+  nixpkgs:
+    - "the-powder-toy"
+homepage:
+  - "http://powder.hardwired.org.uk"
+  - "http://powdertoy.co.uk"
+  - "https://github.com/The-Powder-Toy/The-Powder-Toy"
+  - "https://github.com/ThePowderToy/The-Powder-Toy"
+  - "https://github.com/simtr/The-Powder-Toy"
+  - "https://powdertoy.co.uk"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-only AND Apache-2.0 AND MIT"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv2"
+  - "GPLv3"
+  - "GPLv3 and MIT and ASL 2.0"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/mgord9518/Powder_Toy.AppImage"
+tag:
+  - "Amusements/Games/Other"
+  - "Games/Educational"
+  - "Games/Simulation"
+  - "debug"
+  - "games"
+  - "games-simulation"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mgord9518/Powder_Toy.AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mgord9518/Powder_Toy.AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

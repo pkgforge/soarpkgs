@@ -1,0 +1,64 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gimp/appimage.ivan-hc.stable.yaml
+_disabled: false
+
+pkg: "gimp"
+pkg_id: "github.com.ivan-hc.GIMP-appimage.stable"
+pkg_type: "appimage"
+app_id: "org.gimp.GIMP"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Graphics"
+  - "ImageProcessing"
+description: "The GNU Image Manipulation Program"
+distro_pkg:
+  alpine:
+    - "gimp"
+  archlinux:
+    aur:
+      - "gimp-git"
+    extra:
+      - "gimp"
+  debian:
+    - "gimp"
+  nixpkgs:
+    - "gimp"
+homepage:
+  - "https://www.gimp.org"
+  - "https://gitlab.gnome.org/GNOME/gimp"
+  - "https://github.com/ivan-hc/GIMP-appimage"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Community Created AppImage. Check/Report @ https://github.com/ivan-hc/GIMP-appimage"
+repology:
+  - "gimp"
+src_url:
+  - "https://github.com/ivan-hc/GIMP-appimage"
+tag:
+  - "Applications/Graphics"
+  - "editor"
+  - "extra/multimedia"
+  - "Graphical"
+  - "Graphics"
+  - "Graphics/Editors"
+  - "media-gfx"
+  - "Photo"
+  - "Productivity/Graphics/Bitmap"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gimp/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/GIMP-appimage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

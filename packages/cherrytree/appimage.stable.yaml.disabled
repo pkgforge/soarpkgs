@@ -1,0 +1,75 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cherrytree"
+pkg_id: "github.com.giuspen.cherrytree"
+pkg_type: "appimage"
+app_id: "github.com.giuspen.cherrytree"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "cherrytree"
+distro_pkg:
+  alpine:
+    - "cherrytree"
+  archlinux:
+    aur:
+      - "cherrytree-git"
+    extra:
+      - "cherrytree"
+  debian:
+    - "cherrytree"
+  nixpkgs:
+    - "cherrytree"
+homepage:
+  - "http://www.giuspen.com/cherrytree"
+  - "https://github.com/giuspen/cherrytree"
+  - "https://www.giuspen.com/cherrytree"
+  - "https://www.giuspen.net/cherrytree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU GPLv3"
+  - "GPL-3"
+  - "GPL-3+"
+  - "GPL-3.0+"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-2.1-only"
+  - "GPL2"
+  - "GPL3"
+  - "GPLv2+"
+  - "GPLv3+"
+  - "LGPL-2.1"
+  - "MIT"
+src_url:
+  - "https://github.com/giuspen/cherrytree"
+tag:
+  - "Applications/Productivity"
+  - "Office"
+  - "Office/Utilities"
+  - "Productivity/Office/Other"
+  - "app-text"
+  - "debug"
+  - "deskutils"
+  - "editor"
+  - "editors"
+  - "office"
+  - "office.notes"
+  - "universe/editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/giuspen/cherrytree/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/giuspen/cherrytree" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

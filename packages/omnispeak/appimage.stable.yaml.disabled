@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "omnispeak"
+pkg_id: "github.com.mantralunar.omnispeak"
+pkg_type: "appimage"
+app_id: "github.com.mantralunar.omnispeak"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An open-source re-implementation of Commander Keen in Goodbye Galaxy"
+distro_pkg:
+  archlinux:
+    aur:
+      - "omnispeak"
+homepage:
+  - "https://davidgow.net/keen/omnispeak.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-2.0-only"
+  - "GPL2"
+src_url:
+  - "https://github.com/mantralunar/omnispeak"
+tag:
+  - "Amusements/Games/Action/Arcade"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mantralunar/omnispeak/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mantralunar/omnispeak" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

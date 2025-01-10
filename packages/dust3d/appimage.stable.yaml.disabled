@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dust3d"
+pkg_id: "github.com.huxingyi.dust3d"
+pkg_type: "appimage"
+app_id: "github.com.huxingyi.dust3d"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Dust3D is a cross-platform 3D modeling software that makes it easy to create low poly 3D models for video games, 3D printing, and more."
+distro_pkg:
+  archlinux:
+    aur:
+      - "dust3d"
+      - "dust3d-git"
+homepage:
+  - "https://dust3d.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+  - "MITL"
+src_url:
+  - "https://github.com/huxingyi/dust3d"
+tag:
+  - "Graphics/3D"
+  - "graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/huxingyi/dust3d/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/huxingyi/dust3d" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

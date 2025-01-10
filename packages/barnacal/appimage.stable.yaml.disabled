@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "barnacal"
+pkg_id: "github.com.mike-engel.Barnacal"
+pkg_type: "appimage"
+app_id: "github.com.mike-engel.Barnacal"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A simple menu bar app for viewing a calendar"
+homepage:
+  - "https://github.com/mike-engel/Barnacal"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/mike-engel/Barnacal"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mike-engel/Barnacal/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mike-engel/Barnacal" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

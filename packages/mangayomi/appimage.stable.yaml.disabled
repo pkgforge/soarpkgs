@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mangayomi"
+pkg_id: "github.com.kodjodevf.mangayomi"
+pkg_type: "appimage"
+app_id: "github.com.kodjodevf.mangayomi"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Free and open source application that allows users to read manga and stream anime from a variety of sources including BitTorrent available on Android, iOS, macOS, Linux and Windows"
+homepage:
+  - "https://github.com/kodjodevf/mangayomi"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache License 2.0"
+src_url:
+  - "https://github.com/kodjodevf/mangayomi"
+tag:
+  - "android"
+  - "anime"
+  - "anime-streaming"
+  - "dart"
+  - "dart-eval"
+  - "flutter"
+  - "ios"
+  - "isar"
+  - "linux"
+  - "macos"
+  - "manga"
+  - "manga-reader"
+  - "video"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kodjodevf/mangayomi/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kodjodevf/mangayomi" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kodjodevf/mangayomi" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

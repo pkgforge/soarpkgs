@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "helix"
+pkg_id: "github.com.helix-editor.helix"
+pkg_type: "appimage"
+app_id: "github.com.helix-editor.helix"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A post-modern modal text editor."
+homepage:
+  - "https://github.com/helix-editor/helix"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Mozilla Public License 2.0"
+src_url:
+  - "https://github.com/helix-editor/helix"
+tag:
+  - "kakoune"
+  - "rust"
+  - "text-editor"
+  - "vim"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/helix-editor/helix/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/helix-editor/helix" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/helix-editor/helix" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

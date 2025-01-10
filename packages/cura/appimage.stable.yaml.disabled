@@ -1,0 +1,67 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cura"
+pkg_id: "github.com.Ultimaker.Cura"
+pkg_type: "appimage"
+app_id: "github.com.Ultimaker.Cura"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "3D printer / slicing GUI built on top of the Uranium framework"
+distro_pkg:
+  alpine:
+    - "cura"
+  archlinux:
+    aur:
+      - "cura"
+      - "cura-bin"
+      - "cura-git"
+  debian:
+    - "cura"
+  nixpkgs:
+    - "cura"
+    - "cura_stable"
+homepage:
+  - "http://github.com/Ultimaker/Cura"
+  - "https://github.com/Ultimaker/Cura"
+  - "https://github.com/Ultimaker/Cura/wiki"
+  - "https://github.com/daid/Cura"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0"
+  - "AGPLv3 and CC-BY-SA"
+  - "AGPLv3+"
+  - "GNU Lesser General Public License, version 3.0"
+  - "GPL3"
+  - "LGPL"
+  - "LGPL-3.0-only"
+  - "LGPL-3.0-or-later"
+  - "LGPL3"
+  - "LGPLv3+"
+src_url:
+  - "https://github.com/Ultimaker/Cura"
+tag:
+  - "3d-printing"
+  - "Engineering"
+  - "Hardware/Printing"
+  - "System/Printing"
+  - "cad"
+  - "office"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Ultimaker/Cura/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Ultimaker/Cura" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Ultimaker/Cura" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

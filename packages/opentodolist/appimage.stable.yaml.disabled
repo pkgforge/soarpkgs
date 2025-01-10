@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "opentodolist"
+pkg_id: "github.com.mhoeher.opentodolist"
+pkg_type: "appimage"
+app_id: "github.com.mhoeher.opentodolist"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A simple Todo and task management application - Mirror of https://gitlab.com/rpdev/opentodolist"
+distro_pkg:
+  archlinux:
+    aur:
+      - "opentodolist"
+homepage:
+  - "https://opentodolist.rpdev.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+src_url:
+  - "https://github.com/mhoeher/opentodolist"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mhoeher/opentodolist/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/mhoeher/opentodolist" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/mhoeher/opentodolist" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

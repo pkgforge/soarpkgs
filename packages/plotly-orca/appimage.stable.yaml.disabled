@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "plotly-orca"
+pkg_id: "github.com.plotly.orca"
+pkg_type: "appimage"
+app_id: "github.com.plotly.orca"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Command line application for generating static images of interactive plotly charts"
+distro_pkg:
+  archlinux:
+    aur:
+      - "plotly-orca-appimage"
+homepage:
+  - "https://github.com/plotly/orca"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/plotly/orca"
+tag:
+  - "plotly"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/plotly/orca/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/plotly/orca" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

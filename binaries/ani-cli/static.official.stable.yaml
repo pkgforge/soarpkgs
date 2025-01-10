@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ani-cli/static.official.stable.yaml
+_disabled: false
+
+pkg: "ani-cli"
+pkg_id: "github.com.pystardust.ani-cli"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "CLI to browse and watch anime"
+homepage:
+  - "https://github.com/pystardust/ani-cli"
+license:
+  - id : "GPL-3.0"
+    url: "https://github.com/pystardust/ani-cli/raw/25959086230e9354cf96acc6d3a310d57f392221/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Fetched from Upstream. Check/Report @ https://github.com/pystardust/ani-cli"
+provides:
+  - "ani-cli"  
+repology:
+  - "ani-cli"
+src_url:
+  - "https://github.com/pystardust/ani-cli"
+tag:
+  - "anime"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/pystardust/ani-cli" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Download
+     soar dl "https://raw.githubusercontent.com/pystardust/ani-cli/master/ani-cli" -o "${SBUILD_OUTDIR}/ani-cli" --yes

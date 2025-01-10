@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "plume"
+pkg_id: "github.com.nuttyartist.plume-public"
+pkg_type: "appimage"
+app_id: "github.com.nuttyartist.plume-public"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Write beautifully. Effortlessly. A note-taking app written in Qt C++ and QML."
+distro_pkg:
+  archlinux:
+    aur:
+      - "plume"
+homepage:
+  - "https://joinplu.me"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL3"
+src_url:
+  - "https://github.com/nuttyartist/plume-public"
+tag:
+  - "c-plus-plus"
+  - "cpp"
+  - "cross-platform"
+  - "gui"
+  - "local-first"
+  - "markdown"
+  - "note-managment"
+  - "note-taking"
+  - "note-taking-app"
+  - "personal-knowledge-management"
+  - "productivity"
+  - "qt"
+  - "qt6"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/nuttyartist/plume-public/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/nuttyartist/plume-public" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

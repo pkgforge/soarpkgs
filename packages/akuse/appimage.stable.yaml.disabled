@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "akuse"
+pkg_id: "github.com.akuse-app.akuse"
+pkg_type: "appimage"
+app_id: "github.com.akuse-app.akuse"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "🌸 Simple and easy to use anime streaming desktop app without ads."
+distro_pkg:
+  archlinux:
+    aur:
+      - "akuse"
+      - "akuse-bin"
+      - "akuse-git"
+homepage:
+  - "https://github.com/akuse-app/Akuse"
+  - "https://github.com/akuse-app/akuse"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/akuse-app/akuse"
+tag:
+  - "anilist"
+  - "anime"
+  - "app"
+  - "desktop"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/akuse-app/akuse/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/akuse-app/akuse" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

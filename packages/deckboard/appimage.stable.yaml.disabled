@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "deckboard"
+pkg_id: "github.com.rivafarabi.deckboard"
+pkg_type: "appimage"
+app_id: "github.com.rivafarabi.deckboard"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Control your PC with your phone in easy way possible. News and updates on @DeckboardApp."
+distro_pkg:
+  archlinux:
+    aur:
+      - "deckboard-bin"
+homepage:
+  - "https://deckboard.app"
+  - "https://github.com/rivafarabi/deckboard"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LicenseRef-custom"
+src_url:
+  - "https://github.com/rivafarabi/deckboard"
+tag:
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rivafarabi/deckboard/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/rivafarabi/deckboard" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

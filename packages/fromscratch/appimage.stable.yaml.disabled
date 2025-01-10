@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fromscratch"
+pkg_id: "github.com.Kilian.fromscratch"
+pkg_type: "appimage"
+app_id: "github.com.Kilian.fromscratch"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Autosaving Scratchpad. A simple but smart note-taking app"
+distro_pkg:
+  archlinux:
+    aur:
+      - "fromscratch-bin"
+homepage:
+  - "https://fromscratch.rocks"
+  - "https://github.com/Kilian/fromscratch"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/Kilian/fromscratch"
+tag:
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Kilian/fromscratch/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Kilian/fromscratch" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

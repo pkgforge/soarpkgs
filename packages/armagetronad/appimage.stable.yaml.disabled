@@ -1,0 +1,76 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "armagetronad"
+pkg_id: "github.com.ArmagetronAd.armagetronad"
+pkg_type: "appimage"
+app_id: "github.com.ArmagetronAd.armagetronad"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "null"
+distro_pkg:
+  alpine:
+    - "armagetronad"
+  archlinux:
+    aur:
+      - "armagetronad-git"
+    extra:
+      - "armagetronad"
+  debian:
+    - "armagetronad"
+  nixpkgs:
+    - "armagetronad"
+homepage:
+  - "http://armagetron.sourceforge.net"
+  - "http://armagetronad.net"
+  - "http://armagetronad.org"
+  - "http://armagetronad.sourceforge.net"
+  - "http://www.armagetronad.org"
+  - "http://www.armagetronad.org/downloads.php"
+  - "https://armagetronad.net"
+  - "https://armagetronad.sourceforge.net"
+  - "https://github.com/ArmagetronAd/armagetronad"
+  - "https://launchpad.net/armagetronad"
+  - "https://sourceforge.net/projects/armagetronad"
+  - "https://www.armagetronad.org"
+  - "https://www.armagetronad.org/index.php"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL-1.0-only"
+  - "GPL-2+"
+  - "GPL-2.0+"
+  - "GPL-2.0-or-later"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/ArmagetronAd/armagetronad"
+tag:
+  - "Amusements/Games/Action/Arcade"
+  - "Games/Arcade"
+  - "Graphical"
+  - "debug"
+  - "games"
+  - "games-action"
+  - "games.arcade"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ArmagetronAd/armagetronad/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ArmagetronAd/armagetronad" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

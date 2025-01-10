@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "godmode"
+pkg_id: "github.com.smol-ai.GodMode"
+pkg_type: "appimage"
+app_id: "github.com.smol-ai.GodMode"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "AI Chat Browser: Fast, Full webapp access to ChatGPT / Claude / Bard / Bing / Llama2! I use this 20 times a day."
+distro_pkg:
+  archlinux:
+    aur:
+      - "godmode"
+      - "godmode-bin"
+homepage:
+  - "https://smol.ai"
+  - "https://www.microsoft.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/smol-ai/GodMode"
+tag:
+  - "bard"
+  - "chatgpt"
+  - "electron"
+  - "google"
+  - "menubar"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/smol-ai/GodMode/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/smol-ai/GodMode" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/smol-ai/GodMode" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

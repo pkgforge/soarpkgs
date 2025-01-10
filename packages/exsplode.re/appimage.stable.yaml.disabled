@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "exsplode.re"
+pkg_id: "github.com.AmarOk1412.Eksplode.re"
+pkg_type: "appimage"
+app_id: "github.com.AmarOk1412.Eksplode.re"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Eksplode.re is a Bomberman game made with Godot under BSD3"
+homepage:
+  - "https://github.com/AmarOk1412/Eksplode.re"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/AmarOk1412/Eksplode.re"
+tag:
+  - "bomberman"
+  - "bsd"
+  - "game"
+  - "godot"
+  - "linux"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AmarOk1412/Eksplode.re/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AmarOk1412/Eksplode.re" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mira-backup"
+pkg_id: "github.com.myazarc.mira-backup"
+pkg_type: "appimage"
+app_id: "github.com.myazarc.mira-backup"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Mira Auto Database Backup app"
+homepage:
+  - "https://github.com/myazarc/mira-backup"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/myazarc/mira-backup"
+tag:
+  - "backup"
+  - "db"
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/myazarc/mira-backup/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/myazarc/mira-backup" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

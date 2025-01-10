@@ -1,0 +1,67 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/0ad/appimage.0ad-matters.latest.yaml
+_disabled: false
+
+pkg: "0ad-latest"
+pkg_id: "github.0ad-matters.0ad-appimage.latest"
+pkg_type: "appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Game"
+description: "A FOSS historical Real Time Strategy (RTS) game"
+distro_pkg:
+  archlinux:
+    aur:
+      - "0ad-git"
+    extra:
+      - "0ad"  
+  debian:
+    - "0ad"    
+  nixpkgs:
+    - "zeroad"
+homepage:
+  - "https://play0ad.com"
+  - "https://wildfiregames.com/0ad"
+  - "https://www.wildfiregames.com/0ad"
+  - "https://github.com/0ad/0ad"
+  - "https://play0ad.com"
+  - "https://sourceforge.net/projects/zero-ad"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Community Created AppImage. Check/Report @ https://github.com/0ad-matters/0ad-appimage"
+  - "If you have a GPU that has a chipset other than Nvidia, the  Vulkan backend may be automatically disabled in some cases"
+  - "This  version is based on the latest Ubuntu LTS, so it should not work on older distros"
+  - "In case of problems, install '0ad' instead"
+repology:
+  - "0ad"
+src_url:
+  - "https://github.com/0ad-matters/0ad-appimage"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Strategy/Real Time"
+  - "Games"
+  - "Games/Strategy"
+  - "age-of-empires"
+  - "games"
+  - "games-strategy"
+  - "games.strategy"
+  - "universe/games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/0ad-matters/0ad-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported: https://github.com/0ad-matters/0ad-appimage/releases/\n"
+        ;;
+      x86_64)
+        soar dl "https://github.com/0ad-matters/0ad-appimage@${RELEASE_TAG}" --match "appimage,x86_64" --exclude "aarch64,arm,bsum,b3sum,shasum,sha1,sha256,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

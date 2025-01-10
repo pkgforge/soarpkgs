@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "crossmobile"
+pkg_id: "github.com.crossmob.CrossMobile"
+pkg_type: "appimage"
+app_id: "github.com.crossmob.CrossMobile"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Create native iOS, Android, Windows Phone and Desktop applications in Java. Write it once, and produce sophisticated multiplatform applications."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://crossmobile.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LGPL-3.0"
+src_url:
+  - "https://github.com/crossmob/CrossMobile"
+tag:
+  - "android"
+  - "cross-compiler"
+  - "cross-platform"
+  - "ios"
+  - "ios-app"
+  - "ios-sdk"
+  - "java"
+  - "mobile"
+  - "mobile-app"
+  - "mobile-development"
+  - "xmlvm"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/crossmob/CrossMobile/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/crossmob/CrossMobile" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/crossmob/CrossMobile" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

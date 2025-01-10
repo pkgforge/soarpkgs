@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pointless"
+pkg_id: "github.com.kkoomen.pointless"
+pkg_type: "appimage"
+app_id: "github.com.kkoomen.pointless"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An endless drawing canvas desktop app made with Tauri (Rust) and React 🎨 ✍️"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pointless"
+homepage:
+  - "https://github.com/kkoomen/pointless"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/kkoomen/pointless"
+tag:
+  - "canvas"
+  - "cross-platform"
+  - "desktop"
+  - "drawing"
+  - "endless"
+  - "linux"
+  - "macos"
+  - "react"
+  - "reactjs"
+  - "rust"
+  - "tauri"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kkoomen/pointless/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kkoomen/pointless" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kkoomen/pointless" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

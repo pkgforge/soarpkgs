@@ -1,0 +1,76 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bottom/static.official.stable.yaml
+_disabled: false
+
+pkg: "bottom"
+pkg_id: "github.com.ClementTsang.bottom"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A customizable Graphical Process/System Monitor for the Terminal"
+distro_pkg:
+  alpine:
+    - "bottom"
+  archlinux:
+    aur:
+      - "bottom-git"
+    extra:
+      - "bottom"
+  homebrew:
+    - "bottom"
+  nixpkgs:
+    - "bottom"
+homepage:
+  - "https://github.com/ClementTsang/bottom"
+license:
+  - id : "MIT"
+    url: "https://github.com/ClementTsang/bottom/raw/dbda1ee56f47ccbf517f21af9bd69ea3f6819fe9/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/ClementTsang/bottom"
+provides:
+  - "bottom==btm"    
+repology:
+  - "bottom"
+src_url:
+  - "https://github.com/ClementTsang/bottom"
+tag:
+  - "btop"
+  - "htop"
+  - "monitoring"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ClementTsang/bottom/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ClementTsang/bottom@${RELEASE_TAG}" --match "linux,aarch64,musl,tar" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ClementTsang/bottom@${RELEASE_TAG}" --match "linux,x86_64,musl,tar" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "$SBUILD_TMPDIR" -type f -exec file -i "{}" + | 
+     grep -E "archive|compressed|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"$SBUILD_TMPDIR/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/bottom"
+    cp -fv "${SBUILD_OUTDIR}/bottom" "${SBUILD_OUTDIR}/btm"

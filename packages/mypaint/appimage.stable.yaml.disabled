@@ -1,0 +1,81 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mypaint"
+pkg_id: "github.com.mypaint.mypaint"
+pkg_type: "appimage"
+app_id: "github.com.mypaint.mypaint"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "MyPaint is a simple drawing and painting program that works well with Wacom-style graphics tablets."
+distro_pkg:
+  alpine:
+    - "mypaint"
+  archlinux:
+    aur:
+      - "mypaint-git"
+    extra:
+      - "mypaint"
+  debian:
+    - "mypaint"
+  nixpkgs:
+    - "mypaint"
+homepage:
+  - "http://mypaint.app"
+  - "http://mypaint.info"
+  - "http://mypaint.intilinux.com"
+  - "http://mypaint.org"
+  - "https://github.com/mypaint/mypaint"
+  - "https://mypaint.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License version 2"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later and ISC and Public-domain"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and LGPLv2+ and CC-BY"
+  - "gpl2"
+  - "spdx:GPL-2.0-or-later AND ISC"
+src_url:
+  - "https://github.com/mypaint/mypaint"
+tag:
+  - "Applications/Multimedia"
+  - "Debug"
+  - "Graphical"
+  - "Graphics"
+  - "Graphics/Editors"
+  - "Photo"
+  - "Productivity/Graphics/Other"
+  - "art"
+  - "debug"
+  - "extra/graphic"
+  - "graphics"
+  - "media-gfx"
+  - "multimedia.graphics"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mypaint/mypaint/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mypaint/mypaint" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

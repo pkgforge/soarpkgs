@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "loginized"
+pkg_id: "github.com.juhaku.loginized"
+pkg_type: "appimage"
+app_id: "github.com.juhaku.loginized"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Gnome GDM Login Theme Manager. Easy and Fast Login Theme Manipulation"
+distro_pkg:
+  archlinux:
+    aur:
+      - "loginized"
+homepage:
+  - "https://github.com/juhaku/loginized"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/juhaku/loginized"
+tag:
+  - "electron-vue"
+  - "gdm"
+  - "gnome"
+  - "gnome-shell"
+  - "login-screen-changer"
+  - "login-theme-manipulator"
+  - "login-theme-switcher"
+  - "theme-manipulator"
+  - "theme-switcher"
+  - "vue"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/juhaku/loginized/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/juhaku/loginized" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

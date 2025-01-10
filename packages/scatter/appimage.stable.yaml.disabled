@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "scatter"
+pkg_id: "github.com.GetScatter.ScatterDesktop"
+pkg_type: "appimage"
+app_id: "github.com.GetScatter.ScatterDesktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Connect to applications on EOS, Ethereum, and Tron. Exchange tokens with ease. Manage your assets safely. All in a simple to use interface."
+distro_pkg:
+  archlinux:
+homepage:
+  - "https://github.com/GetScatter/ScatterDesktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/GetScatter/ScatterDesktop"
+tag:
+  - "blockchain"
+  - "blockchain-technology"
+  - "blockchain-wallet"
+  - "crypto"
+  - "cryptocurrency"
+  - "eos"
+  - "ethereum"
+  - "tron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/GetScatter/ScatterDesktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/GetScatter/ScatterDesktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

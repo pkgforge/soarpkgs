@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vocabsieve"
+pkg_id: "github.com.FreeLanguageTools.vocabsieve"
+pkg_type: "appimage"
+app_id: "github.com.FreeLanguageTools.vocabsieve"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Simple sentence mining tool for language learning"
+distro_pkg:
+  archlinux:
+    aur:
+      - "vocabsieve"
+homepage:
+  - "https://github.com/FreeLanguageTools/vocabsieve"
+  - "https://pypi.org/project/vocabsieve"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3"
+  - "GPL3"
+src_url:
+  - "https://github.com/FreeLanguageTools/vocabsieve"
+tag:
+  - "anki"
+  - "epub"
+  - "language-learning"
+  - "python"
+  - "sentence-mining"
+  - "spaced-repetition"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FreeLanguageTools/vocabsieve/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/FreeLanguageTools/vocabsieve" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/FreeLanguageTools/vocabsieve" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

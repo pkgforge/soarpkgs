@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "burning-series"
+pkg_id: "github.com.DATL4G.BurningSeries-Android"
+pkg_type: "appimage"
+app_id: "github.com.DATL4G.BurningSeries-Android"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Watch any series from Burning Series using this app. This is an unofficial Burning Series App"
+homepage:
+  - "https://github.com/DATL4G/BurningSeries-Android"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/DATL4G/BurningSeries-Android"
+tag:
+  - "android"
+  - "app"
+  - "kotlin"
+  - "streaming"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/DATL4G/BurningSeries-Android/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/DATL4G/BurningSeries-Android" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/DATL4G/BurningSeries-Android" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

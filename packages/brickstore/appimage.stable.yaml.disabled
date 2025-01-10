@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "brickstore"
+pkg_id: "github.com.rgriebl.brickstore"
+pkg_type: "appimage"
+app_id: "github.com.rgriebl.brickstore"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An offline BrickLink inventory management tool."
+distro_pkg:
+  archlinux:
+    aur:
+      - "brickstore"
+  nixpkgs:
+    - "brickstore"
+homepage:
+  - "https://github.com/rgriebl/brickstore"
+  - "https://www.brickstore.dev"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/rgriebl/brickstore"
+tag:
+  - "bricklink"
+  - "brickstock"
+  - "lego"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rgriebl/brickstore/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/rgriebl/brickstore" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/rgriebl/brickstore" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

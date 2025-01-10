@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qview"
+pkg_id: "github.com.jurplel.qView"
+pkg_type: "appimage"
+app_id: "github.com.jurplel.qView"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Practical and minimal image viewer"
+distro_pkg:
+  archlinux:
+    aur:
+      - "qview"
+      - "qview-git"
+  nixpkgs:
+    - "qview"
+homepage:
+  - "https://github.com/jurplel/qView"
+  - "https://interversehq.com/qview"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+  - "GPL-3+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/jurplel/qView"
+tag:
+  - "Graphics"
+  - "Graphics/Viewers"
+  - "Productivity/Graphics/Viewers"
+  - "cross-platform"
+  - "graphics"
+  - "media-gfx"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jurplel/qView/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/jurplel/qView" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

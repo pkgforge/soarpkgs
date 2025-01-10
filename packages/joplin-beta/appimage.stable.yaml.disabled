@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "joplin-beta"
+pkg_id: "github.com.laurent22.joplin"
+pkg_type: "appimage"
+app_id: "github.com.laurent22.joplin"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS."
+homepage:
+  - "https://github.com/laurent22/joplin"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/laurent22/joplin"
+tag:
+  - "android"
+  - "dropbox"
+  - "electron"
+  - "enex-files"
+  - "evernote"
+  - "javascript"
+  - "joplin"
+  - "nextcloud"
+  - "nodejs"
+  - "note-taking"
+  - "onedrive"
+  - "react-native"
+  - "synchronisation"
+  - "web-clipper"
+  - "webdav"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/laurent22/joplin/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/laurent22/joplin" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/laurent22/joplin" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

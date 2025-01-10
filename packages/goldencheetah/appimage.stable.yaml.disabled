@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "goldencheetah"
+pkg_id: "github.com.GoldenCheetah.GoldenCheetah"
+pkg_type: "appimage"
+app_id: "github.com.GoldenCheetah.GoldenCheetah"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Performance Software for Cyclists, Runners, Triathletes and Coaches"
+distro_pkg:
+  archlinux:
+    aur:
+      - "golden-cheetah-appimage"
+      - "golden-cheetah-git"
+  debian:
+    - "goldencheetah"
+  nixpkgs:
+    - "golden-cheetah"
+    - "golden-cheetah-bin"
+homepage:
+  - "http://goldencheetah.org"
+  - "http://www.goldencheetah.org"
+  - "https://www.goldencheetah.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2.0-or-later"
+  - "GPL-3.0-only"
+  - "GPLv3"
+src_url:
+  - "https://github.com/GoldenCheetah/GoldenCheetah"
+tag:
+  - "Graphical"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/GoldenCheetah/GoldenCheetah/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/GoldenCheetah/GoldenCheetah" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

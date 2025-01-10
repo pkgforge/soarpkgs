@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sharp-tune"
+pkg_id: "github.com.MD-AZMAL.Sharp-Tune"
+pkg_type: "appimage"
+app_id: "github.com.MD-AZMAL.Sharp-Tune"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Lightweight Cross-platform music player build upon the node using the electron framework."
+homepage:
+  - "https://github.com/MD-AZMAL/Sharp-Tune"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/MD-AZMAL/Sharp-Tune"
+tag:
+  - "cross-platform"
+  - "css3"
+  - "electron"
+  - "electron-app"
+  - "electron-builder"
+  - "electron-updater"
+  - "html5"
+  - "javascript"
+  - "jquery"
+  - "linux"
+  - "music"
+  - "music-player"
+  - "node"
+  - "node-js"
+  - "nodejs"
+  - "npm"
+  - "sound"
+  - "webaudioapi"
+  - "windows"
+  - "windows-10"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/MD-AZMAL/Sharp-Tune/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/MD-AZMAL/Sharp-Tune" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

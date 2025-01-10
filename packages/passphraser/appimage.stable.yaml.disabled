@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "passphraser"
+pkg_id: "github.com.zevlee.passphraser"
+pkg_type: "appimage"
+app_id: "github.com.zevlee.passphraser"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Phrase-based password generator that can use your own list of words available on Windows, macOS, and Linux"
+homepage:
+  - "https://github.com/zevlee/passphraser"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/zevlee/passphraser"
+tag:
+  - "gtk4"
+  - "gui"
+  - "gui-application"
+  - "passphrase"
+  - "passphrase-generator"
+  - "password"
+  - "password-generator"
+  - "pygobject"
+  - "python"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zevlee/passphraser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/zevlee/passphraser" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/zevlee/passphraser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,69 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cpu-x"
+pkg_id: "github.com.TheTumultuousUnicornOfDarkness.CPU-X"
+pkg_type: "appimage"
+app_id: "github.com.TheTumultuousUnicornOfDarkness.CPU-X"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "CPU-X is a Free software that gathers information on CPU, motherboard and more"
+distro_pkg:
+  alpine:
+    - "cpu-x"
+  archlinux:
+    aur:
+      - "cpu-x"
+      - "cpu-x-git"
+  debian:
+    - "cpu-x"
+  nixpkgs:
+    - "cpu-x"
+homepage:
+  - "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+  - "https://github.com/X0rg/CPU-X"
+  - "https://github.com/x0rg/CPU-X"
+  - "https://thetumultuousunicornofdarkness.github.io/CPU-X"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X"
+tag:
+  - "Development/Other"
+  - "Monitoring"
+  - "System/Kernel"
+  - "System/X11/Utilities"
+  - "Utilities"
+  - "debug"
+  - "extra/tool"
+  - "sys-apps"
+  - "system"
+  - "system.utils"
+  - "sysutils"
+  - "x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/TheTumultuousUnicornOfDarkness/CPU-X/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/TheTumultuousUnicornOfDarkness/CPU-X" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

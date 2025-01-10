@@ -1,0 +1,58 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pince"
+pkg_id: "github.com.korcankaraokcu.PINCE"
+pkg_type: "appimage"
+app_id: "github.com.korcankaraokcu.PINCE"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Reverse engineering tool for linux games"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pince"
+      - "pince-git"
+homepage:
+  - "https://github.com/korcankaraokcu/PINCE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later WITH CC-BY-3.0"
+src_url:
+  - "https://github.com/korcankaraokcu/PINCE"
+tag:
+  - "assembler"
+  - "cheat-engine"
+  - "debugging-tool"
+  - "disassembler"
+  - "dissect-code"
+  - "game-hacking"
+  - "gdb"
+  - "gdb-python-scripts"
+  - "hex-editor"
+  - "injection"
+  - "memory-hacking"
+  - "opcode-searcher"
+  - "patcher"
+  - "python3"
+  - "reverse-engineering"
+  - "tracer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/korcankaraokcu/PINCE/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/korcankaraokcu/PINCE" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

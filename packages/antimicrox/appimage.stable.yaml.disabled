@@ -1,0 +1,64 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "antimicrox"
+pkg_id: "github.com.AntiMicroX.antimicrox"
+pkg_type: "appimage"
+app_id: "github.com.AntiMicroX.antimicrox"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Graphical program used to map keyboard buttons and mouse controls to a gamepad. Useful for playing games with no gamepad support."
+distro_pkg:
+  alpine:
+    - "antimicrox"
+  archlinux:
+    aur:
+      - "antimicrox-git"
+    extra:
+      - "antimicrox"
+  nixpkgs:
+    - "antimicrox"
+homepage:
+  - "https://github.com/AntiMicroX"
+  - "https://github.com/AntiMicroX/antimicroX"
+  - "https://github.com/AntiMicroX/antimicrox"
+  - "https://github.com/juliagoda/antimicroX"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND Zlib AND LGPL-3.0-or-later AND LGPL-2.1-or-later"
+  - "GPL-3.0-or-later and Zlib"
+  - "GPL3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/AntiMicroX/antimicrox"
+tag:
+  - "Hardware/Joystick"
+  - "System/Configuration/Hardware"
+  - "controller"
+  - "debug"
+  - "games"
+  - "games-util"
+  - "x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AntiMicroX/antimicrox/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/AntiMicroX/antimicrox" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

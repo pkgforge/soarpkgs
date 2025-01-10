@@ -1,0 +1,60 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "etcher"
+pkg_id: "github.com.balena-io.etcher"
+pkg_type: "appimage"
+app_id: "github.com.balena-io.etcher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Flash OS images to SD cards & USB drives, safely and easily."
+distro_pkg:
+  archlinux:
+    aur:
+      - "balena-etcher"
+      - "etcher-bin"
+      - "etcher-git"
+  nixpkgs:
+    - "etcher"
+homepage:
+  - "https://balena.io/etcher"
+  - "https://etcher.balena.io"
+  - "https://etcher.io"
+  - "https://github.com/balena-io/etcher"
+  - "https://www.balena.io/etcher"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache License 2.0"
+  - "Apache-2.0"
+  - "GPL2"
+  - "apache"
+src_url:
+  - "https://github.com/balena-io/etcher"
+tag:
+  - "System/Configuration/Other"
+  - "Tools"
+  - "boot"
+  - "cross-platform"
+  - "debug"
+  - "flash"
+  - "foss"
+  - "system.utils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/balena-io/etcher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/balena-io/etcher" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/balena-io/etcher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

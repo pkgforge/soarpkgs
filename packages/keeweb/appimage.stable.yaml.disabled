@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "keeweb"
+pkg_id: "github.com.keeweb.keeweb"
+pkg_type: "appimage"
+app_id: "github.com.keeweb.keeweb"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Free cross-platform password manager compatible with KeePass"
+distro_pkg:
+  archlinux:
+    aur:
+      - "keeweb"
+      - "keeweb-git"
+  nixpkgs:
+    - "keeweb"
+homepage:
+  - "https://github.com/keeweb/keeweb"
+  - "https://keeweb.info"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/keeweb/keeweb"
+tag:
+  - "electron"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/keeweb/keeweb/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/keeweb/keeweb" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/keeweb/keeweb" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

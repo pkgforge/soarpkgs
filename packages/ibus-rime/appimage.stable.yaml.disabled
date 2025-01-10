@@ -1,0 +1,68 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ibus-rime"
+pkg_id: "github.com.hchunhui.ibus-rime.AppImage"
+pkg_type: "appimage"
+app_id: "github.com.hchunhui.ibus-rime.AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "null"
+distro_pkg:
+  alpine:
+    - "ibus-rime"
+  archlinux:
+    extra:
+      - "ibus-rime"
+  debian:
+    - "ibus-rime"
+  nixpkgs:
+    - "ibus-engines.rime"
+homepage:
+  - "http://code.google.com/p/rimeime"
+  - "https://github.com/lotem/ibus-rime"
+  - "https://github.com/rime/ibus-rime"
+  - "https://rime.im"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/hchunhui/ibus-rime.AppImage"
+tag:
+  - "System/I18n/Chinese"
+  - "System/Internationalization"
+  - "System/Libraries"
+  - "app-i18n"
+  - "chinese"
+  - "debug"
+  - "desktop.core"
+  - "ibus-engines"
+  - "inputmethod"
+  - "libs"
+  - "x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hchunhui/ibus-rime.AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hchunhui/ibus-rime.AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "guiscrcpy"
+pkg_id: "github.com.srevinsaju.guiscrcpy"
+pkg_type: "appimage"
+app_id: "github.com.srevinsaju.guiscrcpy"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A full fledged GUI integration for the award winning open-source android screen mirroring system -- scrcpy located on https://github.com/genymobile/scrcpy/ by @rom1v"
+distro_pkg:
+  archlinux:
+    aur:
+      - "guiscrcpy"
+      - "guiscrcpy-appimage"
+      - "guiscrcpy-git"
+homepage:
+  - "https://github.com/srevinsaju/guiscrcpy"
+  - "https://guiscrcpy.srev.in"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/srevinsaju/guiscrcpy"
+tag:
+  - "app"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/guiscrcpy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/srevinsaju/guiscrcpy" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

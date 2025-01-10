@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "freeshow"
+pkg_id: "github.com.ChurchApps.FreeShow"
+pkg_type: "appimage"
+app_id: "github.com.ChurchApps.FreeShow"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "FreeShow is a free and open-source, user-friendly presenter software."
+distro_pkg:
+  archlinux:
+    aur:
+      - "freeshow-bin"
+homepage:
+  - "https://freeshow.app"
+  - "https://github.com/ChurchApps/FreeShow"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/ChurchApps/FreeShow"
+tag:
+  - "church"
+  - "easy-to-use"
+  - "free"
+  - "lyrics"
+  - "media"
+  - "presenter"
+  - "show"
+  - "text"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ChurchApps/FreeShow/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ChurchApps/FreeShow" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ChurchApps/FreeShow" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

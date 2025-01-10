@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ytmdesktop2"
+pkg_id: "github.com.Venipa.ytmdesktop2"
+pkg_type: "appimage"
+app_id: "github.com.Venipa.ytmdesktop2"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Unofficial Youtube Music Desktop App, with LastFM support."
+homepage:
+  - "https://github.com/Venipa/ytmdesktop2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Creative Commons Zero v1.0 Universal"
+src_url:
+  - "https://github.com/Venipa/ytmdesktop2"
+tag:
+  - "app"
+  - "discord"
+  - "electron"
+  - "javascript"
+  - "last-fm"
+  - "lastfm"
+  - "music"
+  - "music-player"
+  - "node"
+  - "typescript"
+  - "vue"
+  - "vue3"
+  - "youtube"
+  - "youtube-music"
+  - "youtube-music-player"
+  - "youtube-player"
+  - "ytm"
+  - "ytmusic"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Venipa/ytmdesktop2/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Venipa/ytmdesktop2" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Venipa/ytmdesktop2" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

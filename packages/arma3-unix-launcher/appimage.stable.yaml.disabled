@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "arma3-unix-launcher"
+pkg_id: "github.com.muttleyxd.arma3-unix-launcher"
+pkg_type: "appimage"
+app_id: "github.com.muttleyxd.arma3-unix-launcher"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Launcher for Linux and Mac ArmA 3"
+distro_pkg:
+  archlinux:
+    aur:
+      - "arma3-unix-launcher-bin"
+  nixpkgs:
+    - "arma3-unix-launcher"
+homepage:
+  - "https://github.com/muttleyxd/arma3-unix-launcher"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "Unfree"
+src_url:
+  - "https://github.com/muttleyxd/arma3-unix-launcher"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/muttleyxd/arma3-unix-launcher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/muttleyxd/arma3-unix-launcher" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

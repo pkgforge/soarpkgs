@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dicomautomaton"
+pkg_id: "github.com.hdclark.DICOMautomaton"
+pkg_type: "appimage"
+app_id: "github.com.hdclark.DICOMautomaton"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A multipurpose tool for medical physics."
+homepage:
+  - "https://github.com/hdclark/DICOMautomaton"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/hdclark/DICOMautomaton"
+tag:
+  - "contours"
+  - "dicom"
+  - "dose"
+  - "image-analysis"
+  - "image-processing"
+  - "medical-physics"
+  - "perfusion"
+  - "point-clouds"
+  - "radiomics-feature-extraction"
+  - "radiotherapy"
+  - "registration"
+  - "surface-meshes"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hdclark/DICOMautomaton/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/hdclark/DICOMautomaton" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/hdclark/DICOMautomaton" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

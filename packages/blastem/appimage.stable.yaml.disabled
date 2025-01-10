@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "blastem"
+pkg_id: "github.com.mantralunar.blastem"
+pkg_type: "appimage"
+app_id: "github.com.mantralunar.blastem"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Clone of Mercurial Repo https://www.retrodev.com/blastem/"
+distro_pkg:
+  archlinux:
+    aur:
+      - "blastem"
+      - "blastem-bin"
+      - "blastem-hg"
+  debian:
+    - "blastem"
+  nixpkgs:
+    - "blastem"
+homepage:
+  - "https://www.retrodev.com/blastem"
+  - "https://www.retrodev.com/blastem/changes.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/mantralunar/blastem"
+tag:
+  - "Emulators"
+  - "emulators"
+  - "games"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mantralunar/blastem/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mantralunar/blastem" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

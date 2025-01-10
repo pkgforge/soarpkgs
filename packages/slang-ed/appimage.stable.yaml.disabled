@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "slang-ed"
+pkg_id: "github.com.jrierab.slang-ed"
+pkg_type: "appimage"
+app_id: "github.com.jrierab.slang-ed"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Simple Lang Files Editor - An Electron/Ionic application to edit i18n language translations files. It is intended to ease the translation of your content to different languages when using the ngx-translate internationalization (i18n) library for Angular. Allows the edition of JSON translation files."
+homepage:
+  - "https://github.com/jrierab/slang-ed"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/jrierab/slang-ed"
+tag:
+  - "electron"
+  - "ionic4"
+  - "ngx-translate"
+  - "typescript"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jrierab/slang-ed/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/jrierab/slang-ed" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

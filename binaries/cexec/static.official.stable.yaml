@@ -1,0 +1,61 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/cexec/static.official.stable.yaml
+_disabled: false
+
+pkg: "cexec"
+pkg_id: "github.com.mrusme.cexec"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Execute any command, cache its output and get cached output on subsequent execution"
+homepage:
+  - "https://github.com/mrusme/cexec"
+license:
+  - id : "GPL-3.0"
+    url: "https://github.com/mrusme/cexec/raw/d9061cccd88ecf99da4755709eb9a0f45893f881/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/mrusme/cexec"
+provides:
+  - "cexec"  
+#repology:
+#  - "cexec"
+src_url:
+  - "https://github.com/mrusme/cexec"
+tag:
+  - "cache"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mrusme/cexec/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/mrusme/cexec@${RELEASE_TAG}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/mrusme/cexec@${RELEASE_TAG}" --match "linux,amd64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "$SBUILD_TMPDIR" -type f -exec file -i "{}" + | 
+     grep -E "archive|compressed|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"$SBUILD_TMPDIR/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/cexec"

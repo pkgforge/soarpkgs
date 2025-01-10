@@ -1,0 +1,34 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "thermusqt"
+pkg_id: "github.com.yschutz.ThermusQt"
+pkg_type: "appimage"
+app_id: "github.com.yschutz.ThermusQt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Qt implementation of Thermus, the thermal statistical model"
+homepage:
+  - "https://github.com/yschutz/ThermusQt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/yschutz/ThermusQt"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/yschutz/ThermusQt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/yschutz/ThermusQt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

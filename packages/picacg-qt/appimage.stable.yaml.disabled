@@ -1,0 +1,53 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "picacg-qt"
+pkg_id: "github.com.tonquer.picacg-qt"
+pkg_type: "appimage"
+app_id: "github.com.tonquer.picacg-qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "哔咔漫画, PicACG comic PC client(Windows, Linux, MacOS)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "picacg-qt"
+      - "picacg-qt-appimage"
+homepage:
+  - "https://github.com/tonquer/picacg-qt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LGPL3"
+src_url:
+  - "https://github.com/tonquer/picacg-qt"
+tag:
+  - "bika"
+  - "comic"
+  - "doujinshi"
+  - "picacg"
+  - "picacomic"
+  - "pyside6"
+  - "qt6"
+  - "r18"
+  - "realcugan"
+  - "realesrgan"
+  - "waifu2x"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/tonquer/picacg-qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/tonquer/picacg-qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

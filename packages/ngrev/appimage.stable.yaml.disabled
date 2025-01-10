@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ngrev"
+pkg_id: "github.com.mgechev.ngrev"
+pkg_type: "appimage"
+app_id: "github.com.mgechev.ngrev"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Tool for reverse engineering of Angular applications"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ngrev-bin"
+homepage:
+  - "https://github.com/mgechev/ngrev"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/mgechev/ngrev"
+tag:
+  - "angular"
+  - "electron"
+  - "ngast"
+  - "reverse-engineering"
+  - "source-code-analysis"
+  - "visualization"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mgechev/ngrev/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mgechev/ngrev" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

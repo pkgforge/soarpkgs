@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "legcord"
+pkg_id: "github.com.Legcord.Legcord"
+pkg_type: "appimage"
+app_id: "github.com.Legcord.Legcord"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Legcord is a custom client designed to enhance your Discord experience while keeping everything lightweight."
+distro_pkg:
+  archlinux:
+    aur:
+      - "legcord"
+      - "legcord-bin"
+      - "legcord-git"
+  nixpkgs:
+    - "legcord"
+homepage:
+  - "https://github.com/LegCord/LegCord"
+  - "https://github.com/Legcord/Legcord"
+  - "https://legcord.app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "BSD"
+  - "MIT"
+  - "OSL-3.0"
+  - "custom:OSL-3.0"
+src_url:
+  - "https://github.com/Legcord/Legcord"
+tag:
+  - "Applications/Internet"
+  - "armcord"
+  - "net-im"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Legcord/Legcord/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Legcord/Legcord" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Legcord/Legcord" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

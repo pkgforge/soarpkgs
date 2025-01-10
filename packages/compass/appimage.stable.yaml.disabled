@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "compass"
+pkg_id: "github.com.hpuhr.COMPASS"
+pkg_type: "appimage"
+app_id: "github.com.hpuhr.COMPASS"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "The OpenATS COMPASS (Compliance Assessment) tool aims at providing a generalized framework for air-traffic surveillance data analysis, visualization & evaluation."
+distro_pkg:
+  archlinux:
+  nixpkgs:
+    - "compass"
+homepage:
+  - "http://compass-style.org"
+  - "https://github.com/Compass/compass"
+  - "https://www.mongodb.com/products/compass"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/hpuhr/COMPASS"
+tag:
+  - "Web"
+  - "databases"
+  - "zype"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/hpuhr/COMPASS/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/hpuhr/COMPASS" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

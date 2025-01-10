@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "notepadnext"
+pkg_id: "github.com.dail8859.NotepadNext"
+pkg_type: "appimage"
+app_id: "github.com.dail8859.NotepadNext"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A cross-platform, reimplementation of Notepad++"
+distro_pkg:
+  archlinux:
+    aur:
+      - "notepadnext"
+      - "notepadnext-appimage"
+      - "notepadnext-bin"
+      - "notepadnext-git"
+homepage:
+  - "https://github.com/dail8859/NotepadNext"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3 MIT LGPL-2.1 MIT-no-machine-learning  "
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/dail8859/NotepadNext"
+tag:
+  - "app-editors"
+  - "cross-platform"
+  - "development"
+  - "editors"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dail8859/NotepadNext/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dail8859/NotepadNext" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

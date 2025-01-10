@@ -1,0 +1,85 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dolphin-emu"
+pkg_id: "github.com.mantralunar.dolphin"
+pkg_type: "appimage"
+app_id: "github.com.mantralunar.dolphin"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements."
+distro_pkg:
+  alpine:
+    - "dolphin-emu"
+  archlinux:
+    aur:
+      - "dolphin-emu-debugfast-git"
+      - "dolphin-emu-git"
+      - "dolphin-emu-wayland"
+    extra:
+      - "dolphin-emu"
+  debian:
+    - "dolphin-emu"
+  nixpkgs:
+    - "dolphin-emu"
+    - "dolphin-emu-beta"
+homepage:
+  - "http://dolphin-emu.org"
+  - "http://www.dolphin-emu.com"
+  - "https://dolphin-emu.org"
+  - "https://es.dolphin-emu.org"
+  - "https://github.com/dolphin-emu/dolphin"
+  - "https://hr.dolphin-emu.org"
+  - "https://www.dolphin-emu.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - " AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later"
+  - "BSD"
+  - "BSD-2"
+  - "GNU GPL v2+"
+  - "GNU General Public License, version 2.0 or later"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-2+ BSD BSD-2 LGPL-2.1+ MIT ZLIB MIT ZLIB ZLIB MIT MIT MIT MIT BSD-2 BSD MPL-2.0 GPL-2+ FatFs   MIT LGPL-2.1+ LGPL-2.1+ MIT ZLIB"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND LicenseRef-Callaway-BSD AND LicenseRef-Callaway-MIT AND Zlib"
+  - "GPL-3.0-only"
+  - "GPL2"
+  - "GPLv2"
+  - "GPLv2+"
+  - "GPLv2+ and BSD and MIT and zlib"
+  - "LGPL-2.1+"
+  - "MIT"
+  - "ZLIB"
+src_url:
+  - "https://github.com/mantralunar/dolphin"
+tag:
+  - "Emulators"
+  - "Games"
+  - "System/Emulators/Other"
+  - "debug"
+  - "dolphin"
+  - "emulators"
+  - "extra/game"
+  - "games"
+  - "games-emulation"
+  - "games.emulator"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mantralunar/dolphin/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/mantralunar/dolphin" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

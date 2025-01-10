@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "wournal"
+pkg_id: "github.com.dominiksta.wournal"
+pkg_type: "appimage"
+app_id: "github.com.dominiksta.wournal"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Simple digitial paper for note taking and PDF annotation. Heavily inspired by Xournal."
+homepage:
+  - "https://github.com/dominiksta/wournal"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU Lesser General Public License v2.1"
+src_url:
+  - "https://github.com/dominiksta/wournal"
+tag:
+  - "handwriting"
+  - "linux"
+  - "note-taking"
+  - "pdf-annotation"
+  - "svg"
+  - "windows"
+  - "xournal"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dominiksta/wournal/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dominiksta/wournal" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

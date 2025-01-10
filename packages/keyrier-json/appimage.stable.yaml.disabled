@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "keyrier-json"
+pkg_id: "github.com.magoo-magoo.keyrier-json"
+pkg_type: "appimage"
+app_id: "github.com.magoo-magoo.keyrier-json"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "SQL queries on JSON & CSV"
+homepage:
+  - "https://github.com/magoo-magoo/keyrier-json"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/magoo-magoo/keyrier-json"
+tag:
+  - "data"
+  - "desktop"
+  - "html"
+  - "json"
+  - "keyrier-json"
+  - "react"
+  - "sql"
+  - "web"
+  - "webapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/magoo-magoo/keyrier-json/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/magoo-magoo/keyrier-json" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

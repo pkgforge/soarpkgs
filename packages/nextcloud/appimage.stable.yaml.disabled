@@ -1,0 +1,89 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nextcloud"
+pkg_id: "github.com.nextcloud-releases.desktop"
+pkg_type: "appimage"
+app_id: "github.com.nextcloud-releases.desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "💻 Desktop sync client for Nextcloud"
+distro_pkg:
+  alpine:
+    - "nextcloud"
+    - "nextcloud19"
+    - "nextcloud20"
+    - "nextcloud21"
+    - "nextcloud23"
+    - "nextcloud28"
+    - "nextcloud29"
+    - "nextcloud30"
+  archlinux:
+    aur:
+      - "nextcloud-git"
+    extra:
+      - "nextcloud"
+  nixpkgs:
+    - "nextcloud21"
+    - "nextcloud22"
+    - "nextcloud23"
+    - "nextcloud24"
+    - "nextcloud25"
+    - "nextcloud26"
+    - "nextcloud27"
+    - "nextcloud28"
+    - "nextcloud29"
+    - "nextcloud30"
+homepage:
+  - "http://nextcloud.com"
+  - "http://www.nextcloud.com"
+  - "https://github.com/nextcloud/desktop"
+  - "https://github.com/nextcloud/server"
+  - "https://nextcloud.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL"
+  - "AGPL-3"
+  - "AGPL-3.0"
+  - "AGPL-3.0+ AND AGPL-3.0-only AND MIT AND Apache-2.0 AND "
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPL-3.0-or-later AND LicenseRef-Callaway-MIT AND LicenseRef-Callaway-BSD AND Apache-2.0 AND WTFPL AND LicenseRef-Callaway-CC-BY-SA AND GPL-3.0-or-later AND Adobe-2006"
+  - "AGPL3"
+  - "AGPLv3"
+  - "AGPLv3+ and MIT and BSD and ASL 2.0 and WTFPL and CC-BY-SA and GPLv3+ and Adobe"
+  - "GNU Affero General Public License, version 3.0 or later"
+  - "GPL"
+  - "GPL-2.0-or-later"
+  - "agpl"
+src_url:
+  - "https://github.com/nextcloud-releases/desktop"
+tag:
+  - "Graphical"
+  - "Monitoring"
+  - "Networking/WWW"
+  - "Productivity/Networking/Web/Utilities"
+  - "System/Servers"
+  - "Web"
+  - "network"
+  - "www"
+  - "www-apps"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/nextcloud-releases/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/nextcloud-releases/desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

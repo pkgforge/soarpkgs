@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "another-redis-desktop-manager"
+pkg_id: "github.com.qishibo.AnotherRedisDesktopManager"
+pkg_type: "appimage"
+app_id: "github.com.qishibo.AnotherRedisDesktopManager"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "🚀🚀🚀A faster, better and more stable Redis desktop manager [GUI client], compatible with Linux, Windows, Mac."
+distro_pkg:
+  archlinux:
+    aur:
+      - "another-redis-desktop-manager-appimage"
+      - "another-redis-desktop-manager-bin"
+      - "another-redis-desktop-manager-git"
+homepage:
+  - "https://github.com/qishibo/AnotherRedisDesktopManager"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/qishibo/AnotherRedisDesktopManager"
+tag:
+  - "redis"
+  - "redis-client"
+  - "redis-cluster"
+  - "redis-desktop-manager"
+  - "redis-gui"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/qishibo/AnotherRedisDesktopManager/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/qishibo/AnotherRedisDesktopManager" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/qishibo/AnotherRedisDesktopManager" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

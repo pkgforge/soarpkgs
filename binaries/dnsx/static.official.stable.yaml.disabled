@@ -1,0 +1,154 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dnsx.yaml
+_disabled: false
+
+pkg: "dnsx"
+pkg_id: "github.com.projectdiscovery.dnsx"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+  - "cli, dns-bruteforcer, dns-client, dns-records, dns-resolution, wildcard-filtering"
+description: "Multi-purpose DNS toolkit allow to run multiple DNS queries"
+homepage:
+  - "https://github.com/projectdiscovery/dnsx"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+repology:
+  - "dnsx"
+src_url:
+  - "https://github.com/projectdiscovery/dnsx"
+tag:
+  - "utility"
+  - "cli, dns-bruteforcer, dns-client, dns-records, dns-resolution, wildcard-filtering"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    {EMPTY}
+  run: |
+    #!/usr/bin/env bash
+
+
+
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dnsx/static.official.source.yaml
+_disabled: false
+pkg: "dnsx"
+pkg_type: "static"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+  - "squishy-cli#bin"
+description: "dnsx is a fast and multi-purpose DNS toolkit allow to run multiple DNS queries of your choice with a list of user-supplied resolvers."
+distro_pkg:
+  archlinux:
+    aur:
+      - "dnsx"
+      - "dnsx-bin"
+  homebrew:
+    - "dnsx"
+  nixpkgs:
+    - "dnsx"
+homepage:
+  - "https://docs.projectdiscovery.io/tools/dnsx"
+  - "https://github.com/projectdiscovery/dnsx"
+license:
+  - "MIT"
+maintainer:
+  - "runner"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/projectdiscovery/dnsx"
+repology: "dnsx"
+src_url:
+  - "https://github.com/projectdiscovery/dnsx"
+tag:
+  - "dns"
+  - "golang"
+  - "security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/projectdiscovery/dnsx" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1
+     docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+       bash -l -c '
+       #Setup ENV
+        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+        CGO_ENABLED="1"
+        CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+        GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+        GOOS="linux"
+        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+       #Build
+        git clone --filter "blob:none" --quiet "https://github.com/projectdiscovery/dnsx" "./TEMPREPO" && cd "./TEMPREPO"
+        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/dnsx"
+       #Copy
+        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+       #Strip
+        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+        file "/build-bins/"* && du -sh "/build-bins/"*
+        popd >/dev/null 2>&1
+       '
+    #Copy & Meta
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+
+     
+#-------------------------------------------------------#
+#Sanity Checks
+if [ "${BUILD}" != "YES" ] || \
+   [ -z "${BINDIR}" ] || \
+   [ -z "${EGET_EXCLUDE}" ] || \
+   [ -z "${EGET_TIMEOUT}" ] || \
+   [ -z "${GIT_TERMINAL_PROMPT}" ] || \
+   [ -z "${GIT_ASKPASS}" ] || \
+   [ -z "${GITHUB_TOKEN}" ] || \
+   [ -z "${SYSTMP}" ] || \
+   [ -z "${TMPDIRS}" ]; then
+ #exit
+  echo -e "\n[+]Skipping Builds...\n"
+  exit 1
+fi
+#-------------------------------------------------------#
+
+#-------------------------------------------------------#
+##Main
+export SKIP_BUILD="NO" #YES, in case of deleted repos, broken builds etc
+if [ "${SKIP_BUILD}" == "NO" ]; then
+     #dnsx : Multi-purpose DNS toolkit allow to run multiple DNS queries
+     export BIN="dnsx" #Name of final binary/pkg/cli, sometimes differs from $REPO
+     export SOURCE_URL="https://github.com/projectdiscovery/dnsx" #github/gitlab/homepage/etc for $BIN
+     echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
+      #Fetch
+       eval "$EGET_TIMEOUT" eget "$SOURCE_URL" --asset "linux" --asset "amd64" "$EGET_EXCLUDE" --to "$BINDIR/$BIN"
+fi
+#-------------------------------------------------------#
+
+#-------------------------------------------------------#
+##Cleanup
+unset SKIP_BUILD ; export BUILT="YES"
+#In case of zig polluted env
+unset AR CC CFLAGS CXX CPPFLAGS CXXFLAGS DLLTOOL HOST_CC HOST_CXX LDFLAGS LIBS OBJCOPY RANLIB
+#In case of go polluted env
+unset GOARCH GOOS CGO_ENABLED CGO_CFLAGS
+#PKG Config
+unset PKG_CONFIG_PATH PKG_CONFIG_LIBDIR PKG_CONFIG_SYSROOT_DIR PKG_CONFIG_SYSTEM_INCLUDE_PATH PKG_CONFIG_SYSTEM_LIBRARY_PATH
+#-------------------------------------------------------#

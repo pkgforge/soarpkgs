@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "figma-linux"
+pkg_id: "github.com.Figma-Linux.figma-linux"
+pkg_type: "appimage"
+app_id: "github.com.Figma-Linux.figma-linux"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Figma is the first interface design tool based in the browser, making it easier for teams to create software. Join us in https://t.me/figma_linux"
+distro_pkg:
+  archlinux:
+    aur:
+      - "figma-linux"
+      - "figma-linux-bin"
+      - "figma-linux-git"
+  nixpkgs:
+    - "figma-linux"
+homepage:
+  - "https://github.com/Figma-Linux/figma-linux"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPL-2.0-or-later"
+  - "GPL2"
+src_url:
+  - "https://github.com/Figma-Linux/figma-linux"
+tag:
+  - "electron"
+  - "figma"
+  - "figma-app"
+  - "linux"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Figma-Linux/figma-linux/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Figma-Linux/figma-linux" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Figma-Linux/figma-linux" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

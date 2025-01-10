@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "boost-note"
+pkg_id: "github.com.BoostIO.BoostNote-App"
+pkg_type: "appimage"
+app_id: "github.com.BoostIO.BoostNote-App"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Boost Note is a document driven project management tool that maximizes remote DevOps team velocity."
+homepage:
+  - "https://github.com/BoostIO/BoostNote-App"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/BoostIO/BoostNote-App"
+tag:
+  - "agile-development"
+  - "boostnote"
+  - "developer-tools"
+  - "devops"
+  - "documentation-tool"
+  - "electron"
+  - "markdown"
+  - "notes-for-developer"
+  - "react"
+  - "typescript"
+  - "wiki"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/BoostIO/BoostNote-App/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/BoostIO/BoostNote-App" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

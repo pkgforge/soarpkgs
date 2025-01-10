@@ -1,0 +1,77 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "librecad"
+pkg_id: "github.com.LibreCAD.LibreCAD"
+pkg_type: "appimage"
+app_id: "github.com.LibreCAD.LibreCAD"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "LibreCAD is a cross-platform 2D CAD program written in C++17. It can read DXF/DWG files and can write DXF/PDF/SVG files. It supports point/line/circle/ellipse/parabola/spline primitives. The user interface is highly customizable, and has dozens of translations."
+distro_pkg:
+  archlinux:
+    aur:
+      - "librecad-git"
+    extra:
+      - "librecad"
+  debian:
+    - "librecad"
+  nixpkgs:
+    - "librecad"
+homepage:
+  - "http://librecad.org"
+  - "http://librecad.org/cms/home.html"
+  - "http://www.librecad.org"
+  - "https://github.com/LibreCAD"
+  - "https://github.com/LibreCAD/LibreCAD"
+  - "https://librecad.org"
+  - "https://www.librecad.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - " AND GPL-2.0-only"
+  - "GNU GPL"
+  - "GNU General Public License, version 2.0"
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2.0 and "
+  - "GPL-2.0-only"
+  - "GPL-2.0-only AND "
+  - "GPL-2.0-only AND GPL-2.0-or-later"
+  - "GPL-2.0-or-later"
+  - "GPLv2"
+  - "GPLv2 and GPLv2+"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/LibreCAD/LibreCAD"
+tag:
+  - "Applications/Graphics"
+  - "Graphics"
+  - "Graphics/3D"
+  - "Productivity"
+  - "Productivity/Graphics/CAD"
+  - "cad"
+  - "debug"
+  - "graphics"
+  - "media-gfx"
+  - "office"
+  - "universe/graphics"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LibreCAD/LibreCAD/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/LibreCAD/LibreCAD" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

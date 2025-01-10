@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "viper"
+pkg_id: "github.com.0neGal.viper"
+pkg_type: "appimage"
+app_id: "github.com.0neGal.viper"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Launcher+Updater for TF2 Northstar"
+distro_pkg:
+  archlinux:
+    aur:
+      - "viper-bin"
+homepage:
+  - "http://fenicsproject.org"
+  - "https://github.com/0neGal/viper"
+  - "https://github.com/botherder/viper"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+  - "GPLv3"
+  - "LGPL v3+"
+  - "custom"
+src_url:
+  - "https://github.com/0neGal/viper"
+tag:
+  - "Graphics"
+  - "Networking/WWW"
+  - "universe/python"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/0neGal/viper/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/0neGal/viper" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

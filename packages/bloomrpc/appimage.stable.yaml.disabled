@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bloomrpc"
+pkg_id: "github.com.uw-labs.bloomrpc"
+pkg_type: "appimage"
+app_id: "github.com.uw-labs.bloomrpc"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Former GUI client for gRPC services. No longer maintained."
+distro_pkg:
+  archlinux:
+    aur:
+      - "bloomrpc-bin"
+  nixpkgs:
+    - "bloomrpc"
+homepage:
+  - "https://github.com/bloomrpc/bloomrpc"
+  - "https://github.com/uw-labs/bloomrpc"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LGPL-3.0-or-later"
+  - "LGPL3"
+src_url:
+  - "https://github.com/uw-labs/bloomrpc"
+tag:
+  - "grpc"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/uw-labs/bloomrpc/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/uw-labs/bloomrpc" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,83 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "naev"
+pkg_id: "github.com.naev.naev"
+pkg_type: "appimage"
+app_id: "github.com.naev.naev"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Naev is a 2d action/rpg space game that combines elements from the action, rpg and simulation genres."
+distro_pkg:
+  archlinux:
+    aur:
+      - "naev-git"
+    extra:
+      - "naev"
+  debian:
+    - "naev"
+  nixpkgs:
+    - "naev"
+homepage:
+  - "http://code.google.com/p/naev"
+  - "http://naev.org"
+  - "http://www.naev.org"
+  - "https://github.com/naev/naev"
+  - "https://naev.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache-2.0"
+  - "BSD"
+  - "BSD-2"
+  - "CC-BY-2.0"
+  - "CC-BY-3.0"
+  - "CC-BY-4.0"
+  - "CC-BY-SA-3.0"
+  - "CC-BY-SA-4.0"
+  - "CC0-1.0"
+  - "GPL"
+  - "GPL-2+"
+  - "GPL-3+"
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL-3.0-only AND GPL-3.0-or-later AND GPL-2.0-or-later AND LicenseRef-Fedora-Public-Domain AND CC0-1.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC-BY-3.0 AND CC-BY-4.0 AND  AND GFDL-1.2-no-invariants-only"
+  - "GPL-3.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3 or GPLv3+ or GPLv2+ or Public Domain or CC-BY or CC-BY-SA"
+  - "GPLv3+"
+  - "MIT"
+  - "OFL-1.1"
+  - "public-domain"
+src_url:
+  - "https://github.com/naev/naev"
+tag:
+  - "Amusements/Games"
+  - "Amusements/Games/Action/Other"
+  - "Games"
+  - "Games/Arcade"
+  - "Games/Simulation"
+  - "Graphical"
+  - "debug"
+  - "games"
+  - "games-strategy"
+  - "games.action"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/naev/naev/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/naev/naev" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

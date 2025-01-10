@@ -1,0 +1,38 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "miesimulatorgui"
+pkg_id: "github.com.VirtualPhotonics.MieSimulatorGUI"
+pkg_type: "appimage"
+app_id: "github.com.VirtualPhotonics.MieSimulatorGUI"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Mie Simulator GUI"
+homepage:
+  - "https://github.com/VirtualPhotonics/MieSimulatorGUI"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Other"
+src_url:
+  - "https://github.com/VirtualPhotonics/MieSimulatorGUI"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/VirtualPhotonics/MieSimulatorGUI/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/VirtualPhotonics/MieSimulatorGUI@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "obsidian"
+pkg_id: "github.com.obsidianmd.obsidian-releases"
+pkg_type: "appimage"
+app_id: "github.com.obsidianmd.obsidian-releases"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Community plugins list, theme list, and releases of Obsidian."
+distro_pkg:
+  archlinux:
+    extra:
+      - "obsidian"
+  nixpkgs:
+    - "obsidian"
+homepage:
+  - "https://github.com/obsidianmd/obsidian-releases"
+  - "https://obsidian.md"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Obsidian End User Agreement"
+  - "Obsidian-EULA"
+  - "Proprietary"
+  - "custom"
+  - "custom:Commercial"
+  - "proprietary license"
+src_url:
+  - "https://github.com/obsidianmd/obsidian-releases"
+tag:
+  - "app-office"
+  - "atomic-notes"
+  - "backlink"
+  - "development"
+  - "feed"
+  - "knowledge-base"
+  - "markdown"
+  - "non-free/editors"
+  - "textproc"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/obsidianmd/obsidian-releases/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/obsidianmd/obsidian-releases" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/obsidianmd/obsidian-releases" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

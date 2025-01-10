@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "android-knot"
+pkg_id: "github.com.ic005k.Knot"
+pkg_type: "appimage"
+app_id: "github.com.ic005k.Knot"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Record everything."
+distro_pkg:
+  archlinux:
+    aur:
+      - "android-knot-bin"
+homepage:
+  - "https://github.com/ic005k/Knot"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/ic005k/Knot"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ic005k/Knot/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ic005k/Knot" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

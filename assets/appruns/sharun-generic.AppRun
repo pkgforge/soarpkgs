@@ -1,0 +1,55 @@
+#!/bin/sh
+#-------------------------------------------------------#
+#Can be run with DEBUG=1
+if [ "${DEBUG}" = "1" ]; then
+    set -x
+fi
+#-------------------------------------------------------#
+#Get the AppDir Path
+SELF_PATH="$(dirname "$(realpath "$0")")"
+#Get the ${ARGV0}
+SELF_NAME="${ARGV0}"
+#Set path
+export PATH="${SELF_PATH}/bin:${SELF_PATH}/usr/bin:${PATH}"
+# Check if SELF_NAME exists in the bin directory
+if [ -x "${SELF_PATH}/bin/${SELF_NAME}" ] && [ -f "${SELF_PATH}/bin/${SELF_NAME}" ]; then
+   DEFAULT_CMD="${SELF_PATH}/bin/${SELF_NAME}"
+else
+   #In case a provided AppRun already exists
+   APP_RUN_DEFAULT="${SELF_PATH}/AppRun.default"
+   DEFAULT_CMD=""
+   #If AppRun.default exists use it
+   if [ -x "${APP_RUN_DEFAULT}" ] && [ -f "${APP_RUN_DEFAULT}" ]; then
+       DEFAULT_CMD="${APP_RUN_DEFAULT}"
+   else
+       #Find first executable bin in AppDir/bin & use that
+       for exec_bin in "${SELF_PATH}/bin/"*; do
+           if [ -x "${exec_bin}" ] && [ -f "${exec_bin}" ]; then
+               DEFAULT_CMD="${exec_bin}"
+               break
+           fi
+       done
+   fi
+fi
+#-------------------------------------------------------#
+#Run Found AppRun|Executable if default cmd wasn't specified
+if [ $# -eq 0 ]; then
+    exec "${DEFAULT_CMD}"
+else
+    #Check if the first argument is an executable in the bin directory
+    if [ -x "${SELF_PATH}/bin/$1" ] && [ -f "${SELF_PATH}/bin/$1" ]; then
+        shift
+        exec "${SELF_PATH}/bin/$1" "$@"
+    else
+        #If not, run the default command with all arguments
+        exec "${DEFAULT_CMD}" "$@"
+    fi
+fi
+#-------------------------------------------------------#
+#Reset set -x
+if [ "${DEBUG}" = "1" ]; then
+    set +x
+fi
+#-------------------------------------------------------#
+#END
+#-------------------------------------------------------#

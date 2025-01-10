@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shadowsocks"
+pkg_id: "github.com.shadowsocks.shadowsocks-qt5"
+pkg_type: "appimage"
+app_id: "github.com.shadowsocks.shadowsocks-qt5"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A cross-platform shadowsocks GUI client"
+distro_pkg:
+  archlinux:
+    aur:
+      - "shadowsocks-git"
+    extra:
+      - "shadowsocks"
+  debian:
+    - "shadowsocks"
+homepage:
+  - "https://github.com/clowwindy/shadowsocks"
+  - "https://github.com/shadowsocks/shadowsocks"
+  - "https://github.com/shadowsocks/shadowsocks/tree/master"
+  - "https://pypi.python.org/pypi/shadowsocks"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+src_url:
+  - "https://github.com/shadowsocks/shadowsocks-qt5"
+tag:
+  - "python"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/shadowsocks/shadowsocks-qt5/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/shadowsocks/shadowsocks-qt5" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

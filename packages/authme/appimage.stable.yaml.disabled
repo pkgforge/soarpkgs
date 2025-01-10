@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "authme"
+pkg_id: "github.com.Levminer.authme"
+pkg_type: "appimage"
+app_id: "github.com.Levminer.authme"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Simple cross-platform two-factor (2FA) authenticator app for desktop."
+distro_pkg:
+  archlinux:
+    aur:
+      - "authme-bin"
+homepage:
+  - "https://authme.levminer.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+src_url:
+  - "https://github.com/Levminer/authme"
+tag:
+  - "2fa"
+  - "security"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Levminer/authme/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Levminer/authme" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

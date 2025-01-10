@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gpgfrontend"
+pkg_id: "github.com.saturneric.GpgFrontend"
+pkg_type: "appimage"
+app_id: "github.com.saturneric.GpgFrontend"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A free, open-source, robust yet user-friendly, compact and cross-platform tool for OpenPGP encryption. It stands out as an exceptional GUI frontend for the modern GnuPG (gpg)."
+distro_pkg:
+  archlinux:
+    aur:
+      - "gpgfrontend"
+homepage:
+  - "https://github.com/saturneric/GpgFrontend"
+  - "https://gpgfrontend.bktus.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-or-later"
+src_url:
+  - "https://github.com/saturneric/GpgFrontend"
+tag:
+  - "communication"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/saturneric/GpgFrontend/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/saturneric/GpgFrontend" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

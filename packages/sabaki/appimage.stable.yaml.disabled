@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sabaki"
+pkg_id: "github.com.yishn.Sabaki"
+pkg_type: "appimage"
+app_id: "github.com.yishn.Sabaki"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "An elegant Go board and SGF editor for a more civilized age."
+distro_pkg:
+  archlinux:
+    aur:
+      - "sabaki"
+      - "sabaki-bin"
+      - "sabaki-git"
+homepage:
+  - "http://sabaki.yichuanshen.de"
+  - "https://github.com/SabakiHQ/Sabaki"
+  - "https://sabaki.yichuanshen.de"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+src_url:
+  - "https://github.com/yishn/Sabaki"
+tag:
+  - "baduk"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/yishn/Sabaki/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/yishn/Sabaki" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/yishn/Sabaki" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

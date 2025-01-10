@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "google-tasks-desktop"
+pkg_id: "github.com.Pong420.google-tasks-desktop"
+pkg_type: "appimage"
+app_id: "github.com.Pong420.google-tasks-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Unofficial Google Tasks Desktop Client"
+homepage:
+  - "https://github.com/Pong420/google-tasks-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/Pong420/google-tasks-desktop"
+tag:
+  - "google-tasks"
+  - "google-tasks-api"
+  - "google-tasks-desktop"
+  - "tasks"
+  - "todoapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Pong420/google-tasks-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/Pong420/google-tasks-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

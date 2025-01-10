@@ -1,0 +1,91 @@
+name: Package Take Down (SBUILD)
+description: Request a package (.SBUILD) to be taken down (DMCA/CopyRight/Licensing)
+title: "TakeDown: name_of_the_package"
+labels: ["dmca"]
+assignees:
+  - Azathothas
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide as much Information as possible for **Quicker Resolution**<br>
+  - type: checkboxes
+    id: policy
+    attributes:
+      label: DMCA/Copyright/Licensing Policy
+      description: "Are you sure, you have read our [DMCA Policy?](https://docs.pkgforge.dev/repositories/soarpkgs/dmca-or-copyright-cease-and-desist)"
+      options:
+        - label: "I can confirm I have already read the [DMCA Policy](https://docs.pkgforge.dev/repositories/soarpkgs/dmca-or-copyright-cease-and-desist)"
+          required: true
+  - type: checkboxes
+    id: disabled
+    attributes:
+      label: Package is Disabled
+      description: "Are you sure, this package hasn't already been [disabled?](https://docs.pkgforge.dev/sbuild/specification/1.shebang)"
+      options:
+        - label: "I have already read the SBUILD & it's NOT Disabled"
+          required: true          
+  - type: dropdown
+    id: violation
+    attributes:
+      label: Violation
+      description: "Select Any (ALL) that Apply"
+      multiple: true
+      options:
+        - DMCA & Copyright
+        - Licensing Violation
+        - N/A
+    validations:
+      required: true
+  - type: checkboxes
+    id: ownership
+    attributes:
+      label: Package's Ownership
+      description: "Are you the owner/maintainer/leader or a person/entity that has the right to make this claim?"
+      options:
+        - label: "Yes. I (We) have the rights to request the takedown & removal of this Package"
+          required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verify (Ownership/Rights)
+      description: "Provide required evidence that proves your claim of rights"
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Cache
+      description: "Select the Repo where an unauthorized prebuilt copy of this Package is being distributed"
+      multiple: false
+      options:
+        - bincache (List ==> https://github.com/pkgforge/bincache/blob/main/SBUILD_LIST.json)
+        - pkgcache (List ==> https://github.com/pkgforge/pkgcache/blob/main/SBUILD_LIST.json)
+  - type: textarea
+    id: url
+    attributes:
+      label: SBUILD URL (Blob)
+      description: "Provide the SBUILD's URL (Search In: [binaries](https://github.com/pkgforge/soarpkgs/tree/main/binaries) OR [packages](https://github.com/pkgforge/soarpkgs/tree/main/packages))"
+    validations:
+      required: true
+  - type: textarea
+    id: notice
+    attributes:
+      label: Describe the exact violation
+      description: "Explain what kind of rights violation has taken place with appropriate Evidence & References"
+    validations:
+      required: true
+  - type: textarea
+    id: maintainer
+    attributes:
+      label: Maintainers
+      description: "List & Mention the [Maintainers](https://docs.pkgforge.dev/sbuild/specification/14.maintainer) that are listed in the SBUILD"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Information
+      description: "Anything else you want to tell us about?<br> You can also reach us at: https://docs.pkgforge.dev/contact/chat"
+    validations:
+      required: false

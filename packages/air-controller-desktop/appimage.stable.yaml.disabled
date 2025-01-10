@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "air-controller-desktop"
+pkg_id: "github.com.air-controller.air-controller-desktop"
+pkg_type: "appimage"
+app_id: "github.com.air-controller.air-controller-desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A new handy and powerful Android phone assistant， powered by Flutter."
+distro_pkg:
+  archlinux:
+    aur:
+      - "air-controller-desktop-bin"
+homepage:
+  - "http://ac.yhdm360.cn"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+src_url:
+  - "https://github.com/air-controller/air-controller-desktop"
+tag:
+  - "android"
+  - "assistant"
+  - "cross-platform"
+  - "dart"
+  - "desktop"
+  - "flutter"
+  - "ios"
+  - "macos"
+  - "ubuntu"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/air-controller/air-controller-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/air-controller/air-controller-desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

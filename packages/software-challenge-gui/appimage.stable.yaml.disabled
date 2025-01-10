@@ -1,0 +1,38 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "software-challenge-gui"
+pkg_id: "github.com.CAU-Kiel-Tech-Inf.socha-gui"
+pkg_type: "appimage"
+app_id: "github.com.CAU-Kiel-Tech-Inf.socha-gui"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Electron GUI for the Software-Challenge Germany 2016 - 2020 (Source code publicized 2018)"
+homepage:
+  - "https://github.com/CAU-Kiel-Tech-Inf/socha-gui"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/CAU-Kiel-Tech-Inf/socha-gui"
+tag:
+  - "electron"
+  - "gui"
+  - "software-challenge"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/CAU-Kiel-Tech-Inf/socha-gui/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/CAU-Kiel-Tech-Inf/socha-gui" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

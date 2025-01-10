@@ -1,0 +1,66 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qelectrotech"
+pkg_id: "github.com.qelectrotech.qelectrotech-source-mirror"
+pkg_type: "appimage"
+app_id: "github.com.qelectrotech.qelectrotech-source-mirror"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Main QET repository, Bugtracker: https://qelectrotech.org/bugtracker/"
+distro_pkg:
+  archlinux:
+    aur:
+      - "qelectrotech"
+  debian:
+    - "qelectrotech"
+  nixpkgs:
+    - "qelectrotech"
+homepage:
+  - "http://qelectrotech.org"
+  - "https://qelectrotech.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-3.0"
+  - "CC-BY-3.0 AND GPL-2.0-or-later"
+  - "GPL-2+"
+  - "GPL-2.0"
+  - "GPL-2.0+"
+  - "GPL-2.0+ and CC-BY-3.0"
+  - "GPL-2.0-or-later"
+  - "GPL-2.0-or-later AND CC-BY-3.0"
+  - "GPL2"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/qelectrotech/qelectrotech-source-mirror"
+tag:
+  - "Applications/Engineering"
+  - "Engineering"
+  - "Productivity/Scientific/Electronics"
+  - "Sciences/Other"
+  - "cad"
+  - "debug"
+  - "electronics"
+  - "graphics"
+  - "office.scientific"
+  - "sci-electronics"
+  - "universe/x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/qelectrotech/qelectrotech-source-mirror/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/qelectrotech/qelectrotech-source-mirror" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "devtools-x"
+pkg_id: "github.com.fosslife.devtools-x"
+pkg_type: "appimage"
+app_id: "github.com.fosslife.devtools-x"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Collection of offline first developer utilities available as non-electron desktop application. all in one place, cross-platform, 10MB app!"
+homepage:
+  - "https://github.com/fosslife/devtools-x"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/fosslife/devtools-x"
+tag:
+  - "developer-tools"
+  - "devtools"
+  - "devtoys"
+  - "devutils"
+  - "linux"
+  - "macos"
+  - "tauri"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/fosslife/devtools-x/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/fosslife/devtools-x" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/fosslife/devtools-x" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,63 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rclone-browser"
+pkg_id: "github.com.kapitainsky.RcloneBrowser"
+pkg_type: "appimage"
+app_id: "github.com.kapitainsky.RcloneBrowser"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Simple cross platform GUI for rclone. Supports macOS, GNU/Linux, BSD family and Windows."
+distro_pkg:
+  alpine:
+    - "rclone-browser"
+  archlinux:
+    aur:
+      - "rclone-browser"
+      - "rclone-browser-git"
+  debian:
+    - "rclone-browser"
+  nixpkgs:
+    - "rclone-browser"
+homepage:
+  - "https://github.com/kapitainsky/RcloneBrowser"
+  - "https://github.com/mmozeiko/RcloneBrowser"
+  - "https://kapitainsky.github.io/RcloneBrowser"
+  - "https://martins.ninja/RcloneBrowser"
+  - "https://mmozeiko.github.io/RcloneBrowser"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+  - "MIT License"
+  - "Unlicense"
+  - "custom:public domain"
+src_url:
+  - "https://github.com/kapitainsky/RcloneBrowser"
+tag:
+  - "Archiving/Backup"
+  - "Networking/File"
+  - "debug"
+  - "desktop"
+  - "net"
+  - "network.util"
+  - "rclone"
+  - "sysutils"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/kapitainsky/RcloneBrowser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/kapitainsky/RcloneBrowser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

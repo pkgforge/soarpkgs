@@ -1,0 +1,36 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "noteshrink-qt"
+pkg_id: "github.com.clapautius.noteshrink-qt"
+pkg_type: "appimage"
+app_id: "github.com.clapautius.noteshrink-qt"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Qt GUI for noteshrink.py with preview and pre-processing options."
+homepage:
+  - "https://github.com/clapautius/noteshrink-qt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/clapautius/noteshrink-qt"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/clapautius/noteshrink-qt/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/clapautius/noteshrink-qt" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,85 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "skype"
+pkg_id: "github.com.ivan-hc.Skype-appimage"
+pkg_type: "appimage"
+app_id: "github.com.ivan-hc.Skype-appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Unofficial AppImage of Skype built from the official Snap package."
+distro_pkg:
+  archlinux:
+    aur:
+      - "skypeforlinux-bin"
+  nixpkgs:
+    - "skypeforlinux"
+homepage:
+  - "http://www.skype.com"
+  - "http://www.skype.com/intl/en/get-skype/on-your-computer/linux"
+  - "https://skype.com"
+  - "https://web.skype.com"
+  - "https://www.skype.com"
+  - "https://www.skype.com/en/insider"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "APSL-2"
+  - "Apache-2.0"
+  - "Artistic-2"
+  - "BSD"
+  - "BSD-1"
+  - "BSD-2"
+  - "Boost-1.0"
+  - "CC-BY-SA-3.0"
+  - "CC0-1.0"
+  - "Copyright  2016 Skype and/or Microsoft"
+  - "Freeware"
+  - "ISC"
+  - "LGPL-2.1"
+  - "MIT"
+  - "MIT-with-advertising"
+  - "Proprietary"
+  - "Public Domain"
+  - "Skype EULA"
+  - "Skype license"
+  - "Skype-TOS"
+  - "Unfree"
+  - "ZLIB"
+  - "custom"
+  - "custom:skype-servicesagreement"
+  - "icu"
+  - "openssl"
+src_url:
+  - "https://github.com/ivan-hc/Skype-appimage"
+tag:
+  - "Applications/Internet"
+  - "Networking/Instant"
+  - "Networking/WWW"
+  - "Video"
+  - "call"
+  - "chat"
+  - "net-im"
+  - "network"
+  - "skype"
+  - "voip"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Skype-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ivan-hc/Skype-appimage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

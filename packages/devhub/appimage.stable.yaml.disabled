@@ -1,0 +1,67 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "devhub"
+pkg_id: "github.com.devhubapp.devhub"
+pkg_type: "appimage"
+app_id: "github.com.devhubapp.devhub"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "TweetDeck for GitHub - Filter Issues, Activities & Notifications - Web, Mobile & Desktop with 99% code sharing between them"
+distro_pkg:
+  archlinux:
+    aur:
+      - "devhub"
+      - "devhub-appimage"
+      - "devhub-bin"
+homepage:
+  - "https://devhubapp.com"
+  - "https://github.com/devhubapp/devhub"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "AGPL-3.0-only"
+  - "AGPL-3.0-or-later"
+  - "AGPL3"
+  - "GNU Affero General Public License v3.0"
+  - "GPL3"
+src_url:
+  - "https://github.com/devhubapp/devhub"
+tag:
+  - "android"
+  - "cross-platform"
+  - "desktop"
+  - "devhub"
+  - "electron"
+  - "github"
+  - "github-api"
+  - "graphql"
+  - "ios"
+  - "javascript"
+  - "macos"
+  - "notifications"
+  - "react"
+  - "react-native"
+  - "react-native-web"
+  - "redux"
+  - "typescript"
+  - "web"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/devhubapp/devhub/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/devhubapp/devhub" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

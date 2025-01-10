@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nanosaur"
+pkg_id: "github.com.jorio.Nanosaur"
+pkg_type: "appimage"
+app_id: "github.com.jorio.Nanosaur"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Nanosaur source port 🦖"
+distro_pkg:
+  archlinux:
+    aur:
+      - "nanosaur"
+  nixpkgs:
+    - "nanosaur"
+homepage:
+  - "https://github.com/jorio/Nanosaur"
+  - "https://jorio.itch.io/nanosaur"
+  - "https://pangeasoft.net/nano"
+  - "https://www.pangeasoft.net/nano/index.html"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC-BY-NC-SA-4.0"
+  - "CC-BY-SA-4.0"
+  - "Creative Commons Attribution-NonCommercialShare Alike 4.0"
+  - "custom:cc-by-nc-sa-4.0"
+  - "custom:pangea"
+src_url:
+  - "https://github.com/jorio/Nanosaur"
+tag:
+  - "Amusements/Games/Action/Arcade"
+  - "Games/Arcade"
+  - "game/action"
+  - "games"
+  - "games-action"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/jorio/Nanosaur/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jorio/Nanosaur" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jorio/Nanosaur" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

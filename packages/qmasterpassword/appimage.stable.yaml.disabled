@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qmasterpassword"
+pkg_id: "github.com.bkueng.qMasterPassword"
+pkg_type: "appimage"
+app_id: "github.com.bkueng.qMasterPassword"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "stateless Master Password Manager"
+distro_pkg:
+  archlinux:
+    aur:
+      - "qmasterpassword"
+  nixpkgs:
+    - "qMasterPassword"
+    - "qMasterPassword-wayland"
+homepage:
+  - "https://github.com/bkueng/qMasterPassword"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/bkueng/qMasterPassword"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/bkueng/qMasterPassword/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/bkueng/qMasterPassword" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

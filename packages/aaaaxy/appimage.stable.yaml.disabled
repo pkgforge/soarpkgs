@@ -1,0 +1,57 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "aaaaxy"
+pkg_id: "github.com.divVerent.aaaaxy"
+pkg_type: "appimage"
+app_id: "github.com.divVerent.aaaaxy"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A nonlinear 2D puzzle platformer taking place in impossible spaces."
+distro_pkg:
+  alpine:
+    - "aaaaxy"
+  archlinux:
+    aur:
+      - "aaaaxy"
+      - "aaaaxy-bin"
+      - "aaaaxy-snap"
+  nixpkgs:
+    - "aaaaxy"
+homepage:
+  - "https://divverent.github.io/aaaaxy"
+  - "https://github.com/divVerent/aaaaxy"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Apache"
+  - "Apache-2.0"
+  - "BSD"
+  - "FTL"
+  - "MIT"
+  - "OFL-1.1"
+src_url:
+  - "https://github.com/divVerent/aaaaxy"
+tag:
+  - "2d"
+  - "Games"
+  - "games"
+  - "games-puzzle"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/divVerent/aaaaxy/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/divVerent/aaaaxy" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

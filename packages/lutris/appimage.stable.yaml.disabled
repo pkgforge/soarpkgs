@@ -1,0 +1,67 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lutris"
+pkg_id: "github.com.lucasmz1.Lutris_AppImage"
+pkg_type: "appimage"
+app_id: "github.com.lucasmz1.Lutris_AppImage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Lutris is a video game preservation platform aiming to keep your video game collection up and running for the years to come. Over the years, video games have gone through many different hardware and software platforms. By offering the best software available to run your games, Lutris makes it easy to run all your games, old and new."
+distro_pkg:
+  archlinux:
+    aur:
+      - "lutris-git"
+    extra:
+      - "lutris"
+  debian:
+    - "lutris"
+  nixpkgs:
+    - "lutris-unwrapped"
+homepage:
+  - "http://lutris.net"
+  - "https://github.com/lutris/lutris"
+  - "https://lutris.net"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "CC0-1.0"
+  - "GNU GPLv3"
+  - "GNU General Public License, version 3.0"
+  - "GPL"
+  - "GPL-2.0 and GPL-2.0+ and GPL-3.0+ and CC0-1.0 and LGPL-2.1+ and CC-BY-NC-SA-2.0 and CC-BY-SA-3.0"
+  - "GPL-3+"
+  - "GPL-3.0-only"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later and LGPL-2.1-or-later and MIT"
+  - "GPL3"
+  - "GPLv3"
+  - "GPLv3+"
+src_url:
+  - "https://github.com/lucasmz1/Lutris_AppImage"
+tag:
+  - "Amusements/Games/Other"
+  - "Games/Other"
+  - "Graphical"
+  - "contrib/games"
+  - "extra/game"
+  - "games"
+  - "games-util"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/lucasmz1/Lutris_AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/lucasmz1/Lutris_AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

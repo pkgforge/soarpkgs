@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vipster"
+pkg_id: "github.com.sgsaenger.vipster"
+pkg_type: "appimage"
+app_id: "github.com.sgsaenger.vipster"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Visualization and editing of periodic molecular structure files."
+distro_pkg:
+  archlinux:
+    aur:
+      - "vipster"
+      - "vipster-git"
+homepage:
+  - "https://sgsaenger.github.io/vipster"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+src_url:
+  - "https://github.com/sgsaenger/vipster"
+tag:
+  - "science"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/sgsaenger/vipster/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/sgsaenger/vipster" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "revolt"
+pkg_id: "github.com.revoltchat.desktop"
+pkg_type: "appimage"
+app_id: "github.com.revoltchat.desktop"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Revolt Desktop App"
+distro_pkg:
+  archlinux:
+    aur:
+      - "revolt"
+  debian:
+    - "revolt"
+homepage:
+  - "https://github.com/aperezdc/revolt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL3"
+  - "GPLv3 and CC-BY-SA-3.0"
+src_url:
+  - "https://github.com/revoltchat/desktop"
+tag:
+  - "Networking/Instant"
+  - "net"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/revoltchat/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/revoltchat/desktop" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/revoltchat/desktop" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

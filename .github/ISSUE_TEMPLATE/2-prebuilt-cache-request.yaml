@@ -1,0 +1,74 @@
+name: Prebuilt Package Request (Cache)
+description: Request a package (.SBUILD) to be added to Bincache/PkgCache
+title: "CacheReq: name_of_the_package"
+labels: ["prebuilt-request"]
+assignees:
+  - Azathothas
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide as much Information as possible for **Quicker Addition**<br>
+  - type: checkboxes
+    id: guide
+    attributes:
+      label: Package Request Guide
+      description: "Are you sure, you have read the [BinCache's Guide](https://docs.pkgforge.dev/repositories/bincache/package-request)/[PkgCache's Guide](https://docs.pkgforge.dev/repositories/pkgcache/package-request)"
+      options:
+        - label: "I have read the Package Request Guide for both Repos"
+          required: true
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Package Exists
+      description: "Are you sure, this package doesn't already exist? Search: https://pkgs.pkgforge.dev"
+      options:
+        - label: "I have already searched the [Index Page](https://pkgs.pkgforge.dev)"
+          required: true
+  - type: checkboxes
+    id: issue
+    attributes:
+      label: Package Request Exists
+      description: "Are you sure, this package hasn't already been requested? [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Aprebuilt-request+)"
+      options:
+        - label: "I have already searched the [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Aprebuilt-request+)"
+          required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Types
+      description: "Select the type of Cache you are requesting"
+      multiple: false
+      options:
+        - bincache (Binaries ==> https://docs.pkgforge.dev/repositories/bincache/differences)
+        - pkgcache (Packages ==> https://docs.pkgforge.dev/repositories/pkgcache/differences)
+    validations:
+      required: true        
+  - type: textarea
+    id: pkg_id
+    attributes:
+      label: PKG_ID (Package ID)
+      description: "Provide the [ID of the Package](https://docs.pkgforge.dev/sbuild/specification/2.pkg)"
+    validations:
+      required: true
+  - type: textarea
+    id: url
+    attributes:
+      label: SBUILD URL (Blob)
+      description: "Provide the SBUILD's URL (Search In: [binaries](https://github.com/pkgforge/soarpkgs/tree/main/binaries) OR [packages](https://github.com/pkgforge/soarpkgs/tree/main/packages))"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Prebuilding Reason
+      description: "Summarize why we should provide prebuilds<br>Clearly state your claims and provide supporting reasons for your request"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Information
+      description: "Anything else you want to tell us about?<br> You can also reach us at Discord: https://docs.pkgforge.dev/contact/chat"
+    validations:
+      required: false

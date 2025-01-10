@@ -1,0 +1,69 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gpredict"
+pkg_id: "github.com.csete.gpredict"
+pkg_type: "appimage"
+app_id: "github.com.csete.gpredict"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Gpredict satellite tracking application"
+distro_pkg:
+  archlinux:
+    aur:
+      - "gpredict"
+      - "gpredict-git"
+  debian:
+    - "gpredict"
+  nixpkgs:
+    - "gpredict"
+homepage:
+  - "http://gpredict.oz9aec.net"
+  - "http://groundstation.sourceforge.net/gpredict"
+  - "http://sourceforge.net/projects/gpredict"
+  - "https://github.com/csete/gpredict"
+  - "https://gpredict.oz9aec.net"
+  - "https://oz9aec.dk/gpredict"
+  - "https://sourceforge.net/projects/gpredict"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL"
+  - "GPL-2"
+  - "GPL-2+"
+  - "GPL-2-or-later"
+  - "GPL-2.0"
+  - "GPL-2.0-only"
+  - "GPLv2+"
+src_url:
+  - "https://github.com/csete/gpredict"
+tag:
+  - "Applications/Communications"
+  - "Communications"
+  - "Productivity/Hamradio/Other"
+  - "Sciences/Geosciences"
+  - "academic"
+  - "comms"
+  - "ham"
+  - "hamradio"
+  - "media-radio"
+  - "science"
+  - "universe/hamradio"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/csete/gpredict/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/csete/gpredict" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

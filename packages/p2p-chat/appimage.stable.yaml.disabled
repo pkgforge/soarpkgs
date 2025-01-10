@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "p2p-chat"
+pkg_id: "github.com.dgeibi.p2p-chat"
+pkg_type: "appimage"
+app_id: "github.com.dgeibi.p2p-chat"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "a P2P LAN chatting and file sharing tool   内网 p2p 聊天和文件传输工具"
+homepage:
+  - "https://github.com/dgeibi/p2p-chat"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/dgeibi/p2p-chat"
+tag:
+  - "antd"
+  - "electron"
+  - "homework"
+  - "p2p"
+  - "p2p-chat"
+  - "react"
+  - "redux"
+  - "socket"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dgeibi/p2p-chat/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/dgeibi/p2p-chat" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,188 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/s6/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "s6"
+pkg_id: "nixpkgs.s6"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "A small suite of programs for UNIX, designed to allow process supervision"
+  s6-accessrules-cdb-from-fs: "Compile a directory containing a ruleset into a CDB file [s6]"
+  s6-accessrules-fs-from-cdb: "Decompile a CDB file containing a ruleset into a directory [s6]"
+  s6-applyuidgid: "Execute a program with reduced privileges with specified UID/GID for the process [s6]"
+  s6-cleanfifodir: "Clean up an s6-fifodir, removing any unused or unnecessary FIFO files [s6]"
+  s6-connlimit: "Control the number of client connections to TCP and Unix domain sockets [s6]"
+  s6-envdir: "Change the environment and then executes another program [s6]"
+  s6-envuidgid: "Set the UID, GID, and GIDLIST environment variables before executing a program [s6]"
+  s6-fdholder-daemon: "Store/Retrieve file descriptors for clients via a Unix domain socket [s6]"
+  s6-fdholder-delete: "Delete a file descriptor stored with a given ID using an s6-fdholderd daemon [s6]"
+  s6-fdholder-getdump: "Retrieve the entire state, including stored file descriptors, ID, and expiration dates of an s6-fdholderd daemon [s6]"
+  s6-fdholder-list: "List the ID of currently held file descriptors of an s6-fdholderd daemon [s6]"
+  s6-fdholder-retrieve: "Retrieve a FD & execute a program with the FD as the program's standard input [s6]"
+  s6-fdholder-setdump: "Dump a set of file descriptors with IDs and expiration dates into an s6-fdholderd daemon [s6]"
+  s6-fdholder-store: "Connect to an s6-fdholderd daemon and store an open file descriptor with the daemon [s6]"
+  s6-fdholder-transferdump: "Connect to one s6-fdholderd daemon to another and transfer the contents [s6]"
+  s6-fdholderd: "A server that holds file descriptors as part of the s6-fdholder-daemon system [s6]"
+  s6-fghack: "Detect bugs in programs by monitoring unexpected file descriptor writes and supervise daemons with improper descriptor handling [s6]"
+  s6-ftrig-listen: "Subscribe to multiple s6-fifodir instances, spawn a program, and wait for specific events to occur on the fifodirs [s6]"
+  s6-ftrig-listen1: "Subscribe to a single s6-fifodir, wait for events, and ensure the listener is active before the process sends notifications [s6]"
+  s6-ftrig-notify: "Send a series of events as a message to all listeners in a specified s6-fifodir [s6]"
+  s6-ftrig-wait: "Subscribe to an s6-fifodir and wait for a specified pattern of events to occur on it [s6]"
+  s6-ftrigrd: "Manage a set of subscriptions to s6-fifodir [s6]"
+  s6-instance-control: "Send commands to a running instance of an instanced service [s6]"
+  s6-instance-create: "Creates a new instance of a currently supervised instanced service [s6]"
+  s6-instance-delete: "Deletes an existing instance of a currently supervised instanced service [s6]"
+  s6-instance-list: "Print a list of all currently created instances of an instanced service [s6]"
+  s6-instance-maker: "Creates a service directory implementing an instanced service [s6]"
+  s6-instance-status: "Print the status of instanced services in human-readable/programmatically parsable output [s6]"
+  s6-ioconnect: "Perform full-duplex data transmission between two sets of open file descriptors [s6]"
+  s6-ipcclient: "UCSPI client tool for Unix domain sockets [s6]"
+  s6-ipcserver: "UCSPI server tool for Unix domain sockets [s6]"
+  s6-ipcserver-access: "Access Control Tool for Unix domain sockets [s6]"
+  s6-ipcserver-socketbinder: "Binds a Unix domain socket, then executes a program [s6]"
+  s6-ipcserverd: "The Serving part of the s6-ipcserver [s6]"
+  s6-log: "Reliable logging with automated log rotation with full POSIX Regex [s6]"
+  s6-mkfifodir: "Creates fifodir, belonging to the current user [s6]"
+  s6-notifyoncheck: "Polls a service's readiness and reports it via the s6 notification mechanism [s6]"
+  s6-permafailon: "Checks a service's death tally and, if it matches a pattern, causes permanent failure, stopping the supervisor from restarting it [s6]"
+  s6-setlock: "Takes a lock on a file, then executes into another program [s6]"
+  s6-setsid: "Runs a program as a new session leader or new foreground/background process group [s6]"
+  s6-setuidgid: "Executes a program as another user specified by the account argument [s6]"
+  s6-socklog: "A minimal syslog daemon that logs messages via Unix or TCP sockets [s6]"
+  s6-softlimit: "Modifies process limits (e.g., memory, file size, stack) before executing another program [s6]"
+  s6-sudo: "Connects to a Unix socket, forwarding FDs, arguments, and environment with different privileges [s6]"
+  s6-sudoc: "Interacts with s6-sudod via a Unix socket, sending arguments and descriptors [s6]"
+  s6-sudod: "Forks a program after receiving arguments and descriptors from s6-sudoc over a Unix socket [s6]"
+  s6-supervise: "Monitors a long-lived process or service, ensuring it stays alive [s6]"
+  s6-svc: "Sends commands to a running s6-supervise process [s6]"
+  s6-svdt: "Prints the death tally of a service, showing when the process died and the cause [s6]"
+  s6-svdt-clear: "Clears the recorded death tally of a service being supervised at the specified servicedir [s6]"
+  s6-svlink: "Integrate service directories into an existing service manager sequence and eliminate race conditions [s6]"
+  s6-svlisten: "Runs a program, blocking until a supervised service goes up or down [s6]"
+  s6-svlisten1: "Runs a program, blocking until a supervised service goes up or down [s6]"
+  s6-svok: "Checks if a given s6-service-directory is being monitored by an s6-supervise process [s6]"
+  s6-svperms: "Manages service permissions for reading, controlling, and subscribing [s6]"
+  s6-svscan: "Starts and monitors a collection of s6-supervise processes [s6]"
+  s6-svscanctl: "Sends commands to a running s6-svscan process [s6]"
+  s6-svstat: "Prints a summary of the state of a process monitored by s6-supervise [s6]"
+  s6-svunlink: "Integrates service directories and eliminates race conditions [s6]"
+  s6-svwait: "Monitors one or more s6-service-directory directories, waiting for a specified state [s6]"
+  s6-tai64n: "Prepend each stdin line with a TAI64N timestamp [s6]"
+  s6-tai64nlocal: "Convert lines starting with a TAI64N timestamp into a human-readable local date and time [s6]"
+  s6-usertree-maker: "Creates an s6-service-directory to run an s6-svscan process owned by a specified user, in a user-specific s6-scan-directory [s6]"
+  ucspilogd: "Convert syslog facility numbers and alert levels into names [s6]"
+homepage:
+  - "https://skarnet.org/software/s6/"
+license:
+  - "ISC"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "s6-accessrules-cdb-from-fs"
+  - "s6-accessrules-fs-from-cdb"
+  - "s6-applyuidgid"
+  - "s6-cleanfifodir"
+  - "s6-connlimit"
+  - "s6-envdir"
+  - "s6-envuidgid"
+  - "s6-fdholder-daemon"
+  - "s6-fdholder-delete"
+  - "s6-fdholder-getdump"
+  - "s6-fdholder-list"
+  - "s6-fdholder-retrieve"
+  - "s6-fdholder-setdump"
+  - "s6-fdholder-store"
+  - "s6-fdholder-transferdump"
+  - "s6-fdholderd"
+  - "s6-fghack"
+  - "s6-ftrig-listen"
+  - "s6-ftrig-listen1"
+  - "s6-ftrig-notify"
+  - "s6-ftrig-wait"
+  - "s6-ftrigrd"
+  - "s6-instance-control"
+  - "s6-instance-create"
+  - "s6-instance-delete"
+  - "s6-instance-list"
+  - "s6-instance-maker"
+  - "s6-instance-status"
+  - "s6-ioconnect"
+  - "s6-ipcclient"
+  - "s6-ipcserver"
+  - "s6-ipcserver-access"
+  - "s6-ipcserver-socketbinder"
+  - "s6-ipcserverd"
+  - "s6-log"
+  - "s6-mkfifodir"
+  - "s6-notifyoncheck"
+  - "s6-permafailon"
+  - "s6-setlock"
+  - "s6-setsid"
+  - "s6-setuidgid"
+  - "s6-socklog"
+  - "s6-softlimit"
+  - "s6-sudo"
+  - "s6-sudoc"
+  - "s6-sudod"
+  - "s6-supervise"
+  - "s6-svc"
+  - "s6-svdt"
+  - "s6-svdt-clear"
+  - "s6-svlink"
+  - "s6-svlisten"
+  - "s6-svlisten1"
+  - "s6-svok"
+  - "s6-svperms"
+  - "s6-svscan"
+  - "s6-svscanctl"
+  - "s6-svstat"
+  - "s6-svunlink"
+  - "s6-svwait"
+  - "s6-tai64n"
+  - "s6-tai64nlocal"
+  - "s6-usertree-maker"
+  - "ucspilogd"  
+repology:
+  - "s6"
+src_url:
+  - "https://github.com/skarnet/s6"
+tag:
+  - "sys-apps"
+  - "system"
+  - "sysutils"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#s6" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.s6" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null 

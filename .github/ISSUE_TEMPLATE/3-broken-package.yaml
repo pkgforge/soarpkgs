@@ -1,0 +1,77 @@
+name: Broken Package (SBUILD)
+description: Report a package (.SBUILD) that's broken/not-working as expected
+title: "Broken: name_of_the_package"
+labels: ["bug"]
+assignees:
+  - Azathothas
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide as much Information as possible for **Quicker Resolution**<br>
+  - type: checkboxes
+    id: guide
+    attributes:
+      label: Upstream Issue
+      description: "Are you sure, this issue is not related to Upstream?"
+      options:
+        - label: "I can confirm this issue is only in Soarpkgs' SBUILD"
+          required: true
+  - type: checkboxes
+    id: issue
+    attributes:
+      label: Bug Report Exists
+      description: "Are you sure, this issue wasn't already Reported? [Search](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Abug+)"
+      options:
+        - label: "I have already searched the [Issues Page](https://github.com/pkgforge/soarpkgs/issues?q=is%3Aissue+label%3Abug+)"
+          required: true
+  - type: checkboxes
+    id: disabled
+    attributes:
+      label: Package is Disabled
+      description: "Are you sure, this package hasn't already been [disabled?](https://docs.pkgforge.dev/sbuild/specification/1.shebang)"
+      options:
+        - label: "I have already read the SBUILD & it's NOT Disabled"
+          required: true       
+  - type: textarea
+    id: pkg_id
+    attributes:
+      label: PKG_ID (Package ID)
+      description: "Provide the [ID of the Package](https://docs.pkgforge.dev/sbuild/specification/2.pkg)"
+    validations:
+      required: true
+  - type: textarea
+    id: url
+    attributes:
+      label: SBUILD URL (Blob)
+      description: "Provide the SBUILD's URL (Search In: [binaries](https://github.com/pkgforge/soarpkgs/tree/main/binaries) OR [packages](https://github.com/pkgforge/soarpkgs/tree/main/packages))"
+    validations:
+      required: true
+  - type: textarea
+    id: bug
+    attributes:
+      label: Describe the bug/issue
+      description: "Summarize what's broken & not working<br>Clearly point out the issue and provide supporting screenshots/videos<br>Also attach the `BUILD.log` if it's relevant"
+    validations:
+      required: true
+  - type: textarea
+    id: maintainer
+    attributes:
+      label: Maintainers
+      description: "List & Mention the [Maintainers](https://docs.pkgforge.dev/sbuild/specification/14.maintainer) that are listed in the SBUILD"
+    validations:
+      required: true
+  - type: textarea
+    id: version
+    attributes:
+      label: Soar Version
+      description: "Paste the output of `soar --version && soar env`"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Information
+      description: "Anything else you want to tell us about?<br> You can also reach us at Discord: https://docs.pkgforge.dev/contact/chat"
+    validations:
+      required: false

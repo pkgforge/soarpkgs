@@ -1,0 +1,60 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "quran-companion"
+pkg_id: "github.com.0xzer0x.quran-companion"
+pkg_type: "appimage"
+app_id: "github.com.0xzer0x.quran-companion"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Free and open-source desktop Quran reader and player 💻"
+distro_pkg:
+  archlinux:
+    aur:
+      - "quran-companion"
+      - "quran-companion-git"
+homepage:
+  - "https://github.com/0xzer0x/quran-companion"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "LGPL3"
+src_url:
+  - "https://github.com/0xzer0x/quran-companion"
+tag:
+  - "cross-platform"
+  - "islam"
+  - "linux"
+  - "qt"
+  - "qt6"
+  - "qt6-gui"
+  - "qt6-widgets"
+  - "quran"
+  - "quran-audio"
+  - "quran-companion"
+  - "quran-offline"
+  - "quran-reader"
+  - "quran-recitation"
+  - "quran-search"
+  - "quran-tafseer"
+  - "quran-translation"
+  - "tafsir"
+  - "windows"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/0xzer0x/quran-companion/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/0xzer0x/quran-companion" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,34 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "impposter"
+pkg_id: "github.com.imp-dance.imp-poster"
+pkg_type: "appimage"
+app_id: "github.com.imp-dance.imp-poster"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A simple react/electron project to be able to post to my own development blog"
+homepage:
+  - "https://github.com/imp-dance/imp-poster"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+src_url:
+  - "https://github.com/imp-dance/imp-poster"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/imp-dance/imp-poster/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/imp-dance/imp-poster" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "statuspilatus"
+pkg_id: "github.com.PilatusDevs.StatusPilatus"
+pkg_type: "appimage"
+app_id: "github.com.PilatusDevs.StatusPilatus"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Monitor your PC like never before!"
+homepage:
+  - "https://github.com/PilatusDevs/StatusPilatus"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GNU General Public License v3.0"
+src_url:
+  - "https://github.com/PilatusDevs/StatusPilatus"
+tag:
+  - "chartjs"
+  - "css"
+  - "electron-app"
+  - "htlm5"
+  - "javascript"
+  - "json"
+  - "monitor"
+  - "nodejs"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/PilatusDevs/StatusPilatus/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/PilatusDevs/StatusPilatus" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

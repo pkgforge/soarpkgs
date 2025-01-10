@@ -1,0 +1,38 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "defichain-app"
+pkg_id: "github.com.BirthdayResearch.defichain-app"
+pkg_type: "appimage"
+app_id: "github.com.BirthdayResearch.defichain-app"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "DeFi Blockchain desktop app for Windows, Linux and Mac."
+homepage:
+  - "https://github.com/BirthdayResearch/defichain-app"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT License"
+src_url:
+  - "https://github.com/BirthdayResearch/defichain-app"
+tag:
+  - "electron"
+  - "webapp"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/BirthdayResearch/defichain-app/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/BirthdayResearch/defichain-app" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/BirthdayResearch/defichain-app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -1,0 +1,54 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "elementary-code"
+pkg_id: "github.com.titenko.elementary-code"
+pkg_type: "appimage"
+app_id: "github.com.titenko.elementary-code"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "AppImage version of Elementary OS Code (unofficial) from Maksym Titenko"
+distro_pkg:
+  archlinux:
+    aur:
+      - "pantheon-code-git"
+    extra:
+      - "pantheon-code"
+  nixpkgs:
+    - "pantheon.elementary-code"
+homepage:
+  - "https://elementary.io"
+  - "https://github.com/elementary/code"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0"
+  - "GPL-3.0-or-later"
+  - "GPL-3.0-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND GPL-2.0-or-later"
+  - "GPL3"
+  - "GPLv3"
+src_url:
+  - "https://github.com/titenko/elementary-code"
+tag:
+  - "Development/Debug"
+  - "editors"
+  - "pantheon"
+  - "x11"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/titenko/elementary-code/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/titenko/elementary-code" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

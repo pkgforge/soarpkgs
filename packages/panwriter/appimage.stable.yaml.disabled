@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "panwriter"
+pkg_id: "github.com.mb21.panwriter"
+pkg_type: "appimage"
+app_id: "github.com.mb21.panwriter"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Markdown editor with pandoc integration and paginated preview."
+distro_pkg:
+  archlinux:
+    aur:
+      - "panwriter"
+      - "panwriter-bin"
+homepage:
+  - "https://github.com/mb21/panwriter"
+  - "https://panwriter.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "GPL-3.0-only"
+  - "GPL3"
+src_url:
+  - "https://github.com/mb21/panwriter"
+tag:
+  - "editor"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/mb21/panwriter/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/mb21/panwriter" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/mb21/panwriter" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
