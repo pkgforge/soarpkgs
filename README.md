@@ -30,9 +30,8 @@
     <br> 
 </p>
 
-> [!NOTE]
-> We recommend cloning with [`--filter=blob:none`](https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/) for local development<br>
-> Package Listing & Searching: https://pkgs.pkgforge.dev/?repo=soarpkgs
+---
+- This repository hosts [`.SBUILD` Recipes](https://docs.pkgforge.dev/sbuild/introduction) used to build [Binaries](https://docs.pkgforge.dev/formats/binaries) & [Packages](https://docs.pkgforge.dev/formats/packages) for [Soar](https://github.com/pkgforge/soar)
 ```bash
 .
 ├── assets --> Common Assets used by other Packages
@@ -42,6 +41,10 @@
 
 !# $file.disabled --> Needs fixing & rewriting
 ```
+
+> [!NOTE]
+> We recommend cloning with [`--filter=blob:none`](https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/) for local development<br>
+> Package Listing & Searching: https://pkgs.pkgforge.dev/?repo=soarpkgs
 
 ---
 #### Index
@@ -64,6 +67,6 @@
 
 ---
 #### Repo Analytics
-![Alt](https://repobeats.axiom.co/api/embed/69e7eeda76226334586a3f6c26593382877c59ba.svg "Repobeats analytics image")
+[![Alt](https://repobeats.axiom.co/api/embed/69e7eeda76226334586a3f6c26593382877c59ba.svg "Repobeats analytics image")](https://github.com/pkgforge/soarpkgs/graphs/contributors)
 [![Stargazers](https://reporoster.com/stars/dark/pkgforge/soarpkgs)](https://github.com/pkgforge/soarpkgs/stargazers)
-[![Stargazers over time](https://starchart.cc/pkgforge/soarpkgs.svg)](https://starchart.cc/pkgforge/soarpkgs)
+[![Stargazers over time](https://starchart.cc/pkgforge/soarpkgs.svg?variant=dark)](https://starchart.cc/pkgforge/soarpkgs)
