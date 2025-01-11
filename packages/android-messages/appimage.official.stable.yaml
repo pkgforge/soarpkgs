@@ -1,0 +1,58 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-messages/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "android-messages"
+pkg_id: "github.com.chrisknepper.android-messages-desktop"
+pkg_type: "appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "Android Messages as a Cross-platform Desktop App"
+distro_pkg:
+  archlinux:
+    aur:
+      - "android-messages-desktop"
+      - "android-messages-desktop-bin"
+  homebrew:
+    - "android-messages"      
+homepage:
+  - "https://github.com/OrangeDrangon/android-messages-desktop"
+license:
+  - id: "MIT"
+    url: "https://github.com/OrangeDrangon/android-messages-desktop/raw/3bd2629b73fd4dae8b6f42e434abcb817f99f47c/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/OrangeDrangon/android-messages-desktop"  
+provides:
+  - "android-messages==Android-Messages"
+repology:
+  - "android-messages"
+  - "android-messages-desktop"
+src_url:
+  - "https://github.com/OrangeDrangon/android-messages-desktop"
+tag:
+  - "android-messages"
+  - "message"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/OrangeDrangon/android-messages-desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/OrangeDrangon/android-messages-desktop@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

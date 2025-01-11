@@ -1,33 +1,44 @@
 #!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-knot/appimage.official.stable.yaml
 _disabled: false
 
-pkg: "android-knot"
+pkg: "knot"
 pkg_id: "github.com.ic005k.Knot"
 pkg_type: "appimage"
-app_id: "github.com.ic005k.Knot"
 build_util:
   - "curl#bin"
   - "jq#bin"
 category:
   - "Utility"
-description: "Record everything."
+description: "Record everything in the simplest way possible"
 distro_pkg:
   archlinux:
     aur:
       - "android-knot-bin"
 homepage:
   - "https://github.com/ic005k/Knot"
+license:
+  - id: "MIT"
+    url: "https://github.com/ic005k/Knot/raw/f5b32b83d807550184407ba6b7443d85cdd724b1/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
-license:
-  - "MIT"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/ic005k/Knot"  
+provides:
+  - "knot"
+repology:
+  - "android-knot"  
 src_url:
   - "https://github.com/ic005k/Knot"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/ic005k/Knot/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -35,6 +46,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/ic005k/Knot" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/ic005k/Knot@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
