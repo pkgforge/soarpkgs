@@ -20,7 +20,7 @@ body:
   - type: checkboxes
     id: disabled
     attributes:
-      label: Package is Disabled
+      label: Package is Not Disabled
       description: "Are you sure, this package hasn't already been [disabled?](https://docs.pkgforge.dev/sbuild/specification/1.shebang)"
       options:
         - label: "I have already read the SBUILD & it's NOT Disabled"
