@@ -1,0 +1,59 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/altair/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "altair"
+pkg_id: "github.com.altair-graphql.altair"
+pkg_type: "appimage"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A beautiful feature-rich GraphQL Client"
+distro_pkg:
+  archlinux:
+    aur:
+      - "altair"
+      - "altair-bin"
+  nixpkgs:
+    - "altair"
+homepage:
+  - "https://altair.sirmuel.design"
+  - "https://altairgraphql.dev"
+  - "https://github.com/imolorhe/altair"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/altair-graphql/altair"  
+license:
+  - id: "MIT"
+    url: "https://github.com/altair-graphql/altair/raw/bf289f91889366b68f7e18fd8407ad0e8b02e247/LICENSE"
+provides:
+  - "altair"  
+repology:
+  - "altair"  
+src_url:
+  - "https://github.com/altair-graphql/altair"
+tag:
+  - "api"
+  - "graphql"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/altair-graphql/altair/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/altair-graphql/altair@${RELEASE_TAG}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/altair-graphql/altair@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

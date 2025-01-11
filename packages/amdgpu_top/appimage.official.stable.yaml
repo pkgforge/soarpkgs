@@ -3,7 +3,7 @@
 _disabled: false
 
 pkg: "amdgpu_top"
-pkg_id: "github.com.Umio-Yasuno.amdgpu_top.stable"
+pkg_id: "github.com.Umio-Yasuno.amdgpu_top"
 pkg_type: "appimage"
 build_util:
   - "curl#bin"
@@ -21,22 +21,31 @@ distro_pkg:
     - "amdgpu_top"
 homepage:
   - "https://github.com/Umio-Yasuno/amdgpu_top"
+licensen:
+  - id: "MIT"
+    url: "https://github.com/Umio-Yasuno/amdgpu_top/raw/7ceed7579fb994b7e9026526f0b8ec86756b701f/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
-  - "Officially Created AppImage. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/Umio-Yasuno/amdgpu_top"   
+provides:
+  - "amdgpu_top"
 repology:
   - "amdgpu-top"
 src_url:
   - "https://github.com/Umio-Yasuno/amdgpu_top"
 tag:
-  - "sys-apps"
-  - "system.utils"
+  - "monitor"
+  - "top"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/Umio-Yasuno/amdgpu_top/releases/latest?per_page=100" | jq -r '.tag_name'
   run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -44,6 +53,6 @@ x_exec:
         exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/Umio-Yasuno/amdgpu_top" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/Umio-Yasuno/amdgpu_top@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
