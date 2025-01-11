@@ -1,0 +1,59 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/vesktop/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "vesktop"
+pkg_id: "github.com.Vencord.Vesktop"
+pkg_type: "appimage"
+app_id: "dev.vencord.Vesktop"
+build_util:
+  - "curl"
+  - "jq"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "A custom Discord App aiming to give you better performance and improve linux support"
+distro_pkg:
+  archlinux:
+    aur:
+      - "vesktop"
+      - "vesktop-bin"
+      - "vesktop-git"
+  gentoo:
+    guru:
+      - "net-im/vesktop-bin"
+  nixpkgs:
+    - "vesktop"
+homepage:
+  - "https://github.com/Vencord/Vesktop"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/Vencord/Vesktop/raw/6c4ecc0d64a843ec942b4fa645c0bfe617b21257/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+  - "QaidVoid (https://github.com/QaidVoid)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/Vencord/Vesktop"
+src_url:
+  - "https://github.com/Vencord/Vesktop"
+tag:
+  - "Communications"
+  - "discord"
+  - "messaging"
+  - "net-im"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Vencord/Vesktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    case "$(uname -m)" in
+      aarch64) exclude="x86,x64,arm,zsync" ;;
+      x86_64) exclude="aarch64,arm,zsync" ;;
+    esac
+    if [ -n "$exclude" ]; then
+      soar dl "https://github.com/Vencord/Vesktop" --match "appimage" --exclude "$exclude" -o "./${PKG}" --yes
+    fi
