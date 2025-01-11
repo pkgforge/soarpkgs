@@ -1,22 +1,33 @@
 #!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/agregore/appimage.official.stable.yaml
 _disabled: false
 
 pkg: "agregore"
 pkg_id: "github.com.AgregoreWeb.agregore-browser"
 pkg_type: "appimage"
-app_id: "github.com.AgregoreWeb.agregore-browser"
 build_util:
   - "curl#bin"
   - "jq#bin"
 category:
-  - "Utility"
-description: "A minimal browser for the distributed web (Desktop version)"
+  - "WebBrowser"
+description: "A minimal browser for the distributed web"
+distro_pkg:
+  archlinux:
+    aur:
+      - "agregore-browser-bin"
 homepage:
   - "https://github.com/AgregoreWeb/agregore-browser"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/AgregoreWeb/agregore-browser"  
 license:
-  - "GNU Affero General Public License v3.0"
+  - id: "AGPL-3.0"
+    url: "https://github.com/AgregoreWeb/agregore-browser/raw/b488d9337891b00b681cf06fb3ec221afbbf2777/LICENSE"
+provides:
+  - "agregore"
+repology:
+  - "agregore-browser"
 src_url:
   - "https://github.com/AgregoreWeb/agregore-browser"
 tag:
@@ -28,10 +39,14 @@ tag:
   - "p2p"
   - "ssb"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/AgregoreWeb/agregore-browser/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -39,6 +54,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/AgregoreWeb/agregore-browser" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/AgregoreWeb/agregore-browser@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac

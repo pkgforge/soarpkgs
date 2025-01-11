@@ -15,17 +15,25 @@ description: "FOSS Knowledge Base with fully merged docs, whiteboards and databa
 distro_pkg:
   archlinux:
     aur:
+      - "affine"
       - "affine-bin"
       - "affine-canary-bin"
+  homebrew:
+    - "affine"
   nixpkgs:
     - "affine"
 homepage:
   - "https://affine.pro"
   - "https://github.com/toeverything/AFFiNE"
+license:
+  - id: "MIT"
+    url: "https://github.com/toeverything/AFFiNE/raw/c016f8e37e92873dd355c0d1d78b7629bb37f6ec/LICENSE-MIT"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
-  - "Officially Created AppImage. Check/Report @ https://github.com/toeverything/AFFiNE"
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/toeverything/AFFiNE"
+provides:
+  - "affine"
 repology:
   - "affine-whiteboard"
 src_url:
@@ -34,10 +42,14 @@ tag:
   - "knowledge-base"
   - "wiki"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/toeverything/AFFiNE/releases/latest?per_page=100" | jq -r '.tag_name'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/toeverything/AFFiNE/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -45,6 +57,6 @@ x_exec:
         exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/toeverything/AFFiNE" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/toeverything/AFFiNE@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac

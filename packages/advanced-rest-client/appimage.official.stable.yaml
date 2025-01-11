@@ -1,16 +1,16 @@
 #!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/advanced-passgen/appimage.official.stable.yaml
 _disabled: false
 
 pkg: "advanced-rest-client"
 pkg_id: "github.com.advanced-rest-client.arc-electron"
 pkg_type: "appimage"
-app_id: "github.com.advanced-rest-client.arc-electron"
 build_util:
   - "curl#bin"
   - "jq#bin"
 category:
   - "Utility"
-description: "Advanced REST Client - Desktop application"
+description: "A developer tool to test a HTTP request"
 distro_pkg:
   archlinux:
     aur:
@@ -20,19 +20,29 @@ homepage:
   - "https://github.com/advanced-rest-client/arc-electron"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/advanced-rest-client/arc-electron"  
 license:
-  - "Apache"
-  - "Apache-2.0"
+  - id: "Apache-2.0"
+    url: "https://github.com/advanced-rest-client/arc-electron/raw/4a40ffe7cb044fa1a2f828a5e0ebff3651ee28a9/LICENSE.md"
+provides:
+  - "advanced-rest-client"  
+repology:
+  - "advanced-rest-client"
 src_url:
   - "https://github.com/advanced-rest-client/arc-electron"
 tag:
   - "advanced-rest-client"
   - "electron"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/advanced-rest-client/arc-electron/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -40,6 +50,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/advanced-rest-client/arc-electron" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/advanced-rest-client/arc-electron@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac

@@ -1,0 +1,64 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/free-download-manager/archive.official.stable.yaml
+_disabled: false
+
+pkg: "free-download-manager"
+pkg_id: "www.freedownloadmanager.org"
+pkg_type: "archive"
+build_util:
+  - "busybox/tree#base"
+  - "curl#bin"
+  - "jq#bin"
+  - "tar/tar#base"
+category:
+  - "Player"
+description: "FDM is a powerful modern download accelerator and organizer"
+desktop:
+  dir: "/opt"
+distro_pkg:
+  archlinux:
+    aur:
+      - "freedownloadmanager"
+  homebrew:
+    - "free-download-manager"
+homepage:
+  - "https://www.freedownloadmanager.org"
+icon:
+  dir: "/opt"
+license:
+  - "Freeware"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre-Built Deb Archive. Check/Report @ https://www.freedownloadmanager.org"
+repology:
+  - "freedownloadmanager"
+src_url:
+  - "https://www.freedownloadmanager.org"
+tag:
+  - "Applications/Publishing"
+  - "biblatex"
+  - "office"
+  - "tex"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://www.freedownloadmanager.org/download-fdm-for-linux.htm" | grep -oP 'FDM \K[0-9]+(\.[0-9]+)*([-_][a-zA-Z0-9]+)?' | sort --version-sort | tail -n 1 | tr -cd '0-9a-zA-Z.-_' | tr -d '[:space:]'
+  entrypoint: "/bin/freedownloadmanager"
+  run: |
+    #Download: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=freedownloadmanager
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        curl -qfSL "https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb" -o "./fdm.deb"
+        7z x -mmt="$(($(nproc)+1))" -bd -y -o"./data" "./fdm.deb" 2>/dev/null
+        find "./data" -type f -exec tar -xvf "{}" 2>/dev/null \;
+        rm -rvf "./data" "./fdm.deb"
+        tree "./"
+        ;;
+    esac
