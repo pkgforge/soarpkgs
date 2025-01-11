@@ -5,10 +5,15 @@ _disabled: false #We want this SBUILD to run
 #! We Assume you have read the SPEC at least twice, so we won't repeat things to keep this template small
 #! If you haven't or need a refresher: https://docs.pkgforge.dev/sbuild/introduction
 
+#! You can use this script to fetch some of these values automatically (using repology)
+# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/soarpkgs/scripts/repology_fetcher.sh") "${PKG}"
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/2.pkg
 pkg: "REPLACE_ME" #pkg is canonical name & is Necessary
 pkg_id: "REPLACE_ME" #Leave this empty or delete it if not needed
 pkg_type: "REPLACE_ME" #What kind of package it is: appbundle|appimage|archive|dynamic|flatimage|gameimage|nixappimage|runimage|static etc
 
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/5.buildasset
 #This field specifies what tools soar will install before running the final x_exec.run
 #You can delete this & it's subfields
 build_util:
@@ -16,16 +21,20 @@ build_util:
   - "curl"
   - "jq"
 
- #Only Official Categories listed at:
- # https://specifications.freedesktop.org/menu-spec/latest/category-registry.html#main-category-registry
- # https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html 
- #If you aren't sure, then leave this empty or delete it & use tag: instead
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/7.category
+#Only Official Categories listed at:
+# https://specifications.freedesktop.org/menu-spec/latest/category-registry.html#main-category-registry
+# https://specifications.freedesktop.org/menu-spec/latest/additional-category-registry.html 
+#If you aren't sure, then leave this empty or delete it & use tag: instead
 category:
   - "REPLACE_ME"
   - "REPLACE_ME"
   
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/8.description
 #Use the repology fetcher to see possible values
 description: "REPLACE_ME"
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/10.distropkg
 #Delete what you can't fill along with its parent
 distro_pkg:
   alpine:
@@ -40,55 +49,78 @@ distro_pkg:
     - "REPLACE_ME"
   nixpkgs:
     - "REPLACE_ME"
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/11.homepage
 homepage:
   - "REPLACE_ME"
   - "REPLACE_ME"
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/13.license
 license:
   - "REPLACE_ME"
   - "REPLACE_ME"
   - "REPLACE_ME"
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/14.maintainer
 #Replace this with your own profile, you can also attach links to your email, discord, web etc
 maintainer:
   - "PkgForge (https://github.com/pkgforge)"
   
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/15.note  
 #If there's any special note you want to tell users, otherwise delete it & it's parent
 note:
- - "REPLACE_ME"
- - "REPLACE_ME"
+  - "REPLACE_ME"
+  - "REPLACE_ME"
 
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/16.provides
+#The app or a list of apps this sbuild will generate
+provides:
+  - "REPLACE_ME"
+  #Add more if this SBUILD produces more programs
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/17.repology
 #The search term you used when using repology-fetcher or from the site: https://repology.org/projects/ 
 repology:
- - "REPLACE_ME"
+  - "REPLACE_ME"
 
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/18.sourceurl
 #This is Important, you should fill the exact download page from where you will be getting the package 
 src_url:
   - "REPLACE_ME"
  #If it has multiple download links, you can add them here, otherwise delete it
   - "REPLACE_ME"
 
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/19.tag
 #This has no strict requirement like the category field, so you can fill this with anything, however do be sensible  
 tag:
   - "REPLACE_ME"
   - "REPLACE_ME"
   - "REPLACE_ME"
   
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/20.x_exec  
 #This is the important part
 x_exec:
+  host: 
+    - "aarch64-Linux" #Remove, if it doesn't build for aarch64 Linux
+    - "x86_64-Linux"
   shell: "bash" #Because bash is available everywhere, and we don't want users to install a esoteric shell
   pkgver: |
-    #This will fetch the version and save it as "./${SBUILD_PKG}.version" (SBUILDER will do it, we don't need to do ourselves) and env ${PKG_VER}
+    #This will fetch the version and save it as "./${PKG}.version" (SBUILDER will do it, we don't need to do ourselves) and env ${PKG_VER}
     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name'  
   run: |
+    ##Get the tag (we need it to explictly point to the pkg ver release)
+    RELEASE_TAG="$(cat ./${PKG}.version)" #You can skip this, soar will fetch the latest version if this empty
     ##Download the file
-    #IMPORTANT: ALWAYS try to save the main output file & related files with '${SBUILD_PKG}' variable
+    #IMPORTANT: ALWAYS try to save the main output file & related files with '${PKG}' variable
+    #If you don't want to use '${PKG}' env var, then hardcode the prog names from the value of .provides
     #Based on uname, so we don't have to maintain duplicate scripts, however if your pkg only has one architecture support, change this accordingly
     case "$(uname -m)" in
       aarch64)
        #This is an example of using soar dl to download gh release
-        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        timeout 3m soar dl "https://github.com/86Box/86Box@${RELEASE_TAG}" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes && chmod +x "./${PKG}"
         ;;
       x86_64)
-        timeout 3m soar dl "https://github.com/86Box/86Box" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${SBUILD_PKG}" --yes && chmod +x "./${SBUILD_PKG}"
+        timeout 3m soar dl "https://github.com/86Box/86Box@${RELEASE_TAG}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes && chmod +x "./${PKG}"
         ;;
     esac
     #We are done and can let the Runner take it from here

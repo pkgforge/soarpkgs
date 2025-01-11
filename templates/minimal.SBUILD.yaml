@@ -2,25 +2,28 @@
 #SELF: This contains the github raw url to itself, so it can be downloaded with curl etc: 
 _disabled: false #We want this SBUILD to run
 
+## NOTE: We do not recommend this, this is only for demonstrating the simplicity of SBUILDs & to teach new maintainers
+## We will edit and extend if you send a PR that uses this template
+
 #! We Assume you have read the SPEC at least twice, so we won't repeat things to keep this template small
 #! If you haven't or need a refresher: https://docs.pkgforge.dev/sbuild/introduction
 
+#! You can use this script to fetch some of these values automatically (using repology)
+# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/soarpkgs/scripts/repology_fetcher.sh") "${PKG}"
+
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/2.pkg
 pkg: "REPLACE_ME" #pkg is canonical name & is Necessary
 
-#This field specifies what tools soar will install before running the final x_exec.run
-#You can delete this & it's subfields
-build_util:
- #curl + jq are almost always needed to parse requests & json
-  - "curl"
-  - "jq"
-
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/8.description
 #Use the repology fetcher to see possible values
 description: "REPLACE_ME"
 
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/18.sourceurl
 #This is Important, you should fill the exact download page from where you will be getting the package 
 src_url:
   - "REPLACE_ME"
   
+#!Docs: https://docs.pkgforge.dev/sbuild/specification/20.x_exec  
 #This is the important part
 x_exec:
   shell: "bash" #Because bash is available everywhere, and we don't want users to install an esoteric shell
