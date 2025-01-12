@@ -56,7 +56,7 @@ x_exec:
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Abiword-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
