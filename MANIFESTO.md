@@ -40,4 +40,4 @@ If any of these principles resonates with your experience and vision for Linux p
 - Discussions: https://github.com/pkgforge/soarpkgs/discussions
 - Docs: https://docs.pkgforge.dev/repositories/soarpkgs
 
-Together, let's make Linux packaging soar.
+Together, let's make Linux packaging [soar](https://github.com/pkgforge/soar).
