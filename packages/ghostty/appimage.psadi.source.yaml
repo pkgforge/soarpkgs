@@ -1,0 +1,66 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.psadi.source.yaml
+_disabled: false
+
+pkg: "ghostty"
+pkg_id: "github.com.psadi.ghostty-appimage"
+pkg_type: "appimage"
+category:
+  - "TerminalEmulator"
+description: "Fast, native, feature-rich terminal emulator pushing modern features"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ghostty-git"
+    extra:
+      - "ghostty"
+  homebrew:
+    - "ghostty"
+  nixpkgs:
+    - "ghostty"
+homepage:
+  - "https://ghostty.org"
+  - "https://github.com/ghostty-org/ghostty"
+maintainer:
+  - "psadi (https://github.com/psadi)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source using a Community Provided Script. Check/Report @ https://github.com/psadi/ghostty-appimage"
+license:
+  - id: "MIT"
+    url: "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
+provides:
+  - "ghostty"
+repology:
+  - "ghostty"
+src_url:
+  - "https://github.com/psadi/ghostty-appimage"
+tag:
+  - "terminal"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://raw.githubusercontent.com/psadi/ghostty-appimage/main/build.sh" | grep -oP 'GHOSTTY_VERSION\s*=\s*"\K[^"]*(?=")' | tr -d '[:space:]'
+  run: |
+    #Build
+     docker stop "ubuntu-builder" >/dev/null 2>&1 ; docker rm "ubuntu-builder" >/dev/null 2>&1
+     docker run --privileged --device "/dev/fuse" --net="host" --name "ubuntu-builder" --pull="always" "ghcr.io/pkgforge/devscripts/ubuntu-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+      #Build
+       git clone --depth="1" --filter "blob:none" --quiet "https://github.com/psadi/ghostty-appimage" "./TEMPREPO" && cd "./TEMPREPO"
+       chmod -v +x "./setup.sh" "./build.sh"
+       "./setup.sh" && "./build.sh"
+      #Copy
+       find "/tmp/ghostty-build/" -maxdepth 1 -type f -iname "*mage*" -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/ghostty"
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "ubuntu-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
