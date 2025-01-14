@@ -1,6 +1,10 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/main/packages/wget2/nixappimage.nixpkgs.stable.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+   broken:
+     - date: "2025-01-14"
+       reason: "Doesn't do anything"
 
 pkg: "wget2"
 pkg_id: "nixpkgs.wget2"
@@ -8,6 +12,8 @@ pkg_type: "nixappimage"
 category:
   - "Utility"
 description: "GNU Wget2 is the successor of GNU Wget, a file and recursive website downloader"
+desktop:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/wget2/assets/default.desktop"
 distro_pkg:
   alpine:
     - "wget2"
@@ -26,6 +32,8 @@ distro_pkg:
 homepage:
   - "https://github.com/rockdaboot/wget2"
   - "https://gitlab.com/gnuwget/wget2"
+icon:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/wget2/assets/default.png"  
 license:
   - id: "GPL-3.0"
     url: "https://github.com/rockdaboot/wget2/raw/0651b0a447e4d6dd3f100800d0d93db90f2bd2fb/COPYING"
