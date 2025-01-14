@@ -8,7 +8,7 @@ pkg_type: "appimage"
 app_id: "com.usebottles.bottles"
 build_util:
   - "curl#bin"
-  - "squishy-cli#bin"
+  - "jq#bin"
 category:
   - "Emulator"
 description: "An easy-to-use wineprefix manager to Run Windows software and games on Linux"

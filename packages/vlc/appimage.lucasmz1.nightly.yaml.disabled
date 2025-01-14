@@ -8,7 +8,7 @@ pkg_type: "appimage"
 app_id: "org.videolan.VLC"
 build_util:
   - "curl#bin"
-  - "squishy-cli#bin"
+  - "jq#bin"
 category:
   - "Music"
   - "Player"

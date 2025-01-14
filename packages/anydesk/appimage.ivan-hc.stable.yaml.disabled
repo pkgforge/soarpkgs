@@ -8,7 +8,7 @@ pkg_type: "appimage"
 app_id: "com.anydesk.Anydesk"
 build_util:
   - "curl#bin"
-  - "squishy-cli#bin"
+  - "jq#bin"
 category:
   - "RemoteAccess"
   - "VideoConference"

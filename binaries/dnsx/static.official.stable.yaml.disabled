@@ -40,10 +40,6 @@ x_exec:
 _disabled: false
 pkg: "dnsx"
 pkg_type: "static"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
-  - "squishy-cli#bin"
 description: "dnsx is a fast and multi-purpose DNS toolkit allow to run multiple DNS queries of your choice with a list of user-supplied resolvers."
 distro_pkg:
   archlinux:
