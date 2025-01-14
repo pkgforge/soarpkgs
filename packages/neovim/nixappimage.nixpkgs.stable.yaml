@@ -84,15 +84,24 @@ x_exec:
        ln -sfn "$(realpath --relative-to="$(dirname "./squashfs-root/usr")" "${ENTRYPOINT_DIR}")" "./squashfs-root/usr"
        find "./squashfs-root" -maxdepth 1 -type l ! -name '*entrypoint*' -exec test -f "{}" \; -exec rsync -achvL --remove-source-files "{}" "{}.tmp" \; -exec mv "{}.tmp" "{}" \;
       #Icon
-       find -L "./squashfs-root/usr" -type f,l  -regex '.*\.\(png\|svg\)' \
-         -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
-         | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "./squashfs-root/${PKG}.png"
-       if [[ ! -f "./squashfs-root/${PKG}.png" || $(stat -c%s "./squashfs-root/${PKG}.png") -le 3 ]]; then
-         find -L "./squashfs-root/usr" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "./squashfs-root/${PKG}.png"
+       if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+         find -L "./squashfs-root/usr" -type f,l  -regex '.*\.\(png\|svg\)' \
+           -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+           | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "./squashfs-root/${PKG}.png"
+         if [[ ! -f "./squashfs-root/${PKG}.png" || $(stat -c%s "./squashfs-root/${PKG}.png") -le 3 ]]; then
+           find -L "./squashfs-root/usr" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "./squashfs-root/${PKG}.png"
+         fi
+         cp -fv "./squashfs-root/${PKG}.png" "./squashfs-root/.DirIcon"
+       else
+         cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "./squashfs-root/${PKG}.png" || cp -fv "${SBUILD_OUTDIR}/${PKG}.svg" "./squashfs-root/${PKG}.svg"
+         cp "./squashfs-root/${PKG}.png" "./squashfs-root/.DirIcon" || cp "./squashfs-root/${PKG}.svg" "./squashfs-root/.DirIcon"
        fi
-       cp -fv "./squashfs-root/${PKG}.png" "./squashfs-root/.DirIcon"
       #Desktop
-       find -L "./squashfs-root/usr" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "./squashfs-root/${PKG}.desktop"'
+       if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+         find -L "./squashfs-root/usr" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "./squashfs-root/${PKG}.desktop"'
+       else
+         cp -fv "${SBUILD_OUTDIR}/${PKG}.desktop" "./squashfs-root/${PKG}.desktop"
+       fi
        sed -E 's/\s+setup\s+/ /Ig' -i "./squashfs-root/${PKG}.desktop"
        sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "./squashfs-root/${PKG}.desktop"
       #Perms
