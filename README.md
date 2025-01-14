@@ -12,6 +12,7 @@
 [doc-url]: https://docs.pkgforge.dev/repositories/soarpkgs
 
 <a href="https://pkgs.pkgforge.dev/?repo=soarpkgs"><img src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/soarpkgs/data/TOTAL.json&query=$[2].total&label=SBUILDs&labelColor=orange&style=flat&link=https://pkgs.pkgforge.dev/?repo=soarpkgs" alt="Packages" /></a>
+<a href="https://pkgs.pkgforge.dev"><img src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/soarpkgs/data/TOTAL_CACHE.json&query=$.total&label=Cache&labelColor=orange&style=flat&link=https://pkgs.pkgforge.dev" alt="Cache" /></a>
 [![Discord][discord-shield]][discord-url]
 [![Documentation][doc-shield]][doc-url]
 [![Issues][issues-shield]][issues-url]
