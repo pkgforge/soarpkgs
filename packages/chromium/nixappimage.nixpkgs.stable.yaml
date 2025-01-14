@@ -35,6 +35,7 @@ note:
   - "Built Using Nixpkgs. Check/Report @ https://github.com/NixOS/nixpkgs"
   - "Packed Using NixAppImage. Check/Report @ https://github.com/pkgforge/nix-appimage"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/nixappimage"
+  - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "chromium==chromium-browser"
 repology:
@@ -44,13 +45,16 @@ src_url:
 tag:
   - "browser"
 x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     nix derivation show "nixpkgs#chromium" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
+     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNFREE="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
      nix bundle --bundler "github:pkgforge/nix-appimage?ref=main" "nixpkgs#chromium" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixappimage"
      sudo rsync -achLv --no-relative "${SBUILD_TMPDIR}/nixappimage" "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
