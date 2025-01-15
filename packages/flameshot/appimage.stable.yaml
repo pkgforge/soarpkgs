@@ -1,0 +1,68 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/flameshot/appimage.stable.yaml
+_disabled: false
+
+pkg: "flameshot"
+pkg_id: "github.com.flameshot-org.flameshot"
+pkg_type: "appimage"
+app_id: "github.com.flameshot-org.flameshot"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "screenshot software"
+  - "image editing"
+  - "utilities"
+description: "Powerful yet simple to use screenshot software"
+distro_pkg:
+  alpine:
+    - "flameshot"
+  archlinux:
+    aur:
+      - "flameshot"
+  nixpkgs:
+    - "flameshot"
+homepage:
+  - "https://flameshot.org/"
+  - "https://github.com/flameshot-org/flameshot"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+repology:
+  - "flameshot"
+license:
+  - "GPL-3.0"
+src_url:
+  - "https://github.com/flameshot-org/flameshot"
+tag:
+  - "screenshot"
+  - "capture"
+  - "image-editing"
+  - "gui"
+  - "gnu-linux"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/flameshot-org/flameshot/releases?per_page=100" \
+    | jq -r '.[] | .assets[].name | select(test("x86_64\\.AppImage$"))' \
+    | sed -E 's/Flameshot-([0-9\\.]+)\\.x86_64\\.AppImage/\1/' \
+    | sort --version-sort \
+    | tail -n 1
+  run: |
+    # Download
+    RELEASE_TAG="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/flameshot-org/flameshot/releases?per_page=100" \
+      | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name' | tr -d '[:space:]')"
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is not yet supported for Flameshot AppImage\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/flameshot-org/flameshot/releases/download/${RELEASE_TAG}" \
+          --match "x86_64.AppImage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      *)
+        echo -e "\n[✗] Unsupported architecture: $(uname -m)\n"
+        exit 1
+        ;;
+    esac
+
