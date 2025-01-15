@@ -13,7 +13,7 @@ category:
   - "Music"
   - "Player"
   - "TV"
-description: "🎥 Command line video player (AnyLinux)"
+description: "General Purpose Command line video player"
 distro_pkg:
   alpine:
     - "mpv"
@@ -21,18 +21,31 @@ distro_pkg:
     aur:
       - "mpv-full"
       - "mpv-full-git"
+      - "mpv-git"
     extra:
-      - "mpv"  
+      - "mpv"
+  debian:
+    - "mpv"
+  gnuguix:
+    - "mpv"
+  homebrew:
+    - "mpv"
   nixpkgs:
     - "mpv"
 homepage:
-  - "https://obsproject.com"
+  - "https://mpv.io"
   - "https://github.com/mpv-player/mpv"
   - "https://github.com/pkgforge-dev/mpv-AppImage"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/mpv-player/mpv/raw/ca211b5b8830a74fecae115ba18b62878348342c/LICENSE.GPL"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
-  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/pkgforge-dev/mpv-AppImage"
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/mpv-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mpv"  
 repology:
   - "mpv"
 src_url:
@@ -44,10 +57,14 @@ tag:
   - "Video"
   - "Video/Utilities"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mpv-AppImage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mpv-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -55,6 +72,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/pkgforge-dev/mpv-AppImage" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/pkgforge-dev/mpv-AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
