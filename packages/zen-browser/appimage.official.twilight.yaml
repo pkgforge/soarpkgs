@@ -1,0 +1,60 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/zen-browser/appimage.official.twilight.yaml
+_disabled: false
+
+pkg: "zen-browser"
+pkg_id: "github.com.zen-browser.desktop.twilight"
+pkg_type: "appimage"
+app_id: "app.zen_browser.zen"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "WebBrowser"
+description: "Performance oriented Firefox-based web browser (Twilight)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "zen-browser"
+      - "zen-browser-bin"
+  homebrew:
+    - "zen-browser"
+homepage:
+  - "https://zen-browser.app"
+  - "https://github.com/zen-browser/desktop"
+license:
+  - id: "MPL-2.0"
+    url: "https://github.com/zen-browser/desktop/raw/92fc0f404454fe2186a51268c5d474d576d85025/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/zen-browser/desktop" 
+provides:
+  - "zen-browser==zen"
+repology:
+  - "zen-browser"
+src_url:
+  - "https://github.com/zen-browser/desktop"
+tag:
+  - "arc"
+  - "firefox"
+  - "www-client"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zen-browser/desktop/releases/tags/twilight" | jq -r '.name' | sed -E 's/.*- ([0-9]+\.[0-9]+[[:alnum:]]*) \(([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1_\2/' | tr -d '[:space:]'
+  run: |
+    #Tag
+    RELEASE_TAG="$(cat ./${PKG}.version)"
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/zen-browser/desktop@twilight" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/zen-browser/desktop@twilight" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
