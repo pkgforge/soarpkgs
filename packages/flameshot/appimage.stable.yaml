@@ -5,14 +5,12 @@ _disabled: false
 pkg: "flameshot"
 pkg_id: "github.com.flameshot-org.flameshot"
 pkg_type: "appimage"
-app_id: "github.com.flameshot-org.flameshot"
+app_id: "org.flameshot.Flameshot"
 build_util:
   - "curl#bin"
   - "jq#bin"
 category:
-  - "screenshot software"
-  - "image editing"
-  - "utilities"
+  - "Utility"
 description: "Powerful yet simple to use screenshot software"
 distro_pkg:
   alpine:
