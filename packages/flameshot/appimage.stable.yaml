@@ -42,23 +42,18 @@ tag:
 x_exec:
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/flameshot-org/flameshot/releases?per_page=100" \
-    | jq -r '.[] | .assets[].name | select(test("x86_64\\.AppImage$"))' \
-    | sed -E 's/Flameshot-([0-9\\.]+)\\.x86_64\\.AppImage/\1/' \
-    | sort --version-sort \
-    | tail -n 1
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/flameshot-org/flameshot/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
     # Download
-    RELEASE_TAG="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/flameshot-org/flameshot/releases?per_page=100" \
-      | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name' | tr -d '[:space:]')"
+    RELEASE_TAG="$(cat ./${PKG}.version)"
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is not yet supported for Flameshot AppImage\n"
         exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/flameshot-org/flameshot/releases/download/${RELEASE_TAG}" \
-          --match "x86_64.AppImage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/flameshot-org/flameshot@${RELEASE_TAG}" \
+        --match "x86_64.AppImage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
       *)
         echo -e "\n[✗] Unsupported architecture: $(uname -m)\n"
