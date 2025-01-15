@@ -47,7 +47,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg-formula-repository-official-core/refs/heads/master/formula/wget.yml" | grep "src-url:" | sed -E 's/.*wget-([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "wget") | .version' | tr -d '[:space:]'
   run: |
     #Build
      docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1

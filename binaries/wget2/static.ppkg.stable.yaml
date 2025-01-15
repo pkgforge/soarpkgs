@@ -49,7 +49,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg-formula-repository-official-core/refs/heads/master/formula/wget.yml" | grep "src-url:" | sed -E 's/.*wget-([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "wget2") | .version' | tr -d '[:space:]'
   run: |
     #Build
      docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1
@@ -67,7 +67,7 @@ x_exec:
        chmod -v "a+x" "/usr/local/bin/ppkg"
        ppkg setup --syspm
        ppkg update
-      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/blob/master/formula/wget.yml
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/blob/master/formula/wget2.yml
        ppkg install "wget2" --profile="release" -j "$(($(nproc)+1))" --static
        ppkg tree "wget2" --dirsfirst -L 5
       #Copy
