@@ -52,7 +52,6 @@ x_exec:
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/flameshot-org/flameshot/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
     # Download
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is not yet supported for Flameshot AppImage\n"
