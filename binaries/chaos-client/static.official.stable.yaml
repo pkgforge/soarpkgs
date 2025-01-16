@@ -8,7 +8,6 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "cli"
 description: "Client to interact with Project Discovery's Chaos DNS API"
 distro_pkg:
   archlinux:
@@ -33,8 +32,8 @@ repology:
 src_url:
   - "https://github.com/projectdiscovery/chaos-client"
 tag:
-  - "utility"
-  - "cli"
+  - "bug-bounty"
+  - "recon"
 x_exec:
   host:
     - "aarch64-Linux"
