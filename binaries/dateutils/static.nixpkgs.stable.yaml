@@ -87,7 +87,6 @@ x_exec:
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNFREE="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
      nix-build '<nixpkgs>' --impure --attr "pkgsStatic.dateutils" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
      find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms

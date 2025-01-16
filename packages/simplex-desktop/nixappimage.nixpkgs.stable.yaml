@@ -51,8 +51,7 @@ x_exec:
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; simplex-chat-desktop.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     NIXPKGS_ALLOW_BROKEN="1" NIXPKGS_ALLOW_UNFREE="1" NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1" \
-     nix bundle --bundler "github:pkgforge/nix-appimage?ref=main" "nixpkgs#simplex-chat-desktop" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixappimage"
+     nix bundle --impure --bundler "github:pkgforge/nix-appimage?ref=main" "nixpkgs#simplex-chat-desktop" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixappimage"
      sudo rsync -achLv --no-relative "${SBUILD_TMPDIR}/nixappimage" "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
      sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
      chmod -v +x "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
