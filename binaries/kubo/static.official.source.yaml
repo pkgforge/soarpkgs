@@ -8,7 +8,6 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "ipfs"
 description: 
   ipfswatch: "Tool to Monitor a directory and adds changes to IPFS"
   kubo: "Official Inter Platnetary File System (IPFS) CLI"
@@ -42,7 +41,6 @@ repology:
 src_url:
   - "https://github.com/ipfs/kubo"
 tag:
-  - "utility"
   - "ipfs"
 x_exec:
   host:
