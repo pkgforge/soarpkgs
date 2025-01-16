@@ -46,14 +46,12 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/altair-graphql/altair/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/altair-graphql/altair@${RELEASE_TAG}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/altair-graphql/altair@${PKGVER}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/altair-graphql/altair@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/altair-graphql/altair@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac

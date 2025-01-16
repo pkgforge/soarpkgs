@@ -53,15 +53,13 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/abcfy2/aria2-static-build/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[].tag_name' | grep -iv "continuous" | head -n 1 | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/abcfy2/aria2-static-build@${RELEASE_TAG}" --match "linux,musl,aarch64,static" --exclude "amd,x86,x64,libressl" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/abcfy2/aria2-static-build@${PKGVER}" --match "linux,musl,aarch64,static" --exclude "amd,x86,x64,libressl" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/abcfy2/aria2-static-build@${RELEASE_TAG}" --match "linux,musl,x86_64,static" --exclude "aarch,arm,libressl" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/abcfy2/aria2-static-build@${PKGVER}" --match "linux,musl,x86_64,static" --exclude "aarch,arm,libressl" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

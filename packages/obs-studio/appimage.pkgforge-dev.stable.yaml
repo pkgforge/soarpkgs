@@ -61,8 +61,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/OBS-Studio-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -70,6 +68,6 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac

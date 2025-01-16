@@ -44,15 +44,13 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/s0rg/crawley/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/s0rg/crawley@${RELEASE_TAG}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/s0rg/crawley@${PKGVER}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/s0rg/crawley@${RELEASE_TAG}" --match "linux,x86_64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/s0rg/crawley@${PKGVER}" --match "linux,x86_64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

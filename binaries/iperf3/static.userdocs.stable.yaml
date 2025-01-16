@@ -37,15 +37,13 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/userdocs/iperf3-static/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/userdocs/iperf3-static@${RELEASE_TAG}" --match "arm64v8" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/userdocs/iperf3-static@${PKGVER}" --match "arm64v8" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/userdocs/iperf3-static@${RELEASE_TAG}" --match "amd64" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/userdocs/iperf3-static@${PKGVER}" --match "amd64" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

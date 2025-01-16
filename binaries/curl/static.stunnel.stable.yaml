@@ -45,15 +45,13 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/stunnel/static-curl/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/stunnel/static-curl@${RELEASE_TAG}" --match "linux,musl,aarch64,tar" --exclude "amd,x86,x64" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,aarch64,tar" --exclude "amd,x86,x64" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/stunnel/static-curl@${RELEASE_TAG}" --match "linux,musl,x86_64,tar" --exclude "aarch,arm" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,x86_64,tar" --exclude "aarch,arm" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

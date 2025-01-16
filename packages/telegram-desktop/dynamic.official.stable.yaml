@@ -65,8 +65,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/telegramdesktop/tdesktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
@@ -74,7 +72,7 @@ x_exec:
         exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/telegramdesktop/tdesktop@${RELEASE_TAG}" --match "tar.xz" --exclude "aarch64,arm,zsync" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/telegramdesktop/tdesktop@${PKGVER}" --match "tar.xz" --exclude "aarch64,arm,zsync" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Get Appstream

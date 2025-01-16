@@ -108,8 +108,6 @@ x_exec:
     #This will fetch the version and save it as "./${PKG}.version" (SBUILDER will do it, we don't need to do ourselves) and env ${PKG_VER}
     curl -qfsSL "https://api.github.com/repos/86Box/86Box/releases/latest" | jq -r '.tag_name'  
   run: |
-    ##Get the tag (we need it to explictly point to the pkg ver release)
-    RELEASE_TAG="$(cat ./${PKG}.version)" #You can skip this, soar will fetch the latest version if this empty
     ##Download the file
     #IMPORTANT: ALWAYS try to save the main output file & related files with '${PKG}' variable
     #If you don't want to use '${PKG}' env var, then hardcode the prog names from the value of .provides
@@ -117,10 +115,10 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
        #This is an example of using soar dl to download gh release
-        timeout 3m soar dl "https://github.com/86Box/86Box@${RELEASE_TAG}" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes && chmod +x "./${PKG}"
+        timeout 3m soar dl "https://github.com/86Box/86Box@${PKGVER}" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes && chmod +x "./${PKG}"
         ;;
       x86_64)
-        timeout 3m soar dl "https://github.com/86Box/86Box@${RELEASE_TAG}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes && chmod +x "./${PKG}"
+        timeout 3m soar dl "https://github.com/86Box/86Box@${PKGVER}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes && chmod +x "./${PKG}"
         ;;
     esac
     #We are done and can let the Runner take it from here

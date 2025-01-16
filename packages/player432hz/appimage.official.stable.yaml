@@ -60,20 +60,18 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/mysteryx93/NaturalGroundingPlayer/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "converter432hz" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./converter432hz" --yes
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "player432hz" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./player432hz" --yes
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "powerliminalsplayer" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./powerliminalsplayer" --yes
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "yangdownloader" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./yangdownloader" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "converter432hz" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./converter432hz" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "player432hz" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./player432hz" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "powerliminalsplayer" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./powerliminalsplayer" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "yangdownloader" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./yangdownloader" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "converter432hz" --match "appimage" --exclude "aarch64,arm,zsync" -o "./converter432hz" --yes
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "player432hz" --match "appimage" --exclude "aarch64,arm,zsync" -o "./player432hz" --yes
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "powerliminalsplayer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./powerliminalsplayer" --yes
-        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${RELEASE_TAG}" --match "yangdownloader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./yangdownloader" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "converter432hz" --match "appimage" --exclude "aarch64,arm,zsync" -o "./converter432hz" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "player432hz" --match "appimage" --exclude "aarch64,arm,zsync" -o "./player432hz" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "powerliminalsplayer" --match "appimage" --exclude "aarch64,arm,zsync" -o "./powerliminalsplayer" --yes
+        soar dl "https://github.com/mysteryx93/HanumanInstituteApps@${PKGVER}" --match "yangdownloader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./yangdownloader" --yes
         ;;
     esac

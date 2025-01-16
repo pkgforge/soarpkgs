@@ -39,15 +39,13 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/xm1k3/cent/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/xm1k3/cent@${RELEASE_TAG}" --match "linux,arm64,zip" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/xm1k3/cent@${PKGVER}" --match "linux,arm64,zip" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/xm1k3/cent@${RELEASE_TAG}" --match "linux,amd64,zip" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/xm1k3/cent@${PKGVER}" --match "linux,amd64,zip" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

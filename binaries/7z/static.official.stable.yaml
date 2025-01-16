@@ -59,17 +59,15 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/ip7z/7zip/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
-    #Tag
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     #Download
     case "$(uname -m)" in
       aarch64)
         #curl -qfsSL "https://www.7-zip.org/$(curl -qfsSL "https://www.7-zip.org/download.html" | grep -o 'href="[^"]*"' | sed 's/href="//' | grep 'linux-arm64.tar.xz' | sed 's/"$//' | sort | tail -n 1)" -o "${SBUILD_TMPDIR}/${PKG}.archive"
-        soar dl "https://github.com/ip7z/7zip@${RELEASE_TAG}" --match "linux,arm64,tar.xz" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/ip7z/7zip@${PKGVER}" --match "linux,arm64,tar.xz" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
         #curl -qfsSL "https://www.7-zip.org/$(curl -qfsSL "https://www.7-zip.org/download.html" | grep -o 'href="[^"]*"' | sed 's/href="//' | grep 'linux-x64.tar.xz' | sed 's/"$//' | sort | tail -n 1)" -o "${SBUILD_TMPDIR}/${PKG}.archive"
-        soar dl "https://github.com/ip7z/7zip@${RELEASE_TAG}" --match "linux,x64,tar.xz" --exclude "aarch,arm" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/ip7z/7zip@${PKGVER}" --match "linux,x64,tar.xz" --exclude "aarch,arm" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

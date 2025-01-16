@@ -54,13 +54,12 @@ x_exec:
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/Brave-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true and (.name | test("(?i)nightly")))] | .[0].tag_name | select(. != null)' | tr -d '[:space:]'
   run: |
     #Download
-    RELEASE_TAG="$(cat ./${PKG}.version)"
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/srevinsaju/Brave-AppImage@${RELEASE_TAG}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/srevinsaju/Brave-AppImage@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
