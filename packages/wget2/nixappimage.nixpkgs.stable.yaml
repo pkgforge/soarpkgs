@@ -105,6 +105,7 @@ x_exec:
        else
          cp -fv "${SBUILD_OUTDIR}/${PKG}.desktop" "./squashfs-root/${PKG}.desktop"
        fi
+       sed '/.*DBusActivatable.*/I d' -i "./squashfs-root/${PKG}.desktop"
        sed -E 's/\s+setup\s+/ /Ig' -i "./squashfs-root/${PKG}.desktop"
        sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "./squashfs-root/${PKG}.desktop"
       #Perms
