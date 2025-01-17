@@ -15,17 +15,23 @@ category:
 description: "All-in-one cross-platform voice and text chat for gamers (Canary)"
 distro_pkg:
   archlinux:
-    aur:
-      - "discord-bin"
+    extra:
+      - "discord"
+  homebrew:
+    - "discord@canary"
   nixpkgs:
-    - "discord"
+    - "discord-canary"
 homepage:
   - "https://discordapp.com"
   - "https://github.com/srevinsaju/discord-appimage"
+license:
+  - "Unfree"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/srevinsaju/discord-appimage"
+provides:
+  - "discord=>discord-canary"
 repology:
   - "discord"
 src_url:
@@ -33,22 +39,21 @@ src_url:
 tag:
   - "chat"
   - "Communications"
-  - "net-im"
-  - "network.im"
   - "Networking/Chat"
 x_exec:
+  host:
+    - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/discord-appimage/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -i 'canary' | sed -E 's/(x86_64|aarch64)//' | tr -d "[:alpha:]" | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/discord-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.name | test("(?i)canary")))]' | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | awk -F'[:=/]' '{print $1}' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Download
-    RELEASE_TAG="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/srevinsaju/discord-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true and (.name | test("(?i)canary")))] | .[0].tag_name | select(. != null)' | tr -d '[:space:]')"
     case "$(uname -m)" in
       aarch64)
         echo -e "\n[✗] aarch64 is Not Yet Supported\n"
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/srevinsaju/discord-appimage@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/srevinsaju/discord-appimage@canary" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
