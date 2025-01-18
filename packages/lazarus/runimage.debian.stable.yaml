@@ -1,0 +1,118 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lazarus/runimage.debian.stable.yaml
+_disabled: true
+_disabled_reason:
+   broken:
+     - date: "2025-01-18"
+       reason: "Too many errors about Invalid cross-device link"
+
+pkg: "lazarus"
+pkg_id: "runimage.debian.lazarus"
+pkg_type: "runimage"
+category:
+  - "IDE"
+description: "Portable Delphi-like IDE for the FreePascal compiler"
+desktop:
+  url: "https://gitlab.com/freepascal.org/lazarus/lazarus/-/raw/main/install/lazarus.desktop?ref_type=heads"
+distro_pkg:
+  archlinux:
+    aur:
+      - "lazarus-git"
+    extra:
+      - "lazarus"
+  debian:
+    - "lazarus"
+  gnuguix:
+    - "lazarus"
+  homebrew:
+    - "lazarus"
+  nixpkgs:
+    - "lazarus"
+homepage:
+  - "https://www.lazarus-ide.org"
+  - "https://gitlab.com/freepascal.org/lazarus/lazarus"
+icon:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lazarus/assets/default.png"
+license:
+  - id: "GPL-2.0"
+    url: "https://gitlab.com/freepascal.org/lazarus/lazarus/-/raw/1a0fb4c487de5860a6651df89b3b22bd36968efd/COPYING.txt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [debian]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+ - "lazarus"
+repology:
+ - "lazarus"
+src_url:
+  - "https://gitlab.com/freepascal.org/lazarus/lazarus"
+tag:
+  - "code"
+  - "editor"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/lazarus/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/debian_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+       #Requirements
+        export DEBIAN_FRONTEND="noninteractive"
+        #BASE_PKGS=()
+        apt clean -y
+        apt update -y
+        #DEBIAN_FRONTEND="noninteractive" apt install -f "${BASE_PKGS[@]}" -y --no-install-recommends --ignore-missing
+        #for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
+       #Main Package
+        apt install -f "lazarus" -y --no-install-recommends --ignore-missing
+       #Debloat & Shrink
+        apt show "lazarus" ; dpkg-query -L "lazarus"
+        apt purge locales perl -y ; apt autoremove -y ; apt autoclean -y
+        apt list --installed
+        apt clean -y
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+    #Extract Metadata
+     "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
+     HOME="${SBUILD_TMPDIR}/integ_files" RIM_SHARE_ICONS="0" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "lazarus (Runtime)"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
