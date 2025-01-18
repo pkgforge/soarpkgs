@@ -88,7 +88,7 @@ x_exec:
       }
      export -f build_image
     #Build 
-     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" \
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
      "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
     #Extract Metadata
      "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list

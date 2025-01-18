@@ -1,37 +1,37 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lazarus/runimage.debian.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/blender/runimage.debian.stable.yaml
 _disabled: false
 
-pkg: "lazarus"
-pkg_id: "runimage.debian.lazarus"
+pkg: "blender"
+pkg_id: "runimage.debian.blender"
 pkg_type: "runimage"
+app_id: "org.blender.Blender"
 category:
-  - "IDE"
-description: "Portable Delphi-like IDE for the FreePascal compiler"
+  - "Graphics"
+description: "A fully integrated 3D graphics creation suite"
 desktop:
-  url: "https://gitlab.com/freepascal.org/lazarus/lazarus/-/raw/main/install/lazarus.desktop?ref_type=heads"
+  url: "https://raw.githubusercontent.com/blender/blender/refs/heads/main/release/freedesktop/blender.desktop"
 distro_pkg:
+  alpine:
+    - "blender"
   archlinux:
-    aur:
-      - "lazarus-git"
     extra:
-      - "lazarus"
+      - "blender"
   debian:
-    - "lazarus"
+    - "blender"
   gnuguix:
-    - "lazarus"
+    - "blender"
   homebrew:
-    - "lazarus"
+    - "blender"
   nixpkgs:
-    - "lazarus"
+    - "blender"
 homepage:
-  - "https://www.lazarus-ide.org"
-  - "https://gitlab.com/freepascal.org/lazarus/lazarus"
+  - "https://blender.org"
 icon:
-  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lazarus/assets/default.png"
+  url: "https://raw.githubusercontent.com/blender/blender/refs/heads/main/release/freedesktop/icons/scalable/apps/blender.svg"
 license:
-  - id: "GPL-2.0"
-    url: "https://gitlab.com/freepascal.org/lazarus/lazarus/-/raw/1a0fb4c487de5860a6651df89b3b22bd36968efd/COPYING.txt"
+  - id: "GPL"
+    url: "https://github.com/blender/blender/raw/0db41a88b5b71aa80959be6898e39b1ba990427c/COPYING"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -40,21 +40,21 @@ note:
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
- - "lazarus"
+ - "blender"
 repology:
- - "lazarus"
+ - "blender"
 src_url:
-  - "https://gitlab.com/freepascal.org/lazarus/lazarus"
+  - "https://blender.org"
+  - "https://github.com/blender/blender"
 tag:
-  - "code"
-  - "editor"
+  - "graphics"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.rl.pkgforge.dev/api/v1/project/lazarus" 2>/dev/null | jq -r '.. | objects | select(has("version") and .repo == "debian_unstable") | .version' | grep -vE '^[A-Za-z]+$|^(.)\1*$' | grep -vE '\.[0-9a-f]{6,}$|[0-9a-f]{7,}$' | sort --version-sort --unique | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://api.rl.pkgforge.dev/api/v1/project/blender" 2>/dev/null | jq -r '.. | objects | select(has("version") and .repo == "debian_unstable") | .version' | grep -vE '^[A-Za-z]+$|^(.)\1*$' | grep -vE '\.[0-9a-f]{6,}$|[0-9a-f]{7,}$' | sort --version-sort --unique | tail -n 1 | tr -d '[:space:]'
   run: |
     #Get BaseImage
      curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/debian_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
@@ -73,23 +73,23 @@ x_exec:
         #BASE_PKGS=()
         sudo apt clean -y
         sudo apt update -y
-        #DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${BASE_PKGS[@]}" -y --no-install-recommends --ignore-missing
-        #for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
+        #DEBIAN_FRONTEND="noninteractive" apt install -f "${BASE_PKGS[@]}" -y --no-install-recommends --ignore-missing
+        #for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
        #Main Package
-        sudo apt install -f "lazarus" -y
+        sudo apt install -f "blender" -y --no-install-recommends --ignore-missing
        #Debloat & Shrink
-        sudo apt show "lazarus" ; dpkg-query -L "lazarus"
+        sudo apt show "blender" ; dpkg-query -L "blender"
         sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y
         sudo apt list --installed
         sudo apt clean -y
         rim-shrink --all --verbose 2>/dev/null
        #Config
-        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
        #Rebuild [Dwarfs ZSTD 22]
         rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
       }
@@ -99,7 +99,7 @@ x_exec:
      "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
     #Extract Metadata
      "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
-     HOME="${SBUILD_TMPDIR}/integ_files" RIM_SHARE_ICONS="0" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "lazarus (Runtime)"
+     HOME="${SBUILD_TMPDIR}/integ_files" RIM_SHARE_ICONS="0" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "Blender"
     #Desktop
      if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
        find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
@@ -117,3 +117,5 @@ x_exec:
        fi
        cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
      fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/blender/blender/refs/heads/main/release/freedesktop/org.blender.Blender.metainfo.xml" -o  "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"

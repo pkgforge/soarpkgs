@@ -1,28 +1,37 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/steam/runimage.cachyos.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/blender/runimage.cachyos.stable.yaml
 _disabled: false
 
-pkg: "steam"
-pkg_id: "runimage.cachyos.steam"
+pkg: "blender"
+pkg_id: "runimage.cachyos.blender"
 pkg_type: "runimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+app_id: "org.blender.Blender"
 category:
- - "Game"
-description: "A video game digital distribution service and storefront from Valve"
+  - "Graphics"
+description: "A fully integrated 3D graphics creation suite"
+desktop:
+  url: "https://raw.githubusercontent.com/blender/blender/refs/heads/main/release/freedesktop/blender.desktop"
 distro_pkg:
+  alpine:
+    - "blender"
   archlinux:
-    multilib:
-      - "steam"
+    extra:
+      - "blender"
+  debian:
+    - "blender"
+  gnuguix:
+    - "blender"
+  homebrew:
+    - "blender"
   nixpkgs:
-    - "steam-unwrapped"
+    - "blender"
 homepage:
-  - "https://steamcommunity.com/linux"
-  - "https://store.steampowered.com"
-  - "https://github.com/ValveSoftware/steam-for-linux"
+  - "https://blender.org"
+icon:
+  url: "https://raw.githubusercontent.com/blender/blender/refs/heads/main/release/freedesktop/icons/scalable/apps/blender.svg"
 license:
-  - "Unfree"
+  - id: "GPL"
+    url: "https://github.com/blender/blender/raw/0db41a88b5b71aa80959be6898e39b1ba990427c/COPYING"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -31,19 +40,20 @@ note:
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
- - "steam"
+ - "blender"
 repology:
- - "steam"
+ - "blender"
 src_url:
-  - "https://store.steampowered.com"
+  - "https://blender.org"
+  - "https://github.com/blender/blender"
 tag:
-  - "Games"
+  - "graphics"
 x_exec:
   host:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
   run: |
     #Get BaseImage
      curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/cachyos_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
@@ -54,25 +64,25 @@ x_exec:
       {
        #Requirements
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
-        BASE_PKGS=(freetype2 gcc-libs glxinfo lib32-freetype2 lib32-gcc-libs lib32-mesa lib32-vulkan-intel lib32-vulkan-radeon mesa pcre vulkan-intel vulkan-radeon vulkan-tools xf86-video-amdgpu xf86-video-intel xorg-server)
+        #BASE_PKGS=()
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
        #Main Package
-        pacman -S "steam" --noconfirm
+        pacman -S "blender" --noconfirm
        #Debloat & Shrink
-        pacman -Ql "steam"
+        pacman -Ql "blender"
         pacman -Rsn base-devel --noconfirm 2>/dev/null
         pacman -Rsn perl --noconfirm 2>/dev/null
         pacman -Rsn python --noconfirm 2>/dev/null
         pacman -Scc --noconfirm ; yay -Scc --noconfirm
         rim-shrink --all
        #Config
-        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/steam.rcfg"
-        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/steam.rcfg"
-        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/steam.rcfg"
-        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/steam.rcfg"
-        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/steam.rcfg"
-        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/steam.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
        #Rebuild [Dwarfs ZSTD 22]
         rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
       }
@@ -82,7 +92,7 @@ x_exec:
      "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
     #Extract Metadata
      "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
-     HOME="${SBUILD_TMPDIR}/integ_files" RIM_SHARE_ICONS="0" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "Steam (Runtime)"
+     HOME="${SBUILD_TMPDIR}/integ_files" RIM_SHARE_ICONS="0" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "Blender"
     #Desktop
      if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
        find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
@@ -100,3 +110,5 @@ x_exec:
        fi
        cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
      fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/blender/blender/refs/heads/main/release/freedesktop/org.blender.Blender.metainfo.xml" -o  "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"
