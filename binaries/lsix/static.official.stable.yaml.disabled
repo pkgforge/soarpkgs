@@ -12,10 +12,16 @@ category:
 description: "Like ls, but for images. Shows thumbnails in terminal using sixel graphics."
 homepage:
   - "https://github.com/hackerb9/lsix"
+license:
+  - id : "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/aptly-dev/aptly"
+provides:
+  - "aptly"
 repology:
   - "lsix"
 src_url:

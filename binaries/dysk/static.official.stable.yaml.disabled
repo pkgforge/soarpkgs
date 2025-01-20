@@ -12,10 +12,16 @@ category:
 description: "A linux utility to get information on filesystems, like df but better"
 homepage:
   - "https://github.com/Canop/dysk"
+license:
+  - id : "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/aptly-dev/aptly"
+provides:
+  - "aptly"
 repology:
   - "dysk"
 src_url:

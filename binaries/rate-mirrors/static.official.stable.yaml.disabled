@@ -12,10 +12,16 @@ category:
 description: "Client-Side map-aware Mirror Ranking Tool (Arch Linux; Manjaro; custom ones)"
 homepage:
   - "https://github.com/westandskif/rate-mirrors"
+license:
+  - id : "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/aptly-dev/aptly"
+provides:
+  - "aptly"
 repology:
   - "rate-mirrors"
 src_url:

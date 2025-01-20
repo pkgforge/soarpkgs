@@ -12,10 +12,16 @@ category:
 description: "Tool to manage the list of host names or user names allowed to make connections to the X server."
 homepage:
   - "https://gitlab.freedesktop.org/xorg/app/xhost"
+license:
+  - id : "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/aptly-dev/aptly"
+provides:
+  - "aptly"
 repology:
   - "xhost"
 src_url:
