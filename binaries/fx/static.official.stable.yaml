@@ -1,0 +1,69 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/fx/static.official.stable.yaml
+_disabled: false
+
+pkg: "fx"
+pkg_id: "github.com.antonmedv.fx"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Terminal JSON viewer & processor"
+distro_pkg:
+  alpine:
+    - "fx"
+  archlinux:
+    extra:
+      - "fx"
+  homebrew:
+    - "fx"
+  nixpkgs:
+    - "fx"
+homepage:
+  - "https://github.com/antonmedv/fx"
+license:
+  - id : "MIT"
+    url: "https://github.com/antonmedv/fx/raw/dd653cf7bf83c3fc82995597cf4ce2f7804aa8ff/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/antonmedv/fx"
+provides:
+  - "fx"
+repology:
+  - "fx"
+src_url:
+  - "https://github.com/antonmedv/fx"
+tag:
+  - "json"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/antonmedv/fx/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/antonmedv/fx@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/antonmedv/fx@${PKGVER}" --match "linux,amd64" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "$SBUILD_TMPDIR" -type f -exec file -i "{}" + | 
+     grep -E "archive|compressed|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"$SBUILD_TMPDIR/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/${PKG}"

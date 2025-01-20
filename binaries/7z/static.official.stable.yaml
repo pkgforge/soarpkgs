@@ -63,7 +63,7 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         #curl -qfsSL "https://www.7-zip.org/$(curl -qfsSL "https://www.7-zip.org/download.html" | grep -o 'href="[^"]*"' | sed 's/href="//' | grep 'linux-arm64.tar.xz' | sed 's/"$//' | sort | tail -n 1)" -o "${SBUILD_TMPDIR}/${PKG}.archive"
-        soar dl "https://github.com/ip7z/7zip@${PKGVER}" --match "linux,arm64,tar.xz" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/ip7z/7zip@${PKGVER}" --match "linux,arm64,tar.xz" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
         #curl -qfsSL "https://www.7-zip.org/$(curl -qfsSL "https://www.7-zip.org/download.html" | grep -o 'href="[^"]*"' | sed 's/href="//' | grep 'linux-x64.tar.xz' | sed 's/"$//' | sort | tail -n 1)" -o "${SBUILD_TMPDIR}/${PKG}.archive"

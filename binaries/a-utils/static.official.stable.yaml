@@ -78,8 +78,8 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/xplshn/a-utils@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${PKG}" --yes
-        soar dl "https://github.com/xplshn/a-utils@${PKGVER}" --match "linux,arm64,tar.gz" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/xplshn/a-utils@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${PKG}" --yes
+        soar dl "https://github.com/xplshn/a-utils@${PKGVER}" --match "linux,arm64,tar.gz" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
         soar dl "https://github.com/xplshn/a-utils@${PKGVER}" --match "linux,amd64" --exclude "aarch,arm" --exclude "tar.gz" -o "${SBUILD_TMPDIR}/${PKG}" --yes

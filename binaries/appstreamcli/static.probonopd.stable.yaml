@@ -55,10 +55,10 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/probonopd/static-tools@continuous" --match "aarch64,appstream" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/appstreamcli" --yes
+        soar dl "https://github.com/probonopd/static-tools@continuous" --match "aarch64,appstream" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/appstreamcli" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/probonopd/static-tools@continuous" --match "x86_64,appstream" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/appstreamcli" --yes
+        soar dl "https://github.com/probonopd/static-tools@continuous" --match "x86_64,appstream" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/appstreamcli" --yes
         ;;
     esac
     #Extract

@@ -49,10 +49,10 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/projectdiscovery/cloudlist@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/projectdiscovery/cloudlist@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/projectdiscovery/cloudlist@${PKGVER}" --match "linux,amd64" --exclude "aarch,arm,i386,i686,sha256,sha512" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/projectdiscovery/cloudlist@${PKGVER}" --match "linux,amd64" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

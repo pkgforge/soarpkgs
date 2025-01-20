@@ -1,0 +1,67 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/interactsh/static.official.stable.yaml
+_disabled: false
+
+pkg: "interactsh"
+pkg_id: "github.com.projectdiscovery.interactsh"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "An Out Of Bounds (OOB) interaction gathering server and client tool"
+distro_pkg:
+  nixpkgs:
+    - "interactsh"
+homepage:
+  - "https://github.com/projectdiscovery/interactsh"
+license:
+  - id : "MIT"
+    url: "https://github.com/projectdiscovery/interactsh/raw/99c752ef7d49cb9b8a2c8e9baab61247972035f3/LICENSE.md"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/projectdiscovery/interactsh"
+provides:
+  - "interactsh-client"
+  - "interactsh-server"
+repology:
+  - "interactsh"
+src_url:
+  - "https://github.com/projectdiscovery/interactsh"
+tag:
+  - "bugbounty"
+  - "dns"
+  - "security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/projectdiscovery/interactsh/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/projectdiscovery/interactsh@${PKGVER}" --match "linux,arm64,zip" --match "client" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/interactsh-client.archive" --yes
+        soar dl "https://github.com/projectdiscovery/interactsh@${PKGVER}" --match "linux,arm64,zip" --match "server" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/interactsh-server.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/projectdiscovery/interactsh@${PKGVER}" --match "linux,amd64,zip" --match "client" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/interactsh-client.archive" --yes
+        soar dl "https://github.com/projectdiscovery/interactsh@${PKGVER}" --match "linux,amd64,zip" --match "server" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/interactsh-server.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "$SBUILD_TMPDIR" -type f -exec file -i "{}" + | 
+     grep -E "archive|compressed|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"$SBUILD_TMPDIR/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

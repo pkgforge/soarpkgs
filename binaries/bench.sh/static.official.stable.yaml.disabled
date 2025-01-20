@@ -12,10 +12,14 @@ category:
 description: "A quick & easy Benchmarking Script"
 homepage:
   - "https://github.com/teddysun/across"
+license:
+  - id : "MIT"
+    url: "https://github.com/rhysd/actionlint/raw/ab4e49ed912690dcd58d0bdaa7d2824962711aa2/LICENSE.txt" 
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/rhysd/actionlint"
 provides:
   - "bench:bench.sh"  
 repology:
