@@ -69,7 +69,6 @@ x_exec:
         echo 'daemon:*::' >> "/etc/gshadow"
         echo 'bin:*::' >> "/etc/gshadow"
         echo 'sys:*::' >> "/etc/gshadow"
-        echo 'users:*::' >> "/etc/gshadow"
         #BASE_PKGS=()
         sudo apt clean -y
         sudo apt update -y
@@ -99,7 +98,7 @@ x_exec:
      "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
     #Extract Metadata
      "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
-     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "Blender"
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "[Bb]lender.*"
     #Desktop
      if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
        find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'

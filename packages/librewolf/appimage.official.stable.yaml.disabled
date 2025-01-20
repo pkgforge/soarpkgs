@@ -13,11 +13,17 @@ category:
   - "WebBrowser"
 description: "A fork of Firefox, focused on privacy, security and freedom"
 distro_pkg:
+  alpine:
+    - "librewolf"
   archlinux:
     aur:
       - "librewolf"
       - "librewolf-bin"
       - "librewolf-hg"
+  gnuguix:
+    - "librewolf"
+  homebrew:
+    - "librewolf"
   nixpkgs:
     - "librewolf"
 homepage:
@@ -27,7 +33,7 @@ homepage:
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
-  - "Officially Created AppImage. Check/Report @ https://gitlab.com/librewolf-community/browser/appimage"
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://gitlab.com/librewolf-community/browser/appimage"
 repology:
   - "librewolf"
 src_url:
@@ -40,8 +46,8 @@ tag:
 x_exec:
   shell: "bash"
   pkgver: |
-    #curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/24386000/releases/" | jq -r '.[0].tag_name' | tr -d '[:space:]'
-    echo "librewolf-community/browser/appimage" | jq -Rr "@uri" | xargs -I "{}" curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/{}/releases" | jq -r 'sort_by(.released_at) | last | .tag_name' | tr -d '[:space:]'
+    #curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/24386000/releases/" | jq -r '.[0].tag_name' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+    echo "librewolf-community/browser/appimage" | jq -Rr "@uri" | xargs -I "{}" curl -qfsSL "https://api.gl.pkgforge.dev/api/v4/projects/{}/releases" | jq -r 'sort_by(.released_at) | last | .tag_name' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
