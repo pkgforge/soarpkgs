@@ -47,11 +47,6 @@ x_exec:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
-x_exec:
-  host:
-    - "aarch64-Linux"
-    - "x86_64-Linux"
-  shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
     git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/gohugoio/hugo" "./TEMPREPO" >/dev/null 2>&1 && \
