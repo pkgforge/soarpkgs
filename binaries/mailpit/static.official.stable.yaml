@@ -1,0 +1,69 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/mailpit/static.official.stable.yaml
+_disabled: false
+
+pkg: "mailpit"
+pkg_id: "github.com.axllent.mailpit"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Email and SMTP testing tool with API for developers"
+distro_pkg:
+  archlinux:
+    aur:
+      - "mailpit"
+      - "mailpit-bin"
+  homebrew:
+    - "mailpit"
+  nixpkgs:
+    - "mailpit"
+homepage:
+  - "https://github.com/axllent/mailpit"
+license:
+  - id : "MIT"
+    url: "https://github.com/axllent/mailpit/raw/2a1a5ae8529df798fbe5723d8554b14f73a11c28/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/axllent/mailpit"
+provides:
+  - "mailpit"
+repology:
+  - "mailpit"
+src_url:
+  - "https://github.com/axllent/mailpit"
+tag:
+  - "email"
+  - "mail"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/axllent/mailpit/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/axllent/mailpit@${PKGVER}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/axllent/mailpit@${PKGVER}" --match "linux,amd64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "$SBUILD_TMPDIR" -type f -exec file -i "{}" + | 
+     grep -E "archive|compressed|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"$SBUILD_TMPDIR/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/${PKG}"
