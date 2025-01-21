@@ -49,7 +49,7 @@ x_exec:
   run: |
     #Build
      docker stop "debian-builder-unstable" >/dev/null 2>&1 ; docker rm "debian-builder-unstable" >/dev/null 2>&1
-     docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" "azathothas/debian-builder-unstable:latest" \
+     docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1

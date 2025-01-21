@@ -65,7 +65,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       ##Build (debian-glibc)
        pushd "$($TMPDIRS)" >/dev/null 2>&1
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable" 2>/dev/null
-       docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" "azathothas/debian-builder-unstable:latest" \
+       docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
         #Setup ENV
          set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
