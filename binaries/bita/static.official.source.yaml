@@ -59,7 +59,7 @@ x_exec:
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm rust-toolchain* 2>/dev/null
-       #Features: https://github.com/oll3/bita/blob/main/bitar/Cargo.toml#L54
+       #Features: https://github.com/oll3/bita/raw/main/bitar/Cargo.toml#L54
        #cargo metadata --no-deps --format-version 1 | jq -r ".packages[0].features | keys[]"
        cargo build --target "${RUST_TARGET}" --all-features --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null

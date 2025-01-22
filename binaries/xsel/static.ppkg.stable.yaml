@@ -67,7 +67,7 @@ x_exec:
        chmod -v "a+x" "/usr/local/bin/ppkg"
        ppkg setup --syspm
        ppkg update
-      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/blob/master/formula/xsel.yml
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/xsel.yml
        ppkg install "xsel" --profile="release" -j "$(($(nproc)+1))" --static
        ppkg tree "xsel" --dirsfirst -L 5
       #Copy

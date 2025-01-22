@@ -60,7 +60,7 @@ x_exec:
        GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
-      #Build:https://github.com/SagerNet/sing-box/blob/dev-next/Dockerfile
+      #Build:https://github.com/SagerNet/sing-box/raw/dev-next/Dockerfile
        git clone --filter "blob:none" --quiet "https://github.com/SagerNet/sing-box" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"

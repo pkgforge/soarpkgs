@@ -75,7 +75,7 @@ x_exec:
        chmod -v "a+x" "/usr/local/bin/ppkg"
        ppkg setup --syspm
        ppkg update
-      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/blob/master/formula/xclip.yml
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/xclip.yml
        ppkg install "xclip" --profile="release" -j "$(($(nproc)+1))" --static
        ppkg tree "xclip" --dirsfirst -L 5
       #Copy

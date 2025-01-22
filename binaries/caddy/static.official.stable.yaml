@@ -62,12 +62,12 @@ x_exec:
         ;;
     esac
     #Extract
-    while E_X=$(find "$SBUILD_TMPDIR" -type f -exec file -i "{}" + | 
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
      grep -E "archive|compressed|x-tar" |
      grep -iv "application/.*executable" |
      cut -d: -f1 | head -n1); [ -n "${E_X}" ]
      do
-       7z e "${E_X}" -o"$SBUILD_TMPDIR/." -y && {
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
         file -i "${E_X}" | grep -q "application/.*executable" && break
         rm -f "${E_X}"
        } || break

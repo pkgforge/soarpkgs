@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/sysbox.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/aptly/static.official.stable.yaml
 _disabled: false
 
 pkg: "sysbox"
@@ -8,7 +8,6 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-  - "container-runtime-security, container-runtimes, containers, devops, docker, kubernetes"
 description: "next-generation runc that empowers rootless containers to run workloads such as Systemd, Docker, Kubernetes, just like VMs."
 homepage:
   - "https://github.com/nestybox/sysbox"
@@ -27,8 +26,8 @@ repology:
 src_url:
   - "https://github.com/nestybox/sysbox"
 tag:
-  - "utility"
-  - "container-runtime-security, container-runtimes, containers, devops, docker, kubernetes"
+  - "container"
+  - "security"
 x_exec:
   host:
     - "aarch64-Linux"

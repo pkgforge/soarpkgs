@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/prettyping/static.official.stable.yaml
+_disabled: false
+
+pkg: "prettyping"
+pkg_id: "github.com.denilsonsa.prettyping"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Ping wrapper that produces coloured, easily readable output"
+distro_pkg:
+  archlinux:
+    extra:
+      - "prettyping"
+  debian:
+    - "prettyping"
+  homebrew:
+    - "prettyping"
+  nixpkgs:
+    - "prettyping"
+homepage:
+  - "https://github.com/denilsonsa/prettyping"
+license:
+  - id : "MIT"
+    url: "https://github.com/denilsonsa/prettyping/raw/84ac56179cec6010db135958c7c7ea3b07102135/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/denilsonsa/prettyping"
+provides:
+  - "prettyping"
+repology:
+  - "prettyping"
+src_url:
+  - "https://github.com/denilsonsa/prettyping"
+tag:
+  - "ping"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/denilsonsa/prettyping" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Download
+     curl -qfsSL "https://raw.githubusercontent.com/denilsonsa/prettyping/refs/heads/master/prettyping" -o "${SBUILD_OUTDIR}/${PKG}"

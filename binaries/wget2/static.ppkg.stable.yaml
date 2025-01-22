@@ -67,7 +67,7 @@ x_exec:
        chmod -v "a+x" "/usr/local/bin/ppkg"
        ppkg setup --syspm
        ppkg update
-      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/blob/master/formula/wget2.yml
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/wget2.yml
        ppkg install "wget2" --profile="release" -j "$(($(nproc)+1))" --static
        ppkg tree "wget2" --dirsfirst -L 5
       #Copy

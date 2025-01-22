@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/screenfetch/static.official.stable.yaml
+_disabled: false
+
+pkg: "screenfetch"
+pkg_id: "github.com.KittyKatt.screenFetch"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Generate ASCII art with terminal, shell, and OS info"
+distro_pkg:
+  archlinux:
+    aur:
+      - "screenfetch-git"
+    extra:
+      - "screenfetch"
+  debian:
+    - "screenfetch"
+  gnuguix:
+    - "screenfetch"
+  homebrew:
+    - "screenfetch"
+  nixpkgs:
+    - "screenfetch"
+homepage:
+  - "https://github.com/KittyKatt/screenFetch"
+license:
+  - id : "GPL-3.0"
+    url: "https://github.com/KittyKatt/screenFetch/raw/7e2244d5049812a7915883f19327bf9582e950d7/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/KittyKatt/screenFetch"
+provides:
+  - "screenfetch"
+repology:
+  - "screenfetch"
+src_url:
+  - "https://github.com/KittyKatt/screenFetch"
+tag:
+  - "fetch"
+  - "neofetch"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/KittyKatt/screenFetch" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Download
+     curl -qfsSL "https://raw.githubusercontent.com/KittyKatt/screenFetch/refs/heads/master/screenfetch-dev" -o "${SBUILD_OUTDIR}/${PKG}"
