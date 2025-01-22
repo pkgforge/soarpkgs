@@ -69,6 +69,7 @@ x_exec:
         #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --latest --upgrade --no-interactive 2>/dev/null; done
        #Main Package
         apk add "akregator" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
+        command -v "akregator" >/dev/null 2>&1 || exit 1
        #Debloat & Shrink
         apk info -L "akregator"
         rm -rvf "/etc/apk/repositories" 2>/dev/null

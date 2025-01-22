@@ -1,0 +1,82 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/proot/static.ppkg.stable.yaml
+_disabled: false
+
+pkg: "proot"
+pkg_id: "ppkg.proot"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "User-space implementation of chroot, mount --bind and binfmt_misc"
+distro_pkg:
+  alpine:
+    - "proot"
+  archlinux:
+    aur:
+      - "proot"
+      - "proot-git"
+  debian:
+    - "proot"
+  gnuguix:
+    - "proot"
+    - "proot-static"
+  nixpkgs:
+    - "proot"
+homepage:
+  - "https://proot-me.github.io/"
+license:
+  - id : "GPL-2.0"
+    url: "https://github.com/proot-me/proot/blob/5f780cba57ce7ce557a389e1572e0d30026fcbca/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using ppkg. Check/Report @ https://github.com/leleliu008/ppkg-formula-repository-official-core"
+provides:
+  - "proot"
+repology:
+  - "proot"
+src_url:
+  - "https://github.com/proot-me/proot"
+tag:
+  - "chroot"
+  - "rootfs"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "proot") | .version' | tr -d '[:space:]'
+  run: |
+    #Build
+     docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1
+     docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/alpine-base-mimalloc:stable" \
+      sh -c '
+      #Setup ENV
+       mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
+       apk update && apk upgrade --no-interactive 2>/dev/null
+       apk del ninja-is-really-ninja --force --no-interactive 2>/dev/null
+       apk cache clean --purge
+      #CoreUtils
+       apk add 7zip binutils coreutils croc curl findutils file git grep jq moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
+      #ppkg
+       curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
+       chmod -v "a+x" "/usr/local/bin/ppkg"
+       ppkg setup --syspm
+       ppkg update
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/proot.yml
+       ppkg install "proot" --profile="release" -j "$(($(nproc)+1))" --static
+       ppkg tree "proot" --dirsfirst -L 5
+      #Copy
+       ppkg tree "proot" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | xargs -I "{}" rsync -achLv --exclude="*/" "{}/bin/." "/build-bins/."
+      #strip & info
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
+       file "/build-bins/"* && du -sh "/build-bins/"*
+      '
+    #Copy & Meta
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
