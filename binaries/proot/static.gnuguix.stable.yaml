@@ -1,6 +1,8 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/proot/static.gnuguix.stable.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+  - "Too slow & Expensive"
 
 pkg: "proot"
 pkg_id: "gnuguix.proot-static"
