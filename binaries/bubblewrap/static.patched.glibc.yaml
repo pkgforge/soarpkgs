@@ -1,0 +1,107 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bubblewrap/static.patched.glibc.source.yaml
+_disabled: false
+
+pkg: "bubblewrap"
+pkg_id: "github.com.containers.bubblewrap.patched.glibc"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Namespaces-powered chroot-like solution for Unprivileged Sandboxing (Patched)"
+distro_pkg:
+  alpine:
+    - "bubblewrap"
+  archlinux:
+    aur:
+      - "bubblewrap-git"
+    extra:
+      - "bubblewrap"
+  debian:
+    - "bubblewrap"
+  gnuguix:
+    - "bubblewrap"
+  homebrew:
+    - "bubblewrap"
+  nixpkgs:
+    - "bubblewrap"
+homepage:
+  - "https://github.com/containers/bubblewrap"
+license:
+  - id : "LGPL-2.0-or-later"
+    url: "https://github.com/containers/bubblewrap/raw/9ca3b05ec787acfb4b17bed37db5719fa777834f/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/containers/bubblewrap"
+  - "The bwrap-patched binary is patched to allow nested bubblewraps with capabilities (INSECURE)"
+  - "Learn more @ https://github.com/VHSgunzo/bubblewrap-static/blob/main/caps.patch"
+  - "Statically Linked on Debian (GLIBC)"  
+provides:
+  - "bwrap=>bwrap-patched"
+  - "bwrap=>bubblewrap-patched"
+repology:
+  - "bubblewrap"
+src_url:
+  - "https://github.com/containers/bubblewrap"
+tag:
+  - "container"
+  - "namespace"
+  - "sandbox"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/containers/bubblewrap" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     docker stop "debian-builder-unstable" >/dev/null 2>&1 ; docker rm "debian-builder-unstable" >/dev/null 2>&1
+     docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/containers/bubblewrap" "./TEMPREPO" && cd "./TEMPREPO"
+       #Patch: https://github.com/VHSgunzo/bubblewrap-static/blob/main/caps.patch
+       sed '\''/real_uid != 0 && has_caps ()/,/^[[:space:]]*else/!b; /real_uid != 0 && has_caps/s/^/\/\/ /; /^[[:space:]]*else/!s/^/\/\/ /'\'' -i "./bubblewrap.c"
+       export CC="clang"
+       export CXX="clang++"
+       export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
+       export CPPFLAGS="${CFLAGS}"
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
+       meson setup --buildtype="release" \
+            --default-library="static" \
+            -Db_lto="true" \
+            -Db_pie="true" \
+            -Db_staticpic="true" \
+            -Dc_args="${CFLAGS}" \
+            -Dcpp_args="${CFLAGS}" \
+            -Dc_link_args="${LDFLAGS}" \
+            -Dcpp_link_args="${LDFLAGS}" \
+            -Dtests="false" \
+            -Dman="disabled" \
+            -Dselinux="disabled" \
+            --prefer-static --strip --reconfigure --wipe --clearcache "./STATIC_BUILD" "./"
+       ninja -C "./STATIC_BUILD" -j "$(($(nproc)+1))" install
+       find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" readelf -p ".comment" "{}"
+      #Copy
+       find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #strip & info
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
