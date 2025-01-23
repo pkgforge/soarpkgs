@@ -928,6 +928,10 @@ x_exec:
        bash "./make_single_applets.sh"
       #Copy
        find "./" -type f -executable -name "busybox_[A-Z]*" -exec sh -c "for file; do cp -fv \"\$file\" \"/build-bins/\$(basename \"\$file\" | sed 's/^busybox_//' | tr '[:upper:]' '[:lower:]')\"; done" sh "{}" +
+       find "/build-bins" -type f -executable -name "bb_*" -exec sh -c "for file; do mv -fv \"\$file\" \"/build-bins/\$(basename \"\$file\" | sed 's/^bb_//' | tr '[:upper:]' '[:lower:]')\"; done" sh "{}" +
+       find "/build-bins" -type f -executable -name "*_*" -exec sh -c 'for file; do mv -fv "$file" "/build-bins/$(basename "$file" | tr "_" "-")"; done' sh "{}" +
+       cp -fv "/build-bins/test1" "/build-bins/["
+       cp -fv "/build-bins/test2" "/build-bins/[["
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #strip & info
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
