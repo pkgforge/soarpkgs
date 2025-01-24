@@ -163,7 +163,6 @@ note:
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/uutils/coreutils"
   - "This is the standalone version i.e all progs are built individually"  
 provides:
-  - "["
   - "arch"
   - "b2sum"
   - "b3sum"
@@ -261,7 +260,8 @@ provides:
   - "tac"
   - "tail"
   - "tee"
-  - "test"
+  - "test==["
+  - "test==[["
   - "timeout"
   - "touch"
   - "tr"

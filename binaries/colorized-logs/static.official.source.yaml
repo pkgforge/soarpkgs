@@ -1,46 +1,49 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/nvme-cli/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/colorized-logs/static.official.source.yaml
 _disabled: false
 
-pkg: "nvme-cli"
-pkg_id: "github.com.linux-nvme.nvme-cli"
+pkg: "colorized-logs"
+pkg_id: "github.com.kilobyte.colorized-logs"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "NVMe user space tooling for Linux"
+description: 
+  _default: "Tools for logs with ANSI color"
+  ansi2html: "ANSI to HTML converter [colorized-logs]"
+  ansi2txt: "ANSI to plain text converter [colorized-logs]"
+  pipetty: "Tool to pipe from a pseudoterminal [colorized-logs]"
+  ttyrec2ansi: "TTYREC to ANSI converter [colorized-logs]"
 distro_pkg:
-  alpine:
-    - "nvme-cli"
   archlinux:
     aur:
-      - "nvme-cli-git"
-    extra:
-      - "nvme-cli"
+      - "colorized-logs"
   debian:
-    - "nvme-cli"
-  gnuguix:
-    - "nvme-cli"
+    - "colorized-logs"
   nixpkgs:
-    - "nvme-cli"
+    - "colorized-logs"
 homepage:
-  - "https://github.com/linux-nvme/nvme-cli"
+  - "https://github.com/kilobyte/colorized-logs"
 license:
-  - id : "GPL-2.0"
-    url: "https://github.com/linux-nvme/nvme-cli/raw/7057e6c50639fb05d0997eaa6fac48ece3cb38bc/LICENSE"
+  - id : "MIT"
+    url: "https://github.com/kilobyte/colorized-logs/raw/2fb2ea5db6c830b8426a2e7084e0ad5af83f1070/LICENSE" 
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/linux-nvme/nvme-cli"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/kilobyte/colorized-logs"
 provides:
-  - "nvme-cli"
+  - "ansi2html"
+  - "ansi2txt"
+  - "pipetty"
+  - "ttyrec2ansi"
 repology:
-  - "nvme-cli"
+  - "colorized-logs"
 src_url:
-  - "https://github.com/linux-nvme/nvme-cli"
+  - "https://github.com/kilobyte/colorized-logs"
 tag:
-  - "nvme"
+  - "ansii"
+  - "logs"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -48,55 +51,51 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/linux-nvme/nvme-cli" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/kilobyte/colorized-logs" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
-     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:edge" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
-      #Build:https://github.com/linux-nvme/nvme-cli/blob/master/Makefile#L59
-       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/linux-nvme/nvme-cli" "./TEMPREPO" && cd "./TEMPREPO"
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/kilobyte/colorized-logs" "./TEMPREPO" && cd "./TEMPREPO"
        export CC="clang"
        export CXX="clang++"
        export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
        export CPPFLAGS="${CFLAGS}"
        export CXXFLAGS="${CFLAGS}"
        export LD="$(which mold)"
-       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
-       meson setup --buildtype="release" \
-            --default-library="static" \
-            -Db_lto="true" \
-            -Db_pie="true" \
-            -Db_staticpic="true" \
-            -Dc_args="${CFLAGS}" \
-            -Dcpp_args="${CFLAGS}" \
-            -Dc_link_args="${LDFLAGS}" \
-            -Dcpp_link_args="${LDFLAGS}" \
-            -Ddocs-build="false" \
-            -Dnvme-tests="false" \
-            -Dlibnvme:tests="false" \
-            -Dlibnvme:keyutils="disabled" \
-            --wrap-mode="forcefallback" \
-            --prefer-static --strip --reconfigure --wipe --clearcache "./STATIC_BUILD" "./"
-       ninja -C "./STATIC_BUILD" -j "$(($(nproc)+1))" install
+       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro"
+       mkdir -p "./STATIC_BUILD"
+       cmake -GNinja -B "./STATIC_BUILD" \
+        -DCMAKE_BUILD_TYPE="Release" \
+        -DCMAKE_C_COMPILER="${CC}" \
+        -DCMAKE_CXX_COMPILER="${CXX}" \
+        -DCMAKE_C_FLAGS="${CFLAGS}" \
+        -DCMAKE_CXX_FLAGS="${CFLAGS}" \
+        -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DBUILD_SHARED_LIBS="Off" \
+        -DBUILD_TESTS="Off"
+        cmake --build "./STATIC_BUILD" -j"$(($(nproc)+1))" --clean-first --verbose
        find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
       #Copy
        find "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
-      #strip & info
+      #strip & info 
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
        file "/build-bins/"* && du -sh "/build-bins/"*
        popd >/dev/null 2>&1
       '
     #Copy & Meta
-     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

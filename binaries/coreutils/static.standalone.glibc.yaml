@@ -148,7 +148,6 @@ note:
   - "This is the standalone version i.e all progs are built individually"
   - "Statically Linked on Debian (GLIBC)"
 provides:
-  - "["
   - "arch"
   - "b2sum"
   - "base32"
@@ -238,7 +237,8 @@ provides:
   - "tac"
   - "tail"
   - "tee"
-  - "test"
+  - "test==["
+  - "test==[["  
   - "timeout"
   - "touch"
   - "tr"

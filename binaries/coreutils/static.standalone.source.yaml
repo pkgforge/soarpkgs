@@ -147,7 +147,6 @@ note:
   - "Built From Source (Latest Git TAG). Check/Report @ https://github.com/coreutils/coreutils"
   - "This is the standalone version i.e all progs are built individually"
 provides:
-  - "["
   - "arch"
   - "b2sum"
   - "base32"
@@ -237,7 +236,8 @@ provides:
   - "tac"
   - "tail"
   - "tee"
-  - "test"
+  - "test==["
+  - "test==[["
   - "timeout"
   - "touch"
   - "tr"
