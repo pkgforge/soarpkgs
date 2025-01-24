@@ -52,7 +52,6 @@ x_exec:
     curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "xsel") | .version' | tr -d '[:space:]'
   run: |
     #Build
-     docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1
      docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/alpine-base-mimalloc:stable" \
       sh -c '
       #Setup ENV

@@ -46,7 +46,6 @@ x_exec:
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
-     docker stop "alpine-builder" >/dev/null 2>&1 ; docker rm "alpine-builder" >/dev/null 2>&1
      docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
