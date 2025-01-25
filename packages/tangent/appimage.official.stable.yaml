@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tangent/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "tangent"
+pkg_id: "github.com.suchnsuch.Tangent"
+pkg_type: "appimage"
+app_id: "io.github.suchnsuch.Tangent"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "TextEditor"
+description: "A clean and powerful open source notes app"
+desktop:
+  url: "https://raw.githubusercontent.com/suchnsuch/Tangent/refs/heads/main/apps/tangent-electron/build/flatpak/io.github.suchnsuch.Tangent.desktop"
+homepage:
+  - "https://www.tangentnotes.com"
+icon: 
+  #url: "https://raw.githubusercontent.com/suchnsuch/Tangent/refs/heads/main/apps/tangent-electron/static/tangent-icon.svg"
+  url: "https://raw.githubusercontent.com/suchnsuch/Tangent/refs/heads/main/apps/tangent-electron/build/icons/256x256.png"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/suchnsuch/Tangent/raw/44fcb74dc3fb437a4567444ee6bd573cdae1073c/apps/tangent-electron/LICENSE.txt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/suchnsuch/Tangent"
+provides:
+  - "tangent"
+repology:
+  - "tangent"
+src_url:
+  - "https://www.tangentnotes.com/Download"
+  - "https://github.com/suchnsuch/Tangent"
+tag:
+  - "editor"
+  - "note"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/suchnsuch/Tangent/tags" | jq -r '[.[] | select(.name | test("(?i)alpha|beta") | not)] | sort_by(.created_at) | .[0].name' | sed 's/-[a-zA-Z]*/-/' | tr -d '[:space:]'
+  run: |
+    #Download: https://www.tangentnotes.com/Download
+    case "$(uname -m)" in
+      aarch64)
+        curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER^}-arm64.AppImage" -o "./${PKG}" || curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER}-arm64.AppImage" -o "./${PKG}"
+        ;;
+      x86_64)
+        curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER^}.AppImage" -o "./${PKG}" || curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER}-arm64.AppImage" -o "./${PKG}"
+        ;;
+    esac
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/suchnsuch/Tangent/refs/heads/main/apps/tangent-electron/build/flatpak/io.github.suchnsuch.Tangent.metainfo.xml" -o "./${PKG}.metainfo.xml"
