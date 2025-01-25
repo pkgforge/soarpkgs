@@ -50,7 +50,7 @@ x_exec:
         curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER^}-arm64.AppImage" -o "./${PKG}" || curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER}-arm64.AppImage" -o "./${PKG}"
         ;;
       x86_64)
-        curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER^}.AppImage" -o "./${PKG}" || curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER}-arm64.AppImage" -o "./${PKG}"
+        curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER^}.AppImage" -o "./${PKG}" || curl -w "(DL) <== %{url}\n" -qfSL "https://suchnsuch-public.s3.us-east-2.amazonaws.com/Tangent/Releases/${PKGVER}.AppImage" -o "./${PKG}"
         ;;
     esac
     #Appstream
