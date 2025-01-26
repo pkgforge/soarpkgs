@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/steam/appimage.official.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/steam/appimage.ivan-hc.stable.yaml
 _disabled: false
 
 pkg: "steam"
@@ -21,6 +21,8 @@ homepage:
   - "https://steamcommunity.com/linux"
   - "https://store.steampowered.com"
   - "https://github.com/ValveSoftware/steam-for-linux"
+license:
+  - "Unfree"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -30,11 +32,7 @@ repology:
 src_url:
   - "https://github.com/ivan-hc/Steam-appimage"
 tag:
-  - "Amusements/Games/Other"
   - "Games"
-  - "Games/Other"
-  - "distribution"
-  - "games"
 x_exec:
   shell: "bash"
   pkgver: |
