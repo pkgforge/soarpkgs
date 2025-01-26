@@ -47,6 +47,8 @@ description:
   yakuake: "A drop-down terminal emulator based on KDE konsole technology [kdeutils]"
 homepage:
   - "https://www.kde.org/applications/utilities"
+icon:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kdeutils/assets/default.png"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -67,6 +69,7 @@ provides:
   - "kdeutils=>kdebugsettings"
   - "kdeutils=>kdf"
   - "kdeutils=>kdialog"
+  - "kdeutils:kde-utilities"
   - "kdeutils=>keditbookmarks"
   - "kdeutils=>keysmith"
   - "kdeutils=>kfind"
