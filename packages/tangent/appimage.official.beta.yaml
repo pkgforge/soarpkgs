@@ -1,9 +1,9 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tangent/appimage.official.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tangent/appimage.official.alpha.yaml
 _disabled: false
 
 pkg: "tangent"
-pkg_id: "github.com.suchnsuch.Tangent"
+pkg_id: "github.com.suchnsuch.Tangent.alpha"
 pkg_type: "appimage"
 app_id: "io.github.suchnsuch.Tangent"
 build_util:
@@ -11,7 +11,7 @@ build_util:
   - "jq#bin"
 category:
   - "TextEditor"
-description: "A clean and powerful open source notes app"
+description: "A clean and powerful open source notes app (alpha)"
 desktop:
   url: "https://raw.githubusercontent.com/suchnsuch/Tangent/refs/heads/main/apps/tangent-electron/build/flatpak/io.github.suchnsuch.Tangent.desktop"
 homepage:
@@ -27,7 +27,7 @@ maintainer:
 note:
   - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/suchnsuch/Tangent"
 provides:
-  - "tangent"
+  - "tangent=>tangent-alpha"
 repology:
   - "tangent"
 src_url:
@@ -42,19 +42,18 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    #curl -qfsSL "https://api.gh.pkgforge.dev/repos/suchnsuch/Tangent/tags" | jq -r '[.[] | select(.name | test("(?i)alpha|beta") | not)] | sort_by(.created_at) | .[0].name' | sed 's/-[a-zA-Z]*/-/' | tr -d '[:space:]'
-    curl -qfsSL "https://www.tangentnotes.com/versions/latest" | jq -r '.latest | .version'
+    curl -qfsSL "https://www.tangentnotes.com/versions/latest" | jq -r '.alpha | .version'
   run: |
     #Download
     case "$(uname -m)" in
       aarch64)
         curl -qfsSL "https://www.tangentnotes.com/versions/latest" | jq -r '.. | objects | select(has("path")) | .path' |\
-        grep -Eiv 'alpha' | grep -i 'arm64' | grep -i 'appimage' | grep -i "${PKGVER}" | sort -u | tail -n 1 | tr -d '[:space:]' |\
+        grep -i 'alpha' | grep -i 'arm64' | grep -i 'appimage' | grep -i "${PKGVER}" | sort -u | tail -n 1 | tr -d '[:space:]' |\
         xargs -r -I "{}" curl -w "(DL) <== %{url}\n" -qfSL "{}" -o "./${PKG}"
         ;;
       x86_64)
         curl -qfsSL "https://www.tangentnotes.com/versions/latest" | jq -r '.. | objects | select(has("path")) | .path' |\
-        grep -Eiv 'alpha|aarch64|arm' | grep -i 'appimage' | grep -i "${PKGVER}" | sort -u | tail -n 1 | tr -d '[:space:]' |\
+        grep -Eiv 'aarch64|arm' | grep -i 'alpha' | grep -i 'appimage' | grep -i "${PKGVER}" | sort -u | tail -n 1 | tr -d '[:space:]' |\
         xargs -r -I "{}" curl -w "(DL) <== %{url}\n" -qfSL "{}" -o "./${PKG}"
         ;;
     esac
