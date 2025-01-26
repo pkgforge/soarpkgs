@@ -83,12 +83,13 @@ x_exec:
         sudo pacman -Scc --noconfirm ; yay -Scc --noconfirm
         sudo rim-shrink --all
        #Config
-        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
-        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/lazarus.rcfg"
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=librewolf}"' > "${RUNDIR}/config/librewolf.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/librewolf.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/librewolf.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/librewolf.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/librewolf.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/librewolf.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/librewolf.rcfg"
        #Rebuild [Dwarfs ZSTD 22]
         rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
       }
@@ -98,7 +99,7 @@ x_exec:
      "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
     #Extract Metadata
      "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
-     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "LibreWolf"
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "librewolf.*"
     #Desktop
      if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
        find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
