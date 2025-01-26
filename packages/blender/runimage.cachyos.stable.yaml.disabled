@@ -78,12 +78,13 @@ x_exec:
         pacman -Scc --noconfirm ; yay -Scc --noconfirm
         rim-shrink --all
        #Config
-        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/blender.rcfg"
-        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/blender.rcfg"
-        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
-        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
-        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/blender.rcfg"
-        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/blender.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_UPDATE_SHRINK="${RIM_UPDATE_SHRINK:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
        #Rebuild [Dwarfs ZSTD 22]
         rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
       }
