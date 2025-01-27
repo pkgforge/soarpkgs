@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/vscodium/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "vscodium"
+pkg_id: "github.com.VSCodium.vscodium"
+pkg_type: "appimage"
+app_id: "com.vscodium.codium"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "IDE"
+description: "Visual Studio Code without MS branding/telemetry/licensing"
+distro_pkg:
+  archlinux:
+    aur:
+      - "vscodium"
+      - "vscodium-bin"
+      - "vscodium-electron"
+      - "vscodium-electron-bin"
+      - "vscodium-git"
+  nixpkgs:
+    - "vscodium"
+homepage:
+  - "https://vscodium.com"
+  - "https://github.com/VSCodium/vscodium"
+license:
+  - id: "MIT"
+    url: "https://github.com/VSCodium/vscodium/raw/6d7d20d5e7b489306620107db07caa943f39d4ba/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/VSCodium/vscodium"
+provides:
+  - "vscodium==codium"
+repology:
+  - "vscodium"
+src_url:
+  - "https://github.com/VSCodium/vscodium"
+tag:
+  - "code"
+  - "editor"
+  - "ide"
+x_exec:
+  host:
+  #  - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/VSCodium/vscodium/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        #soar dl "https://github.com/VSCodium/vscodium@${PKGVER}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        exi 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/VSCodium/vscodium@${PKGVER}" --match "appimage" --exclude "aarch64,arm,sha,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
