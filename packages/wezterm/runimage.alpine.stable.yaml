@@ -37,6 +37,7 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using RunImage [alpine]. Check/Report @ https://github.com/VHSgunzo/runimage"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "Requires Fonts (On Host): https://wezfurlong.org/wezterm/config/fonts.html"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "wezterm==open-wezterm-here"
@@ -64,10 +65,10 @@ x_exec:
     #Deps
      build_image()
       {
-        #BASE_PKGS=()
+        BASE_PKGS=(mesa-gl mesa-egl)
         apk update --force-missing-repositories --no-cache --no-interactive
         apk upgrade --force-missing-repositories --no-cache --no-interactive
-        #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --latest --upgrade --no-interactive 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-cache --no-interactive ; done
        #Main Package
         apk add "wezterm" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
         command -v "wezterm" >/dev/null 2>&1 || exit 1
@@ -80,7 +81,6 @@ x_exec:
         rm -rfv "/usr/share/kde4/help"* 2>/dev/null
         rm -rfv "/usr/share/fonts/"* 2>/dev/null
         rm -rfv "/usr/share/licenses/"* 2>/dev/null
-        rm -rfv "/usr/share/locale/"* 2>/dev/null
         rm -rfv "/usr/share/man/"* 2>/dev/null
         apk cache clean
         ln -sf "/dev/null" "/etc/apk/cache"

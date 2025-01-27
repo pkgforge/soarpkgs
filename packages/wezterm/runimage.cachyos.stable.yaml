@@ -37,6 +37,7 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using RunImage [cachyos]. Check/Report @ https://github.com/VHSgunzo/runimage"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "Requires Fonts (On Host): https://wezfurlong.org/wezterm/config/fonts.html"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "wezterm==open-wezterm-here"
@@ -65,9 +66,9 @@ x_exec:
       {
        #Requirements
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
-        #BASE_PKGS=()
-        #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        BASE_PKGS=(libglvnd mesa)
+        pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "wezterm" --noconfirm
         command -v "wezterm" >/dev/null 2>&1 || exit 1
