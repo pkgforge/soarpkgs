@@ -53,7 +53,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.rl.pkgforge.dev/api/v1/project/akregator" 2>/dev/null | jq -r '.. | objects | select(has("version") and .repo == "debian_unstable") | .version' | grep -vE '^[A-Za-z]+$|^(.)\1*$' | grep -vE '\.[0-9a-f]{6,}$|[0-9a-f]{7,}$' | sort --version-sort --unique | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/akregator/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
   run: |
     #Get BaseImage
      curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/alpine_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
@@ -85,13 +85,13 @@ x_exec:
         ln -sf "/dev/null" "/etc/apk/cache"
         rim-shrink --all --verbose 2>/dev/null
        #Config
-        echo 'RIM_AUTORUN="${RIM_AUTORUN:=akregator}"' > "${RUNDIR}/config/akregator.rcfg"
-        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/akregator.rcfg"
-        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/akregator.rcfg"
-        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/akregator.rcfg"
-        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/akregator.rcfg"
-        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/akregator.rcfg"
-        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/akregator.rcfg"
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=akregator}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
        #Rebuild [Dwarfs ZSTD 22]
         rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
       }
@@ -120,4 +120,4 @@ x_exec:
        cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
      fi
     #Appstream
-     curl -qfsSL "https://invent.kde.org/pim/akregator/-/raw/master/src/data/org.kde.akregator.appdata.xml" -o  "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"
+     curl -qfsSL "https://invent.kde.org/pim/akregator/-/raw/master/src/data/org.kde.akregator.appdata.xml" -o  "${SBUILD_OUTDIR}/${PKG}.appdata.xml"

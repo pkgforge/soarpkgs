@@ -66,13 +66,6 @@ x_exec:
         #BASE_PKGS=()
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
         #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
-       #Chaotic-AUR: https://aur.chaotic.cx/docs
-        pacman-key --recv-key '3056513887B78AEB' --keyserver "keyserver.ubuntu.com"
-        pacman-key --lsign-key '3056513887B78AEB'
-        pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" --noconfirm
-        pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst" --noconfirm
-        echo -e "[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | tee -a "/etc/pacman.conf"
-        pacman -y --sync --refresh --refresh --sysupgrade --noconfirm 
        #Main Package
         pacman -Sy "chaotic-aur/ddnet" --noconfirm
         command -v "DDNet" >/dev/null 2>&1 || command -v "ddnet" >/dev/null 2>&1 || exit 1
