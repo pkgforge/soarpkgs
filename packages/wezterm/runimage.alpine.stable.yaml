@@ -1,0 +1,124 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/wezterm/runimage.alpine.stable.yaml
+_disabled: false
+
+pkg: "wezterm"
+pkg_id: "runimage.alpine.wezterm"
+pkg_type: "runimage"
+app_id: "org.wezfurlong.wezterm"
+category:
+  - "Utility"
+description: "A GPU-accelerated cross-platform terminal emulator and multiplexer"
+desktop:
+  url: "https://raw.githubusercontent.com/wez/wezterm/refs/heads/main/assets/wezterm.desktop"
+distro_pkg:
+  alpine:
+    - "wezterm"
+  archlinux:
+    aur:
+      - "wezterm-git"
+    extra:
+      - "wezterm"
+  homebrew:
+    - "wezterm"
+    - "wezterm@nightly"
+  nixpkgs:
+    - "wezterm"
+homepage:
+  - "https://wezfurlong.org/wezterm/"
+icon:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/wezterm/assets/default.png"
+license:
+  - id : "MIT"
+    url: "https://github.com/wez/wezterm/raw/4bf0007cefff7f1ad139d89b54f074d5ad7d2184/LICENSE.md"   
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [alpine]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "wezterm==open-wezterm-here"
+  - "wezterm==strip-ansi-escapes"
+  - "wezterm==wezterm-gui"
+  - "wezterm==wezterm-mux-server"
+repology:
+  - "wezterm"
+src_url:
+  - "https://github.com/wez/wezterm"
+tag:
+  - "Terminal"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/wezterm/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/alpine_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+        #BASE_PKGS=()
+        apk update --force-missing-repositories --no-cache --no-interactive
+        apk upgrade --force-missing-repositories --no-cache --no-interactive
+        #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --latest --upgrade --no-interactive 2>/dev/null; done
+       #Main Package
+        apk add "wezterm" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
+        command -v "wezterm" >/dev/null 2>&1 || exit 1
+       #Debloat & Shrink
+        apk info -L "wezterm"
+        rm -rvf "/etc/apk/repositories" 2>/dev/null
+        rm -rfv "/var/cache/apk/"* 2>/dev/null
+        rm -rfv "/usr/share/doc/"* 2>/dev/null
+        rm -rfv "/usr/share/help/"* 2>/dev/null
+        rm -rfv "/usr/share/kde4/help"* 2>/dev/null
+        rm -rfv "/usr/share/fonts/"* 2>/dev/null
+        rm -rfv "/usr/share/licenses/"* 2>/dev/null
+        rm -rfv "/usr/share/locale/"* 2>/dev/null
+        rm -rfv "/usr/share/man/"* 2>/dev/null
+        apk cache clean
+        ln -sf "/dev/null" "/etc/apk/cache"
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=wezterm}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+    #Extract Metadata
+     "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "wezterm.*"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/wez/wezterm/refs/heads/main/assets/wezterm.appdata.xml" -o  "${SBUILD_OUTDIR}/${PKG}.appdata.xml"

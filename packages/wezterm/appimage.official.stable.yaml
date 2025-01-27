@@ -1,0 +1,66 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/wezterm/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "wezterm"
+pkg_id: "github.com.wez.wezterm"
+pkg_type: "appimage"
+app_id: "org.wezfurlong.wezterm"
+build_util:
+  - "curl#bin"
+  - "jq#bin"
+category:
+  - "Utility"
+description: "A GPU-accelerated cross-platform terminal emulator and multiplexer"
+desktop:
+  url: "https://raw.githubusercontent.com/wez/wezterm/refs/heads/main/assets/wezterm.desktop"
+distro_pkg:
+  alpine:
+    - "wezterm"
+  archlinux:
+    aur:
+      - "wezterm-git"
+    extra:
+      - "wezterm"
+  homebrew:
+    - "wezterm"
+    - "wezterm@nightly"
+  nixpkgs:
+    - "wezterm"
+homepage:
+  - "https://wezfurlong.org/wezterm/"
+license:
+  - id : "MIT"
+    url: "https://github.com/wez/wezterm/raw/4bf0007cefff7f1ad139d89b54f074d5ad7d2184/LICENSE.md"   
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/wez/wezterm"
+provides:
+  - "wezterm"
+repology:
+  - "wezterm"  
+src_url:
+  - "https://github.com/wez/wezterm"
+tag:
+  - "Terminal"
+x_exec:
+  host:
+  #  - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/wez/wezterm/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        #soar dl "https://github.com/wez/wezterm@${PKGVER}" --match "appimage" --exclude "x86,x64,arm,sha,zsync" -o "./${PKG}" --yes
+       exit 1 
+        ;;
+      x86_64)
+        soar dl "https://github.com/wez/wezterm@${PKGVER}" --match "appimage" --exclude "aarch64,arm,sha,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/wez/wezterm/refs/heads/main/assets/wezterm.appdata.xml" -o "./${PKG}/appdata.xml"
