@@ -79,7 +79,6 @@ x_exec:
         rm -rfv "/usr/share/kde4/help"* 2>/dev/null
         rm -rfv "/usr/share/fonts/"* 2>/dev/null
         rm -rfv "/usr/share/licenses/"* 2>/dev/null
-        rm -rfv "/usr/share/locale/"* 2>/dev/null
         rm -rfv "/usr/share/man/"* 2>/dev/null
         apk cache clean
         ln -sf "/dev/null" "/etc/apk/cache"
