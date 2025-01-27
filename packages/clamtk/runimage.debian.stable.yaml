@@ -1,0 +1,117 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/clamtk/runimage.debian.stable.yaml
+_disabled: false
+
+pkg: "clamtk"
+pkg_id: "runimage.debian.clamtk"
+pkg_type: "runimage"
+app_id: "com.gitlab.davem.ClamTk"
+category:
+  - "Utility"
+description: "GTK front-end for Clam Antivirus"
+desktop:
+  url: "https://raw.githubusercontent.com/dave-theunsub/clamtk/refs/heads/master/clamtk.desktop"
+distro_pkg:
+  archlinux:
+    extra:
+      - "clamtk"
+  debian:
+    - "clamtk"
+homepage:
+  - "https://github.com/dave-theunsub/clamtk"
+icon:
+  url: "https://raw.githubusercontent.com/dave-theunsub/clamtk/refs/heads/master/images/clamtk.png"
+license:
+  - id: "GPL"
+    url: "https://github.com/dave-theunsub/clamtk/raw/694833d27c800e7c3ac4ff6dd44f0b2e65025260/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "This Package has been marked 'deprecaed': https://gitlab.com/dave_m/clamtk/-/issues/144"
+  - "Built Using RunImage [debian]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+ - "clamtk"
+repology:
+ - "clamtk"
+src_url:
+  - "https://github.com/dave-theunsub/clamtk"
+  - "https://gitlab.com/dave_m/clamtk"
+tag:
+  - "antivirus"
+  - "security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.rl.pkgforge.dev/api/v1/project/clamtk" 2>/dev/null | jq -r '.. | objects | select(has("version") and .repo == "debian_unstable") | .version' | grep -vE '^[A-Za-z]+$|^(.)\1*$' | grep -vE '\.[0-9a-f]{6,}$|[0-9a-f]{7,}$' | sort --version-sort --unique | tail -n 1 | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/debian_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+       #Requirements
+        export DEBIAN_FRONTEND="noninteractive"
+        echo 'root:*::' > "/etc/gshadow"
+        echo 'daemon:*::' >> "/etc/gshadow"
+        echo 'bin:*::' >> "/etc/gshadow"
+        echo 'sys:*::' >> "/etc/gshadow"
+        #BASE_PKGS=()
+        sudo apt clean -y
+        sudo apt update -y
+        #DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${BASE_PKGS[@]}" -y --no-install-recommends --ignore-missing
+        #for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
+       #Main Package
+        sudo apt install -f "clamtk" -y
+        command -v "clamtk" >/dev/null 2>&1 || exit 1
+       #Debloat & Shrink
+        sudo apt show "clamtk" ; dpkg-query -L "clamtk"
+        sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y
+        sudo apt list --installed
+        sudo apt clean -y
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=clamtk}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_UPDATE_SHRINK="${RIM_UPDATE_SHRINK:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+    #Extract Metadata
+     "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "clamtk.*"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/dave-theunsub/clamtk/refs/heads/master/com.github.davetheunsub.clamtk.appdata.xml" -o "${SBUILD_OUTDIR}/${PKG}.appdata.xml"
