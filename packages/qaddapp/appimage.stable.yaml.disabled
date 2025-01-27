@@ -5,9 +5,9 @@ pkg: "qaddapp"
 pkg_id: "github.com.smokejohn.qaddapp"
 pkg_type: "appimage"
 app_id: "github.com.smokejohn.qaddapp"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Qt5 Gui app that helps you add AppImages and binary archives into your Desktop environment"

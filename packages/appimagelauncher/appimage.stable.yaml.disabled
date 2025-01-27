@@ -5,9 +5,9 @@ pkg: "appimagelauncher"
 pkg_id: "github.com.TheAssassin.AppImageLauncher"
 pkg_type: "appimage"
 app_id: "github.com.TheAssassin.AppImageLauncher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Helper application for Linux distributions serving as a kind of entry point for running and integrating AppImages"

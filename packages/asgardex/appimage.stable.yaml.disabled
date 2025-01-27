@@ -5,9 +5,9 @@ pkg: "asgardex"
 pkg_id: "github.com.thorchain.asgardex-electron"
 pkg_type: "appimage"
 app_id: "github.com.thorchain.asgardex-electron"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ASGARDEX desktop wallet and decentralized exchange for THORChain, 100% open-source"

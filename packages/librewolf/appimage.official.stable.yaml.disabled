@@ -6,9 +6,9 @@ pkg: "librewolf"
 pkg_id: "gitlab.com.librewolf-community.browser.appimage.stable"
 pkg_type: "appimage"
 app_id: "io.gitlab.librewolf-community"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "WebBrowser"
 description: "A fork of Firefox, focused on privacy, security and freedom"

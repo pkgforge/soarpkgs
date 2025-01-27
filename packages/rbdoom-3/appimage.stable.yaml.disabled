@@ -5,9 +5,9 @@ pkg: "rbdoom-3"
 pkg_id: "github.com.mantralunar.RBDOOM-3-BFG"
 pkg_type: "appimage"
 app_id: "github.com.mantralunar.RBDOOM-3-BFG"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Doom 3 BFG Edition source port with updated DX12 / Vulkan renderer and modern game engine features"

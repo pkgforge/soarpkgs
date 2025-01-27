@@ -5,9 +5,9 @@ pkg: "rainbow-board"
 pkg_id: "github.com.harshkhandeparkar.rainbow-board"
 pkg_type: "appimage"
 app_id: "github.com.harshkhandeparkar.rainbow-board"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform electron-based Whiteboard app."

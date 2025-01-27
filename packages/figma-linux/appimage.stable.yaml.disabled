@@ -5,9 +5,9 @@ pkg: "figma-linux"
 pkg_id: "github.com.Figma-Linux.figma-linux"
 pkg_type: "appimage"
 app_id: "github.com.Figma-Linux.figma-linux"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Figma is the first interface design tool based in the browser, making it easier for teams to create software. Join us in https://t.me/figma_linux"

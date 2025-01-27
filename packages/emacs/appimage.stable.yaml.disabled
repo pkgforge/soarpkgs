@@ -5,9 +5,9 @@ pkg: "emacs"
 pkg_id: "github.com.ivan-hc.Emacs-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.Emacs-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial AppImage for Emacs."

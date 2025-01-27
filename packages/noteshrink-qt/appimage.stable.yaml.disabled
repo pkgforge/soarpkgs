@@ -5,9 +5,9 @@ pkg: "noteshrink-qt"
 pkg_id: "github.com.clapautius.noteshrink-qt"
 pkg_type: "appimage"
 app_id: "github.com.clapautius.noteshrink-qt"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Qt GUI for noteshrink.py with preview and pre-processing options."

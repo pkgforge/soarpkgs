@@ -5,9 +5,9 @@ pkg: "peazip"
 pkg_id: "github.com.ferion11.PeaZip_Appimage"
 pkg_type: "appimage"
 app_id: "github.com.ferion11.PeaZip_Appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "PeaZip Appimage for linux 64bits"

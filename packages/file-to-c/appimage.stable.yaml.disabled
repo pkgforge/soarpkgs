@@ -5,9 +5,9 @@ pkg: "file-to-c"
 pkg_id: "github.com.Wallby.file-to-c"
 pkg_type: "appimage"
 app_id: "github.com.Wallby.file-to-c"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Tool for generating a C header (i.e. a .h containing an array variable) from a spir-v binary file"

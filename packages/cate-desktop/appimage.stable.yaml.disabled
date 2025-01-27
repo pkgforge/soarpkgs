@@ -5,9 +5,9 @@ pkg: "cate-desktop"
 pkg_id: "github.com.CCI-Tools.cate-desktop"
 pkg_type: "appimage"
 app_id: "github.com.CCI-Tools.cate-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop GUI for the ESA CCI Toolbox (Cate)"

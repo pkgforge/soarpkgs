@@ -5,9 +5,9 @@ pkg: "gsubs"
 pkg_id: "github.com.sanjevirau.gsubs"
 pkg_type: "appimage"
 app_id: "github.com.sanjevirau.gsubs"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A desktop app that finds you the perfect subtitle match."

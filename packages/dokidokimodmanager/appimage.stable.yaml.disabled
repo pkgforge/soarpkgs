@@ -5,9 +5,9 @@ pkg: "dokidokimodmanager"
 pkg_id: "github.com.DokiDokiModManager.Mod-Manager"
 pkg_type: "appimage"
 app_id: "github.com.DokiDokiModManager.Mod-Manager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Doki Doki Mod Manager - A mod manager for Doki Doki Literature Club!"

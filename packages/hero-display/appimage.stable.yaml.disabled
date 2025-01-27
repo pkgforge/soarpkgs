@@ -5,9 +5,9 @@ pkg: "hero-display"
 pkg_id: "github.com.tue-robotics.hero-display"
 pkg_type: "appimage"
 app_id: "github.com.tue-robotics.hero-display"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Display sink for the hero display that presents information to the user"

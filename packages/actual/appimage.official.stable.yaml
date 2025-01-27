@@ -5,9 +5,9 @@ _disabled: false
 pkg: "actual"
 pkg_id: "github.com.actualbudget.actual.stable"
 pkg_type: "appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Finance"
 description: "Privacy-focused app for managing your finances"

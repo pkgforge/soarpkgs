@@ -5,9 +5,9 @@ pkg: "planet-blupi"
 pkg_id: "github.com.blupi-games.planetblupi-dev"
 pkg_type: "appimage"
 app_id: "github.com.blupi-games.planetblupi-dev"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Planet Blupi development bundle (main repository)"

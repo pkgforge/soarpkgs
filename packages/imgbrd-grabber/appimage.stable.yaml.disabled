@@ -5,9 +5,9 @@ pkg: "imgbrd-grabber"
 pkg_id: "github.com.Bionus.imgbrd-grabber"
 pkg_type: "appimage"
 app_id: "github.com.Bionus.imgbrd-grabber"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Very customizable imageboard/booru downloader with powerful filenaming features."

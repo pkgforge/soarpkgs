@@ -5,9 +5,9 @@ pkg: "pyappimage"
 pkg_id: "github.com.srevinsaju.pyappimage"
 pkg_type: "appimage"
 app_id: "github.com.srevinsaju.pyappimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage builder, just for python."

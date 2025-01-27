@@ -5,9 +5,9 @@ pkg: "vial"
 pkg_id: "github.com.vial-kb.vial-gui"
 pkg_type: "appimage"
 app_id: "github.com.vial-kb.vial-gui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time."

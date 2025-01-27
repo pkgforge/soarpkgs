@@ -5,9 +5,9 @@ pkg: "wishdemo"
 pkg_id: "github.com.julien-montmartin.statcl"
 pkg_type: "appimage"
 app_id: "github.com.julien-montmartin.statcl"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A μ Tcl/Tk distribution statically linked to put in an AppImage"

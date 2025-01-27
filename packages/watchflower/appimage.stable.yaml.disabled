@@ -5,9 +5,9 @@ pkg: "watchflower"
 pkg_id: "github.com.emericg.WatchFlower"
 pkg_type: "appimage"
 app_id: "github.com.emericg.WatchFlower"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A plant monitoring application that reads and plots data from compatible Bluetooth sensors and thermometers like Xiaomi Flower Care or Parrot Flower Power"

@@ -5,9 +5,9 @@ pkg: "shadowsocks"
 pkg_id: "github.com.shadowsocks.shadowsocks-qt5"
 pkg_type: "appimage"
 app_id: "github.com.shadowsocks.shadowsocks-qt5"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A cross-platform shadowsocks GUI client"

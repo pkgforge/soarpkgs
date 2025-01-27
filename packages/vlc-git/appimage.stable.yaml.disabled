@@ -5,9 +5,9 @@ pkg: "vlc-git"
 pkg_id: "github.com.ivan-hc.VLC-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.VLC-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "VLC Video and Media Player AppImages built from JuNest (Arch Linux) and PPA."

@@ -5,9 +5,9 @@ pkg: "mdview"
 pkg_id: "github.com.c3er.mdview"
 pkg_type: "appimage"
 app_id: "github.com.c3er.mdview"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Standalone Markdown viewer"

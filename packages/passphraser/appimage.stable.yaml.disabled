@@ -5,9 +5,9 @@ pkg: "passphraser"
 pkg_id: "github.com.zevlee.passphraser"
 pkg_type: "appimage"
 app_id: "github.com.zevlee.passphraser"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Phrase-based password generator that can use your own list of words available on Windows, macOS, and Linux"

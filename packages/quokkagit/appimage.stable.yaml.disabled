@@ -5,9 +5,9 @@ pkg: "quokkagit"
 pkg_id: "github.com.ballessay.quokkagit"
 pkg_type: "appimage"
 app_id: "github.com.ballessay.quokkagit"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A small, TortoiseGit inspired git log viewer for linux"

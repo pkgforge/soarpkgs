@@ -5,9 +5,9 @@ pkg: "gams-studio"
 pkg_id: "github.com.GAMS-dev.studio"
 pkg_type: "appimage"
 app_id: "github.com.GAMS-dev.studio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "GAMS Studio"

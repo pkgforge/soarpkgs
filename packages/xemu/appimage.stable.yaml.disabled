@@ -5,9 +5,9 @@ pkg: "xemu"
 pkg_id: "github.com.xemu-project.xemu"
 pkg_type: "appimage"
 app_id: "github.com.xemu-project.xemu"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Original Xbox Emulator for Windows, macOS, and Linux (Active Development)"

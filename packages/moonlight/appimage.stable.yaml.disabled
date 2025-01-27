@@ -5,9 +5,9 @@ pkg: "moonlight"
 pkg_id: "github.com.moonlight-stream.moonlight-qt"
 pkg_type: "appimage"
 app_id: "github.com.moonlight-stream.moonlight-qt"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "GameStream client for PCs (Windows, Mac, Linux, and Steam Link)"

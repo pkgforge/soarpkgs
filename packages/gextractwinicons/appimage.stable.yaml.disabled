@@ -5,9 +5,9 @@ pkg: "gextractwinicons"
 pkg_id: "github.com.muflone.gextractwinicons"
 pkg_type: "appimage"
 app_id: "github.com.muflone.gextractwinicons"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A GTK+ utility to extract cursors, icons and png images previews from MS Windows resource files (like .exe, .dll, .ocx, .cpl)"

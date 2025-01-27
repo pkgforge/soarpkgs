@@ -5,9 +5,9 @@ pkg: "hexoclient"
 pkg_id: "github.com.gaoyoubo.hexo-client"
 pkg_type: "appimage"
 app_id: "github.com.gaoyoubo.hexo-client"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "hexo-client: A cross-platform hexo client, build on electron."

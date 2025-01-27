@@ -5,9 +5,9 @@ pkg: "netbeans"
 pkg_id: "github.com.codelerity.netbeans-installers"
 pkg_type: "appimage"
 app_id: "github.com.codelerity.netbeans-installers"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Apache NetBeans installers"

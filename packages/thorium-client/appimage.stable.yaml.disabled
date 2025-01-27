@@ -5,9 +5,9 @@ pkg: "thorium-client"
 pkg_id: "github.com.Thorium-Sim.thorium-kiosk"
 pkg_type: "appimage"
 app_id: "github.com.Thorium-Sim.thorium-kiosk"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A locked-down electron kiosk for Thorium"

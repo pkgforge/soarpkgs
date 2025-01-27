@@ -5,9 +5,9 @@ pkg: "rssguard"
 pkg_id: "github.com.martinrotter.rssguard"
 pkg_type: "appimage"
 app_id: "github.com.martinrotter.rssguard"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Feed reader (and podcast player) which supports RSS/ATOM/JSON and many web-based feed services."

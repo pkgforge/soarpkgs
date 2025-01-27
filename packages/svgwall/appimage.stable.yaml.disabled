@@ -5,9 +5,9 @@ pkg: "svgwall"
 pkg_id: "github.com.grimpirate.SVGWall"
 pkg_type: "appimage"
 app_id: "github.com.grimpirate.SVGWall"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "SVG Wallpaper Utility for Xorg"

@@ -5,9 +5,9 @@ pkg: "notekit"
 pkg_id: "github.com.blackhole89.notekit"
 pkg_type: "appimage"
 app_id: "github.com.blackhole89.notekit"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A GTK3 hierarchical markdown notetaking application with tablet support."

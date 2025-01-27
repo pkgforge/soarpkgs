@@ -6,9 +6,9 @@ pkg: "bottles"
 pkg_id: "github.com.ivan-hc.Bottles-appimage.stable"
 pkg_type: "appimage"
 app_id: "com.usebottles.bottles"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Emulator"
 description: "An easy-to-use wineprefix manager to Run Windows software and games on Linux"

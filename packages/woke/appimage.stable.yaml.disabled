@@ -5,9 +5,9 @@ pkg: "woke"
 pkg_id: "github.com.tmstieff.Woke"
 pkg_type: "appimage"
 app_id: "github.com.tmstieff.Woke"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A native multiplatform desktop REST client with grand ambitions and limited scope"

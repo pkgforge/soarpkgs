@@ -5,9 +5,9 @@ pkg: "deb2appimage"
 pkg_id: "github.com.simoniz0r.deb2appimage"
 pkg_type: "appimage"
 app_id: "github.com.simoniz0r.deb2appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Build AppImages from deb packages on any distro with simple json configuration"

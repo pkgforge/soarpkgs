@@ -5,9 +5,9 @@ pkg: "padloc"
 pkg_id: "github.com.padloc.padloc"
 pkg_type: "appimage"
 app_id: "github.com.padloc.padloc"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A modern, open source password manager for individuals and teams."

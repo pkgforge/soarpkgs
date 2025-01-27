@@ -5,9 +5,9 @@ pkg: "stoplight"
 pkg_id: "github.com.stoplightio.desktop"
 pkg_type: "appimage"
 app_id: "github.com.stoplightio.desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The Stoplight desktop app + issues repository."

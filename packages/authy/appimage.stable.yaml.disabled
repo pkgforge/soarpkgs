@@ -5,9 +5,9 @@ pkg: "authy"
 pkg_id: "github.com.ryuuzaki42.Authy_AppImage"
 pkg_type: "appimage"
 app_id: "github.com.ryuuzaki42.Authy_AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Authy in AppImage"

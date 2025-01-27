@@ -5,9 +5,9 @@ pkg: "farmhand"
 pkg_id: "github.com.jeremyckahn.farmhand"
 pkg_type: "appimage"
 app_id: "github.com.jeremyckahn.farmhand"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A resource management game that puts a farm in your hand"

@@ -6,9 +6,9 @@ pkg: "firefox"
 pkg_id: "github.com.srevinsaju.Firefox-Appimage.stable"
 pkg_type: "appimage"
 app_id: "org.mozilla.firefox"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "WebBrowser"
 description: "A web browser built from Firefox source tree"

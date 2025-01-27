@@ -5,9 +5,9 @@ pkg: "flycast"
 pkg_id: "github.com.flyinghead.flycast"
 pkg_type: "appimage"
 app_id: "github.com.flyinghead.flycast"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Flycast is a multiplatform Sega Dreamcast, Naomi, Naomi 2 and Atomiswave emulator"

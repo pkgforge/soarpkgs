@@ -5,9 +5,9 @@ pkg: "window-pet"
 pkg_id: "github.com.SeakMengs.WindowPet"
 pkg_type: "appimage"
 app_id: "github.com.SeakMengs.WindowPet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Pet overlay app built with tauri and react that lets you have adorable companion such as pets, anime characters on your screen."

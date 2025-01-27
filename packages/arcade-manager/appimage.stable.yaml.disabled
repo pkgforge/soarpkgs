@@ -5,9 +5,9 @@ pkg: "arcade-manager"
 pkg_id: "github.com.cosmo0.arcade-manager"
 pkg_type: "appimage"
 app_id: "github.com.cosmo0.arcade-manager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Arcade management tool to handle your MAME/FBA romsets"

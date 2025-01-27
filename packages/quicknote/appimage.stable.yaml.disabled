@@ -5,9 +5,9 @@ pkg: "quicknote"
 pkg_id: "github.com.srilakshmikanthanp.quicknote"
 pkg_type: "appimage"
 app_id: "github.com.srilakshmikanthanp.quicknote"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "QuickNote helps to paste some random text or take some notes right from your taskbar!"

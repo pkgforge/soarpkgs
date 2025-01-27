@@ -5,9 +5,9 @@ pkg: "sbe"
 pkg_id: "github.com.kondoumh.sbe"
 pkg_type: "appimage"
 app_id: "github.com.kondoumh.sbe"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An unofficial Scrapbox desktop app"

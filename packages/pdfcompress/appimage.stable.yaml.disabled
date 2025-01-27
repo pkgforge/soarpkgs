@@ -5,9 +5,9 @@ pkg: "pdfcompress"
 pkg_id: "github.com.moonline.Utility.PdfCompress"
 pkg_type: "appimage"
 app_id: "github.com.moonline.Utility.PdfCompress"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A utility to compress PDF documentas based on Ghostscript and YAD."

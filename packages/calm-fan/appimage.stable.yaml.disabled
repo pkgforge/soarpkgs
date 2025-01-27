@@ -5,9 +5,9 @@ pkg: "calm-fan"
 pkg_id: "github.com.VitoVan.calm"
 pkg_type: "appimage"
 app_id: "github.com.VitoVan.calm"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Calm down and draw something, in Lisp."

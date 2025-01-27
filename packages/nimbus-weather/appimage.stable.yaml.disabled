@@ -5,9 +5,9 @@ pkg: "nimbus-weather"
 pkg_id: "github.com.tgrowden.nimbus-weather"
 pkg_type: "appimage"
 app_id: "github.com.tgrowden.nimbus-weather"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A beautiful, open source weather app built using the Dark Sky API."

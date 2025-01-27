@@ -5,9 +5,9 @@ pkg: "xxh"
 pkg_id: "github.com.xxh.xxh"
 pkg_type: "appimage"
 app_id: "github.com.xxh.xxh"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🚀 Bring your favorite shell wherever you go through the ssh. Xonsh shell, fish, zsh, osquery and so on."

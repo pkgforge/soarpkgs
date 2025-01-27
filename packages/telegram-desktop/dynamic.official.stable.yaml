@@ -6,10 +6,10 @@ pkg: "telegram-desktop"
 pkg_id: "github.com.telegramdesktop.tdesktop"
 pkg_type: "dynamic"
 app_id: "org.telegram.desktop"
-build_util:
-  - "7z#bin"
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "7z#bin"
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Chat"
   - "IRCClient"

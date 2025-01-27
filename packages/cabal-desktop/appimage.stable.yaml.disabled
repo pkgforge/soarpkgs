@@ -5,9 +5,9 @@ pkg: "cabal-desktop"
 pkg_id: "github.com.cabal-club.cabal-desktop"
 pkg_type: "appimage"
 app_id: "github.com.cabal-club.cabal-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop client for Cabal, the p2p/decentralized/local-first chat platform."

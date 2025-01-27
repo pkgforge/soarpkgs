@@ -5,9 +5,9 @@ pkg: "cric"
 pkg_id: "github.com.trixon.cric"
 pkg_type: "appimage"
 app_id: "github.com.trixon.cric"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Custom Runtime Image Creator (with cross-targeting)"

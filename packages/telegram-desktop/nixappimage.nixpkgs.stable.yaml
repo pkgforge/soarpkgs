@@ -6,9 +6,9 @@ pkg: "telegram-desktop"
 pkg_id: "nixpkgs.telegram-desktop"
 pkg_type: "nixappimage"
 app_id: "org.telegram.desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Chat"
   - "IRCClient"

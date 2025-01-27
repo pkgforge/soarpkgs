@@ -5,9 +5,9 @@ pkg: "kanri"
 pkg_id: "github.com.kanriapp.kanri"
 pkg_type: "appimage"
 app_id: "github.com.kanriapp.kanri"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🪐 Modern offline Kanban board app for Windows, MacOS and Linux. Built with simplicity and user experience in mind."

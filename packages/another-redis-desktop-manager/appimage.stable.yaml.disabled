@@ -5,9 +5,9 @@ pkg: "another-redis-desktop-manager"
 pkg_id: "github.com.qishibo.AnotherRedisDesktopManager"
 pkg_type: "appimage"
 app_id: "github.com.qishibo.AnotherRedisDesktopManager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🚀🚀🚀A faster, better and more stable Redis desktop manager [GUI client], compatible with Linux, Windows, Mac."

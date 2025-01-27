@@ -5,9 +5,9 @@ pkg: "vigad"
 pkg_id: "github.com.VisualGameData.VIGAD"
 pkg_type: "appimage"
 app_id: "github.com.VisualGameData.VIGAD"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A desktop application for continuous extraction of data from screen"

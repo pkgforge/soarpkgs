@@ -5,9 +5,9 @@ pkg: "ser-player"
 pkg_id: "github.com.cgarry.ser-player"
 pkg_type: "appimage"
 app_id: "github.com.cgarry.ser-player"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple video player for playing SER files used for solar, lunar and planetary astronomy-imaging."

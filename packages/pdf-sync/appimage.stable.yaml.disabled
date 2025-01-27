@@ -5,9 +5,9 @@ pkg: "pdf-sync"
 pkg_id: "github.com.sherylynn.pdf-sync"
 pkg_type: "appimage"
 app_id: "github.com.sherylynn.pdf-sync"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "PDF Reader in JavaScript with Sync"

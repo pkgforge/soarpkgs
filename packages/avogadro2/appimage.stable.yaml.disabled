@@ -5,9 +5,9 @@ pkg: "avogadro2"
 pkg_id: "github.com.OpenChemistry.avogadroapp"
 pkg_type: "appimage"
 app_id: "github.com.OpenChemistry.avogadroapp"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Avogadro is an advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."

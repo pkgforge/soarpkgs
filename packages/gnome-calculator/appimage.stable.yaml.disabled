@@ -5,9 +5,9 @@ pkg: "gnome-calculator"
 pkg_id: "github.com.ivan-hc.Gnome-calculator-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.Gnome-calculator-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Perform arithmetic, scientific or financial calculations."

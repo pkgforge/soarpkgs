@@ -5,9 +5,9 @@ pkg: "mqttcute"
 pkg_id: "github.com.MayaPosch.MQTTCute"
 pkg_type: "appimage"
 app_id: "github.com.MayaPosch.MQTTCute"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An advanced desktop MQTT client, suitable for binary protocol development and monitoring"

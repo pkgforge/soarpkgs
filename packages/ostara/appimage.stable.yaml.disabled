@@ -5,9 +5,9 @@ pkg: "ostara"
 pkg_id: "github.com.krud-dev.ostara"
 pkg_type: "appimage"
 app_id: "github.com.krud-dev.ostara"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Ostara is a cross-platform desktop app for managing and monitoring Spring Boot applications using the Actuator API, providing comprehensive insights and effortless control."

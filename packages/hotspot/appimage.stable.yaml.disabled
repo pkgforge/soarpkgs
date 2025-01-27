@@ -5,9 +5,9 @@ pkg: "hotspot"
 pkg_id: "github.com.KDAB.hotspot"
 pkg_type: "appimage"
 app_id: "github.com.KDAB.hotspot"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The Linux perf GUI for performance analysis."

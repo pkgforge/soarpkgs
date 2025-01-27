@@ -5,9 +5,9 @@ pkg: "manager-io"
 pkg_id: "github.com.Manager-io.Manager"
 pkg_type: "appimage"
 app_id: "github.com.Manager-io.Manager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Accounting software. Available for Windows, Mac and Linux."

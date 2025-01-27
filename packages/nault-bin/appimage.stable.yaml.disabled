@@ -5,9 +5,9 @@ pkg: "nault-bin"
 pkg_id: "github.com.Nault.Nault"
 pkg_type: "appimage"
 app_id: "github.com.Nault.Nault"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "⚡ The most advanced Nano wallet with focus on security, speed and robustness"

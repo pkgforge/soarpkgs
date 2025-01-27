@@ -5,9 +5,9 @@ pkg: "jscad-desktop"
 pkg_id: "github.com.jscad.jscad-desktop"
 pkg_type: "appimage"
 app_id: "github.com.jscad.jscad-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "DEPRECATED : Experimental desktop app for JSCAD (See the link below)"

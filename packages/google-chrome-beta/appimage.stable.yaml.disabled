@@ -5,9 +5,9 @@ pkg: "google-chrome-beta"
 pkg_id: "github.com.ivan-hc.Chrome-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.Chrome-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial AppImages of Google Chrome Stable, Beta and Unstable."

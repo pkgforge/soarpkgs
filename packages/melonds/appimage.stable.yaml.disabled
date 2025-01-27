@@ -5,9 +5,9 @@ pkg: "melonds"
 pkg_id: "github.com.melonDS-emu.melonDS"
 pkg_type: "appimage"
 app_id: "github.com.melonDS-emu.melonDS"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "DS emulator, sorta"

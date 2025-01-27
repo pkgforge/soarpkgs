@@ -5,9 +5,9 @@ pkg: "lutris"
 pkg_id: "github.com.lucasmz1.Lutris_AppImage"
 pkg_type: "appimage"
 app_id: "github.com.lucasmz1.Lutris_AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Lutris is a video game preservation platform aiming to keep your video game collection up and running for the years to come. Over the years, video games have gone through many different hardware and software platforms. By offering the best software available to run your games, Lutris makes it easy to run all your games, old and new."

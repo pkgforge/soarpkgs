@@ -5,9 +5,9 @@ pkg: "software-challenge-gui"
 pkg_id: "github.com.CAU-Kiel-Tech-Inf.socha-gui"
 pkg_type: "appimage"
 app_id: "github.com.CAU-Kiel-Tech-Inf.socha-gui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Electron GUI for the Software-Challenge Germany 2016 - 2020 (Source code publicized 2018)"

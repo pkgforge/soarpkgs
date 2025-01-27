@@ -5,9 +5,9 @@ _disabled: false
 pkg: "0ad"
 pkg_id: "github.0ad-matters.0ad-appimage.prerelease"
 pkg_type: "appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Game"
 description: "A FOSS historical Real Time Strategy (RTS) game [prerelease]"

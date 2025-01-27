@@ -5,9 +5,9 @@ pkg: "samira"
 pkg_id: "github.com.jsnli.Samira"
 pkg_type: "appimage"
 app_id: "github.com.jsnli.Samira"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Steam achievement manager for Linux written with Tauri and Rust."

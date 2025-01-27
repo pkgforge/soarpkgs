@@ -5,9 +5,9 @@ pkg: "devhub"
 pkg_id: "github.com.devhubapp.devhub"
 pkg_type: "appimage"
 app_id: "github.com.devhubapp.devhub"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "TweetDeck for GitHub - Filter Issues, Activities & Notifications - Web, Mobile & Desktop with 99% code sharing between them"

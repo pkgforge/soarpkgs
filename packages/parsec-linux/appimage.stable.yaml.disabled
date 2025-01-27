@@ -5,9 +5,9 @@ pkg: "parsec-linux"
 pkg_id: "github.com.E5ten.parsec-linux-AppImage"
 pkg_type: "appimage"
 app_id: "github.com.E5ten.parsec-linux-AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage for Parsec, built using deb2appimage https://github.com/simoniz0r/deb2appimage"

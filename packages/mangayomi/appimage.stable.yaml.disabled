@@ -5,9 +5,9 @@ pkg: "mangayomi"
 pkg_id: "github.com.kodjodevf.mangayomi"
 pkg_type: "appimage"
 app_id: "github.com.kodjodevf.mangayomi"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Free and open source application that allows users to read manga and stream anime from a variety of sources including BitTorrent available on Android, iOS, macOS, Linux and Windows"

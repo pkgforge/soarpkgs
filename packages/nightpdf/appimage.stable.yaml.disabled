@@ -5,9 +5,9 @@ pkg: "nightpdf"
 pkg_id: "github.com.Lunarequest.NightPDF"
 pkg_type: "appimage"
 app_id: "github.com.Lunarequest.NightPDF"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Dark Mode PDF Reader built using Electron and PDF.js"

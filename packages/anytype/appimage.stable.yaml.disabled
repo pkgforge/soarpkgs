@@ -5,9 +5,9 @@ pkg: "anytype"
 pkg_id: "github.com.anyproto.anytype-ts"
 pkg_type: "appimage"
 app_id: "github.com.anyproto.anytype-ts"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Official Anytype client for MacOS, Linux, and Windows"

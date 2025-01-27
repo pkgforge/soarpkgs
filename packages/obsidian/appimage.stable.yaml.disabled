@@ -5,9 +5,9 @@ pkg: "obsidian"
 pkg_id: "github.com.obsidianmd.obsidian-releases"
 pkg_type: "appimage"
 app_id: "github.com.obsidianmd.obsidian-releases"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Community plugins list, theme list, and releases of Obsidian."

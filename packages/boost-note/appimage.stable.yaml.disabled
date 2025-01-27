@@ -5,9 +5,9 @@ pkg: "boost-note"
 pkg_id: "github.com.BoostIO.BoostNote-App"
 pkg_type: "appimage"
 app_id: "github.com.BoostIO.BoostNote-App"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Boost Note is a document driven project management tool that maximizes remote DevOps team velocity."

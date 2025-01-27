@@ -5,9 +5,9 @@ pkg: "summoners.war.exporter"
 pkg_id: "github.com.Xzandro.sw-exporter"
 pkg_type: "appimage"
 app_id: "github.com.Xzandro.sw-exporter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "This tool will parse intercepted data from Summoners War and extract information on the monsters and runes of the user."

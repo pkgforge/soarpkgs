@@ -5,9 +5,9 @@ pkg: "youtube-downloader"
 pkg_id: "github.com.AnthonyGress.Youtube-Downloader"
 pkg_type: "appimage"
 app_id: "github.com.AnthonyGress.Youtube-Downloader"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple cross platform desktop application that downloads video/audio from youtube (and instagram) videos. Works on Mac, Windows, and Linux! This app was built with Electron, Node/Typescript, and React"

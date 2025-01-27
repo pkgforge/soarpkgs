@@ -5,9 +5,9 @@ pkg: "electron-wechat"
 pkg_id: "github.com.eNkru.electron-wechat"
 pkg_type: "appimage"
 app_id: "github.com.eNkru.electron-wechat"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "致力于打造macOS和Linux桌面下最好用的微信（wechat）客户端"

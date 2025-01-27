@@ -5,9 +5,9 @@ pkg: "fishterm"
 pkg_id: "github.com.kuronekouwu.FishTerm"
 pkg_type: "appimage"
 app_id: "github.com.kuronekouwu.FishTerm"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A open-soruce Terminal remote access"

@@ -5,9 +5,9 @@ pkg: "vechain"
 pkg_id: "github.com.vechain.thor-sync.electron"
 pkg_type: "appimage"
 app_id: "github.com.vechain.thor-sync.electron"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A browser that empowers DApps on VeChain"

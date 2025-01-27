@@ -5,9 +5,9 @@ pkg: "pkg2appimage"
 pkg_id: "github.com.AppImageCommunity.pkg2appimage"
 pkg_type: "appimage"
 app_id: "github.com.AppImageCommunity.pkg2appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Tool and recipes to convert existing deb packages to AppImage"

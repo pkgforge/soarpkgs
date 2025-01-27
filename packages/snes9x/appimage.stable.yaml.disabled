@@ -5,9 +5,9 @@ pkg: "snes9x"
 pkg_id: "github.com.snes9xgit.snes9x"
 pkg_type: "appimage"
 app_id: "github.com.snes9xgit.snes9x"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Snes9x - Portable Super Nintendo Entertainment System (TM) emulator"

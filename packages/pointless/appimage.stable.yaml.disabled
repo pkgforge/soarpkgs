@@ -5,9 +5,9 @@ pkg: "pointless"
 pkg_id: "github.com.kkoomen.pointless"
 pkg_type: "appimage"
 app_id: "github.com.kkoomen.pointless"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An endless drawing canvas desktop app made with Tauri (Rust) and React 🎨 ✍️"

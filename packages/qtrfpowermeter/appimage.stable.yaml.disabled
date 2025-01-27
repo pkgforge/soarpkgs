@@ -5,9 +5,9 @@ pkg: "qtrfpowermeter"
 pkg_id: "github.com.coozoo.qtrfpowermeter"
 pkg_type: "appimage"
 app_id: "github.com.coozoo.qtrfpowermeter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "This application few hours project intended to improve usage of chinese RF power meter RF8000 as default application is terrible  with no functionality and lot of crashes"

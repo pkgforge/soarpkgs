@@ -5,9 +5,9 @@ pkg: "carta"
 pkg_id: "github.com.CARTAvis.carta"
 pkg_type: "appimage"
 app_id: "github.com.CARTAvis.carta"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "To CARTA users, this repo holds the CARTA release packages. Please use this repo to log bugs and feature requests. These will be triaged by the development team and prioritised as necessary in the development cycles."

@@ -5,9 +5,9 @@ pkg: "fontforge"
 pkg_id: "github.com.fontforge.fontforge"
 pkg_type: "appimage"
 app_id: "github.com.fontforge.fontforge"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Free (libre) font editor for Windows, Mac OS X and GNU+Linux"

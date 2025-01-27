@@ -5,9 +5,9 @@ pkg: "xm8"
 pkg_id: "github.com.bubio.xm8mac"
 pkg_type: "appimage"
 app_id: "github.com.bubio.xm8mac"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "PC-8801 emulator for macOS and other platforms"

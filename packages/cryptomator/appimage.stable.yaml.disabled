@@ -5,9 +5,9 @@ pkg: "cryptomator"
 pkg_id: "github.com.cryptomator.cryptomator"
 pkg_type: "appimage"
 app_id: "github.com.cryptomator.cryptomator"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cryptomator for Windows, macOS, and Linux: Secure client-side encryption for your cloud storage, ensuring privacy and control over your data."

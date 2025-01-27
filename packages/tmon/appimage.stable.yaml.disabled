@@ -5,9 +5,9 @@ pkg: "tmon"
 pkg_id: "github.com.gmagno.tmon"
 pkg_type: "appimage"
 app_id: "github.com.gmagno.tmon"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Temperature Monitor -- a simple CLI tool for monitoring/reporting CPU temperatures."

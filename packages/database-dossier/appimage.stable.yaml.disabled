@@ -5,9 +5,9 @@ pkg: "database-dossier"
 pkg_id: "github.com.nshiell.database-dossier"
 pkg_type: "appimage"
 app_id: "github.com.nshiell.database-dossier"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A User Interface for your databases"

@@ -5,9 +5,9 @@ pkg: "sunshine"
 pkg_id: "github.com.LizardByte.Sunshine"
 pkg_type: "appimage"
 app_id: "github.com.LizardByte.Sunshine"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Self-hosted game stream host for Moonlight."

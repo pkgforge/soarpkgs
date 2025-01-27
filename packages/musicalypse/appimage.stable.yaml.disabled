@@ -5,9 +5,9 @@ pkg: "musicalypse"
 pkg_id: "github.com.tgambet.musicalypse"
 pkg_type: "appimage"
 app_id: "github.com.tgambet.musicalypse"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A modern audio player built with Web technologies."

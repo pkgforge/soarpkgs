@@ -5,9 +5,9 @@ pkg: "lovr"
 pkg_id: "github.com.bjornbytes.lovr"
 pkg_type: "appimage"
 app_id: "github.com.bjornbytes.lovr"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Lua Virtual Reality Framework"

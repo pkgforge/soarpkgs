@@ -6,9 +6,9 @@ pkg: "freetube"
 pkg_id: "github.com.FreeTubeApp.FreeTube.stable"
 pkg_type: "appimage"
 app_id: "io.freetubeapp.FreeTube"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Player"
   - "TV"

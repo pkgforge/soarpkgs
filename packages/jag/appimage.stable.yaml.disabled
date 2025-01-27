@@ -5,9 +5,9 @@ pkg: "jag"
 pkg_id: "github.com.seleznevae.jag"
 pkg_type: "appimage"
 app_id: "github.com.seleznevae.jag"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simple interactive grapher for 2D plots"

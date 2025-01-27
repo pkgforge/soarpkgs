@@ -5,9 +5,9 @@ pkg: "dashy-app"
 pkg_id: "github.com.GordonSmith.dashy-app"
 pkg_type: "appimage"
 app_id: "github.com.GordonSmith.dashy-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Dashy Electron App"

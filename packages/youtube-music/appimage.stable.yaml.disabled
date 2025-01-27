@@ -5,9 +5,9 @@ pkg: "youtube-music"
 pkg_id: "github.com.th-ch.youtube-music"
 pkg_type: "appimage"
 app_id: "github.com.th-ch.youtube-music"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"

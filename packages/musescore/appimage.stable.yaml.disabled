@@ -5,9 +5,9 @@ pkg: "musescore"
 pkg_id: "github.com.musescore.MuseScore"
 pkg_type: "appimage"
 app_id: "github.com.musescore.MuseScore"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "MuseScore is an open source and free music notation software. For support, contribution, bug reports, visit MuseScore.org. Fork and make pull requests!"

@@ -5,9 +5,9 @@ pkg: "join-desktop"
 pkg_id: "github.com.joaomgcd.JoinDesktop"
 pkg_type: "appimage"
 app_id: "github.com.joaomgcd.JoinDesktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A desktop app for Join built in Electron"

@@ -6,9 +6,9 @@ pkg: "puddletag"
 pkg_id: "github.com.pkgforge-dev.puddletag-AppImage.stable"
 pkg_type: "appimage"
 app_id: "net.puddletag.puddletag"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "AudioVideoEditing"
   - "Music"

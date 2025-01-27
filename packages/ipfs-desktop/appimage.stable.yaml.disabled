@@ -5,9 +5,9 @@ pkg: "ipfs-desktop"
 pkg_id: "github.com.ipfs.ipfs-desktop"
 pkg_type: "appimage"
 app_id: "github.com.ipfs.ipfs-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux."

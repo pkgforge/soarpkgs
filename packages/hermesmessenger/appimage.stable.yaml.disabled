@@ -5,9 +5,9 @@ pkg: "hermesmessenger"
 pkg_id: "github.com.HermesMessenger.HermesDesktop"
 pkg_type: "appimage"
 app_id: "github.com.HermesMessenger.HermesDesktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop applications of Hermes Messenger created using Electron. (You can use the PWA instead for the notifications, this is not faster than a browser)."

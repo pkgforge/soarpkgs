@@ -5,9 +5,9 @@ pkg: "memocast"
 pkg_id: "github.com.TankNee.Memocast"
 pkg_type: "appimage"
 app_id: "github.com.TankNee.Memocast"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Yet another elegant Wiz Note Client, which was built with Quasar UI Framework and based on Electron."

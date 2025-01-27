@@ -5,9 +5,9 @@ pkg: "orcaslicer-any"
 pkg_id: "github.com.SoftFever.OrcaSlicer"
 pkg_type: "appimage"
 app_id: "github.com.SoftFever.OrcaSlicer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"

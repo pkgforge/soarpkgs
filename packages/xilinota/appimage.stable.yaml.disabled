@@ -5,9 +5,9 @@ pkg: "xilinota"
 pkg_id: "github.com.XilinJia.Xilinota"
 pkg_type: "appimage"
 app_id: "github.com.XilinJia.Xilinota"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Xilinota, an open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files. The application runs on Linux, MacOS, Windows, Android and iOS."

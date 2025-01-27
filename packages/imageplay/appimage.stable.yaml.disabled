@@ -5,9 +5,9 @@ pkg: "imageplay"
 pkg_id: "github.com.cpvrlab.ImagePlay"
 pkg_type: "appimage"
 app_id: "github.com.cpvrlab.ImagePlay"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ImagePlay is a rapid prototyping application for image processing"

@@ -5,9 +5,9 @@ pkg: "tockler"
 pkg_id: "github.com.MayGo.tockler"
 pkg_type: "appimage"
 app_id: "github.com.MayGo.tockler"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An application that tracks your time by monitoring your active window title and idle time."

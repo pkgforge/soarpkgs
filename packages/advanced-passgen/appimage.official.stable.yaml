@@ -5,9 +5,9 @@ _disabled: false
 pkg: "advanced-passgen"
 pkg_id: "github.com.CodeDead.Advanced-PassGen"
 pkg_type: "appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Security"
   - "Utility"

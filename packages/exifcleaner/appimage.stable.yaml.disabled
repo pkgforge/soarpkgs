@@ -5,9 +5,9 @@ pkg: "exifcleaner"
 pkg_id: "github.com.szTheory.exifcleaner"
 pkg_type: "appimage"
 app_id: "github.com.szTheory.exifcleaner"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform desktop GUI app to clean image metadata"

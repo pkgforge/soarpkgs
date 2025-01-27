@@ -5,9 +5,9 @@ pkg: "ossia-score"
 pkg_id: "github.com.OSSIA.score"
 pkg_type: "appimage"
 app_id: "github.com.OSSIA.score"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ossia score, an interactive sequencer for the intermedia arts"

@@ -5,9 +5,9 @@ pkg: "bitbox-wallet"
 pkg_id: "github.com.digitalbitbox.bitbox-wallet-app"
 pkg_type: "appimage"
 app_id: "github.com.digitalbitbox.bitbox-wallet-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The BitBoxApp for desktop and mobile."

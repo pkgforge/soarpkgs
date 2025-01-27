@@ -5,9 +5,9 @@ pkg: "magento2-upgrade-gui"
 pkg_id: "github.com.elgentos.magento2-upgrade-gui"
 pkg_type: "appimage"
 app_id: "github.com.elgentos.magento2-upgrade-gui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Magento 2 Upgrade GUI"

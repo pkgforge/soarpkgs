@@ -5,9 +5,9 @@ pkg: "brs-emu-app"
 pkg_id: "github.com.lvcabral.brs-emu-app"
 pkg_type: "appimage"
 app_id: "github.com.lvcabral.brs-emu-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Roku device simulator as a desktop app (macOS, Windows and Linux)"

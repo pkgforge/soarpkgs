@@ -5,9 +5,9 @@ pkg: "tomatox"
 pkg_id: "github.com.yanjiaxuan.TOMATOX"
 pkg_type: "appimage"
 app_id: "github.com.yanjiaxuan.TOMATOX"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "基于Electron、React开发的全网在线免费VIP视频解析播放器，美剧、韩剧、日剧全资源，全平台（Windows、Linux、MacOS）可用"

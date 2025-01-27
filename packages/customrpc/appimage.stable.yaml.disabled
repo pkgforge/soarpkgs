@@ -5,9 +5,9 @@ pkg: "customrpc"
 pkg_id: "github.com.KurozeroPB.CustomRPC"
 pkg_type: "appimage"
 app_id: "github.com.KurozeroPB.CustomRPC"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Set a custom rich presence status on Discord"

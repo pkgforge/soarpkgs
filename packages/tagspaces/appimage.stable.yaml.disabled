@@ -5,9 +5,9 @@ pkg: "tagspaces"
 pkg_id: "github.com.tagspaces.tagspaces"
 pkg_type: "appimage"
 app_id: "github.com.tagspaces.tagspaces"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "TagSpaces is an offline, open source, document manager with tagging support"

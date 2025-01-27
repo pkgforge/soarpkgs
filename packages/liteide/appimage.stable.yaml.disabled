@@ -5,9 +5,9 @@ pkg: "liteide"
 pkg_id: "github.com.visualfc.liteide"
 pkg_type: "appimage"
 app_id: "github.com.visualfc.liteide"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "LiteIDE is a simple, open source, cross-platform Go IDE."

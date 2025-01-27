@@ -5,9 +5,9 @@ pkg: "microsoft-edge-beta"
 pkg_id: "github.com.ivan-hc.MS-Edge-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.MS-Edge-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial AppImages built from DEBs"

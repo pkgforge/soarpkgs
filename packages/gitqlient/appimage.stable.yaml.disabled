@@ -5,9 +5,9 @@ pkg: "gitqlient"
 pkg_id: "github.com.francescmm.GitQlient"
 pkg_type: "appimage"
 app_id: "github.com.francescmm.GitQlient"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "GitQlient: Multi-platform Git client written with Qt."

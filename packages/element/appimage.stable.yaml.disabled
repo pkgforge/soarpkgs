@@ -5,9 +5,9 @@ pkg: "element"
 pkg_id: "github.com.srevinsaju.element-appimage"
 pkg_type: "appimage"
 app_id: "github.com.srevinsaju.element-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Continuous Integration AppImages for Element Matrix Client (element.io)"

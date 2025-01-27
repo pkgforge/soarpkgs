@@ -5,9 +5,9 @@ pkg: "icestudio"
 pkg_id: "github.com.FPGAwars.icestudio"
 pkg_type: "appimage"
 app_id: "github.com.FPGAwars.icestudio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":snowflake: Visual editor for open FPGA boards"

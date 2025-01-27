@@ -5,9 +5,9 @@ pkg: "koreader"
 pkg_id: "github.com.koreader.koreader"
 pkg_type: "appimage"
 app_id: "github.com.koreader.koreader"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"

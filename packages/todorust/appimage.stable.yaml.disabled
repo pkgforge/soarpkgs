@@ -5,9 +5,9 @@ pkg: "todorust"
 pkg_id: "github.com.gustavo-tomas.ToDoRust"
 pkg_type: "appimage"
 app_id: "github.com.gustavo-tomas.ToDoRust"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simple ToDoList made in rust"

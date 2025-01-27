@@ -5,9 +5,9 @@ pkg: "marlin-conf"
 pkg_id: "github.com.akaJes.marlin-config"
 pkg_type: "appimage"
 app_id: "github.com.akaJes.marlin-config"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Marlin firmware instant configurator"

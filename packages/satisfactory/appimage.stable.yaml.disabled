@@ -5,9 +5,9 @@ pkg: "satisfactory"
 pkg_id: "github.com.satisfactorymodding.SatisfactoryModManager"
 pkg_type: "appimage"
 app_id: "github.com.satisfactorymodding.SatisfactoryModManager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A mod manager for easy installation of mods and modloader for Satisfactory"

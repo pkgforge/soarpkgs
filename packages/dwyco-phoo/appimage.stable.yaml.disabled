@@ -5,9 +5,9 @@ pkg: "dwyco-phoo"
 pkg_id: "github.com.blindchimp.dwyco"
 pkg_type: "appimage"
 app_id: "github.com.blindchimp.dwyco"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Dwyco client-side, CDC-X (desktop client), Phoo (experimental Qt5/QML client), and helpers"

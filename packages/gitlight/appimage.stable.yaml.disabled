@@ -5,9 +5,9 @@ pkg: "gitlight"
 pkg_id: "github.com.colinlienard.gitlight"
 pkg_type: "appimage"
 app_id: "github.com.colinlienard.gitlight"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🐙 GitHub & GitLab notifications on your desktop"

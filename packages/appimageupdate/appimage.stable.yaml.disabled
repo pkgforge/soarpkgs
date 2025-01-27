@@ -5,9 +5,9 @@ pkg: "appimageupdate"
 pkg_id: "github.com.AppImage.AppImageUpdate"
 pkg_type: "appimage"
 app_id: "github.com.AppImage.AppImageUpdate"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImageUpdate lets you update AppImages in a decentral way using information embedded in the AppImage itself."

@@ -5,9 +5,9 @@ pkg: "jreleaser"
 pkg_id: "github.com.jreleaser.jreleaser-appimage"
 pkg_type: "appimage"
 app_id: "github.com.jreleaser.jreleaser-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🐧 AppImage repository for JReleaser"

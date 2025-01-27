@@ -5,9 +5,9 @@ pkg: "axe-electrum"
 pkg_id: "github.com.AXErunners.electrum-axe"
 pkg_type: "appimage"
 app_id: "github.com.AXErunners.electrum-axe"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "lightweight client for AXE network"

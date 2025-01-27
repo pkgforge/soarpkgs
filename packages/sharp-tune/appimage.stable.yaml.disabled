@@ -5,9 +5,9 @@ pkg: "sharp-tune"
 pkg_id: "github.com.MD-AZMAL.Sharp-Tune"
 pkg_type: "appimage"
 app_id: "github.com.MD-AZMAL.Sharp-Tune"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Lightweight Cross-platform music player build upon the node using the electron framework."

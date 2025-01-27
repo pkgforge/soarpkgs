@@ -5,9 +5,9 @@ pkg: "browservice"
 pkg_id: "github.com.ttalvitie.browservice"
 pkg_type: "appimage"
 app_id: "github.com.ttalvitie.browservice"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Browservice: Browse the modern web on historical browsers"

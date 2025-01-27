@@ -5,9 +5,9 @@ pkg: "zmninja"
 pkg_id: "github.com.ZoneMinder.zmNinja"
 pkg_type: "appimage"
 app_id: "github.com.ZoneMinder.zmNinja"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "High performance, cross platform ionic app for Home/Commerical Security Surveillance using ZoneMinder"

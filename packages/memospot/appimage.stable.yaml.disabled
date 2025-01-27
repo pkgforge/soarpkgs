@@ -5,9 +5,9 @@ pkg: "memospot"
 pkg_id: "github.com.memospot.memospot"
 pkg_type: "appimage"
 app_id: "github.com.memospot.memospot"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Memospot is a self-contained desktop version of Memos -a privacy-first, lightweight note-taking service."

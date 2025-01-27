@@ -5,9 +5,9 @@ pkg: "spicy-launcher"
 pkg_id: "github.com.spicylobstergames.SpicyLauncher"
 pkg_type: "appimage"
 app_id: "github.com.spicylobstergames.SpicyLauncher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform launcher for Spicy Lobster games 🌶🦞"

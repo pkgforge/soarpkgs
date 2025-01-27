@@ -5,9 +5,9 @@ pkg: "ngpost"
 pkg_id: "github.com.mbruel.ngPost"
 pkg_type: "appimage"
 app_id: "github.com.mbruel.ngPost"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Command Line (or minimalist GUI) usenet poster for binaries developped in C++/QT designed to be as fast as possible and offer all the main features to post data easily and safely. Releases for Linux, Windows and MacOS are available."

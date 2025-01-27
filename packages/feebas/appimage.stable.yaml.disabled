@@ -5,9 +5,9 @@ pkg: "feebas"
 pkg_id: "github.com.timzatko.feebas"
 pkg_type: "appimage"
 app_id: "github.com.timzatko.feebas"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "feebas - screenshot comparison tool for identifying visual regressions."

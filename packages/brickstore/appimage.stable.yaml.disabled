@@ -5,9 +5,9 @@ pkg: "brickstore"
 pkg_id: "github.com.rgriebl.brickstore"
 pkg_type: "appimage"
 app_id: "github.com.rgriebl.brickstore"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An offline BrickLink inventory management tool."

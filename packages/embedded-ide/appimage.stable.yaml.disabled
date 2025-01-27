@@ -5,9 +5,9 @@ pkg: "embedded-ide"
 pkg_id: "github.com.martinribelotta.embedded-ide"
 pkg_type: "appimage"
 app_id: "github.com.martinribelotta.embedded-ide"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "IDE for C embedded development centered on bare-metal ARM systems"

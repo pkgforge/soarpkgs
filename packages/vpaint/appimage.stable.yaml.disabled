@@ -5,9 +5,9 @@ pkg: "vpaint"
 pkg_id: "github.com.dalboris.vpaint"
 pkg_type: "appimage"
 app_id: "github.com.dalboris.vpaint"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Experimental vector graphics and 2D animation editor"

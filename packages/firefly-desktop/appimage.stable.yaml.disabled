@@ -5,9 +5,9 @@ pkg: "firefly-desktop"
 pkg_id: "github.com.iotaledger.firefly"
 pkg_type: "appimage"
 app_id: "github.com.iotaledger.firefly"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The official IOTA and Shimmer wallet"

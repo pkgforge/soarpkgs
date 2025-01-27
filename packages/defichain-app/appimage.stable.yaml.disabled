@@ -5,9 +5,9 @@ pkg: "defichain-app"
 pkg_id: "github.com.BirthdayResearch.defichain-app"
 pkg_type: "appimage"
 app_id: "github.com.BirthdayResearch.defichain-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "DeFi Blockchain desktop app for Windows, Linux and Mac."

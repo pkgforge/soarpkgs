@@ -5,9 +5,9 @@ pkg: "qtjsondiff"
 pkg_id: "github.com.coozoo.qtjsondiff"
 pkg_type: "appimage"
 app_id: "github.com.coozoo.qtjsondiff"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Some kind of json diff widget that consists of two json viewer widgets with highlighting of jsons. There is two modes to view: json and text, search text inside json. Use different sources of json file, url or simply copy-paste. And some more features...."

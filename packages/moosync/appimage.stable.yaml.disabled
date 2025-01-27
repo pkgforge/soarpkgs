@@ -5,9 +5,9 @@ pkg: "moosync"
 pkg_id: "github.com.Moosync.Moosync"
 pkg_type: "appimage"
 app_id: "github.com.Moosync.Moosync"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Music player capable of playing local audio or from Youtube, Spotify and many more"

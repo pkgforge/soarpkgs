@@ -5,9 +5,9 @@ pkg: "seismic"
 pkg_id: "github.com.breadthe.seismic"
 pkg_type: "appimage"
 app_id: "github.com.breadthe.seismic"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A taskbar app for displaying USGS magnitude 2.5+ earthquakes from the past day."

@@ -5,9 +5,9 @@ pkg: "mgba"
 pkg_id: "github.com.mgba-emu.mgba"
 pkg_type: "appimage"
 app_id: "github.com.mgba-emu.mgba"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "mGBA Game Boy Advance Emulator"

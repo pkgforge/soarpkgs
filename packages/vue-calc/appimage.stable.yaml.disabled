@@ -5,9 +5,9 @@ pkg: "vue-calc"
 pkg_id: "github.com.el3um4s.vue-calc"
 pkg_type: "appimage"
 app_id: "github.com.el3um4s.vue-calc"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A Simple VueJSs Calculator built with ElectronJS"

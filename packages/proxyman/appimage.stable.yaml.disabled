@@ -5,9 +5,9 @@ pkg: "proxyman"
 pkg_id: "github.com.ProxymanApp.proxyman-windows-linux"
 pkg_type: "appimage"
 app_id: "github.com.ProxymanApp.proxyman-windows-linux"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Public tracker for Proxyman Windows/Linux"

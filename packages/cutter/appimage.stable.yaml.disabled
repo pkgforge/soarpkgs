@@ -5,9 +5,9 @@ pkg: "cutter"
 pkg_id: "github.com.rizinorg.cutter"
 pkg_type: "appimage"
 app_id: "github.com.rizinorg.cutter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Free and Open Source Reverse Engineering Platform powered by rizin"

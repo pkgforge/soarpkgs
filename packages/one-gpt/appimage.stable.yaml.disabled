@@ -5,9 +5,9 @@ pkg: "one-gpt"
 pkg_id: "github.com.1595901624.gpt-aggregated-edition"
 pkg_type: "appimage"
 app_id: "github.com.1595901624.gpt-aggregated-edition"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "聚合ChatGPT官方版、ChatGPT免费版、文心一言、Poe、chatchat等多平台，支持自定义导入平台"

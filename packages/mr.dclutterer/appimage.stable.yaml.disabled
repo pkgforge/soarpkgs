@@ -5,9 +5,9 @@ pkg: "mr.dclutterer"
 pkg_id: "github.com.deep5050.Mr.Dclutterer"
 pkg_type: "appimage"
 app_id: "github.com.deep5050.Mr.Dclutterer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A minimal looking cross-platform desktop application made with Electron that handles quick file aggregation and bulk renaming."

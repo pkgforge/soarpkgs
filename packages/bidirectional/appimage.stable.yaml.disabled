@@ -5,9 +5,9 @@ pkg: "bidirectional"
 pkg_id: "github.com.samirdjelal.bidirectional"
 pkg_type: "appimage"
 app_id: "github.com.samirdjelal.bidirectional"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Write Arabic text on apps that dont support the bidirectional text."

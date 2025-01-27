@@ -5,9 +5,9 @@ pkg: "wallettech"
 pkg_id: "github.com.bytechcoin.bytech-wallet-electron"
 pkg_type: "appimage"
 app_id: "github.com.bytechcoin.bytech-wallet-electron"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "GUI interface based on Walletd for BytechCoin"

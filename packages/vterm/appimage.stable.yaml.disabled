@@ -5,9 +5,9 @@ pkg: "vterm"
 pkg_id: "github.com.vterm.vterm"
 pkg_type: "appimage"
 app_id: "github.com.vterm.vterm"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":fire: Extensible terminal emulator written with the web languages of the future. Today."

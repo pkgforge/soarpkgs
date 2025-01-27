@@ -5,9 +5,9 @@ pkg: "colon"
 pkg_id: "github.com.Chhekur.colon-ide"
 pkg_type: "appimage"
 app_id: "github.com.Chhekur.colon-ide"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Colon is a flexible text editor, built on Electron, and based on everything we love about our favorite editors. We are trying to designe it to be fully customizable."

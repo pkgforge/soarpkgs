@@ -5,9 +5,9 @@ pkg: "qt-dab"
 pkg_id: "github.com.JvanKatwijk.qt-dab"
 pkg_type: "appimage"
 app_id: "github.com.JvanKatwijk.qt-dab"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Qt-DAB, a general software DAB (DAB+) decoder with a (slight) focus on showing the signal"

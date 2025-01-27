@@ -5,9 +5,9 @@ pkg: "kdiskmark"
 pkg_id: "github.com.JonMagon.KDiskMark"
 pkg_type: "appimage"
 app_id: "github.com.JonMagon.KDiskMark"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple open-source disk benchmark tool for Linux distros"

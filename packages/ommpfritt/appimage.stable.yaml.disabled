@@ -5,9 +5,9 @@ pkg: "ommpfritt"
 pkg_id: "github.com.pasbi.ommpfritt"
 pkg_type: "appimage"
 app_id: "github.com.pasbi.ommpfritt"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "semantic, procedural, non-destructive vector modelling"

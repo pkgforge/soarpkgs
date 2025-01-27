@@ -6,9 +6,9 @@ pkg: "zen-browser"
 pkg_id: "github.com.zen-browser.desktop.beta"
 pkg_type: "appimage"
 app_id: "app.zen_browser.zen"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "WebBrowser"
 description: "Performance oriented Firefox-based web browser (Beta)"

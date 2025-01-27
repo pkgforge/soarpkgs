@@ -5,9 +5,9 @@ pkg: "ttth"
 pkg_id: "github.com.yafp.ttth"
 pkg_type: "appimage"
 app_id: "github.com.yafp.ttth"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ttth (talk to the hand) is an electron based desktop app for online services like WhatsApp, Threema, Telegram, Twitter, Google and several others."

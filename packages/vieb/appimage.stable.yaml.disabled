@@ -5,9 +5,9 @@ pkg: "vieb"
 pkg_id: "github.com.Jelmerro.Vieb"
 pkg_type: "appimage"
 app_id: "github.com.Jelmerro.Vieb"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Vim Inspired Electron Browser - Vim bindings for the web by design"

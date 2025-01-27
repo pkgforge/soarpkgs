@@ -5,9 +5,9 @@ pkg: "qucs-s"
 pkg_id: "github.com.ra3xdh.qucs_s"
 pkg_type: "appimage"
 app_id: "github.com.ra3xdh.qucs_s"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Qucs-S is a circuit simulation program with Qt-based GUI"

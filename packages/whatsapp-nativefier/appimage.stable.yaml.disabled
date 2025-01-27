@@ -5,9 +5,9 @@ pkg: "whatsapp-nativefier"
 pkg_id: "github.com.ivan-hc.WhatsApp-nativefier-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.WhatsApp-nativefier-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage of WhatsApp Nativefier from AUR."

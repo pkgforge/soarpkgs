@@ -5,9 +5,9 @@ pkg: "exeqt"
 pkg_id: "github.com.AlexandruIstrate.ExeQt"
 pkg_type: "appimage"
 app_id: "github.com.AlexandruIstrate.ExeQt"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A nifty little utility for pinning commands, applications or links to the system tray"

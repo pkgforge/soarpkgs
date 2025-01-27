@@ -5,9 +5,9 @@ pkg: "sabaki"
 pkg_id: "github.com.yishn.Sabaki"
 pkg_type: "appimage"
 app_id: "github.com.yishn.Sabaki"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An elegant Go board and SGF editor for a more civilized age."

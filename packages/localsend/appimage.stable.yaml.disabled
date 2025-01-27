@@ -5,9 +5,9 @@ pkg: "localsend"
 pkg_id: "github.com.localsend.localsend"
 pkg_type: "appimage"
 app_id: "github.com.localsend.localsend"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An open-source cross-platform alternative to AirDrop"

@@ -5,9 +5,9 @@ pkg: "artisan"
 pkg_id: "github.com.artisan-roaster-scope.artisan"
 pkg_type: "appimage"
 app_id: "github.com.artisan-roaster-scope.artisan"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "artisan: visual scope for coffee roasters"

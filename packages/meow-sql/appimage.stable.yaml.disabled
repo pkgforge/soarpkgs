@@ -5,9 +5,9 @@ pkg: "meow-sql"
 pkg_id: "github.com.ragnar-lodbrok.meow-sql"
 pkg_type: "appimage"
 app_id: "github.com.ragnar-lodbrok.meow-sql"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "MeowSQL is an attempt to port HeidiSQL to C++/Qt (Linux/Windows)"

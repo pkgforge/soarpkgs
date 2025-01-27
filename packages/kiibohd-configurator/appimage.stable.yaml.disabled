@@ -5,9 +5,9 @@ pkg: "kiibohd-configurator"
 pkg_id: "github.com.kiibohd.configurator"
 pkg_type: "appimage"
 app_id: "github.com.kiibohd.configurator"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Client-side component of the configurator"

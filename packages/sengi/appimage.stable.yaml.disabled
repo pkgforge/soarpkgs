@@ -5,9 +5,9 @@ pkg: "sengi"
 pkg_id: "github.com.NicolasConstant.sengi"
 pkg_type: "appimage"
 app_id: "github.com.NicolasConstant.sengi"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Mastodon & Pleroma Multi-account Desktop Client"

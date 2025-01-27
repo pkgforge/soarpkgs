@@ -5,9 +5,9 @@ pkg: "appimagetool"
 pkg_id: "github.com.AppImage.AppImageKit"
 pkg_type: "appimage"
 app_id: "github.com.AppImage.AppImageKit"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, openSUSE, SLED, Ubuntu, Fedora, debian and derivatives. Join #AppImage on irc.libera.chat"

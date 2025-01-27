@@ -5,9 +5,9 @@ pkg: "toerings"
 pkg_id: "github.com.acarl005.toerings"
 pkg_type: "appimage"
 app_id: "github.com.acarl005.toerings"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A clone of Conky Seamod using Tauri"

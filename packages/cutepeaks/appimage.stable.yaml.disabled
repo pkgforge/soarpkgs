@@ -5,9 +5,9 @@ pkg: "cutepeaks"
 pkg_id: "github.com.labsquare.CutePeaks"
 pkg_type: "appimage"
 app_id: "github.com.labsquare.CutePeaks"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "CutePeaks is a standalone Sanger trace viewer steered by a modern and user-friendly UI."

@@ -5,9 +5,9 @@ pkg: "windows2usb"
 pkg_id: "github.com.ValdikSS.windows2usb"
 pkg_type: "appimage"
 app_id: "github.com.ValdikSS.windows2usb"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)"

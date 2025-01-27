@@ -5,9 +5,9 @@ pkg: "notemaster"
 pkg_id: "github.com.LiamRiddell.NoteMaster"
 pkg_type: "appimage"
 app_id: "github.com.LiamRiddell.NoteMaster"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "NoteMaster is an smart minimalistic persistent note-taking app to help boost productivity."

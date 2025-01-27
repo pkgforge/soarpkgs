@@ -5,9 +5,9 @@ pkg: "bulkurlopener"
 pkg_id: "github.com.EuanRiggans.BulkURLOpener"
 pkg_type: "appimage"
 app_id: "github.com.EuanRiggans.BulkURLOpener"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Bulk URL Opener is an application that provides the user with multiple utilities to help with managing and using large amounts of urls"

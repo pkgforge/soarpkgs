@@ -5,9 +5,9 @@ pkg: "neon"
 pkg_id: "github.com.CityOfZion.neon-wallet"
 pkg_type: "appimage"
 app_id: "github.com.CityOfZion.neon-wallet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Light wallet for the NEO blockchain"

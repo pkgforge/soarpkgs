@@ -5,9 +5,9 @@ pkg: "electrum-ravencoin"
 pkg_id: "github.com.Electrum-RVN-SIG.electrum-ravencoin"
 pkg_type: "appimage"
 app_id: "github.com.Electrum-RVN-SIG.electrum-ravencoin"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Electrum-Ravencoin Wallet Client. Forked from the Electrum Bitcoin base client."

@@ -5,9 +5,9 @@ pkg: "station"
 pkg_id: "github.com.getstation.desktop-app"
 pkg_type: "appimage"
 app_id: "github.com.getstation.desktop-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "One app to rule them all!"

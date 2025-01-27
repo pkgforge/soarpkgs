@@ -5,9 +5,9 @@ pkg: "thorium-reader"
 pkg_id: "github.com.edrlab.thorium-reader"
 pkg_type: "appimage"
 app_id: "github.com.edrlab.thorium-reader"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A cross platform desktop reading app, based on the Readium Desktop toolkit"

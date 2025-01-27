@@ -5,9 +5,9 @@ pkg: "concordium-desktop-wallet"
 pkg_id: "github.com.Concordium.concordium-desktop-wallet"
 pkg_type: "appimage"
 app_id: "github.com.Concordium.concordium-desktop-wallet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop wallet for the Concordium blockchain. For Windows, macOS and Linux."

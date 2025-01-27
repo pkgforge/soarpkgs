@@ -5,9 +5,9 @@ pkg: "slic3r"
 pkg_id: "github.com.slic3r.Slic3r"
 pkg_type: "appimage"
 app_id: "github.com.slic3r.Slic3r"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Open Source toolpath generator for 3D printers"

@@ -5,9 +5,9 @@ pkg: "midori"
 pkg_id: "github.com.goastian.midori-desktop"
 pkg_type: "appimage"
 app_id: "github.com.goastian.midori-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Official repository code Midori Browser"

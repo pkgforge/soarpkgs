@@ -5,9 +5,9 @@ pkg: "fmradio"
 pkg_id: "github.com.dmooney65.fmradio"
 pkg_type: "appimage"
 app_id: "github.com.dmooney65.fmradio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":radio: An Electron app to listen to FM radio using an RTL2832U based USB dongle. Linux and Windows, Intel and ARM"

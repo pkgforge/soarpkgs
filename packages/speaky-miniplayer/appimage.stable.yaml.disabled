@@ -5,9 +5,9 @@ pkg: "speaky-miniplayer"
 pkg_id: "github.com.fjrd84.speaky-miniplayer"
 pkg_type: "appimage"
 app_id: "github.com.fjrd84.speaky-miniplayer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Miniplayer and synthetic radio speaker for Spotify"

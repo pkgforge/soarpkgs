@@ -5,9 +5,9 @@ pkg: "zulip"
 pkg_id: "github.com.zulip.zulip-desktop"
 pkg_type: "appimage"
 app_id: "github.com.zulip.zulip-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Zulip Desktop client for Mac, Windows and Linux."

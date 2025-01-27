@@ -5,9 +5,9 @@ pkg: "keep"
 pkg_id: "github.com.andrepolischuk.keep"
 pkg_type: "appimage"
 app_id: "github.com.andrepolischuk.keep"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop app for Google Keep packaged with Electron"

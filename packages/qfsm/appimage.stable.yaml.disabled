@@ -5,9 +5,9 @@ pkg: "qfsm"
 pkg_id: "github.com.AaronErhardt.qfsm"
 pkg_type: "appimage"
 app_id: "github.com.AaronErhardt.qfsm"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Official repsitory of Qfsm, a graphical Finite State Machine (FSM) designer"

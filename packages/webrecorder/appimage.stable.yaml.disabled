@@ -5,9 +5,9 @@ pkg: "webrecorder"
 pkg_id: "github.com.webrecorder.webrecorder-desktop"
 pkg_type: "appimage"
 app_id: "github.com.webrecorder.webrecorder-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Webrecorder Desktop App!"

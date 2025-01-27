@@ -5,9 +5,9 @@ pkg: "electorrent"
 pkg_id: "github.com.Tympanix.Electorrent"
 pkg_type: "appimage"
 app_id: "github.com.Tympanix.Electorrent"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge"

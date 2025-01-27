@@ -5,9 +5,9 @@ pkg: "repath-studio"
 pkg_id: "github.com.repath-project.repath-studio"
 pkg_type: "appimage"
 app_id: "github.com.repath-project.repath-studio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A cross-platform vector graphics editor."

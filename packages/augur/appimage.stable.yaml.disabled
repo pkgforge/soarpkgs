@@ -5,9 +5,9 @@ pkg: "augur"
 pkg_id: "github.com.AugurProject.augur-app"
 pkg_type: "appimage"
 app_id: "github.com.AugurProject.augur-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Augur Desktop Electron Application"

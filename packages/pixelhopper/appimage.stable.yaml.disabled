@@ -5,9 +5,9 @@ pkg: "pixelhopper"
 pkg_id: "github.com.tomas.pixelhopper"
 pkg_type: "appimage"
 app_id: "github.com.tomas.pixelhopper"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Animated GIF player for Linux (X11) and eventually macOS and Windows"

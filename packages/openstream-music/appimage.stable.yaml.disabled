@@ -5,9 +5,9 @@ pkg: "openstream-music"
 pkg_id: "github.com.openstreamorg.openstreammusic"
 pkg_type: "appimage"
 app_id: "github.com.openstreamorg.openstreammusic"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The OpenStream Music source"

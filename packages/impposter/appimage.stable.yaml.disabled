@@ -5,9 +5,9 @@ pkg: "impposter"
 pkg_id: "github.com.imp-dance.imp-poster"
 pkg_type: "appimage"
 app_id: "github.com.imp-dance.imp-poster"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple react/electron project to be able to post to my own development blog"

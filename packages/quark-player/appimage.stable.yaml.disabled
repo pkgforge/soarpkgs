@@ -5,9 +5,9 @@ pkg: "quark-player"
 pkg_id: "github.com.Alex313031.quark-player"
 pkg_type: "appimage"
 app_id: "github.com.Alex313031.quark-player"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"

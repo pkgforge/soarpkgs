@@ -5,9 +5,9 @@ pkg: "thinreports-section-editor"
 pkg_id: "github.com.thinreports.thinreports-section-editor"
 pkg_type: "appimage"
 app_id: "github.com.thinreports.thinreports-section-editor"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A template editor for Thinreports to edit Section Format templates"

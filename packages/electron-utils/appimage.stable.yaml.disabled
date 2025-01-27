@@ -5,9 +5,9 @@ pkg: "electron-utils"
 pkg_id: "github.com.SamTV12345.DevRustPilot"
 pkg_type: "appimage"
 app_id: "github.com.SamTV12345.DevRustPilot"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Electron Utils for every day usage as a dev."

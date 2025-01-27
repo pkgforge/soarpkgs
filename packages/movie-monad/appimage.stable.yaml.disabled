@@ -5,9 +5,9 @@ pkg: "movie-monad"
 pkg_id: "github.com.lettier.movie-monad"
 pkg_type: "appimage"
 app_id: "github.com.lettier.movie-monad"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":tv: A free and simple to use video player made with Haskell."

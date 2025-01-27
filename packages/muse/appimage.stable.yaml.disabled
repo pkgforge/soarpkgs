@@ -5,9 +5,9 @@ pkg: "muse"
 pkg_id: "github.com.muse-sequencer.muse"
 pkg_type: "appimage"
 app_id: "github.com.muse-sequencer.muse"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "MusE is a digital audio workstation with support for both Audio and MIDI"

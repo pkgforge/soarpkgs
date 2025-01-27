@@ -5,9 +5,9 @@ pkg: "led.custom.palette"
 pkg_id: "github.com.jukben.keyboardio-led-custom-palette"
 pkg_type: "appimage"
 app_id: "github.com.jukben.keyboardio-led-custom-palette"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🎨🦋LED Custom Palette – design the lights on your Model01 with an ease"

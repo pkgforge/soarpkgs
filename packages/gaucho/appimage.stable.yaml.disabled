@@ -5,9 +5,9 @@ pkg: "gaucho"
 pkg_id: "github.com.angrykoala.gaucho"
 pkg_type: "appimage"
 app_id: "github.com.angrykoala.gaucho"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Minimalist task launcher"

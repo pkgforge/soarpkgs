@@ -5,9 +5,9 @@ pkg: "antimicrox"
 pkg_id: "github.com.AntiMicroX.antimicrox"
 pkg_type: "appimage"
 app_id: "github.com.AntiMicroX.antimicrox"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Graphical program used to map keyboard buttons and mouse controls to a gamepad. Useful for playing games with no gamepad support."

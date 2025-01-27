@@ -6,9 +6,9 @@ pkg: "czkawka"
 pkg_id: "github.com.qarmin.czkawka.stable"
 pkg_type: "appimage"
 app_id: "com.github.qarmin.czkawka"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Multi functional app to find duplicates, empty folders, similar images, broken files etc."

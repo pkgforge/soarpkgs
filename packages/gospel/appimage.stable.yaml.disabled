@@ -5,9 +5,9 @@ pkg: "gospel"
 pkg_id: "github.com.ksharindam.gospel-pdf-viewer"
 pkg_type: "appimage"
 app_id: "github.com.ksharindam.gospel-pdf-viewer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Poppler based fast pdf viewer written in PyQt5"

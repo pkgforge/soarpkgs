@@ -5,9 +5,9 @@ _disabled: false
 pkg: "akuse"
 pkg_id: "github.com.akuse-app.akuse"
 pkg_type: "appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simple and easy to use anime streaming desktop app without ads"

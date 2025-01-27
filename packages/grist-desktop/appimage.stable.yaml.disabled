@@ -5,9 +5,9 @@ pkg: "grist-desktop"
 pkg_id: "github.com.gristlabs.grist-desktop"
 pkg_type: "appimage"
 app_id: "github.com.gristlabs.grist-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop Grist, packaged with Electron"

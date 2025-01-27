@@ -5,9 +5,9 @@ pkg: "deeptags"
 pkg_id: "github.com.SZinedine.DeepTags"
 pkg_type: "appimage"
 app_id: "github.com.SZinedine.DeepTags"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "DeepTags is a markdown notes manager with support for nested tags"

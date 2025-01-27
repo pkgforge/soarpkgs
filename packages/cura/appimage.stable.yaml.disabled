@@ -5,9 +5,9 @@ pkg: "cura"
 pkg_id: "github.com.Ultimaker.Cura"
 pkg_type: "appimage"
 app_id: "github.com.Ultimaker.Cura"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "3D printer / slicing GUI built on top of the Uranium framework"

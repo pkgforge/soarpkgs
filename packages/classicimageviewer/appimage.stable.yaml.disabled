@@ -5,9 +5,9 @@ pkg: "classicimageviewer"
 pkg_id: "github.com.classicimageviewer.ClassicImageViewer"
 pkg_type: "appimage"
 app_id: "github.com.classicimageviewer.ClassicImageViewer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ClassicImageViewer is a simple image viewer for Linux with some editing features."

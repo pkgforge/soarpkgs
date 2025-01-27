@@ -5,9 +5,9 @@ pkg: "panwriter"
 pkg_id: "github.com.mb21.panwriter"
 pkg_type: "appimage"
 app_id: "github.com.mb21.panwriter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Markdown editor with pandoc integration and paginated preview."

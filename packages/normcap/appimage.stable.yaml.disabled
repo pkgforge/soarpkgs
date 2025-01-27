@@ -5,9 +5,9 @@ pkg: "normcap"
 pkg_id: "github.com.dynobo.normcap"
 pkg_type: "appimage"
 app_id: "github.com.dynobo.normcap"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "OCR powered screen-capture tool to capture information instead of images"

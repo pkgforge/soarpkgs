@@ -6,9 +6,9 @@ pkg: "cemu"
 pkg_id: "github.com.cemu-project.Cemu.stable"
 pkg_type: "appimage"
 app_id: "info.cemu.Cemu"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Emulator"
   - "Game"

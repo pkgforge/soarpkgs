@@ -5,9 +5,9 @@ pkg: "zenity"
 pkg_id: "github.com.Samueru-sama.Zenity-GTK3-AppImage"
 pkg_type: "appimage"
 app_id: "github.com.Samueru-sama.Zenity-GTK3-AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage of Zenity (GTK3 Version)."

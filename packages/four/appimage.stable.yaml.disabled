@@ -5,9 +5,9 @@ pkg: "four"
 pkg_id: "github.com.FYDesktop.FOUR"
 pkg_type: "appimage"
 app_id: "github.com.FYDesktop.FOUR"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Linux-64 Electron app to access Channel4 (UK) on demand service."

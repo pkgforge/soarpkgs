@@ -5,9 +5,9 @@ pkg: "notes"
 pkg_id: "github.com.nuttyartist.notes"
 pkg_type: "appimage"
 app_id: "github.com.nuttyartist.notes"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Fast and beautiful note-taking app written in C++. Write down your thoughts."

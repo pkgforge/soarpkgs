@@ -5,9 +5,9 @@ pkg: "skype"
 pkg_id: "github.com.ivan-hc.Skype-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.Skype-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial AppImage of Skype built from the official Snap package."

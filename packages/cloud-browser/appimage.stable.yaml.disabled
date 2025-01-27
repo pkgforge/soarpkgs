@@ -5,9 +5,9 @@ pkg: "cloud-browser"
 pkg_id: "github.com.lemourin.libcloudstorage"
 pkg_type: "appimage"
 app_id: "github.com.lemourin.libcloudstorage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Official libcloudstorage repository."

@@ -5,9 +5,9 @@ pkg: "qbittorrent-enhanced"
 pkg_id: "github.com.c0re100.qBittorrent-Enhanced-Edition"
 pkg_type: "appimage"
 app_id: "github.com.c0re100.qBittorrent-Enhanced-Edition"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "[Unofficial] qBittorrent Enhanced, based on qBittorrent"

@@ -5,9 +5,9 @@ pkg: "vnote"
 pkg_id: "github.com.tamlok.vnote"
 pkg_type: "appimage"
 app_id: "github.com.tamlok.vnote"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A pleasant note-taking platform in native C++."

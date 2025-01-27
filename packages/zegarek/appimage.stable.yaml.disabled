@@ -5,9 +5,9 @@ pkg: "zegarek"
 pkg_id: "github.com.konradmb.zegarek"
 pkg_type: "appimage"
 app_id: "github.com.konradmb.zegarek"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple clock with millisecond resolution"

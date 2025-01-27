@@ -5,9 +5,9 @@ pkg: "wooting-analog-midi"
 pkg_id: "github.com.WootingKb.wooting-analog-midi"
 pkg_type: "appimage"
 app_id: "github.com.WootingKb.wooting-analog-midi"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform virtual MIDI device for (Wooting) analog keyboards!"

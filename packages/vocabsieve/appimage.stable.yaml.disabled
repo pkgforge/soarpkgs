@@ -5,9 +5,9 @@ pkg: "vocabsieve"
 pkg_id: "github.com.FreeLanguageTools.vocabsieve"
 pkg_type: "appimage"
 app_id: "github.com.FreeLanguageTools.vocabsieve"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simple sentence mining tool for language learning"

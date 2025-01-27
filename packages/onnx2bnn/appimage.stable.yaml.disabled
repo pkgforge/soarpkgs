@@ -5,9 +5,9 @@ pkg: "onnx2bnn"
 pkg_id: "github.com.JDAI-CV.dabnn"
 pkg_type: "appimage"
 app_id: "github.com.JDAI-CV.dabnn"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "dabnn is an accelerated binary neural networks inference framework for mobile platform"

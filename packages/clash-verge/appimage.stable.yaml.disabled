@@ -5,9 +5,9 @@ pkg: "clash-verge"
 pkg_id: "github.com.zzzgydi.clash-verge"
 pkg_type: "appimage"
 app_id: "github.com.zzzgydi.clash-verge"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A Clash GUI based on tauri. Supports Windows, macOS and Linux."

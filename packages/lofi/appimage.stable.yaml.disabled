@@ -5,9 +5,9 @@ pkg: "lofi"
 pkg_id: "github.com.dvx.lofi"
 pkg_type: "appimage"
 app_id: "github.com.dvx.lofi"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🎵🔉 A mini Spotify player with WebGL visualizations."

@@ -5,9 +5,9 @@ pkg: "openop2"
 pkg_id: "github.com.OpenOP2.OpenOP2"
 pkg_type: "appimage"
 app_id: "github.com.OpenOP2.OpenOP2"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "OpenOP2 is a re-implementation of the gameplay inspired by colony building games like Outpost 2, using the OpenRA engine. The gameplay follows the colony simulation and combat flow, concepts and gameplay mechanics. It features the modernized controls and customization of the OpenRA engine. Find us in"

@@ -5,9 +5,9 @@ pkg: "dingtalk"
 pkg_id: "github.com.nashaofu.dingtalk"
 pkg_type: "appimage"
 app_id: "github.com.nashaofu.dingtalk"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS"

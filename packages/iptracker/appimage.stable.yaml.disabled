@@ -5,9 +5,9 @@ pkg: "iptracker"
 pkg_id: "github.com.modernben.iptracker"
 pkg_type: "appimage"
 app_id: "github.com.modernben.iptracker"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop tool to keep track of your IP address and update you when it changes"

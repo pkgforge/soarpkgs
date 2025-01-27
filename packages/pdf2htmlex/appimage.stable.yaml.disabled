@@ -5,9 +5,9 @@ pkg: "pdf2htmlex"
 pkg_id: "github.com.pdf2htmlEX.pdf2htmlEX"
 pkg_type: "appimage"
 app_id: "github.com.pdf2htmlEX.pdf2htmlEX"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Convert PDF to HTML without losing text or format."

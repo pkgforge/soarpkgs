@@ -5,9 +5,9 @@ pkg: "melodie"
 pkg_id: "github.com.feugy.melodie"
 pkg_type: "appimage"
 app_id: "github.com.feugy.melodie"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Melodie is a portable, simple-as-pie music player"

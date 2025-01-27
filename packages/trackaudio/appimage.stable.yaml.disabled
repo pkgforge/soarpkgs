@@ -5,9 +5,9 @@ pkg: "trackaudio"
 pkg_id: "github.com.pierr3.TrackAudio"
 pkg_type: "appimage"
 app_id: "github.com.pierr3.TrackAudio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A next generation Audio-For-VATSIM ATC Client for macOS, Linux and Windows"

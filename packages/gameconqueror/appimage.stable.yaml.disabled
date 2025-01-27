@@ -5,9 +5,9 @@ pkg: "gameconqueror"
 pkg_id: "github.com.lucasmz1.Game_Conqueror_AppImage"
 pkg_type: "appimage"
 app_id: "github.com.lucasmz1.Game_Conqueror_AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Memory scanner designed to isolate the adress of an arbitrary variable in an executing process (gtk GUI)"

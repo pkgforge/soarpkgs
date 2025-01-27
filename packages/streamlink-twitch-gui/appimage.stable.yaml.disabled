@@ -5,9 +5,9 @@ pkg: "streamlink-twitch-gui"
 pkg_id: "github.com.streamlink.streamlink-twitch-gui"
 pkg_type: "appimage"
 app_id: "github.com.streamlink.streamlink-twitch-gui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A multi platform Twitch.tv browser for Streamlink"

@@ -5,9 +5,9 @@ pkg: "pomotroid"
 pkg_id: "github.com.Splode.pomotroid"
 pkg_type: "appimage"
 app_id: "github.com.Splode.pomotroid"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":tomato: Simple and visually-pleasing Pomodoro timer"

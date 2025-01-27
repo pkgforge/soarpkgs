@@ -5,9 +5,9 @@ pkg: "mirage"
 pkg_id: "github.com.mirukana.mirage"
 pkg_type: "appimage"
 app_id: "github.com.mirukana.mirage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A fancy, customizable, keyboard-operable Qt/QML & Python Matrix chat client for encrypted and decentralized communication."

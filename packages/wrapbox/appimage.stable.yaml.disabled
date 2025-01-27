@@ -5,9 +5,9 @@ pkg: "wrapbox"
 pkg_id: "github.com.peterdanis.wrapbox"
 pkg_type: "appimage"
 app_id: "github.com.peterdanis.wrapbox"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform app for having all frequently used web pages under one hood."

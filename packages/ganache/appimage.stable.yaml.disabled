@@ -5,9 +5,9 @@ pkg: "ganache"
 pkg_id: "github.com.trufflesuite.ganache-ui"
 pkg_type: "appimage"
 app_id: "github.com.trufflesuite.ganache-ui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Personal blockchain for Ethereum development"

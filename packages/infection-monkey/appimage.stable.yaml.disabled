@@ -5,9 +5,9 @@ pkg: "infection-monkey"
 pkg_id: "github.com.guardicore.monkey"
 pkg_type: "appimage"
 app_id: "github.com.guardicore.monkey"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Infection Monkey - An open-source adversary emulation platform"

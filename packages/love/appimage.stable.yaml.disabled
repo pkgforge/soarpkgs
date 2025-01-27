@@ -5,9 +5,9 @@ pkg: "love"
 pkg_id: "github.com.love2d.love"
 pkg_type: "appimage"
 app_id: "github.com.love2d.love"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "LÖVE is an awesome 2D game framework for Lua."

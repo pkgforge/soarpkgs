@@ -5,9 +5,9 @@ pkg: "edex-ui"
 pkg_id: "github.com.GitSquared.edex-ui"
 pkg_type: "appimage"
 app_id: "github.com.GitSquared.edex-ui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."

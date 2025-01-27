@@ -5,9 +5,9 @@ pkg: "arduino-ide"
 pkg_id: "github.com.arduino.arduino-ide"
 pkg_type: "appimage"
 app_id: "github.com.arduino.arduino-ide"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Arduino IDE 2.x"

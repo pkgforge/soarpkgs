@@ -5,9 +5,9 @@ pkg: "colorgenerator"
 pkg_id: "github.com.YaShock.color-generator"
 pkg_type: "appimage"
 app_id: "github.com.YaShock.color-generator"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An application that generates color palettes similar to ColorBrewer but algorithmically using intuitive parameters."

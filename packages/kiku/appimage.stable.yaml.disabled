@@ -5,9 +5,9 @@ pkg: "kiku"
 pkg_id: "github.com.angus6b23.kiku"
 pkg_type: "appimage"
 app_id: "github.com.angus6b23.kiku"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An electron application for playing music from youtube on desktop. The application supports using local api, invidious and piped as source."

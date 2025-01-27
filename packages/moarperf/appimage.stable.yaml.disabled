@@ -5,9 +5,9 @@ pkg: "moarperf"
 pkg_id: "github.com.timo.moarperf"
 pkg_type: "appimage"
 app_id: "github.com.timo.moarperf"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "tool to analyze performance of Raku programs running on moarvm"

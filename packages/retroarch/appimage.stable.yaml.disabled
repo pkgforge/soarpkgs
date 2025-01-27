@@ -5,9 +5,9 @@ pkg: "retroarch"
 pkg_id: "github.com.hizzlekizzle.RetroArch-AppImage"
 pkg_type: "appimage"
 app_id: "github.com.hizzlekizzle.RetroArch-AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An attempt to use CI for nightly builds of RetroArch for Windows and Linux (via AppImage)"

@@ -5,9 +5,9 @@ pkg: "novelwriter"
 pkg_id: "github.com.vkbo.novelwriter"
 pkg_type: "appimage"
 app_id: "github.com.vkbo.novelwriter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "novelWriter is an open source plain text editor designed for writing novels. It supports a minimal markdown-like syntax for formatting text. It is written with Python 3 (3.9+) and Qt 5 (5.15) for cross-platform support."

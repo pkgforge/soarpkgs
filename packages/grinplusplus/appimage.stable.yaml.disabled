@@ -5,9 +5,9 @@ pkg: "grinplusplus"
 pkg_id: "github.com.GrinPlusPlus.GrinPlusPlus"
 pkg_type: "appimage"
 app_id: "github.com.GrinPlusPlus.GrinPlusPlus"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A C++ Grin Node & Wallet For Windows, Mac OS X, & Linux"

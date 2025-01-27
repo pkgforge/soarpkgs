@@ -5,9 +5,9 @@ pkg: "strans"
 pkg_id: "github.com.Inventitech.strans"
 pkg_type: "appimage"
 app_id: "github.com.Inventitech.strans"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Performs string manipulation tasks by learning from the provided example(s), instead of having to program them out explicitly."

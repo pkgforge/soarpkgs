@@ -5,9 +5,9 @@ _disabled: false
 pkg: "steam"
 pkg_id: "runimage.cachyos.steam"
 pkg_type: "runimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
  - "Game"
 description: "A video game digital distribution service and storefront from Valve"

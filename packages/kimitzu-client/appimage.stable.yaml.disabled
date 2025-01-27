@@ -5,9 +5,9 @@ pkg: "kimitzu-client"
 pkg_id: "github.com.kimitzu.kimitzu-client"
 pkg_type: "appimage"
 app_id: "github.com.kimitzu.kimitzu-client"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A web client that interfaces with Kimitzu-Go and Kimitzu-Services"

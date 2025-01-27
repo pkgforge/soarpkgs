@@ -5,9 +5,9 @@ pkg: "sigma-file-manager"
 pkg_id: "github.com.aleksey-hoffman.sigma-file-manager"
 pkg_type: "appimage"
 app_id: "github.com.aleksey-hoffman.sigma-file-manager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Sigma File Manager is a free, open-source, quickly evolving, modern file manager (explorer / browser) app for Windows and Linux."

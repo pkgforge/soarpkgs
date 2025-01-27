@@ -5,9 +5,9 @@ pkg: "jitsi-meet"
 pkg_id: "github.com.jitsi.jitsi-meet-electron"
 pkg_type: "appimage"
 app_id: "github.com.jitsi.jitsi-meet-electron"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Jitsi Meet desktop application powered by :electron:"

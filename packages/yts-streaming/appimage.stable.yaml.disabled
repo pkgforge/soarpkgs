@@ -5,9 +5,9 @@ pkg: "yts-streaming"
 pkg_id: "github.com.iambpn.YTS-Streaming"
 pkg_type: "appimage"
 app_id: "github.com.iambpn.YTS-Streaming"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An electronJS based desktop app to stream or play yts and torrent movies in desktop without downloading."

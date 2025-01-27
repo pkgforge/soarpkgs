@@ -5,9 +5,9 @@ pkg: "httpie-desktop"
 pkg_id: "github.com.httpie.desktop"
 pkg_type: "appimage"
 app_id: "github.com.httpie.desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🚀 HTTPie Desktop — cross-platform API testing client for humans. Painlessly test REST, GraphQL, and HTTP APIs."

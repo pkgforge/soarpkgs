@@ -5,9 +5,9 @@ pkg: "subtitle-composer"
 pkg_id: "github.com.maxrd2.subtitlecomposer"
 pkg_type: "appimage"
 app_id: "github.com.maxrd2.subtitlecomposer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Subtitle Composer - KF5/Qt Video Subtitle Editor"

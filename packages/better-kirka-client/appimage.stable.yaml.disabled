@@ -5,9 +5,9 @@ pkg: "better-kirka-client"
 pkg_id: "github.com.42infi.better-kirka-client"
 pkg_type: "appimage"
 app_id: "github.com.42infi.better-kirka-client"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "a electron js based client for the game kirka.io"

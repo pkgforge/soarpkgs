@@ -5,9 +5,9 @@ pkg: "uncov"
 pkg_id: "github.com.xaizek.uncov"
 pkg_type: "appimage"
 app_id: "github.com.xaizek.uncov"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "uncov(er) is a tool that collects and processes code coverage reports."

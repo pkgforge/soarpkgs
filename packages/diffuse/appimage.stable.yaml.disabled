@@ -5,9 +5,9 @@ pkg: "diffuse"
 pkg_id: "github.com.icidasset.diffuse"
 pkg_type: "appimage"
 app_id: "github.com.icidasset.diffuse"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A music player that connects to your cloud/distributed storage."

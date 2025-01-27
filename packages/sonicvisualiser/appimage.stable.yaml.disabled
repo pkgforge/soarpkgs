@@ -5,9 +5,9 @@ pkg: "sonicvisualiser"
 pkg_id: "github.com.sonic-visualiser.sonic-visualiser"
 pkg_type: "appimage"
 app_id: "github.com.sonic-visualiser.sonic-visualiser"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Visualisation, analysis, and annotation of music audio recordings"

@@ -5,9 +5,9 @@ pkg: "vivaldi-snapshot"
 pkg_id: "github.com.ivan-hc.Vivaldi-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.Vivaldi-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial AppImages for Vivaldi Stable & Vivaldi Snapshot  built from the official deb packages."

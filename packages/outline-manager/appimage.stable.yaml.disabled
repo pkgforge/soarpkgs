@@ -5,9 +5,9 @@ pkg: "outline-manager"
 pkg_id: "github.com.Jigsaw-Code.outline-server"
 pkg_type: "appimage"
 app_id: "github.com.Jigsaw-Code.outline-server"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Outline Server, developed by Jigsaw. The Outline Server is a proxy server that runs a Shadowsocks instance and provides a REST API for access key management."

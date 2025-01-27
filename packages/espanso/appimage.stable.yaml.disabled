@@ -5,9 +5,9 @@ pkg: "espanso"
 pkg_id: "github.com.espanso.espanso"
 pkg_type: "appimage"
 app_id: "github.com.espanso.espanso"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform Text Expander written in Rust"

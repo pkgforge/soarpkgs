@@ -5,9 +5,9 @@ pkg: "domterm"
 pkg_id: "github.com.PerBothner.DomTerm"
 pkg_type: "appimage"
 app_id: "github.com.PerBothner.DomTerm"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "DOM/JavaScript-based terminal-emulator/console"

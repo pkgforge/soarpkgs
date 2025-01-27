@@ -5,9 +5,9 @@ pkg: "running-dinner-tool"
 pkg_id: "github.com.john-kloss.Running-Dinner-Tool"
 pkg_type: "appimage"
 app_id: "github.com.john-kloss.Running-Dinner-Tool"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Ein Tool zum Erstellen eines Running-Dinner-Plans"

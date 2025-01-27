@@ -5,9 +5,9 @@ pkg: "ferdium"
 pkg_id: "github.com.ferdium.ferdium-app"
 pkg_type: "appimage"
 app_id: "github.com.ferdium.ferdium-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "All your services in one place, built by the community"

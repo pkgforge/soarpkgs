@@ -5,9 +5,9 @@ pkg: "ocvwarp"
 pkg_id: "github.com.hn-88.OCVWarp"
 pkg_type: "appimage"
 app_id: "github.com.hn-88.OCVWarp"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Warping images and videos for planetarium fulldome display using OpenCV"

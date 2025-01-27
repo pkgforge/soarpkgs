@@ -5,9 +5,9 @@ pkg: "deepl-linux-electron"
 pkg_id: "github.com.kumakichi.Deepl-linux-electron"
 pkg_type: "appimage"
 app_id: "github.com.kumakichi.Deepl-linux-electron"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "DeepL(https://www.deepl.com/) Integration for Linux. Select text in any application and simply press Ctrl+C and another shortcut to translate it."

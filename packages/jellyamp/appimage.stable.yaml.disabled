@@ -5,9 +5,9 @@ pkg: "jellyamp"
 pkg_id: "github.com.m0ngr31.jellyamp"
 pkg_type: "appimage"
 app_id: "github.com.m0ngr31.jellyamp"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop client for listening to music from a Jellyfin server"

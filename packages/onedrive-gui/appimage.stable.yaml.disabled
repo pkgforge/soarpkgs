@@ -5,9 +5,9 @@ pkg: "onedrive-gui"
 pkg_id: "github.com.bpozdena.OneDriveGUI"
 pkg_type: "appimage"
 app_id: "github.com.bpozdena.OneDriveGUI"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple GUI for OneDrive Linux client with multi-account support."

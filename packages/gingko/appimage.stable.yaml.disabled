@@ -5,9 +5,9 @@ pkg: "gingko"
 pkg_id: "github.com.gingko.client"
 pkg_type: "appimage"
 app_id: "github.com.gingko.client"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Gingko Writer. Tree-based writing software, written in Elm."

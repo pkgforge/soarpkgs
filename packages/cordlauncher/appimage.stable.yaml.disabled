@@ -5,9 +5,9 @@ pkg: "cordlauncher"
 pkg_id: "github.com.ProtocolONE.cord.launcher"
 pkg_type: "appimage"
 app_id: "github.com.ProtocolONE.cord.launcher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Web application for qilin store (cord)"

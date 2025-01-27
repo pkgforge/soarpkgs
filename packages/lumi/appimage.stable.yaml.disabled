@@ -5,9 +5,9 @@ pkg: "lumi"
 pkg_id: "github.com.lumieducation.lumi"
 pkg_type: "appimage"
 app_id: "github.com.lumieducation.lumi"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Lumi is a Desktop App that offers a collection of tools to create, edit and share digital content with your class."

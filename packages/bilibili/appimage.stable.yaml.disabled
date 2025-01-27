@@ -5,9 +5,9 @@ pkg: "bilibili"
 pkg_id: "github.com.msojocs.bilibili-linux"
 pkg_type: "appimage"
 app_id: "github.com.msojocs.bilibili-linux"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "基于哔哩哔哩官方客户端移植的Linux版本 支持漫游"

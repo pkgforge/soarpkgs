@@ -5,9 +5,9 @@ pkg: "mazesolver"
 pkg_id: "github.com.Arquanite.MazeSolver"
 pkg_type: "appimage"
 app_id: "github.com.Arquanite.MazeSolver"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Create and solve mazes using DFS or BFS algorithm"

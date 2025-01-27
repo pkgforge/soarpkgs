@@ -5,9 +5,9 @@ pkg: "yt-dlandcut"
 pkg_id: "github.com.Markkop.yt-dlandcut"
 pkg_type: "appimage"
 app_id: "github.com.Markkop.yt-dlandcut"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Download and cut an Youtube video by providing its url and the time range"

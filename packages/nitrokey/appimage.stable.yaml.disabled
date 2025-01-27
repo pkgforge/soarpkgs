@@ -5,9 +5,9 @@ pkg: "nitrokey"
 pkg_id: "github.com.Nitrokey.nitrokey-app"
 pkg_type: "appimage"
 app_id: "github.com.Nitrokey.nitrokey-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Nitrokeys Application (Win, Linux, Mac)"

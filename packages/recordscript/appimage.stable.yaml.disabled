@@ -5,9 +5,9 @@ pkg: "recordscript"
 pkg_id: "github.com.Recordscript.recordscript"
 pkg_type: "appimage"
 app_id: "github.com.Recordscript.recordscript"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform screen recorder, transcript, subtitle. Built with Tauri & Whisper-rs (rust port of whisper.cpp)"

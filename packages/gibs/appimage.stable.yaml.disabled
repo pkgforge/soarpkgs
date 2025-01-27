@@ -5,9 +5,9 @@ pkg: "gibs"
 pkg_id: "github.com.sierdzio.gibs"
 pkg_type: "appimage"
 app_id: "github.com.sierdzio.gibs"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Experimental project: in-source build system. Just for fun ;-)"

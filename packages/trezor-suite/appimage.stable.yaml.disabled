@@ -5,9 +5,9 @@ pkg: "trezor-suite"
 pkg_id: "github.com.trezor.trezor-suite"
 pkg_type: "appimage"
 app_id: "github.com.trezor.trezor-suite"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Trezor Suite Monorepo"

@@ -5,9 +5,9 @@ pkg: "circle-z"
 pkg_id: "github.com.rossprogram.circle-z"
 pkg_type: "appimage"
 app_id: "github.com.rossprogram.circle-z"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An IRC client for online math courses, with video conferencing and a collaborative TeX editor"

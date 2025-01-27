@@ -5,9 +5,9 @@ pkg: "notesnook"
 pkg_id: "github.com.streetwriters.notesnook"
 pkg_type: "appimage"
 app_id: "github.com.streetwriters.notesnook"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A fully open source & end-to-end encrypted note taking alternative to Evernote."

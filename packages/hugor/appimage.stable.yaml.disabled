@@ -5,9 +5,9 @@ pkg: "hugor"
 pkg_id: "github.com.realnc.hugor"
 pkg_type: "appimage"
 app_id: "github.com.realnc.hugor"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A cross-platform, multimedia interpreter for Hugo adventure games."

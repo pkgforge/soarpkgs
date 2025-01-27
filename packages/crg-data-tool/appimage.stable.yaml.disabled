@@ -5,9 +5,9 @@ pkg: "crg-data-tool"
 pkg_id: "github.com.AdamSmasherDerby.CRG-To-Statsbook"
 pkg_type: "appimage"
 app_id: "github.com.AdamSmasherDerby.CRG-To-Statsbook"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A utility for facilitating the export of data from CRG Scoreboard to the WFTDA StatsBook"

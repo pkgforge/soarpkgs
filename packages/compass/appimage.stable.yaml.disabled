@@ -5,9 +5,9 @@ pkg: "compass"
 pkg_id: "github.com.hpuhr.COMPASS"
 pkg_type: "appimage"
 app_id: "github.com.hpuhr.COMPASS"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The OpenATS COMPASS (Compliance Assessment) tool aims at providing a generalized framework for air-traffic surveillance data analysis, visualization & evaluation."

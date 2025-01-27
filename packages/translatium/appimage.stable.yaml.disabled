@@ -5,9 +5,9 @@ pkg: "translatium"
 pkg_id: "github.com.atomery.translatium"
 pkg_type: "appimage"
 app_id: "github.com.atomery.translatium"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Legacy code of Translatium app for desktop."

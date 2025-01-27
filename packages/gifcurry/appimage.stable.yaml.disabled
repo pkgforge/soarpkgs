@@ -5,9 +5,9 @@ pkg: "gifcurry"
 pkg_id: "github.com.lettier.gifcurry"
 pkg_type: "appimage"
 app_id: "github.com.lettier.gifcurry"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "😎 The open-source, Haskell-built video editor for GIF makers."

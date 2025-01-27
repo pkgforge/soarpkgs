@@ -5,9 +5,9 @@ pkg: "motrix"
 pkg_id: "github.com.agalwood.Motrix"
 pkg_type: "appimage"
 app_id: "github.com.agalwood.Motrix"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A full-featured download manager."

@@ -5,9 +5,9 @@ pkg: "scratux"
 pkg_id: "github.com.scratux.scratux"
 pkg_type: "appimage"
 app_id: "github.com.scratux.scratux"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple project that aims to provide Free/Libre Open Source Linux binaries of Scratch Desktop"

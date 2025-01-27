@@ -5,9 +5,9 @@ pkg: "app-outlet"
 pkg_id: "github.com.AppOutlet.AppOutlet"
 pkg_type: "appimage"
 app_id: "github.com.AppOutlet.AppOutlet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A Universal linux app store"

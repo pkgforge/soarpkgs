@@ -5,9 +5,9 @@ pkg: "better-osu-skills"
 pkg_id: "github.com.straightcurve.better-osuskills"
 pkg_type: "appimage"
 app_id: "github.com.straightcurve.better-osuskills"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials"

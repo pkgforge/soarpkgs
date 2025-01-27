@@ -5,9 +5,9 @@ pkg: "elementary-code"
 pkg_id: "github.com.titenko.elementary-code"
 pkg_type: "appimage"
 app_id: "github.com.titenko.elementary-code"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage version of Elementary OS Code (unofficial) from Maksym Titenko"

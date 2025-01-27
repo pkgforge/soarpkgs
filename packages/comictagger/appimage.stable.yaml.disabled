@@ -5,9 +5,9 @@ pkg: "comictagger"
 pkg_id: "github.com.comictagger.comictagger"
 pkg_type: "appimage"
 app_id: "github.com.comictagger.comictagger"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A multi-platform app for writing metadata to digital comics"

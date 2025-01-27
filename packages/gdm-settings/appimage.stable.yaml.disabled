@@ -5,9 +5,9 @@ pkg: "gdm-settings"
 pkg_id: "github.com.gdm-settings.gdm-settings"
 pkg_type: "appimage"
 app_id: "github.com.gdm-settings.gdm-settings"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A settings app for GNOMEs Login Manager, GDM"

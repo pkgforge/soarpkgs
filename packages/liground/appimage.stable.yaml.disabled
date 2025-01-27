@@ -5,9 +5,9 @@ pkg: "liground"
 pkg_id: "github.com.ml-research.liground"
 pkg_type: "appimage"
 app_id: "github.com.ml-research.liground"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A free, open-source and modern Chess Variant Analysis GUI for the 21st century"

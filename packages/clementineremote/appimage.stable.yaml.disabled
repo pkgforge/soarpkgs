@@ -5,9 +5,9 @@ pkg: "clementineremote"
 pkg_id: "github.com.mbruel.ClementineRemote"
 pkg_type: "appimage"
 app_id: "github.com.mbruel.ClementineRemote"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Remote for Clementine Music Player developped in C++/QT5/QML to be available on any OS. Its main goal is to add the Files View missing in the Android Remote."

@@ -5,9 +5,9 @@ pkg: "dwarf-fortress"
 pkg_id: "github.com.McArcady.lnp-forge"
 pkg_type: "appimage"
 app_id: "github.com.McArcady.lnp-forge"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A Dwarf Fortress starter pack builder for Linux & MacOS"

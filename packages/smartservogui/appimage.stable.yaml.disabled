@@ -5,9 +5,9 @@ pkg: "smartservogui"
 pkg_id: "github.com.emericg.SmartServoFramework"
 pkg_type: "appimage"
 app_id: "github.com.emericg.SmartServoFramework"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A multi-platform C++ framework used to drive Dynamixel and HerkuleX smart actuators, and its control GUI."

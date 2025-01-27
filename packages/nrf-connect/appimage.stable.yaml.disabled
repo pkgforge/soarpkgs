@@ -5,9 +5,9 @@ pkg: "nrf-connect"
 pkg_id: "github.com.NordicSemiconductor.pc-nrfconnect-launcher"
 pkg_type: "appimage"
 app_id: "github.com.NordicSemiconductor.pc-nrfconnect-launcher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "nRF Connect for Desktop application and framework"

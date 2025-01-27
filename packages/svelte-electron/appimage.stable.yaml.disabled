@@ -5,9 +5,9 @@ pkg: "svelte-electron"
 pkg_id: "github.com.ptkdev-boilerplate.svelte-electron-boilerplate"
 pkg_type: "appimage"
 app_id: "github.com.ptkdev-boilerplate.svelte-electron-boilerplate"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🧬 Create a desktop app with this user-friendly Svelte boilerplate for electron"

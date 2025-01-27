@@ -5,9 +5,9 @@ pkg: "smuview"
 pkg_id: "github.com.knarfS.smuview"
 pkg_type: "appimage"
 app_id: "github.com.knarfS.smuview"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "SmuView is a GUI for sigrok that supports power supplies, electronic loads and all sorts of measurement devices like multimeters, LCR meters and so on."

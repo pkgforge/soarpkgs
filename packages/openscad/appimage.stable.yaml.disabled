@@ -5,9 +5,9 @@ pkg: "openscad"
 pkg_id: "github.com.openscad.openscad"
 pkg_type: "appimage"
 app_id: "github.com.openscad.openscad"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "OpenSCAD - The Programmers Solid 3D CAD Modeller"

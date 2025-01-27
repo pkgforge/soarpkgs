@@ -5,9 +5,9 @@ pkg: "studymd"
 pkg_id: "github.com.jotron.StudyMD"
 pkg_type: "appimage"
 app_id: "github.com.jotron.StudyMD"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Flashcards from Markdown. Built with React and Electron"

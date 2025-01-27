@@ -5,9 +5,9 @@ pkg: "prismlauncher-qt5"
 pkg_id: "github.com.PrismLauncher.PrismLauncher"
 pkg_type: "appimage"
 app_id: "github.com.PrismLauncher.PrismLauncher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once (Fork of MultiMC)"

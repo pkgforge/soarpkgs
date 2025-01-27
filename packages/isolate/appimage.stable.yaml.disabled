@@ -5,9 +5,9 @@ pkg: "isolate"
 pkg_id: "github.com.seenaburns.isolate"
 pkg_type: "appimage"
 app_id: "github.com.seenaburns.isolate"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Lightweight image browser"

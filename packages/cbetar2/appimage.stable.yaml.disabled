@@ -5,9 +5,9 @@ pkg: "cbetar2"
 pkg_id: "github.com.MrMYHuang.cbetar2"
 pkg_type: "appimage"
 app_id: "github.com.MrMYHuang.cbetar2"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A frontend + backend ePub viewer supporting fetching and displaying HTML as ePub. This (unofficial) app is also a Buddhist text viewer using CBETA backend API or offline DB."

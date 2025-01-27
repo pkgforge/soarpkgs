@@ -5,9 +5,9 @@ pkg: "jfcord"
 pkg_id: "github.com.Chicken.JFCord"
 pkg_type: "appimage"
 app_id: "github.com.Chicken.JFCord"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An Jellyfin rich presence client for Discord - Antti Edition"

@@ -5,9 +5,9 @@ pkg: "switchshuttle"
 pkg_id: "github.com.s00d.switchshuttle"
 pkg_type: "appimage"
 app_id: "github.com.s00d.switchshuttle"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "SwitchShuttle is a cross-platform system tray application that allows users to run predefined commands in various terminal applications. It supports macOS, Windows, and Linux, offering a simple and customizable way to manage and execute your frequently used commands."

@@ -5,9 +5,9 @@ pkg: "qr-code-generator"
 pkg_id: "github.com.studioLaCosaNostra.qr-code-generator-desktop"
 pkg_type: "appimage"
 app_id: "github.com.studioLaCosaNostra.qr-code-generator-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Create custom QR Codes. You can save them as PNG image. You can change the size of the image."

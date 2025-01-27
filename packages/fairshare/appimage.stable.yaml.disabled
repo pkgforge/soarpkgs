@@ -5,9 +5,9 @@ pkg: "fairshare"
 pkg_id: "github.com.fairdataihub.FAIRshare"
 pkg_type: "appimage"
 app_id: "github.com.fairdataihub.FAIRshare"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines"

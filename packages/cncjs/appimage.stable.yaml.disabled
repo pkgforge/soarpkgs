@@ -5,9 +5,9 @@ pkg: "cncjs"
 pkg_id: "github.com.cncjs.cncjs"
 pkg_type: "appimage"
 app_id: "github.com.cncjs.cncjs"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A web-based interface for CNC milling controller running Grbl, Marlin, Smoothieware, or TinyG."

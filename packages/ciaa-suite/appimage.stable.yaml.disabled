@@ -5,9 +5,9 @@ pkg: "ciaa-suite"
 pkg_id: "github.com.martinribelotta.embedded-ide-builder"
 pkg_type: "appimage"
 app_id: "github.com.martinribelotta.embedded-ide-builder"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Embedded IDE automated build system"

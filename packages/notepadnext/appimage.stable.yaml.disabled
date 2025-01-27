@@ -5,9 +5,9 @@ pkg: "notepadnext"
 pkg_id: "github.com.dail8859.NotepadNext"
 pkg_type: "appimage"
 app_id: "github.com.dail8859.NotepadNext"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A cross-platform, reimplementation of Notepad++"

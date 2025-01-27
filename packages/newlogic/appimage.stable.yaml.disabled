@@ -5,9 +5,9 @@ pkg: "newlogic"
 pkg_id: "github.com.ericm.newlogic"
 pkg_type: "appimage"
 app_id: "github.com.ericm.newlogic"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Circuit Builder Desktop Application (like mmlogic) made with Electron + React Typescript. Compatible with Windows, Mac and Linux."

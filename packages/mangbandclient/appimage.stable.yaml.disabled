@@ -5,9 +5,9 @@ pkg: "mangbandclient"
 pkg_id: "github.com.mangband.mangband"
 pkg_type: "appimage"
 app_id: "github.com.mangband.mangband"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A free online multi-player realtime roguelike game based on Angband"

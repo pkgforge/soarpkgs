@@ -5,9 +5,9 @@ pkg: "smplayer"
 pkg_id: "github.com.smplayer-dev.smplayer"
 pkg_type: "appimage"
 app_id: "github.com.smplayer-dev.smplayer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Free Media Player for Windows, Linux and Mac OS with YouTube support."

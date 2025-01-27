@@ -5,9 +5,9 @@ pkg: "cutechess"
 pkg_id: "github.com.cutechess.cutechess"
 pkg_type: "appimage"
 app_id: "github.com.cutechess.cutechess"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cute Chess is a graphical user interface, command-line interface and a library for playing chess."

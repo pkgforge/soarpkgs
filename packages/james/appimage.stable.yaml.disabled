@@ -5,9 +5,9 @@ pkg: "james"
 pkg_id: "github.com.james-proxy.james"
 pkg_type: "appimage"
 app_id: "github.com.james-proxy.james"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Web Debugging Proxy Application"

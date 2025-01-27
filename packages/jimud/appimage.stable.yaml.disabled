@@ -5,9 +5,9 @@ pkg: "jimud"
 pkg_id: "github.com.icewolfz.jiMUD"
 pkg_type: "appimage"
 app_id: "github.com.icewolfz.jiMUD"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "MUD client for ShadowMUD.com using electron"

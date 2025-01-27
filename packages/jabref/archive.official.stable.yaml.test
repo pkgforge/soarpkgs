@@ -5,11 +5,11 @@ _disabled: false
 pkg: "jabref"
 pkg_id: "github.com.JabRef.jabref.stable"
 pkg_type: "archive"
-build_util:
-  - "busybox/tree#base"
-  - "curl#bin"
-  - "jq#bin"
-  - "tar/tar#base"
+#build_util:
+#  - "busybox/tree#base"
+#  - "curl#bin"
+#  - "jq#bin"
+#  - "tar/tar#base"
 category:
   - "Office"
 description: "Reference manager to edit, manage and search BibTeX and other bibliographies"

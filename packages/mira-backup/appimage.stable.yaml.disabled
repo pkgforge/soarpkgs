@@ -5,9 +5,9 @@ pkg: "mira-backup"
 pkg_id: "github.com.myazarc.mira-backup"
 pkg_type: "appimage"
 app_id: "github.com.myazarc.mira-backup"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Mira Auto Database Backup app"

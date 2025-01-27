@@ -5,9 +5,9 @@ pkg: "qtox"
 pkg_id: "github.com.qTox.qTox-nightly-releases"
 pkg_type: "appimage"
 app_id: "github.com.qTox.qTox-nightly-releases"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Repository for qTox nightly builds"

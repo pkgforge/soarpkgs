@@ -5,9 +5,9 @@ pkg: "swradio"
 pkg_id: "github.com.JvanKatwijk.swradio-8"
 pkg_type: "appimage"
 app_id: "github.com.JvanKatwijk.swradio-8"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "shortwave receiver for use with sdrplay, hackrf, dabsticks and pmsdr"

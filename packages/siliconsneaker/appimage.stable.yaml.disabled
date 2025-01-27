@@ -5,9 +5,9 @@ pkg: "siliconsneaker"
 pkg_id: "github.com.cprevallet.siliconsneaker"
 pkg_type: "appimage"
 app_id: "github.com.cprevallet.siliconsneaker"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Generate a graph and a map for runs taken from Garmin  or Polar running watch fit or tcx formatted files in a local, secure,  cross-platform and reliable manner."

@@ -5,9 +5,9 @@ pkg: "openosrs-launcher"
 pkg_id: "github.com.open-osrs.launcher"
 pkg_type: "appimage"
 app_id: "github.com.open-osrs.launcher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Keeps the OpenOSRS client up to date for those who dont want to build."

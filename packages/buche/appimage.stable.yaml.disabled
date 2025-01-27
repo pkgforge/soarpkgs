@@ -5,9 +5,9 @@ pkg: "buche"
 pkg_id: "github.com.breuleux.buche"
 pkg_type: "appimage"
 app_id: "github.com.breuleux.buche"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Tool to display rich logs."

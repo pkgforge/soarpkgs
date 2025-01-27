@@ -5,9 +5,9 @@ pkg: "ums"
 pkg_id: "github.com.UniversalMediaServer.UniversalMediaServer"
 pkg_type: "appimage"
 app_id: "github.com.UniversalMediaServer.UniversalMediaServer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A DLNA, UPnP and HTTP(S) Media Server."

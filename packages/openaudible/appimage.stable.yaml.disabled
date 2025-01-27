@@ -5,9 +5,9 @@ pkg: "openaudible"
 pkg_id: "github.com.openaudible.openaudible"
 pkg_type: "appimage"
 app_id: "github.com.openaudible.openaudible"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Audiobook Manager for Audible Users"

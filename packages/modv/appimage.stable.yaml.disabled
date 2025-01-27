@@ -5,9 +5,9 @@ pkg: "modv"
 pkg_id: "github.com.vcync.modV"
 pkg_type: "appimage"
 app_id: "github.com.vcync.modV"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "modular audio visualisation powered by JavaScript"

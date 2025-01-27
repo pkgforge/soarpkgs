@@ -6,9 +6,9 @@ pkg: "obs-studio"
 pkg_id: "github.com.pkgforge-dev.OBS-Studio-AppImage.stable"
 pkg_type: "appimage"
 app_id: "com.obsproject.Studio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "AudioVideoEditing"
   - "Recorder"

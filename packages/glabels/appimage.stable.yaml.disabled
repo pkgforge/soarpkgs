@@ -5,9 +5,9 @@ pkg: "glabels"
 pkg_id: "github.com.jimevins.glabels-qt"
 pkg_type: "appimage"
 app_id: "github.com.jimevins.glabels-qt"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "gLabels Label Designer (Qt/C++)"

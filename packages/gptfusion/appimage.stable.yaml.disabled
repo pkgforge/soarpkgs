@@ -5,9 +5,9 @@ pkg: "gptfusion"
 pkg_id: "github.com.lpdswing.GPTFusion"
 pkg_type: "appimage"
 app_id: "github.com.lpdswing.GPTFusion"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "GPT聚合版是一个聚合了多个GPT聊天机器人的跨平台聊天工具, 支持多个免费GPT镜像, 支持自定义导入镜像, 支持POE,文心一言等多个平台."

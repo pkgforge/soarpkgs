@@ -5,9 +5,9 @@ pkg: "torrenttools"
 pkg_id: "github.com.fbdtemme.torrenttools"
 pkg_type: "appimage"
 app_id: "github.com.fbdtemme.torrenttools"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Commandline tool for inspecting, creating and editing BitTorrent metafiles."

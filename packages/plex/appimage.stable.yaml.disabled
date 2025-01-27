@@ -5,9 +5,9 @@ pkg: "plex"
 pkg_id: "github.com.knapsu.plex-media-player-appimage"
 pkg_type: "appimage"
 app_id: "github.com.knapsu.plex-media-player-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Linux AppImage packages for Plex Media Player application."

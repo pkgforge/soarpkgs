@@ -5,9 +5,9 @@ pkg: "gmappimager"
 pkg_id: "github.com.time-killer-games.GMAppImager"
 pkg_type: "appimage"
 app_id: "github.com.time-killer-games.GMAppImager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Graphically Converts GameMaker Studio 2 Linux Games to AppImage Bundles."

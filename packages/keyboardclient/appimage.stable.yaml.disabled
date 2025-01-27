@@ -5,9 +5,9 @@ pkg: "keyboardclient"
 pkg_id: "github.com.chrisandreae.keyboard-firmware"
 pkg_type: "appimage"
 app_id: "github.com.chrisandreae.keyboard-firmware"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Replacement firmware for various keyboards (Kinesis, Ergodox) using an Atmel AVR microcontroller"

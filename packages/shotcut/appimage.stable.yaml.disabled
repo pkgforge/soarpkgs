@@ -5,9 +5,9 @@ pkg: "shotcut"
 pkg_id: "github.com.mltframework.shotcut"
 pkg_type: "appimage"
 app_id: "github.com.mltframework.shotcut"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "cross-platform (Qt), open-source (GPLv3) video editor"

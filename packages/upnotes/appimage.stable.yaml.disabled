@@ -5,9 +5,9 @@ pkg: "upnotes"
 pkg_id: "github.com.upnotes-io.upnotes-website"
 pkg_type: "appimage"
 app_id: "github.com.upnotes-io.upnotes-website"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A notes app for software developers"

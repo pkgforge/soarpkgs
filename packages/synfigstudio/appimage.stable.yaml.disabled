@@ -5,9 +5,9 @@ pkg: "synfigstudio"
 pkg_id: "github.com.synfig.synfig"
 pkg_type: "appimage"
 app_id: "github.com.synfig.synfig"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "This is the Official source code repository of the Synfig project"

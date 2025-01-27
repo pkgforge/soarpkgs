@@ -5,9 +5,9 @@ pkg: "lx-music-desktop"
 pkg_id: "github.com.lyswhut.lx-music-desktop"
 pkg_type: "appimage"
 app_id: "github.com.lyswhut.lx-music-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "一个基于 electron 的音乐软件"

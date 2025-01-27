@@ -5,9 +5,9 @@ pkg: "moniteur-admin"
 pkg_id: "github.com.aueb-cslabs.moniteur-admin"
 pkg_type: "appimage"
 app_id: "github.com.aueb-cslabs.moniteur-admin"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🖥️🍷 The admin panel for the lightweight info screen solution."

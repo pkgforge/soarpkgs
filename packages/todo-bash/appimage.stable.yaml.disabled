@@ -5,9 +5,9 @@ pkg: "todo-bash"
 pkg_id: "github.com.Lateralus138.todo-bash"
 pkg_type: "appimage"
 app_id: "github.com.Lateralus138.todo-bash"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Todo list for the Bash command line."

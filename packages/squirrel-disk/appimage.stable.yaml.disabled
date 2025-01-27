@@ -5,9 +5,9 @@ pkg: "squirrel-disk"
 pkg_id: "github.com.adileo.squirreldisk"
 pkg_type: "appimage"
 app_id: "github.com.adileo.squirreldisk"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Beautiful, Cross-Platform and Super Fast Disk Usage Analysis Tool - Built With Rust 🦀"

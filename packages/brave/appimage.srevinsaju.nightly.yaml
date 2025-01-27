@@ -6,9 +6,9 @@ pkg: "brave"
 pkg_id: "github.com.srevinsaju.Brave-AppImage.nightly"
 pkg_type: "appimage"
 app_id: "com.brave.Browser"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "WebBrowser"
 description: "Privacy-oriented browser for Desktop and Laptop computers (Nightly)"

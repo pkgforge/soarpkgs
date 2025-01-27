@@ -5,9 +5,9 @@ pkg: "encryptpad"
 pkg_id: "github.com.evpo.EncryptPad"
 pkg_type: "appimage"
 app_id: "github.com.evpo.EncryptPad"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format: symmetrically encrypted, compressed and integrity protected. The editor can protect files with passwords, key files or both."

@@ -5,9 +5,9 @@ pkg: "mqtt-explorer"
 pkg_id: "github.com.thomasnordquist.MQTT-Explorer"
 pkg_type: "appimage"
 app_id: "github.com.thomasnordquist.MQTT-Explorer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An all-round MQTT client that provides a structured topic overview"

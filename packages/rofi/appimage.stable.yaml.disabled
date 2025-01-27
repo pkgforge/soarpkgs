@@ -5,9 +5,9 @@ pkg: "rofi"
 pkg_id: "github.com.Samueru-sama.rofi-AppImage"
 pkg_type: "appimage"
 app_id: "github.com.Samueru-sama.rofi-AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage of rofi. [Maintainer=@Samueru-sama]"

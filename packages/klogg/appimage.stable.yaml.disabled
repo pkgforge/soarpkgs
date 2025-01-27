@@ -5,9 +5,9 @@ pkg: "klogg"
 pkg_id: "github.com.variar.klogg"
 pkg_type: "appimage"
 app_id: "github.com.variar.klogg"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Really fast log explorer based on glogg project"

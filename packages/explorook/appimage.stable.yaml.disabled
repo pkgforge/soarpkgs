@@ -5,9 +5,9 @@ pkg: "explorook"
 pkg_id: "github.com.Rookout.explorook"
 pkg_type: "appimage"
 app_id: "github.com.Rookout.explorook"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Rookouts site addon to support local files and folders"

@@ -5,9 +5,9 @@ pkg: "bench-cli"
 pkg_id: "github.com.Lateralus138.bench-cli"
 pkg_type: "appimage"
 app_id: "github.com.Lateralus138.bench-cli"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform command line tool to benchmark commands and other executables/scripts in command lines written in Fortran. Very precise and fast."

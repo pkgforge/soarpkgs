@@ -5,9 +5,9 @@ pkg: "soapy-sdr"
 pkg_id: "github.com.mryndzionek.composable-sdr"
 pkg_type: "appimage"
 app_id: "github.com.mryndzionek.composable-sdr"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "SDR DSP utilities embedded in Haskell"

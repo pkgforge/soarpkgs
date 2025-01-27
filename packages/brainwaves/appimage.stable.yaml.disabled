@@ -5,9 +5,9 @@ pkg: "brainwaves"
 pkg_id: "github.com.makebrainwaves.BrainWaves"
 pkg_type: "appimage"
 app_id: "github.com.makebrainwaves.BrainWaves"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An easy-to-use platform for EEG experimentation in the classroom"

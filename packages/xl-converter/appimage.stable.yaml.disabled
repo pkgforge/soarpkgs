@@ -5,9 +5,9 @@ pkg: "xl-converter"
 pkg_id: "github.com.JacobDev1.xl-converter"
 pkg_type: "appimage"
 app_id: "github.com.JacobDev1.xl-converter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Easy-to-use image converter for modern formats. Supports multithreading, drag n drop, and downscaling."

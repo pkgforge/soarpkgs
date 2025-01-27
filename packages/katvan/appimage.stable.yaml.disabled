@@ -5,9 +5,9 @@ pkg: "katvan"
 pkg_id: "github.com.IgKh.katvan"
 pkg_type: "appimage"
 app_id: "github.com.IgKh.katvan"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A bare-bones editor for Typst files, with a bias for Right-to-Left editing"

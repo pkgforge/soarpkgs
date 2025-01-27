@@ -5,9 +5,9 @@ pkg: "simpleos"
 pkg_id: "github.com.eosrio.simpleos"
 pkg_type: "appimage"
 app_id: "github.com.eosrio.simpleos"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "EOSIO Blockchain Interface & Wallet"

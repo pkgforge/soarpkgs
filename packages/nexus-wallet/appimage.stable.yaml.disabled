@@ -5,9 +5,9 @@ pkg: "nexus-wallet"
 pkg_id: "github.com.Nexusoft.NexusInterface"
 pkg_type: "appimage"
 app_id: "github.com.Nexusoft.NexusInterface"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The official Logical and Interface layers of the Nexus Software Stack."

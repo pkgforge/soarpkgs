@@ -5,9 +5,9 @@ pkg: "teams"
 pkg_id: "github.com.IsmaelMartinez.teams-for-linux"
 pkg_type: "appimage"
 app_id: "github.com.IsmaelMartinez.teams-for-linux"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial Microsoft Teams for Linux client"

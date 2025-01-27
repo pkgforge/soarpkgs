@@ -5,9 +5,9 @@ pkg: "packetsender"
 pkg_id: "github.com.dannagle.PacketSender"
 pkg_type: "appimage"
 app_id: "github.com.dannagle.PacketSender"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Network utility for sending / receiving TCP, UDP, SSL, HTTP"

@@ -6,9 +6,9 @@ pkg: "chromium-edge"
 pkg_id: "github.com.ivan-hc.Chromium-Web-Browser-appimage.edge"
 pkg_type: "appimage"
 app_id: "org.chromium.Chromium"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "WebBrowser"
 description: "Open source web browser from Google (Edge)"

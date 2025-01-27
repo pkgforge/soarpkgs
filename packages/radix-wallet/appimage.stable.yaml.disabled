@@ -5,9 +5,9 @@ pkg: "radix-wallet"
 pkg_id: "github.com.radixdlt.desktop-wallet"
 pkg_type: "appimage"
 app_id: "github.com.radixdlt.desktop-wallet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Radix DLT desktop wallet"

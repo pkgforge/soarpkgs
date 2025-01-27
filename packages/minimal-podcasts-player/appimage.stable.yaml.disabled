@@ -5,9 +5,9 @@ pkg: "minimal-podcasts-player"
 pkg_id: "github.com.son-link.minimal-podcasts-player"
 pkg_type: "appimage"
 app_id: "github.com.son-link.minimal-podcasts-player"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Subscribe, listen and (in the future) download your favorite podcasts, quickly and easily."

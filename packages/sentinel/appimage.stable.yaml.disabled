@@ -5,9 +5,9 @@ pkg: "sentinel"
 pkg_id: "github.com.sentinel-official.desktop-client"
 pkg_type: "appimage"
 app_id: "github.com.sentinel-official.desktop-client"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "This is the official repository of the Sentinel Desktop Client which interfaces with the entire Sentinel Network"

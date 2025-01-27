@@ -5,9 +5,9 @@ pkg: "jira-timer"
 pkg_id: "github.com.alexcroox.jira-timer-menubar"
 pkg_type: "appimage"
 app_id: "github.com.alexcroox.jira-timer-menubar"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "macOS and Linux menubar app for JIRA time logging. Built with React and Electron"

@@ -6,9 +6,9 @@ pkg: "firedragon"
 pkg_id: "gitlab.com.garuda-linux.firedragon.stable"
 pkg_type: "appimage"
 app_id: "org.garudalinux.firedragon"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "WebBrowser"
 description: "A browser based on Floorp browser"

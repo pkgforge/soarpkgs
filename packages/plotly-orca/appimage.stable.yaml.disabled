@@ -5,9 +5,9 @@ pkg: "plotly-orca"
 pkg_id: "github.com.plotly.orca"
 pkg_type: "appimage"
 app_id: "github.com.plotly.orca"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Command line application for generating static images of interactive plotly charts"

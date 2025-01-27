@@ -5,9 +5,9 @@ pkg: "hw-probe"
 pkg_id: "github.com.linuxhw.hw-probe"
 pkg_type: "appimage"
 app_id: "github.com.linuxhw.hw-probe"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Probe for hardware, check operability and find drivers"

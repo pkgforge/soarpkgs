@@ -5,9 +5,9 @@ pkg: "ubports-installer"
 pkg_id: "github.com.ubports.ubports-installer"
 pkg_type: "appimage"
 app_id: "github.com.ubports.ubports-installer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple tool to install Ubuntu Touch on UBports devices"

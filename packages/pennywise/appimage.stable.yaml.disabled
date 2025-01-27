@@ -5,9 +5,9 @@ pkg: "pennywise"
 pkg_id: "github.com.kamranahmedse.pennywise"
 pkg_type: "appimage"
 app_id: "github.com.kamranahmedse.pennywise"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform application to open any website or media in a floating window"

@@ -5,9 +5,9 @@ pkg: "mayo"
 pkg_id: "github.com.fougue.mayo"
 pkg_type: "appimage"
 app_id: "github.com.fougue.mayo"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "3D CAD viewer and converter based on Qt + OpenCascade"

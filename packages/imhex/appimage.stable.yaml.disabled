@@ -5,9 +5,9 @@ pkg: "imhex"
 pkg_id: "github.com.WerWolv.ImHex"
 pkg_type: "appimage"
 app_id: "github.com.WerWolv.ImHex"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🔍 A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM."

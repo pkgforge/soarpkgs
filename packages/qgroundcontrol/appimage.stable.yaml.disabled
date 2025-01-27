@@ -5,9 +5,9 @@ pkg: "qgroundcontrol"
 pkg_id: "github.com.mavlink.qgroundcontrol"
 pkg_type: "appimage"
 app_id: "github.com.mavlink.qgroundcontrol"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform ground control station for drones (Android, iOS, Mac OS, Linux, Windows)"

@@ -5,9 +5,9 @@ pkg: "n3h"
 pkg_id: "github.com.holochain.n3h"
 pkg_type: "appimage"
 app_id: "github.com.holochain.n3h"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "nodejs implementation of holochain networking / p2p backend process"

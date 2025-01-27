@@ -5,9 +5,9 @@ pkg: "jrom-manager"
 pkg_id: "github.com.optyfr.JRomManager"
 pkg_type: "appimage"
 app_id: "github.com.optyfr.JRomManager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Java Rom Manager"

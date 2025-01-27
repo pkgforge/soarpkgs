@@ -5,9 +5,9 @@ pkg: "appinstall"
 pkg_id: "github.com.Drosaca.appImageInstaller"
 pkg_type: "appimage"
 app_id: "github.com.Drosaca.appImageInstaller"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "AppImage Installer is an easy to use and install tool to create app shrotcuts and integrate AppImage binaries to a linux desktop environment (Launcher)"

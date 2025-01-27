@@ -5,9 +5,9 @@ pkg: "youtubeanddownloader"
 pkg_id: "github.com.claudemods.YoutubeAndDownloader"
 pkg_type: "appimage"
 app_id: "github.com.claudemods.YoutubeAndDownloader"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "an app to use youtube and download videos as mp3s or mp4s"

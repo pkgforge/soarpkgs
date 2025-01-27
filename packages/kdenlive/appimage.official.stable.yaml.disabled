@@ -6,9 +6,9 @@ pkg: "kdenlive"
 pkg_id: "apps.kde.org.kdenlive.stable"
 pkg_type: "appimage"
 app_id: "org.kde.kdenlive"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "AudioVideoEditing"
 description: "FOSS video editor, based on MLT Framework and KDE Frameworks"

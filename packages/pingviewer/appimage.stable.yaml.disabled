@@ -5,9 +5,9 @@ pkg: "pingviewer"
 pkg_id: "github.com.bluerobotics.ping-viewer"
 pkg_type: "appimage"
 app_id: "github.com.bluerobotics.ping-viewer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Ping Viewer is an open-source application to view and record data from the Blue Robotics Ping Echosounder and Ping360 Scanning Sonar."

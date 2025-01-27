@@ -5,9 +5,9 @@ pkg: "paletti"
 pkg_id: "github.com.Eroica.Paletti"
 pkg_type: "appimage"
 app_id: "github.com.Eroica.Paletti"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Paletti reduces an image into fewer colors to simplify it visually or to create color palettes."

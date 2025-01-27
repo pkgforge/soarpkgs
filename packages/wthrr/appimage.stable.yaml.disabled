@@ -5,9 +5,9 @@ pkg: "wthrr"
 pkg_id: "github.com.ttytm.wthrr-the-weathercrab"
 pkg_type: "appimage"
 app_id: "github.com.ttytm.wthrr-the-weathercrab"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🌞 🦀 🌙 Weather companion for the terminal. Rust app."

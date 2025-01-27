@@ -5,9 +5,9 @@ pkg: "ryowallet"
 pkg_id: "github.com.ryo-currency.ryo-wallet"
 pkg_type: "appimage"
 app_id: "github.com.ryo-currency.ryo-wallet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Next Generation GUI Wallet for Ryo-currency"

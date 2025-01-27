@@ -5,9 +5,9 @@ _disabled: false
 pkg: "altus"
 pkg_id: "github.com.amanharwara.altus"
 pkg_type: "appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Desktop client for WhatsApp Web with themes, notifications and multiple account support"

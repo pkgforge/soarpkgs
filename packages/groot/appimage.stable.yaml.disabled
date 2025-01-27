@@ -5,9 +5,9 @@ pkg: "groot"
 pkg_id: "github.com.BehaviorTree.Groot"
 pkg_type: "appimage"
 app_id: "github.com.BehaviorTree.Groot"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Graphical Editor to create BehaviorTrees. Compliant with BehaviorTree.CPP"

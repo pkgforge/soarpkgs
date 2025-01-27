@@ -5,9 +5,9 @@ pkg: "beekeeper-studio"
 pkg_id: "github.com.beekeeper-studio.beekeeper-studio"
 pkg_type: "appimage"
 app_id: "github.com.beekeeper-studio.beekeeper-studio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows."

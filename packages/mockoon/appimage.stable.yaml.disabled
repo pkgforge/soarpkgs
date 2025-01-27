@@ -5,9 +5,9 @@ pkg: "mockoon"
 pkg_id: "github.com.mockoon.mockoon"
 pkg_type: "appimage"
 app_id: "github.com.mockoon.mockoon"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Mockoon is the easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source."

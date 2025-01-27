@@ -5,9 +5,9 @@ pkg: "retrom"
 pkg_id: "github.com.JMBeresford.retrom"
 pkg_type: "appimage"
 app_id: "github.com.JMBeresford.retrom"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A centralized game library/collection management service with a focus on emulation"

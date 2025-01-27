@@ -5,9 +5,9 @@ pkg: "bodhi"
 pkg_id: "github.com.bodhiproject.bodhi-app"
 pkg_type: "appimage"
 app_id: "github.com.bodhiproject.bodhi-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Bodhi Prediction Market desktop application"

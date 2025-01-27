@@ -5,9 +5,9 @@ pkg: "dolphin-emu"
 pkg_id: "github.com.mantralunar.dolphin"
 pkg_type: "appimage"
 app_id: "github.com.mantralunar.dolphin"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Dolphin is a GameCube / Wii emulator, allowing you to play games for these two platforms on PC with improvements."

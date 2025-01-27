@@ -5,9 +5,9 @@ pkg: "liketaskmanager"
 pkg_id: "github.com.rejuce.LikeTaskManager"
 pkg_type: "appimage"
 app_id: "github.com.rejuce.LikeTaskManager"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Linux AppImage that should mimik the funktionality and feel of Windows Task Manager Perfomance Tab"

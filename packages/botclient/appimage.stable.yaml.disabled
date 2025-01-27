@@ -5,9 +5,9 @@ pkg: "botclient"
 pkg_id: "github.com.DarkGuy10.BotClient"
 pkg_type: "appimage"
 app_id: "github.com.DarkGuy10.BotClient"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A discord botclient built with Electron, React and discord.js."

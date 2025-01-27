@@ -5,9 +5,9 @@ pkg: "westeroscraftlauncher"
 pkg_id: "github.com.WesterosCraftCode.ElectronLauncher"
 pkg_type: "appimage"
 app_id: "github.com.WesterosCraftCode.ElectronLauncher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Custom launcher for modded minecraft written in Electron and Node.js"

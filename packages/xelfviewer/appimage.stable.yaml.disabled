@@ -5,9 +5,9 @@ pkg: "xelfviewer"
 pkg_id: "github.com.horsicq.XELFViewer"
 pkg_type: "appimage"
 app_id: "github.com.horsicq.XELFViewer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ELF file viewer/editor for Windows, Linux and MacOS."

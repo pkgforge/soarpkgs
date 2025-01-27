@@ -5,9 +5,9 @@ pkg: "notedown"
 pkg_id: "github.com.ruralad.notedown"
 pkg_type: "appimage"
 app_id: "github.com.ruralad.notedown"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Note taking with react + rust. For windows, mac and linux."

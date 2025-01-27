@@ -5,9 +5,9 @@ pkg: "hdrmerge"
 pkg_id: "github.com.jcelaya.hdrmerge"
 pkg_type: "appimage"
 app_id: "github.com.jcelaya.hdrmerge"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "HDR exposure merging"

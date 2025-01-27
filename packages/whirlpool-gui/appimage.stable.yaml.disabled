@@ -5,9 +5,9 @@ pkg: "whirlpool-gui"
 pkg_id: "github.com.Samourai-Wallet.whirlpool-gui"
 pkg_type: "appimage"
 app_id: "github.com.Samourai-Wallet.whirlpool-gui"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "GUI wrapper for Whirlpool-cli"

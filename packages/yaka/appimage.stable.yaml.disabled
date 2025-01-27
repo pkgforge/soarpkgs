@@ -5,9 +5,9 @@ pkg: "yaka"
 pkg_id: "github.com.jyannick.yaka"
 pkg_type: "appimage"
 app_id: "github.com.jyannick.yaka"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "no fuss todo-list manager with full keyboard navigation"

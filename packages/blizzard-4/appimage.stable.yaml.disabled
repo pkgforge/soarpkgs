@@ -5,9 +5,9 @@ pkg: "blizzard-4"
 pkg_id: "github.com.danielfspencer.blizzard-4"
 pkg_type: "appimage"
 app_id: "github.com.danielfspencer.blizzard-4"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Blizzard 4 is a 16-bit computer I designed. This repo contains the compiler, assembler and emulator needed to develop and test programs for it. Try online at:"

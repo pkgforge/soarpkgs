@@ -5,9 +5,9 @@ pkg: "chatall"
 pkg_id: "github.com.sunner.ChatALL"
 pkg_type: "appimage"
 app_id: "github.com.sunner.ChatALL"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers"

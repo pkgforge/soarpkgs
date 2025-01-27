@@ -5,9 +5,9 @@ pkg: "tumblr-downloader-gui"
 pkg_id: "github.com.neuro-sys.tumblr-likes-downloader"
 pkg_type: "appimage"
 app_id: "github.com.neuro-sys.tumblr-likes-downloader"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Download Tumblr posts that you liked"

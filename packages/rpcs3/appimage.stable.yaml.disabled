@@ -5,9 +5,9 @@ pkg: "rpcs3"
 pkg_id: "github.com.RPCS3.rpcs3-binaries-linux"
 pkg_type: "appimage"
 app_id: "github.com.RPCS3.rpcs3-binaries-linux"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Repository for Linux x64 binaries"

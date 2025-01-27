@@ -5,9 +5,9 @@ pkg: "yandex-browser-corporate"
 pkg_id: "github.com.ivan-hc.Yandex-Browser-appimage"
 pkg_type: "appimage"
 app_id: "github.com.ivan-hc.Yandex-Browser-appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial Yandex Browsers AppImage built from the official .deb packages."

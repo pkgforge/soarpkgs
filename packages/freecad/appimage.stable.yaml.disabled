@@ -5,9 +5,9 @@ pkg: "freecad"
 pkg_id: "github.com.FreeCAD.FreeCAD-Bundle"
 pkg_type: "appimage"
 app_id: "github.com.FreeCAD.FreeCAD-Bundle"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Stand-alone repo to Build and Deploy installable FreeCAD images. Do not open general FreeCAD issues here."

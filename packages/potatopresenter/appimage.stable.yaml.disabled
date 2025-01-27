@@ -5,9 +5,9 @@ pkg: "potatopresenter"
 pkg_id: "github.com.thgier.PotatoPresenter"
 pkg_type: "appimage"
 app_id: "github.com.thgier.PotatoPresenter"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Tool to create presentation slides that can be exported as PDF."

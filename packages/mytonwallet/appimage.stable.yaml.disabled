@@ -5,9 +5,9 @@ pkg: "mytonwallet"
 pkg_id: "github.com.mytonwalletorg.mytonwallet"
 pkg_type: "appimage"
 app_id: "github.com.mytonwalletorg.mytonwallet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The most feature-rich web wallet and browser extension for TON Network"

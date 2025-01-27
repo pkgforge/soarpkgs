@@ -5,9 +5,9 @@ pkg: "mypaint"
 pkg_id: "github.com.mypaint.mypaint"
 pkg_type: "appimage"
 app_id: "github.com.mypaint.mypaint"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "MyPaint is a simple drawing and painting program that works well with Wacom-style graphics tablets."

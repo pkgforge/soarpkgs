@@ -5,9 +5,9 @@ pkg: "chrysalis-bin"
 pkg_id: "github.com.keyboardio.Chrysalis"
 pkg_type: "appimage"
 app_id: "github.com.keyboardio.Chrysalis"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Graphical configurator for Kaleidoscope-powered keyboards"

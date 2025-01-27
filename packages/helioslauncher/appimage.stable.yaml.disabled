@@ -5,9 +5,9 @@ pkg: "helioslauncher"
 pkg_id: "github.com.dscalzi.HeliosLauncher"
 pkg_type: "appimage"
 app_id: "github.com.dscalzi.HeliosLauncher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "☀ Custom launcher for modded minecraft written in Electron and Node.js"

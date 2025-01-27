@@ -5,9 +5,9 @@ pkg: "etcher"
 pkg_id: "github.com.balena-io.etcher"
 pkg_type: "appimage"
 app_id: "github.com.balena-io.etcher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Flash OS images to SD cards & USB drives, safely and easily."

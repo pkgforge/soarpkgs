@@ -5,9 +5,9 @@ pkg: "vita3k"
 pkg_id: "github.com.Vita3K.Vita3K"
 pkg_type: "appimage"
 app_id: "github.com.Vita3K.Vita3K"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Experimental PlayStation Vita emulator"

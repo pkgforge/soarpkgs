@@ -5,9 +5,9 @@ pkg: "slippi"
 pkg_id: "github.com.project-slippi.slippi-desktop-app"
 pkg_type: "appimage"
 app_id: "github.com.project-slippi.slippi-desktop-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The way to play Slippi Online and watch replays."

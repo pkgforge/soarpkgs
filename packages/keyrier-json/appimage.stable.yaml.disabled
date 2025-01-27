@@ -5,9 +5,9 @@ pkg: "keyrier-json"
 pkg_id: "github.com.magoo-magoo.keyrier-json"
 pkg_type: "appimage"
 app_id: "github.com.magoo-magoo.keyrier-json"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "SQL queries on JSON & CSV"

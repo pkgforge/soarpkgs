@@ -5,9 +5,9 @@ pkg: "fish"
 pkg_id: "github.com.Maverobot.fish.AppImage"
 pkg_type: "appimage"
 app_id: "github.com.Maverobot.fish.AppImage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Creates an AppImage for fish shell."

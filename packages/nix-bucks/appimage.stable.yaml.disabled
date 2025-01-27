@@ -5,9 +5,9 @@ pkg: "nix-bucks"
 pkg_id: "github.com.margual56.nix-bucks"
 pkg_type: "appimage"
 app_id: "github.com.margual56.nix-bucks"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A money tracker: Your income and expenses at your control"

@@ -5,9 +5,9 @@ pkg: "numara"
 pkg_id: "github.com.bornova.numara-calculator"
 pkg_type: "appimage"
 app_id: "github.com.bornova.numara-calculator"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simple notepad calculator built on Electron, powered by Math.js"

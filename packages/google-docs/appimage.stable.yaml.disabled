@@ -5,9 +5,9 @@ pkg: "google-docs"
 pkg_id: "github.com.Comp-Labs.Google-Docs"
 pkg_type: "appimage"
 app_id: "github.com.Comp-Labs.Google-Docs"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Google Docs Desktop App made with :electron:. Includes Google Docs, Sheets, Slides, Forms, and Drive."

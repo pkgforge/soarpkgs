@@ -5,9 +5,9 @@ pkg: "plagpatrol"
 pkg_id: "github.com.josemmo.plagpatrol"
 pkg_type: "appimage"
 app_id: "github.com.josemmo.plagpatrol"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "🚨 An app for detecting documents tampered to bypass plagiarism detectors"

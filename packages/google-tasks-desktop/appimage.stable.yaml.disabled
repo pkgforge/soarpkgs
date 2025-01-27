@@ -5,9 +5,9 @@ pkg: "google-tasks-desktop"
 pkg_id: "github.com.Pong420.google-tasks-desktop"
 pkg_type: "appimage"
 app_id: "github.com.Pong420.google-tasks-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Unofficial Google Tasks Desktop Client"

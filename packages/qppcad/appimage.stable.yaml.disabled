@@ -5,9 +5,9 @@ pkg: "qppcad"
 pkg_id: "github.com.nvpopov.qppcad"
 pkg_type: "appimage"
 app_id: "github.com.nvpopov.qppcad"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "molecule and crystal editor written in c++"

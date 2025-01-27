@@ -5,9 +5,9 @@ pkg: "rx-bin"
 pkg_id: "github.com.cloudhead.rx"
 pkg_type: "appimage"
 app_id: "github.com.cloudhead.rx"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "👾 Modern and minimalist pixel editor"

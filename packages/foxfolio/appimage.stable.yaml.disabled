@@ -5,9 +5,9 @@ pkg: "foxfolio"
 pkg_id: "github.com.foxfolio.foxfolio-desktop"
 pkg_type: "appimage"
 app_id: "github.com.foxfolio.foxfolio-desktop"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cryptocurrency portfolio management application which automatically retrieves balances and trades using exchange APIs"

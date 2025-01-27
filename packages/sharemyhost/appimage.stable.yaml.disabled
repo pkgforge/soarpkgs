@@ -5,9 +5,9 @@ pkg: "sharemyhost"
 pkg_id: "github.com.antony-jr.ShareMyHost"
 pkg_type: "appimage"
 app_id: "github.com.antony-jr.ShareMyHost"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A simple and easy to use program to share files in local network."

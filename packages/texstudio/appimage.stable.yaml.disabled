@@ -5,9 +5,9 @@ pkg: "texstudio"
 pkg_id: "github.com.texstudio-org.texstudio"
 pkg_type: "appimage"
 app_id: "github.com.texstudio-org.texstudio"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "TeXstudio is a fully featured LaTeX editor. Our goal is to make writing LaTeX documents as easy and comfortable as possible."

@@ -5,9 +5,9 @@ pkg: "strongbox"
 pkg_id: "github.com.ogri-la.strongbox"
 pkg_type: "appimage"
 app_id: "github.com.ogri-la.strongbox"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "a World of Warcraft Addon Manager aimed at Linux players"

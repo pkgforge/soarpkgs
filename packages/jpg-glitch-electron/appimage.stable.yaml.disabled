@@ -5,9 +5,9 @@ pkg: "jpg-glitch-electron"
 pkg_id: "github.com.snorpey.jpg-glitch-electron"
 pkg_type: "appimage"
 app_id: "github.com.snorpey.jpg-glitch-electron"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "desktop app for glitching images"

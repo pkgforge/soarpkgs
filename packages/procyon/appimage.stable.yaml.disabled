@@ -5,9 +5,9 @@ pkg: "procyon"
 pkg_id: "github.com.orion-project.procyon"
 pkg_type: "appimage"
 app_id: "github.com.orion-project.procyon"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Simple personal notes keeper."

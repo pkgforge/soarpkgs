@@ -6,9 +6,9 @@ pkg: "86box"
 pkg_id: "github.com.86Box.86Box.stable"
 pkg_type: "appimage"
 app_id: "net._86box._86Box"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Emulator"
 description: "Emulator of x86-based machines"

@@ -5,9 +5,9 @@ pkg: "mbcord"
 pkg_id: "github.com.SandwichFox.MBCord"
 pkg_type: "appimage"
 app_id: "github.com.SandwichFox.MBCord"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An Emby/Jellyfin rich presence client for Discord ✨"

@@ -5,9 +5,9 @@ pkg: "textosaurus"
 pkg_id: "github.com.martinrotter.textosaurus"
 pkg_type: "appimage"
 app_id: "github.com.martinrotter.textosaurus"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross-platform text editor based on Qt and Scintilla."

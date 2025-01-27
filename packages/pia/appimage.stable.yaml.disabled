@@ -5,9 +5,9 @@ pkg: "pia"
 pkg_id: "github.com.LINCnil.pia-app"
 pkg_type: "appimage"
 app_id: "github.com.LINCnil.pia-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Exécutable permettant de lancer l’application (front office) PIA sur son ordinateur. C’est une version portable de l’outil PIA.  Executable to launch the PIA application on your computer. It is a stand-alone version of the PIA application."

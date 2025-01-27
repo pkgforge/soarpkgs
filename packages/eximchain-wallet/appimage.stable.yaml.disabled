@@ -5,9 +5,9 @@ pkg: "eximchain-wallet"
 pkg_id: "github.com.Eximchain.EximchainWallet"
 pkg_type: "appimage"
 app_id: "github.com.Eximchain.EximchainWallet"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A specialized wallet client to connect to the Eximchain Network"

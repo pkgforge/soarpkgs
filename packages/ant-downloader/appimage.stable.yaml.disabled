@@ -5,9 +5,9 @@ pkg: "ant-downloader"
 pkg_id: "github.com.anatasluo.ant"
 pkg_type: "appimage"
 app_id: "github.com.anatasluo.ant"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A lightweight, feature-rich, easy-to-use and nice-looking BitTorrent Client developed by golang, angular 7, and electron."

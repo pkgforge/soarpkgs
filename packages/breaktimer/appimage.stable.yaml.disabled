@@ -5,9 +5,9 @@ pkg: "breaktimer"
 pkg_id: "github.com.tom-james-watson.breaktimer-app"
 pkg_type: "appimage"
 app_id: "github.com.tom-james-watson.breaktimer-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Manage periodic breaks. Avoid eye-strain and RSI."

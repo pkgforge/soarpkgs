@@ -5,9 +5,9 @@ pkg: "kitupiikki"
 pkg_id: "github.com.artoh.kitupiikki"
 pkg_type: "appimage"
 app_id: "github.com.artoh.kitupiikki"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Finnish bookkeeping software for small organizations - Avoimen lähdekoodin kirjanpitäjä"

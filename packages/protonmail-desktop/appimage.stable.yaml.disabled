@@ -5,9 +5,9 @@ pkg: "protonmail-desktop"
 pkg_id: "github.com.protonmail-desktop.application"
 pkg_type: "appimage"
 app_id: "github.com.protonmail-desktop.application"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":envelope: Unofficial desktop client for ProtonMail"

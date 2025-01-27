@@ -5,9 +5,9 @@ pkg: "piclist"
 pkg_id: "github.com.Kuingsmile.PicList"
 pkg_type: "appimage"
 app_id: "github.com.Kuingsmile.PicList"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An image upload and manage tool, base on PicGo"

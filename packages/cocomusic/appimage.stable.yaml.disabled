@@ -5,9 +5,9 @@ pkg: "cocomusic"
 pkg_id: "github.com.xtuJSer.CoCoMusic"
 pkg_type: "appimage"
 app_id: "github.com.xtuJSer.CoCoMusic"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "a simple music player built by electron and vue"

@@ -5,9 +5,9 @@ pkg: "evoplex"
 pkg_id: "github.com.evoplex.evoplex"
 pkg_type: "appimage"
 app_id: "github.com.evoplex.evoplex"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Evoplex is a fast, robust and extensible platform for developing agent-based models and multi-agent systems on networks. Its available for Windows, Linux and macOS."

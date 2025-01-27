@@ -5,9 +5,9 @@ pkg: "arma3-unix-launcher"
 pkg_id: "github.com.muttleyxd.arma3-unix-launcher"
 pkg_type: "appimage"
 app_id: "github.com.muttleyxd.arma3-unix-launcher"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Launcher for Linux and Mac ArmA 3"

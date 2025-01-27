@@ -5,9 +5,9 @@ pkg: "kuro"
 pkg_id: "github.com.davidsmorais.kuro"
 pkg_type: "appimage"
 app_id: "github.com.davidsmorais.kuro"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An elegant Microsoft ToDo desktop client for Linux (a fork of Ao)"

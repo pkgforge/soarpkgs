@@ -5,9 +5,9 @@ pkg: "bulkreviewer"
 pkg_id: "github.com.bulk-reviewer.bulk-reviewer"
 pkg_type: "appimage"
 app_id: "github.com.bulk-reviewer.bulk-reviewer"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Identify, review, and remove sensitive files"

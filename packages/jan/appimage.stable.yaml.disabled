@@ -5,9 +5,9 @@ pkg: "jan"
 pkg_id: "github.com.janhq.jan"
 pkg_type: "appimage"
 app_id: "github.com.janhq.jan"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM)"

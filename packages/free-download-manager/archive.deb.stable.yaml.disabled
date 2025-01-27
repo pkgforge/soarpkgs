@@ -5,11 +5,11 @@ _disabled: false
 pkg: "free-download-manager"
 pkg_id: "www.freedownloadmanager.org"
 pkg_type: "archive"
-build_util:
-  - "busybox/tree#base"
-  - "curl#bin"
-  - "jq#bin"
-  - "tar/tar#base"
+#build_util:
+#  - "busybox/tree#base"
+#  - "curl#bin"
+#  - "jq#bin"
+#  - "tar/tar#base"
 category:
   - "Player"
 description: "FDM is a powerful modern download accelerator and organizer"

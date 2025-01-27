@@ -5,9 +5,9 @@ pkg: "qelectrotech"
 pkg_id: "github.com.qelectrotech.qelectrotech-source-mirror"
 pkg_type: "appimage"
 app_id: "github.com.qelectrotech.qelectrotech-source-mirror"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Main QET repository, Bugtracker: https://qelectrotech.org/bugtracker/"

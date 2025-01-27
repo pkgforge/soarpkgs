@@ -5,9 +5,9 @@ pkg: "quicktwitch"
 pkg_id: "github.com.mhmiles.QuickTwitch"
 pkg_type: "appimage"
 app_id: "github.com.mhmiles.QuickTwitch"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Cross platform GUI for Twitch.tv"

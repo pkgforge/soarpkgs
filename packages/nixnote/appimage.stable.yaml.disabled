@@ -5,9 +5,9 @@ pkg: "nixnote"
 pkg_id: "github.com.robert7.nixnote2"
 pkg_type: "appimage"
 app_id: "github.com.robert7.nixnote2"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Nixnote - Evernote desktop client for Linux"

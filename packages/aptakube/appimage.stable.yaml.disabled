@@ -5,9 +5,9 @@ pkg: "aptakube"
 pkg_id: "github.com.aptakube.aptakube"
 pkg_type: "appimage"
 app_id: "github.com.aptakube.aptakube"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Modern, lightweight and multi-cluster Kubernetes GUI. Available on Windows, macOS and Linux."

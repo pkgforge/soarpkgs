@@ -5,9 +5,9 @@ pkg: "fms-file-explorer"
 pkg_id: "github.com.AllenInstitute.aics-fms-file-explorer-app"
 pkg_type: "appimage"
 app_id: "github.com.AllenInstitute.aics-fms-file-explorer-app"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "An open-use web application created for easy access, collaboration, and sharing of datasets through rich metadata search, filter, sort, and direct viewing in common industry applications or in our web-based 3D Volume Viewer."

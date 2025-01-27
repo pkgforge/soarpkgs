@@ -5,9 +5,9 @@ pkg: "bread"
 pkg_id: "github.com.pegvin.bread"
 pkg_type: "appimage"
 app_id: "github.com.pegvin.bread"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: ":bread: Install, update and remove AppImage from your CLI."

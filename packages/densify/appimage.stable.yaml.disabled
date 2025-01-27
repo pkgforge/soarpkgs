@@ -5,9 +5,9 @@ pkg: "densify"
 pkg_id: "github.com.hkdb.Densify"
 pkg_type: "appimage"
 app_id: "github.com.hkdb.Densify"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A GTK+ GUI Application written in Python that simplifies compressing PDF files with Ghostscript"

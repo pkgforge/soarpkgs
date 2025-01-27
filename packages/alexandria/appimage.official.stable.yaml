@@ -5,9 +5,9 @@ _disabled: false
 pkg: "alexandria"
 pkg_id: "github.com.btpf.Alexandria"
 pkg_type: "appimage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A minimalistic eBook reader"

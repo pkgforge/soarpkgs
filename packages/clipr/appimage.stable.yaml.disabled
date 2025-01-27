@@ -5,9 +5,9 @@ pkg: "clipr"
 pkg_id: "github.com.clipr.clipr"
 pkg_type: "appimage"
 app_id: "github.com.clipr.clipr"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "The clipboard that syncs!"

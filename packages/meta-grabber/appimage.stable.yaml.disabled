@@ -5,9 +5,9 @@ pkg: "meta-grabber"
 pkg_id: "github.com.andreaswilli.meta-grabber"
 pkg_type: "appimage"
 app_id: "github.com.andreaswilli.meta-grabber"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "📺 A tool to grab metadata for tv shows and rename files on your hard disk."

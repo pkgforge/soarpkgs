@@ -5,9 +5,9 @@ pkg: "pulsar"
 pkg_id: "github.com.pulsar-edit.pulsar"
 pkg_type: "appimage"
 app_id: "github.com.pulsar-edit.pulsar"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "A Community-led Hyper-Hackable Text Editor"

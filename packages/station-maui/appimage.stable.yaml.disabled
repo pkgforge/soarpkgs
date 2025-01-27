@@ -5,9 +5,9 @@ pkg: "station-maui"
 pkg_id: "github.com.Nitrux.maui-appimages-storage"
 pkg_type: "appimage"
 app_id: "github.com.Nitrux.maui-appimages-storage"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "Host zsync files for Maui AppImages"

@@ -5,9 +5,9 @@ pkg: "comic-book-reader"
 pkg_id: "github.com.binarynonsense.comic-book-reader"
 pkg_type: "appimage"
 app_id: "github.com.binarynonsense.comic-book-reader"
-build_util:
-  - "curl#bin"
-  - "jq#bin"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
 category:
   - "Utility"
 description: "ACBR - A comic book reader and converter for CBZ, CBR, CB7, EPUB and PDF files (Windows & Linux)"
