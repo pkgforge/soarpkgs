@@ -6,7 +6,7 @@ pkg: "kdeutils"
 pkg_id: "runimage.cachyos.kdeutils"
 pkg_type: "runimage"
 category:
-  - "IDE"
+  - "Utility"
 description: 
   _default: "Collection of utilities for KDE"
   ark: "Archiving Tool [kdeutils]"
@@ -94,8 +94,7 @@ repology:
 src_url:
   - "https://archlinux.org/groups/x86_64/kde-utilities/"
 tag:
-  - "code"
-  - "editor"
+  - "utilities"
 x_exec:
   host:
     - "x86_64-Linux"
