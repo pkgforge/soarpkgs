@@ -18,14 +18,14 @@ distro_pkg:
 homepage:
   - "https://cromite.org"
   - "https://github.com/uazo/cromite"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/uazo/cromite/raw/8f5cc44a9385431dd26c989f7fd182134cc36991/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cromite-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
-license:
-  - id: "GPL-3.0"
-    url: "https://github.com/uazo/cromite/raw/8f5cc44a9385431dd26c989f7fd182134cc36991/LICENSE"
 provides:
   - "cromite==cromite-browser"
 repology:
