@@ -1,43 +1,61 @@
-#!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/axel/static.official.source.yaml
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dropbear/static.standalone.glibc.yaml
 _disabled: false
 
-pkg: "axel"
-pkg_id: "github.com.axel-download-accelerator.axel"
+pkg: "dropbear"
+pkg_id: "github.com.mkj.dropbear.standalone.glibc"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Lightweight CLI download accelerator"
+description: 
+  _default: "Lightweight Alternative to OpenSSH"
+  dbclient: "Lightweight SSH client [dropbear]"
+  dropbear: "Lightweight SSH server [dropbear]"
+  dropbearconvert: "Convert between Dropbear and OpenSSH private key formats [dropbear]"
+  dropbearkey: "Create private keys for the use with dropbear/dbclient [dropbear]"
+  scp: "Secure remote copy [dropbear]"
 distro_pkg:
   alpine:
-    - "axel"
+    - "dropbear"
   archlinux:
+    aur:
+      - "dropbear-git"
     extra:
-      - "axel"
+      - "dropbear"
   debian:
-    - "axel"
+    - "dropbear"
+  gnuguix:
+    - "dropbear"
+  homebrew:
+    - "dropbear"
   nixpkgs:
-    - "axel"
+    - "dropbear"  
 homepage:
-  - "https://github.com/axel-download-accelerator/axel"
+  - "https://matt.ucc.asn.au/dropbear/dropbear.html"
 license:
-  - id : "GPL-2.0"
-    url: "https://github.com/axel-download-accelerator/axel/raw/3c21dc42dcba02d62f4b4b67adcb592f5863790b/COPYING"  
+  - id : "Custom"
+    url: "https://github.com/mkj/dropbear/raw/2ca81a8944470adf8de88bad3482cbab339ac10c/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/axel-download-accelerator/axel"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/mkj/dropbear"
+  - "This is the standalone version i.e all applets were built individually"
+  - "Statically Linked on Debian (GLIBC)"  
 provides:
-  - "axel"  
+  - "dbclient"
+  - "dropbear"
+  - "dropbearconvert"
+  - "dropbearkey"
+  - "scp"
 repology:
-  - "axel"
+  - "dropbear"
 src_url:
-  - "https://github.com/axel-download-accelerator/axel"
+  - "https://github.com/mkj/dropbear"
 tag:
-  - "downloader"
-  - "download-manager"
+  - "openssh"
+  - "ssh"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -45,33 +63,31 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/axel-download-accelerator/axel" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/mkj/dropbear" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
-     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:edge" \
+     "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
       #Build
-       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/axel-download-accelerator/axel" "./TEMPREPO" && cd "./TEMPREPO"
-       export CC="clang"
-       export CXX="clang++"
-       export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/mkj/dropbear" "./TEMPREPO" && cd "./TEMPREPO"
+       export CFLAGS="-Os -flto=auto -B/usr/libexec/mold -g0 -pipe -static -v -w -Wno-error"
        export CPPFLAGS="${CFLAGS}"
        export CXXFLAGS="${CFLAGS}"
        export LD="$(which mold)"
-       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
-       autoreconf -iv ; "./configure" --disable-shared --disable-Werror --enable-static --enable-year2038 --enable-compile-warnings="no" --with-ssl="openssl"
-       make --jobs="$(($(nproc)+1))" --keep-going
+       export LDFLAGS="-static -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack"
+       #https://github.com/mkj/dropbear/blob/master/INSTALL.md
+       "./configure" --disable-harden --disable-shared --disable-Werror --enable-static --enable-year2038
+       make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" STATIC="1" --jobs="$(($(nproc)+1))" --keep-going
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
       #Copy
-       #cp "./axel" "/build-bins/axel"
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #strip & info 
@@ -81,6 +97,6 @@ x_exec:
        popd >/dev/null 2>&1
       '
     #Copy & Meta
-     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
