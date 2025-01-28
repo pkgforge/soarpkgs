@@ -3,7 +3,7 @@
 _disabled: false
 
 pkg: "wezterm"
-pkg_id: "github.com.wez.wezterm"
+pkg_id: "github.com.wez.wezterm.stable"
 pkg_type: "appimage"
 app_id: "org.wezfurlong.wezterm"
 #build_util:
@@ -63,4 +63,4 @@ x_exec:
         ;;
     esac
     #Appstream
-     curl -qfsSL "https://raw.githubusercontent.com/wez/wezterm/refs/heads/main/assets/wezterm.appdata.xml" -o "./${PKG}/appdata.xml"
+     curl -qfsSL "https://raw.githubusercontent.com/wez/wezterm/refs/heads/main/assets/wezterm.appdata.xml" -o "./${PKG}.appdata.xml"
