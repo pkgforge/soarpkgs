@@ -70,6 +70,7 @@ x_exec:
         "./7z" x -mmt="$(($(nproc)+1))" -bd -y -o"/opt/funkin" "./funkin.zip" 2>/dev/null
         chmod -v 'a+x' "/opt/funkin/Funkin" || chmod -v 'a+x' "/opt/funkin/funkin"
         [[ -s "/opt/Funkin" || -s "/opt/funkin" ]] || exit 1
+        mkdir -pv "/opt/funkin/logs" "/opt/funkin/mods"
         echo '#!/usr/bin/env bash' > "/usr/local/bin/funkin"
         echo 'cd "/opt/funkin" || exit 1' >> "/usr/local/bin/funkin"
         echo 'if [[ -x "./Funkin" ]]; then' >> "/usr/local/bin/funkin"
