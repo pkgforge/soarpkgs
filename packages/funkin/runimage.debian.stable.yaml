@@ -1,0 +1,120 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/funkin/runimage.debian.stable.yaml
+_disabled: false
+
+pkg: "funkin"
+pkg_id: "runimage.debian.funkin"
+pkg_type: "runimage"
+category:
+  - "Game"
+description: "Friday Night Funkin: A rhythm game"
+desktop:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/packages/funkin/assets/default.desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "funkin"
+      - "funkin-git"
+homepage:
+  - "https://www.newgrounds.com/portal/view/770371"
+  - "https://github.com/FunkinCrew/Funkin"
+icon:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/funkin/assets/default.png"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/FunkinCrew/Funkin/raw/df142a91445589189e0bc61704667e3be784e69a/LICENSE.md"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [debian]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+ - "funkin==Funkin"
+repology:
+ - "funkin"
+src_url:
+  - "https://github.com/FunkinCrew/Funkin"
+tag:
+  - "game"
+x_exec:
+  host:
+   # - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FunkinCrew/Funkin/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/debian_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+       #Requirements
+        export DEBIAN_FRONTEND="noninteractive"
+        echo 'root:*::' > "/etc/gshadow"
+        echo 'daemon:*::' >> "/etc/gshadow"
+        echo 'bin:*::' >> "/etc/gshadow"
+        echo 'sys:*::' >> "/etc/gshadow"
+        BASE_PKGS=(libvlc-bin vlc)
+        sudo apt clean -y
+        sudo apt update -y
+        #DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${BASE_PKGS[@]}" -y --no-install-recommends --ignore-missing
+        for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
+       #Main Package
+        curl -kqfSL "https://bin.pkgforge.dev/$(uname -m)/7z" -o "./7z" && chmod -v 'a+x' "./7z"
+        curl -kqfSL "https://github.com/FunkinCrew/Funkin/releases/download/${PKGVER}/funkin-linux-64bit.zip" -o "./funkin.zip"
+        "./7z" x -mmt="$(($(nproc)+1))" -bd -y -o"/opt/funkin" "./funkin.zip" 2>/dev/null
+        chmod -v 'a+x' "/opt/funkin/Funkin" || chmod -v 'a+x' "/opt/funkin/funkin"
+        [[ -s "/opt/Funkin" || -s "/opt/funkin" ]] || exit 1
+        echo '#!/usr/bin/env bash' > "/usr/local/bin/funkin"
+        echo 'cd "/opt/funkin" || exit 1' >> "/usr/local/bin/funkin"
+        echo 'if [[ -x "./Funkin" ]]; then' >> "/usr/local/bin/funkin"
+        echo '   exec "./Funkin" "$@"' >> "/usr/local/bin/funkin"
+        echo 'elif [[ -x "./funkin" ]]; then' >> "/usr/local/bin/funkin"
+        echo '   exec "./funkin" "$@"' >> "/usr/local/bin/funkin"
+        echo 'fi' >> "/usr/local/bin/funkin"
+        chmod -v 'a+x' "/usr/local/bin/funkin"
+        command -v "funkin" >/dev/null 2>&1 || exit 1
+        rm -rvf "./7z" "./funkin.zip"
+       #Debloat & Shrink
+        sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y
+        sudo apt list --installed
+        sudo apt clean -y
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=funkin}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_UPDATE_SHRINK="${RIM_UPDATE_SHRINK:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
