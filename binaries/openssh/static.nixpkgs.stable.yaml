@@ -1,0 +1,100 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/openssh/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "openssh"
+pkg_id: "nixpkgs.openssh"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Utilities and servers for secure shell connections"
+  scp: "OpenSSH secure file copy [openssh]"
+  sftp: "OpenSSH secure file transfer [openssh]"
+  sftp-server: "OpenSSH SFTP server subsystem [openssh]"
+  ssh: "OpenSSH remote login client [openssh]"
+  ssh-add: "Add private key identities to the OpenSSH authentication agent [openssh]"
+  ssh-agent: "OpenSSH authentication agent [openssh]"
+  ssh-copy-id: "Use locally available keys to authorize logins on a remote machine [openssh]"
+  sshd: "OpenSSH daemon [openssh]"
+  sshd-session: "OpenSSH Privilege Separation [openssh]"
+  ssh-keygen: "OpenSSH authentication key utility [openssh]"
+  ssh-keyscan: "Gather SSH public keys from servers [openssh]"
+  ssh-keysign: "OpenSSH helper for host-based authentication [openssh]"
+  ssh-pkcs11-helper: "OpenSSH helper for PKCS#11 support [openssh]"
+  ssh-sk-helper: "OpenSSH helper for FIDO authenticator support [openssh]"
+distro_pkg:
+  alpine:
+    - "openssh"
+  archlinux:
+    aur:
+      - "openssh-git"
+  debian:
+    - "openssh"
+  gnuguix:
+    - "openssh"
+  homebrew:
+    - "openssh"
+  nixpkgs:
+    - "openssh"
+homepage:
+  - "https://www.openssh.com"
+license:
+  - id: "BSD"
+    url: "https://github.com/openssh/openssh-portable/raw/826483d51a9fee60703298bbf839d9ce37943474/LICENCE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "scp"
+  - "sftp"
+  - "sftp-server"
+  - "ssh"
+  - "ssh-add"
+  - "ssh-agent"
+  - "ssh-copy-id"
+  - "sshd"
+  - "sshd-session"
+  - "ssh-keygen"
+  - "ssh-keyscan"
+  - "ssh-keysign"
+  - "ssh-pkcs11-helper"
+  - "ssh-sk-helper"
+repology:
+  - "openssh"
+src_url:
+  - "https://github.com/openssh/openssh-portable"
+tag:
+  - "ssh"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#openssh" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.openssh" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/x-shellscript' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
