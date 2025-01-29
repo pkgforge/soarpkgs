@@ -1,0 +1,99 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/vnstat/static.official.glibc.yaml
+_disabled: false
+
+pkg: "vnstat"
+pkg_id: "github.com.vergoh.vnstat.glibc"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Terminal based network traffic monitor"
+  vnstat: "Terminal based network traffic monitor (Client)"
+  vnstatd: "Server daemon for VnStat"
+distro_pkg:
+  alpine:
+    - "vnstat"
+  archlinux:
+    extra:
+      - "vnstat"
+  debian:
+    - "vnstat"
+  gnuguix:
+    - "vnstat"
+  homebrew:
+    - "vnstat"
+  nixpkgs:
+    - "vnstat"
+homepage:
+  - "https://humdi.net/vnstat/"
+license:
+  - id : "GPL-2.0"
+    url: "https://github.com/vergoh/vnstat/raw/b6ce3d7fc1f2427d0fbd109a42002bd1f76c5763/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/vergoh/vnstat"
+  - "Statically Linked on Debian (GLIBC)"  
+  - "Configuration File: https://raw.githubusercontent.com/vergoh/vnstat/refs/heads/master/cfg/vnstat.conf"
+  - "Service Files:"
+  - "https://github.com/vergoh/vnstat/blob/master/examples/systemd/vnstat.service"
+  - "https://github.com/vergoh/vnstat/blob/master/examples/systemd/simple/vnstat.service"
+  - "https://github.com/vergoh/vnstat/tree/master/examples/init.d/debian"
+provides:
+  - "vnstat"
+  - "vnstatd"
+repology:
+  - "vnstat"
+src_url:
+  - "https://github.com/vergoh/vnstat"
+tag:
+  - "bandwidth"
+  - "traffic"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/vergoh/vnstat" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/vergoh/vnstat" "./TEMPREPO" && cd "./TEMPREPO"
+       export CC="clang"
+       export CXX="clang++"
+       export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
+       export CPPFLAGS="${CFLAGS}"
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
+       "./configure" --disable-shared --disable-Werror --enable-static --enable-year2038 --enable-compile-warnings="no"
+       make --jobs="$(($(nproc)+1))" --keep-going
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
+      #Copy
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #strip & info 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
