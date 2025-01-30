@@ -108,5 +108,5 @@ x_exec:
         soar dl "https://github.com/ivan-hc/KDE-utils-appimage@continuous" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
-    #"${SBUILD_TMPDIR}/upstream.version"
+    #Fetch Upstream Version
      curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/kdeutils/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '[:space:]' > "${SBUILD_TMPDIR}/upstream.version"

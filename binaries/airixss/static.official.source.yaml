@@ -70,5 +70,5 @@ x_exec:
      docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
-    #"${SBUILD_TMPDIR}/upstream.version"
+    #Fetch Upstream Version
      curl -qfsSL "https://api.gh.pkgforge.dev/repos/ferreiraklet/airixss/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
