@@ -3,12 +3,12 @@
 _disabled: false
 
 pkg: "zsv"
-pkg_id: "github.com.liquidaty.zsv"
+pkg_id: "github.com.liquidaty.zsv.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Worlds fastest (simd) CSV parser, with an extensible CLI"
+description: "A command-line utility for parsing CSV"
 distro_pkg:
   nixpkgs:
     - "zsv"
@@ -16,7 +16,7 @@ homepage:
   - "https://github.com/liquidaty/zsv"
 license:
   - id : "MIT"
-    url: "https://github.com/liquidaty/zsv/raw/a5691ce0f0e31a9d89d563d410bd18e2581b24ee/LICENSE"  
+    url: "https://github.com/liquidaty/zsv/raw/a5691ce0f0e31a9d89d563d410bd18e2581b24ee/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
