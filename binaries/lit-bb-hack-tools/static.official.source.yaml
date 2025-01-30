@@ -1,0 +1,116 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/lit-bb-hack-tools/static.official.source.yaml
+_disabled: false
+
+pkg: "lit-bb-hack-tools"
+pkg_id: "github.com.edoardottt.lit-bb-hack-tools"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Little Bug Bounty & Hacking Tools"
+  bbscope: "Generate In-Scope Items based on URLs, Subdomains or BurpSuite Config File [lit-bb-hack-tools]"
+  bbtargets: "Extract Bug Bounty targets from Project Discovery Chaos list [lit-bb-hack-tools]"
+  chainredir: "Display URL redirect chain [lit-bb-hack-tools]"
+  checkbypass: "Test WAF bypass attempts [lit-bb-hack-tools]"
+  cleanpath: "Extract unique paths from URL list [lit-bb-hack-tools]"
+  doomxss: "Detect DOM XSS sinks in HTML/JS files [lit-bb-hack-tools]"
+  eae: "Extract and sort URL extensions [lit-bb-hack-tools]"
+  eah: "Extract and sort hostnames [lit-bb-hack-tools]"
+  eaparam: "Extract unique URL parameters [lit-bb-hack-tools]"
+  eapath: "Extract unique URLs without queries [lit-bb-hack-tools]"
+  eap: "Extract and sort protocols [lit-bb-hack-tools]"
+  earh: "Extract unique root hostnames [lit-bb-hack-tools]"
+  eefjsf: "Extract endpoints from JavaScript files [lit-bb-hack-tools]"
+  genscope: "Generate BurpSuite Config from domain list [lit-bb-hack-tools]"
+  gitdump: "Search git repository for pattern matches [lit-bb-hack-tools]"
+  heacoll: "Collect unique HTTP headers [lit-bb-hack-tools]"
+  knoxssme: "Test URLs using Knoxss.me API [lit-bb-hack-tools]"
+  kubemetrics: "Extract paths from Kubernetes metrics endpoints [lit-bb-hack-tools]"
+  nrp: "List domains without redirects [lit-bb-hack-tools]"
+  rapwp: "Generate payload-embedded URLs [lit-bb-hack-tools]"
+  removehost: "Extract queries without protocol and host [lit-bb-hack-tools]"
+  removepro: "Extract URLs without protocols [lit-bb-hack-tools]"
+  robotstxt: "Extract paths from robots.txt [lit-bb-hack-tools]"
+  rpfu: "Remove standard ports from URLs [lit-bb-hack-tools]"
+  subtake: "Discover CNAME records using dig [lit-bb-hack-tools]"
+  tahm: "Test HTTP methods and collect responses [lit-bb-hack-tools]"
+homepage:
+  - "https://github.com/edoardottt/lit-bb-hack-tools"
+license:
+  - id : "GPL-3.0"
+    url: "https://github.com/edoardottt/lit-bb-hack-tools/raw/0597615f9d7af7b512147f8ca0d7c6410cdd8c1d/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/edoardottt/lit-bb-hack-tools"
+provides:
+  - "aptly"
+repology:
+  - "go:github-edoardottt-lit-bb-hack-tools"
+src_url:
+  - "https://github.com/edoardottt/lit-bb-hack-tools"
+tag:
+  - "utility"
+  - "bug-bounty"
+  - "hacking"
+  - "infosec"
+  - "security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/edoardottt/lit-bb-hack-tools" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       CGO_ENABLED="1" 
+       CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+       GOOS="linux"
+       export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+      #Build
+       git clone --filter "blob:none" --quiet "https://github.com/edoardottt/lit-bb-hack-tools" "./TEMPREPO" && cd "./TEMPREPO"
+       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+       echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       find "." -type f -name "*.md" -exec rm -rvf "{}" \;
+       parent="$(realpath .)"
+       for dir in */; do
+         dir="${dir%/}"
+         [[ "${dir}" == .git* ]] && continue
+         pushd "${dir}" >/dev/null 2>&1 && go mod tidy -v ; go generate
+         file="$(find . -type f | head -n 1 | tr -d "[:space:]")"
+         if [[ -s "${file}" ]]; then
+           out_bin="$(basename "$(realpath .)" | tr -d "[:space:]")"
+           echo -e "\n[+] Building ${out_bin}\n"
+           go build -a -x -v -trimpath -buildmode="pie" -gcflags=all="-l -B -wb=false" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/${out_bin}" "${file}"
+           realpath "${out_bin}"
+         fi
+         cd "${parent}" || popd >/dev/null 2>&1
+       done
+      #Copy
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #Strip 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
