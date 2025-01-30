@@ -24,7 +24,7 @@ description: #https://www.qemu.org/docs/master/user/main.html#linux-user-space-e
   qemu-microblaze: "Simulate a Xilinx MicroBlaze big-endian machine [qemu-user]"
   qemu-microblazeel: "Simulate a Xilinx MicroBlaze little-endian machine [qemu-user]"
   qemu-mips: "Simulate a 32-bit big-endian MIPS machine [qemu-user]"
-  qemu-mips64: "Simulate a 64-bit big-endian MIPS machin [qemu-user]"
+  qemu-mips64: "Simulate a 64-bit big-endian MIPS machine [qemu-user]"
   qemu-mips64el: "Simulate a 64-bit little-endian MIPS machine [qemu-user]"
   qemu-mipsel: "Simulate a 32-bit little-endian MIPS machine [qemu-user]"
   qemu-mipsn32: "Simulate a 32-bit big-endian MIPS machine with N32 ABI [qemu-user]"
@@ -53,8 +53,8 @@ homepage:
   - "https://gitlab.com/qemu-project/qemu"
   - "https://github.com/qemu/qemu"
 license:
-  - id : "MIT"
-    url: "https://github.com/ziglang/qemu-static/raw/3a689be4a02379c6d219b08334109b69957067e6/LICENSE"  
+  - id: "GPL-2.0"
+    url: "https://gitlab.com/qemu-project/qemu/-/raw/master/COPYING?ref_type=heads"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
