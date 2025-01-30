@@ -198,7 +198,11 @@ x_exec:
     curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "qemu") | .version' | tr -d '[:space:]'
   run: |
     #Build
-     docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/alpine-base-mimalloc:stable" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/alpine-base-mimalloc:stable" \
       sh -c '
       #Setup ENV
        mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
@@ -210,14 +214,16 @@ x_exec:
       #ppkg
        curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
        chmod -v "a+x" "/usr/local/bin/ppkg"
-       ppkg setup --syspm
+       ppkg setup
        ppkg update
       #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/qemu.yml
        ppkg install "qemu" --profile="release" -j "$(($(nproc)+1))" --static
        ppkg tree "qemu" --dirsfirst -L 5
       #Copy
-       ppkg tree "qemu" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | xargs -I "{}" rsync -achLv --exclude="*/" "{}/bin/." "/build-bins/."
-       ppkg tree "qemu" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | xargs -I "{}" rsync -achLv --exclude="*/" "{}/libexec/." "/build-bins/."
+       PPKG_BINDIR="$(ppkg tree "qemu" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d '[:space:]')"
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/bin/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/libexec/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/sbin/." "/build-bins/." 2>/dev/null
       #strip & info
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
