@@ -125,4 +125,4 @@ x_exec:
      mkdir -pv "${SBUILD_TMPDIR}/STATIC_BUILD" && \
      find "${SBUILD_TMPDIR}/artifact" -type f -name '*.xz' -exec tar -xvf "{}" --strip-components="1" -C "${SBUILD_TMPDIR}/STATIC_BUILD" \;
     #Copy
-     find "${SBUILD_TMPDIR}/STATIC_BUILD" -maxdepth 2 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}/STATIC_BUILD" -maxdepth 2 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

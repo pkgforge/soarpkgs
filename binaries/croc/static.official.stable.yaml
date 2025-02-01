@@ -61,4 +61,4 @@ x_exec:
     #Extract
     while true;do E_X="$(find "${SBUILD_TMPDIR}" -type f -print0|xargs -0 file -i|grep -Ei "archive|compressed|x-tar"|cut -d: -f1|head -n1)";[ -z "${E_X}" ]&&break;file -i "${E_X}"|grep -qi "application/.*executable"&&break;7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -aoa -y$(mktemp -u)&&rm -vf "${E_X}";done
     #Copy
-    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/croc"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/croc"

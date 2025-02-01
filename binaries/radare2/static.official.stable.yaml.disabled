@@ -81,8 +81,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          meson setup --buildtype="release" --default-library="static" --prefer-static -Ddebug="false" -Db_lto="true" -Db_pie="true" -Dstatic_runtime="true" -Db_staticpic="true" --strip --reconfigure --wipe --clearcache "./STATIC_BUILD" "./"
          ninja -C "./STATIC_BUILD"
         #copy
-         find "./STATIC_BUILD/" -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
-         find "./STATIC_BUILD/binr/" -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
+         find "./STATIC_BUILD/" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
+         find "./STATIC_BUILD/binr/" -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
         '
       #Copy 
        docker cp "alpine-builder-mimalloc:/build-bins/." "$(pwd)/"

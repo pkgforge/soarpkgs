@@ -78,7 +78,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          bash "./configure" --enable-lto --enable-clean-sa-dir --enable-install-cron --enable-use-crond --enable-collect-all  
          make CFLAGS="$CFLAGS" CXXFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" --jobs="$(($(nproc)+1))" --keep-going
         #copy
-         find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
+         find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
         '
       #Copy 
        docker cp "alpine-builder-mimalloc:/build-bins/." "$(pwd)/"
