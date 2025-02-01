@@ -1,14 +1,14 @@
 #!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.glibc.source.yaml
 _disabled: false
 
 pkg: "soar"
-pkg_id: "github.com.pkgforge.soar"
+pkg_id: "github.com.pkgforge.soar.glibc"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "The Modern, Bloat-Free Distro-Independent Package Manager"
+description: "The Modern, Bloat-Free Distro-Independent Package Manager (GLIBC)"
 distro_pkg:
   archlinux:
     aur:
@@ -24,6 +24,9 @@ maintainer:
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/pkgforge/soar"
+  - "Statically Linked on Debian (GLIBC)"
+provides:
+  - "soar"
 repology:
   - "soar"
 src_url:
@@ -42,18 +45,18 @@ x_exec:
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
-     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+     "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
        source "${HOME}/.cargo/env"
-       export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+       export RUST_TARGET="$(uname -m)-unknown-linux-gnu"
        rustup target add "${RUST_TARGET}"
-       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
+       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
        git clone --filter "blob:none" --quiet "https://github.com/pkgforge/soar" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}\n"
@@ -72,7 +75,6 @@ x_exec:
        popd >/dev/null 2>&1
       '
     #Copy & Meta
-     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
-     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
