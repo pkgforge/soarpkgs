@@ -98,6 +98,7 @@ x_exec:
     #Build 
      RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
      "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" && ! -d "${SBUILD_OUTDIR}/${PKG}" ]] || { echo "[-] FATAL: ${SBUILD_OUTDIR}/${PKG} is Missing/Empty" >&2; exit 1; }
     #Extract Metadata
      "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
      HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "akregator.*"

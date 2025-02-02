@@ -1,0 +1,112 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/deltapatcher/runimage.debian.stable.yaml
+_disabled: false
+
+pkg: "deltapatcher"
+pkg_id: "runimage.debian.deltapatcher"
+pkg_type: "runimage"
+app_id: "io.github.marco_calautti.DeltaPatcher"
+category:
+  - "Game"
+description: "GUI to create and apply xdelta patches"
+desktop:
+  url: "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/refs/heads/master/app/linux_stuff/io.github.marco_calautti.DeltaPatcher.desktop"
+homepage:
+  - "https://github.com/marco-calautti/DeltaPatcher"
+icon:
+  url: "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/refs/heads/master/graphics/icon256.png"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/marco-calautti/DeltaPatcher/raw/5263b9486b4ab8081164ab3b192a031511a591a8/LICENSE.md"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [debian]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+ - "deltapatcher==DeltaPatcher"
+#repology:
+# - "deltapatcher"
+src_url:
+  - "https://github.com/marco-calautti/DeltaPatcher"
+tag:
+  - "patcher"
+x_exec:
+  host:
+   # - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/marco-calautti/DeltaPatcher/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/debian_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+       #Requirements
+        export DEBIAN_FRONTEND="noninteractive"
+        echo 'root:*::' > "/etc/gshadow"
+        echo 'daemon:*::' >> "/etc/gshadow"
+        echo 'bin:*::' >> "/etc/gshadow"
+        echo 'sys:*::' >> "/etc/gshadow"
+        BASE_PKGS=(libgtk-3-0 libgtk-3-bin libgtk-3-common)
+        sudo apt clean -y
+        sudo apt update -y
+        #DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${BASE_PKGS[@]}" -y --no-install-recommends --ignore-missing
+        for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
+       #Main Package
+        curl -kqfSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/7z" -o "./7z" && chmod -v 'a+x' "./7z"
+        curl -kqfSL "https://github.com/marco-calautti/DeltaPatcher/releases/download/${PKGVER}/linuxGTK3_bin_x86_64.zip" -o "./deltapatcher.zip"
+        "./7z" x -mmt="$(($(nproc)+1))" -bd -y -o"./deltapatcher" "./deltapatcher.zip" 2>/dev/null
+        chmod -v 'a+x' "./deltapatcher/DeltaPatcher" || chmod -v 'a+x' "./deltapatcher/deltapatcher"
+        [[ -s "./deltapatcher/DeltaPatcher" || -s "./deltapatcher/deltapatcher" ]] || exit 1
+        mv -fv "./deltapatcher/DeltaPatcher" "/usr/local/bin/deltapatcher" || mv -fv "./deltapatcher/deltapatcher" "/usr/local/bin/deltapatcher"
+        chmod -v 'a+x' "/usr/local/bin/deltapatcher"
+        command -v "deltapatcher" >/dev/null 2>&1 || exit 1
+        rm -rvf "./7z" "./deltapatcher" "./deltapatcher.zip"
+       #Debloat & Shrink
+        sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y
+        sudo apt list --installed
+        sudo apt clean -y
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=deltapatcher}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_UPDATE_SHRINK="${RIM_UPDATE_SHRINK:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" && ! -d "${SBUILD_OUTDIR}/${PKG}" ]] || { echo "[-] FATAL: ${SBUILD_OUTDIR}/${PKG} is Missing/Empty" >&2; exit 1; }
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/marco-calautti/DeltaPatcher/refs/heads/master/app/linux_stuff/io.github.marco_calautti.DeltaPatcher.metainfo.xml" -o "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"

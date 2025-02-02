@@ -57,7 +57,7 @@ export SKIP_BUILD="NO" #YES, in case of deleted repos, broken builds etc
 if [ "${SKIP_BUILD}" == "NO" ]; then
    #void: Portable Ephemeral Void Linux Docker Image (DockerC)
      export BIN="void"
-     export SOURCE_URL="hhttps://github.com/void-linux/void-containers"
+     export SOURCE_URL="https://github.com/void-linux/void-containers"
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #Build
        #glibc

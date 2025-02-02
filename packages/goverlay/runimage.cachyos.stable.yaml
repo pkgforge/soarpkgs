@@ -1,0 +1,119 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/goverlay/runimage.cachyos.stable.yaml
+_disabled: false
+
+pkg: "goverlay"
+pkg_id: "runimage.cachyos.goverlay.stable"
+pkg_type: "runimage"
+app_id: "io.github.benjamimgois"
+category:
+  - "Utility"
+description: "GUI for configuring Vulkan/OpenGL overlays"
+desktop:
+  url: "https://gitlab.gnome.org/GNOME/goverlay/-/raw/master/desktop/goverlay.desktop.in.in"
+distro_pkg:
+  alpine:
+    - "goverlay"
+  archlinux:
+    aur:
+      - "goverlay-git"
+    extra:
+      - "goverlay"
+  debian:
+    - "goverlay"
+  nixpkgs:
+    - "goverlay"
+homepage:
+  - "https://www.goverlay.org"
+  - "https://gitlab.gnome.org/GNOME/goverlay"
+icon:
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/goverlay/assets/default.png"
+license:
+  - id: "GPL-3.0"
+    url: "https://gitlab.gnome.org/GNOME/goverlay/-/raw/master/LICENSE?ref_type=heads"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [cachyos]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "goverlay"
+repology:
+  - "goverlay"
+src_url:
+  - "https://archlinux.org/packages/extra/x86_64/goverlay/"
+tag:
+  - "mangohud"
+  - "overlay"
+  - "replaysorcery"
+  - "replay-sorcery"
+  - "vkbasalt"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/goverlay/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/cachyos_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+       #Requirements
+        pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
+        #BASE_PKGS=(libunwind)
+        #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
+        #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+       #Main Package
+        pacman -Sy "goverlay" --noconfirm
+        pacman -Ql "goverlay"
+        command -v "goverlay" >/dev/null 2>&1 || exit 1
+       #Debloat & Shrink
+        pacman -Rsn base-devel --noconfirm 2>/dev/null
+        pacman -Rsn perl --noconfirm 2>/dev/null
+        pacman -Rsn python --noconfirm 2>/dev/null
+        pacman -Scc --noconfirm ; yay -Scc --noconfirm
+        rim-shrink --all
+       #Config
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_UPDATE_SHRINK="${RIM_UPDATE_SHRINK:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" && ! -d "${SBUILD_OUTDIR}/${PKG}" ]] || { echo "[-] FATAL: ${SBUILD_OUTDIR}/${PKG} is Missing/Empty" >&2; exit 1; }
+    #Extract Metadata
+     "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "gnu.*"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/benjamimgois/goverlay/refs/heads/main/data/io.github.benjamimgois.goverlay.metainfo.xml" -o "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"

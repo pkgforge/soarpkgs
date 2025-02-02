@@ -1,0 +1,129 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/inkscape/runimage.alpine.stable.yaml
+_disabled: false
+
+pkg: "inkscape"
+pkg_id: "runimage.alpine.inkscape"
+pkg_type: "runimage"
+app_id: "org.inkscape.Inkscape"
+category:
+  - "Graphics"
+  - "Office"
+description: "FOSS Vector Graphics Editor"
+desktop:
+  url: "https://gitlab.com/inkscape/inkscape/-/raw/master/org.inkscape.Inkscape.desktop.template"
+distro_pkg:
+  alpine:
+    - "inkscape"
+  archlinux:
+    aur:
+      - "inkscape-git"
+    extra:
+      - "inkscape"
+  debian:
+    - "inkscape"
+  gnuguix:
+    - "inkscape"
+  homebrew:
+    - "inkscape"
+  nixpkgs:
+    - "inkscape"
+    - "inkscape-with-extensions"
+homepage:
+  - "https://inkscape.org"
+icon:
+  url: "https://gitlab.com/inkscape/inkscape/-/raw/master/share/icons/application/256x256/org.inkscape.Inkscape.png"
+#  url: "https://gitlab.com/inkscape/inkscape/-/raw/master/share/icons/application/scalable/org.inkscape.Inkscape.svg"
+license:
+  - id: "GPL-2.0"
+    url: "https://gitlab.com/inkscape/inkscape/-/raw/master/COPYING?ref_type=heads"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [alpine]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+ - "inkscape"
+repology:
+ - "inkscape"
+src_url:
+  - "https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/community/inkscape"
+tag:
+  - "editor"
+  - "graphics"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/inkscape/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/alpine_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+        #BASE_PKGS=()
+        apk update --force-missing-repositories --no-cache --no-interactive
+        apk upgrade --force-missing-repositories --no-cache --no-interactive
+        #apt install -f "${BASE_PKGS[@]}" --latest --upgrade --no-interactive
+        #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --latest --upgrade --no-interactive 2>/dev/null; done
+       #Main Package
+        apk add "inkscape" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
+        command -v "inkscape" >/dev/null 2>&1 || exit 1
+       #Debloat & Shrink
+        apk info -L "inkscape"
+        rm -rvf "/etc/apk/repositories" 2>/dev/null
+        rm -rfv "/var/cache/apk/"* 2>/dev/null
+        rm -rfv "/usr/share/doc/"* 2>/dev/null
+        rm -rfv "/usr/share/help/"* 2>/dev/null
+        rm -rfv "/usr/share/kde4/help"* 2>/dev/null
+        rm -rfv "/usr/share/fonts/"* 2>/dev/null
+        rm -rfv "/usr/share/licenses/"* 2>/dev/null
+        rm -rfv "/usr/share/man/"* 2>/dev/null
+        apk cache clean
+        ln -sf "/dev/null" "/etc/apk/cache"
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        #echo 'RIM_AUTORUN="${RIM_AUTORUN:=inkscape}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" && ! -d "${SBUILD_OUTDIR}/${PKG}" ]] || { echo "[-] FATAL: ${SBUILD_OUTDIR}/${PKG} is Missing/Empty" >&2; exit 1; }
+    #Extract Metadata
+     "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "inkscape.*"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
+    #Appstream
+     curl -qfsSL "https://gitlab.com/inkscape/inkscape/-/raw/master/org.inkscape.Inkscape.appdata.xml.in" -o  "${SBUILD_OUTDIR}/${PKG}.appdata.xml"
