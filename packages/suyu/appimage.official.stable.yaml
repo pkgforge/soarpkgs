@@ -43,7 +43,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     #curl -qfsSL "https://git.suyu.dev/api/v1/repos/suyu/suyu/releases?limit=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
-    curl -qfsSL "https://git.suyu.dev/suyu/suyu/releases" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' |\
+    curl -qfsSL "https://api.rv.pkgforge.dev/https://git.suyu.dev/suyu/suyu/releases" | grep -o 'href="[^"]*"' | sed 's/href="//' | sed 's/"$//' |\
      grep -iE 'appimage' | sed -E 's#.*/download/([^/]+)/.*#\1#' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Download
@@ -56,9 +56,9 @@ x_exec:
         #DOWNLOAD_URL="$(curl -qfsSL "https://git.suyu.dev/api/v1/repos/suyu/suyu/releases/tags/${PKGVER}" |\
         # jq -r '.assets[].browser_download_url' | grep -Eiv "aarch64|arm|zsync" | grep -i "appimage" |\
         # sort --version-sort | head -n 1 | tr -d '[:space:]')"
-         DOWNLOAD_URL="$(curl -qfsSL "https://git.suyu.dev/suyu/suyu/releases" | grep -o 'href="[^"]*"' |\
+         DOWNLOAD_URL="$(curl -qfsSL "https://api.rv.pkgforge.dev/https://git.suyu.dev/suyu/suyu/releases" | grep -o 'href="[^"]*"' |\
          sed 's/href="//' | sed 's/"$//' | grep -iE 'appimage' | grep -Eiv "aarch64|arm|zsync" |\
          grep -iE "${PKGVER}" | head -n 1 | tr -d '[:space:]')"
-         curl -w "(DL) <== %{url}\n" -qfSL "${DOWNLOAD_URL}" -o "./${PKG}"
+         curl -w "(DL) <== %{url}\n" -qfSL "https://api.rv.pkgforge.dev/${DOWNLOAD_URL}" -o "./${PKG}"
         ;;
     esac
