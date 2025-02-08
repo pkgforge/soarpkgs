@@ -36,7 +36,7 @@ tag:
 x_exec:
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/steam/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in

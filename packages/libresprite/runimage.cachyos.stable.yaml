@@ -51,7 +51,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libresprite-git" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libresprite-git" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
   run: |
     #Get BaseImage
      curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/cachyos_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"

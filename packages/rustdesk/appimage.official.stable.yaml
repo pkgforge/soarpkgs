@@ -1,0 +1,64 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rustdesk/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "rustdesk"
+pkg_id: "github.com.rustdesk.rustdesk.stable"
+pkg_type: "appimage"
+app_id: "com.rustdesk.RustDesk"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
+category:
+  - "Utility"
+description: "FOSS Remote desktop application"
+#desktop:
+#  url: "https://github.com/rustdesk/rustdesk/raw/refs/heads/master/res/rustdesk.desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "rustdesk"
+      - "rustdesk-appimage"
+      - "rustdesk-bin"
+      - "rustdesk-git"
+  homebrew:
+    - "rustdesk"
+  nixpkgs:
+    - "rustdesk"
+homepage:
+  - "https://github.com/rustdesk/rustdesk"
+  - "https://rustdesk.com"
+#icon: 
+#  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/packages/rustdesk/assets/default.png"
+license:
+  - id: "AGPL-3.0"
+    url: "https://github.com/rustdesk/rustdesk/raw/aa63ebc7e5c130267039555a5cade5b085c15bec/LICENCE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/rustdesk/rustdesk"
+provides:
+  - "rustdesk"
+repology:
+  - "rustdesk"  
+src_url:
+  - "https://github.com/rustdesk/rustdesk"
+tag:
+  - "anydesk"
+  - "remote-desktop"
+  - "screen-sharing"
+  - "teamviewer"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rustdesk/rustdesk/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/rustdesk/rustdesk@${PKGVER}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/rustdesk/rustdesk@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

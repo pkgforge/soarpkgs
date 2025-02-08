@@ -44,7 +44,7 @@ tag:
 x_exec:
   shell: "bash"
   pkgver: |
-    #curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-boxes/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    #curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-boxes/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Boxes-appimage/releases?per_page=100" | \
      jq -r '[.[] | select(.draft == false and (.tag_name | test("continuous")))] | .[0].assets[].browser_download_url' | \
      sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | \

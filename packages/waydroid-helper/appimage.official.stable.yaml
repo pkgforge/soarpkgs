@@ -1,0 +1,51 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/waydroid-helper/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "waydroid-helper"
+pkg_id: "github.com.ayasa520.waydroid-helper.stable"
+pkg_type: "appimage"
+app_id: "com.jaoushingan.WaydroidHelper"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
+category:
+  - "Utility"
+description: "A GUI application for Waydroid configuration and extension installation"
+distro_pkg:
+  archlinux:
+    aur:
+      - "waydroid-helper"
+      - "waydroid-helper-git"
+homepage:
+  - "https://github.com/ayasa520/waydroid-helper"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/ayasa520/waydroid-helper/raw/aa497e707e7d3beec7f8649a57955875c07841c8/COPYING"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/ayasa520/waydroid-helper"
+provides:
+  - "waydroid-helper"
+repology:
+  - "waydroid-helper"
+src_url:
+  - "https://github.com/ayasa520/waydroid-helper"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ayasa520/waydroid-helper/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+       exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/ayasa520/waydroid-helper@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

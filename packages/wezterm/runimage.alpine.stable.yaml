@@ -56,7 +56,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/wezterm/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/wezterm/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
   run: |
     #Get BaseImage
      curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/alpine_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"

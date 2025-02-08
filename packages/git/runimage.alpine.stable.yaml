@@ -210,7 +210,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/git/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/git/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
   run: |
     #Get BaseImage
      curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/alpine_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
@@ -222,7 +222,7 @@ x_exec:
         #BASE_PKGS=()
         apk update --force-missing-repositories --no-cache --no-interactive
         apk upgrade --force-missing-repositories --no-cache --no-interactive
-        #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --latest --upgrade --no-interactive 2>/dev/null; done
+        #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-interactive 2>/dev/null; done
        #Main Package
         apk add "git" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
         command -v "git" >/dev/null 2>&1 || exit 1

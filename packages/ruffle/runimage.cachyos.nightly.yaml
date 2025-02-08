@@ -1,0 +1,110 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ruffle/runimage.cachyos.nightly.yaml
+_disabled: false
+
+pkg: "ruffle"
+pkg_id: "runimage.cachyos.ruffle.nightly"
+pkg_type: "runimage"
+app_id: "rs.ruffle.Ruffle"
+category:
+  - "Utility"
+description: "Adobe Flash Player emulator"
+desktop:
+  url: "https://raw.githubusercontent.com/ruffle-rs/ruffle/refs/heads/master/desktop/packages/linux/rs.ruffle.Ruffle.desktop"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ruffle-bin"
+      - "ruffle-git"
+homepage:
+  - "https://ruffle.rs"
+  - "https://github.com/ruffle-rs/ruffle"
+icon:
+  url: "https://github.com/ruffle-rs/ruffle/raw/refs/heads/master/desktop/packages/linux/rs.ruffle.Ruffle.svg"  
+license:
+  - id: "MIT"
+    url: "https://github.com/ruffle-rs/ruffle/raw/158ff2122a72a2d20b51c1afb9c4d096a1dbee97/LICENSE.md"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [cachyos]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ruffle"
+repology:
+  - "ruffle"
+src_url:
+  - "https://github.com/ruffle-rs/ruffle"
+tag:
+  - "adobe"
+  - "flashplayer"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ruffle" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/cachyos_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+       #Requirements
+        sudo pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
+        BASE_PKGS=(alsa-lib egl-wayland gtk3 libgl libpipewire libpulse libvpx libxcb openal pipewire sdl2 zlib)
+        #sudo pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
+        for pkg in "${BASE_PKGS[@]}"; do sudo pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+       #Main Package
+        yay -S "ruffle-nightly-bin" --noconfirm
+        command -v "ruffle" >/dev/null 2>&1 || exit 1
+       #Debloat & Shrink
+        yay -Ql "ruffle-nightly-bin"
+        sudo pacman -Rsn base-devel --noconfirm 2>/dev/null
+        sudo pacman -Rsn perl --noconfirm 2>/dev/null
+        sudo pacman -Rsn python --noconfirm 2>/dev/null
+        sudo pacman -Scc --noconfirm ; yay -Scc --noconfirm
+        sudo rim-shrink --all
+       #Config
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=ruffle}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_UPDATE_SHRINK="${RIM_UPDATE_SHRINK:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" && ! -d "${SBUILD_OUTDIR}/${PKG}" ]] || { echo "[-] FATAL: ${SBUILD_OUTDIR}/${PKG} is Missing/Empty" >&2; exit 1; }
+    #Extract Metadata
+     "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --list
+     HOME="${SBUILD_TMPDIR}/integ_files" "${SBUILD_OUTDIR}/${PKG}" rim-dinteg --verbose --add "ruffle.*"
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${SBUILD_TMPDIR}/integ_files" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${SBUILD_TMPDIR}/integ_files" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/ruffle-rs/ruffle/refs/heads/master/desktop/packages/linux/rs.ruffle.Ruffle.metainfo.xml" -o  "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"

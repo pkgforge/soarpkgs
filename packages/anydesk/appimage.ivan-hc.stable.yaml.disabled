@@ -37,7 +37,7 @@ tag:
 x_exec:
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=anydesk-bin" | sed -n 's/^pkgver=//p' | tr -d '[:space:]'
+    curl -qfsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=anydesk-bin" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in

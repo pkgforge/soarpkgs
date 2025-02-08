@@ -53,7 +53,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Abiword-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/Abiword-appimage/releases/latest?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | sed 's/^[^0-9]*//; s/[^0-9]*$//' | awk -F'[-:=/]' '{print $1}' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
@@ -62,8 +62,8 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/ivan-hc/Abiword-appimage@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/ivan-hc/Abiword-appimage@continuous" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
     #"${SBUILD_TMPDIR}/upstream.version"
-     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/abiword/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
+     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/abiword/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]' > "${SBUILD_TMPDIR}/upstream.version"

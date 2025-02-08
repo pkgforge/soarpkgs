@@ -69,7 +69,7 @@ x_exec:
        #Main Package: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=freedownloadmanager
         curl -kqfSL "https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb" -o "./fdm.deb" && chmod -v 'a+x' "./fdm.deb"
         apt install -f "./fdm.deb"
-                chmod -v 'a+x' "/opt/freedownloadmanager/fdm"
+        chmod -v 'a+x' "/opt/freedownloadmanager/fdm"
         [[ -s "/opt/freedownloadmanager/fdm" || -s "/opt/freedownloadmanager/fdm" ]] || exit 1
         echo '#!/usr/bin/env bash' > "/usr/local/bin/fdm"
         echo 'cd "/opt/freedownloadmanager" || exit 1' >> "/usr/local/bin/fdm"

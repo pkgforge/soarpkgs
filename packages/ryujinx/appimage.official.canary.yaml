@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ryujinx/appimage.official.canary.yaml
+_disabled: false
+
+pkg: "ryujinx"
+pkg_id: "github.com.Ryubing.Ryujinx.canary"
+pkg_type: "appimage"
+app_id: "io.github.ryubing.Ryujinx"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
+category:
+  - "Game"
+description: "Nintendo Switch Emulator (Canary)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ryujinx"
+      - "ryujinx-git"
+  nixpkgs:
+    - "ryujinx"
+homepage:
+  - "https://github.com/Ryubing/Ryujinx"
+license:
+  - id: "MIT"
+    url: "https://github.com/Ryubing/Ryujinx/raw/1d88771d1b2e90d78a938e5235d13b3a157dad5f/LICENSE.txt"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/ryujinx/ryujinx"
+provides:
+  - "ryujinx"
+repology:
+  - "ryujinx"
+src_url:
+  - "https://github.com/Ryubing/Canary-Releases"
+tag:
+  - "emulator"
+  - "game"
+x_exec:
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Ryubing/Canary-Releases/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Ryubing/Canary-Releases@${PKGVER}" --match "appimage,arm64" --exclude "x86,x64,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Ryubing/Canary-Releases@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

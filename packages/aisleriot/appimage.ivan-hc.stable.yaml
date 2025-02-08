@@ -63,4 +63,4 @@ x_exec:
         ;;
     esac
     #Fetch Upstream Version
-     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/aisleriot/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
+     curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/aisleriot/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
