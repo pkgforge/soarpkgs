@@ -1,0 +1,60 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/signal-desktop/appimage.karo-solutions.stable.yaml
+_disabled: false
+
+pkg: "signal-desktop"
+pkg_id: "github.com.karo-solutions.Signal-Desktop-AppImage.stable"
+pkg_type: "appimage"
+app_id: "org.signal.Signal"
+category:
+  - "Utility"
+description: "Private, simple, and secure messenger"
+distro_pkg:
+  alpine:
+    - "signal-desktop"
+  archlinux:
+    aur:
+      - "signal-desktop-beta"
+    extra:
+      - "signal-desktop"
+  homebrew:
+    - "signal"
+  nixpkgs:
+    - "signal-desktop"
+homepage:
+  - "https://signal.org"
+  - "https://github.com/signalapp/signal-desktop"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/karo-solutions/Signal-Desktop-AppImage"
+license:
+  - id: "AGPL-3.0"
+    url: "https://github.com/signalapp/Signal-Desktop/raw/769391113eea340c5f6c82d9a8341f49f3ee2585/LICENSE"
+provides:
+  - "signal-desktop"
+repology:
+  - "signal-desktop"
+src_url:
+  - "https://github.com/karo-solutions/Signal-Desktop-AppImage"
+tag:
+  - "chat"
+  - "messenger"
+x_exec:
+  host:
+    #- "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/karo-solutions/Signal-Desktop-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        #soar dl "https://github.com/karo-solutions/Signal-Desktop-AppImage@${PKGVER}" --match "appimage,aarch64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/karo-solutions/Signal-Desktop-AppImage@${PKGVER}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
