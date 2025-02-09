@@ -1,0 +1,74 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bed/static.official.source.yaml
+_disabled: false
+
+pkg: "bed"
+pkg_id: "github.com.itchyny.bed.source"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Binary editor written in Go"
+distro_pkg:
+  archlinux:
+    aur:
+      - "bed"
+  homebrew:
+    - "bed"
+homepage:
+  - "https://github.com/itchyny/bed"
+license:
+  - id : "MIT"
+    url: "https://github.com/itchyny/bed/raw/506f3317facca1585dc7409e3e16f37cd6563ca9/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/itchyny/bed"
+provides:
+  - "bed"  
+repology:
+  - "bed-editor-itchyny"
+src_url:
+  - "https://github.com/itchyny/bed"
+tag:
+  - "editor"
+  - "hex"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/itchyny/bed" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       CGO_ENABLED="1" 
+       CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+       GOOS="linux"
+       export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+      #Build
+       git clone --filter "blob:none" --quiet "https://github.com/itchyny/bed" "./TEMPREPO" && cd "./TEMPREPO"
+       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+       echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go build -C "./cmd/bed" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/bed"
+      #Copy
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #Strip 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \; 2>/dev/null
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

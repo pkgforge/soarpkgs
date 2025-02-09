@@ -1,6 +1,11 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/bed/static.official.stable.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+   replaced:
+     - date: "2024-02-09"
+       pkg_id: "github.com.itchyny.bed.source"
+       reason: "Switched to building from source"
 
 pkg: "bed"
 pkg_id: "github.com.itchyny.bed"
