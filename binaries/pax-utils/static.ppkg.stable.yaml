@@ -1,0 +1,99 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/pax-utils/static.ppkg.stable.yaml
+_disabled: false
+
+pkg: "pax-utils"
+pkg_id: "ppkg.pax-utils"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Tools to Check ELF Files for Security Relevant Properties"
+  dumpelf: "Dump internal ELF structure [pax-utils]"
+  lddtree: "Display ELF dependencies as a tree [pax-utils]"
+  pspax: "List ELF/PaX information about running processes [pax-utils]"
+  scanelf: "User-space utility to scan ELF files [pax-utils]"
+  scanmacho: "User-space utility to scan Mach-O files [pax-utils]"
+  symtree: "Display libraries that satisfy undefined symbols, as a tree [pax-utils]"  
+distro_pkg:
+  alpine:
+    - "pax-utils"
+  archlinux:
+    extra:
+      - "pax-utils"
+  debian:
+    - "pax-utils"
+  nixpkgs:
+    - "pax-utils"
+homepage:
+  - "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities"
+  - "https://gitweb.gentoo.org/proj/pax-utils.git"
+license:
+  - id: "GPL-2.0"
+    url: "https://gitweb.gentoo.org/proj/pax-utils.git/plain/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using ppkg. Check/Report @ https://github.com/leleliu008/ppkg-formula-repository-official-core"
+provides:
+  - "dumpelf"
+  - "lddtree"
+  - "pspax"
+  - "scanelf"
+  - "scanmacho"
+  - "symtree"
+repology:
+  - "pax-utils"
+src_url:
+  - "https://gitweb.gentoo.org/proj/pax-utils.git"
+tag:
+  - "elfutils"
+  - "security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "pax-utils") | .version' | tr -d '[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/alpine-base-mimalloc:stable" \
+      sh -c '
+      #Setup ENV
+       mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
+       apk update && apk upgrade --no-interactive 2>/dev/null
+       apk del ninja-is-really-ninja --force --no-interactive 2>/dev/null
+       apk cache clean --purge
+      #CoreUtils
+       apk add 7zip binutils coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
+      #ppkg
+       curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
+       chmod -v "a+x" "/usr/local/bin/ppkg"
+       ppkg setup --syspm
+       ppkg update
+       [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/pax-utils.yml
+       ppkg install "pax-utils" --profile="release" -j "$(($(nproc)+1))" --static
+       ppkg tree "pax-utils" --dirsfirst -L 5
+      #Copy
+       PPKG_BINDIR="$(ppkg tree "pax-utils" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d '[:space:]')"
+       echo "${PPKG_BINDIR}" | grep -qi "ppkg" && [ -d "${PPKG_BINDIR}" ] || exit 1
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/bin/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/libexec/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/sbin/." "/build-bins/." 2>/dev/null
+      #strip & info
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
+       file "/build-bins/"* && du -sh "/build-bins/"*
+      '
+    #Copy & Meta
+     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
