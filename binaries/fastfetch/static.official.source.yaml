@@ -94,7 +94,8 @@ x_exec:
        apk add xfconf-dev --latest --upgrade --no-interactive
        apk add wayland-dev --latest --upgrade --no-interactive
       #Build
-       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/fastfetch-cli/fastfetch" "./TEMPREPO" && cd "./TEMPREPO"
+       #git clone --filter "blob:none" --depth="1" --quiet "https://github.com/fastfetch-cli/fastfetch" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/pkgforge-dev/fastfetch" "./TEMPREPO" && cd "./TEMPREPO"
        export CC="clang"
        export CXX="clang++"
        export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
