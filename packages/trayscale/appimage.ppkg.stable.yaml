@@ -9,24 +9,12 @@ category:
   - "ConsoleOnly"
   - "Utility"
 description: "Unofficial GUI wrapper around the Tailscale CLI client"
-distro_pkg:
-  archlinux:
-    aur:
-      - "trayscale"
-  nixpkgs:
-    - "trayscale"
 desktop:
   url: "https://github.com/DeedleFake/trayscale/raw/refs/heads/master/dev.deedles.Trayscale.desktop"
 distro_pkg:
-  alpine:
-    - "trayscale"
   archlinux:
     aur:
       - "trayscale"
-  debian:
-    - "trayscale"
-  homebrew:
-    - "trayscale"
   nixpkgs:
     - "trayscale"
 homepage:
