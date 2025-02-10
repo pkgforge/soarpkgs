@@ -1,6 +1,10 @@
 #!/SBUILD ver @v1.0.0    
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.mimalloc.source.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+   broken:
+     - date: "2025-02-10"
+       reason: "Some dependencies no longer compile with mimalloc"
 
 pkg: "soar"
 pkg_id: "github.com.pkgforge.soar.mimalloc"
