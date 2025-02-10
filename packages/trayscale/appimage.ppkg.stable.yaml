@@ -1,6 +1,8 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/trayscale/appimage.ppkg.stable.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+  - "Too slow & Expensive"
 
 pkg: "trayscale"
 pkg_id: "ppkg.bundle.trayscale.stable"
@@ -50,11 +52,12 @@ x_exec:
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "ubuntu-builder" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
-     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw,z" --workdir "/tmp" \
      "docker.io/ubuntu:latest" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; chown -Rv "$(whoami):$(whoami)" "/tmp" ; chmod -v '1777' '/tmp'
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
        apt update -y -qq
        apt install coreutils curl xz-utils g++ -y -qq
       #ppkg
