@@ -51,7 +51,7 @@ x_exec:
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/devscripts/ubuntu-builder:$(uname -m)" \
+     "docker.io/ubuntu:latest" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
@@ -60,7 +60,7 @@ x_exec:
       #ppkg
        curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
        chmod -v "a+x" "/usr/local/bin/ppkg"
-       ppkg setup --syspm
+       ppkg setup
        ppkg update
        [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
       #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/git.yml
