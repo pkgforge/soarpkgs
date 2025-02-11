@@ -64,7 +64,7 @@ x_exec:
       {
        #Requirements
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
-        BASE_PKGS=(atk binutils cairo freetype2 gcc gdb gdk-pixbuf2 git glib glibc glu gtk2 gtk-engine-murrine libx11 libxtst make p7zip pango patch subversion unzip wget xterm zip)
+        BASE_PKGS=(atk binutils cairo freetype2 gcc gdb gdk-pixbuf2 git glib glibc glu gtk2 gtk-engine-murrine lib32-glibc libx11 libxtst make p7zip pango patch subversion unzip wget xterm zip)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
         for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
        #Main Package
