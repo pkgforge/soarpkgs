@@ -66,7 +66,7 @@ x_exec:
        ppkg setup
        ppkg update
        [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
-      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/git.yml
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/trayscale.yml
        ppkg install "trayscale" --profile="release" -j "$(($(nproc)+1))"
        ppkg bundle "trayscale" "${PKG}.AppImage" --portable
        ppkg tree "trayscale" --dirsfirst -L 5

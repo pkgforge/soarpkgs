@@ -77,6 +77,7 @@ x_exec:
         pacman -Rsn python --noconfirm 2>/dev/null
         pacman -Scc --noconfirm ; yay -Scc --noconfirm
         #rim-shrink --all
+        rim-shrink --back --docs --locales --pkgcache --pycache --strip
        #Config
         echo 'RIM_AUTORUN="${RIM_AUTORUN:=lazarus}"' > "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
