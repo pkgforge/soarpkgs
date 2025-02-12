@@ -88,7 +88,7 @@ x_exec:
     #Pack & Copy
      [[ -s "${EXT_DIR}/UltimMC" ]] && PKG_ENTRYPOINT="${EXT_DIR}/UltimMC"
      [[ -s "${EXT_DIR}/ultimmc" ]] && PKG_ENTRYPOINT="${EXT_DIR}/ultimmc"
-     "${SBUILD_TMPDIR}/wrappe" --current-dir "command" --compression "22" --show-information "none" --unpack-directory ".${PKG}.wrappe" --unpack-target "cwd" --cleanup "${EXT_DIR}" "${PKG_ENTRYPOINT}" "${SBUILD_OUTDIR}/${PKG}"
+     "${SBUILD_TMPDIR}/wrappe" --current-dir "command" --compression "22" --show-information "none" --unpack-directory ".${PKG}.wrappe" --unpack-target "cwd" "${EXT_DIR}" "${PKG_ENTRYPOINT}" "${SBUILD_OUTDIR}/${PKG}"
      [[ -s "${SBUILD_OUTDIR}/${PKG}" ]] || exit 1
      ( askalono --format "json" crawl --follow "${EXT_DIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
     #Desktop
