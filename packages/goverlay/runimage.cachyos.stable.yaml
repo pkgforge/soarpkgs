@@ -66,9 +66,9 @@ x_exec:
       {
        #Requirements
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
-        #BASE_PKGS=(libunwind)
+        BASE_PKGS=(glu mangohud mesa-utils qt6pas vkbasalt vulkan-tools)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -Sy "goverlay" --noconfirm
         pacman -Ql "goverlay"

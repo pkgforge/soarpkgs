@@ -68,7 +68,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(libglvnd mesa)
         pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "wezterm" --noconfirm
         command -v "wezterm" >/dev/null 2>&1 || exit 1

@@ -70,7 +70,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(gst-libav gst-plugins-base-libs gst-plugins-bad gst-plugins-good gst-plugin-qml6 kimageformats libnice mtxclient spdlog qt6-base qt6-declarative qt6-imageformats qt6-multimedia qt6-svg qt6-jdenticon qtkeychain-qt6)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "nheko" --noconfirm
         command -v "nheko" >/dev/null 2>&1 || exit 1

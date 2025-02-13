@@ -50,7 +50,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(adb atkmm at-spi2-core gtk4 libcups libglvnd mesa nss scrcpy)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         curl -kqfSL "https://bin.pkgforge.dev/$(uname -m)/7z" -o "./7z" && chmod -v 'a+x' "./7z"
         curl -kqfSL "https://github.com/Frontesque/scrcpy-plus/releases/latest/download/scrcpy-plus-${PKGVER}-linux-x64-portable.zip" -o "./scrcpy-plus"

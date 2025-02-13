@@ -53,7 +53,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(egl-wayland freetype2 lib32-freetype2 lib32-libpipewire lib32-libpulse lib32-vulkan-intel lib32-vulkan-mesa-layers lib32-vulkan-nouveau lib32-vulkan-radeon lib32-vulkan-swrast libpipewire libpulse pipewire vulkan-intel vulkan-mesa-layers vulkan-nouveau vulkan-radeon vulkan-swrast vulkan-tools)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done        
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done        
        #Main Package
         pacman -S "steam" --noconfirm
         command -v "steam" >/dev/null 2>&1 || exit 1

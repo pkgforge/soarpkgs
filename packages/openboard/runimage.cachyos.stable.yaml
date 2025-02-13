@@ -66,7 +66,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(ffmpeg openssl poppler qt6-base qt6-declarative qt6-multimedia qt6-svg qt6-webchannel qt6-webengine quazip-qt6)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -Sy "chaotic-aur/openboard" --noconfirm
         pacman -Ql "openboard"

@@ -53,7 +53,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(freetype2 gcc-libs glxinfo lib32-freetype2 lib32-gcc-libs lib32-mesa lib32-vulkan-intel lib32-vulkan-radeon mesa pcre vulkan-intel vulkan-radeon vulkan-tools xf86-video-amdgpu xf86-video-intel xorg-server)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "steam" --noconfirm
         command -v "steam" >/dev/null 2>&1 || exit 1

@@ -65,7 +65,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         #BASE_PKGS=()
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -Sy "chaotic-aur/ddnet" --noconfirm
         command -v "DDNet" >/dev/null 2>&1 || command -v "ddnet" >/dev/null 2>&1 || exit 1

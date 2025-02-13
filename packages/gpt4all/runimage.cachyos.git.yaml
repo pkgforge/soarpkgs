@@ -65,7 +65,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(glibc qt6-base qt6-5compat qt6-declarative qt6-httpserver qt6-shadertools qt6-svg qt6-wayland qt6-webengine)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -Sy "chaotic-aur/gpt4all-chat-git" --noconfirm
         pacman -Ql "gpt4all-chat-git"

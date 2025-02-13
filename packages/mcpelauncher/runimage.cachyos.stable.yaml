@@ -67,7 +67,7 @@ x_exec:
         pacman -y --sync --refresh --refresh --sysupgrade --noconfirm
         BASE_PKGS=(curl libegl libevdev libpng libuv libxcursor libxi libxinerama libxrandr libx11 libzip mcpelauncher-client qt6-base qt6-declarative qt6-svg qt6-webengine zlib)
         #pacman -S "${BASE_PKGS[@]}" --needed --noconfirm 
-        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
+        for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -Sy "chaotic-aur/mcpelauncher-linux-git" --noconfirm
         pacman -Sy "chaotic-aur/mcpelauncher-ui-git" --noconfirm
