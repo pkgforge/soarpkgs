@@ -55,7 +55,6 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
 provides:
-bins:
   - "lzcat"
   - "lzcmp"
   - "lzdiff"
@@ -78,7 +77,7 @@ bins:
   - "xzfgrep"
   - "xzgrep"
   - "xzless"
-  - "xzmore"  
+  - "xzmore"
 repology:
   - "xz"
 src_url:
