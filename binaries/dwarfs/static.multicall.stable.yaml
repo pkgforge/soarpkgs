@@ -43,10 +43,10 @@ note:
   - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/mhx/dwarfs"
   -  "This is the multicall version i.e all applets are symlinked"
 provides:
-  - "dwarfs==dwarfsck"
-  - "dwarfs==dwarfsextract"
-  - "dwarfs==mkdwarfs"
-  - "dwarfs==mount.dwarfs"
+  - "dwarfs-tools==dwarfsck"
+  - "dwarfs-tools==dwarfsextract"
+  - "dwarfs-tools==mkdwarfs"
+  - "dwarfs-tools==mount.dwarfs"
 repology:
   - "dwarfs"
 src_url:
