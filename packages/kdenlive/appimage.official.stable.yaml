@@ -73,7 +73,7 @@ x_exec:
          DOWNLOAD_URL="$(curl -qfsSL "https://kdenlive.org/en/download/" | grep -o 'href="[^"]*"' |\
          sed 's/href="//' | sed 's/"$//' | grep -Ei "AppImage" | grep -Eiv 'aarch|arm|zsync' |\
          grep -i "${PKGVER}" | sort --version-sort | tail -n 1 | tr -d '[:space:]')"
-         soar dl "https://kdenlive.org/${DOWNLOAD_URL}" -o "./${PKG}" --yes
+         soar dl "${DOWNLOAD_URL}" -o "./${PKG}" --yes
         ;;
     esac
     #Appstream

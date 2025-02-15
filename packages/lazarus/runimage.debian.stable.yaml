@@ -1,6 +1,10 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lazarus/runimage.debian.stable.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+   broken:
+     - date: "2025-02-25"
+       reason: "Needs lots of fixes"
 
 pkg: "lazarus"
 pkg_id: "runimage.debian.lazarus"

@@ -61,7 +61,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://www.qbittorrent.org/download" | grep -Eoi 'https://[^"]+\.AppImage' |\
+    curl -qfsSL "https://api.rv.pkgforge.dev/https://www.qbittorrent.org/download" | grep -Eoi 'https://[^"]+\.AppImage' |\
      grep -Eiv 'aarch|alpha|arm|fosshub|zsync' | grep -i 'beta' | sed 's/href="//' | sed 's/"$//' |\
      sort --version-sort | tail -n 1 | grep -o '[0-9]\+\(\.[0-9]\+\)\+' | tr -d "[:alpha:]" |\
      awk -F'[-]' '{print $1}' | sort --version-sort | tail -n 1 | tr -d '[:space:]'
@@ -73,7 +73,7 @@ x_exec:
         exit 1
         ;;
       x86_64)
-         DOWNLOAD_URL="$(curl -qfsSL "https://www.qbittorrent.org/download" | grep -Eoi 'https://[^"]+\.AppImage' |\
+         DOWNLOAD_URL="$(curl -qfsSL "https://api.rv.pkgforge.dev/https://www.qbittorrent.org/download" | grep -Eoi 'https://[^"]+\.AppImage' |\
          grep -Eiv 'aarch|alpha|arm|fosshub|zsync' | grep -i 'beta' | sed 's/href="//' | sed 's/"$//' |\
          grep -i "${PKGVER}" | sort --version-sort | tail -n 1 | tr -d '[:space:]')"
          curl -w "(DL) <== %{url}\n" -qfSL "${DOWNLOAD_URL}" -o "./${PKG}"
