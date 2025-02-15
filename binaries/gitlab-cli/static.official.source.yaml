@@ -9,8 +9,25 @@ category:
   - "ConsoleOnly"
   - "Utility"
 description: "Official Gitlab CLI"
+distro_pkg:
+  alpine:
+    - "glab"
+  archlinux:
+    aur:
+      - "glab-git"
+    extra:
+      - "glab"
+  debian:
+    - "glab"
+  homebrew:
+    - "glab"
+  nixpkgs:
+    - "glab"
 homepage:
   - "https://docs.gitlab.com/ee/editor_extensions/gitlab_cli"
+license:
+  - id: "MIT"
+    url: "https://gitlab.com/gitlab-org/cli/-/raw/main/LICENSE?ref_type=heads"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -20,7 +37,7 @@ provides:
   - "glab"
   - "gitlab-cli"
 repology:
-  - "gitlab-cli"
+  - "glab-gitlab-cli"
 src_url:
   - "https://gitlab.com/gitlab-org/cli"
 tag:
