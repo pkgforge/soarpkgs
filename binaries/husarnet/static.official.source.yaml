@@ -41,7 +41,7 @@ x_exec:
   run: |
     #Build
      cd "${SBUILD_TMPDIR}" && git clone --depth="1" --filter="blob:none" --quiet "https://github.com/husarnet/husarnet" "./TEMPREPO"
-     cd "./TEMPREPO/util" && chmod -v 'a+x' "./build.sh" && "./build.sh" "linux"
+     cd "./TEMPREPO/util" && chmod -v 'a+x' "./build.sh" && faketty "./build.sh" "linux"
      find "${SBUILD_TMPDIR}/TEMPREPO/build" -maxdepth 2 -type f -iname "*husarnet-daemon*" -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/husarnet-daemon"
      find "${SBUILD_TMPDIR}/TEMPREPO/build" -maxdepth 2 -type f ! -iname "*husarnet-daemon*" -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/husarnet"
      ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/LICENSE" ) 2>/dev/null
