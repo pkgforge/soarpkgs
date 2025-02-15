@@ -1,37 +1,48 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/taplo/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tealdeer/static.official.source.yaml
 _disabled: false
 
-pkg: "taplo"
-pkg_id: "github.com.tamasfe.taplo"
+pkg: "tealdeer"
+pkg_id: "github.com.tealdeer-rs.tealdeer"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A TOML toolkit written in Rust"
+description: "Fetch and show tldr help pages for many CLI commands"
 distro_pkg:
   alpine:
-    - "taplo"
+    - "tealdeer"
+  archlinux:
+    aur:
+      - "tealdeer-git"
+    extra:
+      - "tealdeer"
+  debian:
+    - "rust-tealdeer"
+  gnuguix:
+    - "tealdeer"
+  homebrew:
+    - "tealdeer"
   nixpkgs:
-    - "taplo"
+    - "tealdeer"
 homepage:
-  - "https://taplo.tamasfe.dev"
-  - "https://github.com/tamasfe/taplo"
+  - "https://tealdeer-rs.github.io/tealdeer"
 license:
-  - "MIT"  
+  - id : "MIT"
+    url: "https://github.com/tealdeer-rs/tealdeer/raw/120e2a92c20c4a804f6e8b356f6f74b914c80efe/LICENSE-MIT"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/tamasfe/taplo"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/tealdeer-rs/tealdeer"
 provides:
-  - "taplo"  
+  - "tealdeer"
 repology:
-  - "taplo"
+  - "tldr==tealdeer"
 src_url:
-  - "https://github.com/tamasfe/taplo"
+  - "https://github.com/tealdeer-rs/tealdeer"
 tag:
-  - "toml"
+  - "utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -39,7 +50,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/tamasfe/taplo" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/tealdeer-rs/tealdeer" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -57,13 +68,14 @@ x_exec:
        rustup target add "${RUST_TARGET}"
        export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/tamasfe/taplo" "./TEMPREPO" && cd "./TEMPREPO/"
+       git clone --filter "blob:none" --quiet "https://github.com/tealdeer-rs/tealdeer" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm rust-toolchain* 2>/dev/null
-       cargo build --package "taplo-cli" --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
+       mv -fv "./target/${RUST_TARGET}/release/tealdeer" "./target/${RUST_TARGET}/release/tldr" 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

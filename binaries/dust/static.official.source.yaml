@@ -1,37 +1,49 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/taplo/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dust/static.official.source.yaml
 _disabled: false
 
-pkg: "taplo"
-pkg_id: "github.com.tamasfe.taplo"
+pkg: "dust"
+pkg_id: "github.com.bootandy.dust"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A TOML toolkit written in Rust"
+description: "Disk Usage Analyzer"
 distro_pkg:
   alpine:
-    - "taplo"
+    - "dust"
+  archlinux:
+    aur:
+      - "dust-git"
+    extra:
+      - "dust"
+  debian:
+    - "rust-du-dust"
+  gnuguix:
+    - "du-dust"
+  homebrew:
+    - "dust"
   nixpkgs:
-    - "taplo"
+    - "du-dust"
+    - "dust"
 homepage:
-  - "https://taplo.tamasfe.dev"
-  - "https://github.com/tamasfe/taplo"
+  - "https://github.com/bootandy/dust"
 license:
-  - "MIT"  
+  - id : "Apache-2.0"
+    url: "https://github.com/bootandy/dust/raw/a962b80eec8d48379fe1fecea910fdf25622b165/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/tamasfe/taplo"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/bootandy/dust"
 provides:
-  - "taplo"  
+  - "dust"
 repology:
-  - "taplo"
+  - "du-dust"
 src_url:
-  - "https://github.com/tamasfe/taplo"
+  - "https://github.com/bootandy/dust"
 tag:
-  - "toml"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -39,7 +51,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/tamasfe/taplo" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/bootandy/dust" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -57,12 +69,12 @@ x_exec:
        rustup target add "${RUST_TARGET}"
        export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/tamasfe/taplo" "./TEMPREPO" && cd "./TEMPREPO/"
+       git clone --filter "blob:none" --quiet "https://github.com/bootandy/dust" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm rust-toolchain* 2>/dev/null
-       cargo build --package "taplo-cli" --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"

@@ -1,37 +1,45 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/mdcat/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dysk/static.official.source.yaml
 _disabled: false
 
-pkg: "mdcat"
-pkg_id: "github.com.swsnr.mdcat"
+pkg: "dysk"
+pkg_id: "github.com.Canop.dysk"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Sophisticated Markdown rendering for the terminal"
+description: "Linux utility to get information on filesystems, like df but better"
 distro_pkg:
   alpine:
-    - "mdcat"
+    - "dysk"
   archlinux:
+    aur:
+      - "dysk-git"
     extra:
-      - "mdcat"
+      - "dysk"
+  homebrew:
+    - "dysk"
   nixpkgs:
-    - "mdcat"
+    - "dysk"
 homepage:
-  - "https://github.com/swsnr/mdcat"
+  - "https://dystroy.org/dysk"
+  - "https://github.com/Canop/dysk"
 license:
-  - "MPL2"
+  - id : "MIT"
+    url: "https://github.com/Canop/dysk/raw/43b73f43e91ee506debe74c9abb2ecebae81d546/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/swsnr/mdcat"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/Canop/dysk"
+provides:
+  - "dysk"
 repology:
-  - "mdcat"
+  - "dysk"
 src_url:
-  - "https://github.com/swsnr/mdcat"
+  - "https://github.com/Canop/dysk"
 tag:
-  - "markdown"
+  - "utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -39,7 +47,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/swsnr/mdcat" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/Canop/dysk" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -57,7 +65,7 @@ x_exec:
        rustup target add "${RUST_TARGET}"
        export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/swsnr/mdcat" "./TEMPREPO" && cd "./TEMPREPO/"
+       git clone --filter "blob:none" --quiet "https://github.com/Canop/dysk" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"

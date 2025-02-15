@@ -21,11 +21,18 @@ distro_pkg:
       - "nmap"
   debian:
     - "nmap"
+  gnuguix:
+    - "nmap"
+  homebrew:
+    - "nmap"
   nixpkgs:
     - "nmap"
 homepage:
   - "https://nmap.org"
   - "https://github.com/nmap/nmap"
+license:
+  - id: "custom"
+    url: "https://github.com/nmap/nmap/raw/c932f08f42c7fcafd8e7f3c2c75b98d8c583b759/LICENSE"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:

@@ -1,51 +1,32 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/rclone/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/miniserve/static.official.source.yaml
 _disabled: false
 
-pkg: "rclone"
-pkg_id: "github.com.rclone.rclone"
+pkg: "miniserve"
+pkg_id: "github.com.svenstaro.miniserve"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A program to sync files to and from various cloud storage providers"
-distro_pkg:
-  alpine:
-    - "rclone"
-  archlinux:
-    aur:
-      - "rclone-beta-bin"
-      - "rclone-git"
-    extra:
-      - "rclone"
-  debian:
-    - "rclone"
-  homebrew:
-    - "rclone"
-  nixpkgs:
-    - "rclone"
+description: "CLI tool to serve files and dirs over HTTP"
 homepage:
-  - "https://rclone.org"
-  - "https://github.com/rclone/rclone"
+  - "https://github.com/svenstaro/miniserve"
 license:
-  - "BSD"
-  - "ISC"
-  - "MIT"
+  - id : "MIT"
+    url: "https://github.com/svenstaro/miniserve/raw/fb79b404c4f7ecdcc46225af49ca192656aace0f/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/rclone/rclone"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/svenstaro/miniserve"
+provides:
+  - "miniserve"
 repology:
-  - "rclone"
+  - "miniserve"
 src_url:
-  - "https://github.com/rclone/rclone"
+  - "https://github.com/svenstaro/miniserve"
 tag:
-  - "cloud"
-  - "mount"
-  - "rsync"
-  - "s3"
-  - "sync"
+  - "utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -53,7 +34,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/rclone/rclone" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/svenstaro/miniserve" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -66,17 +47,20 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
-       CGO_ENABLED="1"
-       CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
-       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
-       GOOS="linux"
-       export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
-      #Build:https://github.com/rclone/rclone/raw/master/.github/workflows/build.yml
-       git clone --filter "blob:none" --quiet "https://github.com/rclone/rclone" "./TEMPREPO" && cd "./TEMPREPO"
-       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
-       echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -tags "cmount" -o "/build-bins/rclone"
+       source "${HOME}/.cargo/env"
+       export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+       rustup target add "${RUST_TARGET}"
+       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
+      #Build
+       git clone --filter "blob:none" --quiet "https://github.com/svenstaro/miniserve" "./TEMPREPO" && cd "./TEMPREPO/"
+       echo -e "\n[+] Target: ${RUST_TARGET}"
+       echo -e "[+] Flags: ${RUSTFLAGS}\n"
+       sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
+       rm rust-toolchain* 2>/dev/null
+       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
       #Copy
+       find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;

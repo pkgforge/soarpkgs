@@ -1,0 +1,79 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/rclone/static.official.stable.yaml
+_disabled: false
+
+pkg: "rclone"
+pkg_id: "github.com.rclone.rclone.stable"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A program to sync files to and from various cloud storage providers"
+distro_pkg:
+  alpine:
+    - "rclone"
+  archlinux:
+    aur:
+      - "rclone-beta-bin"
+      - "rclone-git"
+    extra:
+      - "rclone"
+  debian:
+    - "rclone"
+  homebrew:
+    - "rclone"
+  nixpkgs:
+    - "rclone"
+homepage:
+  - "https://rclone.org"
+  - "https://github.com/rclone/rclone"
+license:
+  - id: "MIT"
+    url: "https://github.com/rclone/rclone/raw/7da2d8b507f332216a5157215520ec671a1f81e9/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/rclone/rclone"
+provides:
+  - "rclone"  
+repology:
+  - "rclone"
+src_url:
+  - "https://github.com/rclone/rclone"
+tag:
+  - "cloud"
+  - "mount"
+  - "rsync"
+  - "s3"
+  - "sync"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rclone/rclone/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/rclone/rclone@${PKGVER}" --match "linux,arm64,zip" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/rclone/rclone@${PKGVER}" --match "linux,amd64,zip" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -E "archive|compressed|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/${PKG}"
