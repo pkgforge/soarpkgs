@@ -82,6 +82,7 @@ x_exec:
         rim-shrink --all
        #Config
         echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_QUIET_MODE="${RIM_QUIET_MODE:=1}"' >> "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"

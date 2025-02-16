@@ -79,6 +79,7 @@ x_exec:
         sudo rim-shrink --all
        #Config
         echo 'RIM_AUTORUN="${RIM_AUTORUN:=vscodium"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_QUIET_MODE="${RIM_QUIET_MODE:=1}"' >> "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
         echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
