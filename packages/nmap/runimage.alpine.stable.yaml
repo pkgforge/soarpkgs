@@ -1,0 +1,99 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/nmap/runimage.alpine.stable.yaml
+_disabled: false
+
+pkg: "nmap"
+pkg_id: "runimage.alpine.nmap"
+pkg_type: "runimage"
+category:
+  - "Utility"
+description: "Network exploration tool and security/port scanner"
+distro_pkg:
+  alpine:
+    - "nmap"
+  archlinux:
+    extra:
+      - "nmap"
+  debian:
+    - "nmap"
+  gnuguix:
+    - "nmap"
+  homebrew:
+    - "nmap"
+  nixpkgs:
+    - "nmap"
+homepage:
+  - "https://nmap.org"
+  - "https://github.com/nmap/nmap"
+license:
+  - id: "custom"
+    url: "https://github.com/nmap/nmap/raw/c932f08f42c7fcafd8e7f3c2c75b98d8c583b759/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using RunImage [alpine]. Check/Report @ https://github.com/VHSgunzo/runimage"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/runimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "nmap"
+repology:
+ - "nmap"
+src_url:
+  - "https://github.com/nmap/nmap"
+tag:
+  - "network-discovery"
+  - "port-scanner"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/nmap/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
+  run: |
+    #Get BaseImage
+     curl -qfsSL "https://github.com/pkgforge-dev/runimage-base/releases/download/alpine_$(uname -m)/runimage" -o "${SBUILD_TMPDIR}/runimage"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/runimage"
+     [[ -s "${SBUILD_TMPDIR}/runimage" ]] || exit 1
+    #Deps
+     build_image()
+      {
+        #BASE_PKGS=()
+        apk update --force-missing-repositories --no-cache --no-interactive
+        apk upgrade --force-missing-repositories --no-cache --no-interactive
+        #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-interactive 2>/dev/null; done
+       #Main Package
+        apk add "nmap" "nmap-nselibs" "nmap-scripts" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
+        command -v "nmap" >/dev/null 2>&1 || exit 1
+       #Debloat & Shrink
+        apk info -L "nmap"
+        rm -rvf "/etc/apk/repositories" 2>/dev/null
+        rm -rfv "/var/cache/apk/"* 2>/dev/null
+        rm -rfv "/usr/share/doc/"* 2>/dev/null
+        rm -rfv "/usr/share/help/"* 2>/dev/null
+        rm -rfv "/usr/share/kde4/help"* 2>/dev/null
+        rm -rfv "/usr/share/fonts/"* 2>/dev/null
+        rm -rfv "/usr/share/licenses/"* 2>/dev/null
+        rm -rfv "/usr/share/man/"* 2>/dev/null
+        apk cache clean
+        ln -sf "/dev/null" "/etc/apk/cache"
+        rim-shrink --all --verbose 2>/dev/null
+       #Config
+        echo 'RIM_AUTORUN="${RIM_AUTORUN:=nmap}"' > "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_QUIET_MODE="${RIM_QUIET_MODE:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_LVL="${RIM_CMPRS_LVL:=22}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_CMPRS_BSIZE="${RIM_CMPRS_BSIZE:=24}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_ICONS="${RIM_SHARE_ICONS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_FONTS="${RIM_SHARE_FONTS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SHARE_THEMES="${RIM_SHARE_THEMES:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+        echo 'RIM_SYS_NVLIBS="${RIM_SYS_NVLIBS:=1}"' >> "${RUNDIR}/config/Run.rcfg"
+       #Rebuild [Dwarfs ZSTD 22]
+        rim-build --bsize '24' --clvl '22' --dwfs "${SBUILD_OUTDIR}/${PKG}"
+      }
+     export -f build_image
+    #Build 
+     RIM_NO_NVIDIA_CHECK="1" RIM_OVERFS_MODE="1" RIM_ROOT="1" RIM_UNSHARE_USERS="1" \
+     "${SBUILD_TMPDIR}/runimage" bash -c "build_image"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" && ! -d "${SBUILD_OUTDIR}/${PKG}" ]] || { echo "[-] FATAL: ${SBUILD_OUTDIR}/${PKG} is Missing/Empty" >&2; exit 1; }
