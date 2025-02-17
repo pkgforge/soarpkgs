@@ -55,38 +55,6 @@ jobs:
           #-------------#
           echo '[' > "./MATRIX.json.tmp"
            if [[ "${{ github.event.inputs.host }}" == "ALL" ]]; then
-             echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "pkg-name": "${{ inputs.pkg-name }}"},' >> "./MATRIX.json.tmp"
-             echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "pkg-name": "${{ inputs.pkg-name }}"}' >> "./MATRIX.json.tmp"
-           elif [[ "${{ github.event.inputs.host }}" == "aarch64-Linux" ]]; then
-             echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "pkg-name": "${{ inputs.pkg-name }}"}' >> "./MATRIX.json.tmp"
-           elif [[ "${{ github.event.inputs.host }}" == "x86_64-Linux" ]]; then
-             echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "pkg-name": "${{ inputs.pkg-name }}"}' >> "./MATRIX.json.tmp"
-           fi
-          echo ']' >> "./MATRIX.json.tmp"
-          jq 'unique_by(.runner)' "./MATRIX.json.tmp" | jq . > "./MATRIX.json"
-          ESCAPED_MATRIX="$(cat "./MATRIX.json" | jq -c .)"
-          echo "runner_matrix=${ESCAPED_MATRIX}" >> "${GITHUB_OUTPUT}"
-        continue-on-error: false
-
-      - name: Sanity Check Input JSON
-        run: |
-          echo '${{ steps.generate-matrix.outputs.runner_matrix }}' | jq .
-        continue-on-error: true
-
-jobs:
-  preprocess:
-    runs-on: ubuntu-latest
-    outputs:
-      runner_matrix: ${{ steps.generate-matrix.outputs.runner_matrix }}
-    steps:
-      - name: Presetup
-        id: generate-matrix
-        run: |
-          ##presets
-          set +x ; set +e
-          #-------------#
-          echo '[' > "./MATRIX.json.tmp"
-           if [[ "${{ github.event.inputs.host }}" == "ALL" ]]; then
              echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "ghcr_pkg": "${{ inputs.ghcr-url }}"},' >> "./MATRIX.json.tmp"
              echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
            elif [[ "${{ github.event.inputs.host }}" == "aarch64-Linux" ]]; then
