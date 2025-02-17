@@ -252,7 +252,7 @@ jobs:
           ##presets
           set +x ; set +e
           #-------------#
-          METADATA_TAG="soar-manifest"
+          METADATA_TAG="soar-nest"
           export METADATA_TAG="$(echo "${METADATA_TAG}" | tr -d '[:space:]')"
           echo "METADATA_TAG=${METADATA_TAG}" >> "${GITHUB_ENV}"
           echo "GH_PAGER=" >> "${GITHUB_ENV}"
@@ -399,9 +399,29 @@ jobs:
           else
             pushd "${METADATA_DIR}" &>/dev/null &&\
                ls -lah "."
-               find "${METADATA_DIR}" -maxdepth 1 -type f -iname "*.json" -size +3c -print0 | xargs -0 -P "$(($(nproc)+1))" -I '{}' gh release upload "${METADATA_TAG}" --repo "${GITHUB_REPOSITORY}" '{}' --clobber
-               sleep 5 ; gh release view "${METADATA_TAG}" --repo "${GITHUB_REPOSITORY}" 2>/dev/null || true
-               echo -e "\n[+] Metadata: ${METADATA_TAG_URL}/${{ env.HOST_TRIPLET }}.json\n"
+              #Generate 
+               export PKG_FAMILY="${{ env.PKG_FAMILY_LOCAL }}"
+               find "${METADATA_DIR}" -maxdepth 1 -type f -iname "*${HOST_TRIPLET}.json*" -size +3c -exec bash -c 'jq empty "{}" 2>/dev/null && cat "{}"' \; | jq 'walk(if type == "boolean" or type == "number" then tostring else . end)' | jq -s 'if type == "array" then . else [.] end' |\
+                jq 'walk(if type == "object" then with_entries(select(.value != "" and .value != [] and .value != {})) else . end)' |\
+                jq 'map(select(
+                   .pkg != null and .pkg != "" and
+                   .pkg_id != null and .pkg_id != "" and
+                   .pkg_name != null and .pkg_name != "" and
+                   .description != null and .description != "" and
+                   .ghcr_pkg != null and .download_url != "" and
+                   .version != null and .version != ""
+                ))' | jq 'unique_by(.ghcr_pkg) | sort_by(.pkg)' > "${SYSTMP}/${HOST_TRIPLET}.json"
+              #Sanity Check
+               sed -E 's~\bhttps?:/{1,2}\b~https://~g' -i "${SYSTMP}/${HOST_TRIPLET}.json"
+               if [[ "$(jq -r '.[] | .pkg_family' "${SYSTMP}/${HOST_TRIPLET}.json" | sort -u | head -n 1 | tr -d '[:space:]')" == "${PKG_FAMILY}" ]]; then
+                 cp -fv "${SYSTMP}/${HOST_TRIPLET}.json" "${METADATA_DIR}/${HOST_TRIPLET}.json"
+                 find "${METADATA_DIR}" -maxdepth 1 -type f -iname "*${HOST_TRIPLET}.json*" -size +3c -print0 | xargs -0 -P "$(($(nproc)+1))" -I '{}' gh release upload "${METADATA_TAG}" --repo "${GITHUB_REPOSITORY}" '{}' --clobber
+                 sleep 5 ; gh release view "${METADATA_TAG}" --repo "${GITHUB_REPOSITORY}" 2>/dev/null || true
+                 echo -e "\n[+] Metadata: ${METADATA_TAG_URL}\n"
+               else
+                 echo -e "\n[-] FATAL: Failed to Merge Metadata ==> ${METADATA_TAG_URL}"
+                exit 1
+               fi
             popd &>/dev/null
           fi
         continue-on-error: false
