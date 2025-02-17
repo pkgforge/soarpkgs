@@ -86,6 +86,9 @@ else
   fi
  ##Install Needed CMDs
   bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/devscripts/main/Linux/install_bins_curl.sh")
+  #Appimage tools
+   sudo curl -qfsSL "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$(uname -m).AppImage" -o "/usr/local/bin/appimagetool" && sudo chmod -v 'a+x' "/usr/local/bin/appimagetool"
+   sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/unsquashfs" -o "/usr/local/bin/unsquashfs" && sudo chmod -v +x "/usr/local/bin/unsquashfs"
  ##Check Needed CMDs
  for DEP_CMD in apt-fast eget gh glab minisign oras rclone shellcheck soar; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
@@ -94,6 +97,25 @@ else
             return 1 || exit 1 ;;
     esac
  done
+ ##Install Builder + Linter
+ sudo curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Eiv "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" sudo curl -qfsSL "{}" -o "/usr/local/bin/sbuild"
+ sudo chmod -v 'a+x' "/usr/local/bin/sbuild"
+ if ! command -v sbuild &> /dev/null; then
+   echo -e "\n[-] sbuild NOT Found\n"
+   export CONTINUE="NO"
+   return 1 || exit 1
+ else
+   sbuild --help
+ fi
+ sudo curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" sudo curl -qfsSL "{}" -o "/usr/local/bin/sbuild-linter"
+ sudo chmod -v 'a+x' "/usr/local/bin/sbuild-linter"
+ if ! command -v sbuild-linter &> /dev/null; then
+   echo -e "\n[-] sbuild NOT Found\n"
+   export CONTINUE="NO"
+   return 1 || exit 1
+ else
+   sbuild-linter --help
+ fi
  ##Check for GITHUB_TOKEN
   if [ -n "${GITHUB_TOKEN+x}" ] && [ -n "${GITHUB_TOKEN##*[[:space:]]}" ]; then
    echo -e "\n[+] GITHUB_TOKEN is Exported"
@@ -148,7 +170,6 @@ else
   fi
 fi
 #-------------------------------------------------------#
-
 
 #-------------------------------------------------------#
 ##Main
