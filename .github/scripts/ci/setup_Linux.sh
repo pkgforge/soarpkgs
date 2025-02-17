@@ -257,10 +257,7 @@ if [ "${CONTINUE}" == "YES" ]; then
    crystal --version ; shards --version
    sudo ldconfig && sudo ldconfig -p
   fi
- #----------------------# 
- #Dockerc
-  sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)/dockerc" -o "/usr/local/bin/dockerc" && sudo chmod +x "/usr/local/bin/dockerc"
- #----------------------#          
+ #----------------------#
  ##Install golang 
   echo "yes" | bash <(curl -qfsSL "https://git.io/go-installer")
   #Test

@@ -135,7 +135,7 @@ sbuild_builder()
   #-------------------------------------------------------#
   ##Init
    INITSCRIPT="$(mktemp --tmpdir=${SYSTMP} XXXXXXXXX_init.sh)" && export INITSCRIPT="${INITSCRIPT}"
-   curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/setup_$(uname -m).sh" -o "${INITSCRIPT}"
+   curl -w "(SCRIPT) <== %{url}\n" -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/setup_$(uname -s).sh" -o "${INITSCRIPT}"
    chmod +xwr "${INITSCRIPT}" && source "${INITSCRIPT}"
    #Check
    if [ "${CONTINUE}" != "YES" ]; then
