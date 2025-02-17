@@ -3,8 +3,8 @@
 #-------------------------------------------------------#
 ## <DO NOT RUN STANDALONE, meant for CI Only>
 ## Meant to Build & Upload Packages
-## Self: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/builder.sh
-# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/builder.sh")
+## Self: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/builder.sh
+# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/builder.sh")
 ##Env vars
 # (Remote) FORCE_REBUILD_ALL=YES --> Rebuilds everything regardless if prebuilt already exists
 # (Local) SBUILD_REBUILD=true --> Rebuilds Local SBUILD regardless if remote prebuilt already exists
@@ -135,11 +135,13 @@ sbuild_builder()
   #-------------------------------------------------------#
   ##Init
    INITSCRIPT="$(mktemp --tmpdir=${SYSTMP} XXXXXXXXX_init.sh)" && export INITSCRIPT="${INITSCRIPT}"
-   curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/setup_$(uname -m).sh" -o "${INITSCRIPT}"
+   curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/setup_$(uname -m).sh" -o "${INITSCRIPT}"
    chmod +xwr "${INITSCRIPT}" && source "${INITSCRIPT}"
    #Check
    if [ "${CONTINUE}" != "YES" ]; then
      echo -e "\n[✗] Failed To Initialize\n"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "GHA_BUILD_FAILED=YES" >> "${GITHUB_ENV}"
     exit 1
    fi
   ##Ulimits
@@ -152,7 +154,7 @@ sbuild_builder()
   
   #-------------------------------------------------------#
   ##Helpers
-  source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/helpers.sh")
+  source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/helpers.sh")
   sanitize_logs()
   {
   if [[ -s "${TEMP_LOG}" && $(stat -c%s "${TEMP_LOG}") -gt 10 && -n "${LOGPATH}" ]]; then

@@ -11,8 +11,8 @@
 #  --> generate_json
 #  --> upload_to_ghcr
 #  --> cleanup_env
-## Self: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/helpers.sh
-# source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/helpers.sh")
+## Self: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/helpers.sh
+# source <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/helpers.sh")
 #-------------------------------------------------------#
 
 #-------------------------------------------------------#

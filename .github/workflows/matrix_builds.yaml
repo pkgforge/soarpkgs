@@ -120,7 +120,7 @@ jobs:
           #-------------#
           # Check if any of the required secrets are missing
           if [ -z "${RO_GHTOKEN##*[[:space:]]}" ] || [ -z "${RO_GLTOKEN##*[[:space:]]}" ] || [ -z "${MINISIGN_KEY##*[[:space:]]}" ]; then
-            echo "::warning::One or more required secrets are missing:"
+            echo "::warning::One or more required secrets are missing"
             [ -z "${RO_GHTOKEN##*[[:space:]]}" ] && echo "- RO_GHTOKEN is missing (Needed for GitHub Public API Requests)"
             [ -z "${RO_GLTOKEN##*[[:space:]]}" ] && echo "- RO_GLTOKEN is missing (Needed for GitLab Public API Requests)"
             [ -z "${MINISIGN_KEY##*[[:space:]]}" ] && echo "- MINISIGN_KEY is missing (Needed for Signing Artifacts)"
@@ -299,7 +299,7 @@ jobs:
           #--------------#
           ##Env
           if [ -z "${GITHUB_TOKEN+x}" ] || [ -z "${GITHUB_TOKEN##*[[:space:]]}" ]; then
-            echo "::warning::Using Over Privileged Github Token:"
+            echo "::warning::Using Over Privileged Github Token \${GHCR_TOKEN}"
             export GITHUB_TOKEN="${GHCR_TOKEN}"
           fi
           ##Main
