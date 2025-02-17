@@ -178,6 +178,7 @@ gen_json_from_sbuild()
        pkg="$(jq -r '"\(.pkg | select(. != "null") // "")"' "${TMPJSON}" | sed 's/\.$//' | tr -d '[:space:]')" ; export PKG="${pkg}"
        pkg_id="$(jq -r '"\(.pkg_id | select(. != "null") // "")"' "${TMPJSON}" | sed 's/\.$//' | tr -d '[:space:]')" ; export PKG_ID="${pkg_id}"
        pkg_type="$(jq -r '"\(.pkg_type | select(. != "null") // "")"' "${TMPJSON}" | sed 's/\.$//' | tr -d '[:space:]')" ; export PKG_TYPE="${pkg_type}"
+       [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_TYPE=${PKG_TYPE}" >> "${GITHUB_ENV}"
        unset PKG_REPOLOGY ; PKG_REPOLOGY=()
        PKG_REPOLOGY=("$(jq -r 'if has("repology") then (if .repology | type == "array" then .repology[0] else .repology end) else "" end' "${TMPJSON}" 2>/dev/null | tr -d '[:space:]')")
        [[ "${PKG_REPOLOGY}" == "null" ]] && unset PKG_REPOLOGY
@@ -519,6 +520,7 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]]; then
    #PKG_SIZE="$(echo "${PKG_SIZE_RAW}" | awk '{byte=$1; if (byte<1024) printf "%.2f B\n", byte; else if (byte<1024**2) printf "%.2f KB\n", byte/1024; else if (byte<1024**3) printf "%.2f MB\n", byte/(1024**2); else printf "%.2f GB\n", byte/(1024**3)}')"
    PKG_SIZE="$(du -sh "${GHCR_PKG}" | awk '{unit=substr($1,length($1)); sub(/[BKMGT]$/,"",$1); print $1 " " unit "B"}')"
    SBUILD_PKGVER="$(cat "${SBUILD_OUTDIR}/${SBUILD_PKG}.version" | tr -d '[:space:]')" ; export SBUILD_PKGVER
+   [[ "${GHA_MODE}" == "MATRIX" ]] && echo "SBUILD_PKGVER=${SBUILD_PKGVER}" >> "${GITHUB_ENV}"
    export GHCR_PKG PROG PKG_BSUM PKG_DATE PKG_ICON PKG_SIZE PKG_SIZE_RAW PKG_SHASUM SBUILD_PKGVER
   #ghcrpkgurl 
    unset GHCRPKG_URL SNAPSHOT_JSON SNAPSHOT_TAGS TAG_URL
@@ -794,10 +796,12 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
        fi
      fi
      echo "export PKG_VERSION='${PKG_VERSION}'" >> "${OCWD}/ENVPATH"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_VERSION=${PKG_VERSION}" >> "${GITHUB_ENV}"
     #version_upstream 
      PKG_VERSION_UPSTREAM="$(jq -r '.version_upstream' "${PKG_JSON}" | tr -d '[:space:]')"
      [[ "${PKG_VERSION_UPSTREAM}" == "null" ]] && unset PKG_VERSION_UPSTREAM
-     echo "export PKG_VERSION_UPSTREAM='${PKG_VERSION_UPSTREAM}'" >> "${OCWD}/ENVPATH"     
+     echo "export PKG_VERSION_UPSTREAM='${PKG_VERSION_UPSTREAM}'" >> "${OCWD}/ENVPATH"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_VERSION_UPSTREAM=${PKG_VERSION_UPSTREAM}" >> "${GITHUB_ENV}"
     #tag 
      GHCRPKG_TAG="$(echo "${PKG_VERSION}-${HOST_TRIPLET,,}" | sed 's/[^a-zA-Z0-9._-]/_/g; s/_*$//')" ; export GHCRPKG_TAG
      echo "export GHCRPKG_TAG='${GHCRPKG_TAG}'" >> "${OCWD}/ENVPATH"
