@@ -53,19 +53,21 @@ jobs:
           ##presets
           set +x ; set +e
           #-------------#
-          echo '[' > "./MATRIX.json.tmp"
-           if [[ "${{ github.event.inputs.host }}" == "ALL" ]]; then
-             echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "ghcr_pkg": "${{ inputs.ghcr-url }}"},' >> "./MATRIX.json.tmp"
-             echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
-           elif [[ "${{ github.event.inputs.host }}" == "aarch64-Linux" ]]; then
-             echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
-           elif [[ "${{ github.event.inputs.host }}" == "x86_64-Linux" ]]; then
-             echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
-           fi
-          echo ']' >> "./MATRIX.json.tmp"
-          jq 'unique_by(.runner)' "./MATRIX.json.tmp" | jq . > "./MATRIX.json"
-          ESCAPED_MATRIX="$(cat "./MATRIX.json" | jq -c .)"
-          echo "runner_matrix=${ESCAPED_MATRIX}" >> "${GITHUB_OUTPUT}"
+          pushd "$(mktemp -d)" &>/dev/null
+           echo '[' > "./MATRIX.json.tmp"
+            if [[ "${{ inputs.host }}" == "ALL" ]]; then
+              echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "ghcr_pkg": "${{ inputs.ghcr-url }}"},' >> "./MATRIX.json.tmp"
+              echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
+            elif [[ "${{ inputs.host }}" == "aarch64-Linux" ]]; then
+              echo '{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
+            elif [[ "${{ inputs.host }}" == "x86_64-Linux" ]]; then
+              echo '{"host": "x86_64-Linux", "runner": "ubuntu-latest", "ghcr_pkg": "${{ inputs.ghcr-url }}"}' >> "./MATRIX.json.tmp"
+            fi
+           echo ']' >> "./MATRIX.json.tmp"
+           jq 'unique_by(.runner)' "./MATRIX.json.tmp" | jq . > "./MATRIX.json"
+           ESCAPED_MATRIX="$(cat "./MATRIX.json" | jq -c .)"
+           echo "runner_matrix=${ESCAPED_MATRIX}" >> "${GITHUB_OUTPUT}"
+          popd &>/dev/null
         continue-on-error: false
 
       - name: Sanity Check Input JSON
@@ -96,11 +98,11 @@ jobs:
           set +x ; set +e
           #-------------#
           if [[ "$(uname -m | tr -d '[:space:]')" == "aarch64" ]]; then
-            if [[ "${{ github.event.inputs.host }}" != "ALL" ]] && [[ "${{ github.event.inputs.host }}" != "aarch64-Linux" ]]; then
+            if [[ "${{ inputs.host }}" != "ALL" ]] && [[ "${{ inputs.host }}" != "aarch64-Linux" ]]; then
               echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
             fi
           elif [[ "$(uname -m | tr -d '[:space:]')" == "x86_64" ]]; then
-            if [[ "${{ github.event.inputs.host }}" != "ALL" ]] && [[ "${{ github.event.inputs.host }}" != "x86_64-Linux" ]]; then
+            if [[ "${{ inputs.host }}" != "ALL" ]] && [[ "${{ inputs.host }}" != "x86_64-Linux" ]]; then
               echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
             fi
           fi
@@ -133,14 +135,14 @@ jobs:
           #-------------#
           export HOST_TRIPLET="$(uname -m)-$(uname -s)"
           ##Debug   
-           if [ "${{ github.event.inputs.debug }}" == "true" ] ; then
+           if [ "${{ inputs.debug }}" == "true" ] ; then
              export DEBUG="1"
            else
              export DEBUG="0"
            fi
            echo "DEBUG=${DEBUG}" >> "${GITHUB_ENV}"
           ##GHCRPKG_URL
-           GHCRPKG_LOCAL="$(echo "${{ github.event.inputs.ghcr-url }}" | tr -d '[:space:]')"
+           GHCRPKG_LOCAL="$(echo "${{ inputs.ghcr-url }}" | tr -d '[:space:]')"
            export GHCRPKG_LOCAL
            if echo "${GHCRPKG_LOCAL}" | grep -qiE '^ghcr\.io(/|$)'; then
              echo "GHCRPKG_LOCAL=${GHCRPKG_LOCAL}" >> "${GITHUB_ENV}"
@@ -150,7 +152,7 @@ jobs:
             exit 1
            fi
           ##Logs
-           if [ "${{ github.event.inputs.logs }}" == "false" ] ; then
+           if [ "${{ inputs.logs }}" == "false" ] ; then
              export KEEP_LOGS="NO"
            else
              export KEEP_LOGS="YES"
@@ -159,11 +161,11 @@ jobs:
            echo "KEEP_LOGS=${KEEP_LOGS}" >> "${GITHUB_ENV}"
            echo "GITHUB_TEST_BUILD=${GITHUB_TEST_BUILD}" >> "${GITHUB_ENV}"
           ##PKG_FAMILY_LOCAL
-           PKG_FAMILY_LOCAL="$(echo "${{ github.event.inputs.pkg-family }}" | tr -d '[:space:]')"
+           PKG_FAMILY_LOCAL="$(echo "${{ inputs.pkg-family }}" | tr -d '[:space:]')"
            export PKG_FAMILY_LOCAL
            echo "PKG_FAMILY_LOCAL=${PKG_FAMILY_LOCAL}" >> "${GITHUB_ENV}"
           ##Rebuild
-           if [ "${{ github.event.inputs.rebuild }}" == "false" ] ; then
+           if [ "${{ inputs.rebuild }}" == "false" ] ; then
              export SBUILD_REBUILD="false"
            else
              export SBUILD_REBUILD="true"
@@ -172,7 +174,7 @@ jobs:
            ##SBUILD_URL
            sudo curl -qfsSL "https://bin.pkgforge.dev/${HOST_TRIPLET}/yq" -o "/usr/local/bin/yq" && \
              sudo chmod 'a+x' "/usr/local/bin/yq" && command -v yq >/dev/null || exit 1
-           SBUILD_FILE_URL="$(echo "${{ github.event.inputs.sbuild-url }}" | tr -d '[:space:]')"
+           SBUILD_FILE_URL="$(echo "${{ inputs.sbuild-url }}" | tr -d '[:space:]')"
            pushd "$(mktemp -d)" >/dev/null 2>&1
              curl -w "(SBUILD) <== %{url}\n" -fL "${SBUILD_FILE_URL}" -o "./SBUILD_INPUT"
              if [[ ! -s "./SBUILD_INPUT" || $(stat -c%s "./SBUILD_INPUT") -le 10 ]]; then
@@ -287,7 +289,7 @@ jobs:
           sudo sysctl -p "/etc/sysctl.conf"
         continue-on-error: true
 
-      - name: BUILD (${{ github.event.inputs.ghcr-url }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
+      - name: BUILD (${{ inputs.ghcr-url }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
         env:
           #GHCR_TOKEN: "${{ secrets.GHCR_TOKEN }}" #Needs Actions' Token if we want to make the packages public
