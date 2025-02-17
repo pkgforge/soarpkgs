@@ -85,10 +85,10 @@ jobs:
     runs-on: "${{ matrix.package.runner }}"
     timeout-minutes: 200
     permissions:
-      attestations: write
-      contents: write
-      id-token: write
-      packages: write
+      attestations: write #Needed for Build Provenance & Attestations
+      contents: write #Needed to create Release
+      id-token: write #Needed for Build Provenance & Attestations
+      packages: write #Needed to push to ghcr
     steps:
       - name: Exit if not called
         env:
@@ -111,19 +111,19 @@ jobs:
       - name: Validate Required Secrets [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
         env:
-          RO_GHTOKEN: ${{ secrets.RO_GHTOKEN }}
-          RO_GLTOKEN: ${{ secrets.RO_GLTOKEN }}
-          MINISIGN_KEY: ${{ secrets.MINISIGN_KEY }}
+          RO_GHTOKEN: "${{ secrets.RO_GHTOKEN }}" #The existing GITHUB_TOKEN is over privileged
+          RO_GLTOKEN: "${{ secrets.RO_GLTOKEN }}"
+          MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}" #Will be skipped silently
         run: |
           ##presets
           set +x ; set +e
           #-------------#
           # Check if any of the required secrets are missing
           if [ -z "${RO_GHTOKEN##*[[:space:]]}" ] || [ -z "${RO_GLTOKEN##*[[:space:]]}" ] || [ -z "${MINISIGN_KEY##*[[:space:]]}" ]; then
-            echo "::error::One or more required secrets are missing:"
-            [ -z "${RO_GHTOKEN##*[[:space:]]}" ] && echo "- RO_GHTOKEN is missing"
-            [ -z "${RO_GLTOKEN##*[[:space:]]}" ] && echo "- RO_GLTOKEN is missing"
-            [ -z "${MINISIGN_KEY##*[[:space:]]}" ] && echo "- MINISIGN_KEY is missing"
+            echo "::warning::One or more required secrets are missing:"
+            [ -z "${RO_GHTOKEN##*[[:space:]]}" ] && echo "- RO_GHTOKEN is missing (Needed for GitHub Public API Requests)"
+            [ -z "${RO_GLTOKEN##*[[:space:]]}" ] && echo "- RO_GLTOKEN is missing (Needed for GitLab Public API Requests)"
+            [ -z "${MINISIGN_KEY##*[[:space:]]}" ] && echo "- MINISIGN_KEY is missing (Needed for Signing Artifacts)"
           fi
         continue-on-error: false
 
@@ -175,7 +175,7 @@ jobs:
            sudo curl -qfsSL "https://bin.pkgforge.dev/${HOST_TRIPLET}/yq" -o "/usr/local/bin/yq" && \
              sudo chmod 'a+x' "/usr/local/bin/yq" && command -v yq >/dev/null || exit 1
            SBUILD_FILE_URL="$(echo "${{ inputs.sbuild-url }}" | tr -d '[:space:]')"
-           pushd "$(mktemp -d)" >/dev/null 2>&1
+           pushd "$(mktemp -d)" &>/dev/null
              curl -w "(SBUILD) <== %{url}\n" -fL "${SBUILD_FILE_URL}" -o "./SBUILD_INPUT"
              if [[ ! -s "./SBUILD_INPUT" || $(stat -c%s "./SBUILD_INPUT") -le 10 ]]; then
                echo -e "\n[✗] FATAL: Failed to Fetch ${SBUILD_FILE_URL}\n"
@@ -193,15 +193,12 @@ jobs:
                  fi
                fi
              fi
-           popd >/dev/null 2>&1
+           popd &>/dev/null
         continue-on-error: false
 
       - name: Setup Env [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         env:
-          GHCR_TOKEN: "${{ github.token }}"
-          RO_GHTOKEN: "${{ secrets.RO_GHTOKEN }}"
-          RO_GLTOKEN: "${{ secrets.RO_GLTOKEN }}"
-          MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}"
+          MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}" #Private Key is saved locally
         if: env.CONTINUE_GHRUN != 'FALSE'
         run: |
           ##presets
@@ -249,8 +246,8 @@ jobs:
       - name: Create Metadata Tag [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
         env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_TOKEN: ${{ github.token }}      
+          GH_TOKEN: "${{ github.token }}"
+          GITHUB_TOKEN: "${{ github.token }}"
         run: |
           ##presets
           set +x ; set +e
@@ -277,7 +274,7 @@ jobs:
           fi
         continue-on-error: true
 
-      - name: Disable apparmor_restrict_unprivileged_userns
+      - name: Disable apparmor_restrict_unprivileged_userns #Required for fuse (Runimage etc)
         if: env.CONTINUE_GHRUN != 'FALSE'
         run: |
           #presets
@@ -292,19 +289,28 @@ jobs:
       - name: BUILD (${{ inputs.ghcr-url }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
         env:
-          #GHCR_TOKEN: "${{ secrets.GHCR_TOKEN }}" #Needs Actions' Token if we want to make the packages public
-          GHCR_TOKEN: "${{ github.token }}"
-          GITHUB_TOKEN: "${{ secrets.RO_GHTOKEN }}"
-          GITLAB_TOKEN: "${{ secrets.RO_GLTOKEN }}"
-          MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}"
+          GHCR_TOKEN: "${{ github.token }}" #Should Never be exported/used by something else (Is Over Privileged)
+          GH_TOKEN: "${{ secrets.RO_GHTOKEN }}" #Should be a underprivileged Read Only Token
+          GITHUB_TOKEN: "${{ secrets.RO_GHTOKEN }}" #Should be a underprivileged Read Only Token
+          GITLAB_TOKEN: "${{ secrets.RO_GLTOKEN }}" #Should be a underprivileged Read Only Token
         run: |
           #Presets
           set +x ; set +e
           #--------------#
+          ##Env
+          if [ -z "${GITHUB_TOKEN+x}" ] || [ -z "${GITHUB_TOKEN##*[[:space:]]}" ]; then
+            echo "::warning::Using Over Privileged Github Token:"
+            export GITHUB_TOKEN="${GHCR_TOKEN}"
+          fi
           ##Main
-          pushd "$(mktemp -d)" >/dev/null 2>&1
-           curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/runner/builder.sh" -o "${SYSTMP}/BUILDER.sh"
-           dos2unix --quiet "${SYSTMP}/BUILDER.sh" ; chmod +xwr "${SYSTMP}/BUILDER.sh"
+          pushd "$(mktemp -d)" &>/dev/null
+           curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/.github/scripts/ci/builder.sh" -o "${SYSTMP}/BUILDER.sh"
+           if [[ ! -s "${SYSTMP}/BUILDER.sh" || $(stat -c%s "${SYSTMP}/BUILDER.sh") -le 3 ]]; then
+              echo -e "\n[✗] FATAL: Failed to Fetch Builder\n"
+              echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
+             exit 1 
+           fi
+           dos2unix --quiet "${SYSTMP}/BUILDER.sh" ; chmod -v 'a+x' "${SYSTMP}/BUILDER.sh"
            ##Run with STDOUT + LOGS
             export DEBUG="${DEBUG}"
             export KEEP_LOGS="${KEEP_LOGS}"
@@ -314,7 +320,11 @@ jobs:
             export GITHUB_TEST_BUILD="${GITHUB_TEST_BUILD}"
             bash "${SYSTMP}/BUILDER.sh" "${SBUILD_FILE_URL}" | tee "${SYSTMP}/BUILD.log" 2>&1
            ##Purge Tokens (in case set -x & gh didn't redact)
-           cat "${SYSTMP}/BUILD.log" | ansi2txt > "${SYSTMP}/BUILD.gh.log.txt"
+           if ! command -v ansi2txt &> /dev/null; then
+             cat "${SYSTMP}/BUILD.log" > "${SYSTMP}/BUILD.gh.log.txt"
+           else
+             cat "${SYSTMP}/BUILD.log" | ansi2txt > "${SYSTMP}/BUILD.gh.log.txt"
+           fi
            sed -i '/.*github_pat.*/Id' "${SYSTMP}/BUILD.gh.log.txt" 2>/dev/null
            sed -i '/.*ghp_.*/Id' "${SYSTMP}/BUILD.gh.log.txt" 2>/dev/null
            sed -i '/.*access_key_id.*/Id' "${SYSTMP}/BUILD.gh.log.txt" 2>/dev/null
@@ -323,7 +333,7 @@ jobs:
            sed -i '/.*token.*/Id' "${SYSTMP}/BUILD.gh.log.txt" 2>/dev/null
            sed -i '/.*cloudflarestorage.*/Id' "${SYSTMP}/BUILD.gh.log.txt" 2>/dev/null
            mv -fv "${SYSTMP}/BUILD.gh.log.txt" "${SYSTMP}/BUILD.log"
-          popd >/dev/null 2>&1
+          popd &>/dev/null
         continue-on-error: true
 
     ##Logs & Artifacts
@@ -374,6 +384,9 @@ jobs:
 
       - name: Check Push [${{ matrix.package.ghcr_pkg }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
+        env:
+          GH_TOKEN: "${{ github.token }}"
+          GITHUB_TOKEN: "${{ github.token }}"
         run: |
           #Presets
           set +x ; set +e

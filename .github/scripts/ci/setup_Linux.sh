@@ -4,8 +4,8 @@
 #-------------------------------------------------------#
 ## <DO NOT RUN STANDALONE, meant for CI Only>
 ## Meant to Setup Build Machine
-## Self: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/runner/setup_Linux.sh
-# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/scripts/runner/setup_Linux.sh")
+## Self: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/setup_Linux.sh
+# bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/github/.scripts/ci/setup_Linux.sh")
 ###-----------------------------------------------------###
 ### Setups Essential Tools & Preps Sys Environ for Deps ###
 ### This Script must be run as `root` (passwordless)    ###
