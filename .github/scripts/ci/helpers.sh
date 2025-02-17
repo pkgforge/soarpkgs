@@ -1001,7 +1001,7 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
           [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PUSH_SUCCESSFUL=${PUSH_SUCCESSFUL}" >> "${GITHUB_ENV}"
           if [ -n "${METADATA_DIR+x}" ] && [[ "${METADATA_DIR}" =~ ^[^[:space:]]+$ ]]; then
             mkdir -pv "${METADATA_DIR}"
-            cp -fv "${SBUILD_OUTDIR}/${PROG}.json" "${METADATA_DIR}/${PROG}.json"
+            cp -fv "${SBUILD_OUTDIR}/${PROG}.json" "${METADATA_DIR}/${PROG}-${HOST_TRIPLET}.json"
           fi
           break
         else
