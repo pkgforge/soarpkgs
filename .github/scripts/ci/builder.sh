@@ -179,8 +179,8 @@ sbuild_builder()
       echo '\\\\====================== Package Forge ======================////' > "${LOGPATH}"
       echo '|--- Repository: https://github.com/pkgforge/soar              ---|' >> "${LOGPATH}"
       echo '|--- Contact: https://docs.pkgforge.dev/contact/chat           ---|' >> "${LOGPATH}"
-      echo '|--- Discord: https://discord.gg/djJUs48Zbu                    ---|' >> "${LOGPATH}"    
-      echo '|--- Docs: https://docs.pkgforge.dev/sbuild/nests              ---|' >> "${LOGPATH}"
+      echo '|--- Discord: https://discord.gg/djJUs48Zbu                    ---|' >> "${LOGPATH}"
+      echo '|--- Docs: https://docs.pkgforge.dev/repositories/nests        ---|' >> "${LOGPATH}"
       echo '|-----------------------------------------------------------------|' >> "${LOGPATH}"
       grep -viE 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|github_pat|ghp_|glpat|hf_|token|access_key_id|secret_access_key|cloudflarestorage' "${TEMP_LOG}" >> "${LOGPATH}" && rm "${TEMP_LOG}" 2>/dev/null
   fi
