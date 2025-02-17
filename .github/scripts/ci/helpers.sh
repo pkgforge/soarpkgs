@@ -997,9 +997,11 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
           export PUSH_SUCCESSFUL="YES"
           #rm -rf "${GHCR_PKG}" "${PKG_JSON}" 2>/dev/null
           echo "export PUSH_SUCCESSFUL=YES" >> "${OCWD}/ENVPATH"
+          [[ "${GHA_MODE}" == "MATRIX" ]] && echo GHCRPKG_URL="${GHCRPKG_URL}" >> "${GITHUB_ENV}"
           [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PUSH_SUCCESSFUL=${PUSH_SUCCESSFUL}" >> "${GITHUB_ENV}"
-          if [[ -d "${METADATA_DIR}" ]]; then
-            cp -fv "./${PROG}.json" "${METADATA_DIR}/${PROG}.json"
+          if [ -n "${METADATA_DIR+x}" ] && [[ "${METADATA_DIR}" =~ ^[^[:space:]]+$ ]]; then
+            mkdir -pv "${METADATA_DIR}"
+            cp -fv "${SBUILD_OUTDIR}/${PROG}.json" "${METADATA_DIR}/${PROG}.json"
           fi
           break
         else

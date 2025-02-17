@@ -379,6 +379,8 @@ jobs:
             echo -e "\n[-] FATAL: Failed to Successfully Build ${{ matrix.package.ghcr_pkg }}"
             echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
            exit 1
+          else
+            echo -e "\n[+] Package: https://${{ env.GHCRPKG_URL }}\n"
           fi
         continue-on-error: false
 
@@ -396,10 +398,10 @@ jobs:
            exit 1
           else
             pushd "${METADATA_DIR}" &>/dev/null &&\
-               cp -fv 
+               ls -lah "."
                find "${METADATA_DIR}" -maxdepth 1 -type f -iname "*.json" -size +3c -print0 | xargs -0 -P "$(($(nproc)+1))" -I '{}' gh release upload "${METADATA_TAG}" --repo "${GITHUB_REPOSITORY}" '{}' --clobber
                sleep 5 ; gh release view "${METADATA_TAG}" --repo "${GITHUB_REPOSITORY}" 2>/dev/null || true
-               echo -e "\n[+] Metadata: ${METADATA_TAG_URL}/${{ env.PKG_NAME }}.json\n"
+               echo -e "\n[+] Metadata: ${METADATA_TAG_URL}/${{ env.HOST_TRIPLET }}.json\n"
             popd &>/dev/null
           fi
         continue-on-error: false

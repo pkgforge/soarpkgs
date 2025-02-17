@@ -65,6 +65,7 @@ sbuild_builder()
    TMPDIRS="mktemp -d --tmpdir=${SYSTMP}/pkgforge XXXXXXXXX_SBUILD"
    USER_AGENT="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/User-Agents/ua_chrome_macos_latest.txt')"
    export HOST_TRIPLET PKG_REPO SYSTMP TMPDIRS USER_AGENT
+   [[ "${GHA_MODE}" == "MATRIX" ]] && echo "HOST_TRIPLET=${HOST_TRIPLET}" >> "${GITHUB_ENV}"
    if [[ "${KEEP_PREVIOUS}" != "YES" ]]; then
     rm -rf "${SYSTMP}/pkgforge"
     find "${SYSTMP}" -mindepth 1 \( -type f -o -type d \) -empty -not -path "$(pwd)" -not -path "$(pwd)/*" -delete 2>/dev/null
