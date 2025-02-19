@@ -65,7 +65,7 @@ x_exec:
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/alpine-base-mimalloc:stable" \
+     "docker.io/alpine:edge" \
       sh -c '
       #Setup ENV
        mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
