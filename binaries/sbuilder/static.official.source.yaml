@@ -45,11 +45,11 @@ x_exec:
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
-     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
@@ -75,6 +75,6 @@ x_exec:
        popd >/dev/null 2>&1
       '
     #Copy & Meta
-     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

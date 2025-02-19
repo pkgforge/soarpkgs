@@ -74,8 +74,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        popd >/dev/null 2>&1 ; go clean -cache -fuzzcache -modcache -testcache
        #p9cpu
        pushd "$($TMPDIRS)" >/dev/null 2>&1
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-       docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+       docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         sh -c '
         #Setup ENV
          tempdir="$(mktemp -d)" ; mkdir -p "$tempdir" && cd "$tempdir"
@@ -96,10 +96,10 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          cp "./target/$RUST_TARGET/release/p9cpud" "/build-bins/p9cpud"
         '
        #Copy 
-       docker cp "alpine-builder-mimalloc:/build-bins/p9cpu" "$BINDIR/p9cpu"
-       docker cp "alpine-builder-mimalloc:/build-bins/p9cpud" "$BINDIR/p9cpud"
+       docker cp "alpine-builder:/build-bins/p9cpu" "$BINDIR/p9cpu"
+       docker cp "alpine-builder:/build-bins/p9cpud" "$BINDIR/p9cpud"
       #Delete Containers
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc"
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
        popd >/dev/null 2>&1
 fi
 #-------------------------------------------------------#

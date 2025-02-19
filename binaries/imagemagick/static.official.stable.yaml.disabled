@@ -67,8 +67,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      #-------------------------------------------------------#
       ##Build:     
        pushd "$($TMPDIRS)" >/dev/null 2>&1
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-       docker run --privileged --net="host" --name "alpine-builder-mimalloc" "alpine:latest" \
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+       docker run --privileged --net="host" --name "alpine-builder" "alpine:latest" \
         sh -c '     
         #Setup ENV
          mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
@@ -91,8 +91,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
         '
       ###Build:
       # pushd "$($TMPDIRS)" >/dev/null 2>&1
-      # docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-      # docker run --privileged --net="host" --name "alpine-builder-mimalloc" "alpine:latest" \
+      # docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+      # docker run --privileged --net="host" --name "alpine-builder" "alpine:latest" \
       #  sh -c '
       #  #Setup ENV
       #   mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
@@ -114,7 +114,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       #  '
       #Copy & Meta
        mkdir -p "$BASEUTILSDIR/imagemagick"
-       docker cp "alpine-builder-mimalloc:/build-bins/." "$(pwd)/"
+       docker cp "alpine-builder:/build-bins/." "$(pwd)/"
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath
        #Meta
        find "." -maxdepth 1 -type f | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'

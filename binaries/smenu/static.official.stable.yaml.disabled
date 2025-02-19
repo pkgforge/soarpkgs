@@ -66,8 +66,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #Build
        pushd "$($TMPDIRS)" >/dev/null 2>&1
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-       docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+       docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         sh -c '
         #Setup ENV
          tempdir="$(mktemp -d)" ; mkdir -p "$tempdir" && cd "$tempdir"
@@ -83,12 +83,12 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          cp "./STATIC_BUILD/smenu" "/build-bins/smenu"
         '
       #Copy 
-       docker cp "alpine-builder-mimalloc:/build-bins/smenu" "./smenu"
+       docker cp "alpine-builder:/build-bins/smenu" "./smenu"
        #Meta 
        file "./smenu" && du -sh "./smenu"
        cp "./smenu" "$BINDIR/smenu"
       #Delete Containers
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc"
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
        popd >/dev/null 2>&1
 fi
 #-------------------------------------------------------#

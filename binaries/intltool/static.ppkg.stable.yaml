@@ -61,7 +61,7 @@ x_exec:
     curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "intltool") | .version' | tr -d '[:space:]'
   run: |
     #Build
-     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
@@ -95,6 +95,6 @@ x_exec:
        file "/build-bins/"* && du -sh "/build-bins/"*
       '
     #Copy & Meta
-     docker cp "alpine-builder-mimalloc:/build-bins/." "${SBUILD_TMPDIR}/"
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

@@ -64,8 +64,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #Build
        pushd "$($TMPDIRS)" >/dev/null 2>&1
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-       docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+       docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         sh -c '
         #Setup ENV
          tempdir="$(mktemp -d)" ; mkdir -p "$tempdir" && cd "$tempdir"
@@ -94,7 +94,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          find "." -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I {} cp --force {} /build-bins/
         '
       #Copy 
-       docker cp "alpine-builder-mimalloc:/build-bins/." "$(pwd)/" ; find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath
+       docker cp "alpine-builder:/build-bins/." "$(pwd)/" ; find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath
        #Meta
        find "." -maxdepth 1 -type f | xargs -I {} sh -c 'file {}; b3sum {}; sha256sum {}; du -sh {}'
        mkdir -p "$BASEUTILSDIR/fio"
@@ -154,7 +154,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        fi
        unset TMP_METADIR BUILD_LOG BUILD_SCRIPT B3SUM DESCRIPTION NOTE EXTRA_BINS REPO_URL SHA256 WEB_URL
       fi
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc"
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
        find "$BASEUTILSDIR" -type f -size -3c -delete ; popd >/dev/null 2>&1
 fi
 #-------------------------------------------------------#

@@ -66,8 +66,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #Build
        pushd "$($TMPDIRS)" >/dev/null 2>&1
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-       docker run --privileged --net="host" --name "alpine-builder-mimalloc" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+       docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         sh -c '
         #Setup ENV
          tempdir="$(mktemp -d)" ; mkdir -p "$tempdir" && cd "$tempdir"
@@ -88,13 +88,13 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          cp "./target/$RUST_TARGET/release/nix-locate" "/build-bins/nix-locate"
         '
       #Copy 
-       docker cp "alpine-builder-mimalloc:/build-bins/." "$(pwd)/"
+       docker cp "alpine-builder:/build-bins/." "$(pwd)/"
        #Meta 
        file "./nix-index" && du -sh "./nix-index" ; cp "./nix-index" "$BINDIR/nix-index"
        file "./nix-channel-index" && du -sh "./nix-channel-index" ; cp "./nix-channel-index" "$BINDIR/nix-channel-index"
        file "./nix-locate" && du -sh "./nix-locate" ; cp "./nix-locate" "$BINDIR/nix-locate"
       #Delete Containers
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc"
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
        popd >/dev/null 2>&1
 fi
 #-------------------------------------------------------#

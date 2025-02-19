@@ -75,8 +75,8 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        popd >/dev/null 2>&1
       #Build Binary
        pushd "$($TMPDIRS)" >/dev/null 2>&1
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc" 2>/dev/null
-       docker run --privileged --net="host" --volume "/tmp/serverstatus-web:/serverstatus-web" --name "alpine-builder-mimalloc" "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:stable" \
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
+       docker run --privileged --net="host" --volume "/tmp/serverstatus-web:/serverstatus-web" --name "alpine-builder" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         sh -c '
         #Setup ENV
          tempdir="$(mktemp -d)" ; mkdir -p "$tempdir" && cd "$tempdir"
@@ -119,7 +119,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        #https://github.com/zdz/ServerStatus-Rust/blob/master/systemd/stat_client.service
        #https://github.com/zdz/ServerStatus-Rust/blob/master/systemd/stat_server.service
       #Binaries
-       docker cp "alpine-builder-mimalloc:/build-bins/." "$(pwd)/"
+       docker cp "alpine-builder:/build-bins/." "$(pwd)/"
        file "./stat_client" && du -sh "./stat_client" ; cp "./stat_client" "$BINDIR/serverstatus-client"
        cp "./stat_client" "$BINDIR/ssr-client"
        file "./stat_server" && du -sh "./stat_server" ; cp "./stat_server" "$BINDIR/serverstatus-server"
@@ -127,7 +127,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        file "./stat_server_themed" && du -sh "./stat_server_themed" ; cp "./stat_server_themed" "$BINDIR/serverstatus-server-themed"
        cp "./stat_server_themed" "$BINDIR/ssr-server-themed"
       #Delete Containers
-       docker stop "alpine-builder-mimalloc" 2>/dev/null ; docker rm "alpine-builder-mimalloc"
+       docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
        popd >/dev/null 2>&1
 fi
 #-------------------------------------------------------#
