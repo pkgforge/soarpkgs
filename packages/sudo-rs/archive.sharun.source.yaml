@@ -48,11 +48,11 @@ note:
   - "Requires '/etc/sudoers' file & '/etc/sudoers.d' dir"
   - "Also requires PAM to be setup: https://github.com/trifectatechfoundation/sudo-rs#differences-from-original-sudo"
 provides:
- - "su"
+  - "su"
  - "sudo"
  - "visudo"
 repology:
- - "sudo-rs"
+  - "sudo-rs"
 src_url:
   - "https://github.com/trifectatechfoundation/sudo-rs"
 tag:
