@@ -49,8 +49,8 @@ note:
   - "Also requires PAM to be setup: https://github.com/trifectatechfoundation/sudo-rs#differences-from-original-sudo"
 provides:
   - "su"
- - "sudo"
- - "visudo"
+  - "sudo"
+  - "visudo"
 repology:
   - "sudo-rs"
 src_url:
