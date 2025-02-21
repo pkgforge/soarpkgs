@@ -1,13 +1,13 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/crave/archive.sharun.pyinstaller.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/crave/archive.sharun.stable.yaml
 _disabled: false
 
 pkg: "crave"
-pkg_id: "sharun.wrappe.pyinstaller.crave"
+pkg_id: "sharun.wrappe.stable.crave"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "The Network Execution (CrackMapExec) Tool"
+description: "CLI Client for Crave.io"
 distro_pkg:
   archlinux:
     aur:
@@ -22,7 +22,7 @@ maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [PyInstaller]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [Stable]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
