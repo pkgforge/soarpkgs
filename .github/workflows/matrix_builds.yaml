@@ -141,6 +141,22 @@ jobs:
              export DEBUG="0"
            fi
            echo "DEBUG=${DEBUG}" >> "${GITHUB_ENV}"
+          ##GITHUB_REPOSITORY [Exists?]
+           if [[ -z "${GITHUB_REPOSITORY//[[:space:]]/}" ]]; then
+              echo -e "\n[✗] FATAL: Failed to Get \$GITHUB_REPOSITORY\n"
+              echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
+             exit 1
+           elif echo "${GITHUB_REPOSITORY}" | grep -qiE 'github.com'; then
+              GITHUB_REPOSITORY="$(echo "${GITHUB_REPOSITORY}" | sed -E 's|^(https://github.com/)?([^/]+/[^/]+).*|\2|' | tr -d '[:space:]')"
+              export GITHUB_REPOSITORY
+              echo "GITHUB_REPOSITORY=${GITHUB_REPOSITORY}" >> "${GITHUB_ENV}"
+           fi
+          ##GITHUB_REPOSITORY [Is a Fork?]
+           if [[ "$(gh repo view "${GITHUB_REPOSITORY}" --json isFork -q '.isFork' | tr -d '[:space:]')" == "true" ]]; then
+              echo -e "\n[✗] FATAL: \$GITHUB_REPOSITORY must NOT be a Fork\n"
+              echo "CONTINUE_GHRUN=FALSE" >> "${GITHUB_ENV}"
+             exit 1
+           fi
           ##GHCRPKG_URL
            GHCRPKG_LOCAL="$(echo "${{ inputs.ghcr-url }}" | tr -d '[:space:]')"
            export GHCRPKG_LOCAL
