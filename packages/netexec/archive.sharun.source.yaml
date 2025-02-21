@@ -1,45 +1,39 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/twine/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/netexec/archive.sharun.source.yaml
 _disabled: false
 
-pkg: "twine"
-pkg_id: "sharun.wrappe.glibc.twine"
+pkg: "netexec"
+pkg_id: "sharun.wrappe.source.netexec"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Utility for publishing Python packages on PyPI"
+description: "The Network Execution (CrackMapExec) Tool"
 distro_pkg:
-  alpine:
-    - "twine"
   archlinux:
-    extra:
-      - "twine"
-  debian:
-    - "twine"
-  gnuguix:
-    - "python-twine"
-  homebrew:
-    - "twine"
+    aur:
+      - "netexec"
+  nixpkgs:
+    - "netexec"
 homepage:
-  - "https://twine.readthedocs.io"
-  - "https://github.com/pypa/twine"
+  - "https://netexec.wiki"
+  - "https://www.netexec.wiki"
 license:
-  - id: "Apache-2.0"
-    url: "https://github.com/pypa/twine/raw/353e0e4e2b02acedff37d00d52f26de056e33e55/LICENSE"
+  - id: "BSD-2-Clause"
+    url: "https://github.com/Pennyw0rth/NetExec/raw/c2f85db63b5b4323ac6f993eefa553ad276fe12f/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [Source]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "twine"
+  - "netexec==nxc"
 repology:
-  - "twine"
+  - "netexec"
 src_url:
-  - "https://pypi.org/project/twine"
+  - "https://github.com/Pennyw0rth/NetExec"
 tag:
   - "Utility"
 x_exec:
@@ -48,7 +42,10 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/twine/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/Pennyw0rth/NetExec" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -69,10 +66,11 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "twine" --wrappe-exec "twine" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- twine --help
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "git+https://github.com/Pennyw0rth/NetExec" --wrappe-exec "nxc" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- nxc --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+        mv "/build-bins/nxc" "/build-bins/netexec" 2>/dev/null
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
        #Info
         file "/build-bins/"* && du -sh "/build-bins/"*

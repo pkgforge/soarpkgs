@@ -1,36 +1,49 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/trafilatura/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/certbot/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "trafilatura"
-pkg_id: "sharun.wrappe.glibc.trafilatura"
+pkg: "certbot"
+pkg_id: "sharun.wrappe.pypi.certbot"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Command line journal application that stores your journal in a plain text file"
+description: "Tool to obtain certificates from Lets Encrypt and other ACME compliant CAs"
 distro_pkg:
+  alpine:
+    - "certbot"
+  archlinux:
+    aur:
+      - "certbot-git"
+    extra:
+      - "certbot"
+  debian:
+    - "python-certbot"
+  gnuguix:
+    - "certbot"
   homebrew:
-    - "trafilatura"
+    - "certbot"
+  nixpkgs:
+    - "certbot"
 homepage:
-  - "https://trafilatura.readthedocs.io"
-  - "https://github.com/adbar/trafilatura"
+  - "https://certbot.eff.org/docs"
+  - "https://github.com/certbot/certbot"
 license:
   - id: "Apache-2.0"
-    url: "https://github.com/adbar/trafilatura/raw/729b7370253bf036fedc67b9f7c5dfa9d2c800f5/LICENSE"
+    url: "https://github.com/certbot/certbot/raw/d3aceba188d3e4513567d19ca1a94d5b3298013e/LICENSE.txt"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "trafilatura"
+  - "certbot"
 repology:
-  - "trafilatura"
+  - "certbot"
 src_url:
-  - "https://pypi.org/project/trafilatura"
+  - "https://pypi.org/project/certbot"
 tag:
   - "Utility"
 x_exec:
@@ -39,7 +52,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/trafilatura/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/certbot/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -60,8 +73,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "trafilatura" --wrappe-exec "trafilatura" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- trafilatura -u "https://bin.pkgforge.dev"
+        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "certbot" --wrappe-exec "certbot" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- certbot certonly -d "example.com" -d "www.example.com"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

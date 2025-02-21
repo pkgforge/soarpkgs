@@ -1,43 +1,51 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tmuxp/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/awscli/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "tmuxp"
-pkg_id: "sharun.wrappe.glibc.tmuxp"
+pkg: "awscli"
+pkg_id: "sharun.wrappe.pypi.awscli"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Manage tmux workspaces from JSON and YAML"
+description: "Universal Command Line Interface for Amazon Web Services"
 distro_pkg:
+  alpine:
+    - "aws-cli"
   archlinux:
+    aur:
+      - "aws-cli-bin"
+      - "aws-cli-git"
+      - "aws-cli-v2"
     extra:
-      - "tmuxp"
+      - "aws-cli"
   debian:
-    - "tmuxp"
+    - "awscli"
+  gnuguix:
+    - "awscli"
   homebrew:
-    - "tmuxp"
+    - "awscli"
   nixpkgs:
-    - "tmuxp"
+    - "awscli"
 homepage:
-  - "https://tmuxp.git-pull.com"
-  - "https://github.com/tmux-python/tmuxp"
+  - "https://github.com/aws/aws-cli"
 license:
-  - id: "MIT"
-    url: "https://github.com/tmux-python/tmuxp/raw/f24cb5f19ea4f4c24d52d177c222b029e8090429/LICENSE"
+  - id: "Apache-2.0"
+    url: "https://github.com/aws/aws-cli/raw/6198c27528fffa59d7ebb9ba2605c4beb6a3883f/LICENSE.txt"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "tmuxp"
+  - "aws==awscli"
+  - "aws==aws-cli"
 repology:
-  - "tmuxp"
+  - "awscli"
 src_url:
-  - "https://pypi.org/project/tmuxp"
+  - "https://pypi.org/project/awscli"
 tag:
   - "Utility"
 x_exec:
@@ -46,7 +54,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/tmuxp/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/awscli/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -67,8 +75,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "tmuxp" --wrappe-exec "tmuxp" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- tmuxp --help
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "awscli" --wrappe-exec "aws" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- aws s3 ls "s3://nasanex/" --no-sign-request
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

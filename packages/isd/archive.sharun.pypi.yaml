@@ -1,49 +1,41 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/streamlink/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/isd/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "streamlink"
-pkg_id: "sharun.wrappe.glibc.streamlink"
+pkg: "isd"
+pkg_id: "sharun.wrappe.pypi.isd"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Program to pipe streams from services into a video player"
+description: "TUI to interactively work with systemd units"
 distro_pkg:
-  alpine:
-    - "streamlink"
   archlinux:
     aur:
-      - "streamlink-git"
-    extra:
-      - "streamlink"
-  debian:
-    - "streamlink"
-  gnuguix:
-    - "streamlink"
-  homebrew:
-    - "streamlink"
+      - "isd"
+      - "isd-appimage"
+      - "isd-git"
   nixpkgs:
-    - "streamlink"
+    - "isd"
 homepage:
-  - "https://streamlink.github.io/cli.html"
-  - "https://github.com/streamlink/streamlink"
+  - "https://isd-project.github.io/isd/"
+  - "https://github.com/isd-project/isd"
 license:
-  - id: "BSD-2-Clause"
-    url: "https://github.com/streamlink/streamlink/raw/9705129c764cbcaa77923ace6dd630dfcc37bc42/LICENSE"
+  - id: "GPL-3.0"
+    url: "https://github.com/isd-project/isd/raw/8021a51ddb46f068dbbeb341734892242300dc50/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "streamlink"
+  - "isd"
 repology:
-  - "streamlink"
+  - "isd"
 src_url:
-  - "https://pypi.org/project/streamlink"
+  - "https://pypi.org/project/isd"
 tag:
   - "Utility"
 x_exec:
@@ -52,7 +44,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/streamlink/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/isd-tui/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -73,8 +65,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "streamlink" --wrappe-exec "streamlink" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- streamlink "https://www.youtube.com/watch?v=dQw4w9WgXcQ" best
+        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "isd-tui" --wrappe-exec "isd" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- isd --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

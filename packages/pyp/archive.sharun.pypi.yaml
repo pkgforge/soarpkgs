@@ -1,36 +1,38 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/udocker/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pyp/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "udocker"
-pkg_id: "sharun.wrappe.glibc.udocker"
+pkg: "pyp"
+pkg_id: "sharun.wrappe.pypi.pyp"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Execute simple Docker Containers in User Space without root privileges"
+description: "Easily run Python at the shell"
 distro_pkg:
-  nixpkgs:
-    - "udocker"
+  archlinux:
+    aur:
+      - "pyp"
+  debian:
+    - "pyp"
 homepage:
-  - "https://indigo-dc.github.io/udocker/"
-  - "https://github.com/indigo-dc/udocker"
+  - "https://github.com/hauntsaninja/pyp"
 license:
-  - id: "Apache-2.0"
-    url: "https://github.com/indigo-dc/udocker/raw/638bc42f236e29a85368b38d21e49940c5908dfe/LICENSE"
+  - id: "MIT"
+    url: "https://github.com/hauntsaninja/pyp/blob/205a4ede86a7a708ed7ef9d5497416be5be0944a/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "udocker"
+  - "pyp"
 repology:
-  - "udocker"
+  - "pyp"
 src_url:
-  - "https://pypi.org/project/udocker"
+  - "https://pypi.org/project/pyp"
 tag:
   - "Utility"
 x_exec:
@@ -39,7 +41,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/udocker/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/pypyp/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -60,8 +62,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "udocker" --strace-time "60" --wrappe-exec "udocker" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- udocker --allow-root pull "alpine:latest"
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "pypyp" --wrappe-exec "pyp" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- pyp "sqrt(5)"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

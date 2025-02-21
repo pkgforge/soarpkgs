@@ -1,48 +1,39 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/beet/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/isort/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "beet"
-pkg_id: "sharun.wrappe.glibc.beet"
+pkg: "isort"
+pkg_id: "sharun.wrappe.pypi.isort"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Flexible music library manager and tagger"
+description: "Sort Python imports automatically"
 distro_pkg:
-  alpine:
-    - "beets"
-  archlinux:
-    aur:
-      - "beets-git"
-    extra:
-      - "beets"
   debian:
-    - "beets"
-  gnuguix:
-    - "beets"
+    - "isort"
+  homebrew:
+    - "isort"
   nixpkgs:
-    - "beets"
-    - "beets-unstable"
+    - "isort"
 homepage:
-  - "https://beets.io"
-  - "https://github.com/beetbox/beets"
+  - "https://github.com/PyCQA/isort"
 license:
   - id: "MIT"
-    url: "https://github.com/beetbox/beets/raw/c315487bd2f7d9adfdcc6b4eb6ad3043d531641b/LICENSE"
+    url: "https://github.com/PyCQA/isort/raw/1157b58fb70b9166f75f567fdbe45d6fa2cbfc5c/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "beet==beets"
+  - "isort"
 repology:
-  - "beets"
+  - "isort"
 src_url:
-  - "https://pypi.org/project/beets"
+  - "https://pypi.org/project/isort"
 tag:
   - "Utility"
 x_exec:
@@ -51,7 +42,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/beets/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/isort/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -72,8 +63,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.13" --python-pkg "beets" --wrappe-exec "beet" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- beet --help
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "isort" --wrappe-exec "isort" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- isort --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
