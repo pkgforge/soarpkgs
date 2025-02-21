@@ -1,0 +1,88 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/scons/archive.sharun.glibc.yaml
+_disabled: false
+
+pkg: "scons"
+pkg_id: "sharun.wrappe.glibc.scons"
+pkg_type: "archive"
+category:
+  - "Utility"
+description: "A Python replacement for Makefile-based build systems"
+distro_pkg:
+  alpine:
+    - "scons"
+  archlinux:
+    aur:
+      - "scons2"
+    extra:
+      - "scons"
+  debian:
+    - "scons"
+  gnuguix:
+    - "scons"
+  homebrew:
+    - "scons"
+  nixpkgs:
+    - "scons"
+homepage:
+  - "https://scons.org"
+  - "https://github.com/SCons/scons"
+license:
+  - id: "MIT"
+    url: "https://github.com/SCons/scons/raw/a6abb0fff2e8b836dfd58efec752def52faf16b8/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "scons"
+repology:
+  - "scons"
+src_url:
+  - "https://pypi.org/project/scons"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://pypi.org/pypi/scons/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
+      bash -l -c '
+       #Setup ENV
+        set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v '1777' '/tmp'
+        mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+        apt clean -y ; apt update -y -qq 2>/dev/null
+        apt update -y -qq
+       #CoreUtils
+        apt install bash binutils coreutils curl findutils file g++ git grep jq libc-dev moreutils patchelf rsync sed strace tar tree xz-utils zstd -y -qq 2>/dev/null
+       #Sharun
+        curl -qfsSL "https://api.gh.pkgforge.dev/repos/VHSgunzo/sharun/releases?per_page=100" | jq -r ".. | objects | .browser_download_url? // empty" | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sharun" | grep -Ei "aio" | sort --version-sort | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" curl -qfsSL "{}" -o "/usr/local/bin/sharun"
+        chmod -v "a+x" "/usr/local/bin/sharun"
+        command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
+       #Python
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "SCons" --wrappe-exec "scons" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- scons --help
+       #Copy
+        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+       #Info
+        file "/build-bins/"* && du -sh "/build-bins/"*
+        popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
