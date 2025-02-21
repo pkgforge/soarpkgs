@@ -1,36 +1,49 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gtts-cli/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/streamlink/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "gtts-cli"
-pkg_id: "sharun.wrappe.glibc.gtts-cli"
+pkg: "streamlink"
+pkg_id: "sharun.wrappe.pypi.streamlink"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Create an mp3 file from spoken text via the Google TTS API"
+description: "Program to pipe streams from services into a video player"
 distro_pkg:
+  alpine:
+    - "streamlink"
+  archlinux:
+    aur:
+      - "streamlink-git"
+    extra:
+      - "streamlink"
   debian:
-    - "gtts"
+    - "streamlink"
+  gnuguix:
+    - "streamlink"
+  homebrew:
+    - "streamlink"
+  nixpkgs:
+    - "streamlink"
 homepage:
-  - "https://gtts.readthedocs.io"
-  - "https://github.com/pndurette/gTTS"
+  - "https://streamlink.github.io/cli.html"
+  - "https://github.com/streamlink/streamlink"
 license:
-  - id: "MIT"
-    url: "https://github.com/pndurette/gTTS/raw/dbcda4f396074427172d4a1f798a172686ace6e0/LICENSE"
+  - id: "BSD-2-Clause"
+    url: "https://github.com/streamlink/streamlink/raw/9705129c764cbcaa77923ace6dd630dfcc37bc42/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "gtts-cli"
+  - "streamlink"
 repology:
-  - "gtts-cli"
+  - "streamlink"
 src_url:
-  - "https://pypi.org/project/gtts-cli"
+  - "https://pypi.org/project/streamlink"
 tag:
   - "Utility"
 x_exec:
@@ -39,7 +52,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/gTTS/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/streamlink/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -60,8 +73,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "gTTS" --wrappe-exec "gtts-cli" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- gtts-cli "hello" --output "./hello.mp3"
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "streamlink" --wrappe-exec "streamlink" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- streamlink "https://www.youtube.com/watch?v=dQw4w9WgXcQ" best
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

@@ -1,35 +1,33 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/huggingface-cli/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pyarmor/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "huggingface-cli"
-pkg_id: "sharun.wrappe.glibc.huggingface-cli"
+pkg: "pyarmor"
+pkg_id: "sharun.wrappe.pypi.pyarmor"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "The official Python client for the Huggingface Hub"
-distro_pkg:
-  homebrew:
-    - "huggingface-cli"
+description: "Obfuscate, Bind & expire Python Scripts"
 homepage:
-  - "https://huggingface.co/docs/huggingface_hub"
+  - "http://pyarmor.dashingsoft.com"
+  - "https://github.com/dashingsoft/pyarmor"
 license:
-  - id: "Apache-2.0"
-    url: "https://github.com/huggingface/huggingface_hub/raw/f629886b76e6134154270431a67397aef11408e9/LICENSE"
+  - id: "custom"
+    url: "https://github.com/dashingsoft/pyarmor/raw/b707621c895e3947f462ff336af4087b6794fccd/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "huggingface-cli"
-repology:
-  - "huggingface-cli"
+  - "pyarmor"
+#repology:
+#  - "pyarmor"
 src_url:
-  - "https://github.com/huggingface/huggingface_hub"
+  - "https://pypi.org/project/pyarmor"
 tag:
   - "Utility"
 x_exec:
@@ -38,10 +36,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/huggingface/huggingface_hub" "./TEMPREPO" >/dev/null 2>&1 && \
-    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
-    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+    curl -qfsSL "https://pypi.org/pypi/pyarmor/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -62,8 +57,9 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "huggingface_hub[cli]@git+https://github.com/huggingface/huggingface_hub" --wrappe-exec "huggingface-cli" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- huggingface-cli login --token "abcde"
+        curl -qfsSL "https://raw.githubusercontent.com/dashingsoft/pyarmor/refs/heads/master/tests.8/samples/foo.py" -o "./test.py"
+        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "pyarmor" --wrappe-exec "pyarmor" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- pyarmor gen "./test.py"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

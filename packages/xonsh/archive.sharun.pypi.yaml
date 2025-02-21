@@ -1,39 +1,50 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/netexec/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/xonsh/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "netexec"
-pkg_id: "sharun.wrappe.glibc.netexec"
+pkg: "xonsh"
+pkg_id: "sharun.wrappe.pypi.xonsh"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "The Network Execution (CrackMapExec) Tool"
+description: "Python-ish, BASHwards-compatible shell"
 distro_pkg:
+  alpine:
+    - "xonsh"
   archlinux:
     aur:
-      - "netexec"
+      - "xonsh-git"
+    extra:
+      - "xonsh"
+  debian:
+    - "xonsh"
+  gnuguix:
+    - "xonsh"
+  homebrew:
+    - "xonsh"
   nixpkgs:
-    - "netexec"
+    - "xonsh"
+    - "xonsh-unwrapped"
 homepage:
-  - "https://netexec.wiki"
-  - "https://www.netexec.wiki"
+  - "https://xon.sh"
+  - "https://github.com/xonsh/xonsh"
 license:
-  - id: "BSD-2-Clause"
-    url: "https://github.com/Pennyw0rth/NetExec/raw/c2f85db63b5b4323ac6f993eefa553ad276fe12f/LICENSE"
+  - id: "custom"
+    url: "https://github.com/xonsh/xonsh/raw/71d4920ac5c16f2ef37da88b3f563c25c585fb82/license"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "netexec==nxc"
+  - "xonsh"
 repology:
-  - "netexec"
+  - "xonsh"
 src_url:
-  - "https://github.com/Pennyw0rth/NetExec"
+  - "https://pypi.org/project/xonsh"
 tag:
   - "Utility"
 x_exec:
@@ -42,10 +53,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/Pennyw0rth/NetExec" "./TEMPREPO" >/dev/null 2>&1 && \
-    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
-    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+    curl -qfsSL "https://pypi.org/pypi/xonsh/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -66,11 +74,10 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "git+https://github.com/Pennyw0rth/NetExec" --wrappe-exec "nxc" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- nxc --help
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "xonsh[full]" --wrappe-exec "xonsh" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- xonsh --version
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
-        mv "/build-bins/nxc" "/build-bins/netexec" 2>/dev/null
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
        #Info
         file "/build-bins/"* && du -sh "/build-bins/"*

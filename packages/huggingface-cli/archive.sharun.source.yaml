@@ -1,40 +1,35 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ps_mem/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/huggingface-cli/archive.sharun.source.yaml
 _disabled: false
 
-pkg: "ps_mem"
-pkg_id: "sharun.wrappe.glibc.ps_mem"
+pkg: "huggingface-cli"
+pkg_id: "sharun.wrappe.source.huggingface-cli"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Utility to accurately report the in core memory usage for a program"
+description: "The official Python client for the Huggingface Hub"
 distro_pkg:
-  alpine:
-    - "ps_mem"
-  archlinux:
-    aur:
-      - "ps_mem"
-  nixpkgs:
-    - "ps_mem"
+  homebrew:
+    - "huggingface-cli"
 homepage:
-  - "https://github.com/pixelb/ps_mem"
+  - "https://huggingface.co/docs/huggingface_hub"
 license:
-  - id: "LGPL-2.1"
-    url: "https://github.com/pixelb/ps_mem/raw/8dbf7f9df7979773bc135f61d40447b41dc484fd/LICENSE"
+  - id: "Apache-2.0"
+    url: "https://github.com/huggingface/huggingface_hub/raw/f629886b76e6134154270431a67397aef11408e9/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [Source]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "ps_mem==ps-mem"
+  - "huggingface-cli"
 repology:
-  - "ps_mem"
+  - "huggingface-cli"
 src_url:
-  - "https://pypi.org/project/ps_mem"
+  - "https://github.com/huggingface/huggingface_hub"
 tag:
   - "Utility"
 x_exec:
@@ -43,7 +38,10 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/ps_mem/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/huggingface/huggingface_hub" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -64,8 +62,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "ps_mem" --wrappe-exec "ps_mem" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- ps_mem --help
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "huggingface_hub[cli]@git+https://github.com/huggingface/huggingface_hub" --wrappe-exec "huggingface-cli" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- huggingface-cli login --token "abcde"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

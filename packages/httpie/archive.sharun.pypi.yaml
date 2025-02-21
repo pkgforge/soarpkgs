@@ -1,46 +1,47 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ddgr/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/httpie/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "ddgr"
-pkg_id: "sharun.wrappe.glibc.ddgr"
+pkg: "httpie"
+pkg_id: "sharun.wrappe.pypi.httpie"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "DuckDuckGo from the terminal"
+description: "Modern, user-friendly command-line HTTP client for the API era"
 distro_pkg:
   alpine:
-    - "ddgr"
+    - "httpie"
   archlinux:
-    aur:
-      - "ddgr-git"
     extra:
-      - "ddgr"
+      - "httpie"
   debian:
-    - "ddgr"
+    - "httpie"
+  gnuguix:
+    - "httpie"
   homebrew:
-    - "ddgr"
+    - "httpie"
   nixpkgs:
-    - "ddgr"
+    - "httpie"
 homepage:
-  - "https://github.com/jarun/ddgr"
+  - "https://httpie.io"
+  - "https://github.com/httpie/cli"
 license:
-  - id: "GPL-3.0"
-    url: "https://github.com/jarun/ddgr/raw/71883e7d7facd065fee3611e0c0c989928998716/LICENSE"
+  - id: "BSD-3-Clause"
+    url: "https://github.com/httpie/cli/raw/5b604c37c6c67e18e7c3e9aee6c88a8c22b98345/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "ddgr"
+  - "httpie==http"
 repology:
-  - "ddgr"
+  - "httpie"
 src_url:
-  - "https://pypi.org/project/ddgr"
+  - "https://pypi.org/project/httpie"
 tag:
   - "Utility"
 x_exec:
@@ -49,7 +50,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/ddgr/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/httpie/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -70,10 +71,11 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "ddgr" --wrappe-exec "ddgr" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- ddgr "hello world"
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "httpie" --wrappe-exec "http" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- http -v "https://github.com"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+        mv -fv "/build-bins/http" "/build-bins/httpie" 2>/dev/null
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
        #Info
         file "/build-bins/"* && du -sh "/build-bins/"*

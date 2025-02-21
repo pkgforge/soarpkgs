@@ -1,41 +1,36 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jrnl/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/udocker/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "jrnl"
-pkg_id: "sharun.wrappe.glibc.jrnl"
+pkg: "udocker"
+pkg_id: "sharun.wrappe.pypi.udocker"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Command line journal application that stores your journal in a plain text file"
+description: "Execute simple Docker Containers in User Space without root privileges"
 distro_pkg:
-  archlinux:
-    extra:
-      - "jrnl"
-  homebrew:
-    - "jrnl"
   nixpkgs:
-    - "jrnl"
+    - "udocker"
 homepage:
-  - "https://jrnl.sh"
-  - "https://github.com/jrnl-org/jrnl"
+  - "https://indigo-dc.github.io/udocker/"
+  - "https://github.com/indigo-dc/udocker"
 license:
-  - id: "GPL-3.0"
-    url: "https://github.com/jrnl-org/jrnl/raw/247129c7602285b16052bb2f6fcd5d505fc2eb30/LICENSE.md"
+  - id: "Apache-2.0"
+    url: "https://github.com/indigo-dc/udocker/raw/638bc42f236e29a85368b38d21e49940c5908dfe/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "jrnl"
+  - "udocker"
 repology:
-  - "jrnl"
+  - "udocker"
 src_url:
-  - "https://pypi.org/project/jrnl"
+  - "https://pypi.org/project/udocker"
 tag:
   - "Utility"
 x_exec:
@@ -44,7 +39,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/jrnl/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/udocker/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -65,8 +60,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "jrnl" --wrappe-exec "jrnl" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- jrnl "yesterday: test"
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "udocker" --strace-time "60" --wrappe-exec "udocker" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- udocker --allow-root pull "alpine:latest"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

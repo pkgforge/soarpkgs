@@ -1,40 +1,36 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/shell-gpt/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/trafilatura/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "shell-gpt"
-pkg_id: "sharun.wrappe.glibc.shell-gpt"
+pkg: "trafilatura"
+pkg_id: "sharun.wrappe.pypi.trafilatura"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Postgres CLI with autocompletion and syntax highlighting"
+description: "Command line journal application that stores your journal in a plain text file"
 distro_pkg:
-  archlinux:
-    aur:
-      - "shell-gpt"
-      - "shellgpt-git"
-  nixpkgs:
-    - "shell-gpt"
-    - "shell_gpt"
+  homebrew:
+    - "trafilatura"
 homepage:
-  - "https://github.com/TheR1D/shell_gpt"
+  - "https://trafilatura.readthedocs.io"
+  - "https://github.com/adbar/trafilatura"
 license:
-  - id: "MIT"
-    url: "https://github.com/TheR1D/shell_gpt/raw/47b1715bc37e965bdf1414eb030292e23dd13778/LICENSE"
+  - id: "Apache-2.0"
+    url: "https://github.com/adbar/trafilatura/raw/729b7370253bf036fedc67b9f7c5dfa9d2c800f5/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "sgpt==shell-gpt"
+  - "trafilatura"
 repology:
-  - "shell-gpt"
+  - "trafilatura"
 src_url:
-  - "https://pypi.org/project/shell-gpt"
+  - "https://pypi.org/project/trafilatura"
 tag:
   - "Utility"
 x_exec:
@@ -43,7 +39,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/shell-gpt/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/trafilatura/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -64,9 +60,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        export OPENAI_API_KEY="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "shell-gpt" --wrappe-exec "sgpt" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- sgpt "Are aliens real"
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "trafilatura" --wrappe-exec "trafilatura" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- trafilatura -u "https://bin.pkgforge.dev"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

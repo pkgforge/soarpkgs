@@ -1,49 +1,36 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/certbot/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pdfly/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "certbot"
-pkg_id: "sharun.wrappe.glibc.certbot"
+pkg: "pdfly"
+pkg_id: "sharun.wrappe.pypi.pdfly"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "Tool to obtain certificates from Lets Encrypt and other ACME compliant CAs"
+description: "CLI tool to extract (meta)data from PDF and manipulate PDF files"
 distro_pkg:
-  alpine:
-    - "certbot"
-  archlinux:
-    aur:
-      - "certbot-git"
-    extra:
-      - "certbot"
-  debian:
-    - "python-certbot"
-  gnuguix:
-    - "certbot"
   homebrew:
-    - "certbot"
-  nixpkgs:
-    - "certbot"
+    - "pdfly"
 homepage:
-  - "https://certbot.eff.org/docs"
-  - "https://github.com/certbot/certbot"
+  - "https://pdfly.readthedocs.io"
+  - "https://github.com/py-pdf/pdfly"
 license:
-  - id: "Apache-2.0"
-    url: "https://github.com/certbot/certbot/raw/d3aceba188d3e4513567d19ca1a94d5b3298013e/LICENSE.txt"
+  - id: "BSD-3-Clause"
+    url: "https://github.com/py-pdf/pdfly/raw/7471d32e398ed99e710ef4c1b957d63bb812de03/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "certbot"
+  - "pdfly"
 repology:
-  - "certbot"
+  - "pdfly"
 src_url:
-  - "https://pypi.org/project/certbot"
+  - "https://pypi.org/project/pdfly"
 tag:
   - "Utility"
 x_exec:
@@ -52,7 +39,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/certbot/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/pdfly/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -73,8 +60,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "certbot" --wrappe-exec "certbot" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- certbot certonly -d "example.com" -d "www.example.com"
+        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "pdfly" --wrappe-exec "pdfly" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- pdfly --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

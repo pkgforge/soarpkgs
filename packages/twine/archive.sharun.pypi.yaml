@@ -1,36 +1,45 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gptme/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/twine/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "gptme"
-pkg_id: "sharun.wrappe.glibc.gptme"
+pkg: "twine"
+pkg_id: "sharun.wrappe.pypi.twine"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "AI assistant in your terminal"
+description: "Utility for publishing Python packages on PyPI"
 distro_pkg:
+  alpine:
+    - "twine"
+  archlinux:
+    extra:
+      - "twine"
+  debian:
+    - "twine"
+  gnuguix:
+    - "python-twine"
   homebrew:
-    - "gptme"
+    - "twine"
 homepage:
-  - "https://gptme.org/docs"
-  - "https://github.com/ErikBjare/gptme"
+  - "https://twine.readthedocs.io"
+  - "https://github.com/pypa/twine"
 license:
-  - id: "MIT"
-    url: "https://github.com/ErikBjare/gptme/raw/1edf80d96b31333dff3ce0b5475e5547cc157ad3/LICENSE"
+  - id: "Apache-2.0"
+    url: "https://github.com/pypa/twine/raw/353e0e4e2b02acedff37d00d52f26de056e33e55/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "gptme"
+  - "twine"
 repology:
-  - "gptme"
+  - "twine"
 src_url:
-  - "https://pypi.org/project/gptme"
+  - "https://pypi.org/project/twine"
 tag:
   - "Utility"
 x_exec:
@@ -39,7 +48,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/gptme/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/twine/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -60,8 +69,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "gptme" --wrappe-exec "gptme" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- gptme "what do you see?"
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "twine" --wrappe-exec "twine" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- twine --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

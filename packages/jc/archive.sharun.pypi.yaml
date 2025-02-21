@@ -1,36 +1,48 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pdfly/archive.sharun.glibc.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jc/archive.sharun.pypi.yaml
 _disabled: false
 
-pkg: "pdfly"
-pkg_id: "sharun.wrappe.glibc.pdfly"
+pkg: "jc"
+pkg_id: "sharun.wrappe.pypi.jc"
 pkg_type: "archive"
 category:
   - "Utility"
-description: "CLI tool to extract (meta)data from PDF and manipulate PDF files"
+description: "Convert the output of command-line tools to JSON"
 distro_pkg:
+  alpine:
+    - "jc"
+  archlinux:
+    aur:
+      - "jc-git"
+    extra:
+      - "jc"
+  debian:
+    - "jc"
+  gnuguix:
+    - "jc"
   homebrew:
-    - "pdfly"
+    - "jc"
+  nixpkgs:
+    - "jc"
 homepage:
-  - "https://pdfly.readthedocs.io"
-  - "https://github.com/py-pdf/pdfly"
+  - "https://github.com/kellyjonbrazil/jc"
 license:
-  - id: "BSD-3-Clause"
-    url: "https://github.com/py-pdf/pdfly/raw/7471d32e398ed99e710ef4c1b957d63bb812de03/LICENSE"
+  - id: "MIT"
+    url: "https://github.com/kellyjonbrazil/jc/raw/ee3b873ef46de2e447404d22db804304e51f9ab5/LICENSE.md"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Sharun [GLIBC]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
   - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
   - "[PORTABLE] (Works on AnyLinux)"
   - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
 provides:
-  - "pdfly"
+  - "jc"
 repology:
-  - "pdfly"
+  - "jc"
 src_url:
-  - "https://pypi.org/project/pdfly"
+  - "https://pypi.org/project/jc"
 tag:
   - "Utility"
 x_exec:
@@ -39,7 +51,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://pypi.org/pypi/pdfly/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://pypi.org/pypi/jc/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -60,8 +72,8 @@ x_exec:
         chmod -v "a+x" "/usr/local/bin/sharun"
         command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)" 
        #Python
-        sharun lib4bin --with-hooks --python-ver "3.12" --python-pkg "pdfly" --wrappe-exec "pdfly" --strip \
-         --dst-dir "./SHARUN_WRAPPED" sharun -- pdfly --help
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "jc" --wrappe-exec "jc" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- jc --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
