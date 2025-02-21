@@ -129,11 +129,16 @@ jobs:
 
       - name: Parse Input [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
+        env:
+          GH_TOKEN: "${{ github.token }}"
+          GITHUB_TOKEN: "${{ github.token }}"
         run: |
           ##presets
           set +x ; set +e
           #-------------#
           export HOST_TRIPLET="$(uname -m)-$(uname -s)"
+          export "GH_PAGER="
+          gh config set prompt disabled &>/dev/null
           ##Debug   
            if [ "${{ inputs.debug }}" == "true" ] ; then
              export DEBUG="1"
