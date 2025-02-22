@@ -31,7 +31,7 @@ distro_pkg:
 homepage:
   - "https://github.com/fastfetch-cli/fastfetch"
 license:
-  - id : "MIT"
+  - id: "MIT"
     url: "https://github.com/fastfetch-cli/fastfetch/raw/ed8430fb2ff1fe89c7207b2cf7f73dfaf302aa2f/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
@@ -39,6 +39,8 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/fastfetch-cli/fastfetch"
   - "Related Discussion: https://github.com/fastfetch-cli/fastfetch/issues/808"
+  - "This version contains a limited set of features due to static linking"
+  - "Please use the version from pkgcache if all features are needed"
 provides:
   - "fastfetch"
   - "flashfetch"

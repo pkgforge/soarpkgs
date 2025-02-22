@@ -1,0 +1,77 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/aqtinstall/archive.sharun.pypi.yaml
+_disabled: false
+
+pkg: "aqtinstall"
+pkg_id: "sharun.wrappe.pypi.aqtinstall"
+pkg_type: "archive"
+category:
+  - "Utility"
+description: "Qt CLI Installer on multi-platforms"
+distro_pkg:
+  homebrew:
+    - "aqtinstall"
+homepage:
+  - "https://aqtinstall.readthedocs.io"
+  - "https://github.com/miurahr/aqtinstall"
+license:
+  - id: "MIT"
+    url: "https://github.com/miurahr/aqtinstall/raw/39ae4946a6185e954c84c12b9f0ba55fe222219e/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Sharun [pypi]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "aqtinstall==aqt"
+repology:
+  - "aqt"
+  - "aqtinstall"
+src_url:
+  - "https://pypi.org/project/aqtinstall"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://pypi.org/pypi/aqtinstall/json" | jq -r '[.. | .version?] | map(select(. != null)) | first' | tr -d '"'\''[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
+      bash -l -c '
+       #Setup ENV
+        set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v '1777' '/tmp'
+        mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+        apt clean -y ; apt update -y -qq 2>/dev/null
+        apt update -y -qq
+       #CoreUtils
+        apt install bash binutils coreutils curl findutils file g++ git grep jq libc-dev moreutils patchelf rsync sed strace tar tree xz-utils zstd -y -qq 2>/dev/null
+       #Sharun
+        curl -qfsSL "https://api.gh.pkgforge.dev/repos/VHSgunzo/sharun/releases?per_page=100" | jq -r ".. | objects | .browser_download_url? // empty" | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sharun" | grep -Ei "aio" | sort --version-sort | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" curl -qfsSL "{}" -o "/usr/local/bin/sharun"
+        chmod -v "a+x" "/usr/local/bin/sharun"
+        command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)"
+       #Python
+        sharun lib4bin --with-hooks --python-ver "3.14" --python-pkg "aqtinstall" --wrappe-exec "aqt" --strip \
+         --dst-dir "./SHARUN_WRAPPED" sharun -- aqt list-qt linux desktop
+       #Copy
+        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+        mv -fv "/build-bins/aqt" "/build-bins/aqtinstall"
+        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+       #Info
+        file "/build-bins/"* && du -sh "/build-bins/"*
+        popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
