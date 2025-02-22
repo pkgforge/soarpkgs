@@ -1,29 +1,25 @@
+##Needs daemon running as root
+
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/teamviewer/archive.wrappe.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/teamviewer-host/archive.wrappe.stable.yaml
 _disabled: false
 
-pkg: "teamviewer"
-pkg_id: "wrappe.teamviewer"
+pkg: "teamviewer-host"
+pkg_id: "wrappe.teamviewer-host"
 pkg_type: "archive"
-app_id: "com.teamviewer.TeamViewer"
+app_id: "com.teamviewer.TeamViewer-Host"
 category:
   - "Utility"
-description: "All-In-One Software for Remote Support and Online Meetings (Client)"
+description: "For Unattended TeamViewer Access (Host)"
 desktop:
-  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/packages/teamviewer/assets/default.desktop"
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/packages/teamviewer-host/assets/default.desktop"
 distro_pkg:
-  archlinux:
-    aur:
-      - "teamviewer"
-      - "teamviewer13"
   homebrew:
-    - "teamviewer"
-  nixpkgs:
-    - "teamviewer"
+    - "teamviewer-host"
 homepage:
   - "https://www.teamviewer.com"
 icon:
-  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/teamviewer/assets/default.png"
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/teamviewer-host/assets/default.png"
 license:
   - "freeware"
 maintainer:
@@ -36,9 +32,9 @@ note:
   - "Host Dependencies: A lot, please use soar log to view the ldd output"
   - "You might need to install libminizip"
 provides:
-  - "teamviewer" 
+  - "teamviewer-host" 
 repology:
-  - "teamviewer"
+  - "teamviewer-host"
 src_url:
   - "https://www.teamviewer.com/en-us/download/linux/"
 tag:
@@ -61,7 +57,7 @@ x_exec:
        aarch64)
          DOWNLOAD_URL="$(curl -qfsSL "https://www.teamviewer.com/en-us/download/linux/" | grep -o 'href="[^"]*"' |\
            sed 's/href="//' | sed 's/"$//' | grep -i 'download' | grep -i 'linux' | grep -i 'http' |\
-           grep -Eiv 'amd64|armhf|armv7|deb|host|i686|rpm|x86_64' | grep -Ei 'aarch64|arm64' | sort --version-sort |\
+           grep -Eiv 'amd64|armhf|armv7|deb|i686|rpm|x86_64' | grep -i 'host' | grep -Ei 'aarch64|arm64' | sort --version-sort |\
            tail -n 1 | tr -d '"'\''[:space:]')"
          curl -w "(DL) <== %{url}\n" -qfSL "${DOWNLOAD_URL}" -o "${SBUILD_TMPDIR}/${PKG}.archive"
          file "${SBUILD_TMPDIR}/${PKG}.archive"
@@ -69,7 +65,7 @@ x_exec:
        x86_64)
          DOWNLOAD_URL="$(curl -qfsSL "https://www.teamviewer.com/en-us/download/linux/" | grep -o 'href="[^"]*"' |\
            sed 's/href="//' | sed 's/"$//' | grep -i 'download' | grep -i 'linux' | grep -i 'http' |\
-           grep -Eiv 'aarch64|arm|deb|host|i686|rpm' | grep -Ei 'amd64|x86_64' | sort --version-sort |\
+           grep -Eiv 'aarch64|arm|deb|i686|rpm' | grep -i 'host' | grep -Ei 'amd64|x86_64' | sort --version-sort |\
            tail -n 1 | tr -d '"'\''[:space:]')"
          curl -w "(DL) <== %{url}\n" -qfSL "${DOWNLOAD_URL}" -o "${SBUILD_TMPDIR}/${PKG}.archive"
          file "${SBUILD_TMPDIR}/${PKG}.archive"
@@ -93,7 +89,7 @@ x_exec:
       grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | sort -u |\
       xargs -I "{}" bash -c 'sudo chmod -v "a+x" "{}"; ldd "{}" 2>/dev/null ; echo -e "GLIBC" && objdump -T "{}" | grep -Ei "GLIBC(_|XX_)" | sed -E "s/.*GLIBC(_|XX_)([0-9]+[.][0-9.]*).*/\2/" | sort -uV | tail -n 1 ; echo -e "\n"'
     #Pack & Copy
-     [[ -s "${EXT_DIR}/teamviewer" ]] && PKG_ENTRYPOINT="${EXT_DIR}/teamviewer"
+     [[ -s "${EXT_DIR}/tv_bin/script/teamviewer" ]] && PKG_ENTRYPOINT="${EXT_DIR}/tv_bin/script/teamviewer"
      "${SBUILD_TMPDIR}/wrappe" --current-dir "command" --compression "22" --show-information "none" --unpack-directory ".${PKG}.wrappe" --unpack-target "cwd" "${EXT_DIR}" "${PKG_ENTRYPOINT}" "${SBUILD_OUTDIR}/${PKG}"
      [[ -s "${SBUILD_OUTDIR}/${PKG}" ]] || exit 1
      ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}/BUILD_DIR" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
