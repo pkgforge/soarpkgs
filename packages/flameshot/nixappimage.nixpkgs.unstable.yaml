@@ -59,7 +59,7 @@ x_exec:
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
      nix bundle --impure --bundler "github:pkgforge/nix-appimage?ref=main" "nixpkgs#flameshot" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixappimage"
      sudo rsync -achLv --no-relative "${SBUILD_TMPDIR}/nixappimage" "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
-     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
      chmod -v +x "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
     #Debloat & Fix things
      pushd "${SBUILD_TMPDIR}" >/dev/null 2>&1 && \

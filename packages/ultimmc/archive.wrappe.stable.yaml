@@ -81,7 +81,7 @@ x_exec:
      fi
      find -L "${EXT_DIR}" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Prep 
-     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -Rv 755 "${SBUILD_TMPDIR}"
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
      echo -e "\n" && find "${EXT_DIR}" -maxdepth 3 -type f -exec file -i "{}" \; |\
       grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | sort -u |\
       xargs -I "{}" bash -c 'sudo chmod -v "a+x" "{}"; ldd "{}" 2>/dev/null ; echo -e "GLIBC" && objdump -T "{}" | grep -Ei "GLIBC(_|XX_)" | sed -E "s/.*GLIBC(_|XX_)([0-9]+[.][0-9.]*).*/\2/" | sort -uV | tail -n 1 ; echo -e "\n"'
