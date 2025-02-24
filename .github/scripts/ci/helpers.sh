@@ -109,8 +109,9 @@ fetch_version_upstream()
        echo -e "[+] Upstream Version: ${PKG_VERSION_UPSTREAM} ('.SBUILD') [${SBUILD_TMPDIR}/upstream.version]"
      else
        echo -e "[-] WARNING: Could NOT Fetch Version from Upstream ('.SBUILD') <== [${SBUILD_TMPDIR}/upstream.version]"
-       export PKG_VERSION_UPSTREAM=""
        #PKG_VERSION_UPSTREAM="UNKNOWN-$(date --utc +'%y%m%dT%H%M%S')" ; export PKG_VERSION_UPSTREAM
+       PKG_VERSION_UPSTREAM="NA-$(echo "${SBUILD_PKGVER}" | awk -F'T' '{split($1,a,"-"); d=substr(a[3],1,6); printf "20%s-%s-%s\n", substr(d,1,2), substr(d,3,2), substr(d,5,2)}' | tr -d '[:space:]')"
+       export PKG_VERSION_UPSTREAM
      fi
   #Fetch from Repology
    elif [[ -n "${PKG_REPOLOGY[*]}" && "${#PKG_REPOLOGY[@]}" -gt 0 ]]; then
@@ -130,10 +131,21 @@ fetch_version_upstream()
      if [ -n "${PKG_VERSION_UPSTREAM+x}" ] && [ "$(printf '%s' "${PKG_VERSION_UPSTREAM}" | tr -d '[:space:]' | wc -c)" -gt 2 ]; then
        echo -e "[+] Upstream Version: ${PKG_VERSION_UPSTREAM} ('.repology') [${PKG_REPOLOGY[*]}]" ; unset PKG_REPOLOGY
      else
-       export PKG_VERSION_UPSTREAM=""
-       #PKG_VERSION_UPSTREAM="UNKNOWN-$(date --utc +'%y%m%dT%H%M%S')" ; export PKG_VERSION_UPSTREAM
        echo -e "[-] WARNING: Could NOT Fetch Version from Upstream ('.repology') [${PKG_REPOLOGY[*]}]" ; unset PKG_REPOLOGY
+       #PKG_VERSION_UPSTREAM="UNKNOWN-$(date --utc +'%y%m%dT%H%M%S')" ; export PKG_VERSION_UPSTREAM
+       PKG_VERSION_UPSTREAM="NA-$(echo "${SBUILD_PKGVER}" | awk -F'T' '{split($1,a,"-"); d=substr(a[3],1,6); printf "20%s-%s-%s\n", substr(d,1,2), substr(d,3,2), substr(d,5,2)}' | tr -d '[:space:]')"
+       export PKG_VERSION_UPSTREAM
      fi
+   fi
+ elif [[ -s "${SBUILD_TMPDIR}/upstream.version" && $(stat -c%s "${SBUILD_TMPDIR}/upstream.version") -gt 3 ]]; then
+   PKG_VERSION_UPSTREAM="$(cat "${SBUILD_TMPDIR}/upstream.version" | tr -d '[:space:]')" ; export PKG_VERSION_UPSTREAM
+   #Check
+   if [ -n "${PKG_VERSION_UPSTREAM+x}" ] && [ "$(printf '%s' "${PKG_VERSION_UPSTREAM}" | tr -d '[:space:]' | wc -c)" -gt 2 ]; then
+     echo -e "[+] Upstream Version: ${PKG_VERSION_UPSTREAM} ('.SBUILD') [${SBUILD_TMPDIR}/upstream.version]"
+   else
+     echo -e "[-] WARNING: Could NOT Fetch Version from Upstream ('.SBUILD') <== [${SBUILD_TMPDIR}/upstream.version]"
+     export PKG_VERSION_UPSTREAM=""
+     #PKG_VERSION_UPSTREAM="UNKNOWN-$(date --utc +'%y%m%dT%H%M%S')" ; export PKG_VERSION_UPSTREAM
    fi
  elif [ -n "${SBUILD_PKGVER+x}" ] && [ "$(printf '%s' "${SBUILD_PKGVER}" | tr -d '[:space:]' | wc -c)" -gt 2 ];then
    export PKG_VERSION_UPSTREAM="${SBUILD_PKGVER}"
