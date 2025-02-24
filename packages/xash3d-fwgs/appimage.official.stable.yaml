@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/xash3d-fwgs/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "xash3d-fwgs"
+pkg_id: "github.com.FWGS.xash3d-fwgs"
+pkg_type: "appimage"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
+category:
+  - "Utility"
+description: "Heavily modified fork of an original Xash3D Engine for Half Life"
+distro_pkg:
+  archlinux:
+    aur:
+      - "xash3d-fwgs-bin"
+      - "xash3d-fwgs-git"
+homepage:
+  - "https://github.com/FWGS/xash3d-fwgs"
+license:
+  - "GPL"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/FWGS/xash3d-fwgs"   
+provides:
+  - "xash3d-fwgs"
+repology:
+  - "xash3d-fwgs"
+src_url:
+  - "https://github.com/FWGS/xash3d-fwgs"
+tag:
+  - "utility"
+x_exec:
+  host:
+    #- "aarch64-Linux" 
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/FWGS/xash3d-fwgs/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "continuous"))] | .[].published_at | fromdate | strftime("%y%m%dT%H%M%S")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        exit 1
+        ;;
+      x86_64)
+        soar dl "https://github.com/FWGS/xash3d-fwgs@continuous" --match "appimage,fwgs" --exclude "aarch64,arm,i686,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

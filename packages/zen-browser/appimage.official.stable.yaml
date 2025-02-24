@@ -45,8 +45,8 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    #curl -qfsSL "https://api.gh.pkgforge.dev/repos/zen-browser/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.name | test("(?i)(alpha|beta|twilight)") | not))] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zen-browser/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.name | test("(?i)(release)")))] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+    #curl -qfsSL "https://api.gh.pkgforge.dev/repos/zen-browser/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.name | test("(?i)(alpha|beta|twilight)") | not))] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/zen-browser/desktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.name | test("(?i)(release)")))] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in

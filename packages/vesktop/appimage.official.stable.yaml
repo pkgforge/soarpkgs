@@ -48,7 +48,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Vencord/Vesktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/Vencord/Vesktop/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
   run: |
     case "$(uname -m)" in
       aarch64) exclude="x86,x64,arm,zsync" ;;
