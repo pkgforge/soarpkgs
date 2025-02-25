@@ -1,30 +1,32 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ffufpostprocessing/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tldfinder/static.official.source.yaml
 _disabled: false
 
-pkg: "ffufpostprocessing"
-pkg_id: "github.com.Damian89.ffufPostprocessing"
+pkg: "tldfinder"
+pkg_id: "github.com.projectdiscovery.tldfinder.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Filter ffuf results"
+description: "A streamlined tool for discovering private TLDs for security research"
 homepage:
-  - "https://github.com/dsecuredcom/ffufPostprocessing"
+  - "https://github.com/projectdiscovery/tldfinder"
+license:
+  - id: "MIT"
+    url: "https://github.com/projectdiscovery/tldfinder/raw/007ee5cbd9e4bb5558b6d06989b6c30d7983e11b/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/dsecuredcom/ffufPostprocessing"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/projectdiscovery/tldfinder"
 provides:
-- "ffufpostprocessing==ffufPostprocessing"
+  - "tldfinder"  
 #repology:
-#  - "ffufpostprocessing"
+#  - "tldfinder"
 src_url:
-  - "https://github.com/dsecuredcom/ffufPostprocessing"
+  - "https://github.com/projectdiscovery/tldfinder"
 tag:
-  - "bugbounty"
-  - "ffuf"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -32,7 +34,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/dsecuredcom/ffufPostprocessing" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/projectdiscovery/tldfinder" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -51,10 +53,10 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/dsecuredcom/ffufPostprocessing" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/projectdiscovery/tldfinder" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/ffufpostprocessing"
+       go build -C "./cmd/tldfinder" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/tldfinder"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
