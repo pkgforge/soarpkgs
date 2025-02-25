@@ -8,7 +8,7 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Blazing 💥 fast terminal-ui for git written in rust 🦀"
+description: "Blazing fast terminal-ui for git written in rust"
 distro_pkg:
   alpine:
     - "gitui"
@@ -22,13 +22,15 @@ distro_pkg:
 homepage:
   - "https://github.com/extrawurst/gitui"
 license:
-  - "BSD"
-  - "MIT"  
+  - id: "BSD"
+    url: "https://github.com/gitui-org/gitui/raw/9fd82f0d43acd0fab785c8a93a00b26c359845f9/LICENSE.md"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/extrawurst/gitui"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/extrawurst/gitui"\
+provides:
+  - "gitui"
 repology:
   - "gitui"
 src_url:
@@ -59,7 +61,22 @@ x_exec:
        source "${HOME}/.cargo/env"
        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
        rustup target add "${RUST_TARGET}"
-       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
+       RUSTFLAGS="-C target-feature=+crt-static \
+         -C default-linker-libraries=yes \
+         -C link-self-contained=yes \
+         -C prefer-dynamic=no \
+         -C embed-bitcode=yes \
+         -C lto=yes \
+         -C opt-level=z \
+         -C debuginfo=none \
+         -C strip=symbols \
+         -C linker=clang \
+         -C link-arg=-fuse-ld=$(which mold) \
+         -C link-arg=-Wl,--Bstatic \
+         -C link-arg=-Wl,--static \
+         -C link-arg=-Wl,-S \
+         -C link-arg=-Wl,--build-id=none"
+       export RUSTFLAGS
       #Build
        git clone --filter "blob:none" --quiet "https://github.com/extrawurst/gitui" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
