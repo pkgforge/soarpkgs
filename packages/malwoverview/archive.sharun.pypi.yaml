@@ -54,7 +54,7 @@ x_exec:
        pacman -Sc --noconfirm
       #CoreUtils
        BASE_PKGS=(bash binutils coreutils croc curl findutils file gcc git grep jq glibc linux-headers moreutils p7zip patchelf rsync sed strace tar tree xz zstd)
-       for pkg in "${BASE_PKGS[@]}"; do pacman -Sy "${pkg}" -noconfirm --needed 2>/dev/null; done
+       for pkg in "${BASE_PKGS[@]}"; do pacman -Sy "${pkg}" --noconfirm --needed 2>/dev/null; done
       #Sharun
        curl -qfsSL "https://api.gh.pkgforge.dev/repos/VHSgunzo/sharun/releases?per_page=100" | jq -r ".. | objects | .browser_download_url? // empty" | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sharun" | grep -Ei "aio" | sort --version-sort | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" curl -qfsSL "{}" -o "/usr/local/bin/sharun"
        chmod -v "a+x" "/usr/local/bin/sharun"
