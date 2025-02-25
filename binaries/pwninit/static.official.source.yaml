@@ -59,7 +59,22 @@ x_exec:
        source "${HOME}/.cargo/env"
        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
        rustup target add "${RUST_TARGET}"
-       export RUSTFLAGS="-C target-feature=+crt-static -C default-linker-libraries=yes -C link-self-contained=yes -C prefer-dynamic=no -C embed-bitcode=yes -C lto=yes -C opt-level=z -C debuginfo=none -C strip=symbols -C linker=clang -C link-arg=-fuse-ld=$(which mold) -C link-arg=-Wl,--Bstatic -C link-arg=-Wl,--static -C link-arg=-Wl,-S -C link-arg=-Wl,--build-id=none"
+       RUSTFLAGS="-C target-feature=+crt-static \
+         -C default-linker-libraries=yes \
+         -C link-self-contained=yes \
+         -C prefer-dynamic=no \
+         -C embed-bitcode=yes \
+         -C lto=yes \
+         -C opt-level=z \
+         -C debuginfo=none \
+         -C strip=symbols \
+         -C linker=clang \
+         -C link-arg=-fuse-ld=$(which mold) \
+         -C link-arg=-Wl,--Bstatic \
+         -C link-arg=-Wl,--static \
+         -C link-arg=-Wl,-S \
+         -C link-arg=-Wl,--build-id=none"
+       export RUSTFLAGS
       #Build
        git clone --filter "blob:none" --quiet "https://github.com/io12/pwninit" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
