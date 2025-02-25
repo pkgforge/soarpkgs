@@ -1,30 +1,33 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ffufpostprocessing/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/sshamble/static.official.source.yaml
 _disabled: false
 
-pkg: "ffufpostprocessing"
-pkg_id: "github.com.Damian89.ffufPostprocessing"
+pkg: "sshamble"
+pkg_id: "github.com.runZeroInc.sshamble.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Filter ffuf results"
+description: "Unexpected Exposures in SSH"
 homepage:
-  - "https://github.com/dsecuredcom/ffufPostprocessing"
+  - "https://sshamble.com"
+  - "https://github.com/runZeroInc/sshamble"
+license:
+  - id: "BSD-2-Clause"
+    url: "https://github.com/runZeroInc/sshamble/raw/259fbe0627303bc340bbf71a35757113e24fccc7/LICENSE.md"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/dsecuredcom/ffufPostprocessing"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/runZeroInc/sshamble"
 provides:
-- "ffufpostprocessing==ffufPostprocessing"
-#repology:
-#  - "ffufpostprocessing"
+  - "sshamble"
+repology:
+  - "sshamble"
 src_url:
-  - "https://github.com/dsecuredcom/ffufPostprocessing"
+  - "https://github.com/runZeroInc/sshamble"
 tag:
-  - "bugbounty"
-  - "ffuf"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -32,7 +35,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/dsecuredcom/ffufPostprocessing" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/runZeroInc/sshamble" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -51,10 +54,10 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/dsecuredcom/ffufPostprocessing" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/runZeroInc/sshamble" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/ffufpostprocessing"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/sshamble"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
