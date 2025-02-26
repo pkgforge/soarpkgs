@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/wcurl/static.official.source.yaml
+_disabled: false
+
+pkg: "wcurl"
+pkg_id: "github.com.curl.wcurl.source"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A simple wrapper around curl to easily download files"
+distro_pkg:
+  alpine:
+    - "wcurl"
+  archlinux:
+    aur:
+      - "wcurl-git"
+    extra:
+      - "wcurl"
+  homebrew:
+    - "wcurl"
+  nixpkgs:
+    - "wcurl"
+homepage:
+  - "https://curl.se/wcurl"
+  - "https://github.com/curl/wcurl"
+license:
+  - id: "Custom"
+    url: "https://github.com/curl/wcurl/raw/54ea860fbf0015b6377b34c79ce981aa5cd91191/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Fetched from Upstream. Check/Report @ https://github.com/curl/wcurl"
+provides:
+  - "wcurl"  
+repology:
+  - "wcurl"
+src_url:
+  - "https://github.com/curl/wcurl"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/curl/wcurl" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Download
+     soar dl "https://raw.githubusercontent.com/curl/wcurl/main/wcurl" -o "${SBUILD_OUTDIR}/wcurl" --yes
+    #Fetch Upstream Version
+     curl -qfsSL "https://api.gh.pkgforge.dev/repos/curl/wcurl/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
