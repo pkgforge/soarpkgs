@@ -14,6 +14,7 @@
 > - https://lobste.rs/s/iem7jw/soar_distro_agnostic_package_manager
 > > This is why we have the sorry state of Linux Packaging in the first place. Rather than answer any of my questions where it's clearly stated that _**it wouldn’t work the way soar/soarpkgs are designed (Always from latest source)**_, We get lectures on how "other" distros do it and then we also receive our own code as supposed proof...?
 > > ![image](https://github.com/user-attachments/assets/33ebe008-9e4b-493e-8f8b-859d63be1c40)
+> - [Long discussion with Pacstall/Rhino Team where we get accused of lot many things & then blamed for insulting them](https://github.com/rhino-linux/tracker/issues/40)
 </details>
 
 ---
