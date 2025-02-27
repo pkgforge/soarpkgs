@@ -13,8 +13,6 @@ on:
     paths:
       - 'binaries/**'
       - 'packages/**'
-env:
-  RCLONE_CF_R2_PUB: "${{ secrets.RCLONE_CF_R2_PUB }}"
 #------------------------------------------------------------------------------------#
 jobs:
   check:
@@ -57,12 +55,8 @@ jobs:
           echo "SYSTMP=${SYSTMP}" >> "${GITHUB_ENV}"
           ##Setup GHDIRS
           mkdir -pv "${GITHUB_WORKSPACE}/main/metadata"
-          ##Setup rClone
-          mkdir -p "${HOME}/.config/rclone"
-          echo "${{ secrets.RCLONE_CF_R2_PUB }}" > "${HOME}/.config/rclone/rclone.conf"
-          export RCLONE_STATS="120s" ; echo "RCLONE_STATS=${RCLONE_STATS}" >> "${GITHUB_ENV}"
           ##User-Agent
-          USER_AGENT="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/User-Agents/ua_chrome_macos_latest.txt')" && export USER_AGENT="${USER_AGENT}"
+          USER_AGENT="$(curl -qfsSL 'https://raw.githubusercontent.com/pkgforge/devscripts/refs/heads/main/Misc/User-Agents/ua_chrome_macos_latest.txt')" && export USER_AGENT="${USER_AGENT}"
           echo "USER_AGENT=${USER_AGENT}" >> "${GITHUB_ENV}"
         continue-on-error: true
 
@@ -138,22 +132,3 @@ jobs:
           commit_message: "✅ Linted (Repo) 🛍️"
           #push_options: '--force'
         continue-on-error: true
-#------------------------------------------------------------------------------------#
-      - name: rClone BackUp Repo ("https://pub.ajam.dev/repos/${GITHUB_REPOSITORY}")
-        run: |
-          # Presets
-          set +x ; set +e
-          #--------------#
-          #touch "${HOME}/.rclone.conf"
-          echo "${{ secrets.RCLONE_CF_R2_PUB }}" > "${HOME}/.rclone.conf"
-          #chdir to Repo
-          cd "${GITHUB_WORKSPACE}/main"
-          #Git pull
-          git pull origin main --no-edit 2>/dev/null
-          #Del Bloat
-          rm -rf "$(pwd)/.git"
-          #Upload to Pub
-          echo -e "[+] Syncing ${GITHUB_REPOSITORY} to pub.ajam.dev/repos/${GITHUB_REPOSITORY} \n"
-          rclone sync "." "r2:/pub/repos/${GITHUB_REPOSITORY}/" --user-agent="${USER_AGENT}" --buffer-size="100M" --s3-upload-concurrency="500" --s3-chunk-size="100M" --multi-thread-streams="500" --checkers="2000" --transfers="1000" --check-first --checksum --copy-links --fast-list --progress
-        continue-on-error: true
-#------------------------------------------------------------------------------------#

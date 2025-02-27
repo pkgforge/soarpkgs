@@ -257,7 +257,7 @@ jobs:
           git config --global "user.email" "AjamX101@gmail.com"
           git config --global "user.name" "Azathothas"
           ##User-Agent
-          USER_AGENT="$(curl -qfsSL 'https://pub.ajam.dev/repos/Azathothas/Wordlists/Misc/User-Agents/ua_chrome_macos_latest.txt')" && export USER_AGENT="${USER_AGENT}"
+          USER_AGENT="$(curl -qfsSL 'https://raw.githubusercontent.com/pkgforge/devscripts/refs/heads/main/Misc/User-Agents/ua_chrome_macos_latest.txt')" && export USER_AGENT="${USER_AGENT}"
           echo "USER_AGENT=${USER_AGENT}" >> "${GITHUB_ENV}"
           ##Wget
           echo 'progress = dot:giga' | sudo tee -a "/etc/wgetrc"
