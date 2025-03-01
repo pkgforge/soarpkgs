@@ -1,37 +1,38 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/smap/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/axfr2hosts/static.official.source.yaml
 _disabled: false
 
-pkg: "smap"
-pkg_id: "github.com.s0md3v.Smap"
+pkg: "axfr2hosts"
+pkg_id: "github.com.dkorunic.axfr2hosts.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Drop-in replacement for Nmap powered by shodan.io"
+description: "Transfer DNS zones (AXFR) and convert A/AAAA/CNAME records into a hosts file for offline use"
 distro_pkg:
   archlinux:
     aur:
-      - "smap-bin"
-      - "smap-git"
-  homebrew:
-    - "smap"
+      - "axfr2hosts-git"
+  nixpkgs:
+    - "axfr2hosts"
 homepage:
-  - "https://github.com/s0md3v/Smap"
+  - "https://github.com/dkorunic/axfr2hosts"
 license:
-  - "GPL3"  
+  - id: "MIT"
+    url: "https://github.com/dkorunic/axfr2hosts/raw/1c78050c3bfef11d704eca4a04ba0d9f47f241b7/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/s0md3v/Smap"  
-repology:
-  - "smap-shodah-nmap"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/dkorunic/axfr2hosts"
+provides:
+  - "axfr2hosts"  
+#repology:
+#  - "axfr2hosts"
 src_url:
-  - "https://github.com/s0md3v/Smap"
+  - "https://github.com/dkorunic/axfr2hosts"
 tag:
-  - "network"
-  - "nmap"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -39,7 +40,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/s0md3v/Smap" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/dkorunic/axfr2hosts" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -58,10 +59,10 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/s0md3v/Smap" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/dkorunic/axfr2hosts" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go build -C "./cmd/smap" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/smap"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/axfr2hosts"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 

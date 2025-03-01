@@ -3,12 +3,12 @@
 _disabled: false
 
 pkg: "syncthing"
-pkg_id: "github.com.syncthing.syncthing"
+pkg_id: "github.com.syncthing.syncthing.stable"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Open Source Continuous File Synchronization"
+description: "FOSS Continuous File Synchronisation"
 distro_pkg:
   alpine:
     - "syncthing"
@@ -27,6 +27,7 @@ distro_pkg:
   nixpkgs:
     - "syncthing"
 homepage:
+  - "https://syncthing.net"
   - "https://github.com/syncthing/syncthing"
 license:
   - id: "MPL-2.0"
@@ -51,7 +52,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/syncthing/syncthing/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/syncthing/syncthing/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
