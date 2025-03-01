@@ -19,7 +19,9 @@ homepage:
 maintainer:
   - "Souhrud Reddy (https://github.com/sounddrill31)"
 note:
-  - "Pre Built AppImage, with Build-related changes. Check/Report @ https://github.com/sounddrill31/Pixelpulse2"  
+  - "Pre Built AppImage, with Build-related changes. Check/Report @ https://github.com/sounddrill31/Pixelpulse2"
+  - "Run it with --getudev flag the first time to configure udev rules. It may not detect the board otherwise"
+  - "To reduce crashes, plug in your device after configuring the udev rule and opening the app"
 license:
   - id: "MPL-2.0"
     url: "https://raw.githubusercontent.com/sounddrill31/Pixelpulse2/refs/heads/master/LICENSE"
