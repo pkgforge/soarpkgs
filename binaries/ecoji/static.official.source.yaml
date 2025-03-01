@@ -21,7 +21,9 @@ maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/keith-turner/ecoji"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/keith-turner/ecoji"
+provides:
+  - "ecoji"
 repology:
   - "ecoji"
 src_url:

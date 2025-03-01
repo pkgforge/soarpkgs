@@ -1,37 +1,32 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/smap/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/morrigan/static.official.source.yaml
 _disabled: false
 
-pkg: "smap"
-pkg_id: "github.com.s0md3v.Smap"
+pkg: "morrigan"
+pkg_id: "github.com.nao1215.morrigan.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Drop-in replacement for Nmap powered by shodan.io"
-distro_pkg:
-  archlinux:
-    aur:
-      - "smap-bin"
-      - "smap-git"
-  homebrew:
-    - "smap"
+description: "Busybox like Penetration Tool Set"
 homepage:
-  - "https://github.com/s0md3v/Smap"
+  - "https://github.com/nao1215/morrigan"
 license:
-  - "GPL3"  
+  - id: "MIT"
+    url: "https://github.com/nao1215/morrigan/raw/94bc9892ab8caf554ce26a752c289c758605c7c9/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/s0md3v/Smap"  
-repology:
-  - "smap-shodah-nmap"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/nao1215/morrigan"
+provides:
+  - "morrigan"  
+#repology:
+#  - "morrigan"
 src_url:
-  - "https://github.com/s0md3v/Smap"
+  - "https://github.com/nao1215/morrigan"
 tag:
-  - "network"
-  - "nmap"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -39,7 +34,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/s0md3v/Smap" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/nao1215/morrigan" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -52,16 +47,16 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
-       CGO_ENABLED="1"
+       CGO_ENABLED="1" 
        CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
        GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/s0md3v/Smap" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/nao1215/morrigan" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go build -C "./cmd/smap" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/smap"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/morrigan"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
