@@ -62,7 +62,7 @@ x_exec:
        ppkg install "zsv" --profile="release" -j "$(($(nproc)+1))" --static
        ppkg tree "zsv" --dirsfirst -L 5
       #Copy
-       PPKG_BINDIR="$(ppkg tree "zsv" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d '[:space:]')"
+       PPKG_BINDIR="$(ppkg tree "zsv" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d "[:space:]")"
        echo "${PPKG_BINDIR}" | grep -qi "ppkg" && [ -d "${PPKG_BINDIR}" ] || exit 1
        rsync -achLv --exclude="*/" "${PPKG_BINDIR}/bin/." "/build-bins/." 2>/dev/null
        rsync -achLv --exclude="*/" "${PPKG_BINDIR}/libexec/." "/build-bins/." 2>/dev/null
