@@ -52,7 +52,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/abcfy2/aria2-static-build/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .tag_name == "continuous")] | .[].published_at | fromdate | strftime("%y%m%dT%H%M%S")'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/abcfy2/aria2-static-build/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "continuous")) | .assets[].updated_at] | map(select(. != null)) | .[] | fromdate | strftime("%y%m%dT%H%M%S")' | sort --version-sort | tail -n 1 | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
