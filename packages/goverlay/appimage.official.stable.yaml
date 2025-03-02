@@ -1,9 +1,9 @@
 #!/SBUILD
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/goverlay/appimage.official.beta2.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/goverlay/appimage.official.stable.yaml
 _disabled: false
 
 pkg: "goverlay"
-pkg_id: "github.com.benjamimgois.goverlay.beta2"
+pkg_id: "github.com.benjamimgois.goverlay.stable"
 pkg_type: "appimage"
 app_id: "io.github.benjamimgois.goverlay"
 #build_util:
@@ -11,7 +11,9 @@ app_id: "io.github.benjamimgois.goverlay"
 #  - "jq#bin"
 category:
   - "Utility"
-description: "GUI for configuring Vulkan/OpenGL overlays (beta2)"
+description: "GUI for configuring Vulkan/OpenGL overlays"
+desktop:
+  url: "https://raw.githubusercontent.com/benjamimgois/goverlay/refs/heads/main/data/io.github.benjamimgois.goverlay.desktop"
 distro_pkg:
   alpine:
     - "goverlay"
@@ -26,6 +28,8 @@ distro_pkg:
     - "goverlay"
 homepage:
   - "https://github.com/benjamimgois/goverlay"
+icon:
+  url: "https://raw.githubusercontent.com/benjamimgois/goverlay/refs/heads/main/data/icons/512x512/goverlay.png"  
 license:
   - id: "GPL-3.0"
     url: "https://github.com/benjamimgois/goverlay/raw/d1770cf776609c01d3adf7202b602eeebe7aae10/LICENSE"
@@ -59,6 +63,8 @@ x_exec:
        exit 1
         ;;
       x86_64)
-        soar dl "https://github.com/benjamimgois/goverlay@${PKGVER}" --match "appimage,beta2" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/benjamimgois/goverlay@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
+    #Appstream
+     curl -qfsSL "https://raw.githubusercontent.com/benjamimgois/goverlay/refs/heads/main/data/io.github.benjamimgois.goverlay.metainfo.xml" -o "./${PKG}.metainfo.xml"

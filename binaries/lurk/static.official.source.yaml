@@ -37,7 +37,7 @@ tag:
   - "Utility"
 x_exec:
   host:
-    - "aarch64-Linux"
+    #- "aarch64-Linux" #https://github.com/JakWai01/lurk/issues/4
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |

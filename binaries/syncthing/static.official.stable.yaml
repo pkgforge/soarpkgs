@@ -64,6 +64,7 @@ x_exec:
         ;;
     esac
     #Extract
+    tar -xvf "${SBUILD_TMPDIR}/${PKG}.archive" -C "${SBUILD_TMPDIR}"
     while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
      grep -Ei "archive|compressed|gzip|x-tar" |
      grep -iv "application/.*executable" |
@@ -75,4 +76,4 @@ x_exec:
        } || break
      done
     #Copy
-    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/${PKG}"
+    find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

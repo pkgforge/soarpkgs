@@ -5,7 +5,7 @@ _disabled: false
 pkg: "goverlay"
 pkg_id: "github.com.benjamimgois.goverlay.beta"
 pkg_type: "appimage"
-app_id: "io.github.benjamimgois"
+app_id: "io.github.benjamimgois.goverlay"
 #build_util:
 #  - "curl#bin"
 #  - "jq#bin"
@@ -28,7 +28,7 @@ homepage:
   - "https://github.com/benjamimgois/goverlay"
 license:
   - id: "GPL-3.0"
-    url: "https://gitlab.gnome.org/GNOME/goverlay/-/raw/master/LICENSE?ref_type=heads"
+    url: "https://github.com/benjamimgois/goverlay/raw/d1770cf776609c01d3adf7202b602eeebe7aae10/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
