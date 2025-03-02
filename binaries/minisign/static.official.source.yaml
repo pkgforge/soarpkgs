@@ -62,9 +62,9 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
-       mkdir -p "/build-bins"
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
       #Build
-       pushd "$(mktemp -d)" >/dev/null 2>&1 && git clone --filter "blob:none" --quiet "https://github.com/jedisct1/minisign" && cd "./minisign"
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/jedisct1/minisign" "./TEMPREPO" && cd "./TEMPREPO"
        cmake -DCMAKE_C_FLAGS="-O2 -flto=auto -static -w -pipe" \
        -DCMAKE_EXE_LINKER_FLAGS="-static -s -Wl,-S -Wl,--build-id=none" \
        -DCMAKE_BUILD_TYPE="Release" \
