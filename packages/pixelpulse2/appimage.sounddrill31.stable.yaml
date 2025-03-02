@@ -19,22 +19,23 @@ homepage:
 maintainer:
   - "Souhrud Reddy (https://github.com/sounddrill31)"
 note:
-  - "Pre Built AppImage, with Build-related changes. Check/Report @ https://github.com/sounddrill31/Pixelpulse2"
+  - "Pre Built AppImage, with Build-related changes. Check/Report @ https://github.com/pkgforge-dev/Pixelpulse2-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
   - "Run it with --getudev flag the first time to configure udev rules. It may not detect the board otherwise"
   - "To reduce crashes, plug in your device after configuring the udev rule and opening the app"
 license:
   - id: "MPL-2.0"
-    url: "https://raw.githubusercontent.com/sounddrill31/Pixelpulse2/refs/heads/master/LICENSE"
+    url: "https://raw.githubusercontent.com/pkgforge-dev/Pixelpulse2-AppImage/refs/heads/master/LICENSE"
 icon:
-  url: "https://cdn.jsdelivr.net/gh/sounddrill31/Pixelpulse2@master/debian/pp2.png"
+  url: "https://cdn.jsdelivr.net/gh/pkgforge-dev/Pixelpulse2-AppImage@master/debian/pp2.png"
 desktop: 
-  url: "https://cdn.jsdelivr.net/gh/sounddrill31/Pixelpulse2@master/debian/pixelpulse2.desktop"
+  url: "https://cdn.jsdelivr.net/gh/pkgforge-dev/Pixelpulse2-AppImage@master/debian/pixelpulse2.desktop"
 provides:
   - "pixelpulse2"  
 repology:
   - "pixelpulse2"  
 src_url:
-  - "https://github.com/sounddrill31/Pixelpulse2"
+  - "https://github.com/pkgforge-dev/Pixelpulse2-AppImage"
 tag:
   - "pixelpulse2"
   - "adalm1000"
@@ -44,14 +45,14 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/sounddrill31/Pixelpulse2/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Pixelpulse2-AppImage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/sounddrill31/Pixelpulse2@${PKGVER}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/pkgforge-dev/Pixelpulse2-AppImage@${PKGVER}" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/sounddrill31/Pixelpulse2@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        soar dl "https://github.com/pkgforge-dev/Pixelpulse2-AppImage@${PKGVER}" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
     esac
