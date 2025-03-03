@@ -174,15 +174,18 @@ sbuild_builder()
       -e '/.*cloudflarestorage.*/Id' -i "${TEMP_LOG}"
    #sed '/.*\[+\] Total Size.*/I,$ { /.*\[+\] Total Size.*/I p; d }' -i "${TEMP_LOG}"
    sed '/\(LOGPATH\|ENVPATH\)=/d' -i "${TEMP_LOG}"
-      #grep -viE 'github_pat|ghp_|glpat|hf_|token|access_key_id|secret_access_key|cloudflarestorage' "${TEMP_LOG}" | tee "${LOGPATH}" && rm "${TEMP_LOG}" 2>/dev/null
-      #mv -fv "${TEMP_LOG}" "${LOGPATH}" && rm "${TEMP_LOG}" 2>/dev/null
-      echo '\\\\====================== Package Forge ======================////' > "${LOGPATH}"
-      echo '|--- Repository: https://github.com/pkgforge/soar              ---|' >> "${LOGPATH}"
-      echo '|--- Contact: https://docs.pkgforge.dev/contact/chat           ---|' >> "${LOGPATH}"
-      echo '|--- Discord: https://discord.gg/djJUs48Zbu                    ---|' >> "${LOGPATH}"
-      echo '|--- Docs: https://docs.pkgforge.dev/repositories/nests        ---|' >> "${LOGPATH}"
-      echo '|-----------------------------------------------------------------|' >> "${LOGPATH}"
-      grep -viE 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|github_pat|ghp_|glpat|hf_|token|access_key_id|secret_access_key|cloudflarestorage' "${TEMP_LOG}" >> "${LOGPATH}" && rm "${TEMP_LOG}" 2>/dev/null
+   #Banner
+     if [[ "${BANNER}" == "0" ]] || [[ "${BANNER}" == "OFF" ]]; then
+       grep -viE 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|github_pat|ghp_|glpat|hf_|token|access_key_id|secret_access_key|cloudflarestorage' "${TEMP_LOG}" > "${LOGPATH}" && rm "${TEMP_LOG}" 2>/dev/null
+     else
+       echo '\\\\====================== Package Forge ======================////' > "${LOGPATH}"
+       echo '|--- Repository: https://github.com/pkgforge/soar              ---|' >> "${LOGPATH}"
+       echo '|--- Contact: https://docs.pkgforge.dev/contact/chat           ---|' >> "${LOGPATH}"
+       echo '|--- Discord: https://discord.gg/djJUs48Zbu                    ---|' >> "${LOGPATH}"
+       echo '|--- Docs: https://docs.pkgforge.dev/repositories/nests        ---|' >> "${LOGPATH}"
+       echo '|-----------------------------------------------------------------|' >> "${LOGPATH}"
+       grep -viE 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|github_pat|ghp_|glpat|hf_|token|access_key_id|secret_access_key|cloudflarestorage' "${TEMP_LOG}" >> "${LOGPATH}" && rm "${TEMP_LOG}" 2>/dev/null
+     fi
   fi
   }
   export -f sanitize_logs 
