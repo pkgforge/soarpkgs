@@ -54,4 +54,4 @@ x_exec:
     #Download
      soar dl "https://raw.githubusercontent.com/curl/wcurl/main/wcurl" -o "${SBUILD_OUTDIR}/wcurl" --yes
     #Fetch Upstream Version
-     curl -qfsSL "https://api.gh.pkgforge.dev/repos/curl/wcurl/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
+     curl -qfsSL "https://api.gh.pkgforge.dev/repos/curl/wcurl/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]' > "${SBUILD_TMPDIR}/upstream.version"

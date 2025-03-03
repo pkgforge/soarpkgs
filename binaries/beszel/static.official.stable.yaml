@@ -1,0 +1,68 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/beszel/static.official.stable.yaml
+_disabled: false
+
+pkg: "beszel"
+pkg_id: "github.com.henrygd.beszel.stable"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Lightweight server monitoring hub with historical data, docker stats, and alerts"
+distro_pkg:
+  alpine:
+    - "beszel"
+  nixpkgs:
+    - "beszel"
+homepage:
+  - "https://github.com/henrygd/beszel"
+license:
+  - id: "MIT"
+    url: "https://github.com/henrygd/beszel/raw/2ef1fe6b2afa9cd71f9bd540df4c70f77306de40/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/henrygd/beszel"
+provides:
+  - "beszel"
+  - "beszel-agent" 
+repology:
+  - "beszel"
+src_url:
+  - "https://github.com/henrygd/beszel"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/henrygd/beszel/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/henrygd/beszel@${PKGVER}" --match "linux,arm64" --exclude "agent" --exclude "amd64,x86,x64,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/beszel.archive" --yes
+        soar dl "https://github.com/henrygd/beszel@${PKGVER}" --match "linux,arm64" --match "agent" --exclude "amd64,x86,x64,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/beszel-agent.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/henrygd/beszel@${PKGVER}" --match "linux,amd64" --exclude "agent" --exclude "aarch,arm,i386,i686,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/beszel.archive" --yes
+        soar dl "https://github.com/henrygd/beszel@${PKGVER}" --match "linux,amd64" --match "agent" --exclude "aarch,arm,i386,i686,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/beszel-agent.archive" --yes
+        ;;
+    esac
+    #Extract
+    find "${SBUILD_TMPDIR}" -type f -iname "*.archive" -exec tar -xvf "{}" \; 2>/dev/null
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -Ei "archive|compressed|gzip|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/"
