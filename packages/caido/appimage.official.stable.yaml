@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/caido/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "caido"
+pkg_id: "github.com.caido.caido.stable"
+pkg_type: "appimage"
+app_id: "io.caido.caido"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
+category:
+  - "Utility"
+description: "Lightweight web security auditing toolkit"
+distro_pkg:
+  homebrew:
+    - "caido"
+  nixpkgs:
+    - "caido"
+homepage:
+  - "https://caido.io"
+icon:
+  url: "https://raw.githubusercontent.com/caido/caido/refs/heads/main/brand/png/logo.png"
+license:
+  - "Unfree"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/caido/caido"
+  - "You may need to run this with: --no-sandbox"
+provides:
+  - "caido"
+repology:
+  - "caido"
+src_url:
+  - "https://github.com/caido/caido"
+tag:
+  - "security"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/caido/caido/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+     DOWNLOAD_URL="$(curl -qfsSL 'https://api.gh.pkgforge.dev/repos/caido/caido/releases/latest' | jq -r '.body' |\
+     grep -oP '\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))' | sed 's/href="//' | sed 's/"$//' | grep -i 'http' |\
+     grep -i "linux" | grep -i "${PKGVER}" | grep -Ei "$(uname -m)" | grep -i "appimage" | grep -Eiv 'cli|zsync' |\
+     sort --version-sort | tail -n 1 | sed -E 's:^/*(.*[^/])/*$:\1:' | tr -d '"'\''[:space:]')"
+     curl -w "(DL) <== %{url}\n" -qfSL "${DOWNLOAD_URL}" -o "${SBUILD_OUTDIR}/${PKG}"
