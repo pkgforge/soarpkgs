@@ -1,6 +1,11 @@
 #!/SBUILD
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/goverlay/appimage.official.beta2.yaml
-_disabled: false
+_disabled: true
+_disabled_reason:
+   replaced:
+     - date: "2025-03-03"
+       pkg_id: "github.com.benjamimgois.goverlay.nightly"
+       reason: "Switched to nightly"
 
 pkg: "goverlay"
 pkg_id: "github.com.benjamimgois.goverlay.beta2"
