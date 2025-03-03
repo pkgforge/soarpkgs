@@ -26,6 +26,11 @@ on:
         type: string
         required: true
 
+      banner:
+        description: Disable PkgForge Branding in LogFiles [Default ==> False (Enabled)]
+        type: boolean
+        default: true
+
       debug:
         description: Debug Mode (Verbose with set -x) [Default ==> False]
         type: boolean
@@ -139,7 +144,14 @@ jobs:
           export HOST_TRIPLET="$(uname -m)-$(uname -s)"
           export "GH_PAGER="
           gh config set prompt disabled &>/dev/null
-          ##Debug   
+          ##Banner
+           if [ "${{ inputs.banner }}" == "false" ] ; then
+             export BANNER="0"
+           else
+             export BANNER="1"
+           fi
+           echo "BANNER=${BANNER}" >> "${GITHUB_ENV}"
+          ##Debug
            if [ "${{ inputs.debug }}" == "true" ] ; then
              export DEBUG="1"
            else
