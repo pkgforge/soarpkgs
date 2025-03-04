@@ -1,0 +1,109 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/openvscode-server/archive.wrappe.stable.yaml
+_disabled: false
+
+pkg: "openvscode-server"
+pkg_id: "wrappe.openvscode-server.stable"
+pkg_type: "archive"
+category:
+  - "Utility"
+description: "Run VS Code on any machine anywhere and access it in the browser (GitPod)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "openvscode-server"
+  nixpkgs:
+    - "openvscode-server"
+homepage:
+  - "https://github.com/gitpod-io/openvscode-server"
+icon:
+  url: "https://raw.githubusercontent.com/gitpod-io/openvscode-server/refs/heads/main/resources/server/code-512.png"
+license:
+  - id: "MIT"
+    url: "https://github.com/gitpod-io/openvscode-server/raw/a31351e344db5c1b8472aa106a98f8c2436763df/LICENSE.txt"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Source Bundle fetched from Upstream. Check/Report @ https://github.com/gitpod-io/openvscode-server"
+  - "Packed as-is using WrapPe. Check/Report @ https://github.com/Systemcluster/wrappe"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+  - "Host Dependencies: A lot, please use soar log to view the ldd output"
+provides:
+  - "openvscode-server"
+repology:
+ - "openvscode-server"
+src_url:
+  - "https://github.com/gitpod-io/openvscode-server"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/gitpod-io/openvscode-server/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Get Wrappe
+     curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/wrappe" -o "${SBUILD_TMPDIR}/wrappe"
+     chmod -v 'a+x' "${SBUILD_TMPDIR}/wrappe"
+     [[ -s "${SBUILD_TMPDIR}/wrappe" ]] || exit 1
+    #Get Bundle
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/gitpod-io/openvscode-server@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/gitpod-io/openvscode-server@${PKGVER}" --match "linux,x64" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+     [[ -s "${SBUILD_TMPDIR}/${PKG}.archive" ]] || exit 1
+     mkdir -pv "${SBUILD_TMPDIR}/BUILD_DIR"
+     tar -xvf "${SBUILD_TMPDIR}/${PKG}.archive" -C "${SBUILD_TMPDIR}/BUILD_DIR"
+     #7z x -mmt="$(($(nproc)+1))" -bd -y -o"${SBUILD_TMPDIR}/BUILD_DIR" "${SBUILD_TMPDIR}/${PKG}.archive"
+     # while E_X=$(find "${SBUILD_TMPDIR}/BUILD_DIR" -type f -exec file -i "{}" + | 
+     # grep -Ei "archive|compressed|x-tar" |
+     # grep -iv "application/.*executable" |
+     # cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     # do
+     #   7z e "${E_X}" -o"${SBUILD_TMPDIR}/BUILD_DIR/." -y && {
+     #    file -i "${E_X}" | grep -Eqiv "archive|compressed|x-tar" && break
+     #    rm -f "${E_X}"
+     #   } || break
+     # done
+     EXT_DIR="$(find "${SBUILD_TMPDIR}/BUILD_DIR" -type f -printf '%h\n' | sort -u | head -n 1 | tr -d '[:space:]')"
+     if [[ ! -d "${EXT_DIR}" ]] || [[ "$(du -s "${EXT_DIR}" | cut -f1)" -le 100 ]]; then
+       echo -e "\n[-] FATAL: Extracted dir is empty\n"
+      exit 1
+     fi
+     find -L "${EXT_DIR}" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Prep 
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
+     echo -e "\n" && find "${EXT_DIR}" -maxdepth 3 -type f -exec file -i "{}" \; |\
+      grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | sort -u |\
+      xargs -I "{}" bash -c 'sudo chmod -v "a+x" "{}"; ldd "{}" 2>/dev/null ; echo -e "GLIBC" && objdump -T "{}" | grep -Ei "GLIBC(_|XX_)" | sed -E "s/.*GLIBC(_|XX_)([0-9]+[.][0-9.]*).*/\2/" | sort -uV | tail -n 1 ; echo -e "\n"'
+    #Pack & Copy
+     [[ -s "${EXT_DIR}/bin/openvscode-server" ]] && PKG_ENTRYPOINT="${EXT_DIR}/bin/openvscode-server"
+     "${SBUILD_TMPDIR}/wrappe" --current-dir "command" --show-information "none" --unpack-directory ".${PKG}.wrappe" --unpack-target "cwd" "${EXT_DIR}" "${PKG_ENTRYPOINT}" "${SBUILD_OUTDIR}/${PKG}"
+     [[ -s "${SBUILD_OUTDIR}/${PKG}" ]] || exit 1
+     ( askalono --format "json" crawl --follow "${EXT_DIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
+    #Desktop
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+       find -L "${EXT_DIR}" -name "*.desktop" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" sh -c 'cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"'
+     fi
+     sed '/.*DBusActivatable.*/I d' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed -E 's/\s+setup\s+/ /Ig' -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+     sed "s/Icon=[^ ]*/Icon=${PKG}/" -i "${SBUILD_OUTDIR}/${PKG}.desktop"
+    #Icon
+     if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" && ! -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+       find -L "${EXT_DIR}" -type f,l  -regex '.*\.\(png\|svg\)' \
+        -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+        | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       if [[ ! -f "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.png") -le 3 ]]; then
+        find -L "${EXT_DIR}" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+       fi
+       cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
+     fi

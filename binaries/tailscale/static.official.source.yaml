@@ -81,6 +81,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/tailscale/tailscale" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go mod tidy -v ; go generate
        go build -C "./cmd/tailscale" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/tailscale"
        go build -C "./cmd/tailscaled" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/tailscaled"
        go build -C "./cmd/tailscaled" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -tags "ts_include_cli" -o "/build-bins/tailscale-multi"

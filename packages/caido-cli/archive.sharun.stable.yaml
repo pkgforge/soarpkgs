@@ -67,7 +67,7 @@ x_exec:
         curl -w "(DL) <== %{url}\n" -qfSL "${DOWNLOAD_URL}" -o "./${PKG}.archive"
         tar -xvf "./${PKG}.archive" && rm -rvf "./${PKG}.archive"
         while E_X=$(find "." -type f -exec file -i "{}" + | 
-         grep -Ei "archive|compressed|gzip|x-tar" |
+         grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
          grep -iv "application/.*executable" |
          cut -d: -f1 | head -n1); [ -n "${E_X}" ]
          do

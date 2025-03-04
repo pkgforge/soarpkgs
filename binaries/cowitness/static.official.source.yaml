@@ -11,6 +11,9 @@ category:
 description: "mimic an HTTP server and a DNS server, providing complete responses"
 homepage:
   - "https://github.com/stolenusername/cowitness"
+license:
+  - id: "MIT"
+    url: "https://github.com/stolenusername/cowitness/raw/606c37a2c897265f241b84236c803b811ee50bdc/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -54,6 +57,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/stolenusername/cowitness" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go mod tidy -v ; go generate
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/cowitness"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

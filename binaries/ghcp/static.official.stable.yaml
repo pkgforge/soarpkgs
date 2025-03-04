@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ghcp/static.official.stable.yaml
+_disabled: false
+
+pkg: "ghcp"
+pkg_id: "github.com.suzuki-shunsuke.ghcp.stable"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tool to fork a repository, commit files, create a pull request and upload assets using GitHub API"
+homepage:
+  - "https://github.com/suzuki-shunsuke/ghcp"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/suzuki-shunsuke/ghcp/raw/3f9eab762f53a41124b15bb1430f715178f17b7b/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/suzuki-shunsuke/ghcp"
+provides:
+  - "ghcp"   
+#repology:
+#  - "ghcp"
+src_url:
+  - "https://github.com/suzuki-shunsuke/ghcp"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/suzuki-shunsuke/ghcp/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/suzuki-shunsuke/ghcp@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,deb,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/suzuki-shunsuke/ghcp@${PKGVER}" --match "linux,amd64" --exclude "aarch,arm,i386,i686,deb,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/${PKG}"
