@@ -62,6 +62,7 @@ x_exec:
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        #web files
        cd "./internal/web" && npm install && npm run build ; cd "../../"
+       go mod tidy -v ; go generate
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/exatorrent" "./exatorrent.go"
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -tags "noui" -o "/build-bins/exatorrent-noui" "./exatorrent.go"
       #Copy

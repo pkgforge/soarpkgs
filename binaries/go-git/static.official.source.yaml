@@ -51,6 +51,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/go-git/go-git" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go mod tidy -v ; go generate
        go build -C "./_examples/clone" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/git-clone"
        go build -C "./_examples/checkout" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/git-checkout"
        go build -C "./_examples/pull" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/git-pull"

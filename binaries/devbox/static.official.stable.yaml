@@ -3,7 +3,7 @@
 _disabled: false
 
 pkg: "devbox"
-pkg_id: "github.com.jetpack-io.devbox"
+pkg_id: "github.com.jetify-com.devbox.stable"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
@@ -55,7 +55,7 @@ x_exec:
     esac
     #Extract
     while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
-     grep -Ei "archive|compressed|gzip|x-tar" |
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
      grep -iv "application/.*executable" |
      cut -d: -f1 | head -n1); [ -n "${E_X}" ]
      do

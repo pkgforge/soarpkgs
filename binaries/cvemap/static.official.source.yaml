@@ -3,7 +3,7 @@
 _disabled: false
 
 pkg: "cvemap"
-pkg_id: "github.com.projectdiscovery.cvemap"
+pkg_id: "github.com.projectdiscovery.cvemap.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
@@ -24,7 +24,7 @@ maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/projectdiscovery/cvemap"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/projectdiscovery/cvemap"
 provides:
   - "cvemap"   
 repology:
@@ -53,7 +53,7 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
-       CGO_ENABLED="1" 
+       CGO_ENABLED="1"
        CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
        GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
        GOOS="linux"
@@ -63,7 +63,7 @@ x_exec:
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go mod tidy -v ; go generate
-       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/cvemap"
+       go build -C "./cmd/cvemap" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/cvemap"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 

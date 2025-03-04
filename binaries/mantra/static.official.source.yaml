@@ -12,7 +12,7 @@ description: "Tool used to hunt down API key leaks in JS files and pages"
 homepage:
   - "https://github.com/MrEmpy/mantra"
 license:
-  - "GPL3"  
+  - "GPL-3.0"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 distro_pkg:
@@ -20,7 +20,9 @@ distro_pkg:
     - "mantra"  
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/MrEmpy/mantra"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/MrEmpy/mantra"
+provides:
+  - "mantra"
 repology:
   - "mantra-key-leak-hunter"
 src_url:
@@ -59,6 +61,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/MrEmpy/mantra" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go mod tidy -v ; go generate
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/mantra"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

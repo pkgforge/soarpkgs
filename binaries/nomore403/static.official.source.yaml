@@ -3,7 +3,7 @@
 _disabled: false
 
 pkg: "nomore403"
-pkg_id: "github.com.devploit.nomore403"
+pkg_id: "github.com.devploit.nomore403.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
@@ -15,19 +15,21 @@ distro_pkg:
 homepage:
   - "https://github.com/devploit/nomore403"
 license:
-  - "MIT"  
+  - id: "MIT"
+    url: "https://github.com/devploit/nomore403/raw/34770db935dfefcea28a014ed93f51f560e3df71/LICENSE"   
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/devploit/nomore403"  
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/devploit/nomore403"
+provides:
+  - "nomore403"   
 repology:
   - "nomore403"
 src_url:
   - "https://github.com/devploit/nomore403"
 tag:
-  - "403"
-  - "bypass"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -57,6 +59,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/devploit/nomore403" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go mod tidy -v ; go generate
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/nomore403"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

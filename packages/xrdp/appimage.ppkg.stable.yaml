@@ -1,0 +1,102 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/xrdp/appimage.ppkg.stable.yaml
+_disabled: false
+
+pkg: "xrdp"
+pkg_id: "ppkg.bundle.xrdp.stable"
+pkg_type: "appimage"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: 
+  _default: "Open source Remote Desktop Protocol (RDP) server"
+  xrdp: "Open source Remote Desktop Protocol (RDP) server [xrdp]"
+  xrdp-chansrv: "xrdp Channel Server [xrdp]"
+  xrdp-dis: "xrdp disconnect utility [xrdp]"
+  xrdp-dumpfv1: "Display content of .fv1 font files [xrdp]"
+  xrdp-genkeymap: "Key map generator for XRDP [xrdp]"
+  xrdp-keygen: "xrdp RSA key generation utility [xrdp]"
+  xrdp-sesadmin: "Console XRDP sessions administration tool [xrdp]"
+  xrdp-sesman: "xrdp session manager [xrdp]"
+  xrdp-sesrun: "xrdp session launcher [xrdp]"
+distro_pkg:
+  alpine:
+    - "xrdp"
+  archlinux:
+    aur:
+      - "xrdp"
+  debian:
+    - "xrdp"
+  gnuguix:
+    - "xrdp"
+  nixpkgs:
+    - "xrdp"
+homepage:
+  - "https://www.xrdp.org"
+  - "https://github.com/neutrinolabs/xrdp"
+icon:
+  url: "https://github.com/neutrinolabs/xrdp/raw/refs/heads/main/logo/mascot.svg"  
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/neutrinolabs/xrdp/raw/f5634269f20bd27b323663a4bb9de6de0a474b65/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using ppkg. Check/Report @ https://github.com/leleliu008/ppkg-formula-repository-official-core"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "xrdp==xrdp-chansrv"
+  - "xrdp==xrdp-dis"
+  - "xrdp==xrdp-dumpfv1"
+  - "xrdp==xrdp-genkeymap"
+  - "xrdp==xrdp-keygen"
+  - "xrdp==xrdp-sesadmin"
+  - "xrdp==xrdp-sesman"
+  - "xrdp==xrdp-sesrun"
+repology:
+  - "xrdp"
+src_url:
+  - "https://github.com/neutrinolabs/xrdp"
+tag:
+  - "remote"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "xrdp") | .version' | tr -d '[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "ubuntu-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw,z" --workdir "/tmp" \
+     "docker.io/ubuntu:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; chown -Rv "$(whoami):$(whoami)" "/tmp" ; chmod -v '1777' '/tmp'
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       apt update -y -qq
+       apt install coreutils curl file xz-utils g++ -y -qq
+      #ppkg
+       curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
+       chmod -v "a+x" "/usr/local/bin/ppkg"
+       ppkg setup
+       ppkg update
+       [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/linux/xrdp.yml
+       ppkg install "xrdp" --profile="release" -j "$(($(nproc)+1))"
+       ppkg bundle "xrdp" "${PKG}.AppImage" --portable
+       ppkg tree "xrdp" --dirsfirst -L 5
+      #Copy
+       find "." -maxdepth 1 -type f -iname "*appimage*" -exec realpath "{}" \; | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/${PKG}"
+      #info
+       file "/build-bins/"* && du -sh "/build-bins/"*
+      '
+    #Copy & Meta
+     docker cp "ubuntu-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
