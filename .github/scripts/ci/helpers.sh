@@ -398,6 +398,8 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
            strip --strip-debug --strip-dwo --strip-unneeded "{}"
          fi
        '
+      #Fix Desktop
+       find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -iname "*.desktop" -exec sed -E 's/^[[:space:]]*[Ee]xec[[:space:]]*=[[:space:]]*[^[:space:]]+/Exec={{pkg_path}}/' -i "{}" \;
       #License
        if jq --exit-status . "${TMPJSON}" >/dev/null 2>&1; then
          if [[ ! -s "${SBUILD_OUTDIR}/LICENSE" || $(stat -c%s "${SBUILD_OUTDIR}/LICENSE") -le 10 ]]; then
@@ -991,20 +993,24 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
         [[ -f "./SBUILD.sig" && -s "./SBUILD.sig" ]] && ghcr_push+=("./SBUILD.sig")
         [[ -f "./${PROG}.appdata.xml" && -s "./${PROG}.appdata.xml" ]] && ghcr_push+=("./${PROG}.appdata.xml")
         [[ -f "./${PROG}.appdata.xml.sig" && -s "./${PROG}.appdata.xml.sig" ]] && ghcr_push+=("./${PROG}.appdata.xml.sig")
-        [[ -f "./${PROG}.desktop" && -s "./${PROG}.desktop" ]] && ghcr_push+=("./${PROG}.desktop")
-        [[ -f "./${PROG}.desktop.sig" && -s "./${PROG}.desktop.sig" ]] && ghcr_push+=("./${PROG}.desktop.sig")
+        desktop_files=() ; mapfile -t desktop_files < <(find "." -maxdepth 1 -type f -name "*.desktop" 2>/dev/null)
+         for d_f in "${desktop_files[@]}"; do
+           [[ -f "${d_f}" && -s "${d_f}" ]] && ghcr_push+=("${d_f}")
+           [[ -f "${d_f}.sig" && -s "${d_f}.sig" ]] && ghcr_push+=("${d_f}.sig")
+         done
+        icon_files=() ; mapfile -t icon_files < <(find "." -maxdepth 1 -type f -regex ".*\.\(png\|svg\)" 2>/dev/null)
+         for i_f in "${icon_files[@]}"; do
+           [[ -f "${i_f}" && -s "${i_f}" ]] && ghcr_push+=("${i_f}")
+           [[ -f "${i_f}.sig" && -s "${i_f}.sig" ]] && ghcr_push+=("${i_f}.sig")
+         done
         [[ -f "./${PROG}.json" && -s "./${PROG}.json" ]] && ghcr_push+=("./${PROG}.json")
         [[ -f "./${PROG}.json.sig" && -s "./${PROG}.json.sig" ]] && ghcr_push+=("./${PROG}.json.sig")
         [[ -f "./${PROG}.log" && -s "./${PROG}.log" ]] && ghcr_push+=("./${PROG}.log")
         [[ -f "./${PROG}.log.sig" && -s "./${PROG}.log.sig" ]] && ghcr_push+=("./${PROG}.log.sig")
         [[ -f "./${PROG}.metainfo.xml" && -s "./${PROG}.metainfo.xml" ]] && ghcr_push+=("./${PROG}.metainfo.xml")
         [[ -f "./${PROG}.metainfo.xml.sig" && -s "./${PROG}.metainfo.xml.sig" ]] && ghcr_push+=("./${PROG}.metainfo.xml.sig")
-        [[ -f "./${PROG}.png" && -s "./${PROG}.png" ]] && ghcr_push+=("./${PROG}.png")
-        [[ -f "./${PROG}.png.sig" && -s "./${PROG}.png.sig" ]] && ghcr_push+=("./${PROG}.png.sig")
         [[ -f "./${PROG}.version" && -s "./${PROG}.version" ]] && ghcr_push+=("./${PROG}.version")
         [[ -f "./${PROG}.version.sig" && -s "./${PROG}.version.sig" ]] && ghcr_push+=("./${PROG}.version.sig")
-        [[ -f "./${PROG}.svg" && -s "./${PROG}.svg" ]] && ghcr_push+=("./${PROG}.svg")
-        [[ -f "./${PROG}.svg.sig" && -s "./${PROG}.svg.sig" ]] && ghcr_push+=("./${PROG}.svg.sig")
         "${ghcr_push[@]}" ; sleep 5
        #Check
         if [[ "$(oras manifest fetch "${GHCRPKG_URL}:${GHCRPKG_TAG}" | jq -r '.annotations["dev.pkgforge.soar.build_date"]' | tr -d '[:space:]')" == "${PKG_DATE}" ]]; then
@@ -1074,7 +1080,7 @@ cleanup_env()
   rm -rvf "${BUILD_DIR}" 2>/dev/null
  fi
 #Cleanup Env
- unset ARTIFACTS_DIR BUILD_DIR BUILD_GHACTIONS BUILD_ID ghcr_push ghcr_push_cmd GHCRPKG_URL GHCRPKG_TAG INPUT_SBUILD INPUT_SBUILD_PATH MANIFEST_URL OCWD pkg PKG PKG_APPSTREAM PKG_DESKTOP PKG_FAMILY PKG_GHCR pkg_id PKG_ID PKG_MANIFEST pkg_type PKG_TYPE pkgver PKGVER pkg_ver PKG_VER PKG_VERSION_UPSTREAM PKG_WEBPAGE PROG REPOLOGY_PKG REPOLOGY_PKGVER REPOLOGY_VER SBUILD_OUTDIR SBUILD_PKG SBUILD_PKGS SBUILD_PKGVER SBUILD_REBUILD SBUILD_SCRIPT SBUILD_SCRIPT_BLOB SBUILD_SKIPPED SBUILD_SUCCESSFUL SBUILD_TMPDIR SNAPSHOT_JSON SNAPSHOT_TAGS TAG_URL TMPJSON TMPXVER TMPXRUN
+ unset ARTIFACTS_DIR BUILD_DIR BUILD_GHACTIONS BUILD_ID desktop_files icon_files ghcr_push ghcr_push_cmd GHCRPKG_URL GHCRPKG_TAG INPUT_SBUILD INPUT_SBUILD_PATH MANIFEST_URL OCWD pkg PKG PKG_APPSTREAM PKG_DESKTOP PKG_FAMILY PKG_GHCR pkg_id PKG_ID PKG_MANIFEST pkg_type PKG_TYPE pkgver PKGVER pkg_ver PKG_VER PKG_VERSION_UPSTREAM PKG_WEBPAGE PROG REPOLOGY_PKG REPOLOGY_PKGVER REPOLOGY_VER SBUILD_OUTDIR SBUILD_PKG SBUILD_PKGS SBUILD_PKGVER SBUILD_REBUILD SBUILD_SCRIPT SBUILD_SCRIPT_BLOB SBUILD_SKIPPED SBUILD_SUCCESSFUL SBUILD_TMPDIR SNAPSHOT_JSON SNAPSHOT_TAGS TAG_URL TMPJSON TMPXVER TMPXRUN
 }
 export -f cleanup_env
 #-------------------------------------------------------#
