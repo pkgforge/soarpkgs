@@ -1,0 +1,71 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/xray-core/static.official.stable.yaml
+_disabled: false
+
+pkg: "xray-core"
+pkg_id: "github.com.XTLS.Xray-core.stable"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "The best v2ray-core, with XTLS support"
+distro_pkg:
+  archlinux:
+    aur:
+      - "xray"
+      - "xray-bin"
+      - "xray-git"
+  homebrew:
+    - "xray"
+  nixpkgs:
+    - "xray"
+homepage:
+  - "https://github.com/XTLS/Xray-core"
+license:
+  - id: "MPL-2.0"
+    url: "https://github.com/XTLS/Xray-core/raw/152959824fbd7b3cf0119bf09d1405230f5c10c6/LICENSE"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/XTLS/Xray-core"
+provides:
+  - "xray==xray-core"
+  - "geoip.dat=>xray-geoip.dat"
+  - "geosite.dat=>xray-geosite.dat"
+repology:
+  - "xray-core"
+src_url:
+  - "https://github.com/XTLS/Xray-core"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/XTLS/Xray-core/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/XTLS/Xray-core@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,deb,dgst,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/XTLS/Xray-core@${PKGVER}" --match "linux,64" --exclude "aarch,arm,i386,i686,deb,dgst,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/"
