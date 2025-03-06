@@ -1,40 +1,32 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ipinfo/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/fget/static.official.source.yaml
 _disabled: false
 
-pkg: "ipinfo"
-pkg_id: "github.com.ipinfo.cli.source"
+pkg: "fget"
+pkg_id: "github.com.pkgforge-security.fget"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Official Command Line Interface for the IPinfo API"
-distro_pkg:
-  archlinux:
-    aur:
-      - "ipinfo"
-  nixpkgs:
-    - "ipinfo"
+description: "Multithread download for a list of files"
 homepage:
-  - "https://ipinfo.io/"
+  - "https://github.com/pkgforge-security/fget"
 license:
-  - id: "Apache-2.0"
-    url: "https://github.com/ipinfo/cli/raw/a9ca4b1d939d42ef2343696283ddc6382771d3c4/LICENSE"
+  - id: "MIT"
+    url: "https://github.com/pkgforge-security/fget/raw/3355b163bcf2188310c9e03c35ce4976d60a2d7b/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/ipinfo/cli"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/pkgforge-security/fget"
 provides:
-  - "ipinfo==ipinfo-cli"
-repology:
-  - "ipinfo"
+  - "fget"   
+#repology:
+#  - "fget"
 src_url:
-  - "https://github.com/ipinfo/cli"
+  - "https://github.com/pkgforge-security/fget"
 tag:
-  - "ip"
-  - "ip-lookup"
-  - "ipinfo"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -42,7 +34,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/ipinfo/cli" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/pkgforge-security/fget" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -55,17 +47,17 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
-       CGO_ENABLED="1" 
+       CGO_ENABLED="1"
        CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
        GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/ipinfo/cli" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/pkgforge-security/fget" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go mod tidy -v ; go generate
-       go build -C "./ipinfo" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/ipinfo"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/fget"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
