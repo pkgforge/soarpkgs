@@ -1,33 +1,32 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/rescope/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/gosearch/static.official.source.yaml
 _disabled: false
 
-pkg: "rescope"
-pkg_id: "github.com.root4loot.rescope.source"
+pkg: "gosearch"
+pkg_id: "github.com.ibnaleem.gosearch.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "A scope generation tool for Burp Suite & ZAP"
+description: "OSINT tool designed for uncovering digital footprints associated with a given username"
 homepage:
-  - "https://github.com/root4loot/rescope"
+  - "https://github.com/ibnaleem/gosearch"
 license:
-  - id: "MIT"
-    url: "https://github.com/root4loot/rescope/raw/feed1ae8891c50b724f368226af5707689cae6e0/LICENSE"
+  - id: "GPL-3.0"
+    url: "https://github.com/ibnaleem/gosearch/raw/bc02f227133588b40cf428c16a066220086f1bdf/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/root4loot/rescope"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/ibnaleem/gosearch"
 provides:
-  - "rescope"
+  - "gosearch"
 #repology:
-#  - "rescope"
+#  - "gosearch"
 src_url:
-  - "https://github.com/root4loot/rescope"
+  - "https://github.com/ibnaleem/gosearch"
 tag:
-  - "bugbounty"
-  - "security"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -35,7 +34,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/root4loot/rescope" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/ibnaleem/gosearch" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -54,11 +53,11 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/root4loot/rescope" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/ibnaleem/gosearch" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go mod tidy -v ; go generate
-       go build -C "./cmd/rescope" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/rescope"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/gosearch"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
