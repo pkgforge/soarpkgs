@@ -8,7 +8,10 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Sort and pack files into partitions"
+description: 
+  _default: "Sort and pack files into partitions"
+  fpart: "Sort and pack files into partitions"
+  fpsync: "Sync directories in parallel using fpart"
 distro_pkg:
   archlinux:
     aur:
@@ -31,7 +34,8 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/martymac/fpart"
 provides:
-  - "fpart"  
+  - "fpart"
+  - "fpsync"
 repology:
   - "fpart"
 src_url:
@@ -83,3 +87,4 @@ x_exec:
      docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     curl -qfsSL "https://raw.githubusercontent.com/martymac/fpart/refs/heads/master/tools/fpsync" -o "${SBUILD_OUTDIR}/fpsync"

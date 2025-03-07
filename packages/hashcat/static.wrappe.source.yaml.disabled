@@ -1,0 +1,105 @@
+#Complains about missing module dirs
+
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/hashcat/static.wrappe.source.yaml
+_disabled: false
+
+pkg: "hashcat"
+pkg_id: "github.com.hashcat.hashcat.wrappe"
+pkg_type: "archive"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Advanced password recovery utility"
+distro_pkg:
+  alpine:
+    - "hashcat"
+  archlinux:
+    aur:
+      - "hashcat-git"
+    extra:
+      - "hashcat"
+  debian:
+    - "hashcat"
+  gnuguix:
+    - "hashcat"
+  homebrew:
+    - "hashcat"
+  nixpkgs:
+    - "hashcat"
+homepage:
+  - "https://github.com/hashcat/hashcat"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/hashcat/hashcat/raw/3c21dc42dcba02d62f4b4b67adcb592f5863790b/COPYING"  
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/hashcat/hashcat"
+  - "Packed as-is using WrapPe. Check/Report @ https://github.com/Systemcluster/wrappe"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "hashcat"  
+repology:
+  - "hashcat"
+src_url:
+  - "https://github.com/hashcat/hashcat"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/hashcat/hashcat" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/wrappe" -o "/tmp/wrappe"
+       chmod -v "a+x" "/tmp/wrappe"
+       [[ -s "/tmp/wrappe" ]] || exit 1
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/hashcat/hashcat" "./TEMPREPO" && cd "./TEMPREPO"
+       SRC_REPO="$(realpath .)" ; export SRC_REPO
+       export CFLAGS="-Os -flto=auto -B/usr/libexec/mold -g0 -pipe -static -v -w -Wno-error"
+       export CPPFLAGS="${CFLAGS}"
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       make --jobs="$(($(nproc)+1))"
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
+      #Copy
+       #cp "./hashcat" "/build-bins/hashcat"
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #strip & info 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       [[ -s "/build-bins/hashcat" ]] || exit 1
+      #Repack
+       #make clean ; make dist clean 2>/dev/null
+       rm -rf "${SRC_REPO}/.git" "${SRC_REPO}/.github" 2>/dev/null
+       mv -fv "/build-bins/hashcat" "${SRC_REPO}/hashcat"
+       [[ -s "${SRC_REPO}/hashcat" ]] || exit 1
+       "/tmp/wrappe" --current-dir "command" --show-information "none" --unpack-directory ".hashcat.wrappe" --unpack-target "cwd" "${SRC_REPO}" "${SRC_REPO}/hashcat" "/build-bins/hashcat"
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

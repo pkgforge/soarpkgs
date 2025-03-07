@@ -56,9 +56,9 @@ x_exec:
        #CoreUtils
         apt install bash binutils coreutils curl findutils file g++ git grep jq libc-dev moreutils patchelf rsync sed strace tar tree xz-utils zstd -y -qq 2>/dev/null
        #Sharun
-        curl -qfsSL "https://api.gh.pkgforge.dev/repos/VHSgunzo/sharun/releases?per_page=100" | jq -r ".. | objects | .browser_download_url? // empty" | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sharun" | grep -Ei "aio" | sort --version-sort | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" curl -qfsSL "{}" -o "/usr/local/bin/sharun"
+        curl -w "(DL) <== %{url}\n" -qfSL "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio" -o "/usr/local/bin/sharun"
         chmod -v "a+x" "/usr/local/bin/sharun"
-        command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)"
+        command -v sharun &>/dev/null || echo -e "\n[X] FATAL: sharun is NOT Installed\n$(exit 1)"
        #Fetch & Pack
         DOWNLOAD_URL="$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/caido/caido/releases/latest" | jq -r ".body" |\
         grep -oP '\''\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))'\'' | sed '\''s/href="//'\'' |\

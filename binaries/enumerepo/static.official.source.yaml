@@ -3,7 +3,7 @@
 _disabled: false
 
 pkg: "enumerepo"
-pkg_id: "github.com.trickest.enumerepo"
+pkg_id: "github.com.trickest.enumerepo.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
@@ -20,14 +20,13 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/trickest/enumerepo"
 provides:
-  - "enumerepo"  
+  - "enumerepo"
 #repology:
 #  - "enumerepo"
 src_url:
   - "https://github.com/trickest/enumerepo"
 tag:
-  - "enumeration"
-  - "security"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -48,7 +47,7 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
-       CGO_ENABLED="1" 
+       CGO_ENABLED="1"
        CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
        GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
        GOOS="linux"

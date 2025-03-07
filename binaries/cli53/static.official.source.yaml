@@ -1,0 +1,80 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/cli53/static.official.source.yaml
+_disabled: false
+
+pkg: "cli53"
+pkg_id: "github.com.barnybug.cli53.source"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "CLI tool for the Amazon Route 53 DNS service"
+distro_pkg:
+  archlinux:
+    aur:
+      - "cli53"
+  homebrew:
+    - "cli53"
+  nixpkgs:
+    - "cli53"
+homepage:
+  - "https://github.com/barnybug/cli53"
+license:
+  - id: "MIT"
+    url: "https://github.com/barnybug/cli53/raw/1b29a32f3911fb9c130ecbc3b962013dff16e485/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/barnybug/cli53"
+provides:
+  - "cli53"
+repology:
+  - "cli53"
+src_url:
+  - "https://github.com/barnybug/cli53"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/barnybug/cli53" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       CGO_ENABLED="1"
+       CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+       GOOS="linux"
+       export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+      #Build
+       git clone --filter "blob:none" --quiet "https://github.com/barnybug/cli53" "./TEMPREPO" && cd "./TEMPREPO"
+       echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+       echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+       go mod tidy -v ; go generate
+       go build -C "./cmd/cli53" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/cli53"
+      #Copy
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #Strip 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

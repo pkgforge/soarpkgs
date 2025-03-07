@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tracee/static.official.stable.yaml
+_disabled: false
+
+pkg: "tracee"
+pkg_id: "github.com.orhun.tracee.stable"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Linux Runtime Security and Forensics using eBPF"
+homepage:
+  - "https://github.com/aquasecurity/tracee"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/aquasecurity/tracee/raw/b99581d6413bc635f230748976eaccdc67c16964/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/aquasecurity/tracee"
+provides:
+  - "tracee"
+  - "tracee-ebpf"  
+repology:
+  - "tracee"
+src_url:
+  - "https://github.com/aquasecurity/tracee"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/aquasecurity/tracee/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/aquasecurity/tracee@${PKGVER}" --match "aarch64,tar" --exclude "amd64,x86,x64,checksum,deb,dgst,rpm,sha256,sha512,sig,txt,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/aquasecurity/tracee@${PKGVER}" --match "x86_64,tar" --exclude "aarch,arm,checksum,i386,i686,deb,dgst,rpm,sha256,sha512,sig,txt,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    tar -xvf "${SBUILD_TMPDIR}/${PKG}.archive" -C "${SBUILD_TMPDIR}/${PKG}.archive"
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | grep -Ei 'static' | grep -Eiv 'ebpf' | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/tracee"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | grep -Ei 'ebpf-static' | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/tracee-ebpf"
