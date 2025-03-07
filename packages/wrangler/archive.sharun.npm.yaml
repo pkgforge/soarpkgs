@@ -62,17 +62,17 @@ x_exec:
        BASE_PKGS=(bash binutils coreutils croc curl findutils file gcc git grep jq glibc linux-headers moreutils p7zip patchelf rsync sed strace tar tree xz zstd)
        for pkg in "${BASE_PKGS[@]}"; do pacman -Sy "${pkg}" --noconfirm --needed 2>/dev/null; done
       #Sharun
-       curl -qfsSL "https://api.gh.pkgforge.dev/repos/VHSgunzo/sharun/releases?per_page=100" | jq -r ".. | objects | .browser_download_url? // empty" | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Ei "sharun" | grep -Ei "aio" | sort --version-sort | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" curl -qfsSL "{}" -o "/usr/local/bin/sharun"
+       curl -w "(DL) <== %{url}\n" -qfSL "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio" -o "/usr/local/bin/sharun"
        chmod -v "a+x" "/usr/local/bin/sharun"
-       command -v sharun &>/dev/null || echo -e "\[X] FATAL: sharun is NOT Installed\n$(exit 1)"
+       command -v sharun &>/dev/null || echo -e "\n[X] FATAL: sharun is NOT Installed\n$(exit 1)"
       #Node
        pacman -Sy nodejs --noconfirm --needed
        pacman -Sy npm --noconfirm --needed
-       command -v node &>/dev/null || echo -e "\[X] FATAL: node is NOT Installed\n$(exit 1)"
+       command -v node &>/dev/null || echo -e "\n[X] FATAL: node is NOT Installed\n$(exit 1)"
       #Bun
        curl -qfsSL "https://bun.sh/install" | bash
        export PATH="${HOME}/.bun/bin:${PATH}"
-       command -v bun &>/dev/null || echo -e "\[X] FATAL: bun is NOT Installed\n$(exit 1)"
+       command -v bun &>/dev/null || echo -e "\n[X] FATAL: bun is NOT Installed\n$(exit 1)"
        npm install "@vercel/ncc@latest" --global
       #Install PKG
        export PKG="wrangler"
@@ -88,7 +88,7 @@ x_exec:
        #Create symlink without *.js/*.ts etc
        find "$(dirname ${PKG_ENTRYPOINT})" -type f \( -name "*.*js*" -o -name "*.*ts*" \) -exec bash -c '\''t=${1%.*};[ ! -e "$t" ]&&ln -sv "./${1##*/}" "$t"'\'' _ "{}" \;
        realpath "$(dirname ${PKG_ENTRYPOINT})" && ls "$(dirname ${PKG_ENTRYPOINT})"
-       [ -s "${PKG_ENTRYPOINT%.*}" ] || echo -e "\[X] FATAL: Failed to create Symlink$(exit 1)"
+       [ -s "${PKG_ENTRYPOINT%.*}" ] || echo -e "\n[X] FATAL: Failed to create Symlink$(exit 1)"
       #Bundle PKG
        sharun lib4bin --gen-lib-path --hard-links --with-hooks --with-sharun --strip --dst-dir "${PKG_ROOT_DIR}" "$(which node)" -- --help
        sharun lib4bin --gen-lib-path --hard-links --with-hooks --with-sharun --strip --dst-dir "${PKG_ROOT_DIR}" "${PKG_ENTRYPOINT}" -- --help
