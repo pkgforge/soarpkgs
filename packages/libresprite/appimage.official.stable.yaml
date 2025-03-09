@@ -11,7 +11,17 @@ pkg_type: "appimage"
 #  - "jq#bin"
 category:
   - "Graphics"
-description: "Emulator of x86-based machines"
+description: "Animated sprite editor & pixel art tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "libresprite"
+      - "libresprite-bin"
+      - "libresprite-git"
+  gnuguix:
+    - "libresprite"
+  nixpkgs:
+    - "libresprite"
 homepage:
   - "https://libresprite.github.io"
 icon: 
@@ -20,7 +30,7 @@ desktop:
   url: "https://cdn.jsdelivr.net/gh/LibreSprite/LibreSprite@master/desktop/libresprite.desktop"
 license:
   - id: "GPL-2.0"
-    url: "https://github.com/86Box/86Box/raw/6d4031eb28deaf2267f9aa09929050ebb1c4e70b/COPYING"
+    url: "https://github.com/LibreSprite/LibreSprite/raw/fda1e4281ccd3a0b5cbf37db4ef408d22d0b44dc/LICENSE.txt"  
 maintainer:
   - "Souhrud Reddy (https://github.com/sounddrill31)"
 note:
@@ -43,9 +53,10 @@ x_exec:
   run: |
     #Download
     case "$(uname -m)" in
-      #aarch64)
+      aarch64)
       #  soar dl "https://github.com/LibreSprite/LibreSprite@${PKGVER}" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes
-      #  ;;
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        ;;
       x86_64)
         soar dl "https://github.com/LibreSprite/LibreSprite@${PKGVER}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
         ;;
