@@ -54,6 +54,8 @@ x_exec:
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
        source "${HOME}/.cargo/env"
+       rustup default nightly
+       rustup component add rust-src --toolchain nightly
        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
        rustup target add "${RUST_TARGET}"
        RUSTFLAGS="-C target-feature=+crt-static \
