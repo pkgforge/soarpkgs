@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/libresprite/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "libresprite"
+pkg_id: "github.com.libresprite.libresprite.stable"
+pkg_type: "appimage"
+#build_util:
+#  - "curl#bin"
+#  - "jq#bin"
+category:
+  - "Graphics"
+description: "Animated sprite editor & pixel art tool"
+distro_pkg:
+  archlinux:
+    aur:
+      - "libresprite"
+      - "libresprite-bin"
+      - "libresprite-git"
+  gnuguix:
+    - "libresprite"
+  nixpkgs:
+    - "libresprite"
+homepage:
+  - "https://libresprite.github.io"
+icon: 
+  url: "https://cdn.jsdelivr.net/gh/LibreSprite/LibreSprite@master/data/icons/ase64.png"
+desktop: 
+  url: "https://cdn.jsdelivr.net/gh/LibreSprite/LibreSprite@master/desktop/libresprite.desktop"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/LibreSprite/LibreSprite/raw/fda1e4281ccd3a0b5cbf37db4ef408d22d0b44dc/LICENSE.txt"  
+maintainer:
+  - "Souhrud Reddy (https://github.com/sounddrill31)"
+note:
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/LibreSprite/LibreSprite"
+provides:
+  - "libresprite"
+src_url:
+  - "https://github.com/LibreSprite/LibreSprite"
+tag:
+  - "pixel-art"
+  - "drawing"
+  - "libresprite"
+x_exec:
+  host:
+   #- "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LibreSprite/LibreSprite/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+      #  soar dl "https://github.com/LibreSprite/LibreSprite@${PKGVER}" --match "appimage,arm64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes
+        echo -e "\n[✗] aarch64 is Not Yet Supported\n"
+        ;;
+      x86_64)
+        soar dl "https://github.com/LibreSprite/LibreSprite@${PKGVER}" --match "appimage,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
