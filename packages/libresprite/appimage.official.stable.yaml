@@ -1,7 +1,6 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/libresprite/appimage.official.stable.yaml
-_disabled: true
-# Not ready yet, will update after they make a proper release
+_disabled: false
 
 pkg: "libresprite"
 pkg_id: "github.com.libresprite.libresprite.stable"
@@ -45,11 +44,11 @@ tag:
   - "libresprite"
 x_exec:
   host:
+   #- "aarch64-Linux"
     - "x86_64-Linux"
-    #- "aarch64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LibreSprite/LibreSprite/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/LibreSprite/LibreSprite/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == true)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
