@@ -23,17 +23,15 @@ homepage:
   - "https://www.nushell.sh"
   - "https://github.com/nushell/nushell"
 license:
-  - "0BSD"
-  - "ISC"
-  - "MIT"
+  - id: "MIT"
+    url: "https://github.com/nushell/nushell/raw/e926919582138fe6025080469d5b66d817aa8570/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/nushell/nushell"
 provides:
-  - "nu"
-  - "nushell"  
+  - "nushell==nu"
 repology:
   - "nushell"
 src_url:
@@ -69,7 +67,7 @@ x_exec:
          -C prefer-dynamic=no \
          -C embed-bitcode=yes \
          -C lto=yes \
-         -C opt-level=z \
+         -C opt-level=3 \
          -C debuginfo=none \
          -C strip=symbols \
          -C linker=clang \
@@ -85,12 +83,17 @@ x_exec:
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm rust-toolchain* 2>/dev/null
-       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       cargo build --workspace --target "${RUST_TARGET}" \
+         --all-features \
+         --jobs="$(($(nproc)+1))" \
+         --release \
+         --keep-going \
+         --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
+       cp -fv "./target/${RUST_TARGET}/release/nu" "./target/${RUST_TARGET}/release/nushell" 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
-       cp -fv "/build-bins/nu" "/build-bins/nushell"
       #Strip 
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
