@@ -398,6 +398,8 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
            strip --strip-debug --strip-dwo --strip-unneeded "{}"
          fi
        '
+      #Remove Size0 Files
+       find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -size 0 -delete 2>/dev/null
       #Fix Desktop
        find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -iname "*.desktop" -exec sed -E 's/^[[:space:]]*[Ee]xec[[:space:]]*=[[:space:]]*[^[:space:]]+/Exec={{pkg_path}}/' -i "{}" \;
       #License
