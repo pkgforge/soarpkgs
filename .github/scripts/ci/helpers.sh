@@ -43,6 +43,10 @@ setup_env()
  echo "export BUILD_DIR='${BUILD_DIR}'" >> "${OCWD}/ENVPATH"
  echo "export SBUILD_OUTDIR='${SBUILD_OUTDIR}'" >> "${OCWD}/ENVPATH"
  echo "export SBUILD_TMPDIR='${SBUILD_TMPDIR}'" >> "${OCWD}/ENVPATH"
+ [[ "${GHA_MODE}" == "MATRIX" ]] && echo "INPUT_SBUILD=${INPUT_SBUILD}" >> "${GITHUB_ENV}"
+ [[ "${GHA_MODE}" == "MATRIX" ]] && echo "BUILD_DIR=${BUILD_DIR}" >> "${GITHUB_ENV}"
+ [[ "${GHA_MODE}" == "MATRIX" ]] && echo "SBUILD_OUTDIR=${SBUILD_OUTDIR}" >> "${GITHUB_ENV}"
+ [[ "${GHA_MODE}" == "MATRIX" ]] && echo "SBUILD_TMPDIR=${SBUILD_TMPDIR}" >> "${GITHUB_ENV}"
 }
 export -f setup_env
 #-------------------------------------------------------#
@@ -638,6 +642,8 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]]; then
      BUILD_ID="$(cat '/etc/machine-id' | tr -d '[:space:]')"
    fi
    export BUILD_GHACTIONS BUILD_ID
+   [[ "${GHA_MODE}" == "MATRIX" ]] && echo "BUILD_GHACTIONS=${BUILD_GHACTIONS}" >> "${GITHUB_ENV}"
+   [[ "${GHA_MODE}" == "MATRIX" ]] && echo "BUILD_ID=${BUILD_ID}" >> "${GITHUB_ENV}"
   #Generate Snapshots
    if [ -n "${GHCRPKG_URL+x}" ] && [[ "${GHCRPKG_URL}" =~ ^[^[:space:]]+$ ]]; then
     #Generate Manifest
@@ -774,6 +780,7 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
    if [[ -s "${GHCR_PKG}" && $(stat -c%s "${GHCR_PKG}") -gt 100 ]]; then
     #pkg_name
      PKG_NAME="$(jq -r '.pkg_name' "${PKG_JSON}" | tr -d '[:space:]')"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_NAME=${PKG_NAME}" >> "${GITHUB_ENV}"
     #build_gha
      BUILD_GHACTIONS="$(jq -r '.build_gha' "${PKG_JSON}" | tr -d '[:space:]')"
      [[ "${BUILD_GHACTIONS}" == "null" ]] && BUILD_GHACTIONS=""
@@ -802,6 +809,7 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
        PKG_DATETMP="${PKG_DATE}"
        PKG_DATE="$(echo "${PKG_DATETMP}" | sed 's/ZZ\+/Z/Ig')" ; unset PKG_DATETMP
      fi
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_DATE=${PKG_DATE}" >> "${GITHUB_ENV}"
     #version 
      PKG_VERSION="$(jq -r '.version' "${PKG_JSON}" | tr -d '[:space:]')"
      if [[ "${PKG_VERSION}" == "latest" ]]; then
@@ -821,6 +829,8 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
     #tag 
      GHCRPKG_TAG="$(echo "${PKG_VERSION}-${HOST_TRIPLET,,}" | sed 's/[^a-zA-Z0-9._-]/_/g; s/_*$//')" ; export GHCRPKG_TAG
      echo "export GHCRPKG_TAG='${GHCRPKG_TAG}'" >> "${OCWD}/ENVPATH"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "GHCRPKG_URL=${GHCRPKG_URL}" >> "${GITHUB_ENV}"
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "GHCRPKG_TAG=${GHCRPKG_TAG}" >> "${GITHUB_ENV}"
     #Sanity Check download_url
      generate_ghcrpkgurl
      if [ -n "${DOWNLOAD_URL+x}" ] && [[ "${DOWNLOAD_URL}" =~ ^[^[:space:]]+$ ]]; then
@@ -877,6 +887,7 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
      if [ -z "${PKG_WEBPAGE+x}" ] || [ -z "${PKG_WEBPAGE##*[[:space:]]}" ]; then
        PKG_WEBPAGE="$(echo "https://github.com/${GITHUB_REPOSITORY}" | sed 's|^/*||; s|/*$||' | tr -d '[:space:]')" ; export PKG_WEBPAGE 
      fi
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_WEBPAGE=${PKG_WEBPAGE}" >> "${GITHUB_ENV}"
     #note 
      PKG_NOTE="$(jq -r 'if .note | type == "array" then .note[0] else .note end' "${PKG_JSON}")"
      [[ "${PKG_NOTE}" == "null" ]] && PKG_NOTE=""
@@ -900,6 +911,7 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
      elif [[ -n "${PKG_HOMEPAGE}" ]]; then
        PKG_SRCURL="${PKG_HOMEPAGE}"
      fi
+     [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_SRCURL=${PKG_SRCURL}" >> "${GITHUB_ENV}"
     #tag 
      PKG_TAG="$(jq -r 'if .tag | type == "array" then .tag[0] else .tag end' "${PKG_JSON}" | tr -d '[:space:]')"
      [[ "${PKG_TAG}" == "null" ]] && PKG_TAG=""
@@ -1021,7 +1033,8 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
           export PUSH_SUCCESSFUL="YES"
           #rm -rf "${GHCR_PKG}" "${PKG_JSON}" 2>/dev/null
           echo "export PUSH_SUCCESSFUL=YES" >> "${OCWD}/ENVPATH"
-          [[ "${GHA_MODE}" == "MATRIX" ]] && echo GHCRPKG_URL="${GHCRPKG_URL}" >> "${GITHUB_ENV}"
+          [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PKG_VERSION_UPSTREAM=${PKG_VERSION_UPSTREAM}" >> "${GITHUB_ENV}"
+          [[ "${GHA_MODE}" == "MATRIX" ]] && echo "GHCRPKG_URL=${GHCRPKG_URL}" >> "${GITHUB_ENV}"
           [[ "${GHA_MODE}" == "MATRIX" ]] && echo "PUSH_SUCCESSFUL=${PUSH_SUCCESSFUL}" >> "${GITHUB_ENV}"
           if [ -n "${METADATA_DIR+x}" ] && [[ "${METADATA_DIR}" =~ ^[^[:space:]]+$ ]]; then
             mkdir -pv "${METADATA_DIR}"
@@ -1075,14 +1088,14 @@ popd >/dev/null 2>&1
 cleanup_env()
 {
 #Cleanup Dir  
- if [ -n "${GITHUB_TEST_BUILD+x}" ]; then
+ if [[ -n "${GITHUB_TEST_BUILD+x}" || "${GHA_MODE}" == "MATRIX" ]]; then
   7z a -t7z -mx="9" -mmt="$(($(nproc)+1))" -bsp1 -bt "/tmp/BUILD_ARTIFACTS.7z" "${BUILD_DIR}" 2>/dev/null
  elif [[ "${KEEP_LOGS}" != "YES" ]]; then
   echo -e "\n[-] Removing ALL Logs & Files\n"
   rm -rvf "${BUILD_DIR}" 2>/dev/null
  fi
 #Cleanup Env
- unset ARTIFACTS_DIR BUILD_DIR BUILD_GHACTIONS BUILD_ID desktop_files icon_files ghcr_push ghcr_push_cmd GHCRPKG_URL GHCRPKG_TAG INPUT_SBUILD INPUT_SBUILD_PATH MANIFEST_URL OCWD pkg PKG PKG_APPSTREAM PKG_DESKTOP PKG_FAMILY PKG_GHCR pkg_id PKG_ID PKG_MANIFEST pkg_type PKG_TYPE pkgver PKGVER pkg_ver PKG_VER PKG_VERSION_UPSTREAM PKG_WEBPAGE PROG REPOLOGY_PKG REPOLOGY_PKGVER REPOLOGY_VER SBUILD_OUTDIR SBUILD_PKG SBUILD_PKGS SBUILD_PKGVER SBUILD_REBUILD SBUILD_SCRIPT SBUILD_SCRIPT_BLOB SBUILD_SKIPPED SBUILD_SUCCESSFUL SBUILD_TMPDIR SNAPSHOT_JSON SNAPSHOT_TAGS TAG_URL TMPJSON TMPXVER TMPXRUN
+ unset ARTIFACTS_DIR BUILD_DIR BUILD_GHACTIONS BUILD_ID desktop_files icon_files ghcr_push ghcr_push_cmd GHCRPKG_URL GHCRPKG_TAG GHCRPKG_TAG_SRCBUILD INPUT_SBUILD INPUT_SBUILD_PATH MANIFEST_URL OCWD pkg PKG PKG_APPSTREAM PKG_DESKTOP PKG_FAMILY PKG_GHCR pkg_id PKG_ID PKG_MANIFEST pkg_type PKG_TYPE pkgver PKGVER pkg_ver PKG_VER PKG_VERSION_UPSTREAM PKG_WEBPAGE PROG REPOLOGY_PKG REPOLOGY_PKGVER REPOLOGY_VER SBUILD_OUTDIR SBUILD_PKG SBUILD_PKGS SBUILD_PKGVER SBUILD_REBUILD SBUILD_SCRIPT SBUILD_SCRIPT_BLOB SBUILD_SKIPPED SBUILD_SUCCESSFUL SBUILD_TMPDIR SNAPSHOT_JSON SNAPSHOT_TAGS TAG_URL TMPJSON TMPXVER TMPXRUN
 }
 export -f cleanup_env
 #-------------------------------------------------------#
