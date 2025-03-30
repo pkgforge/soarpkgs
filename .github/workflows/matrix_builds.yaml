@@ -383,7 +383,8 @@ jobs:
           #--------------#
           ##Set ENV
            if [[ "${SKIP_SRCBUILD_UPLOAD}" != "YES" ]]; then
-              GHCRPKG_TAG_SRCBUILD="srcbuild.$(date --utc +"%y%m%dT%H%M%S" | tr -d '[:space:]')-${{ env.GHCRPKG_TAG }}"
+              #GHCRPKG_TAG_SRCBUILD="srcbuild.$(date --utc +"%y%m%dT%H%M%S" | tr -d '[:space:]')-${{ env.GHCRPKG_TAG }}"
+              GHCRPKG_TAG_SRCBUILD="${{ env.GHCRPKG_TAG }}"
               export GHCRPKG_TAG_SRCBUILD
               [[ "${GHA_MODE}" == "MATRIX" ]] && echo "GHCRPKG_TAG_SRCBUILD=${GHCRPKG_TAG_SRCBUILD}" >> "${GITHUB_ENV}"
            fi
@@ -406,37 +407,37 @@ jobs:
                     ghcr_push+=(--annotation "dev.pkgforge.soar.push_date=${{ env.PKG_DATE }}")
                     ghcr_push+=(--annotation "dev.pkgforge.soar.version=${{ env.PKG_VERSION }}")
                     ghcr_push+=(--annotation "org.opencontainers.image.created=${{ env.PKG_DATE }}")
-                    ghcr_push+=(--annotation "org.opencontainers.image.description=SRCBUILD for ${{ env.GHCRPKG_URL }}:${{ env.GHCRPKG_TAG }}")
+                    ghcr_push+=(--annotation "org.opencontainers.image.description=SRCBUILD for ${{ env.GHCRPKG_URL }}")
                     ghcr_push+=(--annotation "org.opencontainers.image.licenses=blessing")
                     ghcr_push+=(--annotation "org.opencontainers.image.ref.name=${{ env.PKG_VERSION }}")
                     ghcr_push+=(--annotation "org.opencontainers.image.revision=${{ env.PKG_VERSION }}")
                     ghcr_push+=(--annotation "org.opencontainers.image.source=${{ env.PKG_WEBPAGE }}")
-                    ghcr_push+=(--annotation "org.opencontainers.image.title=SRCBUILD-${{ env.PKG_NAME }}")
+                    ghcr_push+=(--annotation "org.opencontainers.image.title=SRCBUILD-${{ env.PKG_FAMILY_LOCAL }}")
                     ghcr_push+=(--annotation "org.opencontainers.image.url=${{ env.PKG_SRCURL }}")
                     ghcr_push+=(--annotation "org.opencontainers.image.vendor=pkgforge")
                     ghcr_push+=(--annotation "org.opencontainers.image.version=${{ env.PKG_VERSION }}")
-                    ghcr_push+=("${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}")
+                    ghcr_push+=("${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}")
                     [[ -f "./BUILD_ARTIFACTS.7z" && -s "./BUILD_ARTIFACTS.7z" ]] && ghcr_push+=("./BUILD_ARTIFACTS.7z")
                     "${ghcr_push[@]}" ; sleep 5
                    #Check
-                    if [[ "$(oras manifest fetch "${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" == "${{ env.PKG_DATE }}" ]]; then
-                      echo -e "\n[+] (ARTIFACTS) Registry --> https://${{ env.GHCRPKG_URL }}\n"
+                    if [[ "$(oras manifest fetch "${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" == "${{ env.PKG_DATE }}" ]]; then
+                      echo -e "\n[+] (ARTIFACTS) Registry --> https://${{ env.GHCRPKG_URL }}-srcbuild\n"
                       break
                     else
-                      echo -e "\n[-] Failed to Push Artifact to ${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD} (Retrying ${i}/10)\n"
+                      echo -e "\n[-] Failed to Push Artifact to ${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD} (Retrying ${i}/10)\n"
                     fi
                     sleep "$(shuf -i 500-4500 -n 1)e-3"
                   done
                  }
                  export -f ghcr_push_cmd
                  ghcr_push_cmd
-                 if [[ "$(oras manifest fetch "${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" != "${{ env.PKG_DATE }}" ]]; then
-                   echo -e "\n[✗] Failed to Push Artifact to ${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}\n"
+                 if [[ "$(oras manifest fetch "${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" != "${{ env.PKG_DATE }}" ]]; then
+                   echo -e "\n[✗] Failed to Push Artifact to ${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}\n"
                     echo -e "\n[-] Retrying ...\n"
                     ghcr_push_cmd
-                     if [[ "$(oras manifest fetch "${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" != "${{ env.PKG_DATE }}" ]]; then
-                       oras manifest fetch "${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}" | jq .
-                       echo -e "\n[✗] Failed to Push Artifact to ${{ env.GHCRPKG_URL }}:${GHCRPKG_TAG_SRCBUILD}\n"
+                     if [[ "$(oras manifest fetch "${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" != "${{ env.PKG_DATE }}" ]]; then
+                       oras manifest fetch "${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}" | jq .
+                       echo -e "\n[✗] Failed to Push Artifact to ${{ env.GHCRPKG_URL }}-srcbuild:${GHCRPKG_TAG_SRCBUILD}\n"
                        return 1 || exit 1
                      fi
                  fi
@@ -473,7 +474,7 @@ jobs:
         if: env.CONTINUE_GHRUN != 'FALSE'
         uses: actions/attest-build-provenance@v2.2.3
         with:
-          subject-name: "${{ env.PKG_FAMILY_LOCAL }}-${{ env.PKG_NAME }}-${{ env.GHCRPKG_TAG }}"
+          subject-name: "${{ env.PKG_FAMILY_LOCAL }}-${{ env.BUILD_ID }}-${{ env.GHCRPKG_TAG }}"
           subject-path: |
             "/tmp/BUILD.log"
             "/tmp/BUILD_ARTIFACTS.7z"
