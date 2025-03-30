@@ -385,7 +385,7 @@ jobs:
            if [[ "${SKIP_SRCBUILD_UPLOAD}" != "YES" ]]; then
               #GHCRPKG_TAG_SRCBUILD="srcbuild.$(date --utc +"%y%m%dT%H%M%S" | tr -d '[:space:]')-${{ env.GHCRPKG_TAG }}"
               GHCRPKG_TAG_SRCBUILD="${{ env.GHCRPKG_TAG }}"
-              GHCRPKG_URL_SRCBUILD="${{ env.GHCRPKG_LOCAL }}/${{ env.PKG_FAMILY_LOCAL }}-${{ env.BUILD_ID }}-srcbuild"
+              GHCRPKG_URL_SRCBUILD="${{ env.GHCRPKG_LOCAL }}/${{ env.PKG_FAMILY_LOCAL }}-srcbuild-${{ env.BUILD_ID }}"
               export GHCRPKG_TAG_SRCBUILD GHCRPKG_URL_SRCBUILD
               echo "GHCRPKG_TAG_SRCBUILD=${GHCRPKG_TAG_SRCBUILD}" >> "${GITHUB_ENV}"
               echo "GHCRPKG_URL_SRCBUILD=${GHCRPKG_URL_SRCBUILD}" >> "${GITHUB_ENV}"
