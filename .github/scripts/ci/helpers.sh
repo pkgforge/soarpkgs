@@ -647,12 +647,12 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]]; then
      TAG_URL="https://api.ghcr.pkgforge.dev/$(echo "${GHCRPKG}" | sed ':a; s|^\(https://\)\([^/]\)/\(/\)|\1\2/\3|; ta' | sed -E 's|^ghcr\.io/||; s|^/+||; s|/+?$||' | sed ':a; s|^\(https://\)\([^/]\)/\(/\)|\1\2/\3|; ta')/${PROG}?tags"
      echo -e "[+] Fetching Snapshot Tags <== ${TAG_URL} [\$GHCRPKG]"
      #readarray -t "SNAPSHOT_TAGS" < <(curl -qfsSL "${TAG_URL}" | grep -i "$(uname -m)" | uniq)
-     readarray -t "SNAPSHOT_TAGS" < <(oras repo tags "${GHCRPKG_URL}" | grep -i "$(uname -m)" | uniq)
+     readarray -t "SNAPSHOT_TAGS" < <(oras repo tags "${GHCRPKG_URL}" | grep -viE '^\s*(latest|srcbuild)[.-][0-9]{6}T[0-9]{6}[.-]' | grep -i "$(uname -m)" | uniq)
    else
      TAG_URL="https://api.ghcr.pkgforge.dev/${PKG_REPO_OWNER}/$(echo "${PKG_REPO}/${PKG_FAMILY:-${PKG_NAME}}/${PKG_NAME:-${PKG_FAMILY:-${PKG_ID}}}" | sed ':a; s|^\(https://\)\([^/]\)/\(/\)|\1\2/\3|; ta')/${PROG}?tags"
      echo -e "[+] Fetching Snapshot Tags <== ${TAG_URL} [NO \$GHCRPKG]"
      #readarray -t "SNAPSHOT_TAGS" < <(curl -qfsSL "${TAG_URL}" | grep -i "$(uname -m)" | uniq)
-     readarray -t "SNAPSHOT_TAGS" < <(oras repo tags "${GHCRPKG_URL}" | grep -i "$(uname -m)" | uniq)
+     readarray -t "SNAPSHOT_TAGS" < <(oras repo tags "${GHCRPKG_URL}" | grep -viE '^\s*(latest|srcbuild)[.-][0-9]{6}T[0-9]{6}[.-]' | grep -i "$(uname -m)" | uniq)
    fi
    if [[ -n "${SNAPSHOT_TAGS[*]}" && "${#SNAPSHOT_TAGS[@]}" -gt 0 ]]; then
      echo -e "[+] Snapshots: ${SNAPSHOT_TAGS[*]}"
