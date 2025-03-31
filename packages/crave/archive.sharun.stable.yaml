@@ -80,7 +80,8 @@ x_exec:
             rm -f "${E_X}"
            } || break
          done
-         find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sharun lib4bin --gen-lib-path --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "${PKG}" --dst-dir "./SHARUN_WRAPPED" "{}"
+         find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sharun lib4bin --gen-lib-path --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "${PKG}" --dst-dir "./SHARUN_WRAPPED" "{}" \
+         "/lib/$(uname -m)-linux-gnu/libcrypt.*" # "/lib/$(uname -m)-linux-gnu/libdl.*"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/crave"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
