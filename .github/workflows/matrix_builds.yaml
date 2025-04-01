@@ -319,7 +319,7 @@ jobs:
           sudo sysctl -p "/etc/sysctl.conf"
         continue-on-error: true
 
-      - name: BUILD (${{ inputs.ghcr-url }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
+      - name: BUILD (${{ env.GHCRPKG_LOCAL }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
         env:
           GHCR_TOKEN: "${{ github.token }}" #Should Never be exported/used by something else (Is Over Privileged)
@@ -369,7 +369,7 @@ jobs:
           popd &>/dev/null
         continue-on-error: true
 
-      - name: Push Artifacts (${{ github.event.inputs.ghcr-url }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
+      - name: Push Artifacts (${{ env.GHCRPKG_LOCAL }}) [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
         env:
           #GHCR_TOKEN: "${{ secrets.GHCR_TOKEN }}" #Needs Actions' Token if we want to make the packages public

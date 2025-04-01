@@ -68,7 +68,7 @@ x_exec:
       #Build
        apk add "${PKG}" --latest --upgrade --no-interactive
        apk info -L "${PKG}"
-       sharun lib4bin --gen-lib-path --strace-mode --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "${PKG}" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "${PKG}"))"
+       sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "${PKG}" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "${PKG}"))"
       #Copy
        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
        apk info -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "appdata\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.appdata.xml"

@@ -60,7 +60,7 @@ x_exec:
         command -v sanicdns &>/dev/null || echo -e "\n[X] FATAL: sanicdns is NOT Installed\n$(exit 1)"
        #Bundle
         curl -qfSL "https://raw.githubusercontent.com/hadriansecurity/sanicdns/main/majestic_million.txt" | shuf -n 1000 > "./test.txt"
-        sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "sanicdns" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "sanicdns"))" -- --input-file "./test.txt" -r "200" -c "1000" --resolvers "1.1.1.1,1.0.0.1" -o "./tmp.txt"
+        sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "sanicdns" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "sanicdns"))" -- --input-file "./test.txt" -r "200" -c "1000" --resolvers "1.1.1.1,1.0.0.1" -o "./tmp.txt"
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

@@ -75,9 +75,9 @@ x_exec:
       #Build
        apk add "proxychains-ng" --latest --upgrade --no-interactive
        apk info -L "proxychains-ng"
-       sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "proxychains" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "proxychains"))" --
-       sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "proxychains4" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "proxychains4"))" --
-       sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "proxychains4-daemon" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "proxychains4-daemon"))" --
+       sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "proxychains" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "proxychains"))" --
+       sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "proxychains4" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "proxychains4"))" --
+       sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "proxychains4-daemon" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "proxychains4-daemon"))" --
       #Copy
        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
        [ ! -s "/build-bins/proxychains" ] && mv -fv "/build-bins/proxychains4" "/build-bins/proxychains"
