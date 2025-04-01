@@ -109,9 +109,9 @@ x_exec:
        apt install libpam0g-dev -y -qq
        cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
-       sharun lib4bin --gen-lib-path --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "su" --dst-dir "./SHARUN_WRAPPED" "./target/${RUST_TARGET}/release/su"
-       sharun lib4bin --gen-lib-path --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "su" --dst-dir "./SHARUN_WRAPPED" "./target/${RUST_TARGET}/release/sudo"
-       sharun lib4bin --gen-lib-path --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "su" --dst-dir "./SHARUN_WRAPPED" "./target/${RUST_TARGET}/release/visudo"
+       sharun lib4bin --gen-lib-path --strace-mode --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "su" --dst-dir "./SHARUN_WRAPPED" "./target/${RUST_TARGET}/release/su"
+       sharun lib4bin --gen-lib-path --strace-mode --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "su" --dst-dir "./SHARUN_WRAPPED" "./target/${RUST_TARGET}/release/sudo"
+       sharun lib4bin --gen-lib-path --strace-mode --strace-time "60" --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "su" --dst-dir "./SHARUN_WRAPPED" "./target/${RUST_TARGET}/release/visudo"
       #Copy
        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
