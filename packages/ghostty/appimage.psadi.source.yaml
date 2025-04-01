@@ -30,7 +30,7 @@ maintainer:
   - "psadi (https://github.com/psadi)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source using a Community Provided Script. Check/Report @ https://github.com/psadi/ghostty-appimage"
+  - "Built From Source using a Community Provided Script. Check/Report @ https://github.com/pkgforge-dev/ghostty-appimage"
   - "[PORTABLE] (Works on AnyLinux)"
 license:
   - id: "MIT"
@@ -40,7 +40,7 @@ provides:
 repology:
   - "ghostty"
 src_url:
-  - "https://github.com/psadi/ghostty-appimage"
+  - "https://github.com/pkgforge-dev/ghostty-appimage"
 tag:
   - "terminal"
 x_exec:
@@ -49,7 +49,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://raw.githubusercontent.com/psadi/ghostty-appimage/main/build.sh" | grep -oP 'GHOSTTY_VERSION\s*=\s*"\K[^"]*(?=")' | tr -d '[:space:]'
+    curl -qfsSL "https://raw.githubusercontent.com/pkgforge-dev/ghostty-appimage/main/build.sh" | grep -oP 'GHOSTTY_VERSION\s*=\s*"\K[^"]*(?=")' | tr -d '[:space:]'
   run: |
     #Build
      docker stop "ubuntu-builder" >/dev/null 2>&1 ; docker rm "ubuntu-builder" >/dev/null 2>&1
@@ -58,7 +58,7 @@ x_exec:
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
       #Build
-       git clone --depth="1" --filter "blob:none" --quiet "https://github.com/psadi/ghostty-appimage" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --depth="1" --filter "blob:none" --quiet "https://github.com/pkgforge-dev/ghostty-appimage" "./TEMPREPO" && cd "./TEMPREPO"
        chmod -v +x "./setup.sh" "./build.sh"
        "./setup.sh" && "./build.sh"
       #Copy
