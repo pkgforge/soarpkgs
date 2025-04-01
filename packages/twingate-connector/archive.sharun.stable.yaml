@@ -68,8 +68,8 @@ x_exec:
          export TWINGATE_REFRESH_TOKEN="aaaaa"
          export TWINGATE_NETWORK="aaaaaa" 
          export TWINGATE_LABEL_DEPLOYED_BY="linux"
-         sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-connector" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-connector"))" --
-         sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-connectorctl" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-connectorctl"))" --
+         sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-connector" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-connector"))" --
+         sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-connectorctl" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-connectorctl"))" --
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         dpkg-query -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "appdata\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.appdata.xml"

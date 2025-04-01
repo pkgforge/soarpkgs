@@ -76,9 +76,9 @@ x_exec:
          curl -qfsSL "https://binaries.twingate.com/client/linux/install.sh" -o "./install.sh" &&\
            chmod +x "./install.sh" && bash "./install.sh"
          apt show "twingate" ; dpkg-query -L "twingate"
-         sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate"))" -- setup
-         sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingated" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingated"))" -- --help
-         sharun lib4bin --gen-lib-path --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-notifier" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-notifier"))" -- --help
+         sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate"))" -- setup
+         sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingated" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingated"))" -- --help
+         sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-notifier" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-notifier"))" -- --help
        #Copy
         find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         dpkg-query -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "appdata\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.appdata.xml"
