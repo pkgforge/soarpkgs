@@ -98,7 +98,8 @@ else
     esac
  done
  ##Install Builder + Linter
- sudo curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Eiv "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" sudo curl -qfsSL "{}" -o "/usr/local/bin/sbuild"
+ #sudo curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/sbuilder/releases?per_page=100" | jq -r '.. | objects | .browser_download_url? // empty' | grep -Ei "$(uname -m)" | grep -Eiv "tar\.gz|\.b3sum" | grep -Eiv "sbuild-linter" | sort --version-sort | tail -n 1 | tr -d '[:space:]' | xargs -I "{}" sudo curl -qfsSL "{}" -o "/usr/local/bin/sbuild"
+ sudo curl -qfsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly-sbuild/sbuild-$(uname -m)-linux" -o "/usr/local/bin/sbuild"
  sudo chmod -v 'a+x' "/usr/local/bin/sbuild"
  if ! command -v sbuild &> /dev/null; then
    echo -e "\n[-] sbuild NOT Found\n"
