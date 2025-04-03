@@ -1,9 +1,9 @@
 #!/SBUILD
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.psadi.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.pkgforge-dev.stable.yaml
 _disabled: false
 
-pkg: "ghostty"
-pkg_id: "github.com.psadi.ghostty-appimage.stable"
+pkg: "ghostty-nightly"
+pkg_id: "github.com.pkgforge-dev.ghostty-appimage.stable"
 pkg_type: "appimage"
 category:
   - "TerminalEmulator"
@@ -41,8 +41,7 @@ x_exec:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
-  pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=100" | jq -r '.tag_name'
+  pkgver: tip
   run: |
     #Download
     case "$(uname -m)" in
