@@ -46,7 +46,7 @@ provides:
 repology:
   - "ghostty"
 src_url:
-  - "https://github.com/pkgforge-dev/ghostty-appimage"
+  - "https://github.com/ghostty-org/ghostty"
 tag:
   - "terminal"
 x_exec:
@@ -140,4 +140,3 @@ x_exec:
        --mksquashfs-opt -mkfs-time --mksquashfs-opt "0" \
        --mksquashfs-opt -Xcompression-level --mksquashfs-opt "22" \
        --no-appstream "${SBUILD_TMPDIR}/squashfs-root" "${SBUILD_OUTDIR}/${PKG}"
-
