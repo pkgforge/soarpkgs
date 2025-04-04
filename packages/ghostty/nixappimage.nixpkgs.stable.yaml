@@ -2,9 +2,9 @@
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/main/packages/ghostty/nixappimage.nixpkgs.stable.yaml
 _disabled: true
 _disabled_reason:
-   broken:
-     - date: "2025-01-14"
-       reason: "Fails to create EGL Display" #https://github.com/NixOS/nixpkgs/issues/9415
+  broken:
+    - date: "2025-01-14"
+      reason: "Fails to create EGL Display" #https://github.com/NixOS/nixpkgs/issues/9415
 
 pkg: "ghostty"
 pkg_id: "nixpkgs.ghostty"
@@ -46,7 +46,7 @@ provides:
 repology:
   - "ghostty"
 src_url:
-  - "https://github.com/psadi/ghostty-appimage"
+  - "https://github.com/ghostty-org/ghostty"
 tag:
   - "terminal"
 x_exec:

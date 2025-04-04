@@ -1,14 +1,14 @@
 #!/SBUILD
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.psadi.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.pkgforge-dev.source.yaml
 _disabled: true
 _disabled_reason:
-   replaced:
-     - date: "2024-12-31"
-       pkg_id: "github.com.psadi.ghostty-appimage.stable"
-       reason: "Switched to fetching prebuilt"
+  replaced:
+    - date: "2024-12-31"
+      pkg_id: "github.com.pkgforge-dev.ghostty-appimage.stable"
+      reason: "Switched to fetching prebuilt"
 
 pkg: "ghostty"
-pkg_id: "github.com.psadi.ghostty-appimage.source"
+pkg_id: "github.com.pkgforge-dev.ghostty-appimage.source"
 pkg_type: "appimage"
 category:
   - "TerminalEmulator"
