@@ -404,63 +404,92 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        '
       #Remove Size0 Files
        find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -size 0 -delete 2>/dev/null
+      #Exract Media [Dwarfs Only]
+       if [[ "${DWARFS_PKG_EXTRACT}" != "NO" ]]; then
+        unset DWARFS_PKGS ; DWARFS_PKGS=()
+        mapfile -t "DWARFS_PKGS" < <(find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -exec bash -c 'dwarfsck --input "$1" --quiet 2>/dev/null && realpath "$1"' _ "{}" \;)
+        if [[ ${#DWARFS_PKGS[@]} -ne 0 ]]; then
+          echo -e "\n[+] Extracting Media from ${SBUILD_PKG} (Dwarfs)"
+          if [[ -s "${SBUILD_OUTDIR}/${PKG}.appdata.xml" ]]; then
+            rsync -achL "${SBUILD_OUTDIR}/${PKG}.appdata.xml" "${SBUILD_TMPDIR}/${PKG}.appdata.xml.bak"
+          fi
+          if [[ -s "${SBUILD_OUTDIR}/.DirIcon" ]]; then
+            rsync -achL "${SBUILD_OUTDIR}/.DirIcon" "${SBUILD_TMPDIR}/.DirIcon.bak"
+          fi
+          if [[ -s "${SBUILD_OUTDIR}/${PKG}.desktop" ]]; then
+            rsync -achL "${SBUILD_OUTDIR}/${PKG}.desktop" "${SBUILD_TMPDIR}/${PKG}.desktop.bak"
+          fi
+          if [[ -s "${SBUILD_OUTDIR}/${PKG}.metainfo.xml" ]]; then
+            rsync -achL "${SBUILD_OUTDIR}/${PKG}.metainfo.xml" "${SBUILD_TMPDIR}/${PKG}.metainfo.xml.bak"
+          fi
+          if [[ -s "${SBUILD_OUTDIR}/${PKG}.png" ]]; then
+            rsync -achL "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_TMPDIR}/${PKG}.png.bak"
+          fi
+          if [[ -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
+            rsync -achL "${SBUILD_OUTDIR}/${PKG}.svg" "${SBUILD_TMPDIR}/${PKG}.svg.bak"
+          fi
+           pushd "${SBUILD_TMPDIR}" &>/dev/null &&\
+            for D_PKG in "${DWARFS_PKGS[@]}"; do
+              dwarfsextract -i "${D_PKG}" --format="ustar" | tar -x \
+                --dereference \
+                --no-anchored \
+                --overwrite \
+                --wildcards \
+                --wildcards-match-slash \
+                '*.appdata.xml' '*.desktop' '*.DirIcon' '*.metainfo.xml' '*.png' '*.svg' 2>/dev/null
+            done
+           pushd "${SBUILD_OUTDIR}" &>/dev/null
+          find -L "${SBUILD_TMPDIR}" -type f,l -name "*.appdata.xml" -printf "%s %p\n" | awk 'BEGIN{matched=0}{lines[NR]=$0}tolower($2)~/share.*metainfo/{matches[NR]=1;matched=1}END{if(matched){for(i in matches)print lines[i]}else{for(i=1;i<=NR;i++)print lines[i]}}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.appdata.xml"
+           if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.appdata.xml" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.appdata.xml") -le 3 ]]; then
+              if [[ -s "${SBUILD_TMPDIR}/${PKG}.appdata.xml.bak" ]]; then
+                cp -fv "${SBUILD_TMPDIR}/${PKG}.appdata.xml.bak" "${SBUILD_OUTDIR}/${PKG}.appdata.xml"
+              fi
+           fi
+          find -L "${SBUILD_TMPDIR}" -type f,l -name "*.desktop" -printf "%s %p\n" | awk 'BEGIN{matched=0}{lines[NR]=$0}tolower($2)~/share.*application/{matches[NR]=1;matched=1}END{if(matched){for(i in matches)print lines[i]}else{for(i=1;i<=NR;i++)print lines[i]}}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.desktop"
+           if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.desktop" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.desktop") -le 3 ]]; then
+              if [[ -s "${SBUILD_TMPDIR}/${PKG}.desktop.bak" ]]; then
+                cp -fv "${SBUILD_TMPDIR}/${PKG}.desktop.bak" "${SBUILD_OUTDIR}/${PKG}.desktop"
+              fi
+           fi
+          find -L "${SBUILD_TMPDIR}" -type f,l -name "*.metainfo.xml" -printf "%s %p\n" | awk 'BEGIN{matched=0}{lines[NR]=$0}tolower($2)~/share.*metainfo/{matches[NR]=1;matched=1}END{if(matched){for(i in matches)print lines[i]}else{for(i=1;i<=NR;i++)print lines[i]}}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"
+           if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.metainfo.xml" || $(stat -c%s "${SBUILD_OUTDIR}/${PKG}.metainfo.xml") -le 3 ]]; then
+              if [[ -s "${SBUILD_TMPDIR}/${PKG}.metainfo.xml.bak" ]]; then
+                cp -fv "${SBUILD_TMPDIR}/${PKG}.metainfo.xml.bak" "${SBUILD_OUTDIR}/${PKG}.metainfo.xml"
+              fi
+           fi
+          find -L "${SBUILD_TMPDIR}" -type f,l -regex '.*\.\(DirIcon\|png\)' \
+            -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+            | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_TMPDIR}/${PKG}.png"
+           if [[ ! -f "${SBUILD_TMPDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.png") -le 3 ]]; then
+             find -L "${SBUILD_TMPDIR}" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
+           elif [[ -s "${SBUILD_TMPDIR}/${PKG}.png" ]]; then
+             cp -fv "${SBUILD_TMPDIR}/${PKG}.png" "${SBUILD_OUTDIR}/${PKG}.png"
+           fi
+           if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.png") -le 3 ]]; then
+              if [[ -s "${SBUILD_TMPDIR}/.DirIcon.bak" ]]; then
+                cp -fv "${SBUILD_TMPDIR}/.DirIcon.bak" "${SBUILD_OUTDIR}/.DirIcon"
+              fi
+              if [[ -s "${SBUILD_TMPDIR}/${PKG}.png.bak" ]]; then
+                cp -fv "${SBUILD_TMPDIR}/${PKG}.png.bak" "${SBUILD_OUTDIR}/${PKG}.png"
+              fi
+           fi
+          find -L "${SBUILD_TMPDIR}" -type f,l -regex '.*\.\(svg\)' \
+            -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
+            | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_TMPDIR}/${PKG}.svg"
+           if [[ ! -f "${SBUILD_TMPDIR}/${PKG}.svg" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.svg") -le 3 ]]; then
+             find -L "${SBUILD_TMPDIR}" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.svg"
+           elif [[ -s "${SBUILD_TMPDIR}/${PKG}.svg" ]]; then
+             cp -fv "${SBUILD_TMPDIR}/${PKG}.svg" "${SBUILD_OUTDIR}/${PKG}.svg"
+           fi
+           if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.png") -le 3 ]]; then
+              if [[ -s "${SBUILD_TMPDIR}/${PKG}.svg.bak" ]]; then
+                cp -fv "${SBUILD_TMPDIR}/${PKG}.svg.bak" "${SBUILD_OUTDIR}/${PKG}.svg"
+              fi
+           fi
+        fi
+       fi
       #Fix Desktop
        find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -iname "*.desktop" -exec sed -E 's/^[[:space:]]*[Ee]xec[[:space:]]*=[[:space:]]*[^[:space:]]+/Exec={{pkg_path}}/' -i "{}" \;
-      #Icons [Dwarfs Only]
-       unset DWARFS_PKGS ; DWARFS_PKGS=()
-       mapfile -t "DWARFS_PKGS" < <(find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -exec bash -c 'dwarfsck --input "$1" --quiet 2>/dev/null && realpath "$1"' _ "{}" \;)
-       if [[ ${#DWARFS_PKGS[@]} -ne 0 ]]; then
-         echo -e "\n[+] Extracting Media from ${SBUILD_PKG} (Dwarfs)"
-         if [[ -s "${SBUILD_OUTDIR}/.DirIcon" ]]; then
-           rsync -achL "${SBUILD_OUTDIR}/.DirIcon" "${SBUILD_TMPDIR}/.DirIcon.bak"
-         fi
-         if [[ -s "${SBUILD_OUTDIR}/${PKG}.png" ]]; then
-           rsync -achL "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_TMPDIR}/${PKG}.png.bak"
-         fi
-         if [[ -s "${SBUILD_OUTDIR}/${PKG}.svg" ]]; then
-           rsync -achL "${SBUILD_OUTDIR}/${PKG}.svg" "${SBUILD_TMPDIR}/${PKG}.svg.bak"
-         fi
-          pushd "${SBUILD_TMPDIR}" &>/dev/null &&\
-           for D_PKG in "${DWARFS_PKGS[@]}"; do
-             dwarfsextract -i "${D_PKG}" --format="ustar" | tar -x \
-               --dereference \
-               --no-anchored \
-               --overwrite \
-               --wildcards \
-               --wildcards-match-slash \
-               '*.DirIcon' '*.png' '*.svg'
-           done
-          pushd "${SBUILD_OUTDIR}" &>/dev/null
-         find -L "${SBUILD_TMPDIR}" -type f,l  -regex '.*\.\(DirIcon\|png\)' \
-           -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
-           | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_TMPDIR}/${PKG}.png"
-          if [[ ! -f "${SBUILD_TMPDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.png") -le 3 ]]; then
-            find -L "${SBUILD_TMPDIR}" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
-          elif [[ -s "${SBUILD_TMPDIR}/${PKG}.png" ]]; then
-            cp -fv "${SBUILD_TMPDIR}/${PKG}.png" "${SBUILD_OUTDIR}/${PKG}.png"
-          fi
-          if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.png") -le 3 ]]; then
-             if [[ -s "${SBUILD_TMPDIR}/.DirIcon.bak" ]]; then
-               cp -fv "${SBUILD_TMPDIR}/.DirIcon.bak" "${SBUILD_OUTDIR}/.DirIcon"
-             fi
-             if [[ -s "${SBUILD_TMPDIR}/${PKG}.png.bak" ]]; then
-               cp -fv "${SBUILD_TMPDIR}/${PKG}.png.bak" "${SBUILD_OUTDIR}/${PKG}.png"
-             fi
-          fi
-         find -L "${SBUILD_TMPDIR}" -type f,l  -regex '.*\.\(svg\)' \
-           -not -regex '.*\(favicon\|/\(16x16\|22x22\|24x24\|32x32\|36x36\|48x48\|64x64\|72x72\|96x96\)/\).*' \
-           | awk '{print length, $0}' | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_TMPDIR}/${PKG}.svg"
-          if [[ ! -f "${SBUILD_TMPDIR}/${PKG}.svg" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.svg") -le 3 ]]; then
-            find -L "${SBUILD_TMPDIR}" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" rsync -achLv "{}" "${SBUILD_OUTDIR}/${PKG}.svg"
-          elif [[ -s "${SBUILD_TMPDIR}/${PKG}.svg" ]]; then
-            cp -fv "${SBUILD_TMPDIR}/${PKG}.svg" "${SBUILD_OUTDIR}/${PKG}.svg"
-          fi
-          if [[ ! -s "${SBUILD_OUTDIR}/${PKG}.png" || $(stat -c%s "${SBUILD_TMPDIR}/${PKG}.png") -le 3 ]]; then
-             if [[ -s "${SBUILD_TMPDIR}/${PKG}.svg.bak" ]]; then
-               cp -fv "${SBUILD_TMPDIR}/${PKG}.svg.bak" "${SBUILD_OUTDIR}/${PKG}.svg"
-             fi
-          fi
-       fi
       #Icons [Display using Chafa]
        if command -v chafa &>/dev/null; then
          timeout -k 10s 60s find -L "${SBUILD_OUTDIR}" -maxdepth 1 -type f,l -regex '.*\.\(DirIcon\|png\|svg\)' -exec bash -c 'basename "{}" && chafa "{}"' \;
