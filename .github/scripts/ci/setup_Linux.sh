@@ -88,9 +88,14 @@ else
   bash <(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/devscripts/main/Linux/install_bins_curl.sh")
   #Appimage tools
    sudo curl -qfsSL "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$(uname -m).AppImage" -o "/usr/local/bin/appimagetool" && sudo chmod -v 'a+x' "/usr/local/bin/appimagetool"
+   sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/dwarfs-tools" -o "/usr/local/bin/dwarfs-tools" && sudo chmod -v +x "/usr/local/bin/dwarfs-tools"
+   sudo ln -fsv "/usr/local/bin/dwarfs-tools" "/usr/local/bin/dwarfs"
+   sudo ln -fsv "/usr/local/bin/dwarfs-tools" "/usr/local/bin/dwarfsck"
+   sudo ln -fsv "/usr/local/bin/dwarfs-tools" "/usr/local/bin/dwarfsextract"
+   sudo ln -fsv "/usr/local/bin/dwarfs-tools" "/usr/local/bin/mkdwarfs"
    sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/unsquashfs" -o "/usr/local/bin/unsquashfs" && sudo chmod -v +x "/usr/local/bin/unsquashfs"
  ##Check Needed CMDs
- for DEP_CMD in apt-fast eget gh glab minisign oras rclone shellcheck soar; do
+ for DEP_CMD in appimagetool dwarfs dwarfsck dwarfsextract eget gh glab mkdwarfs minisign oras rclone shellcheck soar unsquashfs; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
         "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\n"
            export CONTINUE="NO"
