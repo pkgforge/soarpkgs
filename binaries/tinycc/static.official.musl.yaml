@@ -64,7 +64,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Build
        git clone --filter "blob:none" --depth="1" --quiet "https://github.com/TinyCC/tinycc" "./TEMPREPO" && cd "./TEMPREPO"
        export CFLAGS="-Os -flto=auto -B/usr/libexec/mold -g0 -pipe -static -v -w -Wno-error"

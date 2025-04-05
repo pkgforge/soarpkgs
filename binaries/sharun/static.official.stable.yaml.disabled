@@ -70,7 +70,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
-         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
          source "${HOME}/.cargo/env"
          rustup default nightly
          rustup component add rust-src --toolchain nightly

@@ -55,7 +55,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/archlinux-builder:$(uname -m)" \
       bash -l -c '
       #Setup ENV
-       set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v '1777' '/tmp'
+       set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v "1777" "/tmp"
        mkdir -p "/build-bins" && cd "$(mktemp -d)" &>/dev/null
        pacman -Syu --noconfirm
        pacman -Sc --noconfirm

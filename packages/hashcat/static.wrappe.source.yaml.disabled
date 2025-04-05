@@ -68,7 +68,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/wrappe" -o "/tmp/wrappe"
        chmod -v "a+x" "/tmp/wrappe"
        [[ -s "/tmp/wrappe" ]] || exit 1

@@ -70,7 +70,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
-         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
         #Deps 
          apk update && apk upgrade --no-interactive
          apk add libapparmor --latest --upgrade --no-interactive

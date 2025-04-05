@@ -70,7 +70,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
         bash -l -c '
         #Setup ENV
-         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
         #Build: https://github.com/radareorg/radare2/blob/master/sys/static.sh
          #https://github.com/radareorg/radare2/blob/master/.github/workflows/build.yml
          git clone --filter "blob:none" --quiet "https://github.com/radareorg/radare2" && cd "./radare2"

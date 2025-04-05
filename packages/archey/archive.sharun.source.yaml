@@ -58,9 +58,9 @@ x_exec:
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
      "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       bash -l -c '
-       #Setup ENV
-        set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v '1777' '/tmp'
-        mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+      #Setup ENV
+       set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v "1777" "/tmp"
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
         apt clean -y ; apt update -y -qq 2>/dev/null
         apt update -y -qq
        #CoreUtils

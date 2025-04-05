@@ -70,7 +70,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
         #Setup ENV
-         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
          sudo apt-get update -y -qq
          sudo apt-get install -y -qq libffi-dev libxml2-dev libxslt-dev libssl-dev openssl autoconf g++ python3-dev curl git
          sudo apt-get update -y -qq
@@ -100,7 +100,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
         #Setup ENV
-         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
          sudo apt-get update -y -qq
          sudo apt-get install -y -qq libffi-dev libxml2-dev libxslt-dev libssl-dev openssl autoconf g++ python3-dev curl git
          sudo apt-get update -y -qq

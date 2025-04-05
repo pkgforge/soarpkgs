@@ -66,7 +66,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       # docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       #  bash -l -c '
       #  #Setup ENV
-      #   set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+      #   set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #   sudo apt-get update -y -qq
       #  #https://mitmproxy.org/downloads/
       #   VERSION="$(git ls-remote --tags https://github.com/mitmproxy/mitmproxy | awk -F/ '\''/tags/ && !/{}$/ {print $NF}'\'' | tr -d "[:alpha:]" | sort --version-sort | tail -n 1 | tr -d "[:space:]")" && export VERSION="${VERSION}"
@@ -89,7 +89,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
         #Setup ENV
-         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+         set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
          sudo apt-get update -y -qq
         #Build
          git clone --quiet --filter "blob:none" "https://github.com/mitmproxy/mitmproxy" && cd "./mitmproxy"

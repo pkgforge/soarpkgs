@@ -64,7 +64,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        export GIT_HTTP_USER_AGENT="$(curl -qfsSL "https://raw.githubusercontent.com/pkgforge/devscripts/refs/heads/main/Misc/User-Agents/ua_chrome_macos_latest.txt" | tr -d "[:space:]")"
       #Build
        git clone --filter "blob:none" --depth="1" --quiet "https://codeberg.org/ivarch/pv" "./TEMPREPO" && cd "./TEMPREPO"

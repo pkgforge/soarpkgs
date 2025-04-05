@@ -70,7 +70,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Deps: https://github.com/fastfetch-cli/fastfetch/blob/dev/.github/workflows/ci.yml
        apk update && apk upgrade --no-interactive
        apk add chafa-dev --latest --upgrade --no-interactive

@@ -220,7 +220,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/ubuntu-builder:$(uname -m)" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        apt update -y -qq
        apt install coreutils curl xz-utils g++ -y -qq
       #ppkg

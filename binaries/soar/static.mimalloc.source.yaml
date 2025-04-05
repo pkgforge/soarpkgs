@@ -55,7 +55,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine-builder-mimalloc:edge" \
       bash -l -c '
       #Setup ENV
-       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" >/dev/null 2>&1
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        source "${HOME}/.cargo/env"
        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
        rustup default nightly
