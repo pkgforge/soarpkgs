@@ -38,7 +38,6 @@ maintainer:
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/fastfetch-cli/fastfetch"
-  - "Related Discussion: https://github.com/fastfetch-cli/fastfetch/issues/808"
   - "This version contains a limited set of features due to static linking"
   - "Please use the version from pkgcache if all features are needed"
 provides:
@@ -97,7 +96,6 @@ x_exec:
        apk add wayland-dev --latest --upgrade --no-interactive
       #Build
        git clone --filter "blob:none" --depth="1" --quiet "https://github.com/fastfetch-cli/fastfetch" "./TEMPREPO" && cd "./TEMPREPO"
-       #git clone --branch "soar" --filter "blob:none" --depth="1" --quiet "https://github.com/pkgforge-dev/fastfetch" "./TEMPREPO" && cd "./TEMPREPO"
        export CC="clang"
        export CXX="clang++"
        export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
