@@ -1,0 +1,86 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dmon/static.official.source.yaml
+_disabled: false
+
+pkg: "dmon"
+pkg_id: "github.com.aperezdc.dmon.source"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description:
+  _default: "Run a program as a Unix daemon"
+  denv: "Run a command in a modified environment [dmon]"
+  dlog: "Send lines from standard input to a log file [dmon]"
+  dmon: "Daemonize and monitor Processes [dmon]"
+  drlog: "Read lines from stdin and append them to auto-rotated logs [dmon]"
+  dslog: "Send lines from standard input to the system log [dmon]"
+homepage:
+  - "https://github.com/aperezdc/dmon"
+license:
+  - id: "MIT"
+    url: "https://github.com/aperezdc/dmon/raw/ce2419bb26381479665fbfe0cea8fe5b87726a3b/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/aperezdc/dmon"
+provides:
+  - "denv"
+  - "dlog"
+  - "dmon"
+  - "drlog"
+  - "dslog"
+#repology:
+#  - "dmon"
+src_url:
+  - "https://github.com/aperezdc/dmon"
+tag:
+  - "daemon"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/aperezdc/dmon" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/aperezdc/dmon" "./TEMPREPO" && cd "./TEMPREPO"
+       export CC="clang"
+       export CXX="clang++"
+       export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error -D_GNU_SOURCE"
+       export CPPFLAGS="${CFLAGS}"
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
+       #https://github.com/aperezdc/dmon/issues/16
+       sed -e "0,/\*\//s/\(\*\/[[:space:]]*\)/\1\n#define _GNU_SOURCE\n/" "./conf.c"
+       make MULTICALL="0" --jobs="$(($(nproc)+1))" --keep-going
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
+      #Copy
+       #cp "./dmon" "/build-bins/dmon"
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #strip & info 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
+       file "/build-bins/"* && du -sh "/build-bins/"*
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
