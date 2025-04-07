@@ -1,39 +1,33 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tun2proxy/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/icann-rdap/static.official.source.yaml
 _disabled: false
 
-pkg: "tun2proxy"
-pkg_id: "github.com.tun2proxy.tun2proxy"
+pkg: "icann-rdap"
+pkg_id: "github.com.icann.icann-rdap.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Tunnel (TUN) interface for SOCKS and HTTP proxies"
-distro_pkg:
-  archlinux:
-    aur:
-      - "tun2proxy"
-  nixpkgs:
-    - "tun2proxy"
+description: "ICANN implementation of the Registry Data Access Protocol (RDAP)"
 homepage:
-  - "https://github.com/tun2proxy/tun2proxy"
+  - "https://github.com/icann/icann-rdap"
 license:
-  - "MIT"  
+  - id: "MIT"
+    url: "https://github.com/icann/icann-rdap/raw/33e1d912208dfbf0913f68a358b36e692955f1ca/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/tun2proxy/tun2proxy"  
-repology:
-  - "tun2proxy"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/icann/icann-rdap"
+provides:
+  - "rdap==icann-rdap"
+  #- "rdap-srv==icann-rdap-srv"
+#repology:
+#  - "icann-rdap"
 src_url:
-  - "https://github.com/tun2proxy/tun2proxy"
+  - "https://github.com/icann/icann-rdap"
 tag:
-  - "proxy" 
-  - "socks" 
-  - "tun2proxy" 
-  - "tun2socks" 
-  - "tunnel"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -41,7 +35,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/tun2proxy/tun2proxy" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/icann/icann-rdap" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -74,18 +68,23 @@ x_exec:
          -C link-arg=-Wl,--build-id=none"
        export RUSTFLAGS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/tun2proxy/tun2proxy" "./TEMPREPO" && cd "./TEMPREPO/"
+       git clone --filter "blob:none" --quiet "https://github.com/icann/icann-rdap" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-       rm rust-toolchain* 2>/dev/null
-       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
+       cargo build --target "${RUST_TARGET}" \
+         --all-features \
+         --jobs="$(($(nproc)+1))" \
+         --release \
+         --keep-going \
+         --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
-       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \; 2>/dev/null
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
        file "/build-bins/"* && du -sh "/build-bins/"*
        popd >/dev/null 2>&1

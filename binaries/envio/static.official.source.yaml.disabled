@@ -83,7 +83,7 @@ x_exec:
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-       rm rust-toolchain* 2>/dev/null
+       rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
        apk update && apk upgrade --no-interactive
        apk add gpgme-dev --latest --upgrade --no-interactive
        apk add libgpg-error-dev --latest --upgrade --no-interactive

@@ -78,7 +78,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/pkgforge/soar" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-       rm rust-toolchain* 2>/dev/null
+       rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
        unset RUST_TARGET
        cargo build --target "$(uname -m)-unknown-linux-gnu" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/$(uname -m)-unknown-linux-gnu/release" -maxdepth 1 -type f 2>/dev/null

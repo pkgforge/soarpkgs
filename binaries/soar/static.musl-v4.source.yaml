@@ -78,7 +78,7 @@ x_exec:
        echo -e "\n[+] Target: $(uname -m)-unknown-linux-musl\n"
        echo -e "\n[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-       rm rust-toolchain* 2>/dev/null
+       rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
        cargo build --target "$(uname -m)-unknown-linux-musl" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/$(uname -m)-unknown-linux-musl/release" -maxdepth 1 -type f 2>/dev/null
       #Copy

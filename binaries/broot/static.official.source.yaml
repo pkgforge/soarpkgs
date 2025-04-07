@@ -82,7 +82,7 @@ x_exec:
        echo -e "\n[+] Target: ${RUST_TARGET}"
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-       rm rust-toolchain* 2>/dev/null
+       rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
        cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
       #Copy 

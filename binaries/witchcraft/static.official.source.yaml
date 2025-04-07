@@ -72,7 +72,7 @@ x_exec:
        echo -e "[+] Flags: ${RUSTFLAGS}\n"
        cd "./witchcraft" || true
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-       rm rust-toolchain* 2>/dev/null
+       rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
        cargo build --workspace --target "${RUST_TARGET}" \
          --all-features \
          --jobs="$(($(nproc)+1))" \

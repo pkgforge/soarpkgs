@@ -90,7 +90,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          echo -e "\n[+] Target: $RUST_TARGET\n"
          echo -e "\n[+] Flags: $RUSTFLAGS\n"
          sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-         rm rust-toolchain* 2>/dev/null
+         rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
          cargo build --target "$RUST_TARGET" --release --jobs="$(($(nproc)+1))" --keep-going
          cp "./target/$RUST_TARGET/release/stat_client" "/build-bins/stat_client"
          cp "./target/$RUST_TARGET/release/stat_server" "/build-bins/stat_server"
@@ -100,7 +100,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          echo -e "\n[+] Target: $RUST_TARGET\n"
          echo -e "\n[+] Flags: $RUSTFLAGS\n"
          sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-         rm rust-toolchain* 2>/dev/null
+         rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
          #Replace theme
          find "./web" -mindepth 1 -maxdepth 1 -not -name 'jinja' -exec rm -rf {} +
          rsync -av --copy-links --checksum "/serverstatus-web/." "./web/"

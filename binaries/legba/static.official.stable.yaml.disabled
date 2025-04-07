@@ -87,7 +87,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          echo -e "\n[+] Target: $RUST_TARGET\n"
          echo -e "\n[+] Flags: $RUSTFLAGS\n"
          sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
-         rm rust-toolchain* 2>/dev/null
+         rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
          #Features : cargo metadata --no-deps --format-version 1 | jq -r ".packages[0].features | keys[]"
          #         : cargo metadata --no-deps --format-version 1 | jq ".packages[0].features | to_entries[]" | less
          #Excluded : oracle samba (breaks, unable to find libs)
