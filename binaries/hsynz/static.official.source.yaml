@@ -50,9 +50,7 @@ x_exec:
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Build
-       #git clone --filter "blob:none" --depth="1" --quiet "https://github.com/sisong/hsynz" "./TEMPREPO" && cd "./TEMPREPO"
-       #https://github.com/sisong/hsynz/issues/33
-       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/pkgforge-dev/hsynz" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/sisong/hsynz" "./TEMPREPO" && cd "./TEMPREPO"
        git submodule update --init --recursive
        export CC="clang"
        export CXX="clang++"
