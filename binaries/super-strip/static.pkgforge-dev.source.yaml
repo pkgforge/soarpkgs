@@ -1,5 +1,5 @@
 #!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/super-strip/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/super-strip/static.pkgforge-dev.source.yaml
 _disabled: false
 
 pkg: "super-strip"
@@ -8,7 +8,7 @@ pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: 
+description:
   _default: "Remove as much as possible from an ELF file"
   sstrip: "Remove as much as possible from an ELF file"
   sstrip.upx: "Remove as much as possible from an ELF file (UPXed)"
