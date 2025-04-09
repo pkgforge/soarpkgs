@@ -79,7 +79,7 @@ x_exec:
          --keep-going \
          --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
-       mv -fv "./target/${RUST_TARGET}/release/wasm_cli" "./target/${RUST_TARGET}/release/wasm-cli" 2>/dev/null
+       mv -fv "./target/${RUST_TARGET}/release/wasmi_cli" "./target/${RUST_TARGET}/release/wasmi-cli" 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
