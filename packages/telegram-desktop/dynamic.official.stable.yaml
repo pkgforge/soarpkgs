@@ -89,4 +89,4 @@ x_exec:
        } || break
      done
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -iname '*tele*' -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/telegram-desktop"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -iname '*tele*' -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/telegram-desktop"

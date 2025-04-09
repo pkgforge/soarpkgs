@@ -44,8 +44,8 @@ x_exec:
      cd "./TEMPREPO/util" && chmod -v 'a+x' "./build.sh"
      find "." -type f -iname "*.sh" -exec sed '/set +uo/!s#set -uo#set +uo#g' -i "{}" + 2>/dev/null
      script --quiet --return --command 'sudo "./build.sh" "linux"'
-     find "${SBUILD_TMPDIR}/TEMPREPO/build" -maxdepth 2 -type f -iname "*husarnet-daemon*" -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/husarnet-daemon"
-     find "${SBUILD_TMPDIR}/TEMPREPO/build" -maxdepth 2 -type f ! -iname "*husarnet-daemon*" -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/husarnet"
+     find "${SBUILD_TMPDIR}/TEMPREPO/build" -maxdepth 2 -type f -iname "*husarnet-daemon*" -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/husarnet-daemon"
+     find "${SBUILD_TMPDIR}/TEMPREPO/build" -maxdepth 2 -type f ! -iname "*husarnet-daemon*" -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/husarnet"
      ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_TMPDIR}/LICENSE" ) 2>/dev/null
     #strip & info 
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
@@ -53,4 +53,4 @@ x_exec:
      file "${SBUILD_TMPDIR}/"* && du -sh "${SBUILD_TMPDIR}/"*
     #Copy & Meta
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

@@ -64,6 +64,6 @@ x_exec:
      docker cp "${C_ID}:/ffprobe" "${SBUILD_TMPDIR}/ffprobe"
      docker rm "${C_ID}" --force
     #Copy
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
     #Fetch Upstream Version
      curl -qfsSL "https://github.com/wader/static-ffmpeg/raw/refs/heads/master/Dockerfile" | sed -nE '/^[[:space:]]*[^#].*[Ff][Ff][Mm][Pp][Ee][Gg]_[Vv][Ee][Rr][Ss][Ii][Oo][Nn][[:space:]]*=/ s/.*[Ff][Ff][Mm][Pp][Ee][Gg]_[Vv][Ee][Rr][Ss][Ii][Oo][Nn][[:space:]]*=[[:space:]]*["'\'']?([^"'\''[:space:]]+)[[:space:]]*["'\'']?.*/\1/p' | tr -d '"'\''[:space:]' > "${SBUILD_TMPDIR}/upstream.version"

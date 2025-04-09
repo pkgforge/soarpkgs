@@ -80,7 +80,7 @@ x_exec:
          sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingated" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingated"))" -- --help
          sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "twingate-notifier" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "twingate-notifier"))" -- --help
        #Copy
-        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+        find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
         dpkg-query -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "appdata\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.appdata.xml"
         dpkg-query -L "${PKG}" | grep -i "usr/share/applications/" | grep -im1 "desktop" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.desktop"
         dpkg-query -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "metainfo\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.metainfo.xml"
@@ -94,4 +94,4 @@ x_exec:
     #Copy & Meta
      docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

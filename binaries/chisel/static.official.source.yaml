@@ -72,7 +72,7 @@ x_exec:
     #Copy & Meta
      docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
-     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
   #-------------------------------------------------------#
   ##Switched to building from source
   #pkgver: |
@@ -90,4 +90,4 @@ x_exec:
   #  #Extract
   #  while E_X="$(find "${SBUILD_TMPDIR}" -type f -print0 | xargs -0 file -i | grep -E "archive|compressed" | grep -iv "application/.*executable" | grep -v "${F_X:=^$}" | cut -d: -f1 | head -n1)"; [ -n "${E_X}" ]; do 7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && rm "${E_X}" || { F_X="$(basename "${E_X}")"; break; }; done
   #  #Copy
-  #  find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/chisel"
+  #  find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/chisel"

@@ -70,7 +70,7 @@ x_exec:
        } || break
      done
     #Copy
-    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcat-menu$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcat-menu"
-    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcat-notify$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcat-notify"
-    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcatctl$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcatctl"
-    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcatd$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcatd"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcat-menu$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcat-menu"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcat-notify$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcat-notify"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcatctl$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcatctl"
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | grep -Ei 'clipcatd$' | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/clipcatd"
