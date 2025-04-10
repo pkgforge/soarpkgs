@@ -398,8 +398,8 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
            mv -fv "{}" "${dir}/${new_name}"
          fi
          if echo "${PKG_TYPE}" | grep -qi "static" ; then
-           objcopy --remove-section=".comment" --remove-section=".note.*" "{}"
-           strip --strip-debug --strip-dwo --strip-unneeded "{}"
+           objcopy --remove-section=".comment" --remove-section=".note.*" "{}" 2>/dev/null
+           strip --strip-all --verbose "{}" 2>/dev/null
          fi
        '
       #Remove Size0 Files

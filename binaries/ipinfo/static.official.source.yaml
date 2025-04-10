@@ -70,8 +70,10 @@ x_exec:
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
-       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; 2>/dev/null
-       file "/build-bins/"* && du -sh "/build-bins/"*
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+       find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+       file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+       du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
        popd >/dev/null 2>&1
       '
     #Copy & Meta

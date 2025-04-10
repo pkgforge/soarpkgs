@@ -80,8 +80,10 @@ x_exec:
        rsync -achLv --exclude="*/" "${PPKG_BINDIR}/sbin/." "/build-bins/." 2>/dev/null
       #strip & info
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
-       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded "{}" \; >/dev/null 2>&1
-       file "/build-bins/"* && du -sh "/build-bins/"*
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+       find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+       file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+       du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
       '
     #Copy & Meta
      docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
