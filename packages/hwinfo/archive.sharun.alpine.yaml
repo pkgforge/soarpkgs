@@ -1,0 +1,75 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/hwinfo/archive.sharun.alpine.yaml
+_disabled: false
+
+pkg: "hwinfo"
+pkg_id: "sharun.wrappe.alpine.hwinfo"
+pkg_type: "archive"
+category:
+  - "Utility"
+description: "Hardware information tool"
+homepage:
+  - "https://github.com/openSUSE/hwinfo"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/openSUSE/hwinfo/raw/f47ffea08274959813b9f604c0f000becb838a43/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Sharun [alpine]. Check/Report @ https://github.com/VHSgunzo/sharun"
+  - "Learn more @ https://docs.pkgforge.dev/formats/packages/archive"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "hwinfo"
+repology:
+  - "hwinfo"
+src_url:
+  - "https://github.com/openSUSE/hwinfo"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/community/hwinfo/APKBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "alpine:edge" \
+      sh -c '
+      #Setup ENV
+       set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v "1777" "/tmp"
+       mkdir -p "/build-bins" && cd "$(mktemp -d)" &>/dev/null
+       apk update && apk upgrade --no-interactive 2>/dev/null
+       apk cache clean --purge
+      #CoreUtils
+       apk add 7zip bash binutils coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils patchelf rsync sed strace tar tree xz zstd --latest --upgrade --no-interactive 2>/dev/null
+      #Sharun
+       curl -w "(DL) <== %{url}\n" -qfSL "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio" -o "/usr/local/bin/sharun"
+       chmod -v "a+x" "/usr/local/bin/sharun"
+       command -v sharun &>/dev/null || echo -e "\n[X] FATAL: sharun is NOT Installed\n$(exit 1)"
+      #Build
+       apk add "${PKG}" --latest --upgrade --no-interactive
+       apk info -L "${PKG}"
+       sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "${PKG}" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "${PKG}"))" --
+      #Copy
+       find "./SHARUN_WRAPPED" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"
+       apk info -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "appdata\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.appdata.xml"
+       apk info -L "${PKG}" | grep -i "usr/share/applications/" | grep -im1 "desktop" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.desktop"
+       apk info -L "${PKG}" | grep -i "usr/share/metainfo/" | grep -im1 "metainfo\.xml" | tr -d "[:space:]" | head -n 1 | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.metainfo.xml"
+       apk info -L "${PKG}" | grep -i "usr/share/icons/hicolor" | grep -i "png" | sort -V | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.png"
+       apk info -L "${PKG}" | grep -i "usr/share/icons/hicolor" | grep -i "svg" | sort -V | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" cp -fv "/{}" "/build-bins/${PKG}.svg"
+      #Info
+       file "/build-bins/"* && du -sh "/build-bins/"*
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

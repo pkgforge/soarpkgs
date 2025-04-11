@@ -21,7 +21,7 @@ description:
   e2label: "Change the label on an ext2/ext3/ext4 file system [e2fsprogs]"
   e2mmpstatus: "Check MMP status of an ext4 file system [e2fsprogs]"
   e2scrub: "Check the contents of a mounted ext[234] file system [e2fsprogs]"
-  e2scrub_all: "Check all mounted ext(2,3,4) file systems for errors [e2fsprogs]"
+  e2scrub_all: "Check all mounted ext[234] file systems for errors [e2fsprogs]"
   e2undo: "Replay an undo log for an ext2/ext3/ext4 file system [e2fsprogs]"
   e4crypt: "ext4 file system encryption utility [e2fsprogs]"
   e4defrag: "Defragmenter for ext4 file system [e2fsprogs]"
@@ -29,6 +29,7 @@ description:
   fsck.ext2: "Check a Linux ext2 file system [e2fsprogs]"
   fsck.ext3: "Check a Linux ext3 file system [e2fsprogs]"
   fsck.ext4: "Check a Linux ext4 file system [e2fsprogs]"
+  fuse2fs: "FUSE file system client for ext2/ext3/ext4 file systems [e2fsprogs]"
   logsave: "Save the output of a command in a logfile [e2fsprogs]"
   lsattr: "List ext2/ext3/ext4 file attributes [e2fsprogs]"
   mk_cmds: "Convert a table of command names and help messages into a C source file [e2fsprogs]"
@@ -47,13 +48,19 @@ distro_pkg:
       - "e2fsprogs-git"
   debian:
     - "e2fsprogs"
+  gnuguix:
+    - "e2fsck-static"
+    - "e2fsprogs"
+  homebrew:
+    - "e2fsprogs"
   nixpkgs:
     - "e2fsprogs"
 homepage:
-  - "https://e2fsprogs.sourceforge.net"
-  - "https://github.com/tytso/e2fsprogs"
-  - "https://sourceforge.net/projects/e2fsprogs"
+  - "https://docs.kernel.org/filesystems/ext4/"
   - "https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git"
+  - "https://github.com/tytso/e2fsprogs"
+license:
+  - "GPL"  
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -79,6 +86,7 @@ provides:
   - "fsck.ext2"
   - "fsck.ext3"
   - "fsck.ext4"
+  - "fuse2fs"
   - "logsave"
   - "lsattr"
   - "mk_cmds"
@@ -88,11 +96,11 @@ provides:
   - "mkfs.ext4"
   - "mklost+found"
   - "resize2fs"
-  - "tune2fs"  
+  - "tune2fs"
 repology:
   - "e2fsprogs"
 src_url:
-  - "https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git"
+  - "https://github.com/tytso/e2fsprogs"
 tag:
   - "e2fs"
   - "ext2"
@@ -107,7 +115,7 @@ x_exec:
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
      nix-build '<nixpkgs>' --impure --attr "pkgsStatic.e2fsprogs" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
-     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+     find -L "${SBUILD_TMPDIR}/nixbuild" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent "  "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
      xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \

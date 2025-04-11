@@ -1,0 +1,78 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/log_proxy/static.official.source.yaml
+_disabled: false
+
+pkg: "log_proxy"
+pkg_id: "github.com.wtarreau.log_proxy.source"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Utility for apps that write their logs to stdout/stderr"
+homepage:
+  - "https://github.com/metwork-framework/log_proxy"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://github.com/metwork-framework/log_proxy/raw/78bd87ca784c549d29416d0c316458c1a056f8eb/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/metwork-framework/log_proxy"
+provides:
+  - "log_proxy"
+  - "log_proxy_wrapper"
+#repology:
+#  - "log_proxy"
+src_url:
+  - "https://github.com/metwork-framework/log_proxy"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/metwork-framework/log_proxy" "./TEMPREPO" >/dev/null 2>&1 && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v "1777" "/tmp"
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/metwork-framework/log_proxy" "./TEMPREPO" && cd "./TEMPREPO"
+       #export CC="clang"
+       #export CXX="clang++"
+       export CFLAGS="-Os -flto=auto -B/usr/libexec/mold -g0 -pipe -static -v -w -Wno-error"
+       export CPPFLAGS="${CFLAGS}"
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       export LDFLAGS="-static -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack"
+       make --jobs="$(($(nproc)+1))" --keep-going
+       find "." -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
+      #Copy
+       #cp "./log_proxy" "/build-bins/log_proxy"
+       find "." -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #strip & info 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+       find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+       file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+       du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+       popd >/dev/null 2>&1
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
