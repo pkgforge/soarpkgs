@@ -20,7 +20,7 @@ note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/kevinboone/epub2txt2"
 provides:
-  - "epub2txt2"
+  - "epub2txt"
 #repology:
 #  - "epub2txt2"
 src_url:
@@ -60,7 +60,7 @@ x_exec:
        make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" --jobs="$(($(nproc)+1))" --keep-going
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
       #Copy
-       #cp "./epub2txt2" "/build-bins/epub2txt2"
+       cp -fv "./epub2txt2" "/build-bins/epub2txt" 2>/dev/null
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #strip & info 
