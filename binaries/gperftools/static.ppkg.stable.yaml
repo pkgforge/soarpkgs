@@ -54,7 +54,9 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "gperftools") | .version' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" |\
+     jq -r '(map(select(.pkg == "gperftools" and .version != "")) | first) // 
+     (map(select((.pkg | test("^gperftools"; "i")) and .version != "")) | first) | .version // empty' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
