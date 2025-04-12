@@ -1,0 +1,89 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gcc/appimage.ppkg.stable.yaml
+_disabled: false
+
+pkg: "gcc"
+pkg_id: "ppkg.bundle.gcc.stable"
+pkg_type: "appimage"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description:
+  _default: "GNU Compiler Collection"
+  c++: "GNU C++ Compiler [gcc]"
+  cpp: "GNU CPP Preprocessor [gcc]"
+  g++: "GNU C++ Compiler Driver [gcc]"
+  gcc-ar: "Wrapper around ar adding the --plugin option [gcc]"
+  gcc-nm: "Wrapper around nm adding the --plugin option [gcc]"
+  gcc-ranlib: "Wrapper around ranlib adding the --plugin option [gcc]"
+  gcov: "Coverage testing tool [gcc]"
+  gcov-dump: "Gcov intermediate dump tool [gcc]"
+  gcov-tool: "Tool for manipulating gcda and gcno files [gcc]"
+  gfortran: "GNU Fortran Compiler [gcc]"
+  lto-dump: "Tool for dumping LTO object files [gcc]"
+homepage:
+  - "https://www.gnu.org/software/gcc/"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using ppkg. Check/Report @ https://github.com/leleliu008/ppkg-formula-repository-official-core"
+  - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "gcc==c++"
+  - "gcc==cpp"
+  - "gcc==g++"
+  - "gcc==gcc-ar"
+  - "gcc==gcc-nm"
+  - "gcc==gcc-ranlib"
+  - "gcc==gcov"
+  - "gcc==gcov-dump"
+  - "gcc==gcov-tool"
+  - "gcc==gfortran"
+  - "gcc==lto-dump"
+repology:
+  - "gcc"
+src_url:
+  - "https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "gcc") | .version' | tr -d '"'\''[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "ubuntu-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw,z" --workdir "/tmp" \
+     "docker.io/ubuntu:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+       apt update -y -qq
+       apt install gcc coreutils curl dos2unix file g++ git jq moreutils rsync util-linux wget xz-utils -y -qq
+      #ppkg
+       curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
+       chmod -v "a+x" "/usr/local/bin/ppkg"
+       ppkg setup
+       ppkg update
+       [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/gcc.yml
+       ppkg install "gcc" --profile="release" -j "$(($(nproc)+1))"
+       ppkg bundle "gcc" "${PKG}.AppImage" --portable
+       ppkg tree "gcc" --dirsfirst -L 5
+      #Copy
+       find "." -maxdepth 1 -type f -iname "*appimage*" -exec realpath "{}" \; | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/${PKG}"
+      #info
+       file "/build-bins/"* && du -sh "/build-bins/"*
+      '
+    #Copy & Meta
+     docker cp "ubuntu-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
