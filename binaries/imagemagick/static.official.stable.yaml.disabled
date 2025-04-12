@@ -102,7 +102,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       #  #https://github.com/leleliu008/ppkg
       #  #https://github.com/leleliu008/ppkg-package-manually-build/blob/master/.github/workflows/manually-build-for-linux-musl.yml
       #   sudo curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg" && sudo chmod a+x "/usr/local/bin/ppkg"
-      #   ppkg setup --syspm ; ppkg setup ; ppkg update
+      #   ppkg setup ; ppkg setup ; ppkg update
        [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
       #   ppkg formula-repo-add "main-core" "https://github.com/leleliu008/ppkg-formula-repository-official-core" --enable
       #   ppkg formula-repo-conf "main-core" --url="https://github.com/leleliu008/ppkg-formula-repository-official-core" --enable --pin ; ppkg formula-repo-list

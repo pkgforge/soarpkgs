@@ -68,7 +68,7 @@ x_exec:
       #ppkg
        curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
        chmod -v "a+x" "/usr/local/bin/ppkg"
-       ppkg setup --syspm
+       ppkg setup
        ppkg update
        [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
       #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/lua.yml
