@@ -54,7 +54,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    nix derivation show "nixpkgs#squashfsTools" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '[:space:]'
+    nix derivation show "nixpkgs#squashfsTools" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"

@@ -1,55 +1,44 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tmux/static.nixpkgs.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/archivemount/static.nixpkgs.stable.yaml
 _disabled: false
 
-pkg: "tmux"
-pkg_id: "nixpkgs.tmux"
+pkg: "archivemount"
+pkg_id: "nixpkgs.archivemount"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Tool to control multiple terminals from a single terminal"
-distro_pkg:
-  alpine:
-    - "tmux"
-  archlinux:
-    aur:
-      - "tmux-git"
-    extra:
-      - "tmux"
-  debian:
-    - "tmux"
-  nixpkgs:
-    - "tmux"
+description: "Mount cpio, .tar.gz, .tar.bz2 Archives"
 homepage:
-  - "https://tmux.github.io"
-  - "https://github.com/tmux/tmux"
+  - "https://git.sr.ht/~nabijaczleweli/archivemount-ng"
 license:
-  - "BSD"
-  - "MIT"  
+  - id: "0BSD"
+    url: "https://git.sr.ht/~nabijaczleweli/archivemount-ng/blob/trunk/LICENSES/0BSD.txt" 
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"  
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "archivemount"    
 repology:
-  - "tmux"
+  - "archivemount"
 src_url:
-  - "https://github.com/tmux/tmux"
+  - "https://git.sr.ht/~nabijaczleweli/archivemount-ng"
 tag:
-  - "terminal"
-  - "terminal-emulator"
+  - "fetch"
+  - "system-info"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    nix derivation show "nixpkgs#tmux" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
+    nix derivation show "nixpkgs#archivemount" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.tmux" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.archivemount" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
      find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\

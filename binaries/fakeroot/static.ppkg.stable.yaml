@@ -1,0 +1,77 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/fakeroot/static.ppkg.stable.yaml
+_disabled: false
+
+pkg: "fakeroot"
+pkg_id: "ppkg.fakeroot"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A command-line tool for simulating superuser privileges"
+homepage:
+  - "https://salsa.debian.org/clint/fakeroot"
+license:
+  - id: "GPL-3.0"
+    url: "https://salsa.debian.org/clint/fakeroot/-/raw/master/COPYING?ref_type=heads"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using ppkg. Check/Report @ https://github.com/leleliu008/ppkg-formula-repository-official-core"
+  - "Statically Linked on Ubuntu (GLIBC)"
+provides:
+  - "faked"
+  - "fakeroot"
+repology:
+  - "fakeroot"
+src_url:
+  - "https://salsa.debian.org/clint/fakeroot"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" | jq -r '.[] | select(.pkg == "fakeroot") | .version' | tr -d '[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "ubuntu-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw,z" --workdir "/tmp" \
+     "docker.io/ubuntu:latest" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; chown -Rv "$(whoami):$(whoami)" "/tmp" ; chmod -v '1777' '/tmp'
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+       apt update -y -qq
+       apt install coreutils curl file git moreutils xz-utils g++ -y -qq
+      #ppkg
+       curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
+       chmod -v "a+x" "/usr/local/bin/ppkg"
+       ppkg setup
+       ppkg update
+       [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/fakeroot.yml
+       ppkg install "fakeroot" --profile="release" -j "$(($(nproc)+1))" --static
+       ppkg tree "fakeroot" --dirsfirst -L 5
+      #Copy
+       PPKG_BINDIR="$(ppkg tree "fakeroot" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d "[:space:]")"
+       echo "${PPKG_BINDIR}" | grep -qi "ppkg" && [ -d "${PPKG_BINDIR}" ] || exit 1
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/bin/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/libexec/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${PPKG_BINDIR}/sbin/." "/build-bins/." 2>/dev/null
+      #strip & info
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+       find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+       file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+       du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+      '
+    #Copy & Meta
+     docker cp "ubuntu-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
