@@ -77,7 +77,7 @@ x_exec:
      "docker.io/ubuntu:latest" \
       bash -l -c '
       #Setup ENV
-       set -x ; chown -Rv "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "tmp"
+       set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
        mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        apt update -y -qq
        apt install coreutils curl file xz-utils g++ -y -qq

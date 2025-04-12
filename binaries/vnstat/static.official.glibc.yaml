@@ -71,7 +71,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       bash -l -c '
       #Setup ENV
-       set -x ; chown -R "$(whoami):$(whoami)" "/tmp" 2>/dev/null ; chmod -v "1777" "/tmp"
+       set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
        mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Build
        git clone --filter "blob:none" --depth="1" --quiet "https://github.com/vergoh/vnstat" "./TEMPREPO" && cd "./TEMPREPO"
