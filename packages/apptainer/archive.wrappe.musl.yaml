@@ -83,7 +83,7 @@ x_exec:
          curl -w "(DL) <== %{url}\n" -qfSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/squashfuse" -o "${PROG_DIR}/squashfuse"
          curl -w "(DL) <== %{url}\n" -qfSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/squashfuse_ll" -o "${PROG_DIR}/squashfuse_ll"
          curl -w "(DL) <== %{url}\n" -qfSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/unsquashfs" -o "${PROG_DIR}/unsquashfs"
-         chmod 'a+x' -v "${PROG_DIR}/fuse2fs""${PROG_DIR}/fuse-overlayfs"  "${PROG_DIR}/gocryptfs" \
+         chmod 'a+x' -v "${PROG_DIR}/fuse2fs" "${PROG_DIR}/fuse-overlayfs"  "${PROG_DIR}/gocryptfs" \
            "${PROG_DIR}/mksquashfs" "${PROG_DIR}/squashfuse" "${PROG_DIR}/squashfuse_ll" "${PROG_DIR}/unsquashfs"
          find -L "${OWD_P}/STATIC_INSTALL" -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find -L "${OWD_P}/STATIC_INSTALL" -type f -exec file -i "{}" \; | grep -Ei "application/.*executable" | cut -d":" -f1 | xargs realpath | xargs -I "{}" strip --strip-all --verbose "{}" \;
