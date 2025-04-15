@@ -82,7 +82,7 @@ x_exec:
        apk del ninja-is-really-ninja --force --no-interactive 2>/dev/null
        apk cache clean --purge
       #CoreUtils
-       apk add 7zip binutils coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
+       apk add 7zip binutils build-base clang coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
       #ppkg
        curl -qfsSL "https://raw.githubusercontent.com/leleliu008/ppkg/master/ppkg" -o "/usr/local/bin/ppkg"
        chmod -v "a+x" "/usr/local/bin/ppkg"

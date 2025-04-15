@@ -1,30 +1,30 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/gcli/static.ppkg.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ptcpdump/static.ppkg.stable.yaml
 _disabled: false
 
-pkg: "gcli"
-pkg_id: "ppkg.gcli"
+pkg: "ptcpdump"
+pkg_id: "ppkg.ptcpdump.stable"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Portable Github|Gitlab|Gittea/Forgejo/Bugzilla CLI tool"
+description: "Process-aware, eBPF-based tcpdump"
 homepage:
-  - "https://github.com/herrhotzenplotz/gcli"
+  - "https://github.com/mozillazg/ptcpdump"
 license:
-  - id: "BSD-2-Clause"
-    url: "https://github.com/herrhotzenplotz/gcli/raw/f2049553ddd91bfe302bebc8a3b0d6adb6424a63/LICENSE"
+  - id: "MIT"
+    url: "https://github.com/mozillazg/ptcpdump/raw/9e9e80a88cf6cd40b6192789418bbf280c60c758/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using ppkg. Check/Report @ https://github.com/leleliu008/ppkg-formula-repository-official-core"
 provides:
-  - "gcli"
-repology:
-  - "gcli"
+  - "ptcpdump"
+#repology:
+#  - "ptcpdump"
 src_url:
-  - "https://github.com/herrhotzenplotz/gcli"
+  - "https://github.com/mozillazg/ptcpdump"
 tag:
   - "Utility"
 x_exec:
@@ -34,8 +34,8 @@ x_exec:
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://meta.pkgforge.dev/misc/PPKG.json" |\
-     jq -r '(map(select(.pkg == "gcli" and .version != "")) | first) // 
-     (map(select((.pkg | test("^gcli"; "i")) and .version != "")) | first) | .version // empty' | tr -d '"'\''[:space:]'
+     jq -r '(map(select(.pkg == "ptcpdump" and .version != "")) | first) // 
+     (map(select((.pkg | test("^ptcpdump"; "i")) and .version != "")) | first) | .version // empty' | tr -d '"'\''[:space:]'
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
@@ -47,7 +47,6 @@ x_exec:
       #Setup ENV
        mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
        apk update && apk upgrade --no-interactive 2>/dev/null
-       apk del ninja-is-really-ninja --force --no-interactive 2>/dev/null
        apk cache clean --purge
       #CoreUtils
        apk add 7zip binutils build-base clang coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
@@ -57,11 +56,11 @@ x_exec:
        ppkg setup
        ppkg update
        [ -d "${HOME}/.ppkg/repos.d/official-core/" ] && git -C "${HOME}/.ppkg/repos.d/official-core/" reset --hard
-      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/gcli.yml
-       ppkg install "gcli" --profile="release" -j "$(($(nproc)+1))" --static
-       ppkg tree "gcli" --dirsfirst -L 5
+      #Build: https://github.com/leleliu008/ppkg-formula-repository-official-core/raw/master/formula/ptcpdump.yml
+       ppkg install "ptcpdump" --profile="release" -j "$(($(nproc)+1))" --static
+       ppkg tree "ptcpdump" --dirsfirst -L 5
       #Copy
-       PPKG_BINDIR="$(ppkg tree "gcli" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d "[:space:]")"
+       PPKG_BINDIR="$(ppkg tree "ptcpdump" --dirsfirst -L 1 | grep -o "/.*/.*" 2>/dev/null | tail -n1 | xargs realpath | tr -d "[:space:]")"
        echo "${PPKG_BINDIR}" | grep -qi "ppkg" && [ -d "${PPKG_BINDIR}" ] || exit 1
        rsync -achLv --exclude="*/" "${PPKG_BINDIR}/bin/." "/build-bins/." 2>/dev/null
        rsync -achLv --exclude="*/" "${PPKG_BINDIR}/libexec/." "/build-bins/." 2>/dev/null
