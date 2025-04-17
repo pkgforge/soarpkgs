@@ -56,7 +56,7 @@ x_exec:
        apk del ninja-is-really-ninja --force --no-interactive 2>/dev/null
        apk cache clean --purge
       #CoreUtils
-       apk add 7zip binutils build-base clang coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
+       apk add 7zip bash binutils build-base clang coreutils croc curl findutils file g++ git grep jq libc-dev linux-headers moreutils rsync tar tree util-linux xz zstd --latest --upgrade --no-interactive 2>/dev/null
       #Sharun
        curl -w "(DL) <== %{url}\n" -qfSL "https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$(uname -m)-aio" -o "/usr/local/bin/sharun"
        chmod -v "a+x" "/usr/local/bin/sharun"
