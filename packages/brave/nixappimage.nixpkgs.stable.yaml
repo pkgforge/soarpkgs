@@ -71,6 +71,23 @@ x_exec:
        [[ -s "${SBUILD_OUTDIR}/LICENSE" ]] || ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}/squashfs-root" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
       #Fix Symlinks
        rm -rvf "./squashfs-root/usr" 2>/dev/null
+       find "./squashfs-root" -type l | awk '{
+         link=$0;
+         cmd="readlink \""link"\"";
+         cmd | getline target;
+         close(cmd);
+         cmd="readlink -f \""link"\" 2>/dev/null";
+         if((cmd | getline resolved) <= 0 || system("test -e \""resolved"\"") != 0) {
+           system("rm -rfv \""link"\" 2>/dev/null");
+         } else {
+           if(target == link || target == "."target || 
+              index(resolved, link) > 0 || index(link, resolved) > 0 ||
+              system("test \""resolved"\" -ef \"$(dirname \""link"\")\" || test \""resolved"\" -ef \"$(dirname $(dirname \""link"\"))\"") == 0) {
+             system("rm -rfv \""link"\" 2>/dev/null");
+           }
+         }
+         close(cmd);
+       }'
        ln -sfn "$(realpath --relative-to="$(dirname "./squashfs-root/usr")" "${ENTRYPOINT_DIR}")" "./squashfs-root/usr"
        find "./squashfs-root" -maxdepth 1 -type l ! -name '*entrypoint*' -exec test -f "{}" \; -exec rsync -achvL --remove-source-files "{}" "{}.tmp" \; -exec mv "{}.tmp" "{}" \;
       #Icon
