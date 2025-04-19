@@ -47,12 +47,7 @@ tag:
 x_exec:
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/GIMP-appimage/releases?per_page=100" | \
-     jq -r '[.[] | select(.draft == false and (.tag_name | test("dev")))] | .[0].assets[].browser_download_url' | \
-     sed -E 's/(x86_64|aarch64)//' | tr -d '[:alpha:]' | \
-     sed 's/^[^0-9]*//; s/[^0-9]*$//' | \
-     awk -F'[-]' '{print $1}' | \
-     sort --version-sort | tail -n 1 | tr -d '[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/GIMP-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "continuous-dev")) | .assets[].updated_at] | map(select(. != null)) | .[] | fromdate | strftime("%y%m%dT%H%M%S")' | sort --version-sort | tail -n 1 | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
