@@ -80,8 +80,8 @@ x_exec:
        [[ -s "${SBUILD_OUTDIR}/LICENSE" ]] || ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}/squashfs-root" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
       #Fix Symlinks
        rm -rvf "./squashfs-root/usr" 2>/dev/null
-       find "./squashfs-root" -type f,l -name "*LC_MESSAGES*" -exec rm -rvf "{}" \;
-       find "./squashfs-root" -type l | awk '{
+       find -L "./squashfs-root" -xtype f,l -name "*LC_MESSAGES*" -exec rm -rvf "{}" \;
+       find -L "./squashfs-root" -xtype l | awk '{
          link=$0;
          cmd="readlink \""link"\"";
          cmd | getline target;
