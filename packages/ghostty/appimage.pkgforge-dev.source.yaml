@@ -59,7 +59,7 @@ x_exec:
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Build
        git clone --depth="1" --filter "blob:none" --quiet "https://github.com/pkgforge-dev/ghostty-appimage" "./TEMPREPO" && cd "./TEMPREPO"
-       chmod -v +x "./setup.sh" "./build.sh"
+       chmod +x "./setup.sh" "./build.sh"
        "./setup.sh" && "./build.sh"
       #Copy
        find "/tmp/ghostty-build/" -maxdepth 1 -type f -iname "*mage*" -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/ghostty"

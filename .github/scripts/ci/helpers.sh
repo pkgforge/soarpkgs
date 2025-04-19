@@ -378,8 +378,8 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
      cleanup_containers
      printf "\n" && timeout -k 5m 150m sbuild --log-level "verbose" "${INPUT_SBUILD}" --timeout-linter "120" --outdir "${SBUILD_OUTDIR}/BUILD" --keep
      printf "\n" && cleanup_containers
-     sudo chown -Rv "$(whoami):$(whoami)" "${SBUILD_OUTDIR}" 2>/dev/null
-     find "${SBUILD_OUTDIR}" -type f -exec sudo chmod -v +xwr "{}" \; 2>/dev/null
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_OUTDIR}" 2>/dev/null
+     find "${SBUILD_OUTDIR}" -type f -exec sudo chmod +xwr "{}" \; 2>/dev/null
      unset ARTIFACTS_DIR ; ARTIFACTS_DIR="$(find "${SBUILD_OUTDIR}/BUILD" -name "SBUILD" -type f -exec dirname "{}" \; | xargs realpath | head -n 1 | tr -d '[:space:]')"
      if [ -d "${ARTIFACTS_DIR}" ] && [ $(du -s "${ARTIFACTS_DIR}" | cut -f1) -gt 10 ]; then
        rsync -achL "${ARTIFACTS_DIR}/." "${SBUILD_OUTDIR}"

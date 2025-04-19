@@ -53,7 +53,7 @@ x_exec:
      nix bundle --impure --bundler "github:pkgforge/nix-appimage?ref=main" "nixpkgs#brave" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixappimage"
      sudo rsync -achLv --no-relative "${SBUILD_TMPDIR}/nixappimage" "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
      sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
-     chmod -v +x "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
+     chmod +x "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
     #Debloat & Fix things
      pushd "${SBUILD_TMPDIR}" >/dev/null 2>&1 && \
        "./${PKG}.nixappimage.tmp" --appimage-extract >/dev/null && rm -rvf "./${PKG}.nixappimage.tmp"
@@ -71,7 +71,7 @@ x_exec:
        [[ -s "${SBUILD_OUTDIR}/LICENSE" ]] || ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}/squashfs-root" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
       #Fix Symlinks
        rm -rvf "./squashfs-root/usr" 2>/dev/null
-       find "./squashfs-root" -path "*/LC_MESSAGES/LC_MESSAGES/LC_MESSAGES*" -type l -exec rm -rvf "{}" \;
+       find "./squashfs-root" -type f,l -name "*LC_MESSAGES*" -exec rm -rvf "{}" \;
        find "./squashfs-root" -type l | awk '{
          link=$0;
          cmd="readlink \""link"\"";
