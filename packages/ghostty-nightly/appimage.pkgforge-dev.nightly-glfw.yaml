@@ -1,5 +1,5 @@
 #!/SBUILD
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty-nightly/appimage.pkgforge-dev.nightly.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty-nightly/appimage.pkgforge-dev.nightly-glfw.yaml
 _disabled: false
 
 pkg: "ghostty-nightly"
@@ -7,7 +7,7 @@ pkg_id: "github.com.pkgforge-dev.ghostty-appimage.nightly-glfw"
 pkg_type: "appimage"
 category:
   - "TerminalEmulator"
-description: "Fast, native, feature-rich terminal emulator pushing modern features (Nightly)"
+description: "Fast, native, feature-rich terminal emulator pushing modern features (Experimental Nightly)"
 distro_pkg:
   archlinux:
     aur:
@@ -25,6 +25,7 @@ maintainer:
   - "psadi (https://github.com/psadi)"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ghostty-appimage"
+  - "This is an Experimental Build: https://github.com/pkgforge-dev/ghostty-appimage#-experimental-builds-glfw"
 license:
   - id: "MIT"
     url: "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
