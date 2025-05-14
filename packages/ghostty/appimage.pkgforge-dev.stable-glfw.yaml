@@ -1,13 +1,13 @@
 #!/SBUILD
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.pkgforge-dev.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.pkgforge-dev.stable-glfw.yaml
 _disabled: false
 
 pkg: "ghostty"
-pkg_id: "github.com.pkgforge-dev.ghostty-appimage.glfw"
+pkg_id: "github.com.pkgforge-dev.ghostty-appimage.stable-glfw"
 pkg_type: "appimage"
 category:
   - "TerminalEmulator"
-description: "Fast, native, feature-rich terminal emulator pushing modern features"
+description: "Fast, native, feature-rich terminal emulator pushing modern features (Experimental)"
 distro_pkg:
   archlinux:
     aur:
@@ -25,6 +25,7 @@ maintainer:
   - "psadi (https://github.com/psadi)"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ghostty-appimage"
+  - "This is an Experimental Build: https://github.com/pkgforge-dev/ghostty-appimage#-experimental-builds-glfw"
 license:
   - id: "MIT"
     url: "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
@@ -42,7 +43,7 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=100" | jq -r '.tag_name'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=100" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
