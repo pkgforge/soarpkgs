@@ -1,0 +1,56 @@
+#!/SBUILD
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty-nightly/appimage.pkgforge-dev.nightly-glfw.yaml
+_disabled: false
+
+pkg: "ghostty-nightly"
+pkg_id: "github.com.pkgforge-dev.ghostty-appimage.nightly-glfw"
+pkg_type: "appimage"
+category:
+  - "TerminalEmulator"
+description: "Fast, native, feature-rich terminal emulator pushing modern features (Experimental Nightly)"
+distro_pkg:
+  archlinux:
+    aur:
+      - "ghostty-git"
+    extra:
+      - "ghostty"
+  homebrew:
+    - "ghostty"
+  nixpkgs:
+    - "ghostty"
+homepage:
+  - "https://ghostty.org"
+  - "https://github.com/ghostty-org/ghostty"
+maintainer:
+  - "psadi (https://github.com/psadi)"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ghostty-appimage"
+  - "This is an Experimental Build: https://github.com/pkgforge-dev/ghostty-appimage#-experimental-builds-glfw"
+license:
+  - id: "MIT"
+    url: "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
+provides:
+  - "ghostty-nightly"
+repology:
+  - "ghostty"
+src_url:
+  - "https://github.com/pkgforge-dev/ghostty-appimage"
+tag:
+  - "terminal"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ghostty-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "tip")) | .assets[].updated_at] | map(select(. != null)) | .[] | fromdate | strftime("%y%m%dT%H%M%S")' | sort --version-sort | tail -n 1 | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/pkgforge-dev/ghostty-appimage@tip" --match "appimage,aarch64,glfw" --exclude "x64,x86,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/pkgforge-dev/ghostty-appimage@tip" --match "appimage,x86_64,glfw" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
