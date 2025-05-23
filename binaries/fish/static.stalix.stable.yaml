@@ -1,0 +1,102 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/fish/static.stalix.stable.yaml
+_disabled: false
+
+pkg: "fish"
+pkg_id: "stalix.bin_fish.stable"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Smart and User-friendly Command Line Shell"
+distro_pkg:
+  alpine:
+    - "fish"
+  archlinux:
+    aur:
+      - "fish-git"
+    extra:
+      - "fish"
+  debian:
+    - "fish"
+  gnuguix:
+    - "fish"
+  homebrew:
+    - "fish"
+  nixpkgs:
+    - "fish"
+    - "fishMinimal"
+  stalix:
+    - "bin/fish"  
+homepage:
+  - "https://github.com/fish-shell/fish-shell"
+license:
+  - id: "Custom"
+    url: "https://github.com/fish-shell/fish-shell/raw/8617964d4dbf03d752fbf094600ef977a36a83ec/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using StalIX. Check/Report @ https://github.com/stal-ix/ix"
+provides:
+  - "fish"
+repology:
+  - "fish"
+src_url:
+  - "https://github.com/fish-shell/fish-shell"
+tag:
+  - "Utility"
+x_exec:
+  host:
+  #  - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://github.com/stal-ix/ix/raw/main/pkgs/bin/fish/ix.sh" |\
+     sed -n '/^[[:space:]]*{%[[:space:]]*block[[:space:]]\+version[[:space:]]*%}/{ n; s/^[[:space:]]*//; s/[[:space:]]*$//; p; }' | tr -d '"'\''[:space:]'
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-ix:$(uname -m)" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+      #stalix
+       hash -r &>/dev/null
+       command -v ix || exit 1
+       if [[ -d "${HOME}/ix/.git" ]]; then
+          git -C "${HOME}/ix/" reset --hard
+          git -C "${HOME}/ix/" fetch --all
+          git -C "${HOME}/ix/" reset --hard "origin/$(git -C "${HOME}/ix/" rev-parse --abbrev-ref HEAD)"
+       else
+          echo -e "\n [X] FATAL: IX Not Found\n"
+         exit 1
+       fi
+      #Build: https://github.com/stal-ix/ix/blob/main/pkgs/bin/fish/ix.sh
+       echo -e "\n[+] StalIX PKG: ${PKG}\n"
+       curl -qfsSL "https://meta.pkgforge.dev/misc/STALIX.json" | jq '\''first(.[] | select(.pkg_path | test("bin/fish"; "i")))'\''
+       printf "\n" && curl -w "\n(SCRIPT) <== %{url}\n" -qfsSL "https://github.com/stal-ix/ix/raw/main/pkgs/bin/fish/ix.sh" ; printf "\n"
+       SI_REALM_OUT="${PKG}T$(date --utc +%Y%m%d)"
+       SI_BINDIR="/ix/realm/${SI_REALM_OUT}"
+       ix mut "${SI_REALM_OUT}" --materialize "bin/fish"
+       tree "${SI_BINDIR}" || ls "${SI_BINDIR}" -lah
+      #Copy
+       echo "${SI_BINDIR}" | grep -qi "realm" && [ -d "${SI_BINDIR}" ] || exit 1
+       rsync -achLv --exclude="*/" "${SI_BINDIR}/bin/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${SI_BINDIR}/libexec/." "/build-bins/." 2>/dev/null
+       rsync -achLv --exclude="*/" "${SI_BINDIR}/sbin/." "/build-bins/." 2>/dev/null
+       sudo chown -R "$(whoami):$(whoami)" "/build-bins" && chmod -R 755 "/build-bins"
+      #strip & info
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+       find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+       file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+       du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
