@@ -79,6 +79,104 @@
 | 🗂️ [**PkgCache**](https://docs.pkgforge.dev/repositories/pkgcache) | [![Packages](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.packages&label=&color=blue&style=flat)](#) | [![Updated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.updated&label=&color=brightgreen&style=flat)](#) | [![Outdated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.outdated&label=&color=red&style=flat)](#) | [![Health](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.healthy&label=&suffix=%25&color=green&style=flat)](#) | [![Stale](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.stale&label=&suffix=%25&color=orange&style=flat)](#) |
 
 ---
+#### Workflow
+```mermaid
+flowchart TD
+  soarpkgs["📦 SoarPkgs 📀"] --> Existing["Existing Packages ♾️"]
+  soarpkgs --> New["New Packages ➕"]
+
+  %% Existing Packages
+  Existing --> EB["Binaries 📦"]
+  Existing --> EP["Packages 📀"]
+
+  subgraph Existing_Binaries [ ]
+    EB1["🗜️ Linted + Validated 🤖"] --> EB2["📇 Indexed (Updated) 🤖"]
+    EB2 --> EB3["⏫ Diffed (Version) 🤖"]
+    EB3 --> EB4["🧰▶️ Build Queued [@BinCache] 🤖"]
+    EB4 --> EB5["📡✅ Built (Based on priority) 🤖"]
+    EB5 --> EB6["🧬 Metadata Updated 🤖"]
+  end
+  EB --> EB1
+
+  subgraph Existing_Packages [ ]
+    EP1["🗜️ Linted + Validated 🤖"] --> EP2["📇 Indexed (Updated) 🤖"]
+    EP2 --> EP3["⏫ Diffed (Version) 🤖"]
+    EP3 --> EP4["🧰▶️ Build Queued [@PkgCache] 🤖"]
+    EP4 --> EP5["📡✅ Built (Based on priority) 🤖"]
+    EP5 --> EP6["🧬 Metadata Updated 🤖"]
+  end
+  EP --> EP1
+
+  %% New Packages
+  New --> NB["Binaries 📦"]
+  New --> NP["Packages 📀"]
+
+  subgraph New_Binaries [ ]
+    NB1["🗜️ Linted + Validated 🤖"] --> NB2["📇 Indexed (Added) 🤖"]
+    NB2 --> NB3["⏭️ Diffed (+List) [@BinCache] 🤖"]
+    NB3 --> NB4["🦽✅ Merged (Manually) [@BinCache]"]
+    NB4 --> NB5["🦽▶️ Built (Manually) [@BinCache]"]
+    NB5 --> NB6["📇 Indexed (Updated) 🤖"]
+    NB6 --> NB7["⏫ Diffed (Version) 🤖"]
+    NB7 --> NB8["🧰⏩ Build Skipped (New) 🤖"]
+    NB8 --> NB9["🧬 Metadata Updated 🤖"]
+  end
+  NB --> NB1
+
+  subgraph New_Packages [ ]
+    NP1["🗜️ Linted + Validated 🤖"] --> NP2["📇 Indexed (Added) 🤖"]
+    NP2 --> NP3["⏭️ Diffed (+List) [@PkgCache] 🤖"]
+    NP3 --> NP4["🦽✅ Merged (Manually) [@PkgCache]"]
+    NP4 --> NP5["🦽▶️ Built (Manually) [@PkgCache]"]
+    NP5 --> NP6["📇 Indexed (Updated) 🤖"]
+    NP6 --> NP7["⏫ Diffed (Version) 🤖"]
+    NP7 --> NP8["🧰⏩ Build Skipped (New) 🤖"]
+    NP8 --> NP9["🧬 Metadata Updated 🤖"]
+  end
+  NP --> NP1
+  EB6 --> Existing
+  EP6 --> Existing
+  NB9 --> Existing
+  NP9 --> Existing
+
+
+  %% Clickable links
+  click soarpkgs "https://github.com/soarpkgs" "Recipe Repo"
+  click EB "https://github.com/pkgforge/soarpkgs/tree/main/binaries" "Binaries"
+  click EB1 "https://github.com/pkgforge/sbuilder" "Linter"
+  click EB2 "https://github.com/pkgforge/metadata/raw/refs/heads/main/soarpkgs/data/INDEX.json" "Soarpkgs Index Update"
+  click EB3 "https://github.com/pkgforge/metadata/blob/main/soarpkgs/data/DIFF_bincache.json" "Version Diff"
+  click EB4 "https://github.com/pkgforge/bincache/actions/workflows/schedule_builds.yaml" "BinCache Build Queue"
+  click EB5 "https://github.com/pkgforge/bincache/actions/workflows/matrix_builds.yaml" "BinCache Builds"
+  click EB6 "https://github.com/pkgforge/metadata/actions/workflows/generate.yaml" "BinCache Metadata Update"
+  click EP "https://github.com/pkgforge/soarpkgs/tree/main/packages" "Packages"
+  click EP1 "https://github.com/pkgforge/sbuilder" "Linter"
+  click EP2 "https://github.com/pkgforge/metadata/raw/refs/heads/main/soarpkgs/data/INDEX.json" "Soarpkgs Index Update"
+  click EP3 "https://github.com/pkgforge/metadata/blob/main/soarpkgs/data/DIFF_pkgcache.json" "Version Diff"
+  click EP4 "https://github.com/pkgforge/pkgcache/actions/workflows/schedule_builds.yaml" "PkgCache Build Queue"
+  click EP5 "https://github.com/pkgforge/pkgcache/actions/workflows/matrix_builds.yaml" "PkgCache Builds"
+  click EP6 "https://github.com/pkgforge/metadata/actions/workflows/generate.yaml" "PkgCache Metadata Update"
+  click NB "https://github.com/pkgforge/soarpkgs/tree/main/binaries" "Binaries"
+  click NB1 "https://github.com/pkgforge/sbuilder" "Linter"
+  click NB2 "https://github.com/pkgforge/metadata/raw/refs/heads/main/soarpkgs/data/INDEX.json" "Index"
+  click NB3 "https://github.com/pkgforge/bincache/blob/main/SBUILD_LIST.diff" "Diff List BinCache"
+  click NB4 "https://github.com/pkgforge/bincache/blob/main/SBUILD_LIST.json" "Build List BinCache"
+  click NB5 "https://github.com/pkgforge/bincache/actions/workflows/matrix_builds.yaml" "BinCache Builds"
+  click NB6 "https://github.com/pkgforge/metadata/raw/refs/heads/main/soarpkgs/data/INDEX.json" "BinCache Index Update"
+  click NB7 "https://github.com/pkgforge/metadata/blob/main/soarpkgs/data/DIFF_bincache.json" "Version Diff"
+  click NB9 "https://github.com/pkgforge/metadata/actions/workflows/generate.yaml" "BinCache Metadata Update"
+  click NP "https://github.com/pkgforge/soarpkgs/tree/main/packages" "Packages"
+  click NP1 "https://github.com/pkgforge/sbuilder" "Linter"
+  click NP2 "https://github.com/pkgforge/metadata/raw/refs/heads/main/soarpkgs/data/INDEX.json" "Index"
+  click NP3 "https://github.com/pkgforge/pkgcache/blob/main/SBUILD_LIST.diff" "Diff List PkgCache"
+  click NP4 "https://github.com/pkgforge/pkgcache/blob/main/SBUILD_LIST.json" "Build List PkgCache"
+  click NP5 "https://github.com/pkgforge/pkgcache/actions/workflows/matrix_builds.yaml" "PkgCache Builds"
+  click NP6 "https://github.com/pkgforge/metadata/raw/refs/heads/main/soarpkgs/data/INDEX.json" "PkgCache Index Update"
+  click NP7 "https://github.com/pkgforge/metadata/blob/main/soarpkgs/data/DIFF_pkgcache.json" "Version Diff"
+  click NP9 "https://github.com/pkgforge/metadata/actions/workflows/generate.yaml" "PkgCache Metadata Update"
+```
+
+---
 #### Repo Analytics
 [![Alt](https://repobeats.axiom.co/api/embed/69e7eeda76226334586a3f6c26593382877c59ba.svg "Repobeats analytics image")](https://github.com/pkgforge/soarpkgs/graphs/contributors)
 [![Stargazers](https://reporoster.com/stars/dark/pkgforge/soarpkgs)](https://github.com/pkgforge/soarpkgs/stargazers)
