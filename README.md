@@ -67,6 +67,18 @@
 > - <a href="https://discord.gg/djJUs48Zbu"><img src="https://github.com/user-attachments/assets/5a336d72-6342-4ca5-87a4-aa8a35277e2f" width="18" height="18"><code>PkgForge (<img src="https://github.com/user-attachments/assets/a08a20e6-1795-4ee6-87e6-12a8ab2a7da6" width="18" height="18">) Discord </code></a> `➼` [`https://discord.gg/djJUs48Zbu`](https://discord.gg/djJUs48Zbu)
 
 ---
+#### Package Stats
+> [!NOTE]
+> ℹ️ It is usual for most packages to be outdated since we build most of them from `GIT HEAD`<br>
+> 🗄️ Table of Packages & their status: https://github.com/pkgforge/metadata/blob/main/PKG_STATUS.md<br>
+> 🗄️ Table of Only Outdated Packages: https://github.com/pkgforge/metadata/blob/main/soarpkgs/data/COMP_VER_CACHE_OLD.md<br>
+
+| Repository 🗃️ | Total Packages 📦 | Updated 🟩 | Outdated 🟥 | Healthy 🟢 | Stale 🔴 |
+|------------|----------------|---------|----------|----------|---------|
+| 🗂️ [**BinCache**](https://docs.pkgforge.dev/repositories/bincache) | [![Packages](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[0].bincache.packages&label=&color=blue&style=flat)](#) | [![Updated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[0].bincache.updated&label=&color=brightgreen&style=flat)](#) | [![Outdated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[0].bincache.outdated&label=&color=red&style=flat)](#) | [![Health](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[0].bincache.healthy&label=&suffix=%25&color=green&style=flat)](#) | [![Stale](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[0].bincache.stale&label=&suffix=%25&color=orange&style=flat)](#) |
+| 🗂️ [**PkgCache**](https://docs.pkgforge.dev/repositories/pkgcache) | [![Packages](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.packages&label=&color=blue&style=flat)](#) | [![Updated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.updated&label=&color=brightgreen&style=flat)](#) | [![Outdated](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.outdated&label=&color=red&style=flat)](#) | [![Health](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.healthy&label=&suffix=%25&color=green&style=flat)](#) | [![Stale](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/pkgforge/metadata/refs/heads/main/PKG_STATUS_SUM.json&query=$[1].pkgcache.stale&label=&suffix=%25&color=orange&style=flat)](#) |
+
+---
 #### Repo Analytics
 [![Alt](https://repobeats.axiom.co/api/embed/69e7eeda76226334586a3f6c26593382877c59ba.svg "Repobeats analytics image")](https://github.com/pkgforge/soarpkgs/graphs/contributors)
 [![Stargazers](https://reporoster.com/stars/dark/pkgforge/soarpkgs)](https://github.com/pkgforge/soarpkgs/stargazers)
