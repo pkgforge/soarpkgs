@@ -48,7 +48,9 @@ x_exec:
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/onetrueawk/awk" "./TEMPREPO" && cd "./TEMPREPO"
+       #https://github.com/onetrueawk/awk/pull/252
+       #git clone --filter "blob:none" --quiet "https://github.com/onetrueawk/awk" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/pkgforge-dev/awk" "./TEMPREPO" && cd "./TEMPREPO"
        export CC="clang"
        export CXX="clang++"
        export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
@@ -56,7 +58,7 @@ x_exec:
        export CXXFLAGS="${CFLAGS}"
        export LD="$(which mold)"
        export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
-       make CC="${CC}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" --jobs="$(($(nproc)+1))" --keep-going
+       make --jobs="$(($(nproc)+1))" --keep-going
       #Copy
        cp -fv "./a.out" "/build-bins/awk"
        #find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
