@@ -49,11 +49,14 @@ x_exec:
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
       #Build
        git clone --filter "blob:none" --quiet "https://github.com/onetrueawk/awk" "./TEMPREPO" && cd "./TEMPREPO"
-       export CFLAGS="-O2 -flto=auto -static -w -pipe"
-       export CXXFLAGS="${CFLAGS}"
+       export CC="clang"
+       export CXX="clang++"
+       export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error"
        export CPPFLAGS="${CFLAGS}"
-       export LDFLAGS="-static -s -Wl,-S -Wl,--build-id=none"
-       make --jobs="$(($(nproc)+1))" --keep-going
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
+       make CC="${CC}" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" --jobs="$(($(nproc)+1))" --keep-going
       #Copy
        cp -fv "./a.out" "/build-bins/awk"
        #find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
