@@ -117,7 +117,7 @@ x_exec:
        for dir in */; do
          dir="${dir%/}"
          [[ "${dir}" == .git* ]] && continue
-         pushd "${dir}" >/dev/null 2>&1 && go mod tidy -v ; go generate
+         pushd "${dir}" >/dev/null 2>&1 && go mod tidy -v ; go generate ./...
          file="$(find . -type f | head -n 1 | tr -d "[:space:]")"
          if [[ -s "${file}" ]]; then
            out_bin="$(basename "$(realpath .)" | tr -d "[:space:]")"

@@ -55,7 +55,7 @@ x_exec:
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go install -v "github.com/actgardner/gogen-avro/v10/cmd/...@latest"
        go generate "pkg/generator/generate.go"
-       go mod tidy -v ; go generate
+       go mod tidy -v ; go generate ./...
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/jr" "./jr.go"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null

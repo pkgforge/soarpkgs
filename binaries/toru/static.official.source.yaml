@@ -54,7 +54,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/sweetbbak/toru" && cd "./toru"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\"\n"
        echo -e "\n[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go mod tidy -v ; go generate
+       go mod tidy -v ; go generate ./...
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" "./cmd/toru"
       #Copy
        find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"

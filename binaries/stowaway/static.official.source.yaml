@@ -57,7 +57,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/ph4ntonn/Stowaway" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go mod tidy -v ; go generate
+       go mod tidy -v ; go generate ./...
        go build -C "./admin" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/stowaway-admin"
        go build -C "./agent" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/stowaway-agent"
       #Copy

@@ -57,7 +57,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/NHAS/reverse_ssh" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go mod tidy -v ; go generate
+       go mod tidy -v ; go generate ./...
        yes "y" | ssh-keygen -t ed25519 -N "" -C "" -f "./internal/client/keys/private_key" || true
        go build -C "./cmd/client" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/reverse-ssh-client"
        go build -C "./cmd/server" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/reverse-ssh-server"

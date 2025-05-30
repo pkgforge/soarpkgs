@@ -51,7 +51,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://github.com/jaeles-project/jaeles" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go mod tidy -v ; go generate
+       go mod tidy -v ; go generate ./...
        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/jaeles"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
@@ -96,7 +96,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       #Build 
        pushd "$($TMPDIRS)" >/dev/null 2>&1 && git clone --quiet --filter "blob:none" "https://github.com/Azathothas/jwt-cracker" && cd "./jwt-cracker"
        rm "go.mod" -rf 2>/dev/null ; go mod init "github.com/Azathothas/jwt-cracker" ; go mod tidy
-       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go mod tidy -v ; go generate
+       GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go mod tidy -v ; go generate ./...
        go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./jwt-cracker" ; cp "./jwt-cracker" "$BINDIR/jwt-cracker" ; popd >/dev/null 2>&1 ; go clean -cache -fuzzcache -modcache -testcache
 fi
 #-------------------------------------------------------#

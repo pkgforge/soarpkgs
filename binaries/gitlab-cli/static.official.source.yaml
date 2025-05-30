@@ -71,7 +71,7 @@ x_exec:
        git clone --filter "blob:none" --quiet "https://gitlab.com/gitlab-org/cli" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
-       go mod tidy -v ; go generate
+       go mod tidy -v ; go generate ./...
        go build -C "./cmd/glab" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/glab"
       #Copy
        cp -fv "/build-bins/glab" "/build-bins/gitlab-cli"
