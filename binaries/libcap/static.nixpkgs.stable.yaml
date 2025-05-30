@@ -1,55 +1,54 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/libtree/static.nixpkgs.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/libcap/static.nixpkgs.stable.yaml
 _disabled: false
 
-pkg: "libtree"
-pkg_id: "nixpkgs.libtree"
+pkg: "libcap"
+pkg_id: "nixpkgs.libcap"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Tree ldd with an option to bundle dependencies into a single folder"
-distro_pkg:
-  alpine:
-    - "libtree"
-  archlinux:
-    aur:
-      - "libtree"
-      - "libtree-bin"
-      - "libtree-git"
-  debian:
-    - "libtree"
-  nixpkgs:
-    - "libtree"
+description: 
+  _default: "Tools for working with POSIX capabilities"
+  capsh: "Capability Shell Wrapper [libcap]"
+  captree: "Display tree of process capabilities [libcap]"
+  getcap: "Display the capabilities on the queried file(s) [libcap]"
+  getpcaps: "Display process capabilities [libcap]"
+  setcap: "Set file capabilities [libcap]"
 homepage:
-  - "https://github.com/haampie/libtree"
+  - "https://sites.google.com/site/fullycapable"
+  - "https://git.kernel.org/pub/scm/libs/libcap/libcap.git"
 license:
-  - id: "MIT"
-    url: "https://github.com/haampie/libtree/raw/95d8992968a18ae957fef723f103b416d0843398/LICENSE"  
+  - id: "BSD-3-Clause"
+    url: "https://git.kernel.org/pub/scm/libs/libcap/libcap.git/plain/License"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
 provides:
-  - "libtree"
+  - "capsh"
+  - "captree"
+  - "getcap"
+  - "getpcaps"
+  - "setcap"
 repology:
-  - "libtree-ldd"
+  - "libcap"
 src_url:
-  - "https://github.com/haampie/libtree"
+  - "https://git.kernel.org/pub/scm/libs/libcap/libcap.git"
 tag:
-  - "ldd"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    nix derivation show "nixpkgs#libtree" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
+    nix derivation show "nixpkgs#libcap" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
   run: |
     #Build
      echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.libtree" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.libcap" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
      find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\

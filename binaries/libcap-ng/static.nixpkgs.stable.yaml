@@ -1,55 +1,52 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/libtree/static.nixpkgs.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/libcap-ng/static.nixpkgs.stable.yaml
 _disabled: false
 
-pkg: "libtree"
-pkg_id: "nixpkgs.libtree"
+pkg: "libcap-ng"
+pkg_id: "nixpkgs.libcap_ng"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Tree ldd with an option to bundle dependencies into a single folder"
-distro_pkg:
-  alpine:
-    - "libtree"
-  archlinux:
-    aur:
-      - "libtree"
-      - "libtree-bin"
-      - "libtree-git"
-  debian:
-    - "libtree"
-  nixpkgs:
-    - "libtree"
+description:
+  _default: "Tools for working with POSIX capabilities"
+  captest: "Demonstrate capabilities [libcap-ng]"
+  filecap: "See file-based capabilities [libcap-ng]"
+  netcap: "See network capabilities [libcap-ng]"
+  pscap: "See process capabilities [libcap-ng]"
 homepage:
-  - "https://github.com/haampie/libtree"
+  - "https://people.redhat.com/sgrubb/libcap-ng/"
+  - "https://github.com/stevegrubb/libcap-ng"
 license:
-  - id: "MIT"
-    url: "https://github.com/haampie/libtree/raw/95d8992968a18ae957fef723f103b416d0843398/LICENSE"  
+  - id: "GPL-2.0"
+    url: "https://github.com/stevegrubb/libcap-ng/raw/3b6819b057fcd9289886961ea198d822ff26e373/COPYING"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
   - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
 provides:
-  - "libtree"
+  - "captest"
+  - "filecap"
+  - "netcap"
+  - "pscap"
 repology:
-  - "libtree-ldd"
+  - "libcap-ng"
 src_url:
-  - "https://github.com/haampie/libtree"
+  - "https://github.com/stevegrubb/libcap-ng"
 tag:
-  - "ldd"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    nix derivation show "nixpkgs#libtree" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
+    nix derivation show "nixpkgs#libcap_ng" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
   run: |
     #Build
-     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
-     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.libtree" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; libcap_ng.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.libcap_ng" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
      find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
     #Fix Perms
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
