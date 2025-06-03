@@ -49,6 +49,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -89,7 +90,7 @@ x_exec:
             -Dman="disabled" \
             -Dselinux="disabled" \
             --prefer-static --strip --reconfigure --wipe --clearcache "./STATIC_BUILD" "./"
-       ninja -C "./STATIC_BUILD" -j "$(($(nproc)+1))" install
+       ninja -C "./STATIC_BUILD" -j "$(($(nproc)+1))"
        find -L "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
       #Copy
        find -L "./STATIC_BUILD" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" cp -fv "{}" "/build-bins/"

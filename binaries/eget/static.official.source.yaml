@@ -19,7 +19,7 @@ homepage:
   - "https://github.com/zyedidia/eget"
 license:
   - "AGPLv3"
-  - "MIT"  
+  - "MIT"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
@@ -34,6 +34,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |

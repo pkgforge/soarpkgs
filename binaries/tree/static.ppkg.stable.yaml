@@ -43,10 +43,11 @@ provides:
 src_url:
   - "https://github.com/Old-Man-Programmer/tree"
 tag:
-  - "downloader"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |

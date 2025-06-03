@@ -73,24 +73,36 @@ x_exec:
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        source "${HOME}/.cargo/env"
-       export RUST_TARGET="$(uname -m)-unknown-linux-musl"
-       rustup target add "${RUST_TARGET}"
-       RUSTFLAGS="-C target-feature=+crt-static \
-         -C default-linker-libraries=yes \
-         -C link-self-contained=yes \
-         -C prefer-dynamic=no \
-         -C embed-bitcode=yes \
-         -C lto=yes \
-         -C opt-level=z \
-         -C debuginfo=none \
-         -C strip=symbols \
-         -C linker=clang \
-         -C link-arg=-fuse-ld=$(which mold) \
-         -C link-arg=-Wl,--Bstatic \
-         -C link-arg=-Wl,--static \
-         -C link-arg=-Wl,-S \
-         -C link-arg=-Wl,--build-id=none"
-       export RUSTFLAGS
+       if [[ "$(uname -m | tr -d '[:space:]')" == "riscv64" ]]; then
+         RUST_TARGET="$(rustc -Vv 2>/dev/null | sed -n "s/^[[:space:]]*host[[:space:]]*:[[:space:]]*//p" | grep -i "riscv" | tr -d "[:space:]")"
+         if [[ -n "${RUST_TARGET//[[:space:]]/}" ]]; then
+           export RUST_TARGET
+         else
+           rustc -Vv ; exit 1
+         fi
+       else
+         export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+         rustup target add "${RUST_TARGET}"
+       fi
+       RUST_FLAGS=()
+       RUST_FLAGS+=("-C target-feature=+crt-static")
+       RUST_FLAGS+=("-C default-linker-libraries=yes")
+       if echo "${RUST_TARGET}" | grep -Eqiv "alpine|gnu"; then
+         RUST_FLAGS+=("-C link-self-contained=yes")
+       fi
+       RUST_FLAGS+=("-C prefer-dynamic=no")
+       RUST_FLAGS+=("-C embed-bitcode=yes")
+       RUST_FLAGS+=("-C lto=yes")
+       RUST_FLAGS+=("-C opt-level=z")
+       RUST_FLAGS+=("-C debuginfo=none")
+       RUST_FLAGS+=("-C strip=symbols")
+       RUST_FLAGS+=("-C linker=clang")
+       RUST_FLAGS+=("-C link-arg=-fuse-ld=$(which mold)")
+       RUST_FLAGS+=("-C link-arg=-Wl,--Bstatic")
+       RUST_FLAGS+=("-C link-arg=-Wl,--static")
+       RUST_FLAGS+=("-C link-arg=-Wl,-S")
+       RUST_FLAGS+=("-C link-arg=-Wl,--build-id=none")
+       export RUSTFLAGS="${RUST_FLAGS[*]}"
       #Build
        git clone --filter "blob:none" --quiet "https://github.com/wez/wezterm" "./TEMPREPO" && cd "./TEMPREPO/"
        echo -e "\n[+] Target: ${RUST_TARGET}"

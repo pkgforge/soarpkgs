@@ -1,57 +1,44 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tailscale/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/croc/static.official.source.yaml
 _disabled: false
 
-pkg: "tailscale"
-pkg_id: "github.com.tailscale.tailscale"
+pkg: "croc"
+pkg_id: "github.com.schollz.croc.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description:
-  _default: "A mesh VPN built on WireGuard"
-  tailscale: "CLI Client for Tailscale, a mesh VPN built on WireGuard"
-  tailscaled: "Daemon for the Tailscale CLI"
-  tailscale-multi: "Combined Client & Daemon in a Single Binary (Limited Features)"
+description: "Easily and securely send things from one computer to another"
 distro_pkg:
   alpine:
-    - "tailscale"
+    - "croc"
   archlinux:
     aur:
-      - "tailscale-git"
-      - "tailscale-unstable-bin"
+      - "croc-git"
     extra:
-      - "tailscale"
+      - "croc"
   homebrew:
-    - "tailscale"
+    - "croc"
   nixpkgs:
-    - "tailscale"
+    - "croc"
 homepage:
-  - "https://tailscale.com"
-  - "https://github.com/tailscale/tailscale"
+  - "https://github.com/schollz/croc"
 license:
-  - "BSD"
-  - "MIT"  
+  - id: "MIT"
+    url: "https://github.com/schollz/croc/raw/bc5063e2c5fc01a072bf025e198b7336249bf60c/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/tailscale/tailscale"
-  - "tailscale-multi is based on: https://tailscale.com/kb/1207/small-tailscale"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/schollz/croc"
 provides:
-  - "tailscale"
-  - "tailscaled"
-  - "tailscale-multi"
+  - "croc"
 repology:
-  - "tailscale"
+  - "croc"
 src_url:
-  - "https://github.com/tailscale/tailscale"
+  - "https://github.com/schollz/croc"
 tag:
-  - "mesh"
-  - "tunnel"
-  - "vpn"
-  - "wireguard"
-  - "zerotier"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -60,7 +47,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/tailscale/tailscale" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/schollz/croc" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -79,16 +66,14 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/tailscale/tailscale" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/schollz/croc" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go mod tidy -v ; go generate ./...
-       go build -C "./cmd/tailscale" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/tailscale"
-       go build -C "./cmd/tailscaled" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/tailscaled"
-       go build -C "./cmd/tailscaled" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -tags "ts_include_cli" -o "/build-bins/tailscale-multi"
+       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/croc"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
-      #Strip 
+      #Strip
        find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
        find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
