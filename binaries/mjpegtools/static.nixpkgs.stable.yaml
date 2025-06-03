@@ -1,0 +1,148 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/mjpegtools/static.nixpkgs.stable.yaml
+_disabled: false
+
+pkg: "mjpegtools"
+pkg_id: "nixpkgs.mjpegtools"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description:
+  _default: "Suite of programs for processing MPEG or MJPEG video"
+  jpeg2yuv: "Convert jpeg images to the yuv format [mjpegtools]"
+  lav2mpeg: "Easy conversion of lav files to mpeg [mjpegtools]"
+  lav2wav: "Extract the audio out of MJPEG container files to stdout [mjpegtools]"
+  lav2yuv: "Convert a MJPEG file to raw yuv [mjpegtools]"
+  lavaddwav: "Add WAV audio to MJPEG video files [mjpegtools]"
+  lavinfo: "Display information about MJPEG video files [mjpegtools]"
+  lavpipe: "Create raw YUV streams from pipe list scripts [mjpegtools]"
+  lavplay: "Playback and edit MJPEG video [mjpegtools]"
+  lavrec: "Record MJPEG-video from a zoran/video4linux-device [mjpegtools]"
+  lavtrans: "Convert MJPEG videos to other MJPEG video formats [mjpegtools]"
+  mp2enc: "Simple MPEG-1 layer-II audio encoder [mjpegtools]"
+  mpeg2enc: "MPEG-1/2 encoder [mjpegtools]"
+  mplex: "MPEG 1/2 program/system stream multiplexer [mjpegtools]"
+  pgmtoy4m: "Convert mpeg2dec pgm and pgmpipe output to YUV4MPEG2 [mjpegtools]"
+  png2yuv: "Convert PNG images to the YUV4MPEG stream format [mjpegtools]"
+  pnmtoy4m: "Convert PNM images to YUV4MPEG2 stream [mjpegtools]"
+  ppmtoy4m: "Convert PPM images to YUV4MPEG2 stream [mjpegtools]"
+  y4mblack: "Generate black frames in YUV4MPEG2 format [mjpegtools]"
+  y4mcolorbars: "Create a YUV4MPEG2 stream containing a colorbar test pattern [mjpegtools]"
+  y4mdenoise: "Motion-compensating YUV4MPEG-frame denoiser [mjpegtools]"
+  y4mhist: "Generate histogram information from YUV4MPEG2 streams [mjpegtools]"
+  y4minterlace: "Interlace/deinterlace YUV4MPEG2 streams [mjpegtools]"
+  y4mivtc: "Inverse telecine filter for YUV4MPEG2 streams [mjpegtools]"
+  y4mscaler: "Scale/crop/translate a YUV4MPEG2 stream [mjpegtools]"
+  y4mshift: "Shift/pad YUV4MPEG2 stream frames [mjpegtools]"
+  y4mspatialfilter: "Spatial filtering for YUV4MPEG2 streams [mjpegtools]"
+  y4mstabilizer: "Video stabilizer for YUV4MPEG2 streams [mjpegtools]"
+  y4mtopnm: "Convert a YUV4MPEG2 stream to PNM images [mjpegtools]"
+  y4mtoppm: "Convert YUV4MPEG2 stream to PPM images [mjpegtools]"
+  y4mtoyuv: "Convert YUV4MPEG2 stream to raw YUV [mjpegtools]"
+  y4munsharp: "Unsharp filter for YUV4MPEG2 streams [mjpegtools]"
+  ypipe: "Pipe YUV data between mjpegtools programs [mjpegtools]"
+  yuv2lav: "Encode lavtool's raw YUV frame streams into MJPEG files [mjpegtools]"
+  yuv4mpeg: "YUV4MPEG stream format handler [mjpegtools]"
+  yuvcorrect: "Color correction for YUV streams [mjpegtools]"
+  yuvcorrect_tune: "Interactive color correction tuning for YUV streams [mjpegtools]"
+  yuvdeinterlace: "Deinterlace YUV streams [mjpegtools]"
+  yuvdenoise: "Motion-Compensating-YUV4MPEG2-frame-denoiser [mjpegtools]"
+  yuvfps: "Convert to a different frame rate [mjpegtools]"
+  yuvinactive: "Set a part of the video to a defined state [mjpegtools]"
+  yuvkineco: "Revert 2-3 pulldown movie [mjpegtools]"
+  yuvmedianfilter: "A filter for yuv images produced by the mjpeg tools [mjpegtools]"
+  yuvplay: "Display YUV4MPEG2 streams (using SDL) [mjpegtools]"
+  yuvscaler: "UPscale/DOWNscale a YUV4MPEG2 stream to a specified format [mjpegtools]"
+  yuvycsnoise: "Noise filter specialized for NTSC Y/C separation noise [mjpegtools]"
+  yuyvtoy4m: "Convert YUYV format to YUV4MPEG2 stream [mjpegtools]"
+homepage:
+  - "https://mjpeg.sourceforge.io"
+license:
+  - id: "GPL-2.0"
+    url: "https://sourceforge.net/p/mjpeg/Code/HEAD/tree/trunk/mjpeg_play/COPYING"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built Using Nix. Check/Report @ https://github.com/NixOS/nixpkgs"
+provides:
+  - "jpeg2yuv"
+  - "lav2mpeg"
+  - "lav2wav"
+  - "lav2yuv"
+  - "lavaddwav"
+  - "lavinfo"
+  - "lavpipe"
+  - "lavtrans"
+  - "mp2enc"
+  - "mpeg2enc"
+  - "mpegtranscode"
+  - "mplex"
+  - "pgmtoy4m"
+  - "png2yuv"
+  - "pnmtoy4m"
+  - "ppmtoy4m"
+  - "y4mblack"
+  - "y4mcolorbars"
+  - "y4mdenoise"
+  - "y4mhist"
+  - "y4minterlace"
+  - "y4mivtc"
+  - "y4mscaler"
+  - "y4mshift"
+  - "y4mspatialfilter"
+  - "y4mstabilizer"
+  - "y4mtopnm"
+  - "y4mtoppm"
+  - "y4mtoyuv"
+  - "y4munsharp"
+  - "ypipe"
+  - "yuv2lav"
+  - "yuv4mpeg"
+  - "yuvcorrect"
+  - "yuvcorrect_tune"
+  - "yuvdeinterlace"
+  - "yuvdenoise"
+  - "yuvfps"
+  - "yuvinactive"
+  - "yuvkineco"
+  - "yuvmedianfilter"
+  - "yuvscaler"
+  - "yuvycsnoise"
+  - "yuyvtoy4m"
+repology:
+  - "mjpegtools"
+src_url:
+  - "https://svn.code.sf.net/p/mjpeg/Code/"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    nix derivation show "nixpkgs#mjpegtools" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
+  run: |
+    #Build
+     echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+     nix-build '<nixpkgs>' --impure --attr "pkgsStatic.mjpegtools" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+     find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+    #Fix Perms
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+     xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+     xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+     sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
+    #Fix Shell Scripts
+     find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+     find "${SBUILD_TMPDIR}" -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+           sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+           sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+       '
+    #Copy
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+     ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null
