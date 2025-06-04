@@ -71,7 +71,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
         bash -l -c '
         #Setup ENV
          set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
-         source "${HOME}/.cargo/env"
+         [[ -s "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
          rustup default nightly
          rustup component add rust-src --toolchain nightly
          export RUST_TARGET="x86_64-unknown-linux-musl"

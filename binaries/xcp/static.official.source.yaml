@@ -49,7 +49,7 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
-       source "${HOME}/.cargo/env"
+       [[ -s "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
        if [[ "$(uname -m | tr -d '[:space:]')" == "riscv64" ]]; then
          RUST_TARGET="$(rustc -Vv 2>/dev/null | sed -n "s/^[[:space:]]*host[[:space:]]*:[[:space:]]*//p" | grep -i "riscv" | tr -d "[:space:]")"
          if [[ -n "${RUST_TARGET//[[:space:]]/}" ]]; then

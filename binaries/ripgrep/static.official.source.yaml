@@ -60,7 +60,7 @@ x_exec:
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
-       source "${HOME}/.cargo/env"
+       [[ -s "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
        rustup target add "${RUST_TARGET}"
        RUSTFLAGS="-C target-feature=+crt-static \
