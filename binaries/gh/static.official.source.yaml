@@ -1,46 +1,46 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/yq/static.official.source.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/gh/static.official.source.yaml
 _disabled: false
 
-pkg: "yq"
-pkg_id: "github.com.mikefarah.yq"
+pkg: "gh"
+pkg_id: "github.com.cli.cli.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "Portable command-line YAML, JSON, XML, CSV, TOML and properties processor"
+description: "GitHub CLI tool"
 distro_pkg:
   alpine:
-    - "yq"
-    - "yq-go"
+    - "github-cli"
   archlinux:
+    aur:
+      - "github-cli-git"
     extra:
-      - "go-yq"
+      - "github-cli"
+  debian:
+    - "gh"
   homebrew:
-    - "yq"
+    - "gh"
   nixpkgs:
-    - "yq-go"
+    - "gh"
 homepage:
-  - "https://mikefarah.gitbook.io/yq"
-  - "https://github.com/mikefarah/yq"
+  - "https://github.com/cli/cli"
 license:
-  - "Apache-2.0"
-  - "BSD"
-  - "MIT"  
+  - id: "MIT"
+    url: "https://github.com/cli/cli/raw/fe74349fe460cd80c21116eabd2753c0ba746f63/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/mikefarah/yq"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/cli/cli"
+provides:
+  - "gh==github-cli"
 repology:
-  - "yq-mikefarah"
+  - "github-cli"
 src_url:
-  - "https://github.com/mikefarah/yq"
+  - "https://github.com/cli/cli"
 tag:
-  - "json"
-  - "jq"
-  - "toml"
-  - "yaml"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
@@ -49,7 +49,7 @@ x_exec:
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/mikefarah/yq" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/cli/cli" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -68,15 +68,15 @@ x_exec:
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/mikefarah/yq" "./TEMPREPO" && cd "./TEMPREPO"
+       git clone --filter "blob:none" --quiet "https://github.com/cli/cli" "./TEMPREPO" && cd "./TEMPREPO"
        echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
        echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
        go mod tidy -v ; go generate ./...
-       go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/yq"
+       go build -C "./cmd/gh" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/gh"
       #Copy
        ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
       #Strip 
-       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \; 2>/dev/null
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
        find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
        find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
        file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \

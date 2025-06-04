@@ -47,6 +47,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -74,7 +75,7 @@ x_exec:
        export LD="$(which mold)"
        export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,now,-z,pack-relative-relocs,-z,relro"
        #https://github.com/jqlang/jq/blob/master/Dockerfile
-       git submodule update --init --recursive
+       git submodule update --init --recursive --depth="1" --filter="blob:none"
        autoreconf --install --verbose --force
        "./configure" --with-oniguruma="builtin" --disable-docs --disable-valgrind --disable-shared --disable-Werror --enable-static --enable-all-static --enable-year2038
        make --jobs="$(($(nproc)+1))" --keep-going

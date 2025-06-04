@@ -40,6 +40,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -48,10 +49,13 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,aarch64,tar" --exclude "amd,x86,x64" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,aarch64,tar" --exclude "amd,x86,x64,dev" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      riscv64)
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,riscv64,tar" --exclude "asc,sha256,sha512,dev" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,x86_64,tar" --exclude "aarch,arm" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,x86_64,tar" --exclude "aarch,arm,dev" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract
