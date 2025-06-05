@@ -1,46 +1,55 @@
-#!/SBUILD ver @v1.0.0    
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.musl.source.yaml
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ouch/static.official.source.yaml
 _disabled: false
 
-pkg: "soar"
-pkg_id: "github.com.pkgforge.soar.musl"
+pkg: "ouch"
+pkg_id: "github.com.ouch-org.ouch.source"
 pkg_type: "static"
 category:
   - "ConsoleOnly"
   - "Utility"
-description: "The Modern, Bloat-Free Distro-Independent Package Manager (MUSL)"
+description: "Command-line utility for easily compressing and decompressing files and directories"
 distro_pkg:
+  alpine:
+    - "ouch"
   archlinux:
     aur:
-      - "soar-bin"
+      - "ouch-git"
+    extra:
+      - "ouch"
+  gnuguix:
+    - "ouch"
+  homebrew:
+    - "ouch"
+  nixpkgs:
+    - "ouch"
 homepage:
-  - "https://soar.qaidvoid.dev"
-  - "https://github.com/pkgforge/soar"
+  - "https://github.com/ouch-org/ouch"
 license:
   - id: "MIT"
-    url: "https://raw.githubusercontent.com/pkgforge/soar/refs/heads/main/LICENSE"
+    url: "https://github.com/ouch-org/ouch/raw/28d0933d6c07c1a6224dfe40e0b00526e1dd920a/LICENSE"
 maintainer:
   - "Azathothas (https://github.com/Azathothas)"
 note:
   - "[DO NOT RUN] (Meant for pkgforge CI Only)"
-  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/pkgforge/soar"
-  - "Built on Vanilla Musl"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/ouch-org/ouch"
 provides:
-  - "soar"  
+  - "ouch"  
 repology:
-  - "soar"
+  - "ouch"
 src_url:
-  - "https://github.com/pkgforge/soar"
+  - "https://github.com/ouch-org/ouch"
 tag:
-  - "package-manager"
+  - "Utility"
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
     pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/pkgforge/soar" "./TEMPREPO" >/dev/null 2>&1 && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/ouch-org/ouch" "./TEMPREPO" >/dev/null 2>&1 && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
     [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
   run: |
@@ -62,8 +71,6 @@ x_exec:
            rustc -Vv ; exit 1
          fi
        else
-         rustup default nightly
-         rustup component add rust-src --toolchain nightly
          export RUST_TARGET="$(uname -m)-unknown-linux-musl"
          rustup target add "${RUST_TARGET}"
        fi
@@ -87,12 +94,17 @@ x_exec:
        RUST_FLAGS+=("-C link-arg=-Wl,--build-id=none")
        export RUSTFLAGS="${RUST_FLAGS[*]}"
       #Build
-       git clone --filter "blob:none" --quiet "https://github.com/pkgforge/soar" "./TEMPREPO" && cd "./TEMPREPO/"
-       echo -e "\n[+] Target: ${RUST_TARGET}\n"
-       echo -e "\n[+] Flags: ${RUSTFLAGS}\n"
+       git clone --filter "blob:none" --quiet "https://github.com/ouch-org/ouch" "./TEMPREPO" && cd "./TEMPREPO/"
+       echo -e "\n[+] Target: ${RUST_TARGET}"
+       echo -e "[+] Flags: ${RUSTFLAGS}\n"
        sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
        rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
-       cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+       cargo build --target "${RUST_TARGET}" \
+         --all-features \
+         --jobs="$(($(nproc)+1))" \
+         --release \
+         --keep-going \
+         --verbose
        find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
       #Copy
        find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
@@ -109,5 +121,3 @@ x_exec:
      docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
-    #Fetch Upstream Version
-     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/soar/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]' > "${SBUILD_TMPDIR}/upstream.version"
