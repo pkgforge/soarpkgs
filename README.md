@@ -61,6 +61,7 @@
 > - [**`DMCA/Copyright/PKG Removal`**](https://docs.pkgforge.dev/repositories/soarpkgs/dmca-or-copyright-cease-and-desist)
 > - [**`Is this really an AUR..?`**](https://docs.pkgforge.dev/repositories/soarpkgs/faq#is-this-really-an-aur)
 > - [**`FAQs`**](https://docs.pkgforge.dev/repositories/soarpkgs/faq)
+> - [**`Re-Distribute Our Packages`**](https://docs.pkgforge.dev/repositories/soarpkgs/re-distribution)
 > - [**`Security`**](https://docs.pkgforge.dev/repositories/soarpkgs/security)
 > - [**`Contact Us`**](https://docs.pkgforge.dev/contact/chat)
 - [**Community 💬**](https://docs.pkgforge.dev/contact/chat)
