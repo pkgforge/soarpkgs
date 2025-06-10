@@ -42,6 +42,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -51,6 +52,9 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         soar dl "https://github.com/XTLS/Xray-core@${PKGVER}" --match "linux,arm64" --exclude "amd64,x86,x64,deb,dgst,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      riscv64)
+        soar dl "https://github.com/XTLS/Xray-core@${PKGVER}" --match "linux,riscv64" --exclude "asc,deb,dgst,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
         soar dl "https://github.com/XTLS/Xray-core@${PKGVER}" --match "linux,64" --exclude "aarch,arm,i386,i686,deb,dgst,rpm,sha256,sha512,sig,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes

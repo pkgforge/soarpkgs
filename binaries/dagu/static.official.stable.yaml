@@ -37,15 +37,15 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/rhysd/actionlint/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/dagu-dev/dagu/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
   run: |
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/rhysd/actionlint@${PKGVER}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/dagu-dev/dagu@${PKGVER}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/rhysd/actionlint@${PKGVER}" --match "linux,amd64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/dagu-dev/dagu@${PKGVER}" --match "linux,amd64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/appimagetool/appimage.official.stable.yaml
+_disabled: false
+
+pkg: "appimagetool"
+pkg_id: "github.com.AppImage.appimagetool.stable"
+pkg_type: "appimage"
+category:
+  - "Utility"
+description: "Generate an AppImage from an existing AppDir"
+homepage:
+  - "https://github.com/AppImage/appimagetool"
+license:
+  - id: "MIT"
+    url: "https://github.com/AppImage/appimagetool/raw/7cfafc45e5a8e64ad0755870b1001e5d7ffb4e85/LICENSE"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built AppImage Fetched from Upstream. Check/Report @ https://github.com/AppImage/appimagetool"
+  - "[NO_DESKTOP_INTEGRATION] (Does not need desktop integration)"
+provides:
+  - "appimagetool"
+repology:
+  - "appimagetool"
+src_url:
+  - "https://github.com/AppImage/appimagetool"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/AppImage/appimagetool/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "continuous")) | .assets[].updated_at] | map(select(. != null)) | .[] | fromdate | strftime("%y%m%dT%H%M%S")' | sort --version-sort | tail -n 1 | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/AppImage/appimagetool@continuous" --match "appimagetool,aarch64" --exclude "x64,x86,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/AppImage/appimagetool@continuous" --match "appimagetool,x86_64" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac

@@ -40,6 +40,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -49,6 +50,9 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         soar dl "https://github.com/tianon/gosu@${PKGVER}" --match "linux,arm64" --exclude "asc" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      riscv64)
+        soar dl "https://github.com/tianon/gosu@${PKGVER}" --match "linux,riscv64" --exclude "asc,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
         soar dl "https://github.com/tianon/gosu@${PKGVER}" --match "linux,amd64" --exclude "asc" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes

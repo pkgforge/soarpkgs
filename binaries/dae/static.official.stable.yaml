@@ -30,6 +30,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -38,10 +39,13 @@ x_exec:
     #Download
     case "$(uname -m)" in
       aarch64)
-        soar dl "https://github.com/daeuniverse/dae@${PKGVER}" --match "linux,arm64,zip" --exclude "v2,v3,v4" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/daeuniverse/dae@${PKGVER}" --match "linux,arm64,zip" --exclude "v2,v3,v4,dgst" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      riscv64)
+        soar dl "https://github.com/daeuniverse/dae@${PKGVER}" --match "linux,riscv64,zip" --exclude "v2,v3,v4,dgst" --exclude "asc,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
-        soar dl "https://github.com/daeuniverse/dae@${PKGVER}" --match "linux,x86_64,zip" --exclude "v2,v3,v4" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        soar dl "https://github.com/daeuniverse/dae@${PKGVER}" --match "linux,x86_64,zip" --exclude "v2,v3,v4,dgst" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
     esac
     #Extract

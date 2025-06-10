@@ -32,6 +32,7 @@ tag:
 x_exec:
   host:
     - "aarch64-Linux"
+    - "riscv64-Linux"
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
@@ -41,6 +42,9 @@ x_exec:
     case "$(uname -m)" in
       aarch64)
         soar dl "https://github.com/userdocs/iperf3-static@${PKGVER}" --match "arm64v8" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      riscv64)
+        soar dl "https://github.com/userdocs/iperf3-static@${PKGVER}" --match "riscv64" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
         ;;
       x86_64)
         soar dl "https://github.com/userdocs/iperf3-static@${PKGVER}" --match "amd64" --exclude "osx,win" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
