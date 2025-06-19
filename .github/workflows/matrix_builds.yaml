@@ -394,8 +394,8 @@ jobs:
            ##Push 
             if [[ -n "${GHCRPKG_TAG_SRCBUILD+x}" ]]; then
              pushd "/tmp" &>/dev/null
-              if [[ -s "./BUILD_ARTIFACTS.7z" && $(stat -c%s "./BUILD_ARTIFACTS.7z") -gt 1000 ]]; then
-                realpath "./BUILD_ARTIFACTS.7z" && du -sh "./BUILD_ARTIFACTS.7z"
+              if [[ -s "./BUILD_ARTIFACTS.zstd" && $(stat -c%s "./BUILD_ARTIFACTS.zstd") -gt 1000 ]]; then
+                realpath "./BUILD_ARTIFACTS.zstd" && du -sh "./BUILD_ARTIFACTS.zstd"
                 ls -sh "${{ env.SBUILD_OUTDIR }}"
                 ghcr_push_cmd()
                   {
@@ -420,7 +420,7 @@ jobs:
                      ghcr_push+=(--annotation "org.opencontainers.image.vendor=pkgforge")
                      ghcr_push+=(--annotation "org.opencontainers.image.version=${{ env.PKG_VERSION }}")
                      ghcr_push+=("${GHCRPKG_URL_SRCBUILD}:${GHCRPKG_TAG_SRCBUILD}")
-                     [[ -f "./BUILD_ARTIFACTS.7z" && -s "./BUILD_ARTIFACTS.7z" ]] && ghcr_push+=("./BUILD_ARTIFACTS.7z")
+                     [[ -f "./BUILD_ARTIFACTS.zstd" && -s "./BUILD_ARTIFACTS.zstd" ]] && ghcr_push+=("./BUILD_ARTIFACTS.zstd")
                      "${ghcr_push[@]}" ; sleep 5
                     #Check
                      if [[ "$(oras manifest fetch "${GHCRPKG_URL_SRCBUILD}:${GHCRPKG_TAG_SRCBUILD}" | jq -r '.annotations["dev.pkgforge.soar.push_date"]' | tr -d '[:space:]')" == "${{ env.PKG_DATE }}" ]]; then
@@ -468,7 +468,7 @@ jobs:
             name: ${{ env.PKG_FAMILY_LOCAL }}_${{ matrix.package.host }}
             path: |
               /tmp/BUILD.log
-              /tmp/BUILD_ARTIFACTS.7z
+              /tmp/BUILD_ARTIFACTS.zstd
             compression-level: 0 # no compression, [Default: 6 (GNU Gzip)]
             retention-days: 30
             overwrite: true
@@ -481,7 +481,7 @@ jobs:
           subject-name: "${{ env.PKG_FAMILY_LOCAL }}-${{ env.BUILD_ID }}-${{ env.GHCRPKG_TAG }}"
           subject-path: |
             "/tmp/BUILD.log"
-            "/tmp/BUILD_ARTIFACTS.7z"
+            "/tmp/BUILD_ARTIFACTS.zstd"
             ${{ env.SBUILD_OUTDIR }}/**
             !${{ env.SBUILD_TMPDIR }}/**
           show-summary: true

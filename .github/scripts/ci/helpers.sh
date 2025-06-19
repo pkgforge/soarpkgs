@@ -1219,7 +1219,11 @@ cleanup_env()
 {
 #Cleanup Dir  
  if [[ -n "${GITHUB_TEST_BUILD+x}" || "${GHA_MODE}" == "MATRIX" ]]; then
-  7z a -t7z -mx="9" -mmt="$(($(nproc)+1))" -bsp1 -bt "/tmp/BUILD_ARTIFACTS.7z" "${BUILD_DIR}" 2>/dev/null
+  pushd "$(mktemp -d)" &>/dev/null &&\
+   tar --directory="${BUILD_DIR}" --preserve-permissions --create --file="BUILD_ARTIFACTS.tar" "."
+   zstd --force "./BUILD_ARTIFACTS.tar" --verbose -o "/tmp/BUILD_ARTIFACTS.zstd"
+   rm -rvf "./BUILD_ARTIFACTS.tar" 2>/dev/null &&\
+  popd &>/dev/null
  elif [[ "${KEEP_LOGS}" != "YES" ]]; then
   echo -e "\n[-] Removing ALL Logs & Files\n"
   rm -rvf "${BUILD_DIR}" 2>/dev/null
