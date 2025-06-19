@@ -95,7 +95,7 @@ else
    sudo ln -fsv "/usr/local/bin/dwarfs-tools" "/usr/local/bin/mkdwarfs"
    sudo curl -qfsSL "https://bin.pkgforge.dev/$(uname -m)-$(uname -s)/unsquashfs" -o "/usr/local/bin/unsquashfs" && sudo chmod -v +x "/usr/local/bin/unsquashfs"
  ##Check Needed CMDs
- for DEP_CMD in appimagetool dwarfs dwarfsck dwarfsextract eget gh glab mkdwarfs minisign oras rclone shellcheck soar unsquashfs; do
+ for DEP_CMD in appimagetool dwarfs dwarfsck dwarfsextract eget gh glab mkdwarfs minisign oras rclone shellcheck soar unsquashfs zstd; do
     case "$(command -v "${DEP_CMD}" 2>/dev/null)" in
         "") echo -e "\n[✗] FATAL: ${DEP_CMD} is NOT INSTALLED\n"
            export CONTINUE="NO"
@@ -334,42 +334,40 @@ if [ "${CONTINUE}" == "YES" ]; then
   sudo ldconfig && sudo ldconfig -p          
  #----------------------# 
  ##Nix
-  ##Official Installers break
-  #curl -qfsSL "https://nixos.org/nix/install" | bash -s -- --no-daemon
-  #source "${HOME}/.bash_profile" ; source "${HOME}/.nix-profile/etc/profile.d/nix.sh" ; . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
-  ##https://github.com/DeterminateSystems/nix-installer
-  "/nix/nix-installer" uninstall --no-confirm 2>/dev/null
-  #curl -qfsSL "https://install.determinate.systems/nix" | bash -s -- install linux --init none --no-confirm
-  curl -qfsSL "https://install.determinate.systems/nix" | bash -s -- install linux --init none --extra-conf "filter-syscalls = false" --no-confirm
-  #Source
-  source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
-  #Fix perms: could not set permissions on '/nix/var/nix/profiles/per-user' to 755: Operation not permitted
-  #sudo chown --recursive "${USER}" "/nix"
-  sudo chown --recursive "runner" "/nix"
-  echo "root    ALL=(ALL:ALL) ALL" | sudo tee -a "/etc/sudoers"
-  #Test
-  if ! command -v nix &> /dev/null; then
-     echo -e "\n[-] nix NOT Found\n"
-     export CONTINUE="NO"
-     return 1 || exit 1
-  else
-    #Add Env vars
-     export NIXPKGS_ALLOW_BROKEN="1"
-     export NIXPKGS_ALLOW_INSECURE="1"
-     export NIXPKGS_ALLOW_UNFREE="1"
-     export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1"  
-    #Add Tokens
-     echo "access-tokens = github.com=${GITHUB_TOKEN}" | sudo tee -a "/etc/nix/nix.conf" >/dev/null 2>&1
-    #Update Channels
-     nix --version && nix-channel --list && nix-channel --update
-    #Seed Local Data 
-     nix derivation show "nixpkgs#hello" --impure --refresh --quiet >/dev/null 2>&1
+  [[ -f "${HOME}/.bash_profile" ]] && source "${HOME}/.bash_profile"
+  [[ -f "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]] && source "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+  hash -r &>/dev/null
+  if ! command -v nix >/dev/null 2>&1; then
+    pushd "$(mktemp -d)" &>/dev/null
+     curl -qfsSL "https://raw.githubusercontent.com/pkgforge/devscripts/refs/heads/main/Linux/install_nix.sh" -o "./install_nix.sh"
+     dos2unix --quiet "./install_nix.sh" ; chmod +x "./install_nix.sh"
+     bash "./install_nix.sh"
+     [[ -f "${HOME}/.bash_profile" ]] && source "${HOME}/.bash_profile"
+     [[ -f "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]] && source "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+     [[ -f "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+    rm -rf "./install_nix.sh" 2>/dev/null ; popd &>/dev/null
   fi
- ##Purge:
- #sudo rm -rf "/etc/bash.bashrc.backup-before-nix" "/etc/nix" "/nix" "/root/.nix-profile" "/root/.nix-defexpr" "/root/.nix-channels" "/root/.local/state/nix" "/root/.cache/nix" "${HOME}/.nix-profile" "${HOME}/.nix-defexpr" "${HOME}/.nix-channels" "${HOME}/.local/state/nix" "${HOME}/.cache/nix" 2>/dev/null
+  #Test
+   if ! command -v nix &> /dev/null; then
+      echo -e "\n[-] nix NOT Found\n"
+      export CONTINUE="NO"
+      return 1 || exit 1
+   else
+     #Add Env vars
+      export NIXPKGS_ALLOW_BROKEN="1"
+      export NIXPKGS_ALLOW_INSECURE="1"
+      export NIXPKGS_ALLOW_UNFREE="1"
+      export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1"
+     #Add Tokens
+      echo "access-tokens = github.com=${GITHUB_TOKEN}" | sudo tee -a "/etc/nix/nix.conf" >/dev/null 2>&1
+     #Update Channels
+      nix --version && nix-channel --list && nix-channel --update
+     #Seed Local Data 
+      nix derivation show "nixpkgs#hello" --impure --refresh --quiet >/dev/null 2>&1
+   fi
  #----------------------# 
  #rust & cargo
-  bash <(curl -qfsSL "https://sh.rustup.rs") -y
+  bash <(curl -qfsSL "https://sh.rustup.rs") --no-modify-path -y
   #Test: PATH="${HOME}/.cargo/bin:${HOME}/.cargo/env:${PATH}" 
   if ! command -v cargo &> /dev/null; then
    echo -e "\n[-] cargo (rust) NOT Found\n"
