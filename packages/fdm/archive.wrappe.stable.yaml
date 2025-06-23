@@ -104,4 +104,4 @@ x_exec:
         find -L "${SBUILD_TMPDIR}/BUILD_DIR" -regex ".*\(128x128/apps\|256x256\)/.*${PKG}.*\.\(png\|svg\)" -printf "%s %p\n" -quit | sort -n | awk 'NR==1 {print $2}' | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/${PKG}.png"
        fi
        cp -fv "${SBUILD_OUTDIR}/${PKG}.png" "${SBUILD_OUTDIR}/.DirIcon"
-     fi 
+     fi

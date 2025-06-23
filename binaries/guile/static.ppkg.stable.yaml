@@ -46,6 +46,7 @@ src_url:
 tag:
   - "guile"
 x_exec:
+  bsys: "docker://ppkg"
   host:
     - "aarch64-Linux"
     - "riscv64-Linux"

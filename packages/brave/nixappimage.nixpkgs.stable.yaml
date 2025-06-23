@@ -41,6 +41,7 @@ tag:
   - "Networking/WWW"
   - "network.web.browser"
 x_exec:
+  bsys: "host://nix"
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"

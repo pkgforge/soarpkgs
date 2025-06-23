@@ -109,6 +109,7 @@ src_url:
 tag:
   - "package-manager"
 x_exec:
+  bsys: "docker://ppkg"
   host:
     - "aarch64-Linux"
     - "riscv64-Linux"

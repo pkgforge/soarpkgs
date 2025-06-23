@@ -28,6 +28,7 @@ src_url:
 tag:
   - "Utility"
 x_exec:
+  bsys: "docker://rust"
   host:
     - "aarch64-Linux"
     - "riscv64-Linux"

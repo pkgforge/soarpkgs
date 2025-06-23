@@ -49,6 +49,7 @@ tag:
   - "namespace"
   - "sandbox"
 x_exec:
+  bsys: "docker://clang+meson"
   host:
     - "aarch64-Linux"
     - "riscv64-Linux"

@@ -305,6 +305,7 @@ tag:
   - "coreutils"
   - "toybox"
 x_exec:
+  bsys: "docker://clang+meson"
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"

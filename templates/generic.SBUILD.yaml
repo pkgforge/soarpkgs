@@ -100,6 +100,7 @@ tag:
 #!Docs: https://docs.pkgforge.dev/sbuild/specification/20.x_exec  
 #This is the important part
 x_exec:
+  bsys: "host://soar-dl" #Denotes it is run directly on host and uses soar-dl
   host: 
     - "aarch64-Linux" #Remove, if it doesn't build for aarch64 Linux
     - "x86_64-Linux"

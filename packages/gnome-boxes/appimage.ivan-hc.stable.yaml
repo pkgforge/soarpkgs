@@ -42,6 +42,7 @@ tag:
   - "editor"
   - "graphics"
 x_exec:
+  bsys: "host://soar-dl"
   shell: "bash"
   pkgver: |
     #curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-boxes/-/raw/main/PKGBUILD" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'

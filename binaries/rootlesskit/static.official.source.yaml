@@ -45,6 +45,7 @@ tag:
   - "container"
   - "rootless"
 x_exec:
+  bsys: "docker://go"
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"

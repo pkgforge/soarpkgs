@@ -45,6 +45,7 @@ tag:
   - "editor"
   - "graphics"
 x_exec:
+  bsys: "host://soar-dl"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/ivan-hc/GIMP-appimage/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "continuous-dev")) | .assets[].updated_at] | map(select(. != null)) | .[] | fromdate | strftime("%y%m%dT%H%M%S")' | sort --version-sort | tail -n 1 | tr -d '"'\''[:space:]'

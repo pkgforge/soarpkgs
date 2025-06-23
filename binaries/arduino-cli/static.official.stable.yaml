@@ -39,6 +39,7 @@ tag:
   - "development"
   - "dev-embedded"
 x_exec:
+  bsys: "host://soar-dl"
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"

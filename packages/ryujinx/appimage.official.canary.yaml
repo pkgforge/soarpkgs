@@ -38,6 +38,7 @@ tag:
   - "emulator"
   - "game"
 x_exec:
+  bsys: "host://soar-dl"
   shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/Ryubing/Canary-Releases/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'

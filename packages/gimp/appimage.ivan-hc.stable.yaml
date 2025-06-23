@@ -45,6 +45,7 @@ tag:
   - "editor"
   - "graphics"
 x_exec:
+  bsys: "host://soar-dl"
   shell: "bash"
   pkgver: |
     #curl -qfsSL "https://gitlab.archlinux.org/archlinux/packaging/packages/gimp/-/raw/main/PKGBUILD?ref_type=heads" | sed -n 's/^pkgver=//p' | tr -d '"'\''[:space:]'

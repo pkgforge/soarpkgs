@@ -42,6 +42,7 @@ src_url:
 tag:
   - "text-editor"
 x_exec:
+  bsys: "docker://go"
   host:
     - "aarch64-Linux"
     - "riscv64-Linux"

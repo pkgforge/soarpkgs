@@ -266,6 +266,7 @@ tag:
   - "busybox"
   - "coreutils"
 x_exec:
+  bsys: "docker://clang+make"
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"

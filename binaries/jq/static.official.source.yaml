@@ -45,6 +45,7 @@ src_url:
 tag:
   - "json"
 x_exec:
+  bsys: "docker://clang+make"
   host:
     - "aarch64-Linux"
     - "riscv64-Linux"

@@ -38,6 +38,7 @@ src_url:
 tag:
   - "Utility"
 x_exec:
+  bsys: "docker://rust"
   host:
     #- "aarch64-Linux" #https://github.com/orhun/binsider/issues/56
     # https://github.com/JakWai01/lurk/issues/4

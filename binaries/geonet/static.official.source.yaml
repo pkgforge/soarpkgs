@@ -25,6 +25,7 @@ tag:
   - "dns"
   - "geonet"
 x_exec:
+  bsys: "docker://rust"
   host:
     - "aarch64-Linux"
     - "x86_64-Linux"
