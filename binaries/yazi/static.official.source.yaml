@@ -63,7 +63,7 @@ x_exec:
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "ghcr.io/pkgforge/devscripts/alpine-builder:latest" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null

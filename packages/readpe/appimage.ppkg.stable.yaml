@@ -50,11 +50,11 @@ x_exec:
      (map(select((.pkg | test("^readpe"; "i")) and .version != "")) | first) | .version // empty' | tr -d '"'\''[:space:]'
   run: |
     #Build
-     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "ubuntu-builder" --pull="always" \
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder" --pull="always" \
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw,z" --workdir "/tmp" \
-     "docker.io/ubuntu:latest" \
+     "ghcr.io/pkgforge/devscripts/debian:$(uname -m)" \
       bash -l -c '
       #Setup ENV
        set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
@@ -77,6 +77,6 @@ x_exec:
        file "/build-bins/"* && du -sh "/build-bins/"*
       '
     #Copy & Meta
-     docker cp "ubuntu-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     docker cp "debian-builder:/build-bins/." "${SBUILD_TMPDIR}/"
      [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
      find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

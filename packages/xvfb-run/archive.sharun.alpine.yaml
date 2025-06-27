@@ -49,7 +49,7 @@ x_exec:
      -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
      -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
      --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
-     "alpine:edge" \
+     "ghcr.io/pkgforge/devscripts/alpine:$(uname -m)" \
       sh -c '
       #Setup ENV
        set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
