@@ -43,10 +43,10 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/SSLMate/certspotter" "./TEMPREPO" >/dev/null 2>&1 && \
+    pushd "$(mktemp -d)" &>/dev/null && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/SSLMate/certspotter" "./TEMPREPO" &>/dev/null && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
-    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
@@ -59,7 +59,7 @@ x_exec:
        set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
        CGO_ENABLED="1" 
        CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
-       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/;s/loongarch64/loong64/")
+       GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/;s/loongarch64/loong64/")"
        GOOS="linux"
        export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
       #Build
@@ -76,7 +76,7 @@ x_exec:
        find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
        file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
        du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
-       popd >/dev/null 2>&1
+       popd &>/dev/null
       '
     #Copy & Meta
      docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"

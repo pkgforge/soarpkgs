@@ -70,7 +70,7 @@ x_exec:
        #Main Package
         pacman -Sy "chaotic-aur/gimp-git" --noconfirm
         pacman -Ql "gimp-git"
-        command -v "gimp" >/dev/null 2>&1 || command -v "gimp-3" >/dev/null 2>&1 || exit 1
+        command -v "gimp" &>/dev/null || command -v "gimp-3" &>/dev/null || exit 1
         [[ -s "/usr/local/bin/gimp" ]] || ln -sfv "$(which gimp-3)" "/usr/local/bin/gimp"
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null

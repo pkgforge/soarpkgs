@@ -74,25 +74,25 @@ export -f check_sane_env
 cleanup_containers()
 {
  #Alpine 
-  ( docker stop "alpine-builder" >/dev/null 2>&1 ; docker rm "alpine-builder" >/dev/null 2>&1 ) &>/dev/null
-  ( sudo docker stop "alpine-builder" >/dev/null 2>&1 ; sudo docker rm "alpine-builder" >/dev/null 2>&1 ) &>/dev/null
+  ( docker stop "alpine-builder" &>/dev/null ; docker rm "alpine-builder" &>/dev/null ) &>/dev/null
+  ( sudo docker stop "alpine-builder" &>/dev/null ; sudo docker rm "alpine-builder" &>/dev/null ) &>/dev/null
  #Alpine-mimalloc 
-  ( docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; docker rm "alpine-builder-mimalloc" >/dev/null 2>&1 ) &>/dev/null
-  ( sudo docker stop "alpine-builder-mimalloc" >/dev/null 2>&1 ; sudo docker rm "alpine-builder-mimalloc" >/dev/null 2>&1 ) &>/dev/null
+  ( docker stop "alpine-builder-mimalloc" &>/dev/null ; docker rm "alpine-builder-mimalloc" &>/dev/null ) &>/dev/null
+  ( sudo docker stop "alpine-builder-mimalloc" &>/dev/null ; sudo docker rm "alpine-builder-mimalloc" &>/dev/null ) &>/dev/null
  #Archlinux 
-  ( docker stop "archlinux-builder" >/dev/null 2>&1 ; docker rm "archlinux-builder" >/dev/null 2>&1 ) &>/dev/null
-  ( sudo docker stop "archlinux-builder" >/dev/null 2>&1 ; sudo docker rm "archlinux-builder" >/dev/null 2>&1 ) &>/dev/null
+  ( docker stop "archlinux-builder" &>/dev/null ; docker rm "archlinux-builder" &>/dev/null ) &>/dev/null
+  ( sudo docker stop "archlinux-builder" &>/dev/null ; sudo docker rm "archlinux-builder" &>/dev/null ) &>/dev/null
  #Debian 
-  ( docker stop "debian-builder" >/dev/null 2>&1 ; docker rm "debian-builder" >/dev/null 2>&1 ) &>/dev/null
-  ( sudo docker stop "debian-builder" >/dev/null 2>&1 ; sudo docker rm "debian-builder" >/dev/null 2>&1 ) &>/dev/null
+  ( docker stop "debian-builder" &>/dev/null ; docker rm "debian-builder" &>/dev/null ) &>/dev/null
+  ( sudo docker stop "debian-builder" &>/dev/null ; sudo docker rm "debian-builder" &>/dev/null ) &>/dev/null
  #Debian-Unstable 
-  ( docker stop "debian-builder-unstable" >/dev/null 2>&1 ; docker rm "debian-builder-unstable" >/dev/null 2>&1 ) &>/dev/null
-  ( sudo docker stop "debian-builder-unstable" >/dev/null 2>&1 ; sudo docker rm "debian-builder-unstable" >/dev/null 2>&1 ) &>/dev/null
+  ( docker stop "debian-builder-unstable" &>/dev/null ; docker rm "debian-builder-unstable" &>/dev/null ) &>/dev/null
+  ( sudo docker stop "debian-builder-unstable" &>/dev/null ; sudo docker rm "debian-builder-unstable" &>/dev/null ) &>/dev/null
  #Ubuntu 
-  ( docker stop "ubuntu-builder" >/dev/null 2>&1 ; docker rm "ubuntu-builder" >/dev/null 2>&1 ) &>/dev/null
-  ( sudo docker stop "ubuntu-builder" >/dev/null 2>&1 ; sudo docker rm "ubuntu-builder" >/dev/null 2>&1 ) &>/dev/null
+  ( docker stop "ubuntu-builder" &>/dev/null ; docker rm "ubuntu-builder" &>/dev/null ) &>/dev/null
+  ( sudo docker stop "ubuntu-builder" &>/dev/null ; sudo docker rm "ubuntu-builder" &>/dev/null ) &>/dev/null
  #Cleanup 
-  wait >/dev/null 2>&1 ; echo
+  wait &>/dev/null ; echo
 }
 export -f cleanup_containers
 #-------------------------------------------------------#
@@ -172,7 +172,7 @@ gen_json_from_sbuild()
    export TMPJSON TMPXVER TMPXRUN
   #Gen
    yq eval "." "${INPUT_SBUILD}" --output-format "json" | jq 'del(.x_exec)' > "${TMPJSON}"
-   if jq --exit-status . "${TMPJSON}" >/dev/null 2>&1; then
+   if jq --exit-status . "${TMPJSON}" &>/dev/null; then
     ##Check & Set
      if [[ "$(yq '._disabled' "${INPUT_SBUILD}")" == "true" ]]; then
        echo -e "\n[✗] FATAL: SBUILD (${INPUT_SBUILD}) is Disabled ('_disabled: true')\n"
@@ -310,7 +310,7 @@ build_progs()
 {
 unset SBUILD_SUCCESSFUL
 if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
- if jq --exit-status . "${TMPJSON}" >/dev/null 2>&1; then
+ if jq --exit-status . "${TMPJSON}" &>/dev/null; then
  #Additional Env
   PKGVER="${SBUILD_PKGVER}" ; pkgver="${PKGVER}"
   PKG_VER="${SBUILD_PKGVER}" ; pkg_ver="${PKG_VER}"
@@ -373,7 +373,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
  #Run
   if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
    check_sane_env
-   pushd "${SBUILD_OUTDIR}" >/dev/null 2>&1
+   pushd "${SBUILD_OUTDIR}" &>/dev/null
      #printf "\n" && timeout -k 5m 150m "${TMPXRUN}" ; printf "\n"
      cleanup_containers
      printf "\n" && timeout -k 5m 150m sbuild --log-level "verbose" "${INPUT_SBUILD}" --timeout-linter "120" --outdir "${SBUILD_OUTDIR}/BUILD" --keep
@@ -536,7 +536,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
          timeout -k 10s 60s find -L "${SBUILD_OUTDIR}" -maxdepth 1 -type f,l -regex '.*\.\(DirIcon\|png\|svg\)' -exec bash -c 'basename "{}" && chafa "{}"' \;
        fi
       #License
-       if jq --exit-status . "${TMPJSON}" >/dev/null 2>&1; then
+       if jq --exit-status . "${TMPJSON}" &>/dev/null; then
          if [[ ! -s "${SBUILD_OUTDIR}/LICENSE" || $(stat -c%s "${SBUILD_OUTDIR}/LICENSE") -le 10 ]]; then
            echo -e "\n[+] Fetching LICENSE ==> [${SBUILD_OUTDIR}/LICENSE]"
            unset LICENSE_SRC TMP_LICENSE
@@ -609,7 +609,7 @@ if [[ "${CONTINUE_SBUILD}" == "YES" ]]; then
        [[ "${GHA_MODE}" == "MATRIX" ]] && echo "SBUILD_SUCCESSFUL=${SBUILD_SUCCESSFUL}" >> "${GITHUB_ENV}"
        cleanup_env ; return 1 || exit 1
      fi
-   popd >/dev/null 2>&1
+   popd &>/dev/null
   fi
  else
    echo -e "\n[✗] FATAL: Could NOT parse ${INPUT_SBUILD} ==> ${TMPJSON}\n"
@@ -895,13 +895,13 @@ export -f generate_json
 upload_to_ghcr()
 {
 local PROG="$1"
-pushd "${SBUILD_OUTDIR}" >/dev/null 2>&1
+pushd "${SBUILD_OUTDIR}" &>/dev/null
 unset GHCR_PKG ; GHCR_PKG="$(realpath ${SBUILD_OUTDIR})/${PROG}" ; export GHCR_PKG
 if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
  #Clear ENV
   unset ARCH BUILD_LOG BUILD_SCRIPT DOWNLOAD_URL GHCRPKG_TAG GHCRPKG_URL MANIFEST_URL METADATA_URL PKG_BSUM PKG_APPSTREAM PKG_CATEGORY PKG_DATE PKG_DESCRIPTION PKG_DESKTOP PKG_HOMEPAGE PKG_ICON PKG_JSON PKG_NAME PKG_NOTE PKG_ORIG PKG_REPOLOGY PKG_SCREENSHOT PKG_SHASUM PKG_SIZE PKG_SIZE_RAW PKG_SRCURL PKG_TAG PKG_VERSION PKG_VERSION_UPSTREAM PKG_WEBPAGE PUSH_SUCCESSFUL VERSION
  #Parse (in order of dependencies)
-  if jq --exit-status . "${SBUILD_OUTDIR}/${PROG}.json" >/dev/null 2>&1; then
+  if jq --exit-status . "${SBUILD_OUTDIR}/${PROG}.json" &>/dev/null; then
   #json 
    PKG_JSON="$(realpath ${SBUILD_OUTDIR}/${PROG}.json)" ; export PKG_JSON
    echo "export PKG_JSON='${PKG_JSON}'" >> "${OCWD}/ENVPATH"
@@ -1207,10 +1207,10 @@ if [[ "${SBUILD_SUCCESSFUL}" == "YES" ]] && [[ -s "${GHCR_PKG}" ]]; then
    return 1 || exit 1
   fi
 fi
-popd >/dev/null 2>&1
+popd &>/dev/null
 }
 export -f upload_to_ghcr
-popd >/dev/null 2>&1
+popd &>/dev/null
 #-------------------------------------------------------#
 
 #-------------------------------------------------------#

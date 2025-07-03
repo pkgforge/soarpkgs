@@ -115,11 +115,11 @@ x_exec:
     #Build
      cd "${SBUILD_TMPDIR}" && \
      git clone --filter "blob:none" --quiet "https://github.com/ziglang/qemu-static" "./TEMPREPO" && cd "./TEMPREPO/"
-     docker stop "qemu-static" >/dev/null 2>&1 ; docker rm "qemu-static" >/dev/null 2>&1
+     docker stop "qemu-static" &>/dev/null ; docker rm "qemu-static" &>/dev/null
      docker build --tag "qemu-static" "./" --no-cache && rm -rf "${SBUILD_TMPDIR}/artifact" 2>/dev/null ; mkdir -pv "${SBUILD_TMPDIR}/artifact"
      docker run --privileged --net="host" --name "qemu-builder" "qemu-static" sh -c 'true'
      docker cp "qemu-builder:/work/artifact/." "${SBUILD_TMPDIR}/artifact/."
-     docker stop "qemu-builder" >/dev/null 2>&1 ; docker rm "qemu-builder" >/dev/null 2>&1
+     docker stop "qemu-builder" &>/dev/null ; docker rm "qemu-builder" &>/dev/null
      docker container rm "qemu-static" 2>/dev/null ; docker image rm "qemu-static" 2>/dev/null
     #Extract
      mkdir -pv "${SBUILD_TMPDIR}/STATIC_BUILD" && \

@@ -68,7 +68,7 @@ x_exec:
        #Main Package
         pacman -Sy "chaotic-aur/libresprite-git" --noconfirm
         pacman -Ql "libresprite-git"
-        command -v "libresprite" >/dev/null 2>&1 || exit 1
+        command -v "libresprite" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null
         pacman -Rsn perl --noconfirm 2>/dev/null

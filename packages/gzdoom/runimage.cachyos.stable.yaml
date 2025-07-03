@@ -72,7 +72,7 @@ x_exec:
        #Main Package
         pacman -Sy "chaotic-aur/gzdoom" --noconfirm
         pacman -Ql "gzdoom"
-        command -v "gzdoom" >/dev/null 2>&1 || exit 1
+        command -v "gzdoom" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null
         pacman -Rsn perl --noconfirm 2>/dev/null

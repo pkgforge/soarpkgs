@@ -69,7 +69,7 @@ x_exec:
         #for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "blender" --noconfirm
-        command -v "blender" >/dev/null 2>&1 || exit 1
+        command -v "blender" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Ql "blender"
         pacman -Rsn base-devel --noconfirm 2>/dev/null

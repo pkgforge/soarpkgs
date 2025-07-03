@@ -53,7 +53,7 @@ sbuild_builder()
   ##ENV:$PATH
    HOME="$(getent passwd ${USER} | cut -d: -f6)" && export HOME="${HOME}"
    export PATH="${HOME}/.local/share/soar/bin:${HOME}/bin:${HOME}/.cargo/bin:${HOME}/.cargo/env:${HOME}/.config/guix/current/bin/guix:${HOME}/.go/bin:${HOME}/go/bin:${HOME}/.local/bin:${HOME}/miniconda3/bin:${HOME}/miniconda3/condabin:/root/.config/guix/current/bin/guix:/usr/local/zig:/usr/local/zig/lib:/usr/local/zig/lib/include:/usr/local/musl/bin:/usr/local/musl/lib:/usr/local/musl/include:${PATH}"
-   if command -v awk >/dev/null 2>&1 && command -v sed >/dev/null 2>&1; then
+   if command -v awk &>/dev/null && command -v sed &>/dev/null; then
     PATH="$(echo "${PATH}" | awk 'BEGIN{RS=":";ORS=":"}{gsub(/\n/,"");if(!a[$0]++)print}' | sed 's/:*$//')" ; export PATH
    fi
    HOST_TRIPLET="$(uname -m)-$(uname -s)"
@@ -217,14 +217,14 @@ sbuild_builder()
     fi
    fi
   #Build
-   i=0; until pushd "$(${TMPDIRS})" >/dev/null 2>&1 || [ $((i+=1)) -gt 3 ]; do :; done
+   i=0; until pushd "$(${TMPDIRS})" &>/dev/null || [ $((i+=1)) -gt 3 ]; do :; done
    echo -e "\n==> [+] Started Building at :: $(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC\n"
    sort -u "${SYSTMP}/pkgforge/SBUILD_URLS" -o"${SYSTMP}/pkgforge/SBUILD_URLS"
    readarray -t RECIPES < "${SYSTMP}/pkgforge/SBUILD_URLS"
    TOTAL_RECIPES="${#RECIPES[@]}" && export TOTAL_RECIPES="${TOTAL_RECIPES}"
    echo -e "\n[+] Total RECIPES :: ${TOTAL_RECIPES}\n"
     for ((i=0; i<${#RECIPES[@]}; i++)); do
-     pushd "$(${TMPDIRS})" >/dev/null 2>&1 || sleep 2 && pushd "$(${TMPDIRS})" >/dev/null 2>&1
+     pushd "$(${TMPDIRS})" &>/dev/null || sleep 2 && pushd "$(${TMPDIRS})" &>/dev/null
      OCWD="$(realpath .)" ; export OCWD
      rm "${OCWD}/ENVPATH" 2>/dev/null
      if [[ "${LOCAL_SBUILD}" == "YES" ]] && [[ "${SBUILD_REBUILD}" != "false" ]]; then
@@ -321,16 +321,16 @@ sbuild_builder()
        fi
      fi
      if [[ "${KEEP_LOGS}" != "YES" ]]; then
-      rm -rf "${BUILDSCRIPT}" "$(realpath .)" && popd >/dev/null 2>&1 ; cleanup_env
+      rm -rf "${BUILDSCRIPT}" "$(realpath .)" && popd &>/dev/null ; cleanup_env
      else
-      popd >/dev/null 2>&1 ; cleanup_env
+      popd &>/dev/null ; cleanup_env
      fi
      END_TIME="$(date +%s)" && export END_TIME="${END_TIME}"
      ELAPSED_TIME="$(date -u -d@"$((END_TIME - START_TIME))" "+%H(Hr):%M(Min):%S(Sec)")"
      echo -e "\n[+] Completed (Building|Fetching) ${RECIPE} :: ${ELAPSED_TIME}\n"
     done
     echo -e "\n==> [+] Finished Building at :: $(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC\n"
-   popd >/dev/null 2>&1
+   popd &>/dev/null
    unset CONTINUE_SBUILD GHCRPKG LOGPATH PKG_FAMILY PUSH_SUCCESSFUL RECIPE SBUILD_PKG SBUILD_SCRIPT SBUILD_SCRIPT_BLOB SBUILD_SKIPPED SBUILD_SUCCESSFUL
    cd "${OWD_TMPDIR}" ; unset OWD_TMPDIR
   ##Finish

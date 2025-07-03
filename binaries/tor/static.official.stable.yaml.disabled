@@ -60,7 +60,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      export SOURCE_URL="https://github.com/bpftrace/bpftrace"
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       ##Build (alpine-musl)
-       pushd "$($TMPDIRS)" >/dev/null 2>&1
+       pushd "$($TMPDIRS)" &>/dev/null
        docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
         bash -l -c '
@@ -80,7 +80,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
            mv "$file" "$newname"; 
          done
          find "dist/" -name "*.whl" | xargs pip install --break-system-packages --upgrade --force
-         staticx --version ; popd >/dev/null 2>&1
+         staticx --version ; popd &>/dev/null
         ##Staticx
          apk update && apk upgrade --no-interactive
          apk add tor torsocks --latest --upgrade --no-interactive
@@ -98,7 +98,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \; 2>/dev/null
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null
          file "/build-bins/"* && du -sh "/build-bins/"*
-         popd >/dev/null 2>&1
+         popd &>/dev/null
         '
       #Copy & Meta
        docker cp "alpine-builder:/build-bins/." "$(pwd)/"
@@ -108,7 +108,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        sudo rsync -av --copy-links --exclude="*/" "./." "$BASEUTILSDIR/tor"
       #Delete Containers
        docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
-       popd >/dev/null 2>&1
+       popd &>/dev/null
       #-------------------------------------------------------#
       if [ -s "$HOME/.config/rclone/rclone.conf" ] && [ "$(find "$BASEUTILSDIR/tor" -mindepth 1 -print -quit 2>/dev/null)" ]; then
       ##Meta
@@ -154,12 +154,12 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
           jq --arg BIN "$BIN" --arg WEB_URL "$WEB_URL" '.[] |= if .name == $BIN then . + {web_url: $WEB_URL} else . end' "$TMP_METADIR/INFO.json" > "$TMP_METADIR/INFO.tmp" && mv "$TMP_METADIR/INFO.tmp" "$TMP_METADIR/INFO.json"
        done
        #Upload 
-       if jq --exit-status . "$TMP_METADIR/INFO.json" >/dev/null 2>&1; then
+       if jq --exit-status . "$TMP_METADIR/INFO.json" &>/dev/null; then
           rclone copyto --checksum "$TMP_METADIR/INFO.json" "r2:/bin/x86_64_Linux/Baseutils/tor/INFO.json" --check-first --checkers 2000 --transfers 1000 --user-agent="$USER_AGENT"
        fi
        unset TMP_METADIR BUILD_LOG BUILD_SCRIPT B3SUM DESCRIPTION NOTE EXTRA_BINS REPO_URL SHA256 WEB_URL
       fi       
-       find "$BASEUTILSDIR" -type f -size -3c -delete ; popd >/dev/null 2>&1
+       find "$BASEUTILSDIR" -type f -size -3c -delete ; popd &>/dev/null
 fi
 #-------------------------------------------------------#
 

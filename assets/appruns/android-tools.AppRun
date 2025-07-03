@@ -2,24 +2,24 @@
 CURRENTDIR="$(dirname "$(readlink -f "$0")")"/usr/bin
 UDEVNOTICE='No android udev rules detected, use "--getudev" to install'
 UDEVREPO="https://github.com/M0Rf30/android-udev-rules.git"
-cat /etc/udev/rules.d/*droid.rules >/dev/null 2>&1 && UDEVNOTICE=""
+cat /etc/udev/rules.d/*droid.rules &>/dev/null && UDEVNOTICE=""
 ARGV0="${ARGV0#./}"
 export PATH="$CURRENTDIR:$PATH"
 
 _get_udev_rules() {
-	if cat /etc/udev/rules.d/*droid.rules >/dev/null 2>&1; then
+	if cat /etc/udev/rules.d/*droid.rules &>/dev/null; then
 		echo "ERROR: udev rules are already installed!"
 		echo "Errors persisting with installed udev rules may be due to missing" 
 		echo "udev rules for device or lack of permissions from device"
 		exit 1
 	fi
-	if ! command -v git >/dev/null 2>&1; then
+	if ! command -v git &>/dev/null; then
 		echo "ERROR: you need git to use this function"
 		exit 1
 	fi
-	if command -v sudo >/dev/null 2>&1; then
+	if command -v sudo &>/dev/null; then
 		SUDOCMD="sudo"
-	elif command -v doas >/dev/null 2>&1; then
+	elif command -v doas &>/dev/null; then
 		SUDOCMD="doas"
 	else
 		echo "ERROR: You need sudo or doas to use this function"
@@ -27,11 +27,11 @@ _get_udev_rules() {
 	fi
 	printf '%s' "udev rules installer from $UDEVREPO, run installer? (y/N): "
 	read -r yn
-	if echo "$yn" | grep -i '^y' >/dev/null 2>&1; then
+	if echo "$yn" | grep -i '^y' &>/dev/null; then
 		tmpudev=".udev_rules_tmp.dir"
 		git clone "$UDEVREPO" "$tmpudev" && cd "$tmpudev" || exit 1
 		chmod +x ./install.sh && "$SUDOCMD" ./install.sh
-		cat /etc/udev/rules.d/*droid.rules >/dev/null 2>&1 || exit 1
+		cat /etc/udev/rules.d/*droid.rules &>/dev/null || exit 1
 		cd .. && rm -rf "$tmpudev" || exit 1
 		echo "udev rules installed successfully!"
 	else
@@ -51,7 +51,7 @@ _get_symlinks() {
 	echo "Make sure there are not existing files $BINDIR with those names"
 	printf '\n%s' "Proceed with the symlink creation? (Y/n): " 
 	read -r yn
-	if echo "$yn" | grep -i '^n' >/dev/null 2>&1; then
+	if echo "$yn" | grep -i '^n' &>/dev/null; then
 		echo "Aborting..."
 		exit 1
 	fi

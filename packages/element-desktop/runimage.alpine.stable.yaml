@@ -70,7 +70,7 @@ x_exec:
         for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-interactive 2>/dev/null; done
        #Main Package
         apk add "element-desktop" --repository="https://dl-cdn.alpinelinux.org/alpine/edge/testing" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
-        command -v "element-desktop" >/dev/null 2>&1 || exit 1
+        command -v "element-desktop" &>/dev/null || exit 1
        #Debloat & Shrink
         apk info -L "element-desktop"
         rm -rvf "/etc/apk/repositories" 2>/dev/null

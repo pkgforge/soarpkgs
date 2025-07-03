@@ -39,10 +39,10 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/nmimusic/unifetch" "./TEMPREPO" >/dev/null 2>&1 && \
+    pushd "$(mktemp -d)" &>/dev/null && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/nmimusic/unifetch" "./TEMPREPO" &>/dev/null && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
-    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
   run: |
     #Download
      curl -qfsSL "https://raw.githubusercontent.com/nmimusic/unifetch/master/unifetch" -o "${SBUILD_OUTDIR}/${PKG}"

@@ -78,7 +78,7 @@ x_exec:
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
        #Info
         file "/build-bins/"* && du -sh "/build-bins/"*
-        popd >/dev/null 2>&1
+        popd &>/dev/null
       '
     #Copy & Meta
      docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"

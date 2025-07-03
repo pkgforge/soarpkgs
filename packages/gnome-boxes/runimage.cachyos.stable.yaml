@@ -73,7 +73,7 @@ x_exec:
        #Main Package
         pacman -Sy "gnome-boxes" --noconfirm
         pacman -Ql "gnome-boxes"
-        command -v "gnome-boxes" >/dev/null 2>&1 || exit 1
+        command -v "gnome-boxes" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null
         pacman -Rsn perl --noconfirm 2>/dev/null

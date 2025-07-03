@@ -446,7 +446,7 @@ jobs:
                   fi
               fi
             fi
-           popd >/dev/null 2>&1
+           popd &>/dev/null
           fi
         continue-on-error: true
 

@@ -70,7 +70,7 @@ x_exec:
        #Main Package
         pacman -Sy "chaotic-aur/openboard" --noconfirm
         pacman -Ql "openboard"
-        command -v "openboard" >/dev/null 2>&1 || exit 1
+        command -v "openboard" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null
         pacman -Rsn perl --noconfirm 2>/dev/null

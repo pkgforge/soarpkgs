@@ -46,10 +46,10 @@ x_exec:
     - "x86_64-Linux"
   shell: "bash"
   pkgver: |
-    pushd "$(mktemp -d)" >/dev/null 2>&1 && \
-    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/HorlogeSkynet/archey4" "./TEMPREPO" >/dev/null 2>&1 && \
+    pushd "$(mktemp -d)" &>/dev/null && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/HorlogeSkynet/archey4" "./TEMPREPO" &>/dev/null && \
     git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
-    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" >/dev/null 2>&1 && popd >/dev/null 2>&1
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
   run: |
     #Build
      mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "debian-builder-unstable" --pull="always" \
@@ -77,7 +77,7 @@ x_exec:
         ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
        #Info
         file "/build-bins/"* && du -sh "/build-bins/"*
-        popd >/dev/null 2>&1
+        popd &>/dev/null
       '
     #Copy & Meta
      docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"

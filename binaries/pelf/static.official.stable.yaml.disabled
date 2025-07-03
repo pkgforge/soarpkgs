@@ -65,13 +65,13 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      export SOURCE_URL="https://github.com/xplshn/pelf"
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #Build
-       pushd "$($TMPDIRS)" >/dev/null 2>&1 && git clone --quiet --filter "blob:none" "https://github.com/xplshn/pelf" && cd "./pelf/cmd/pelfd"
+       pushd "$($TMPDIRS)" &>/dev/null && git clone --quiet --filter "blob:none" "https://github.com/xplshn/pelf" && cd "./pelf/cmd/pelfd"
        rm -rf "go.mod" 2>/dev/null ; go mod init "github.com/xplshn/pelf" && go mod tidy
        GOOS="linux" GOARCH="amd64" CGO_ENABLED="0" go build -x -v -ldflags="-buildid= -s -w -extldflags '-static'" -o "./pelfd-bin" ; cp "./pelfd-bin" "$BINDIR/pelfd"
        curl -qfsSL "https://raw.githubusercontent.com/xplshn/pelf/master/pelf" -o "$BINDIR/pelf"
        curl -qfsSL "https://raw.githubusercontent.com/xplshn/pelf/master/pelf_extract" -o "$BINDIR/pelf_extract"
        curl -qfsSL "https://raw.githubusercontent.com/xplshn/pelf/master/pelf_linker" -o "$BINDIR/pelf_linker"
-       popd >/dev/null 2>&1 ; go clean -cache -fuzzcache -modcache -testcache
+       popd &>/dev/null ; go clean -cache -fuzzcache -modcache -testcache
 fi
 #-------------------------------------------------------#
 

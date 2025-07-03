@@ -65,7 +65,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      export SOURCE_URL="https://www.twingate.com/" #github/gitlab/homepage/etc for $BIN
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       ##Build: Clients
-       pushd "$($TMPDIRS)" >/dev/null 2>&1
+       pushd "$($TMPDIRS)" &>/dev/null
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable" 2>/dev/null
        docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
@@ -83,7 +83,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          staticx --loglevel DEBUG "./twingated" --strip "/build-bins/twingated"
          sudo rsync -av --copy-links "$(which twingate-notifier)" "./twingate-notifier"
          staticx --loglevel DEBUG "./twingate-notifier" --strip "/build-bins/twingate-notifier"
-         popd >/dev/null 2>&1
+         popd &>/dev/null
         '
       #Copy & Meta
        docker cp "debian-builder-unstable:/build-bins/." "$(pwd)/"
@@ -93,9 +93,9 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        sudo rsync -av --copy-links --exclude="*/" "./." "$BASEUTILSDIR/twingate/"
       #Delete Containers
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable"
-       popd >/dev/null 2>&1
+       popd &>/dev/null
       ##Build: Connectors
-       pushd "$($TMPDIRS)" >/dev/null 2>&1
+       pushd "$($TMPDIRS)" &>/dev/null
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable" 2>/dev/null
        docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
@@ -111,7 +111,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          staticx --loglevel DEBUG "./twingate-connector" --strip "/build-bins/twingate-connector"
          sudo rsync -av --copy-links "$(which twingate-connectorctl)" "./twingate-connectorctl"
          staticx --loglevel DEBUG "./twingate-connectorctl" --strip "/build-bins/twingate-connectorctl"
-         popd >/dev/null 2>&1
+         popd &>/dev/null
         '
       #Copy & Meta
        docker cp "debian-builder-unstable:/build-bins/." "$(pwd)/"
@@ -121,7 +121,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        sudo rsync -av --copy-links --exclude="*/" "./." "$BASEUTILSDIR/twingate/"
       #Delete Containers
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable"
-       popd >/dev/null 2>&1
+       popd &>/dev/null
       #-------------------------------------------------------#
       if [ -s "$HOME/.config/rclone/rclone.conf" ] && [ "$(find "$BASEUTILSDIR/twingate" -mindepth 1 -print -quit 2>/dev/null)" ]; then
       ##Meta
@@ -167,13 +167,13 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
           jq --arg BIN "$BIN" --arg WEB_URL "$WEB_URL" '.[] |= if .name == $BIN then . + {web_url: $WEB_URL} else . end' "$TMP_METADIR/INFO.json" > "$TMP_METADIR/INFO.tmp" && mv "$TMP_METADIR/INFO.tmp" "$TMP_METADIR/INFO.json"
        done
        #Upload 
-       if jq --exit-status . "$TMP_METADIR/INFO.json" >/dev/null 2>&1; then
+       if jq --exit-status . "$TMP_METADIR/INFO.json" &>/dev/null; then
           rclone copyto --checksum "$TMP_METADIR/INFO.json" "r2:/bin/x86_64_Linux/Baseutils/twingate/INFO.json" --check-first --checkers 2000 --transfers 1000 --user-agent="$USER_AGENT"
        fi
        unset TMP_METADIR BUILD_LOG BUILD_SCRIPT B3SUM DESCRIPTION NOTE EXTRA_BINS REPO_URL SHA256 WEB_URL
       fi
        docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
-       find "$BASEUTILSDIR" -type f -size -3c -delete ; popd >/dev/null 2>&1
+       find "$BASEUTILSDIR" -type f -size -3c -delete ; popd &>/dev/null
 fi
 #-------------------------------------------------------#
 

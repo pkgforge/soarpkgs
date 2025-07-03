@@ -19,7 +19,7 @@ if [ -z "${SYSTMP+x}" ] || [ -z "${SYSTMP##*[[:space:]]}" ]; then
 fi
 USER="$(whoami)" && export USER="${USER}"
 HOME="$(getent passwd ${USER} | cut -d: -f6)" && export HOME="${HOME}"
-if command -v awk >/dev/null 2>&1 && command -v sed >/dev/null 2>&1; then
+if command -v awk &>/dev/null && command -v sed &>/dev/null; then
  PATH="$(echo "${PATH}" | awk 'BEGIN{RS=":";ORS=":"}{gsub(/\n/,"");if(!a[$0]++)print}' | sed 's/:*$//')" ; export PATH
 fi
 #-------------------------------------------------------#
@@ -179,7 +179,7 @@ fi
 
 #-------------------------------------------------------#
 ##Main
-pushd "$(mktemp -d)" >/dev/null 2>&1
+pushd "$(mktemp -d)" &>/dev/null
  echo -e "\n\n [+] Started Initializing $(uname -mnrs) :: at $(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)')\n\n"
  echo -e "[+] USER = ${USER}"
  echo -e "[+] HOME = ${HOME}"
@@ -249,7 +249,7 @@ if [ "${CONTINUE}" == "YES" ]; then
      return 1 || exit 1
    else
      if ! sudo systemctl is-active --quiet docker; then
-      sudo service docker restart >/dev/null 2>&1 ; sleep 10
+      sudo service docker restart &>/dev/null ; sleep 10
      fi
      sudo systemctl status "docker.service" --no-pager
      docker --version ; sudo docker run hello-world
@@ -265,7 +265,7 @@ if [ "${CONTINUE}" == "YES" ]; then
    echo -e "\n[+] Latest Docker seems to be already Installed"
    docker --version
    if ! sudo systemctl is-active --quiet docker; then
-    sudo service docker restart >/dev/null 2>&1 ; sleep 10
+    sudo service docker restart &>/dev/null ; sleep 10
    fi
    sudo systemctl status "docker.service" --no-pager
   fi
@@ -337,7 +337,7 @@ if [ "${CONTINUE}" == "YES" ]; then
   [[ -f "${HOME}/.bash_profile" ]] && source "${HOME}/.bash_profile"
   [[ -f "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]] && source "${HOME}/.nix-profile/etc/profile.d/nix.sh"
   hash -r &>/dev/null
-  if ! command -v nix >/dev/null 2>&1; then
+  if ! command -v nix &>/dev/null; then
     pushd "$(mktemp -d)" &>/dev/null
      curl -qfsSL "https://raw.githubusercontent.com/pkgforge/devscripts/refs/heads/main/Linux/install_nix.sh" -o "./install_nix.sh"
      dos2unix --quiet "./install_nix.sh" ; chmod +x "./install_nix.sh"
@@ -359,11 +359,11 @@ if [ "${CONTINUE}" == "YES" ]; then
       export NIXPKGS_ALLOW_UNFREE="1"
       export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM="1"
      #Add Tokens
-      echo "access-tokens = github.com=${GITHUB_TOKEN}" | sudo tee -a "/etc/nix/nix.conf" >/dev/null 2>&1
+      echo "access-tokens = github.com=${GITHUB_TOKEN}" | sudo tee -a "/etc/nix/nix.conf" &>/dev/null
      #Update Channels
       nix --version && nix-channel --list && nix-channel --update
      #Seed Local Data 
-      nix derivation show "nixpkgs#hello" --impure --refresh --quiet >/dev/null 2>&1
+      nix derivation show "nixpkgs#hello" --impure --refresh --quiet &>/dev/null
    fi
  #----------------------# 
  #rust & cargo
@@ -391,6 +391,6 @@ if [ "${CONTINUE}" == "YES" ]; then
    unset AR AS CC CFLAGS CPP CXX CPPFLAGS CXXFLAGS DLLTOOL HOST_CC HOST_CXX LD LDFLAGS LIBS NM OBJCOPY OBJDUMP RANLIB READELF SIZE STRINGS STRIP SYSROOT
  fi
 fi
-rm -rf "$(realpath .)" && popd >/dev/null 2>&1
+rm -rf "$(realpath .)" && popd &>/dev/null
 echo -e "\n[+] Continue : ${CONTINUE}\n"
 #-------------------------------------------------------#

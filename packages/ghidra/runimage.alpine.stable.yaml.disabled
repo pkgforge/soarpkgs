@@ -69,7 +69,7 @@ x_exec:
         for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-interactive 2>/dev/null; done
        #Main Package
         apk add "ghidra" --repository="https://dl-cdn.alpinelinux.org/alpine/edge/testing" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
-        command -v "ghidra" >/dev/null 2>&1 || exit 1
+        command -v "ghidra" &>/dev/null || exit 1
         mv -fv "$(which ghidra)" "/usr/bin/ghidra-bin"
         echo '#!/bin/sh' > "/usr/bin/ghidra"
         echo '/usr/bin/ghidra-bin "$@"' >> "/usr/bin/ghidra"

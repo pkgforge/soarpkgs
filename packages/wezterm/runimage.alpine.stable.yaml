@@ -71,7 +71,7 @@ x_exec:
         for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-cache --no-interactive ; done
        #Main Package
         apk add "wezterm" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
-        command -v "wezterm" >/dev/null 2>&1 || exit 1
+        command -v "wezterm" &>/dev/null || exit 1
        #Debloat & Shrink
         apk info -L "wezterm"
         rm -rvf "/etc/apk/repositories" 2>/dev/null

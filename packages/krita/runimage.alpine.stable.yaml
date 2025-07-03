@@ -74,7 +74,7 @@ x_exec:
         #for pkg in "${BASE_PKGS[@]}"; do apk add "${pkg}" --force-missing-repositories --latest --upgrade --no-interactive 2>/dev/null; done
        #Main Package
         apk add "krita" --force-missing-repositories --latest --upgrade --no-cache --no-interactive
-        command -v "krita" >/dev/null 2>&1 || exit 1
+        command -v "krita" &>/dev/null || exit 1
        #Debloat & Shrink
         apk info -L "krita"
         rm -rvf "/etc/apk/repositories" 2>/dev/null

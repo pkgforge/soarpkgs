@@ -69,14 +69,14 @@ x_exec:
      sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
      chmod +x "${SBUILD_TMPDIR}/${PKG}.nixappimage.tmp"
     #Debloat & Fix things
-     pushd "${SBUILD_TMPDIR}" >/dev/null 2>&1 && \
+     pushd "${SBUILD_TMPDIR}" &>/dev/null && \
        "./${PKG}.nixappimage.tmp" --appimage-extract >/dev/null && rm -rvf "./${PKG}.nixappimage.tmp"
        if [ ! -d "./squashfs-root" ] || [ "$(du -s "./squashfs-root" | cut -f1)" -le 100 ]; then
          echo -e "\n [X] FATAL: Building/Extraction probably Failed\n"
         exit 1
        fi
       #De-Nix
-       pushd "${SBUILD_TMPDIR}" >/dev/null 2>&1 || exit 1
+       pushd "${SBUILD_TMPDIR}" &>/dev/null || exit 1
        mkdir -pv "./squashfs-root/usr/share/applications" && mkdir -pv "./squashfs-root/usr/share/metainfo"
        ENTRYPOINT_DIR="$(readlink -f "./squashfs-root/entrypoint" | sed -E 's|^(/nix/store/[^/]+).*|\1|' | tr -d '[:space:]')"
        ENTRYPOINT_DIR="$(echo "${SBUILD_TMPDIR}/squashfs-root/${ENTRYPOINT_DIR}" | sed 's|//|/|g')" && export ENTRYPOINT_DIR="${ENTRYPOINT_DIR}"

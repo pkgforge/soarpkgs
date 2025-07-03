@@ -63,7 +63,7 @@ x_exec:
         echo '   exec "./scrcpy-plus" "$@"' >> "/usr/local/bin/scrcpy-plus"
         echo 'fi' >> "/usr/local/bin/scrcpy-plus"
         chmod -v 'a+x' "/usr/local/bin/scrcpy-plus"
-        command -v "scrcpy-plus" >/dev/null 2>&1 || exit 1
+        command -v "scrcpy-plus" &>/dev/null || exit 1
         rm -rvf "./7z" "./scrcpy-plus"
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null

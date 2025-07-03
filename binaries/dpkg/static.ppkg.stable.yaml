@@ -128,7 +128,7 @@ x_exec:
      "ghcr.io/pkgforge/devscripts/alpine:$(uname -m)" \
       sh -c '
       #Setup ENV
-       mkdir -p "/build-bins" && cd "$(mktemp -d)" >/dev/null 2>&1
+       mkdir -p "/build-bins" && cd "$(mktemp -d)" &>/dev/null
        apk update && apk upgrade --no-interactive 2>/dev/null
        apk del ninja-is-really-ninja --force --no-interactive 2>/dev/null
        apk cache clean --purge

@@ -77,7 +77,7 @@ x_exec:
         echo '   exec "./fdm" "$@"' >> "/usr/local/bin/fdm"
         echo 'fi' >> "/usr/local/bin/fdm"
         chmod -v 'a+x' "/usr/local/bin/fdm"
-        command -v "fdm" >/dev/null 2>&1 || exit 1
+        command -v "fdm" &>/dev/null || exit 1
         rm -rvf "./fdm.deb"
        #Debloat & Shrink
         sudo apt show "freedownloadmanager" ; dpkg-query -L "freedownloadmanager"

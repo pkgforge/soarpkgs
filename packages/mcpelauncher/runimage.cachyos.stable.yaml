@@ -73,8 +73,8 @@ x_exec:
         pacman -Sy "chaotic-aur/mcpelauncher-ui-git" --noconfirm
         pacman -Ql "mcpelauncher-linux-git"
         pacman -Ql "mcpelauncher-ui-git"
-        command -v "mcpelauncher-client" >/dev/null 2>&1 || exit 1
-        command -v "mcpelauncher-ui-qt" >/dev/null 2>&1 || exit 1
+        command -v "mcpelauncher-client" &>/dev/null || exit 1
+        command -v "mcpelauncher-ui-qt" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null
         pacman -Rsn perl --noconfirm 2>/dev/null

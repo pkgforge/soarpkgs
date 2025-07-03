@@ -63,7 +63,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      export SOURCE_URL="https://github.com/pkgforge/squishy-rs"
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #Build
-       pushd "$($TMPDIRS)" >/dev/null 2>&1
+       pushd "$($TMPDIRS)" &>/dev/null
        docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder" 2>/dev/null
        docker run --privileged --net="host" --name "alpine-builder" --pull="always" "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
         bash -l -c '
@@ -85,7 +85,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null
          file "/build-bins/"* && du -sh "/build-bins/"*
-         popd >/dev/null 2>&1
+         popd &>/dev/null
         '
       #Copy & Meta
        docker cp "alpine-builder:/build-bins/." "$(pwd)/"
@@ -95,7 +95,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        sudo rsync -av --copy-links --exclude="*/" "./." "${BINDIR}"
       #Delete Containers
        docker stop "alpine-builder" 2>/dev/null ; docker rm "alpine-builder"
-       popd >/dev/null 2>&1
+       popd &>/dev/null
 fi
 #-------------------------------------------------------#
 

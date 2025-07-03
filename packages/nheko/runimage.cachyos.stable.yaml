@@ -73,7 +73,7 @@ x_exec:
         for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "nheko" --noconfirm
-        command -v "nheko" >/dev/null 2>&1 || exit 1
+        command -v "nheko" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Ql "nheko"
         pacman -Rsn base-devel --noconfirm 2>/dev/null

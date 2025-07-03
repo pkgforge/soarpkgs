@@ -73,7 +73,7 @@ x_exec:
        #Main Package:
         curl -kqfsSL "https://mega.nz/linux/repo/Debian_12/amd64/megasync-Debian_12_amd64.deb" -o "./megasync.deb"
         sudo apt install -f "./megasync.deb" -y
-        command -v "megasync" >/dev/null 2>&1 || exit 1
+        command -v "megasync" &>/dev/null || exit 1
         rm -rvf "./megasync.deb" 2>/dev/null
        #Debloat & Shrink
         sudo apt show "megasync" ; dpkg-query -L "megasync"

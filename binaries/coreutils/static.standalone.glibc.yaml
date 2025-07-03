@@ -324,7 +324,7 @@ x_exec:
        find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
        file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
        du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
-       popd >/dev/null 2>&1
+       popd &>/dev/null
       '
     #Copy & Meta
      docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"

@@ -67,7 +67,7 @@ x_exec:
         [[ -s "./deltapatcher/DeltaPatcher" || -s "./deltapatcher/deltapatcher" ]] || exit 1
         mv -fv "./deltapatcher/DeltaPatcher" "/usr/local/bin/deltapatcher" || mv -fv "./deltapatcher/deltapatcher" "/usr/local/bin/deltapatcher"
         chmod -v 'a+x' "/usr/local/bin/deltapatcher"
-        command -v "deltapatcher" >/dev/null 2>&1 || exit 1
+        command -v "deltapatcher" &>/dev/null || exit 1
         rm -rvf "./7z" "./deltapatcher" "./deltapatcher.zip"
        #Debloat & Shrink
         sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y

@@ -89,7 +89,7 @@ x_exec:
          apt purge -f "fastfetch" 2>/dev/null
          rm -rf "$(which fastfetch)" "$(which flashfetch)" 2>/dev/null
          find "." -maxdepth 1 -type f -iname "*deb*" -exec dpkg -i "{}" \;
-         command -v "fastfetch" >/dev/null 2>&1 || exit 1
+         command -v "fastfetch" &>/dev/null || exit 1
          apt show "fastfetch" ; dpkg-query -L "fastfetch"
          sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "${PKG}" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "${PKG}"))"
          sharun lib4bin --gen-lib-path --strace-mode --with-hooks --with-wrappe --wrappe-clvl "22" --wrappe-exec "flashfetch" --dst-dir "./SHARUN_WRAPPED" "$(realpath $(which "flashfetch"))"

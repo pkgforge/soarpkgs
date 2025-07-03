@@ -80,7 +80,7 @@ x_exec:
         dpkg-query -L "${PKG}" | grep -i "usr/share/license" | sort -V | tail -n 1 | tr -d "[:space:]" | xargs -I "{}" cp -fv "/{}" "/build-bins/LICENSE"
        #Info
         file "/build-bins/"* && du -sh "/build-bins/"*
-        popd >/dev/null 2>&1
+        popd &>/dev/null
       '
     #Copy & Meta
      docker cp "debian-builder-unstable:/build-bins/." "${SBUILD_TMPDIR}/"

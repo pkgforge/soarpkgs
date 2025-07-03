@@ -79,7 +79,7 @@ x_exec:
         echo '   exec "./funkin" "$@"' >> "/usr/local/bin/funkin"
         echo 'fi' >> "/usr/local/bin/funkin"
         chmod -v 'a+x' "/usr/local/bin/funkin"
-        command -v "funkin" >/dev/null 2>&1 || exit 1
+        command -v "funkin" &>/dev/null || exit 1
         rm -rvf "./7z" "./funkin.zip"
        #Debloat & Shrink
         sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y

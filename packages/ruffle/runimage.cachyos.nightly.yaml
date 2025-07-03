@@ -61,7 +61,7 @@ x_exec:
         for pkg in "${BASE_PKGS[@]}"; do sudo pacman -S "${pkg}" --needed --noconfirm 2>/dev/null; done
        #Main Package
         yay -S "ruffle-nightly-bin" --noconfirm
-        command -v "ruffle" >/dev/null 2>&1 || exit 1
+        command -v "ruffle" &>/dev/null || exit 1
        #Debloat & Shrink
         yay -Ql "ruffle-nightly-bin"
         sudo pacman -Rsn base-devel --noconfirm 2>/dev/null

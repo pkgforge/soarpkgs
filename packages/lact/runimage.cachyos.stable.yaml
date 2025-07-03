@@ -65,7 +65,7 @@ x_exec:
         for pkg in "${BASE_PKGS[@]}"; do pacman -S "${pkg}" --overwrite \* --noconfirm 2>/dev/null; done
        #Main Package
         pacman -S "lact" --noconfirm
-        command -v "lact" >/dev/null 2>&1 || exit 1
+        command -v "lact" &>/dev/null || exit 1
        #Debloat & Shrink
         pacman -Ql "lact"
         pacman -Rsn base-devel --noconfirm 2>/dev/null

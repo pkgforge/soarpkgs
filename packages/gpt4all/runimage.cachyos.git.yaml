@@ -69,7 +69,7 @@ x_exec:
        #Main Package
         pacman -Sy "chaotic-aur/gpt4all-chat-git" --noconfirm
         pacman -Ql "gpt4all-chat-git"
-        command -v "gpt4all" >/dev/null 2>&1 || command -v "gpt4all-chat" >/dev/null 2>&1 || exit 1
+        command -v "gpt4all" &>/dev/null || command -v "gpt4all-chat" &>/dev/null || exit 1
         [[ -s "/usr/local/bin/gpt4all" ]] || ln -sfv "$(which gpt4all-chat)" "/usr/local/bin/gpt4all"
        #Debloat & Shrink
         pacman -Rsn base-devel --noconfirm 2>/dev/null

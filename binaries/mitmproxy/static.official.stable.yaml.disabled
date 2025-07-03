@@ -61,7 +61,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
      echo -e "\n\n [+] (Building | Fetching) ${BIN} :: ${SOURCE_URL} [$(TZ='UTC' date +'%A, %Y-%m-%d (%I:%M:%S %p)') UTC]\n"
       #https://github.com/JonathonReinhart/staticx/issues/188
       ###Build:
-      # pushd "$($TMPDIRS)" >/dev/null 2>&1
+      # pushd "$($TMPDIRS)" &>/dev/null
       # docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable" 2>/dev/null
       # docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
       #  bash -l -c '
@@ -81,10 +81,10 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
       #   find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
       #   find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null
       #   file "/build-bins/"* && du -sh "/build-bins/"*
-      #   popd >/dev/null 2>&1
+      #   popd &>/dev/null
       #  '
       ##Build
-       pushd "$($TMPDIRS)" >/dev/null 2>&1
+       pushd "$($TMPDIRS)" &>/dev/null
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable" 2>/dev/null
        docker run --privileged --net="host" --name "debian-builder-unstable" "ghcr.io/pkgforge/devscripts/debian-builder-unstable:$(uname -m)" \
         bash -l -c '
@@ -104,7 +104,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
          find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
          find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-debug --strip-dwo --strip-unneeded --preserve-dates "{}" \; 2>/dev/null
          file "/build-bins/"* && du -sh "/build-bins/"*
-         popd >/dev/null 2>&1
+         popd &>/dev/null
         '
       #Copy & Meta
        docker cp "debian-builder-unstable:/build-bins/." "$(pwd)/"
@@ -114,7 +114,7 @@ if [ "${SKIP_BUILD}" == "NO" ]; then
        sudo rsync -av --copy-links --exclude="*/" "./." "$BINDIR"
       #Delete Containers
        docker stop "debian-builder-unstable" 2>/dev/null ; docker rm "debian-builder-unstable"
-       popd >/dev/null 2>&1
+       popd &>/dev/null
 fi
 #-------------------------------------------------------#
 

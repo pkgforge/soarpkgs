@@ -80,7 +80,7 @@ x_exec:
         #for pkg in "${BASE_PKGS[@]}"; do DEBIAN_FRONTEND="noninteractive" sudo apt install -f "${pkg}" -y --no-install-recommends --ignore-missing 2>/dev/null; done
        #Main Package
         sudo apt install -f "lazarus" -y
-        command -v "lazarus" >/dev/null 2>&1 || exit 1
+        command -v "lazarus" &>/dev/null || exit 1
        #Debloat & Shrink
         sudo apt show "lazarus" ; dpkg-query -L "lazarus"
         sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y

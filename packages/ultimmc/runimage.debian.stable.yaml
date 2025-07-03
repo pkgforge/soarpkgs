@@ -80,7 +80,7 @@ x_exec:
         echo '   exec "./ultimmc" "$@"' >> "/usr/local/bin/ultimmc"
         echo 'fi' >> "/usr/local/bin/ultimmc"
         chmod -v 'a+x' "/usr/local/bin/ultimmc"
-        command -v "ultimmc" >/dev/null 2>&1 || exit 1
+        command -v "ultimmc" &>/dev/null || exit 1
         rm -rvf "./7z" "./ultimmc" "./ultimmc.zip"
        #Debloat & Shrink
         sudo apt purge locales perl -y ; sudo apt autoremove -y ; sudo apt autoclean -y
