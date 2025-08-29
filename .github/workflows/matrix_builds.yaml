@@ -476,7 +476,7 @@ jobs:
 
       - name: Attest Build Provenance [${{ matrix.package.host }}<==>${{ matrix.package.runner }}]
         if: env.CONTINUE_GHRUN != 'FALSE'
-        uses: actions/attest-build-provenance@v2.4.0
+        uses: actions/attest-build-provenance@v3.0.0
         with:
           subject-name: "${{ env.PKG_FAMILY_LOCAL }}-${{ env.BUILD_ID }}-${{ env.GHCRPKG_TAG }}"
           subject-path: |
