@@ -32,5 +32,5 @@ x_exec:
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/TibixDev/winboat/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
   run: |
     soar dl "https://github.com/TibixDev/winboat" --match "appimage" -o "./${PKG}" --yes
-    squishy appimage "./${PKG}" --icon --desktop --write
+    squishy-cli appimage "./${PKG}" --icon --desktop --write
     find "${SBUILD_OUTDIR}" -maxdepth 1 -type f -iname "*.desktop" -exec sed -E 's/^[[:space:]]*[Ee]xec[[:space:]]*=[[:space:]]*[^[:space:]]+/Exec={{pkg_path}}/' -i "{}" \;
