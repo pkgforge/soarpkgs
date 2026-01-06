@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+_disabled: false
+
+pkg: "ghostty"
+pkg_id: "pkgforge-dev.ghostty"
+pkgver: "v1.2.3"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/ghostty"
+category:
+  - "TerminalEmulator"
+description: "Fast, native, feature-rich terminal emulator pushing modern features"
+homepage:
+  - "https://ghostty.org"
+  - "https://github.com/ghostty-org/ghostty"
+maintainer:
+  - "psadi (https://github.com/psadi)"
+license:
+  - id: "MIT"
+    url: "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ghostty-appimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ghostty"
+repology:
+  - "ghostty"
+src_url:
+  - "https://github.com/pkgforge-dev/ghostty-appimage"
+tag:
+  - "terminal"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ghostty-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
