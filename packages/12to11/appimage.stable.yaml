@@ -5,7 +5,7 @@ _disabled: false
 pkg: "12to11"
 pkg_id: "pkgforge-dev.12to11"
 pkg_type: "appimage"
-pkgver: "510a27f@2026-01-06_1767711172"
+pkgver: "HEAD-510a27f@2026-01-06_1767711172"
 ghcr_pkg: "pkgcache/pkgforge-dev/12to11"
 category:
   - "Utility"
@@ -13,7 +13,7 @@ description: "Tool for running Wayland applications on an X server"
 homepage:
   - "https://git.linuxping.win/12to11/12to11"
 maintainer:
-  - "Samueru-sama@hgithub.com/Samueru-sama"
+  - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-3.0"
     url: "https://git.linuxping.win/12to11/12to11/src/branch/master/COPYING"
@@ -32,6 +32,6 @@ x_exec:
     - "aarch64-Linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
   run: |
     soar dl "https://github.com/pkgforge-dev/12to11-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
