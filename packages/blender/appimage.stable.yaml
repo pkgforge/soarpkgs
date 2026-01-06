@@ -11,20 +11,6 @@ ghcr_pkg: "pkgcache/pkgforge-dev/blender"
 category:
   - "Graphics"
 description: "A fully integrated 3D graphics creation suite"
-distro_pkg:
-  alpine:
-    - "blender"
-  archlinux:
-    extra:
-      - "blender"
-  debian:
-    - "blender"
-  gnuguix:
-    - "blender"
-  homebrew:
-    - "blender"
-  nixpkgs:
-    - "blender"
 homepage:
   - "https://blender.org"
 maintainer:
