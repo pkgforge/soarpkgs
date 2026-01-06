@@ -248,7 +248,7 @@ jobs:
 
       - name: Upload updates report
         if: always() && steps.check.outputs.update_count > 0
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: updates-report
           path: /tmp/updates.json
