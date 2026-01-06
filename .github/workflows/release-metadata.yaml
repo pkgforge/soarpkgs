@@ -1,0 +1,229 @@
+name: Release Metadata
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force regeneration of all metadata'
+        type: boolean
+        default: false
+
+concurrency:
+  group: release-metadata
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64-Linux
+            runner: ubuntu-latest
+          - arch: aarch64-Linux
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          ARCH="$(uname -m)-linux"
+          sudo apt-get update
+          sudo apt-get install -y zstd xz-utils jq
+
+          # Download sbuild-meta
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-meta-${ARCH}" \
+            -o /usr/local/bin/sbuild-meta || {
+            echo "::error::Failed to download sbuild-meta"
+            exit 1
+          }
+          chmod +x /usr/local/bin/sbuild-meta
+          sbuild-meta --version
+
+          # Download soarql for SDB generation
+          curl -fsSL "https://github.com/pkgforge/soarql/releases/download/nightly/soarql-${ARCH}" \
+            -o /usr/local/bin/soarql || {
+            echo "::error::Failed to download soarql"
+            exit 1
+          }
+          chmod +x /usr/local/bin/soarql
+
+      - name: Generate bincache metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p /tmp/output
+
+          # Note: For test repo, the packages are pushed to bincache-test
+          # sbuild-meta will look for ghcr.io/pkgforge/bincache-test/<pkg>
+          sbuild-meta generate \
+            --arch "${{ matrix.arch }}" \
+            --recipes ./binaries \
+            --output /tmp/output \
+            --cache-type bincache \
+            --parallel 4 \
+            --ghcr-owner pkgforge \
+            --github-token "$GITHUB_TOKEN" || {
+            echo "::warning::bincache metadata generation failed or no packages found"
+          }
+
+          # Rename to include cache type
+          if [ -f "/tmp/output/bincache/${{ matrix.arch }}.json" ]; then
+            mv "/tmp/output/bincache/${{ matrix.arch }}.json" "/tmp/output/bincache-${{ matrix.arch }}.json"
+            echo "::notice::bincache metadata generated"
+            jq 'length' "/tmp/output/bincache-${{ matrix.arch }}.json"
+          else
+            echo "::warning::No bincache metadata generated"
+          fi
+
+      - name: Generate pkgcache metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sbuild-meta generate \
+            --arch "${{ matrix.arch }}" \
+            --recipes ./packages \
+            --output /tmp/output \
+            --cache-type pkgcache \
+            --parallel 4 \
+            --ghcr-owner pkgforge \
+            --github-token "$GITHUB_TOKEN" || {
+            echo "::warning::pkgcache metadata generation failed or no packages found"
+          }
+
+          # Rename to include cache type
+          if [ -f "/tmp/output/pkgcache/${{ matrix.arch }}.json" ]; then
+            mv "/tmp/output/pkgcache/${{ matrix.arch }}.json" "/tmp/output/pkgcache-${{ matrix.arch }}.json"
+            echo "::notice::pkgcache metadata generated"
+            jq 'length' "/tmp/output/pkgcache-${{ matrix.arch }}.json"
+          else
+            echo "::warning::No pkgcache metadata generated"
+          fi
+
+      - name: List outputs
+        run: |
+          echo "=== Generated files ==="
+          ls -lah /tmp/output/ || echo "No files"
+
+          for f in /tmp/output/*.json; do
+            if [ -f "$f" ]; then
+              echo "=== $(basename $f) ==="
+              jq '.[0:2]' "$f" 2>/dev/null || cat "$f"
+            fi
+          done
+
+      - name: Generate SDB metadata
+        run: |
+          cd /tmp/output
+
+          for json_file in *.json; do
+            if [ -f "$json_file" ]; then
+              sdb_file="${json_file%.json}.sdb"
+              # Extract repo name from filename (e.g., bincache-x86_64-Linux.json -> bincache)
+              repo_name=$(echo "$json_file" | cut -d'-' -f1)
+
+              echo "Converting $json_file to $sdb_file (repo: $repo_name)"
+              soarql -i "$json_file" -o "$sdb_file" -r "$repo_name" || {
+                echo "::warning::Failed to convert $json_file to SDB"
+                continue
+              }
+            fi
+          done
+
+          echo "=== SDB files generated ==="
+          ls -lah *.sdb 2>/dev/null || echo "No SDB files"
+
+      - name: Compress outputs
+        run: |
+          cd /tmp/output
+
+          for file in *.json *.sdb; do
+            if [ -f "$file" ]; then
+              # Compress with zstd
+              zstd -19 "$file" -o "${file}.zstd"
+            fi
+          done
+
+          ls -lah
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: metadata-${{ matrix.arch }}
+          path: |
+            /tmp/output/*.json
+            /tmp/output/*.json.zstd
+            /tmp/output/*.sdb
+            /tmp/output/*.sdb.zstd
+          retention-days: 7
+
+  release:
+    needs: generate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/artifacts
+          merge-multiple: true
+
+      - name: List artifacts
+        run: |
+          echo "=== Downloaded artifacts ==="
+          ls -lah /tmp/artifacts/ || echo "No artifacts"
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="v$(date -u '+%Y%m%d.%H%M%S')"
+
+          # Check if we have any files
+          if [ -z "$(ls -A /tmp/artifacts/ 2>/dev/null)" ]; then
+            echo "::warning::No artifacts to release"
+            exit 0
+          fi
+
+          # Generate release notes
+          cat > /tmp/release_notes.md << EOF
+          ## Metadata Release
+
+          **Generated**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+          ### Contents
+
+          | File | Size |
+          |------|------|
+          EOF
+
+          for f in /tmp/artifacts/*; do
+            if [ -f "$f" ]; then
+              size=$(ls -lh "$f" | awk '{print $5}')
+              echo "| $(basename $f) | $size |" >> /tmp/release_notes.md
+            fi
+          done
+
+          cat >> /tmp/release_notes.md << EOF
+
+          ---
+          *This release was generated automatically from test repository.*
+          EOF
+
+          # Create the release
+          gh release create "$VERSION" \
+            --title "Metadata $VERSION" \
+            --notes-file /tmp/release_notes.md \
+            --repo "${{ github.repository }}" \
+            /tmp/artifacts/* || {
+            echo "::error::Failed to create release"
+            exit 1
+          }
+
+          echo "::notice::Created release $VERSION"

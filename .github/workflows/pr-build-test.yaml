@@ -1,0 +1,348 @@
+name: PR Build Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to build'
+        type: number
+        required: true
+      host:
+        description: 'Target host'
+        type: choice
+        options:
+          - x86_64-Linux
+          - aarch64-Linux
+          - riscv64-Linux
+          - ALL
+        default: x86_64-Linux
+
+permissions:
+  attestations: write
+  contents: write
+  id-token: write
+  packages: write
+  pull-requests: write
+
+concurrency:
+  group: pr-build-${{ inputs.pr_number }}
+  cancel-in-progress: true
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      changed_recipes: ${{ steps.detect.outputs.changed_recipes }}
+      has_changes: ${{ steps.detect.outputs.has_changes }}
+      pr_head_sha: ${{ steps.pr-info.outputs.head_sha }}
+    steps:
+      - name: Get PR info
+        id: pr-info
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_DATA=$(gh api repos/${{ github.repository }}/pulls/${{ inputs.pr_number }})
+          HEAD_SHA=$(echo "$PR_DATA" | jq -r '.head.sha')
+          BASE_SHA=$(echo "$PR_DATA" | jq -r '.base.sha')
+          HEAD_REF=$(echo "$PR_DATA" | jq -r '.head.ref')
+
+          echo "head_sha=${HEAD_SHA}" >> $GITHUB_OUTPUT
+          echo "base_sha=${BASE_SHA}" >> $GITHUB_OUTPUT
+          echo "head_ref=${HEAD_REF}" >> $GITHUB_OUTPUT
+
+          echo "::notice::PR #${{ inputs.pr_number }}: ${HEAD_REF} (${HEAD_SHA})"
+
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.pr-info.outputs.head_sha }}
+          fetch-depth: 0
+
+      - name: Detect changed recipes
+        id: detect
+        env:
+          BASE_SHA: ${{ steps.pr-info.outputs.base_sha }}
+        run: |
+          # Get changed files between base and PR head
+          CHANGED_FILES=$(git diff --name-only "${BASE_SHA}" HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
+
+          echo "Changed recipe files:"
+          echo "$CHANGED_FILES"
+
+          CHANGED_RECIPES="[]"
+
+          for file in $CHANGED_FILES; do
+            if [ -f "$file" ]; then
+              CHANGED_RECIPES=$(echo "$CHANGED_RECIPES" | jq --arg path "$file" '. + [{"path": $path}]')
+            fi
+          done
+
+          RECIPE_COUNT=$(echo "$CHANGED_RECIPES" | jq 'length')
+          echo "::notice::Found ${RECIPE_COUNT} changed recipes"
+
+          echo "changed_recipes=$(echo "$CHANGED_RECIPES" | jq -c .)" >> $GITHUB_OUTPUT
+
+          if [ "$RECIPE_COUNT" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+  build:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has_changes == 'true'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        recipe: ${{ fromJson(needs.detect-changes.outputs.changed_recipes) }}
+    uses: ./.github/workflows/matrix_builds.yaml
+    with:
+      host: ${{ inputs.host }}
+      sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/${{ needs.detect-changes.outputs.pr_head_sha }}/${{ matrix.recipe.path }}"
+      ghcr-url: ${{ contains(matrix.recipe.path, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      pkg-family: ${{ github.event.repository.name }}
+      rebuild: true
+      logs: true
+      metadata-release: false
+    secrets: inherit
+
+  update-cache:
+    needs: [detect-changes, build]
+    if: always() && needs.detect-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.detect-changes.outputs.pr_head_sha }}
+
+      - name: Download sbuild-linter (for hash)
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
+            -o /usr/local/bin/sbuild-linter || exit 0
+          chmod +x /usr/local/bin/sbuild-linter
+
+      - name: Download sbuild-cache
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
+            -o /usr/local/bin/sbuild-cache || exit 0
+          chmod +x /usr/local/bin/sbuild-cache
+
+      - name: Download existing cache
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
+            sbuild-cache --cache /tmp/build_cache.sdb init
+
+      - name: Update cache with recipe hashes
+        run: |
+          RECIPES='${{ needs.detect-changes.outputs.changed_recipes }}'
+          BUILD_RESULT="${{ needs.build.result }}"
+
+          echo "$RECIPES" | jq -c '.[]' | while read -r recipe; do
+            path=$(echo "$recipe" | jq -r '.path')
+            pkg_name=$(basename "$(dirname "$path")")
+
+            # Extract version from recipe's pkgver field
+            pkg_version="unknown"
+            if [ -f "$path" ]; then
+              pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "unknown")
+              [ -z "$pkg_version" ] && pkg_version="unknown"
+            fi
+
+            # Compute recipe hash (excluding version for consistency)
+            if [ -f "$path" ]; then
+              recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+            else
+              recipe_hash="unknown"
+            fi
+
+            status="success"
+            if [ "$BUILD_RESULT" != "success" ]; then
+              status="failure"
+            fi
+
+            echo "Caching: $pkg_name v${pkg_version} (hash: ${recipe_hash:0:16}..., status: $status)"
+
+            sbuild-cache --cache /tmp/build_cache.sdb update \
+              --package "$pkg_name" \
+              --version "$pkg_version" \
+              --hash "$recipe_hash" \
+              --status "$status" || true
+          done
+
+      - name: Upload updated cache
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f "/tmp/build_cache.sdb" ]; then
+            gh release upload build-cache /tmp/build_cache.sdb --clobber --repo "${{ github.repository }}" || {
+              gh release create build-cache \
+                --title "Build Cache" \
+                --notes "Build cache for CI" \
+                --prerelease \
+                --repo "${{ github.repository }}" \
+                /tmp/build_cache.sdb
+            }
+          fi
+
+  comment-result:
+    needs: [detect-changes, build]
+    if: always() && needs.detect-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Download build status artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: build-status-*
+          path: /tmp/build-status
+          merge-multiple: false
+        continue-on-error: true
+
+      - name: Generate detailed comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          BUILD_STATUS="${{ needs.build.result }}"
+          RECIPES='${{ needs.detect-changes.outputs.changed_recipes }}'
+          HOST="${{ inputs.host }}"
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          REPO_OWNER="${{ github.repository_owner }}"
+
+          # Build results table header
+          echo "| Recipe | Host | Status | Package |" > /tmp/results_table.md
+          echo "|--------|------|--------|---------|" >> /tmp/results_table.md
+
+          # Process build status artifacts
+          SUCCESS_COUNT=0
+          FAILURE_COUNT=0
+          SKIPPED_COUNT=0
+
+          if [ -d "/tmp/build-status" ]; then
+            for status_dir in /tmp/build-status/build-status-*/; do
+              [ -d "$status_dir" ] || continue
+              status_file="${status_dir}build-status.json"
+              [ -f "$status_file" ] || continue
+
+              host=$(jq -r '.host // "unknown"' "$status_file")
+              status=$(jq -r '.status // "unknown"' "$status_file")
+              recipe_url=$(jq -r '.recipe_url // ""' "$status_file")
+              ghcr_url=$(jq -r '.ghcr_url // ""' "$status_file")
+
+              # Extract recipe path from URL
+              recipe_path=$(echo "$recipe_url" | grep -oE '(binaries|packages)/[^"]+\.yaml' || echo "unknown")
+              pkg_family=$(echo "$recipe_path" | cut -d'/' -f2)
+              recipe_name=$(basename "$recipe_path" .yaml 2>/dev/null || echo "unknown")
+
+              # Determine cache type from path
+              if echo "$recipe_path" | grep -q "^packages/"; then
+                CACHE_TYPE="pkgcache"
+              else
+                CACHE_TYPE="bincache"
+              fi
+
+              case "$status" in
+                success)
+                  STATUS_ICON="✅"
+                  SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+                  if [ -n "$ghcr_url" ] && [ "$ghcr_url" != "null" ] && [ "$ghcr_url" != "" ]; then
+                    # Show GHCR URLs directly (more useful for pulling)
+                    PKG_COUNT=$(echo "$ghcr_url" | tr ',' '\n' | wc -l)
+                    if [ "$PKG_COUNT" -gt 1 ]; then
+                      # Multiple packages - show as code block with all URLs
+                      PKG_LINK=$(echo "$ghcr_url" | tr ',' '\n' | sed 's/^/`/; s/$/`/' | tr '\n' ' ')
+                    else
+                      PKG_LINK="\`${ghcr_url}\`"
+                    fi
+                  else
+                    PKG_LINK="-"
+                  fi
+                  ;;
+                failure)
+                  STATUS_ICON="❌"
+                  FAILURE_COUNT=$((FAILURE_COUNT + 1))
+                  PKG_LINK="-"
+                  ;;
+                skipped)
+                  STATUS_ICON="⏭️"
+                  SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+                  PKG_LINK="-"
+                  ;;
+                *)
+                  STATUS_ICON="⚠️"
+                  PKG_LINK="-"
+                  ;;
+              esac
+
+              echo "| \`${recipe_path}\` | \`${host}\` | ${STATUS_ICON} ${status} | ${PKG_LINK} |" >> /tmp/results_table.md
+            done
+          fi
+
+          RESULTS_TABLE=$(cat /tmp/results_table.md)
+          TOTAL=$((SUCCESS_COUNT + FAILURE_COUNT + SKIPPED_COUNT))
+
+          # Overall status header
+          if [ "$BUILD_STATUS" == "success" ]; then
+            HEADER_EMOJI="✅"
+            HEADER_TEXT="Build Test Passed"
+          elif [ "$BUILD_STATUS" == "failure" ]; then
+            HEADER_EMOJI="❌"
+            HEADER_TEXT="Build Test Failed"
+          elif [ "$BUILD_STATUS" == "skipped" ]; then
+            HEADER_EMOJI="⏭️"
+            HEADER_TEXT="Build Test Skipped"
+          else
+            HEADER_EMOJI="⚠️"
+            HEADER_TEXT="Build Test: ${BUILD_STATUS}"
+          fi
+
+          # Summary line
+          SUMMARY="**${SUCCESS_COUNT}** passed"
+          [ "$FAILURE_COUNT" -gt 0 ] && SUMMARY="${SUMMARY}, **${FAILURE_COUNT}** failed"
+          [ "$SKIPPED_COUNT" -gt 0 ] && SUMMARY="${SUMMARY}, **${SKIPPED_COUNT}** skipped"
+
+          # Build the comment using heredoc for proper formatting
+          cat > /tmp/comment.md << EOF
+          ## ${HEADER_EMOJI} ${HEADER_TEXT}
+
+          | | |
+          |---|---|
+          | **Target** | \`${HOST}\` |
+          | **Commit** | \`${{ needs.detect-changes.outputs.pr_head_sha }}\` |
+          | **Summary** | ${SUMMARY} |
+
+          ### Build Results
+
+          ${RESULTS_TABLE}
+
+          <details>
+          <summary>📋 View workflow logs</summary>
+
+          **Workflow Run:** [${RUN_URL}](${RUN_URL})
+
+          </details>
+
+          ---
+          <sub>🤖 Triggered via workflow_dispatch by @${{ github.actor }}</sub>
+          EOF
+
+          gh pr comment "${{ inputs.pr_number }}" \
+            --repo "${{ github.repository }}" \
+            --body-file /tmp/comment.md
+
+  no-changes:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has_changes != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: No recipes to build
+        run: |
+          echo "::warning::No recipe changes detected in PR #${{ inputs.pr_number }}"

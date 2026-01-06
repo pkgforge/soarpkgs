@@ -1,0 +1,89 @@
+name: Manual Build Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      recipe:
+        description: 'Recipe path (e.g., binaries/hello/static.yaml) or leave empty to list all'
+        type: string
+        default: ''
+      host:
+        description: 'Target host'
+        type: choice
+        options:
+          - ALL
+          - x86_64-Linux
+          - aarch64-Linux
+        default: 'x86_64-Linux'
+      cache_type:
+        description: 'Cache type (auto-detected from path if not specified)'
+        type: choice
+        options:
+          - auto
+          - bincache
+          - pkgcache
+        default: 'auto'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      recipe: ${{ steps.validate.outputs.recipe }}
+      valid: ${{ steps.validate.outputs.valid }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate recipe
+        id: validate
+        run: |
+          RECIPE="${{ inputs.recipe }}"
+
+          # Find all available recipes
+          RECIPES=$(find binaries packages -name '*.yaml' -type f 2>/dev/null | sort)
+          RECIPE_COUNT=$(echo "$RECIPES" | wc -l)
+
+          # Generate job summary with available recipes
+          {
+            echo "## Available Recipes ($RECIPE_COUNT)"
+            echo ""
+            echo "### Binaries"
+            echo '```'
+            echo "$RECIPES" | grep "^binaries/" || echo "(none)"
+            echo '```'
+            echo ""
+            echo "### Packages"
+            echo '```'
+            echo "$RECIPES" | grep "^packages/" || echo "(none)"
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
+
+          if [ -z "$RECIPE" ]; then
+            echo "::notice::No recipe specified. Check job summary for available recipes."
+            echo "valid=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          if [ ! -f "$RECIPE" ]; then
+            echo "::error::Recipe not found: $RECIPE"
+            echo "valid=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          echo "recipe=$RECIPE" >> $GITHUB_OUTPUT
+          echo "valid=true" >> $GITHUB_OUTPUT
+
+  build:
+    needs: validate
+    if: needs.validate.outputs.valid == 'true'
+    uses: ./.github/workflows/matrix_builds.yaml
+    with:
+      host: ${{ inputs.host }}
+      sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/${{ needs.validate.outputs.recipe }}"
+      ghcr-url: ${{ contains(needs.validate.outputs.recipe, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      pkg-family: ${{ github.event.repository.name }}
+      rebuild: true
+      logs: true
+      debug: true
+      metadata-release: false
+    secrets: inherit

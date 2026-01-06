@@ -1,0 +1,201 @@
+name: Rolling Rebuilds
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  workflow_dispatch:
+    inputs:
+      package_filter:
+        description: 'Package name filter (regex)'
+        type: string
+        default: ''
+      force:
+        description: 'Force rebuild even if no changes detected'
+        type: boolean
+        default: false
+
+concurrency:
+  group: rolling-rebuilds
+  cancel-in-progress: false
+
+jobs:
+  find-rolling-packages:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.find.outputs.packages }}
+      has_packages: ${{ steps.find.outputs.has_packages }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find rolling packages
+        id: find
+        run: |
+          PACKAGES="[]"
+
+          # Find recipes marked with _rolling: true
+          for recipe in $(find binaries packages -name "*.yaml" 2>/dev/null); do
+            if grep -qE '^_rolling:\s*(true|yes)' "$recipe"; then
+              pkg_family=$(echo "$recipe" | cut -d'/' -f2)
+              recipe_name=$(basename "$recipe" .yaml)
+
+              # Apply filter if provided
+              if [ -n "${{ inputs.package_filter }}" ]; then
+                if ! echo "$pkg_family" | grep -qE "${{ inputs.package_filter }}"; then
+                  continue
+                fi
+              fi
+
+              PACKAGES=$(echo "$PACKAGES" | jq --arg path "$recipe" --arg family "$pkg_family" --arg name "$recipe_name" \
+                '. + [{"path": $path, "family": $family, "name": $name}]')
+            fi
+          done
+
+          PKG_COUNT=$(echo "$PACKAGES" | jq 'length')
+          echo "::notice::Found ${PKG_COUNT} rolling packages"
+
+          echo "packages=$(echo "$PACKAGES" | jq -c .)" >> $GITHUB_OUTPUT
+
+          if [ "$PKG_COUNT" -gt 0 ]; then
+            echo "has_packages=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_packages=false" >> $GITHUB_OUTPUT
+          fi
+
+  check-for-updates:
+    needs: find-rolling-packages
+    if: needs.find-rolling-packages.outputs.has_packages == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      to_rebuild: ${{ steps.check.outputs.to_rebuild }}
+      has_updates: ${{ steps.check.outputs.has_updates }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build cache
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || true
+
+      - name: Check for source updates
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          TO_REBUILD="[]"
+          PACKAGES='${{ needs.find-rolling-packages.outputs.packages }}'
+
+          echo "$PACKAGES" | jq -c '.[]' | while read -r pkg; do
+            path=$(echo "$pkg" | jq -r '.path')
+            family=$(echo "$pkg" | jq -r '.family')
+            name=$(echo "$pkg" | jq -r '.name')
+
+            echo "::group::Checking $family/$name"
+
+            # Extract src_url from recipe
+            SRC_URL=$(grep -A1 "^src_url:" "$path" | grep "^\s*-" | head -1 | sed 's/^[[:space:]]*-[[:space:]]*//; s/^"//; s/"$//')
+
+            if [ -z "$SRC_URL" ]; then
+              echo "No src_url found, skipping"
+              echo "::endgroup::"
+              continue
+            fi
+
+            NEEDS_REBUILD=false
+            CURRENT_HASH=""
+            NEW_HASH=""
+
+            # Check if it's a GitHub repo
+            if echo "$SRC_URL" | grep -qE "github\.com/[^/]+/[^/]+"; then
+              REPO=$(echo "$SRC_URL" | sed 's|.*github\.com/||; s|\.git$||; s|/tree/.*||; s|/releases.*||')
+
+              # Get latest commit SHA
+              NEW_HASH=$(gh api "repos/${REPO}/commits/HEAD" --jq '.sha' 2>/dev/null | head -c 12 || echo "")
+
+              if [ -n "$NEW_HASH" ]; then
+                # Check against cached hash (stored as version in build cache)
+                if [ -f "/tmp/build_cache.sdb" ]; then
+                  # Query the cache for last built hash
+                  # For now, just mark for rebuild if force flag or no cache
+                  NEEDS_REBUILD=true
+                else
+                  NEEDS_REBUILD=true
+                fi
+
+                echo "Latest commit: $NEW_HASH"
+              fi
+            fi
+
+            # Force rebuild if requested
+            if [ "${{ inputs.force }}" == "true" ]; then
+              NEEDS_REBUILD=true
+            fi
+
+            if [ "$NEEDS_REBUILD" == "true" ]; then
+              echo "Marking for rebuild"
+              TO_REBUILD=$(echo "$TO_REBUILD" | jq --arg path "$path" --arg hash "$NEW_HASH" \
+                '. + [{"path": $path, "new_hash": $hash}]')
+            else
+              echo "No rebuild needed"
+            fi
+
+            echo "::endgroup::"
+          done
+
+          # Write final output
+          REBUILD_COUNT=$(echo "$TO_REBUILD" | jq 'length')
+          echo "::notice::${REBUILD_COUNT} packages need rebuilding"
+
+          echo "to_rebuild=$(echo "$TO_REBUILD" | jq -c .)" >> $GITHUB_OUTPUT
+
+          if [ "$REBUILD_COUNT" -gt 0 ]; then
+            echo "has_updates=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_updates=false" >> $GITHUB_OUTPUT
+          fi
+
+  rebuild:
+    needs: [find-rolling-packages, check-for-updates]
+    if: needs.check-for-updates.outputs.has_updates == 'true'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        package: ${{ fromJson(needs.check-for-updates.outputs.to_rebuild) }}
+    uses: ./.github/workflows/matrix_builds.yaml
+    with:
+      host: "ALL"
+      sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/${{ matrix.package.path }}"
+      ghcr-url: ${{ contains(matrix.package.path, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      pkg-family: ${{ github.event.repository.name }}
+      rebuild: true
+      logs: true
+    secrets: inherit
+
+  summary:
+    needs: [find-rolling-packages, check-for-updates, rebuild]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate summary
+        run: |
+          echo "## 🔄 Rolling Rebuild Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+
+          FOUND=$(echo '${{ needs.find-rolling-packages.outputs.packages }}' | jq 'length')
+          echo "| Rolling packages found | ${FOUND} |" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ needs.check-for-updates.outputs.has_updates }}" == "true" ]; then
+            REBUILT=$(echo '${{ needs.check-for-updates.outputs.to_rebuild }}' | jq 'length')
+            echo "| Packages rebuilt | ${REBUILT} |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Packages rebuilt | 0 |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Build result:** ${{ needs.rebuild.result || 'skipped' }}" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,255 @@
+name: Check Upstream Updates
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+    inputs:
+      package_filter:
+        description: 'Package name filter (regex)'
+        type: string
+        default: ''
+      dry_run:
+        description: 'Dry run (no PRs created)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: update-checker
+  cancel-in-progress: true
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download sbuild-meta
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-meta-x86_64-linux" \
+            -o /usr/local/bin/sbuild-meta || {
+            echo "::warning::Failed to download sbuild-meta, skipping update check"
+            exit 0
+          }
+          chmod +x /usr/local/bin/sbuild-meta
+          sbuild-meta --version
+
+      - name: Check for upstream updates
+        id: check
+        run: |
+          sbuild-meta check-updates \
+            --recipes ./binaries ./packages \
+            --output /tmp/updates.json \
+            --parallel 10 \
+            --timeout 30
+
+          # Count updates
+          if [ -f /tmp/updates.json ]; then
+            UPDATE_COUNT=$(jq 'length' /tmp/updates.json)
+          else
+            UPDATE_COUNT=0
+          fi
+          echo "update_count=${UPDATE_COUNT}" >> $GITHUB_OUTPUT
+
+          if [ "$UPDATE_COUNT" -gt 0 ]; then
+            echo "::notice::Found ${UPDATE_COUNT} packages with upstream updates"
+            jq -r '.[] | "\(.pkg): \(.current_version) -> \(.upstream_version)"' /tmp/updates.json
+          else
+            echo "::notice::No updates found"
+          fi
+
+      - name: Create update PRs
+        if: steps.check.outputs.update_count > 0 && inputs.dry_run != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          jq -c '.[]' /tmp/updates.json | while read -r pkg_data; do
+            pkg_name=$(echo "$pkg_data" | jq -r '.pkg')
+            pkg_id=$(echo "$pkg_data" | jq -r '.pkg_id')
+            recipe_path=$(echo "$pkg_data" | jq -r '.recipe_path')
+            old_ver=$(echo "$pkg_data" | jq -r '.current_version')
+            new_ver=$(echo "$pkg_data" | jq -r '.upstream_version')
+
+            # Sanitize version for branch name
+            safe_ver=$(echo "$new_ver" | tr -cs '[:alnum:].-' '-' | sed 's/-$//')
+            branch="bot/update-${pkg_name}-${safe_ver}"
+
+            # Check if PR already exists
+            if gh pr list --head "$branch" --json number | jq -e 'length > 0' > /dev/null 2>&1; then
+              echo "::notice::PR already exists for $pkg_name $new_ver, skipping"
+              continue
+            fi
+
+            # Check if branch exists remotely
+            if git ls-remote --heads origin "$branch" | grep -q "$branch"; then
+              echo "::notice::Branch $branch already exists, skipping"
+              continue
+            fi
+
+            echo "::group::Creating PR for $pkg_name"
+
+            # Create branch from main
+            git checkout main
+            git pull origin main
+            git checkout -b "$branch"
+
+            # Update pkgver in recipe and add old version to snapshots
+            if [ -f "$recipe_path" ]; then
+              # Add old version to snapshots (if not already there)
+              if grep -q "^snapshots:" "$recipe_path"; then
+                # Check if old_ver is already in snapshots
+                if ! grep -A100 "^snapshots:" "$recipe_path" | grep -q "\"${old_ver}\""; then
+                  # Add old version to existing snapshots array (after snapshots: line)
+                  sed -i "/^snapshots:/a\\  - \"${old_ver}\"" "$recipe_path"
+                fi
+              else
+                # Add snapshots field before x_exec (or at end if no x_exec)
+                if grep -q "^x_exec:" "$recipe_path"; then
+                  sed -i "/^x_exec:/i\\snapshots:\\n  - \"${old_ver}\"" "$recipe_path"
+                else
+                  echo -e "\nsnapshots:\n  - \"${old_ver}\"" >> "$recipe_path"
+                fi
+              fi
+
+              # Check if pkgver field exists
+              if grep -q "^pkgver:" "$recipe_path"; then
+                # Update existing pkgver
+                sed -i "s/^pkgver:.*/pkgver: \"${new_ver}\"/" "$recipe_path"
+              else
+                # Add pkgver field after pkg_id
+                sed -i "/^pkg_id:/a pkgver: \"${new_ver}\"" "$recipe_path"
+              fi
+
+              git add "$recipe_path"
+              git commit -m "chore(bot): update ${pkg_name} to ${new_ver}"
+              git push origin "$branch"
+
+              # Extract metadata from recipe file directly
+              description=""
+              homepage=""
+              src_url=""
+
+              if [ -f "$recipe_path" ]; then
+                # Get description (handle both simple string and map format)
+                desc_line=$(grep -n "^description:" "$recipe_path" | head -1 | cut -d: -f1)
+                if [ -n "$desc_line" ]; then
+                  next_line=$(sed -n "$((desc_line + 1))p" "$recipe_path")
+                  # Check if it's a simple string (next line is not indented key-value)
+                  if echo "$next_line" | grep -qE "^[a-z_]+:"; then
+                    # Simple string on same line as description:
+                    description=$(sed -n "${desc_line}p" "$recipe_path" | sed 's/^description:[[:space:]]*//; s/^"//; s/"$//')
+                  elif echo "$next_line" | grep -qE "^[[:space:]]+[a-zA-Z_\"\[]+:"; then
+                    # Map format - extract _default and other descriptions
+                    # Find where description block ends (next top-level key)
+                    end_line=$(tail -n +$((desc_line + 1)) "$recipe_path" | grep -n "^[a-z_]*:" | head -1 | cut -d: -f1)
+                    if [ -n "$end_line" ]; then
+                      end_line=$((desc_line + end_line - 1))
+                    else
+                      end_line=$(wc -l < "$recipe_path")
+                    fi
+
+                    # Get _default description
+                    description=$(sed -n "$((desc_line + 1)),$((end_line))p" "$recipe_path" | grep "_default:" | head -1 | sed 's/^[[:space:]]*_default:[[:space:]]*//; s/^"//; s/"$//')
+
+                    # Get all other descriptions (limit to first 10)
+                    other_descs=$(sed -n "$((desc_line + 1)),$((end_line))p" "$recipe_path" | grep -v "_default:" | head -10 | sed 's/^[[:space:]]*//; s/:[[:space:]]*/: /' | tr '\n' '|' | sed 's/|$//')
+                    if [ -n "$other_descs" ]; then
+                      description="${description}
+
+          <details>
+          <summary>Per-binary descriptions (click to expand)</summary>
+
+          \`\`\`
+          $(echo "$other_descs" | tr '|' '\n')
+          \`\`\`
+          </details>"
+                    fi
+                  else
+                    # Simple string on same line
+                    description=$(sed -n "${desc_line}p" "$recipe_path" | sed 's/^description:[[:space:]]*//; s/^"//; s/"$//')
+                  fi
+                fi
+
+                # Get homepage (first entry)
+                homepage=$(grep -A1 "^homepage:" "$recipe_path" | grep "^\s*-" | head -1 | sed 's/^[[:space:]]*-[[:space:]]*//; s/^"//; s/"$//')
+
+                # Get src_url (first entry)
+                src_url=$(grep -A1 "^src_url:" "$recipe_path" | grep "^\s*-" | head -1 | sed 's/^[[:space:]]*-[[:space:]]*//; s/^"//; s/"$//')
+              fi
+
+              # Build links section only if we have links
+              LINKS_SECTION=""
+              if [ -n "$homepage" ]; then
+                LINKS_SECTION="${LINKS_SECTION}
+          - 🏠 [Homepage](${homepage})"
+              fi
+              if [ -n "$src_url" ]; then
+                LINKS_SECTION="${LINKS_SECTION}
+          - 📥 [Source](${src_url})"
+              fi
+
+              # Build detailed PR body
+              PR_BODY=$(cat << EOF
+          ## 📦 Package Update
+
+          | Field | Value |
+          |-------|-------|
+          | **Package** | \`${pkg_name}\` |
+          | **Package ID** | \`${pkg_id}\` |
+          | **Recipe** | [\`${recipe_path}\`](https://github.com/${{ github.repository }}/blob/${branch}/${recipe_path}) |
+          | **Old Version** | \`${old_ver}\` → added to snapshots |
+          | **New Version** | \`${new_ver}\` |
+
+          ### Description
+          ${description:-_No description available_}
+          ${LINKS_SECTION:+
+          ### Links
+          ${LINKS_SECTION}}
+
+          ### Checklist
+          - [ ] Version bump is correct
+          - [ ] Build script doesn't need changes
+          - [ ] Test build passes
+
+          ---
+          <sub>🤖 This PR was automatically created by the update checker bot</sub>
+          EOF
+          )
+
+              gh pr create \
+                --title "⬆️ Update ${pkg_name}: ${old_ver} → ${new_ver}" \
+                --body "$PR_BODY" \
+                --label "bot,update" \
+                --head "$branch" \
+                --base main
+
+              echo "::notice::Created PR for $pkg_name"
+            else
+              echo "::warning::Recipe file not found: $recipe_path"
+            fi
+
+            echo "::endgroup::"
+
+            # Return to main for next iteration
+            git checkout main
+
+            # Rate limiting - avoid hitting GitHub API limits
+            sleep 2
+          done
+
+      - name: Upload updates report
+        if: always() && steps.check.outputs.update_count > 0
+        uses: actions/upload-artifact@v4
+        with:
+          name: updates-report
+          path: /tmp/updates.json
+          retention-days: 7

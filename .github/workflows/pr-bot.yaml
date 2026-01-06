@@ -1,0 +1,300 @@
+name: PR Bot
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+  attestations: write
+  id-token: write
+  packages: write
+
+jobs:
+  handle-command:
+    # Only run on PR comments (not issue comments) and from authorized users
+    if: |
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/') &&
+      (
+        github.event.comment.author_association == 'OWNER' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'COLLABORATOR'
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR info
+        id: pr-info
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_DATA=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.issue.number }})
+          echo "head_sha=$(echo "$PR_DATA" | jq -r '.head.sha')" >> $GITHUB_OUTPUT
+          echo "head_ref=$(echo "$PR_DATA" | jq -r '.head.ref')" >> $GITHUB_OUTPUT
+          echo "base_ref=$(echo "$PR_DATA" | jq -r '.base.ref')" >> $GITHUB_OUTPUT
+
+      - name: Parse command
+        id: parse
+        run: |
+          COMMENT="${{ github.event.comment.body }}"
+          COMMAND=$(echo "$COMMENT" | head -1 | awk '{print $1}' | tr -d '/')
+          ARGS=$(echo "$COMMENT" | head -1 | cut -d' ' -f2- -s)
+
+          echo "command=$COMMAND" >> $GITHUB_OUTPUT
+          echo "args=$ARGS" >> $GITHUB_OUTPUT
+          echo "Parsed command: $COMMAND, args: $ARGS"
+
+      - name: React to comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions \
+            -f content='eyes' || true
+
+      - name: Handle /help
+        if: steps.parse.outputs.command == 'help'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          HELP_MSG=$(cat << 'EOF'
+          ## 🤖 PR Bot Commands
+
+          | Command | Description |
+          |---------|-------------|
+          | `/help` | Show this help message |
+          | `/build` | Build all changed recipes in this PR |
+          | `/build x86_64` | Build for specific host (x86_64, aarch64, riscv64) |
+          | `/build <recipe>` | Build a specific recipe |
+          | `/lint` | Run linter on changed recipes |
+          | `/check` | Check upstream versions |
+          | `/approve` | Approve and merge (maintainers only) |
+
+          <sub>Commands are only available to repository collaborators.</sub>
+          EOF
+          )
+
+          gh pr comment ${{ github.event.issue.number }} \
+            --repo ${{ github.repository }} \
+            --body "$HELP_MSG"
+
+      - name: Handle /build
+        if: steps.parse.outputs.command == 'build'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ARGS="${{ steps.parse.outputs.args }}"
+          PR_NUM="${{ github.event.issue.number }}"
+
+          # Determine host
+          HOST="x86_64-Linux"
+          case "$ARGS" in
+            x86_64*|X86_64*) HOST="x86_64-Linux" ;;
+            aarch64*|AARCH64*|arm64*) HOST="aarch64-Linux" ;;
+            riscv64*|RISCV64*) HOST="riscv64-Linux" ;;
+            all|ALL) HOST="ALL" ;;
+          esac
+
+          # Post acknowledgment
+          gh pr comment "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --body "🚀 **Build triggered!**
+
+          | | |
+          |---|---|
+          | **PR** | #${PR_NUM} |
+          | **Host** | \`${HOST}\` |
+          | **Triggered by** | @${{ github.event.comment.user.login }} |
+
+          Build will start shortly. I'll post results when complete.
+
+          [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+
+          # Trigger the build workflow
+          gh workflow run pr-build-test.yaml \
+            --repo ${{ github.repository }} \
+            -f pr_number="$PR_NUM" \
+            -f host="$HOST"
+
+      - name: Checkout for lint
+        if: steps.parse.outputs.command == 'lint'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Handle /lint
+        if: steps.parse.outputs.command == 'lint'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUM="${{ github.event.issue.number }}"
+          HEAD_SHA="${{ steps.pr-info.outputs.head_sha }}"
+          BASE_REF="${{ steps.pr-info.outputs.base_ref }}"
+
+          gh pr comment "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --body "🔍 **Running linter...**"
+
+          # Checkout PR branch
+          gh pr checkout "$PR_NUM"
+
+          # Download linter
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
+            -o /tmp/sbuild-linter && chmod +x /tmp/sbuild-linter
+
+          # Get changed files
+          CHANGED=$(git diff --name-only "origin/${BASE_REF}" HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
+
+          if [ -z "$CHANGED" ]; then
+            gh pr comment "$PR_NUM" \
+              --repo ${{ github.repository }} \
+              --body "✅ **Lint complete** - No recipe files changed"
+            exit 0
+          fi
+
+          # Run linter on each file
+          RESULTS="| Recipe | Status | Details |
+          |--------|--------|---------|"
+          HAS_ERRORS=false
+
+          for file in $CHANGED; do
+            if [ -f "$file" ]; then
+              if /tmp/sbuild-linter lint "$file" > /tmp/lint-output.txt 2>&1; then
+                RESULTS="${RESULTS}
+          | \`${file}\` | ✅ Valid | - |"
+              else
+                ERROR_MSG=$(cat /tmp/lint-output.txt | head -3 | tr '\n' ' ' | head -c 100)
+                RESULTS="${RESULTS}
+          | \`${file}\` | ❌ Invalid | ${ERROR_MSG:-Unknown error} |"
+                HAS_ERRORS=true
+              fi
+            fi
+          done
+
+          if [ "$HAS_ERRORS" = true ]; then
+            EMOJI="❌"
+            STATUS="Lint Failed"
+          else
+            EMOJI="✅"
+            STATUS="Lint Passed"
+          fi
+
+          gh pr comment "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --body "## ${EMOJI} ${STATUS}
+
+          ${RESULTS}
+
+          <sub>Triggered by @${{ github.event.comment.user.login }}</sub>"
+
+      - name: Checkout for check
+        if: steps.parse.outputs.command == 'check'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Handle /check
+        if: steps.parse.outputs.command == 'check'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUM="${{ github.event.issue.number }}"
+
+          gh pr comment "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --body "🔍 **Checking upstream versions...**"
+
+          # Checkout PR branch
+          gh pr checkout "$PR_NUM"
+
+          # Download sbuild-meta
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-meta-x86_64-linux" \
+            -o /tmp/sbuild-meta && chmod +x /tmp/sbuild-meta || {
+            gh pr comment "$PR_NUM" \
+              --repo ${{ github.repository }} \
+              --body "⚠️ Failed to download sbuild-meta"
+            exit 1
+          }
+
+          # Run version check
+          /tmp/sbuild-meta check-updates \
+            --recipes ./binaries ./packages \
+            --output /tmp/updates.json \
+            --parallel 5 \
+            --timeout 30 || true
+
+          if [ ! -f /tmp/updates.json ] || [ "$(jq 'length' /tmp/updates.json)" = "0" ]; then
+            gh pr comment "$PR_NUM" \
+              --repo ${{ github.repository }} \
+              --body "✅ **Version check complete** - All packages are up to date!"
+            exit 0
+          fi
+
+          # Format results
+          RESULTS="| Package | Current | Upstream |
+          |---------|---------|----------|"
+
+          while read -r line; do
+            pkg=$(echo "$line" | jq -r '.pkg')
+            current=$(echo "$line" | jq -r '.current_version')
+            upstream=$(echo "$line" | jq -r '.upstream_version')
+            RESULTS="${RESULTS}
+          | \`${pkg}\` | ${current} | **${upstream}** |"
+          done < <(jq -c '.[]' /tmp/updates.json)
+
+          gh pr comment "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --body "## 📦 Version Check Results
+
+          ${RESULTS}
+
+          <sub>Triggered by @${{ github.event.comment.user.login }}</sub>"
+
+      - name: Handle /approve
+        if: steps.parse.outputs.command == 'approve'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUM="${{ github.event.issue.number }}"
+          USER="${{ github.event.comment.user.login }}"
+          ASSOC="${{ github.event.comment.author_association }}"
+
+          # Only owners/admins can approve
+          if [[ "$ASSOC" != "OWNER" && "$ASSOC" != "MEMBER" ]]; then
+            gh pr comment "$PR_NUM" \
+              --repo ${{ github.repository }} \
+              --body "⚠️ @${USER} Only repository owners/members can use \`/approve\`"
+            exit 0
+          fi
+
+          # Approve the PR
+          gh pr review "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --approve \
+            --body "✅ Approved via \`/approve\` command by @${USER}"
+
+          gh pr comment "$PR_NUM" \
+            --repo ${{ github.repository }} \
+            --body "✅ **PR Approved** by @${USER}
+
+          Ready to merge when checks pass."
+
+      - name: Handle unknown command
+        if: |
+          steps.parse.outputs.command != 'help' &&
+          steps.parse.outputs.command != 'build' &&
+          steps.parse.outputs.command != 'lint' &&
+          steps.parse.outputs.command != 'check' &&
+          steps.parse.outputs.command != 'approve'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          COMMAND="${{ steps.parse.outputs.command }}"
+
+          gh pr comment ${{ github.event.issue.number }} \
+            --repo ${{ github.repository }} \
+            --body "❓ Unknown command: \`/${COMMAND}\`
+
+          Use \`/help\` to see available commands."

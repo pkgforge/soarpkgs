@@ -1,0 +1,290 @@
+name: Build Changed Packages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'binaries/**/*.yaml'
+      - 'packages/**/*.yaml'
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      recipe_path:
+        description: 'Specific recipe path to build (e.g., binaries/hello/static.yaml)'
+        type: string
+        default: ''
+      force_rebuild:
+        description: 'Force rebuild even if hash unchanged'
+        type: boolean
+        default: true
+
+permissions:
+  attestations: write
+  contents: write
+  id-token: write
+  packages: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  detect-changes:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+    outputs:
+      changed_recipes: ${{ steps.filter.outputs.recipes_to_build }}
+      has_changes: ${{ steps.filter.outputs.has_changes }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Download tools
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
+            -o /usr/local/bin/sbuild-linter && chmod +x /usr/local/bin/sbuild-linter || true
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
+            -o /usr/local/bin/sbuild-cache && chmod +x /usr/local/bin/sbuild-cache || true
+
+      - name: Download build cache
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
+            sbuild-cache --cache /tmp/build_cache.sdb init 2>/dev/null || true
+
+      - name: Detect changed recipes
+        id: detect
+        run: |
+          mkdir -p /tmp/changes
+          CHANGED_RECIPES="[]"
+
+          if [ -n "${{ inputs.recipe_path }}" ]; then
+            # Manual trigger with specific recipe
+            if [ -f "${{ inputs.recipe_path }}" ]; then
+              RECIPE="${{ inputs.recipe_path }}"
+              CHANGED_RECIPES=$(jq -n --arg path "$RECIPE" '[{"path": $path}]')
+            else
+              echo "::error::Recipe not found: ${{ inputs.recipe_path }}"
+              exit 1
+            fi
+          else
+            # Detect changes from git diff or find all recipes
+            if [ "${{ github.event_name }}" == "push" ]; then
+              CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
+            elif [ "${{ github.event_name }}" == "pull_request" ]; then
+              CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
+            elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+              # No specific recipe, build all recipes
+              echo "::notice::No recipe specified, building all recipes"
+              CHANGED_FILES=$(find binaries packages -name '*.yaml' -type f 2>/dev/null || true)
+            else
+              CHANGED_FILES=""
+            fi
+
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+
+            # Build JSON array of changed recipes
+            for file in $CHANGED_FILES; do
+              if [ -f "$file" ]; then
+                CHANGED_RECIPES=$(echo "$CHANGED_RECIPES" | jq --arg path "$file" '. + [{"path": $path}]')
+              fi
+            done
+          fi
+
+          # Output results
+          RECIPE_COUNT=$(echo "$CHANGED_RECIPES" | jq 'length')
+          echo "Found $RECIPE_COUNT changed recipes"
+          echo "$CHANGED_RECIPES" | jq .
+
+          echo "changed_recipes=$(echo "$CHANGED_RECIPES" | jq -c .)" >> $GITHUB_OUTPUT
+
+      - name: Filter already-built recipes
+        id: filter
+        run: |
+          CHANGED_RECIPES='${{ steps.detect.outputs.changed_recipes }}'
+          FORCE_REBUILD="${{ inputs.force_rebuild }}"
+          RECIPES_TO_BUILD="[]"
+          SKIPPED=0
+
+          echo "$CHANGED_RECIPES" | jq -c '.[]' | while read -r recipe; do
+            path=$(echo "$recipe" | jq -r '.path')
+            pkg_name=$(basename "$(dirname "$path")")
+
+            # Skip cache check if force rebuild
+            if [ "$FORCE_REBUILD" == "true" ]; then
+              echo "$recipe"
+              continue
+            fi
+
+            # Compute current recipe hash
+            if [ -f "$path" ] && command -v sbuild-linter &>/dev/null; then
+              current_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+            else
+              current_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+            fi
+
+            # Check if already built with same hash
+            if [ -f "/tmp/build_cache.sdb" ] && command -v sbuild-cache &>/dev/null; then
+              cached_info=$(sbuild-cache --cache /tmp/build_cache.sdb get --package "$pkg_name" --json 2>/dev/null || echo "")
+              cached_hash=$(echo "$cached_info" | jq -r '.recipe_hash // ""' 2>/dev/null || echo "")
+              cached_status=$(echo "$cached_info" | jq -r '.last_build_status // ""' 2>/dev/null || echo "")
+
+              if [ "$cached_hash" == "$current_hash" ] && [ "$cached_status" == "success" ]; then
+                echo "::notice::Skipping $pkg_name - already built with same hash"
+                continue
+              fi
+            fi
+
+            echo "$recipe"
+          done | jq -s '.' > /tmp/recipes_to_build.json
+
+          RECIPES_TO_BUILD=$(cat /tmp/recipes_to_build.json)
+          RECIPE_COUNT=$(echo "$RECIPES_TO_BUILD" | jq 'length')
+
+          echo "Recipes to build after filtering: $RECIPE_COUNT"
+          echo "$RECIPES_TO_BUILD" | jq .
+
+          echo "recipes_to_build=$(echo "$RECIPES_TO_BUILD" | jq -c .)" >> $GITHUB_OUTPUT
+
+          if [ "$RECIPE_COUNT" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+  build:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has_changes == 'true'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        recipe: ${{ fromJson(needs.detect-changes.outputs.changed_recipes) }}
+    uses: ./.github/workflows/matrix_builds.yaml
+    with:
+      sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/${{ matrix.recipe.path }}"
+      ghcr-url: ${{ contains(matrix.recipe.path, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      pkg-family: ${{ github.event.repository.name }}
+      rebuild: true
+      logs: true
+      metadata-release: false
+    secrets: inherit
+
+  update-cache:
+    needs: [detect-changes, build]
+    if: always() && needs.detect-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download tools
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
+            -o /usr/local/bin/sbuild-cache && chmod +x /usr/local/bin/sbuild-cache || true
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
+            -o /usr/local/bin/sbuild-linter && chmod +x /usr/local/bin/sbuild-linter || true
+
+      - name: Download existing cache
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
+            sbuild-cache --cache /tmp/build_cache.sdb init
+
+      - name: Download build status artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: build-status-*
+          path: /tmp/build-statuses
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: Update cache with build results
+        run: |
+          RECIPES='${{ needs.detect-changes.outputs.changed_recipes }}'
+
+          echo "$RECIPES" | jq -c '.[]' | while read -r recipe; do
+            path=$(echo "$recipe" | jq -r '.path')
+
+            # Extract package name from path (e.g., binaries/hello/static.yaml -> hello)
+            pkg_name=$(basename "$(dirname "$path")")
+
+            # Extract version from recipe's pkgver field
+            pkg_version="unknown"
+            if [ -f "$path" ]; then
+              pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "unknown")
+              [ -z "$pkg_version" ] && pkg_version="unknown"
+            fi
+
+            # Compute recipe hash for cache
+            if [ -f "$path" ] && command -v sbuild-linter &>/dev/null; then
+              recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+            else
+              recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+            fi
+
+            # Find build status from artifacts
+            status="unknown"
+
+            if [ -d "/tmp/build-statuses" ]; then
+              for status_file in /tmp/build-statuses/build-status.json /tmp/build-statuses/*/build-status.json; do
+                [ -f "$status_file" ] || continue
+
+                recipe_url=$(jq -r '.recipe_url // ""' "$status_file" 2>/dev/null || echo "")
+                if echo "$recipe_url" | grep -q "$path"; then
+                  file_status=$(jq -r '.status // "unknown"' "$status_file" 2>/dev/null || echo "unknown")
+                  if [ "$file_status" = "failure" ]; then
+                    status="failure"
+                    break
+                  elif [ "$file_status" = "success" ]; then
+                    status="success"
+                  fi
+                fi
+              done
+            fi
+
+            # Fallback: use overall build job result if no artifact found
+            if [ "$status" = "unknown" ]; then
+              status="${{ needs.build.result }}"
+            fi
+
+            echo "Package: $pkg_name, Version: $pkg_version, Hash: ${recipe_hash:0:16}..., Status: $status"
+
+            sbuild-cache --cache /tmp/build_cache.sdb update \
+              --package "$pkg_name" \
+              --version "$pkg_version" \
+              --hash "$recipe_hash" \
+              --status "$status" || true
+          done
+
+      - name: Generate build summary
+        run: |
+          sbuild-cache --cache /tmp/build_cache.sdb gh-summary \
+            --title "Build Results" \
+            --host x86_64-Linux || true
+
+      - name: Upload updated cache
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f "/tmp/build_cache.sdb" ]; then
+            gh release upload build-cache /tmp/build_cache.sdb --clobber --repo "${{ github.repository }}" || {
+              gh release create build-cache \
+                --title "Build Cache" \
+                --notes "Build cache for CI" \
+                --prerelease \
+                --repo "${{ github.repository }}" \
+                /tmp/build_cache.sdb
+            }
+          fi
