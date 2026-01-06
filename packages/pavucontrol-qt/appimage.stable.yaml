@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pavucontrol-qt/appimage.stable.yaml
+_disabled: false
+
+pkg: "pavucontrol-qt"
+pkg_id: "pkgforge-dev.pavucontrol-qt"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/pavucontrol-qt"
+category:
+  - "Audio"
+  - "Mixer"
+description: "Qt port of volume control pavucontrol for PulseAudio"
+homepage:
+  - "https://github.com/lxqt/pavucontrol-qt"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/lxqt/pavucontrol-qt/master/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/pavucontrol-qt-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pavucontrol-qt"
+repology:
+  - "pavucontrol-qt"
+src_url:
+  - "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage"
+tag:
+  - "audio"
+  - "mixer"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/pavucontrol-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

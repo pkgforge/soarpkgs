@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/mesa/appimage.stable.yaml
+_disabled: false
+
+pkg: "mesa"
+pkg_id: "pkgforge-dev.mesa"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/mesa"
+category:
+  - "Graphics"
+  - "System"
+description: "Open source implementations of OpenGL, Vulkan and other graphics APIs"
+homepage:
+  - "https://www.mesa3d.org"
+  - "https://gitlab.freedesktop.org/mesa/mesa"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MIT"
+    url: "https://gitlab.freedesktop.org/mesa/mesa/-/raw/main/docs/license.rst"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/MESA-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mesa"
+repology:
+  - "mesa"
+src_url:
+  - "https://github.com/pkgforge-dev/MESA-AppImage"
+tag:
+  - "graphics"
+  - "system"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/MESA-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/MESA-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

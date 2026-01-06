@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cromite/appimage.stable.yaml
+_disabled: false
+
+pkg: "cromite"
+pkg_id: "pkgforge-dev.cromite"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/cromite"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "A privacy-focused Chromium-based browser"
+homepage:
+  - "https://github.com/uazo/cromite"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://raw.githubusercontent.com/uazo/cromite/master/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cromite-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cromite"
+repology:
+  - "cromite"
+src_url:
+  - "https://github.com/pkgforge-dev/Cromite-AppImage"
+tag:
+  - "browser"
+  - "privacy"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cromite-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Cromite-AppImage@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
