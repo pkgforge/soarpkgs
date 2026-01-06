@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/signal-desktop/appimage.stable.yaml
+_disabled: false
+
+pkg: "signal-desktop"
+pkg_id: "pkgforge-dev.signal"
+pkgver: "7.83.0-1@2026-01-01_1767256235"
+pkg_type: "appimage"
+app_id: "org.signal.Signal"
+ghcr_pkg: "pkgcache/pkgforge-dev/signal-desktop"
+category:
+  - "Chat"
+  - "InstantMessaging"
+description: "Private, simple, and secure messenger"
+homepage:
+  - "https://signal.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "AGPL-3.0"
+    url: "https://raw.githubusercontent.com/signalapp/Signal-Desktop/a3173f6ae3961a44827fa59f975a789db1224e56/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Signal-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "signal-desktop"
+repology:
+  - "signal-desktop"
+src_url:
+  - "https://github.com/signalapp/signal-desktop"
+tag:
+  - "chat"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Signal-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Signal-AppImage-Enhanced@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
