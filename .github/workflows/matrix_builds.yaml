@@ -476,7 +476,7 @@ jobs:
 
       - name: Attest build provenance
         if: env.SKIP_BUILD != 'true' && env.BUILD_FAILED != 'true'
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v3
         with:
           subject-name: "${{ inputs.pkg-family }}-${{ matrix.target.host }}"
           subject-path: "${{ env.SBUILD_OUTDIR }}/**"
