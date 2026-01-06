@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/obs-studio/appimage.stable.yaml
+_disabled: false
+
+pkg: "obs-studio"
+pkg_id: "pkgforge-dev.obs-studio"
+pkg_type: "appimage"
+pkgver: "32.0.2-3@2026-01-01_1767255931"
+app_id: "org.obsproject.Studio"
+ghcr_pkg: "pkgcache/pkgforge-dev/obs-studio"
+category:
+  - "AudioVideoEditing"
+  - "Recorder"
+description: "Free and open source software for live streaming and screen recording"
+homepage:
+  - "https://obsproject.com"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/obsproject/obs-studio/13a132b486295042a0daf558bff977a6d19a4e84/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OBS-Studio-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "obs-studio"
+repology:
+  - "obs-studio"
+src_url:
+  - "https://github.com/obsproject/obs-studio"
+tag:
+  - "game-capture"
+  - "live-streaming"
+  - "screen-capture"
+  - "video-recording"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/OBS-Studio-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
