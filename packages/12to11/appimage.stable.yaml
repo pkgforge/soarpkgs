@@ -1,0 +1,37 @@
+#!/SBUILD ver @v1.0.0
+
+_disabled: false
+
+pkg: "12to11"
+pkg_id: "pkgforge-dev.12to11"
+pkg_type: "appimage"
+pkgver: "HEAD-510a27f@2026-01-06_1767711172"
+ghcr_pkg: "pkgcache/pkgforge-dev/12to11"
+category:
+  - "Utility"
+description: "Tool for running Wayland applications on an X server"
+homepage:
+  - "https://git.linuxping.win/12to11/12to11"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://git.linuxping.win/12to11/12to11/src/branch/master/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/12to11-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "12to11"
+src_url:
+  - "https://git.linuxping.win/12to11/12to11"
+tag:
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/12to11-AppImage@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
