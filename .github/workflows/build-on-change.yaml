@@ -139,7 +139,7 @@ jobs:
               cached_status=$(echo "$cached_info" | jq -r '.last_build_status // ""' 2>/dev/null || echo "")
 
               if [ "$cached_hash" == "$current_hash" ] && [ "$cached_status" == "success" ]; then
-                echo "::notice::Skipping $pkg_name - already built with same hash"
+                echo "::notice::Skipping $pkg_name - already built with same hash" >&2
                 continue
               fi
             fi
