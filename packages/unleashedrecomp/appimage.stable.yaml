@@ -7,16 +7,15 @@ pkg_id: "pkgforge-dev.unleashedrecomp"
 pkg_type: "appimage"
 ghcr_pkg: "pkgcache/pkgforge-dev/unleashedrecomp"
 category:
-  - "Development"
-  - "Utility"
-description: "N64 recompilation tool"
+  - "Game"
+description: "An unofficial PC port of the Xbox 360 version of Sonic Unleashed"
 homepage:
-  - "https://github.com/N64Recomp/N64Recomp"
+  - "https://github.com/hedge-dev/UnleashedRecomp"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/Mr-Wiseguy/N64Recomp/refs/heads/main/LICENSE"
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/hedge-dev/UnleashedRecomp/refs/heads/main/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UnleashedRecomp-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,9 +26,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/UnleashedRecomp-AppImage"
 tag:
-  - "development"
-  - "n64"
-  - "tool"
+  - "game"
+  - "xbox360"
 x_exec:
   host:
     - "x86_64-Linux"
