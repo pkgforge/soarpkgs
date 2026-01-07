@@ -198,7 +198,7 @@ jobs:
       actions: read
     steps:
       - name: Download build status artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           pattern: build-status-*
           path: /tmp/build-status
