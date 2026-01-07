@@ -9,14 +9,14 @@ ghcr_pkg: "pkgcache/pkgforge-dev/azahar-enhanced"
 category:
   - "Game"
   - "Emulator"
-description: "Nintendo Switch emulator"
+description: "Nintendo 3DS emulator"
 homepage:
-  - "https://github.com/emuplace/Azahar"
+  - "https://github.com/azahar-emu/azahar"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/Slluxx/Azahar/refs/heads/main/LICENSE"
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/azahar-emu/azahar/refs/heads/master/license.txt"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -33,6 +33,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Azahar-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
