@@ -53,7 +53,7 @@ jobs:
           echo "::notice::PR #${{ inputs.pr_number }}: ${HEAD_REF} (${HEAD_SHA})"
 
       - name: Checkout PR
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ steps.pr-info.outputs.head_sha }}
           fetch-depth: 0
@@ -113,7 +113,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ needs.detect-changes.outputs.pr_head_sha }}
 

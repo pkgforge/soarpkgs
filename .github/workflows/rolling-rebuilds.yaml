@@ -26,7 +26,7 @@ jobs:
       has_packages: ${{ steps.find.outputs.has_packages }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Find rolling packages
         id: find
@@ -71,7 +71,7 @@ jobs:
       has_updates: ${{ steps.check.outputs.has_updates }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download build cache
         continue-on-error: true
