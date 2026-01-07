@@ -2,12 +2,11 @@
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gear-lever/appimage.stable.yaml
 _disabled: false
 
-pkg: "gear-lever"
-pkg_id: "pkgforge-dev.gear-lever"
+pkg: "gearlever"
+pkg_id: "pkgforge-dev.gearlever"
 pkg_type: "appimage"
-ghcr_pkg: "pkgcache/pkgforge-dev/gear-lever"
+ghcr_pkg: "pkgcache/pkgforge-dev/gearlever"
 category:
-  - "Game"
   - "Utility"
 description: "Manage AppImages and more"
 homepage:
@@ -16,23 +15,23 @@ maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/mijorus/gearlever/refs/heads/main/LICENSE.md"
+    url: "https://raw.githubusercontent.com/mijorus/gearlever/refs/heads/master/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gear-Lever-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "gear-lever"
+  - "gearlever"
 repology:
-  - "gear-lever"
+  - "gearlever"
 src_url:
   - "https://github.com/pkgforge-dev/Gear-Lever-AppImage"
 tag:
   - "utility"
-  - "gaming"
   - "appimage"
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gear-Lever-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
