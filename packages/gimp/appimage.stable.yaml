@@ -16,12 +16,13 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/GNOME/gimp/refs/heads/main/COPYING"
+    url: "https://gitlab.gnome.org/GNOME/gimp/-/raw/master/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "gimp"
+  - "photogimp"
 repology:
   - "gimp"
 src_url:
