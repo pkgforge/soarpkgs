@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/alacritty/appimage.stable.yaml
+_disabled: false
+
+pkg: "alacritty"
+pkg_id: "pkgforge-dev.alacritty"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/alacritty"
+category:
+  - "TerminalEmulator"
+description: "A cross-platform, GPU-accelerated terminal emulator"
+homepage:
+  - "https://alacritty.org"
+  - "https://github.com/alacritty/alacritty"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/alacritty/alacritty/master/LICENSE-APACHE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/alacritty-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "alacritty"
+repology:
+  - "alacritty"
+src_url:
+  - "https://github.com/pkgforge-dev/alacritty-AppImage"
+tag:
+  - "terminal"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/alacritty-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/alacritty-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
