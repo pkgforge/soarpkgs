@@ -8,14 +8,14 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgcache/pkgforge-dev/appimageupdatetool"
 category:
   - "Utility"
-description: "AppImageUpdate - Update AppImages"
+description: "Tool to update AppImages"
 homepage:
-  - "https://github.com/AppImageCommunity/AppImageUpdate"
+  - "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "MIT"
-    url: "https://raw.githubusercontent.com/AppImageCommunity/AppImageUpdate/refs/heads/main/LICENSE"
+    url: "https://raw.githubusercontent.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/refs/heads/main/LICENSE.txt"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -28,9 +28,11 @@ src_url:
 tag:
   - "utility"
   - "updater"
+  - "appimage"
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
