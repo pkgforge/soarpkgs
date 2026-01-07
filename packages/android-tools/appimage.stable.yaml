@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-tools/appimage.stable.yaml
+_disabled: false
+
+pkg: "android-tools"
+pkg_id: "pkgforge-dev.android-tools"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/android-tools"
+category:
+  - "Development"
+  - "Utility"
+description: "Android SDK Platform-Tools"
+homepage:
+  - "https://developer.android.com/studio/command-line"
+  - "https://github.com/pkgforge-dev/android-tools-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/android/platform_system_core/refs/heads/main/NOTICE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/android-tools-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "android-tools"
+repology:
+  - "android-tools"
+src_url:
+  - "https://github.com/pkgforge-dev/android-tools-AppImage"
+tag:
+  - "android"
+  - "development"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/android-tools-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

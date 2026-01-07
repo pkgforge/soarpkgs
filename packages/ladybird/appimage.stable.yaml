@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ladybird/appimage.stable.yaml
+_disabled: false
+
+pkg: "ladybird"
+pkg_id: "pkgforge-dev.ladybird"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/ladybird"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "Truly independent web browser"
+homepage:
+  - "https://ladybird.dev"
+  - "https://github.com/pkgforge-dev/ladybird-appimage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "BSD-2-Clause"
+    url: "https://raw.githubusercontent.com/LadybirdBrowser/ladybird/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ladybird-appimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ladybird"
+repology:
+  - "ladybird"
+src_url:
+  - "https://github.com/pkgforge-dev/ladybird-appimage"
+tag:
+  - "browser"
+  - "web"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ladybird-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ladybird-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

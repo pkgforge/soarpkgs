@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/virt-manager/appimage.stable.yaml
+_disabled: false
+
+pkg: "virt-manager"
+pkg_id: "pkgforge-dev.virt-manager"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/virt-manager"
+category:
+  - "System"
+  - "Emulator"
+description: "Virtual machine manager"
+homepage:
+  - "https://virt-manager.org"
+  - "https://github.com/pkgforge-dev/virt-manager-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/virt-manager/virt-manager/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/virt-manager-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "virt-manager"
+repology:
+  - "virt-manager"
+src_url:
+  - "https://github.com/pkgforge-dev/virt-manager-AppImage"
+tag:
+  - "virtualization"
+  - "system"
+  - "vm"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/virt-manager-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/virt-manager-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

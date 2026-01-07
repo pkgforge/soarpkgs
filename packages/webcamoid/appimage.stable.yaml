@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/webcamoid/appimage.stable.yaml
+_disabled: false
+
+pkg: "webcamoid"
+pkg_id: "pkgforge-dev.webcamoid"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/webcamoid"
+category:
+  - "AudioVideo"
+  - "Utility"
+description: "Webcam suite"
+homepage:
+  - "https://webcamoid.github.io"
+  - "https://github.com/pkgforge-dev/Webcamoid-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/webcamoid/webcamoid/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Webcamoid-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "webcamoid"
+repology:
+  - "webcamoid"
+src_url:
+  - "https://github.com/pkgforge-dev/Webcamoid-AppImage"
+tag:
+  - "webcam"
+  - "video"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Webcamoid-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Webcamoid-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ares-emu/appimage.stable.yaml
+_disabled: false
+
+pkg: "ares-emu"
+pkg_id: "pkgforge-dev.ares-emu"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/ares-emu"
+category:
+  - "Game"
+  - "Emulator"
+description: "Multi-system emulator focused on accuracy and preservation"
+homepage:
+  - "https://ares-emu.net"
+  - "https://github.com/pkgforge-dev/ares-emu-appimage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "ISC"
+    url: "https://raw.githubusercontent.com/ares-emulator/ares/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ares-emu-appimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ares-emu"
+repology:
+  - "ares-emu"
+src_url:
+  - "https://github.com/pkgforge-dev/ares-emu-appimage"
+tag:
+  - "emulator"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ares-emu-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ares-emu-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/opencode-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "opencode-enhanced"
+pkg_id: "pkgforge-dev.opencode-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/opencode-enhanced"
+category:
+  - "Development"
+  - "TextEditor"
+description: "Open source code editor"
+homepage:
+  - "https://github.com/VSCodium/vscodium"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/getcursor/cursor/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/opencode-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "opencode-enhanced"
+repology:
+  - "opencode-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/opencode-AppImage-Enhanced"
+tag:
+  - "editor"
+  - "development"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/opencode-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/opencode-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

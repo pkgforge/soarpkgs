@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tagger/appimage.stable.yaml
+_disabled: false
+
+pkg: "tagger"
+pkg_id: "pkgforge-dev.tagger"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/tagger"
+category:
+  - "Audio"
+  - "Utility"
+description: "Music tag editor"
+homepage:
+  - "https://github.com/nlogozzo/NickvisionTagger"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/NickvisionApps/Tagger/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tagger-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "tagger"
+repology:
+  - "tagger"
+src_url:
+  - "https://github.com/pkgforge-dev/Tagger-AppImage"
+tag:
+  - "audio"
+  - "tag"
+  - "metadata"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Tagger-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Tagger-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

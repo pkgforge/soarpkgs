@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/mame/appimage.stable.yaml
+_disabled: false
+
+pkg: "mame"
+pkg_id: "pkgforge-dev.mame"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/mame"
+category:
+  - "Game"
+  - "Emulator"
+description: "Multiple Arcade Machine Emulator"
+homepage:
+  - "https://www.mamedev.org"
+  - "https://github.com/pkgforge-dev/MAME-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/mamedev/mame/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/MAME-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mame"
+repology:
+  - "mame"
+src_url:
+  - "https://github.com/pkgforge-dev/MAME-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "arcade"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/MAME-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/MAME-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

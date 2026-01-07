@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gnome-text-editor/appimage.stable.yaml
+_disabled: false
+
+pkg: "gnome-text-editor"
+pkg_id: "pkgforge-dev.gnome-text-editor"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/gnome-text-editor"
+category:
+  - "Utility"
+  - "TextEditor"
+description: "Simple text editor for GNOME"
+homepage:
+  - "https://gitlab.gnome.org/GNOME/gnome-text-editor"
+  - "https://github.com/pkgforge-dev/Gnome-Text-Editor-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/GNOME/gnome-text-editor/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gnome-Text-Editor-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gnome-text-editor"
+repology:
+  - "gnome-text-editor"
+src_url:
+  - "https://github.com/pkgforge-dev/Gnome-Text-Editor-AppImage"
+tag:
+  - "editor"
+  - "text"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-Text-Editor-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Gnome-Text-Editor-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sound-space-plus/appimage.stable.yaml
+_disabled: false
+
+pkg: "sound-space-plus"
+pkg_id: "pkgforge-dev.sound-space-plus"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/sound-space-plus"
+category:
+  - "Game"
+description: "Rhythm game"
+homepage:
+  - "https://github.com/SE-Mod-Community/sound-space-plus"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/Innectic/sound-space-plus/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/sound-space-plus-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sound-space-plus"
+repology:
+  - "sound-space-plus"
+src_url:
+  - "https://github.com/pkgforge-dev/sound-space-plus-AppImage"
+tag:
+  - "game"
+  - "rhythm"
+  - "music"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/sound-space-plus-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/sound-space-plus-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

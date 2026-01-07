@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pinta/appimage.stable.yaml
+_disabled: false
+
+pkg: "pinta"
+pkg_id: "pkgforge-dev.pinta"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/pinta"
+category:
+  - "Graphics"
+description: "Simple drawing and image editing program"
+homepage:
+  - "https://www.pinta-project.com"
+  - "https://github.com/pkgforge-dev/Pinta-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/PintaProject/Pinta/refs/heads/main/license-mit.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Pinta-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pinta"
+repology:
+  - "pinta"
+src_url:
+  - "https://github.com/pkgforge-dev/Pinta-AppImage"
+tag:
+  - "graphics"
+  - "image"
+  - "editor"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Pinta-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Pinta-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

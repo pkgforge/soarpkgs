@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sview/appimage.stable.yaml
+_disabled: false
+
+pkg: "sview"
+pkg_id: "pkgforge-dev.sview"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/sview"
+category:
+  - "AudioVideo"
+  - "Player"
+description: "Media player for 3D/2D content"
+homepage:
+  - "https://www.sview.ru"
+  - "https://github.com/pkgforge-dev/sView-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/gkv311/sview/refs/heads/main/license-gpl-3.0.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/sView-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sview"
+repology:
+  - "sview"
+src_url:
+  - "https://github.com/pkgforge-dev/sView-AppImage"
+tag:
+  - "video"
+  - "player"
+  - "3d"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/sView-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/sView-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

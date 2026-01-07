@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/audio-sharing/appimage.stable.yaml
+_disabled: false
+
+pkg: "audio-sharing"
+pkg_id: "pkgforge-dev.audio-sharing"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/audio-sharing"
+category:
+  - "Audio"
+  - "Network"
+description: "Share audio between computers over network"
+homepage:
+  - "https://github.com/mkckr0/audio-sharing"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/mkckr0/audio-sharing/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Audio-Sharing-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "audio-sharing"
+repology:
+  - "audio-sharing"
+src_url:
+  - "https://github.com/pkgforge-dev/Audio-Sharing-AppImage"
+tag:
+  - "audio"
+  - "network"
+  - "streaming"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Audio-Sharing-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Audio-Sharing-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

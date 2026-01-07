@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/system-monitoring-center/appimage.stable.yaml
+_disabled: false
+
+pkg: "system-monitoring-center"
+pkg_id: "pkgforge-dev.system-monitoring-center"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/system-monitoring-center"
+category:
+  - "System"
+  - "Monitor"
+description: "Multi-featured system monitor"
+homepage:
+  - "https://github.com/hakandundar34coding/system-monitoring-center"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/hakandundar34coding/system-monitoring-center/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/system-monitoring-center-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "system-monitoring-center"
+repology:
+  - "system-monitoring-center"
+src_url:
+  - "https://github.com/pkgforge-dev/system-monitoring-center-AppImage"
+tag:
+  - "system"
+  - "monitor"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/system-monitoring-center-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/system-monitoring-center-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

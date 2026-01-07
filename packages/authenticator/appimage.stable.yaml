@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/authenticator/appimage.stable.yaml
+_disabled: false
+
+pkg: "authenticator"
+pkg_id: "pkgforge-dev.authenticator"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/authenticator"
+category:
+  - "Utility"
+  - "Security"
+description: "Two-factor authentication codes generator"
+homepage:
+  - "https://gitlab.gnome.org/World/Authenticator"
+  - "https://github.com/pkgforge-dev/Authenticator-AppImage"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/World/Authenticator/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Authenticator-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "authenticator"
+repology:
+  - "authenticator"
+src_url:
+  - "https://github.com/pkgforge-dev/Authenticator-AppImage"
+tag:
+  - "security"
+  - "2fa"
+  - "authentication"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Authenticator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Authenticator-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

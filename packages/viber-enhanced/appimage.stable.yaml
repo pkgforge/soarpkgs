@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/viber-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "viber-enhanced"
+pkg_id: "pkgforge-dev.viber-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/viber-enhanced"
+category:
+  - "Network"
+  - "InstantMessaging"
+description: "Free calls and messages"
+homepage:
+  - "https://www.viber.com"
+  - "https://github.com/pkgforge-dev/Viber-AppImage-Enhanced"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Proprietary"
+    url: "https://raw.githubusercontent.com/Viber/api-docs/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Viber-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "viber-enhanced"
+repology:
+  - "viber-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/Viber-AppImage-Enhanced"
+tag:
+  - "messaging"
+  - "communication"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Viber-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Viber-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

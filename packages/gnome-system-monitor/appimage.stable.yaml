@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gnome-system-monitor/appimage.stable.yaml
+_disabled: false
+
+pkg: "gnome-system-monitor"
+pkg_id: "pkgforge-dev.gnome-system-monitor"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/gnome-system-monitor"
+category:
+  - "System"
+  - "Monitor"
+description: "View current processes and monitor system state"
+homepage:
+  - "https://wiki.gnome.org/Apps/SystemMonitor"
+  - "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/GNOME/gnome-system-monitor/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gnome-system-monitor"
+repology:
+  - "gnome-system-monitor"
+src_url:
+  - "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage"
+tag:
+  - "system"
+  - "monitor"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

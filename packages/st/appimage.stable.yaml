@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/st/appimage.stable.yaml
+_disabled: false
+
+pkg: "st"
+pkg_id: "pkgforge-dev.st"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/st"
+category:
+  - "System"
+  - "TerminalEmulator"
+description: "Simple terminal"
+homepage:
+  - "https://st.suckless.org"
+  - "https://github.com/pkgforge-dev/st-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/suckless/st/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/st-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "st"
+repology:
+  - "st"
+src_url:
+  - "https://github.com/pkgforge-dev/st-AppImage"
+tag:
+  - "terminal"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/st-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/st-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/citron/appimage.stable.yaml
+_disabled: false
+
+pkg: "citron"
+pkg_id: "pkgforge-dev.citron"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/citron"
+category:
+  - "Game"
+  - "Emulator"
+description: "Nintendo 3DS emulator"
+homepage:
+  - "https://github.com/emuplace/Citron"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/Lime3DS/Lime3DS/refs/heads/main/license.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Citron-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "citron"
+repology:
+  - "citron"
+src_url:
+  - "https://github.com/pkgforge-dev/Citron-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Citron-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Citron-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

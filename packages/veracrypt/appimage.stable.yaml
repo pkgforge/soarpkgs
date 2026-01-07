@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/veracrypt/appimage.stable.yaml
+_disabled: false
+
+pkg: "veracrypt"
+pkg_id: "pkgforge-dev.veracrypt"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/veracrypt"
+category:
+  - "Utility"
+  - "Security"
+description: "Disk encryption software"
+homepage:
+  - "https://www.veracrypt.fr"
+  - "https://github.com/pkgforge-dev/VeraCrypt-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/veracrypt/VeraCrypt/refs/heads/main/License.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/VeraCrypt-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "veracrypt"
+repology:
+  - "veracrypt"
+src_url:
+  - "https://github.com/pkgforge-dev/VeraCrypt-AppImage"
+tag:
+  - "security"
+  - "encryption"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/VeraCrypt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/VeraCrypt-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

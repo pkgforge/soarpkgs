@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/extension-manager/appimage.stable.yaml
+_disabled: false
+
+pkg: "extension-manager"
+pkg_id: "pkgforge-dev.extension-manager"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/extension-manager"
+category:
+  - "Utility"
+  - "Settings"
+description: "Manage GNOME Shell extensions"
+homepage:
+  - "https://github.com/mjakeman/extension-manager"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/mjakeman/extension-manager/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Extension-Manager-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "extension-manager"
+repology:
+  - "extension-manager"
+src_url:
+  - "https://github.com/pkgforge-dev/Extension-Manager-AppImage"
+tag:
+  - "gnome"
+  - "extensions"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Extension-Manager-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Extension-Manager-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

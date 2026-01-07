@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gnome-pomodoro/appimage.stable.yaml
+_disabled: false
+
+pkg: "gnome-pomodoro"
+pkg_id: "pkgforge-dev.gnome-pomodoro"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/gnome-pomodoro"
+category:
+  - "Utility"
+description: "Time management utility for GNOME"
+homepage:
+  - "https://gnomepomodoro.org"
+  - "https://github.com/pkgforge-dev/gnome-pomodoro-appimage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/gnome-pomodoro/gnome-pomodoro/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gnome-pomodoro-appimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gnome-pomodoro"
+repology:
+  - "gnome-pomodoro"
+src_url:
+  - "https://github.com/pkgforge-dev/gnome-pomodoro-appimage"
+tag:
+  - "utility"
+  - "productivity"
+  - "timer"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/gnome-pomodoro-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/gnome-pomodoro-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

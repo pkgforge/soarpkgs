@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sudachi/appimage.stable.yaml
+_disabled: false
+
+pkg: "sudachi"
+pkg_id: "pkgforge-dev.sudachi"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/sudachi"
+category:
+  - "Game"
+  - "Emulator"
+description: "Nintendo Switch emulator"
+homepage:
+  - "https://github.com/emuplace/sudachi.emuplace.app"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/sudachi-emu/sudachi/refs/heads/main/LICENSE.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Sudachi-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sudachi"
+repology:
+  - "sudachi"
+src_url:
+  - "https://github.com/pkgforge-dev/Sudachi-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Sudachi-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

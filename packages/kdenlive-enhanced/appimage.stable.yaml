@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kdenlive-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "kdenlive-enhanced"
+pkg_id: "pkgforge-dev.kdenlive-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/kdenlive-enhanced"
+category:
+  - "AudioVideo"
+  - "VideoEditing"
+description: "Video editor"
+homepage:
+  - "https://kdenlive.org"
+  - "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/KDE/kdenlive/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kdenlive-enhanced"
+repology:
+  - "kdenlive-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced"
+tag:
+  - "video"
+  - "editor"
+  - "multimedia"
+x_exec:
+  host:
+    - "x86_64-Linux"
+    - "aarch64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

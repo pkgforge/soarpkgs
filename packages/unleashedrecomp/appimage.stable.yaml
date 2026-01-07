@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/unleashedrecomp/appimage.stable.yaml
+_disabled: false
+
+pkg: "unleashedrecomp"
+pkg_id: "pkgforge-dev.unleashedrecomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/unleashedrecomp"
+category:
+  - "Development"
+  - "Utility"
+description: "N64 recompilation tool"
+homepage:
+  - "https://github.com/N64Recomp/N64Recomp"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/Mr-Wiseguy/N64Recomp/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UnleashedRecomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "unleashedrecomp"
+repology:
+  - "unleashedrecomp"
+src_url:
+  - "https://github.com/pkgforge-dev/UnleashedRecomp-AppImage"
+tag:
+  - "development"
+  - "n64"
+  - "tool"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/UnleashedRecomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/UnleashedRecomp-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

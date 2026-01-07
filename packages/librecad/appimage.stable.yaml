@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/librecad/appimage.stable.yaml
+_disabled: false
+
+pkg: "librecad"
+pkg_id: "pkgforge-dev.librecad"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/librecad"
+category:
+  - "Graphics"
+  - "Engineering"
+description: "2D CAD application"
+homepage:
+  - "https://librecad.org"
+  - "https://github.com/pkgforge-dev/LibreCAD-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/LibreCAD/LibreCAD/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LibreCAD-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "librecad"
+repology:
+  - "librecad"
+src_url:
+  - "https://github.com/pkgforge-dev/LibreCAD-AppImage"
+tag:
+  - "cad"
+  - "graphics"
+  - "engineering"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/LibreCAD-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/LibreCAD-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

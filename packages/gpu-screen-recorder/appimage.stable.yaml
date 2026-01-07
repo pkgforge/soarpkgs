@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gpu-screen-recorder/appimage.stable.yaml
+_disabled: false
+
+pkg: "gpu-screen-recorder"
+pkg_id: "pkgforge-dev.gpu-screen-recorder"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/gpu-screen-recorder"
+category:
+  - "Video"
+  - "Recorder"
+description: "Screen recorder with GPU acceleration"
+homepage:
+  - "https://git.dec05eba.com/gpu-screen-recorder"
+  - "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/dec05eba/gpu-screen-recorder/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gpu-screen-recorder"
+repology:
+  - "gpu-screen-recorder"
+src_url:
+  - "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage"
+tag:
+  - "video"
+  - "recorder"
+  - "screen"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/gpu-screen-recorder-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

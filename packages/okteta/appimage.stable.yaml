@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/okteta/appimage.stable.yaml
+_disabled: false
+
+pkg: "okteta"
+pkg_id: "pkgforge-dev.okteta"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/okteta"
+category:
+  - "Development"
+  - "Utility"
+description: "Hex editor for KDE"
+homepage:
+  - "https://apps.kde.org/okteta"
+  - "https://github.com/pkgforge-dev/okteta-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/KDE/okteta/refs/heads/main/COPYING.LIB"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/okteta-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "okteta"
+repology:
+  - "okteta"
+src_url:
+  - "https://github.com/pkgforge-dev/okteta-AppImage"
+tag:
+  - "development"
+  - "hex"
+  - "editor"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/okteta-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/okteta-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

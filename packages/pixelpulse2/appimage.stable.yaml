@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pixelpulse2/appimage.stable.yaml
+_disabled: false
+
+pkg: "pixelpulse2"
+pkg_id: "pkgforge-dev.pixelpulse2"
+pkg_type: "appimage"
+ghcr_pkg: "pkgcache/pkgforge-dev/pixelpulse2"
+category:
+  - "Science"
+  - "Engineering"
+description: "Oscilloscope and logic analyzer application"
+homepage:
+  - "https://github.com/analogdevicesinc/pixelpulse2"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/analogdevicesinc/Pixelpulse2/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Pixelpulse2-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pixelpulse2"
+repology:
+  - "pixelpulse2"
+src_url:
+  - "https://github.com/pkgforge-dev/Pixelpulse2-AppImage"
+tag:
+  - "electronics"
+  - "engineering"
+  - "science"
+x_exec:
+  host:
+    - "x86_64-Linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Pixelpulse2-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Pixelpulse2-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
