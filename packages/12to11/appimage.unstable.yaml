@@ -1,12 +1,11 @@
 #!/SBUILD ver @v1.0.0
-
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/12to11/appimage.unstable.yaml
 _disabled: false
 
 pkg: "12to11"
 pkg_id: "pkgforge-dev.12to11"
 pkg_type: "appimage"
-pkgver: "HEAD-510a27f@2026-01-06_1767711172"
-ghcr_pkg: "pkgcache/pkgforge-dev/12to11"
+ghcr_pkg: "pkgforge-dev/12to11"
 category:
   - "Utility"
 description: "Tool for running Wayland applications on an X server"
