@@ -8,7 +8,11 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgcache/pkgforge-dev/dunst"
 category:
   - "Utility"
-description: "Lightweight and customizable notification daemon"
+description:
+  _default: "Lightweight and customizable notification daemon"
+  dunst: "Notification daemon"
+  dunstify: "Send notification"
+  dunstctl: "Control dunst over dbus"
 homepage:
   - "https://dunst-project.org"
   - "https://github.com/pkgforge-dev/dunst-AppImage"
@@ -16,12 +20,13 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "BSD-3-Clause"
-    url: "https://raw.githubusercontent.com/dunst-project/dunst/refs/heads/main/LICENSE"
+    url: "https://raw.githubusercontent.com/dunst-project/dunst/refs/heads/master/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/dunst-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "dunst"
+  - "dunst=>dunstctl"
+  - "dunst=>dunstify"
 repology:
   - "dunst"
 src_url:
@@ -33,6 +38,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/dunst-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
