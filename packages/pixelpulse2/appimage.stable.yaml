@@ -8,15 +8,14 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgcache/pkgforge-dev/pixelpulse2"
 category:
   - "Science"
-  - "Engineering"
 description: "Oscilloscope and logic analyzer application"
 homepage:
   - "https://github.com/analogdevicesinc/pixelpulse2"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/analogdevicesinc/Pixelpulse2/refs/heads/main/LICENSE"
+  - id: "MPL-2.0"
+    url: "https://raw.githubusercontent.com/analogdevicesinc/Pixelpulse2/refs/heads/master/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Pixelpulse2-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
