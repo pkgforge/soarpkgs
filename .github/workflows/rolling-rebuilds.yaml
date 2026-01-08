@@ -118,6 +118,13 @@ jobs:
             timeout 120s bash -c "$script" 2>/dev/null | tr -d '\n\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | head -c 100
           }
 
+          # Sanitize version for OCI tag comparison
+          # OCI tags only allow: [a-zA-Z0-9_.-], other chars become -
+          sanitize_version() {
+            local version="$1"
+            echo "$version" | sed 's/[^a-zA-Z0-9_.-]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//'
+          }
+
           # Function to extract pkg name from recipe
           # Priority: first provides entry > pkg field
           get_pkg_name() {
@@ -153,25 +160,35 @@ jobs:
           }
 
           # Function to get current version from GHCR
-          # GHCR path: {owner}/{ghcr_pkg}/{provides} or {owner}/{pkg_family}/{recipe_name}/{provides}
+          # GHCR path: {owner}/{ghcr_pkg}/{provides}
           get_ghcr_version() {
-            local family="$1"
-            local recipe_name="$2"
-            local provides_entry="$3"
-            local ghcr_pkg="$4"
+            local ghcr_pkg="$1"
+            local provides_entry="$2"
 
-            local ghcr_path
-            if [ -n "$ghcr_pkg" ]; then
-              ghcr_path="ghcr.io/${GHCR_OWNER}/${ghcr_pkg}/${provides_entry}"
-            else
-              ghcr_path="ghcr.io/${GHCR_OWNER}/${family}/${recipe_name}/${provides_entry}"
-            fi
-
+            local ghcr_path="ghcr.io/${GHCR_OWNER}/${ghcr_pkg}/${provides_entry}"
             echo "Checking GHCR: $ghcr_path" >&2
 
-            # Try to get version from manifest annotation
-            skopeo inspect "docker://${ghcr_path}:latest" 2>/dev/null | \
-              jq -r '.Labels["dev.pkgforge.soar.version"] // empty' || echo ""
+            # List tags and extract version from tag name
+            # Tags are formatted as {version}-{arch} (e.g., v1.2.3-x86_64-linux)
+            local tags_json
+            tags_json=$(skopeo list-tags "docker://${ghcr_path}" 2>/dev/null) || {
+              echo ""
+              return
+            }
+
+            # Get first tag matching x86_64-linux and extract version
+            local tag version
+            tag=$(echo "$tags_json" | jq -r '.Tags[]? | select(endswith("-x86_64-linux"))' | head -1)
+
+            # If no x86_64, try aarch64
+            if [ -z "$tag" ]; then
+              tag=$(echo "$tags_json" | jq -r '.Tags[]? | select(endswith("-aarch64-linux"))' | head -1)
+              version=$(echo "$tag" | sed 's/-aarch64-linux$//')
+            else
+              version=$(echo "$tag" | sed 's/-x86_64-linux$//')
+            fi
+
+            echo "$version"
           }
 
           echo "$PACKAGES" | jq -c '.[]' | while IFS= read -r pkg; do
@@ -185,10 +202,17 @@ jobs:
               pkg_name="$family"  # fallback to family name
             fi
 
-            # Check for custom ghcr_pkg
+            # Check for custom ghcr_pkg (required for GHCR version check)
             ghcr_pkg=$(get_ghcr_pkg "$path")
 
             echo "::group::Checking $family/$name (pkg: $pkg_name)"
+
+            # Skip if no ghcr_pkg - we can't determine the GHCR path
+            if [ -z "$ghcr_pkg" ]; then
+              echo "No ghcr_pkg set - cannot check GHCR version, skipping"
+              echo "::endgroup::"
+              continue
+            fi
 
             NEEDS_REBUILD=false
             NEW_VERSION=""
@@ -204,14 +228,18 @@ jobs:
               if [ -n "$NEW_VERSION" ]; then
                 echo "New version from pkgver: $NEW_VERSION"
 
+                # Sanitize version for comparison (OCI tags have restricted charset)
+                SANITIZED_VERSION=$(sanitize_version "$NEW_VERSION")
+                echo "Sanitized version: $SANITIZED_VERSION"
+
                 # Get current version from GHCR
-                CURRENT_VERSION=$(get_ghcr_version "$family" "$name" "$pkg_name" "$ghcr_pkg")
+                CURRENT_VERSION=$(get_ghcr_version "$ghcr_pkg" "$pkg_name")
 
                 if [ -n "$CURRENT_VERSION" ]; then
                   echo "Current version in GHCR: $CURRENT_VERSION"
 
-                  if [ "$NEW_VERSION" != "$CURRENT_VERSION" ]; then
-                    echo "Version changed: $CURRENT_VERSION -> $NEW_VERSION"
+                  if [ "$SANITIZED_VERSION" != "$CURRENT_VERSION" ]; then
+                    echo "Version changed: $CURRENT_VERSION -> $SANITIZED_VERSION"
                     NEEDS_REBUILD=true
                   else
                     echo "Version unchanged"
