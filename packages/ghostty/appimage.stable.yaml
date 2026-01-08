@@ -1,11 +1,12 @@
 #!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ghostty/appimage.stable.yaml
 _disabled: false
 
 pkg: "ghostty"
 pkg_id: "pkgforge-dev.ghostty"
 pkgver: "v1.2.3"
 pkg_type: "appimage"
-ghcr_pkg: "pkgcache/pkgforge-dev/ghostty"
+ghcr_pkg: "pkgforge-dev/ghostty"
 category:
   - "TerminalEmulator"
 description: "Fast, native, feature-rich terminal emulator pushing modern features"
