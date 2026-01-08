@@ -17,7 +17,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "Proprietary"
-    url: "https://raw.githubusercontent.com/getcursor/cursor/refs/heads/main/LICENSE"
+    url: "https://cursor.com/terms-of-service"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/cursor-cli-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,6 +34,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/cursor-cli-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
