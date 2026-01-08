@@ -8,7 +8,6 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgcache/pkgforge-dev/librecad"
 category:
   - "Graphics"
-  - "Engineering"
 description: "2D CAD application"
 homepage:
   - "https://librecad.org"
@@ -17,7 +16,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-2.0"
-    url: "https://raw.githubusercontent.com/LibreCAD/LibreCAD/refs/heads/main/LICENSE"
+    url: "https://raw.githubusercontent.com/LibreCAD/LibreCAD/refs/heads/master/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LibreCAD-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,6 +33,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/LibreCAD-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
