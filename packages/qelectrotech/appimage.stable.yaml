@@ -8,7 +8,6 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgcache/pkgforge-dev/qelectrotech"
 category:
   - "Graphics"
-  - "Engineering"
 description: "Electric diagram editor"
 homepage:
   - "https://qelectrotech.org"
@@ -17,7 +16,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-2.0"
-    url: "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/main/COPYING"
+    url: "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/QElectroTech-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,6 +33,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/QElectroTech-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
