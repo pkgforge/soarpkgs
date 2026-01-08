@@ -17,7 +17,7 @@ maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/YaLTeR/video-trimmer/refs/heads/main/LICENSE"
+    url: "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Video-Trimmer-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,6 +34,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Video-Trimmer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
