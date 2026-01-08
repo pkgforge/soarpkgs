@@ -9,7 +9,10 @@ ghcr_pkg: "pkgcache/pkgforge-dev/gpu-screen-recorder"
 category:
   - "Video"
   - "Recorder"
-description: "Screen recorder with GPU acceleration"
+description: 
+  _default: "Screen recorder with GPU acceleration"
+  gpu-screen-recorder-gtk: "GTK3 GUI"
+  gsr-ui: "ShadowPlay like overlay"
 homepage:
   - "https://git.dec05eba.com/gpu-screen-recorder"
   - "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage"
@@ -17,12 +20,13 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/dec05eba/gpu-screen-recorder/refs/heads/main/LICENSE"
+    url: "https://git.dec05eba.com/gpu-screen-recorder/tree/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "gpu-screen-recorder"
+  - "gpu-screen-recorder=>gpu-screen-recorder-gtk"
+  - "gpu-screen-recorder=>gsr-ui"
 repology:
   - "gpu-screen-recorder"
 src_url:
@@ -34,6 +38,7 @@ tag:
 x_exec:
   host:
     - "x86_64-Linux"
+    - "aarch64-Linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/gpu-screen-recorder-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
