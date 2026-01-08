@@ -89,7 +89,7 @@ jobs:
           PR_NUM="${{ github.event.issue.number }}"
 
           # Determine host
-          HOST="x86_64-Linux"
+          HOST="ALL"
           case "$ARGS" in
             x86_64*|X86_64*) HOST="x86_64-Linux" ;;
             aarch64*|AARCH64*|arm64*) HOST="aarch64-Linux" ;;
@@ -120,7 +120,7 @@ jobs:
 
       - name: Checkout for lint
         if: steps.parse.outputs.command == 'lint'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -191,7 +191,7 @@ jobs:
 
       - name: Checkout for check
         if: steps.parse.outputs.command == 'check'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 

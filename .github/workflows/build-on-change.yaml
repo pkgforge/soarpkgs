@@ -41,7 +41,7 @@ jobs:
       has_changes: ${{ steps.filter.outputs.has_changes }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
@@ -172,7 +172,7 @@ jobs:
     uses: ./.github/workflows/matrix_builds.yaml
     with:
       sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/${{ matrix.recipe.path }}"
-      ghcr-url: ${{ contains(matrix.recipe.path, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      ghcr-url: ${{ format('ghcr.io/{0}', github.repository_owner) }}
       pkg-family: ${{ github.event.repository.name }}
       rebuild: true
       logs: true
@@ -185,7 +185,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download tools
         run: |
@@ -203,7 +203,7 @@ jobs:
             sbuild-cache --cache /tmp/build_cache.sdb init
 
       - name: Download build status artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           pattern: build-status-*
           path: /tmp/build-statuses
