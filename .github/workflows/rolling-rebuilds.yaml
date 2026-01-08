@@ -33,22 +33,35 @@ jobs:
         run: |
           PACKAGES="[]"
 
-          # Find recipes marked with _rolling: true
+          # Find recipes without top-level pkgver/version (these are rolling packages)
           for recipe in $(find binaries packages -name "*.yaml" 2>/dev/null); do
-            if grep -qE '^_rolling:\s*(true|yes)' "$recipe"; then
-              pkg_family=$(echo "$recipe" | cut -d'/' -f2)
-              recipe_name=$(basename "$recipe" .yaml)
-
-              # Apply filter if provided
-              if [ -n "${{ inputs.package_filter }}" ]; then
-                if ! echo "$pkg_family" | grep -qE "${{ inputs.package_filter }}"; then
-                  continue
-                fi
-              fi
-
-              PACKAGES=$(echo "$PACKAGES" | jq --arg path "$recipe" --arg family "$pkg_family" --arg name "$recipe_name" \
-                '. + [{"path": $path, "family": $family, "name": $name}]')
+            # Skip disabled packages
+            if grep -qE '^_disabled:\s*(true|yes)' "$recipe"; then
+              continue
             fi
+
+            # Check if package has a hardcoded version (pkgver or version at top level)
+            if grep -qE '^(pkgver|version):' "$recipe"; then
+              continue
+            fi
+
+            # Must have x_exec.pkgver to be useful
+            if ! grep -qE '^[[:space:]]+pkgver:' "$recipe"; then
+              continue
+            fi
+
+            pkg_family=$(echo "$recipe" | cut -d'/' -f2)
+            recipe_name=$(basename "$recipe" .yaml)
+
+            # Apply filter if provided
+            if [ -n "${{ inputs.package_filter }}" ]; then
+              if ! echo "$pkg_family" | grep -qE "${{ inputs.package_filter }}"; then
+                continue
+              fi
+            fi
+
+            PACKAGES=$(echo "$PACKAGES" | jq --arg path "$recipe" --arg family "$pkg_family" --arg name "$recipe_name" \
+              '. + [{"path": $path, "family": $family, "name": $name}]')
           done
 
           PKG_COUNT=$(echo "$PACKAGES" | jq 'length')
@@ -73,60 +86,145 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Download build cache
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Install skopeo
         run: |
-          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || true
+          sudo apt-get update
+          sudo apt-get install -y skopeo
 
       - name: Check for source updates
         id: check
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          GHCR_OWNER: ${{ github.repository_owner }}
         run: |
           TO_REBUILD="[]"
           PACKAGES='${{ needs.find-rolling-packages.outputs.packages }}'
 
-          echo "$PACKAGES" | jq -c '.[]' | while read -r pkg; do
+          # Function to extract pkgver script from x_exec block
+          extract_pkgver_script() {
+            local file="$1"
+            awk '
+              /^x_exec:/ { in_xexec=1; next }
+              in_xexec && /^[a-z_]+:/ && !/^[[:space:]]/ { in_xexec=0 }
+              in_xexec && /^[[:space:]]+pkgver:[[:space:]]*\|/ { in_pkgver=1; next }
+              in_pkgver && /^[[:space:]]+[a-z_]+:/ { in_pkgver=0 }
+              in_pkgver { gsub(/^[[:space:]]{4}/, ""); print }
+            ' "$file"
+          }
+
+          # Function to run pkgver script with timeout
+          run_pkgver() {
+            local script="$1"
+            timeout 120s bash -c "$script" 2>/dev/null | tr -d '\n\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | head -c 100
+          }
+
+          # Function to extract pkg name from recipe
+          # Priority: first provides entry > pkg field
+          get_pkg_name() {
+            local file="$1"
+
+            # Try to get first provides entry
+            local provides_entry
+            provides_entry=$(awk '
+              /^provides:/ { in_provides=1; next }
+              in_provides && /^[a-z_]+:/ && !/^[[:space:]]/ { exit }
+              in_provides && /^[[:space:]]*-/ {
+                gsub(/^[[:space:]]*-[[:space:]]*/, "")
+                gsub(/^"/, ""); gsub(/"$/, "")
+                # Extract base name before any separator (=>, ==, :)
+                split($0, parts, /[=:>]/)
+                print parts[1]
+                exit
+              }
+            ' "$file")
+
+            if [ -n "$provides_entry" ]; then
+              echo "$provides_entry"
+            else
+              # Fallback to pkg field
+              grep -E "^pkg:" "$file" | head -1 | sed 's/^pkg:[[:space:]]*//; s/^"//; s/"$//'
+            fi
+          }
+
+          # Function to extract ghcr_pkg from recipe (custom GHCR path)
+          get_ghcr_pkg() {
+            local file="$1"
+            grep -E "^ghcr_pkg:" "$file" | head -1 | sed 's/^ghcr_pkg:[[:space:]]*//; s/^"//; s/"$//'
+          }
+
+          # Function to get current version from GHCR
+          # GHCR path: {owner}/{ghcr_pkg}/{provides} or {owner}/{pkg_family}/{recipe_name}/{provides}
+          get_ghcr_version() {
+            local family="$1"
+            local recipe_name="$2"
+            local provides_entry="$3"
+            local ghcr_pkg="$4"
+
+            local ghcr_path
+            if [ -n "$ghcr_pkg" ]; then
+              ghcr_path="ghcr.io/${GHCR_OWNER}/${ghcr_pkg}/${provides_entry}"
+            else
+              ghcr_path="ghcr.io/${GHCR_OWNER}/${family}/${recipe_name}/${provides_entry}"
+            fi
+
+            echo "Checking GHCR: $ghcr_path" >&2
+
+            # Try to get version from manifest annotation
+            skopeo inspect "docker://${ghcr_path}:latest" 2>/dev/null | \
+              jq -r '.Labels["dev.pkgforge.soar.version"] // empty' || echo ""
+          }
+
+          echo "$PACKAGES" | jq -c '.[]' | while IFS= read -r pkg; do
             path=$(echo "$pkg" | jq -r '.path')
             family=$(echo "$pkg" | jq -r '.family')
             name=$(echo "$pkg" | jq -r '.name')
 
-            echo "::group::Checking $family/$name"
-
-            # Extract src_url from recipe
-            SRC_URL=$(grep -A1 "^src_url:" "$path" | grep "^\s*-" | head -1 | sed 's/^[[:space:]]*-[[:space:]]*//; s/^"//; s/"$//')
-
-            if [ -z "$SRC_URL" ]; then
-              echo "No src_url found, skipping"
-              echo "::endgroup::"
-              continue
+            # Extract pkg_name from recipe
+            pkg_name=$(get_pkg_name "$path")
+            if [ -z "$pkg_name" ]; then
+              pkg_name="$family"  # fallback to family name
             fi
 
+            # Check for custom ghcr_pkg
+            ghcr_pkg=$(get_ghcr_pkg "$path")
+
+            echo "::group::Checking $family/$name (pkg: $pkg_name)"
+
             NEEDS_REBUILD=false
-            CURRENT_HASH=""
-            NEW_HASH=""
+            NEW_VERSION=""
+            CURRENT_VERSION=""
 
-            # Check if it's a GitHub repo
-            if echo "$SRC_URL" | grep -qE "github\.com/[^/]+/[^/]+"; then
-              REPO=$(echo "$SRC_URL" | sed 's|.*github\.com/||; s|\.git$||; s|/tree/.*||; s|/releases.*||')
+            # Try to extract and run pkgver script
+            PKGVER_SCRIPT=$(extract_pkgver_script "$path")
 
-              # Get latest commit SHA
-              NEW_HASH=$(gh api "repos/${REPO}/commits/HEAD" --jq '.sha' 2>/dev/null | head -c 12 || echo "")
+            if [ -n "$PKGVER_SCRIPT" ]; then
+              echo "Found pkgver script, executing..."
+              NEW_VERSION=$(run_pkgver "$PKGVER_SCRIPT")
 
-              if [ -n "$NEW_HASH" ]; then
-                # Check against cached hash (stored as version in build cache)
-                if [ -f "/tmp/build_cache.sdb" ]; then
-                  # Query the cache for last built hash
-                  # For now, just mark for rebuild if force flag or no cache
-                  NEEDS_REBUILD=true
+              if [ -n "$NEW_VERSION" ]; then
+                echo "New version from pkgver: $NEW_VERSION"
+
+                # Get current version from GHCR
+                CURRENT_VERSION=$(get_ghcr_version "$family" "$name" "$pkg_name" "$ghcr_pkg")
+
+                if [ -n "$CURRENT_VERSION" ]; then
+                  echo "Current version in GHCR: $CURRENT_VERSION"
+
+                  if [ "$NEW_VERSION" != "$CURRENT_VERSION" ]; then
+                    echo "Version changed: $CURRENT_VERSION -> $NEW_VERSION"
+                    NEEDS_REBUILD=true
+                  else
+                    echo "Version unchanged"
+                  fi
                 else
+                  echo "No existing version in GHCR, marking for build"
                   NEEDS_REBUILD=true
                 fi
-
-                echo "Latest commit: $NEW_HASH"
+              else
+                echo "pkgver script returned empty result"
               fi
+            else
+              echo "No pkgver script found, skipping version check"
             fi
 
             # Force rebuild if requested
@@ -136,14 +234,22 @@ jobs:
 
             if [ "$NEEDS_REBUILD" == "true" ]; then
               echo "Marking for rebuild"
-              TO_REBUILD=$(echo "$TO_REBUILD" | jq --arg path "$path" --arg hash "$NEW_HASH" \
-                '. + [{"path": $path, "new_hash": $hash}]')
+              # Write to temp file to persist across subshell
+              echo "$path|$NEW_VERSION" >> /tmp/to_rebuild.txt
             else
               echo "No rebuild needed"
             fi
 
             echo "::endgroup::"
           done
+
+          # Build TO_REBUILD from temp file
+          if [ -f /tmp/to_rebuild.txt ]; then
+            while IFS='|' read -r path version; do
+              TO_REBUILD=$(echo "$TO_REBUILD" | jq --arg path "$path" --arg version "$version" \
+                '. + [{"path": $path, "new_version": $version}]')
+            done < /tmp/to_rebuild.txt
+          fi
 
           # Write final output
           REBUILD_COUNT=$(echo "$TO_REBUILD" | jq 'length')
@@ -169,7 +275,7 @@ jobs:
     with:
       host: "ALL"
       sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/${{ matrix.package.path }}"
-      ghcr-url: ${{ contains(matrix.package.path, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      ghcr-url: ${{ format('ghcr.io/{0}', github.repository_owner) }}
       pkg-family: ${{ github.event.repository.name }}
       rebuild: true
       logs: true
