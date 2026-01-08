@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "gnome-calculator"
 pkg_id: "pkgforge-dev.gnome-calculator"
-pkgver: "49.2-1@2026-01-01_1767251973"
 pkg_type: "appimage"
+pkgver: "49.2-1@2026-01-01_1767251973"
 ghcr_pkg: "pkgforge-dev/gnome-calculator"
 category:
   - "Utility"
@@ -34,8 +34,8 @@ tag:
   - "math"
 x_exec:
   host:
-    - "x86_64-Linux"
-    - "aarch64-Linux"
+    - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-Calculator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

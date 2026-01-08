@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "ghostty"
 pkg_id: "pkgforge-dev.ghostty"
-pkgver: "v1.2.3"
 pkg_type: "appimage"
+pkgver: "v1.2.3"
 ghcr_pkg: "pkgforge-dev/ghostty"
 category:
   - "TerminalEmulator"
@@ -31,8 +31,8 @@ tag:
   - "terminal"
 x_exec:
   host:
-    - "x86_64-Linux"
-    - "aarch64-Linux"
+    - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

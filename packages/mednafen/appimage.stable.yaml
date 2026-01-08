@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "mednafen"
 pkg_id: "pkgforge-dev.mednafen"
-pkgver: "1.32.1@2026-01-01_1767256240"
 pkg_type: "appimage"
+pkgver: "1.32.1@2026-01-01_1767256240"
 ghcr_pkg: "pkgforge-dev/mednafen"
 category:
   - "Game"
@@ -33,7 +33,7 @@ tag:
   - "gaming"
 x_exec:
   host:
-    - "x86_64-Linux"
+    - "x86_64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mednafen-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

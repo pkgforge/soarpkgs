@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "azahar-enhanced"
 pkg_id: "pkgforge-dev.azahar-enhanced"
-pkgver: "2123.4-beta2@2026-01-01_1767256588"
 pkg_type: "appimage"
+pkgver: "2123.4-beta2@2026-01-01_1767256588"
 ghcr_pkg: "pkgforge-dev/azahar-enhanced"
 category:
   - "Game"
@@ -33,8 +33,8 @@ tag:
   - "nintendo"
 x_exec:
   host:
-    - "x86_64-Linux"
-    - "aarch64-Linux"
+    - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Azahar-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

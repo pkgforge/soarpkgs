@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "android-translation-layer"
 pkg_id: "pkgforge-dev.android-translation-layer"
-pkgver: "r1000.c69c046b-1@2026-01-02_1767318090"
 pkg_type: "appimage"
+pkgver: "r1000.c69c046b-1@2026-01-02_1767318090"
 ghcr_pkg: "pkgforge-dev/android-translation-layer"
 category:
   - "System"
@@ -33,7 +33,7 @@ tag:
   - "compatibility"
 x_exec:
   host:
-    - "x86_64-Linux"
+    - "x86_64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android_translation_layer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

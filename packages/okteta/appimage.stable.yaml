@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "okteta"
 pkg_id: "pkgforge-dev.okteta"
-pkgver: "1_0.26.24-2@2026-01-01_1767256266"
 pkg_type: "appimage"
+pkgver: "1_0.26.24-2@2026-01-01_1767256266"
 ghcr_pkg: "pkgforge-dev/okteta"
 category:
   - "Development"
@@ -34,7 +34,7 @@ tag:
   - "editor"
 x_exec:
   host:
-    - "x86_64-Linux"
+    - "x86_64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/okteta-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

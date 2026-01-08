@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "nsz"
 pkg_id: "pkgforge-dev.nsz"
-pkgver: "4.6.1@2026-01-01_1767255560"
 pkg_type: "appimage"
+pkgver: "4.6.1@2026-01-01_1767255560"
 ghcr_pkg: "pkgforge-dev/nsz"
 category:
   - "Utility"
@@ -33,7 +33,7 @@ tag:
   - "compression"
 x_exec:
   host:
-    - "x86_64-Linux"
+    - "x86_64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/NSZ-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "dolphin-emu"
 pkg_id: "pkgforge-dev.dolphin-emu"
-pkgver: "2512@2026-01-01_1767256227"
 pkg_type: "appimage"
+pkgver: "2512@2026-01-01_1767256227"
 ghcr_pkg: "pkgforge-dev/dolphin-emu"
 category:
   - "Game"
@@ -34,8 +34,8 @@ tag:
   - "nintendo"
 x_exec:
   host:
-    - "x86_64-Linux"
-    - "aarch64-Linux"
+    - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Dolphin-emu-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

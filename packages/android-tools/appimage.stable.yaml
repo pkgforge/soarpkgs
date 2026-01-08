@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "android-tools"
 pkg_id: "pkgforge-dev.android-tools"
-pkgver: "36.0.0@2026-01-01_1767284433"
 pkg_type: "appimage"
+pkgver: "36.0.0@2026-01-01_1767284433"
 ghcr_pkg: "pkgforge-dev/android-tools"
 category:
   - "Development"
@@ -15,7 +15,7 @@ description:
   adb: "Android Debug Bridge (adb) to communicate with an emulator instance or connected Android-powered device [android-tools]"
   etc1tool: "Encode/Decode PNG images to & from the ETC1 compression standard [android-tools]"
   fastboot: "Android flashing and booting utility [android-tools]"
-  hprof-conv: "HPROF Converter [android-tools]"
+  "hprof-conv": "HPROF Converter [android-tools]"
   make_f2fs: "Tool to create a flash-friendly F2FS file system [android-tools]"
   make_f2fs_casefold: "Version of make_f2fs with casefolding support for file systems [android-tools]"
   mke2fs: "Utility to create ext2, ext3, or ext4 file systems [android-tools]"
@@ -49,7 +49,7 @@ tag:
   - "utility"
 x_exec:
   host:
-    - "x86_64-Linux"
+    - "x86_64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

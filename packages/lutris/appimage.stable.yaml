@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "lutris"
 pkg_id: "pkgforge-dev.lutris"
-pkgver: "0.5.19-6@2026-01-01_1767256260"
 pkg_type: "appimage"
+pkgver: "0.5.19-6@2026-01-01_1767256260"
 ghcr_pkg: "pkgforge-dev/lutris"
 category:
   - "Game"
@@ -32,7 +32,7 @@ tag:
   - "launcher"
 x_exec:
   host:
-    - "x86_64-Linux"
+    - "x86_64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Lutris-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
