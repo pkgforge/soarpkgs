@@ -80,7 +80,7 @@ jobs:
     with:
       host: ${{ inputs.host }}
       sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main/${{ needs.validate.outputs.recipe }}"
-      ghcr-url: ${{ contains(needs.validate.outputs.recipe, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      ghcr-url: ${{ format('ghcr.io/{0}', github.repository_owner) }}
       pkg-family: ${{ github.event.repository.name }}
       rebuild: true
       logs: true

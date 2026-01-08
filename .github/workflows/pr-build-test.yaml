@@ -100,7 +100,7 @@ jobs:
     with:
       host: ${{ inputs.host }}
       sbuild-url: "https://raw.githubusercontent.com/${{ github.repository }}/${{ needs.detect-changes.outputs.pr_head_sha }}/${{ matrix.recipe.path }}"
-      ghcr-url: ${{ contains(matrix.recipe.path, 'packages/') && format('ghcr.io/{0}/pkgcache', github.repository_owner) || format('ghcr.io/{0}/bincache', github.repository_owner) }}
+      ghcr-url: ${{ format('ghcr.io/{0}', github.repository_owner) }}
       pkg-family: ${{ github.event.repository.name }}
       rebuild: true
       logs: true
@@ -242,11 +242,12 @@ jobs:
               pkg_family=$(echo "$recipe_path" | cut -d'/' -f2)
               recipe_name=$(basename "$recipe_path" .yaml 2>/dev/null || echo "unknown")
 
-              # Determine cache type from path
-              if echo "$recipe_path" | grep -q "^packages/"; then
-                CACHE_TYPE="pkgcache"
-              else
+              # Determine cache type from pkg_type (first part of recipe name)
+              pkg_type=$(echo "$recipe_name" | cut -d'.' -f1)
+              if [ "$pkg_type" = "static" ] || [ "$pkg_type" = "dynamic" ]; then
                 CACHE_TYPE="bincache"
+              else
+                CACHE_TYPE="pkgcache"
               fi
 
               case "$status" in
