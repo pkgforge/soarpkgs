@@ -18,7 +18,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-2.0"
-    url: "https://raw.githubusercontent.com/GNOME/easytag/refs/heads/main/COPYING"
+    url: "https://gitlab.gnome.org/GNOME/easytag/-/raw/master/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/EasyTAG-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,6 +35,7 @@ tag:
 x_exec:
   host:
     - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/EasyTAG-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

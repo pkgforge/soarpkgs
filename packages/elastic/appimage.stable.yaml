@@ -8,16 +8,15 @@ pkg_type: "appimage"
 pkgver: "1.0.1-1@2026-01-01_1767252112"
 ghcr_pkg: "pkgforge-dev/elastic"
 category:
-  - "Audio"
   - "Utility"
-description: "Audio stretcher and pitch shifter"
+description: "Elastic allows to design and export spring physics-based animations to use with libadwaita."
 homepage:
   - "https://github.com/veedeo/elastic"
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/Sleepdealr/ELASTIC/refs/heads/main/LICENSE"
+    url: "https://gitlab.gnome.org/World/elastic/-/raw/main/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Elastic-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -28,11 +27,11 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Elastic-AppImage"
 tag:
-  - "audio"
   - "utility"
 x_exec:
   host:
     - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Elastic-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
