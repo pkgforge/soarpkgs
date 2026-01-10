@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/7zip/static.stable.yaml
+_disabled: false
+
+pkg: "7zip"
+pkg_id: "ip7z.7zip"
+pkgver: "25.01"
+pkg_type: "static"
+category:
+  - "Utility"
+  - "Archiving"
+description: "File archiver with a high compression ratio"
+homepage:
+  - "https://7-zip.org"
+  - "https://github.com/ip7z/7zip"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "LGPL-2.0-only"
+    url: "https://raw.githubusercontent.com/ip7z/7zip/main/DOC/License.txt"
+note:
+  - Official binary from https://github.com/ip7z/7zip
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "7zip=>7z"
+repology:
+  - "7zip"
+src_url:
+  - "https://github.com/ip7z/7zip"
+tag:
+  - "archiver"
+  - "compression"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/ip7z/7zip/releases/latest" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ip7z/7zip@${PKGVER}" --glob "*linux-arm64*.tar.xz" -o "./7z.tar.xz" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ip7z/7zip@${PKGVER}" --glob "*linux-x64*.tar.xz" -o "./7z.tar.xz" --yes
+        ;;
+    esac
+    tar -xf "./7z.tar.xz"
+    mv "./7zzs" "./${PKG}"
+    mv "./License.txt" "./LICENSE"
+    rm -rf "./7z.tar.xz" "./7zz" "./History.txt" "./readme.txt" "./MANUAL"
