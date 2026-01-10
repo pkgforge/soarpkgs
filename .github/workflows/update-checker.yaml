@@ -130,7 +130,7 @@ jobs:
               fi
 
               git add "$recipe_path"
-              git commit -m "chore(bot): update ${pkg_name} to ${new_ver}"
+              git commit -m "${pkg_name}: update to ${new_ver}"
               git push origin "$branch"
 
               # Extract metadata from recipe file directly
