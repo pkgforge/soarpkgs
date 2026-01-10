@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/phoenix-x-server/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/phoenix-x-server/appimage.unstable.yaml
 _disabled: false
 
 pkg: "phoenix-x-server"
 pkg_id: "pkgforge-dev.phoenix-x-server"
 pkg_type: "appimage"
-pkgver: "r211.d35fdea-1@2026-01-08_1767857008"
 ghcr_pkg: "pkgforge-dev/phoenix-x-server"
 category:
   - "System"
@@ -16,7 +15,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/evilbunny2008/phoenix-x-server/refs/heads/main/LICENSE"
+    url: "https://git.dec05eba.com/phoenix/plain/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/phoenix-x-server-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"

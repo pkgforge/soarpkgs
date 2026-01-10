@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/playerctl/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/playerctl/appimage.nightly.yaml
 _disabled: false
 
 pkg: "playerctl"
 pkg_id: "pkgforge-dev.playerctl"
 pkg_type: "appimage"
-pkgver: "continuous"
 ghcr_pkg: "pkgforge-dev/playerctl"
 category:
   - "Audio"
@@ -17,7 +16,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "LGPL-3.0"
-    url: "https://raw.githubusercontent.com/altdesktop/playerctl/refs/heads/main/COPYING"
+    url: "https://raw.githubusercontent.com/altdesktop/playerctl/master/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/playerctl-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -36,6 +35,6 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/playerctl-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/playerctl-AppImage/releases/latest?per_page=20" | jq -r '"\(.tag_name)-\(.published_at | split("T")[0])"' | tr -d '"'\''[:space:]'
   run: |
-    soar dl "https://github.com/pkgforge-dev/playerctl-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/playerctl-AppImage@${PKGVER%-*}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

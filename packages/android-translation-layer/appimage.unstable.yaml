@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-translation-layer/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-translation-layer/appimage.unstable.yaml
 _disabled: false
 
 pkg: "android-translation-layer"
 pkg_id: "pkgforge-dev.android-translation-layer"
 pkg_type: "appimage"
-pkgver: "r1000.c69c046b-1@2026-01-02_1767318090"
 ghcr_pkg: "pkgforge-dev/android-translation-layer"
 category:
   - "System"

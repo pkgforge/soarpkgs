@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/torzu/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/torzu/appimage.unstable.yaml
 _disabled: false
 
 pkg: "torzu"
 pkg_id: "pkgforge-dev.torzu"
 pkg_type: "appimage"
-pkgver: "dee5dca@2025-08-14_1755136039"
 ghcr_pkg: "pkgforge-dev/torzu"
 category:
   - "Game"
@@ -36,6 +35,6 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Torzu-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Torzu-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Torzu-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Torzu-AppImage@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

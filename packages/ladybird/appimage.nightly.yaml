@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ladybird/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ladybird/appimage.nightly.yaml
 _disabled: false
 
 pkg: "ladybird"
 pkg_id: "pkgforge-dev.ladybird"
 pkg_type: "appimage"
-pkgver: "snapshot"
 ghcr_pkg: "pkgforge-dev/ladybird"
 category:
   - "Network"
@@ -18,7 +17,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "BSD-2-Clause"
-    url: "https://raw.githubusercontent.com/LadybirdBrowser/ladybird/refs/heads/main/LICENSE"
+    url: "https://raw.githubusercontent.com/LadybirdBrowser/ladybird/master/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ladybird-appimage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -36,6 +35,6 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ladybird-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ladybird-appimage/releases/latest?per_page=20" | jq -r '"\(.tag_name)-\(.published_at | split("T")[0])"' | tr -d '"'\''[:space:]'
   run: |
-    soar dl "https://github.com/pkgforge-dev/ladybird-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/ladybird-appimage@${PKGVER%-*}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

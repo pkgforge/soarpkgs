@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rofi/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rofi/appimage.unstable.yaml
 _disabled: false
 
 pkg: "rofi"
 pkg_id: "pkgforge-dev.rofi"
 pkg_type: "appimage"
-pkgver: "fae73fc@2026-01-01_1767256138"
 ghcr_pkg: "pkgforge-dev/rofi"
 category:
   - "Utility"
@@ -16,7 +15,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "MIT"
-    url: "https://raw.githubusercontent.com/davatorium/rofi/refs/heads/main/COPYING"
+    url: "https://raw.githubusercontent.com/davatorium/rofi/next/COPYING"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/rofi-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,6 +34,6 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/rofi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/rofi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
   run: |
-    soar dl "https://github.com/pkgforge-dev/rofi-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/rofi-AppImage@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

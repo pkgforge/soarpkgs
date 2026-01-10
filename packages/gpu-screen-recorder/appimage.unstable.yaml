@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gpu-screen-recorder/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gpu-screen-recorder/appimage.unstable.yaml
 _disabled: false
 
 pkg: "gpu-screen-recorder"
 pkg_id: "pkgforge-dev.gpu-screen-recorder"
 pkg_type: "appimage"
-pkgver: "r1251.cb9cb6c-1@2026-01-01_1767285379"
 ghcr_pkg: "pkgforge-dev/gpu-screen-recorder"
 category:
   - "Video"

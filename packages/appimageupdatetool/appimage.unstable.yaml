@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/appimageupdatetool/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/appimageupdatetool/appimage.unstable.yaml
 _disabled: false
 
 pkg: "appimageupdatetool"
 pkg_id: "pkgforge-dev.appimageupdatetool"
 pkg_type: "appimage"
-pkgver: "a76b0ca08"
 ghcr_pkg: "pkgforge-dev/appimageupdatetool"
 category:
   - "Utility"
@@ -36,6 +35,6 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
   run: |
-    soar dl "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

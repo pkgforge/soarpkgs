@@ -1,11 +1,10 @@
 #!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sview/appimage.stable.yaml
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sview/appimage.unstable.yaml
 _disabled: false
 
 pkg: "sview"
 pkg_id: "pkgforge-dev.sview"
 pkg_type: "appimage"
-pkgver: "r1770.b44fa756-1@2026-01-01_1767255113"
 ghcr_pkg: "pkgforge-dev/sview"
 category:
   - "AudioVideo"
