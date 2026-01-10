@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "7zip"
 pkg_id: "ip7z.7zip"
-pkgver: "25.01"
 pkg_type: "static"
+pkgver: "25.01"
 category:
   - "Utility"
   - "Archiving"
@@ -19,7 +19,7 @@ license:
   - id: "LGPL-2.0-only"
     url: "https://raw.githubusercontent.com/ip7z/7zip/main/DOC/License.txt"
 note:
-  - Official binary from https://github.com/ip7z/7zip
+  - "Official binary from https://github.com/ip7z/7zip"
   - "[PORTABLE] (Portable Static Binary)"
 provides:
   - "7zip=>7z"
