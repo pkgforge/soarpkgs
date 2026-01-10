@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/dunst/appimage.stable.yaml
+_disabled: false
+
+pkg: "dunst"
+pkg_id: "pkgforge-dev.dunst"
+pkg_type: "appimage"
+pkgver: "1.13.0-1@2026-01-08_1767854502"
+ghcr_pkg: "pkgforge-dev/dunst"
+category:
+  - "Utility"
+description:
+  _default: "Lightweight and customizable notification daemon"
+  dunst: "Notification daemon"
+  dunstify: "Send notification"
+  dunstctl: "Control dunst over dbus"
+homepage:
+  - "https://dunst-project.org"
+  - "https://github.com/pkgforge-dev/dunst-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://raw.githubusercontent.com/dunst-project/dunst/refs/heads/master/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/dunst-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dunst=>dunstctl"
+  - "dunst=>dunstify"
+repology:
+  - "dunst"
+src_url:
+  - "https://github.com/pkgforge-dev/dunst-AppImage"
+tag:
+  - "utility"
+  - "notification"
+  - "desktop"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/dunst-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/dunst-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

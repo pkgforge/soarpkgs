@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/mednafen/appimage.stable.yaml
+_disabled: false
+
+pkg: "mednafen"
+pkg_id: "pkgforge-dev.mednafen"
+pkg_type: "appimage"
+pkgver: "1.32.1@2026-01-01_1767256240"
+ghcr_pkg: "pkgforge-dev/mednafen"
+category:
+  - "Game"
+  - "Emulator"
+description: "Multi-system emulator"
+homepage:
+  - "https://mednafen.github.io"
+  - "https://github.com/pkgforge-dev/mednafen-appimage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/mednafen/mednafen/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/mednafen-appimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mednafen"
+repology:
+  - "mednafen"
+src_url:
+  - "https://github.com/pkgforge-dev/mednafen-appimage"
+tag:
+  - "emulator"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mednafen-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/mednafen-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

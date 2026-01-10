@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/oversteer/appimage.stable.yaml
+_disabled: false
+
+pkg: "oversteer"
+pkg_id: "pkgforge-dev.oversteer"
+pkg_type: "appimage"
+pkgver: "0.8.3-2@2026-01-01_1767255610"
+ghcr_pkg: "pkgforge-dev/oversteer"
+category:
+  - "Game"
+  - "Utility"
+description: "Steering wheel configuration tool"
+homepage:
+  - "https://github.com/berarma/oversteer"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/berarma/oversteer/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Oversteer-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "oversteer"
+repology:
+  - "oversteer"
+src_url:
+  - "https://github.com/pkgforge-dev/Oversteer-AppImage"
+tag:
+  - "gaming"
+  - "hardware"
+  - "configuration"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Oversteer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Oversteer-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

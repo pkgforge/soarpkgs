@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/touchhle/appimage.stable.yaml
+_disabled: false
+
+pkg: "touchhle"
+pkg_id: "pkgforge-dev.touchhle"
+pkg_type: "appimage"
+pkgver: "0.2.2-3@2026-01-01_1767252064"
+ghcr_pkg: "pkgforge-dev/touchhle"
+category:
+  - "Game"
+  - "Emulator"
+description: "High-level iOS emulator"
+homepage:
+  - "https://github.com/touchHLE/touchHLE"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MPL-2.0"
+    url: "https://raw.githubusercontent.com/touchHLE/touchHLE/refs/heads/trunk/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/TouchHLE-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "touchhle"
+repology:
+  - "touchhle"
+src_url:
+  - "https://github.com/pkgforge-dev/TouchHLE-AppImage"
+tag:
+  - "emulator"
+  - "ios"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/TouchHLE-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/TouchHLE-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

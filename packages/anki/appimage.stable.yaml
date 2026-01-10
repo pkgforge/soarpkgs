@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/anki/appimage.stable.yaml
+_disabled: false
+
+pkg: "anki"
+pkg_id: "pkgforge-dev.anki"
+pkg_type: "appimage"
+pkgver: "25.09.2-1@2026-01-01_1767256112"
+ghcr_pkg: "pkgforge-dev/anki"
+category:
+  - "Education"
+description: "Powerful, intelligent flash cards"
+homepage:
+  - "https://apps.ankiweb.net"
+  - "https://github.com/pkgforge-dev/anki-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "AGPL-3.0"
+    url: "https://raw.githubusercontent.com/ankitects/anki/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/anki-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "anki"
+repology:
+  - "anki"
+src_url:
+  - "https://github.com/pkgforge-dev/anki-AppImage"
+tag:
+  - "education"
+  - "flashcards"
+  - "learning"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/anki-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/anki-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

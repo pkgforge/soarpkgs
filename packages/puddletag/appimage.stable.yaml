@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/puddletag/appimage.stable.yaml
+_disabled: false
+
+pkg: "puddletag"
+pkg_id: "pkgforge-dev.puddletag"
+pkg_type: "appimage"
+pkgver: "2.5.0.r36.ged5c5a5-1@2026-01-08_1767856451"
+ghcr_pkg: "pkgforge-dev/puddletag"
+category:
+  - "Audio"
+  - "Utility"
+description: "Audio tag editor"
+homepage:
+  - "https://docs.puddletag.net"
+  - "https://github.com/pkgforge-dev/puddletag-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/puddletag/puddletag/refs/heads/main/LICENCE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/puddletag-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "puddletag"
+repology:
+  - "puddletag"
+src_url:
+  - "https://github.com/pkgforge-dev/puddletag-AppImage"
+tag:
+  - "audio"
+  - "tag"
+  - "metadata"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/puddletag-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/puddletag-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

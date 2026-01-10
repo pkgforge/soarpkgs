@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/newsflash/appimage.stable.yaml
+_disabled: false
+
+pkg: "newsflash"
+pkg_id: "pkgforge-dev.newsflash"
+pkg_type: "appimage"
+pkgver: "4.1.4-1@2026-01-01_1767253021"
+ghcr_pkg: "pkgforge-dev/newsflash"
+category:
+  - "Network"
+  - "News"
+description: "RSS reader"
+homepage:
+  - "https://gitlab.com/news-flash/news_flash_gtk"
+  - "https://github.com/pkgforge-dev/NewsFlash-AppImage"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/news-flash/news_flash_gtk/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NewsFlash-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "newsflash"
+repology:
+  - "newsflash"
+src_url:
+  - "https://github.com/pkgforge-dev/NewsFlash-AppImage"
+tag:
+  - "rss"
+  - "news"
+  - "reader"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/NewsFlash-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/NewsFlash-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

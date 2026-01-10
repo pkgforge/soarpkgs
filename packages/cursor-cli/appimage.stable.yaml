@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cursor-cli/appimage.stable.yaml
+_disabled: false
+
+pkg: "cursor-cli"
+pkg_id: "pkgforge-dev.cursor-cli"
+pkg_type: "appimage"
+pkgver: "1_2025.11.25.1.d5b3271-1@2026-01-01_1767254405"
+ghcr_pkg: "pkgforge-dev/cursor-cli"
+category:
+  - "Development"
+  - "Utility"
+description: "Command-line interface for Cursor editor"
+homepage:
+  - "https://www.cursor.com"
+  - "https://github.com/pkgforge-dev/cursor-cli-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Proprietary"
+    url: "https://cursor.com/terms-of-service"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/cursor-cli-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cursor-cli"
+repology:
+  - "cursor-cli"
+src_url:
+  - "https://github.com/pkgforge-dev/cursor-cli-AppImage"
+tag:
+  - "editor"
+  - "development"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/cursor-cli-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/cursor-cli-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

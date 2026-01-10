@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/dolphin-emu/appimage.stable.yaml
+_disabled: false
+
+pkg: "dolphin-emu"
+pkg_id: "pkgforge-dev.dolphin-emu"
+pkg_type: "appimage"
+pkgver: "2512@2026-01-01_1767256227"
+ghcr_pkg: "pkgforge-dev/dolphin-emu"
+category:
+  - "Game"
+  - "Emulator"
+description: "GameCube and Wii emulator"
+homepage:
+  - "https://dolphin-emu.org"
+  - "https://github.com/pkgforge-dev/Dolphin-emu-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/dolphin-emu/dolphin/refs/heads/master/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dolphin-emu-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dolphin-emu"
+repology:
+  - "dolphin-emu"
+src_url:
+  - "https://github.com/pkgforge-dev/Dolphin-emu-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Dolphin-emu-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Dolphin-emu-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

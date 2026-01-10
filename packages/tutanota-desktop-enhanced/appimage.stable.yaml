@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tutanota-desktop-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "tutanota-desktop-enhanced"
+pkg_id: "pkgforge-dev.tutanota-desktop-enhanced"
+pkg_type: "appimage"
+pkgver: "317.251217.0@2026-01-01_1767256247"
+ghcr_pkg: "pkgforge-dev/tutanota-desktop-enhanced"
+category:
+  - "Network"
+  - "Email"
+description: "Secure email client"
+homepage:
+  - "https://tutanota.com"
+  - "https://github.com/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/tutao/tutanota/refs/heads/master/LICENSE.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "tutanota-desktop-enhanced"
+repology:
+  - "tutanota-desktop-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced"
+tag:
+  - "email"
+  - "security"
+  - "privacy"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/elastic/appimage.stable.yaml
+_disabled: false
+
+pkg: "elastic"
+pkg_id: "pkgforge-dev.elastic"
+pkg_type: "appimage"
+pkgver: "1.0.1-1@2026-01-01_1767252112"
+ghcr_pkg: "pkgforge-dev/elastic"
+category:
+  - "Audio"
+  - "Utility"
+description: "Audio stretcher and pitch shifter"
+homepage:
+  - "https://github.com/veedeo/elastic"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/Sleepdealr/ELASTIC/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Elastic-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "elastic"
+repology:
+  - "elastic"
+src_url:
+  - "https://github.com/pkgforge-dev/Elastic-AppImage"
+tag:
+  - "audio"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Elastic-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Elastic-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/video-trimmer/appimage.stable.yaml
+_disabled: false
+
+pkg: "video-trimmer"
+pkg_id: "pkgforge-dev.video-trimmer"
+pkg_type: "appimage"
+pkgver: "25.03-2@2026-01-01_1767255583"
+ghcr_pkg: "pkgforge-dev/video-trimmer"
+category:
+  - "AudioVideo"
+description: "Cut out fragments of video without re-encoding"
+homepage:
+  - "https://gitlab.gnome.org/YaLTeR/video-trimmer"
+  - "https://github.com/pkgforge-dev/Video-Trimmer-AppImage"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Video-Trimmer-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "video-trimmer"
+repology:
+  - "video-trimmer"
+src_url:
+  - "https://github.com/pkgforge-dev/Video-Trimmer-AppImage"
+tag:
+  - "video"
+  - "editor"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Video-Trimmer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Video-Trimmer-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

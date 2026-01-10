@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/citron/appimage.stable.yaml
+_disabled: false
+
+pkg: "citron"
+pkg_id: "pkgforge-dev.citron"
+pkg_type: "appimage"
+pkgver: "0.12.25@2025-12-26_1766769485"
+ghcr_pkg: "pkgforge-dev/citron"
+category:
+  - "Game"
+  - "Emulator"
+description: "Nintendo switch emulator"
+homepage:
+  - "https://github.com/emuplace/Citron"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://git.citron-emu.org/Citron/Citron/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Citron-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "citron"
+repology:
+  - "citron"
+src_url:
+  - "https://github.com/pkgforge-dev/Citron-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Citron-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Citron-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

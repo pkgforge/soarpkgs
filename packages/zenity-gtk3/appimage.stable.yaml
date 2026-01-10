@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "zenity-gtk3"
 pkg_id: "pkgforge-dev.zenity-gtk3"
-pkgver: "3.44.5@2026-01-01_1767252130"
 pkg_type: "appimage"
+pkgver: "3.44.5@2026-01-01_1767252130"
 ghcr_pkg: "pkgforge-dev/zenity-gtk3"
 category:
   - "Utility"
@@ -31,8 +31,8 @@ tag:
   - "gtk"
 x_exec:
   host:
-    - "x86_64-Linux"
-    - "aarch64-Linux"
+    - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Zenity-GTK3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

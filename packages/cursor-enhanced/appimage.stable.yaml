@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cursor-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "cursor-enhanced"
+pkg_id: "pkgforge-dev.cursor-enhanced"
+pkg_type: "appimage"
+pkgver: "2.2.44@2026-01-01_1767256819"
+ghcr_pkg: "pkgforge-dev/cursor-enhanced"
+category:
+  - "Development"
+  - "TextEditor"
+description: "The AI-first code editor"
+homepage:
+  - "https://www.cursor.com"
+  - "https://github.com/pkgforge-dev/Cursor-AppImage-enhanced"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Proprietary"
+    url: "https://cursor.com/terms-of-service"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cursor-AppImage-enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cursor-enhanced"
+repology:
+  - "cursor-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/Cursor-AppImage-enhanced"
+tag:
+  - "editor"
+  - "development"
+  - "ai"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cursor-AppImage-enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Cursor-AppImage-enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

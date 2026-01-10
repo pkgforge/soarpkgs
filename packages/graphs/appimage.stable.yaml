@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/graphs/appimage.stable.yaml
+_disabled: false
+
+pkg: "graphs"
+pkg_id: "pkgforge-dev.graphs"
+pkg_type: "appimage"
+pkgver: "1.8.6-1@2026-01-01_1767256132"
+ghcr_pkg: "pkgforge-dev/graphs"
+category:
+  - "Science"
+  - "Math"
+description: "Plot and manipulate data"
+homepage:
+  - "https://github.com/alexhuntley/Graphs"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/World/Graphs/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Graphs-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "graphs"
+repology:
+  - "graphs"
+src_url:
+  - "https://github.com/pkgforge-dev/Graphs-AppImage"
+tag:
+  - "math"
+  - "graphs"
+  - "science"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Graphs-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Graphs-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

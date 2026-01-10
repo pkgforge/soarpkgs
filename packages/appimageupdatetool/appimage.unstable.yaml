@@ -1,0 +1,40 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/appimageupdatetool/appimage.unstable.yaml
+_disabled: false
+
+pkg: "appimageupdatetool"
+pkg_id: "pkgforge-dev.appimageupdatetool"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/appimageupdatetool"
+category:
+  - "Utility"
+description: "Tool to update AppImages"
+homepage:
+  - "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/refs/heads/main/LICENSE.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "appimageupdatetool"
+repology:
+  - "appimageupdatetool"
+src_url:
+  - "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition"
+tag:
+  - "utility"
+  - "updater"
+  - "appimage"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cartridges/appimage.stable.yaml
+_disabled: false
+
+pkg: "cartridges"
+pkg_id: "pkgforge-dev.cartridges"
+pkg_type: "appimage"
+pkgver: "2.12.1-2@2026-01-01_1767255696"
+ghcr_pkg: "pkgforge-dev/cartridges"
+category:
+  - "Game"
+  - "Utility"
+description: "Simple game launcher for your games"
+homepage:
+  - "https://github.com/kra-mo/cartridges"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://codeberg.org/kramo/cartridges/raw/branch/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cartridges-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cartridges"
+repology:
+  - "cartridges"
+src_url:
+  - "https://github.com/pkgforge-dev/Cartridges-AppImage"
+tag:
+  - "gaming"
+  - "launcher"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cartridges-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Cartridges-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/warp/appimage.stable.yaml
+_disabled: false
+
+pkg: "warp"
+pkg_id: "pkgforge-dev.warp"
+pkg_type: "appimage"
+pkgver: "0.9.2-1@2026-01-01_1767252864"
+ghcr_pkg: "pkgforge-dev/warp"
+category:
+  - "Network"
+  - "FileTransfer"
+description: "Fast and secure file transfer"
+homepage:
+  - "https://apps.gnome.org/Warp"
+  - "https://github.com/pkgforge-dev/Warp-AppImage"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/GNOME/warp/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Warp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "warp"
+repology:
+  - "warp"
+src_url:
+  - "https://github.com/pkgforge-dev/Warp-AppImage"
+tag:
+  - "network"
+  - "transfer"
+  - "file"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Warp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Warp-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

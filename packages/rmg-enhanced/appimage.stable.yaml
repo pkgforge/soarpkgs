@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rmg-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "rmg-enhanced"
+pkg_id: "pkgforge-dev.rmg-enhanced"
+pkg_type: "appimage"
+pkgver: "0.8.8-1@2026-01-01_1767254760"
+ghcr_pkg: "pkgforge-dev/rmg-enhanced"
+category:
+  - "Game"
+  - "Emulator"
+description: "Rosalie's Mupen GUI - N64 emulator frontend"
+homepage:
+  - "https://github.com/Rosalie241/RMG"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/Rosalie241/RMG/refs/heads/main/License.md"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RMG-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rmg-enhanced"
+repology:
+  - "rmg-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/RMG-AppImage-Enhanced"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/RMG-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/RMG-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

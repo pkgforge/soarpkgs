@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/desmume/appimage.stable.yaml
+_disabled: false
+
+pkg: "desmume"
+pkg_id: "pkgforge-dev.desmume"
+pkg_type: "appimage"
+pkgver: "0.9.13-1@2026-01-04_1767536602"
+ghcr_pkg: "pkgforge-dev/desmume"
+category:
+  - "Game"
+  - "Emulator"
+description: "Nintendo DS emulator"
+homepage:
+  - "https://desmume.org"
+  - "https://github.com/pkgforge-dev/DeSmuME-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/TASEmulators/desmume/refs/heads/master/license.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DeSmuME-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "desmume"
+repology:
+  - "desmume"
+src_url:
+  - "https://github.com/pkgforge-dev/DeSmuME-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/DeSmuME-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DeSmuME-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-tools/appimage.stable.yaml
+_disabled: false
+
+pkg: "android-tools"
+pkg_id: "pkgforge-dev.android-tools"
+pkg_type: "appimage"
+pkgver: "36.0.0@2026-01-01_1767284433"
+ghcr_pkg: "pkgforge-dev/android-tools"
+category:
+  - "Development"
+  - "Utility"
+description:
+  _default: "Android SDK Platform-Tools (adb, fastboot & more)"
+  adb: "Android Debug Bridge (adb) to communicate with an emulator instance or connected Android-powered device [android-tools]"
+  etc1tool: "Encode/Decode PNG images to & from the ETC1 compression standard [android-tools]"
+  fastboot: "Android flashing and booting utility [android-tools]"
+  "hprof-conv": "HPROF Converter [android-tools]"
+  make_f2fs: "Tool to create a flash-friendly F2FS file system [android-tools]"
+  make_f2fs_casefold: "Version of make_f2fs with casefolding support for file systems [android-tools]"
+  mke2fs: "Utility to create ext2, ext3, or ext4 file systems [android-tools]"
+  sqlite3: "Command-line interface for SQLite databases [android-tools]"
+homepage:
+  - "https://developer.android.com/tools/releases/platform-tools"
+  - "https://github.com/pkgforge-dev/android-tools-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Apache-2.0"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/android-tools-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "android-tools=>adb"
+  - "android-tools=>etc1tool"
+  - "android-tools=>fastboot"
+  - "android-tools=>hprof-conv"
+  - "android-tools=>make_f2fs"
+  - "android-tools=>make_f2fs_casefold"
+  - "android-tools=>mke2fs"
+  - "android-tools=>sqlite3"
+repology:
+  - "android-tools"
+src_url:
+  - "https://github.com/pkgforge-dev/android-tools-AppImage"
+tag:
+  - "android"
+  - "development"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/android-tools-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

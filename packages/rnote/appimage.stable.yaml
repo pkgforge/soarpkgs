@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rnote/appimage.stable.yaml
+_disabled: false
+
+pkg: "rnote"
+pkg_id: "pkgforge-dev.rnote"
+pkg_type: "appimage"
+pkgver: "0.13.1-1@2026-01-01_1767256089"
+ghcr_pkg: "pkgforge-dev/rnote"
+category:
+  - "Graphics"
+  - "Office"
+description: "Sketch and take handwritten notes"
+homepage:
+  - "https://rnote.flxzt.net"
+  - "https://github.com/pkgforge-dev/Rnote-AppImage"
+maintainer:
+  - "fiftydinar (github.com/fiftydinar)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/flxzt/rnote/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rnote-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rnote"
+repology:
+  - "rnote"
+src_url:
+  - "https://github.com/pkgforge-dev/Rnote-AppImage"
+tag:
+  - "graphics"
+  - "notes"
+  - "drawing"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Rnote-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Rnote-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

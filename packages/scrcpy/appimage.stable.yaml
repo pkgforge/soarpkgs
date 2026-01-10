@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/scrcpy/appimage.stable.yaml
+_disabled: false
+
+pkg: "scrcpy"
+pkg_id: "pkgforge-dev.scrcpy"
+pkg_type: "appimage"
+pkgver: "3.3.4@2026-01-01_1767256164"
+ghcr_pkg: "pkgforge-dev/scrcpy"
+category:
+  - "Network"
+  - "Utility"
+description: "Display and control Android devices"
+homepage:
+  - "https://github.com/Genymobile/scrcpy"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/Genymobile/scrcpy/refs/heads/main/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/scrcpy-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "scrcpy"
+repology:
+  - "scrcpy"
+src_url:
+  - "https://github.com/pkgforge-dev/scrcpy-AppImage"
+tag:
+  - "android"
+  - "screen"
+  - "control"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/scrcpy-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/scrcpy-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

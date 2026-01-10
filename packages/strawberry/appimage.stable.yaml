@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/strawberry/appimage.stable.yaml
+_disabled: false
+
+pkg: "strawberry"
+pkg_id: "pkgforge-dev.strawberry"
+pkg_type: "appimage"
+pkgver: "1.2.16-1@2026-01-01_1767256239"
+ghcr_pkg: "pkgforge-dev/strawberry"
+category:
+  - "Audio"
+  - "Player"
+description: "Music player and music collection organizer"
+homepage:
+  - "https://www.strawberrymusicplayer.org"
+  - "https://github.com/pkgforge-dev/strawberry-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/strawberrymusicplayer/strawberry/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/strawberry-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "strawberry"
+repology:
+  - "strawberry"
+src_url:
+  - "https://github.com/pkgforge-dev/strawberry-AppImage"
+tag:
+  - "audio"
+  - "music"
+  - "player"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/strawberry-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/strawberry-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/clementine/appimage.stable.yaml
+_disabled: false
+
+pkg: "clementine"
+pkg_id: "pkgforge-dev.clementine"
+pkg_type: "appimage"
+pkgver: "1.4.1+58+gbae968a2f-1@2026-01-01_1767257012"
+ghcr_pkg: "pkgforge-dev/clementine"
+category:
+  - "Audio"
+  - "Player"
+description: "Modern music player and library organizer"
+homepage:
+  - "https://www.clementine-player.org"
+  - "https://github.com/pkgforge-dev/Clementine-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/clementine-player/Clementine/refs/heads/master/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Clementine-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "clementine"
+repology:
+  - "clementine"
+src_url:
+  - "https://github.com/pkgforge-dev/Clementine-AppImage"
+tag:
+  - "audio"
+  - "music"
+  - "player"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Clementine-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Clementine-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

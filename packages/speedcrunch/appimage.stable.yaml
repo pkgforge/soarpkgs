@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/speedcrunch/appimage.stable.yaml
+_disabled: false
+
+pkg: "speedcrunch"
+pkg_id: "pkgforge-dev.speedcrunch"
+pkg_type: "appimage"
+pkgver: "0.12@2025-10-01_1759302954"
+ghcr_pkg: "pkgforge-dev/speedcrunch"
+category:
+  - "Utility"
+  - "Calculator"
+description: "Fast and precise calculator"
+homepage:
+  - "https://speedcrunch.org"
+  - "https://github.com/pkgforge-dev/SpeedCrunch-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/speedcrunch/speedcrunch/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SpeedCrunch-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "speedcrunch"
+repology:
+  - "speedcrunch"
+src_url:
+  - "https://github.com/pkgforge-dev/SpeedCrunch-AppImage"
+tag:
+  - "calculator"
+  - "math"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/SpeedCrunch-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SpeedCrunch-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

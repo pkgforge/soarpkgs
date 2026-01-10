@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kaffeine/appimage.stable.yaml
+_disabled: false
+
+pkg: "kaffeine"
+pkg_id: "pkgforge-dev.kaffeine"
+pkg_type: "appimage"
+pkgver: "2.0.19-3@2026-01-01_1767255943"
+ghcr_pkg: "pkgforge-dev/kaffeine"
+category:
+  - "AudioVideo"
+  - "Player"
+description: "Media player for KDE"
+homepage:
+  - "https://apps.kde.org/kaffeine"
+  - "https://github.com/pkgforge-dev/kaffeine-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/KDE/kaffeine/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/kaffeine-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kaffeine"
+repology:
+  - "kaffeine"
+src_url:
+  - "https://github.com/pkgforge-dev/kaffeine-AppImage"
+tag:
+  - "video"
+  - "player"
+  - "kde"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/kaffeine-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/kaffeine-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

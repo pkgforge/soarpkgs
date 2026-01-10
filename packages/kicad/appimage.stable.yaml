@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kicad/appimage.stable.yaml
+_disabled: false
+
+pkg: "kicad"
+pkg_id: "pkgforge-dev.kicad"
+pkg_type: "appimage"
+pkgver: "9.0.6-2@2025-12-01_1764577551"
+ghcr_pkg: "pkgforge-dev/kicad"
+category:
+  - "Electronics"
+description: "Electronic design automation suite"
+homepage:
+  - "https://www.kicad.org"
+  - "https://github.com/pkgforge-dev/KiCad-AppImage"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-3.0"
+    url: "https://gitlab.com/kicad/code/kicad/-/raw/master/LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KiCad-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kicad"
+repology:
+  - "kicad"
+src_url:
+  - "https://github.com/pkgforge-dev/KiCad-AppImage"
+tag:
+  - "electronics"
+  - "pcb"
+  - "cad"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/KiCad-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/KiCad-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

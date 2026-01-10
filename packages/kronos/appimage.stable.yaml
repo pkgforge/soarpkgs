@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kronos/appimage.stable.yaml
+_disabled: false
+
+pkg: "kronos"
+pkg_id: "pkgforge-dev.kronos"
+pkg_type: "appimage"
+pkgver: "2.7.0-2@2026-01-01_1767256415"
+ghcr_pkg: "pkgforge-dev/kronos"
+category:
+  - "Game"
+  - "Emulator"
+description: "Sega Saturn emulator"
+homepage:
+  - "https://github.com/FCare/Kronos"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/Retrospring/Kronos/refs/heads/main/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Kronos-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kronos"
+repology:
+  - "kronos"
+src_url:
+  - "https://github.com/pkgforge-dev/Kronos-AppImage"
+tag:
+  - "emulator"
+  - "gaming"
+  - "sega"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Kronos-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Kronos-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

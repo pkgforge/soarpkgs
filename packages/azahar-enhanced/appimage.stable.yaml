@@ -1,0 +1,42 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/azahar-enhanced/appimage.stable.yaml
+_disabled: false
+
+pkg: "azahar-enhanced"
+pkg_id: "pkgforge-dev.azahar-enhanced"
+pkg_type: "appimage"
+pkgver: "2123.4-beta2@2026-01-01_1767256588"
+ghcr_pkg: "pkgforge-dev/azahar-enhanced"
+category:
+  - "Game"
+  - "Emulator"
+description: "Nintendo 3DS emulator"
+homepage:
+  - "https://github.com/azahar-emu/azahar"
+maintainer:
+  - "Samueru-sama (github.com/Samueru-sama)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/azahar-emu/azahar/refs/heads/master/license.txt"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "azahar-enhanced"
+repology:
+  - "azahar-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced"
+tag:
+  - "emulator"
+  - "gaming"
+  - "nintendo"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Azahar-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
