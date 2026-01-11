@@ -17,7 +17,7 @@ maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/World/Graphs/refs/heads/main/COPYING"
+    url: "https://gitlab.gnome.org/World/Graphs/-/raw/main/LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Graphs-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,6 +34,7 @@ tag:
 x_exec:
   host:
     - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Graphs-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'

@@ -17,7 +17,6 @@ maintainer:
   - "pflyly (github.com/pflyly)"
 license:
   - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/sudachi-emu/sudachi/refs/heads/main/LICENSE.txt"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Sudachi-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -33,6 +32,7 @@ tag:
 x_exec:
   host:
     - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
