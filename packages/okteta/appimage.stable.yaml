@@ -18,7 +18,7 @@ maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - id: "GPL-2.0"
-    url: "https://raw.githubusercontent.com/KDE/okteta/refs/heads/main/COPYING.LIB"
+    url: "https://raw.githubusercontent.com/KDE/okteta/refs/heads/master/LICENSES/GPL-2.0-only.txt"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/okteta-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -37,6 +37,7 @@ snapshots:
 x_exec:
   host:
     - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/okteta-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
