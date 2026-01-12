@@ -32,8 +32,9 @@ tag:
 x_exec:
   host:
     - "x86_64-linux"
+    - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/rofi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/rofi-AppImage/releases/latest?per_page=20")" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
   run: |
     soar dl "https://github.com/pkgforge-dev/rofi-AppImage@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
