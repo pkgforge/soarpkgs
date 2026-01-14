@@ -5,7 +5,7 @@ _disabled: false
 pkg: "puddletag"
 pkg_id: "pkgforge-dev.puddletag"
 pkg_type: "appimage"
-pkgver: "2.5.0.r36.ged5c5a5-1@2026-01-08_1767856451"
+pkgver: "2.5.0.r37.gda6fd53-1@2026-01-14_1768385945"
 ghcr_pkg: "pkgforge-dev/puddletag"
 category:
   - "Audio"
@@ -32,6 +32,8 @@ tag:
   - "audio"
   - "tag"
   - "metadata"
+snapshots:
+  - "2.5.0.r36.ged5c5a5-1@2026-01-08_1767856451"
 x_exec:
   host:
     - "x86_64-linux"
