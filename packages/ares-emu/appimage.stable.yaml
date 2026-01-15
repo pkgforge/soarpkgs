@@ -5,7 +5,7 @@ _disabled: false
 pkg: "ares-emu"
 pkg_id: "pkgforge-dev.ares-emu"
 pkg_type: "appimage"
-pkgver: "v147@2026-01-01_1767253716"
+pkgver: "v147@2026-01-15_1768462632"
 ghcr_pkg: "pkgforge-dev/ares-emu"
 category:
   - "Game"
@@ -32,6 +32,8 @@ src_url:
 tag:
   - "emulator"
   - "gaming"
+snapshots:
+  - "v147@2026-01-01_1767253716"
 x_exec:
   host:
     - "x86_64-linux"
