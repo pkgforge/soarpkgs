@@ -5,7 +5,7 @@ _disabled: false
 pkg: "azahar-enhanced"
 pkg_id: "pkgforge-dev.azahar-enhanced"
 pkg_type: "appimage"
-pkgver: "2123.4-beta2@2026-01-01_1767256588"
+pkgver: "2124-rc2@2026-01-15_1768464909"
 ghcr_pkg: "pkgforge-dev/azahar-enhanced"
 category:
   - "Game"
@@ -31,6 +31,8 @@ tag:
   - "emulator"
   - "gaming"
   - "nintendo"
+snapshots:
+  - "2123.4-beta2@2026-01-01_1767256588"
 x_exec:
   host:
     - "x86_64-linux"
