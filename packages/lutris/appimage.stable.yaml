@@ -5,7 +5,7 @@ _disabled: false
 pkg: "lutris"
 pkg_id: "pkgforge-dev.lutris"
 pkg_type: "appimage"
-pkgver: "0.5.19-6@2026-01-01_1767256260"
+pkgver: "0.5.19-8@2026-01-15_1768462840"
 ghcr_pkg: "pkgforge-dev/lutris"
 category:
   - "Game"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "gaming"
   - "launcher"
+snapshots:
+  - "0.5.19-6@2026-01-01_1767256260"
 x_exec:
   host:
     - "x86_64-linux"
