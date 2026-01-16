@@ -5,7 +5,7 @@ _disabled: false
 pkg: "graphs"
 pkg_id: "pkgforge-dev.graphs"
 pkg_type: "appimage"
-pkgver: "1.8.6-1@2026-01-01_1767256132"
+pkgver: "1.8.7-1@2026-01-16_1768578909"
 ghcr_pkg: "pkgforge-dev/graphs"
 category:
   - "Science"
@@ -31,6 +31,8 @@ tag:
   - "math"
   - "graphs"
   - "science"
+snapshots:
+  - "1.8.6-1@2026-01-01_1767256132"
 x_exec:
   host:
     - "x86_64-linux"
