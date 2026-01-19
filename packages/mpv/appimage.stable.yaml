@@ -5,7 +5,7 @@ _disabled: false
 pkg: "mpv"
 pkg_id: "pkgforge-dev.mpv"
 pkg_type: "appimage"
-pkgver: "v0.41.0-60-g85bf9f4ff@2026-01-08_1767857143"
+pkgver: "v0.41.0-90-gb7e8fe949@2026-01-19_1768826055"
 ghcr_pkg: "pkgforge-dev/mpv"
 category:
   - "AudioVideo"
@@ -32,6 +32,8 @@ tag:
   - "video"
   - "player"
   - "media"
+snapshots:
+  - "v0.41.0-60-g85bf9f4ff@2026-01-08_1767857143"
 x_exec:
   host:
     - "x86_64-linux"
