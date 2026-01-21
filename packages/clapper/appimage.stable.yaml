@@ -5,7 +5,7 @@ _disabled: false
 pkg: "clapper"
 pkg_id: "pkgforge-dev.clapper"
 pkg_type: "appimage"
-pkgver: "0.10.0-1@2026-01-01_1767255130"
+pkgver: "0.10.0-1@2026-01-21_1768994361"
 ghcr_pkg: "pkgforge-dev/clapper"
 category:
   - "AudioVideo"
@@ -31,6 +31,8 @@ tag:
   - "video"
   - "player"
   - "media"
+snapshots:
+  - "0.10.0-1@2026-01-01_1767255130"
 x_exec:
   host:
     - "x86_64-linux"
