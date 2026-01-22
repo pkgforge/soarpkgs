@@ -5,7 +5,7 @@ _disabled: false
 pkg: "video-trimmer"
 pkg_id: "pkgforge-dev.video-trimmer"
 pkg_type: "appimage"
-pkgver: "25.03-2@2026-01-01_1767255583"
+pkgver: "25.03-2@2026-01-22_1769070524"
 ghcr_pkg: "pkgforge-dev/video-trimmer"
 category:
   - "AudioVideo"
@@ -31,6 +31,8 @@ tag:
   - "video"
   - "editor"
   - "utility"
+snapshots:
+  - "25.03-2@2026-01-01_1767255583"
 x_exec:
   host:
     - "x86_64-linux"
