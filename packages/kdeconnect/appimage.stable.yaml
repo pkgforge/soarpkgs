@@ -5,7 +5,7 @@ _disabled: false
 pkg: "kdeconnect"
 pkg_id: "pkgforge-dev.kdeconnect"
 pkg_type: "appimage"
-pkgver: "25.12.0-1@2026-01-01_1767256209"
+pkgver: "25.12.1-1@2026-01-22_1769070897"
 ghcr_pkg: "pkgforge-dev/kdeconnect"
 category:
   - "Network"
@@ -32,6 +32,8 @@ tag:
   - "network"
   - "mobile"
   - "sync"
+snapshots:
+  - "25.12.0-1@2026-01-01_1767256209"
 x_exec:
   host:
     - "x86_64-linux"
