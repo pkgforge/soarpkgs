@@ -5,7 +5,7 @@ _disabled: false
 pkg: "mednafen"
 pkg_id: "pkgforge-dev.mednafen"
 pkg_type: "appimage"
-pkgver: "1.32.1@2026-01-01_1767256240"
+pkgver: "1.32.1@2026-01-22_1769086700"
 ghcr_pkg: "pkgforge-dev/mednafen"
 category:
   - "Game"
@@ -31,6 +31,8 @@ src_url:
 tag:
   - "emulator"
   - "gaming"
+snapshots:
+  - "1.32.1@2026-01-01_1767256240"
 x_exec:
   host:
     - "x86_64-linux"
