@@ -5,7 +5,7 @@ _disabled: false
 pkg: "signal-desktop"
 pkg_id: "pkgforge-dev.signal"
 pkg_type: "appimage"
-pkgver: "7.83.0-1@2026-01-01_1767256235"
+pkgver: "7.85.0-1@2026-01-22_1769068842"
 app_id: "org.signal.Signal"
 ghcr_pkg: "pkgforge-dev/signal-desktop"
 category:
@@ -31,6 +31,8 @@ src_url:
   - "https://github.com/pkgforge-dev/Signal-AppImage-Enhanced"
 tag:
   - "chat"
+snapshots:
+  - "7.83.0-1@2026-01-01_1767256235"
 x_exec:
   host:
     - "x86_64-linux"
