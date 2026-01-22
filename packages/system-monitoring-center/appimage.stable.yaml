@@ -5,7 +5,7 @@ _disabled: false
 pkg: "system-monitoring-center"
 pkg_id: "pkgforge-dev.system-monitoring-center"
 pkg_type: "appimage"
-pkgver: "2.26.3-1@2026-01-01_1767256211"
+pkgver: "2.26.3-1@2026-01-22_1769070998"
 ghcr_pkg: "pkgforge-dev/system-monitoring-center"
 category:
   - "System"
@@ -31,6 +31,8 @@ tag:
   - "system"
   - "monitor"
   - "utility"
+snapshots:
+  - "2.26.3-1@2026-01-01_1767256211"
 x_exec:
   host:
     - "x86_64-linux"
