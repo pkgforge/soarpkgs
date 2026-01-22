@@ -5,7 +5,7 @@ _disabled: false
 pkg: "gimp"
 pkg_id: "pkgforge-dev.gimp"
 pkg_type: "appimage"
-pkgver: "3.0.6-2@2026-01-01_1767253386"
+pkgver: "3.0.6-2@2026-01-22_1769069515"
 ghcr_pkg: "pkgforge-dev/gimp"
 category:
   - "Graphics"
@@ -32,6 +32,8 @@ tag:
   - "graphics"
   - "image"
   - "editor"
+snapshots:
+  - "3.0.6-2@2026-01-01_1767253386"
 x_exec:
   host:
     - "x86_64-linux"
