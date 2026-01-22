@@ -5,7 +5,7 @@ _disabled: false
 pkg: "librecad"
 pkg_id: "pkgforge-dev.librecad"
 pkg_type: "appimage"
-pkgver: "2.2.1.2-1@2026-01-01_1767256205"
+pkgver: "2.2.1.3-2@2026-01-22_1769070645"
 ghcr_pkg: "pkgforge-dev/librecad"
 category:
   - "Graphics"
@@ -31,6 +31,8 @@ tag:
   - "cad"
   - "graphics"
   - "engineering"
+snapshots:
+  - "2.2.1.2-1@2026-01-01_1767256205"
 x_exec:
   host:
     - "x86_64-linux"
