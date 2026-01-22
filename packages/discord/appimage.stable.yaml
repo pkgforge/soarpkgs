@@ -5,7 +5,7 @@ _disabled: false
 pkg: "discord"
 pkg_id: "pkgforge-dev.discord"
 pkg_type: "appimage"
-pkgver: "0.0.119-1@2026-01-01_1767256258"
+pkgver: "0.0.121-1@2026-01-22_1769071262"
 ghcr_pkg: "pkgforge-dev/discord"
 category:
   - "Chat"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "chat"
   - "gaming"
+snapshots:
+  - "0.0.119-1@2026-01-01_1767256258"
 x_exec:
   host:
     - "x86_64-linux"
