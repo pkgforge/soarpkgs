@@ -5,7 +5,7 @@ _disabled: false
 pkg: "audio-sharing"
 pkg_id: "pkgforge-dev.audio-sharing"
 pkg_type: "appimage"
-pkgver: "0.2.4-3@2026-01-01_1767252335"
+pkgver: "0.2.4-3@2026-01-22_1769066647"
 ghcr_pkg: "pkgforge-dev/audio-sharing"
 category:
   - "Audio"
@@ -31,6 +31,8 @@ tag:
   - "audio"
   - "network"
   - "streaming"
+snapshots:
+  - "0.2.4-3@2026-01-01_1767252335"
 x_exec:
   host:
     - "x86_64-linux"
