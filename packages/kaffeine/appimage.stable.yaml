@@ -5,7 +5,7 @@ _disabled: false
 pkg: "kaffeine"
 pkg_id: "pkgforge-dev.kaffeine"
 pkg_type: "appimage"
-pkgver: "2.0.19-3@2026-01-01_1767255943"
+pkgver: "2.0.19-3@2026-01-22_1769070476"
 ghcr_pkg: "pkgforge-dev/kaffeine"
 category:
   - "AudioVideo"
@@ -32,6 +32,8 @@ tag:
   - "video"
   - "player"
   - "kde"
+snapshots:
+  - "2.0.19-3@2026-01-01_1767255943"
 x_exec:
   host:
     - "x86_64-linux"
