@@ -5,7 +5,7 @@ _disabled: false
 pkg: "scrcpy"
 pkg_id: "pkgforge-dev.scrcpy"
 pkg_type: "appimage"
-pkgver: "3.3.4@2026-01-01_1767256164"
+pkgver: "3.3.4@2026-01-22_1769070290"
 ghcr_pkg: "pkgforge-dev/scrcpy"
 category:
   - "Network"
@@ -31,6 +31,8 @@ tag:
   - "android"
   - "screen"
   - "control"
+snapshots:
+  - "3.3.4@2026-01-01_1767256164"
 x_exec:
   host:
     - "x86_64-linux"
