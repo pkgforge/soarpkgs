@@ -5,7 +5,7 @@ _disabled: false
 pkg: "tagger"
 pkg_id: "pkgforge-dev.tagger"
 pkg_type: "appimage"
-pkgver: "2024.6.0-3@2026-01-01_1767256185"
+pkgver: "2024.6.0-3@2026-01-22_1769070634"
 ghcr_pkg: "pkgforge-dev/tagger"
 category:
   - "Audio"
@@ -31,6 +31,8 @@ tag:
   - "audio"
   - "tag"
   - "metadata"
+snapshots:
+  - "2024.6.0-3@2026-01-01_1767256185"
 x_exec:
   host:
     - "x86_64-linux"
