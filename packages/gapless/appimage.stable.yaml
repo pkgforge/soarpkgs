@@ -5,7 +5,7 @@ _disabled: false
 pkg: "gapless"
 pkg_id: "pkgforge-dev.gapless"
 pkg_type: "appimage"
-pkgver: "4.6-1@2026-01-01_1767256185"
+pkgver: "4.6-1@2026-01-22_1769070306"
 ghcr_pkg: "pkgforge-dev/gapless"
 category:
   - "Audio"
@@ -31,6 +31,8 @@ tag:
   - "audio"
   - "music"
   - "player"
+snapshots:
+  - "4.6-1@2026-01-01_1767256185"
 x_exec:
   host:
     - "x86_64-linux"
