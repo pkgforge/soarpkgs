@@ -5,7 +5,7 @@ _disabled: false
 pkg: "qelectrotech"
 pkg_id: "pkgforge-dev.qelectrotech"
 pkg_type: "appimage"
-pkgver: "0.9-4@2026-01-01_1767254597"
+pkgver: "0.9-4@2026-01-22_1769068862"
 ghcr_pkg: "pkgforge-dev/qelectrotech"
 category:
   - "Graphics"
@@ -31,6 +31,8 @@ tag:
   - "electronics"
   - "engineering"
   - "diagram"
+snapshots:
+  - "0.9-4@2026-01-01_1767254597"
 x_exec:
   host:
     - "x86_64-linux"
