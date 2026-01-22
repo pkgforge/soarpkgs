@@ -5,7 +5,7 @@ _disabled: false
 pkg: "tutanota-desktop-enhanced"
 pkg_id: "pkgforge-dev.tutanota-desktop-enhanced"
 pkg_type: "appimage"
-pkgver: "317.251217.0@2026-01-01_1767256247"
+pkgver: "317.251217.0@2026-01-22_1769071201"
 ghcr_pkg: "pkgforge-dev/tutanota-desktop-enhanced"
 category:
   - "Network"
@@ -32,6 +32,8 @@ tag:
   - "email"
   - "security"
   - "privacy"
+snapshots:
+  - "317.251217.0@2026-01-01_1767256247"
 x_exec:
   host:
     - "x86_64-linux"
