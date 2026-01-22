@@ -5,7 +5,7 @@ _disabled: false
 pkg: "gnome-system-monitor"
 pkg_id: "pkgforge-dev.gnome-system-monitor"
 pkg_type: "appimage"
-pkgver: "49.1-1@2026-01-01_1767255568"
+pkgver: "49.1-1@2026-01-22_1769070801"
 ghcr_pkg: "pkgforge-dev/gnome-system-monitor"
 category:
   - "System"
@@ -32,6 +32,8 @@ tag:
   - "system"
   - "monitor"
   - "utility"
+snapshots:
+  - "49.1-1@2026-01-01_1767255568"
 x_exec:
   host:
     - "x86_64-linux"
