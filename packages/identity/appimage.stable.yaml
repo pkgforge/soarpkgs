@@ -5,7 +5,7 @@ _disabled: false
 pkg: "identity"
 pkg_id: "pkgforge-dev.identity"
 pkg_type: "appimage"
-pkgver: "25.10.1-1@2026-01-01_1767256164"
+pkgver: "25.10.1-1@2026-01-22_1769069575"
 ghcr_pkg: "pkgforge-dev/identity"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "utility"
   - "image"
   - "comparison"
+snapshots:
+  - "25.10.1-1@2026-01-01_1767256164"
 x_exec:
   host:
     - "x86_64-linux"
