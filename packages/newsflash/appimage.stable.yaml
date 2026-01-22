@@ -5,7 +5,7 @@ _disabled: false
 pkg: "newsflash"
 pkg_id: "pkgforge-dev.newsflash"
 pkg_type: "appimage"
-pkgver: "4.1.4-1@2026-01-01_1767253021"
+pkgver: "4.1.4-1@2026-01-22_1769067273"
 ghcr_pkg: "pkgforge-dev/newsflash"
 category:
   - "Network"
@@ -32,6 +32,8 @@ tag:
   - "rss"
   - "news"
   - "reader"
+snapshots:
+  - "4.1.4-1@2026-01-01_1767253021"
 x_exec:
   host:
     - "x86_64-linux"
