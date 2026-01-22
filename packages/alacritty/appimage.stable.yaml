@@ -5,7 +5,7 @@ _disabled: false
 pkg: "alacritty"
 pkg_id: "pkgforge-dev.alacritty"
 pkg_type: "appimage"
-pkgver: "v0.16.1@2026-01-01_1767256526"
+pkgver: "v0.16.1@2026-01-22_1769071133"
 ghcr_pkg: "pkgforge-dev/alacritty"
 category:
   - "TerminalEmulator"
@@ -29,6 +29,8 @@ src_url:
   - "https://github.com/pkgforge-dev/alacritty-AppImage"
 tag:
   - "terminal"
+snapshots:
+  - "v0.16.1@2026-01-01_1767256526"
 x_exec:
   host:
     - "x86_64-linux"
