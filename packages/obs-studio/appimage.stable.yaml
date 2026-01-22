@@ -5,7 +5,7 @@ _disabled: false
 pkg: "obs-studio"
 pkg_id: "pkgforge-dev.obs-studio"
 pkg_type: "appimage"
-pkgver: "32.0.2-3@2026-01-01_1767255931"
+pkgver: "32.0.4-1@2026-01-22_1769069720"
 app_id: "org.obsproject.Studio"
 ghcr_pkg: "pkgforge-dev/obs-studio"
 category:
@@ -34,6 +34,8 @@ tag:
   - "live-streaming"
   - "screen-capture"
   - "video-recording"
+snapshots:
+  - "32.0.2-3@2026-01-01_1767255931"
 x_exec:
   host:
     - "x86_64-linux"
