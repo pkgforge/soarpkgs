@@ -5,7 +5,7 @@ _disabled: false
 pkg: "filelight"
 pkg_id: "pkgforge-dev.filelight"
 pkg_type: "appimage"
-pkgver: "25.12.0-1@2026-01-01_1767256352"
+pkgver: "25.12.1-1@2026-01-22_1769070938"
 ghcr_pkg: "pkgforge-dev/filelight"
 category:
   - "Utility"
@@ -32,6 +32,8 @@ tag:
   - "utility"
   - "disk"
   - "filesystem"
+snapshots:
+  - "25.12.0-1@2026-01-01_1767256352"
 x_exec:
   host:
     - "x86_64-linux"
