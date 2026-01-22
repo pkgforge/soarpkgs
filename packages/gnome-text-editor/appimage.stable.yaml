@@ -5,7 +5,7 @@ _disabled: false
 pkg: "gnome-text-editor"
 pkg_id: "pkgforge-dev.gnome-text-editor"
 pkg_type: "appimage"
-pkgver: "49.0-1@2026-01-01_1767254405"
+pkgver: "49.1-1@2026-01-22_1769071029"
 ghcr_pkg: "pkgforge-dev/gnome-text-editor"
 category:
   - "Utility"
@@ -32,6 +32,8 @@ tag:
   - "editor"
   - "text"
   - "utility"
+snapshots:
+  - "49.0-1@2026-01-01_1767254405"
 x_exec:
   host:
     - "x86_64-linux"
