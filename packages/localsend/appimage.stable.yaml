@@ -5,7 +5,7 @@ _disabled: false
 pkg: "localsend"
 pkg_id: "pkgforge-dev.localsend"
 pkg_type: "appimage"
-pkgver: "1.17.0-2@2026-01-01_1767254930"
+pkgver: "1.17.0-2@2026-01-22_1769070928"
 ghcr_pkg: "pkgforge-dev/localsend"
 category:
   - "Network"
@@ -32,6 +32,8 @@ tag:
   - "network"
   - "sharing"
   - "transfer"
+snapshots:
+  - "1.17.0-2@2026-01-01_1767254930"
 x_exec:
   host:
     - "x86_64-linux"
