@@ -5,7 +5,7 @@ _disabled: false
 pkg: "collision"
 pkg_id: "pkgforge-dev.collision"
 pkg_type: "appimage"
-pkgver: "3.11.0-1@2026-01-01_1767255417"
+pkgver: "3.11.0-1@2026-01-22_1769071275"
 ghcr_pkg: "pkgforge-dev/collision"
 category:
   - "Utility"
@@ -30,6 +30,8 @@ tag:
   - "utility"
   - "hash"
   - "checksum"
+snapshots:
+  - "3.11.0-1@2026-01-01_1767255417"
 x_exec:
   host:
     - "x86_64-linux"
