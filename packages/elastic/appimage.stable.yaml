@@ -5,7 +5,7 @@ _disabled: false
 pkg: "elastic"
 pkg_id: "pkgforge-dev.elastic"
 pkg_type: "appimage"
-pkgver: "1.0.1-1@2026-01-01_1767252112"
+pkgver: "1.0.1-1@2026-01-22_1769066459"
 ghcr_pkg: "pkgforge-dev/elastic"
 category:
   - "Utility"
@@ -28,6 +28,8 @@ src_url:
   - "https://github.com/pkgforge-dev/Elastic-AppImage"
 tag:
   - "utility"
+snapshots:
+  - "1.0.1-1@2026-01-01_1767252112"
 x_exec:
   host:
     - "x86_64-linux"
