@@ -5,7 +5,7 @@ _disabled: false
 pkg: "polybar"
 pkg_id: "pkgforge-dev.polybar"
 pkg_type: "appimage"
-pkgver: "3.7.2.r29.gf99e0b1c-1@2026-01-01_1767255828"
+pkgver: "3.7.2.r29.gf99e0b1c-1@2026-01-22_1769070276"
 ghcr_pkg: "pkgforge-dev/polybar"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "desktop"
   - "bar"
   - "utility"
+snapshots:
+  - "3.7.2.r29.gf99e0b1c-1@2026-01-01_1767255828"
 x_exec:
   host:
     - "x86_64-linux"
