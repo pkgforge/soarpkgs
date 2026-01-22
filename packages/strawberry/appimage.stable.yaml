@@ -5,7 +5,7 @@ _disabled: false
 pkg: "strawberry"
 pkg_id: "pkgforge-dev.strawberry"
 pkg_type: "appimage"
-pkgver: "1.2.16-1@2026-01-01_1767256239"
+pkgver: "1.2.17-1@2026-01-22_1769070790"
 ghcr_pkg: "pkgforge-dev/strawberry"
 category:
   - "Audio"
@@ -32,6 +32,8 @@ tag:
   - "audio"
   - "music"
   - "player"
+snapshots:
+  - "1.2.16-1@2026-01-01_1767256239"
 x_exec:
   host:
     - "x86_64-linux"
