@@ -5,7 +5,7 @@ _disabled: false
 pkg: "servo"
 pkg_id: "pkgforge-dev.servo"
 pkg_type: "appimage"
-pkgver: "v0.0.3@2026-01-01_1767255068"
+pkgver: "v0.0.3@2026-01-22_1769069853"
 ghcr_pkg: "pkgforge-dev/servo"
 category:
   - "Network"
@@ -31,6 +31,8 @@ src_url:
 tag:
   - "browser"
   - "web"
+snapshots:
+  - "v0.0.3@2026-01-01_1767255068"
 x_exec:
   host:
     - "x86_64-linux"
