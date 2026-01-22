@@ -5,7 +5,7 @@ _disabled: false
 pkg: "gnome-calculator"
 pkg_id: "pkgforge-dev.gnome-calculator"
 pkg_type: "appimage"
-pkgver: "49.2-1@2026-01-11_1768167639"
+pkgver: "49.2-1@2026-01-22_1769068441"
 ghcr_pkg: "pkgforge-dev/gnome-calculator"
 category:
   - "Utility"
@@ -33,6 +33,7 @@ tag:
   - "calculator"
   - "math"
 snapshots:
+  - "49.2-1@2026-01-11_1768167639"
   - "49.2-1@2026-01-01_1767251973"
 x_exec:
   host:
