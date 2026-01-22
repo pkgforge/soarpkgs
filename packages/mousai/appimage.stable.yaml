@@ -5,7 +5,7 @@ _disabled: false
 pkg: "mousai"
 pkg_id: "pkgforge-dev.mousai"
 pkg_type: "appimage"
-pkgver: "0.7.9-1@2026-01-01_1767256114"
+pkgver: "0.7.9-1@2026-01-22_1769071180"
 ghcr_pkg: "pkgforge-dev/mousai"
 category:
   - "Audio"
@@ -31,6 +31,8 @@ tag:
   - "audio"
   - "music"
   - "recognition"
+snapshots:
+  - "0.7.9-1@2026-01-01_1767256114"
 x_exec:
   host:
     - "x86_64-linux"
