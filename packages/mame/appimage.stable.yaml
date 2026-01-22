@@ -5,7 +5,7 @@ _disabled: false
 pkg: "mame"
 pkg_id: "pkgforge-dev.mame"
 pkg_type: "appimage"
-pkgver: "0.283-1@2026-01-01_1767261693"
+pkgver: "0.284-2@2026-01-22_1769076462"
 ghcr_pkg: "pkgforge-dev/mame"
 category:
   - "Game"
@@ -32,6 +32,8 @@ tag:
   - "emulator"
   - "gaming"
   - "arcade"
+snapshots:
+  - "0.283-1@2026-01-01_1767261693"
 x_exec:
   host:
     - "x86_64-linux"
