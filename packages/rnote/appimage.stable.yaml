@@ -5,7 +5,7 @@ _disabled: false
 pkg: "rnote"
 pkg_id: "pkgforge-dev.rnote"
 pkg_type: "appimage"
-pkgver: "0.13.1-1@2026-01-01_1767256089"
+pkgver: "0.13.1-1@2026-01-23_1769179846"
 ghcr_pkg: "pkgforge-dev/rnote"
 category:
   - "Graphics"
@@ -32,6 +32,8 @@ tag:
   - "graphics"
   - "notes"
   - "drawing"
+snapshots:
+  - "0.13.1-1@2026-01-01_1767256089"
 x_exec:
   host:
     - "x86_64-linux"
