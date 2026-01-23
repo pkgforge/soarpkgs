@@ -5,7 +5,7 @@ _disabled: false
 pkg: "rmg-enhanced"
 pkg_id: "pkgforge-dev.rmg-enhanced"
 pkg_type: "appimage"
-pkgver: "0.8.8-1@2026-01-01_1767254760"
+pkgver: "0.8.8-1@2026-01-23_1769156197"
 ghcr_pkg: "pkgforge-dev/rmg-enhanced"
 category:
   - "Game"
@@ -31,6 +31,8 @@ tag:
   - "emulator"
   - "gaming"
   - "nintendo"
+snapshots:
+  - "0.8.8-1@2026-01-01_1767254760"
 x_exec:
   host:
     - "x86_64-linux"
