@@ -5,7 +5,7 @@ _disabled: false
 pkg: "kicad"
 pkg_id: "pkgforge-dev.kicad"
 pkg_type: "appimage"
-pkgver: "9.0.6-2@2025-12-01_1764577551"
+pkgver: "9.0.7-5@2026-01-23_1769127525"
 ghcr_pkg: "pkgforge-dev/kicad"
 category:
   - "Electronics"
@@ -31,6 +31,8 @@ tag:
   - "electronics"
   - "pcb"
   - "cad"
+snapshots:
+  - "9.0.6-2@2025-12-01_1764577551"
 x_exec:
   host:
     - "x86_64-linux"
