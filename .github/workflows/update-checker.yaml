@@ -238,7 +238,7 @@ jobs:
           )
 
               gh pr create \
-                --title "⬆️ Update ${pkg_name}: ${old_ver} → ${new_ver}" \
+                --title "${pkg_name}: ${old_ver} -> ${new_ver}" \
                 --body "$PR_BODY" \
                 --label "bot,update" \
                 --head "$branch" \
