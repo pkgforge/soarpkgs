@@ -260,9 +260,6 @@ jobs:
       - name: Check host compatibility
         run: |
           SBUILD="${SYSTMP}/sbuild"
-          if [[ "${QEMU_MODE:-}" == "true" ]]; then
-            SBUILD="${SYSTMP}/sbuild-riscv64"
-          fi
 
           if ! "$SBUILD" info "${{ inputs.sbuild-url }}" --check-host "${HOST_TRIPLET}"; then
             echo "::warning::Recipe not supported on ${HOST_TRIPLET}"
