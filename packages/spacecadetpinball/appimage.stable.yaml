@@ -5,7 +5,7 @@ _disabled: false
 pkg: "spacecadetpinball"
 pkg_id: "pkgforge-dev.spacecadetpinball"
 pkg_type: "appimage"
-pkgver: "2.1.0.r6.gcb9b7b8-1@2026-01-01_1767256028"
+pkgver: "2.1.0.r6.gcb9b7b8-1@2026-01-23_1769208360"
 ghcr_pkg: "pkgforge-dev/spacecadetpinball"
 category:
   - "Game"
@@ -29,6 +29,8 @@ src_url:
 tag:
   - "game"
   - "pinball"
+snapshots:
+  - "2.1.0.r6.gcb9b7b8-1@2026-01-01_1767256028"
 x_exec:
   host:
     - "x86_64-linux"
