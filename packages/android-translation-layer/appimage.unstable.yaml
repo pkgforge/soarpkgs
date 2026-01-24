@@ -35,6 +35,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android_translation_layer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android_translation_layer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/android_translation_layer-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -35,6 +35,6 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/xenia-canary-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/xenia-canary-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')
   run: |
     soar dl "https://github.com/pkgforge-dev/xenia-canary-AppImage@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

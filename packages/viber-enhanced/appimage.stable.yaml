@@ -1,11 +1,9 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/viber-enhanced/appimage.stable.yaml
 _disabled: false
-
 pkg: "viber-enhanced"
 pkg_id: "pkgforge-dev.viber-enhanced"
 pkg_type: "appimage"
-pkgver: "24.9.0.3-1@2026-01-12_1768216296"
 ghcr_pkg: "pkgforge-dev/viber-enhanced"
 category:
   - "Network"
@@ -38,6 +36,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Viber-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Viber-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Viber-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

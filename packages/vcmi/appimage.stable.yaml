@@ -1,11 +1,9 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/vcmi/appimage.stable.yaml
 _disabled: false
-
 pkg: "vcmi"
 pkg_id: "pkgforge-dev.vcmi"
 pkg_type: "appimage"
-pkgver: "1.7.0-1@2026-01-01_1767256080"
 ghcr_pkg: "pkgforge-dev/vcmi"
 category:
   - "Game"
@@ -35,6 +33,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/vcmi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/vcmi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/vcmi-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

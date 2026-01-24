@@ -35,6 +35,6 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
+    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/AppImageUpdate-Enhanced-Edition/releases/latest?per_page=20" | jq -r '.tag_name')"
   run: |
     soar dl "https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

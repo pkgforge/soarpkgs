@@ -5,7 +5,6 @@ _disabled: false
 pkg: "mpv"
 pkg_id: "pkgforge-dev.mpv"
 pkg_type: "appimage"
-pkgver: "v0.41.0-60-g85bf9f4ff@2026-01-08_1767857143"
 ghcr_pkg: "pkgforge-dev/mpv"
 category:
   - "AudioVideo"
@@ -38,6 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mpv-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/mpv-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/mpv-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -5,7 +5,6 @@ _disabled: false
 pkg: "android-tools"
 pkg_id: "pkgforge-dev.android-tools"
 pkg_type: "appimage"
-pkgver: "36.0.0@2026-01-01_1767284433"
 ghcr_pkg: "pkgforge-dev/android-tools"
 category:
   - "Development"
@@ -52,6 +51,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/android-tools-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

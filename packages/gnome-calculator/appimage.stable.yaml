@@ -5,7 +5,6 @@ _disabled: false
 pkg: "gnome-calculator"
 pkg_id: "pkgforge-dev.gnome-calculator"
 pkg_type: "appimage"
-pkgver: "49.2-1@2026-01-11_1768167639"
 ghcr_pkg: "pkgforge-dev/gnome-calculator"
 category:
   - "Utility"
@@ -40,6 +39,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-Calculator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-Calculator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

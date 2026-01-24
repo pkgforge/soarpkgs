@@ -1,11 +1,9 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/system-monitoring-center/appimage.stable.yaml
 _disabled: false
-
 pkg: "system-monitoring-center"
 pkg_id: "pkgforge-dev.system-monitoring-center"
 pkg_type: "appimage"
-pkgver: "2.26.3-1@2026-01-01_1767256211"
 ghcr_pkg: "pkgforge-dev/system-monitoring-center"
 category:
   - "System"
@@ -36,6 +34,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/system-monitoring-center-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/system-monitoring-center-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/system-monitoring-center-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

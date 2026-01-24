@@ -5,7 +5,6 @@ _disabled: false
 pkg: "stirling-pdf"
 pkg_id: "pkgforge-dev.stirling-pdf"
 pkg_type: "appimage"
-pkgver: "v2.1.5@2026-01-01_1767256052"
 ghcr_pkg: "pkgforge-dev/stirling-pdf"
 category:
   - "Office"
@@ -36,6 +35,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Stirling-PDF-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Stirling-PDF-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Stirling-PDF-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

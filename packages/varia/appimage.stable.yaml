@@ -1,11 +1,9 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/varia/appimage.stable.yaml
 _disabled: false
-
 pkg: "varia"
 pkg_id: "pkgforge-dev.varia"
 pkg_type: "appimage"
-pkgver: "2025.10.14-1@2026-01-01_1767256167"
 ghcr_pkg: "pkgforge-dev/varia"
 category:
   - "Utility"
@@ -36,6 +34,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Varia-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Varia-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Varia-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

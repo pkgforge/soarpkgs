@@ -1,11 +1,9 @@
 #!/SBUILD ver @v1.0.0
 #SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/servo/appimage.stable.yaml
 _disabled: false
-
 pkg: "servo"
 pkg_id: "pkgforge-dev.servo"
 pkg_type: "appimage"
-pkgver: "v0.0.3@2026-01-01_1767255068"
 ghcr_pkg: "pkgforge-dev/servo"
 category:
   - "Network"
@@ -36,6 +34,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/servo-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/servo-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/servo-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

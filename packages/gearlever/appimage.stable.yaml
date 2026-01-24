@@ -5,7 +5,6 @@ _disabled: false
 pkg: "gearlever"
 pkg_id: "pkgforge-dev.gearlever"
 pkg_type: "appimage"
-pkgver: "4.2.1-1@2026-01-01_1767252370"
 ghcr_pkg: "pkgforge-dev/gearlever"
 category:
   - "Utility"
@@ -35,6 +34,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gear-Lever-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gear-Lever-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Gear-Lever-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

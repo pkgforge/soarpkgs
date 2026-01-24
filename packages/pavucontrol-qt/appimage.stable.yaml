@@ -5,7 +5,6 @@ _disabled: false
 pkg: "pavucontrol-qt"
 pkg_id: "pkgforge-dev.pavucontrol-qt"
 pkg_type: "appimage"
-pkgver: "2.3.0-1@2026-01-01_1767285148"
 ghcr_pkg: "pkgforge-dev/pavucontrol-qt"
 category:
   - "Audio"
@@ -36,6 +35,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/pavucontrol-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/pavucontrol-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

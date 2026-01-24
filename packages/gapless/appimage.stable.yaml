@@ -5,7 +5,6 @@ _disabled: false
 pkg: "gapless"
 pkg_id: "pkgforge-dev.gapless"
 pkg_type: "appimage"
-pkgver: "4.6-1@2026-01-01_1767256185"
 ghcr_pkg: "pkgforge-dev/gapless"
 category:
   - "Audio"
@@ -37,6 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gapless-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gapless-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Gapless-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

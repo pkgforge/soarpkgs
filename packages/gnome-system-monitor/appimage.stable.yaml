@@ -5,7 +5,6 @@ _disabled: false
 pkg: "gnome-system-monitor"
 pkg_id: "pkgforge-dev.gnome-system-monitor"
 pkg_type: "appimage"
-pkgver: "49.1-1@2026-01-01_1767255568"
 ghcr_pkg: "pkgforge-dev/gnome-system-monitor"
 category:
   - "System"
@@ -37,6 +36,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

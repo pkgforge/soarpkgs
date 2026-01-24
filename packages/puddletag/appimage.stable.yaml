@@ -5,7 +5,6 @@ _disabled: false
 pkg: "puddletag"
 pkg_id: "pkgforge-dev.puddletag"
 pkg_type: "appimage"
-pkgver: "2.5.0.r36.ged5c5a5-1@2026-01-08_1767856451"
 ghcr_pkg: "pkgforge-dev/puddletag"
 category:
   - "Audio"
@@ -38,6 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/puddletag-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/puddletag-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/puddletag-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

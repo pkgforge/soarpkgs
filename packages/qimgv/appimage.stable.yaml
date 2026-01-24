@@ -5,7 +5,6 @@ _disabled: false
 pkg: "qimgv"
 pkg_id: "pkgforge-dev.qimgv"
 pkg_type: "appimage"
-pkgver: "1.0.2.r183.g6bdfad1-1.6@2026-01-01_1767255054"
 ghcr_pkg: "pkgforge-dev/qimgv"
 category:
   - "Graphics"
@@ -36,6 +35,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Qimgv-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Qimgv-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Qimgv-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

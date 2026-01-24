@@ -5,7 +5,6 @@ _disabled: false
 pkg: "okteta"
 pkg_id: "pkgforge-dev.okteta"
 pkg_type: "appimage"
-pkgver: "0.26.24-2@2026-01-08_1767898065"
 ghcr_pkg: "pkgforge-dev/okteta"
 category:
   - "Development"
@@ -40,6 +39,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/okteta-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/okteta-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/okteta-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

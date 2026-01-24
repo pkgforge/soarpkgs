@@ -5,7 +5,6 @@ _disabled: false
 pkg: "sudachi"
 pkg_id: "pkgforge-dev.sudachi"
 pkg_type: "appimage"
-pkgver: "2025-07-27-1.0.15"
 ghcr_pkg: "pkgforge-dev/sudachi"
 category:
   - "Game"
@@ -35,6 +34,7 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Sudachi-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

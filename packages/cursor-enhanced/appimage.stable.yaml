@@ -5,7 +5,6 @@ _disabled: false
 pkg: "cursor-enhanced"
 pkg_id: "pkgforge-dev.cursor-enhanced"
 pkg_type: "appimage"
-pkgver: "2.2.44@2026-01-01_1767256819"
 ghcr_pkg: "pkgforge-dev/cursor-enhanced"
 category:
   - "Development"
@@ -38,6 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cursor-AppImage-enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cursor-AppImage-enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/Cursor-AppImage-enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

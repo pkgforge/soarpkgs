@@ -5,7 +5,6 @@ _disabled: false
 pkg: "ares-emu"
 pkg_id: "pkgforge-dev.ares-emu"
 pkg_type: "appimage"
-pkgver: "v147@2026-01-01_1767253716"
 ghcr_pkg: "pkgforge-dev/ares-emu"
 category:
   - "Game"
@@ -38,6 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ares-emu-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/ares-emu-appimage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/ares-emu-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

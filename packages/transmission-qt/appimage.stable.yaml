@@ -5,7 +5,6 @@ _disabled: false
 pkg: "transmission-qt"
 pkg_id: "pkgforge-dev.transmission-qt"
 pkg_type: "appimage"
-pkgver: "4.0.6-10@2026-01-01_1767254688"
 ghcr_pkg: "pkgforge-dev/transmission-qt"
 category:
   - "Network"
@@ -39,6 +38,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/transmission-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/transmission-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
     soar dl "https://github.com/pkgforge-dev/transmission-qt-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
