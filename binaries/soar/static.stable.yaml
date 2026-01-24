@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/soar/static.stable.yaml
+_disabled: false
+
+pkg: "soar"
+pkg_id: "pkgforge.soar"
+pkgver: "0.10.2"
+remote_pkgver: "v0.10.2"
+pkg_type: "static"
+ghcr_pkg: "pkgforge/soar"
+category:
+  - "Utility"
+  - "System"
+description: "Fast, modern, bloat-free distro-independent package manager"
+homepage:
+  - "https://github.com/pkgforge/soar"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/pkgforge/soar/main/LICENSE"
+note:
+  - "Official binary from https://github.com/pkgforge/soar"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "soar"
+repology:
+  - "soar"
+src_url:
+  - "https://github.com/pkgforge/soar"
+tag:
+  - "package-manager"
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+    - "riscv64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/soar/releases/latest" | jq -r '.tag_name')
+    echo "${VERSION#v}"
+  run: |
+    soar dl "https://github.com/pkgforge/soar@v${REMOTE_PKGVER}" --glob "*$(uname -m)-linux.tar.gz" --yes -o soar.tar.gz
+    tar -xf "soar.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/release/soar" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/release/LICENSE" "$SBUILD_OUTDIR/$PKG/LICENSE"
+    rm -rf "soar.tar.gz"
