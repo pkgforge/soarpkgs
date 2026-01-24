@@ -38,4 +38,4 @@ x_exec:
     echo "${VERSION%%@*}" | sed "s/^v//"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/uad-ng-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/uad-ng-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -37,4 +37,4 @@ x_exec:
     VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Sudachi-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Sudachi-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

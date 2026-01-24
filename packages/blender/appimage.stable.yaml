@@ -38,4 +38,4 @@ x_exec:
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/blender-AppImage@${PKGVER}" --match "appimage,x86_64" --exclude "zsync" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/blender-AppImage@${REMOTE_PKGVER}" --match "appimage,x86_64" --exclude "zsync" -o "./${PKG}" --yes

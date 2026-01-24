@@ -41,4 +41,4 @@ x_exec:
     echo "${VERSION%%@*}" | sed "s/^v//"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/ares-emu-appimage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/ares-emu-appimage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

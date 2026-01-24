@@ -42,4 +42,4 @@ x_exec:
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${REMOTE_PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
