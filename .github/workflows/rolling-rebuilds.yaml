@@ -153,6 +153,18 @@ jobs:
             fi
           }
 
+          # Function to get remote_pkgver (for upstream comparison)
+          get_remote_pkgver() {
+            local file="$1"
+            # Try to get remote_pkgver first, fall back to pkgver
+            local remote_ver
+            remote_ver=$(grep -E "^remote_pkgver:" "$file" | head -1 | sed 's/^remote_pkgver:[[:space:]]*//; s/^"//; s/"$//')
+            if [ -z "$remote_ver" ]; then
+              remote_ver=$(grep -E "^pkgver:" "$file" | head -1 | sed 's/^pkgver:[[:space:]]*//; s/^"//; s/"$//')
+            fi
+            echo "$remote_ver"
+          }
+
           # Function to extract ghcr_pkg from recipe (custom GHCR path)
           get_ghcr_pkg() {
             local file="$1"
@@ -218,6 +230,9 @@ jobs:
             NEW_VERSION=""
             CURRENT_VERSION=""
 
+            # Get remote_pkgver from recipe for comparison
+            REMOTE_PKGVER=$(get_remote_pkgver "$path")
+
             # Try to extract and run pkgver script
             PKGVER_SCRIPT=$(extract_pkgver_script "$path")
 
@@ -227,26 +242,20 @@ jobs:
 
               if [ -n "$NEW_VERSION" ]; then
                 echo "New version from pkgver: $NEW_VERSION"
+                echo "Current remote_pkgver in recipe: $REMOTE_PKGVER"
 
                 # Sanitize version for comparison (OCI tags have restricted charset)
                 SANITIZED_VERSION=$(sanitize_version "$NEW_VERSION")
-                echo "Sanitized version: $SANITIZED_VERSION"
+                SANITIZED_REMOTE=$(sanitize_version "$REMOTE_PKGVER")
+                echo "Sanitized new version: $SANITIZED_VERSION"
+                echo "Sanitized remote version: $SANITIZED_REMOTE"
 
-                # Get current version from GHCR
-                CURRENT_VERSION=$(get_ghcr_version "$ghcr_pkg" "$pkg_name")
-
-                if [ -n "$CURRENT_VERSION" ]; then
-                  echo "Current version in GHCR: $CURRENT_VERSION"
-
-                  if [ "$SANITIZED_VERSION" != "$CURRENT_VERSION" ]; then
-                    echo "Version changed: $CURRENT_VERSION -> $SANITIZED_VERSION"
-                    NEEDS_REBUILD=true
-                  else
-                    echo "Version unchanged"
-                  fi
-                else
-                  echo "No existing version in GHCR, marking for build"
+                # Compare new version with remote_pkgver (not pkgver)
+                if [ "$SANITIZED_VERSION" != "$SANITIZED_REMOTE" ]; then
+                  echo "Version changed: $SANITIZED_REMOTE -> $SANITIZED_VERSION"
                   NEEDS_REBUILD=true
+                else
+                  echo "Version unchanged (matches remote_pkgver)"
                 fi
               else
                 echo "pkgver script returned empty result"
