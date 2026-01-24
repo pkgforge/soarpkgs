@@ -5,7 +5,6 @@ _disabled: false
 pkg: "citron"
 pkg_id: "pkgforge-dev.citron"
 pkg_type: "appimage"
-pkgver: "0.12.25@2025-12-26_1766769485"
 ghcr_pkg: "pkgforge-dev/citron"
 category:
   - "Game"
@@ -37,6 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Citron-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Citron-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Citron-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Citron-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

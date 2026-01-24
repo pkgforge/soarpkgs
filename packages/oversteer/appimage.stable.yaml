@@ -5,7 +5,6 @@ _disabled: false
 pkg: "oversteer"
 pkg_id: "pkgforge-dev.oversteer"
 pkg_type: "appimage"
-pkgver: "0.8.3-2@2026-01-01_1767255610"
 ghcr_pkg: "pkgforge-dev/oversteer"
 category:
   - "Game"
@@ -37,6 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Oversteer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Oversteer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Oversteer-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Oversteer-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

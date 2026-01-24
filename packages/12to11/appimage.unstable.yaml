@@ -31,6 +31,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    echo "HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]')"
+    VERSION="HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/12to11-AppImage@${PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/12to11-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

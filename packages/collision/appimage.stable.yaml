@@ -5,7 +5,6 @@ _disabled: false
 pkg: "collision"
 pkg_id: "pkgforge-dev.collision"
 pkg_type: "appimage"
-pkgver: "3.11.0-1@2026-01-01_1767255417"
 ghcr_pkg: "pkgforge-dev/collision"
 category:
   - "Utility"
@@ -36,6 +35,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Collision-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Collision-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Collision-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Collision-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

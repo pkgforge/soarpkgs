@@ -5,7 +5,6 @@ _disabled: false
 pkg: "zenity-gtk3"
 pkg_id: "pkgforge-dev.zenity-gtk3"
 pkg_type: "appimage"
-pkgver: "3.44.5@2026-01-01_1767252130"
 ghcr_pkg: "pkgforge-dev/zenity-gtk3"
 category:
   - "Utility"
@@ -35,6 +34,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Zenity-GTK3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Zenity-GTK3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Zenity-GTK3-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Zenity-GTK3-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

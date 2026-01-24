@@ -5,7 +5,6 @@ _disabled: false
 pkg: "cromite"
 pkg_id: "pkgforge-dev.cromite"
 pkg_type: "appimage"
-pkgver: "v143.0.7499.110@2026-01-11_1768127173"
 ghcr_pkg: "pkgforge-dev/cromite"
 category:
   - "Network"
@@ -30,13 +29,13 @@ src_url:
 tag:
   - "browser"
   - "privacy"
-snapshots:
-  - "v143.0.7499.110@2026-01-04_1767557437"
 x_exec:
   host:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cromite-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cromite-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Cromite-AppImage@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Cromite-AppImage@${REMOTE_PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes

@@ -5,7 +5,6 @@ _disabled: false
 pkg: "lutris"
 pkg_id: "pkgforge-dev.lutris"
 pkg_type: "appimage"
-pkgver: "0.5.19-6@2026-01-01_1767256260"
 ghcr_pkg: "pkgforge-dev/lutris"
 category:
   - "Game"
@@ -35,6 +34,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Lutris-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Lutris-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Lutris-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Lutris-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

@@ -5,7 +5,6 @@ _disabled: false
 pkg: "deadbeef"
 pkg_id: "pkgforge-dev.deadbeef"
 pkg_type: "appimage"
-pkgver: "1.10.0@2026-01-01_1767256288"
 ghcr_pkg: "pkgforge-dev/deadbeef"
 category:
   - "Audio"
@@ -37,6 +36,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/DeaDBeeF-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/DeaDBeeF-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/DeaDBeeF-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/DeaDBeeF-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

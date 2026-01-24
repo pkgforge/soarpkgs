@@ -5,7 +5,6 @@ _disabled: false
 pkg: "cemu"
 pkg_id: "pkgforge-dev.cemu"
 pkg_type: "appimage"
-pkgver: "2.6-4@2026-01-01_1767256118"
 ghcr_pkg: "pkgforge-dev/cemu"
 category:
   - "Game"
@@ -37,6 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cemu-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Cemu-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Cemu-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Cemu-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

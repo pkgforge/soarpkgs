@@ -5,7 +5,6 @@ _disabled: false
 pkg: "eyedropper"
 pkg_id: "pkgforge-dev.eyedropper"
 pkg_type: "appimage"
-pkgver: "2.1.0-3@2026-01-11_1768168288"
 ghcr_pkg: "pkgforge-dev/eyedropper"
 category:
   - "Graphics"
@@ -31,13 +30,13 @@ tag:
   - "graphics"
   - "utility"
   - "color"
-snapshots:
-  - "2.1.0-3@2026-01-01_1767256145"
 x_exec:
   host:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Eyedropper-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Eyedropper-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Eyedropper-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Eyedropper-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

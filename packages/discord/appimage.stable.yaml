@@ -5,7 +5,6 @@ _disabled: false
 pkg: "discord"
 pkg_id: "pkgforge-dev.discord"
 pkg_type: "appimage"
-pkgver: "0.0.119-1@2026-01-01_1767256258"
 ghcr_pkg: "pkgforge-dev/discord"
 category:
   - "Chat"
@@ -35,6 +34,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Discord-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Discord-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Discord-AppImage@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Discord-AppImage@${REMOTE_PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes

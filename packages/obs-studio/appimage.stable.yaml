@@ -5,7 +5,6 @@ _disabled: false
 pkg: "obs-studio"
 pkg_id: "pkgforge-dev.obs-studio"
 pkg_type: "appimage"
-pkgver: "32.0.2-3@2026-01-01_1767255931"
 app_id: "org.obsproject.Studio"
 ghcr_pkg: "pkgforge-dev/obs-studio"
 category:
@@ -39,6 +38,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/OBS-Studio-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/OBS-Studio-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/OBS-Studio-AppImage@${REMOTE_PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes

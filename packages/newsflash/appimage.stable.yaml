@@ -5,7 +5,6 @@ _disabled: false
 pkg: "newsflash"
 pkg_id: "pkgforge-dev.newsflash"
 pkg_type: "appimage"
-pkgver: "4.1.4-1@2026-01-01_1767253021"
 ghcr_pkg: "pkgforge-dev/newsflash"
 category:
   - "Network"
@@ -38,6 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/NewsFlash-AppImage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/NewsFlash-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/NewsFlash-AppImage@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/NewsFlash-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes

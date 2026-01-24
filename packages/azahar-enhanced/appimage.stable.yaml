@@ -5,7 +5,6 @@ _disabled: false
 pkg: "azahar-enhanced"
 pkg_id: "pkgforge-dev.azahar-enhanced"
 pkg_type: "appimage"
-pkgver: "2123.4-beta2@2026-01-01_1767256588"
 ghcr_pkg: "pkgforge-dev/azahar-enhanced"
 category:
   - "Game"
@@ -37,6 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Azahar-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Azahar-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced@${PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
