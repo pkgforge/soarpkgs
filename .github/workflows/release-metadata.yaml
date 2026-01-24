@@ -1,6 +1,8 @@
 name: Release Metadata
 
 on:
+  schedule:
+    - cron: '0 0 * * 7' # At 00:00 on Sunday
   workflow_dispatch:
     inputs:
       force:
@@ -59,8 +61,6 @@ jobs:
         run: |
           mkdir -p /tmp/output
 
-          # Note: For test repo, the packages are pushed to bincache-test
-          # sbuild-meta will look for ghcr.io/pkgforge/bincache-test/<pkg>
           sbuild-meta generate \
             --arch "${{ matrix.arch }}" \
             --recipes ./binaries \
@@ -213,7 +213,7 @@ jobs:
           cat >> /tmp/release_notes.md << EOF
 
           ---
-          *This release was generated automatically from test repository.*
+          *This release was generated automatically.*
           EOF
 
           # Create the release
