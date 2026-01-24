@@ -105,7 +105,7 @@ jobs:
           echo "HOST_TRIPLET=${HOST_TRIPLET}" >> "$GITHUB_ENV"
 
           # For RISC-V, we'll use QEMU on ARM runner
-          if [[ "$HOST_TRIPLET" == "riscv64-Linux" ]]; then
+          if [[ "$HOST_TRIPLET" == "riscv64-linux" ]]; then
             echo "QEMU_MODE=true" >> "$GITHUB_ENV"
             NATIVE_ARCH="aarch64"
           else
