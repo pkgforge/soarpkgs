@@ -10,7 +10,7 @@ on:
   workflow_call:
     inputs:
       host:
-        description: "Target host [aarch64-Linux, x86_64-Linux, riscv64-Linux, ALL]"
+        description: "Target host [aarch64-Linux, x86_64-Linux, ALL]"
         type: string
         default: "ALL"
       sbuild-url:
@@ -59,8 +59,7 @@ jobs:
             "ALL")
               MATRIX='[
                 {"host": "x86_64-Linux", "runner": "ubuntu-latest"},
-                {"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm"},
-                {"host": "riscv64-Linux", "runner": "ubuntu-24.04-arm"}
+                {"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm"}
               ]'
               ;;
             "x86_64-Linux")
@@ -68,9 +67,6 @@ jobs:
               ;;
             "aarch64-Linux")
               MATRIX='[{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm"}]'
-              ;;
-            "riscv64-Linux")
-              MATRIX='[{"host": "riscv64-Linux", "runner": "ubuntu-24.04-arm"}]'
               ;;
             *)
               echo "::error::Invalid host: ${{ inputs.host }}"
@@ -103,14 +99,6 @@ jobs:
           # Determine host triplet
           HOST_TRIPLET="${{ matrix.target.host }}"
           echo "HOST_TRIPLET=${HOST_TRIPLET}" >> "$GITHUB_ENV"
-
-          # For RISC-V, we'll use QEMU on ARM runner
-          if [[ "$HOST_TRIPLET" == "riscv64-Linux" ]]; then
-            echo "QEMU_MODE=true" >> "$GITHUB_ENV"
-            NATIVE_ARCH="aarch64"
-          else
-            NATIVE_ARCH="$(uname -m)"
-          fi
 
           # Temp directory
           SYSTMP="$(mktemp -d)"
@@ -180,18 +168,6 @@ jobs:
             RECIPE_ID=$(echo -n "${{ inputs.sbuild-url }}" | sha256sum | cut -c1-8)
           fi
           echo "RECIPE_ID=${RECIPE_ID}" >> "$GITHUB_ENV"
-
-          # For RISC-V, setup QEMU and download riscv64 binaries
-          if [[ "${QEMU_MODE:-}" == "true" ]]; then
-            sudo apt-get install -y qemu-user-static
-            RISCV_TRIPLET="riscv64-linux"
-            # Download riscv64 sbuild
-            curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-${RISCV_TRIPLET}" \
-              -o "${SYSTMP}/sbuild-riscv64" && chmod +x "${SYSTMP}/sbuild-riscv64"
-            # Download riscv64 soar
-            curl -fsSL "https://github.com/pkgforge/soar/releases/latest/download/soar-${RISCV_TRIPLET}" \
-              -o /tmp/soar-riscv64 && sudo mv /tmp/soar-riscv64 /usr/local/bin/soar-riscv64 && sudo chmod +x /usr/local/bin/soar-riscv64
-          fi
 
       - name: Detect build dependencies
         id: detect-deps
@@ -349,7 +325,6 @@ jobs:
                   case "$(uname -m)" in
                     x86_64)  GO_ARCH="amd64" ;;
                     aarch64) GO_ARCH="arm64" ;;
-                    riscv64) GO_ARCH="riscv64" ;;
                   esac
                   curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-${GO_ARCH}.tar.gz" | sudo tar -xzf - -C /usr/local
                   echo "/usr/local/go/bin" >> "$GITHUB_PATH"
@@ -375,7 +350,6 @@ jobs:
                   case "$(uname -m)" in
                     x86_64)  ZIG_ARCH="x86_64" ;;
                     aarch64) ZIG_ARCH="aarch64" ;;
-                    riscv64) ZIG_ARCH="riscv64" ;;
                   esac
                   curl -fsSL "https://ziglang.org/download/${ZIG_VERSION}/zig-linux-${ZIG_ARCH}-${ZIG_VERSION}.tar.xz" \
                     | sudo tar -xJf - -C /usr/local
@@ -424,9 +398,6 @@ jobs:
           set +e  # Don't exit on error, we want to capture the result
 
           SBUILD="${SYSTMP}/sbuild"
-          if [[ "${QEMU_MODE:-}" == "true" ]]; then
-            SBUILD="${SYSTMP}/sbuild-riscv64"
-          fi
 
           # Output directory
           OUTDIR="${SYSTMP}/output"
