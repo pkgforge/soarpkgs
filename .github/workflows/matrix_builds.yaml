@@ -100,6 +100,8 @@ jobs:
           HOST_TRIPLET="${{ matrix.target.host }}"
           echo "HOST_TRIPLET=${HOST_TRIPLET}" >> "$GITHUB_ENV"
 
+          NATIVE_ARCH="$(uname -m)"
+
           # Temp directory
           SYSTMP="$(mktemp -d)"
           echo "SYSTMP=${SYSTMP}" >> "$GITHUB_ENV"
