@@ -4,7 +4,7 @@ _disabled: false
 
 pkg: "soar"
 pkg_id: "pkgforge.soar"
-pkgver: "0.10.2"
+pkgver: "0.10.3"
 remote_pkgver: "v0.10.2"
 pkg_type: "static"
 ghcr_pkg: "pkgforge/soar"
@@ -32,6 +32,8 @@ tag:
   - "package-manager"
   - "cli"
   - "utility"
+snapshots:
+  - "0.10.2"
 x_exec:
   host:
     - "x86_64-linux"
