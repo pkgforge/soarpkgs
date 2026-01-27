@@ -66,7 +66,7 @@ jobs:
           |---------|-------------|
           | `/help` | Show this help message |
           | `/build` | Build all changed recipes in this PR |
-          | `/build x86_64` | Build for specific host (x86_64, aarch64, riscv64) |
+          | `/build x86_64` | Build for specific host (x86_64, aarch64) |
           | `/build <recipe>` | Build a specific recipe |
           | `/lint` | Run linter on changed recipes |
           | `/check` | Check upstream versions |
@@ -93,7 +93,6 @@ jobs:
           case "$ARGS" in
             x86_64*|X86_64*) HOST="x86_64-Linux" ;;
             aarch64*|AARCH64*|arm64*) HOST="aarch64-Linux" ;;
-            riscv64*|RISCV64*) HOST="riscv64-Linux" ;;
             all|ALL) HOST="ALL" ;;
           esac
 
