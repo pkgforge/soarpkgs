@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/starship/static.stable.yaml
+_disabled: false
+
+pkg: "starship"
+pkg_id: "starship.starship"
+pkgver: "1.24.2"
+remote_pkgver: "v1.24.2"
+pkg_type: "static"
+ghcr_pkg: "starship/starship"
+category:
+  - "Utility"
+  - "Shell"
+description: "The minimal, blazing-fast, and infinitely customizable prompt for any shell"
+homepage:
+  - "https://github.com/starship/starship"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "ISC"
+    url: "https://raw.githubusercontent.com/starship/starship/master/LICENSE"
+note:
+  - "Official binary from https://github.com/starship/starship"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "starship"
+repology:
+  - "starship"
+src_url:
+  - "https://github.com/starship/starship"
+tag:
+  - "shell"
+  - "prompt"
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/starship/starship/releases/latest" | jq -r '.tag_name')
+    echo "${VERSION#v}"
+    echo "$VERSION"
+  run: |
+    soar dl "github:starship/starship@${REMOTE_PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" -o "./starship.tar.gz" --yes
+    tar -xf "starship.tar.gz"
+    rm -f "starship.tar.gz"
