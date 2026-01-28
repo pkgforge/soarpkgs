@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/fish/static.stable.yaml
+_disabled: false
+
+pkg: "fish"
+pkg_id: "fish-shell.fish"
+pkgver: "4.3.3"
+pkg_type: "static"
+ghcr_pkg: "fish-shell/fish-shell"
+category:
+  - "Utility"
+  - "Shell"
+description: "The user-friendly command line shell"
+homepage:
+  - "https://github.com/fish-shell/fish-shell"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/fish-shell/fish-shell/master/COPYING"
+note:
+  - "Official binary from https://github.com/fish-shell/fish-shell"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "fish"
+repology:
+  - "fish"
+src_url:
+  - "https://github.com/fish-shell/fish-shell"
+tag:
+  - "shell"
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/fish-shell/fish-shell/releases/latest" | jq -r '.tag_name')
+    echo "$VERSION"
+  run: |
+    soar dl "github:fish-shell/fish-shell@${REMOTE_PKGVER}" --glob "*linux-$(uname -m).tar.xz" -o "./fish.tar.xz" --yes
+    tar -xf "fish.tar.xz" -C "$SBUILD_OUTDIR/"
+    rm -f "fish.tar.xz"
