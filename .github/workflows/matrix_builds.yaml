@@ -489,3 +489,11 @@ jobs:
             ${{ env.SYSTMP }}/build-status.json
           retention-days: 1
           if-no-files-found: ignore
+
+      - name: Final status check
+        if: always()
+        run: |
+          if [[ "${BUILD_FAILED:-}" == "true" ]]; then
+            echo "::error::Build failed - failing workflow"
+            exit 1
+          fi
