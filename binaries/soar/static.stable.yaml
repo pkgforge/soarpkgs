@@ -5,7 +5,7 @@ _disabled: false
 pkg: "soar"
 pkg_id: "pkgforge.soar"
 pkgver: "0.10.3"
-remote_pkgver: "v0.10.2"
+remote_pkgver: "v0.10.3"
 pkg_type: "static"
 ghcr_pkg: "pkgforge/soar"
 category:
@@ -42,8 +42,9 @@ x_exec:
   pkgver: |
     VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge/soar/releases/latest" | jq -r '.tag_name')
     echo "${VERSION#v}"
+    echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge/soar@v${REMOTE_PKGVER}" --glob "*$(uname -m)-linux.tar.gz" --yes -o soar.tar.gz
+    soar dl "https://github.com/pkgforge/soar@${REMOTE_PKGVER}" --glob "*$(uname -m)-linux.tar.gz" --yes -o soar.tar.gz
     tar -xf "soar.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/release/soar" "$SBUILD_OUTDIR/$PKG"
     mv "$SBUILD_TMPDIR/release/LICENSE" "$SBUILD_OUTDIR/$PKG/LICENSE"
