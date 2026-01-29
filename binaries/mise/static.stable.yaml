@@ -4,8 +4,8 @@ _disabled: false
 
 pkg: "mise"
 pkg_id: "jdx.mise"
-pkgver: "2026.1.8"
-remote_pkgver: "v2026.1.8"
+pkgver: "2026.1.9"
+remote_pkgver: "v2026.1.9"
 pkg_type: "static"
 ghcr_pkg: "jdx/mise"
 category:
@@ -32,6 +32,8 @@ tag:
   - "dev-tools"
   - "cli"
   - "utility"
+snapshots:
+  - "2026.1.8"
 x_exec:
   host:
     - "x86_64-linux"
