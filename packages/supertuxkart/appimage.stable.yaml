@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/supertuxkart/appimage.stable.yaml
+_disabled: false
+
+pkg: "supertuxkart"
+pkg_id: "pkgforge-dev.supertuxkart"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/supertuxkart"
+category:
+  - "Game"
+description: "Kart racing game featuring Tux and his friends"
+homepage:
+  - "https://supertuxkart.net"
+  - "https://github.com/supertuxkart/stk-code"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/supertuxkart/stk-code/refs/heads/master/COPYING"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SuperTuxKart-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "supertuxkart"
+repology:
+  - "supertuxkart"
+src_url:
+  - "https://github.com/pkgforge-dev/SuperTuxKart-AppImage-Enhanced"
+tag:
+  - "game"
+  - "racing"
+  - "kart"
+x_exec:
+  host:
+    - "aarch64-linux"
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/SuperTuxKart-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SuperTuxKart-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*$(uname -m).appimage" -o "./${PKG}" --yes
