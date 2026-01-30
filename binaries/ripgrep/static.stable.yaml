@@ -1,0 +1,67 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ripgrep/static.stable.yaml
+_disabled: false
+
+pkg: "ripgrep"
+pkg_id: "burntsushi.ripgrep"
+pkgver: "15.1.0"
+pkg_type: "static"
+ghcr_pkg: "burntsushi/ripgrep"
+category:
+  - "System"
+  - "Utility"
+description: "A search tool that combines the usability of ag with the raw speed of grep"
+homepage:
+  - "https://github.com/BurntSushi/ripgrep"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT OR UNLICENSE"
+    url: "https://raw.githubusercontent.com/BurntSushi/ripgrep/master/COPYING"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ripgrep=>rg"
+repology:
+  - "ripgrep"
+src_url:
+  - "https://github.com/BurntSushi/ripgrep"
+tag:
+  - "dev-tools"
+  - "cli"
+  - "utility"
+snapshots:
+  - "15.0.0"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | jq -r '.tag_name')
+    echo "$VERSION"
+  run: |
+    mkdir -pv "$SBUILD_TMPDIR/tmp"
+    docker run --privileged --net="host" --name "ripgrep-builder" --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR/tmp:/tmp:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -l -c '
+        set -e
+        mkdir -p "/build-bins"
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter "blob:none" --quiet "https://github.com/BurntSushi/ripgrep" "./ripgrep"
+        cd "./ripgrep"
+        git checkout "$PKGVER"
+        cargo build --target "$RUST_TARGET" --profile release-lto
+        cp -fv "./target/$RUST_TARGET/release-lto/rg" "/build-bins/ripgrep"
+        cp -fv COPYING "/build-bins/LICENSE" 2>/dev/null || true
+      '
+    docker cp "ripgrep-builder:/build-bins/." "$SBUILD_TMPDIR/"
+    docker rm "ripgrep-builder" >/dev/null
+    cp -fv "$SBUILD_TMPDIR/ripgrep" "$SBUILD_OUTDIR/"
+    cp -fv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true
