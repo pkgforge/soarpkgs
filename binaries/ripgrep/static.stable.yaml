@@ -57,7 +57,7 @@ x_exec:
         git clone --filter "blob:none" --quiet "https://github.com/BurntSushi/ripgrep" "./ripgrep"
         cd "./ripgrep"
         git checkout "$PKGVER"
-        cargo build --target "$RUST_TARGET" --profile release-lto
+        cargo build --target "$RUST_TARGET" --profile release-lto --features "pcre2"
         cp -fv "./target/$RUST_TARGET/release-lto/rg" "/build-bins/ripgrep"
         cp -fv COPYING "/build-bins/LICENSE" 2>/dev/null || true
       '
