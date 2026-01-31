@@ -42,26 +42,24 @@ x_exec:
     VERSION=$(curl -qfsSL "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | jq -r '.tag_name')
     echo "$VERSION"
   run: |
-    mkdir -pv "$SBUILD_TMPDIR/tmp"
-    docker run --privileged --net="host" --name "ripgrep-builder" --pull="always" \
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
       -e "PKGVER=$PKGVER" \
-      --volume "$SBUILD_TMPDIR/tmp:/tmp:rw" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
       "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
-      bash -l -c '
+      bash -c '
         set -e
-        mkdir -p "/build-bins"
         cd "$(mktemp -d)"
         source "$HOME/.cargo/env"
         export RUST_TARGET="$(uname -m)-unknown-linux-musl"
         export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
-        git clone --filter "blob:none" --quiet "https://github.com/BurntSushi/ripgrep" "./ripgrep"
-        cd "./ripgrep"
+        git clone --filter=blob:none --quiet "https://github.com/BurntSushi/ripgrep"
+        cd ripgrep
         git checkout "$PKGVER"
-        cargo build --target "$RUST_TARGET" --profile release-lto --features "pcre2"
-        cp -fv "./target/$RUST_TARGET/release-lto/rg" "/build-bins/ripgrep"
-        cp -fv COPYING "/build-bins/LICENSE" 2>/dev/null || true
+        cargo build --target="$RUST_TARGET" --profile=release-lto --features=pcre2
+        mkdir -p /output
+        tar -cf - -C "target/$RUST_TARGET/release-lto" rg -C ../../../../.. COPYING 2>/dev/null | tar -xf - -C /output
+        mv /output/rg /output/ripgrep
       '
-    docker cp "ripgrep-builder:/build-bins/." "$SBUILD_TMPDIR/"
-    docker rm "ripgrep-builder" >/dev/null
-    cp -fv "$SBUILD_TMPDIR/ripgrep" "$SBUILD_OUTDIR/"
-    cp -fv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true
+    cp "$SBUILD_TMPDIR/ripgrep" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true
