@@ -57,9 +57,8 @@ x_exec:
         cd ripgrep
         git checkout "$PKGVER"
         cargo build --target="$RUST_TARGET" --profile=release-lto --features=pcre2
-        mkdir -p /output
-        tar -cf - -C "target/$RUST_TARGET/release-lto" rg -C ../../../../.. COPYING 2>/dev/null | tar -xf - -C /output
-        mv /output/rg /output/ripgrep
+        cp "target/$RUST_TARGET/release-lto/rg" /output/ripgrep
+        cp COPYING /output/LICENSE 2>/dev/null || true
       '
     cp "$SBUILD_TMPDIR/ripgrep" "$SBUILD_OUTDIR/"
     cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true
