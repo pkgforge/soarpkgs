@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/croc/static.stable.yaml
+_disabled: false
+
+pkg: "croc"
+pkg_id: "schollz.croc"
+pkg_type: "static"
+pkgver: "10.3.1"
+ghcr_pkg: "schollz/croc"
+category:
+  - "FileTransfer"
+  - "Network"
+  - "Utility"
+description: "Easily and securely send things from one computer to another"
+homepage:
+  - "https://schollz.com/software/croc6"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/schollz/croc/master/LICENSE"
+note:
+  - "Official binary from https://github.com/schollz/croc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "croc"
+repology:
+  - "croc"
+src_url:
+  - "https://github.com/schollz/croc"
+tag:
+  - "p2p"
+  - "sharing"
+  - "transfer"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/schollz/croc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="64bit" ;;
+      aarch64) ARCH="ARM64" ;;
+    esac
+    soar dl "https://github.com/schollz/croc@v${PKGVER}" --glob "*Linux-${ARCH}.tar.gz" --yes -o croc.tar.gz
+    tar -xf "croc.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/croc" "$SBUILD_OUTDIR/croc"
+    rm -rf "croc.tar.gz"
+    strip "$SBUILD_OUTDIR/croc"

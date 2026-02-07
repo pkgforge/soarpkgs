@@ -38,7 +38,7 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/m4b/bingrep/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+    curl -qfsSL "https://api.github.com/repos/m4b/bingrep/tags" | jq -r '.[0].name' | tr -d 'v'
   run: |
     docker run --rm --privileged --net="host" \
       --pull="always" \
