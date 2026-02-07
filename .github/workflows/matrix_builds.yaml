@@ -10,7 +10,7 @@ on:
   workflow_call:
     inputs:
       host:
-        description: "Target host [aarch64-Linux, x86_64-Linux, ALL]"
+        description: "Target host [aarch64-linux, x86_64-linux, ALL]"
         type: string
         default: "ALL"
       sbuild-url:
@@ -54,15 +54,15 @@ jobs:
           case "${{ inputs.host }}" in
             "ALL")
               MATRIX='[
-                {"host": "x86_64-Linux", "runner": "ubuntu-latest"},
-                {"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm"}
+                {"host": "x86_64-linux", "runner": "ubuntu-latest"},
+                {"host": "aarch64-linux", "runner": "ubuntu-24.04-arm"}
               ]'
               ;;
-            "x86_64-Linux")
-              MATRIX='[{"host": "x86_64-Linux", "runner": "ubuntu-latest"}]'
+            "x86_64-linux")
+              MATRIX='[{"host": "x86_64-linux", "runner": "ubuntu-latest"}]'
               ;;
-            "aarch64-Linux")
-              MATRIX='[{"host": "aarch64-Linux", "runner": "ubuntu-24.04-arm"}]'
+            "aarch64-linux")
+              MATRIX='[{"host": "aarch64-linux", "runner": "ubuntu-24.04-arm"}]'
               ;;
             *)
               echo "::error::Invalid host: ${{ inputs.host }}"
