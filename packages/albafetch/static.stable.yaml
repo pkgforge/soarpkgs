@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/albafetch/static.stable.yaml
+_disabled: false
+
+pkg: "albafetch"
+pkg_id: "alba4k.albafetch"
+pkg_type: "static"
+pkgver: "4.3"
+ghcr_pkg: "alba4k/albafetch"
+category:
+  - "Utility"
+  - "System"
+description: "Faster neofetch alternative, written in C"
+homepage:
+  - "https://github.com/alba4k/albafetch"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/alba4k/albafetch/main/LICENSE"
+note:
+  - "Official binary from https://github.com/alba4k/albafetch"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "albafetch"
+repology:
+  - "albafetch"
+src_url:
+  - "https://github.com/alba4k/albafetch"
+tag:
+  - "fetch"
+  - "system-info"
+  - "neofetch"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/alba4k/albafetch/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/alba4k/albafetch@v${PKGVER}" --glob "albafetch-linux-${ARCH}-static.zip" --yes -o albafetch.zip
+    7z x "albafetch.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/albafetch" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "albafetch.zip"
