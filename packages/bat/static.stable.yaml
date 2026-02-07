@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bat/static.stable.yaml
+_disabled: false
+
+pkg: "bat"
+pkg_id: "sharkdp.bat"
+pkg_type: "static"
+pkgver: "0.26.1"
+ghcr_pkg: "sharkdp/bat"
+category:
+  - "Utility"
+  - "System"
+description: "Cat clone with syntax highlighting and git integration"
+homepage:
+  - "https://github.com/sharkdp/bat"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/sharkdp/bat/master/LICENSE-MIT"
+note:
+  - "Official binary from https://github.com/sharkdp/bat"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bat"
+repology:
+  - "bat-cat"
+src_url:
+  - "https://github.com/sharkdp/bat"
+tag:
+  - "syntax-highlighting"
+  - "git"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharkdp/bat/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    soar dl "https://github.com/sharkdp/bat@v${PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" --yes -o bat.tar.gz
+    tar -xf "bat.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/bat"*"/bat" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "bat.tar.gz"

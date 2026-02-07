@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bandwhich/static.stable.yaml
+_disabled: false
+
+pkg: "bandwhich"
+pkg_id: "imsnif.bandwhich"
+pkg_type: "static"
+pkgver: "0.23.1"
+ghcr_pkg: "imsnif/bandwhich"
+category:
+  - "Utility"
+  - "Network"
+description: "Terminal bandwidth utilization tool"
+homepage:
+  - "https://github.com/imsnif/bandwhich"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/imsnif/bandwhich/main/LICENSE.md"
+note:
+  - "Official binary from https://github.com/imsnif/bandwhich"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bandwhich"
+repology:
+  - "bandwhich"
+src_url:
+  - "https://github.com/imsnif/bandwhich"
+tag:
+  - "network"
+  - "bandwidth"
+  - "monitoring"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/imsnif/bandwhich/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    soar dl "https://github.com/imsnif/bandwhich@v${PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" --yes -o bandwhich.tar.gz
+    tar -xf "bandwhich.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/bandwhich" "$SBUILD_OUTDIR/bandwhich"
+    rm -rf "bandwhich.tar.gz"
