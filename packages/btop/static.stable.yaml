@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/btop/static.stable.yaml
+_disabled: false
+
+pkg: "btop"
+pkg_id: "aristocratos.btop"
+pkg_type: "static"
+pkgver: "1.4.6"
+ghcr_pkg: "aristocratos/btop"
+category:
+  - "Utility"
+  - "System"
+description: "Modern and colorful command line resource monitor that shows usage and stats"
+homepage:
+  - "https://github.com/aristocratos/btop"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/aristocratos/btop/main/LICENSE"
+note:
+  - "Official binary from https://github.com/aristocratos/btop"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "btop"
+repology:
+  - "btop"
+src_url:
+  - "https://github.com/aristocratos/btop"
+tag:
+  - "monitoring"
+  - "system"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/aristocratos/btop/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    soar dl "https://github.com/aristocratos/btop@v${PKGVER}" --glob "btop-$(uname -m)-unknown-linux-musl.tbz" --yes -o btop.tar.xz
+    tar -xf "btop.tar.xz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/btop/bin/btop" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "btop.tar.xz"
