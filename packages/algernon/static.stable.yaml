@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/algernon/static.stable.yaml
+_disabled: false
+
+pkg: "algernon"
+pkg_id: "xyproto.algernon"
+pkg_type: "static"
+pkgver: "1.17.5"
+ghcr_pkg: "xyproto/algernon"
+category:
+  - "Utility"
+  - "Network"
+description: "Small self-contained pure-Go web server with Lua, Teal, Markdown, HTTP/2, QUIC, Redis and PostgreSQL support"
+homepage:
+  - "https://algernon.roboticoverlords.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://raw.githubusercontent.com/xyproto/algernon/main/LICENSE"
+note:
+  - "Official binary from https://github.com/xyproto/algernon"
+provides:
+  - "algernon"
+repology:
+  - "algernon"
+src_url:
+  - "https://github.com/xyproto/algernon"
+tag:
+  - "web-server"
+  - "http"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/xyproto/algernon/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    soar dl "https://github.com/xyproto/algernon@v${PKGVER}" --glob "*linux_$(uname -m)_static.tar.xz" --yes -o algernon.tar.xz
+    tar -xf "algernon.tar.xz" -C "$SBUILD_TMPDIR/"
+    extract_dir="algernon-${PKGVER}-linux_$(uname -m)_static"
+    mv "$SBUILD_TMPDIR/$extract_dir/algernon" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "algernon.tar.xz"

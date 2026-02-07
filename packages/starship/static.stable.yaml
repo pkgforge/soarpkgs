@@ -5,7 +5,6 @@ _disabled: false
 pkg: "starship"
 pkg_id: "starship.starship"
 pkgver: "1.24.2"
-remote_pkgver: "v1.24.2"
 pkg_type: "static"
 ghcr_pkg: "starship/starship"
 category:
@@ -39,10 +38,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/starship/starship/releases/latest" | jq -r '.tag_name')
-    echo "${VERSION#v}"
-    echo "$VERSION"
+    curl -qfsSL "https://api.gh.pkgforge.dev/repos/starship/starship/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "github:starship/starship@${REMOTE_PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" -o "./starship.tar.gz" --yes
+    soar dl "github:starship/starship@v${PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" -o "./starship.tar.gz" --yes
     tar -xf "starship.tar.gz"
     rm -f "starship.tar.gz"

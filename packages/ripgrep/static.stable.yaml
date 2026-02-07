@@ -38,8 +38,7 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | jq -r '.tag_name')
-    echo "$VERSION"
+    curl -qfsSL "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | jq -r '.tag_name'
   run: |
     docker run --rm --privileged --net="host" \
       --pull="always" \

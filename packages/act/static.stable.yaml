@@ -38,16 +38,14 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/nektos/act/releases/latest" | jq -r '.tag_name')
-    echo "${VERSION#v}"
+    curl -qfsSL "https://api.github.com/repos/nektos/act/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
     ARCH=$(uname -m)
     case "$ARCH" in
       x86_64) ARCH="x86_64" ;;
       aarch64) ARCH="arm64" ;;
     esac
-    soar dl "https://github.com/nektos/act@v${REMOTE_PKGVER}" --glob "act_Linux_${ARCH}.tar.gz" --yes -o act.tar.gz
+    soar dl "https://github.com/nektos/act@v${PKGVER}" --glob "act_Linux_${ARCH}.tar.gz" --yes -o act.tar.gz
     tar -xf "act.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/act" "$SBUILD_OUTDIR/$PKG"
-    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/$PKG/LICENSE"
     rm -rf "act.tar.gz"

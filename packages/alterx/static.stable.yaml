@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/alterx/static.stable.yaml
+_disabled: false
+
+pkg: "alterx"
+pkg_id: "projectdiscovery.alterx"
+pkg_type: "static"
+pkgver: "0.1.0"
+ghcr_pkg: "projectdiscovery/alterx"
+category:
+  - "Utility"
+  - "Security"
+description: "Fast and customizable subdomain wordlist generator using DSL"
+homepage:
+  - "https://github.com/projectdiscovery/alterx"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/projectdiscovery/alterx/main/LICENSE"
+note:
+  - "Official binary from https://github.com/projectdiscovery/alterx"
+provides:
+  - "alterx"
+repology:
+  - "alterx"
+src_url:
+  - "https://github.com/projectdiscovery/alterx"
+tag:
+  - "subdomain"
+  - "wordlist"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/projectdiscovery/alterx/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/alterx@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o alterx.zip
+    7z x "alterx.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/alterx" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "alterx.zip"
