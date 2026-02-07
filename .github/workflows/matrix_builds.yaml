@@ -37,10 +37,6 @@ on:
         description: "Force rebuild"
         type: boolean
         default: true
-      build-deps:
-        description: "Build dependencies to install (comma-separated: nix,docker,go,rust)"
-        type: string
-        default: ""
       metadata-release:
         description: "Create soar-nest metadata release (for third-party use)"
         type: boolean
@@ -178,62 +174,21 @@ jobs:
           RECIPE_CONTENT=$(curl -fsSL "${{ inputs.sbuild-url }}" 2>/dev/null || echo "")
 
           if [[ -z "$RECIPE_CONTENT" ]]; then
-            echo "::warning::Could not fetch recipe, using provided build-deps"
-            echo "deps=${{ inputs.build-deps }}" >> $GITHUB_OUTPUT
+            echo "::warning::Could not fetch recipe"
+            echo "deps=" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          DETECTED_DEPS=""
+          # Check for deps comment in first 10 lines (e.g., "# deps: cargo docker")
+          RECIPE_DEPS=$(echo "$RECIPE_CONTENT" | head -10 | grep -E '^\s*#\s+deps:' | sed -E 's/^\s*#\s+deps:\s*//' || echo "")
 
-          # Check for nix (shell: nix-shell, nix-build, or nix commands in script)
-          if echo "$RECIPE_CONTENT" | grep -qiE '(shell:\s*nix|nix-build|nix-shell|nix\s+build|nix\s+develop)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},nix"
-          fi
-
-          # Check for docker
-          if echo "$RECIPE_CONTENT" | grep -qiE '(docker\s+build|docker\s+run|dockerfile)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},docker"
-          fi
-
-          # Check for go
-          if echo "$RECIPE_CONTENT" | grep -qiE '(go\s+build|go\s+install|CGO_|go\s+mod)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},go"
-          fi
-
-          # Check for rust/cargo
-          if echo "$RECIPE_CONTENT" | grep -qiE '(cargo\s+build|cargo\s+install|rustc|Cargo\.toml)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},rust"
-          fi
-
-          # Check for zig
-          if echo "$RECIPE_CONTENT" | grep -qiE '(zig\s+build|zig\s+cc)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},zig"
-          fi
-
-          # Check for python/pip
-          if echo "$RECIPE_CONTENT" | grep -qiE '(pip\s+install|python\s+setup\.py|pyproject\.toml)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},python"
-          fi
-
-          # Always include build-essential for C/C++ builds
-          if echo "$RECIPE_CONTENT" | grep -qiE '(make\s|cmake|configure|gcc|g\+\+|clang)'; then
-            DETECTED_DEPS="${DETECTED_DEPS},build-essential"
-          fi
-
-          # Remove leading comma
-          DETECTED_DEPS="${DETECTED_DEPS#,}"
-
-          # Merge with explicitly provided deps (explicit deps take priority)
-          if [[ -n "${{ inputs.build-deps }}" ]]; then
-            # If explicit deps provided, use those instead
-            FINAL_DEPS="${{ inputs.build-deps }}"
+          if [[ -n "$RECIPE_DEPS" ]]; then
+            echo "Found dependencies: $RECIPE_DEPS"
           else
-            FINAL_DEPS="$DETECTED_DEPS"
+            echo "No dependencies found"
           fi
 
-          echo "Detected dependencies: $DETECTED_DEPS"
-          echo "Final dependencies: $FINAL_DEPS"
-          echo "deps=$FINAL_DEPS" >> $GITHUB_OUTPUT
+          echo "deps=$RECIPE_DEPS" >> $GITHUB_OUTPUT
 
       - name: Check host compatibility
         run: |
@@ -433,6 +388,7 @@ jobs:
           if [[ $BUILD_STATUS -ne 0 ]]; then
             echo "BUILD_FAILED=true" >> "$GITHUB_ENV"
             echo "::error::Build failed with status $BUILD_STATUS"
+            exit 1
           fi
 
       - name: Upload build logs
@@ -489,11 +445,3 @@ jobs:
             ${{ env.SYSTMP }}/build-status.json
           retention-days: 1
           if-no-files-found: ignore
-
-      - name: Final status check
-        if: always()
-        run: |
-          if [[ "${BUILD_FAILED:-}" == "true" ]]; then
-            echo "::error::Build failed - failing workflow"
-            exit 1
-          fi
