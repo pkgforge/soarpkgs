@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bore/static.stable.yaml
+_disabled: false
+
+pkg: "bore"
+pkg_id: "ekzhang.bore"
+pkgver: "0.6.0"
+pkg_type: "static"
+ghcr_pkg: "ekzhang/bore"
+category:
+  - "Utility"
+  - "Network"
+description: "A command line tool for making tunnels to localhost"
+homepage:
+  - "https://github.com/ekzhang/bore"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/ekzhang/bore/master/LICENSE"
+note:
+  - "Official binary from https://github.com/ekzhang/bore"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bore"
+repology:
+  - "bore-cli"
+src_url:
+  - "https://github.com/ekzhang/bore"
+tag:
+  - "tunnel"
+  - "networking"
+  - "localhost"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ekzhang/bore/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    soar dl "https://github.com/ekzhang/bore@v${PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" --yes -o bore.tar.gz
+    tar -xf "bore.tar.gz" -C "$SBUILD_TMPDIR/"
+    cp "$SBUILD_TMPDIR/bore" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "bore.tar.gz"
+    strip "$SBUILD_OUTDIR/$PKG"
