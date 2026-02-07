@@ -91,8 +91,8 @@ jobs:
           # Determine host
           HOST="ALL"
           case "$ARGS" in
-            x86_64*|X86_64*) HOST="x86_64-Linux" ;;
-            aarch64*|AARCH64*|arm64*) HOST="aarch64-Linux" ;;
+            x86_64*|X86_64*) HOST="x86_64-linux" ;;
+            aarch64*|AARCH64*|arm64*) HOST="aarch64-linux" ;;
             all|ALL) HOST="ALL" ;;
           esac
 

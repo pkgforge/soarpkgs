@@ -11,10 +11,10 @@ on:
         description: 'Target host'
         type: choice
         options:
-          - x86_64-Linux
-          - aarch64-Linux
+          - x86_64-linux
+          - aarch64-linux
           - ALL
-        default: x86_64-Linux
+        default: x86_64-linux
 
 permissions:
   attestations: write

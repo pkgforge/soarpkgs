@@ -20,9 +20,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - arch: x86_64-Linux
+          - arch: x86_64-linux
             runner: ubuntu-latest
-          - arch: aarch64-Linux
+          - arch: aarch64-linux
             runner: ubuntu-24.04-arm
     runs-on: ${{ matrix.runner }}
     permissions:
@@ -55,54 +55,26 @@ jobs:
           }
           chmod +x /usr/local/bin/soarql
 
-      - name: Generate bincache metadata
+      - name: Generate metadata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p /tmp/output
 
           sbuild-meta generate \
-            --arch "${{ matrix.arch }}" \
-            --recipes ./binaries \
-            --output /tmp/output \
-            --cache-type bincache \
-            --parallel 4 \
-            --ghcr-owner pkgforge \
-            --github-token "$GITHUB_TOKEN" || {
-            echo "::warning::bincache metadata generation failed or no packages found"
+            -a "${{ matrix.arch }}" \
+            -r ./packages/ \
+            -o /tmp/output/metadata.json \
+            || {
+            echo "::warning::metadata generation failed or no packages found"
           }
 
-          # Rename to include cache type
-          if [ -f "/tmp/output/bincache/${{ matrix.arch }}.json" ]; then
-            mv "/tmp/output/bincache/${{ matrix.arch }}.json" "/tmp/output/bincache-${{ matrix.arch }}.json"
-            echo "::notice::bincache metadata generated"
-            jq 'length' "/tmp/output/bincache-${{ matrix.arch }}.json"
+          if [ -f "/tmp/output/metadata.json" ]; then
+            mv "/tmp/output/metadata.json" "/tmp/output/metadata-${{ matrix.arch }}.json"
+            echo "::notice::metadata generated"
+            jq 'length' "/tmp/output/metadata-${{ matrix.arch }}.json"
           else
-            echo "::warning::No bincache metadata generated"
-          fi
-
-      - name: Generate pkgcache metadata
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          sbuild-meta generate \
-            --arch "${{ matrix.arch }}" \
-            --recipes ./packages \
-            --output /tmp/output \
-            --cache-type pkgcache \
-            --parallel 4 \
-            --ghcr-owner pkgforge \
-            --github-token "$GITHUB_TOKEN" || {
-            echo "::warning::pkgcache metadata generation failed or no packages found"
-          }
-
-          # Rename to include cache type
-          if [ -f "/tmp/output/pkgcache/${{ matrix.arch }}.json" ]; then
-            mv "/tmp/output/pkgcache/${{ matrix.arch }}.json" "/tmp/output/pkgcache-${{ matrix.arch }}.json"
-            echo "::notice::pkgcache metadata generated"
-            jq 'length' "/tmp/output/pkgcache-${{ matrix.arch }}.json"
-          else
-            echo "::warning::No pkgcache metadata generated"
+            echo "::warning::No metadata generated"
           fi
 
       - name: List outputs
@@ -124,11 +96,9 @@ jobs:
           for json_file in *.json; do
             if [ -f "$json_file" ]; then
               sdb_file="${json_file%.json}.sdb"
-              # Extract repo name from filename (e.g., bincache-x86_64-Linux.json -> bincache)
-              repo_name=$(echo "$json_file" | cut -d'-' -f1)
 
-              echo "Converting $json_file to $sdb_file (repo: $repo_name)"
-              soarql -i "$json_file" -o "$sdb_file" -r "$repo_name" || {
+              echo "Converting $json_file to $sdb_file"
+              soarql -i "$json_file" -o "$sdb_file" -r "soarpkgs" || {
                 echo "::warning::Failed to convert $json_file to SDB"
                 continue
               }

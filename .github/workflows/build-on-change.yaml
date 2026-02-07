@@ -272,7 +272,7 @@ jobs:
         run: |
           sbuild-cache --cache /tmp/build_cache.sdb gh-summary \
             --title "Build Results" \
-            --host x86_64-Linux || true
+            --host x86_64-linux || true
 
       - name: Upload updated cache
         env:

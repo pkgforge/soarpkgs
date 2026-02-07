@@ -12,9 +12,9 @@ on:
         type: choice
         options:
           - ALL
-          - x86_64-Linux
-          - aarch64-Linux
-        default: 'x86_64-Linux'
+          - x86_64-linux
+          - aarch64-linux
+        default: 'x86_64-linux'
       cache_type:
         description: 'Cache type (auto-detected from path if not specified)'
         type: choice
