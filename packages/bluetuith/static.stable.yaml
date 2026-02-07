@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bluetuith/static.stable.yaml
+_disabled: false
+
+pkg: "bluetuith"
+pkg_id: "bluetuith-org.bluetuith"
+pkg_type: "static"
+pkgver: "0.2.6"
+ghcr_pkg: "bluetuith-org/bluetuith"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+  - "System"
+description: "A TUI bluetooth manager for Linux"
+homepage:
+  - "https://github.com/darkhz/bluetuith"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/bluetuith-org/bluetuith/master/LICENSE"
+note:
+  - "Official binary from https://github.com/bluetuith-org/bluetuith"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bluetuith"
+repology:
+  - "bluetuith"
+src_url:
+  - "https://github.com/bluetuith-org/bluetuith"
+tag:
+  - "bluetooth"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bluetuith-org/bluetuith/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/bluetuith-org/bluetuith@v${PKGVER}" --glob "*Linux_${ARCH}.tar.gz" --yes -o bluetuith.tar.gz
+    tar -xf "bluetuith.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/bluetuith" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "bluetuith.tar.gz"
