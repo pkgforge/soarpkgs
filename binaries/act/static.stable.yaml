@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/act/static.stable.yaml
+_disabled: false
+
+pkg: "act"
+pkg_id: "nektos.act"
+pkgver: "0.2.84"
+pkg_type: "static"
+ghcr_pkg: "nektos/act"
+category:
+  - "Development"
+  - "Utility"
+description: "Run your GitHub Actions locally"
+homepage:
+  - "https://nektosact.com"
+  - "https://github.com/nektos/act"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/nektos/act/master/LICENSE"
+note:
+  - "Official binary from https://github.com/nektos/act"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "act"
+repology:
+  - "act-github-actions"
+src_url:
+  - "https://github.com/nektos/act"
+tag:
+  - "ci"
+  - "devops"
+  - "github-actions"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/nektos/act/releases/latest" | jq -r '.tag_name')
+    echo "${VERSION#v}"
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/nektos/act@v${REMOTE_PKGVER}" --glob "act_Linux_${ARCH}.tar.gz" --yes -o act.tar.gz
+    tar -xf "act.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/act" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/$PKG/LICENSE"
+    rm -rf "act.tar.gz"
