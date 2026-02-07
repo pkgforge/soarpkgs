@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/binfmt/static.stable.yaml
+_disabled: false
+
+pkg: "binfmt"
+pkg_id: "tonistiigi.binfmt"
+pkg_type: "static"
+pkgver: "10.0.4-59"
+ghcr_pkg: "tonistiigi/binfmt"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Cross-platform emulator collection distributed with Docker images"
+homepage:
+  - "https://github.com/tonistiigi/binfmt"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/tonistiigi/binfmt/master/LICENSE"
+note:
+  - "Official binary from https://github.com/tonistiigi/binfmt"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "binfmt"
+src_url:
+  - "https://github.com/tonistiigi/binfmt"
+tag:
+  - "binfmt"
+  - "emulation"
+  - "container"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tonistiigi/binfmt/releases/latest" | jq -r '.tag_name' | tr -d 'deploy/v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/tonistiigi/binfmt@deploy/v${PKGVER}" --glob "binfmt_linux-${ARCH}.tar.gz" --yes -o binfmt.tar.gz
+    tar -xf "binfmt.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/binfmt" "$SBUILD_OUTDIR/binfmt"
+    rm -rf "binfmt.tar.gz"
+    strip binfmt
