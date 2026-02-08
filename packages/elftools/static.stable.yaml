@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/elftools/static.stable.yaml
+_disabled: false
+
+pkg: "elftools"
+pkg_id: "github.com.pkgforge-dev.elftools"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "pkgforge-dev/elftools"
+category:
+  - "Utility"
+description: "Static binary for elftools"
+homepage:
+  - "https://github.com/pkgforge-dev/elftools"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/pkgforge-dev/elftools/master/LICENSE"
+note:
+  - "Official binary from https://github.com/pkgforge-dev/elftools"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "elftools"
+src_url:
+  - "https://github.com/pkgforge-dev/elftools"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pkgforge-dev/elftools/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/pkgforge-dev/elftools@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o elftools.tar.gz
+    tar -xf "elftools.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "elftools" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "elftools.tar.gz"

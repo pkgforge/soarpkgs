@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/aix/static.stable.yaml
+_disabled: false
+
+pkg: "aix"
+pkg_id: "github.com.projectdiscovery.aix"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "projectdiscovery/aix"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "AIx is a cli tool to interact with Large Language Models (LLM) APIs"
+homepage:
+  - "https://github.com/projectdiscovery/aix"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/projectdiscovery/aix/raw/8ef9d17bff962d368fcab38689eaf3ea1b9765b1/LICENSE.md"
+note:
+  - "Official binary from https://github.com/projectdiscovery/aix"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "aix"
+src_url:
+  - "https://github.com/projectdiscovery/aix"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        curl -qfsSL "https://api.github.com/repos/projectdiscovery/aix/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/aix@${PKGVER}" --glob "*linux_${ARCH}*" --yes -o aix.zip
+    7z x "aix.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/aix" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "aix.zip"

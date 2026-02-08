@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/chsrc/static.stable.yaml
+_disabled: false
+
+pkg: "chsrc"
+pkg_id: "RubyMetric/chsrc/stable"
+pkg_type: "static"
+ghcr_pkg: "RubyMetric/chsrc"
+category:
+  - "Utility"
+description: "Change Source everywhere for every software"
+homepage:
+  - "https://chsrc.run"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/RubyMetric/chsrc/raw/e2fd640045e53d38097999ddde7122558771f238/COPYING  "
+note:
+  - "Official binary from https://github.com/RubyMetric/chsrc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "chsrc"
+src_url:
+  - "https://github.com/RubyMetric/chsrc"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/RubyMetric/chsrc/stable/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/RubyMetric/chsrc/stable@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o chsrc.zip
+    7z x "chsrc.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/chsrc" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "chsrc.zip"

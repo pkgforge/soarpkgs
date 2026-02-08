@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/routedns/static.stable.yaml
+_disabled: false
+
+pkg: "routedns"
+pkg_id: "github.com.folbricht.routedns.source"
+pkg_type: "static"
+category:
+  - ""
+description: "DNS stub resolver, proxy and router"
+homepage:
+  - "  - https://github.com/folbricht/routedns"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/folbricht/routedns/master/LICENSE"
+note:
+  - "Official binary from https://github.com/folbricht/routedns"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "routedns"
+src_url:
+  - "https://github.com/folbricht/routedns"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/folbricht/routedns/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/folbricht/routedns@v${PKGVER}" --glob "routedns_linux_${ARCH}.tar.gz" --yes -o routedns.tar.gz
+    tar -xf "routedns.tar.gz" -C "/"
+    mv "/routedns" "/$PKG"
+    rm -rf "routedns.tar.gz"

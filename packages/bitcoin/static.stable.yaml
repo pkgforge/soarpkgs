@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bitcoin/static.stable.yaml
+_disabled: false
+
+pkg: "bitcoin"
+pkg_id: "ppkg.bitcoin"
+pkg_type: "static"
+ghcr_pkg: "bitcoin/bitcoin"
+category:
+  - "ConsoleOnly"
+description: "CLI and Utilities for BitCoin: Decentralized, peer to peer payment network"
+homepage:
+  - "https://www.bitcoincore.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/bitcoin/bitcoin/raw/8fa10edcd1706a1f0dc9d8c3adbc8efa3c7755bf/COPYING"
+note:
+  - "Official binary from https://github.com/bitcoin/bitcoin"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bench_bitcoin"
+repology:
+  - "bitcoin"
+src_url:
+  - "https://github.com/bitcoin/bitcoin"
+tag:
+  - "cryptocurrency"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bitcoin/bitcoin/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/bitcoin/bitcoin@v${PKGVER}" --glob "*bitcoin*" --yes -o bitcoin.tar.gz \
+    tar -xf "bitcoin.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bitcoin" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bitcoin.tar.gz"

@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cmdx/static.stable.yaml
+_disabled: false
+
+pkg: "cmdx"
+pkg_id: "suzuki-shunsuke/cmdx/stable"
+pkg_type: "static"
+ghcr_pkg: "suzuki-shunsuke/cmdx"
+category:
+  - "Utility"
+description: "Manage tasks for your project such as test, build, format, lint, and release"
+homepage:
+  - "https://github.com/suzuki-shunsuke/cmdx"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/suzuki-shunsuke/cmdx/raw/712db3471fb695242bc07717dd8265edeaff291c/LICENSE"
+note:
+  - "Official binary from https://github.com/suzuki-shunsuke/cmdx"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cmdx"
+src_url:
+  - "https://github.com/suzuki-shunsuke/cmdx"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/suzuki-shunsuke/cmdx/stable/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/suzuki-shunsuke/cmdx/stable@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cmdx.zip
+    7z x "cmdx.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cmdx" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cmdx.zip"

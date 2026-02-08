@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/asnmap/static.stable.yaml
+_disabled: false
+
+pkg: "asnmap"
+pkg_id: "github.com.projectdiscovery.asnmap"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "projectdiscovery/asnmap"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tool to gather network ranges using ASN information"
+homepage:
+  - "https://github.com/projectdiscovery/asnmap"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/projectdiscovery/asnmap/raw/9eed8411517b21980578b87a2fb2884adb57a846/LICENSE"
+note:
+  - "Official binary from https://github.com/projectdiscovery/asnmap"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "asnmap"
+repology:
+  - "asnmap"
+src_url:
+  - "https://github.com/projectdiscovery/asnmap"
+tag:
+  - "asn"
+  - "asn-lookup"
+  - "osint"
+  - "recon"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/projectdiscovery/asnmap" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/asnmap@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o asnmap.zip
+    7z x "asnmap.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/asnmap" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "asnmap.zip"

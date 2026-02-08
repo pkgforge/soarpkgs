@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/imgcat/static.stable.yaml
+_disabled: false
+
+pkg: "imgcat"
+pkg_id: "github.com.danielgatis.imgcat"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "danielgatis/imgcat"
+category:
+  - "Development"
+  - "Utility"
+description: "Display images and gifs in your terminal"
+homepage:
+  - "https://github.com/danielgatis/imgcat"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/danielgatis/imgcat/master/LICENSE"
+note:
+  - "Official binary from https://github.com/danielgatis/imgcat"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "imgcat"
+src_url:
+  - "https://github.com/danielgatis/imgcat"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/danielgatis/imgcat/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/danielgatis/imgcat@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o imgcat.tar.gz || \
+    soar dl "https://github.com/danielgatis/imgcat@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o imgcat.tar.gz || \
+    soar dl "https://github.com/danielgatis/imgcat@v${PKGVER}" --glob "*${ARCH}*" --yes -o imgcat.tar.gz
+    tar -xf "imgcat.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "imgcat.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "imgcat" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "imgcat-\*" -exec mv {} "$SBUILD_OUTDIR/imgcat" \; || \
+    mv "$SBUILD_TMPDIR/imgcat" "$SBUILD_OUTDIR/imgcat"
+    rm -rf "imgcat.tar.gz"

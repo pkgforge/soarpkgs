@@ -1,0 +1,55 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/asn/static.stable.yaml
+_disabled: false
+
+pkg: "asn"
+pkg_id: "github.com.nitefood.asn"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "nitefood/asn"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "OSINT command line tool for investigating network data"
+homepage:
+  - "https://github.com/nitefood/asn"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/nitefood/asn/raw/790adaed2cc2b4f72b61ae51d48dd62e6b46de9f/LICENSE"
+note:
+  - "Official binary from https://github.com/nitefood/asn"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "asn"
+repology:
+  - "asn"
+src_url:
+  - "https://github.com/nitefood/asn"
+tag:
+  - "asn-lookup"
+  - "ip-lookup"
+  - "osint"
+  - "recon"
+  - "whois"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/nitefood/asn" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://raw.githubusercontent.com/nitefood/asn/master/asn" --glob "*linux_${ARCH}*" --yes -o asn.zip
+    7z x "asn.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/asn" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "asn.zip"

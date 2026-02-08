@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bzip3/static.stable.yaml
+_disabled: false
+
+pkg: "bzip3"
+pkg_id: "ppkg.bzip3"
+pkg_type: "static"
+ghcr_pkg: "kspalaiologos/bzip3"
+category:
+  - "ConsoleOnly"
+description: "Tools for compressing and decompressing bzip3 files"
+homepage:
+  - "https://github.com/kspalaiologos/bzip3"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/kspalaiologos/bzip3/raw/2d1d304a613f12379790efc2ba8aba83a9f1bfb5/LICENSE"
+note:
+  - "Official binary from https://github.com/kspalaiologos/bzip3"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bunzip3"
+repology:
+  - "bzip3"
+src_url:
+  - "https://github.com/kspalaiologos/bzip3"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kspalaiologos/bzip3/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/kspalaiologos/bzip3@v${PKGVER}" --glob "*bzip3*" --yes -o bzip3.tar.gz \
+    tar -xf "bzip3.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bzip3" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bzip3.tar.gz"

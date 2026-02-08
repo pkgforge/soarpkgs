@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/arti/static.stable.yaml
+_disabled: false
+
+pkg: "arti"
+pkg_id: "stalix.bin_arti.stable"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "stalix/bin_arti/stable"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tor reimplementation in Rust"
+homepage:
+  - "https://gitlab.torproject.org/tpo/core/arti"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://gitlab.torproject.org/tpo/core/arti/-/raw/9197956fa936635900bba96c68a22aced4aafb3e/LICENSE-MIT"
+note:
+  - "Official binary from https://gitlab.torproject.org/tpo/core/arti"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "arti"
+repology:
+  - "arti"
+src_url:
+  - "https://gitlab.torproject.org/tpo/core/arti"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        curl -qfsSL "https://github.com/stal-ix/ix/raw/main/pkgs/bin/arti/ix.sh" |\
+         sed -n '/^[[:space:]]*{%[[:space:]]*block[[:space:]]\+version[[:space:]]*%}/{ n; s/^[[:space:]]*//; s/[[:space:]]*$//; p; }' | tr -d '"'\''[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/stalix/bin_arti/stable@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o arti.zip
+    7z x "arti.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/arti" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "arti.zip"

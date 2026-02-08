@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/loki/static.stable.yaml
+_disabled: false
+
+pkg: "loki"
+pkg_id: "grafana.loki"
+pkg_type: "static"
+pkgver: "3.3.1"
+ghcr_pkg: "grafana/loki"
+category:
+  - "Utility"
+  - "Database"
+description: "Horizontally-scalable log aggregation system"
+homepage:
+  - "https://github.com/grafana/loki"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "AGPL-3.0"
+    url: "https://raw.githubusercontent.com/grafana/loki/master/LICENSE"
+note:
+  - "Official binary from https://github.com/grafana/loki"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "logcli"
+  - "loki"
+  - "promtail"
+repology:
+  - "grafana-loki"
+src_url:
+  - "https://github.com/grafana/loki"
+tag:
+  - "logging"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/grafana/loki/releases/latest" | jq -r '.tag_name'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/grafana/loki@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o loki.tar.gz
+    tar -xf "loki.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "logcli" -exec mv {} "$SBUILD_OUTDIR/" \;
+    find "$SBUILD_TMPDIR" -type f -name "loki" -exec mv {} "$SBUILD_OUTDIR/" \;
+    find "$SBUILD_TMPDIR" -type f -name "promtail" -exec mv {} "$SBUILD_OUTDIR/" \;
+    rm -rf "loki.tar.gz"

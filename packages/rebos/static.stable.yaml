@@ -1,0 +1,61 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/rebos/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "rebos"
+pkg_id: "Oglo12/rebos"
+pkgver: "0.1.0"
+pkg_type: "static"
+ghcr_pkg: "Oglo12/rebos"
+category:
+  - "System"
+  - "Utility"
+description: "Tool to mimic NixOS's repeatability"
+homepage:
+  - "https://github.com/Oglo12/rebos"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://gitlab.com/Oglo12/rebos/-/raw/main/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rebos"
+repology:
+  - "rebos"
+src_url:
+  - "https://github.com/Oglo12/rebos"
+tag:
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Oglo12/rebos/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/Oglo12/rebos"
+        cd rebos
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --profile=release-lto
+        cp "target/$RUST_TARGET/release-lto/rebos" /output/rebos 2>/dev/null || cp "target/$RUST_TARGET/release/rebos" /output/rebos
+        cp LICENSE* /output/ 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/rebos" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE"* "$SBUILD_OUTDIR/" 2>/dev/null || true

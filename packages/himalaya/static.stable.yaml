@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/himalaya/static.stable.yaml
+_disabled: false
+
+pkg: "himalaya"
+pkg_id: "github.com.pimalaya.himalaya"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "pimalaya/himalaya"
+category:
+  - "Development"
+  - "Utility"
+description: "CLI to manage emails"
+homepage:
+  - "https://github.com/pimalaya/himalaya"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/pimalaya/himalaya/master/LICENSE"
+note:
+  - "Official binary from https://github.com/pimalaya/himalaya"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "himalaya"
+src_url:
+  - "https://github.com/pimalaya/himalaya"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pimalaya/himalaya/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/pimalaya/himalaya@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o himalaya.tar.gz || \
+    soar dl "https://github.com/pimalaya/himalaya@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o himalaya.tar.gz || \
+    soar dl "https://github.com/pimalaya/himalaya@v${PKGVER}" --glob "*${ARCH}*" --yes -o himalaya.tar.gz
+    tar -xf "himalaya.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "himalaya.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "himalaya" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "himalaya-\*" -exec mv {} "$SBUILD_OUTDIR/himalaya" \; || \
+    mv "$SBUILD_TMPDIR/himalaya" "$SBUILD_OUTDIR/himalaya"
+    rm -rf "himalaya.tar.gz"

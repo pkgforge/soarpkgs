@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/brename/static.stable.yaml
+_disabled: false
+
+pkg: "brename"
+pkg_id: "github.com.shenwei356.brename"
+pkg_type: "static"
+ghcr_pkg: "shenwei356/brename"
+category:
+  - "ConsoleOnly"
+description: "Tool for batch renaming files/directories via regular expressions"
+homepage:
+  - "https://github.com/shenwei356/brename"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/shenwei356/brename/raw/a048bdfa7f32ea4372b02c912f2b98c2a8f81096/LICENSE"
+note:
+  - "Official binary from https://github.com/shenwei356/brename"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "brename"
+repology:
+  - "brename"
+src_url:
+  - "https://github.com/shenwei356/brename"
+tag:
+  - "rename"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/shenwei356/brename/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/shenwei356/brename@v${PKGVER}" --glob "*brename*" --yes -o brename.tar.gz \
+    tar -xf "brename.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/brename" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "brename.tar.gz"

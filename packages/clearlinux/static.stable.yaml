@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/clearlinux/static.stable.yaml
+_disabled: false
+
+pkg: "clearlinux"
+pkg_id: "clearlinux/docker-brew-clearlinux"
+pkg_type: "static"
+ghcr_pkg: "clearlinux/docker-brew-clearlinux"
+category:
+  - "Utility"
+description: "Portable Ephemeral ClearLinux Docker Image (DockerC)"
+homepage:
+  - "https://github.com/clearlinux/docker-brew-clearlinux"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/clearlinux/official-images/raw/d59bbfe5a228104ed6fe3a62973fe2fbbc545a4f/LICENSE   "
+note:
+  - "Official binary from https://github.com/clearlinux/docker-brew-clearlinux"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "clearlinux"
+src_url:
+  - "https://github.com/clearlinux/docker-brew-clearlinux"
+tag:
+  - "clearlinux"
+  - "docker"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/clearlinux/docker-brew-clearlinux/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/clearlinux/docker-brew-clearlinux@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o clearlinux.zip
+    7z x "clearlinux.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/clearlinux" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "clearlinux.zip"

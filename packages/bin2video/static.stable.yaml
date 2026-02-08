@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bin2video/static.stable.yaml
+_disabled: false
+
+pkg: "bin2video"
+pkg_id: "github.com.pixelomer.bin2video"
+pkg_type: "static"
+ghcr_pkg: "pixelomer/bin2video"
+category:
+  - "ConsoleOnly"
+description: "Tool for encoding files as videos"
+homepage:
+  - "https://github.com/pixelomer/bin2video"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+note:
+  - "Official binary from https://github.com/pixelomer/bin2video"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bin2video"
+repology:
+  - "bin2video"
+src_url:
+  - "https://github.com/pixelomer/bin2video"
+tag:
+  - "ffmpeg"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pixelomer/bin2video/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/pixelomer/bin2video@v${PKGVER}" --glob "*bin2video*" --yes -o bin2video.tar.gz \
+    tar -xf "bin2video.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bin2video" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bin2video.tar.gz"

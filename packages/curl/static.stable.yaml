@@ -1,0 +1,74 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/curl/static.stunnel.stable.yaml
+_disabled: false
+
+pkg: "curl"
+pkg_id: "github.com.stunnel.static-curl"
+pkg_type: "static"
+ghcr_pkg: "curl/curl"
+category:
+  - "Utility"
+description:
+  _default: "Command Line Tools for working with URLs (curl & trurl)"
+  curl: "A command line tool for transferring files with URL syntax"
+  trurl: "A command line tool for URL parsing and Manipulation"
+homepage:
+  - "https://curl.se"
+  - "https://github.com/curl/curl"
+  - "https://github.com/curl/trurl"
+  - "https://github.com/stunnel/static-curl"
+icon: 
+  url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/curl/assets/default.svg"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Community Created Binary. Check/Report @ https://github.com/stunnel/static-curl"
+provides:
+  - "curl"
+  - "trurl"
+repology:
+  - "curl"
+  - "trurl"
+src_url:
+  - "https://github.com/stunnel/static-curl"
+tag:
+  - "curl"
+  - "http-client"
+  - "http3"
+  - "http3-client"
+x_exec:
+  bsys: "host://soar-dl"
+  host:
+    - "aarch64-Linux"
+    - "riscv64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/stunnel/static-curl/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,aarch64,tar" --exclude "amd,x86,x64,dev" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      riscv64)
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,riscv64,tar" --exclude "asc,sha256,sha512,dev" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/stunnel/static-curl@${PKGVER}" --match "linux,musl,x86_64,tar" --exclude "aarch,arm,dev" --exclude "dev" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

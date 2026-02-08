@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/tar-split/static.stable.yaml
+_disabled: false
+
+pkg: "tar-split"
+pkg_id: "github.com.vbatts.tar-split"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "vbatts/tar-split"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/vbatts/tar-split"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/vbatts/tar-split/main/LICENSE"
+note:
+  - "Official binary from https://github.com/vbatts/tar-split"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "tar-split"
+src_url:
+  - "https://github.com/vbatts/tar-split"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/vbatts/tar-split/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/vbatts/tar-split@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o tar-split.tar.gz ||     soar dl "https://github.com/vbatts/tar-split@v${PKGVER}" --glob "*${ARCH}*" --yes -o tar-split.tar.gz ||     soar dl "https://github.com/vbatts/tar-split@v${PKGVER}" --glob "*linux*" --yes -o tar-split.tar.gz
+    tar -xf "tar-split.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "tar-split*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/tar-split" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/tar-split" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "tar-split.tar.gz"

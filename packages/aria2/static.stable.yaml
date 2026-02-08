@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/aria2/static.stable.yaml
+_disabled: false
+
+pkg: "aria2"
+pkg_id: "github.com.aria2.aria2.continuous"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "abcfy2/aria2-static-build"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A multi-protocol (HTTP/HTTPS, FTP, SFTP, BitTorrent & Metalink) & multi-source command-line download utility"
+homepage:
+  - "https://aria2.github.io"
+  - "https://github.com/aria2/aria2"
+  - "https://aria2.sourceforge.net"
+  - "https://sourceforge.net/projects/aria2"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/aria2/aria2/raw/b519ce04e3f3a0651fcec43550bc71f09771b069/COPYING"
+note:
+  - "Official binary from https://github.com/abcfy2/aria2-static-build"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "aria2:aria2c"
+repology:
+  - "aria2"
+src_url:
+  - "https://github.com/abcfy2/aria2-static-build"
+tag:
+  - "bittorrent"
+  - "downloader"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        curl -qfsSL "https://api.github.com/repos/abcfy2/aria2-static-build/releases?per_page=100" | jq -r '[.[] | select(.draft == false and (.tag_name | ascii_downcase == "continuous")) | .assets[].updated_at] | map(select(. != null)) | .[] | fromdate | strftime("%y%m%dT%H%M%S")' | sort --version-sort | tail -n 1 | tr -d '"'\''[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/abcfy2/aria2-static-build@continuous" --glob "*linux_${ARCH}*" --yes -o aria2.zip
+    7z x "aria2.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/aria2" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "aria2.zip"

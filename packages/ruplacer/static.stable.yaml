@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ruplacer/static.stable.yaml
+_disabled: false
+
+pkg: "ruplacer"
+pkg_id: "github.com.your-tools.ruplacer.source"
+pkg_type: "static"
+category:
+  - ""
+description: "Find and replace text in source files"
+homepage:
+  - "  - https://github.com/your-tools/ruplacer"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/your-tools/ruplacer/master/LICENSE"
+note:
+  - "Official binary from https://github.com/your-tools/ruplacer"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ruplacer"
+src_url:
+  - "https://github.com/your-tools/ruplacer"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/your-tools/ruplacer/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/your-tools/ruplacer@v${PKGVER}" --glob "ruplacer_linux_${ARCH}.tar.gz" --yes -o ruplacer.tar.gz
+    tar -xf "ruplacer.tar.gz" -C "/"
+    mv "/ruplacer" "/$PKG"
+    rm -rf "ruplacer.tar.gz"

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cloudflared/static.stable.yaml
+_disabled: false
+
+pkg: "cloudflared"
+pkg_id: "cloudflare/cloudflared"
+pkg_type: "static"
+ghcr_pkg: "cloudflare/cloudflared"
+category:
+  - "Utility"
+description: "Cloudflare Tunnel daemon, Cloudflare Access toolkit, and DNS-over-HTTPS client"
+homepage:
+  - "https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/cloudflare/cloudflared/raw/2714d10d62fee962bab19d07bd2ef164ee15dc22/LICENSE"
+note:
+  - "Official binary from https://github.com/cloudflare/cloudflared"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cloudflared"
+src_url:
+  - "https://github.com/cloudflare/cloudflared"
+tag:
+  - "cloudflare"
+  - "tunnel"
+  - "proxy"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cloudflare/cloudflared/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/cloudflare/cloudflared@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cloudflared.zip
+    7z x "cloudflared.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cloudflared" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cloudflared.zip"

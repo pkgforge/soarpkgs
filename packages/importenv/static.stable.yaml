@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/importenv/static.stable.yaml
+_disabled: false
+
+pkg: "importenv"
+pkg_id: "github.com.VHSgunzo.importenv"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "VHSgunzo/importenv"
+category:
+  - "Development"
+  - "Utility"
+description: "Launch an executable file with environment variables from a specific process id"
+homepage:
+  - "https://github.com/VHSgunzo/importenv"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/VHSgunzo/importenv/master/LICENSE"
+note:
+  - "Official binary from https://github.com/VHSgunzo/importenv"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "importenv"
+src_url:
+  - "https://github.com/VHSgunzo/importenv"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/VHSgunzo/importenv/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/VHSgunzo/importenv@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o importenv.tar.gz || \
+    soar dl "https://github.com/VHSgunzo/importenv@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o importenv.tar.gz || \
+    soar dl "https://github.com/VHSgunzo/importenv@v${PKGVER}" --glob "*${ARCH}*" --yes -o importenv.tar.gz
+    tar -xf "importenv.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "importenv.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "importenv" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "importenv-\*" -exec mv {} "$SBUILD_OUTDIR/importenv" \; || \
+    mv "$SBUILD_TMPDIR/importenv" "$SBUILD_OUTDIR/importenv"
+    rm -rf "importenv.tar.gz"

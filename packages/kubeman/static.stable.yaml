@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kubeman/static.stable.yaml
+_disabled: false
+
+pkg: "kubeman"
+pkg_id: "walmartlabs/kubeman"
+pkg_type: "static"
+ghcr_pkg: "walmartlabs/kubeman"
+category:
+  - "Utility"
+description: "The Hero that Kubernetes deserves"
+homepage:
+  - "https://github.com/walmartlabs/kubeman"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache"
+    url: "https://github.com/walmartlabs/kubeman/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/walmartlabs/kubeman"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kubeman"
+repology:
+  - "kubeman"
+src_url:
+  - "https://github.com/walmartlabs/kubeman"
+tag:
+  - istio
+  - kubernetes
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/walmartlabs/kubeman/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/walmartlabs/kubeman" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/walmartlabs/kubeman" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

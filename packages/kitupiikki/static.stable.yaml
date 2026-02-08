@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kitupiikki/static.stable.yaml
+_disabled: false
+
+pkg: "kitupiikki"
+pkg_id: "artoh/kitupiikki"
+pkg_type: "static"
+ghcr_pkg: "artoh/kitupiikki"
+category:
+  - "Utility"
+description: "Finnish bookkeeping software for small organizations - Avoimen lähdekoodin kirjanpitäjä"
+homepage:
+  - "https://github.com/artoh/kitupiikki"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Other"
+    url: "https://github.com/artoh/kitupiikki/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/artoh/kitupiikki"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kitupiikki"
+repology:
+  - "kitupiikki"
+src_url:
+  - "https://github.com/artoh/kitupiikki"
+tag:
+  - utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/artoh/kitupiikki/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/artoh/kitupiikki" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/artoh/kitupiikki" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

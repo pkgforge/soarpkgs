@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lcedit/static.stable.yaml
+_disabled: false
+
+pkg: "lcedit"
+pkg_id: "Fulgen301/LCEdit"
+pkg_type: "static"
+ghcr_pkg: "Fulgen301/LCEdit"
+category:
+  - "Utility"
+description: "null"
+homepage:
+  - "https://github.com/Fulgen301/LCEdit"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/Fulgen301/LCEdit/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/Fulgen301/LCEdit"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "lcedit"
+repology:
+  - "lcedit"
+src_url:
+  - "https://github.com/Fulgen301/LCEdit"
+tag:
+  - clonk
+  - legacyclonk
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Fulgen301/LCEdit/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Fulgen301/LCEdit" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Fulgen301/LCEdit" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

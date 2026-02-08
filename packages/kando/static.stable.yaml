@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kando/static.stable.yaml
+_disabled: false
+
+pkg: "kando"
+pkg_id: "kando-menu/kando"
+pkg_type: "static"
+ghcr_pkg: "kando-menu/kando"
+category:
+  - "Utility"
+description: "🥧 The Cross-Platform Pie Menu."
+homepage:
+  - "https://github.com/kando-menu/kando"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/kando-menu/kando/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/kando-menu/kando"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kando"
+repology:
+  - "kando"
+src_url:
+  - "https://github.com/kando-menu/kando"
+tag:
+  - cross-platform
+  - electron
+  - gestures
+  - linux
+  - macos
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kando-menu/kando/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kando-menu/kando" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kando-menu/kando" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

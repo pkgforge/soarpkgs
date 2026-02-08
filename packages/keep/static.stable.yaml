@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/keep/static.stable.yaml
+_disabled: false
+
+pkg: "keep"
+pkg_id: "andrepolischuk/keep"
+pkg_type: "static"
+ghcr_pkg: "andrepolischuk/keep"
+category:
+  - "Utility"
+description: "Desktop app for Google Keep packaged with Electron"
+homepage:
+  - "http://keep.sourceforge.net"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD"
+    url: "https://github.com/andrepolischuk/keep/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/andrepolischuk/keep"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "keep"
+repology:
+  - "keep"
+src_url:
+  - "https://github.com/andrepolischuk/keep"
+tag:
+  - sysutils
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/andrepolischuk/keep/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/andrepolischuk/keep" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/andrepolischuk/keep" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

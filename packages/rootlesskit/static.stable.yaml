@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rootlesskit/static.stable.yaml
+_disabled: false
+
+pkg: "rootlesskit"
+pkg_id: "github.com.rootless-containers.rootlesskit"
+pkg_type: "static"
+category:
+  - ""
+description: ""
+homepage:
+  - "  - https://github.com/rootless-containers/rootlesskit"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/rootless-containers/rootlesskit/master/LICENSE"
+note:
+  - "Official binary from https://github.com/rootless-containers/rootlesskit"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rootlesskit"
+src_url:
+  - "https://github.com/rootless-containers/rootlesskit"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/rootless-containers/rootlesskit/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/rootless-containers/rootlesskit@v${PKGVER}" --glob "rootlesskit_linux_${ARCH}.tar.gz" --yes -o rootlesskit.tar.gz
+    tar -xf "rootlesskit.tar.gz" -C "/"
+    mv "/rootlesskit" "/$PKG"
+    rm -rf "rootlesskit.tar.gz"

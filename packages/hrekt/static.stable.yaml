@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hrekt/static.stable.yaml
+_disabled: false
+
+pkg: "hrekt"
+pkg_id: "github.com.ethicalhackingplayground.hrekt"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "ethicalhackingplayground/hrekt"
+category:
+  - "Development"
+  - "Utility"
+description: "A really fast HTTP Prober"
+homepage:
+  - "https://github.com/ethicalhackingplayground/hrekt"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/ethicalhackingplayground/hrekt/master/LICENSE"
+note:
+  - "Official binary from https://github.com/ethicalhackingplayground/hrekt"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hrekt"
+src_url:
+  - "https://github.com/ethicalhackingplayground/hrekt"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ethicalhackingplayground/hrekt/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/ethicalhackingplayground/hrekt@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hrekt.tar.gz || \
+    soar dl "https://github.com/ethicalhackingplayground/hrekt@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hrekt.tar.gz || \
+    soar dl "https://github.com/ethicalhackingplayground/hrekt@v${PKGVER}" --glob "*${ARCH}*" --yes -o hrekt.tar.gz
+    tar -xf "hrekt.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hrekt.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hrekt" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hrekt-\*" -exec mv {} "$SBUILD_OUTDIR/hrekt" \; || \
+    mv "$SBUILD_TMPDIR/hrekt" "$SBUILD_OUTDIR/hrekt"
+    rm -rf "hrekt.tar.gz"

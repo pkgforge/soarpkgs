@@ -1,0 +1,58 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/etcd/static.stable.yaml
+_disabled: false
+
+pkg: "etcd"
+pkg_id: "github.com.etcd-io.etcd"
+pkg_type: "static"
+ghcr_pkg: "etcd-io/etcd"
+category:
+  - "ConsoleOnly"
+description: ""
+homepage:
+  - "https://github.com/etcd-io/etcd"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/etcd-io/etcd/raw/88b39386b43823b9f662829d588a684a8073363b/LICENSE"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "etcd"
+repology:
+  - "etcd"
+src_url:
+  - "https://github.com/etcd-io/etcd"
+tag:
+  - "distributed"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/etcd-io/etcd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Download
+        case "$(uname -m)" in
+          aarch64)
+            soar dl "https://github.com/etcd-io/etcd@${PKGVER}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+            ;;
+          x86_64)
+            soar dl "https://github.com/etcd-io/etcd@${PKGVER}" --match "linux,amd64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+            ;;
+        esac
+        #Extract
+        while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+         grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+         grep -iv "application/.*executable" |
+         cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+         do
+           7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+            file -i "${E_X}" | grep -q "application/.*executable" && break
+            rm -f "${E_X}"
+           } || break
+         done
+        #Copy
+        find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

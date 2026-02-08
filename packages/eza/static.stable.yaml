@@ -1,0 +1,98 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/eza/static.stable.yaml
+_disabled: false
+
+pkg: "eza"
+pkg_id: "github.com.eza-community.eza"
+pkg_type: "static"
+ghcr_pkg: "eza-community/eza"
+category:
+  - "ConsoleOnly"
+description: "A modern replacement for ls"
+homepage:
+  - "https://eza.rocks"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "MIT"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "eza"
+repology:
+  - "eza"
+src_url:
+  - "https://github.com/eza-community/eza"
+tag:
+  - "ls"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/eza-community/eza/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Build
+         mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+         -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+         -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+         --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+         "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+          bash -l -c '
+          #Setup ENV
+           set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+           [[ -s "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
+           if [[ "$(uname -m | tr -d '[:space:]')" == "riscv64" ]]; then
+             RUST_TARGET="$(rustc -Vv 2>/dev/null | sed -n "s/^[[:space:]]*host[[:space:]]*:[[:space:]]*//p" | grep -i "riscv" | tr -d "[:space:]")"
+             if [[ -n "${RUST_TARGET//[[:space:]]/}" ]]; then
+               export RUST_TARGET
+             else
+               rustc -Vv ; exit 1
+             fi
+           else
+             export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+             rustup target add "${RUST_TARGET}"
+           fi
+           RUST_FLAGS=()
+           RUST_FLAGS+=("-C target-feature=+crt-static")
+           RUST_FLAGS+=("-C default-linker-libraries=yes")
+           if echo "${RUST_TARGET}" | grep -Eqiv "alpine|gnu"; then
+             RUST_FLAGS+=("-C link-self-contained=yes")
+           fi
+           RUST_FLAGS+=("-C prefer-dynamic=no")
+           RUST_FLAGS+=("-C embed-bitcode=yes")
+           RUST_FLAGS+=("-C lto=yes")
+           RUST_FLAGS+=("-C opt-level=z")
+           RUST_FLAGS+=("-C debuginfo=none")
+           RUST_FLAGS+=("-C strip=symbols")
+           RUST_FLAGS+=("-C linker=clang")
+           RUST_FLAGS+=("-C link-arg=-fuse-ld=$(which mold)")
+           RUST_FLAGS+=("-C link-arg=-Wl,--Bstatic")
+           RUST_FLAGS+=("-C link-arg=-Wl,--static")
+           RUST_FLAGS+=("-C link-arg=-Wl,-S")
+           RUST_FLAGS+=("-C link-arg=-Wl,--build-id=none")
+           export RUSTFLAGS="${RUST_FLAGS[*]}"
+          #Build
+           git clone --filter "blob:none" --quiet "https://github.com/eza-community/eza" "./TEMPREPO" && cd "./TEMPREPO/"
+           echo -e "\n[+] Target: ${RUST_TARGET}"
+           echo -e "[+] Flags: ${RUSTFLAGS}\n"
+           sed "/^\[profile\.release\]/,/^$/d" -i "./Cargo.toml" ; echo -e "\n[profile.release]\nstrip = true\nopt-level = 3\nlto = true" >> "./Cargo.toml"
+           rm -rvf "./.cargo" rust-toolchain* 2>/dev/null
+           cargo build --target "${RUST_TARGET}" --release --jobs="$(($(nproc)+1))" --keep-going --verbose
+           find -L "./target/${RUST_TARGET}/release" -maxdepth 1 -type f 2>/dev/null
+          #Copy
+           find "./target/${RUST_TARGET}/release" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+           ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+          #Strip 
+           find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+           find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+           find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+           file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+           du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+           popd &>/dev/null
+          '
+        #Copy & Meta
+         docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+         [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

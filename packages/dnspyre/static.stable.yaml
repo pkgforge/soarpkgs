@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dnspyre/static.stable.yaml
+_disabled: false
+
+pkg: "dnspyre"
+pkg_id: "github.com.Tantalor93.dnspyre"
+pkgver: "3.9.0"
+pkg_type: "static"
+ghcr_pkg: "Tantalor93/dnspyre"
+category:
+  - "Utility"
+description: "command-line DNS benchmark tool built to stress test and measure the performance of DNS servers"
+homepage:
+  - "https://github.com/Tantalor93/dnspyre"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/Tantalor93/dnspyre/master/LICENSE"
+note:
+  - "Official binary from https://github.com/Tantalor93/dnspyre"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "dnspyre"
+src_url:
+  - "https://github.com/Tantalor93/dnspyre"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Tantalor93/dnspyre/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/Tantalor93/dnspyre@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o dnspyre.tar.gz
+    tar -xf "dnspyre.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "dnspyre" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "dnspyre.tar.gz"

@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/anakin/static.stable.yaml
+_disabled: false
+
+pkg: "anakin"
+pkg_id: "github.com.Timmmm.anakin"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "Timmmm/anakin"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Kill orphan processes"
+homepage:
+  - "https://github.com/Timmmm/anakin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/Timmmm/anakin/raw/258fc03c630bc6e98392c982869b88c8c3617942/LICENSE-MIT"
+note:
+  - "Official binary from https://github.com/Timmmm/anakin"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "anakin"
+repology:
+  - "anakin"
+src_url:
+  - "https://github.com/Timmmm/anakin"
+tag:
+  - "process-killer"
+  - "process-manager"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/Timmmm/anakin" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/Timmmm/anakin@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o anakin.zip
+    7z x "anakin.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/anakin" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "anakin.zip"

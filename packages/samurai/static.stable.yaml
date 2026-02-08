@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/samurai/static.stable.yaml
+_disabled: false
+
+pkg: "samurai"
+pkg_id: "ppkg.samurai"
+pkg_type: "static"
+category:
+  - ""
+description: "Ninja-compatible build tool written in C"
+homepage:
+  - "  - https://git.sr.ht/~mcf/samurai"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/michaelforney/samurai/master/LICENSE"
+note:
+  - "Official binary from https://github.com/michaelforney/samurai"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "samurai"
+src_url:
+  - "https://github.com/michaelforney/samurai"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/michaelforney/samurai/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/michaelforney/samurai@v${PKGVER}" --glob "samurai_linux_${ARCH}.tar.gz" --yes -o samurai.tar.gz
+    tar -xf "samurai.tar.gz" -C "/"
+    mv "/samurai" "/$PKG"
+    rm -rf "samurai.tar.gz"

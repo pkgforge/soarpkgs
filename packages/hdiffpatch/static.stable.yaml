@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hdiffpatch/static.stable.yaml
+_disabled: false
+
+pkg: "hdiffpatch"
+pkg_id: "github.com.sisong.HDiffPatch.glibc"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "sisong/HDiffPatch/glibc"
+category:
+  - "Development"
+  - "Utility"
+description: "Fast Binary diff/patch tools with small deltas/differentials and low memory use"
+homepage:
+  - "https://github.com/sisong/HDiffPatch/glibc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/sisong/HDiffPatch/glibc/master/LICENSE"
+note:
+  - "Official binary from https://github.com/sisong/HDiffPatch/glibc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hdiffpatch"
+src_url:
+  - "https://github.com/sisong/HDiffPatch/glibc"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sisong/HDiffPatch/glibc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/sisong/HDiffPatch/glibc@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hdiffpatch.tar.gz || \
+    soar dl "https://github.com/sisong/HDiffPatch/glibc@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hdiffpatch.tar.gz || \
+    soar dl "https://github.com/sisong/HDiffPatch/glibc@v${PKGVER}" --glob "*${ARCH}*" --yes -o hdiffpatch.tar.gz
+    tar -xf "hdiffpatch.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hdiffpatch.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hdiffpatch" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hdiffpatch-\*" -exec mv {} "$SBUILD_OUTDIR/hdiffpatch" \; || \
+    mv "$SBUILD_TMPDIR/hdiffpatch" "$SBUILD_OUTDIR/hdiffpatch"
+    rm -rf "hdiffpatch.tar.gz"

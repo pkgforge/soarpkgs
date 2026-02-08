@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hakrevdns/static.stable.yaml
+_disabled: false
+
+pkg: "hakrevdns"
+pkg_id: "github.com.hakluke.hakrevdns"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "hakluke/hakrevdns"
+category:
+  - "Development"
+  - "Utility"
+description: "Small, fast tool for performing reverse DNS lookups en masse"
+homepage:
+  - "https://github.com/hakluke/hakrevdns"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/hakluke/hakrevdns/master/LICENSE"
+note:
+  - "Official binary from https://github.com/hakluke/hakrevdns"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hakrevdns"
+src_url:
+  - "https://github.com/hakluke/hakrevdns"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hakluke/hakrevdns/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/hakluke/hakrevdns@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hakrevdns.tar.gz || \
+    soar dl "https://github.com/hakluke/hakrevdns@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hakrevdns.tar.gz || \
+    soar dl "https://github.com/hakluke/hakrevdns@v${PKGVER}" --glob "*${ARCH}*" --yes -o hakrevdns.tar.gz
+    tar -xf "hakrevdns.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hakrevdns.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hakrevdns" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hakrevdns-\*" -exec mv {} "$SBUILD_OUTDIR/hakrevdns" \; || \
+    mv "$SBUILD_TMPDIR/hakrevdns" "$SBUILD_OUTDIR/hakrevdns"
+    rm -rf "hakrevdns.tar.gz"

@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/syncthing/static.stable.yaml
+_disabled: false
+
+pkg: "syncthing"
+pkg_id: "syncthing.syncthing"
+pkg_type: "static"
+pkgver: "1.29.2"
+ghcr_pkg: "syncthing/syncthing"
+category:
+  - "Utility"
+  - "Network"
+description: "Continuous file synchronization"
+homepage:
+  - "https://github.com/syncthing/syncthing"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+    url: "https://raw.githubusercontent.com/syncthing/syncthing/master/LICENSE"
+note:
+  - "Official binary from https://github.com/syncthing/syncthing"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "syncthing"
+repology:
+  - "syncthing"
+src_url:
+  - "https://github.com/syncthing/syncthing"
+tag:
+  - "sync"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/syncthing/syncthing/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/syncthing/syncthing@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o syncthing.tar.gz
+    tar -xf "syncthing.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "syncthing" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "syncthing.tar.gz"

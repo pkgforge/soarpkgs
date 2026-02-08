@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cdncheck/static.stable.yaml
+_disabled: false
+
+pkg: "cdncheck"
+pkg_id: "projectdiscovery/cdncheck"
+pkg_type: "static"
+ghcr_pkg: "projectdiscovery/cdncheck"
+category:
+  - "Utility"
+description: "A utility to detect various technology for a given IP address"
+homepage:
+  - "https://github.com/projectdiscovery/cdncheck"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/projectdiscovery/cdncheck/raw/3a0ffaf7768032ded0bec64bdea95829541cf779/LICENSE.md"
+note:
+  - "Official binary from https://github.com/projectdiscovery/cdncheck"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cdncheck"
+src_url:
+  - "https://github.com/projectdiscovery/cdncheck"
+tag:
+  - "bugbounty"
+  - "cdn"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/projectdiscovery/cdncheck/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/cdncheck@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cdncheck.zip
+    7z x "cdncheck.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cdncheck" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cdncheck.zip"

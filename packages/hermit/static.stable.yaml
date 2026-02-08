@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hermit/static.stable.yaml
+_disabled: false
+
+pkg: "hermit"
+pkg_id: "github.com.orhun.hermit.stable"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "orhun/hermit/stable"
+category:
+  - "Development"
+  - "Utility"
+description: "Manage isolated, self-bootstrapping sets of tools in software projects"
+homepage:
+  - "https://github.com/orhun/hermit/stable"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/orhun/hermit/stable/master/LICENSE"
+note:
+  - "Official binary from https://github.com/orhun/hermit/stable"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hermit"
+src_url:
+  - "https://github.com/orhun/hermit/stable"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/orhun/hermit/stable/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/orhun/hermit/stable@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hermit.tar.gz || \
+    soar dl "https://github.com/orhun/hermit/stable@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hermit.tar.gz || \
+    soar dl "https://github.com/orhun/hermit/stable@v${PKGVER}" --glob "*${ARCH}*" --yes -o hermit.tar.gz
+    tar -xf "hermit.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hermit.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hermit" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hermit-\*" -exec mv {} "$SBUILD_OUTDIR/hermit" \; || \
+    mv "$SBUILD_TMPDIR/hermit" "$SBUILD_OUTDIR/hermit"
+    rm -rf "hermit.tar.gz"

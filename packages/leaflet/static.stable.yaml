@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/leaflet/static.stable.yaml
+_disabled: false
+
+pkg: "leaflet"
+pkg_id: "PotatoProject/Leaflet"
+pkg_type: "static"
+ghcr_pkg: "PotatoProject/Leaflet"
+category:
+  - "Utility"
+description: "POSP official notes app, soon to be included"
+homepage:
+  - "https://github.com/PotatoProject/Leaflet"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: ""MIT"
+    url: "https://github.com/PotatoProject/Leaflet/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/PotatoProject/Leaflet"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "leaflet"
+repology:
+  - "leaflet"
+src_url:
+  - "https://github.com/PotatoProject/Leaflet"
+tag:
+  - android
+  - cross-platform
+  - flutter
+  - linux
+  - macos
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/PotatoProject/Leaflet/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/PotatoProject/Leaflet" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/PotatoProject/Leaflet" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

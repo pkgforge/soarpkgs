@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rshijack/static.stable.yaml
+_disabled: false
+
+pkg: "rshijack"
+pkg_id: "github.com.kpcyrd.rshijack"
+pkg_type: "static"
+category:
+  - ""
+description: "TCP connection hijacker"
+homepage:
+  - "  - https://github.com/kpcyrd/rshijack"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/kpcyrd/rshijack/master/LICENSE"
+note:
+  - "Official binary from https://github.com/kpcyrd/rshijack"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rshijack"
+src_url:
+  - "https://github.com/kpcyrd/rshijack"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kpcyrd/rshijack/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/kpcyrd/rshijack@v${PKGVER}" --glob "rshijack_linux_${ARCH}.tar.gz" --yes -o rshijack.tar.gz
+    tar -xf "rshijack.tar.gz" -C "/"
+    mv "/rshijack" "/$PKG"
+    rm -rf "rshijack.tar.gz"

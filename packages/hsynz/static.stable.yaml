@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hsynz/static.stable.yaml
+_disabled: false
+
+pkg: "hsynz"
+pkg_id: "github.com.sisong.hsynz.source"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "sisong/hsynz/source"
+category:
+  - "Development"
+  - "Utility"
+description: "Multi-Threaded Delta update using HDiffPatch over HTTP(s) with support for large files, directories, zstd & More"
+homepage:
+  - "https://github.com/sisong/hsynz/source"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/sisong/hsynz/source/master/LICENSE"
+note:
+  - "Official binary from https://github.com/sisong/hsynz/source"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hsynz"
+src_url:
+  - "https://github.com/sisong/hsynz/source"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sisong/hsynz/source/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/sisong/hsynz/source@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hsynz.tar.gz || \
+    soar dl "https://github.com/sisong/hsynz/source@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hsynz.tar.gz || \
+    soar dl "https://github.com/sisong/hsynz/source@v${PKGVER}" --glob "*${ARCH}*" --yes -o hsynz.tar.gz
+    tar -xf "hsynz.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hsynz.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hsynz" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hsynz-\*" -exec mv {} "$SBUILD_OUTDIR/hsynz" \; || \
+    mv "$SBUILD_TMPDIR/hsynz" "$SBUILD_OUTDIR/hsynz"
+    rm -rf "hsynz.tar.gz"

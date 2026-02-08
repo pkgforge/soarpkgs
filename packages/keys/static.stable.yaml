@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/keys/static.stable.yaml
+_disabled: false
+
+pkg: "keys"
+pkg_id: "keys-pub/app"
+pkg_type: "static"
+ghcr_pkg: "keys-pub/app"
+category:
+  - "Utility"
+description: "Key management is hard"
+homepage:
+  - "https://keys.pub"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Other"
+    url: "https://github.com/keys-pub/app/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/keys-pub/app"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "keys"
+repology:
+  - "keys"
+src_url:
+  - "https://github.com/keys-pub/app"
+tag:
+  - utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/keys-pub/app/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/keys-pub/app" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/keys-pub/app" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sed/static.stable.yaml
+_disabled: false
+
+pkg: "sed"
+pkg_id: "nixpkgs.gnused"
+pkg_type: "static"
+category:
+  - ""
+description: "SEd (stream editor) is a Unix utility that parses and transforms text"
+homepage:
+  - "  - https://www.gnu.org/software/sed/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com///master/LICENSE"
+note:
+  - "Official binary from https://github.com//"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "sed"
+src_url:
+  - "https://github.com//"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos///releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com//@v${PKGVER}" --glob "sed_linux_${ARCH}.tar.gz" --yes -o sed.tar.gz
+    tar -xf "sed.tar.gz" -C "/"
+    mv "/sed" "/$PKG"
+    rm -rf "sed.tar.gz"

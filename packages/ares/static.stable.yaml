@@ -1,0 +1,51 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ares/static.stable.yaml
+_disabled: false
+
+pkg: "ares"
+pkg_id: "github.com.bee-san.Ares.source"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "bee-san/Ares"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Automated decoding of encrypted text without knowing the key or ciphers used"
+homepage:
+  - "https://github.com/bee-san/Ares"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/bee-san/Ares/raw/2eadeb92e62b6f6b1921695e319a96627d0c08da/LICENSE"
+note:
+  - "Official binary from https://github.com/bee-san/Ares"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ares"
+repology:
+  - "ares-decoder"
+src_url:
+  - "https://github.com/bee-san/Ares"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/bee-san/Ares" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/bee-san/Ares@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o ares.zip
+    7z x "ares.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/ares" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "ares.zip"

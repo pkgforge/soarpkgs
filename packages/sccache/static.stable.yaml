@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sccache/static.stable.yaml
+_disabled: false
+
+pkg: "sccache"
+pkg_id: "nixpkgs.sccache"
+pkg_type: "static"
+category:
+  - ""
+description: "Like ccache with cloud storage support"
+homepage:
+  - "  - https://github.com/mozilla/sccache"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/mozilla/sccache/master/LICENSE"
+note:
+  - "Official binary from https://github.com/mozilla/sccache"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "sccache"
+src_url:
+  - "https://github.com/mozilla/sccache"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mozilla/sccache/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/mozilla/sccache@v${PKGVER}" --glob "sccache_linux_${ARCH}.tar.gz" --yes -o sccache.tar.gz
+    tar -xf "sccache.tar.gz" -C "/"
+    mv "/sccache" "/$PKG"
+    rm -rf "sccache.tar.gz"

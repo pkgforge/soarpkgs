@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jqp/static.stable.yaml
+_disabled: false
+
+pkg: "jqp"
+pkg_id: "github.com.noahgorstein.jqp"
+pkg_type: "static"
+ghcr_pkg: "noahgorstein/jqp"
+category:
+  - "ConsoleOnly"
+description: "TUI playground to experiment with jq"
+homepage:
+  - "https://github.com/noahgorstein/jqp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/noahgorstein/jqp/raw/a75e3e782aa7769994d2111f70c72e08d8654919/LICENSE"
+note:
+  - "Official binary from https://github.com/noahgorstein/jqp"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "jqp"
+repology:
+  - "jqp"
+src_url:
+  - "https://github.com/noahgorstein/jqp"
+tag:
+  - "jq"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/noahgorstein/jqp/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/noahgorstein/jqp"
+        cd jqp
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/jqp
+        cp jqp /output/
+      '
+    cp "$SBUILD_TMPDIR/jqp" "$SBUILD_OUTDIR/"
+    strip jqp

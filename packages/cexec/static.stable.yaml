@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cexec/static.stable.yaml
+_disabled: false
+
+pkg: "cexec"
+pkg_id: "mrusme/cexec"
+pkg_type: "static"
+ghcr_pkg: "mrusme/cexec"
+category:
+  - "Utility"
+description: "Execute any command, cache its output and get cached output on subsequent execution"
+homepage:
+  - "https://github.com/mrusme/cexec"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/mrusme/cexec/raw/d9061cccd88ecf99da4755709eb9a0f45893f881/LICENSE"
+note:
+  - "Official binary from https://github.com/mrusme/cexec"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cexec"
+src_url:
+  - "https://github.com/mrusme/cexec"
+tag:
+  - "cache"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mrusme/cexec/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/mrusme/cexec@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cexec.zip
+    7z x "cexec.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cexec" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cexec.zip"

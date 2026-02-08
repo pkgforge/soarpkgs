@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/docker-repack/static.stable.yaml
+_disabled: false
+
+pkg: "docker-repack"
+pkg_id: "github.com.orf.docker-repack"
+pkgver: "0.5.0"
+pkg_type: "static"
+ghcr_pkg: "orf/docker-repack"
+category:
+  - "Utility"
+description: "Repack docker images to optimize for pulling speed"
+homepage:
+  - "https://github.com/orf/docker-repack"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/orf/docker-repack/master/LICENSE"
+note:
+  - "Official binary from https://github.com/orf/docker-repack"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "docker-repack"
+src_url:
+  - "https://github.com/orf/docker-repack"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/orf/docker-repack/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/orf/docker-repack@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o docker-repack.tar.gz
+    tar -xf "docker-repack.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "docker-repack" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "docker-repack.tar.gz"

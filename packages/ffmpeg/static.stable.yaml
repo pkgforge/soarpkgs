@@ -1,0 +1,60 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ffmpeg/static.stable.yaml
+_disabled: false
+
+pkg: "ffmpeg"
+pkg_id: "github.com.shaka-project.static-ffmpeg-binaries.stable"
+pkg_type: "static"
+ghcr_pkg: "shaka-project/static-ffmpeg-binaries"
+category:
+  - "ConsoleOnly"
+description: ""
+homepage:
+  - "https://ffmpeg.org"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/FFmpeg/FFmpeg/raw/87d7b8ff4b02ab0f6ccf65d51e0163298777b441/COPYING.GPLv3"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "ffmpeg"
+repology:
+  - "ffmpeg"
+src_url:
+  - "https://github.com/shaka-project/static-ffmpeg-binaries"
+tag:
+  - "media"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/shaka-project/static-ffmpeg-binaries/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Download
+        case "$(uname -m)" in
+          aarch64)
+            soar dl "https://github.com/shaka-project/static-ffmpeg-binaries@${PKGVER}" --match "linux,arm64,ffmpeg" --exclude "amd,x86,x64,ubuntu" -o "${SBUILD_TMPDIR}/ffmpeg" --yes
+            soar dl "https://github.com/shaka-project/static-ffmpeg-binaries@${PKGVER}" --match "linux,arm64,ffprobe" --exclude "amd,x86,x64,ubuntu" -o "${SBUILD_TMPDIR}/ffprobe" --yes
+            ;;
+          x86_64)
+            soar dl "https://github.com/shaka-project/static-ffmpeg-binaries@${PKGVER}" --match "linux,x64,ffmpeg" --exclude "aarch,arm,ubuntu" -o "${SBUILD_TMPDIR}/ffmpeg" --yes
+            soar dl "https://github.com/shaka-project/static-ffmpeg-binaries@${PKGVER}" --match "linux,x64,ffprobe" --exclude "aarch,arm,ubuntu" -o "${SBUILD_TMPDIR}/ffprobe" --yes
+            ;;
+        esac
+        #Extract
+        while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+         grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+         grep -iv "application/.*executable" |
+         cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+         do
+           7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+            file -i "${E_X}" | grep -q "application/.*executable" && break
+            rm -f "${E_X}"
+           } || break
+         done
+        #Copy
+        find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

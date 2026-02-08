@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kanri/static.stable.yaml
+_disabled: false
+
+pkg: "kanri"
+pkg_id: "kanriapp/kanri"
+pkg_type: "static"
+ghcr_pkg: "kanriapp/kanri"
+category:
+  - "Utility"
+description: "🪐 Modern offline Kanban board app for Windows, MacOS and Linux. Built with simplicity and user experience in mind."
+homepage:
+  - "https://github.com/kanriapp/kanri"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL3.0"
+    url: "https://github.com/kanriapp/kanri/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/kanriapp/kanri"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kanri"
+repology:
+  - "kanri"
+src_url:
+  - "https://github.com/kanriapp/kanri"
+tag:
+  - kanban
+  - kanban-board
+  - kanban-board-application
+  - nuxt
+  - nuxt3
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kanriapp/kanri/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kanriapp/kanri" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kanriapp/kanri" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

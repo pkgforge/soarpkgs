@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dynamic-file-searcher/static.stable.yaml
+_disabled: false
+
+pkg: "dynamic-file-searcher"
+pkg_id: "github.com.dsecuredcom.dynamic-file-searcher"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "dsecuredcom/dynamic-file-searcher"
+category:
+  - "Utility"
+description: "Scan servers and hosts using dynamic paths"
+homepage:
+  - "https://github.com/dsecuredcom/dynamic-file-searcher"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/dsecuredcom/dynamic-file-searcher/master/LICENSE"
+note:
+  - "Official binary from https://github.com/dsecuredcom/dynamic-file-searcher"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "dynamic-file-searcher"
+src_url:
+  - "https://github.com/dsecuredcom/dynamic-file-searcher"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dsecuredcom/dynamic-file-searcher/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/dsecuredcom/dynamic-file-searcher@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o dynamic-file-searcher.tar.gz
+    tar -xf "dynamic-file-searcher.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "dynamic-file-searcher" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "dynamic-file-searcher.tar.gz"

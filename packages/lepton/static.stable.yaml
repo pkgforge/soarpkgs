@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lepton/static.stable.yaml
+_disabled: false
+
+pkg: "lepton"
+pkg_id: "hackjutsu/Lepton"
+pkg_type: "static"
+ghcr_pkg: "hackjutsu/Lepton"
+category:
+  - "Utility"
+description: "💻     Democratizing Snippet Management (macOS/Win/Linux)"
+homepage:
+  - "https://github.com/hackjutsu/Lepton"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: ""MIT"
+    url: "https://github.com/hackjutsu/Lepton/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/hackjutsu/Lepton"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "lepton"
+repology:
+  - "lepton"
+src_url:
+  - "https://github.com/hackjutsu/Lepton"
+tag:
+  - desktop-client
+  - electron
+  - electron-app
+  - electron-application
+  - electron-builder
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hackjutsu/Lepton/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/hackjutsu/Lepton" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/hackjutsu/Lepton" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

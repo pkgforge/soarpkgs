@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rlwrap/static.stable.yaml
+_disabled: false
+
+pkg: "rlwrap"
+pkg_id: "ppkg.rlwrap"
+pkg_type: "static"
+category:
+  - ""
+description: "Wrapper to allow the editing of keyboard commands"
+homepage:
+  - "  - https://github.com/hanslub42/rlwrap"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/hanslub42/rlwrap/master/LICENSE"
+note:
+  - "Official binary from https://github.com/hanslub42/rlwrap"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rlwrap"
+src_url:
+  - "https://github.com/hanslub42/rlwrap"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hanslub42/rlwrap/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/hanslub42/rlwrap@v${PKGVER}" --glob "rlwrap_linux_${ARCH}.tar.gz" --yes -o rlwrap.tar.gz
+    tar -xf "rlwrap.tar.gz" -C "/"
+    mv "/rlwrap" "/$PKG"
+    rm -rf "rlwrap.tar.gz"

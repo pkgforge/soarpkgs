@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gh/static.stable.yaml
+_disabled: false
+
+pkg: "gh"
+pkg_id: "cli.gh"
+pkg_type: "static"
+pkgver: "2.64.2"
+ghcr_pkg: "cli/cli"
+category:
+  - "Utility"
+  - "Development"
+description: "GitHub CLI tool"
+homepage:
+  - "https://github.com/cli/cli"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/cli/cli/master/LICENSE"
+note:
+  - "Official binary from https://github.com/cli/cli"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "gh"
+repology:
+  - "github-cli"
+src_url:
+  - "https://github.com/cli/cli"
+tag:
+  - "github"
+  - "git"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cli/cli/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/cli/cli@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o gh.tar.gz
+    tar -xf "gh.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "gh" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "gh.tar.gz"

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jsmug/static.stable.yaml
+_disabled: false
+
+pkg: "jsmug"
+pkg_id: "github.com.xscorp.jsmug"
+pkg_type: "static"
+ghcr_pkg: "xscorp/jsmug"
+category:
+  - "ConsoleOnly"
+description: "JSON Smuggling technique to smuggle arbitrary files through JSON"
+homepage:
+  - "https://github.com/xscorp/jsmug"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"
+note:
+  - "Official binary from https://github.com/xscorp/jsmug"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "jsmug"
+repology:
+  - "jsmug"
+src_url:
+  - "https://github.com/xscorp/jsmug"
+tag:
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/xscorp/jsmug/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/xscorp/jsmug@v${PKGVER}" --glob "jsmug_linux_${ARCH}*" --yes -o jsmug.tar.gz
+    tar -xf "jsmug.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/jsmug" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "jsmug.tar.gz"

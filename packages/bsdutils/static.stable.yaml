@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bsdutils/static.stable.yaml
+_disabled: false
+
+pkg: "bsdutils"
+pkg_id: "github.com.dcantrell.bsdutils.source"
+pkg_type: "static"
+ghcr_pkg: "dcantrell/bsdutils"
+category:
+  - "ConsoleOnly"
+description: "#https://github.com/dcantrell/bsdutils/blob/master/import-src.sh#L71"
+homepage:
+  - "https://github.com/dcantrell/bsdutils"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://github.com/dcantrell/bsdutils/raw/48af14bea90e50db10aaace7e4d643e179814a0b/LICENSE"
+note:
+  - "Official binary from https://github.com/dcantrell/bsdutils"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "addpart"
+repology:
+  - "bsdutils"
+src_url:
+  - "https://github.com/dcantrell/bsdutils"
+tag:
+  - "busybox"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dcantrell/bsdutils/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/dcantrell/bsdutils" \
+        cd bsdutils \
+        git checkout "v$PKGVER" \
+        autoreconf -iv && ./configure --enable-static \
+        make \
+        cp bsdutils /output/bsdutils \
+      \' \
+    cp "$SBUILD_TMPDIR/bsdutils" "$SBUILD_OUTDIR/" \
+    strip bsdutils

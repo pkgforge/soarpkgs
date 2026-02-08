@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bin-graph/static.stable.yaml
+_disabled: false
+
+pkg: "bin-graph"
+pkg_id: "ppkg.bin-graph.stable"
+pkg_type: "static"
+ghcr_pkg: "8dcc/bin-graph"
+category:
+  - "ConsoleOnly"
+description: "Visualize binary files"
+homepage:
+  - "https://github.com/8dcc/bin-graph"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/8dcc/bin-graph/raw/e7f5a764fd3f32ba04aa254ba40eb2572cfd87e0/LICENSE"
+note:
+  - "Official binary from https://github.com/8dcc/bin-graph"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bin-graph"
+repology:
+  - "bin-graph"
+src_url:
+  - "https://github.com/8dcc/bin-graph"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/8dcc/bin-graph/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/8dcc/bin-graph@v${PKGVER}" --glob "*bin-graph*" --yes -o bin-graph.tar.gz \
+    tar -xf "bin-graph.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bin-graph" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bin-graph.tar.gz"

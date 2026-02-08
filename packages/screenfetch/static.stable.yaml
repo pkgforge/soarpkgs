@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/screenfetch/static.stable.yaml
+_disabled: false
+
+pkg: "screenfetch"
+pkg_id: "github.com.KittyKatt.screenFetch"
+pkg_type: "static"
+category:
+  - ""
+description: "Generate ASCII art with terminal, shell, and OS info"
+homepage:
+  - "  - https://github.com/KittyKatt/screenFetch"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/KittyKatt/screenFetch/master/LICENSE"
+note:
+  - "Official binary from https://github.com/KittyKatt/screenFetch"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "screenfetch"
+src_url:
+  - "https://github.com/KittyKatt/screenFetch"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/KittyKatt/screenFetch/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/KittyKatt/screenFetch@v${PKGVER}" --glob "screenfetch_linux_${ARCH}.tar.gz" --yes -o screenfetch.tar.gz
+    tar -xf "screenfetch.tar.gz" -C "/"
+    mv "/screenfetch" "/$PKG"
+    rm -rf "screenfetch.tar.gz"

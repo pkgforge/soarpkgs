@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bed/static.stable.yaml
+_disabled: false
+
+pkg: "bed"
+pkg_id: "github.com.itchyny.bed.source"
+pkg_type: "static"
+ghcr_pkg: "itchyny/bed"
+category:
+  - "ConsoleOnly"
+description: "Binary editor written in Go"
+homepage:
+  - "https://github.com/itchyny/bed"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/itchyny/bed/raw/506f3317facca1585dc7409e3e16f37cd6563ca9/LICENSE"
+note:
+  - "Official binary from https://github.com/itchyny/bed"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bed"
+repology:
+  - "bed"
+src_url:
+  - "https://github.com/itchyny/bed"
+tag:
+  - "editor"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/itchyny/bed/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/itchyny/bed" \
+        cd bed \
+        git checkout "v$PKGVER" \
+        CGO_ENABLED=1 GOOS=linux GOARCH="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')" \
+        go build -trimpath -ldflags="-s -w -buildid=" -o /output/bed \
+      \' \
+    cp "$SBUILD_TMPDIR/bed" "$SBUILD_OUTDIR/" \
+    strip bed

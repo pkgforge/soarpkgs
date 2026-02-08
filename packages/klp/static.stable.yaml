@@ -1,0 +1,56 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/klp/static.stable.yaml
+_disabled: false
+
+pkg: "klp"
+pkg_id: "sharun/wrappe"
+pkg_type: "static"
+ghcr_pkg: "https://pypi.org/project/klp-logviewer"
+category:
+  - "Utility"
+description: "CLI viewer for structured log files and streams (logfmt, JSONL and many others)"
+homepage:
+  - "https://github.com/dloss/klp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://pypi.org/project/klp-logviewer/blob/main/LICENSE"
+note:
+  - "Official binary from https://pypi.org/project/klp-logviewer"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "klp"
+repology:
+  - "klp"
+src_url:
+  - "https://pypi.org/project/klp-logviewer"
+tag:
+  - Utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharun/wrappe/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/sharun/wrappe"
+        cd klp
+        git checkout "v$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/klp" /output/klp
+      '
+    cp "$SBUILD_TMPDIR/klp" "$SBUILD_OUTDIR/"
+    strip klp

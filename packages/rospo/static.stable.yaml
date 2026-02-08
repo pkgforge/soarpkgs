@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rospo/static.stable.yaml
+_disabled: false
+
+pkg: "rospo"
+pkg_id: "github.com.ferama.rospo"
+pkg_type: "static"
+category:
+  - ""
+description: "Simple, reliable, persistent ssh tunnels with embedded ssh server"
+homepage:
+  - "  - https://github.com/ferama/rospo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/ferama/rospo/master/LICENSE"
+note:
+  - "Official binary from https://github.com/ferama/rospo"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rospo"
+src_url:
+  - "https://github.com/ferama/rospo"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ferama/rospo/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/ferama/rospo@v${PKGVER}" --glob "rospo_linux_${ARCH}.tar.gz" --yes -o rospo.tar.gz
+    tar -xf "rospo.tar.gz" -C "/"
+    mv "/rospo" "/$PKG"
+    rm -rf "rospo.tar.gz"

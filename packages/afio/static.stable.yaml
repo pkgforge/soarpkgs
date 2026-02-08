@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/afio/static.stable.yaml
+_disabled: false
+
+pkg: "afio"
+pkg_id: "nixpkgs.afio"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "kholtman/afio"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Archiver & backup program with fault tolerant compression"
+homepage:
+  - "https://github.com/kholtman/afio"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+note:
+  - "Official binary from https://github.com/kholtman/afio"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "afio"
+repology:
+  - "afio"
+src_url:
+  - "https://github.com/kholtman/afio"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        nix derivation show "nixpkgs#afio" --impure --refresh --quiet 1>&1 2>/dev/null | sed -n '/^[[:space:]]*{/,$p' | jq -r '.. | objects | (select(has("version")).version, (select(has("env")) | select(.env.__json != null) | .env.__json | fromjson | select(has("version")).version) | select(.))' | tr -d '"'\''[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/kholtman/afio@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o afio.zip
+    7z x "afio.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/afio" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "afio.zip"

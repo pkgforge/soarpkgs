@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/execline/static.stable.yaml
+_disabled: false
+
+pkg: "execline"
+pkg_id: "nixpkgs.execline"
+pkg_type: "static"
+ghcr_pkg: "skarnet/execline"
+category:
+  - "ConsoleOnly"
+description: ""
+homepage:
+  - "https://skarnet.org/software/execline"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - id: "ISC"
+    url: "https://github.com/skarnet/execline/raw/15583497da174dd17b7b44701dcb000f46c235ed/INSTALL"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "background"
+repology:
+  - "execline"
+src_url:
+  - "https://github.com/skarnet/execline"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/skarnet/execline/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Build
+         echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+         nix-build '<nixpkgs>' --impure --attr "pkgsStatic.execline" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+         find -L "$(find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' | head -n 1)" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent " "; print (NF>1 ? indent "--> " $NF : $NF)}'
+        #Fix Perms
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+         xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+         xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+         sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
+        #Fix Shell Scripts
+         find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+         find "${SBUILD_TMPDIR}" -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+               sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+               sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+               sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+               sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+               sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+           '
+        #Copy
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+         ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null

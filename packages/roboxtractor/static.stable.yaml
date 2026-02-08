@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/roboxtractor/static.stable.yaml
+_disabled: false
+
+pkg: "roboxtractor"
+pkg_id: "github.com.Josue87.roboxtractor"
+pkg_type: "static"
+category:
+  - ""
+description: "Extract endpoints marked as disallow in robots files to generate wordlists"
+homepage:
+  - "  - https://github.com/Josue87/roboxtractor"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/Josue87/roboxtractor/master/LICENSE"
+note:
+  - "Official binary from https://github.com/Josue87/roboxtractor"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "roboxtractor"
+src_url:
+  - "https://github.com/Josue87/roboxtractor"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Josue87/roboxtractor/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/Josue87/roboxtractor@v${PKGVER}" --glob "roboxtractor_linux_${ARCH}.tar.gz" --yes -o roboxtractor.tar.gz
+    tar -xf "roboxtractor.tar.gz" -C "/"
+    mv "/roboxtractor" "/$PKG"
+    rm -rf "roboxtractor.tar.gz"

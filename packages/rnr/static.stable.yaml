@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rnr/static.stable.yaml
+_disabled: false
+
+pkg: "rnr"
+pkg_id: "github.com.ismaelgv.rnr"
+pkg_type: "static"
+category:
+  - ""
+description: "A CLI tool to rename files and directories that supports regex"
+homepage:
+  - "  - https://github.com/ismaelgv/rnr"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/ismaelgv/rnr/master/LICENSE"
+note:
+  - "Official binary from https://github.com/ismaelgv/rnr"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rnr"
+src_url:
+  - "https://github.com/ismaelgv/rnr"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ismaelgv/rnr/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/ismaelgv/rnr@v${PKGVER}" --glob "rnr_linux_${ARCH}.tar.gz" --yes -o rnr.tar.gz
+    tar -xf "rnr.tar.gz" -C "/"
+    mv "/rnr" "/$PKG"
+    rm -rf "rnr.tar.gz"

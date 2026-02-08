@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/am-i-isolated/static.stable.yaml
+_disabled: false
+
+pkg: "am-i-isolated"
+pkg_id: "github.com.edera-dev.am-i-isolated.source"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "edera-dev/am-i-isolated"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Validate the isolation posture of Container Environments"
+homepage:
+  - "https://github.com/edera-dev/am-i-isolated"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/edera-dev/am-i-isolated/raw/c919073d0158d2c568e1f964e82be9df6ce6b31d/LICENSE"
+note:
+  - "Official binary from https://github.com/edera-dev/am-i-isolated"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "am-i-isolated"
+src_url:
+  - "https://github.com/edera-dev/am-i-isolated"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/edera-dev/am-i-isolated" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/edera-dev/am-i-isolated@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o am-i-isolated.zip
+    7z x "am-i-isolated.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/am-i-isolated" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "am-i-isolated.zip"

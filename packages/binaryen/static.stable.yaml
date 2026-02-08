@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/binaryen/static.stable.yaml
+_disabled: false
+
+pkg: "binaryen"
+pkg_id: "github.com.WebAssembly.binaryen.source"
+pkg_type: "static"
+ghcr_pkg: "WebAssembly/binaryen"
+category:
+  - "ConsoleOnly"
+description: "Compiler infrastructure and toolchain library for WebAssembly"
+homepage:
+  - "https://github.com/WebAssembly/binaryen"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/WebAssembly/binaryen/raw/d30f0430f1659038c40ae1dafe1b3629f8a1850f/LICENSE"
+note:
+  - "Official binary from https://github.com/WebAssembly/binaryen"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "wasm-as"
+repology:
+  - "binaryen"
+src_url:
+  - "https://github.com/WebAssembly/binaryen"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/WebAssembly/binaryen/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/WebAssembly/binaryen" \
+        cd binaryen \
+        git checkout "v$PKGVER" \
+        autoreconf -iv && ./configure --enable-static \
+        make \
+        cp binaryen /output/binaryen \
+      \' \
+    cp "$SBUILD_TMPDIR/binaryen" "$SBUILD_OUTDIR/" \
+    strip binaryen

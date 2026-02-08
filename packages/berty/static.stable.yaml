@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/berty/static.stable.yaml
+_disabled: false
+
+pkg: "berty"
+pkg_id: "github.com.berty.berty"
+pkg_type: "static"
+ghcr_pkg: "berty/berty"
+category:
+  - "ConsoleOnly"
+description: "An open, secure, offline-first, peer-to-peer and zero trust messaging app"
+homepage:
+  - "https://github.com/berty/berty"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache"
+note:
+  - "Official binary from https://github.com/berty/berty"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "berty"
+repology:
+  - "berty"
+src_url:
+  - "https://github.com/berty/berty"
+tag:
+  - "censorship"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/berty/berty/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/berty/berty" \
+        cd berty \
+        git checkout "v$PKGVER" \
+        CGO_ENABLED=1 GOOS=linux GOARCH="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')" \
+        go build -trimpath -ldflags="-s -w -buildid=" -o /output/berty \
+      \' \
+    cp "$SBUILD_TMPDIR/berty" "$SBUILD_OUTDIR/" \
+    strip berty

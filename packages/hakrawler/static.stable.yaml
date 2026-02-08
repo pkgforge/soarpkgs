@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hakrawler/static.stable.yaml
+_disabled: false
+
+pkg: "hakrawler"
+pkg_id: "github.com.hakluke.hakrawler"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "hakluke/hakrawler"
+category:
+  - "Development"
+  - "Utility"
+description: "Simple, fast web crawler designed for easy, quick discovery of endpoints and assets within a web application"
+homepage:
+  - "https://github.com/hakluke/hakrawler"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/hakluke/hakrawler/master/LICENSE"
+note:
+  - "Official binary from https://github.com/hakluke/hakrawler"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hakrawler"
+src_url:
+  - "https://github.com/hakluke/hakrawler"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hakluke/hakrawler/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/hakluke/hakrawler@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hakrawler.tar.gz || \
+    soar dl "https://github.com/hakluke/hakrawler@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hakrawler.tar.gz || \
+    soar dl "https://github.com/hakluke/hakrawler@v${PKGVER}" --glob "*${ARCH}*" --yes -o hakrawler.tar.gz
+    tar -xf "hakrawler.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hakrawler.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hakrawler" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hakrawler-\*" -exec mv {} "$SBUILD_OUTDIR/hakrawler" \; || \
+    mv "$SBUILD_TMPDIR/hakrawler" "$SBUILD_OUTDIR/hakrawler"
+    rm -rf "hakrawler.tar.gz"

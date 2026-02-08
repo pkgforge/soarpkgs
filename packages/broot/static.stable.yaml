@@ -1,0 +1,55 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/broot/static.stable.yaml
+_disabled: false
+
+pkg: "broot"
+pkg_id: "github.com.Canop.broot"
+pkg_type: "static"
+ghcr_pkg: "Canop/broot"
+category:
+  - "ConsoleOnly"
+description: "Interactive directory tree view, fuzzy search, balanced BFS descent"
+homepage:
+  - "https://github.com/Canop/broot"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD"
+note:
+  - "Official binary from https://github.com/Canop/broot"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "broot"
+repology:
+  - "broot"
+src_url:
+  - "https://github.com/Canop/broot"
+tag:
+  - "tree"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Canop/broot/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        source "$HOME/.cargo/env" \
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl" \
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes" \
+        git clone --filter=blob:none --quiet "https://github.com/Canop/broot" \
+        cd broot \
+        git checkout "v$PKGVER" \
+        cargo build --target="$RUST_TARGET" --release \
+        cp "target/$RUST_TARGET/release/broot" /output/broot \
+      \' \
+    cp "$SBUILD_TMPDIR/broot" "$SBUILD_OUTDIR/" \
+    strip broot

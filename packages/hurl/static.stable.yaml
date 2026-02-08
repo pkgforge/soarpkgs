@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hurl/static.stable.yaml
+_disabled: false
+
+pkg: "hurl"
+pkg_id: "github.com.Orange-OpenSource.hurl"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "Orange-OpenSource/hurl"
+category:
+  - "Development"
+  - "Utility"
+description: "Hurl - command line tool that runs HTTP requests"
+homepage:
+  - "https://github.com/Orange-OpenSource/hurl"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/Orange-OpenSource/hurl/master/LICENSE"
+note:
+  - "Official binary from https://github.com/Orange-OpenSource/hurl"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hurl"
+src_url:
+  - "https://github.com/Orange-OpenSource/hurl"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Orange-OpenSource/hurl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/Orange-OpenSource/hurl@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hurl.tar.gz || \
+    soar dl "https://github.com/Orange-OpenSource/hurl@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hurl.tar.gz || \
+    soar dl "https://github.com/Orange-OpenSource/hurl@v${PKGVER}" --glob "*${ARCH}*" --yes -o hurl.tar.gz
+    tar -xf "hurl.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hurl.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hurl" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hurl-\*" -exec mv {} "$SBUILD_OUTDIR/hurl" \; || \
+    mv "$SBUILD_TMPDIR/hurl" "$SBUILD_OUTDIR/hurl"
+    rm -rf "hurl.tar.gz"

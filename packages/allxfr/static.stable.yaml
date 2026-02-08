@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/allxfr/static.stable.yaml
+_disabled: false
+
+pkg: "allxfr"
+pkg_id: "github.com.lanrat.allxfr"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "lanrat/allxfr"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "AXFR all the things"
+homepage:
+  - "https://github.com/lanrat/allxfr"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/lanrat/allxfr/raw/fe653fd4873a63068a3b338840c6a9aec2a260bf/LICENSE"
+note:
+  - "Official binary from https://github.com/lanrat/allxfr"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "allxfr"
+src_url:
+  - "https://github.com/lanrat/allxfr"
+tag:
+  - "axfr"
+  - "dns"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/lanrat/allxfr" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/lanrat/allxfr@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o allxfr.zip
+    7z x "allxfr.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/allxfr" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "allxfr.zip"

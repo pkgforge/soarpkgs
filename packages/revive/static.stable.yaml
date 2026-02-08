@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/revive/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "revive"
+pkg_id: "mgechev.revive"
+pkgver: "0.1.0"
+pkg_type: "static"
+ghcr_pkg: "mgechev/revive"
+category:
+  - "Development"
+  - "Utility"
+description: "Drop-in replacement for golint"
+homepage:
+  - "https://github.com/mgechev/revive"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/mgechev/revive/raw/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "revive"
+repology:
+  - "revive"
+src_url:
+  - "https://github.com/mgechev/revive"
+tag:
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mgechev/revive/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        export CGO_ENABLED=1
+        export CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+        export GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+        export GOOS="linux"
+        git clone --filter=blob:none --quiet "https://github.com/mgechev/revive"
+        cd revive
+        git checkout "$PKGVER"
+        go mod tidy -v
+        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w" -o "/output/revive"
+        cp LICENSE* /output/ 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/revive" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE"* "$SBUILD_OUTDIR/" 2>/dev/null || true

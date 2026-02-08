@@ -1,0 +1,64 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/reader/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "reader"
+pkg_id: "mrusme.reader"
+pkgver: "0.1.0"
+pkg_type: "static"
+ghcr_pkg: "mrusme/reader"
+category:
+  - "Development"
+  - "Utility"
+description: "A minimal command line reader offering better readability of web pages on the CLI"
+homepage:
+  - "https://github.com/mrusme/reader"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/mrusme/reader/raw/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "reader"
+repology:
+  - "reader"
+src_url:
+  - "https://github.com/mrusme/reader"
+tag:
+  - "cli"
+  - "reader"
+  - "terminal"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mrusme/reader/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        export CGO_ENABLED=1
+        export CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+        export GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+        export GOOS="linux"
+        git clone --filter=blob:none --quiet "https://github.com/mrusme/reader"
+        cd reader
+        git checkout "$PKGVER"
+        go mod tidy -v
+        go generate ./...
+        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/output/reader"
+        cp LICENSE /output/LICENSE 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/reader" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true

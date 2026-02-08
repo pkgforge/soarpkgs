@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/landrun/static.stable.yaml
+_disabled: false
+
+pkg: "landrun"
+pkg_id: "github.com.Zouuup.landrun.source"
+pkg_type: "static"
+ghcr_pkg: "Zouuup/landrun"
+category:
+  - "ConsoleOnly"
+description: "Run any Linux process in a secure, unprivileged sandbox using Landlock"
+homepage:
+  - "https://github.com/Zouuup/landrun"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/Zouuup/landrun/raw/d4c2ad8b818d372853e7fdced7b6d24082b2c1d4/LICENSE"
+note:
+  - "Official binary from https://github.com/Zouuup/landrun"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "landrun"
+repology:
+  - "landrun"
+src_url:
+  - "https://github.com/Zouuup/landrun"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Zouuup/landrun/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/Zouuup/landrun"
+        cd landrun
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/landrun
+        cp landrun /output/
+      '
+    cp "$SBUILD_TMPDIR/landrun" "$SBUILD_OUTDIR/"
+    strip landrun

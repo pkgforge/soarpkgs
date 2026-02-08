@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/s6-networking/static.stable.yaml
+_disabled: false
+
+pkg: "s6-networking"
+pkg_id: "nixpkgs.s6-networking"
+pkg_type: "static"
+category:
+  - ""
+description: ""
+homepage:
+  - "  - https://skarnet.org/software/s6-networking/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/skarnet/s6-networking/master/LICENSE"
+note:
+  - "Official binary from https://github.com/skarnet/s6-networking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "s6-networking"
+src_url:
+  - "https://github.com/skarnet/s6-networking"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/skarnet/s6-networking/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/skarnet/s6-networking@v${PKGVER}" --glob "s6-networking_linux_${ARCH}.tar.gz" --yes -o s6-networking.tar.gz
+    tar -xf "s6-networking.tar.gz" -C "/"
+    mv "/s6-networking" "/$PKG"
+    rm -rf "s6-networking.tar.gz"

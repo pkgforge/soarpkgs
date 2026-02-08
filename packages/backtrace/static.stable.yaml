@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/backtrace/static.stable.yaml
+_disabled: false
+
+pkg: "backtrace"
+pkg_id: "github.com.oneclickvirt.backtrace.source"
+pkg_type: "static"
+ghcr_pkg: "oneclickvirt/backtrace"
+category:
+  - "ConsoleOnly"
+description: "Analyze return routes to Chinese ISPs and identify carrier-grade lines"
+homepage:
+  - "https://github.com/oneclickvirt/backtrace"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/oneclickvirt/backtrace/raw/16484ea6cad95f9e4084cea30214355e6247939c/LICENSE"
+note:
+  - "Official binary from https://github.com/oneclickvirt/backtrace"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "backtrace"
+repology:
+  - "backtrace"
+src_url:
+  - "https://github.com/oneclickvirt/backtrace"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/oneclickvirt/backtrace/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/oneclickvirt/backtrace" \
+        cd backtrace \
+        git checkout "v$PKGVER" \
+        CGO_ENABLED=1 GOOS=linux GOARCH="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')" \
+        go build -trimpath -ldflags="-s -w -buildid=" -o /output/backtrace \
+      \' \
+    cp "$SBUILD_TMPDIR/backtrace" "$SBUILD_OUTDIR/" \
+    strip backtrace

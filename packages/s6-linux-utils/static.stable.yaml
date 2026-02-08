@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/s6-linux-utils/static.stable.yaml
+_disabled: false
+
+pkg: "s6-linux-utils"
+pkg_id: "nixpkgs.s6-linux-utils"
+pkg_type: "static"
+category:
+  - ""
+description: ""
+homepage:
+  - "  - https://skarnet.org/software/s6-linux-utils/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/skarnet/s6-linux-utils/master/LICENSE"
+note:
+  - "Official binary from https://github.com/skarnet/s6-linux-utils"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "s6-linux-utils"
+src_url:
+  - "https://github.com/skarnet/s6-linux-utils"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/skarnet/s6-linux-utils/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/skarnet/s6-linux-utils@v${PKGVER}" --glob "s6-linux-utils_linux_${ARCH}.tar.gz" --yes -o s6-linux-utils.tar.gz
+    tar -xf "s6-linux-utils.tar.gz" -C "/"
+    mv "/s6-linux-utils" "/$PKG"
+    rm -rf "s6-linux-utils.tar.gz"

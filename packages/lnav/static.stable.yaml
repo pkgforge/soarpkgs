@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lnav/static.stable.yaml
+_disabled: false
+
+pkg: "lnav"
+pkg_id: "tstack.lnav"
+pkg_type: "static"
+pkgver: "0.12.1"
+ghcr_pkg: "tstack/lnav"
+category:
+  - "Utility"
+  - "Development"
+description: "Log file navigator"
+homepage:
+  - "https://github.com/tstack/lnav"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+note:
+  - "Official binary from https://github.com/tstack/lnav"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "lnav"
+repology:
+  - "lnav"
+src_url:
+  - "https://github.com/tstack/lnav"
+tag:
+  - "log"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tstack/lnav/releases/latest" | jq -r '.tag_name'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/tstack/lnav@v${PKGVER}" --glob "*linux*${ARCH}*musl*" --yes -o lnav.tar.gz
+    tar -xf "lnav.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "lnav" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "lnav.tar.gz"

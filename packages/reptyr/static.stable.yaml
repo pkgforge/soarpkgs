@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/reptyr/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "reptyr"
+pkg_id: "nelhage.reptyr"
+pkgver: "0.1.0"
+pkg_type: "static"
+ghcr_pkg: "nelhage/reptyr"
+category:
+  - "Development"
+  - "Utility"
+description: "Reparent a running program to a new terminal"
+homepage:
+  - "https://github.com/nelhage/reptyr"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/nelhage/reptyr/raw/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "reptyr"
+repology:
+  - "reptyr"
+src_url:
+  - "https://github.com/nelhage/reptyr"
+tag:
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/nelhage/reptyr/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/nelhage/reptyr"
+        cd reptyr
+        git checkout "$PKGVER"
+        make && cp reptyr /output/reptyr 2>/dev/null || ./autogen.sh && ./configure && make && cp reptyr /output/reptyr
+        cp LICENSE* /output/ 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/reptyr" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE"* "$SBUILD_OUTDIR/" 2>/dev/null || true

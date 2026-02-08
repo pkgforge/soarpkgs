@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/taierspeed-cli/static.stable.yaml
+_disabled: false
+
+pkg: "taierspeed-cli"
+pkg_id: "github.com.ztelliot.taierspeed-cli"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "ztelliot/taierspeed-cli"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/ztelliot/taierspeed-cli"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/ztelliot/taierspeed-cli/main/LICENSE"
+note:
+  - "Official binary from https://github.com/ztelliot/taierspeed-cli"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "taierspeed-cli"
+src_url:
+  - "https://github.com/ztelliot/taierspeed-cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ztelliot/taierspeed-cli/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/ztelliot/taierspeed-cli@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o taierspeed-cli.tar.gz ||     soar dl "https://github.com/ztelliot/taierspeed-cli@v${PKGVER}" --glob "*${ARCH}*" --yes -o taierspeed-cli.tar.gz ||     soar dl "https://github.com/ztelliot/taierspeed-cli@v${PKGVER}" --glob "*linux*" --yes -o taierspeed-cli.tar.gz
+    tar -xf "taierspeed-cli.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "taierspeed-cli*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/taierspeed-cli" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/taierspeed-cli" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "taierspeed-cli.tar.gz"

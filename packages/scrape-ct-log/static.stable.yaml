@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/scrape-ct-log/static.stable.yaml
+_disabled: false
+
+pkg: "scrape-ct-log"
+pkg_id: "github.com.mpalmer.scrape-ct-log.source"
+pkg_type: "static"
+category:
+  - ""
+description: "Quickly and reliably Download entries from a Certificate Transparency log"
+homepage:
+  - "  - https://github.com/mpalmer/scrape-ct-log"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/mpalmer/scrape-ct-log/master/LICENSE"
+note:
+  - "Official binary from https://github.com/mpalmer/scrape-ct-log"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "scrape-ct-log"
+src_url:
+  - "https://github.com/mpalmer/scrape-ct-log"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mpalmer/scrape-ct-log/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/mpalmer/scrape-ct-log@v${PKGVER}" --glob "scrape-ct-log_linux_${ARCH}.tar.gz" --yes -o scrape-ct-log.tar.gz
+    tar -xf "scrape-ct-log.tar.gz" -C "/"
+    mv "/scrape-ct-log" "/$PKG"
+    rm -rf "scrape-ct-log.tar.gz"

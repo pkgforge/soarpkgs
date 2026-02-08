@@ -1,0 +1,51 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/aggligator/static.stable.yaml
+_disabled: false
+
+pkg: "aggligator"
+pkg_id: "github.com.surban.aggligator"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "surban/aggligator"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Aggregates multiple links (TCP, Bluetooth, USB or similar) into one connection"
+homepage:
+  - "https://github.com/surban/aggligator"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache"
+    url: "https://github.com/surban/aggligator/raw/509782bf790c4aba6ab4e08466d688d1d27eb5c2/LICENSE"
+note:
+  - "Official binary from https://github.com/surban/aggligator"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "agg-speed"
+  - "agg-tunnel"
+src_url:
+  - "https://github.com/surban/aggligator"
+tag:
+  - "utility"
+  - "bluetooth"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/surban/aggligator" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/surban/aggligator@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o aggligator.zip
+    7z x "aggligator.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/aggligator" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "aggligator.zip"

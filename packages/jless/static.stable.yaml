@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jless/static.stable.yaml
+_disabled: false
+
+pkg: "jless"
+pkg_id: "ppkg.jless"
+pkg_type: "static"
+ghcr_pkg: "PaulJuliusMartinez/jless"
+category:
+  - "ConsoleOnly"
+description: "Command-line pager for JSON data"
+homepage:
+  - "https://jless.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/PaulJuliusMartinez/jless/raw/e6cdef719c7319020391d6bbf838ab272ce44cf0/LICENSE"
+note:
+  - "Official binary from https://github.com/PaulJuliusMartinez/jless"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "jless"
+repology:
+  - "jless"
+src_url:
+  - "https://github.com/PaulJuliusMartinez/jless"
+tag:
+  - "json"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/PaulJuliusMartinez/jless/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/PaulJuliusMartinez/jless"
+        cd jless
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/jless
+        cp jless /output/
+      '
+    cp "$SBUILD_TMPDIR/jless" "$SBUILD_OUTDIR/"
+    strip jless

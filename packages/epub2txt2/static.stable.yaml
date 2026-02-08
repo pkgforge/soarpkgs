@@ -1,0 +1,73 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/epub2txt2/static.stable.yaml
+_disabled: false
+
+pkg: "epub2txt2"
+pkg_id: "github.com.kevinboone.epub2txt2.source"
+pkg_type: "static"
+ghcr_pkg: "kevinboone/epub2txt2"
+category:
+  - "ConsoleOnly"
+description: "Extract text from EPUB documents"
+homepage:
+  - "https://github.com/kevinboone/epub2txt2"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/kevinboone/epub2txt2/raw/10403a533ec6d2ad42990561982f4f87c1e174c2/LICENSE"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "epub2txt"
+repology:
+  - "https://github.com/kevinboone/epub2txt2"
+src_url:
+  - "https://github.com/kevinboone/epub2txt2"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kevinboone/epub2txt2/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Build
+         mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+         -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+         -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+         --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+         "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+          bash -l -c '
+          #Setup ENV
+           set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
+           mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+          #Build
+           git clone --filter "blob:none" --depth="1" --quiet "https://github.com/kevinboone/epub2txt2" "./TEMPREPO" && cd "./TEMPREPO"
+           #export CC="clang"
+           #export CXX="clang++"
+           export CFLAGS="-Os -flto=auto -B/usr/libexec/mold -g0 -pipe -static -v -w -Wno-error"
+           export CPPFLAGS="${CFLAGS}"
+           export CXXFLAGS="${CFLAGS}"
+           export LD="$(which mold)"
+           export LDFLAGS="-static -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack"
+           make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" --jobs="$(($(nproc)+1))" --keep-going
+           find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
+          #Copy
+           cp -fv "./epub2txt2" "/build-bins/epub2txt" 2>/dev/null
+           find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+           ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+          #strip & info 
+           find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+           find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+           find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+           file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+           du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+           popd &>/dev/null
+          '
+        #Copy & Meta
+         docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+         [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

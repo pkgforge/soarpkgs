@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bulkdns/static.stable.yaml
+_disabled: false
+
+pkg: "bulkdns"
+pkg_id: "github.com.maroofi.bulkdns.source"
+pkg_type: "static"
+ghcr_pkg: "maroofi/bulkDNS"
+category:
+  - "ConsoleOnly"
+description: "DNS scanner for large-scale measurement"
+homepage:
+  - "https://github.com/maroofi/bulkDNS"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/maroofi/bulkDNS/raw/645dc06787853ac5574a6e05171e306e330323b3/LICENSE"
+note:
+  - "Official binary from https://github.com/maroofi/bulkDNS"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bulkdns"
+repology:
+  - "bulkdns"
+src_url:
+  - "https://github.com/maroofi/bulkDNS"
+tag:
+  - "dns"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/maroofi/bulkDNS/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/maroofi/bulkDNS" \
+        cd bulkDNS \
+        git checkout "v$PKGVER" \
+        autoreconf -iv && ./configure --enable-static \
+        make \
+        cp bulkdns /output/bulkdns \
+      \' \
+    cp "$SBUILD_TMPDIR/bulkdns" "$SBUILD_OUTDIR/" \
+    strip bulkdns

@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cent/static.stable.yaml
+_disabled: false
+
+pkg: "cent"
+pkg_id: "xm1k3/cent"
+pkg_type: "static"
+ghcr_pkg: "xm1k3/cent"
+category:
+  - "Utility"
+description: "Fetch & Organize all Nuclei Templates"
+homepage:
+  - "https://github.com/xm1k3/cent"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/xm1k3/cent/raw/481700c7eaee876f0d73449730e842678d8b46a4/LICENSE"
+note:
+  - "Official binary from https://github.com/xm1k3/cent"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cent"
+src_url:
+  - "https://github.com/xm1k3/cent"
+tag:
+  - "bugbounty"
+  - "nuclei"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/xm1k3/cent/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/xm1k3/cent@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cent.zip
+    7z x "cent.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cent" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cent.zip"

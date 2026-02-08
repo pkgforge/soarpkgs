@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/almalinux/static.stable.yaml
+_disabled: false
+
+pkg: "almalinux"
+pkg_id: "github.com.AlmaLinux.docker-images"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "AlmaLinux/docker-images"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Portable Ephemeral AlmaLinux Docker Image (DockerC)"
+homepage:
+  - "https://wiki.almalinux.org/containers/docker-images.html"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/AlmaLinux/docker-images/raw/cbfe509d63b9d87c21c3f25a1d97d8f84f444cce/LICENSE"
+note:
+  - "Official binary from https://github.com/AlmaLinux/docker-images"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "almalinux"
+  - "almalinux-minimal"
+src_url:
+  - "https://github.com/AlmaLinux/docker-images"
+tag:
+  - "almalinux"
+  - "docker"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        docker manifest inspect "almalinux:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/AlmaLinux/docker-images@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o almalinux.zip
+    7z x "almalinux.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/almalinux" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "almalinux.zip"

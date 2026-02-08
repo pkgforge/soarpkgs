@@ -1,0 +1,51 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bucketloot/static.stable.yaml
+_disabled: false
+
+pkg: "bucketloot"
+pkg_id: "github.com.redhuntlabs.BucketLoot"
+pkg_type: "static"
+ghcr_pkg: "redhuntlabs/BucketLoot"
+category:
+  - "ConsoleOnly"
+description: "Automated S3-compatible bucket inspector"
+homepage:
+  - "https://github.com/redhuntlabs/BucketLoot"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+note:
+  - "Official binary from https://github.com/redhuntlabs/BucketLoot"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bucketloot"
+repology:
+  - "bucketloot"
+src_url:
+  - "https://github.com/redhuntlabs/BucketLoot"
+tag:
+  - "bugbounty"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/redhuntlabs/BucketLoot/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/redhuntlabs/BucketLoot" \
+        cd BucketLoot \
+        git checkout "v$PKGVER" \
+        CGO_ENABLED=1 GOOS=linux GOARCH="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')" \
+        go build -trimpath -ldflags="-s -w -buildid=" -o /output/bucketloot \
+      \' \
+    cp "$SBUILD_TMPDIR/bucketloot" "$SBUILD_OUTDIR/" \
+    strip bucketloot

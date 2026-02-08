@@ -1,0 +1,45 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cloudlist/static.stable.yaml
+_disabled: false
+
+pkg: "cloudlist"
+pkg_id: "projectdiscovery/cloudlist"
+pkg_type: "static"
+ghcr_pkg: "projectdiscovery/cloudlist"
+category:
+  - "Utility"
+description: "A tool for listing Assets from multiple Cloud Providers"
+homepage:
+  - "https://github.com/projectdiscovery/cloudlist"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/projectdiscovery/cloudlist/raw/2af93c411befffaf9ba3ecb8cb07f1190548e5f0/LICENSE.md"
+note:
+  - "Official binary from https://github.com/projectdiscovery/cloudlist"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cloudlist"
+src_url:
+  - "https://github.com/projectdiscovery/cloudlist"
+tag:
+  - "cloud"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/projectdiscovery/cloudlist/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/cloudlist@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cloudlist.zip
+    7z x "cloudlist.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cloudlist" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cloudlist.zip"

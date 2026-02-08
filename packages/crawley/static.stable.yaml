@@ -1,0 +1,69 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/crawley/static.official.stable.yaml
+_disabled: false
+
+pkg: "crawley"
+pkg_id: "github.com.s0rg.crawley"
+pkg_type: "static"
+ghcr_pkg: "th3k3r/crawley"
+category:
+  - "Utility"
+description: "The unix-way web crawler"
+distro_pkg:
+  archlinux:
+    aur:
+      - "crawley"
+      - "crawley-bin"
+  nixpkgs:
+    - "crawley"
+homepage:
+  - "https://github.com/s0rg/crawley"
+license:
+  - id: "MIT"
+    url: "https://github.com/s0rg/crawley/raw/9a5cbe630e351208f558a3b0b0e3bd3a6c80765d/LICENSE"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/s0rg/crawley"
+provides:
+  - "crawley"  
+repology:
+  - "crawley"
+src_url:
+  - "https://github.com/s0rg/crawley"
+tag:
+  - "crawler"
+  - "scraper"
+  - "spider"
+x_exec:
+  bsys: "host://soar-dl"
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/s0rg/crawley/releases?per_page=100" | jq -r '[.[] | select(.draft == false and .prerelease == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/s0rg/crawley@${PKGVER}" --match "linux,arm64,tar" --exclude "amd64,x86,x64,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/s0rg/crawley@${PKGVER}" --match "linux,x86_64,tar" --exclude "aarch,arm,i386,i686,sha256,sha512,bsd,macos,windows" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + | 
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}/crawley"

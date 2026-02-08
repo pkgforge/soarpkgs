@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/boltconn/static.stable.yaml
+_disabled: false
+
+pkg: "boltconn"
+pkg_id: "github.com.XOR-op.BoltConn"
+pkg_type: "static"
+ghcr_pkg: "XOR-op/BoltConn"
+category:
+  - "ConsoleOnly"
+description: "Transparent and flexible L4/L7 networking manager, supporting WireGuard, firewall and scripted MitM"
+homepage:
+  - "https://github.com/XOR-op/BoltConn"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/rhysd/actionlint/raw/ab4e49ed912690dcd58d0bdaa7d2824962711aa2/LICENSE.txt"
+note:
+  - "Official binary from https://github.com/XOR-op/BoltConn"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "boltconn"
+repology:
+  - "boltconn"
+src_url:
+  - "https://github.com/XOR-op/BoltConn"
+tag:
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/XOR-op/BoltConn/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/XOR-op/BoltConn@v${PKGVER}" --glob "*boltconn*" --yes -o boltconn.tar.gz \
+    tar -xf "boltconn.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/boltconn" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "boltconn.tar.gz"

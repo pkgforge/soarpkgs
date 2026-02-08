@@ -1,0 +1,56 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/amass/static.stable.yaml
+_disabled: false
+
+pkg: "amass"
+pkg_id: "github.com.owasp-amass.amass"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "owasp-amass/amass"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "In-depth attack surface mapping and asset discovery"
+homepage:
+  - "https://github.com/owasp-amass/amass"
+  - "https://www.owasp.org/index.php/OWASP_Amass_Project"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache"
+    url: "https://github.com/owasp-amass/amass/raw/5f1f7176bae60975c1e5be64273cb201f1bb37c3/LICENSE"
+note:
+  - "Official binary from https://github.com/owasp-amass/amass"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "amass"
+repology:
+  - "amass"
+src_url:
+  - "https://github.com/owasp-amass/amass"
+tag:
+  - "enumeration"
+  - "information-gathering"
+  - "owasp"
+  - "recon"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/owasp-amass/amass" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/owasp-amass/amass@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o amass.zip
+    7z x "amass.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/amass" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "amass.zip"

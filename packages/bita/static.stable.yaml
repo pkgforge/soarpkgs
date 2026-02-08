@@ -1,0 +1,55 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bita/static.stable.yaml
+_disabled: false
+
+pkg: "bita"
+pkg_id: "github.com.oll3.bita"
+pkg_type: "static"
+ghcr_pkg: "oll3/bita"
+category:
+  - "ConsoleOnly"
+description: "Differential file synchronization over http"
+homepage:
+  - "https://github.com/oll3/bita"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/oll3/bita"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bita"
+repology:
+  - "bita"
+src_url:
+  - "https://github.com/oll3/bita"
+tag:
+  - "delta-update"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/oll3/bita/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        source "$HOME/.cargo/env" \
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl" \
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes" \
+        git clone --filter=blob:none --quiet "https://github.com/oll3/bita" \
+        cd bita \
+        git checkout "v$PKGVER" \
+        cargo build --target="$RUST_TARGET" --release \
+        cp "target/$RUST_TARGET/release/bita" /output/bita \
+      \' \
+    cp "$SBUILD_TMPDIR/bita" "$SBUILD_OUTDIR/" \
+    strip bita

@@ -1,0 +1,60 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/miniserve/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "miniserve"
+pkg_id: "svenstaro.miniserve"
+pkgver: "0.28.0"
+pkg_type: "static"
+ghcr_pkg: "svenstaro/miniserve"
+category:
+  - "Utility"
+  - "Network"
+description: "CLI tool to serve files over HTTP"
+homepage:
+  - "https://github.com/svenstaro/miniserve"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/svenstaro/miniserve/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "miniserve"
+repology:
+  - "miniserve"
+src_url:
+  - "https://github.com/svenstaro/miniserve"
+tag:
+  - "http-server"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/svenstaro/miniserve/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/svenstaro/miniserve"
+        cd miniserve
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/miniserve" /output/miniserve
+        cp LICENSE /output/LICENSE 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/miniserve" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true

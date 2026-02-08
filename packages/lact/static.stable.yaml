@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lact/static.stable.yaml
+_disabled: false
+
+pkg: "lact"
+pkg_id: "runimage/cachyos"
+pkg_type: "static"
+ghcr_pkg: "https://archlinux.org/packages/extra/x86_64/lact"
+category:
+  - "Utility"
+description: "Linux GPU Control Application"
+homepage:
+  - "https://github.com/ilya-zlobintsev/LACT"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://archlinux.org/packages/extra/x86_64/lact//blob/main/LICENSE"
+note:
+  - "Official binary from https://archlinux.org/packages/extra/x86_64/lact/"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "lact"
+repology:
+  - "lact"
+src_url:
+  - "https://archlinux.org/packages/extra/x86_64/lact/"
+tag:
+  - gpu
+  - Utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/runimage/cachyos/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/runimage/cachyos@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o lact.tar.gz
+    tar -xf "lact.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/lact" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "lact.tar.gz"

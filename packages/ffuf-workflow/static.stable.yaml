@@ -1,0 +1,69 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ffuf-workflow/static.stable.yaml
+_disabled: false
+
+pkg: "ffuf-workflow"
+pkg_id: "github.com.nullenc0de.FFUF-Workflow-Tool.source"
+pkg_type: "static"
+ghcr_pkg: "nullenc0de/FFUF-Workflow-Tool"
+category:
+  - "ConsoleOnly"
+description: "Automate the process of running FFUF and post-processing its results to extract valid URLs"
+homepage:
+  - "https://github.com/nullenc0de/FFUF-Workflow-Tool"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - "Azathothas (https://github.com/Azathothas)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "ffuf-workflow"
+repology:
+  - "https://github.com/nullenc0de/FFUF-Workflow-Tool"
+src_url:
+  - "https://github.com/nullenc0de/FFUF-Workflow-Tool"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/nullenc0de/FFUF-Workflow-Tool/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Build
+         mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+         -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+         -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+         --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+         "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+          bash -l -c '
+          #Setup ENV
+           set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+           CGO_ENABLED="1" 
+           CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+           GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/;s/loongarch64/loong64/")"
+           GOOS="linux"
+           export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+          #Build
+           git clone --filter "blob:none" --quiet "https://github.com/nullenc0de/FFUF-Workflow-Tool" "./TEMPREPO" && cd "./TEMPREPO"
+           echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+           echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+           go mod tidy -v ; go generate ./...
+           go build -C "./cmd/ffuf-workflow" -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/ffuf-workflow"
+          #Copy
+           ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+          #Strip 
+           find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+           find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+           find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+           file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+           du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+           popd &>/dev/null
+          '
+        #Copy & Meta
+         docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+         [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

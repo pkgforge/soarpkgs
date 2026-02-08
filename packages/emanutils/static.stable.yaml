@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/emanutils/static.stable.yaml
+_disabled: false
+
+pkg: "emanutils"
+pkg_id: "github.com.emanuele6.emanutils"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "emanuele6/emanutils"
+category:
+  - "Utility"
+description: "Static binary for emanutils"
+homepage:
+  - "https://github.com/emanuele6/emanutils"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/emanuele6/emanutils/master/LICENSE"
+note:
+  - "Official binary from https://github.com/emanuele6/emanutils"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "emanutils"
+src_url:
+  - "https://github.com/emanuele6/emanutils"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/emanuele6/emanutils/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/emanuele6/emanutils@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o emanutils.tar.gz
+    tar -xf "emanutils.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "emanutils" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "emanutils.tar.gz"

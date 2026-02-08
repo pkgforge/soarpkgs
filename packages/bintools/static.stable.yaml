@@ -1,0 +1,56 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bintools/static.stable.yaml
+_disabled: false
+
+pkg: "bintools"
+pkg_id: "gnu.binutils"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+description: "Tools for manipulating binaries (linker, assembler, etc.) [alias=binutils]"
+homepage:
+  - "https://www.gnu.org/software/binutils/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL3"
+note:
+  - "Official binary from https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "addr2line"
+repology:
+  - "bintools"
+src_url:
+  - "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git"
+tag:
+  - "build-tools"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=tags" | grep -oP "binutils-[0-9]+[0-9a-z.]*" | sort -V | tail -1 | grep -oP "[0-9]+[0-9a-z.]*"
+  run: |
+    #Build
+         echo -e "\n" ; nix-instantiate --eval --expr "builtins.toJSON (with import <nixpkgs> {}; ${PKG}.meta)" --quiet 2>/dev/null | jq -r fromjson 2>/dev/null ; echo -e "\n"
+         nix-build '<nixpkgs>' --impure --attr "pkgsStatic.bintools" --cores "$(($(nproc)+1))" --max-jobs "$(($(nproc)+1))" --log-format bar-with-logs --out-link "${SBUILD_TMPDIR}/nixbuild"
+         find -L "${SBUILD_TMPDIR}/nixbuild" | sort | awk -F/ '{indent=""; for (i=2; i<NF; i++) indent=indent "  "; print (NF>1 ? indent "--> " $NF : $NF)}'
+        #Fix Perms
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type d -o -type l -exec realpath "{}" \; | grep -Ev '^\.$' |\
+         xargs -I{} find -L "{}" -type d -iregex ".*\(bin\|exec\).*" | \
+         xargs -I{} sudo rsync -achLv --no-relative "{}/." "${SBUILD_TMPDIR}/."
+         sudo chown -R "$(whoami):$(whoami)" "${SBUILD_TMPDIR}" && chmod -R 755 "${SBUILD_TMPDIR}"
+        #Fix Shell Scripts
+         find "${SBUILD_TMPDIR}" -type f -iregex '.*\.\(bin\|pl\)$' -exec bash -c 'mv -fv "$1" "${1%.*}"' _ "{}" \;
+         find "${SBUILD_TMPDIR}" -type f \( -name "*.sh" -o -exec sh -c 'file -i "$1" | grep -qiv "application/.*executable"' sh {} \; \) -print0 | xargs -0 -I {} sh -c '
+               sed "s|^#!/nix/store/.*/bin/sh|#!/bin/sh|" -i "{}" 2>/dev/null
+               sed "s|/nix/store[^ ]*/bin/\([^ ]*\)|/usr/local/bin/\1|g" -i "{}" 2>/dev/null
+               sed "s|/nix/store/[^/]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+               sed "s|/nix/store[^/ ]*/bin|/usr/local/bin|g" -i "{}" 2>/dev/null
+               sed "s|/nix/store[^ \"'\'']*|/|g" -i "{}" 2>/dev/null
+           '
+        #Copy
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei 'application/.*executable|text/x-perl|text/.*script' | cut -d":" -f1 | xargs realpath | sort -u | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
+         ( askalono --format "json" crawl --follow "${SBUILD_TMPDIR}" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "${SBUILD_OUTDIR}/LICENSE" ) 2>/dev/null

@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cloudcash/static.stable.yaml
+_disabled: false
+
+pkg: "cloudcash"
+pkg_id: "mrusme/cloudcash"
+pkg_type: "static"
+ghcr_pkg: "mrusme/cloudcash"
+category:
+  - "Utility"
+description: "Check your cloud spending from the CLI"
+homepage:
+  - "https://github.com/mrusme/cloudcash"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/mrusme/cloudcash/raw/8b0c683511280d1657519489c4704c61e6e2a1e9/LICENSE"
+note:
+  - "Official binary from https://github.com/mrusme/cloudcash"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cloudcash"
+src_url:
+  - "https://github.com/mrusme/cloudcash"
+tag:
+  - "aws"
+  - "cloud"
+  - "cost"
+  - "finance"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mrusme/cloudcash/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/mrusme/cloudcash@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cloudcash.zip
+    7z x "cloudcash.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cloudcash" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cloudcash.zip"

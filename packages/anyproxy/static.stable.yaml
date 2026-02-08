@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/anyproxy/static.stable.yaml
+_disabled: false
+
+pkg: "anyproxy"
+pkg_id: "github.com.keminar.anyproxy.source"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "keminar/anyproxy"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "TCP stream forwarder & Proxy"
+homepage:
+  - "https://github.com/keminar/anyproxy"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+note:
+  - "Official binary from https://github.com/keminar/anyproxy"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "anyproxy"
+src_url:
+  - "https://github.com/keminar/anyproxy"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/keminar/anyproxy" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/keminar/anyproxy@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o anyproxy.zip
+    7z x "anyproxy.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/anyproxy" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "anyproxy.zip"

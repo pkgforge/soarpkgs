@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/arc-archiver/static.stable.yaml
+_disabled: false
+
+pkg: "arc-archiver"
+pkg_id: "github.com.jm33-m0.arc.source"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "jm33-m0/arc"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "CLI for creating, extracting, and managing archives"
+homepage:
+  - "https://github.com/jm33-m0/arc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/jm33-m0/arc/raw/07cfb64c5ddf3e47b081b2ed191caa9228a6364d/LICENSE"
+note:
+  - "Official binary from https://github.com/jm33-m0/arc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "arc"
+src_url:
+  - "https://github.com/jm33-m0/arc"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/jm33-m0/arc" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/jm33-m0/arc@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o arc-archiver.zip
+    7z x "arc-archiver.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/arc-archiver" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "arc-archiver.zip"

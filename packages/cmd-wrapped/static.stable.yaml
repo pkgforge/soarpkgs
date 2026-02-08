@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cmd-wrapped/static.stable.yaml
+_disabled: false
+
+pkg: "cmd-wrapped"
+pkg_id: "YiNNx/cmd-wrapped"
+pkg_type: "static"
+ghcr_pkg: "YiNNx/cmd-wrapped"
+category:
+  - "Utility"
+description: "A CLI tool to view Unix shell history statistics, with support for zsh, bash, fish, and atuin"
+homepage:
+  - "https://github.com/YiNNx/cmd-wrapped"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/YiNNx/cmd-wrapped/raw/07c5366dd2c5b6fcd9d5beaa2b13cf7a2f22c9bc/LICENSE"
+note:
+  - "Official binary from https://github.com/YiNNx/cmd-wrapped"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cmd-wrapped"
+src_url:
+  - "https://github.com/YiNNx/cmd-wrapped"
+tag:
+  - "atuin"
+  - "history"
+  - "shell"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/YiNNx/cmd-wrapped/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/YiNNx/cmd-wrapped@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cmd-wrapped.zip
+    7z x "cmd-wrapped.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cmd-wrapped" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cmd-wrapped.zip"

@@ -1,0 +1,55 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/binocle/static.stable.yaml
+_disabled: false
+
+pkg: "binocle"
+pkg_id: "github.com.sharkdp.binocle"
+pkg_type: "static"
+ghcr_pkg: "sharkdp/binocle"
+category:
+  - "ConsoleOnly"
+description: "A graphical tool to visualize binary data"
+homepage:
+  - "https://github.com/sharkdp/binocle"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache"
+note:
+  - "Official binary from https://github.com/sharkdp/binocle"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "binocle"
+repology:
+  - "binocle"
+src_url:
+  - "https://github.com/sharkdp/binocle"
+tag:
+  - "binary-data"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharkdp/binocle/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        source "$HOME/.cargo/env" \
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl" \
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes" \
+        git clone --filter=blob:none --quiet "https://github.com/sharkdp/binocle" \
+        cd binocle \
+        git checkout "v$PKGVER" \
+        cargo build --target="$RUST_TARGET" --release \
+        cp "target/$RUST_TARGET/release/binocle" /output/binocle \
+      \' \
+    cp "$SBUILD_TMPDIR/binocle" "$SBUILD_OUTDIR/" \
+    strip binocle

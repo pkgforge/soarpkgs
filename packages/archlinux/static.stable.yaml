@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/archlinux/static.stable.yaml
+_disabled: false
+
+pkg: "archlinux"
+pkg_id: "github.com.Azathothas.docker-archlinux"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "pkgforge-dev/docker-archlinux"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Portable Ephemeral ArchLinux Docker Image (DockerC)"
+homepage:
+  - "https://wiki.archlinux.org/title/Docker"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/pkgforge-dev/docker-archlinux/raw/ba21edb3918afdfe889689cd8ed9b76b73b610d0/LICENSE"
+note:
+  - "Official binary from https://github.com/pkgforge-dev/docker-archlinux"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "archlinux"
+src_url:
+  - "https://github.com/pkgforge-dev/docker-archlinux"
+tag:
+  - "archlinux"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        docker manifest inspect "archlinux:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/pkgforge-dev/docker-archlinux@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o archlinux.zip
+    7z x "archlinux.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/archlinux" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "archlinux.zip"

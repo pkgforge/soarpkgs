@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cntb/static.stable.yaml
+_disabled: false
+
+pkg: "cntb"
+pkg_id: "contabo/cntb"
+pkg_type: "static"
+ghcr_pkg: "contabo/cntb"
+category:
+  - "Utility"
+description: "CLI tool for managing your products from Contabo like VPS and VDS"
+homepage:
+  - "https://github.com/contabo/cntb"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/contabo/cntb/raw/47d17005b64654fcbc16efadb7c5778377f43088/LICENSE"
+note:
+  - "Official binary from https://github.com/contabo/cntb"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cntb"
+src_url:
+  - "https://github.com/contabo/cntb"
+tag:
+  - "contabo"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/contabo/cntb/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/contabo/cntb@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cntb.zip
+    7z x "cntb.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cntb" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cntb.zip"

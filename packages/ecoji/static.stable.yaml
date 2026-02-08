@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ecoji/static.stable.yaml
+_disabled: false
+
+pkg: "ecoji"
+pkg_id: "github.com.keith-turner.ecoji"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "keith-turner/ecoji"
+category:
+  - "Utility"
+description: "Encodes (and decodes) data as emojis"
+homepage:
+  - "https://github.com/keith-turner/ecoji"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/keith-turner/ecoji/master/LICENSE"
+note:
+  - "Official binary from https://github.com/keith-turner/ecoji"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ecoji"
+src_url:
+  - "https://github.com/keith-turner/ecoji"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/keith-turner/ecoji/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/keith-turner/ecoji@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o ecoji.tar.gz
+    tar -xf "ecoji.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "ecoji" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "ecoji.tar.gz"

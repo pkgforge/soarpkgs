@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rsync/static.stable.yaml
+_disabled: false
+
+pkg: "rsync"
+pkg_id: "nixpkgs.rsync"
+pkg_type: "static"
+category:
+  - ""
+description: "An open source utility that provides fast incremental File Transfer"
+homepage:
+  - "  - https://rsync.samba.org/rsync"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/WayneD/rsync/master/LICENSE"
+note:
+  - "Official binary from https://github.com/WayneD/rsync"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rsync"
+src_url:
+  - "https://github.com/WayneD/rsync"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/WayneD/rsync/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/WayneD/rsync@v${PKGVER}" --glob "rsync_linux_${ARCH}.tar.gz" --yes -o rsync.tar.gz
+    tar -xf "rsync.tar.gz" -C "/"
+    mv "/rsync" "/$PKG"
+    rm -rf "rsync.tar.gz"

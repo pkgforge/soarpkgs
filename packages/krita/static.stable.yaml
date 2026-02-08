@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/krita/static.stable.yaml
+_disabled: false
+
+pkg: "krita"
+pkg_id: "gitlab/krita"
+pkg_type: "static"
+ghcr_pkg: "https://krita.org/en/download"
+category:
+  - "Utility"
+description: "A free and open source painting application (Alpha/Next)"
+homepage:
+  - "https://krita.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://krita.org/en/download//blob/main/LICENSE"
+note:
+  - "Official binary from https://krita.org/en/download/"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "krita"
+repology:
+  - "krita"
+src_url:
+  - "https://krita.org/en/download/"
+tag:
+  - editor
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/gitlab/krita/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/gitlab/krita" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/gitlab/krita" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

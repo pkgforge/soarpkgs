@@ -1,0 +1,63 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tealdeer/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "tealdeer"
+pkg_id: "tealdeer-rs.tealdeer"
+pkgver: "1.7.1"
+pkg_type: "static"
+ghcr_pkg: "tealdeer-rs/tealdeer"
+category:
+  - "Utility"
+  - "Development"
+description: "Fast tldr client"
+homepage:
+  - "https://github.com/tealdeer-rs/tealdeer"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/tealdeer-rs/tealdeer/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "tealdeer"
+  - "tldr"
+repology:
+  - "tealdeer"
+src_url:
+  - "https://github.com/tealdeer-rs/tealdeer"
+tag:
+  - "documentation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/tealdeer-rs/tealdeer"
+        cd tealdeer
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/tealdeer" /output/tealdeer
+        cp "target/$RUST_TARGET/release/tealdeer" /output/tldr
+        cp LICENSE /output/LICENSE 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/tealdeer" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/tldr" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true

@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bubblewrap/static.stable.yaml
+_disabled: false
+
+pkg: "bubblewrap"
+pkg_id: "github.com.containers.bubblewrap.glibc"
+pkg_type: "static"
+ghcr_pkg: "containers/bubblewrap"
+category:
+  - "ConsoleOnly"
+description: "Namespaces-powered chroot-like solution for Unprivileged Sandboxing"
+homepage:
+  - "https://github.com/containers/bubblewrap"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "LGPL-2.0-or-later"
+    url: "https://github.com/containers/bubblewrap/raw/9ca3b05ec787acfb4b17bed37db5719fa777834f/COPYING"
+note:
+  - "Official binary from https://github.com/containers/bubblewrap"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bwrap==bubblewrap"
+repology:
+  - "bubblewrap"
+src_url:
+  - "https://github.com/containers/bubblewrap"
+tag:
+  - "container"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/containers/bubblewrap/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/containers/bubblewrap" \
+        cd bubblewrap \
+        git checkout "v$PKGVER" \
+        autoreconf -iv && ./configure --enable-static \
+        make \
+        cp bubblewrap /output/bubblewrap \
+      \' \
+    cp "$SBUILD_TMPDIR/bubblewrap" "$SBUILD_OUTDIR/" \
+    strip bubblewrap

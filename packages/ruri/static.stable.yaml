@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ruri/static.stable.yaml
+_disabled: false
+
+pkg: "ruri"
+pkg_id: "github.com.Moe-hacker.ruri"
+pkg_type: "static"
+category:
+  - ""
+description: "A self-contained Linux container implementation"
+homepage:
+  - "  - https://blog.crack.moe/2023/07/31/moe-ruri-notes/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/Moe-hacker/ruri/master/LICENSE"
+note:
+  - "Official binary from https://github.com/Moe-hacker/ruri"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ruri"
+src_url:
+  - "https://github.com/Moe-hacker/ruri"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Moe-hacker/ruri/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/Moe-hacker/ruri@v${PKGVER}" --glob "ruri_linux_${ARCH}.tar.gz" --yes -o ruri.tar.gz
+    tar -xf "ruri.tar.gz" -C "/"
+    mv "/ruri" "/$PKG"
+    rm -rf "ruri.tar.gz"

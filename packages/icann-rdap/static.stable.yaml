@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/icann-rdap/static.stable.yaml
+_disabled: false
+
+pkg: "icann-rdap"
+pkg_id: "github.com.icann.icann-rdap.source"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "icann/icann-rdap/source"
+category:
+  - "Development"
+  - "Utility"
+description: "ICANN implementation of the Registry Data Access Protocol (RDAP)"
+homepage:
+  - "https://github.com/icann/icann-rdap/source"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/icann/icann-rdap/source/master/LICENSE"
+note:
+  - "Official binary from https://github.com/icann/icann-rdap/source"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "icann-rdap"
+src_url:
+  - "https://github.com/icann/icann-rdap/source"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/icann/icann-rdap/source/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/icann/icann-rdap/source@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o icann-rdap.tar.gz || \
+    soar dl "https://github.com/icann/icann-rdap/source@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o icann-rdap.tar.gz || \
+    soar dl "https://github.com/icann/icann-rdap/source@v${PKGVER}" --glob "*${ARCH}*" --yes -o icann-rdap.tar.gz
+    tar -xf "icann-rdap.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "icann-rdap.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "icann-rdap" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "icann-rdap-\*" -exec mv {} "$SBUILD_OUTDIR/icann-rdap" \; || \
+    mv "$SBUILD_TMPDIR/icann-rdap" "$SBUILD_OUTDIR/icann-rdap"
+    rm -rf "icann-rdap.tar.gz"

@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kalker/static.stable.yaml
+_disabled: false
+
+pkg: "kalker"
+pkg_id: "github.com.PaddiM8.kalker"
+pkg_type: "static"
+ghcr_pkg: "PaddiM8/kalker"
+category:
+  - "ConsoleOnly"
+description: "Calculator with Math syntax that supports user-defined variables and functions, Complex numbers, and estimation of Derivatives and Integrals"
+homepage:
+  - "https://kalker.xyz"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+note:
+  - "Official binary from https://github.com/PaddiM8/kalker"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kalker"
+repology:
+  - "kalker"
+src_url:
+  - "https://github.com/PaddiM8/kalker"
+tag:
+  - "calculator"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/PaddiM8/kalker/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/PaddiM8/kalker"
+        cd kalker
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/kalker
+        cp kalker /output/
+      '
+    cp "$SBUILD_TMPDIR/kalker" "$SBUILD_OUTDIR/"
+    strip kalker

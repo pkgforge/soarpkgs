@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/headless-terminal/static.stable.yaml
+_disabled: false
+
+pkg: "headless-terminal"
+pkg_id: "github.com.andyk.ht"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "andyk/ht"
+category:
+  - "Development"
+  - "Utility"
+description: "Headless Terminal (ht) - wrap any binary with a terminal interface for easy programmatic access"
+homepage:
+  - "https://github.com/andyk/ht"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/andyk/ht/master/LICENSE"
+note:
+  - "Official binary from https://github.com/andyk/ht"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "headless-terminal"
+src_url:
+  - "https://github.com/andyk/ht"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/andyk/ht/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/andyk/ht@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o headless-terminal.tar.gz || \
+    soar dl "https://github.com/andyk/ht@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o headless-terminal.tar.gz || \
+    soar dl "https://github.com/andyk/ht@v${PKGVER}" --glob "*${ARCH}*" --yes -o headless-terminal.tar.gz
+    tar -xf "headless-terminal.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "headless-terminal.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "headless-terminal" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "headless-terminal-\*" -exec mv {} "$SBUILD_OUTDIR/headless-terminal" \; || \
+    mv "$SBUILD_TMPDIR/headless-terminal" "$SBUILD_OUTDIR/headless-terminal"
+    rm -rf "headless-terminal.tar.gz"

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kimitzu-client/static.stable.yaml
+_disabled: false
+
+pkg: "kimitzu-client"
+pkg_id: "kimitzu/kimitzu-client"
+pkg_type: "static"
+ghcr_pkg: "kimitzu/kimitzu-client"
+category:
+  - "Utility"
+description: "A web client that interfaces with Kimitzu-Go and Kimitzu-Services"
+homepage:
+  - "https://github.com/kimitzu/kimitzu-client"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: ""Mozilla"
+    url: "https://github.com/kimitzu/kimitzu-client/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/kimitzu/kimitzu-client"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kimitzu-client"
+repology:
+  - "kimitzu-client"
+src_url:
+  - "https://github.com/kimitzu/kimitzu-client"
+tag:
+  - utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kimitzu/kimitzu-client/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kimitzu/kimitzu-client" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kimitzu/kimitzu-client" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

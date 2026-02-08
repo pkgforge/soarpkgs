@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/arc/static.stable.yaml
+_disabled: false
+
+pkg: "arc"
+pkg_id: "github.com.avs-origami.arc"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "avs-origami/arc"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tiny package manager for Linux"
+homepage:
+  - "https://avs-origami.github.io/projects/arc/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/avs-origami/arc/raw/c8a77566e37b49a8910634f668291ef1e2ce0902/license"
+note:
+  - "Official binary from https://github.com/avs-origami/arc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "arc"
+src_url:
+  - "https://github.com/avs-origami/arc"
+tag:
+  - "package-manager"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/avs-origami/arc" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/avs-origami/arc@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o arc.zip
+    7z x "arc.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/arc" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "arc.zip"

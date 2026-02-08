@@ -1,0 +1,56 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cfssl/static.stable.yaml
+_disabled: false
+
+pkg: "cfssl"
+pkg_id: "cloudflare.cfssl"
+pkg_type: "static"
+pkgver: "1.6.5"
+ghcr_pkg: "cloudflare/cfssl"
+category:
+  - "Utility"
+  - "Security"
+description: "Cloudflare's PKI and TLS toolkit"
+homepage:
+  - "https://github.com/cloudflare/cfssl"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD-2-Clause"
+    url: "https://raw.githubusercontent.com/cloudflare/cfssl/master/LICENSE"
+note:
+  - "Official binary from https://github.com/cloudflare/cfssl"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cfssl"
+  - "cfssl-bundle"
+  - "cfssl-certinfo"
+  - "cfssl-newkey"
+  - "cfssl-scan"
+  - "cfssljson"
+  - "mkbundle"
+  - "multirootca"
+repology:
+  - "cfssl"
+src_url:
+  - "https://github.com/cloudflare/cfssl"
+tag:
+  - "tls"
+  - "pki"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cloudflare/cfssl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    for bin in cfssl cfssl-bundle cfssl-certinfo cfssl-newkey cfssl-scan cfssljson mkbundle multirootca; do
+      soar dl "https://github.com/cloudflare/cfssl@${PKGVER}" --glob "${bin}*linux*${ARCH}*" --yes -o "$SBUILD_OUTDIR/${bin}"
+    done

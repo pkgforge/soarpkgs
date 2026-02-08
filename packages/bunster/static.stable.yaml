@@ -1,0 +1,53 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bunster/static.stable.yaml
+_disabled: false
+
+pkg: "bunster"
+pkg_id: "github.com.yassinebenaid.bunster.source"
+pkg_type: "static"
+ghcr_pkg: "yassinebenaid/bunster"
+category:
+  - "ConsoleOnly"
+description: "Compile shell scripts to static binaries"
+homepage:
+  - "https://bunster.netlify.app"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://github.com/yassinebenaid/bunster/raw/14b05b232fd8c324c4f565abf02881bc00fa45cb/LICENSE"
+note:
+  - "Official binary from https://github.com/yassinebenaid/bunster"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bunster"
+repology:
+  - "bunster"
+src_url:
+  - "https://github.com/yassinebenaid/bunster"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/yassinebenaid/bunster/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/yassinebenaid/bunster" \
+        cd bunster \
+        git checkout "v$PKGVER" \
+        CGO_ENABLED=1 GOOS=linux GOARCH="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')" \
+        go build -trimpath -ldflags="-s -w -buildid=" -o /output/bunster \
+      \' \
+    cp "$SBUILD_TMPDIR/bunster" "$SBUILD_OUTDIR/" \
+    strip bunster

@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/scilla/static.stable.yaml
+_disabled: false
+
+pkg: "scilla"
+pkg_id: "github.com.edoardottt.scilla"
+pkg_type: "static"
+category:
+  - ""
+description: "DNS, subdomain, port, directory enumeration tool"
+homepage:
+  - "  - https://github.com/edoardottt/scilla"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/edoardottt/scilla/master/LICENSE"
+note:
+  - "Official binary from https://github.com/edoardottt/scilla"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "scilla"
+src_url:
+  - "https://github.com/edoardottt/scilla"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/edoardottt/scilla/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/edoardottt/scilla@v${PKGVER}" --glob "scilla_linux_${ARCH}.tar.gz" --yes -o scilla.tar.gz
+    tar -xf "scilla.tar.gz" -C "/"
+    mv "/scilla" "/$PKG"
+    rm -rf "scilla.tar.gz"

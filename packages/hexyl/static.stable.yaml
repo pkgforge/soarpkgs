@@ -1,0 +1,61 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/hexyl/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "hexyl"
+pkg_id: "sharkdp.hexyl"
+pkgver: "0.15.0"
+pkg_type: "static"
+ghcr_pkg: "sharkdp/hexyl"
+category:
+  - "Utility"
+  - "Development"
+description: "A command-line hex viewer"
+homepage:
+  - "https://github.com/sharkdp/hexyl"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/sharkdp/hexyl/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hexyl"
+repology:
+  - "hexyl"
+src_url:
+  - "https://github.com/sharkdp/hexyl"
+tag:
+  - "hex"
+  - "hexdump"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharkdp/hexyl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/sharkdp/hexyl"
+        cd hexyl
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/hexyl" /output/hexyl
+        cp LICENSE /output/LICENSE 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/hexyl" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true

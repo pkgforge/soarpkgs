@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/keyboardclient/static.stable.yaml
+_disabled: false
+
+pkg: "keyboardclient"
+pkg_id: "chrisandreae/keyboard-firmware"
+pkg_type: "static"
+ghcr_pkg: "chrisandreae/keyboard-firmware"
+category:
+  - "Utility"
+description: "Replacement firmware for various keyboards (Kinesis, Ergodox) using an Atmel AVR microcontroller"
+homepage:
+  - "https://github.com/chrisandreae/keyboard-firmware"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/chrisandreae/keyboard-firmware/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/chrisandreae/keyboard-firmware"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "keyboardclient"
+repology:
+  - "keyboardclient"
+src_url:
+  - "https://github.com/chrisandreae/keyboard-firmware"
+tag:
+  - utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/chrisandreae/keyboard-firmware/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/chrisandreae/keyboard-firmware" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/chrisandreae/keyboard-firmware" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/httpstat/static.stable.yaml
+_disabled: false
+
+pkg: "httpstat"
+pkg_id: "github.com.davecheney.httpstat.source"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "davecheney/httpstat/source"
+category:
+  - "Development"
+  - "Utility"
+description: "Visualize cURL statistics"
+homepage:
+  - "https://github.com/davecheney/httpstat/source"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/davecheney/httpstat/source/master/LICENSE"
+note:
+  - "Official binary from https://github.com/davecheney/httpstat/source"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "httpstat"
+src_url:
+  - "https://github.com/davecheney/httpstat/source"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/davecheney/httpstat/source/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/davecheney/httpstat/source@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o httpstat.tar.gz || \
+    soar dl "https://github.com/davecheney/httpstat/source@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o httpstat.tar.gz || \
+    soar dl "https://github.com/davecheney/httpstat/source@v${PKGVER}" --glob "*${ARCH}*" --yes -o httpstat.tar.gz
+    tar -xf "httpstat.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "httpstat.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "httpstat" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "httpstat-\*" -exec mv {} "$SBUILD_OUTDIR/httpstat" \; || \
+    mv "$SBUILD_TMPDIR/httpstat" "$SBUILD_OUTDIR/httpstat"
+    rm -rf "httpstat.tar.gz"

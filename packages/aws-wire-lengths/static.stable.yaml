@@ -1,0 +1,56 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/aws-wire-lengths/static.stable.yaml
+_disabled: false
+
+pkg: "aws-wire-lengths"
+pkg_id: "github.com.oxidecomputer.aws-wire-lengths"
+pkg_type: "static"
+ghcr_pkg: "oxidecomputer/aws-wire-lengths"
+category:
+  - "ConsoleOnly"
+description: "Simple command line for various AWS management tasks"
+homepage:
+  - "https://github.com/oxidecomputer/aws-wire-lengths"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MPL-2.0"
+    url: "https://github.com/oxidecomputer/aws-wire-lengths/raw/392bb8af0dde3ac2c753068be73594d49a597ae5/LICENSE"
+note:
+  - "Official binary from https://github.com/oxidecomputer/aws-wire-lengths"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "aws-wire-lengths"
+repology:
+  - "aws-wire-lengths"
+src_url:
+  - "https://github.com/oxidecomputer/aws-wire-lengths"
+tag:
+  - "aws"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/oxidecomputer/aws-wire-lengths/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        source "$HOME/.cargo/env" \
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl" \
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes" \
+        git clone --filter=blob:none --quiet "https://github.com/oxidecomputer/aws-wire-lengths" \
+        cd aws-wire-lengths \
+        git checkout "v$PKGVER" \
+        cargo build --target="$RUST_TARGET" --release \
+        cp "target/$RUST_TARGET/release/aws-wire-lengths" /output/aws-wire-lengths \
+      \' \
+    cp "$SBUILD_TMPDIR/aws-wire-lengths" "$SBUILD_OUTDIR/" \
+    strip aws-wire-lengths

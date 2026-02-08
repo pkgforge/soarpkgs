@@ -1,0 +1,69 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kubo/static.stable.yaml
+_disabled: false
+
+pkg: "kubo"
+pkg_id: "ipfs.kubo"
+pkg_type: "static"
+ghcr_pkg: "ipfs/kubo"
+category:
+  - "Utility"
+  - "Network"
+description: "Official InterPlanetary File System (IPFS) CLI"
+homepage:
+  - "https://ipfs.io"
+  - "https://docs.ipfs.tech"
+  - "https://github.com/ipfs/kubo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/ipfs/kubo/raw/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ipfswatch"
+  - "kubo"
+repology:
+  - "kubo"
+src_url:
+  - "https://github.com/ipfs/kubo"
+tag:
+  - "ipfs"
+  - "p2p"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ipfs/kubo/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env" 2>/dev/null || true
+        export GOARCH="'$ARCH'"
+        export GOOS="linux"
+        export CGO_ENABLED="1"
+        export CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+        git clone --filter=blob:none --quiet "https://github.com/ipfs/kubo"
+        cd kubo
+        git checkout "v$PKGVER"
+        go mod tidy -v
+        go build -C "./cmd/ipfs" -trimpath -buildmode=pie -ldflags="-s -w -buildid=" -o /output/kubo
+        go build -C "./cmd/ipfswatch" -trimpath -buildmode=pie -ldflags="-s -w -buildid=" -o /output/ipfswatch
+      '
+    cp "$SBUILD_TMPDIR/kubo" "$SBUILD_TMPDIR/ipfswatch" "$SBUILD_OUTDIR/"
+    strip kubo ipfswatch

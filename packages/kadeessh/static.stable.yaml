@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kadeessh/static.stable.yaml
+_disabled: false
+
+pkg: "kadeessh"
+pkg_id: "github.com.kadeessh.kadeessh"
+pkg_type: "static"
+ghcr_pkg: "kadeessh/kadeessh"
+category:
+  - "ConsoleOnly"
+description: "A general-purpose, extensible, modular, memory-safe SSH server"
+homepage:
+  - "https://github.com/kadeessh/kadeessh"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"
+note:
+  - "Official binary from https://github.com/kadeessh/kadeessh"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kadeessh"
+repology:
+  - "kadeessh"
+src_url:
+  - "https://github.com/kadeessh/kadeessh"
+tag:
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kadeessh/kadeessh/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/kadeessh/kadeessh@v${PKGVER}" --glob "kadeessh_linux_${ARCH}*" --yes -o kadeessh.tar.gz
+    tar -xf "kadeessh.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/kadeessh" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "kadeessh.tar.gz"

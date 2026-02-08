@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/imagemagick/static.stable.yaml
+_disabled: false
+
+pkg: "imagemagick"
+pkg_id: "github.com.imagemagick.linux"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "imagemagick/linux"
+category:
+  - "Development"
+  - "Utility"
+description: "A software suite to create, edit, compose, or convert bitmap images"
+homepage:
+  - "https://github.com/imagemagick/linux"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/imagemagick/linux/master/LICENSE"
+note:
+  - "Official binary from https://github.com/imagemagick/linux"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "imagemagick"
+src_url:
+  - "https://github.com/imagemagick/linux"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/imagemagick/linux/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/imagemagick/linux@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o imagemagick.tar.gz || \
+    soar dl "https://github.com/imagemagick/linux@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o imagemagick.tar.gz || \
+    soar dl "https://github.com/imagemagick/linux@v${PKGVER}" --glob "*${ARCH}*" --yes -o imagemagick.tar.gz
+    tar -xf "imagemagick.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "imagemagick.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "imagemagick" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "imagemagick-\*" -exec mv {} "$SBUILD_OUTDIR/imagemagick" \; || \
+    mv "$SBUILD_TMPDIR/imagemagick" "$SBUILD_OUTDIR/imagemagick"
+    rm -rf "imagemagick.tar.gz"

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/beszel/static.stable.yaml
+_disabled: false
+
+pkg: "beszel"
+pkg_id: "github.com.henrygd.beszel.stable"
+pkg_type: "static"
+ghcr_pkg: "henrygd/beszel"
+category:
+  - "ConsoleOnly"
+description: "Lightweight server monitoring hub with historical data, docker stats, and alerts"
+homepage:
+  - "https://github.com/henrygd/beszel"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/henrygd/beszel/raw/2ef1fe6b2afa9cd71f9bd540df4c70f77306de40/LICENSE"
+note:
+  - "Official binary from https://github.com/henrygd/beszel"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "beszel"
+repology:
+  - "beszel"
+src_url:
+  - "https://github.com/henrygd/beszel"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/henrygd/beszel/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/henrygd/beszel@v${PKGVER}" --glob "*beszel*" --yes -o beszel.tar.gz \
+    tar -xf "beszel.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/beszel" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "beszel.tar.gz"

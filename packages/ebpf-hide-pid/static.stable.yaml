@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ebpf-hide-pid/static.stable.yaml
+_disabled: false
+
+pkg: "ebpf-hide-pid"
+pkg_id: "github.com.Acceis.eBPF-hide-PID"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "Acceis/eBPF-hide-PID"
+category:
+  - "Utility"
+description: "Hide any PID/Directory in the Linux kernel"
+homepage:
+  - "https://github.com/Acceis/eBPF-hide-PID"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/Acceis/eBPF-hide-PID/master/LICENSE"
+note:
+  - "Official binary from https://github.com/Acceis/eBPF-hide-PID"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ebpf-hide-pid"
+src_url:
+  - "https://github.com/Acceis/eBPF-hide-PID"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Acceis/eBPF-hide-PID/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/Acceis/eBPF-hide-PID@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o ebpf-hide-pid.tar.gz
+    tar -xf "ebpf-hide-pid.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "ebpf-hide-pid" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "ebpf-hide-pid.tar.gz"

@@ -1,0 +1,58 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/atuin/static.stable.yaml
+_disabled: false
+
+pkg: "atuin"
+pkg_id: "github.com.atuinsh.atuin"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "atuinsh/atuin"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Sync, search and backup tool for shell history"
+homepage:
+  - "https://atuin.sh"
+  - "https://crates.io/crates/atuin"
+  - "https://github.com/atuinsh/atuin"
+  - "https://github.com/ellie/atuin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/atuinsh/atuin/raw/f40fb1796f20c9c02b36e794fadd73786acc8da7/LICENSE"
+note:
+  - "Official binary from https://github.com/atuinsh/atuin"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "atuin"
+repology:
+  - "atuin"
+src_url:
+  - "https://github.com/atuinsh/atuin"
+tag:
+  - "app-shells"
+  - "shells"
+  - "System/Console"
+  - "sysutils"
+  - "utils"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/atuinsh/atuin" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/atuinsh/atuin@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o atuin.zip
+    7z x "atuin.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/atuin" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "atuin.zip"

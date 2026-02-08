@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/i2pd/static.stable.yaml
+_disabled: false
+
+pkg: "i2pd"
+pkg_id: "github.com.PurpleI2P.i2pd"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "PurpleI2P/i2pd"
+category:
+  - "Development"
+  - "Utility"
+description: "I2P daemon written in C++"
+homepage:
+  - "https://github.com/PurpleI2P/i2pd"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/PurpleI2P/i2pd/master/LICENSE"
+note:
+  - "Official binary from https://github.com/PurpleI2P/i2pd"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "i2pd"
+src_url:
+  - "https://github.com/PurpleI2P/i2pd"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/PurpleI2P/i2pd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/PurpleI2P/i2pd@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o i2pd.tar.gz || \
+    soar dl "https://github.com/PurpleI2P/i2pd@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o i2pd.tar.gz || \
+    soar dl "https://github.com/PurpleI2P/i2pd@v${PKGVER}" --glob "*${ARCH}*" --yes -o i2pd.tar.gz
+    tar -xf "i2pd.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "i2pd.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "i2pd" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "i2pd-\*" -exec mv {} "$SBUILD_OUTDIR/i2pd" \; || \
+    mv "$SBUILD_TMPDIR/i2pd" "$SBUILD_OUTDIR/i2pd"
+    rm -rf "i2pd.tar.gz"

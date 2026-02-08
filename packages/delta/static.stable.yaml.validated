@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/delta/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "delta"
+pkg_id: "dandavison.delta"
+pkg_type: "static"
+pkgver: "0.18.2"
+ghcr_pkg: "dandavison/delta"
+category:
+  - "Development"
+  - "Utility"
+description: "A syntax-highlighting pager for git, diff, grep, and blame output"
+homepage:
+  - "https://github.com/dandavison/delta"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/dandavison/delta/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "delta"
+repology:
+  - "git-delta"
+src_url:
+  - "https://github.com/dandavison/delta"
+tag:
+  - "diff"
+  - "git"
+  - "pager"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dandavison/delta/releases/latest" | jq -r '.tag_name'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        export CFLAGS="-Wno-incompatible-pointer-types"
+        git clone --filter=blob:none --quiet "https://github.com/dandavison/delta"
+        cd delta
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/delta" /output/delta
+      '
+    cp "$SBUILD_TMPDIR/delta" "$SBUILD_OUTDIR/"
+    strip "$SBUILD_OUTDIR/delta"

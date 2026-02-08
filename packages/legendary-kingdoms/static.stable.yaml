@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/legendary-kingdoms/static.stable.yaml
+_disabled: false
+
+pkg: "legendary-kingdoms"
+pkg_id: "daelsepara/legendary-kingdoms"
+pkg_type: "static"
+ghcr_pkg: "daelsepara/legendary-kingdoms"
+category:
+  - "Utility"
+description: "An Implementation of Legendary Kingdoms gamebook series in C++ and SDL. Only book 1, The Valley of Bones has been implemented as of now."
+homepage:
+  - "https://github.com/daelsepara/legendary-kingdoms"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: ""GNU"
+    url: "https://github.com/daelsepara/legendary-kingdoms/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/daelsepara/legendary-kingdoms"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "legendary-kingdoms"
+repology:
+  - "legendary-kingdoms"
+src_url:
+  - "https://github.com/daelsepara/legendary-kingdoms"
+tag:
+  - computer-games
+  - crpg
+  - game
+  - gamebook
+  - gamebooks
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/daelsepara/legendary-kingdoms/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/daelsepara/legendary-kingdoms" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/daelsepara/legendary-kingdoms" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

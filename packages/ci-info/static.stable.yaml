@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ci-info/static.stable.yaml
+_disabled: false
+
+pkg: "ci-info"
+pkg_id: "suzuki-shunsuke/ci-info/stable"
+pkg_type: "static"
+ghcr_pkg: "suzuki-shunsuke/ci-info"
+category:
+  - "Utility"
+description: "CLI tool to get CI related information"
+homepage:
+  - "https://github.com/suzuki-shunsuke/ci-info"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/suzuki-shunsuke/ci-info/raw/9b942d7ef3dd024403e4fa71e3c30db000263e0f/LICENSE"
+note:
+  - "Official binary from https://github.com/suzuki-shunsuke/ci-info"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ci-info"
+src_url:
+  - "https://github.com/suzuki-shunsuke/ci-info"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/suzuki-shunsuke/ci-info/stable/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/suzuki-shunsuke/ci-info/stable@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o ci-info.zip
+    7z x "ci-info.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/ci-info" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "ci-info.zip"

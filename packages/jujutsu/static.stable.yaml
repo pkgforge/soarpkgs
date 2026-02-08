@@ -1,0 +1,58 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jujutsu/static.stable.yaml
+_disabled: false
+
+pkg: "jujutsu"
+pkg_id: "github.com.martinvonz.jj"
+pkg_type: "static"
+ghcr_pkg: "jj-vcs/jj"
+category:
+  - "ConsoleOnly"
+description: "Jujutsu is a Git-compatible DVCS that is both simple and powerful"
+homepage:
+  - "https://jj-vcs.github.io/jj"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache"
+note:
+  - "Official binary from https://github.com/jj-vcs/jj"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "jujutsu"
+repology:
+  - "jujutsu"
+src_url:
+  - "https://github.com/jj-vcs/jj"
+tag:
+  - "git"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/jj-vcs/jj/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/jj-vcs/jj"
+        cd jj
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/jujutsu
+        cp jujutsu /output/
+      '
+    cp "$SBUILD_TMPDIR/jujutsu" "$SBUILD_OUTDIR/"
+    strip jujutsu

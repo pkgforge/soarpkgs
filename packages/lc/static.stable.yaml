@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lc/static.stable.yaml
+_disabled: false
+
+pkg: "lc"
+pkg_id: "github.com.wgpsec.lc.source"
+pkg_type: "static"
+ghcr_pkg: "wgpsec/lc"
+category:
+  - "ConsoleOnly"
+description: "List Publicly Accessible Cloud Assets"
+homepage:
+  - "https://github.com/wgpsec/lc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/wgpsec/lc/raw/6b0eafd5eb0d22245a3fc954ba5a037be14fb5d2/LICENSE"
+note:
+  - "Official binary from https://github.com/wgpsec/lc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "lc"
+repology:
+  - "lc"
+src_url:
+  - "https://github.com/wgpsec/lc"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/wgpsec/lc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/wgpsec/lc"
+        cd lc
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/lc
+        cp lc /output/
+      '
+    cp "$SBUILD_TMPDIR/lc" "$SBUILD_OUTDIR/"
+    strip lc

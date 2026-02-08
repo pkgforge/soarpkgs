@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/s3scanner/static.stable.yaml
+_disabled: false
+
+pkg: "s3scanner"
+pkg_id: "github.com.sa7mon.S3Scanner"
+pkg_type: "static"
+category:
+  - ""
+description: "A tool to find open S3 buckets in AWS or other cloud providers"
+homepage:
+  - "  - https://github.com/sa7mon/S3Scanner"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/sa7mon/S3Scanner/master/LICENSE"
+note:
+  - "Official binary from https://github.com/sa7mon/S3Scanner"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "s3scanner"
+src_url:
+  - "https://github.com/sa7mon/S3Scanner"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sa7mon/S3Scanner/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/sa7mon/S3Scanner@v${PKGVER}" --glob "s3scanner_linux_${ARCH}.tar.gz" --yes -o s3scanner.tar.gz
+    tar -xf "s3scanner.tar.gz" -C "/"
+    mv "/s3scanner" "/$PKG"
+    rm -rf "s3scanner.tar.gz"

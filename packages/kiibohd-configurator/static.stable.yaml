@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kiibohd-configurator/static.stable.yaml
+_disabled: false
+
+pkg: "kiibohd-configurator"
+pkg_id: "kiibohd/configurator"
+pkg_type: "static"
+ghcr_pkg: "kiibohd/configurator"
+category:
+  - "Utility"
+description: "Client-side component of the configurator"
+homepage:
+  - "https://github.com/kiibohd/configurator"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL"
+    url: "https://github.com/kiibohd/configurator/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/kiibohd/configurator"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kiibohd-configurator"
+repology:
+  - "kiibohd-configurator"
+src_url:
+  - "https://github.com/kiibohd/configurator"
+tag:
+  - boot
+  - clojure
+  - electron
+  - keyboard
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/kiibohd/configurator/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/kiibohd/configurator" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/kiibohd/configurator" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

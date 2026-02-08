@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/langly/static.stable.yaml
+_disabled: false
+
+pkg: "langly"
+pkg_id: "christofferok/langly"
+pkg_type: "static"
+ghcr_pkg: "christofferok/langly"
+category:
+  - "Utility"
+description: "Manage JSON language files in Laravel"
+homepage:
+  - "https://github.com/christofferok/langly"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: ""MIT"
+    url: "https://github.com/christofferok/langly/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/christofferok/langly"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "langly"
+repology:
+  - "langly"
+src_url:
+  - "https://github.com/christofferok/langly"
+tag:
+  - electron
+  - json
+  - laravel
+  - localization
+  - nodejs
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/christofferok/langly/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/christofferok/langly" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/christofferok/langly" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

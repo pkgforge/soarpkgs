@@ -1,0 +1,37 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/firejail/static.stable.yaml
+_disabled: false
+
+pkg: "firejail"
+pkg_id: "github.com.netblue30.firejail"
+pkg_type: "static"
+ghcr_pkg: "netblue30/firejail"
+category:
+  - "ConsoleOnly"
+description: "Linux namespaces and seccomp-bpf sandbox Tools"
+homepage:
+  - "https://firejail.wordpress.com"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - id: "MIT"
+    url: "https://github.com/aptly-dev/aptly/raw/90343b21d3199e097f6a31803ec3fbfbe1471723/LICENSE"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "aptly"
+repology:
+  - "firejail"
+src_url:
+  - "https://github.com/netblue30/firejail"
+tag:
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/netblue30/firejail/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #!/usr/bin/env bash

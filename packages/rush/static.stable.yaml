@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rush/static.stable.yaml
+_disabled: false
+
+pkg: "rush"
+pkg_id: "github.com.shenwei356.rush"
+pkg_type: "static"
+category:
+  - ""
+description: "A cross-platform command-line tool for executing jobs in parallel"
+homepage:
+  - "  - https://github.com/shenwei356/rush"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/shenwei356/rush/master/LICENSE"
+note:
+  - "Official binary from https://github.com/shenwei356/rush"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "rush"
+src_url:
+  - "https://github.com/shenwei356/rush"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/shenwei356/rush/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/shenwei356/rush@v${PKGVER}" --glob "rush_linux_${ARCH}.tar.gz" --yes -o rush.tar.gz
+    tar -xf "rush.tar.gz" -C "/"
+    mv "/rush" "/$PKG"
+    rm -rf "rush.tar.gz"

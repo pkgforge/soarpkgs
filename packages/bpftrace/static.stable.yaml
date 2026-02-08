@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bpftrace/static.stable.yaml
+_disabled: false
+
+pkg: "bpftrace"
+pkg_id: "github.com.bpftrace.bpftrace"
+pkg_type: "static"
+ghcr_pkg: "bpftrace/bpftrace"
+category:
+  - "ConsoleOnly"
+description: "High-level tracing language & tool for Linux"
+homepage:
+  - "https://github.com/bpftrace/bpftrace"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+note:
+  - "Official binary from https://github.com/bpftrace/bpftrace"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bpftrace"
+repology:
+  - "bpftrace"
+src_url:
+  - "https://github.com/bpftrace/bpftrace"
+tag:
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bpftrace/bpftrace/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/bpftrace/bpftrace@v${PKGVER}" --glob "*bpftrace*" --yes -o bpftrace.tar.gz \
+    tar -xf "bpftrace.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bpftrace" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bpftrace.tar.gz"

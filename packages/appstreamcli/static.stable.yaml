@@ -1,0 +1,51 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/appstreamcli/static.stable.yaml
+_disabled: false
+
+pkg: "appstreamcli"
+pkg_id: "github.com.probonopd.static-tools"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "probonopd/static-tools"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tool to work with AppStream metadata"
+homepage:
+  - "https://github.com/ximion/appstream"
+  - "https://distributions.freedesktop.org/wiki/AppStream"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "LGPL-2.1"
+    url: "https://github.com/ximion/appstream/raw/916873e8a6b3f4b1b68f802afcbb466d864a65cc/COPYING"
+note:
+  - "Official binary from https://github.com/probonopd/static-tools"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "appstreamcli"
+repology:
+  - "appstreamcli"
+src_url:
+  - "https://github.com/probonopd/static-tools"
+tag:
+  - "desktop"
+  - "desktop-util"
+  - "System/Tools"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        curl -qfsSL "https://raw.githubusercontent.com/probonopd/static-tools/refs/heads/master/build.sh" | grep -oP '(?<=ximion/appstream/archive/)v\d+\.\d+\.\d+(?=\.tar\.gz)' | tr -d '[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/probonopd/static-tools@continuous" --glob "*linux_${ARCH}*" --yes -o appstreamcli.zip
+    7z x "appstreamcli.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/appstreamcli" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "appstreamcli.zip"

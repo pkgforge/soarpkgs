@@ -1,0 +1,62 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/reviewdog/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "reviewdog"
+pkg_id: "reviewdog.reviewdog"
+pkgver: "0.1.0"
+pkg_type: "static"
+ghcr_pkg: "reviewdog/reviewdog"
+category:
+  - "Development"
+  - "Utility"
+description: "Automated code review tool"
+homepage:
+  - "https://github.com/reviewdog/reviewdog"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/reviewdog/reviewdog/raw/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "reviewdog"
+repology:
+  - "reviewdog"
+src_url:
+  - "https://github.com/reviewdog/reviewdog"
+tag:
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/reviewdog/reviewdog/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        export CGO_ENABLED=1
+        export CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+        export GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")"
+        export GOOS="linux"
+        git clone --filter=blob:none --quiet "https://github.com/reviewdog/reviewdog"
+        cd reviewdog
+        git checkout "$PKGVER"
+        go mod tidy -v
+        go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w" -o "/output/reviewdog"
+        cp LICENSE* /output/ 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/reviewdog" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE"* "$SBUILD_OUTDIR/" 2>/dev/null || true

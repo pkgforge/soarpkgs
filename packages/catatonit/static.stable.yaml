@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/catatonit/static.stable.yaml
+_disabled: false
+
+pkg: "catatonit"
+pkg_id: "openSUSE.catatonit"
+pkg_type: "static"
+pkgver: "0.2.0"
+ghcr_pkg: "openSUSE/catatonit"
+category:
+  - "Utility"
+  - "System"
+description: "A container init that is so simple its effectively brain-dead"
+homepage:
+  - "https://github.com/openSUSE/catatonit"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://raw.githubusercontent.com/openSUSE/catatonit/master/COPYING"
+note:
+  - "Official binary from https://github.com/openSUSE/catatonit"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "catatonit"
+repology:
+  - "catatonit"
+src_url:
+  - "https://github.com/openSUSE/catatonit"
+tag:
+  - "container"
+  - "init"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/openSUSE/catatonit/releases/latest" | jq -r '.tag_name'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/openSUSE/catatonit@${PKGVER}" --glob "*catatonit*linux*${ARCH}*" --yes -o catatonit.tar.gz
+    tar -xf "catatonit.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "catatonit" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "catatonit.tar.gz"

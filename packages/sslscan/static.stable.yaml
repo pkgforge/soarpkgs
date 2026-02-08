@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/sslscan/static.stable.yaml
+_disabled: false
+
+pkg: "sslscan"
+pkg_id: "github.com.rbsec.sslscan"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "rbsec/sslscan"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/rbsec/sslscan"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/rbsec/sslscan/main/LICENSE"
+note:
+  - "Official binary from https://github.com/rbsec/sslscan"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "sslscan"
+src_url:
+  - "https://github.com/rbsec/sslscan"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/rbsec/sslscan/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/rbsec/sslscan@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o sslscan.tar.gz ||     soar dl "https://github.com/rbsec/sslscan@v${PKGVER}" --glob "*${ARCH}*" --yes -o sslscan.tar.gz ||     soar dl "https://github.com/rbsec/sslscan@v${PKGVER}" --glob "*linux*" --yes -o sslscan.tar.gz
+    tar -xf "sslscan.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "sslscan*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/sslscan" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/sslscan" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "sslscan.tar.gz"

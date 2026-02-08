@@ -1,0 +1,44 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cirrus-cli/static.stable.yaml
+_disabled: false
+
+pkg: "cirrus-cli"
+pkg_id: "cirruslabs/cirrus-cli/stable"
+pkg_type: "static"
+ghcr_pkg: "cirruslabs/cirrus-cli"
+category:
+  - "Utility"
+description: "CLI for executing Cirrus tasks locally and in any CI"
+homepage:
+  - "https://github.com/cirruslabs/cirrus-cli"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "AGPL-3.0"
+    url: "https://github.com/cirruslabs/cirrus-cli/raw/c851023d91eb0038c30e161584a6afa57116282c/LICENSE"
+note:
+  - "Official binary from https://github.com/cirruslabs/cirrus-cli"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cirrus-cli"
+src_url:
+  - "https://github.com/cirruslabs/cirrus-cli"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cirruslabs/cirrus-cli/stable/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/cirruslabs/cirrus-cli/stable@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cirrus-cli.zip
+    7z x "cirrus-cli.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cirrus-cli" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cirrus-cli.zip"

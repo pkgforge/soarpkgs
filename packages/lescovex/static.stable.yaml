@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/lescovex/static.stable.yaml
+_disabled: false
+
+pkg: "lescovex"
+pkg_id: "Lescovex/LSCX"
+pkg_type: "static"
+ghcr_pkg: "Lescovex/LSCX"
+category:
+  - "Utility"
+description: "Lescovex DEX , Contracts & Blockchain Certification Authority"
+homepage:
+  - "https://github.com/Lescovex/LSCX"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/Lescovex/LSCX/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/Lescovex/LSCX"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "lescovex"
+repology:
+  - "lescovex"
+src_url:
+  - "https://github.com/Lescovex/LSCX"
+tag:
+  - utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Lescovex/LSCX/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Lescovex/LSCX" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Lescovex/LSCX" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

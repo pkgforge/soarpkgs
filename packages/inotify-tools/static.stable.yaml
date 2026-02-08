@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/inotify-tools/static.stable.yaml
+_disabled: false
+
+pkg: "inotify-tools"
+pkg_id: "github.com.inotify-tools.inotify-tools"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "inotify-tools/inotify-tools"
+category:
+  - "Development"
+  - "Utility"
+description: "Command-line programs providing a simple interface to inotify"
+homepage:
+  - "https://github.com/inotify-tools/inotify-tools"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/inotify-tools/inotify-tools/master/LICENSE"
+note:
+  - "Official binary from https://github.com/inotify-tools/inotify-tools"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "inotify-tools"
+src_url:
+  - "https://github.com/inotify-tools/inotify-tools"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/inotify-tools/inotify-tools/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/inotify-tools/inotify-tools@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o inotify-tools.tar.gz || \
+    soar dl "https://github.com/inotify-tools/inotify-tools@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o inotify-tools.tar.gz || \
+    soar dl "https://github.com/inotify-tools/inotify-tools@v${PKGVER}" --glob "*${ARCH}*" --yes -o inotify-tools.tar.gz
+    tar -xf "inotify-tools.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "inotify-tools.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "inotify-tools" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "inotify-tools-\*" -exec mv {} "$SBUILD_OUTDIR/inotify-tools" \; || \
+    mv "$SBUILD_TMPDIR/inotify-tools" "$SBUILD_OUTDIR/inotify-tools"
+    rm -rf "inotify-tools.tar.gz"

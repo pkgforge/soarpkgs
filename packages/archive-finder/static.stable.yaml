@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/archive-finder/static.stable.yaml
+_disabled: false
+
+pkg: "archive-finder"
+pkg_id: "github.com.dsecuredcom.archive-finder.source"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "dsecuredcom/archive-finder"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Scan a list of hosts to locate potential archive files (.zip, .tar, .rar, etc.)"
+homepage:
+  - "https://github.com/dsecuredcom/archive-finder"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/dsecuredcom/archive-finder/raw/add7428fb9f3f764572ebbeed5cf143ce616783c/LICENSE.md"
+note:
+  - "Official binary from https://github.com/dsecuredcom/archive-finder"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "archive-finder"
+src_url:
+  - "https://github.com/dsecuredcom/archive-finder"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/dsecuredcom/archive-finder" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/dsecuredcom/archive-finder@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o archive-finder.zip
+    7z x "archive-finder.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/archive-finder" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "archive-finder.zip"

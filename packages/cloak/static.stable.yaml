@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cloak/static.stable.yaml
+_disabled: false
+
+pkg: "cloak"
+pkg_id: "cbeuw/Cloak"
+pkg_type: "static"
+ghcr_pkg: "cbeuw/Cloak"
+category:
+  - "Utility"
+description: "A censorship circumvention tool to evade detection by authoritarian state adversaries"
+homepage:
+  - "https://github.com/cbeuw/Cloak"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/cbeuw/Cloak/raw/d229d8b3dc0e026680c035d2b4a4d7af799557b3/LICENSE"
+note:
+  - "Official binary from https://github.com/cbeuw/Cloak"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cloak"
+src_url:
+  - "https://github.com/cbeuw/Cloak"
+tag:
+  - "censorship"
+  - "gfw"
+  - "proxy"
+  - "socks"
+  - "tor"
+  - "vpn"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cbeuw/Cloak/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/cbeuw/Cloak@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cloak.zip
+    7z x "cloak.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cloak" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cloak.zip"

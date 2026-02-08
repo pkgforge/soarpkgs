@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/shellcheck/static.stable.yaml
+_disabled: false
+
+pkg: "shellcheck"
+pkg_id: "koalaman.shellcheck"
+pkg_type: "static"
+pkgver: "0.10.8"
+ghcr_pkg: "koalaman/shellcheck"
+category:
+  - "Utility"
+  - "Development"
+description: "Shell script analysis tool"
+homepage:
+  - "https://github.com/koalaman/shellcheck"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://raw.githubusercontent.com/koalaman/shellcheck/master/LICENSE"
+note:
+  - "Official binary from https://github.com/koalaman/shellcheck"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "shellcheck"
+repology:
+  - "shellcheck"
+src_url:
+  - "https://github.com/koalaman/shellcheck"
+tag:
+  - "shell"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/koalaman/shellcheck/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/koalaman/shellcheck@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o shellcheck.tar.xz
+    tar -xf "shellcheck.tar.xz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "shellcheck" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "shellcheck.tar.xz"

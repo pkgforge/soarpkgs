@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/keepalived/static.stable.yaml
+_disabled: false
+
+pkg: "keepalived"
+pkg_id: "ppkg/bundle"
+pkg_type: "static"
+ghcr_pkg: "acassen/keepalived"
+category:
+  - "ConsoleOnly"
+description: "Health Checking for Linux Virtual Server & High-Availability"
+homepage:
+  - "https://github.com/acassen/keepalived"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/acassen/keepalived/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/acassen/keepalived"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "keepalived"
+repology:
+  - "keepalived"
+src_url:
+  - "https://github.com/acassen/keepalived"
+tag:
+  - Utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ppkg/bundle/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/ppkg/bundle" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/ppkg/bundle" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

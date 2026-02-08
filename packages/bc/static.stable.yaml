@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bc/static.stable.yaml
+_disabled: false
+
+pkg: "bc"
+pkg_id: "nixpkgs.bc"
+pkg_type: "static"
+ghcr_pkg: "gavinhoward/bc"
+category:
+  - "ConsoleOnly"
+description: "GNU software calculator"
+homepage:
+  - "https://www.gnu.org/software/bc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Custom"
+    url: "https://github.com/gavinhoward/bc/raw/3d8ae3efb1d0aeea6a1b2d7c33dcb061175be681/LICENSE.md"
+note:
+  - "Official binary from https://github.com/gavinhoward/bc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bc"
+repology:
+  - "bc"
+src_url:
+  - "https://github.com/gavinhoward/bc"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/gavinhoward/bc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/gavinhoward/bc@v${PKGVER}" --glob "*bc*" --yes -o bc.tar.gz \
+    tar -xf "bc.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bc" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bc.tar.gz"

@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kdiskmark/static.stable.yaml
+_disabled: false
+
+pkg: "kdiskmark"
+pkg_id: "JonMagon/KDiskMark"
+pkg_type: "static"
+ghcr_pkg: "JonMagon/KDiskMark"
+category:
+  - "Utility"
+description: "A simple open-source disk benchmark tool for Linux distros"
+homepage:
+  - "https://github.com/JonMagon/KDiskMark"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL3"
+    url: "https://github.com/JonMagon/KDiskMark/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/JonMagon/KDiskMark"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kdiskmark"
+repology:
+  - "kdiskmark"
+src_url:
+  - "https://github.com/JonMagon/KDiskMark"
+tag:
+  - Development/Other
+  - Monitoring
+  - Other
+  - System/Kernel
+  - app-benchmarks
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/JonMagon/KDiskMark/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/JonMagon/KDiskMark" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/JonMagon/KDiskMark" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

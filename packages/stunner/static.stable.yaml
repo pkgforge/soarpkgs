@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/stunner/static.stable.yaml
+_disabled: false
+
+pkg: "stunner"
+pkg_id: "github.com.firefart.stunner"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "firefart/stunner"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/firefart/stunner"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/firefart/stunner/main/LICENSE"
+note:
+  - "Official binary from https://github.com/firefart/stunner"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "stunner"
+src_url:
+  - "https://github.com/firefart/stunner"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/firefart/stunner/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/firefart/stunner@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o stunner.tar.gz ||     soar dl "https://github.com/firefart/stunner@v${PKGVER}" --glob "*${ARCH}*" --yes -o stunner.tar.gz ||     soar dl "https://github.com/firefart/stunner@v${PKGVER}" --glob "*linux*" --yes -o stunner.tar.gz
+    tar -xf "stunner.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "stunner*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/stunner" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/stunner" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "stunner.tar.gz"

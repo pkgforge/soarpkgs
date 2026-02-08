@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hl/static.stable.yaml
+_disabled: false
+
+pkg: "hl"
+pkg_id: "github.com.pamburus.hl.source"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "pamburus/hl/source"
+category:
+  - "Development"
+  - "Utility"
+description: "Log viewer/processor that transforms logs in JSON/logfmt formats into a human-readable output"
+homepage:
+  - "https://github.com/pamburus/hl/source"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/pamburus/hl/source/master/LICENSE"
+note:
+  - "Official binary from https://github.com/pamburus/hl/source"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hl"
+src_url:
+  - "https://github.com/pamburus/hl/source"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pamburus/hl/source/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/pamburus/hl/source@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hl.tar.gz || \
+    soar dl "https://github.com/pamburus/hl/source@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hl.tar.gz || \
+    soar dl "https://github.com/pamburus/hl/source@v${PKGVER}" --glob "*${ARCH}*" --yes -o hl.tar.gz
+    tar -xf "hl.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hl.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hl" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hl-\*" -exec mv {} "$SBUILD_OUTDIR/hl" \; || \
+    mv "$SBUILD_TMPDIR/hl" "$SBUILD_OUTDIR/hl"
+    rm -rf "hl.tar.gz"

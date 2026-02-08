@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/axel/static.stable.yaml
+_disabled: false
+
+pkg: "axel"
+pkg_id: "github.com.axel-download-accelerator.axel"
+pkg_type: "static"
+ghcr_pkg: "axel-download-accelerator/axel"
+category:
+  - "ConsoleOnly"
+description: "Lightweight CLI download accelerator"
+homepage:
+  - "https://github.com/axel-download-accelerator/axel"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/axel-download-accelerator/axel/raw/3c21dc42dcba02d62f4b4b67adcb592f5863790b/COPYING"
+note:
+  - "Official binary from https://github.com/axel-download-accelerator/axel"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "axel"
+repology:
+  - "axel"
+src_url:
+  - "https://github.com/axel-download-accelerator/axel"
+tag:
+  - "downloader"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/axel-download-accelerator/axel/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/axel-download-accelerator/axel" \
+        cd axel \
+        git checkout "v$PKGVER" \
+        autoreconf -iv && ./configure --enable-static \
+        make \
+        cp axel /output/axel \
+      \' \
+    cp "$SBUILD_TMPDIR/axel" "$SBUILD_OUTDIR/" \
+    strip axel

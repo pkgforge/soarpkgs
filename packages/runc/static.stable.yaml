@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/runc/static.stable.yaml
+_disabled: false
+
+pkg: "runc"
+pkg_id: "github.com.opencontainers.runc.source"
+pkg_type: "static"
+category:
+  - ""
+description: "CLI tool for spawning and running containers according to the OCI specification"
+homepage:
+  - "  - https://github.com/opencontainers/runc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/opencontainers/runc/master/LICENSE"
+note:
+  - "Official binary from https://github.com/opencontainers/runc"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "runc"
+src_url:
+  - "https://github.com/opencontainers/runc"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/opencontainers/runc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/opencontainers/runc@v${PKGVER}" --glob "runc_linux_${ARCH}.tar.gz" --yes -o runc.tar.gz
+    tar -xf "runc.tar.gz" -C "/"
+    mv "/runc" "/$PKG"
+    rm -rf "runc.tar.gz"

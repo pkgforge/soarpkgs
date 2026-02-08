@@ -1,0 +1,57 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/jr/static.stable.yaml
+_disabled: false
+
+pkg: "jr"
+pkg_id: "github.com.ugol.jr"
+pkg_type: "static"
+ghcr_pkg: "ugol/jr"
+category:
+  - "ConsoleOnly"
+description: "Generate & Stream quality Random Data from the command line"
+homepage:
+  - "https://jrnd.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+note:
+  - "Official binary from https://github.com/ugol/jr"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "jr"
+repology:
+  - "jr"
+src_url:
+  - "https://github.com/ugol/jr"
+tag:
+  - "json"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ugol/jr/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/ugol/jr"
+        cd jr
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/jr
+        cp jr /output/
+      '
+    cp "$SBUILD_TMPDIR/jr" "$SBUILD_OUTDIR/"
+    strip jr

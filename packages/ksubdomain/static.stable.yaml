@@ -1,0 +1,58 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ksubdomain/static.stable.yaml
+_disabled: false
+
+pkg: "ksubdomain"
+pkg_id: "github.com.boy-hack.ksubdomain"
+pkg_type: "static"
+ghcr_pkg: "boy-hack/ksubdomain"
+category:
+  - "ConsoleOnly"
+description: "Subdomain enumeration tool, asynchronous dns packets, use pcap to scan 1600,000 subdomains in 1 second"
+homepage:
+  - "https://github.com/boy-hack/ksubdomain"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/boy-hack/ksubdomain"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ksubdomain"
+repology:
+  - "ksubdomain"
+src_url:
+  - "https://github.com/boy-hack/ksubdomain"
+tag:
+  - "bugbounty"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/boy-hack/ksubdomain/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/boy-hack/ksubdomain"
+        cd ksubdomain
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/ksubdomain
+        cp ksubdomain /output/
+      '
+    cp "$SBUILD_TMPDIR/ksubdomain" "$SBUILD_OUTDIR/"
+    strip ksubdomain

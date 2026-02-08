@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/oras/static.stable.yaml
+_disabled: false
+
+pkg: "oras"
+pkg_id: "oras-project.oras"
+pkg_type: "static"
+pkgver: "1.2.2"
+ghcr_pkg: "oras-project/oras"
+category:
+  - "Utility"
+  - "Development"
+description: "OCI registry client"
+homepage:
+  - "https://github.com/oras-project/oras"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/oras-project/oras/master/LICENSE"
+note:
+  - "Official binary from https://github.com/oras-project/oras"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "oras"
+repology:
+  - "oras"
+src_url:
+  - "https://github.com/oras-project/oras"
+tag:
+  - "oci"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/oras-project/oras/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/oras-project/oras@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o oras.tar.gz
+    tar -xf "oras.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -name "oras" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "oras.tar.gz"

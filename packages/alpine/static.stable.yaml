@@ -1,0 +1,49 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/alpine/static.stable.yaml
+_disabled: false
+
+pkg: "alpine"
+pkg_id: "github.com.alpinelinux.docker-alpine"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "alpinelinux/docker-alpine"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Portable Ephemeral Alpine Linux Docker Image (DockerC)"
+homepage:
+  - "https://github.com/alpinelinux/docker-alpine"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/alpinelinux/docker-alpine/raw/cfaba603d3e1826ae8d871985674cf96ba422f84/LICENSE"
+note:
+  - "Official binary from https://github.com/alpinelinux/docker-alpine"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "alpine"
+repology:
+  - "alpine"
+src_url:
+  - "https://github.com/alpinelinux/docker-alpine"
+tag:
+  - "alpinelinux"
+  - "docker"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        docker manifest inspect "alpine:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/alpinelinux/docker-alpine@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o alpine.zip
+    7z x "alpine.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/alpine" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "alpine.zip"

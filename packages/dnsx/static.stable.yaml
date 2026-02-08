@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dnsx/static.stable.yaml
+_disabled: false
+
+pkg: "dnsx"
+pkg_id: "github.com.projectdiscovery.dnsx"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "projectdiscovery/dnsx"
+category:
+  - "Utility"
+description: "Multi-purpose DNS toolkit allow to run multiple DNS queries"
+homepage:
+  - "https://github.com/projectdiscovery/dnsx"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/projectdiscovery/dnsx/master/LICENSE"
+note:
+  - "Official binary from https://github.com/projectdiscovery/dnsx"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "dnsx"
+src_url:
+  - "https://github.com/projectdiscovery/dnsx"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/projectdiscovery/dnsx/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/dnsx@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o dnsx.tar.gz
+    tar -xf "dnsx.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "dnsx" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "dnsx.tar.gz"

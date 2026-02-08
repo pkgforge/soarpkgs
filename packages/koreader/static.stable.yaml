@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/koreader/static.stable.yaml
+_disabled: false
+
+pkg: "koreader"
+pkg_id: "koreader/koreader"
+pkg_type: "static"
+ghcr_pkg: "koreader/koreader"
+category:
+  - "Utility"
+description: "An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"
+homepage:
+  - "https://github.com/koreader/koreader"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "AGPL3.0only"
+    url: "https://github.com/koreader/koreader/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/koreader/koreader"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "koreader"
+repology:
+  - "koreader"
+src_url:
+  - "https://github.com/koreader/koreader"
+tag:
+  - cbz
+  - djvu
+  - djvu-reflow
+  - ebook
+  - ebook-reader
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/koreader/koreader/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/koreader/koreader" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/koreader/koreader" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

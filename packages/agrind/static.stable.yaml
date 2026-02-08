@@ -1,0 +1,50 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/agrind/static.stable.yaml
+_disabled: false
+
+pkg: "agrind"
+pkg_id: "github.com.rcoh.angle-grinder"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "rcoh/angle-grinder"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Slice and dice logs on the command line"
+homepage:
+  - "https://github.com/rcoh/angle-grinder"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/rcoh/angle-grinder/raw/50032e0c3d171dfecf13bc2ec6af45ff3daef0a5/LICENSE"
+note:
+  - "Official binary from https://github.com/rcoh/angle-grinder"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "agrind:angle-grinder"
+src_url:
+  - "https://github.com/rcoh/angle-grinder"
+tag:
+  - "analytics"
+  - "logging"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/rcoh/angle-grinder" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/rcoh/angle-grinder@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o agrind.zip
+    7z x "agrind.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/agrind" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "agrind.zip"

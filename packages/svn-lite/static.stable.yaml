@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/svn-lite/static.stable.yaml
+_disabled: false
+
+pkg: "svn-lite"
+pkg_id: "github.com.rofl0r.svn-lite"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "rofl0r/svn-lite"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/rofl0r/svn-lite"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/rofl0r/svn-lite/main/LICENSE"
+note:
+  - "Official binary from https://github.com/rofl0r/svn-lite"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "svn-lite"
+src_url:
+  - "https://github.com/rofl0r/svn-lite"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/rofl0r/svn-lite/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/rofl0r/svn-lite@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o svn-lite.tar.gz ||     soar dl "https://github.com/rofl0r/svn-lite@v${PKGVER}" --glob "*${ARCH}*" --yes -o svn-lite.tar.gz ||     soar dl "https://github.com/rofl0r/svn-lite@v${PKGVER}" --glob "*linux*" --yes -o svn-lite.tar.gz
+    tar -xf "svn-lite.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "svn-lite*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/svn-lite" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/svn-lite" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "svn-lite.tar.gz"

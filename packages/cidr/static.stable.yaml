@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cidr/static.stable.yaml
+_disabled: false
+
+pkg: "cidr"
+pkg_id: "bschaatsbergen/cidr"
+pkg_type: "static"
+ghcr_pkg: "bschaatsbergen/cidr"
+category:
+  - "Utility"
+description: "CLI to perform various actions on CIDR ranges"
+homepage:
+  - "https://github.com/bschaatsbergen/cidr"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/bschaatsbergen/cidr/raw/e629c4e4bfde18507d071956baa58c7686b7df1e/LICENSE"
+note:
+  - "Official binary from https://github.com/bschaatsbergen/cidr"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cidr"
+src_url:
+  - "https://github.com/bschaatsbergen/cidr"
+tag:
+  - "cidr"
+  - "ipv4"
+  - "ipv6"
+  - "subnet"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bschaatsbergen/cidr/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/bschaatsbergen/cidr@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cidr.zip
+    7z x "cidr.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cidr" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cidr.zip"

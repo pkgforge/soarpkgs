@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/dnslookup/static.stable.yaml
+_disabled: false
+
+pkg: "dnslookup"
+pkg_id: "github.com.ameshkov.dnslookup"
+pkgver: "1.11.2"
+pkg_type: "static"
+ghcr_pkg: "ameshkov/dnslookup"
+category:
+  - "Utility"
+description: "Simple command line utility to make DNS lookups to the specified server"
+homepage:
+  - "https://github.com/ameshkov/dnslookup"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/ameshkov/dnslookup/master/LICENSE"
+note:
+  - "Official binary from https://github.com/ameshkov/dnslookup"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "dnslookup"
+src_url:
+  - "https://github.com/ameshkov/dnslookup"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ameshkov/dnslookup/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/ameshkov/dnslookup@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o dnslookup.tar.gz
+    tar -xf "dnslookup.tar.gz" -C "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR" -type f -executable -name "dnslookup" -exec mv {} "$SBUILD_OUTDIR/$PKG" \;
+    rm -rf "dnslookup.tar.gz"

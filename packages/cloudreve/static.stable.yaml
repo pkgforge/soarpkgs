@@ -1,0 +1,47 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cloudreve/static.stable.yaml
+_disabled: false
+
+pkg: "cloudreve"
+pkg_id: "cloudreve/Cloudreve"
+pkg_type: "static"
+ghcr_pkg: "cloudreve/Cloudreve"
+category:
+  - "Utility"
+description: "Self-hosted file management and sharing system, supports multiple storage providers"
+homepage:
+  - "https://github.com/cloudreve/Cloudreve"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/cloudreve/Cloudreve/raw/3373b9dc02eb65bd0546cc47f64a0946ef4ac990/LICENSE"
+note:
+  - "Official binary from https://github.com/cloudreve/Cloudreve"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "cloudreve"
+src_url:
+  - "https://github.com/cloudreve/Cloudreve"
+tag:
+  - "utility"
+  - "cloud"
+  - "file"
+  - "sharing"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cloudreve/Cloudreve/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/cloudreve/Cloudreve@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o cloudreve.zip
+    7z x "cloudreve.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/cloudreve" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "cloudreve.zip"

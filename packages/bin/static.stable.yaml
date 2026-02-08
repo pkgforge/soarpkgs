@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bin/static.stable.yaml
+_disabled: false
+
+pkg: "bin"
+pkg_id: "github.com.marcosnils.bin"
+pkg_type: "static"
+ghcr_pkg: "marcosnils/bin"
+category:
+  - "ConsoleOnly"
+description: "Effortless binary manager"
+homepage:
+  - "https://github.com/marcosnils/bin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/marcosnils/bin/raw/94bbdcac69f74abb8b3d9e5dcc0fcb22d72d6782/LICENSE"
+note:
+  - "Official binary from https://github.com/marcosnils/bin"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "bin"
+repology:
+  - "bin"
+src_url:
+  - "https://github.com/marcosnils/bin"
+tag:
+  - "package-manager"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/marcosnils/bin/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/marcosnils/bin@v${PKGVER}" --glob "*bin*" --yes -o bin.tar.gz \
+    tar -xf "bin.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/bin" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "bin.tar.gz"

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/amazonlinux/static.stable.yaml
+_disabled: false
+
+pkg: "amazonlinux"
+pkg_id: "github.com.aws.amazon-linux-docker-images"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "aws/amazon-linux-docker-images"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Portable Ephemeral AmazonLinux Docker Image (DockerC)"
+homepage:
+  - "https://github.com/aws/amazon-linux-docker-images"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/amazonlinux/container-images/raw/a3932af1e532aed65eb663940f68f4ba0b607a3b/LICENSE"
+note:
+  - "Official binary from https://github.com/aws/amazon-linux-docker-images"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "amazonlinux"
+src_url:
+  - "https://github.com/aws/amazon-linux-docker-images"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        docker manifest inspect "amazonlinux:latest" | jq -r '.manifests[].digest' | grep -oE '[a-f0-9]{64}' | head -n 1 |  cut -c 1-12 | tr -d '[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/aws/amazon-linux-docker-images@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o amazonlinux.zip
+    7z x "amazonlinux.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/amazonlinux" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "amazonlinux.zip"

@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/askalono/static.stable.yaml
+_disabled: false
+
+pkg: "askalono"
+pkg_id: "github.com.jpeddicord.askalono"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "jpeddicord/askalono"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Tool to detect open source licenses from texts"
+homepage:
+  - "https://github.com/jpeddicord/askalono"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://github.com/jpeddicord/askalono/raw/36c1b3554f73210758de9b78f98f086d82fad523/LICENSE"
+note:
+  - "Official binary from https://github.com/jpeddicord/askalono"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "askalono"
+repology:
+  - "askalono"
+src_url:
+  - "https://github.com/jpeddicord/askalono"
+tag:
+  - "license"
+  - "spdx"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/jpeddicord/askalono" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/jpeddicord/askalono@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o askalono.zip
+    7z x "askalono.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/askalono" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "askalono.zip"

@@ -1,0 +1,78 @@
+#!/SBUILD ver @v1.0.0    
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/cpustat/static.official.source.yaml
+_disabled: false
+
+pkg: "cpustat"
+pkg_id: "github.com.ColinIanKing.cpustat.source"
+pkg_type: "static"
+ghcr_pkg: "uber-common/cpustat"
+category:
+  - "Utility"
+description: "Periodically dump out the current CPU utilisation statistics of running processes"
+homepage:
+  - "https://github.com/ColinIanKing/cpustat"
+license:
+  - id: "GPL-2.0"
+    url: "https://github.com/ColinIanKing/cpustat/raw/bd703b811d3a9580feba307ab02ad06dd70582a7/COPYING"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Built From Source (Latest Git HEAD). Check/Report @ https://github.com/ColinIanKing/cpustat"
+provides:
+  - "cpustat"  
+#repology:
+#  - "cpustat"
+src_url:
+  - "https://github.com/ColinIanKing/cpustat"
+tag:
+  - "Utility"
+x_exec:
+  bsys: "docker://clang+make"
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    pushd "$(mktemp -d)" &>/dev/null && \
+    git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/ColinIanKing/cpustat" "./TEMPREPO" &>/dev/null && \
+    git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+    [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    #Build
+     mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+     -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+     -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+     --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+     "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -l -c '
+      #Setup ENV
+       set -x ; mkdir -pv "/tmp" ; chown -R "$(whoami):$(whoami)" "/tmp" ; chmod -v "1777" "/tmp"
+       mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+      #Build
+       git clone --filter "blob:none" --depth="1" --quiet "https://github.com/ColinIanKing/cpustat" "./TEMPREPO" && cd "./TEMPREPO"
+       export CC="clang"
+       export CXX="clang++"
+       export CFLAGS="-Os -flto=auto -fuse-ld=$(which mold) -g0 -pipe -static -static-pie -v -w -Wno-error -Wno-implicit-function-declaration -Wno-int-conversion"
+       export CPPFLAGS="${CFLAGS}"
+       export CXXFLAGS="${CFLAGS}"
+       export LD="$(which mold)"
+       export LDFLAGS="-static -static-pie -Wl,--Bstatic,--build-id=none,--no-dynamic-linker,--no-fatal-warnings,--static,--stats,--strip-all,-z,noexecstack,-z,pack-relative-relocs,-z,relro"
+       make --jobs="$(($(nproc)+1))" --keep-going
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath | xargs -I "{}" sh -c '\''echo "File: {}"; readelf -p ".comment" "{}"'\''
+      #Copy
+       #cp "./cpustat" "/build-bins/cpustat"
+       find "." -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "/build-bins/"
+       ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+      #strip & info 
+       find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+       find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+       find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+       file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+       du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+       popd &>/dev/null
+      '
+    #Copy & Meta
+     docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+     [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+     find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

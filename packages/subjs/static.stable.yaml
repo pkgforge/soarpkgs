@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/subjs/static.stable.yaml
+_disabled: false
+
+pkg: "subjs"
+pkg_id: "github.com.lc.subjs"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "lc/subjs"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/lc/subjs"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/lc/subjs/main/LICENSE"
+note:
+  - "Official binary from https://github.com/lc/subjs"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "subjs"
+src_url:
+  - "https://github.com/lc/subjs"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/lc/subjs/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/lc/subjs@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o subjs.tar.gz ||     soar dl "https://github.com/lc/subjs@v${PKGVER}" --glob "*${ARCH}*" --yes -o subjs.tar.gz ||     soar dl "https://github.com/lc/subjs@v${PKGVER}" --glob "*linux*" --yes -o subjs.tar.gz
+    tar -xf "subjs.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "subjs*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/subjs" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/subjs" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "subjs.tar.gz"

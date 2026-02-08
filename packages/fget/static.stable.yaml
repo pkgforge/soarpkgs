@@ -1,0 +1,70 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/fget/static.stable.yaml
+_disabled: false
+
+pkg: "fget"
+pkg_id: "github.com.pkgforge-security.fget"
+pkg_type: "static"
+ghcr_pkg: "pkgforge-security/fget"
+category:
+  - "ConsoleOnly"
+description: "Multithread download for a list of files"
+homepage:
+  - "https://github.com/pkgforge-security/fget"
+maintainer:
+  - "Azathothas (https://github.com/Azathothas)"
+license:
+  - id: "MIT"
+    url: "https://github.com/pkgforge-security/fget/raw/3355b163bcf2188310c9e03c35ce4976d60a2d7b/LICENSE"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+provides:
+  - "fget"
+repology:
+  - "https://github.com/pkgforge-security/fget"
+src_url:
+  - "https://github.com/pkgforge-security/fget"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pkgforge-security/fget/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Build
+         mkdir -pv "${SBUILD_TMPDIR}/tmp" && docker run --privileged --net="host" --name "alpine-builder" --pull="always" \
+         -e "PKG=${PKG}" -e "PKG_ID=${PKG_ID}" -e "PKG_TYPE=${PKG_TYPE}" -e "PKG_VER=${PKG_VER}" \
+         -e "PKGVER=${PKGVER}" -e "SBUILD_PKG=${SBUILD_PKG}" -e "SBUILD_PKGVER=${SBUILD_PKGVER}" \
+         --volume "${SBUILD_TMPDIR}/tmp:/tmp:rw" \
+         "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+          bash -l -c '
+          #Setup ENV
+           set -x ; mkdir -p "/build-bins" && pushd "$(mktemp -d)" &>/dev/null
+           CGO_ENABLED="1"
+           CGO_CFLAGS="-O2 -flto=auto -fPIE -fpie -static -w -pipe"
+           GOARCH="$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/;s/loongarch64/loong64/")"
+           GOOS="linux"
+           export CGO_ENABLED CGO_CFLAGS GOARCH GOOS
+          #Build
+           git clone --filter "blob:none" --quiet "https://github.com/pkgforge-security/fget" "./TEMPREPO" && cd "./TEMPREPO"
+           echo -e "\n[+] Target: \"${GOARCH}/${GOOS}\""
+           echo -e "[+] Flags: CGO_ENABLED=\"${CGO_ENABLED}\" CGO_CFLAGS=\"${CGO_CFLAGS}\"\n"
+           go mod tidy -v ; go generate ./...
+           go build -x -v -trimpath -buildmode="pie" -ldflags="-s -w -buildid= -linkmode=external -extldflags '\''-s -w -static-pie -Wl,--build-id=none'\''" -o "/build-bins/fget"
+          #Copy
+           ( askalono --format "json" crawl --follow "$(realpath .)" | jq -r ".. | objects | .path? // empty" | head -n 1 | xargs -I "{}" cp -fv "{}" "/build-bins/LICENSE" ) 2>/dev/null
+          #Strip 
+           find "/build-bins/" -type f -exec objcopy --remove-section=".comment" --remove-section=".note.*" "{}" \;
+           find "/build-bins/" -type f ! -name "*.no_strip" -exec strip --strip-all --verbose "{}" 2>/dev/null \;
+           find "/build-bins/" -type f -exec bash -c "echo && realpath {} && readelf --section-headers {} 2>/dev/null" \;
+           file "/build-bins/"* && stat -c "%n:         %s Bytes" "/build-bins/"* && \
+           du "/build-bins/"* --bytes --human-readable --time --time-style="full-iso" --summarize
+           popd &>/dev/null
+          '
+        #Copy & Meta
+         docker cp "alpine-builder:/build-bins/." "${SBUILD_TMPDIR}/"
+         [ -s "${SBUILD_TMPDIR}/LICENSE" ] && cp -fv "${SBUILD_TMPDIR}/LICENSE" "${SBUILD_OUTDIR}/LICENSE"
+         find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"

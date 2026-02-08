@@ -1,0 +1,63 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/tailspin/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "tailspin"
+pkg_id: "bensadeh.tailspin"
+pkgver: "0.2.0"
+pkg_type: "static"
+ghcr_pkg: "bensadeh/tailspin"
+category:
+  - "Utility"
+  - "Development"
+description: "Log file highlighter"
+homepage:
+  - "https://github.com/bensadeh/tailspin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/bensadeh/tailspin/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "tailspin"
+  - "tspin"
+repology:
+  - "tailspin"
+src_url:
+  - "https://github.com/bensadeh/tailspin"
+tag:
+  - "log"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bensadeh/tailspin/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/bensadeh/tailspin"
+        cd tailspin
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/tailspin" /output/tailspin
+        cp "target/$RUST_TARGET/release/tailspin" /output/tspin
+        cp LICENSE /output/LICENSE 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/tailspin" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/tspin" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true

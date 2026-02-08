@@ -1,0 +1,51 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/apk-static/static.stable.yaml
+_disabled: false
+
+pkg: "apk-static"
+pkg_id: "gitlab.alpinelinux.org.alpine.apk-tools"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "gitlab/alpinelinux/org/alpine/apk-tools"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Alpine Package Keeper (apk)"
+homepage:
+  - "https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper"
+  - "https://gitlab.alpinelinux.org/alpine/apk-tools"
+  - "http://git.alpinelinux.org/cgit/apk-tools"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-2.0"
+    url: "https://gitlab.alpinelinux.org/alpine/apk-tools/-/raw/dc191820b1c4865f209bd0ee49fddb6f32cdb8b8/LICENSE"
+note:
+  - "Official binary from https://gitlab.alpinelinux.org/alpine/apk-tools"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "apk-static:apk"
+repology:
+  - "apk-static"
+src_url:
+  - "https://gitlab.alpinelinux.org/alpine/apk-tools"
+tag:
+  - "alpine"
+  - "package-manager"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        curl -qfsSL "https://gitlab.alpinelinux.org/api/v4/projects/5/repository/tags" | jq -r '.[0].name' | tr -d '[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/gitlab/alpinelinux/org/alpine/apk-tools@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o apk-static.zip
+    7z x "apk-static.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/apk-static" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "apk-static.zip"

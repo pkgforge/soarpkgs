@@ -1,0 +1,43 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/stress-ng/static.stable.yaml
+_disabled: false
+
+pkg: "stress-ng"
+pkg_id: "github.com.ColinIanKing.stress-ng"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "ColinIanKing/stress-ng"
+category:
+  - "Utility"
+description: "Ported from pkgs/binaries"
+homepage:
+  - "https://github.com/ColinIanKing/stress-ng"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/ColinIanKing/stress-ng/main/LICENSE"
+note:
+  - "Official binary from https://github.com/ColinIanKing/stress-ng"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "stress-ng"
+src_url:
+  - "https://github.com/ColinIanKing/stress-ng"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ColinIanKing/stress-ng/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/ColinIanKing/stress-ng@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o stress-ng.tar.gz ||     soar dl "https://github.com/ColinIanKing/stress-ng@v${PKGVER}" --glob "*${ARCH}*" --yes -o stress-ng.tar.gz ||     soar dl "https://github.com/ColinIanKing/stress-ng@v${PKGVER}" --glob "*linux*" --yes -o stress-ng.tar.gz
+    tar -xf "stress-ng.tar.gz" -C "$SBUILD_TMPDIR/" || true
+    find "$SBUILD_TMPDIR/" -type f -executable -name "stress-ng*" -exec mv {} "$SBUILD_OUTDIR/" \; ||     mv "$SBUILD_TMPDIR/stress-ng" "$SBUILD_OUTDIR/" 2>/dev/null ||     mv "$SBUILD_TMPDIR/stress-ng" "$SBUILD_OUTDIR/" 2>/dev/null
+    rm -rf "stress-ng.tar.gz"

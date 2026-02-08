@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/httpx/static.stable.yaml
+_disabled: false
+
+pkg: "httpx"
+pkg_id: "github.com.projectdiscovery.httpx"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "projectdiscovery/httpx"
+category:
+  - "Development"
+  - "Utility"
+description: "Fast and multi-purpose HTTP toolkit"
+homepage:
+  - "https://github.com/projectdiscovery/httpx"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/projectdiscovery/httpx/master/LICENSE"
+note:
+  - "Official binary from https://github.com/projectdiscovery/httpx"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "httpx"
+src_url:
+  - "https://github.com/projectdiscovery/httpx"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/projectdiscovery/httpx/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/projectdiscovery/httpx@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o httpx.tar.gz || \
+    soar dl "https://github.com/projectdiscovery/httpx@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o httpx.tar.gz || \
+    soar dl "https://github.com/projectdiscovery/httpx@v${PKGVER}" --glob "*${ARCH}*" --yes -o httpx.tar.gz
+    tar -xf "httpx.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "httpx.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "httpx" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "httpx-\*" -exec mv {} "$SBUILD_OUTDIR/httpx" \; || \
+    mv "$SBUILD_TMPDIR/httpx" "$SBUILD_OUTDIR/httpx"
+    rm -rf "httpx.tar.gz"

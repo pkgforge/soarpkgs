@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/byacc/static.stable.yaml
+_disabled: false
+
+pkg: "byacc"
+pkg_id: "nixpkgs.byacc"
+pkg_type: "static"
+ghcr_pkg: "ThomasDickey/byacc-snapshots"
+category:
+  - "ConsoleOnly"
+description: "Berkeley YACC"
+homepage:
+  - "https://invisible-island.net/byacc/byacc.html"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Custom"
+    url: "https://github.com/ThomasDickey/byacc-snapshots/raw/e9ce822d7ad6002f4bf5d6562486acef202718f2/LICENSE"
+note:
+  - "Official binary from https://github.com/ThomasDickey/byacc-snapshots"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "byacc"
+repology:
+  - "byacc"
+src_url:
+  - "https://github.com/ThomasDickey/byacc-snapshots"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ThomasDickey/byacc-snapshots/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/ThomasDickey/byacc-snapshots@v${PKGVER}" --glob "*byacc*" --yes -o byacc.tar.gz \
+    tar -xf "byacc.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/byacc" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "byacc.tar.gz"

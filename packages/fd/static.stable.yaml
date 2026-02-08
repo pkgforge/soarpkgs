@@ -1,0 +1,63 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/fd/static.stable.yaml
+# deps: docker
+_disabled: false
+
+pkg: "fd"
+pkg_id: "sharkdp.fd"
+pkgver: "10.2.0"
+pkg_type: "static"
+ghcr_pkg: "sharkdp/fd"
+category:
+  - "Utility"
+  - "Development"
+description: "A simple, fast and user-friendly alternative to find"
+homepage:
+  - "https://github.com/sharkdp/fd"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache-2.0"
+    url: "https://raw.githubusercontent.com/sharkdp/fd/master/LICENSE"
+note:
+  - "Built from source with static musl linking"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "fd"
+  - "fd-find"
+repology:
+  - "fd-find"
+src_url:
+  - "https://github.com/sharkdp/fd"
+tag:
+  - "find"
+  - "search"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharkdp/fd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        source "$HOME/.cargo/env"
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+        git clone --filter=blob:none --quiet "https://github.com/sharkdp/fd"
+        cd fd
+        git checkout "$PKGVER"
+        cargo build --target="$RUST_TARGET" --release
+        cp "target/$RUST_TARGET/release/fd" /output/fd
+        cp LICENSE /output/LICENSE 2>/dev/null || true
+      '
+    cp "$SBUILD_TMPDIR/fd" "$SBUILD_OUTDIR/"
+    cp "$SBUILD_TMPDIR/fd" "$SBUILD_OUTDIR/fd-find"
+    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true

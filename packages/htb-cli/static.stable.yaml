@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/htb-cli/static.stable.yaml
+_disabled: false
+
+pkg: "htb-cli"
+pkg_id: "github.com.GoToolSharing.htb-cli"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "GoToolSharing/htb-cli"
+category:
+  - "Development"
+  - "Utility"
+description: "Interact with Hackthebox using your terminal"
+homepage:
+  - "https://github.com/GoToolSharing/htb-cli"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/GoToolSharing/htb-cli/master/LICENSE"
+note:
+  - "Official binary from https://github.com/GoToolSharing/htb-cli"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "htb-cli"
+src_url:
+  - "https://github.com/GoToolSharing/htb-cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/GoToolSharing/htb-cli/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/GoToolSharing/htb-cli@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o htb-cli.tar.gz || \
+    soar dl "https://github.com/GoToolSharing/htb-cli@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o htb-cli.tar.gz || \
+    soar dl "https://github.com/GoToolSharing/htb-cli@v${PKGVER}" --glob "*${ARCH}*" --yes -o htb-cli.tar.gz
+    tar -xf "htb-cli.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "htb-cli.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "htb-cli" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "htb-cli-\*" -exec mv {} "$SBUILD_OUTDIR/htb-cli" \; || \
+    mv "$SBUILD_TMPDIR/htb-cli" "$SBUILD_OUTDIR/htb-cli"
+    rm -rf "htb-cli.tar.gz"

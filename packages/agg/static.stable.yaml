@@ -1,0 +1,52 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/agg/static.stable.yaml
+_disabled: false
+
+pkg: "agg"
+pkg_id: "github.com.asciinema.agg"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "asciinema/agg"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Asciicast (Asciinema) to GIF converter"
+homepage:
+  - "https://github.com/asciinema/agg"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "Apache"
+    url: "https://github.com/asciinema/agg/raw/5592b9790ba7c6d5ffa232176e29a1d3cadf8fe2/LICENSE"
+note:
+  - "Official binary from https://github.com/asciinema/agg"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "agg"
+repology:
+  - "agg-asciinema"
+src_url:
+  - "https://github.com/asciinema/agg"
+tag:
+  - "asciicast"
+  - "asciinema"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/asciinema/agg" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/asciinema/agg@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o agg.zip
+    7z x "agg.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/agg" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "agg.zip"

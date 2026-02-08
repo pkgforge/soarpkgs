@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/7z/static.stable.yaml
+_disabled: false
+
+pkg: "7z"
+pkg_id: "github.com.ip7z.7zip"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "ip7z/7zip"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Command line archiver utility"
+homepage:
+  - "https://7-zip.org"
+  - "https://github.com/ip7z/7zip"
+  - "https://sourceforge.net/projects/sevenzip"
+  - "https://www.7-zip.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD"
+    url: "https://github.com/ip7z/7zip/raw/e5431fa6f5505e385c6f9367260717e9c47dc2ee/DOC/License.txt"
+note:
+  - "Official binary from https://github.com/ip7z/7zip"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "7z"
+repology:
+  - "7z"
+src_url:
+  - "https://github.com/ip7z/7zip"
+tag:
+  - "7zip"
+  - "archive"
+  - "archiver"
+  - "archivers"
+  - "Archiving/Compression"
+  - "Productivity/Archiving/Compression"
+  - "system"
+  - "Tools"
+  - "utils"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        curl -qfsSL "https://api.github.com/repos/ip7z/7zip/releases?per_page=100" | jq -r '[.[] | select(.draft == false)] | .[0].tag_name | gsub("\\s+"; "")' | tr -d '"'\''[:space:]'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/ip7z/7zip@${PKGVER}" --glob "*linux_${ARCH}*" --yes -o 7z.zip
+    7z x "7z.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/7z" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "7z.zip"

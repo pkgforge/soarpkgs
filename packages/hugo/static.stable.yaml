@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/hugo/static.stable.yaml
+_disabled: false
+
+pkg: "hugo"
+pkg_id: "github.com.gohugoio.hugo"
+pkgver: "0.0.0"
+pkg_type: "static"
+ghcr_pkg: "gohugoio/hugo"
+category:
+  - "Development"
+  - "Utility"
+description: "Fast and Flexible Static Site Generator"
+homepage:
+  - "https://github.com/gohugoio/hugo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "UNKNOWN"
+    url: "https://raw.githubusercontent.com/gohugoio/hugo/master/LICENSE"
+note:
+  - "Official binary from https://github.com/gohugoio/hugo"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "hugo"
+src_url:
+  - "https://github.com/gohugoio/hugo"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/gohugoio/hugo/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/gohugoio/hugo@v${PKGVER}" --glob "*Linux_${ARCH}*" --yes -o hugo.tar.gz || \
+    soar dl "https://github.com/gohugoio/hugo@v${PKGVER}" --glob "*linux*${ARCH}*" --yes -o hugo.tar.gz || \
+    soar dl "https://github.com/gohugoio/hugo@v${PKGVER}" --glob "*${ARCH}*" --yes -o hugo.tar.gz
+    tar -xf "hugo.tar.gz" -C "$SBUILD_TMPDIR/" || unzip -o "hugo.tar.gz" -d "$SBUILD_TMPDIR/"
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hugo" -exec mv {} "$SBUILD_OUTDIR/" \; || \
+    find "$SBUILD_TMPDIR/" -type f -executable -name "hugo-\*" -exec mv {} "$SBUILD_OUTDIR/hugo" \; || \
+    mv "$SBUILD_TMPDIR/hugo" "$SBUILD_OUTDIR/hugo"
+    rm -rf "hugo.tar.gz"

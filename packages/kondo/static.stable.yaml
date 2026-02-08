@@ -1,0 +1,58 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kondo/static.stable.yaml
+_disabled: false
+
+pkg: "kondo"
+pkg_id: "github.com.tbillington.kondo"
+pkg_type: "static"
+ghcr_pkg: "tbillington/kondo"
+category:
+  - "ConsoleOnly"
+description: "Cleans dependencies and build artifacts from your projects"
+homepage:
+  - "https://github.com/tbillington/kondo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/tbillington/kondo"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "kondo"
+repology:
+  - "kondo"
+src_url:
+  - "https://github.com/tbillington/kondo"
+tag:
+  - "cleaner"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tbillington/kondo/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$ARCH" \
+      bash -c '
+        set -e
+        cd "$(mktemp -d)"
+        git clone --filter=blob:none --quiet "https://github.com/tbillington/kondo"
+        cd kondo
+        git checkout "v$PKGVER"
+        # Build commands here - needs customization per package
+        cargo build --release || go build -o /output/kondo
+        cp kondo /output/
+      '
+    cp "$SBUILD_TMPDIR/kondo" "$SBUILD_OUTDIR/"
+    strip kondo

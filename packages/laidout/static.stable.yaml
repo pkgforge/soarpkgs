@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/laidout/static.stable.yaml
+_disabled: false
+
+pkg: "laidout"
+pkg_id: "Laidout/laidout"
+pkg_type: "static"
+ghcr_pkg: "Laidout/laidout"
+category:
+  - "Utility"
+description: "Laidout, desktop publishing software"
+homepage:
+  - "https://github.com/Laidout/laidout"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: ""GNU"
+    url: "https://github.com/Laidout/laidout/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/Laidout/laidout"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "laidout"
+repology:
+  - "laidout"
+src_url:
+  - "https://github.com/Laidout/laidout"
+tag:
+  - utility
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Laidout/laidout/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Laidout/laidout" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Laidout/laidout" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"

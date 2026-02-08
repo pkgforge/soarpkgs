@@ -1,0 +1,54 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/awk/static.stable.yaml
+_disabled: false
+
+pkg: "awk"
+pkg_id: "github.com.onetrueawk.awk"
+pkg_type: "static"
+ghcr_pkg: "onetrueawk/awk"
+category:
+  - "ConsoleOnly"
+description: "One true awk, as described in The AWK Programming Language book with Support for UTF-8 and CSV Input"
+homepage:
+  - "https://github.com/onetrueawk/awk"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "CustomLicense"
+    url: "https://github.com/onetrueawk/awk/raw/5c261eb19a5e92bb6d68e818cf575524067c1e6a/LICENSE"
+note:
+  - "Official binary from https://github.com/onetrueawk/awk"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "awk"
+repology:
+  - "awk"
+src_url:
+  - "https://github.com/onetrueawk/awk"
+tag:
+  - "string-manipulation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/onetrueawk/awk/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        git clone --filter=blob:none --quiet "https://github.com/onetrueawk/awk" \
+        cd awk \
+        git checkout "v$PKGVER" \
+        autoreconf -iv && ./configure --enable-static \
+        make \
+        cp awk /output/awk \
+      \' \
+    cp "$SBUILD_TMPDIR/awk" "$SBUILD_OUTDIR/" \
+    strip awk

@@ -1,0 +1,59 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/age/static.stable.yaml
+_disabled: false
+
+pkg: "age"
+pkg_id: "github.com.FiloSottile.age"
+pkg_type: "static"
+pkgver: ""
+ghcr_pkg: "FiloSottile/age"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A simple, modern and secure encryption tool"
+homepage:
+  - "https://age-encryption.org"
+  - "https://filippo.io/age"
+  - "https://github.com/FiloSottile/age"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD-3-Clause"
+    url: "https://github.com/FiloSottile/age/raw/482cf6fc9babd3ab06f6606762aac10447222201/LICENSE"
+note:
+  - "Official binary from https://github.com/FiloSottile/age"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "age"
+  - "age-keygen"
+repology:
+  - "age-encryption"
+src_url:
+  - "https://github.com/FiloSottile/age"
+tag:
+  - "app-crypt"
+  - "Cryptography"
+  - "encryption"
+  - "Productivity/Networking/Security"
+  - "security"
+  - "utils"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+        pushd "$(mktemp -d)" &>/dev/null && \
+        git clone --depth="1" --filter="blob:none" --no-checkout --single-branch --quiet "https://github.com/FiloSottile/age" "./TEMPREPO" &>/dev/null && \
+        git --git-dir="./TEMPREPO/.git" --no-pager log -1 --pretty=format:'HEAD-%h-%cd' --date=format:'%y%m%dT%H%M%S' && \
+        [ -d "$(realpath .)/TEMPREPO" ] && rm -rf "$(realpath .)" &>/dev/null && popd &>/dev/null
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="amd64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/FiloSottile/age@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o age.zip
+    7z x "age.zip" -o"$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/age" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "age.zip"

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/byedpi/static.stable.yaml
+_disabled: false
+
+pkg: "byedpi"
+pkg_id: "nixpkgs.byedpi"
+pkg_type: "static"
+ghcr_pkg: "hufrea/byedpi"
+category:
+  - "ConsoleOnly"
+description: "SOCKS proxy server implementing some DPI bypass methods"
+homepage:
+  - "https://github.com/hufrea/byedpi"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://github.com/hufrea/byedpi/raw/f66668d2eaa2eda90c4dd03203352af70ab14891/LICENSE"
+note:
+  - "Official binary from https://github.com/hufrea/byedpi"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ciadpi==byedpi"
+repology:
+  - "byedpi"
+src_url:
+  - "https://github.com/hufrea/byedpi"
+tag:
+  - "Utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hufrea/byedpi/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/hufrea/byedpi@v${PKGVER}" --glob "*byedpi*" --yes -o byedpi.tar.gz \
+    tar -xf "byedpi.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/byedpi" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "byedpi.tar.gz"

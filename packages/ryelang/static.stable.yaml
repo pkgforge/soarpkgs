@@ -1,0 +1,41 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/ryelang/static.stable.yaml
+_disabled: false
+
+pkg: "ryelang"
+pkg_id: "github.com.astral-sh.ryelang"
+pkg_type: "static"
+category:
+  - ""
+description: "Interpreter for RyeLang"
+homepage:
+  - "  - https://ryelang.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "MIT"
+    url: "https://raw.githubusercontent.com/refaktor/rye/master/LICENSE"
+note:
+  - "Official binary from https://github.com/refaktor/rye"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "ryelang"
+src_url:
+  - "https://github.com/refaktor/rye"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/refaktor/rye/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m)
+    case "$ARCH" in
+      x86_64) ARCH="x86_64" ;;
+      aarch64) ARCH="aarch64" ;;
+    esac
+    soar dl "https://github.com/refaktor/rye@v${PKGVER}" --glob "ryelang_linux_${ARCH}.tar.gz" --yes -o ryelang.tar.gz
+    tar -xf "ryelang.tar.gz" -C "/"
+    mv "/ryelang" "/$PKG"
+    rm -rf "ryelang.tar.gz"

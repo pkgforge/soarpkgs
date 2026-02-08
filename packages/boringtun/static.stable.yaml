@@ -1,0 +1,55 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/boringtun/static.stable.yaml
+_disabled: false
+
+pkg: "boringtun"
+pkg_id: "github.com.cloudflare.boringtun"
+pkg_type: "static"
+ghcr_pkg: "cloudflare/boringtun"
+category:
+  - "ConsoleOnly"
+description: "Userspace WireGuard® Implementation in Rust"
+homepage:
+  - "https://github.com/cloudflare/boringtun"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-3-Clause"
+note:
+  - "Official binary from https://github.com/cloudflare/boringtun"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "boringtun"
+repology:
+  - "boringtun"
+src_url:
+  - "https://github.com/cloudflare/boringtun"
+tag:
+  - "wireguard"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cloudflare/boringtun/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    docker run --rm --privileged --net="host" \
+      --pull="always" \
+      -e "PKGVER=$PKGVER" \
+      --volume "$SBUILD_TMPDIR:/output:rw" \
+      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
+      bash -c \' \
+        set -e \
+        cd "$(mktemp -d)" \
+        source "$HOME/.cargo/env" \
+        export RUST_TARGET="$(uname -m)-unknown-linux-musl" \
+        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes" \
+        git clone --filter=blob:none --quiet "https://github.com/cloudflare/boringtun" \
+        cd boringtun \
+        git checkout "v$PKGVER" \
+        cargo build --target="$RUST_TARGET" --release \
+        cp "target/$RUST_TARGET/release/boringtun" /output/boringtun \
+      \' \
+    cp "$SBUILD_TMPDIR/boringtun" "$SBUILD_OUTDIR/" \
+    strip boringtun

@@ -1,0 +1,46 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/brook/static.stable.yaml
+_disabled: false
+
+pkg: "brook"
+pkg_id: "github.com.txthinking.brook"
+pkg_type: "static"
+ghcr_pkg: "txthinking/brook"
+category:
+  - "ConsoleOnly"
+description: "A Zero Config strong encryption and not detectable proxy"
+homepage:
+  - "https://github.com/txthinking/brook"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "GPL-3.0"
+    url: "https://github.com/txthinking/brook/raw/a0c62c2b6f09b77526840c191a33ac9e19452254/LICENSE"
+note:
+  - "Official binary from https://github.com/txthinking/brook"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "brook"
+repology:
+  - "brook"
+src_url:
+  - "https://github.com/txthinking/brook"
+tag:
+  - "proxy"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/txthinking/brook/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    ARCH=$(uname -m) \
+    case "$ARCH" in \
+      x86_64) ARCH="x86_64" ;; \
+      aarch64) ARCH="arm64" ;; \
+    esac \
+    soar dl "https://github.com/txthinking/brook@v${PKGVER}" --glob "*brook*" --yes -o brook.tar.gz \
+    tar -xf "brook.tar.gz" -C "$SBUILD_TMPDIR/" \
+    mv "$SBUILD_TMPDIR/brook" "$SBUILD_OUTDIR/$PKG" \
+    rm -rf "brook.tar.gz"

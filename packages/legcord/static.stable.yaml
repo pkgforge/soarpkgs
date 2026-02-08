@@ -1,0 +1,48 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/legcord/static.stable.yaml
+_disabled: false
+
+pkg: "legcord"
+pkg_id: "Legcord/Legcord"
+pkg_type: "static"
+ghcr_pkg: "Legcord/Legcord"
+category:
+  - "Utility"
+description: "Legcord is a custom client designed to enhance your Discord experience while keeping everything lightweight."
+homepage:
+  - "https://github.com/LegCord/LegCord"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - id: "BSD"
+    url: "https://github.com/Legcord/Legcord/blob/main/LICENSE"
+note:
+  - "Official binary from https://github.com/Legcord/Legcord"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "legcord"
+repology:
+  - "legcord"
+src_url:
+  - "https://github.com/Legcord/Legcord"
+tag:
+  - Applications/Internet
+  - armcord
+  - net-im
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Legcord/Legcord/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/Legcord/Legcord" --match "appimage" --exclude "x86,x64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/Legcord/Legcord" --match "appimage" --exclude "aarch64,arm,zsync" -o "./${PKG}" --yes
+        ;;
+    esac
+    mv "${PKG}" "$SBUILD_OUTDIR/"
