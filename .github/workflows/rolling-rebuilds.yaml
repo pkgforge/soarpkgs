@@ -86,10 +86,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Install skopeo
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y skopeo
+      - name: Cache remote_pkgver state
+        id: cache
+        uses: actions/cache@v5
+        with:
+          path: .rolling-state.json
+          key: rolling-remote-versions-v1
+          restore-keys: |
+            rolling-remote-versions-v1
 
       - name: Check for source updates
         id: check
@@ -99,6 +103,12 @@ jobs:
         run: |
           TO_REBUILD="[]"
           PACKAGES='${{ needs.find-rolling-packages.outputs.packages }}'
+          STATE_FILE=".rolling-state.json"
+
+          # Initialize state file if doesn't exist
+          if [ ! -f "$STATE_FILE" ]; then
+            echo "{}" > "$STATE_FILE"
+          fi
 
           # Function to extract pkgver script from x_exec block
           extract_pkgver_script() {
@@ -113,16 +123,22 @@ jobs:
           }
 
           # Function to run pkgver script with timeout
+          # Returns: second line (remote version), falls back to first line if only one output
           run_pkgver() {
             local script="$1"
-            timeout 120s bash -c "$script" 2>/dev/null | tr -d '\n\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | head -c 100
-          }
+            local output
+            output=$(timeout 120s bash -c "$script" 2>/dev/null) || return 1
 
-          # Sanitize version for OCI tag comparison
-          # OCI tags only allow: [a-zA-Z0-9_.-], other chars become -
-          sanitize_version() {
-            local version="$1"
-            echo "$version" | sed 's/[^a-zA-Z0-9_.-]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//'
+            # Try second line first (remote version)
+            local version
+            version=$(echo "$output" | sed -n '2p' | tr -d '\n\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | head -c 100)
+
+            # Fall back to first line if second line is empty
+            if [ -z "$version" ]; then
+              version=$(echo "$output" | sed -n '1p' | tr -d '\n\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | head -c 100)
+            fi
+
+            echo "$version"
           }
 
           # Function to extract pkg name from recipe
@@ -153,54 +169,10 @@ jobs:
             fi
           }
 
-          # Function to get remote_pkgver (for upstream comparison)
-          get_remote_pkgver() {
-            local file="$1"
-            # Try to get remote_pkgver first, fall back to pkgver
-            local remote_ver
-            remote_ver=$(grep -E "^remote_pkgver:" "$file" | head -1 | sed 's/^remote_pkgver:[[:space:]]*//; s/^"//; s/"$//')
-            if [ -z "$remote_ver" ]; then
-              remote_ver=$(grep -E "^pkgver:" "$file" | head -1 | sed 's/^pkgver:[[:space:]]*//; s/^"//; s/"$//')
-            fi
-            echo "$remote_ver"
-          }
-
           # Function to extract ghcr_pkg from recipe (custom GHCR path)
           get_ghcr_pkg() {
             local file="$1"
             grep -E "^ghcr_pkg:" "$file" | head -1 | sed 's/^ghcr_pkg:[[:space:]]*//; s/^"//; s/"$//'
-          }
-
-          # Function to get current version from GHCR
-          # GHCR path: {owner}/{ghcr_pkg}/{provides}
-          get_ghcr_version() {
-            local ghcr_pkg="$1"
-            local provides_entry="$2"
-
-            local ghcr_path="ghcr.io/${GHCR_OWNER}/${ghcr_pkg}/${provides_entry}"
-            echo "Checking GHCR: $ghcr_path" >&2
-
-            # List tags and extract version from tag name
-            # Tags are formatted as {version}-{arch} (e.g., v1.2.3-x86_64-linux)
-            local tags_json
-            tags_json=$(skopeo list-tags "docker://${ghcr_path}" 2>/dev/null) || {
-              echo ""
-              return
-            }
-
-            # Get first tag matching x86_64-linux and extract version
-            local tag version
-            tag=$(echo "$tags_json" | jq -r '.Tags[]? | select(endswith("-x86_64-linux"))' | head -1)
-
-            # If no x86_64, try aarch64
-            if [ -z "$tag" ]; then
-              tag=$(echo "$tags_json" | jq -r '.Tags[]? | select(endswith("-aarch64-linux"))' | head -1)
-              version=$(echo "$tag" | sed 's/-aarch64-linux$//')
-            else
-              version=$(echo "$tag" | sed 's/-x86_64-linux$//')
-            fi
-
-            echo "$version"
           }
 
           echo "$PACKAGES" | jq -c '.[]' | while IFS= read -r pkg; do
@@ -214,24 +186,24 @@ jobs:
               pkg_name="$family"  # fallback to family name
             fi
 
-            # Check for custom ghcr_pkg (required for GHCR version check)
+            # Check for ghcr_pkg
             ghcr_pkg=$(get_ghcr_pkg "$path")
 
             echo "::group::Checking $family/$name (pkg: $pkg_name)"
 
-            # Skip if no ghcr_pkg - we can't determine the GHCR path
+            # Skip if no ghcr_pkg
             if [ -z "$ghcr_pkg" ]; then
-              echo "No ghcr_pkg set - cannot check GHCR version, skipping"
+              echo "No ghcr_pkg set - cannot track version, skipping"
               echo "::endgroup::"
               continue
             fi
 
             NEEDS_REBUILD=false
             NEW_VERSION=""
-            CURRENT_VERSION=""
+            CACHED_VERSION=""
 
-            # Get remote_pkgver from recipe for comparison
-            REMOTE_PKGVER=$(get_remote_pkgver "$path")
+            # Get cached remote_pkgver from state file
+            CACHED_VERSION=$(jq -r --arg key "$path" '.[$key] // ""' "$STATE_FILE")
 
             # Try to extract and run pkgver script
             PKGVER_SCRIPT=$(extract_pkgver_script "$path")
@@ -242,20 +214,17 @@ jobs:
 
               if [ -n "$NEW_VERSION" ]; then
                 echo "New version from pkgver: $NEW_VERSION"
-                echo "Current remote_pkgver in recipe: $REMOTE_PKGVER"
+                echo "Cached version: ${CACHED_VERSION:-<none>}"
 
-                # Sanitize version for comparison (OCI tags have restricted charset)
-                SANITIZED_VERSION=$(sanitize_version "$NEW_VERSION")
-                SANITIZED_REMOTE=$(sanitize_version "$REMOTE_PKGVER")
-                echo "Sanitized new version: $SANITIZED_VERSION"
-                echo "Sanitized remote version: $SANITIZED_REMOTE"
-
-                # Compare new version with remote_pkgver (not pkgver)
-                if [ "$SANITIZED_VERSION" != "$SANITIZED_REMOTE" ]; then
-                  echo "Version changed: $SANITIZED_REMOTE -> $SANITIZED_VERSION"
+                # Compare new version with cached version
+                if [ -n "$CACHED_VERSION" ] && [ "$NEW_VERSION" != "$CACHED_VERSION" ]; then
+                  echo "Version changed: $CACHED_VERSION -> $NEW_VERSION"
+                  NEEDS_REBUILD=true
+                elif [ -z "$CACHED_VERSION" ]; then
+                  echo "No cached version - first build or cache cleared, will trigger rebuild"
                   NEEDS_REBUILD=true
                 else
-                  echo "Version unchanged (matches remote_pkgver)"
+                  echo "Version unchanged (matches cache)"
                 fi
               else
                 echo "pkgver script returned empty result"
@@ -273,6 +242,8 @@ jobs:
               echo "Marking for rebuild"
               # Write to temp file to persist across subshell
               echo "$path|$NEW_VERSION" >> /tmp/to_rebuild.txt
+              # Update state file with new version
+              jq --arg key "$path" --arg ver "$NEW_VERSION" '.[$key] = $ver' "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE"
             else
               echo "No rebuild needed"
             fi
@@ -298,6 +269,13 @@ jobs:
             echo "has_updates=true" >> $GITHUB_OUTPUT
           else
             echo "has_updates=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update rolling state cache
+        if: always()
+        run: |
+          if [ -f .rolling-state.json ]; then
+            echo "State file updated with $(jq 'length' .rolling-state.json) tracked versions"
           fi
 
   rebuild:
