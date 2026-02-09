@@ -18,6 +18,10 @@ concurrency:
   group: rolling-rebuilds
   cancel-in-progress: false
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   find-rolling-packages:
     runs-on: ubuntu-latest
@@ -296,8 +300,127 @@ jobs:
       logs: true
     secrets: inherit
 
+  update-cache:
+    needs: [check-for-updates, rebuild]
+    if: always() && needs.check-for-updates.outputs.has_updates == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Download tools
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
+            -o /usr/local/bin/sbuild-cache && chmod +x /usr/local/bin/sbuild-cache || true
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
+            -o /usr/local/bin/sbuild-linter && chmod +x /usr/local/bin/sbuild-linter || true
+
+      - name: Download existing cache
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
+            sbuild-cache --cache /tmp/build_cache.sdb init
+
+      - name: Download build status artifacts
+        uses: actions/download-artifact@v7
+        with:
+          pattern: build-status-*
+          path: /tmp/build-statuses
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: Update cache with build results
+        run: |
+          PACKAGES='${{ needs.check-for-updates.outputs.to_rebuild }}'
+
+          echo "$PACKAGES" | jq -c '.[]' | while read -r pkg; do
+            path=$(echo "$pkg" | jq -r '.path')
+            new_version=$(echo "$pkg" | jq -r '.new_version // "unknown"')
+
+            # Extract package name from path
+            pkg_name=$(basename "$(dirname "$path")")
+
+            # Use version from pkgver output or fall back to recipe
+            pkg_version="$new_version"
+            if [ "$pkg_version" = "unknown" ] || [ -z "$pkg_version" ]; then
+              if [ -f "$path" ]; then
+                pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "unknown")
+              fi
+            fi
+            [ -z "$pkg_version" ] && pkg_version="unknown"
+
+            # Compute recipe hash
+            if [ -f "$path" ] && command -v sbuild-linter &>/dev/null; then
+              recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+            else
+              recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+            fi
+
+            # Process build status for each host architecture
+            for host in x86_64-linux aarch64-linux; do
+              status="unknown"
+
+              if [ -d "/tmp/build-statuses" ]; then
+                for status_file in /tmp/build-statuses/build-status.json /tmp/build-statuses/*/build-status.json; do
+                  [ -f "$status_file" ] || continue
+
+                  recipe_url=$(jq -r '.recipe_url // ""' "$status_file" 2>/dev/null || echo "")
+                  file_host=$(jq -r '.host // ""' "$status_file" 2>/dev/null || echo "")
+
+                  if echo "$recipe_url" | grep -q "$path" && [ "$file_host" = "$host" ]; then
+                    file_status=$(jq -r '.status // "unknown"' "$status_file" 2>/dev/null || echo "unknown")
+                    case "$file_status" in
+                      failure) status="failed" ;;
+                      success) status="success" ;;
+                      skipped) status="skipped" ;;
+                      *) status="pending" ;;
+                    esac
+                    break
+                  fi
+                done
+              fi
+
+              # Skip if no status found for this host
+              if [ "$status" = "unknown" ]; then
+                continue
+              fi
+
+              echo "Package: $pkg_name ($host), Version: $pkg_version, Hash: ${recipe_hash:0:16}..., Status: $status"
+
+              sbuild-cache --cache /tmp/build_cache.sdb update \
+                --package "$pkg_name" \
+                --host "$host" \
+                --version "$pkg_version" \
+                --hash "$recipe_hash" \
+                --status "$status" || echo "Warning: Failed to update cache for $pkg_name ($host)"
+            done
+          done
+
+      - name: Generate build summary
+        run: |
+          sbuild-cache --cache /tmp/build_cache.sdb gh-summary \
+            --title "Rolling Rebuild Results" \
+            --host x86_64-linux || true
+
+      - name: Upload updated cache
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f "/tmp/build_cache.sdb" ]; then
+            gh release upload build-cache /tmp/build_cache.sdb --clobber --repo "${{ github.repository }}" || {
+              gh release create build-cache \
+                --title "Build Cache" \
+                --notes "Build cache for CI" \
+                --prerelease \
+                --repo "${{ github.repository }}" \
+                /tmp/build_cache.sdb
+            }
+          fi
+
   summary:
-    needs: [find-rolling-packages, check-for-updates, rebuild]
+    needs: [find-rolling-packages, check-for-updates, rebuild, update-cache]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -320,3 +443,4 @@ jobs:
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Build result:** ${{ needs.rebuild.result || 'skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Cache update:** ${{ needs.update-cache.result || 'skipped' }}" >> $GITHUB_STEP_SUMMARY

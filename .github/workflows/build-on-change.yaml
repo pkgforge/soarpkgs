@@ -234,38 +234,46 @@ jobs:
               recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
             fi
 
-            # Find build status from artifacts
-            status="unknown"
+            # Process build status for each host architecture
+            for host in x86_64-linux aarch64-linux; do
+              status="unknown"
 
-            if [ -d "/tmp/build-statuses" ]; then
-              for status_file in /tmp/build-statuses/build-status.json /tmp/build-statuses/*/build-status.json; do
-                [ -f "$status_file" ] || continue
+              if [ -d "/tmp/build-statuses" ]; then
+                for status_file in /tmp/build-statuses/build-status.json /tmp/build-statuses/*/build-status.json; do
+                  [ -f "$status_file" ] || continue
 
-                recipe_url=$(jq -r '.recipe_url // ""' "$status_file" 2>/dev/null || echo "")
-                if echo "$recipe_url" | grep -q "$path"; then
-                  file_status=$(jq -r '.status // "unknown"' "$status_file" 2>/dev/null || echo "unknown")
-                  if [ "$file_status" = "failure" ]; then
-                    status="failure"
+                  recipe_url=$(jq -r '.recipe_url // ""' "$status_file" 2>/dev/null || echo "")
+                  file_host=$(jq -r '.host // ""' "$status_file" 2>/dev/null || echo "")
+
+                  # Match both recipe path and host
+                  if echo "$recipe_url" | grep -q "$path" && [ "$file_host" = "$host" ]; then
+                    file_status=$(jq -r '.status // "unknown"' "$status_file" 2>/dev/null || echo "unknown")
+                    # Map workflow status values to sbuild-cache expected values
+                    case "$file_status" in
+                      failure) status="failed" ;;
+                      success) status="success" ;;
+                      skipped) status="skipped" ;;
+                      *) status="pending" ;;
+                    esac
                     break
-                  elif [ "$file_status" = "success" ]; then
-                    status="success"
                   fi
-                fi
-              done
-            fi
+                done
+              fi
 
-            # Fallback: use overall build job result if no artifact found
-            if [ "$status" = "unknown" ]; then
-              status="${{ needs.build.result }}"
-            fi
+              # Skip if no status found for this host (build might not have run for this arch)
+              if [ "$status" = "unknown" ]; then
+                continue
+              fi
 
-            echo "Package: $pkg_name, Version: $pkg_version, Hash: ${recipe_hash:0:16}..., Status: $status"
+              echo "Package: $pkg_name ($host), Version: $pkg_version, Hash: ${recipe_hash:0:16}..., Status: $status"
 
-            sbuild-cache --cache /tmp/build_cache.sdb update \
-              --package "$pkg_name" \
-              --version "$pkg_version" \
-              --hash "$recipe_hash" \
-              --status "$status" || true
+              sbuild-cache --cache /tmp/build_cache.sdb update \
+                --package "$pkg_name" \
+                --host "$host" \
+                --version "$pkg_version" \
+                --hash "$recipe_hash" \
+                --status "$status" || echo "Warning: Failed to update cache for $pkg_name ($host)"
+            done
           done
 
       - name: Generate build summary
