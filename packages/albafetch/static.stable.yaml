@@ -5,7 +5,7 @@ _disabled: false
 pkg: "albafetch"
 pkg_id: "alba4k.albafetch"
 pkg_type: "static"
-pkgver: "4.3"
+pkgver: ""
 ghcr_pkg: "alba4k/albafetch"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "fetch"
   - "system-info"
   - "neofetch"
+snapshots:
+  - "4.3"
 x_exec:
   host:
     - "x86_64-linux"
