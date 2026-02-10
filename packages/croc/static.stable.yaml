@@ -5,7 +5,7 @@ _disabled: false
 pkg: "croc"
 pkg_id: "schollz.croc"
 pkg_type: "static"
-pkgver: "10.3.1"
+pkgver: ""
 ghcr_pkg: "schollz/croc"
 category:
   - "FileTransfer"
@@ -32,6 +32,8 @@ tag:
   - "p2p"
   - "sharing"
   - "transfer"
+snapshots:
+  - "10.3.1"
 x_exec:
   host:
     - "x86_64-linux"
