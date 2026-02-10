@@ -5,7 +5,7 @@ _disabled: false
 pkg: "binfmt"
 pkg_id: "tonistiigi.binfmt"
 pkg_type: "static"
-pkgver: "10.0.4-59"
+pkgver: ""
 ghcr_pkg: "tonistiigi/binfmt"
 category:
   - "ConsoleOnly"
@@ -29,6 +29,8 @@ tag:
   - "binfmt"
   - "emulation"
   - "container"
+snapshots:
+  - "10.0.4-59"
 x_exec:
   host:
     - "x86_64-linux"
