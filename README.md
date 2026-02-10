@@ -32,28 +32,12 @@ This repository hosts [`.SBUILD` recipes](https://docs.pkgforge.dev/sbuild/intro
 
 ```bash
 .
-├── binaries    --> SBUILDs for building static binaries
-├── packages    --> SBUILDs for building full packages
-└── templates   --> SBUILD examples and templates
+└── packages    --> SBUILD recipes for all packages
 ```
 
 > [!NOTE]
 > We recommend cloning with [`--filter=blob:none`](https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/) for local development<br>
 > Package Listing & Searching: https://pkgs.pkgforge.dev
-
----
-
-## About soarpkgs
-
-soarpkgs is a community-driven repository of `.SBUILD` recipes that define how to build software packages. Each recipe contains:
-
-- **Package metadata** - Name, description, license, dependencies
-- **Build instructions** - Scripts to download, compile, and package software
-- **Version tracking** - Automatic version detection and upstream comparison
-
-Recipes are validated by [sbuilder](https://github.com/pkgforge/sbuilder) and built by CI workflows. The resulting packages are published to GHCR, with metadata available for:
-- **bincache** - Static binaries
-- **pkgcache** - Portable packages
 
 ---
 
@@ -70,12 +54,6 @@ Visit: https://pkgs.pkgforge.dev
 - [Contribution Guidelines](https://docs.pkgforge.dev/repositories/soarpkgs/contribution)
 - [Request a Package](https://docs.pkgforge.dev/repositories/soarpkgs/package-request)
 - [FAQs](https://docs.pkgforge.dev/repositories/soarpkgs/faq)
-
----
-
-## Community
-
-<a href="https://discord.gg/djJUs48Zbu"><img src="https://github.com/user-attachments/assets/5a336d72-6342-4ca5-87a4-aa8a35277e2f" width="18" height="18"><code>PkgForge Discord</code></a> ➼ [`https://discord.gg/djJUs48Zbu`](https://discord.gg/djJUs48Zbu)
 
 ---
 
