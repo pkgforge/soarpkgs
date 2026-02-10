@@ -21,6 +21,8 @@ concurrency:
 permissions:
   contents: write
   packages: write
+  attestations: write
+  id-token: write
 
 jobs:
   find-rolling-packages:

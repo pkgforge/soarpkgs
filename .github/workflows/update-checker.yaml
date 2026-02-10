@@ -46,8 +46,14 @@ jobs:
           sbuild-meta check-updates \
             --recipes ./binaries ./packages \
             --output /tmp/updates.json \
-            --parallel 10 \
-            --timeout 30
+            --parallel 5 \
+            --timeout 60
+
+          # Filter out updates with empty upstream_version
+          if [ -f /tmp/updates.json ]; then
+            jq '[.[] | select(.upstream_version != null and .upstream_version != "")]' /tmp/updates.json > /tmp/updates-filtered.json
+            mv /tmp/updates-filtered.json /tmp/updates.json
+          fi
 
           # Count updates
           if [ -f /tmp/updates.json ]; then
