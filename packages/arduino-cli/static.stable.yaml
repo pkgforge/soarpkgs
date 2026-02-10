@@ -5,7 +5,7 @@ _disabled: false
 pkg: "arduino-cli"
 pkg_id: "arduino.arduino-cli"
 pkg_type: "static"
-pkgver: "1.4.1"
+pkgver: ""
 ghcr_pkg: "arduino/arduino-cli"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "arduino"
   - "embedded"
   - "development"
+snapshots:
+  - "1.4.1"
 x_exec:
   host:
     - "x86_64-linux"
