@@ -5,7 +5,7 @@ _disabled: false
 pkg: "bluetuith"
 pkg_id: "bluetuith-org.bluetuith"
 pkg_type: "static"
-pkgver: "0.2.6"
+pkgver: ""
 ghcr_pkg: "bluetuith-org/bluetuith"
 category:
   - "ConsoleOnly"
@@ -31,6 +31,8 @@ src_url:
 tag:
   - "bluetooth"
   - "tui"
+snapshots:
+  - "0.2.6"
 x_exec:
   host:
     - "x86_64-linux"
