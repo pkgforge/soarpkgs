@@ -4,7 +4,7 @@ _disabled: false
 
 pkg: "act"
 pkg_id: "nektos.act"
-pkgver: "0.2.84"
+pkgver: ""
 pkg_type: "static"
 ghcr_pkg: "nektos/act"
 category:
@@ -32,6 +32,8 @@ tag:
   - "ci"
   - "devops"
   - "github-actions"
+snapshots:
+  - "0.2.84"
 x_exec:
   host:
     - "x86_64-linux"
