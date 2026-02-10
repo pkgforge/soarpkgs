@@ -5,7 +5,7 @@ _disabled: false
 pkg: "btop"
 pkg_id: "aristocratos.btop"
 pkg_type: "static"
-pkgver: "1.4.6"
+pkgver: ""
 ghcr_pkg: "aristocratos/btop"
 category:
   - "Utility"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "monitoring"
   - "system"
+snapshots:
+  - "1.4.6"
 x_exec:
   host:
     - "x86_64-linux"
