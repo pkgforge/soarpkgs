@@ -5,7 +5,7 @@ _disabled: false
 pkg: "algernon"
 pkg_id: "xyproto.algernon"
 pkg_type: "static"
-pkgver: "1.17.5"
+pkgver: ""
 ghcr_pkg: "xyproto/algernon"
 category:
   - "Utility"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "web-server"
   - "http"
+snapshots:
+  - "1.17.5"
 x_exec:
   host:
     - "x86_64-linux"
