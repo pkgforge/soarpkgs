@@ -5,7 +5,7 @@ _disabled: false
 pkg: "aws-nuke"
 pkg_id: "ekristen.aws-nuke"
 pkg_type: "static"
-pkgver: "3.63.4"
+pkgver: ""
 ghcr_pkg: "ekristen/aws-nuke"
 category:
   - "Utility"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "aws"
   - "cleanup"
+snapshots:
+  - "3.63.4"
 x_exec:
   host:
     - "x86_64-linux"
