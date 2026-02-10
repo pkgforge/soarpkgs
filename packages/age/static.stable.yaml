@@ -5,7 +5,7 @@ _disabled: false
 pkg: "age"
 pkg_id: "filosottile.age"
 pkg_type: "static"
-pkgver: "1.3.1"
+pkgver: ""
 ghcr_pkg: "filosottile/age"
 category:
   - "ConsoleOnly"
@@ -35,6 +35,8 @@ tag:
   - "cryptography"
   - "encryption"
   - "security"
+snapshots:
+  - "1.3.1"
 x_exec:
   host:
     - "x86_64-linux"
