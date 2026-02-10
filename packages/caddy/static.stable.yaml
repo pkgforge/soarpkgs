@@ -5,7 +5,7 @@ _disabled: false
 pkg: "caddy"
 pkg_id: "caddyserver.caddy"
 pkg_type: "static"
-pkgver: "2.10.2"
+pkgver: ""
 ghcr_pkg: "caddyserver/caddy"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "web-server"
   - "http"
   - "https"
+snapshots:
+  - "2.10.2"
 x_exec:
   host:
     - "x86_64-linux"
