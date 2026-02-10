@@ -5,7 +5,7 @@ _disabled: false
 pkg: "bandwhich"
 pkg_id: "imsnif.bandwhich"
 pkg_type: "static"
-pkgver: "0.23.1"
+pkgver: ""
 ghcr_pkg: "imsnif/bandwhich"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "network"
   - "bandwidth"
   - "monitoring"
+snapshots:
+  - "0.23.1"
 x_exec:
   host:
     - "x86_64-linux"
