@@ -5,7 +5,7 @@ _disabled: false
 pkg: "bat"
 pkg_id: "sharkdp.bat"
 pkg_type: "static"
-pkgver: "0.26.1"
+pkgver: ""
 ghcr_pkg: "sharkdp/bat"
 category:
   - "Utility"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "syntax-highlighting"
   - "git"
+snapshots:
+  - "0.26.1"
 x_exec:
   host:
     - "x86_64-linux"
