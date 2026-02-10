@@ -5,7 +5,7 @@ _disabled: false
 pkg: "eza"
 pkg_id: "eza-community.eza"
 pkg_type: "static"
-pkgver: "0.23.4"
+pkgver: ""
 ghcr_pkg: "eza-community/eza"
 category:
   - "ConsoleOnly"
@@ -29,6 +29,8 @@ src_url:
   - "https://github.com/eza-community/eza"
 tag:
   - "ls"
+snapshots:
+  - "0.23.4"
 x_exec:
   host:
     - "x86_64-linux"
