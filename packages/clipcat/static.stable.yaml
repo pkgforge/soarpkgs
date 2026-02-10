@@ -5,7 +5,7 @@ _disabled: false
 pkg: "clipcat"
 pkg_id: "xrelkd.clipcat"
 pkg_type: "static"
-pkgver: "0.24.0"
+pkgver: ""
 ghcr_pkg: "xrelkd/clipcat"
 category:
   - "Utility"
@@ -32,6 +32,8 @@ src_url:
   - "https://github.com/xrelkd/clipcat"
 tag:
   - "clipboard"
+snapshots:
+  - "0.24.0"
 x_exec:
   host:
     - "x86_64-linux"
