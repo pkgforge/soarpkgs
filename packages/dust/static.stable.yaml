@@ -4,7 +4,7 @@ _disabled: false
 
 pkg: "dust"
 pkg_id: "bootandy.dust"
-pkgver: "1.2.4"
+pkgver: ""
 pkg_type: "static"
 ghcr_pkg: "bootandy/dust"
 category:
@@ -32,6 +32,8 @@ tag:
   - "disk-usage"
   - "du"
   - "analyzer"
+snapshots:
+  - "1.2.4"
 x_exec:
   host:
     - "x86_64-linux"
