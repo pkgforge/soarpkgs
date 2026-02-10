@@ -5,7 +5,7 @@ _disabled: false
 
 pkg: "ripgrep"
 pkg_id: "burntsushi.ripgrep"
-pkgver: "15.1.0"
+pkgver: ""
 pkg_type: "static"
 ghcr_pkg: "burntsushi/ripgrep"
 category:
@@ -32,6 +32,8 @@ tag:
   - "dev-tools"
   - "cli"
   - "utility"
+snapshots:
+  - "15.1.0"
 x_exec:
   host:
     - "x86_64-linux"
