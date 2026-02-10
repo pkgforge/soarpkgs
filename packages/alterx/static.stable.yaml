@@ -5,7 +5,7 @@ _disabled: false
 pkg: "alterx"
 pkg_id: "projectdiscovery.alterx"
 pkg_type: "static"
-pkgver: "0.1.0"
+pkgver: ""
 ghcr_pkg: "projectdiscovery/alterx"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "subdomain"
   - "wordlist"
   - "security"
+snapshots:
+  - "0.1.0"
 x_exec:
   host:
     - "x86_64-linux"
