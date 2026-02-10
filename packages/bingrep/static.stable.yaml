@@ -5,7 +5,7 @@ _disabled: false
 
 pkg: "bingrep"
 pkg_id: "m4b.bingrep"
-pkgver: "0.12.1"
+pkgver: ""
 pkg_type: "static"
 ghcr_pkg: "m4b/bingrep"
 category:
@@ -32,6 +32,8 @@ tag:
   - "binary"
   - "security"
   - "analysis"
+snapshots:
+  - "0.12.1"
 x_exec:
   host:
     - "x86_64-linux"
