@@ -5,7 +5,7 @@ _disabled: false
 pkg: "actionlint"
 pkg_id: "rhysd.actionlint"
 pkg_type: "static"
-pkgver: "1.7.10"
+pkgver: "1.7.11"
 ghcr_pkg: "rhysd/actionlint"
 category:
   - "Utility"
@@ -31,6 +31,8 @@ tag:
   - "ci"
   - "github-actions"
   - "linter"
+snapshots:
+  - "1.7.10"
 x_exec:
   host:
     - "x86_64-linux"
