@@ -5,7 +5,7 @@ _disabled: false
 pkg: "7zip"
 pkg_id: "ip7z.7zip"
 pkg_type: "static"
-pkgver: "25.01"
+pkgver: "26.00"
 ghcr_pkg: "ip7z/7zip"
 category:
   - "Utility"
@@ -32,6 +32,8 @@ tag:
   - "archiver"
   - "compression"
   - "utility"
+snapshots:
+  - "25.01"
 x_exec:
   host:
     - "x86_64-linux"
