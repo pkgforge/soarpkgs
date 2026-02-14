@@ -343,6 +343,15 @@ jobs:
           sudo sysctl -p || true
         continue-on-error: true
 
+      - name: Download build cache
+        if: env.SKIP_BUILD != 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: "${{ github.token }}"
+        run: |
+          gh release download build-cache -p build_cache.sdb -D "${SYSTMP}/" \
+            --repo "${{ github.repository }}" 2>/dev/null || true
+
       - name: Build package
         if: env.SKIP_BUILD != 'true'
         env:
@@ -370,6 +379,11 @@ jobs:
             "--push"
             "--ghcr-repo" "${GHCR_REPO}"
           )
+
+          # Pass cache for revision tracking
+          if [[ -f "${SYSTMP}/build_cache.sdb" ]]; then
+            ARGS+=("--cache" "${SYSTMP}/build_cache.sdb")
+          fi
 
           [[ "${{ inputs.rebuild }}" == "true" ]] && ARGS+=("--force")
           [[ "${{ inputs.logs }}" == "true" ]] && ARGS+=("--keep")
@@ -445,3 +459,21 @@ jobs:
             ${{ env.SYSTMP }}/build-status.json
           retention-days: 1
           if-no-files-found: ignore
+
+      - name: Upload updated cache
+        if: always() && env.SKIP_BUILD != 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: "${{ github.token }}"
+        run: |
+          if [[ -f "${SYSTMP}/build_cache.sdb" ]]; then
+            gh release upload build-cache "${SYSTMP}/build_cache.sdb" --clobber \
+              --repo "${{ github.repository }}" 2>/dev/null || {
+              gh release create build-cache \
+                --title "Build Cache" \
+                --notes "Build cache for CI" \
+                --prerelease \
+                --repo "${{ github.repository }}" \
+                "${SYSTMP}/build_cache.sdb"
+            }
+          fi
