@@ -333,36 +333,43 @@ jobs:
           merge-multiple: true
         continue-on-error: true
 
-      - name: Update cache with build results
+      - name: Update cache with failed/skipped build results
         run: |
+          # sbuild now updates cache directly on success via --cache flag.
+          # This step only records failures/skips that sbuild didn't handle.
           PACKAGES='${{ needs.check-for-updates.outputs.to_rebuild }}'
 
           echo "$PACKAGES" | jq -c '.[]' | while read -r pkg; do
             path=$(echo "$pkg" | jq -r '.path')
-            new_version=$(echo "$pkg" | jq -r '.new_version // "unknown"')
+            new_version=$(echo "$pkg" | jq -r '.new_version // ""')
 
             # Extract package name from path
             pkg_name=$(basename "$(dirname "$path")")
 
             # Use version from pkgver output or fall back to recipe
             pkg_version="$new_version"
-            if [ "$pkg_version" = "unknown" ] || [ -z "$pkg_version" ]; then
+            if [ -z "$pkg_version" ]; then
               if [ -f "$path" ]; then
-                pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "unknown")
+                pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "")
               fi
             fi
-            [ -z "$pkg_version" ] && pkg_version="unknown"
+
+            # Skip if we still have no version
+            if [ -z "$pkg_version" ]; then
+              echo "Skipping $pkg_name: no version available"
+              continue
+            fi
 
             # Compute recipe hash
             if [ -f "$path" ] && command -v sbuild-linter &>/dev/null; then
               recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
             else
-              recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+              recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "")
             fi
 
             # Process build status for each host architecture
             for host in x86_64-linux aarch64-linux; do
-              status="unknown"
+              status=""
 
               if [ -d "/tmp/build-statuses" ]; then
                 for status_file in /tmp/build-statuses/build-status.json /tmp/build-statuses/*/build-status.json; do
@@ -372,24 +379,24 @@ jobs:
                   file_host=$(jq -r '.host // ""' "$status_file" 2>/dev/null || echo "")
 
                   if echo "$recipe_url" | grep -q "$path" && [ "$file_host" = "$host" ]; then
-                    file_status=$(jq -r '.status // "unknown"' "$status_file" 2>/dev/null || echo "unknown")
+                    file_status=$(jq -r '.status // ""' "$status_file" 2>/dev/null || echo "")
                     case "$file_status" in
                       failure) status="failed" ;;
-                      success) status="success" ;;
                       skipped) status="skipped" ;;
-                      *) status="pending" ;;
+                      success) status="" ;;  # Already handled by sbuild --cache
+                      *) status="" ;;
                     esac
                     break
                   fi
                 done
               fi
 
-              # Skip if no status found for this host
-              if [ "$status" = "unknown" ]; then
+              # Only update cache for failed/skipped (success handled by sbuild)
+              if [ -z "$status" ]; then
                 continue
               fi
 
-              echo "Package: $pkg_name ($host), Version: $pkg_version, Hash: ${recipe_hash:0:16}..., Status: $status"
+              echo "Package: $pkg_name ($host), Version: $pkg_version, Status: $status"
 
               sbuild-cache --cache /tmp/build_cache.sdb update \
                 --package "$pkg_name" \
