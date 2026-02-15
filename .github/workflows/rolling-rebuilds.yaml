@@ -343,8 +343,17 @@ jobs:
             path=$(echo "$pkg" | jq -r '.path')
             new_version=$(echo "$pkg" | jq -r '.new_version // ""')
 
-            # Extract package name from path
-            pkg_name=$(basename "$(dirname "$path")")
+            # Extract pkg_id and pkg name from recipe YAML for cache operations
+            pkg_id=""
+            pkg_name=""
+            if [ -f "$path" ]; then
+              pkg_id=$(grep -E '^pkg_id:' "$path" | head -1 | sed 's/pkg_id:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+              pkg_name=$(grep -E '^pkg:' "$path" | head -1 | sed 's/pkg:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+            fi
+            # Fallback to pkg name from recipe
+            if [ -z "$pkg_id" ]; then
+              pkg_id="${pkg_name:-$(basename "$(dirname "$path")")}"
+            fi
 
             # Use version from pkgver output or fall back to recipe
             pkg_version="$new_version"
@@ -396,14 +405,14 @@ jobs:
                 continue
               fi
 
-              echo "Package: $pkg_name ($host), Version: $pkg_version, Status: $status"
+              echo "Package: $pkg_id ($host), Version: $pkg_version, Status: $status"
 
               sbuild-cache --cache /tmp/build_cache.sdb update \
-                --package "$pkg_name" \
+                --package "$pkg_id" \
                 --host "$host" \
                 --version "$pkg_version" \
                 --hash "$recipe_hash" \
-                --status "$status" || echo "Warning: Failed to update cache for $pkg_name ($host)"
+                --status "$status" || echo "Warning: Failed to update cache for $pkg_id ($host)"
             done
           done
 

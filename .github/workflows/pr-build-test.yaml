@@ -143,20 +143,36 @@ jobs:
 
           echo "$RECIPES" | jq -c '.[]' | while read -r recipe; do
             path=$(echo "$recipe" | jq -r '.path')
-            pkg_name=$(basename "$(dirname "$path")")
+
+            # Extract pkg_id from recipe YAML for cache operations
+            pkg_id=""
+            pkg_name=""
+            if [ -f "$path" ]; then
+              pkg_id=$(grep -E '^pkg_id:' "$path" | head -1 | sed 's/pkg_id:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+              pkg_name=$(grep -E '^pkg:' "$path" | head -1 | sed 's/pkg:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+            fi
+            # Fallback to pkg field then directory name
+            if [ -z "$pkg_id" ]; then
+              pkg_id="${pkg_name:-$(basename "$(dirname "$path")")}"
+            fi
 
             # Extract version from recipe's pkgver field
-            pkg_version="unknown"
+            pkg_version=""
             if [ -f "$path" ]; then
-              pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "unknown")
-              [ -z "$pkg_version" ] && pkg_version="unknown"
+              pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+            fi
+
+            # Skip if we have no version
+            if [ -z "$pkg_version" ]; then
+              echo "Skipping $pkg_id: no version available"
+              continue
             fi
 
             # Compute recipe hash (excluding version for consistency)
             if [ -f "$path" ]; then
               recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
             else
-              recipe_hash="unknown"
+              recipe_hash=""
             fi
 
             status="success"
@@ -164,10 +180,10 @@ jobs:
               status="failure"
             fi
 
-            echo "Caching: $pkg_name v${pkg_version} (hash: ${recipe_hash:0:16}..., status: $status)"
+            echo "Caching: $pkg_id v${pkg_version} (hash: ${recipe_hash:0:16}..., status: $status)"
 
             sbuild-cache --cache /tmp/build_cache.sdb update \
-              --package "$pkg_name" \
+              --package "$pkg_id" \
               --version "$pkg_version" \
               --hash "$recipe_hash" \
               --status "$status" || true

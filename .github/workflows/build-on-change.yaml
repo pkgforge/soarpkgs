@@ -117,7 +117,18 @@ jobs:
 
           echo "$CHANGED_RECIPES" | jq -c '.[]' | while read -r recipe; do
             path=$(echo "$recipe" | jq -r '.path')
-            pkg_name=$(basename "$(dirname "$path")")
+
+            # Extract pkg_id from recipe YAML for cache lookups
+            pkg_id=""
+            pkg_name=""
+            if [ -f "$path" ]; then
+              pkg_id=$(grep -E '^pkg_id:' "$path" | head -1 | sed 's/pkg_id:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+              pkg_name=$(grep -E '^pkg:' "$path" | head -1 | sed 's/pkg:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+            fi
+            # Fallback to pkg name from recipe
+            if [ -z "$pkg_id" ]; then
+              pkg_id="${pkg_name:-$(basename "$(dirname "$path")")}"
+            fi
 
             # Skip cache check if force rebuild
             if [ "$FORCE_REBUILD" == "true" ]; then
@@ -134,12 +145,12 @@ jobs:
 
             # Check if already built with same hash
             if [ -f "/tmp/build_cache.sdb" ] && command -v sbuild-cache &>/dev/null; then
-              cached_info=$(sbuild-cache --cache /tmp/build_cache.sdb get --package "$pkg_name" --json 2>/dev/null || echo "")
+              cached_info=$(sbuild-cache --cache /tmp/build_cache.sdb get --package "$pkg_id" --json 2>/dev/null || echo "")
               cached_hash=$(echo "$cached_info" | jq -r '.recipe_hash // ""' 2>/dev/null || echo "")
               cached_status=$(echo "$cached_info" | jq -r '.last_build_status // ""' 2>/dev/null || echo "")
 
               if [ "$cached_hash" == "$current_hash" ] && [ "$cached_status" == "success" ]; then
-                echo "::notice::Skipping $pkg_name - already built with same hash" >&2
+                echo "::notice::Skipping $pkg_id - already built with same hash" >&2
                 continue
               fi
             fi
@@ -219,8 +230,17 @@ jobs:
           echo "$RECIPES" | jq -c '.[]' | while read -r recipe; do
             path=$(echo "$recipe" | jq -r '.path')
 
-            # Extract package name from path (e.g., binaries/hello/static.yaml -> hello)
-            pkg_name=$(basename "$(dirname "$path")")
+            # Extract pkg_id and pkg name from recipe YAML for cache operations
+            pkg_id=""
+            pkg_name=""
+            if [ -f "$path" ]; then
+              pkg_id=$(grep -E '^pkg_id:' "$path" | head -1 | sed 's/pkg_id:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+              pkg_name=$(grep -E '^pkg:' "$path" | head -1 | sed 's/pkg:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+            fi
+            # Fallback to pkg name from recipe
+            if [ -z "$pkg_id" ]; then
+              pkg_id="${pkg_name:-$(basename "$(dirname "$path")")}"
+            fi
 
             # Extract version from recipe's pkgver field
             pkg_version=""
@@ -230,7 +250,7 @@ jobs:
 
             # Skip if we have no version
             if [ -z "$pkg_version" ]; then
-              echo "Skipping $pkg_name: no version available"
+              echo "Skipping $pkg_id: no version available"
               continue
             fi
 
@@ -270,14 +290,14 @@ jobs:
                 continue
               fi
 
-              echo "Package: $pkg_name ($host), Version: $pkg_version, Status: $status"
+              echo "Package: $pkg_id ($host), Version: $pkg_version, Status: $status"
 
               sbuild-cache --cache /tmp/build_cache.sdb update \
-                --package "$pkg_name" \
+                --package "$pkg_id" \
                 --host "$host" \
                 --version "$pkg_version" \
                 --hash "$recipe_hash" \
-                --status "$status" || echo "Warning: Failed to update cache for $pkg_name ($host)"
+                --status "$status" || echo "Warning: Failed to update cache for $pkg_id ($host)"
             done
           done
 
