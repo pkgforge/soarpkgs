@@ -55,4 +55,5 @@ x_exec:
     mv "$SBUILD_TMPDIR/age/age-keygen" "$SBUILD_OUTDIR/"
     mv "$SBUILD_TMPDIR/age/age-plugin-batchpass" "$SBUILD_OUTDIR/"
     rm -rf "age.tar.gz"
-    strip age*
+    strip age
+    strip age-*
