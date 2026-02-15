@@ -2,7 +2,7 @@ name: Release Metadata
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # At 00:00 on Sunday
+    - cron: '0 5 * * 1/3' # At 5:00am on Monday and Thursday
   workflow_dispatch:
     inputs:
       force:
