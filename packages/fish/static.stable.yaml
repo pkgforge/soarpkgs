@@ -4,7 +4,7 @@ _disabled: false
 
 pkg: "fish"
 pkg_id: "fish-shell.fish"
-pkgver: "4.4.0"
+pkgver: "4.5.0"
 pkg_type: "static"
 ghcr_pkg: "fish-shell/fish-shell"
 category:
@@ -32,6 +32,7 @@ tag:
   - "cli"
   - "utility"
 snapshots:
+  - "4.4.0"
   - "4.3.3"
 x_exec:
   host:
