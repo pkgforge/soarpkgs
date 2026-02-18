@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/binfmt/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "binfmt"
@@ -9,18 +8,22 @@ pkgver: "10.0.4-59"
 ghcr_pkg: "tonistiigi/binfmt"
 category:
   - "ConsoleOnly"
-  - "Utility"
+  - "Emulator"
+  - "System"
 description: "Cross-platform emulator collection distributed with Docker images"
 homepage:
   - "https://github.com/tonistiigi/binfmt"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/tonistiigi/binfmt/master/LICENSE"
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/tonistiigi/binfmt/master/LICENSE"
+    out: "LICENSE"
 note:
   - "Official binary from https://github.com/tonistiigi/binfmt"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "binfmt"
 src_url:
@@ -37,7 +40,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/tonistiigi/binfmt/releases/latest" | jq -r '.tag_name' | tr -d 'deploy/v'
   run: |
-    ARCH=$(uname -m)
     case "$ARCH" in
       x86_64) ARCH="amd64" ;;
       aarch64) ARCH="arm64" ;;

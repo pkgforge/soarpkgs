@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/playerctl/appimage.nightly.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "playerctl"
@@ -15,8 +14,10 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "LGPL-3.0"
-    url: "https://raw.githubusercontent.com/altdesktop/playerctl/master/COPYING"
+  - "LGPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/altdesktop/playerctl/master/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/playerctl-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,7 +36,7 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/playerctl-AppImage/releases/latest?per_page=20" | jq -r '( .tag_name + "-" + (.published_at | split("T")[0]))')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/playerctl-AppImage/releases/latest?per_page=20" | jq -r '( .tag_name + "-" + (.published_at | split("T")[0]))')
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/playerctl-AppImage@${REMOTE_PKGVER%%-*}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/playerctl-AppImage@${REMOTE_PKGVER%%-*}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/filelight/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "filelight"
@@ -7,8 +6,8 @@ pkg_id: "pkgforge-dev.filelight"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/filelight"
 category:
-  - "Utility"
   - "FileTools"
+  - "Utility"
 description: "Visualize disk usage"
 homepage:
   - "https://apps.kde.org/filelight"
@@ -16,8 +15,10 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/KDE/filelight/refs/heads/master/LICENSES/GPL-3.0-only.txt"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/KDE/filelight/refs/heads/master/LICENSES/GPL-3.0-only.txt"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Filelight-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -37,8 +38,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Filelight-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Filelight-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Filelight-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Filelight-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

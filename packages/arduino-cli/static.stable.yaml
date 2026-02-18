@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/arduino-cli/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "arduino-cli"
@@ -8,19 +7,19 @@ pkg_type: "static"
 pkgver: "1.4.1"
 ghcr_pkg: "arduino/arduino-cli"
 category:
-  - "Utility"
   - "Development"
+  - "Electronics"
 description: "Arduino command line interface"
 homepage:
   - "https://github.com/arduino/arduino-cli"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/arduino/arduino-cli/master/LICENSE.txt"
+  - "GPL-3.0"
 note:
   - "Official binary from https://github.com/arduino/arduino-cli"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "arduino-cli"
 repology:
@@ -39,7 +38,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/arduino/arduino-cli/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
     case "$ARCH" in
       x86_64) ARCH="64bit" ;;
       aarch64) ARCH="ARM64" ;;
@@ -47,4 +45,5 @@ x_exec:
     soar dl "https://github.com/arduino/arduino-cli@v${PKGVER}" --glob "*Linux_${ARCH}.tar.gz" --yes -o arduino-cli.tar.gz
     tar -xf "arduino-cli.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/arduino-cli" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE.txt" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "arduino-cli.tar.gz"

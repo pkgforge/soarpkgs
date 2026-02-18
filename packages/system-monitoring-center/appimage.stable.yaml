@@ -1,21 +1,22 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/system-monitoring-center/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 pkg: "system-monitoring-center"
 pkg_id: "pkgforge-dev.system-monitoring-center"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/system-monitoring-center"
 category:
-  - "System"
   - "Monitor"
+  - "System"
 description: "Multi-featured system monitor"
 homepage:
   - "https://github.com/hakandundar34coding/system-monitoring-center"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/hakandundar34coding/system-monitoring-center/refs/heads/master/LICENSE"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/hakandundar34coding/system-monitoring-center/refs/heads/master/LICENSE"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/system-monitoring-center-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,8 +35,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/system-monitoring-center-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/system-monitoring-center-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/system-monitoring-center-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/system-monitoring-center-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

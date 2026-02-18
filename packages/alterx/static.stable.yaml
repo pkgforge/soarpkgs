@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/alterx/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "alterx"
@@ -8,7 +7,7 @@ pkg_type: "static"
 pkgver: "0.1.0"
 ghcr_pkg: "projectdiscovery/alterx"
 category:
-  - "Utility"
+  - "Network"
   - "Security"
 description: "Fast and customizable subdomain wordlist generator using DSL"
 homepage:
@@ -16,11 +15,14 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/projectdiscovery/alterx/main/LICENSE"
+  - "MIT"
+build_asset:
+  - url: "https://github.com/projectdiscovery/alterx/releases/download/v${PKGVER}/alterx_${PKGVER}_linux_${ARCH_ALT}.zip"
+    out: "alterx.zip"
 note:
   - "Official binary from https://github.com/projectdiscovery/alterx"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "alterx"
 repology:
@@ -39,12 +41,7 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/projectdiscovery/alterx/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
-    case "$ARCH" in
-      x86_64) ARCH="amd64" ;;
-      aarch64) ARCH="arm64" ;;
-    esac
-    soar dl "https://github.com/projectdiscovery/alterx@v${PKGVER}" --glob "*linux_${ARCH}*" --yes -o alterx.zip
     7z x "alterx.zip" -o"$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/alterx" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "alterx.zip"

@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rofi/appimage.unstable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "rofi"
@@ -7,6 +6,7 @@ pkg_id: "pkgforge-dev.rofi"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rofi"
 category:
+  - "System"
   - "Utility"
 description: "Window switcher, run dialog and dmenu replacement"
 homepage:
@@ -14,8 +14,10 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/davatorium/rofi/next/COPYING"
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/davatorium/rofi/next/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/rofi-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,8 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION="HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/rofi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/rofi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/rofi-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/rofi-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/mise/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "mise"
@@ -9,19 +8,19 @@ remote_pkgver: "v2026.2.9"
 pkg_type: "static"
 ghcr_pkg: "jdx/mise"
 category:
+  - "Development"
   - "Utility"
-  - "System"
 description: "The front-end to your dev env"
 homepage:
   - "https://github.com/jdx/mise"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/jdx/mise/main/LICENSE"
+  - "MIT"
 note:
   - "Official binary from https://github.com/jdx/mise"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "mise"
 repology:
@@ -46,11 +45,11 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/jdx/mise/releases/latest" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/jdx/mise/releases/latest" | jq -r '.tag_name')
     echo "${VERSION#v}"
     echo "$VERSION"
   run: |
-    case "$(uname -m)" in
+    case "${ARCH}" in
       aarch64)
         soar dl "github:jdx/mise@${REMOTE_PKGVER}" --glob "*linux-arm64-musl.tar.xz" -o "./mise.tar.xz" --yes
         ;;

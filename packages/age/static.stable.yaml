@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/age/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "age"
@@ -17,11 +16,14 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "BSD-3-Clause"
-    url: "https://raw.githubusercontent.com/FiloSottile/age/refs/heads/main/LICENSE"
+  - "BSD-3-Clause"
+build_asset:
+  - url: "https://github.com/FiloSottile/age/releases/download/v${PKGVER}/age-v${PKGVER}-linux-${ARCH_ALT}.tar.gz"
+    out: "age.tar.gz"
 note:
   - "Official binary from https://github.com/FiloSottile/age"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "age"
   - "@age-inspect"
@@ -43,17 +45,12 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/FiloSottile/age/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
-    case "$ARCH" in
-      x86_64) ARCH="amd64" ;;
-      aarch64) ARCH="arm64" ;;
-    esac
-    soar dl "https://github.com/FiloSottile/age@v${PKGVER}" --glob "*linux-${ARCH}.tar.gz" --yes -o age.tar.gz
     tar -xf "age.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/age/age" "$SBUILD_OUTDIR/"
     mv "$SBUILD_TMPDIR/age/age-inspect" "$SBUILD_OUTDIR/"
     mv "$SBUILD_TMPDIR/age/age-keygen" "$SBUILD_OUTDIR/"
     mv "$SBUILD_TMPDIR/age/age-plugin-batchpass" "$SBUILD_OUTDIR/"
+    mv "$SBUILD_TMPDIR/age/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "age.tar.gz"
     strip age
     strip age-*

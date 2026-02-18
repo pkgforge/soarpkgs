@@ -1,6 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ripgrep/static.stable.yaml
-# deps: docker
+#!/SBUILD
 _disabled: false
 
 pkg: "ripgrep"
@@ -9,7 +7,7 @@ pkgver: "15.1.0"
 pkg_type: "static"
 ghcr_pkg: "burntsushi/ripgrep"
 category:
-  - "System"
+  - "ConsoleOnly"
   - "Utility"
 description: "A search tool that combines the usability of ag with the raw speed of grep"
 homepage:
@@ -17,13 +15,16 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT OR UNLICENSE"
-    url: "https://raw.githubusercontent.com/BurntSushi/ripgrep/master/COPYING"
+  - "MIT"
+  - "Unlicense"
+build_deps:
+  - "docker"
 note:
   - "Built from source with static musl linking"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
-  - "ripgrep=>rg"
+  - "rg"
 repology:
   - "ripgrep"
 src_url:
@@ -36,27 +37,19 @@ x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
-  shell: "sh"
+  container: "ghcr.io/pkgforge/devscripts/alpine-builder"
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | jq -r '.tag_name'
   run: |
-    docker run --rm --privileged --net="host" \
-      --pull="always" \
-      -e "PKGVER=$PKGVER" \
-      --volume "$SBUILD_TMPDIR:/output:rw" \
-      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
-      bash -c '
-        set -e
-        cd "$(mktemp -d)"
-        source "$HOME/.cargo/env"
-        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
-        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
-        git clone --filter=blob:none --quiet "https://github.com/BurntSushi/ripgrep"
-        cd ripgrep
-        git checkout "$PKGVER"
-        cargo build --target="$RUST_TARGET" --profile=release-lto --features=pcre2
-        cp "target/$RUST_TARGET/release-lto/rg" /output/ripgrep
-        cp COPYING /output/LICENSE 2>/dev/null || true
-      '
-    cp "$SBUILD_TMPDIR/ripgrep" "$SBUILD_OUTDIR/"
-    cp "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/" 2>/dev/null || true
+    set -e
+    cd "$(mktemp -d)"
+    source "$HOME/.cargo/env"
+    export RUST_TARGET="${ARCH}-unknown-linux-musl"
+    export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+    git clone --filter=blob:none --quiet "https://github.com/BurntSushi/ripgrep"
+    cd ripgrep
+    git checkout "$PKGVER"
+    cargo build --target="$RUST_TARGET" --profile=release-lto --features=pcre2
+    cp "target/$RUST_TARGET/release-lto/rg" "$SBUILD_OUTDIR/rg"
+    cp "LICENSE-MIT" "$SBUILD_OUTDIR/"

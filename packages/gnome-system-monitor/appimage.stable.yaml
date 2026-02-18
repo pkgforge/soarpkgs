@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/gnome-system-monitor/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "gnome-system-monitor"
@@ -7,8 +6,8 @@ pkg_id: "pkgforge-dev.gnome-system-monitor"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gnome-system-monitor"
 category:
-  - "System"
   - "Monitor"
+  - "System"
 description: "View current processes and monitor system state"
 homepage:
   - "https://wiki.gnome.org/Apps/SystemMonitor"
@@ -16,8 +15,10 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-2.0"
-    url: "https://raw.githubusercontent.com/GNOME/gnome-system-monitor/refs/heads/main/COPYING"
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/GNOME/gnome-system-monitor/refs/heads/main/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -36,8 +37,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

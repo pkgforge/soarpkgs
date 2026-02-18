@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/pavucontrol-qt/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "pavucontrol-qt"
@@ -15,8 +14,10 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-2.0"
-    url: "https://raw.githubusercontent.com/lxqt/pavucontrol-qt/master/LICENSE"
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/lxqt/pavucontrol-qt/master/LICENSE"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/pavucontrol-qt-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,8 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/pavucontrol-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/pavucontrol-qt-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

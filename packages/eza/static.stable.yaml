@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/eza/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "eza"
@@ -9,6 +8,7 @@ pkgver: "0.23.4"
 ghcr_pkg: "eza-community/eza"
 category:
   - "ConsoleOnly"
+  - "FileTools"
   - "Utility"
 description: "A modern replacement for ls"
 homepage:
@@ -16,11 +16,13 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/LICENSE.txt"
+  - "MIT"
+build_deps:
+  - "docker"
 note:
   - "Built from source with static musl linking"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "eza"
 repology:
@@ -33,25 +35,19 @@ x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
-  shell: "sh"
+  container: "ghcr.io/pkgforge/devscripts/alpine-builder"
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/eza-community/eza/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    docker run --rm --privileged --net="host" \
-      --pull="always" \
-      -e "PKGVER=$PKGVER" \
-      --volume "$SBUILD_TMPDIR:/output:rw" \
-      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
-      bash -c '
-        set -e
-        cd "$(mktemp -d)"
-        source "$HOME/.cargo/env"
-        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
-        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
-        git clone --filter=blob:none --quiet "https://github.com/eza-community/eza"
-        cd eza
-        git checkout "v$PKGVER"
-        cargo build --target="$RUST_TARGET" --release
-        cp "target/$RUST_TARGET/release/eza" /output/eza
-      '
-    cp "$SBUILD_TMPDIR/eza" "$SBUILD_OUTDIR/"
+    set -e
+    cd "$(mktemp -d)"
+    source "$HOME/.cargo/env"
+    export RUST_TARGET="${ARCH}-unknown-linux-musl"
+    export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+    git clone --filter=blob:none --quiet "https://github.com/eza-community/eza"
+    cd eza
+    git checkout "v$PKGVER"
+    cargo build --target="$RUST_TARGET" --release
+    cp LICENSE.txt "$SBUILD_OUTDIR/LICENSE"
+    cp "target/$RUST_TARGET/release/eza" "$SBUILD_OUTDIR/"

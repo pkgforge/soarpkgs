@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/newsflash/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "newsflash"
@@ -7,6 +6,7 @@ pkg_id: "pkgforge-dev.newsflash"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/newsflash"
 category:
+  - "Feed"
   - "Network"
   - "News"
 description: "RSS reader"
@@ -16,8 +16,10 @@ homepage:
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
-  - id: "GPL-3.0"
-    url: "https://gitlab.com/news-flash/news_flash_gtk/-/raw/main/LICENSE"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://gitlab.com/news-flash/news_flash_gtk/-/raw/main/LICENSE"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NewsFlash-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -37,8 +39,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/NewsFlash-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/NewsFlash-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/NewsFlash-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/NewsFlash-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

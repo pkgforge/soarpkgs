@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/fzf/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "fzf"
@@ -8,19 +7,22 @@ pkgver: "0.67.0"
 pkg_type: "static"
 ghcr_pkg: "junegunn/fzf"
 category:
+  - "ConsoleOnly"
   - "Utility"
-  - "System"
 description: "A command-line fuzzy finder"
 homepage:
   - "https://github.com/junegunn/fzf"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/junegunn/fzf/master/LICENSE"
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/junegunn/fzf/master/LICENSE"
+    out: "LICENSE"
 note:
   - "Official binary from https://github.com/junegunn/fzf"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "fzf"
 repology:
@@ -38,17 +40,11 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/junegunn/fzf/releases/latest" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/junegunn/fzf/releases/latest" | jq -r '.tag_name')
     echo "${VERSION#v}"
   run: |
-    case "$(uname -m)" in
-      aarch64)
-        soar dl "github:junegunn/fzf@v${PKGVER}" --glob "*linux_arm64.tar.gz" -o "./fzf.tar.gz" --yes
-        ;;
-      x86_64)
-        soar dl "github:junegunn/fzf@v${PKGVER}" --glob "*linux_amd64.tar.gz" -o "./fzf.tar.gz" --yes
-        ;;
-    esac
+    soar dl "github:junegunn/fzf@v${PKGVER}" --glob "*linux_${ARCH_ALT}.tar.gz" -o "./fzf.tar.gz" --yes
     tar -xf "fzf.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/fzf" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -f "fzf.tar.gz"

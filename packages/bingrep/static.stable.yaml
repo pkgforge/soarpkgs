@@ -1,6 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bingrep/static.stable.yaml
-# deps: docker
+#!/SBUILD
 _disabled: false
 
 pkg: "bingrep"
@@ -10,6 +8,7 @@ pkg_type: "static"
 ghcr_pkg: "m4b/bingrep"
 category:
   - "ConsoleOnly"
+  - "Development"
   - "Utility"
 description: "Cross-platform binary parser and colorizer"
 homepage:
@@ -17,11 +16,13 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/m4b/bingrep/master/LICENSE"
+  - "MIT"
+build_deps:
+  - "docker"
 note:
   - "Built from source with static musl linking"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "bingrep"
 repology:
@@ -36,26 +37,19 @@ x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
-  shell: "sh"
+  container: "ghcr.io/pkgforge/devscripts/alpine-builder"
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/m4b/bingrep/tags" | jq -r '.[0].name' | tr -d 'v'
   run: |
-    docker run --rm --privileged --net="host" \
-      --pull="always" \
-      -e "PKGVER=$PKGVER" \
-      --volume "$SBUILD_TMPDIR:/output:rw" \
-      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
-      bash -c '
-        set -e
-        cd "$(mktemp -d)"
-        source "$HOME/.cargo/env"
-        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
-        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
-        git clone --filter=blob:none --quiet "https://github.com/m4b/bingrep"
-        cd bingrep
-        git checkout "v$PKGVER"
-        cargo build --target="$RUST_TARGET" --release
-        cp "target/$RUST_TARGET/release/bingrep" /output/bingrep
-      '
-    cp "$SBUILD_TMPDIR/bingrep" "$SBUILD_OUTDIR/"
-    strip bingrep
+    set -e
+    cd "$(mktemp -d)"
+    source "$HOME/.cargo/env"
+    export RUST_TARGET="${ARCH}-unknown-linux-musl"
+    export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+    git clone --filter=blob:none --quiet "https://github.com/m4b/bingrep"
+    cd bingrep
+    git checkout "v$PKGVER"
+    cargo build --target="$RUST_TARGET" --release
+    cp "target/$RUST_TARGET/release/bingrep" "$SBUILD_OUTDIR/"
+    cp "LICENSE" "$SBUILD_OUTDIR/"

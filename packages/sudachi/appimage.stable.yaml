@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sudachi/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "sudachi"
@@ -7,15 +6,15 @@ pkg_id: "pkgforge-dev.sudachi"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/sudachi"
 category:
-  - "Game"
   - "Emulator"
+  - "Game"
 description: "Nintendo Switch emulator"
 homepage:
   - "https://github.com/pkgforge-dev/Sudachi-AppImage"
 maintainer:
   - "pflyly (github.com/pflyly)"
 license:
-  - id: "GPL-3.0"
+  - "GPL-3.0"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Sudachi-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,7 +33,7 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Sudachi-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Sudachi-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Sudachi-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

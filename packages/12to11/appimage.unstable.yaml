@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/12to11/appimage.unstable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "12to11"
@@ -7,6 +6,7 @@ pkg_id: "pkgforge-dev.12to11"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/12to11"
 category:
+  - "System"
   - "Utility"
 description: "Tool for running Wayland applications on an X server"
 homepage:
@@ -14,11 +14,14 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://git.linuxping.win/12to11/12to11/raw/branch/master/COPYING"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://git.linuxping.win/12to11/12to11/raw/branch/master/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/12to11-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "12to11"
 src_url:
@@ -31,8 +34,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION="HEAD-$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/12to11-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/12to11-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/12to11-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

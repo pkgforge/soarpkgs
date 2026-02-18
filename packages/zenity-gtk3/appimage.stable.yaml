@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/zenity-gtk3/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "zenity-gtk3"
@@ -7,6 +6,7 @@ pkg_id: "pkgforge-dev.zenity-gtk3"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/zenity-gtk3"
 category:
+  - "Development"
   - "Utility"
 description: "Display graphical dialog boxes from shell scripts (GTK3 version)"
 homepage:
@@ -14,11 +14,14 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "LGPL-2.1"
-    url: "https://gitlab.gnome.org/GNOME/zenity/-/raw/master/COPYING"
+  - "LGPL-2.1"
+build_asset:
+  - url: "https://gitlab.gnome.org/GNOME/zenity/-/raw/master/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Zenity-GTK3-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "zenity-gtk3==zenity"
 repology:
@@ -34,8 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Zenity-GTK3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Zenity-GTK3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Zenity-GTK3-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Zenity-GTK3-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

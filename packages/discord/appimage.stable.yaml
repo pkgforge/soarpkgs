@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/discord/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "discord"
@@ -9,14 +8,17 @@ ghcr_pkg: "pkgforge-dev/discord"
 category:
   - "Chat"
   - "InstantMessaging"
+  - "Network"
 description: "All-in-one voice and text chat for gamers"
 homepage:
   - "https://discord.com"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "Proprietary"
-    url: "https://discord.com/terms"
+  - "Proprietary"
+build_asset:
+  - url: "https://discord.com/terms"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Discord-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,7 +36,7 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Discord-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Discord-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
