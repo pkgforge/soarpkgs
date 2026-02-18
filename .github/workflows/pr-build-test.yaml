@@ -15,6 +15,10 @@ on:
           - aarch64-linux
           - ALL
         default: x86_64-linux
+      package:
+        description: 'Specific package to build (e.g. "bat" or "packages/bat/static.stable.yaml"). Leave empty to auto-detect from PR diff.'
+        type: string
+        required: false
 
 permissions:
   attestations: write
@@ -61,23 +65,42 @@ jobs:
         id: detect
         env:
           BASE_SHA: ${{ steps.pr-info.outputs.base_sha }}
+          PACKAGE_INPUT: ${{ inputs.package }}
         run: |
-          # Get changed files between base and PR head
-          CHANGED_FILES=$(git diff --name-only "${BASE_SHA}" HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
-
-          echo "Changed recipe files:"
-          echo "$CHANGED_FILES"
-
           CHANGED_RECIPES="[]"
 
-          for file in $CHANGED_FILES; do
-            if [ -f "$file" ]; then
-              CHANGED_RECIPES=$(echo "$CHANGED_RECIPES" | jq --arg path "$file" '. + [{"path": $path}]')
+          if [ -n "$PACKAGE_INPUT" ]; then
+            echo "::notice::Package specified: ${PACKAGE_INPUT}"
+
+            if [ -f "$PACKAGE_INPUT" ]; then
+              # Full path provided (e.g. packages/bat/static.stable.yaml)
+              CHANGED_RECIPES=$(echo "$CHANGED_RECIPES" | jq --arg path "$PACKAGE_INPUT" '. + [{"path": $path}]')
+            else
+              # Package name provided (e.g. "bat") - find all recipes under it
+              for dir in packages binaries; do
+                for file in "${dir}/${PACKAGE_INPUT}"/*.yaml; do
+                  if [ -f "$file" ]; then
+                    CHANGED_RECIPES=$(echo "$CHANGED_RECIPES" | jq --arg path "$file" '. + [{"path": $path}]')
+                  fi
+                done
+              done
             fi
-          done
+          else
+            # Auto-detect from PR diff
+            CHANGED_FILES=$(git diff --name-only "${BASE_SHA}" HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
+
+            echo "Changed recipe files:"
+            echo "$CHANGED_FILES"
+
+            for file in $CHANGED_FILES; do
+              if [ -f "$file" ]; then
+                CHANGED_RECIPES=$(echo "$CHANGED_RECIPES" | jq --arg path "$file" '. + [{"path": $path}]')
+              fi
+            done
+          fi
 
           RECIPE_COUNT=$(echo "$CHANGED_RECIPES" | jq 'length')
-          echo "::notice::Found ${RECIPE_COUNT} changed recipes"
+          echo "::notice::Found ${RECIPE_COUNT} recipes to build"
 
           echo "changed_recipes=$(echo "$CHANGED_RECIPES" | jq -c .)" >> $GITHUB_OUTPUT
 
