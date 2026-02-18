@@ -38,14 +38,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y zstd xz-utils jq
 
-          # Download sbuild-meta
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-meta-${ARCH}" \
-            -o /usr/local/bin/sbuild-meta || {
-            echo "::error::Failed to download sbuild-meta"
+          # Download sbuild
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-${ARCH}" \
+            -o /usr/local/bin/sbuild || {
+            echo "::error::Failed to download sbuild"
             exit 1
           }
-          chmod +x /usr/local/bin/sbuild-meta
-          sbuild-meta --version
+          chmod +x /usr/local/bin/sbuild
+          sbuild --version
 
           # Download soarql for SDB generation
           curl -fsSL "https://github.com/pkgforge/soarql/releases/download/nightly/soarql-${ARCH}" \
@@ -61,7 +61,7 @@ jobs:
         run: |
           mkdir -p /tmp/output
 
-          sbuild-meta generate \
+          sbuild meta generate \
             -a "${{ matrix.arch }}" \
             -r ./packages/ \
             -o /tmp/output/metadata.json \

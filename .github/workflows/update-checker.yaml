@@ -30,20 +30,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download sbuild-meta
+      - name: Download sbuild
         run: |
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-meta-x86_64-linux" \
-            -o /usr/local/bin/sbuild-meta || {
-            echo "::warning::Failed to download sbuild-meta, skipping update check"
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /usr/local/bin/sbuild || {
+            echo "::warning::Failed to download sbuild, skipping update check"
             exit 0
           }
-          chmod +x /usr/local/bin/sbuild-meta
-          sbuild-meta --version
+          chmod +x /usr/local/bin/sbuild
+          sbuild --version
 
       - name: Check for upstream updates
         id: check
         run: |
-          sbuild-meta check-updates \
+          sbuild meta check-updates \
             --recipes ./binaries ./packages \
             --output /tmp/updates.json \
             --parallel 5 \

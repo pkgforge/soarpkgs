@@ -124,7 +124,7 @@ jobs:
           soar --version
 
           # Install sbuild
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-${SOAR_TRIPLET}" \
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-${SOAR_TRIPLET}" \
             -o "${SYSTMP}/sbuild" && chmod +x "${SYSTMP}/sbuild"
           "${SYSTMP}/sbuild" --version
 
@@ -179,8 +179,25 @@ jobs:
             exit 0
           fi
 
-          # Check for deps comment in first 10 lines (e.g., "# deps: cargo docker")
-          RECIPE_DEPS=$(echo "$RECIPE_CONTENT" | head -10 | grep -E '^\s*#\s+deps:' | sed -E 's/^\s*#\s+deps:\s*//' || echo "")
+          # Check for build_deps field in YAML
+          RECIPE_DEPS=$(echo "$RECIPE_CONTENT" | awk '
+            /^build_deps:/ { in_deps=1; next }
+            in_deps && /^[a-z_]+:/ { exit }
+            in_deps && /^[[:space:]]*-/ {
+              gsub(/^[[:space:]]*-[[:space:]]*/, "")
+              gsub(/^"/, ""); gsub(/"$/, "")
+              gsub(/'\''/, "")
+              printf "%s,", $0
+            }
+          ' | sed 's/,$//')
+
+          # Fallback: check for deps comment in first 10 lines (e.g., "# deps: cargo docker")
+          if [[ -z "$RECIPE_DEPS" ]]; then
+            COMMENT_DEPS=$(echo "$RECIPE_CONTENT" | head -10 | grep -E '^\s*#\s+deps:' | sed -E 's/^\s*#\s+deps:\s*//' || echo "")
+            if [[ -n "$COMMENT_DEPS" ]]; then
+              RECIPE_DEPS="$COMMENT_DEPS"
+            fi
+          fi
 
           if [[ -n "$RECIPE_DEPS" ]]; then
             echo "Found dependencies: $RECIPE_DEPS"

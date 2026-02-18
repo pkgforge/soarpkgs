@@ -139,9 +139,9 @@ jobs:
           # Checkout PR branch
           gh pr checkout "$PR_NUM"
 
-          # Download linter
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
-            -o /tmp/sbuild-linter && chmod +x /tmp/sbuild-linter
+          # Download sbuild
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /tmp/sbuild && chmod +x /tmp/sbuild
 
           # Get changed files
           CHANGED=$(git diff --name-only "origin/${BASE_REF}" HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
@@ -160,7 +160,7 @@ jobs:
 
           for file in $CHANGED; do
             if [ -f "$file" ]; then
-              if /tmp/sbuild-linter lint "$file" > /tmp/lint-output.txt 2>&1; then
+              if /tmp/sbuild lint "$file" > /tmp/lint-output.txt 2>&1; then
                 RESULTS="${RESULTS}
           | \`${file}\` | ✅ Valid | - |"
               else
@@ -208,17 +208,17 @@ jobs:
           # Checkout PR branch
           gh pr checkout "$PR_NUM"
 
-          # Download sbuild-meta
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-meta-x86_64-linux" \
-            -o /tmp/sbuild-meta && chmod +x /tmp/sbuild-meta || {
+          # Download sbuild
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /tmp/sbuild && chmod +x /tmp/sbuild || {
             gh pr comment "$PR_NUM" \
               --repo ${{ github.repository }} \
-              --body "⚠️ Failed to download sbuild-meta"
+              --body "⚠️ Failed to download sbuild"
             exit 1
           }
 
           # Run version check
-          /tmp/sbuild-meta check-updates \
+          /tmp/sbuild meta check-updates \
             --recipes ./binaries ./packages \
             --output /tmp/updates.json \
             --parallel 5 \
