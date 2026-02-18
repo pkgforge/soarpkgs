@@ -47,10 +47,8 @@ jobs:
 
       - name: Download tools
         run: |
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
-            -o /usr/local/bin/sbuild-linter && chmod +x /usr/local/bin/sbuild-linter || true
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
-            -o /usr/local/bin/sbuild-cache && chmod +x /usr/local/bin/sbuild-cache || true
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild || true
 
       - name: Download build cache
         continue-on-error: true
@@ -58,7 +56,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild-cache --cache /tmp/build_cache.sdb init 2>/dev/null || true
+            sbuild cache --cache /tmp/build_cache.sdb init 2>/dev/null || true
 
       - name: Detect changed recipes
         id: detect
@@ -137,15 +135,15 @@ jobs:
             fi
 
             # Compute current recipe hash
-            if [ -f "$path" ] && command -v sbuild-linter &>/dev/null; then
-              current_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+            if [ -f "$path" ] && command -v sbuild &>/dev/null; then
+              current_hash=$(sbuild meta hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
             else
               current_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
             fi
 
             # Check if already built with same hash
-            if [ -f "/tmp/build_cache.sdb" ] && command -v sbuild-cache &>/dev/null; then
-              cached_info=$(sbuild-cache --cache /tmp/build_cache.sdb get --package "$pkg_id" --json 2>/dev/null || echo "")
+            if [ -f "/tmp/build_cache.sdb" ] && command -v sbuild &>/dev/null; then
+              cached_info=$(sbuild cache --cache /tmp/build_cache.sdb get --package "$pkg_id" --json 2>/dev/null || echo "")
               cached_hash=$(echo "$cached_info" | jq -r '.recipe_hash // ""' 2>/dev/null || echo "")
               cached_status=$(echo "$cached_info" | jq -r '.last_build_status // ""' 2>/dev/null || echo "")
 
@@ -200,10 +198,8 @@ jobs:
 
       - name: Download tools
         run: |
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
-            -o /usr/local/bin/sbuild-cache && chmod +x /usr/local/bin/sbuild-cache || true
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
-            -o /usr/local/bin/sbuild-linter && chmod +x /usr/local/bin/sbuild-linter || true
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild || true
 
       - name: Download existing cache
         continue-on-error: true
@@ -211,7 +207,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild-cache --cache /tmp/build_cache.sdb init
+            sbuild cache --cache /tmp/build_cache.sdb init
 
       - name: Download build status artifacts
         uses: actions/download-artifact@v7
@@ -255,8 +251,8 @@ jobs:
             fi
 
             # Compute recipe hash for cache
-            if [ -f "$path" ] && command -v sbuild-linter &>/dev/null; then
-              recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+            if [ -f "$path" ] && command -v sbuild &>/dev/null; then
+              recipe_hash=$(sbuild meta hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
             else
               recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "")
             fi
@@ -292,7 +288,7 @@ jobs:
 
               echo "Package: $pkg_id ($host), Version: $pkg_version, Status: $status"
 
-              sbuild-cache --cache /tmp/build_cache.sdb update \
+              sbuild cache --cache /tmp/build_cache.sdb update \
                 --package "$pkg_id" \
                 --host "$host" \
                 --version "$pkg_version" \
@@ -303,7 +299,7 @@ jobs:
 
       - name: Generate build summary
         run: |
-          sbuild-cache --cache /tmp/build_cache.sdb gh-summary \
+          sbuild cache --cache /tmp/build_cache.sdb gh-summary \
             --title "Build Results" \
             --host x86_64-linux || true
 

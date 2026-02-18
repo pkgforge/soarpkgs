@@ -116,17 +116,11 @@ jobs:
         with:
           ref: ${{ needs.detect-changes.outputs.pr_head_sha }}
 
-      - name: Download sbuild-linter (for hash)
+      - name: Download sbuild
         run: |
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-linter-x86_64-linux" \
-            -o /usr/local/bin/sbuild-linter || exit 0
-          chmod +x /usr/local/bin/sbuild-linter
-
-      - name: Download sbuild-cache
-        run: |
-          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/latest/sbuild-cache-x86_64-linux" \
-            -o /usr/local/bin/sbuild-cache || exit 0
-          chmod +x /usr/local/bin/sbuild-cache
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /usr/local/bin/sbuild || exit 0
+          chmod +x /usr/local/bin/sbuild
 
       - name: Download existing cache
         continue-on-error: true
@@ -134,7 +128,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild-cache --cache /tmp/build_cache.sdb init
+            sbuild cache --cache /tmp/build_cache.sdb init
 
       - name: Update cache with recipe hashes
         run: |
@@ -170,7 +164,7 @@ jobs:
 
             # Compute recipe hash (excluding version for consistency)
             if [ -f "$path" ]; then
-              recipe_hash=$(sbuild-linter hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
+              recipe_hash=$(sbuild meta hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
             else
               recipe_hash=""
             fi
@@ -182,7 +176,7 @@ jobs:
 
             echo "Caching: $pkg_id v${pkg_version} (hash: ${recipe_hash:0:16}..., status: $status)"
 
-            sbuild-cache --cache /tmp/build_cache.sdb update \
+            sbuild cache --cache /tmp/build_cache.sdb update \
               --package "$pkg_id" \
               --version "$pkg_version" \
               --hash "$recipe_hash" \
