@@ -88,13 +88,23 @@ jobs:
           ARGS="${{ steps.parse.outputs.args }}"
           PR_NUM="${{ github.event.issue.number }}"
 
-          # Determine host
+          # Parse args: each word is either a host or a package
           HOST="ALL"
-          case "$ARGS" in
-            x86_64*|X86_64*) HOST="x86_64-linux" ;;
-            aarch64*|AARCH64*|arm64*) HOST="aarch64-linux" ;;
-            all|ALL) HOST="ALL" ;;
-          esac
+          PACKAGE=""
+          for arg in $ARGS; do
+            case "$arg" in
+              x86_64|X86_64|x86_64-linux) HOST="x86_64-linux" ;;
+              aarch64|AARCH64|arm64|aarch64-linux) HOST="aarch64-linux" ;;
+              all|ALL) HOST="ALL" ;;
+              *) PACKAGE="$arg" ;;
+            esac
+          done
+
+          # Build info for comment
+          PKG_INFO=""
+          if [ -n "$PACKAGE" ]; then
+            PKG_INFO="| **Package** | \`${PACKAGE}\` |"
+          fi
 
           # Post acknowledgment
           gh pr comment "$PR_NUM" \
@@ -105,6 +115,7 @@ jobs:
           |---|---|
           | **PR** | #${PR_NUM} |
           | **Host** | \`${HOST}\` |
+          ${PKG_INFO}
           | **Triggered by** | @${{ github.event.comment.user.login }} |
 
           Build will start shortly. I'll post results when complete.
@@ -115,7 +126,8 @@ jobs:
           gh workflow run pr-build-test.yaml \
             --repo ${{ github.repository }} \
             -f pr_number="$PR_NUM" \
-            -f host="$HOST"
+            -f host="$HOST" \
+            -f package="$PACKAGE"
 
       - name: Checkout for lint
         if: steps.parse.outputs.command == 'lint'
