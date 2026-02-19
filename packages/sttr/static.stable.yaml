@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sttr"
+pkg_id: "abhimanyu003.sttr"
+pkgver: "0.2.30"
+pkg_type: "static"
+ghcr_pkg: "abhimanyu003/sttr"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "CLI app to perform various operations on strings"
+homepage:
+  - "https://github.com/abhimanyu003/sttr"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/abhimanyu003/sttr"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "sttr"
+repology:
+  - "sttr"
+src_url:
+  - "https://github.com/abhimanyu003/sttr"
+tag:
+  - "string"
+  - "conversion"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/abhimanyu003/sttr/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/abhimanyu003/sttr/releases/download/v${PKGVER}/sttr_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/sttr.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/sttr.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/sttr" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"

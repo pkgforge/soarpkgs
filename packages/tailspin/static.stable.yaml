@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tailspin"
+pkg_id: "bensadeh.tailspin"
+pkgver: "5.5.0"
+pkg_type: "static"
+ghcr_pkg: "bensadeh/tailspin"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A log file highlighter"
+homepage:
+  - "https://github.com/bensadeh/tailspin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/bensadeh/tailspin/main/LICENCE"
+    out: "LICENSE"
+  - url: "https://github.com/bensadeh/tailspin/releases/download/${PKGVER}/tailspin-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "tailspin.tar.gz"
+note:
+  - "Official binary from https://github.com/bensadeh/tailspin"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "tspin"
+repology:
+  - "tailspin"
+src_url:
+  - "https://github.com/bensadeh/tailspin"
+tag:
+  - "log"
+  - "highlight"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bensadeh/tailspin/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "tailspin.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/tspin" "$SBUILD_OUTDIR/tspin"
+    rm -rf "tailspin.tar.gz"

@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gping"
+pkg_id: "orf.gping"
+pkgver: "1.20.1"
+pkg_type: "static"
+ghcr_pkg: "orf/gping"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Utility"
+description: "Ping, but with a graph"
+homepage:
+  - "https://github.com/orf/gping"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/orf/gping/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/orf/gping"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "gping"
+repology:
+  - "gping"
+src_url:
+  - "https://github.com/orf/gping"
+tag:
+  - "ping"
+  - "network"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/orf/gping/releases/latest" | jq -r '.tag_name' | sed 's/gping-v//'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/orf/gping/releases/download/gping-v${PKGVER}/gping-Linux-musl-${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/gping.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/gping.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/gping" "$SBUILD_OUTDIR/$PKG"

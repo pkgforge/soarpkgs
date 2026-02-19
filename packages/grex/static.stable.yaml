@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "grex"
+pkg_id: "pemistahl.grex"
+pkgver: "1.4.6"
+pkg_type: "static"
+ghcr_pkg: "pemistahl/grex"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Command-line tool for generating regular expressions from test cases"
+homepage:
+  - "https://github.com/pemistahl/grex"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/pemistahl/grex/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/pemistahl/grex/releases/download/v${PKGVER}/grex-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "grex.tar.gz"
+note:
+  - "Official binary from https://github.com/pemistahl/grex"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "grex"
+repology:
+  - "grex"
+src_url:
+  - "https://github.com/pemistahl/grex"
+tag:
+  - "regex"
+  - "generator"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pemistahl/grex/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "grex.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/grex" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "grex.tar.gz"

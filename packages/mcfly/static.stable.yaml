@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mcfly"
+pkg_id: "cantino.mcfly"
+pkgver: "0.9.4"
+pkg_type: "static"
+ghcr_pkg: "cantino/mcfly"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Fly through your shell history"
+homepage:
+  - "https://github.com/cantino/mcfly"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/cantino/mcfly/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/cantino/mcfly/releases/download/v${PKGVER}/mcfly-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "mcfly.tar.gz"
+note:
+  - "Official binary from https://github.com/cantino/mcfly"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "mcfly"
+repology:
+  - "mcfly"
+src_url:
+  - "https://github.com/cantino/mcfly"
+tag:
+  - "shell"
+  - "history"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cantino/mcfly/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "mcfly.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/mcfly" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "mcfly.tar.gz"

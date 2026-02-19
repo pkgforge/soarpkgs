@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fblog"
+pkg_id: "brocode.fblog"
+pkgver: "4.17.0"
+pkg_type: "static"
+ghcr_pkg: "brocode/fblog"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Small command-line JSON log viewer"
+homepage:
+  - "https://github.com/brocode/fblog"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "WTFPL"
+build_asset:
+  - url: "https://raw.githubusercontent.com/brocode/fblog/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/brocode/fblog/releases/download/v${PKGVER}/fblog"
+    out: "fblog"
+note:
+  - "Official binary from https://github.com/brocode/fblog"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "fblog"
+repology:
+  - "fblog"
+src_url:
+  - "https://github.com/brocode/fblog"
+tag:
+  - "json"
+  - "log"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/brocode/fblog/releases/latest" | jq -r '.tag_name' | tr -d 'v'

@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zfind"
+pkg_id: "laktak.zfind"
+pkgver: "0.4.7"
+pkg_type: "static"
+ghcr_pkg: "laktak/zfind"
+category:
+  - "ConsoleOnly"
+  - "FileTools"
+  - "Utility"
+description: "Search for files using a SQL-WHERE filter, even inside archives"
+homepage:
+  - "https://github.com/laktak/zfind"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/laktak/zfind/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/laktak/zfind/releases/download/v${PKGVER}/zfind-linux-${ARCH_ALT}.tar.gz"
+    out: "zfind.tar.gz"
+note:
+  - "Official binary from https://github.com/laktak/zfind"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "zfind"
+repology:
+  - "zfind"
+src_url:
+  - "https://github.com/laktak/zfind"
+tag:
+  - "find"
+  - "search"
+  - "files"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/laktak/zfind/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "zfind.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/zfind" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "zfind.tar.gz"
