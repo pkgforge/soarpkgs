@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "miniserve"
+pkg_id: "svenstaro.miniserve"
+pkgver: "0.33.0"
+pkg_type: "static"
+ghcr_pkg: "svenstaro/miniserve"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Utility"
+description: "CLI tool to serve files and dirs over HTTP"
+homepage:
+  - "https://github.com/svenstaro/miniserve"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/svenstaro/miniserve/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/svenstaro/miniserve/releases/download/v${PKGVER}/miniserve-${PKGVER}-${ARCH}-unknown-linux-musl"
+    out: "miniserve"
+note:
+  - "Official binary from https://github.com/svenstaro/miniserve"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "miniserve"
+repology:
+  - "miniserve"
+src_url:
+  - "https://github.com/svenstaro/miniserve"
+tag:
+  - "http"
+  - "server"
+  - "file-sharing"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/svenstaro/miniserve/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    chmod +x "$SBUILD_OUTDIR/$PKG"

@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pueue"
+pkg_id: "nukesor.pueue"
+pkgver: "4.0.2"
+pkg_type: "static"
+ghcr_pkg: "nukesor/pueue"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "Manage your shell commands with a task queue"
+homepage:
+  - "https://github.com/Nukesor/pueue"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Nukesor/pueue/main/LICENSE.MIT"
+    out: "LICENSE"
+  - url: "https://github.com/Nukesor/pueue/releases/download/v${PKGVER}/pueue-${ARCH}-unknown-linux-musl"
+    out: "pueue"
+  - url: "https://github.com/Nukesor/pueue/releases/download/v${PKGVER}/pueued-${ARCH}-unknown-linux-musl"
+    out: "pueued"
+note:
+  - "Official binary from https://github.com/Nukesor/pueue"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "pueue"
+  - "@pueued"
+repology:
+  - "pueue"
+src_url:
+  - "https://github.com/Nukesor/pueue"
+tag:
+  - "task-queue"
+  - "process"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Nukesor/pueue/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    chmod +x "$SBUILD_OUTDIR/pueue" "$SBUILD_OUTDIR/pueued"

@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dive"
+pkg_id: "wagoodman.dive"
+pkgver: "0.13.1"
+pkg_type: "static"
+ghcr_pkg: "wagoodman/dive"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "A tool for exploring each layer in a Docker image"
+homepage:
+  - "https://github.com/wagoodman/dive"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/wagoodman/dive/releases/download/v${PKGVER}/dive_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "dive.tar.gz"
+note:
+  - "Official binary from https://github.com/wagoodman/dive"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "dive"
+repology:
+  - "dive"
+src_url:
+  - "https://github.com/wagoodman/dive"
+tag:
+  - "docker"
+  - "image"
+  - "layers"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/wagoodman/dive/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "dive.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/dive" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "dive.tar.gz"

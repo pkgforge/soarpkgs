@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "oha"
+pkg_id: "hatoo.oha"
+pkgver: "1.13.0"
+pkg_type: "static"
+ghcr_pkg: "hatoo/oha"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Utility"
+description: "HTTP load generator, inspired by rakyll/hey with TUI animation"
+homepage:
+  - "https://github.com/hatoo/oha"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/hatoo/oha/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/hatoo/oha/releases/download/v${PKGVER}/oha-linux-${ARCH_ALT}"
+    out: "oha"
+note:
+  - "Official binary from https://github.com/hatoo/oha"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "oha"
+repology:
+  - "oha"
+src_url:
+  - "https://github.com/hatoo/oha"
+tag:
+  - "load-testing"
+  - "http"
+  - "benchmark"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hatoo/oha/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    mv "oha" "$SBUILD_OUTDIR/$PKG"
+    chmod +x "$SBUILD_OUTDIR/$PKG"

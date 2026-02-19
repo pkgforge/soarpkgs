@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lf"
+pkg_id: "gokcehan.lf"
+pkgver: "r41"
+pkg_type: "static"
+ghcr_pkg: "gokcehan/lf"
+category:
+  - "ConsoleOnly"
+  - "FileManager"
+  - "Utility"
+description: "Terminal file manager"
+homepage:
+  - "https://github.com/gokcehan/lf"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/gokcehan/lf/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/gokcehan/lf/releases/download/${PKGVER}/lf-linux-${ARCH_ALT}.tar.gz"
+    out: "lf.tar.gz"
+note:
+  - "Official binary from https://github.com/gokcehan/lf"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "lf"
+repology:
+  - "lf"
+src_url:
+  - "https://github.com/gokcehan/lf"
+tag:
+  - "file-manager"
+  - "terminal"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/gokcehan/lf/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "lf.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/lf" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "lf.tar.gz"

@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "watchexec"
+pkg_id: "watchexec.watchexec"
+pkgver: "2.3.3"
+pkg_type: "static"
+ghcr_pkg: "watchexec/watchexec"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Executes commands in response to file modifications"
+homepage:
+  - "https://watchexec.github.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://github.com/watchexec/watchexec/releases/download/v${PKGVER}/watchexec-${PKGVER}-${ARCH}-unknown-linux-musl.tar.xz"
+    out: "watchexec.tar.xz"
+note:
+  - "Official binary from https://github.com/watchexec/watchexec"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "watchexec"
+repology:
+  - "watchexec"
+src_url:
+  - "https://github.com/watchexec/watchexec"
+tag:
+  - "file-watcher"
+  - "development"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/watchexec/watchexec/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "watchexec.tar.xz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/watchexec-${PKGVER}-${ARCH}-unknown-linux-musl/watchexec" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/watchexec-${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "watchexec.tar.xz"

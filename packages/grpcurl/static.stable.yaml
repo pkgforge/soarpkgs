@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "grpcurl"
+pkg_id: "fullstorydev.grpcurl"
+pkgver: "1.9.3"
+pkg_type: "static"
+ghcr_pkg: "fullstorydev/grpcurl"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Development"
+description: "CLI tool for interacting with gRPC servers"
+homepage:
+  - "https://github.com/fullstorydev/grpcurl"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/fullstorydev/grpcurl"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "grpcurl"
+repology:
+  - "grpcurl"
+src_url:
+  - "https://github.com/fullstorydev/grpcurl"
+tag:
+  - "grpc"
+  - "api"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/fullstorydev/grpcurl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$(uname -m)" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/fullstorydev/grpcurl/releases/download/v${PKGVER}/grpcurl_${PKGVER}_linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/grpcurl.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/grpcurl.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/grpcurl" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"

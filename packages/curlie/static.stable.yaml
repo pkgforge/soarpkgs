@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "curlie"
+pkg_id: "rs.curlie"
+pkgver: "1.8.2"
+pkg_type: "static"
+ghcr_pkg: "rs/curlie"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Utility"
+description: "Frontend to cURL that adds the ease of use of HTTPie"
+homepage:
+  - "https://curlie.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/rs/curlie/releases/download/v${PKGVER}/curlie_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "curlie.tar.gz"
+note:
+  - "Official binary from https://github.com/rs/curlie"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "curlie"
+repology:
+  - "curlie"
+src_url:
+  - "https://github.com/rs/curlie"
+tag:
+  - "http"
+  - "curl"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/rs/curlie/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "curlie.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/curlie" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "curlie.tar.gz"
