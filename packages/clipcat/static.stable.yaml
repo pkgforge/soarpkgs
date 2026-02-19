@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/clipcat/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "clipcat"
@@ -8,24 +7,24 @@ pkg_type: "static"
 pkgver: "0.24.0"
 ghcr_pkg: "xrelkd/clipcat"
 category:
-  - "Utility"
   - "System"
+  - "Utility"
 description: "A clipboard manager in Rust"
 homepage:
   - "https://github.com/xrelkd/clipcat"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/xrelkd/clipcat/main/LICENSE"
+  - "GPL-3.0"
 note:
   - "Official binary from https://github.com/xrelkd/clipcat"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
-  - "clipcat-menu"
-  - "clipcat-notify"
-  - "clipcatctl"
   - "clipcatd"
+  - "@clipcat-menu"
+  - "@clipcat-notify"
+  - "@clipcatctl"
 repology:
   - "clipcat"
 src_url:
@@ -40,10 +39,11 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/xrelkd/clipcat/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "https://github.com/xrelkd/clipcat@v${PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" --yes -o clipcat.tar.gz
+    soar dl "https://github.com/xrelkd/clipcat@v${PKGVER}" --glob "*${ARCH}-unknown-linux-musl.tar.gz" --yes -o clipcat.tar.gz
     tar -xf "clipcat.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/clipcat-menu" "$SBUILD_OUTDIR/clipcat-menu"
     mv "$SBUILD_TMPDIR/clipcat-notify" "$SBUILD_OUTDIR/clipcat-notify"
     mv "$SBUILD_TMPDIR/clipcatctl" "$SBUILD_OUTDIR/clipcatctl"
     mv "$SBUILD_TMPDIR/clipcatd" "$SBUILD_OUTDIR/clipcatd"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "clipcat.tar.gz"

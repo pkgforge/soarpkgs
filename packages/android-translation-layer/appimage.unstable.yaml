@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-translation-layer/appimage.unstable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "android-translation-layer"
@@ -7,19 +6,22 @@ pkg_id: "pkgforge-dev.android-translation-layer"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/android-translation-layer"
 category:
-  - "System"
   - "Emulator"
+  - "System"
 description: "Android Translation Layer - Run Android apps on Linux"
 homepage:
   - "https://github.com/android-translation-layer/android_translation_layer"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://gitlab.com/android_translation_layer/android_translation_layer/-/raw/master/LICENSE.txt"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://gitlab.com/android_translation_layer/android_translation_layer/-/raw/master/LICENSE.txt"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/android_translation_layer-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "android-translation-layer"
 repology:
@@ -35,8 +37,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/android_translation_layer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/android_translation_layer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}" | sed "s/^v//"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/android_translation_layer-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/android_translation_layer-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/sound-space-plus/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 pkg: "sound-space-plus"
 pkg_id: "pkgforge-dev.sound-space-plus"
@@ -7,14 +6,17 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/sound-space-plus"
 category:
   - "Game"
+  - "Music"
 description: "Rhythm game"
 homepage:
   - "https://github.com/David20122/sound-space-plus"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/David20122/sound-space-plus/refs/heads/nightly/LICENSE.txt"
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/David20122/sound-space-plus/refs/heads/nightly/LICENSE.txt"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/sound-space-plus-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -33,8 +35,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/sound-space-plus-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/sound-space-plus-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/sound-space-plus-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/sound-space-plus-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

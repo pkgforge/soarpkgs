@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/starship/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "starship"
@@ -8,7 +7,7 @@ pkgver: "1.24.2"
 pkg_type: "static"
 ghcr_pkg: "starship/starship"
 category:
-  - "Utility"
+  - "ConsoleOnly"
   - "Shell"
 description: "The minimal, blazing-fast, and infinitely customizable prompt for any shell"
 homepage:
@@ -16,11 +15,14 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "ISC"
-    url: "https://raw.githubusercontent.com/starship/starship/master/LICENSE"
+  - "ISC"
+build_asset:
+  - url: "https://raw.githubusercontent.com/starship/starship/master/LICENSE"
+    out: "LICENSE"
 note:
   - "Official binary from https://github.com/starship/starship"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "starship"
 repology:
@@ -38,8 +40,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.gh.pkgforge.dev/repos/starship/starship/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+    curl -qfsSL "https://api.github.com/repos/starship/starship/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "github:starship/starship@v${PKGVER}" --glob "*$(uname -m)-unknown-linux-musl.tar.gz" -o "./starship.tar.gz" --yes
+    soar dl "github:starship/starship@v${PKGVER}" --glob "*${ARCH}-unknown-linux-musl.tar.gz" -o "./starship.tar.gz" --yes
     tar -xf "starship.tar.gz"
     rm -f "starship.tar.gz"

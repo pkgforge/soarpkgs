@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/video-trimmer/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 pkg: "video-trimmer"
 pkg_id: "pkgforge-dev.video-trimmer"
@@ -7,6 +6,8 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/video-trimmer"
 category:
   - "AudioVideo"
+  - "AudioVideoEditing"
+  - "Video"
 description: "Cut out fragments of video without re-encoding"
 homepage:
   - "https://gitlab.gnome.org/YaLTeR/video-trimmer"
@@ -14,8 +15,10 @@ homepage:
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
-  - id: "GPL-3.0"
-    url: "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Video-Trimmer-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,8 +38,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Video-Trimmer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Video-Trimmer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Video-Trimmer-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Video-Trimmer-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

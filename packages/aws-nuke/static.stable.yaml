@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/aws-nuke/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "aws-nuke"
@@ -8,19 +7,19 @@ pkg_type: "static"
 pkgver: "3.63.4"
 ghcr_pkg: "ekristen/aws-nuke"
 category:
-  - "Utility"
   - "Development"
+  - "Utility"
 description: "Remove all the resources from an AWS account"
 homepage:
   - "https://aws-nuke.ekristen.dev"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/ekristen/aws-nuke/main/LICENSE"
+  - "MIT"
 note:
   - "Official binary from https://github.com/ekristen/aws-nuke"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "aws-nuke"
 repology:
@@ -38,12 +37,8 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/ekristen/aws-nuke/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
-    case "$ARCH" in
-      x86_64) ARCH="amd64" ;;
-      aarch64) ARCH="arm64" ;;
-    esac
-    soar dl "https://github.com/ekristen/aws-nuke@v${PKGVER}" --glob "*linux-${ARCH}.tar.gz" --yes -o aws-nuke.tar.gz
+    soar dl "https://github.com/ekristen/aws-nuke@v${PKGVER}" --glob "*linux-${ARCH_ALT}.tar.gz" --yes -o aws-nuke.tar.gz
     tar -zxf "aws-nuke.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/aws-nuke" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "aws-nuke.tar.gz"

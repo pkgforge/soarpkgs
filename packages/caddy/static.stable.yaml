@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/caddy/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "caddy"
@@ -8,19 +7,19 @@ pkg_type: "static"
 pkgver: "2.10.2"
 ghcr_pkg: "caddyserver/caddy"
 category:
-  - "Utility"
   - "Network"
+  - "WebDevelopment"
 description: "A powerful, enterprise-ready, and extensible HTTP/2 + HTTP/3 web server with automatic HTTPS"
 homepage:
   - "https://caddyserver.com"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "Apache-2.0"
-    url: "https://raw.githubusercontent.com/caddyserver/caddy/master/LICENSE"
+  - "Apache-2.0"
 note:
   - "Official binary from https://github.com/caddyserver/caddy"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "caddy"
 repology:
@@ -39,12 +38,8 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/caddyserver/caddy/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
-    case "$ARCH" in
-      x86_64) ARCH="amd64" ;;
-      aarch64) ARCH="arm64" ;;
-    esac
-    soar dl "https://github.com/caddyserver/caddy@v${PKGVER}" --glob "*linux_${ARCH}.tar.gz" --yes -o caddy.tar.gz
+    soar dl "https://github.com/caddyserver/caddy@v${PKGVER}" --glob "*linux_${ARCH_ALT}.tar.gz" --yes -o caddy.tar.gz
     tar -xf "caddy.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/caddy" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "caddy.tar.gz"

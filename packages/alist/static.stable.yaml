@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/alist/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "alist"
@@ -8,7 +7,7 @@ pkg_type: "static"
 pkgver: "3.57.0"
 ghcr_pkg: "alist-org/alist"
 category:
-  - "Utility"
+  - "FileManager"
   - "Network"
 description: "A file list/WebDAV program that supports multiple storages"
 homepage:
@@ -16,11 +15,16 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "AGPL-3.0-or-later"
-    url: "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"
+  - "AGPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/AlistGo/alist/releases/download/v${PKGVER}/alist-linux-musl-${ARCH_ALT}.tar.gz"
+    out: "alist.tar.gz"
 note:
   - "Official binary from https://github.com/alist-org/alist"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "alist"
 repology:
@@ -39,12 +43,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/alist-org/alist/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
-    case "$ARCH" in
-      x86_64) ARCH="amd64" ;;
-      aarch64) ARCH="arm64" ;;
-    esac
-    soar dl "https://github.com/alist-org/alist@v${PKGVER}" --glob "alist-linux-musl-${ARCH}.tar.gz" --yes -o alist.tar.gz
     tar -xf "alist.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/alist" "$SBUILD_OUTDIR/$PKG"
     rm -rf "alist.tar.gz"

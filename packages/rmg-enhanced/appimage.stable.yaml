@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/rmg-enhanced/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "rmg-enhanced"
@@ -7,16 +6,18 @@ pkg_id: "pkgforge-dev.rmg-enhanced"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rmg-enhanced"
 category:
-  - "Game"
   - "Emulator"
+  - "Game"
 description: "Rosalie's Mupen GUI - N64 emulator frontend"
 homepage:
   - "https://github.com/Rosalie241/RMG"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/Rosalie241/RMG/refs/heads/main/License.md"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Rosalie241/RMG/refs/heads/master/LICENSE"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RMG-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -35,8 +36,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/RMG-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/RMG-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/RMG-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/RMG-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

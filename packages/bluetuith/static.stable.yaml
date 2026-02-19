@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/bluetuith/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "bluetuith"
@@ -9,19 +8,19 @@ pkgver: "0.2.6"
 ghcr_pkg: "bluetuith-org/bluetuith"
 category:
   - "ConsoleOnly"
-  - "Utility"
   - "System"
+  - "Utility"
 description: "A TUI bluetooth manager for Linux"
 homepage:
   - "https://github.com/darkhz/bluetuith"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/bluetuith-org/bluetuith/master/LICENSE"
+  - "MIT"
 note:
   - "Official binary from https://github.com/bluetuith-org/bluetuith"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "bluetuith"
 repology:
@@ -39,7 +38,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/bluetuith-org/bluetuith/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
     case "$ARCH" in
       x86_64) ARCH="x86_64" ;;
       aarch64) ARCH="arm64" ;;
@@ -47,4 +45,5 @@ x_exec:
     soar dl "https://github.com/bluetuith-org/bluetuith@v${PKGVER}" --glob "*Linux_${ARCH}.tar.gz" --yes -o bluetuith.tar.gz
     tar -xf "bluetuith.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/bluetuith" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "bluetuith.tar.gz"

@@ -1,6 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/b3sum/static.stable.yaml
-# deps: docker
+#!/SBUILD
 _disabled: false
 
 pkg: "b3sum"
@@ -17,11 +15,13 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "Apache-2.0"
-    url: "https://raw.githubusercontent.com/BLAKE3-team/BLAKE3/master/LICENSE_A2"
+  - "Apache-2.0"
+build_deps:
+  - "docker"
 note:
   - "Built from source with static musl linking"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "b3sum"
 repology:
@@ -36,28 +36,20 @@ x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
-  shell: "sh"
+  container: "ghcr.io/pkgforge/devscripts/alpine-builder"
+  shell: "bash"
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/BLAKE3-team/BLAKE3/releases/latest" | jq -r '.tag_name'
   run: |
-    docker run --rm --privileged --net="host" \
-      --pull="always" \
-      -e "PKGVER=$PKGVER" \
-      --volume "$SBUILD_TMPDIR:/output:rw" \
-      "ghcr.io/pkgforge/devscripts/alpine-builder:$(uname -m)" \
-      bash -c '
-        set -e
-        cd "$(mktemp -d)"
-        source "$HOME/.cargo/env"
-        export RUST_TARGET="$(uname -m)-unknown-linux-musl"
-        export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
-        git clone --filter=blob:none --quiet "https://github.com/BLAKE3-team/BLAKE3"
-        cd BLAKE3
-        git checkout "$PKGVER"
-        cd b3sum
-        cargo build --target="$RUST_TARGET" --release
-        cp "target/$RUST_TARGET/release/b3sum" /output/b3sum
-        cp ../LICENSE_A2 /output/LICENSE 2>/dev/null || true
-      '
-    cp "$SBUILD_TMPDIR/b3sum" "$SBUILD_OUTDIR/"
-    strip "$SBUILD_OUTDIR/b3sum"
+    set -e
+    cd "$(mktemp -d)"
+    source "$HOME/.cargo/env"
+    export RUST_TARGET="${ARCH}-unknown-linux-musl"
+    export RUSTFLAGS="-C target-feature=+crt-static -C link-self-contained=yes"
+    git clone --filter=blob:none --quiet "https://github.com/BLAKE3-team/BLAKE3"
+    cd BLAKE3
+    git checkout "$PKGVER"
+    cd b3sum
+    cargo build --target="$RUST_TARGET" --release
+    cp "target/$RUST_TARGET/release/b3sum" "$SBUILD_OUTDIR/"
+    cp ../LICENSE_A2 "$SBUILD_OUTDIR/LICENSE" 2>/dev/null || true

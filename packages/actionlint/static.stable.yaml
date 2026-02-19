@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/actionlint/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "actionlint"
@@ -8,19 +7,22 @@ pkg_type: "static"
 pkgver: "1.7.11"
 ghcr_pkg: "rhysd/actionlint"
 category:
-  - "Utility"
   - "Development"
+  - "Utility"
 description: "Static checker for GitHub Actions workflow files"
 homepage:
   - "https://rhysd.github.io/actionlint"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/rhysd/actionlint/main/LICENSE.txt"
+  - "MIT"
+build_asset:
+  - url: "https://github.com/rhysd/actionlint/releases/download/v${PKGVER}/actionlint_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "actionlint.tar.gz"
 note:
   - "Official binary from https://github.com/rhysd/actionlint"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "actionlint"
 repology:
@@ -41,12 +43,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/rhysd/actionlint/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
-    case "$ARCH" in
-      x86_64) ARCH="amd64" ;;
-      aarch64) ARCH="arm64" ;;
-    esac
-    soar dl "https://github.com/rhysd/actionlint@v${REMOTE_PKGVER}" --glob "*linux_${ARCH}.tar.gz" -o "./actionlint.tar.gz" --yes
     tar -xf "actionlint.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/actionlint" "$SBUILD_OUTDIR/$PKG"
     mv "$SBUILD_TMPDIR/LICENSE.txt" "$SBUILD_OUTDIR/LICENSE"

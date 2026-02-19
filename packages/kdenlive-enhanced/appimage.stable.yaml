@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/kdenlive-enhanced/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "kdenlive-enhanced"
@@ -8,6 +7,8 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kdenlive-enhanced"
 category:
   - "AudioVideo"
+  - "AudioVideoEditing"
+  - "Video"
 description: "Video editor"
 homepage:
   - "https://kdenlive.org"
@@ -15,8 +16,10 @@ homepage:
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/KDE/kdenlive/refs/heads/master/COPYING"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/KDE/kdenlive/refs/heads/master/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -36,8 +39,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

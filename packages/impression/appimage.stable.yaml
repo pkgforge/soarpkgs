@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/impression/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "impression"
@@ -7,8 +6,8 @@ pkg_id: "pkgforge-dev.impression"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/impression"
 category:
-  - "Utility"
   - "System"
+  - "Utility"
 description: "Create bootable drives"
 homepage:
   - "https://gitlab.com/adhami3310/Impression"
@@ -16,8 +15,10 @@ homepage:
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
-  - id: "GPL-3.0"
-    url: "https://gitlab.com/adhami3310/Impression/-/raw/main/COPYING"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://gitlab.com/adhami3310/Impression/-/raw/main/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Impression-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -37,8 +38,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Impression-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Impression-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Impression-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Impression-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

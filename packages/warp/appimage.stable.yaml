@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/warp/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "warp"
@@ -7,17 +6,18 @@ pkg_id: "pkgforge-dev.warp"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/warp"
 category:
-  - "Network"
   - "FileTransfer"
+  - "Network"
 description: "Fast and secure file transfer"
 homepage:
   - "https://apps.gnome.org/Warp"
-  - "https://github.com/pkgforge-dev/Warp-AppImage"
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
-  - id: "GPL-3.0"
-    url: "https://raw.githubusercontent.com/GNOME/warp/refs/heads/main/COPYING"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://gitlab.gnome.org/World/warp/-/raw/main/LICENSE"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Warp-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -37,8 +37,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/Warp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Warp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Warp-AppImage@${REMOTE_PKGVER}" --glob "*$(uname -m)*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Warp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

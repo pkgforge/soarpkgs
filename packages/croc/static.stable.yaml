@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/croc/static.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "croc"
@@ -17,11 +16,11 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "MIT"
-    url: "https://raw.githubusercontent.com/schollz/croc/master/LICENSE"
+  - "MIT"
 note:
   - "Official binary from https://github.com/schollz/croc"
   - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "croc"
 repology:
@@ -40,7 +39,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/schollz/croc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    ARCH=$(uname -m)
     case "$ARCH" in
       x86_64) ARCH="64bit" ;;
       aarch64) ARCH="ARM64" ;;
@@ -48,5 +46,6 @@ x_exec:
     soar dl "https://github.com/schollz/croc@v${PKGVER}" --glob "*Linux-${ARCH}.tar.gz" --yes -o croc.tar.gz
     tar -xf "croc.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/croc" "$SBUILD_OUTDIR/croc"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "croc.tar.gz"
     strip "$SBUILD_OUTDIR/croc"

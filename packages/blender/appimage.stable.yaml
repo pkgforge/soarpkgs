@@ -1,5 +1,4 @@
-#!/SBUILD ver @v1.0.0
-#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/blender/appimage.stable.yaml
+#!/SBUILD
 _disabled: false
 
 pkg: "blender"
@@ -8,6 +7,7 @@ pkg_type: "appimage"
 app_id: "org.blender.Blender"
 ghcr_pkg: "pkgforge-dev/blender"
 category:
+  - "3DGraphics"
   - "Graphics"
 description: "A fully integrated 3D graphics creation suite"
 homepage:
@@ -16,8 +16,10 @@ homepage:
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - id: "GPL"
-    url: "https://raw.githubusercontent.com/blender/blender/35240eab7126741074a92d6dbfcea81c4283e776/COPYING"
+  - "GPL"
+build_asset:
+  - url: "https://raw.githubusercontent.com/blender/blender/35240eab7126741074a92d6dbfcea81c4283e776/COPYING"
+    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/blender-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -34,8 +36,8 @@ x_exec:
     - "x86_64-linux"
   shell: "bash"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.gh.pkgforge.dev/repos/pkgforge-dev/blender-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/blender-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/blender-AppImage@${REMOTE_PKGVER}" --match "appimage,x86_64" --exclude "zsync" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/blender-AppImage@${REMOTE_PKGVER}" --match "appimage,${ARCH}" --exclude "zsync" -o "./${PKG}" --yes
