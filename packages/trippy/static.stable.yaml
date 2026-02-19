@@ -28,7 +28,6 @@ note:
   - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "trip"
-  - "trippy"
 repology:
   - "trippy"
 src_url:
@@ -47,5 +46,4 @@ x_exec:
   run: |
     tar -xf "trippy.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/trippy-${PKGVER}-${ARCH}-unknown-linux-musl/trip" "$SBUILD_OUTDIR/trip"
-    cp "$SBUILD_OUTDIR/trip" "$SBUILD_OUTDIR/trippy"
     rm -rf "trippy.tar.gz"
