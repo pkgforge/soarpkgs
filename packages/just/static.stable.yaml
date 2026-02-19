@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "just"
+pkg_id: "casey.just"
+pkgver: "1.46.0"
+pkg_type: "static"
+ghcr_pkg: "casey/just"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A handy way to save and run project-specific commands"
+homepage:
+  - "https://just.systems"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "CC0-1.0"
+build_asset:
+  - url: "https://github.com/casey/just/releases/download/${PKGVER}/just-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "just.tar.gz"
+note:
+  - "Official binary from https://github.com/casey/just"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "just"
+repology:
+  - "just"
+src_url:
+  - "https://github.com/casey/just"
+tag:
+  - "command-runner"
+  - "make"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/casey/just/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "just.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/just" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "just.tar.gz"

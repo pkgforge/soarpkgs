@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "procs"
+pkg_id: "dalance.procs"
+pkgver: "0.14.10"
+pkg_type: "static"
+ghcr_pkg: "dalance/procs"
+category:
+  - "ConsoleOnly"
+  - "Monitor"
+  - "System"
+description: "A modern replacement for ps written in Rust"
+homepage:
+  - "https://github.com/dalance/procs"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/dalance/procs/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/dalance/procs/releases/download/v${PKGVER}/procs-v${PKGVER}-${ARCH}-linux.zip"
+    out: "procs.zip"
+note:
+  - "Official binary from https://github.com/dalance/procs"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "procs"
+repology:
+  - "procs"
+src_url:
+  - "https://github.com/dalance/procs"
+tag:
+  - "ps"
+  - "process"
+  - "system"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dalance/procs/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    unzip -o "procs.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/procs" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "procs.zip"
