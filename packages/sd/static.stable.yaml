@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sd"
+pkg_id: "chmln.sd"
+pkgver: "1.0.0"
+pkg_type: "static"
+ghcr_pkg: "chmln/sd"
+category:
+  - "ConsoleOnly"
+  - "TextTools"
+  - "Utility"
+description: "Intuitive find & replace CLI (sed alternative)"
+homepage:
+  - "https://github.com/chmln/sd"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/chmln/sd/releases/download/v${PKGVER}/sd-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "sd.tar.gz"
+note:
+  - "Official binary from https://github.com/chmln/sd"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "sd"
+repology:
+  - "sd"
+src_url:
+  - "https://github.com/chmln/sd"
+tag:
+  - "sed"
+  - "find-replace"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/chmln/sd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "sd.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/sd-v${PKGVER}-${ARCH}-unknown-linux-musl/sd" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/sd-v${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "sd.tar.gz"

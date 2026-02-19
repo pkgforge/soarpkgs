@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "yazi"
+pkg_id: "sxyazi.yazi"
+pkgver: "26.1.22"
+pkg_type: "static"
+ghcr_pkg: "sxyazi/yazi"
+category:
+  - "ConsoleOnly"
+  - "FileManager"
+  - "Utility"
+description: "Blazing fast terminal file manager written in Rust, based on async I/O"
+homepage:
+  - "https://yazi-rs.github.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/sxyazi/yazi/releases/download/v${PKGVER}/yazi-${ARCH}-unknown-linux-musl.zip"
+    out: "yazi.zip"
+note:
+  - "Official binary from https://github.com/sxyazi/yazi"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "yazi"
+  - "@ya"
+repology:
+  - "yazi"
+src_url:
+  - "https://github.com/sxyazi/yazi"
+tag:
+  - "file-manager"
+  - "tui"
+  - "terminal"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sxyazi/yazi/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    unzip -o "yazi.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/yazi-${ARCH}-unknown-linux-musl/yazi" "$SBUILD_OUTDIR/yazi"
+    mv "$SBUILD_TMPDIR/yazi-${ARCH}-unknown-linux-musl/ya" "$SBUILD_OUTDIR/ya"
+    mv "$SBUILD_TMPDIR/yazi-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "yazi.zip"

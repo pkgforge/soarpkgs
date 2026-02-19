@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "duf"
+pkg_id: "muesli.duf"
+pkgver: "0.9.1"
+pkg_type: "static"
+ghcr_pkg: "muesli/duf"
+category:
+  - "ConsoleOnly"
+  - "Filesystem"
+  - "Utility"
+description: "Disk Usage/Free Utility - a better 'df' alternative"
+homepage:
+  - "https://github.com/muesli/duf"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/muesli/duf/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/muesli/duf"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "duf"
+repology:
+  - "duf"
+src_url:
+  - "https://github.com/muesli/duf"
+tag:
+  - "disk-usage"
+  - "df"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/muesli/duf/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/muesli/duf/releases/download/v${PKGVER}/duf_${PKGVER}_linux_${_ARCH}.tar.gz" -o duf.tar.gz --yes
+    tar -xf "duf.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/duf" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "duf.tar.gz"

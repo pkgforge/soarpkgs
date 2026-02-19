@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ncdu"
+pkg_id: "yorhel.ncdu"
+pkgver: "2.7"
+pkg_type: "static"
+ghcr_pkg: "yorhel/ncdu"
+category:
+  - "ConsoleOnly"
+  - "Filesystem"
+  - "Utility"
+description: "Disk usage analyzer with an ncurses interface"
+homepage:
+  - "https://dev.yorhel.nl/ncdu"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://code.blicky.net/yorhel/ncdu/raw/branch/HEAD/LICENSES/MIT.txt"
+    out: "LICENSE"
+  - url: "https://dev.yorhel.nl/download/ncdu-${PKGVER}-linux-${ARCH}.tar.gz"
+    out: "ncdu.tar.gz"
+note:
+  - "Official binary from https://dev.yorhel.nl/ncdu"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "ncdu"
+repology:
+  - "ncdu"
+src_url:
+  - "https://code.blicky.net/yorhel/ncdu"
+tag:
+  - "disk-usage"
+  - "ncurses"
+  - "du"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://dev.yorhel.nl/ncdu" | grep -oP 'ncdu-\K[0-9]+\.[0-9]+' | head -1
+  run: |
+    tar -xf "ncdu.tar.gz" -C "$SBUILD_OUTDIR/"
+    rm -f "ncdu.tar.gz"

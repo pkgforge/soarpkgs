@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "delta"
+pkg_id: "dandavison.delta"
+pkgver: "0.18.2"
+pkg_type: "static"
+ghcr_pkg: "dandavison/delta"
+category:
+  - "ConsoleOnly"
+  - "TextTools"
+  - "Utility"
+description: "A syntax-highlighting pager for git, diff, and grep output"
+homepage:
+  - "https://dandavison.github.io/delta"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/dandavison/delta/releases/download/${PKGVER}/delta-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "delta.tar.gz"
+note:
+  - "Official binary from https://github.com/dandavison/delta"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "delta"
+repology:
+  - "git-delta"
+src_url:
+  - "https://github.com/dandavison/delta"
+tag:
+  - "git"
+  - "diff"
+  - "pager"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dandavison/delta/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "delta.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/delta-${PKGVER}-${ARCH}-unknown-linux-musl/delta" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/delta-${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "delta.tar.gz"

@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jq"
+pkg_id: "jqlang.jq"
+pkgver: "1.8.1"
+pkg_type: "static"
+ghcr_pkg: "jqlang/jq"
+category:
+  - "ConsoleOnly"
+  - "TextTools"
+  - "Utility"
+description: "Lightweight and flexible command-line JSON processor"
+homepage:
+  - "https://jqlang.github.io/jq"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/jqlang/jq/master/COPYING"
+    out: "LICENSE"
+  - url: "https://github.com/jqlang/jq/releases/download/jq-${PKGVER}/jq-linux-${ARCH_ALT}"
+    out: "jq"
+note:
+  - "Official binary from https://github.com/jqlang/jq"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "jq"
+repology:
+  - "jq"
+src_url:
+  - "https://github.com/jqlang/jq"
+tag:
+  - "json"
+  - "cli"
+  - "processor"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/jqlang/jq/releases/latest" | jq -r '.tag_name' | sed 's/^jq-//'
+  run: |
+    mv "jq" "$SBUILD_OUTDIR/$PKG"
+    chmod +x "$SBUILD_OUTDIR/$PKG"

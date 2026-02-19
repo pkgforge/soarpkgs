@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zellij"
+pkg_id: "zellij-org.zellij"
+pkgver: "0.43.1"
+pkg_type: "static"
+ghcr_pkg: "zellij-org/zellij"
+category:
+  - "ConsoleOnly"
+  - "TerminalEmulator"
+  - "System"
+description: "A terminal workspace with batteries included"
+homepage:
+  - "https://zellij.dev"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/zellij-org/zellij/main/LICENSE.md"
+    out: "LICENSE"
+  - url: "https://github.com/zellij-org/zellij/releases/download/v${PKGVER}/zellij-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "zellij.tar.gz"
+note:
+  - "Official binary from https://github.com/zellij-org/zellij"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "zellij"
+repology:
+  - "zellij"
+src_url:
+  - "https://github.com/zellij-org/zellij"
+tag:
+  - "terminal"
+  - "multiplexer"
+  - "tmux"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/zellij-org/zellij/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "zellij.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/zellij" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "zellij.tar.gz"

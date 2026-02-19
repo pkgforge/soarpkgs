@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hugo"
+pkg_id: "gohugoio.hugo"
+pkgver: "0.156.0"
+pkg_type: "static"
+ghcr_pkg: "gohugoio/hugo"
+category:
+  - "ConsoleOnly"
+  - "WebDevelopment"
+description: "The world's fastest framework for building websites"
+homepage:
+  - "https://gohugo.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://github.com/gohugoio/hugo/releases/download/v${PKGVER}/hugo_${PKGVER}_linux-${ARCH_ALT}.tar.gz"
+    out: "hugo.tar.gz"
+note:
+  - "Official binary from https://github.com/gohugoio/hugo"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "hugo"
+repology:
+  - "hugo"
+src_url:
+  - "https://github.com/gohugoio/hugo"
+tag:
+  - "static-site"
+  - "website"
+  - "generator"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/gohugoio/hugo/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "hugo.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/hugo" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "hugo.tar.gz"
