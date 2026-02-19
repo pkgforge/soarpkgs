@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nushell"
+pkg_id: "nushell.nushell"
+pkgver: "0.110.0"
+pkg_type: "static"
+ghcr_pkg: "nushell/nushell"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "A new type of shell"
+homepage:
+  - "https://www.nushell.sh"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/nushell/nushell/releases/download/${PKGVER}/nu-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "nushell.tar.gz"
+note:
+  - "Official binary from https://github.com/nushell/nushell"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "nu"
+repology:
+  - "nushell"
+src_url:
+  - "https://github.com/nushell/nushell"
+tag:
+  - "shell"
+  - "cli"
+  - "terminal"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/nushell/nushell/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "nushell.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/nu-${PKGVER}-${ARCH}-unknown-linux-musl/nu" "$SBUILD_OUTDIR/nu"
+    mv "$SBUILD_TMPDIR/nu-${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "nushell.tar.gz"

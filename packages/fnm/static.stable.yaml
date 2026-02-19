@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fnm"
+pkg_id: "schniz.fnm"
+pkgver: "1.38.1"
+pkg_type: "static"
+ghcr_pkg: "schniz/fnm"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Fast and simple Node.js version manager, built in Rust"
+homepage:
+  - "https://github.com/Schniz/fnm"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Schniz/fnm/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/Schniz/fnm"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "fnm"
+repology:
+  - "fnm"
+src_url:
+  - "https://github.com/Schniz/fnm"
+tag:
+  - "nodejs"
+  - "version-manager"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Schniz/fnm/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _URL="https://github.com/Schniz/fnm/releases/download/v${PKGVER}/fnm-linux.zip" ;;
+      aarch64) _URL="https://github.com/Schniz/fnm/releases/download/v${PKGVER}/fnm-arm64.zip" ;;
+    esac
+    soar dl "$_URL" --output "$SBUILD_TMPDIR/fnm.zip"
+    unzip -o "$SBUILD_TMPDIR/fnm.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/fnm" "$SBUILD_OUTDIR/$PKG"

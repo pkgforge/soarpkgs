@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "httpx"
+pkg_id: "projectdiscovery.httpx"
+pkgver: "1.8.1"
+pkg_type: "static"
+ghcr_pkg: "projectdiscovery/httpx"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Security"
+description: "Fast and multi-purpose HTTP toolkit"
+homepage:
+  - "https://github.com/projectdiscovery/httpx"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/projectdiscovery/httpx/releases/download/v${PKGVER}/httpx_${PKGVER}_linux_${ARCH_ALT}.zip"
+    out: "httpx.zip"
+note:
+  - "Official binary from https://github.com/projectdiscovery/httpx"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "httpx"
+repology:
+  - "httpx"
+src_url:
+  - "https://github.com/projectdiscovery/httpx"
+tag:
+  - "http"
+  - "recon"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/projectdiscovery/httpx/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    unzip -o "httpx.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/httpx" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE.md" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "httpx.zip"

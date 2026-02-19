@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gitleaks"
+pkg_id: "gitleaks.gitleaks"
+pkgver: "8.30.0"
+pkg_type: "static"
+ghcr_pkg: "gitleaks/gitleaks"
+category:
+  - "ConsoleOnly"
+  - "Security"
+  - "Development"
+description: "Find secrets with Gitleaks"
+homepage:
+  - "https://github.com/gitleaks/gitleaks"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/gitleaks/gitleaks"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "gitleaks"
+repology:
+  - "gitleaks"
+src_url:
+  - "https://github.com/gitleaks/gitleaks"
+tag:
+  - "secrets"
+  - "security"
+  - "git"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/gitleaks/gitleaks/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/gitleaks/gitleaks/releases/download/v${PKGVER}/gitleaks_${PKGVER}_linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/gitleaks.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/gitleaks.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/gitleaks" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"

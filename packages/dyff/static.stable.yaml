@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dyff"
+pkg_id: "homeport.dyff"
+pkgver: "1.10.4"
+pkg_type: "static"
+ghcr_pkg: "homeport/dyff"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Diff tool for YAML files, and sometimes JSON"
+homepage:
+  - "https://github.com/homeport/dyff"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/homeport/dyff/releases/download/v${PKGVER}/dyff_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "dyff.tar.gz"
+note:
+  - "Official binary from https://github.com/homeport/dyff"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "dyff"
+repology:
+  - "dyff"
+src_url:
+  - "https://github.com/homeport/dyff"
+tag:
+  - "yaml"
+  - "diff"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/homeport/dyff/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "dyff.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/dyff" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "dyff.tar.gz"

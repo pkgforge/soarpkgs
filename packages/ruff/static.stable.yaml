@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ruff"
+pkg_id: "astral-sh.ruff"
+pkgver: "0.15.1"
+pkg_type: "static"
+ghcr_pkg: "astral-sh/ruff"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Extremely fast Python linter and code formatter, written in Rust"
+homepage:
+  - "https://github.com/astral-sh/ruff"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/astral-sh/ruff/releases/download/${PKGVER}/ruff-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "ruff.tar.gz"
+note:
+  - "Official binary from https://github.com/astral-sh/ruff"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "ruff"
+repology:
+  - "ruff"
+src_url:
+  - "https://github.com/astral-sh/ruff"
+tag:
+  - "python"
+  - "linter"
+  - "formatter"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/astral-sh/ruff/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "ruff.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/ruff-${ARCH}-unknown-linux-musl/ruff" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "ruff.tar.gz"

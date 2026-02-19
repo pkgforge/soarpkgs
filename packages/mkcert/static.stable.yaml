@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mkcert"
+pkg_id: "filosottile.mkcert"
+pkgver: "1.4.4"
+pkg_type: "static"
+ghcr_pkg: "filosottile/mkcert"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Security"
+description: "Simple zero-config tool to make locally trusted development certificates"
+homepage:
+  - "https://github.com/FiloSottile/mkcert"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-3-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/FiloSottile/mkcert/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/FiloSottile/mkcert/releases/download/v${PKGVER}/mkcert-v${PKGVER}-linux-${ARCH_ALT}"
+    out: "mkcert"
+note:
+  - "Official binary from https://github.com/FiloSottile/mkcert"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "mkcert"
+repology:
+  - "mkcert"
+src_url:
+  - "https://github.com/FiloSottile/mkcert"
+tag:
+  - "tls"
+  - "certificate"
+  - "development"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/FiloSottile/mkcert/releases/latest" | jq -r '.tag_name' | tr -d 'v'

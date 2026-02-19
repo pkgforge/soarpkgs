@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shfmt"
+pkg_id: "mvdan.shfmt"
+pkgver: "3.12.0"
+pkg_type: "static"
+ghcr_pkg: "mvdan/shfmt"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Shell parser, formatter, and interpreter with bash support"
+homepage:
+  - "https://github.com/mvdan/sh"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-3-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/mvdan/sh/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/mvdan/sh/releases/download/v${PKGVER}/shfmt_v${PKGVER}_linux_${ARCH_ALT}"
+    out: "shfmt"
+note:
+  - "Official binary from https://github.com/mvdan/sh"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "shfmt"
+repology:
+  - "shfmt"
+src_url:
+  - "https://github.com/mvdan/sh"
+tag:
+  - "shell"
+  - "formatter"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mvdan/sh/releases/latest" | jq -r '.tag_name' | tr -d 'v'

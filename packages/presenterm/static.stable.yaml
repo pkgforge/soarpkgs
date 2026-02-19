@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "presenterm"
+pkg_id: "mfontanini.presenterm"
+pkgver: "0.16.0"
+pkg_type: "static"
+ghcr_pkg: "mfontanini/presenterm"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Terminal-based markdown slideshow tool"
+homepage:
+  - "https://github.com/mfontanini/presenterm"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://github.com/mfontanini/presenterm/releases/download/v${PKGVER}/presenterm-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "presenterm.tar.gz"
+note:
+  - "Official binary from https://github.com/mfontanini/presenterm"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "presenterm"
+repology:
+  - "presenterm"
+src_url:
+  - "https://github.com/mfontanini/presenterm"
+tag:
+  - "presentation"
+  - "markdown"
+  - "terminal"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mfontanini/presenterm/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "presenterm.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/presenterm-${PKGVER}/presenterm" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/presenterm-${PKGVER}/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "presenterm.tar.gz"

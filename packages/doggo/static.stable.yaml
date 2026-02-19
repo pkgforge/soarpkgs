@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "doggo"
+pkg_id: "mr-karan.doggo"
+pkgver: "1.1.4"
+pkg_type: "static"
+ghcr_pkg: "mr-karan/doggo"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Utility"
+description: "Command-line DNS client for humans"
+homepage:
+  - "https://github.com/mr-karan/doggo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+note:
+  - "Official binary from https://github.com/mr-karan/doggo"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "doggo"
+repology:
+  - "doggo"
+src_url:
+  - "https://github.com/mr-karan/doggo"
+tag:
+  - "dns"
+  - "network"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mr-karan/doggo/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/mr-karan/doggo/releases/download/v${PKGVER}/doggo_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/doggo.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/doggo.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/doggo_${PKGVER}_Linux_${_ARCH}/doggo" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/doggo_${PKGVER}_Linux_${_ARCH}/LICENSE" "$SBUILD_OUTDIR/LICENSE"

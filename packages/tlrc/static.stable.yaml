@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tlrc"
+pkg_id: "tldr-pages.tlrc"
+pkgver: "1.12.0"
+pkg_type: "static"
+ghcr_pkg: "tldr-pages/tlrc"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A tldr client written in Rust"
+homepage:
+  - "https://github.com/tldr-pages/tlrc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/tldr-pages/tlrc/releases/download/v${PKGVER}/tlrc-v${PKGVER}-x86_64-unknown-linux-musl.tar.gz"
+    out: "tlrc.tar.gz"
+note:
+  - "Official binary from https://github.com/tldr-pages/tlrc"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "tldr"
+repology:
+  - "tlrc"
+src_url:
+  - "https://github.com/tldr-pages/tlrc"
+tag:
+  - "tldr"
+  - "documentation"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tldr-pages/tlrc/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "tlrc.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/tldr" "$SBUILD_OUTDIR/tldr"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "tlrc.tar.gz"

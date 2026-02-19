@@ -43,5 +43,3 @@ x_exec:
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/svenstaro/miniserve/releases/latest" | jq -r '.tag_name' | tr -d 'v'
-  run: |
-    chmod +x "$SBUILD_OUTDIR/$PKG"
