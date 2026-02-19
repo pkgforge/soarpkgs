@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nnn"
+pkg_id: "jarun.nnn"
+pkgver: "5.2"
+pkg_type: "static"
+ghcr_pkg: "jarun/nnn"
+category:
+  - "ConsoleOnly"
+  - "FileManager"
+  - "Utility"
+description: "n³ The unorthodox terminal file manager"
+homepage:
+  - "https://github.com/jarun/nnn"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/jarun/nnn/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/jarun/nnn/releases/download/v${PKGVER}/nnn-musl-static-${PKGVER}.${ARCH}.tar.gz"
+    out: "nnn.tar.gz"
+note:
+  - "Official binary from https://github.com/jarun/nnn"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "nnn"
+repology:
+  - "nnn"
+src_url:
+  - "https://github.com/jarun/nnn"
+tag:
+  - "file-manager"
+  - "tui"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/jarun/nnn/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "nnn.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/nnn-musl-static" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "nnn.tar.gz"

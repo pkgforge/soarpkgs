@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jql"
+pkg_id: "yamafaktory.jql"
+pkgver: "8.0.10"
+pkg_type: "static"
+ghcr_pkg: "yamafaktory/jql"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A JSON Query Language CLI tool"
+homepage:
+  - "https://github.com/yamafaktory/jql"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/yamafaktory/jql/main/LICENSE-MIT"
+    out: "LICENSE"
+  - url: "https://github.com/yamafaktory/jql/releases/download/jql-v${PKGVER}/jql-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "jql.tar.gz"
+note:
+  - "Official binary from https://github.com/yamafaktory/jql"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "jql"
+repology:
+  - "jql"
+src_url:
+  - "https://github.com/yamafaktory/jql"
+tag:
+  - "json"
+  - "query"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/yamafaktory/jql/releases/latest" | jq -r '.tag_name' | sed 's/jql-v//'
+  run: |
+    tar -xf "jql.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/jql" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "jql.tar.gz"

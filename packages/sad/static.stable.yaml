@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sad"
+pkg_id: "ms-jpq.sad"
+pkgver: "0.4.32"
+pkg_type: "static"
+ghcr_pkg: "ms-jpq/sad"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "CLI search and replace, Space Age seD"
+homepage:
+  - "https://github.com/ms-jpq/sad"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ms-jpq/sad/senpai/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/ms-jpq/sad/releases/download/v${PKGVER}/${ARCH}-unknown-linux-musl.zip"
+    out: "sad.zip"
+note:
+  - "Official binary from https://github.com/ms-jpq/sad"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "sad"
+repology:
+  - "sad"
+src_url:
+  - "https://github.com/ms-jpq/sad"
+tag:
+  - "search"
+  - "replace"
+  - "sed"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ms-jpq/sad/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    unzip -o "sad.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/sad" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "sad.zip"

@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "skim"
+pkg_id: "lotabout.skim"
+pkgver: "3.3.0"
+pkg_type: "static"
+ghcr_pkg: "lotabout/skim"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Fuzzy Finder in rust"
+homepage:
+  - "https://github.com/lotabout/skim"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/lotabout/skim/releases/download/v${PKGVER}/skim-${ARCH}-unknown-linux-musl.tar.xz"
+    out: "skim.tar.xz"
+note:
+  - "Official binary from https://github.com/lotabout/skim"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "sk"
+repology:
+  - "skim"
+src_url:
+  - "https://github.com/lotabout/skim"
+tag:
+  - "fuzzy-finder"
+  - "search"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/lotabout/skim/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "skim.tar.xz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/skim-${ARCH}-unknown-linux-musl/sk" "$SBUILD_OUTDIR/sk"
+    rm -rf "skim.tar.xz"

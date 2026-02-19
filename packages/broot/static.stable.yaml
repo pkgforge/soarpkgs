@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "broot"
+pkg_id: "canop.broot"
+pkgver: "1.55.0"
+pkg_type: "static"
+ghcr_pkg: "canop/broot"
+category:
+  - "ConsoleOnly"
+  - "FileManager"
+  - "Utility"
+description: "A new way to see and navigate directory trees"
+homepage:
+  - "https://dystroy.org/broot"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Canop/broot/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/Canop/broot/releases/download/v${PKGVER}/broot_${PKGVER}.zip"
+    out: "broot.zip"
+note:
+  - "Official binary from https://github.com/Canop/broot"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "broot"
+repology:
+  - "broot"
+src_url:
+  - "https://github.com/Canop/broot"
+tag:
+  - "file-manager"
+  - "tree"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Canop/broot/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    unzip -o "broot.zip" "${ARCH}-unknown-linux-musl/broot" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/${ARCH}-unknown-linux-musl/broot" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "broot.zip"

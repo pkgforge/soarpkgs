@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "macchina"
+pkg_id: "macchina-cli.macchina"
+pkgver: "6.4.0"
+pkg_type: "static"
+ghcr_pkg: "macchina-cli/macchina"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "A system information frontend with an emphasis on performance"
+homepage:
+  - "https://github.com/Macchina-CLI/macchina"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Macchina-CLI/macchina/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/Macchina-CLI/macchina/releases/download/v${PKGVER}/macchina-v${PKGVER}-linux-musl-${ARCH}.tar.gz"
+    out: "macchina.tar.gz"
+note:
+  - "Official binary from https://github.com/Macchina-CLI/macchina"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "macchina"
+repology:
+  - "macchina"
+src_url:
+  - "https://github.com/Macchina-CLI/macchina"
+tag:
+  - "system-info"
+  - "fetch"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Macchina-CLI/macchina/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "macchina.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/macchina" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "macchina.tar.gz"

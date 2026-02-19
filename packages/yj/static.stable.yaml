@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "yj"
+pkg_id: "sclevine.yj"
+pkgver: "5.1.0"
+pkg_type: "static"
+ghcr_pkg: "sclevine/yj"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Convert between YAML, TOML, JSON, and HCL"
+homepage:
+  - "https://github.com/sclevine/yj"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/sclevine/yj/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/sclevine/yj/releases/download/v${PKGVER}/yj-linux-${ARCH_ALT}"
+    out: "yj"
+note:
+  - "Official binary from https://github.com/sclevine/yj"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "yj"
+repology:
+  - "yj"
+src_url:
+  - "https://github.com/sclevine/yj"
+tag:
+  - "yaml"
+  - "json"
+  - "toml"
+  - "converter"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sclevine/yj/releases/latest" | jq -r '.tag_name' | tr -d 'v'
