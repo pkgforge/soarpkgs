@@ -1,7 +1,7 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "fd-find"
+pkg: "fd"
 pkg_id: "sharkdp.fd"
 pkgver: "10.3.0"
 pkg_type: "static"
@@ -27,7 +27,6 @@ note:
   - "[NO_DESKTOP_INTEGRATION]"
 provides:
   - "fd"
-  - "fd-find"
 repology:
   - "fd-find"
 src_url:
@@ -45,6 +44,6 @@ x_exec:
     curl -qfsSL "https://api.github.com/repos/sharkdp/fd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
     tar -xf "fd.tar.gz" -C "$SBUILD_TMPDIR/"
-    mv "$SBUILD_TMPDIR/fd-v${PKGVER}-${ARCH}-unknown-linux-musl/fd" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/fd-v${PKGVER}-${ARCH}-unknown-linux-musl/fd" "$SBUILD_OUTDIR/fd"
     mv "$SBUILD_TMPDIR/fd-v${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE-APACHE" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "fd.tar.gz"
