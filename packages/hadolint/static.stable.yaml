@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hadolint"
+pkg_id: "hadolint.hadolint"
+pkgver: "2.14.0"
+pkg_type: "static"
+ghcr_pkg: "hadolint/hadolint"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Dockerfile linter, validate inline bash"
+homepage:
+  - "https://github.com/hadolint/hadolint"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/hadolint/hadolint/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/hadolint/hadolint"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "hadolint"
+repology:
+  - "hadolint"
+src_url:
+  - "https://github.com/hadolint/hadolint"
+tag:
+  - "docker"
+  - "linter"
+  - "dockerfile"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/hadolint/hadolint/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/hadolint/hadolint/releases/download/v${PKGVER}/hadolint-Linux-${_ARCH}" --output "$SBUILD_OUTDIR/$PKG"
+    chmod +x "$SBUILD_OUTDIR/$PKG"

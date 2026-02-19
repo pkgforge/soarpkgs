@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ffuf"
+pkg_id: "ffuf.ffuf"
+pkgver: "2.1.0"
+pkg_type: "static"
+ghcr_pkg: "ffuf/ffuf"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Security"
+description: "Fast web fuzzer written in Go"
+homepage:
+  - "https://github.com/ffuf/ffuf"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/ffuf/ffuf/releases/download/v${PKGVER}/ffuf_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "ffuf.tar.gz"
+note:
+  - "Official binary from https://github.com/ffuf/ffuf"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "ffuf"
+repology:
+  - "ffuf"
+src_url:
+  - "https://github.com/ffuf/ffuf"
+tag:
+  - "fuzzing"
+  - "web"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ffuf/ffuf/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "ffuf.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/ffuf" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "ffuf.tar.gz"

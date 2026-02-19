@@ -46,5 +46,3 @@ x_exec:
   shell: "sh"
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/Nukesor/pueue/releases/latest" | jq -r '.tag_name' | tr -d 'v'
-  run: |
-    chmod +x "$SBUILD_OUTDIR/pueue" "$SBUILD_OUTDIR/pueued"

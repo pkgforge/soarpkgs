@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gum"
+pkg_id: "charmbracelet.gum"
+pkgver: "0.17.0"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/gum"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A tool for glamorous shell scripts"
+homepage:
+  - "https://github.com/charmbracelet/gum"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/gum"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "gum"
+repology:
+  - "gum"
+src_url:
+  - "https://github.com/charmbracelet/gum"
+tag:
+  - "tui"
+  - "shell"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/gum/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/gum/releases/download/v${PKGVER}/gum_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/gum.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/gum.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/gum_${PKGVER}_Linux_${_ARCH}/gum" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/gum_${PKGVER}_Linux_${_ARCH}/LICENSE" "$SBUILD_OUTDIR/LICENSE"

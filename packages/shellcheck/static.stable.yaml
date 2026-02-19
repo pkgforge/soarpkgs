@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shellcheck"
+pkg_id: "koalaman.shellcheck"
+pkgver: "0.11.0"
+pkg_type: "static"
+ghcr_pkg: "koalaman/shellcheck"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Static analysis tool for shell scripts"
+homepage:
+  - "https://github.com/koalaman/shellcheck"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://github.com/koalaman/shellcheck/releases/download/v${PKGVER}/shellcheck-v${PKGVER}.linux.${ARCH}.tar.xz"
+    out: "shellcheck.tar.xz"
+note:
+  - "Official binary from https://github.com/koalaman/shellcheck"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "shellcheck"
+repology:
+  - "shellcheck"
+src_url:
+  - "https://github.com/koalaman/shellcheck"
+tag:
+  - "shell"
+  - "linter"
+  - "static-analysis"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/koalaman/shellcheck/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "shellcheck.tar.xz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/shellcheck-v${PKGVER}/shellcheck" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/shellcheck-v${PKGVER}/LICENSE.txt" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "shellcheck.tar.xz"

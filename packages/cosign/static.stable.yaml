@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cosign"
+pkg_id: "sigstore.cosign"
+pkgver: "3.0.4"
+pkg_type: "static"
+ghcr_pkg: "sigstore/cosign"
+category:
+  - "ConsoleOnly"
+  - "Security"
+  - "Utility"
+description: "Code signing and transparency for containers and binaries"
+homepage:
+  - "https://github.com/sigstore/cosign"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/sigstore/cosign/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/sigstore/cosign/releases/download/v${PKGVER}/cosign-linux-${ARCH_ALT}"
+    out: "cosign"
+note:
+  - "Official binary from https://github.com/sigstore/cosign"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "cosign"
+repology:
+  - "cosign"
+src_url:
+  - "https://github.com/sigstore/cosign"
+tag:
+  - "signing"
+  - "container"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sigstore/cosign/releases/latest" | jq -r '.tag_name' | tr -d 'v'

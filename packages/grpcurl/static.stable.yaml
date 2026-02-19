@@ -39,7 +39,7 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/fullstorydev/grpcurl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    case "$(uname -m)" in
+    case "$ARCH" in
       x86_64) _ARCH="x86_64" ;;
       aarch64) _ARCH="arm64" ;;
     esac

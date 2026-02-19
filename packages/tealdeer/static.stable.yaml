@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tealdeer"
+pkg_id: "dbrgn.tealdeer"
+pkgver: "1.8.1"
+pkg_type: "static"
+ghcr_pkg: "dbrgn/tealdeer"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Very fast implementation of tldr in Rust"
+homepage:
+  - "https://github.com/dbrgn/tealdeer"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://github.com/dbrgn/tealdeer/releases/download/v${PKGVER}/LICENSE-APACHE.txt"
+    out: "LICENSE"
+  - url: "https://github.com/dbrgn/tealdeer/releases/download/v${PKGVER}/tealdeer-linux-${ARCH}-musl"
+    out: "tldr"
+note:
+  - "Official binary from https://github.com/dbrgn/tealdeer"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "tldr"
+repology:
+  - "tealdeer"
+src_url:
+  - "https://github.com/dbrgn/tealdeer"
+tag:
+  - "tldr"
+  - "documentation"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dbrgn/tealdeer/releases/latest" | jq -r '.tag_name' | tr -d 'v'
