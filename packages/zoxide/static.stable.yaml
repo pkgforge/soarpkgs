@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zoxide"
+pkg_id: "ajeetdsouza.zoxide"
+pkgver: "0.9.9"
+pkg_type: "static"
+ghcr_pkg: "ajeetdsouza/zoxide"
+category:
+  - "ConsoleOnly"
+  - "Shell"
+  - "Utility"
+description: "A smarter cd command, inspired by z and autojump"
+homepage:
+  - "https://github.com/ajeetdsouza/zoxide"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/ajeetdsouza/zoxide/releases/download/v${PKGVER}/zoxide-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "zoxide.tar.gz"
+note:
+  - "Official binary from https://github.com/ajeetdsouza/zoxide"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "zoxide"
+repology:
+  - "zoxide"
+src_url:
+  - "https://github.com/ajeetdsouza/zoxide"
+tag:
+  - "cd"
+  - "shell"
+  - "navigation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ajeetdsouza/zoxide/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "zoxide.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/zoxide" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "zoxide.tar.gz"

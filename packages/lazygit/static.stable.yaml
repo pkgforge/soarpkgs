@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lazygit"
+pkg_id: "jesseduffield.lazygit"
+pkgver: "0.59.0"
+pkg_type: "static"
+ghcr_pkg: "jesseduffield/lazygit"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "RevisionControl"
+description: "Simple terminal UI for git commands"
+homepage:
+  - "https://github.com/jesseduffield/lazygit"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/jesseduffield/lazygit"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "lazygit"
+repology:
+  - "lazygit"
+src_url:
+  - "https://github.com/jesseduffield/lazygit"
+tag:
+  - "git"
+  - "tui"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/jesseduffield/lazygit/releases/download/v${PKGVER}/lazygit_${PKGVER}_linux_${_ARCH}.tar.gz" -o lazygit.tar.gz --yes
+    tar -xf "lazygit.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/lazygit" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "lazygit.tar.gz"

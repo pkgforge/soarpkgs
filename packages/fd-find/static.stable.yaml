@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fd"
+pkg_id: "sharkdp.fd"
+pkgver: "10.3.0"
+pkg_type: "static"
+ghcr_pkg: "sharkdp/fd"
+category:
+  - "ConsoleOnly"
+  - "FileTools"
+  - "Utility"
+description: "A simple, fast and user-friendly alternative to find"
+homepage:
+  - "https://github.com/sharkdp/fd"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+  - "MIT"
+build_asset:
+  - url: "https://github.com/sharkdp/fd/releases/download/v${PKGVER}/fd-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "fd.tar.gz"
+note:
+  - "Official binary from https://github.com/sharkdp/fd"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "fd"
+repology:
+  - "fd-find"
+src_url:
+  - "https://github.com/sharkdp/fd"
+tag:
+  - "find"
+  - "search"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharkdp/fd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "fd.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/fd-v${PKGVER}-${ARCH}-unknown-linux-musl/fd" "$SBUILD_OUTDIR/fd"
+    mv "$SBUILD_TMPDIR/fd-v${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE-APACHE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "fd.tar.gz"

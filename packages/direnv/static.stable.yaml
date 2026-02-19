@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "direnv"
+pkg_id: "direnv.direnv"
+pkgver: "2.37.1"
+pkg_type: "static"
+ghcr_pkg: "direnv/direnv"
+category:
+  - "ConsoleOnly"
+  - "Shell"
+  - "Development"
+description: "Unclutter your .profile - per-directory shell configuration"
+homepage:
+  - "https://direnv.net"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/direnv/direnv/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/direnv/direnv/releases/download/v${PKGVER}/direnv.linux-${ARCH_ALT}"
+    out: "direnv"
+note:
+  - "Official binary from https://github.com/direnv/direnv"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "direnv"
+repology:
+  - "direnv"
+src_url:
+  - "https://github.com/direnv/direnv"
+tag:
+  - "shell"
+  - "environment"
+  - "dotenv"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/direnv/direnv/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    mv "direnv" "$SBUILD_OUTDIR/$PKG"
+    chmod +x "$SBUILD_OUTDIR/$PKG"

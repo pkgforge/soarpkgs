@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bottom"
+pkg_id: "clementtsang.bottom"
+pkgver: "0.12.3"
+pkg_type: "static"
+ghcr_pkg: "clementtsang/bottom"
+category:
+  - "ConsoleOnly"
+  - "Monitor"
+  - "System"
+description: "A customizable cross-platform graphical process/system monitor for the terminal"
+homepage:
+  - "https://clementtsang.github.io/bottom"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ClementTsang/bottom/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/ClementTsang/bottom/releases/download/${PKGVER}/bottom_${ARCH}-unknown-linux-musl.tar.gz"
+    out: "bottom.tar.gz"
+note:
+  - "Official binary from https://github.com/ClementTsang/bottom"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "btm"
+repology:
+  - "bottom"
+src_url:
+  - "https://github.com/ClementTsang/bottom"
+tag:
+  - "monitoring"
+  - "htop"
+  - "system"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ClementTsang/bottom/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "bottom.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/btm" "$SBUILD_OUTDIR/btm"
+    rm -rf "bottom.tar.gz"

@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rclone"
+pkg_id: "rclone.rclone"
+pkgver: "1.73.1"
+pkg_type: "static"
+ghcr_pkg: "rclone/rclone"
+category:
+  - "ConsoleOnly"
+  - "FileTransfer"
+  - "Network"
+description: "Rsync for cloud storage - sync files to and from various cloud providers"
+homepage:
+  - "https://rclone.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/rclone/rclone/master/COPYING"
+    out: "LICENSE"
+  - url: "https://github.com/rclone/rclone/releases/download/v${PKGVER}/rclone-v${PKGVER}-linux-${ARCH_ALT}.zip"
+    out: "rclone.zip"
+note:
+  - "Official binary from https://github.com/rclone/rclone"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "rclone"
+repology:
+  - "rclone"
+src_url:
+  - "https://github.com/rclone/rclone"
+tag:
+  - "cloud"
+  - "sync"
+  - "s3"
+  - "backup"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/rclone/rclone/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    unzip -o "rclone.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/rclone-v${PKGVER}-linux-${ARCH_ALT}/rclone" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "rclone.zip"
