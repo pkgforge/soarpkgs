@@ -378,7 +378,7 @@ jobs:
           MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}"
           MINISIGN_PASSWORD: "${{ secrets.MINISIGN_PASSWORD }}"
         run: |
-          set +e  # Don't exit on error, we want to capture the result
+          set +e -o pipefail  # Don't exit on error, capture pipeline exit status
 
           SBUILD="${SYSTMP}/sbuild"
 
