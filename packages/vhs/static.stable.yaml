@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vhs"
+pkg_id: "charmbracelet.vhs"
+pkgver: "0.10.0"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/vhs"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Your CLI home video recorder"
+homepage:
+  - "https://github.com/charmbracelet/vhs"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/vhs"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "vhs"
+repology:
+  - "vhs"
+src_url:
+  - "https://github.com/charmbracelet/vhs"
+tag:
+  - "terminal"
+  - "recorder"
+  - "gif"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/vhs/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/vhs/releases/download/v${PKGVER}/vhs_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/vhs.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/vhs.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/vhs_${PKGVER}_Linux_${_ARCH}/vhs" "$SBUILD_OUTDIR/$PKG"

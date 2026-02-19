@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "csvtk"
+pkg_id: "shenwei356.csvtk"
+pkgver: "0.36.0"
+pkg_type: "static"
+ghcr_pkg: "shenwei356/csvtk"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A cross-platform, efficient and practical CSV/TSV toolkit"
+homepage:
+  - "https://bioinf.shenwei.me/csvtk"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/shenwei356/csvtk/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/shenwei356/csvtk/releases/download/v${PKGVER}/csvtk_linux_${ARCH_ALT}.tar.gz"
+    out: "csvtk.tar.gz"
+note:
+  - "Official binary from https://github.com/shenwei356/csvtk"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "csvtk"
+repology:
+  - "csvtk"
+src_url:
+  - "https://github.com/shenwei356/csvtk"
+tag:
+  - "csv"
+  - "tsv"
+  - "data"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/shenwei356/csvtk/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "csvtk.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/csvtk" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "csvtk.tar.gz"
