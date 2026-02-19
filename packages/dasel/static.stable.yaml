@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dasel"
+pkg_id: "tomwright.dasel"
+pkgver: "3.2.2"
+pkg_type: "static"
+ghcr_pkg: "tomwright/dasel"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Select, put and delete data from JSON, TOML, YAML, XML and CSV"
+homepage:
+  - "https://github.com/TomWright/dasel"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/TomWright/dasel/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/TomWright/dasel/releases/download/v${PKGVER}/dasel_linux_${ARCH_ALT}"
+    out: "dasel"
+note:
+  - "Official binary from https://github.com/TomWright/dasel"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "dasel"
+repology:
+  - "dasel"
+src_url:
+  - "https://github.com/TomWright/dasel"
+tag:
+  - "json"
+  - "yaml"
+  - "data"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/TomWright/dasel/releases/latest" | jq -r '.tag_name' | tr -d 'v'

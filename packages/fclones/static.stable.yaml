@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fclones"
+pkg_id: "pkolaczk.fclones"
+pkgver: "0.35.0"
+pkg_type: "static"
+ghcr_pkg: "pkolaczk/fclones"
+category:
+  - "ConsoleOnly"
+  - "FileTools"
+  - "Utility"
+description: "Efficient duplicate file finder"
+homepage:
+  - "https://github.com/pkolaczk/fclones"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/pkolaczk/fclones/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/pkolaczk/fclones/releases/download/v${PKGVER}/fclones-${PKGVER}-linux-musl-${ARCH}.tar.gz"
+    out: "fclones.tar.gz"
+note:
+  - "Official binary from https://github.com/pkolaczk/fclones"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "fclones"
+repology:
+  - "fclones"
+src_url:
+  - "https://github.com/pkolaczk/fclones"
+tag:
+  - "duplicate"
+  - "files"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pkolaczk/fclones/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "fclones.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/target/${ARCH}-unknown-linux-musl/release/fclones" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "fclones.tar.gz"

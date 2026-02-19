@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kmon"
+pkg_id: "orhun.kmon"
+pkgver: "1.7.1"
+pkg_type: "static"
+ghcr_pkg: "orhun/kmon"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "Linux kernel manager and activity monitor"
+homepage:
+  - "https://github.com/orhun/kmon"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://github.com/orhun/kmon/releases/download/v${PKGVER}/kmon-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "kmon.tar.gz"
+note:
+  - "Official binary from https://github.com/orhun/kmon"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "kmon"
+repology:
+  - "kmon"
+src_url:
+  - "https://github.com/orhun/kmon"
+tag:
+  - "kernel"
+  - "monitor"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/orhun/kmon/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "kmon.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/kmon-${PKGVER}/kmon" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/kmon-${PKGVER}/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "kmon.tar.gz"

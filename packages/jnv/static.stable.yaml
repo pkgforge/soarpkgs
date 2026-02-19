@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jnv"
+pkg_id: "ynqa.jnv"
+pkgver: "0.6.1"
+pkg_type: "static"
+ghcr_pkg: "ynqa/jnv"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Interactive JSON filter using jq"
+homepage:
+  - "https://github.com/ynqa/jnv"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/ynqa/jnv/releases/download/v${PKGVER}/jnv-${ARCH}-unknown-linux-musl.tar.xz"
+    out: "jnv.tar.xz"
+note:
+  - "Official binary from https://github.com/ynqa/jnv"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "jnv"
+repology:
+  - "jnv"
+src_url:
+  - "https://github.com/ynqa/jnv"
+tag:
+  - "json"
+  - "jq"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ynqa/jnv/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "jnv.tar.xz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/jnv-${ARCH}-unknown-linux-musl/jnv" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/jnv-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "jnv.tar.xz"

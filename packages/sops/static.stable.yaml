@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sops"
+pkg_id: "getsops.sops"
+pkgver: "3.11.0"
+pkg_type: "static"
+ghcr_pkg: "getsops/sops"
+category:
+  - "ConsoleOnly"
+  - "Security"
+  - "Utility"
+description: "Simple and flexible tool for managing secrets"
+homepage:
+  - "https://github.com/getsops/sops"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/getsops/sops/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/getsops/sops/releases/download/v${PKGVER}/sops-v${PKGVER}.linux.${ARCH_ALT}"
+    out: "sops"
+note:
+  - "Official binary from https://github.com/getsops/sops"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "sops"
+repology:
+  - "sops"
+src_url:
+  - "https://github.com/getsops/sops"
+tag:
+  - "secrets"
+  - "encryption"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/getsops/sops/releases/latest" | jq -r '.tag_name' | tr -d 'v'

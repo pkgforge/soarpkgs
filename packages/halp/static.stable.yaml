@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "halp"
+pkg_id: "orhun.halp"
+pkgver: "0.2.0"
+pkg_type: "static"
+ghcr_pkg: "orhun/halp"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A CLI tool to get help with CLI tools"
+homepage:
+  - "https://github.com/orhun/halp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://github.com/orhun/halp/releases/download/v${PKGVER}/halp-${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "halp.tar.gz"
+note:
+  - "Official binary from https://github.com/orhun/halp"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "halp"
+repology:
+  - "halp"
+src_url:
+  - "https://github.com/orhun/halp"
+tag:
+  - "help"
+  - "cli"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/orhun/halp/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "halp.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/halp-${PKGVER}/halp" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/halp-${PKGVER}/LICENSE-MIT" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "halp.tar.gz"

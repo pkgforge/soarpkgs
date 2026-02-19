@@ -17,7 +17,7 @@ maintainer:
 license:
   - "MIT"
 build_asset:
-  - url: "https://github.com/tldr-pages/tlrc/releases/download/v${PKGVER}/tlrc-v${PKGVER}-x86_64-unknown-linux-musl.tar.gz"
+  - url: "https://github.com/tldr-pages/tlrc/releases/download/v${PKGVER}/tlrc-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
     out: "tlrc.tar.gz"
 note:
   - "Official binary from https://github.com/tldr-pages/tlrc"

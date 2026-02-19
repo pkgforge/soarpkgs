@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "f2"
+pkg_id: "ayoisaiah.f2"
+pkgver: "2.2.2"
+pkg_type: "static"
+ghcr_pkg: "ayoisaiah/f2"
+category:
+  - "ConsoleOnly"
+  - "FileTools"
+  - "Utility"
+description: "Cross-platform tool for batch renaming files and directories"
+homepage:
+  - "https://github.com/ayoisaiah/f2"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/ayoisaiah/f2/releases/download/v${PKGVER}/f2_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "f2.tar.gz"
+note:
+  - "Official binary from https://github.com/ayoisaiah/f2"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "f2"
+repology:
+  - "f2"
+src_url:
+  - "https://github.com/ayoisaiah/f2"
+tag:
+  - "rename"
+  - "files"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/ayoisaiah/f2/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "f2.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/f2" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENCE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "f2.tar.gz"
