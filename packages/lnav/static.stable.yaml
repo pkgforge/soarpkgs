@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lnav"
+pkg_id: "tstack.lnav"
+pkgver: "0.13.2"
+pkg_type: "static"
+ghcr_pkg: "tstack/lnav"
+category:
+  - "ConsoleOnly"
+  - "Monitor"
+  - "Utility"
+description: "Log file navigator"
+homepage:
+  - "https://lnav.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/tstack/lnav/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/tstack/lnav"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "lnav"
+repology:
+  - "lnav"
+src_url:
+  - "https://github.com/tstack/lnav"
+tag:
+  - "log"
+  - "viewer"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tstack/lnav/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/tstack/lnav/releases/download/v${PKGVER}/lnav-${PKGVER}-linux-musl-${_ARCH}.zip" --output "$SBUILD_TMPDIR/lnav.zip"
+    unzip -o "$SBUILD_TMPDIR/lnav.zip" -d "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/lnav-${PKGVER}/lnav" "$SBUILD_OUTDIR/$PKG"

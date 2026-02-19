@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "intermodal"
+pkg_id: "casey.intermodal"
+pkgver: "0.1.15"
+pkg_type: "static"
+ghcr_pkg: "casey/intermodal"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A user-friendly and featureful command-line BitTorrent metainfo utility"
+homepage:
+  - "https://github.com/casey/intermodal"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "CC0-1.0"
+build_asset:
+  - url: "https://github.com/casey/intermodal/releases/download/v${PKGVER}/imdl-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "imdl.tar.gz"
+note:
+  - "Official binary from https://github.com/casey/intermodal"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "imdl"
+repology:
+  - "intermodal"
+src_url:
+  - "https://github.com/casey/intermodal"
+tag:
+  - "torrent"
+  - "bittorrent"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/casey/intermodal/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "imdl.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/imdl" "$SBUILD_OUTDIR/imdl"
+    rm -rf "imdl.tar.gz"

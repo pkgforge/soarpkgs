@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ubi"
+pkg_id: "houseabsolute.ubi"
+pkgver: "0.9.0"
+pkg_type: "static"
+ghcr_pkg: "houseabsolute/ubi"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "The universal binary installer"
+homepage:
+  - "https://github.com/houseabsolute/ubi"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/houseabsolute/ubi/master/LICENSE-APACHE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/houseabsolute/ubi"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "ubi"
+repology:
+  - "ubi"
+src_url:
+  - "https://github.com/houseabsolute/ubi"
+tag:
+  - "installer"
+  - "binary"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/houseabsolute/ubi/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/houseabsolute/ubi/releases/download/v${PKGVER}/ubi-Linux-musl-${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/ubi.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/ubi.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/ubi" "$SBUILD_OUTDIR/$PKG"

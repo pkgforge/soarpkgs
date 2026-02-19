@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "amp"
+pkg_id: "jmacdonald.amp"
+pkgver: "0.7.1"
+pkg_type: "static"
+ghcr_pkg: "jmacdonald/amp"
+category:
+  - "ConsoleOnly"
+  - "TextEditor"
+description: "A complete text editor for your terminal"
+homepage:
+  - "https://amp.rs"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/jmacdonald/amp/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/jmacdonald/amp/releases/download/${PKGVER}/amp-${ARCH}-unknown-linux-musl"
+    out: "amp"
+note:
+  - "Official binary from https://github.com/jmacdonald/amp"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "amp"
+repology:
+  - "amp"
+src_url:
+  - "https://github.com/jmacdonald/amp"
+tag:
+  - "editor"
+  - "text-editor"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/jmacdonald/amp/releases/latest" | jq -r '.tag_name'

@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "jaq"
+pkg_id: "01mf02.jaq"
+pkgver: "2.3.0"
+pkg_type: "static"
+ghcr_pkg: "01mf02/jaq"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A jq clone focussed on correctness, speed, and simplicity"
+homepage:
+  - "https://github.com/01mf02/jaq"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/01mf02/jaq/main/LICENSE-MIT"
+    out: "LICENSE"
+  - url: "https://github.com/01mf02/jaq/releases/download/v${PKGVER}/jaq-${ARCH}-unknown-linux-musl"
+    out: "jaq"
+note:
+  - "Official binary from https://github.com/01mf02/jaq"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "jaq"
+repology:
+  - "jaq"
+src_url:
+  - "https://github.com/01mf02/jaq"
+tag:
+  - "jq"
+  - "json"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/01mf02/jaq/releases/latest" | jq -r '.tag_name' | tr -d 'v'

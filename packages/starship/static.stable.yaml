@@ -19,6 +19,8 @@ license:
 build_asset:
   - url: "https://raw.githubusercontent.com/starship/starship/master/LICENSE"
     out: "LICENSE"
+  - url: "https://github.com/starship/starship/releases/download/v${PKGVER}/starship-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "starship.tar.gz"
 note:
   - "Official binary from https://github.com/starship/starship"
   - "[PORTABLE] (Portable Static Binary)"
@@ -42,6 +44,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/starship/starship/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "github:starship/starship@v${PKGVER}" --glob "*${ARCH}-unknown-linux-musl.tar.gz" -o "./starship.tar.gz" --yes
-    tar -xf "starship.tar.gz"
-    rm -f "starship.tar.gz"
+    tar -xf "starship.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/starship" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "starship.tar.gz"

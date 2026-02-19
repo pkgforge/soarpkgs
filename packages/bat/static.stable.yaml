@@ -16,6 +16,9 @@ maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
+build_asset:
+  - url: "https://github.com/sharkdp/bat/releases/download/v${PKGVER}/bat-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "bat.tar.gz"
 note:
   - "Official binary from https://github.com/sharkdp/bat"
   - "[PORTABLE] (Portable Static Binary)"
@@ -37,8 +40,7 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/sharkdp/bat/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "https://github.com/sharkdp/bat@v${PKGVER}" --glob "*${ARCH}-unknown-linux-musl.tar.gz" --yes -o bat.tar.gz
     tar -xf "bat.tar.gz" -C "$SBUILD_TMPDIR/"
-    mv "$SBUILD_TMPDIR/bat"*"/bat" "$SBUILD_OUTDIR/$PKG"
-    mv "$SBUILD_TMPDIR/bat"*"/LICENSE-MIT" "$SBUILD_OUTDIR/LICENSE"
+    mv "$SBUILD_TMPDIR/bat-v${PKGVER}-${ARCH}-unknown-linux-musl/bat" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/bat-v${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE-MIT" "$SBUILD_OUTDIR/LICENSE"
     rm -rf "bat.tar.gz"

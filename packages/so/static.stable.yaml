@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "so"
+pkg_id: "samtay.so"
+pkgver: "0.4.10"
+pkg_type: "static"
+ghcr_pkg: "samtay/so"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A terminal interface for Stack Overflow"
+homepage:
+  - "https://github.com/samtay/so"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/samtay/so/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/samtay/so/releases/download/v${PKGVER}/so-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "so.tar.gz"
+note:
+  - "Official binary from https://github.com/samtay/so"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "so"
+repology:
+  - "so"
+src_url:
+  - "https://github.com/samtay/so"
+tag:
+  - "stackoverflow"
+  - "search"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/samtay/so/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "so.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/so" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "so.tar.gz"

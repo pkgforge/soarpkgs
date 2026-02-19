@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "genact"
+pkg_id: "svenstaro.genact"
+pkgver: "1.5.1"
+pkg_type: "static"
+ghcr_pkg: "svenstaro/genact"
+category:
+  - "ConsoleOnly"
+  - "Amusement"
+description: "A nonsense activity generator"
+homepage:
+  - "https://github.com/svenstaro/genact"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/svenstaro/genact/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/svenstaro/genact/releases/download/v${PKGVER}/genact-${PKGVER}-${ARCH}-unknown-linux-musl"
+    out: "genact"
+note:
+  - "Official binary from https://github.com/svenstaro/genact"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "genact"
+repology:
+  - "genact"
+src_url:
+  - "https://github.com/svenstaro/genact"
+tag:
+  - "fun"
+  - "activity"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/svenstaro/genact/releases/latest" | jq -r '.tag_name' | tr -d 'v'
