@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gh"
+pkg_id: "github.cli"
+pkgver: "2.87.0"
+pkg_type: "static"
+ghcr_pkg: "github/cli"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "RevisionControl"
+description: "GitHub CLI tool"
+homepage:
+  - "https://cli.github.com"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/cli/cli/releases/download/v${PKGVER}/gh_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "gh.tar.gz"
+note:
+  - "Official binary from https://github.com/cli/cli"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "gh"
+repology:
+  - "github-cli"
+src_url:
+  - "https://github.com/cli/cli"
+tag:
+  - "github"
+  - "git"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/cli/cli/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "gh.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/gh_${PKGVER}_linux_${ARCH_ALT}/bin/gh" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/gh_${PKGVER}_linux_${ARCH_ALT}/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "gh.tar.gz"

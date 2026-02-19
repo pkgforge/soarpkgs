@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "usql"
+pkg_id: "xo.usql"
+pkgver: "0.20.8"
+pkg_type: "static"
+ghcr_pkg: "xo/usql"
+category:
+  - "ConsoleOnly"
+  - "Database"
+  - "Utility"
+description: "Universal command-line interface for SQL databases"
+homepage:
+  - "https://github.com/xo/usql"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://github.com/xo/usql/releases/download/v${PKGVER}/usql_static-${PKGVER}-linux-${ARCH_ALT}.tar.bz2"
+    out: "usql.tar.bz2"
+note:
+  - "Official binary from https://github.com/xo/usql"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "usql"
+repology:
+  - "usql"
+src_url:
+  - "https://github.com/xo/usql"
+tag:
+  - "database"
+  - "sql"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/xo/usql/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xjf "usql.tar.bz2" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/usql_static" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "usql.tar.bz2"

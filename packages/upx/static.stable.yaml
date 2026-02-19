@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "upx"
+pkg_id: "upx.upx"
+pkgver: "5.1.0"
+pkg_type: "static"
+ghcr_pkg: "upx/upx"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Ultimate packer for executables"
+homepage:
+  - "https://upx.github.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://github.com/upx/upx/releases/download/v${PKGVER}/upx-${PKGVER}-${ARCH_ALT}_linux.tar.xz"
+    out: "upx.tar.xz"
+note:
+  - "Official binary from https://github.com/upx/upx"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "upx"
+repology:
+  - "upx"
+src_url:
+  - "https://github.com/upx/upx"
+tag:
+  - "compression"
+  - "binary"
+  - "packer"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/upx/upx/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "upx.tar.xz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/upx-${PKGVER}-${ARCH_ALT}_linux/upx" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/upx-${PKGVER}-${ARCH_ALT}_linux/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "upx.tar.xz"

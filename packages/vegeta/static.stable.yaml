@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vegeta"
+pkg_id: "tsenart.vegeta"
+pkgver: "12.13.0"
+pkg_type: "static"
+ghcr_pkg: "tsenart/vegeta"
+category:
+  - "ConsoleOnly"
+  - "Network"
+  - "Utility"
+description: "Versatile HTTP load testing tool"
+homepage:
+  - "https://github.com/tsenart/vegeta"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/tsenart/vegeta/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/tsenart/vegeta/releases/download/v${PKGVER}/vegeta_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+    out: "vegeta.tar.gz"
+note:
+  - "Official binary from https://github.com/tsenart/vegeta"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "vegeta"
+repology:
+  - "vegeta"
+src_url:
+  - "https://github.com/tsenart/vegeta"
+tag:
+  - "load-testing"
+  - "http"
+  - "benchmark"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/tsenart/vegeta/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "vegeta.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/vegeta" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "vegeta.tar.gz"

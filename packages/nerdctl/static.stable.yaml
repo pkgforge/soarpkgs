@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nerdctl"
+pkg_id: "containerd.nerdctl"
+pkgver: "2.2.1"
+pkg_type: "static"
+ghcr_pkg: "containerd/nerdctl"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "Docker-compatible CLI for containerd"
+homepage:
+  - "https://github.com/containerd/nerdctl"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/containerd/nerdctl/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/containerd/nerdctl/releases/download/v${PKGVER}/nerdctl-${PKGVER}-linux-${ARCH_ALT}.tar.gz"
+    out: "nerdctl.tar.gz"
+note:
+  - "Official binary from https://github.com/containerd/nerdctl"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "nerdctl"
+repology:
+  - "nerdctl"
+src_url:
+  - "https://github.com/containerd/nerdctl"
+tag:
+  - "container"
+  - "docker"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/containerd/nerdctl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "nerdctl.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/nerdctl" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "nerdctl.tar.gz"

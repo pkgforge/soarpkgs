@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "restic"
+pkg_id: "restic.restic"
+pkgver: "0.18.1"
+pkg_type: "static"
+ghcr_pkg: "restic/restic"
+category:
+  - "ConsoleOnly"
+  - "Archiving"
+  - "Utility"
+description: "Fast, secure, efficient backup program"
+homepage:
+  - "https://restic.net"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/restic/restic/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/restic/restic/releases/download/v${PKGVER}/restic_${PKGVER}_linux_${ARCH_ALT}.bz2"
+    out: "restic.bz2"
+note:
+  - "Official binary from https://github.com/restic/restic"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "restic"
+repology:
+  - "restic"
+src_url:
+  - "https://github.com/restic/restic"
+tag:
+  - "backup"
+  - "deduplication"
+  - "encryption"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/restic/restic/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    bzip2 -d "restic.bz2"
+    mv "restic" "$SBUILD_OUTDIR/$PKG"
+    chmod +x "$SBUILD_OUTDIR/$PKG"
