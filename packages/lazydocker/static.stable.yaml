@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lazydocker"
+pkg_id: "jesseduffield.lazydocker"
+pkgver: "0.24.4"
+pkg_type: "static"
+ghcr_pkg: "jesseduffield/lazydocker"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "TUI for docker resource visualization and management"
+homepage:
+  - "https://github.com/jesseduffield/lazydocker"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/jesseduffield/lazydocker"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "lazydocker"
+repology:
+  - "lazydocker"
+src_url:
+  - "https://github.com/jesseduffield/lazydocker"
+tag:
+  - "docker"
+  - "tui"
+  - "containers"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/jesseduffield/lazydocker/releases/download/v${PKGVER}/lazydocker_${PKGVER}_Linux_${_ARCH}.tar.gz" -o lazydocker.tar.gz --yes
+    tar -xf "lazydocker.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/lazydocker" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "lazydocker.tar.gz"

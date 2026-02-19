@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "k9s"
+pkg_id: "derailed.k9s"
+pkgver: "0.50.18"
+pkg_type: "static"
+ghcr_pkg: "derailed/k9s"
+category:
+  - "ConsoleOnly"
+  - "System"
+  - "Utility"
+description: "Terminal UI to interact with Kubernetes clusters"
+homepage:
+  - "https://k9scli.io"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://github.com/derailed/k9s/releases/download/v${PKGVER}/k9s_Linux_${ARCH_ALT}.tar.gz"
+    out: "k9s.tar.gz"
+note:
+  - "Official binary from https://github.com/derailed/k9s"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "k9s"
+repology:
+  - "k9s"
+src_url:
+  - "https://github.com/derailed/k9s"
+tag:
+  - "kubernetes"
+  - "tui"
+  - "k8s"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/derailed/k9s/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "k9s.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/k9s" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "k9s.tar.gz"

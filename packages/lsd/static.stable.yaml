@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lsd"
+pkg_id: "lsd-rs.lsd"
+pkgver: "1.2.0"
+pkg_type: "static"
+ghcr_pkg: "lsd-rs/lsd"
+category:
+  - "ConsoleOnly"
+  - "FileTools"
+  - "Utility"
+description: "The next gen ls command"
+homepage:
+  - "https://github.com/lsd-rs/lsd"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://github.com/lsd-rs/lsd/releases/download/v${PKGVER}/lsd-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "lsd.tar.gz"
+note:
+  - "Official binary from https://github.com/lsd-rs/lsd"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "lsd"
+repology:
+  - "lsd"
+src_url:
+  - "https://github.com/lsd-rs/lsd"
+tag:
+  - "ls"
+  - "cli"
+  - "file-listing"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/lsd-rs/lsd/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "lsd.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/lsd-v${PKGVER}-${ARCH}-unknown-linux-musl/lsd" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/lsd-v${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "lsd.tar.gz"

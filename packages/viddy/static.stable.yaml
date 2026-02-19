@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "viddy"
+pkg_id: "sachaos.viddy"
+pkgver: "1.3.0"
+pkg_type: "static"
+ghcr_pkg: "sachaos/viddy"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A modern watch command"
+homepage:
+  - "https://github.com/sachaos/viddy"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/sachaos/viddy/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/sachaos/viddy"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "viddy"
+repology:
+  - "viddy"
+src_url:
+  - "https://github.com/sachaos/viddy"
+tag:
+  - "watch"
+  - "cli"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sachaos/viddy/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/sachaos/viddy/releases/download/v${PKGVER}/viddy-v${PKGVER}-linux-${_ARCH}.tar.gz" -o viddy.tar.gz --yes
+    tar -xf "viddy.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/viddy" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "viddy.tar.gz"

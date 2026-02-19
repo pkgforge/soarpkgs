@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gitui"
+pkg_id: "extrawurst.gitui"
+pkgver: "0.28.0"
+pkg_type: "static"
+ghcr_pkg: "extrawurst/gitui"
+category:
+  - "ConsoleOnly"
+  - "RevisionControl"
+  - "Development"
+description: "Blazing fast terminal-ui for git written in Rust"
+homepage:
+  - "https://github.com/extrawurst/gitui"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/extrawurst/gitui/master/LICENSE.md"
+    out: "LICENSE"
+  - url: "https://github.com/extrawurst/gitui/releases/download/v${PKGVER}/gitui-linux-${ARCH}.tar.gz"
+    out: "gitui.tar.gz"
+note:
+  - "Official binary from https://github.com/extrawurst/gitui"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "gitui"
+repology:
+  - "gitui"
+src_url:
+  - "https://github.com/extrawurst/gitui"
+tag:
+  - "git"
+  - "tui"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/extrawurst/gitui/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "gitui.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/gitui" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "gitui.tar.gz"

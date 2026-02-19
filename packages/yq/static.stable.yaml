@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "yq"
+pkg_id: "mikefarah.yq"
+pkgver: "4.52.4"
+pkg_type: "static"
+ghcr_pkg: "mikefarah/yq"
+category:
+  - "ConsoleOnly"
+  - "TextTools"
+  - "Utility"
+description: "Portable command-line YAML, JSON, XML, CSV, TOML and properties processor"
+homepage:
+  - "https://mikefarah.gitbook.io/yq"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/mikefarah/yq/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/mikefarah/yq/releases/download/v${PKGVER}/yq_linux_${ARCH_ALT}"
+    out: "yq"
+note:
+  - "Official binary from https://github.com/mikefarah/yq"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "yq"
+repology:
+  - "yq-mikefarah"
+src_url:
+  - "https://github.com/mikefarah/yq"
+tag:
+  - "yaml"
+  - "json"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/mikefarah/yq/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    mv "yq" "$SBUILD_OUTDIR/$PKG"
+    chmod +x "$SBUILD_OUTDIR/$PKG"

@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hexyl"
+pkg_id: "sharkdp.hexyl"
+pkgver: "0.17.0"
+pkg_type: "static"
+ghcr_pkg: "sharkdp/hexyl"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "A command-line hex viewer"
+homepage:
+  - "https://github.com/sharkdp/hexyl"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+  - "MIT"
+build_asset:
+  - url: "https://github.com/sharkdp/hexyl/releases/download/v${PKGVER}/hexyl-v${PKGVER}-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "hexyl.tar.gz"
+note:
+  - "Official binary from https://github.com/sharkdp/hexyl"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "hexyl"
+repology:
+  - "hexyl"
+src_url:
+  - "https://github.com/sharkdp/hexyl"
+tag:
+  - "hex"
+  - "viewer"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/sharkdp/hexyl/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "hexyl.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/hexyl-v${PKGVER}-${ARCH}-unknown-linux-musl/hexyl" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/hexyl-v${PKGVER}-${ARCH}-unknown-linux-musl/LICENSE-APACHE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "hexyl.tar.gz"

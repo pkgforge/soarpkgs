@@ -1,0 +1,52 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gdu"
+pkg_id: "dundee.gdu"
+pkgver: "5.33.0"
+pkg_type: "static"
+ghcr_pkg: "dundee/gdu"
+category:
+  - "ConsoleOnly"
+  - "Filesystem"
+  - "Utility"
+description: "Fast disk usage calculator with console interface"
+homepage:
+  - "https://github.com/dundee/gdu"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/dundee/gdu/master/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/dundee/gdu"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "gdu"
+repology:
+  - "gdu"
+src_url:
+  - "https://github.com/dundee/gdu"
+tag:
+  - "disk-usage"
+  - "du"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/dundee/gdu/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _SUFFIX="amd64_static" ;;
+      aarch64) _SUFFIX="arm64" ;;
+    esac
+    soar dl "https://github.com/dundee/gdu/releases/download/v${PKGVER}/gdu_linux_${_SUFFIX}.tgz" -o gdu.tgz --yes
+    tar -xf "gdu.tgz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/gdu_linux_${_SUFFIX}" "$SBUILD_OUTDIR/$PKG"
+    rm -rf "gdu.tgz"

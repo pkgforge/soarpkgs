@@ -1,0 +1,49 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "glow"
+pkg_id: "charmbracelet.glow"
+pkgver: "2.1.1"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/glow"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Render markdown on the CLI"
+homepage:
+  - "https://github.com/charmbracelet/glow"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/glow"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "glow"
+repology:
+  - "glow"
+src_url:
+  - "https://github.com/charmbracelet/glow"
+tag:
+  - "markdown"
+  - "cli"
+  - "viewer"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/glow/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/glow/releases/download/v${PKGVER}/glow_${PKGVER}_Linux_${_ARCH}.tar.gz" -o glow.tar.gz --yes
+    tar -xf "glow.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/glow_${PKGVER}_Linux_${_ARCH}/glow" "$SBUILD_OUTDIR/$PKG"
+    mv "$SBUILD_TMPDIR/glow_${PKGVER}_Linux_${_ARCH}/LICENSE" "$SBUILD_OUTDIR/LICENSE"
+    rm -rf "glow.tar.gz"
