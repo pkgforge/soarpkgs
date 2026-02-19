@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fx"
+pkg_id: "antonmedv.fx"
+pkgver: "39.2.0"
+pkg_type: "static"
+ghcr_pkg: "antonmedv/fx"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Terminal JSON viewer & processor"
+homepage:
+  - "https://fx.wtf"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/antonmedv/fx/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/antonmedv/fx/releases/download/${PKGVER}/fx_linux_${ARCH_ALT}"
+    out: "fx"
+note:
+  - "Official binary from https://github.com/antonmedv/fx"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "fx"
+repology:
+  - "fx"
+src_url:
+  - "https://github.com/antonmedv/fx"
+tag:
+  - "json"
+  - "viewer"
+  - "tui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/antonmedv/fx/releases/latest" | jq -r '.tag_name'

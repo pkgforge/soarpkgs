@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "freeze"
+pkg_id: "charmbracelet.freeze"
+pkgver: "0.2.2"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/freeze"
+category:
+  - "ConsoleOnly"
+  - "Utility"
+description: "Generate images of code and terminal output"
+homepage:
+  - "https://github.com/charmbracelet/freeze"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/freeze"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "freeze"
+repology:
+  - "freeze"
+src_url:
+  - "https://github.com/charmbracelet/freeze"
+tag:
+  - "screenshot"
+  - "code"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/freeze/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/freeze/releases/download/v${PKGVER}/freeze_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/freeze.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/freeze.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/freeze_${PKGVER}_Linux_${_ARCH}/freeze" "$SBUILD_OUTDIR/$PKG"

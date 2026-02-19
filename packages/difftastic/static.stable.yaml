@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "difftastic"
+pkg_id: "wilfred.difftastic"
+pkgver: "0.67.0"
+pkg_type: "static"
+ghcr_pkg: "wilfred/difftastic"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "A structural diff that understands syntax"
+homepage:
+  - "https://difftastic.wilfred.me.uk"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Wilfred/difftastic/master/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/Wilfred/difftastic/releases/download/${PKGVER}/difft-${ARCH}-unknown-linux-musl.tar.gz"
+    out: "difft.tar.gz"
+note:
+  - "Official binary from https://github.com/Wilfred/difftastic"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "difft"
+repology:
+  - "difftastic"
+src_url:
+  - "https://github.com/Wilfred/difftastic"
+tag:
+  - "diff"
+  - "syntax"
+  - "development"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Wilfred/difftastic/releases/latest" | jq -r '.tag_name'
+  run: |
+    tar -xf "difft.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/difft" "$SBUILD_OUTDIR/difft"
+    rm -rf "difft.tar.gz"

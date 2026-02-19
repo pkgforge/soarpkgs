@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "soft-serve"
+pkg_id: "charmbracelet.soft-serve"
+pkgver: "0.11.3"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/soft-serve"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Network"
+description: "The mighty, self-hostable Git server for the command line"
+homepage:
+  - "https://github.com/charmbracelet/soft-serve"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/soft-serve"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "soft"
+repology:
+  - "soft-serve"
+src_url:
+  - "https://github.com/charmbracelet/soft-serve"
+tag:
+  - "git"
+  - "server"
+  - "ssh"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/soft-serve/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/soft-serve/releases/download/v${PKGVER}/soft-serve_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/soft-serve.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/soft-serve.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/soft-serve_${PKGVER}_Linux_${_ARCH}/soft" "$SBUILD_OUTDIR/soft"

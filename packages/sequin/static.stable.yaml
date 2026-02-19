@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sequin"
+pkg_id: "charmbracelet.sequin"
+pkgver: "0.3.1"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/sequin"
+category:
+  - "ConsoleOnly"
+  - "Development"
+  - "Utility"
+description: "Human-readable ANSI sequences"
+homepage:
+  - "https://github.com/charmbracelet/sequin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/sequin"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "sequin"
+repology:
+  - "sequin"
+src_url:
+  - "https://github.com/charmbracelet/sequin"
+tag:
+  - "ansi"
+  - "terminal"
+  - "cli"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/sequin/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/sequin/releases/download/v${PKGVER}/sequin_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/sequin.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/sequin.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/sequin_${PKGVER}_Linux_${_ARCH}/sequin" "$SBUILD_OUTDIR/$PKG"

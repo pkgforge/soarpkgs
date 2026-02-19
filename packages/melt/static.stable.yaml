@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "melt"
+pkg_id: "charmbracelet.melt"
+pkgver: "0.6.2"
+pkg_type: "static"
+ghcr_pkg: "charmbracelet/melt"
+category:
+  - "ConsoleOnly"
+  - "Security"
+  - "Utility"
+description: "Backup and restore Ed25519 SSH keys with seed words"
+homepage:
+  - "https://github.com/charmbracelet/melt"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Official binary from https://github.com/charmbracelet/melt"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "melt"
+repology:
+  - "melt"
+src_url:
+  - "https://github.com/charmbracelet/melt"
+tag:
+  - "ssh"
+  - "backup"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/charmbracelet/melt/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) _ARCH="x86_64" ;;
+      aarch64) _ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/charmbracelet/melt/releases/download/v${PKGVER}/melt_${PKGVER}_Linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/melt.tar.gz"
+    tar -xf "$SBUILD_TMPDIR/melt.tar.gz" -C "$SBUILD_TMPDIR/"
+    mv "$SBUILD_TMPDIR/melt_${PKGVER}_Linux_${_ARCH}/melt" "$SBUILD_OUTDIR/$PKG"
