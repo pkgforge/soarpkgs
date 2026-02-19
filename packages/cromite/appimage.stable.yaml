@@ -39,4 +39,4 @@ x_exec:
     echo "${VERSION%%@*}" | sed "s/^v//"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Cromite-AppImage@${REMOTE_PKGVER}" --glob "*x86_64*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/Cromite-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

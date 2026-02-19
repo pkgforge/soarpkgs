@@ -11,13 +11,12 @@ category:
 description: "Fast and precise calculator"
 homepage:
   - "https://speedcrunch.org"
-  - "https://github.com/pkgforge-dev/SpeedCrunch-AppImage"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - "GPL-2.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/speedcrunch/speedcrunch/refs/heads/main/COPYING"
+  - url: "https://bitbucket.org/heldercorreia/speedcrunch/raw/3c1b4c18ccb275eb2891f9d8ff36a9205c0f566b/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SpeedCrunch-AppImage"

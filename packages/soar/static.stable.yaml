@@ -11,11 +11,14 @@ category:
   - "System"
 description: "Fast, modern, bloat-free distro-independent package manager"
 homepage:
-  - "https://github.com/pkgforge/soar"
+  - "https://soar.qaidvoid.dev"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
+build_asset:
+  - url: "https://github.com/pkgforge/soar/releases/download/v${PKGVER}/soar-${ARCH}-linux.tar.gz"
+    out: "soar.tar.gz"
 note:
   - "Official binary from https://github.com/pkgforge/soar"
   - "[PORTABLE] (Portable Static Binary)"
@@ -41,7 +44,6 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/pkgforge/soar/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "https://github.com/pkgforge/soar@v${PKGVER}" --glob "*${ARCH}-linux.tar.gz" --yes -o soar.tar.gz
     tar -xf "soar.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/release/soar" "$SBUILD_OUTDIR/$PKG"
     mv "$SBUILD_TMPDIR/release/LICENSE" "$SBUILD_OUTDIR/LICENSE"

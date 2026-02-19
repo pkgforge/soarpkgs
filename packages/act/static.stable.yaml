@@ -17,9 +17,6 @@ maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
-build_asset:
-  - url: "https://github.com/nektos/act/releases/download/v${PKGVER}/act_Linux_${ARCH}.tar.gz"
-    out: "act.tar.gz"
 note:
   - "Official binary from https://github.com/nektos/act"
   - "[PORTABLE] (Portable Static Binary)"
@@ -42,6 +39,10 @@ x_exec:
   pkgver: |
     curl -qfsSL "https://api.github.com/repos/nektos/act/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
+    case "$ARCH" in
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/nektos/act/releases/download/v${PKGVER}/act_Linux_${ARCH}.tar.gz" -o act.tar.gz
     tar -xf "act.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/act" "$SBUILD_OUTDIR/"
     mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/"

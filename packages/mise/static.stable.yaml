@@ -12,7 +12,7 @@ category:
   - "Utility"
 description: "The front-end to your dev env"
 homepage:
-  - "https://github.com/jdx/mise"
+  - "https://mise.jdx.dev"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
@@ -50,13 +50,10 @@ x_exec:
     echo "$VERSION"
   run: |
     case "${ARCH}" in
-      aarch64)
-        soar dl "github:jdx/mise@${REMOTE_PKGVER}" --glob "*linux-arm64-musl.tar.xz" -o "./mise.tar.xz" --yes
-        ;;
-      x86_64)
-        soar dl "github:jdx/mise@${REMOTE_PKGVER}" --glob "*linux-x64-musl.tar.xz" -o "./mise.tar.xz" --yes
-        ;;
+      aarch64) ARCH="arm64" ;;
+      x86_64) ARCH="x64" ;;
     esac
+    soar dl "github:jdx/mise@${REMOTE_PKGVER}" --glob "*linux-${ARCH}-musl.tar.xz" -o "./mise.tar.xz" --yes
     tar -xf "mise.tar.xz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/mise/bin/mise" "$SBUILD_OUTDIR/$PKG"
     mv "$SBUILD_TMPDIR/mise/LICENSE" "$SBUILD_OUTDIR/"

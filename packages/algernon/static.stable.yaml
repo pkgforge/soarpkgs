@@ -17,7 +17,7 @@ maintainer:
 license:
   - "BSD-3-Clause"
 build_asset:
-  - url: "https://github.com/xyproto/algernon/releases/download/v${PKGVER}/algernon-${PKGVER}-linux_x86_64_static.tar.xz"
+  - url: "https://github.com/xyproto/algernon/releases/download/v${PKGVER}/algernon-${PKGVER}-linux_${ARCH}_static.tar.xz"
     out: "algernon.tar.xz"
 note:
   - "Official binary from https://github.com/xyproto/algernon"

@@ -11,13 +11,12 @@ category:
 description: "Fast and secure file transfer"
 homepage:
   - "https://apps.gnome.org/Warp"
-  - "https://github.com/pkgforge-dev/Warp-AppImage"
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
   - "GPL-3.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/GNOME/warp/refs/heads/main/COPYING"
+  - url: "https://gitlab.gnome.org/World/warp/-/raw/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Warp-AppImage"
