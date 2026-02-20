@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "cosign"
 pkg_id: "sigstore.cosign"
-pkgver: "3.0.4"
+pkgver: "3.0.5"
 pkg_type: "static"
 ghcr_pkg: "sigstore/cosign"
 category:
@@ -36,6 +36,8 @@ tag:
   - "signing"
   - "container"
   - "security"
+snapshots:
+  - "3.0.4"
 x_exec:
   host:
     - "x86_64-linux"
