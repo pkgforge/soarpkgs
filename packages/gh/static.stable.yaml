@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "gh"
 pkg_id: "github.cli"
-pkgver: "2.87.0"
+pkgver: "2.87.2"
 pkg_type: "static"
 ghcr_pkg: "github/cli"
 category:
@@ -34,6 +34,8 @@ tag:
   - "github"
   - "git"
   - "cli"
+snapshots:
+  - "2.87.0"
 x_exec:
   host:
     - "x86_64-linux"
