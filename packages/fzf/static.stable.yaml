@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "fzf"
 pkg_id: "junegunn.fzf"
-pkgver: "0.67.0"
+pkgver: "0.68.0"
 pkg_type: "static"
 ghcr_pkg: "junegunn/fzf"
 category:
@@ -34,6 +34,8 @@ tag:
   - "cli"
   - "utility"
   - "fuzzy-finder"
+snapshots:
+  - "0.67.0"
 x_exec:
   host:
     - "aarch64-linux"
