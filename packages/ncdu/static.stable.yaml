@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "ncdu"
 pkg_id: "yorhel.ncdu"
-pkgver: "2.7"
+pkgver: "2.9"
 pkg_type: "static"
 ghcr_pkg: "yorhel/ncdu"
 category:
@@ -36,6 +36,8 @@ tag:
   - "disk-usage"
   - "ncurses"
   - "du"
+snapshots:
+  - "2.7"
 x_exec:
   host:
     - "x86_64-linux"
