@@ -20,11 +20,13 @@ note:
   - "Official binary from https://github.com/xrelkd/clipcat"
   - "[PORTABLE] (Portable Static Binary)"
   - "[NO_DESKTOP_INTEGRATION]"
-provides:
-  - "clipcatd"
-  - "@clipcat-menu"
-  - "@clipcat-notify"
-  - "@clipcatctl"
+packages:
+  clipcat:
+    provides:
+      - "clipcatd"
+      - "@clipcat-menu"
+      - "@clipcat-notify"
+      - "@clipcatctl"
 repology:
   - "clipcat"
 src_url:
