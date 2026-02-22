@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "dyff"
 pkg_id: "homeport.dyff"
-pkgver: "1.10.4"
+pkgver: "1.10.5"
 pkg_type: "static"
 ghcr_pkg: "homeport/dyff"
 category:
@@ -34,6 +34,8 @@ tag:
   - "yaml"
   - "diff"
   - "cli"
+snapshots:
+  - "1.10.4"
 x_exec:
   host:
     - "x86_64-linux"
