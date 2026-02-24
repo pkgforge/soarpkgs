@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "dasel"
 pkg_id: "tomwright.dasel"
-pkgver: "3.2.2"
+pkgver: "3.2.3"
 pkg_type: "static"
 ghcr_pkg: "tomwright/dasel"
 category:
@@ -36,6 +36,8 @@ tag:
   - "json"
   - "yaml"
   - "data"
+snapshots:
+  - "3.2.2"
 x_exec:
   host:
     - "x86_64-linux"
