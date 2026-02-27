@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "procs"
 pkg_id: "dalance.procs"
-pkgver: "0.14.10"
+pkgver: "0.14.11"
 pkg_type: "static"
 ghcr_pkg: "dalance/procs"
 category:
@@ -36,6 +36,8 @@ tag:
   - "ps"
   - "process"
   - "system"
+snapshots:
+  - "0.14.10"
 x_exec:
   host:
     - "x86_64-linux"
