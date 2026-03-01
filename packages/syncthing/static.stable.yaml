@@ -1,0 +1,50 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "syncthing"
+pkg_id: "syncthing.syncthing"
+pkgver: "2.0.14"
+pkg_type: "static"
+ghcr_pkg: "syncthing/syncthing"
+category:
+  - "Filesystem"
+  - "FileTransfer"
+description: "Open Source Continuous File Synchronization"
+homepage:
+  - "https://syncthing.net"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://github.com/syncthing/syncthing/releases/download/v${PKGVER}/syncthing-linux-${ARCH_ALT}-v${PKGVER}.tar.gz"
+    out: "syncthing.tar.gz"
+  - url: "https://raw.githubusercontent.com/syncthing/syncthing/refs/heads/main/assets/logo-only.svg"
+    out: "syncthing-ui.svg"
+note:
+  - "Official binary from https://github.com/syncthing/syncthing"
+  - "[PORTABLE] (Portable Static Binary)"
+provides:
+  - "syncthing"
+repology:
+  - "syncthing"
+src_url:
+  - "https://github.com/syncthing/syncthing"
+tag:
+  - "file-transfer"
+  - "p2p"
+  - "synchronization"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/syncthing/syncthing/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    tar -xf "syncthing.tar.gz" -C "$SBUILD_TMPDIR/"
+    pkgdir="$SBUILD_TMPDIR/syncthing-linux-${ARCH_ALT}-v${PKGVER}"
+    mv "$pkgdir/syncthing" "$SBUILD_OUTDIR/$PKG"
+    mv "$pkgdir/LICENSE.txt" "$SBUILD_OUTDIR/LICENSE"
+    mv "$pkgdir/etc/linux-desktop/syncthing-ui.desktop" "$SBUILD_OUTDIR/syncthing-ui.desktop"
+    rm -rf "syncthing.tar.gz"
