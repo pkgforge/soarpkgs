@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "fselect"
 pkg_id: "jhspetersson.fselect"
-pkgver: "0.9.2"
+pkgver: "0.9.3"
 pkg_type: "static"
 ghcr_pkg: "jhspetersson/fselect"
 category:
@@ -37,6 +37,8 @@ tag:
   - "file-search"
   - "sql"
   - "cli"
+snapshots:
+  - "0.9.2"
 x_exec:
   host:
     - "x86_64-linux"
