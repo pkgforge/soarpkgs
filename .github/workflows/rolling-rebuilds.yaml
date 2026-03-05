@@ -324,7 +324,7 @@ jobs:
             sbuild cache --cache /tmp/build_cache.sdb init
 
       - name: Download build status artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           pattern: build-status-*
           path: /tmp/build-statuses
