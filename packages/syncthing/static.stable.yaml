@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "syncthing"
 pkg_id: "syncthing.syncthing"
-pkgver: "2.0.14"
+pkgver: "2.0.15"
 pkg_type: "static"
 ghcr_pkg: "syncthing/syncthing"
 category:
@@ -34,6 +34,8 @@ tag:
   - "file-transfer"
   - "p2p"
   - "synchronization"
+snapshots:
+  - "2.0.14"
 x_exec:
   host:
     - "x86_64-linux"
