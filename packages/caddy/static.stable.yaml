@@ -4,7 +4,7 @@ _disabled: false
 pkg: "caddy"
 pkg_id: "caddyserver.caddy"
 pkg_type: "static"
-pkgver: "2.11.1"
+pkgver: "2.11.2"
 ghcr_pkg: "caddyserver/caddy"
 category:
   - "Network"
@@ -31,6 +31,7 @@ tag:
   - "http"
   - "https"
 snapshots:
+  - "2.11.1"
   - "2.10.2"
 x_exec:
   host:
