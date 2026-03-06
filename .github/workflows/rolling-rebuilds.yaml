@@ -315,14 +315,6 @@ jobs:
           curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
             -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild || true
 
-      - name: Download existing cache
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild cache --cache /tmp/build_cache.sdb init
-
       - name: Download build status artifacts
         uses: actions/download-artifact@v7
         with:
@@ -332,8 +324,10 @@ jobs:
         continue-on-error: true
 
       - name: Update cache with failed/skipped build results
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
-          # sbuild now updates cache directly on success via --cache flag.
+          # sbuild updates cache directly on success via SBUILD_CACHE_URI.
           # This step only records failures/skips that sbuild didn't handle.
           PACKAGES='${{ needs.check-for-updates.outputs.to_rebuild }}'
 
@@ -390,7 +384,7 @@ jobs:
                     case "$file_status" in
                       failure) status="failed" ;;
                       skipped) status="skipped" ;;
-                      success) status="" ;;  # Already handled by sbuild --cache
+                      success) status="" ;;  # Already handled by sbuild
                       *) status="" ;;
                     esac
                     break
@@ -405,7 +399,7 @@ jobs:
 
               echo "Package: $pkg_id ($host), Version: $pkg_version, Status: $status"
 
-              sbuild cache --cache /tmp/build_cache.sdb update \
+              sbuild cache update \
                 --package "$pkg_id" \
                 --host "$host" \
                 --version "$pkg_version" \
@@ -415,15 +409,20 @@ jobs:
           done
 
       - name: Generate build summary
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
-          sbuild cache --cache /tmp/build_cache.sdb gh-summary \
+          sbuild cache gh-summary \
             --title "Rolling Rebuild Results" \
             --host x86_64-linux || true
 
-      - name: Upload updated cache
+      - name: Export cache to SQLite and upload
         env:
           GH_TOKEN: ${{ github.token }}
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
+          sbuild cache export --output /tmp/build_cache.sdb || true
+
           if [ -f "/tmp/build_cache.sdb" ]; then
             gh release upload build-cache /tmp/build_cache.sdb --clobber --repo "${{ github.repository }}" || {
               gh release create build-cache \
