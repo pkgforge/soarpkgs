@@ -50,14 +50,6 @@ jobs:
           curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
             -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild || true
 
-      - name: Download build cache
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild cache --cache /tmp/build_cache.sdb init 2>/dev/null || true
-
       - name: Detect changed recipes
         id: detect
         run: |
@@ -107,6 +99,8 @@ jobs:
 
       - name: Filter already-built recipes
         id: filter
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
           CHANGED_RECIPES='${{ steps.detect.outputs.changed_recipes }}'
           FORCE_REBUILD="${{ inputs.force_rebuild }}"
@@ -141,14 +135,22 @@ jobs:
               current_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
             fi
 
-            # Check if already built with same hash
-            if [ -f "/tmp/build_cache.sdb" ] && command -v sbuild &>/dev/null; then
-              cached_info=$(sbuild cache --cache /tmp/build_cache.sdb get --package "$pkg_id" --json 2>/dev/null || echo "")
-              cached_hash=$(echo "$cached_info" | jq -r '.recipe_hash // ""' 2>/dev/null || echo "")
-              cached_status=$(echo "$cached_info" | jq -r '.last_build_status // ""' 2>/dev/null || echo "")
+            # Check if already built with same hash on ALL hosts (via MongoDB)
+            if command -v sbuild &>/dev/null && [ -n "$SBUILD_CACHE_URI" ]; then
+              all_built=true
+              for check_host in x86_64-linux aarch64-linux; do
+                cached_info=$(sbuild cache get --package "$pkg_id" --host "$check_host" --json 2>/dev/null || echo "")
+                cached_hash=$(echo "$cached_info" | jq -r '.recipe_hash // ""' 2>/dev/null || echo "")
+                cached_status=$(echo "$cached_info" | jq -r '.last_build_status // ""' 2>/dev/null || echo "")
 
-              if [ "$cached_hash" == "$current_hash" ] && [ "$cached_status" == "success" ]; then
-                echo "::notice::Skipping $pkg_id - already built with same hash" >&2
+                if [ "$cached_hash" != "$current_hash" ] || [ "$cached_status" != "success" ]; then
+                  all_built=false
+                  break
+                fi
+              done
+
+              if [ "$all_built" == "true" ]; then
+                echo "::notice::Skipping $pkg_id - already built with same hash on all hosts" >&2
                 continue
               fi
             fi
@@ -201,14 +203,6 @@ jobs:
           curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
             -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild || true
 
-      - name: Download existing cache
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild cache --cache /tmp/build_cache.sdb init
-
       - name: Download build status artifacts
         uses: actions/download-artifact@v7
         with:
@@ -218,8 +212,10 @@ jobs:
         continue-on-error: true
 
       - name: Update cache with failed/skipped build results
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
-          # sbuild now updates cache directly on success via --cache flag.
+          # sbuild updates cache directly on success via SBUILD_CACHE_URI.
           # This step only records failures/skips that sbuild didn't handle.
           RECIPES='${{ needs.detect-changes.outputs.changed_recipes }}'
 
@@ -273,7 +269,7 @@ jobs:
                     case "$file_status" in
                       failure) status="failed" ;;
                       skipped) status="skipped" ;;
-                      success) status="" ;;  # Already handled by sbuild --cache
+                      success) status="" ;;  # Already handled by sbuild
                       *) status="" ;;
                     esac
                     break
@@ -288,7 +284,7 @@ jobs:
 
               echo "Package: $pkg_id ($host), Version: $pkg_version, Status: $status"
 
-              sbuild cache --cache /tmp/build_cache.sdb update \
+              sbuild cache update \
                 --package "$pkg_id" \
                 --host "$host" \
                 --version "$pkg_version" \
@@ -298,15 +294,20 @@ jobs:
           done
 
       - name: Generate build summary
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
-          sbuild cache --cache /tmp/build_cache.sdb gh-summary \
+          sbuild cache gh-summary \
             --title "Build Results" \
             --host x86_64-linux || true
 
-      - name: Upload updated cache
+      - name: Export cache to SQLite and upload
         env:
           GH_TOKEN: ${{ github.token }}
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
+          sbuild cache export --output /tmp/build_cache.sdb || true
+
           if [ -f "/tmp/build_cache.sdb" ]; then
             gh release upload build-cache /tmp/build_cache.sdb --clobber --repo "${{ github.repository }}" || {
               gh release create build-cache \
