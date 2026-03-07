@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "fd"
 pkg_id: "sharkdp.fd"
-pkgver: "10.3.0"
+pkgver: "10.4.0"
 pkg_type: "static"
 ghcr_pkg: "sharkdp/fd"
 category:
@@ -35,6 +35,8 @@ tag:
   - "find"
   - "search"
   - "cli"
+snapshots:
+  - "10.3.0"
 x_exec:
   host:
     - "x86_64-linux"
