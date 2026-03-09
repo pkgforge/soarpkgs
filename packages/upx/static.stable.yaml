@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "upx"
 pkg_id: "upx.upx"
-pkgver: "5.1.0"
+pkgver: "5.1.1"
 pkg_type: "static"
 ghcr_pkg: "upx/upx"
 category:
@@ -34,6 +34,8 @@ tag:
   - "compression"
   - "binary"
   - "packer"
+snapshots:
+  - "5.1.0"
 x_exec:
   host:
     - "x86_64-linux"
