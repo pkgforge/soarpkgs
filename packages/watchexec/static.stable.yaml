@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "watchexec"
 pkg_id: "watchexec.watchexec"
-pkgver: "2.3.3"
+pkgver: "2.5.0"
 pkg_type: "static"
 ghcr_pkg: "watchexec/watchexec"
 category:
@@ -34,6 +34,8 @@ tag:
   - "file-watcher"
   - "development"
   - "cli"
+snapshots:
+  - "2.3.3"
 x_exec:
   host:
     - "x86_64-linux"
