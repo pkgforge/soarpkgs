@@ -1,0 +1,51 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cpufetch"
+pkg_id: "dr-noob.cpufetch"
+pkgver: "1.07"
+pkg_type: "static"
+ghcr_pkg: "dr-noob/cpufetch"
+category:
+  - "System"
+  - "Utility"
+description: "Simple yet fancy CPU architecture fetching tool"
+homepage:
+  - "https://github.com/Dr-Noob/cpufetch"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Dr-Noob/cpufetch/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Official binary from https://github.com/Dr-Noob/cpufetch"
+  - "[PORTABLE] (Portable Static Binary)"
+  - "[NO_DESKTOP_INTEGRATION]"
+provides:
+  - "cpufetch"
+repology:
+  - "cpufetch"
+src_url:
+  - "https://github.com/Dr-Noob/cpufetch"
+tag:
+  - "system"
+  - "cli"
+  - "utility"
+  - "cpu"
+  - "hardware"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Dr-Noob/cpufetch/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    case "$ARCH" in
+      x86_64) ARCH="x86-64" ;;
+      aarch64) ARCH="arm64" ;;
+    esac
+    soar dl "https://github.com/Dr-Noob/cpufetch/releases/download/v${PKGVER}/cpufetch_${ARCH}_linux" -o "cpufetch" --yes
+    strip cpufetch
