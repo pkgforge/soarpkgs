@@ -92,29 +92,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Cache remote_pkgver state
-        id: cache
-        uses: actions/cache@v5
-        with:
-          path: .rolling-state.json
-          key: rolling-remote-versions-v1
-          restore-keys: |
-            rolling-remote-versions-v1
+      - name: Download sbuild
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild
+          sbuild --version
 
       - name: Check for source updates
         id: check
         env:
           GITHUB_TOKEN: ${{ github.token }}
           GHCR_OWNER: ${{ github.repository_owner }}
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
           TO_REBUILD="[]"
           PACKAGES='${{ needs.find-rolling-packages.outputs.packages }}'
-          STATE_FILE=".rolling-state.json"
-
-          # Initialize state file if doesn't exist
-          if [ ! -f "$STATE_FILE" ]; then
-            echo "{}" > "$STATE_FILE"
-          fi
 
           # Function to extract pkgver script from x_exec block
           extract_pkgver_script() {
@@ -181,6 +173,12 @@ jobs:
             grep -E "^ghcr_pkg:" "$file" | head -1 | sed 's/^ghcr_pkg:[[:space:]]*//; s/^"//; s/"$//'
           }
 
+          # Function to extract pkg_id from recipe
+          get_pkg_id() {
+            local file="$1"
+            grep -E "^pkg_id:" "$file" | head -1 | sed 's/^pkg_id:[[:space:]]*//; s/^"//; s/"$//'
+          }
+
           echo "$PACKAGES" | jq -c '.[]' | while IFS= read -r pkg; do
             path=$(echo "$pkg" | jq -r '.path')
             family=$(echo "$pkg" | jq -r '.family')
@@ -192,24 +190,37 @@ jobs:
               pkg_name="$family"  # fallback to family name
             fi
 
-            # Check for ghcr_pkg
-            ghcr_pkg=$(get_ghcr_pkg "$path")
+            # Extract pkg_id for cache lookup
+            pkg_id=$(get_pkg_id "$path")
 
-            echo "::group::Checking $family/$name (pkg: $pkg_name)"
+            echo "::group::Checking $family/$name (pkg_id: $pkg_id)"
 
-            # Skip if no ghcr_pkg
-            if [ -z "$ghcr_pkg" ]; then
-              echo "No ghcr_pkg set - cannot track version, skipping"
+            # Skip if no pkg_id
+            if [ -z "$pkg_id" ]; then
+              echo "No pkg_id set - cannot check cache, skipping"
               echo "::endgroup::"
               continue
             fi
 
             NEEDS_REBUILD=false
             NEW_VERSION=""
-            CACHED_VERSION=""
+            STORED_VERSION=""
 
-            # Get cached remote_pkgver from state file
-            CACHED_VERSION=$(jq -r --arg key "$path" '.[$key] // ""' "$STATE_FILE")
+            # Query MongoDB for stored version
+            CACHE_DATA=$(sbuild cache get --package "$pkg_id" --json 2>/dev/null || echo "{}")
+            REMOTE_VER=$(echo "$CACHE_DATA" | jq -r '.remote_version // ""')
+            CURRENT_VER=$(echo "$CACHE_DATA" | jq -r '.current_version // ""')
+            
+            # Use remote_version if set, otherwise fall back to current_version
+            if [ -n "$REMOTE_VER" ] && [ "$REMOTE_VER" != "null" ]; then
+              STORED_VERSION="$REMOTE_VER"
+              echo "Stored remote_version: $STORED_VERSION"
+            elif [ -n "$CURRENT_VER" ] && [ "$CURRENT_VER" != "null" ]; then
+              STORED_VERSION="$CURRENT_VER"
+              echo "No remote_version, using current_version: $STORED_VERSION"
+            else
+              echo "No stored version in cache"
+            fi
 
             # Try to extract and run pkgver script
             PKGVER_SCRIPT=$(extract_pkgver_script "$path")
@@ -220,17 +231,17 @@ jobs:
 
               if [ -n "$NEW_VERSION" ]; then
                 echo "New version from pkgver: $NEW_VERSION"
-                echo "Cached version: ${CACHED_VERSION:-<none>}"
+                echo "Stored version: ${STORED_VERSION:-<none>}"
 
-                # Compare new version with cached version
-                if [ -n "$CACHED_VERSION" ] && [ "$NEW_VERSION" != "$CACHED_VERSION" ]; then
-                  echo "Version changed: $CACHED_VERSION -> $NEW_VERSION"
+                # Compare new version with stored version
+                if [ -n "$STORED_VERSION" ] && [ "$NEW_VERSION" != "$STORED_VERSION" ]; then
+                  echo "Version changed: $STORED_VERSION -> $NEW_VERSION"
                   NEEDS_REBUILD=true
-                elif [ -z "$CACHED_VERSION" ]; then
-                  echo "No cached version - first build or cache cleared, will trigger rebuild"
+                elif [ -z "$STORED_VERSION" ]; then
+                  echo "No stored version - first build, will trigger rebuild"
                   NEEDS_REBUILD=true
                 else
-                  echo "Version unchanged (matches cache)"
+                  echo "Version unchanged (matches stored)"
                 fi
               else
                 echo "pkgver script returned empty result"
@@ -248,8 +259,6 @@ jobs:
               echo "Marking for rebuild"
               # Write to temp file to persist across subshell
               echo "$path|$NEW_VERSION" >> /tmp/to_rebuild.txt
-              # Update state file with new version
-              jq --arg key "$path" --arg ver "$NEW_VERSION" '.[$key] = $ver' "$STATE_FILE" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE"
             else
               echo "No rebuild needed"
             fi
@@ -275,13 +284,6 @@ jobs:
             echo "has_updates=true" >> $GITHUB_OUTPUT
           else
             echo "has_updates=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Update rolling state cache
-        if: always()
-        run: |
-          if [ -f .rolling-state.json ]; then
-            echo "State file updated with $(jq 'length' .rolling-state.json) tracked versions"
           fi
 
   rebuild:

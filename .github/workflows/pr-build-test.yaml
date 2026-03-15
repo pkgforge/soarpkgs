@@ -142,33 +142,36 @@ jobs:
       - name: Download sbuild
         run: |
           curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
-            -o /usr/local/bin/sbuild || exit 0
-          chmod +x /usr/local/bin/sbuild
+            -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild
+          sbuild --version
 
-      - name: Download existing cache
+      - name: Download build status artifacts
+        uses: actions/download-artifact@v7
+        with:
+          pattern: build-status-*
+          path: /tmp/build-statuses
+          merge-multiple: true
         continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download build-cache -p build_cache.sdb -D /tmp/ --repo "${{ github.repository }}" || \
-            sbuild cache --cache /tmp/build_cache.sdb init
 
-      - name: Update cache with recipe hashes
+      - name: Update cache with build results
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
+          # sbuild updates cache directly on success via SBUILD_CACHE_URI.
+          # This step only records failures/skips that sbuild didn't handle.
           RECIPES='${{ needs.detect-changes.outputs.changed_recipes }}'
-          BUILD_RESULT="${{ needs.build.result }}"
 
           echo "$RECIPES" | jq -c '.[]' | while read -r recipe; do
             path=$(echo "$recipe" | jq -r '.path')
 
-            # Extract pkg_id from recipe YAML for cache operations
+            # Extract pkg_id and pkg name from recipe YAML for cache operations
             pkg_id=""
             pkg_name=""
             if [ -f "$path" ]; then
               pkg_id=$(grep -E '^pkg_id:' "$path" | head -1 | sed 's/pkg_id:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
               pkg_name=$(grep -E '^pkg:' "$path" | head -1 | sed 's/pkg:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
             fi
-            # Fallback to pkg field then directory name
+            # Fallback to pkg name from recipe
             if [ -z "$pkg_id" ]; then
               pkg_id="${pkg_name:-$(basename "$(dirname "$path")")}"
             fi
@@ -176,7 +179,7 @@ jobs:
             # Extract version from recipe's pkgver field
             pkg_version=""
             if [ -f "$path" ]; then
-              pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//')
+              pkg_version=$(grep -E "^pkgver:" "$path" | head -1 | sed 's/pkgver:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//' || echo "")
             fi
 
             # Skip if we have no version
@@ -185,31 +188,68 @@ jobs:
               continue
             fi
 
-            # Compute recipe hash (excluding version for consistency)
-            if [ -f "$path" ]; then
+            # Compute recipe hash
+            if [ -f "$path" ] && command -v sbuild &>/dev/null; then
               recipe_hash=$(sbuild meta hash --exclude-version "$path" 2>/dev/null || sha256sum "$path" | cut -d' ' -f1)
             else
-              recipe_hash=""
+              recipe_hash=$(sha256sum "$path" 2>/dev/null | cut -d' ' -f1 || echo "")
             fi
 
-            status="success"
-            if [ "$BUILD_RESULT" != "success" ]; then
-              status="failure"
-            fi
+            # Process build status for each host architecture
+            for host in x86_64-linux aarch64-linux; do
+              status=""
 
-            echo "Caching: $pkg_id v${pkg_version} (hash: ${recipe_hash:0:16}..., status: $status)"
+              if [ -d "/tmp/build-statuses" ]; then
+                for status_file in /tmp/build-statuses/build-status.json /tmp/build-statuses/*/build-status.json; do
+                  [ -f "$status_file" ] || continue
 
-            sbuild cache --cache /tmp/build_cache.sdb update \
-              --package "$pkg_id" \
-              --version "$pkg_version" \
-              --hash "$recipe_hash" \
-              --status "$status" || true
+                  recipe_url=$(jq -r '.recipe_url // ""' "$status_file" 2>/dev/null || echo "")
+                  file_host=$(jq -r '.host // ""' "$status_file" 2>/dev/null || echo "")
+
+                  if echo "$recipe_url" | grep -q "$path" && [ "$file_host" = "$host" ]; then
+                    file_status=$(jq -r '.status // ""' "$status_file" 2>/dev/null || echo "")
+                    case "$file_status" in
+                      failure) status="failed" ;;
+                      skipped) status="skipped" ;;
+                      success) status="" ;;  # Already handled by sbuild
+                      *) status="" ;;
+                    esac
+                    break
+                  fi
+                done
+              fi
+
+              # Only update cache for failed/skipped (success handled by sbuild)
+              if [ -z "$status" ]; then
+                continue
+              fi
+
+              echo "Package: $pkg_id ($host), Version: $pkg_version, Status: $status"
+
+              sbuild cache update \
+                --package "$pkg_id" \
+                --host "$host" \
+                --version "$pkg_version" \
+                --hash "$recipe_hash" \
+                --status "$status" || echo "Warning: Failed to update cache for $pkg_id ($host)"
+            done
           done
 
-      - name: Upload updated cache
+      - name: Generate build summary
+        env:
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
+        run: |
+          sbuild cache gh-summary \
+            --title "PR Build Results" \
+            --host x86_64-linux || true
+
+      - name: Export cache to SQLite and upload
         env:
           GH_TOKEN: ${{ github.token }}
+          SBUILD_CACHE_URI: ${{ secrets.SBUILD_CACHE_URI }}
         run: |
+          sbuild cache export --output /tmp/build_cache.sdb || true
+
           if [ -f "/tmp/build_cache.sdb" ]; then
             gh release upload build-cache /tmp/build_cache.sdb --clobber --repo "${{ github.repository }}" || {
               gh release create build-cache \

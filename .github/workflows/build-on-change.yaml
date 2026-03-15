@@ -7,10 +7,6 @@ on:
     paths:
       - 'binaries/**/*.yaml'
       - 'packages/**/*.yaml'
-  pull_request:
-    types: [closed]
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       recipe_path:
@@ -34,7 +30,6 @@ concurrency:
 
 jobs:
   detect-changes:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     outputs:
       changed_recipes: ${{ steps.filter.outputs.recipes_to_build }}
