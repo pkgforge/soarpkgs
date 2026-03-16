@@ -4,7 +4,7 @@ _disabled: false
 pkg: "alist"
 pkg_id: "alist-org.alist"
 pkg_type: "static"
-pkgver: "3.57.0"
+pkgver: "3.58.0"
 ghcr_pkg: "alist-org/alist"
 category:
   - "FileManager"
@@ -35,6 +35,8 @@ tag:
   - "file-server"
   - "webdav"
   - "storage"
+snapshots:
+  - "3.57.0"
 x_exec:
   host:
     - "x86_64-linux"
