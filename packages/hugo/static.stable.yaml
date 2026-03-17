@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "hugo"
 pkg_id: "gohugoio.hugo"
-pkgver: "0.156.0"
+pkgver: "0.158.0"
 pkg_type: "static"
 ghcr_pkg: "gohugoio/hugo"
 category:
@@ -33,6 +33,8 @@ tag:
   - "static-site"
   - "website"
   - "generator"
+snapshots:
+  - "0.156.0"
 x_exec:
   host:
     - "x86_64-linux"
