@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "jql"
 pkg_id: "yamafaktory.jql"
-pkgver: "8.0.10"
+pkgver: "8.1.2"
 pkg_type: "static"
 ghcr_pkg: "yamafaktory/jql"
 category:
@@ -37,6 +37,8 @@ tag:
   - "json"
   - "query"
   - "cli"
+snapshots:
+  - "8.0.10"
 x_exec:
   host:
     - "x86_64-linux"
