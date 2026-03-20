@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "broot"
 pkg_id: "canop.broot"
-pkgver: "1.55.0"
+pkgver: "1.56.0"
 pkg_type: "static"
 ghcr_pkg: "canop/broot"
 category:
@@ -36,6 +36,8 @@ tag:
   - "file-manager"
   - "tree"
   - "tui"
+snapshots:
+  - "1.55.0"
 x_exec:
   host:
     - "x86_64-linux"
