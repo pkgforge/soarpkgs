@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "gitleaks"
 pkg_id: "gitleaks.gitleaks"
-pkgver: "8.30.0"
+pkgver: "8.30.1"
 pkg_type: "static"
 ghcr_pkg: "gitleaks/gitleaks"
 category:
@@ -31,6 +31,8 @@ tag:
   - "secrets"
   - "security"
   - "git"
+snapshots:
+  - "8.30.0"
 x_exec:
   host:
     - "x86_64-linux"
