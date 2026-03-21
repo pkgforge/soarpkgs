@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "vhs"
 pkg_id: "charmbracelet.vhs"
-pkgver: "0.10.0"
+pkgver: "0.11.0"
 pkg_type: "static"
 ghcr_pkg: "charmbracelet/vhs"
 category:
@@ -30,6 +30,8 @@ tag:
   - "terminal"
   - "recorder"
   - "gif"
+snapshots:
+  - "0.10.0"
 x_exec:
   host:
     - "x86_64-linux"
