@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "soft-serve"
 pkg_id: "charmbracelet.soft-serve"
-pkgver: "0.11.3"
+pkgver: "0.11.6"
 pkg_type: "static"
 ghcr_pkg: "charmbracelet/soft-serve"
 category:
@@ -31,6 +31,8 @@ tag:
   - "git"
   - "server"
   - "ssh"
+snapshots:
+  - "0.11.3"
 x_exec:
   host:
     - "x86_64-linux"
