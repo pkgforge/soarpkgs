@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "sops"
 pkg_id: "getsops.sops"
-pkgver: "3.12.1"
+pkgver: "3.12.2"
 pkg_type: "static"
 ghcr_pkg: "getsops/sops"
 category:
@@ -37,6 +37,7 @@ tag:
   - "encryption"
   - "security"
 snapshots:
+  - "3.12.1"
   - "3.11.0"
 x_exec:
   host:
