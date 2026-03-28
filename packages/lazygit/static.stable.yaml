@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "lazygit"
 pkg_id: "jesseduffield.lazygit"
-pkgver: "0.59.0"
+pkgver: "0.60.0"
 pkg_type: "static"
 ghcr_pkg: "jesseduffield/lazygit"
 category:
@@ -31,6 +31,8 @@ tag:
   - "git"
   - "tui"
   - "cli"
+snapshots:
+  - "0.59.0"
 x_exec:
   host:
     - "x86_64-linux"
