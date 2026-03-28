@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qownnotes"
+pkg_id: "pkgforge-dev.qownnotes"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/qownnotes"
+category:
+  - "TextEditor"
+  - "Utility"
+description: "Plain-text file markdown note taking with Nextcloud/ownCloud integration"
+homepage:
+  - "https://www.qownnotes.org"
+  - "https://github.com/pbek/QOwnNotes"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/pbek/QOwnNotes/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/${PKGVER}/QOwnNotes-${PKGVER}-anylinux-${ARCH}.AppImage"
+    out: "qownnotes"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/QOwnNotes-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "qownnotes"
+repology:
+  - "qownnotes"
+src_url:
+  - "https://github.com/pkgforge-dev/QOwnNotes-AppImage"
+tag:
+  - "note-taking"
+  - "markdown"
+  - "nextcloud"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/pkgforge-dev/QOwnNotes-AppImage/releases/latest?per_page=20" | jq -r '.tag_name'
