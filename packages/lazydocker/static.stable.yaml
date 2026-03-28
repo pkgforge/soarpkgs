@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "lazydocker"
 pkg_id: "jesseduffield.lazydocker"
-pkgver: "0.24.4"
+pkgver: "0.25.0"
 pkg_type: "static"
 ghcr_pkg: "jesseduffield/lazydocker"
 category:
@@ -31,6 +31,8 @@ tag:
   - "docker"
   - "tui"
   - "containers"
+snapshots:
+  - "0.24.4"
 x_exec:
   host:
     - "x86_64-linux"
