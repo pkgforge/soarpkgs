@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "ruff"
 pkg_id: "astral-sh.ruff"
-pkgver: "0.15.4"
+pkgver: "0.15.8"
 pkg_type: "static"
 ghcr_pkg: "astral-sh/ruff"
 category:
@@ -37,6 +37,7 @@ tag:
   - "linter"
   - "formatter"
 snapshots:
+  - "0.15.4"
   - "0.15.2"
   - "0.15.1"
 x_exec:
