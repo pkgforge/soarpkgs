@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "rclone"
 pkg_id: "rclone.rclone"
-pkgver: "1.73.1"
+pkgver: "1.73.3"
 pkg_type: "static"
 ghcr_pkg: "rclone/rclone"
 category:
@@ -37,6 +37,8 @@ tag:
   - "sync"
   - "s3"
   - "backup"
+snapshots:
+  - "1.73.1"
 x_exec:
   host:
     - "x86_64-linux"
