@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "gdu"
 pkg_id: "dundee.gdu"
-pkgver: "5.34.0"
+pkgver: "5.35.0"
 pkg_type: "static"
 ghcr_pkg: "dundee/gdu"
 category:
@@ -35,6 +35,7 @@ tag:
   - "du"
   - "tui"
 snapshots:
+  - "5.34.0"
   - "5.33.0"
 x_exec:
   host:
