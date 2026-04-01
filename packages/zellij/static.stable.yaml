@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "zellij"
 pkg_id: "zellij-org.zellij"
-pkgver: "0.43.1"
+pkgver: "0.44.0"
 pkg_type: "static"
 ghcr_pkg: "zellij-org/zellij"
 category:
@@ -36,6 +36,8 @@ tag:
   - "terminal"
   - "multiplexer"
   - "tmux"
+snapshots:
+  - "0.43.1"
 x_exec:
   host:
     - "x86_64-linux"
