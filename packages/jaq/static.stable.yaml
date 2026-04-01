@@ -3,7 +3,7 @@ _disabled: false
 
 pkg: "jaq"
 pkg_id: "01mf02.jaq"
-pkgver: "2.3.0"
+pkgver: "3.0.0"
 pkg_type: "static"
 ghcr_pkg: "01mf02/jaq"
 category:
@@ -36,6 +36,8 @@ tag:
   - "jq"
   - "json"
   - "cli"
+snapshots:
+  - "2.3.0"
 x_exec:
   host:
     - "x86_64-linux"
