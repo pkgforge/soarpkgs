@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "librewolf"
+pkg_id: "librewolf-community.browser"
+pkg_type: "appimage"
+app_id: "io.gitlab.librewolf-community"
+ghcr_pkg: "librewolf-community/browser"
+category:
+  - "WebBrowser"
+  - "Network"
+description: "A custom version of Firefox, focused on privacy, security and freedom"
+homepage:
+  - "https://librewolf.net"
+  - "https://codeberg.org/librewolf"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://gitlab.com/librewolf-community/browser/source/-/raw/main/LICENSE"
+    out: "LICENSE"
+  - url: "https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/${PKGVER}/LibreWolf.${ARCH}.AppImage"
+    out: "librewolf"
+note:
+  - "Fetched from official LibreWolf AppImage. Check/Report @ https://codeberg.org/librewolf/issues"
+  - "[NOT PORTABLE] Dynamically linked executable"
+provides:
+  - "librewolf"
+repology:
+  - "librewolf"
+src_url:
+  - "https://codeberg.org/librewolf/browser"
+tag:
+  - "browser"
+  - "privacy"
+  - "firefox"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://gitlab.com/api/v4/projects/24386000/repository/tags?per_page=5&order_by=version" | jq -r '.[0].name' | tr -d 'v'
