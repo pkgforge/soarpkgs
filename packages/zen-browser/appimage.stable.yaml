@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zen-browser"
+pkg_id: "pkgforge-dev.zen-browser"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/zen-browser"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "A Firefox-based browser focused on privacy and a calm browsing experience"
+homepage:
+  - "https://github.com/zen-browser/desktop"
+  - "https://zen-browser.app"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/zen-browser/desktop/dev/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Zen-Browser-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "zen-browser"
+repology:
+  - "zen-browser"
+src_url:
+  - "https://github.com/pkgforge-dev/Zen-Browser-AppImage-Enhanced"
+tag:
+  - "browser"
+  - "firefox"
+  - "privacy"
+  - "web"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Zen-Browser-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Zen-Browser-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
