@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "helium-browser"
+pkg_id: "pkgforge-dev.helium-browser"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/helium-browser"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "Private browser based on Chromium with built-in ad blocking"
+homepage:
+  - "https://github.com/imputnet/helium-linux"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/imputnet/helium-linux/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "helium-browser"
+repology:
+  - "helium-browser"
+src_url:
+  - "https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhanced"
+tag:
+  - "browser"
+  - "chromium"
+  - "privacy"
+  - "web"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Helium-Browser-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
