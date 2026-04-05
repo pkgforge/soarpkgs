@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "dummyhttp"
 pkg_id: "svenstaro.dummyhttp"
-pkgver: "1.1.3"
 pkg_type: "static"
 ghcr_pkg: "svenstaro/dummyhttp"
 category:
@@ -36,8 +35,6 @@ tag:
   - "http"
   - "server"
   - "cli"
-snapshots:
-  - "1.1.2"
 x_exec:
   host:
     - "x86_64-linux"

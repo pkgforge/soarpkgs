@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "doggo"
 pkg_id: "mr-karan.doggo"
-pkgver: "1.1.5"
 pkg_type: "static"
 ghcr_pkg: "mr-karan/doggo"
 category:
@@ -31,8 +30,6 @@ tag:
   - "dns"
   - "network"
   - "cli"
-snapshots:
-  - "1.1.4"
 x_exec:
   host:
     - "x86_64-linux"

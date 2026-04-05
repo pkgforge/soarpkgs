@@ -36,7 +36,6 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Pixelpulse2-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
-    echo "$VERSION"
+    curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Pixelpulse2-AppImage/releases/latest?per_page=20" | jq -r '.tag_name'
   run: |
     soar dl "https://github.com/pkgforge-dev/Pixelpulse2-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

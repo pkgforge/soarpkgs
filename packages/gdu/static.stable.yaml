@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "gdu"
 pkg_id: "dundee.gdu"
-pkgver: "5.34.0"
 pkg_type: "static"
 ghcr_pkg: "dundee/gdu"
 category:
@@ -34,8 +33,6 @@ tag:
   - "disk-usage"
   - "du"
   - "tui"
-snapshots:
-  - "5.33.0"
 x_exec:
   host:
     - "x86_64-linux"

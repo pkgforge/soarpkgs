@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "mise"
 pkg_id: "jdx.mise"
-pkgver: "2026.3.9"
 remote_pkgver: "v2026.3.9"
 pkg_type: "static"
 ghcr_pkg: "jdx/mise"
@@ -31,33 +30,19 @@ tag:
   - "dev-tools"
   - "cli"
   - "utility"
-snapshots:
-  - "2026.2.23"
-  - "2026.2.19"
-  - "2026.2.17"
-  - "2026.2.9"
-  - "2026.2.7"
-  - "2026.2.6"
-  - "2026.2.3"
-  - "2026.1.12"
-  - "2026.1.11"
-  - "2026.1.9"
-  - "2026.1.8"
 x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/jdx/mise/releases/latest" | jq -r '.tag_name')
-    echo "${VERSION#v}"
-    echo "$VERSION"
+    curl -qfsSL "https://api.github.com/repos/jdx/mise/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
     case "${ARCH}" in
       aarch64) ARCH="arm64" ;;
       x86_64) ARCH="x64" ;;
     esac
-    soar dl "github:jdx/mise@${REMOTE_PKGVER}" --glob "*linux-${ARCH}-musl.tar.xz" -o "./mise.tar.xz" --yes
+    soar dl "github:jdx/mise@v${PKGVER}" --glob "*linux-${ARCH}-musl.tar.xz" -o "./mise.tar.xz" --yes
     tar -xf "mise.tar.xz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/mise/bin/mise" "$SBUILD_OUTDIR/$PKG"
     mv "$SBUILD_TMPDIR/mise/LICENSE" "$SBUILD_OUTDIR/"

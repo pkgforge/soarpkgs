@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "fzf"
 pkg_id: "junegunn.fzf"
-pkgver: "0.70.0"
 pkg_type: "static"
 ghcr_pkg: "junegunn/fzf"
 category:
@@ -34,17 +33,13 @@ tag:
   - "cli"
   - "utility"
   - "fuzzy-finder"
-snapshots:
-  - "0.68.0"
-  - "0.67.0"
 x_exec:
   host:
     - "aarch64-linux"
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/junegunn/fzf/releases/latest" | jq -r '.tag_name')
-    echo "${VERSION#v}"
+    curl -qfsSL "https://api.github.com/repos/junegunn/fzf/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
     soar dl "github:junegunn/fzf@v${PKGVER}" --glob "*linux_${ARCH_ALT}.tar.gz" -o "./fzf.tar.gz" --yes
     tar -xf "fzf.tar.gz" -C "$SBUILD_TMPDIR/"
