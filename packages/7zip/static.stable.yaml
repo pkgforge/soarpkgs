@@ -4,7 +4,6 @@ _disabled: false
 pkg: "7zip"
 pkg_id: "ip7z.7zip"
 pkg_type: "static"
-pkgver: "26.00"
 ghcr_pkg: "ip7z/7zip"
 category:
   - "Archiving"
@@ -32,15 +31,13 @@ tag:
   - "archiver"
   - "compression"
   - "utility"
-snapshots:
-  - "25.01"
 x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/ip7z/7zip/releases/latest" | jq -r '.tag_name' | tr -d '"'\''[:space:]'
+    curl -qfsSL "https://api.github.com/repos/ip7z/7zip/releases/latest" | jq -r '.tag_name'
   run: |
     case "$ARCH" in
       aarch64) ARCH="arm64" ;;

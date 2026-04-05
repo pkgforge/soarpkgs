@@ -35,8 +35,6 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=20" | jq -r '.tag_name');
-    echo "${VERSION#v}"
-    echo "${VERSION}"
+    curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ghostty-appimage/releases/latest?per_page=20" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "https://github.com/pkgforge-dev/ghostty-appimage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/ghostty-appimage@v${PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes

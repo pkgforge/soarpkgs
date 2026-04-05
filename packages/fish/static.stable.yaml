@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "fish"
 pkg_id: "fish-shell.fish"
-pkgver: "4.5.0"
 pkg_type: "static"
 ghcr_pkg: "fish-shell/fish-shell"
 category:
@@ -33,17 +32,13 @@ tag:
   - "shell"
   - "cli"
   - "utility"
-snapshots:
-  - "4.4.0"
-  - "4.3.3"
 x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/fish-shell/fish-shell/releases/latest" | jq -r '.tag_name')
-    echo "$VERSION"
+    curl -qfsSL "https://api.github.com/repos/fish-shell/fish-shell/releases/latest" | jq -r '.tag_name'
   run: |
     soar dl "github:fish-shell/fish-shell@${REMOTE_PKGVER}" --glob "*linux-${ARCH}.tar.xz" -o "./fish.tar.xz" --yes
     tar -xf "fish.tar.xz" -C "$SBUILD_OUTDIR/"

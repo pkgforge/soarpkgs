@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "oha"
 pkg_id: "hatoo.oha"
-pkgver: "1.14.0"
 pkg_type: "static"
 ghcr_pkg: "hatoo/oha"
 category:
@@ -36,8 +35,6 @@ tag:
   - "load-testing"
   - "http"
   - "benchmark"
-snapshots:
-  - "1.13.0"
 x_exec:
   host:
     - "x86_64-linux"

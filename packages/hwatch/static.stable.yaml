@@ -3,7 +3,6 @@ _disabled: false
 
 pkg: "hwatch"
 pkg_id: "blacknon.hwatch"
-pkgver: "0.3.20"
 pkg_type: "static"
 ghcr_pkg: "blacknon/hwatch"
 category:
@@ -36,8 +35,6 @@ tag:
   - "watch"
   - "monitor"
   - "cli"
-snapshots:
-  - "0.3.19"
 x_exec:
   host:
     - "x86_64-linux"
