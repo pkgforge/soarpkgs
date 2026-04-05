@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "winboat"
+pkg_id: "pkgforge-dev.winboat"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/winboat"
+category:
+  - "System"
+  - "Utility"
+description: "Run Windows apps on Linux with seamless integration"
+homepage:
+  - "https://github.com/TibixDev/winboat"
+  - "https://www.winboat.app/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/TibixDev/winboat/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/WinBoat-AppImage"
+  - "[NOT PORTABLE] Requires Docker or Podman (not bundled)"
+  - "AppImage itself works on any distro, but depends on an external container runtime"
+provides:
+  - "winboat"
+repology:
+  - "winboat"
+src_url:
+  - "https://github.com/pkgforge-dev/WinBoat-AppImage"
+tag:
+  - "windows"
+  - "virtualization"
+  - "containers"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/WinBoat-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/WinBoat-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
