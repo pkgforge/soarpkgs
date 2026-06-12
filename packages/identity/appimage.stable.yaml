@@ -10,14 +10,14 @@ category:
   - "Utility"
 description: "Compare images and videos"
 homepage:
-  - "https://gitlab.gnome.org/YaLTeR/identity"
-  - "https://github.com/pkgforge-dev/Identity-AppImage"
+  - "https://github.com/aripitek/gitlab.gnome.org/YaLTeR/identity"
+  - "https://github.com/aripitek/pkgforge-dev/Identity-AppImage"
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
   - "GPL-3.0"
 build_asset:
-  - url: "https://gitlab.gnome.org/YaLTeR/identity/-/raw/main/COPYING"
+  - url: "https://github.com/aripitek/gitlab.gnome.org/YaLTeR/identity/-/raw/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Identity-AppImage"
@@ -27,7 +27,7 @@ provides:
 repology:
   - "identity"
 src_url:
-  - "https://github.com/pkgforge-dev/Identity-AppImage"
+  - "https://github.com/aripitek/pkgforge-dev/Identity-AppImage"
 tag:
   - "utility"
   - "image"
@@ -38,8 +38,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Identity-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://github.com/aripitek/api.github.com/repos/pkgforge-dev/Identity-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/Identity-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/aripitek/pkgforge-dev/Identity-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
