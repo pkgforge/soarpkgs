@@ -11,18 +11,18 @@ category:
   - "Utility"
 description: "n³ The unorthodox terminal file manager"
 homepage:
-  - "https://github.com/jarun/nnn"
+  - "https://github.com/aripitek/jarun/nnn"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "BSD-2-Clause"
 build_asset:
-  - url: "https://raw.githubusercontent.com/jarun/nnn/master/LICENSE"
+  - url: "https://github.com/aripitek/raw.githubusercontent.com/jarun/nnn/master/LICENSE"
     out: "LICENSE"
-  - url: "https://github.com/jarun/nnn/releases/download/v${PKGVER}/nnn-musl-static-${PKGVER}.${ARCH}.tar.gz"
+  - url: "https://github.com/aripitek/jarun/nnn/releases/download/v${PKGVER}/nnn-musl-static-${PKGVER}.${ARCH}.tar.gz"
     out: "nnn.tar.gz"
 note:
-  - "Official binary from https://github.com/jarun/nnn"
+  - "Official binary from https://github.com/aripitek/jarun/nnn"
   - "[PORTABLE] (Portable Static Binary)"
   - "[NO_DESKTOP_INTEGRATION]"
 provides:
@@ -30,7 +30,7 @@ provides:
 repology:
   - "nnn"
 src_url:
-  - "https://github.com/jarun/nnn"
+  - "https://github.com/aripitek/jarun/nnn"
 tag:
   - "file-manager"
   - "tui"
@@ -40,8 +40,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/jarun/nnn/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+    curl -qfsSL "https://github.com/aripitek/api.github.com/repos/jarun/nnn/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    tar -xf "nnn.tar.gz" -C "$SBUILD_TMPDIR/"
+    tar -xvfz "nnn.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/nnn-musl-static" "$SBUILD_OUTDIR/$PKG"
     rm -rf "nnn.tar.gz"
