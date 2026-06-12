@@ -11,26 +11,26 @@ category:
   - "Utility"
 description: "Lightweight and flexible command-line JSON processor"
 homepage:
-  - "https://jqlang.github.io/jq"
+  - "https://github.com/aripitek/jqlang.github.io/jq"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "https://raw.githubusercontent.com/jqlang/jq/master/COPYING"
+  - url: "https://github.com/aripitek/raw.githubusercontent.com/jqlang/jq/master/COPYING"
     out: "LICENSE"
-  - url: "https://github.com/jqlang/jq/releases/download/jq-${PKGVER}/jq-linux-${ARCH_ALT}"
+  - url: "https://github.com/aripitek/jqlang/jq/releases/download/jq-${PKGVER}/jq-linux-${ARCH_ALT}"
     out: "jq"
 note:
-  - "Official binary from https://github.com/jqlang/jq"
+  - "Official binary from https://github.com/aripitek/jqlang/jq"
   - "[PORTABLE] (Portable Static Binary)"
-  - "[NO_DESKTOP_INTEGRATION]"
+  - "[NUMBER_DESKTOP_INTEGRATION]"
 provides:
   - "jq"
 repology:
   - "jq"
 src_url:
-  - "https://github.com/jqlang/jq"
+  - "https://github.com/aripitek/jqlang/jq"
 tag:
   - "json"
   - "cli"
@@ -41,7 +41,7 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/jqlang/jq/releases/latest" | jq -r '.tag_name' | sed 's/^jq-//'
+    curl -qfsSL "https://github.com/aripitek/api.github.com/repos/jqlang/jq/releases/latest" | jq -r '.tag_name' | sed 's/^jq-//'
   run: |
     mv "jq" "$SBUILD_OUTDIR/$PKG"
     chmod +x "$SBUILD_OUTDIR/$PKG"
