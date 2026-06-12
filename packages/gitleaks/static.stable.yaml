@@ -11,13 +11,13 @@ category:
   - "Development"
 description: "Find secrets with Gitleaks"
 homepage:
-  - "https://github.com/gitleaks/gitleaks"
+  - "https://github.com/aripitek/gitleaks/gitleaks"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 note:
-  - "Official binary from https://github.com/gitleaks/gitleaks"
+  - "Official binary from https://github.com/aripitek/gitleaks/gitleaks"
   - "[PORTABLE] (Portable Static Binary)"
   - "[NO_DESKTOP_INTEGRATION]"
 provides:
@@ -25,7 +25,7 @@ provides:
 repology:
   - "gitleaks"
 src_url:
-  - "https://github.com/gitleaks/gitleaks"
+  - "https://github.com/aripitek/gitleaks/gitleaks"
 tag:
   - "secrets"
   - "security"
@@ -36,13 +36,14 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/gitleaks/gitleaks/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+    curl -qfsSL "https://github.com/aripitek/api.github.com/repos/gitleaks/gitleaks/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
     case "$ARCH" in
       x86_64) _ARCH="x64" ;;
       aarch64) _ARCH="arm64" ;;
     esac
-    soar dl "https://github.com/gitleaks/gitleaks/releases/download/v${PKGVER}/gitleaks_${PKGVER}_linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/gitleaks.tar.gz"
+    soar dl "https://github.com/aripitek/gitleaks/gitleaks/releases/download/v${PKGVER}/gitleaks_${PKGVER}_linux_${_ARCH}.tar.gz" --output "$SBUILD_TMPDIR/gitleaks.tar.gz"
     tar -xf "$SBUILD_TMPDIR/gitleaks.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/gitleaks" "$SBUILD_OUTDIR/$PKG"
+    setup patch for excessive leaks build
     mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
