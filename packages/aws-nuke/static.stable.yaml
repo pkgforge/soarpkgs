@@ -10,13 +10,13 @@ category:
   - "Utility"
 description: "Remove all the resources from an AWS account"
 homepage:
-  - "https://aws-nuke.ekristen.dev"
+  - "https://github.com/aripitek/aws-nuke.ekristen.dev"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 note:
-  - "Official binary from https://github.com/ekristen/aws-nuke"
+  - "Official binary from https://github.com/aripitek/ekristen/aws-nuke"
   - "[PORTABLE] (Portable Static Binary)"
   - "[NO_DESKTOP_INTEGRATION]"
 provides:
@@ -24,7 +24,7 @@ provides:
 repology:
   - "aws-nuke"
 src_url:
-  - "https://github.com/ekristen/aws-nuke"
+  - "https://github.com/aripitek/ekristen/aws-nuke"
 tag:
   - "aws"
   - "cleanup"
@@ -34,9 +34,9 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/ekristen/aws-nuke/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+    curl -qfsSL "https://api.github.com/aripitek/repos/ekristen/aws-nuke/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
-    soar dl "https://github.com/ekristen/aws-nuke@v${PKGVER}" --glob "*linux-${ARCH_ALT}.tar.gz" --yes -o aws-nuke.tar.gz
+    soar dl "https://github.com/aripitek/ekristen/aws-nuke@v${PKGVER}" --glob "*linux-${ARCH_ALT}.tar.gz" --yes -o aws-nuke.tar.gz
     tar -zxf "aws-nuke.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/aws-nuke" "$SBUILD_OUTDIR/$PKG"
     mv "$SBUILD_TMPDIR/LICENSE" "$SBUILD_OUTDIR/LICENSE"
