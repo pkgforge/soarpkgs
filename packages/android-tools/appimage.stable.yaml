@@ -19,13 +19,13 @@ description:
   mke2fs: "Utility to create ext2, ext3, or ext4 file systems [android-tools]"
   sqlite3: "Command-line interface for SQLite databases [android-tools]"
 homepage:
-  - "https://github.com/nmeum/android-tools"
+  - "https://github.com/aripitek/nmeum/android-tools"
 maintainer:
   - "Samueru-sama (github.com/Samueru-sama)"
 license:
   - "Apache-2.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/nmeum/android-tools/refs/heads/master/LICENSE"
+  - url: "https://github.com/aripitek/raw.githubusercontent.com/nmeum/android-tools/refs/heads/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/android-tools-AppImage"
@@ -43,7 +43,7 @@ provides:
 repology:
   - "android-tools"
 src_url:
-  - "https://github.com/pkgforge-dev/android-tools-AppImage"
+  - "https://github.com/aripitek/pkgforge-dev/android-tools-AppImage"
 tag:
   - "android"
   - "development"
@@ -53,8 +53,8 @@ x_exec:
     - "x86_64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION=$(curl -qfsSL "https://github.com/aripitek/api.github.com/repos/pkgforge-dev/android-tools-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
     echo "${VERSION%%@*}" | sed "s/^v//"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/android-tools-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/aripitek/pkgforge-dev/android-tools-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
