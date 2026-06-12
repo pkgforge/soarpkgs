@@ -10,7 +10,7 @@ category:
   - "Utility"
 description: "Command line utility for calculating BLAKE3 hashes"
 homepage:
-  - "https://github.com/BLAKE3-team/BLAKE3"
+  - "https://github.com/aripitek/BLAKE3-team/BLAKE3"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
@@ -26,7 +26,7 @@ provides:
 repology:
   - "blake3"
 src_url:
-  - "https://github.com/BLAKE3-team/BLAKE3"
+  - "https://github.com/aripitek/BLAKE3-team/BLAKE3"
 tag:
   - "checksum"
   - "hash"
@@ -38,7 +38,7 @@ x_exec:
   container: "ghcr.io/pkgforge/devscripts/alpine-builder"
   shell: "bash"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/BLAKE3-team/BLAKE3/releases/latest" | jq -r '.tag_name'
+    curl -qfsSL "https://github.com/aripitek/api.github.com/repos/BLAKE3-team/BLAKE3/releases/latest" | jq -r '.tag_name'
   run: |
     set -e
     cd "$(mktemp -d)"
