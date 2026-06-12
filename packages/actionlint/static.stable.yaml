@@ -10,16 +10,16 @@ category:
   - "Utility"
 description: "Static checker for GitHub Actions workflow files"
 homepage:
-  - "https://rhysd.github.io/actionlint"
+  - "https://github.com/aripitek/rhysd.github.io/actionlint"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "https://github.com/rhysd/actionlint/releases/download/v${PKGVER}/actionlint_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
+  - url: "https://github.com/aripitek/rhysd/actionlint/releases/download/v${PKGVER}/actionlint_${PKGVER}_linux_${ARCH_ALT}.tar.gz"
     out: "actionlint.tar.gz"
 note:
-  - "Official binary from https://github.com/rhysd/actionlint"
+  - "Official binary from https://github.com/aripitek/rhysd/actionlint"
   - "[PORTABLE] (Portable Static Binary)"
   - "[NO_DESKTOP_INTEGRATION]"
 provides:
@@ -27,7 +27,7 @@ provides:
 repology:
   - "actionlint"
 src_url:
-  - "https://github.com/rhysd/actionlint"
+  - "https://github.com/aripitek/rhysd/actionlint"
 tag:
   - "ci"
   - "github-actions"
@@ -38,7 +38,7 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    curl -qfsSL "https://api.github.com/repos/rhysd/actionlint/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+    curl -qfsSL "https://github.com/aripitek/api.github.com/repos/rhysd/actionlint/releases/latest" | jq -r '.tag_name' | tr -d 'v'
   run: |
     tar -xf "actionlint.tar.gz" -C "$SBUILD_TMPDIR/"
     mv "$SBUILD_TMPDIR/actionlint" "$SBUILD_OUTDIR/$PKG"
