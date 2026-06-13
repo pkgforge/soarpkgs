@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "yt-dlp"
+pkg_id: "pkgforge-dev.yt-dlp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/yt-dlp"
+category:
+  - "AudioVideo"
+  - "Network"
+description: "A feature-rich command-line audio/video downloader"
+homepage:
+  - "https://github.com/yt-dlp/yt-dlp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Unlicense"
+build_asset:
+  - url: "https://raw.githubusercontent.com/yt-dlp/yt-dlp/refs/heads/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/yt-dlp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "yt-dlp"
+repology:
+  - "yt-dlp"
+src_url:
+  - "https://github.com/pkgforge-dev/yt-dlp-AppImage"
+tag:
+  - "video"
+  - "downloader"
+  - "media"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/yt-dlp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/yt-dlp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
