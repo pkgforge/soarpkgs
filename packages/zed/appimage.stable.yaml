@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zed"
+pkg_id: "pkgforge-dev.zed"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/zed"
+category:
+  - "Development"
+  - "TextEditor"
+description: "A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
+homepage:
+  - "https://zed.dev"
+  - "https://github.com/zed-industries/zed"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/zed-industries/zed/refs/heads/main/LICENSE-APACHE"
+    out: "LICENSE-APACHE"
+  - url: "https://raw.githubusercontent.com/zed-industries/zed/refs/heads/main/LICENSE-GPL"
+    out: "LICENSE-GPL"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Zed-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "zed"
+repology:
+  - "zed-editor"
+src_url:
+  - "https://github.com/pkgforge-dev/Zed-AppImage"
+tag:
+  - "editor"
+  - "ide"
+  - "development"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Zed-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Zed-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
