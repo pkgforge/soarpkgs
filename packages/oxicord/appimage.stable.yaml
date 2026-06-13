@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "oxicord"
+pkg_id: "pkgforge-dev.oxicord"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/oxicord"
+category:
+  - "Chat"
+  - "InstantMessaging"
+  - "Network"
+description: "Vim-native Discord TUI for terminal enthusiasts"
+homepage:
+  - "https://github.com/linuxmobile/oxicord"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/linuxmobile/oxicord/refs/heads/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/oxicord-appimage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "oxicord"
+repology:
+  - "oxicord"
+src_url:
+  - "https://github.com/pkgforge-dev/oxicord-appimage"
+tag:
+  - "chat"
+  - "discord"
+  - "communication"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/oxicord-appimage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/oxicord-appimage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
