@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "htop"
+pkg_id: "pkgforge-dev.htop"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/htop"
+category:
+  - "System"
+  - "Monitor"
+description: "Interactive process viewer and system monitor"
+homepage:
+  - "https://htop.dev"
+  - "https://github.com/htop-dev/htop"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/htop-dev/htop/refs/heads/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/htop-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "htop"
+repology:
+  - "htop"
+src_url:
+  - "https://github.com/pkgforge-dev/htop-AppImage"
+tag:
+  - "system"
+  - "process"
+  - "monitor"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/htop-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/htop-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
