@@ -1,0 +1,105 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "amdgpu_top"
+pkg_id: "umio-yasuno.amdgpu_top"
+ghcr_pkg: "umio-yasuno/amdgpu_top"
+category:
+  - "System"
+  - "Monitor"
+description: "Tool to display AMDGPU usage"
+homepage:
+  - "https://github.com/Umio-Yasuno/amdgpu_top"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+note:
+  - "Bundled with onelf. [PORTABLE] (Works on AnyLinux)"
+packages:
+  amdgpu_top:
+    provides:
+      - "amdgpu_top"
+  amdgpu_top_gui:
+    provides:
+      - "amdgpu_top"
+repology:
+  - "amdgpu-top"
+src_url:
+  - "https://github.com/Umio-Yasuno/amdgpu_top"
+tag:
+  - "system"
+  - "gpu"
+  - "monitor"
+  - "amd"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  container: "debian:stable"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/Umio-Yasuno/amdgpu_top/releases/latest" | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    export DEBIAN_FRONTEND=noninteractive
+
+    apt-get update -qq
+    apt-get install -y --no-install-recommends \
+      curl ca-certificates jq patchelf binutils \
+      libdrm2 libgl1-mesa-dri libglx-mesa0 libegl1 libgbm1 \
+      libvulkan1 mesa-vulkan-drivers \
+      libwayland-client0 libwayland-cursor0 libwayland-egl1 \
+      libxkbcommon0 libxkbcommon-x11-0 libdecor-0-0 libgtk-3-0 \
+      libx11-6 libxcursor1 libxrandr2 libxi6 libxext6 libxfixes3 \
+      libxrender1 libxcomposite1 libxcb1
+
+    # Install soar
+    curl -fsSL "https://github.com/pkgforge/soar/releases/latest/download/soar-${ARCH}-linux" \
+      -o /usr/local/bin/soar && chmod +x /usr/local/bin/soar
+
+    # Install onelf
+    curl -fsSL "https://github.com/QaidVoid/onelf/releases/latest/download/onelf-${ARCH}-linux" \
+      -o /usr/local/bin/onelf && chmod +x /usr/local/bin/onelf
+
+    # Map arch to upstream target triple
+    case "${ARCH}" in
+      x86_64)  TARGET="x86_64-unknown-linux-gnu" ;;
+      aarch64) TARGET="aarch64-unknown-linux-gnu" ;;
+    esac
+
+    # Download amdgpu_top binary (tar.gz)
+    soar dl "https://github.com/Umio-Yasuno/amdgpu_top@v${PKGVER}" \
+      --glob "*${TARGET}*.tar.gz" \
+      --extract --extract-dir "${SBUILD_TMPDIR}" -o "${SBUILD_TMPDIR}/download" --yes
+
+    # Bundle CLI variant (minimal, no graphics libraries)
+    mkdir -p "${SBUILD_TMPDIR}/_cli"
+    onelf bundle-libs "${SBUILD_TMPDIR}/_cli" \
+      --from-binary "${SBUILD_TMPDIR}/amdgpu_top" --strip \
+      --no-gl --no-dri --no-vulkan --no-wayland
+
+    # Bundle GUI variant (with GL, DRI, Vulkan, Wayland so --gui works)
+    mkdir -p "${SBUILD_TMPDIR}/_gui"
+    onelf bundle-libs "${SBUILD_TMPDIR}/_gui" \
+      --from-binary "${SBUILD_TMPDIR}/amdgpu_top" --strip \
+      --gl --dri --vulkan --wayland
+
+    # Bundle the desktop file into the GUI appdir under the .onelf/ metadata
+    # convention.
+    mkdir -p "${SBUILD_TMPDIR}/_gui/.onelf/desktop"
+    curl -fsSL "https://raw.githubusercontent.com/Umio-Yasuno/amdgpu_top/main/assets/amdgpu_top.desktop" \
+      -o "${SBUILD_TMPDIR}/_gui/.onelf/desktop/amdgpu_top.desktop"
+
+    # Create sub-package directories
+    mkdir -p "${SBUILD_OUTDIR}/packages/amdgpu_top"
+    mkdir -p "${SBUILD_OUTDIR}/packages/amdgpu_top_gui"
+
+    # Pack CLI variant
+    onelf pack "${SBUILD_TMPDIR}/_cli" \
+      -o "${SBUILD_OUTDIR}/packages/amdgpu_top/amdgpu_top" \
+      --command "bin/amdgpu_top" --level 22
+
+    # Pack GUI variant (same binary, bundled with graphics libs + desktop)
+    onelf pack "${SBUILD_TMPDIR}/_gui" \
+      -o "${SBUILD_OUTDIR}/packages/amdgpu_top_gui/amdgpu_top" \
+      --command "bin/amdgpu_top" --level 22
