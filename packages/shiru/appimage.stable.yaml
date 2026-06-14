@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "shiru"
+pkg_id: "pkgforge-dev.shiru"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/shiru"
+category:
+  - "AudioVideo"
+  - "Video"
+description: "A personal anime library manager for watching and tracking your collection in real time"
+homepage:
+  - "https://github.com/RockinChaos/Shiru"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/RockinChaos/Shiru/refs/heads/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Shiru-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "shiru"
+repology:
+  - "shiru"
+src_url:
+  - "https://github.com/pkgforge-dev/Shiru-AppImage"
+tag:
+  - "anime"
+  - "library"
+  - "media"
+  - "video"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Shiru-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Shiru-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
