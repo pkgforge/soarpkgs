@@ -149,6 +149,42 @@ jobs:
           echo "=== Downloaded artifacts ==="
           ls -lah /tmp/artifacts/ || echo "No artifacts"
 
+      - name: Sign metadata
+        env:
+          MINISIGN_SIGKEY: ${{ secrets.MINISIGN_SIGKEY }}
+          MINISIGN_PASSWORD: ${{ secrets.MINISIGN_PASSWORD }}
+        run: |
+          if [ -z "${MINISIGN_SIGKEY:-}" ]; then
+            echo "::warning::MINISIGN_SIGKEY not set; publishing unsigned metadata. Clients with signature verification enabled will reject this release."
+            exit 0
+          fi
+
+          sudo apt-get update
+          sudo apt-get install -y minisign
+
+          mkdir -p "${HOME}/.minisign"
+          printf '%s\n' "${MINISIGN_SIGKEY}" > "${HOME}/.minisign/minisign.key"
+
+          cd /tmp/artifacts
+          shopt -s nullglob
+          signed=0
+          for f in *.sdb.zstd; do
+            echo "Signing ${f}"
+            # CI has no controlling tty, so minisign reads the key password from stdin.
+            # Use the .sig extension to match soar's package signature convention.
+            printf '%s\n' "${MINISIGN_PASSWORD}" \
+              | minisign -S -s "${HOME}/.minisign/minisign.key" -m "${f}" -x "${f}.sig"
+            signed=$((signed + 1))
+          done
+
+          if [ "${signed}" -eq 0 ]; then
+            echo "::error::No .sdb.zstd metadata found to sign"
+            exit 1
+          fi
+
+          echo "=== Signatures ==="
+          ls -lah *.sig
+
       - name: Create release
         env:
           GH_TOKEN: ${{ github.token }}
