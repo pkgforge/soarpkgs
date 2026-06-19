@@ -14,10 +14,13 @@ homepage:
 maintainer:
   - "fiftydinar (github.com/fiftydinar)"
 license:
-  - "GPL-3.0"
+  - "GPL-3.0-only"
+  - "CC0-1.0"
 build_asset:
-  - url: "https://gitlab.gnome.org/World/warp/-/raw/main/LICENSE"
-    out: "LICENSE"
+  - url: "https://gitlab.gnome.org/World/warp/-/raw/main/LICENSES/GPL-3.0-only.txt"
+    out: "LICENSE-GPL-3.0-only"
+  - url: "https://gitlab.gnome.org/World/warp/-/raw/main/LICENSES/CC0-1.0.txt"
+    out: "LICENSE-CC0-1.0"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Warp-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
