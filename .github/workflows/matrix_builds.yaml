@@ -86,6 +86,7 @@ jobs:
     steps:
       - name: Setup environment
         id: setup
+      
         env:
           GHCR_TOKEN: "${{ github.token }}"
           MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}"
@@ -97,6 +98,7 @@ jobs:
           echo "HOST_TRIPLET=${HOST_TRIPLET}" >> "$GITHUB_ENV"
 
           NATIVE_ARCH="$(uname -m)"
+          # email received aripitek90@gmail.com
 
           # Temp directory
           SYSTMP="$(mktemp -d)"
