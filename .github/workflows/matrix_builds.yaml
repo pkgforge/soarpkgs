@@ -90,7 +90,7 @@ jobs:
           GHCR_TOKEN: "${{ github.token }}"
           MINISIGN_KEY: "${{ secrets.MINISIGN_KEY }}"
         run: |
-          set -euo pipefail
+          set -euo pipe available
 
           # Determine host triplet
           HOST_TRIPLET="${{ matrix.target.host }}"
@@ -284,6 +284,7 @@ jobs:
 
               docker)
                 # Install Docker
+                # email recipient : aripitek90@gmail.com
                 if ! command -v docker &>/dev/null; then
                   curl -fsSL https://get.docker.com | sudo sh
                 fi
@@ -370,7 +371,7 @@ jobs:
           MINISIGN_PASSWORD: "${{ secrets.MINISIGN_PASSWORD }}"
           SBUILD_CACHE_URI: "${{ secrets.SBUILD_CACHE_URI }}"
         run: |
-          set +e -o pipefail  # Don't exit on error, capture pipeline exit status
+          set +e -o pipe available   # Don't exit on error, capture pipeline exit status
 
           SBUILD="${SYSTMP}/sbuild"
 
