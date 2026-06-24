@@ -1,0 +1,63 @@
+#!/SBUILD ver @v1.0.0
+#SELF: https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/binaries/ngrep/static.official.stable.yaml
+_disabled: false
+
+pkg: "ngrep"
+pkg_id: "github.com.jpr5.ngrep"
+pkg_type: "static"
+category:
+  - "ConsoleOnly"
+  - "Network"
+description: "ngrep is like GNU grep applied to the network layer. It's a PCAP-based tool that allows you to specify an extended regular or hexadecimal expression to match against data payloads of packets."
+homepage:
+  - "https://github.com/jpr5/ngrep"
+license:
+  - id: "BSD"
+    url: "https://github.com/jpr5/ngrep/raw/master/LICENSE"
+maintainer:
+  - "ryancnelson (https://github.com/ryancnelson)"
+note:
+  - "[DO NOT RUN] (Meant for pkgforge CI Only)"
+  - "Pre Built Binary Fetched from Upstream. Check/Report @ https://github.com/jpr5/ngrep"
+provides:
+  - "ngrep"
+src_url:
+  - "https://github.com/jpr5/ngrep"
+tag:
+  - "grep"
+  - "network"
+  - "packet"
+  - "pcap"
+  - "sniffer"
+
+x_exec:
+  bsys: "host://soar-dl"
+  host:
+    - "aarch64-Linux"
+    - "x86_64-Linux"
+  shell: "bash"
+  pkgver: |
+    curl -qfsSL 'https://api.github.com/repos/jpr5/ngrep/releases/latest' | jq -r '.tag_name' | tr -d 'v'
+  run: |
+    #Download
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://github.com/jpr5/ngrep@v${PKGVER}" --match "linux,arm64,tar" --exclude "full,sha,bsd,macos,windows,freebsd,netbsd,openbsd,solaris" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+      x86_64)
+        soar dl "https://github.com/jpr5/ngrep@v${PKGVER}" --match "linux,x86_64,tar" --exclude "full,sha,bsd,macos,windows,freebsd,netbsd,openbsd,solaris" -o "${SBUILD_TMPDIR}/${PKG}.archive" --yes
+        ;;
+    esac
+    #Extract
+    while E_X=$(find "${SBUILD_TMPDIR}" -type f -exec file -i "{}" + |
+     grep -Ei "archive|compressed|gzip|x-compress|x-tar" |
+     grep -iv "application/.*executable" |
+     cut -d: -f1 | head -n1); [ -n "${E_X}" ]
+     do
+       7z e "${E_X}" -o"${SBUILD_TMPDIR}/." -y && {
+        file -i "${E_X}" | grep -q "application/.*executable" && break
+        rm -f "${E_X}"
+       } || break
+     done
+    #Copy
+    find "${SBUILD_TMPDIR}" -maxdepth 1 -type f -exec file -i "{}" \; | grep -Ei "application/.*executable|inode/symlink|text/x-perl|text/.*script" | cut -d":" -f1 | xargs realpath --no-symlinks | xargs -I "{}" rsync -achvL "{}" "${SBUILD_OUTDIR}"
