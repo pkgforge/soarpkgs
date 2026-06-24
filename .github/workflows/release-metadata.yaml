@@ -151,11 +151,11 @@ jobs:
 
       - name: Sign metadata
         env:
-          MINISIGN_SIGKEY: ${{ secrets.MINISIGN_SIGKEY }}
+          MINISIGN_KEY: ${{ secrets.MINISIGN_KEY }}
           MINISIGN_PASSWORD: ${{ secrets.MINISIGN_PASSWORD }}
         run: |
-          if [ -z "${MINISIGN_SIGKEY:-}" ]; then
-            echo "::warning::MINISIGN_SIGKEY not set; publishing unsigned metadata. Clients with signature verification enabled will reject this release."
+          if [ -z "${MINISIGN_KEY:-}" ]; then
+            echo "::warning::MINISIGN_KEY not set; publishing unsigned metadata. Clients with signature verification enabled will reject this release."
             exit 0
           fi
 
@@ -163,7 +163,7 @@ jobs:
           sudo apt-get install -y minisign
 
           mkdir -p "${HOME}/.minisign"
-          printf '%s\n' "${MINISIGN_SIGKEY}" > "${HOME}/.minisign/minisign.key"
+          printf '%s\n' "${MINISIGN_KEY}" > "${HOME}/.minisign/minisign.key"
 
           cd /tmp/artifacts
           shopt -s nullglob
