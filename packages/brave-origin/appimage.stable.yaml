@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "brave-origin"
+pkg_id: "pkgforge-dev.brave-origin"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/brave-origin"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "A privacy-focused Brave browser variant with telemetry stripped out"
+homepage:
+  - "https://github.com/brave/brave-browser"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/brave/brave-browser/refs/heads/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Brave-Origin-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "brave-origin"
+repology:
+  - "brave-origin"
+src_url:
+  - "https://github.com/pkgforge-dev/Brave-Origin-AppImage"
+tag:
+  - "browser"
+  - "brave"
+  - "privacy"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Brave-Origin-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Brave-Origin-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
