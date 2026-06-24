@@ -168,7 +168,7 @@ jobs:
           cd /tmp/artifacts
           shopt -s nullglob
           signed=0
-          for f in *.sdb.zstd; do
+          for f in *.sdb *.sdb.zstd *.json *.json.zstd; do
             echo "Signing ${f}"
             # CI has no controlling tty, so minisign reads the key password from stdin.
             # Use the .sig extension to match soar's package signature convention.
@@ -178,7 +178,7 @@ jobs:
           done
 
           if [ "${signed}" -eq 0 ]; then
-            echo "::error::No .sdb.zstd metadata found to sign"
+            echo "::error::No metadata found to sign"
             exit 1
           fi
 
