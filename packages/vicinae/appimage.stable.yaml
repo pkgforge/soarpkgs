@@ -1,0 +1,31 @@
+#!/SBUILD ver @v1.0.0
+_disabled: false
+
+pkg: "vicinae"
+pkg_id: "github.com.vicinaehq.vicinae"
+pkg_type: "appimage"
+category:
+  - "Utility"
+description: "A high-performance Raycast alternative for Linux"
+homepage:
+  - "https://github.com/vicinaehq/vicinae"
+maintainer:
+  - "jtbrough (https://github.com/jtbrough)"
+license:
+  - "GPL-3.0"
+provides:
+  - "vicinae"
+src_url:
+  - "https://github.com/vicinaehq/vicinae"
+tag:
+  - "launcher"
+  - "raycast"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/vicinaehq/vicinae/releases/latest" | jq -r '.tag_name'
+  run: |
+    soar dl "https://github.com/vicinaehq/vicinae@${PKGVER}" --glob "*x86_64*.AppImage" -o "./${PKG}" --yes
