@@ -1,0 +1,39 @@
+#!/SBUILD ver @v1.0.0
+_disabled: false
+
+pkg: "lm-studio"
+pkg_id: "ai.lmstudio.lm-studio"
+pkg_type: "appimage"
+category:
+  - "Utility"
+description: "Discover, download, and run local LLMs"
+homepage:
+  - "https://lmstudio.ai"
+maintainer:
+  - "jtbrough (https://github.com/jtbrough)"
+license:
+  - "Proprietary"
+provides:
+  - "lm-studio"
+src_url:
+  - "https://lmstudio.ai"
+tag:
+  - "llm"
+  - "ai"
+  - "appimage"
+x_exec:
+  host:
+    - "aarch64-linux"
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qI -s -L "https://lmstudio.ai/download/latest/linux/x64" | grep -i "^location:" | awk -F/ '{print $(NF-1)}'
+  run: |
+    case "$(uname -m)" in
+      aarch64)
+        soar dl "https://installers.lmstudio.ai/linux/arm64/${PKGVER}/LM-Studio-${PKGVER}-arm64.AppImage" -o "./${PKG}" --yes
+        ;;
+      x86_64)
+        soar dl "https://installers.lmstudio.ai/linux/x64/${PKGVER}/LM-Studio-${PKGVER}-x64.AppImage" -o "./${PKG}" --yes
+        ;;
+    esac
