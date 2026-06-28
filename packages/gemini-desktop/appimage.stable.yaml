@@ -1,0 +1,31 @@
+#!/SBUILD ver @v1.0.0
+_disabled: false
+
+pkg: "gemini-desktop"
+pkg_id: "github.com.bwendell.gemini-desktop"
+pkg_type: "appimage"
+category:
+  - "Utility"
+description: "A desktop client for Google Gemini"
+homepage:
+  - "https://github.com/bwendell/gemini-desktop"
+maintainer:
+  - "jtbrough (https://github.com/jtbrough)"
+license:
+  - "MIT"
+provides:
+  - "gemini-desktop"
+src_url:
+  - "https://github.com/bwendell/gemini-desktop"
+tag:
+  - "gemini"
+  - "ai"
+  - "appimage"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    curl -qfsSL "https://api.github.com/repos/bwendell/gemini-desktop/releases/latest" | jq -r '.tag_name'
+  run: |
+    soar dl "https://github.com/bwendell/gemini-desktop@${PKGVER}" --glob "*x86_64.AppImage" -o "./${PKG}" --yes
