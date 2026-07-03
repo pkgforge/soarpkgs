@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "defold"
+pkg_id: "pkgforge-dev.defold"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/defold"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Defold [Maintainer=@Samueru-sama]"
+homepage:
+  - "https://github.com/pkgforge-dev/Defold-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Defold-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "defold"
+repology:
+  - "defold"
+src_url:
+  - "https://github.com/pkgforge-dev/Defold-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Defold-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Defold-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
