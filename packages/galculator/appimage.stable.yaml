@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "galculator"
+pkg_id: "pkgforge-dev.galculator"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/galculator"
+category:
+  - "TODO"
+description: "TODO: Add description"
+homepage:
+  - "https://github.com/pkgforge-dev/Galculator-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Galculator-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "galculator"
+repology:
+  - "galculator"
+src_url:
+  - "https://github.com/pkgforge-dev/Galculator-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Galculator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Galculator-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
