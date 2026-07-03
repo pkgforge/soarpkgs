@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dnzhrecomp"
+pkg_id: "pkgforge-dev.dnzhrecomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dnzhrecomp"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Duke Nukem Zero Hour Recompiled [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/DNZHRecomp-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DNZHRecomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dnzhrecomp"
+repology:
+  - "dnzhrecomp"
+src_url:
+  - "https://github.com/pkgforge-dev/DNZHRecomp-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DNZHRecomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DNZHRecomp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
