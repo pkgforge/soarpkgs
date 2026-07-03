@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kid3"
+pkg_id: "pkgforge-dev.kid3"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/kid3"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Kid3. [Maintainer=@Samueru-sama] "
+homepage:
+  - "https://github.com/pkgforge-dev/Kid3-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Kid3-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kid3"
+repology:
+  - "kid3"
+src_url:
+  - "https://github.com/pkgforge-dev/Kid3-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Kid3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Kid3-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
