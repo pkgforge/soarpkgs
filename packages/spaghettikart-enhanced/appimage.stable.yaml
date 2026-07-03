@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "spaghettikart-enhanced"
+pkg_id: "pkgforge-dev.spaghettikart-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/spaghettikart-enhanced"
+category:
+  - "TODO"
+description: "Unofficial AppImage of SpaghettiKart [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "spaghettikart-enhanced"
+repology:
+  - "spaghettikart-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/SpaghettiKart-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
