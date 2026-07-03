@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zsnes"
+pkg_id: "pkgforge-dev.zsnes"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/zsnes"
+category:
+  - "TODO"
+description: "Unofficial AppImage of ZSNES [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/ZSNES-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ZSNES-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "zsnes"
+repology:
+  - "zsnes"
+src_url:
+  - "https://github.com/pkgforge-dev/ZSNES-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ZSNES-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ZSNES-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
