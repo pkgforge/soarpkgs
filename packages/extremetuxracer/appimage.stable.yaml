@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "extremetuxracer"
+pkg_id: "pkgforge-dev.extremetuxracer"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/extremetuxracer"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Extreme Tux Racer [Maintainer=@Samueru-sama]"
+homepage:
+  - "https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "extremetuxracer"
+repology:
+  - "extremetuxracer"
+src_url:
+  - "https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ExtremeTuxRacer-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
