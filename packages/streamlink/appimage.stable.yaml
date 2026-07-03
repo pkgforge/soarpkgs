@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "streamlink"
+pkg_id: "pkgforge-dev.streamlink"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/streamlink"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Streamlink [Maintainer=@domesya]"
+homepage:
+  - "https://github.com/pkgforge-dev/Streamlink-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Streamlink-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "streamlink"
+repology:
+  - "streamlink"
+src_url:
+  - "https://github.com/pkgforge-dev/Streamlink-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Streamlink-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Streamlink-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
