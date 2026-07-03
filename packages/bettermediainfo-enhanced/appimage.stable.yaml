@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bettermediainfo-enhanced"
+pkg_id: "pkgforge-dev.bettermediainfo-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/bettermediainfo-enhanced"
+category:
+  - "TODO"
+description: "Unofficial AppImage of BetterMediaInfo [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "bettermediainfo-enhanced"
+repology:
+  - "bettermediainfo-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
