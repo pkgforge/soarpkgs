@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "aaaaxy-enhanced"
-pkg_id: "pkgforge-dev.aaaaxy-enhanced"
+pkg: "aaaaxy"
+pkg_id: "pkgforge-dev.aaaaxy"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/aaaaxy-enhanced"
+app_id: "io.github.divverent.aaaaxy"
+ghcr_pkg: "pkgforge-dev/aaaaxy"
 category:
-  - "TODO"
-description: " Unofficial AppImage of AAAAXY game.　　　　　　　　　[Maintainer=@fiftydinar]"
+  - "ActionGame"
+  - "Game"
+description: "Nonlinear 2D puzzle platformer taking place in impossible spaces"
 homepage:
-  - "https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced"
+  - "https://divVerent.github.io/aaaaxy"
+  - "https://github.com/divVerent/aaaaxy"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Apache-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/divVerent/aaaaxy/refs/heads/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "aaaaxy-enhanced"
+  - "aaaaxy"
 repology:
-  - "aaaaxy-enhanced"
+  - "aaaaxy"
 src_url:
   - "https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "game"
+  - "platformer"
+  - "puzzle"
 x_exec:
   host:
     - "x86_64-linux"
