@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nomacs"
+pkg_id: "pkgforge-dev.nomacs"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/nomacs"
+category:
+  - "TODO"
+description: "Unofficial AppImage. nomacs is a free, open source image viewer, which supports multiple platforms. You can use it for viewing all common image formats including RAW and psd images. [Maintainer=@lucasmz1]"
+homepage:
+  - "https://github.com/pkgforge-dev/Nomacs-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Nomacs-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "nomacs"
+repology:
+  - "nomacs"
+src_url:
+  - "https://github.com/pkgforge-dev/Nomacs-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Nomacs-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Nomacs-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
