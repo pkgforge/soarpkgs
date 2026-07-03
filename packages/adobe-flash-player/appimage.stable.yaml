@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.adobe-flash-player"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/adobe-flash-player"
 category:
-  - "TODO"
-description: "Over 67 billion devices use adobe flash player!　　　　　　　　　　[Maintainer=@fiftydinar]"
+  - "AudioVideo"
+  - "Player"
+description: "Standalone player for Adobe Flash (SWF) content"
 homepage:
-  - "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
+  - "https://www.adobe.com/products/flashplayer/end-of-life-alternative.html"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Proprietary"
 build_asset:
-  - url: "TODO"
+  - url: "https://www.adobe.com/legal/terms.html"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
@@ -23,11 +24,13 @@ note:
 provides:
   - "adobe-flash-player"
 repology:
-  - "adobe-flash-player"
+  - "adobe-flash"
 src_url:
   - "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
 tag:
-  - "TODO"
+  - "flash"
+  - "player"
+  - "swf"
 x_exec:
   host:
     - "x86_64-linux"
