@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dwarf-fortress"
+pkg_id: "pkgforge-dev.dwarf-fortress"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dwarf-fortress"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Dwarf Fortress [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dwarf-fortress"
+repology:
+  - "dwarf-fortress"
+src_url:
+  - "https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Dwarf-Fortress-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
