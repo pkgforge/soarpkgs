@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gram-enhanced"
+pkg_id: "pkgforge-dev.gram-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/gram-enhanced"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Gram [Maintainer=@Samueru-sama]"
+homepage:
+  - "https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gram-enhanced"
+repology:
+  - "gram-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Gram-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Gram-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
