@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "darkplaces"
+pkg_id: "pkgforge-dev.darkplaces"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/darkplaces"
+category:
+  - "TODO"
+description: "Unofficial AppImage of DarkPlaces [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/DarkPlaces-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DarkPlaces-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "darkplaces"
+repology:
+  - "darkplaces"
+src_url:
+  - "https://github.com/pkgforge-dev/DarkPlaces-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DarkPlaces-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DarkPlaces-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
