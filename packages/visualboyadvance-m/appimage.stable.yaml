@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "visualboyadvance-m"
+pkg_id: "pkgforge-dev.visualboyadvance-m"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/visualboyadvance-m"
+category:
+  - "TODO"
+description: "Unofficial AppImage of VisualBoyAdvance-M [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "visualboyadvance-m"
+repology:
+  - "visualboyadvance-m"
+src_url:
+  - "https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/VisualBoyAdvance-M-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
