@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openxray"
+pkg_id: "pkgforge-dev.openxray"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openxray"
+category:
+  - "TODO"
+description: "Unofficial AppImage of OpenXRay [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/OpenXRay-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenXRay-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openxray"
+repology:
+  - "openxray"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenXRay-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenXRay-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenXRay-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
