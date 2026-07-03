@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kolourpaint"
+pkg_id: "pkgforge-dev.kolourpaint"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/kolourpaint"
+category:
+  - "TODO"
+description: "Unofficial AppImage of KolourPaint [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/KolourPaint-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KolourPaint-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kolourpaint"
+repology:
+  - "kolourpaint"
+src_url:
+  - "https://github.com/pkgforge-dev/KolourPaint-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/KolourPaint-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/KolourPaint-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
