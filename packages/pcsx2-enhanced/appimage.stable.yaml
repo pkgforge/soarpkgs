@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pcsx2-enhanced"
+pkg_id: "pkgforge-dev.pcsx2-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pcsx2-enhanced"
+category:
+  - "TODO"
+description: "Unofficial AppImage of PCSX2 that can work on any linux system [Maintainer=@lucasmz1]"
+homepage:
+  - "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pcsx2-enhanced"
+repology:
+  - "pcsx2-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PCSX2-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
