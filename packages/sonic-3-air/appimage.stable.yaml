@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sonic-3-air"
+pkg_id: "pkgforge-dev.sonic-3-air"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/sonic-3-air"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Sonic 3 A.I.R. [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/Sonic-3-AIR-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Sonic-3-AIR-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sonic-3-air"
+repology:
+  - "sonic-3-air"
+src_url:
+  - "https://github.com/pkgforge-dev/Sonic-3-AIR-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Sonic-3-AIR-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Sonic-3-AIR-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
