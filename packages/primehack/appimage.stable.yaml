@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "primehack"
+pkg_id: "pkgforge-dev.primehack"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/primehack"
+category:
+  - "TODO"
+description: "Unofficial AppImage of the PrimeHack emulator [Maintainer=@SNBeast|@lucasmz1|@Samueru-sama]"
+homepage:
+  - "https://github.com/pkgforge-dev/PrimeHack-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "TODO"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PrimeHack-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "primehack"
+repology:
+  - "primehack"
+src_url:
+  - "https://github.com/pkgforge-dev/PrimeHack-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PrimeHack-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PrimeHack-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
