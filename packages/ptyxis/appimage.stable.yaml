@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ptyxis"
+pkg_id: "pkgforge-dev.ptyxis"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ptyxis"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Ptyxis terminal [Maintainer=@domesya]"
+homepage:
+  - "https://github.com/pkgforge-dev/Ptyxis-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Ptyxis-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ptyxis"
+repology:
+  - "ptyxis"
+src_url:
+  - "https://github.com/pkgforge-dev/Ptyxis-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Ptyxis-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Ptyxis-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
