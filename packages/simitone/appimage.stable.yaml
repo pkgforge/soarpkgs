@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "simitone"
+pkg_id: "pkgforge-dev.simitone"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/simitone"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Simitone [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/Simitone-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Simitone-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "simitone"
+repology:
+  - "simitone"
+src_url:
+  - "https://github.com/pkgforge-dev/Simitone-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Simitone-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Simitone-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
