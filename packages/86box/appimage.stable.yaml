@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "86box"
+pkg_id: "pkgforge-dev.86box"
+pkg_type: "appimage"
+app_id: "net._86box._86Box"
+ghcr_pkg: "pkgforge-dev/86box"
+category:
+  - "Emulator"
+  - "System"
+description: "Emulator of x86-based machines"
+homepage:
+  - "https://86box.net"
+  - "https://github.com/86Box/86Box"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/86Box/86Box/refs/heads/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/86box-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "86box"
+repology:
+  - "86box"
+src_url:
+  - "https://github.com/pkgforge-dev/86box-AppImage-Enhanced"
+tag:
+  - "emulator"
+  - "emulation"
+  - "x86"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/86box-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/86box-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
