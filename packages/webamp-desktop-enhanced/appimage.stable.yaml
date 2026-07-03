@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "webamp-desktop-enhanced"
+pkg_id: "pkgforge-dev.webamp-desktop-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/webamp-desktop-enhanced"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Webamp-Desktop [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "webamp-desktop-enhanced"
+repology:
+  - "webamp-desktop-enhanced"
+src_url:
+  - "https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
