@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dosbox-x"
+pkg_id: "pkgforge-dev.dosbox-x"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dosbox-x"
+category:
+  - "TODO"
+description: "Unofficial AppImage of DOSBox-X [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/DOSBox-X-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DOSBox-X-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dosbox-x"
+repology:
+  - "dosbox-x"
+src_url:
+  - "https://github.com/pkgforge-dev/DOSBox-X-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DOSBox-X-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DOSBox-X-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
