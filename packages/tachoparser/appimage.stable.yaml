@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "tachoparser"
+pkg_id: "pkgforge-dev.tachoparser"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/tachoparser"
+category:
+  - "TODO"
+description: "Unofficial AppImage of tachoparser, CLI and GUI application for reading DDD tachograph cards　[Maintainer=@fiftydinar]"
+homepage:
+  - "https://github.com/pkgforge-dev/tachoparser-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/tachoparser-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "tachoparser"
+repology:
+  - "tachoparser"
+src_url:
+  - "https://github.com/pkgforge-dev/tachoparser-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/tachoparser-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/tachoparser-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
