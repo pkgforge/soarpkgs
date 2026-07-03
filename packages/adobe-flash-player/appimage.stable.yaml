@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "adobe-flash-player"
+pkg_id: "pkgforge-dev.adobe-flash-player"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/adobe-flash-player"
+category:
+  - "AudioVideo"
+  - "Player"
+description: "Standalone player for Adobe Flash (SWF) content"
+homepage:
+  - "https://www.adobe.com/products/flashplayer/end-of-life-alternative.html"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+build_asset:
+  - url: "https://www.adobe.com/legal/terms.html"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "adobe-flash-player"
+repology:
+  - "adobe-flash"
+src_url:
+  - "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
+tag:
+  - "flash"
+  - "player"
+  - "swf"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Adobe-Flash-Player-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
