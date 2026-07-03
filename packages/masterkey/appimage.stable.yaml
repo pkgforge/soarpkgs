@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "masterkey"
+pkg_id: "pkgforge-dev.masterkey"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/masterkey"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Master Key [Maintainer=@TheRealYasri]"
+homepage:
+  - "https://github.com/pkgforge-dev/masterkey-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/masterkey-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "masterkey"
+repology:
+  - "masterkey"
+src_url:
+  - "https://github.com/pkgforge-dev/masterkey-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/masterkey-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/masterkey-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
