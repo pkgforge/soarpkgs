@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xeyes"
+pkg_id: "pkgforge-dev.xeyes"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/xeyes"
+category:
+  - "TODO"
+description: "Unofficial AppImage of xeyes [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/xeyes-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/xeyes-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "xeyes"
+repology:
+  - "xeyes"
+src_url:
+  - "https://github.com/pkgforge-dev/xeyes-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/xeyes-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/xeyes-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
