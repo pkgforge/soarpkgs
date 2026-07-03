@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "adobe-flash-player"
+pkg_id: "pkgforge-dev.adobe-flash-player"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/adobe-flash-player"
+category:
+  - "TODO"
+description: "Over 67 billion devices use adobe flash player!　　　　　　　　　　[Maintainer=@fiftydinar]"
+homepage:
+  - "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "adobe-flash-player"
+repology:
+  - "adobe-flash-player"
+src_url:
+  - "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Adobe-Flash-Player-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
