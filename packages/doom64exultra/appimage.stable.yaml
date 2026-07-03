@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "doom64exultra"
+pkg_id: "pkgforge-dev.doom64exultra"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/doom64exultra"
+category:
+  - "TODO"
+description: "Unofficial AppImage of DOOM64EXUltra [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "doom64exultra"
+repology:
+  - "doom64exultra"
+src_url:
+  - "https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DOOM64EXUltra-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
