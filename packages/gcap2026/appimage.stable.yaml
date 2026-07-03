@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gcap2026"
+pkg_id: "pkgforge-dev.gcap2026"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/gcap2026"
+category:
+  - "TODO"
+description: "Appimage não oficial do GCAP2026 [Mantenedor=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/GCAP2026-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GCAP2026-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gcap2026"
+repology:
+  - "gcap2026"
+src_url:
+  - "https://github.com/pkgforge-dev/GCAP2026-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/GCAP2026-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/GCAP2026-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
