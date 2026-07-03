@@ -1,0 +1,149 @@
+name: Add AnyLinux Packages
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'  # Weekly on Monday
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Specific Anylinux-AppImages repo (e.g. htop-AppImage); empty = all missing'
+        type: string
+        default: ''
+      limit:
+        description: 'Max PRs to create per run'
+        type: string
+        default: '5'
+      dry_run:
+        description: 'Dry run (no PRs created)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: anylinux-packages
+  cancel-in-progress: true
+
+jobs:
+  add-packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Find missing packages
+        id: missing
+        run: |
+          ./scripts/add_anylinux_pkg.sh list | grep -F ' -> ' | awk '{print $1, $3}' > /tmp/missing.txt || true
+
+          if [ -n "${{ inputs.repo }}" ]; then
+            grep -i "^${{ inputs.repo }} " /tmp/missing.txt > /tmp/missing-filtered.txt || {
+              echo "::warning::${{ inputs.repo }} is not in the missing list (already packaged or unknown)"
+              : > /tmp/missing-filtered.txt
+            }
+            mv /tmp/missing-filtered.txt /tmp/missing.txt
+          fi
+
+          COUNT=$(grep -c . /tmp/missing.txt || true)
+          echo "count=${COUNT}" >> $GITHUB_OUTPUT
+
+          if [ "$COUNT" -gt 0 ]; then
+            echo "::notice::Found ${COUNT} missing AnyLinux packages"
+            cat /tmp/missing.txt
+          else
+            echo "::notice::No missing packages"
+          fi
+
+      - name: Create package PRs
+        if: steps.missing.outputs.count > 0 && inputs.dry_run != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          LIMIT='${{ inputs.limit }}'
+          LIMIT="${LIMIT:-5}"
+          created=0
+
+          while read -r repo pkg; do
+            [ -z "$repo" ] && continue
+            if [ "$created" -ge "$LIMIT" ]; then
+              echo "::notice::Reached limit of ${LIMIT} PRs, stopping"
+              break
+            fi
+
+            branch="bot/add-${pkg}"
+
+            # Skip if a PR (open or previously rejected) already exists
+            if gh pr list --head "$branch" --state all --json number | jq -e 'length > 0' > /dev/null 2>&1; then
+              echo "::notice::PR already exists for ${pkg}, skipping"
+              continue
+            fi
+
+            if git ls-remote --heads origin "$branch" | grep -q "$branch"; then
+              echo "::notice::Branch ${branch} already exists, skipping"
+              continue
+            fi
+
+            echo "::group::Creating PR for ${pkg} (${repo})"
+
+            git checkout main
+            git checkout -b "$branch"
+
+            if ! ./scripts/add_anylinux_pkg.sh "$repo" "$pkg"; then
+              echo "::warning::Failed to generate recipe for ${pkg}"
+              git checkout main
+              git branch -D "$branch"
+              continue
+            fi
+
+            recipe_path="packages/${pkg}/appimage.stable.yaml"
+            git add "packages/${pkg}"
+            git commit -m "${pkg}: init"
+            git push origin "$branch"
+
+            PR_BODY=$(cat << EOF
+          ## 📦 New AnyLinux Package
+
+          | Field | Value |
+          |-------|-------|
+          | **Package** | \`${pkg}\` |
+          | **Upstream** | [pkgforge-dev/${repo}](https://github.com/pkgforge-dev/${repo}) |
+          | **Recipe** | [\`${recipe_path}\`](https://github.com/${{ github.repository }}/blob/${branch}/${recipe_path}) |
+
+          ### TODO before merge
+          - [ ] \`category\` — pick from [freedesktop menu spec](https://specifications.freedesktop.org/menu-spec/latest/apa.html)
+          - [ ] \`build_asset\` — URL to upstream LICENSE file
+          - [ ] \`tag\` — sensible tags for the app
+          - [ ] \`repology\` — verify at https://repology.org/projects/
+          - [ ] Review description/license/homepage
+          - [ ] Test build passes
+
+          ---
+          <sub>🤖 This PR was automatically created from [Anylinux-AppImages](https://github.com/pkgforge-dev/Anylinux-AppImages)</sub>
+          EOF
+          )
+
+            gh pr create \
+              --draft \
+              --title "${pkg}: init" \
+              --body "$PR_BODY" \
+              --label "bot" \
+              --head "$branch" \
+              --base main
+
+            created=$((created + 1))
+            echo "::endgroup::"
+
+            git checkout main
+
+            # Rate limiting - avoid hitting GitHub API limits
+            sleep 2
+          done < /tmp/missing.txt
+
+          echo "::notice::Created ${created} PRs"
