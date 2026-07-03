@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "abaddon"
+pkg_id: "pkgforge-dev.abaddon"
+pkg_type: "appimage"
+app_id: "io.github.uowuo.abaddon"
+ghcr_pkg: "pkgforge-dev/abaddon"
+category:
+  - "Chat"
+  - "InstantMessaging"
+  - "Network"
+description: "Alternative Discord client with voice support made with C++ and GTK 3"
+homepage:
+  - "https://github.com/uowuo/abaddon"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/uowuo/abaddon/refs/heads/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Abaddon-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "abaddon"
+repology:
+  - "abaddon"
+src_url:
+  - "https://github.com/pkgforge-dev/Abaddon-AppImage"
+tag:
+  - "chat"
+  - "discord"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Abaddon-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Abaddon-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
