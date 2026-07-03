@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "corsixth"
+pkg_id: "pkgforge-dev.corsixth"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/corsixth"
+category:
+  - "TODO"
+description: "Unofficial AppImage of CorsixTH [Maintainer=@Link4Electronics]"
+homepage:
+  - "https://github.com/pkgforge-dev/CorsixTH-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CorsixTH-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "corsixth"
+repology:
+  - "corsixth"
+src_url:
+  - "https://github.com/pkgforge-dev/CorsixTH-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/CorsixTH-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/CorsixTH-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
