@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "audacious"
+pkg_id: "pkgforge-dev.audacious"
+pkg_type: "appimage"
+app_id: "org.atheme.audacious"
+ghcr_pkg: "pkgforge-dev/audacious"
+category:
+  - "Audio"
+  - "AudioVideo"
+  - "Player"
+description: "Lightweight and versatile audio player"
+homepage:
+  - "https://audacious-media-player.org"
+  - "https://github.com/audacious-media-player/audacious"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/audacious-media-player/audacious/refs/heads/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Audacious-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "audacious"
+repology:
+  - "audacious"
+src_url:
+  - "https://github.com/pkgforge-dev/Audacious-AppImage"
+tag:
+  - "audio"
+  - "music"
+  - "player"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Audacious-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Audacious-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
