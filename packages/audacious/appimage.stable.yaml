@@ -4,18 +4,22 @@ _disabled: false
 pkg: "audacious"
 pkg_id: "pkgforge-dev.audacious"
 pkg_type: "appimage"
+app_id: "org.atheme.audacious"
 ghcr_pkg: "pkgforge-dev/audacious"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Audacious [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "AudioVideo"
+  - "Player"
+description: "Lightweight and versatile audio player"
 homepage:
-  - "https://github.com/pkgforge-dev/Audacious-AppImage"
+  - "https://audacious-media-player.org"
+  - "https://github.com/audacious-media-player/audacious"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-2-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/audacious-media-player/audacious/refs/heads/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Audacious-AppImage"
@@ -27,7 +31,9 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Audacious-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "music"
+  - "player"
 x_exec:
   host:
     - "x86_64-linux"
