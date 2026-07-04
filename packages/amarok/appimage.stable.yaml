@@ -4,18 +4,22 @@ _disabled: false
 pkg: "amarok"
 pkg_id: "pkgforge-dev.amarok"
 pkg_type: "appimage"
+app_id: "org.kde.amarok"
 ghcr_pkg: "pkgforge-dev/amarok"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Amarok [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "Music"
+  - "Player"
+description: "Powerful music player that lets you rediscover your music"
 homepage:
-  - "https://github.com/pkgforge-dev/Amarok-AppImage"
+  - "https://amarok.kde.org"
+  - "https://invent.kde.org/multimedia/amarok"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/KDE/amarok/refs/heads/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Amarok-AppImage"
@@ -27,7 +31,9 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Amarok-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "music"
+  - "player"
 x_exec:
   host:
     - "x86_64-linux"
