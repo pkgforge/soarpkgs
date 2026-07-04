@@ -6,17 +6,16 @@ pkg_id: "pkgforge-dev.antigravity"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/antigravity"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Antigravity [Maintainer=@mnalmahmud] "
+  - "Development"
+  - "IDE"
+  - "TextEditor"
+description: "Agentic AI-powered IDE from Google"
 homepage:
-  - "https://github.com/pkgforge-dev/Antigravity-AppImage"
+  - "https://antigravity.google"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Antigravity-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +26,9 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Antigravity-AppImage"
 tag:
-  - "TODO"
+  - "ai"
+  - "development"
+  - "editor"
 x_exec:
   host:
     - "x86_64-linux"
