@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "antigravity-ide"
+pkg_id: "pkgforge-dev.antigravity-ide"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/antigravity-ide"
+category:
+  - "Development"
+  - "IDE"
+  - "TextEditor"
+description: "Agentic development platform from Google, evolving the IDE into the agent-first era"
+homepage:
+  - "https://antigravity.google"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Antigravity-IDE-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "antigravity-ide"
+repology:
+  - "antigravity-ide"
+src_url:
+  - "https://github.com/pkgforge-dev/Antigravity-IDE-AppImage"
+tag:
+  - "ai"
+  - "development"
+  - "editor"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Antigravity-IDE-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Antigravity-IDE-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
