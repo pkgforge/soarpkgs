@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "amiberry"
+pkg_id: "pkgforge-dev.amiberry"
+pkg_type: "appimage"
+app_id: "com.blitterstudio.amiberry"
+ghcr_pkg: "pkgforge-dev/amiberry"
+category:
+  - "Emulator"
+  - "Game"
+description: "Optimized Amiga emulator"
+homepage:
+  - "https://amiberry.com"
+  - "https://github.com/BlitterStudio/amiberry"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/BlitterStudio/amiberry/refs/heads/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Amiberry-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "amiberry"
+repology:
+  - "amiberry"
+src_url:
+  - "https://github.com/pkgforge-dev/Amiberry-AppImage"
+tag:
+  - "amiga"
+  - "emulator"
+  - "emulation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Amiberry-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Amiberry-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
