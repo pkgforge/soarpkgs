@@ -4,18 +4,19 @@ _disabled: false
 pkg: "aerofoil"
 pkg_id: "pkgforge-dev.aerofoil"
 pkg_type: "appimage"
+app_id: "io.github.elasota.aerofoil"
 ghcr_pkg: "pkgforge-dev/aerofoil"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Aerofoil [Maintainer=@Link4Electronics]"
+  - "Game"
+description: "Modern port of Glider PRO, the classic Macintosh paper airplane game"
 homepage:
-  - "https://github.com/pkgforge-dev/Aerofoil-AppImage"
+  - "https://github.com/elasota/Aerofoil"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/elasota/Aerofoil/refs/heads/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Aerofoil-AppImage"
@@ -27,7 +28,9 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Aerofoil-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "glider"
+  - "retro"
 x_exec:
   host:
     - "x86_64-linux"
