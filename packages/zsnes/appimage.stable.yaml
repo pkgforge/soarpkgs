@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.zsnes"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/zsnes"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ZSNES [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "A maintained fork of ZSNES, a Super Nintendo (SNES) emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/ZSNES-AppImage"
+  - "https://www.zsnes.com"
+  - "https://github.com/xyproto/zsnes"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/xyproto/zsnes/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ZSNES-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/ZSNES-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "snes"
+  - "nintendo"
+  - "retro"
 x_exec:
   host:
     - "x86_64-linux"
