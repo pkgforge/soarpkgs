@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.galculator"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/galculator"
 category:
-  - "TODO"
-description: "TODO: Add description"
+  - "Utility"
+  - "Calculator"
+  - "Science"
+description: "GTK 2 / GTK 3 based scientific calculator"
 homepage:
-  - "https://github.com/pkgforge-dev/Galculator-AppImage"
+  - "https://github.com/galculator/galculator"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/galculator/galculator/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Galculator-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Galculator-AppImage"
 tag:
-  - "TODO"
+  - "calculator"
+  - "gtk"
+  - "scientific"
+  - "math"
 x_exec:
   host:
     - "x86_64-linux"
