@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.ffmpeg"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/ffmpeg"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ffmpeg [Maintainer=@Samueru-sama]"
+  - "AudioVideo"
+  - "Video"
+  - "Audio"
+description: "Complete cross-platform solution to record, convert and stream audio and video"
 homepage:
-  - "https://github.com/pkgforge-dev/FFmpeg-AppImage"
+  - "https://ffmpeg.org"
+  - "https://github.com/FFmpeg/FFmpeg"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/COPYING.GPLv3"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/FFmpeg-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/FFmpeg-AppImage"
 tag:
-  - "TODO"
+  - "multimedia"
+  - "video"
+  - "audio"
+  - "encoder"
 x_exec:
   host:
     - "x86_64-linux"
