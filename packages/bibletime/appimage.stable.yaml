@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bibletime"
+pkg_id: "pkgforge-dev.bibletime"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/bibletime"
+category:
+  - "Education"
+  - "Viewer"
+  - "Utility"
+description: "Powerful cross platform Bible study tool"
+homepage:
+  - "https://bibletime.info/"
+  - "https://github.com/bibletime/bibletime"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/bibletime/bibletime/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BibleTime-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "bibletime"
+repology:
+  - "bibletime"
+src_url:
+  - "https://github.com/pkgforge-dev/BibleTime-AppImage"
+tag:
+  - "bible"
+  - "study"
+  - "religion"
+  - "qt"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/BibleTime-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/BibleTime-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
