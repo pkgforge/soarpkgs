@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.collaboraoffice"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/collaboraoffice"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Collabora Office [Maintainer=@sounddrill31] "
+  - "Office"
+  - "Utility"
+description: "LibreOffice-based office suite for documents, spreadsheets and presentations"
 homepage:
-  - "https://github.com/pkgforge-dev/CollaboraOffice-AppImage"
+  - "https://github.com/CollaboraOnline/online"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "MPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/CollaboraOnline/online/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CollaboraOffice-AppImage"
@@ -23,11 +24,14 @@ note:
 provides:
   - "collaboraoffice"
 repology:
-  - "collaboraoffice"
+  - "collabora-office"
 src_url:
   - "https://github.com/pkgforge-dev/CollaboraOffice-AppImage"
 tag:
-  - "TODO"
+  - "office"
+  - "libreoffice"
+  - "documents"
+  - "productivity"
 x_exec:
   host:
     - "x86_64-linux"
