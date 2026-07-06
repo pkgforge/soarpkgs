@@ -7,7 +7,8 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/postal"
 category:
   - "Game"
-description: "Unofficial AppImage of POSTAL [Maintainer=@Link4Electronics]"
+  - "ActionGame"
+description: "POSTAL (1997), the classic isometric shooter by Running With Scissors"
 homepage:
   - "https://github.com/RWS-Studios/POSTAL-SourceCode"
 maintainer:
@@ -15,19 +16,19 @@ maintainer:
 license:
   - "GPL-2.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/RWS-Studios/POSTAL-SourceCode/refs/heads/main/LICENSE"
+  - url: "https://raw.githubusercontent.com/RWS-Studios/POSTAL-SourceCode/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/POSTAL-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "postal"
-repology:
-  - "postal"
 src_url:
   - "https://github.com/pkgforge-dev/POSTAL-AppImage"
 tag:
+  - "game"
   - "shooter"
+  - "action"
   - "retro"
 x_exec:
   host:
@@ -35,8 +36,8 @@ x_exec:
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/POSTAL-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/POSTAL-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/POSTAL-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/POSTAL-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
