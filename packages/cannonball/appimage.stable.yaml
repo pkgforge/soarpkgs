@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cannonball"
+pkg_id: "pkgforge-dev.cannonball"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/cannonball"
+category:
+  - "Game"
+  - "ArcadeGame"
+description: "Enhanced OutRun arcade game engine, a C++ rewrite of the Sega original"
+homepage:
+  - "https://github.com/djyt/cannonball"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://raw.githubusercontent.com/djyt/cannonball/master/docs/license.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cannonball-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cannonball"
+repology:
+  - "cannonball"
+src_url:
+  - "https://github.com/pkgforge-dev/Cannonball-AppImage"
+tag:
+  - "outrun"
+  - "arcade"
+  - "sega"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Cannonball-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Cannonball-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
