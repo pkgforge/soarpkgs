@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.gthumb"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gthumb"
 category:
-  - "TODO"
-description: "Unofficial AppImage of gThumb [Maintainer=@Samueru-sama]"
+  - "Graphics"
+  - "Viewer"
+  - "Photography"
+description: "Image viewer and browser for the GNOME desktop"
 homepage:
-  - "https://github.com/pkgforge-dev/gThumb-AppImage"
+  - "https://apps.gnome.org/gThumb"
+  - "https://gitlab.gnome.org/GNOME/gthumb"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.gnome.org/GNOME/gthumb/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gThumb-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/gThumb-AppImage"
 tag:
-  - "TODO"
+  - "image-viewer"
+  - "photography"
+  - "graphics"
+  - "gnome"
 x_exec:
   host:
     - "x86_64-linux"
