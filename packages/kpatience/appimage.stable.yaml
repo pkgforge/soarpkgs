@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.kpatience"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kpatience"
 category:
-  - "TODO"
-description: "Unofficial AppImage of KPatience [Maintainer=@Link4Electronics]"
+  - "Game"
+description: "KPatience offers a selection of solitaire card games"
 homepage:
-  - "https://github.com/pkgforge-dev/KPatience-AppImage"
+  - "https://apps.kde.org/kpat"
+  - "https://invent.kde.org/games/kpat"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/games/kpat/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KPatience-AppImage"
@@ -23,11 +24,14 @@ note:
 provides:
   - "kpatience"
 repology:
-  - "kpatience"
+  - "kpat"
 src_url:
   - "https://github.com/pkgforge-dev/KPatience-AppImage"
 tag:
-  - "TODO"
+  - "solitaire"
+  - "card-game"
+  - "kde"
+  - "patience"
 x_exec:
   host:
     - "x86_64-linux"
