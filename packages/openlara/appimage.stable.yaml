@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.openlara"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/openlara"
 category:
-  - "TODO"
-description: "Unofficial AppImage of OpenLara [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Classic Tomb Raider open-source engine reimplementation"
 homepage:
-  - "https://github.com/pkgforge-dev/OpenLara-AppImage"
+  - "https://github.com/XProger/OpenLara"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-2-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/XProger/OpenLara/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenLara-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/OpenLara-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "tombraider"
+  - "engine"
+  - "adventure"
 x_exec:
   host:
     - "x86_64-linux"
