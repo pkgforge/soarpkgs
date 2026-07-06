@@ -5,17 +5,18 @@ pkg: "perfect-dark"
 pkg_id: "pkgforge-dev.perfect-dark"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/perfect-dark"
+app_id: "io.github.perfect_dark_pc_port.perfect_dark"
 category:
-  - "TODO"
+  - "Game"
 description: "Unofficial AppImage of Perfect Dark [Maintainer=@Link4Electronics]"
 homepage:
-  - "https://github.com/pkgforge-dev/Perfect-Dark-AppImage"
+  - "https://github.com/perfect-dark-pc-port/perfect_dark"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/perfect-dark-pc-port/perfect_dark/refs/heads/port/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Perfect-Dark-AppImage"
@@ -27,7 +28,9 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Perfect-Dark-AppImage"
 tag:
-  - "TODO"
+  - "fps"
+  - "n64"
+  - "retro"
 x_exec:
   host:
     - "x86_64-linux"
