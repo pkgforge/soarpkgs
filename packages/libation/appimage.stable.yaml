@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.libation"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/libation"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Libation [Maintainer=@Samueru-sama]"
+  - "Audio"
+  - "Utility"
+  - "AudioVideo"
+description: "Audible audiobook library manager and downloader"
 homepage:
-  - "https://github.com/pkgforge-dev/Libation-AppImage"
+  - "https://getlibation.com"
+  - "https://github.com/rmcrackan/Libation"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/rmcrackan/Libation/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Libation-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Libation-AppImage"
 tag:
-  - "TODO"
+  - "audible"
+  - "audiobook"
+  - "downloader"
+  - "drm"
 x_exec:
   host:
     - "x86_64-linux"
