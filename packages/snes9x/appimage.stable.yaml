@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "snes9x-enhanced"
-pkg_id: "pkgforge-dev.snes9x-enhanced"
+pkg: "snes9x"
+pkg_id: "pkgforge-dev.snes9x"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/snes9x-enhanced"
+ghcr_pkg: "pkgforge-dev/snes9x"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Snes9x [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Portable Super Nintendo Entertainment System (SNES) emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced"
+  - "http://www.snes9x.com"
+  - "https://github.com/snes9xgit/snes9x"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Custom"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/snes9xgit/snes9x/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "snes9x-enhanced"
+  - "snes9x"
 repology:
-  - "snes9x-enhanced"
+  - "snes9x"
 src_url:
   - "https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "emulator"
+  - "snes"
+  - "nintendo"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
