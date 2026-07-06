@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.gearboy"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gearboy"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Gearboy [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Game Boy / Game Boy Color emulator written in C++"
 homepage:
-  - "https://github.com/pkgforge-dev/Gearboy-AppImage"
+  - "https://github.com/drhelius/Gearboy"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/drhelius/Gearboy/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gearboy-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Gearboy-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "gameboy"
+  - "gbc"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
