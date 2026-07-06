@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.scummvm"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/scummvm"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ScummVM [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+  - "Emulator"
+description: "Interpreter to run classic point-and-click adventure and RPG games"
 homepage:
-  - "https://github.com/pkgforge-dev/ScummVM-AppImage"
+  - "https://www.scummvm.org"
+  - "https://github.com/scummvm/scummvm"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/scummvm/scummvm/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ScummVM-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/ScummVM-AppImage"
 tag:
-  - "TODO"
+  - "games"
+  - "adventure"
+  - "emulator"
+  - "point-and-click"
 x_exec:
   host:
     - "x86_64-linux"
