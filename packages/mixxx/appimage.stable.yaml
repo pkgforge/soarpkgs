@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.mixxx"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/mixxx"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Mixxx [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "Music"
+  - "AudioVideo"
+description: "Free and open-source DJ mixing software for live performances"
 homepage:
-  - "https://github.com/pkgforge-dev/Mixxx-AppImage"
+  - "https://mixxx.org"
+  - "https://github.com/mixxxdj/mixxx"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/mixxxdj/mixxx/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Mixxx-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Mixxx-AppImage"
 tag:
-  - "TODO"
+  - "dj"
+  - "audio"
+  - "music"
+  - "mixing"
 x_exec:
   host:
     - "x86_64-linux"
