@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.zelda64recomp"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/zelda64recomp"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Zelda 64 Recompiled [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Static recompilation of The Legend of Zelda: Majora's Mask to run natively on PC"
 homepage:
-  - "https://github.com/pkgforge-dev/Zelda64Recomp-AppImage"
+  - "https://github.com/Zelda64Recomp/Zelda64Recomp"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-only"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Zelda64Recomp/Zelda64Recomp/dev/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Zelda64Recomp-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Zelda64Recomp-AppImage"
 tag:
-  - "TODO"
+  - "zelda"
+  - "majoras-mask"
+  - "n64"
+  - "recompilation"
 x_exec:
   host:
     - "x86_64-linux"
