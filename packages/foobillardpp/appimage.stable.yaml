@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.foobillardpp"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/foobillardpp"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Foobillard++ [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "SportsGame"
+description: "Free 3D OpenGL billiard game with 8-ball, 9-ball, snooker and carambol"
 homepage:
-  - "https://github.com/pkgforge-dev/Foobillardpp-AppImage"
+  - "https://sourceforge.net/projects/foobillardplus/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://sourceforge.net/p/foobillardplus/code/HEAD/tree/COPYING?format=raw"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Foobillardpp-AppImage"
@@ -23,11 +24,14 @@ note:
 provides:
   - "foobillardpp"
 repology:
-  - "foobillardpp"
+  - "foobillard++"
 src_url:
   - "https://github.com/pkgforge-dev/Foobillardpp-AppImage"
 tag:
-  - "TODO"
+  - "billiard"
+  - "pool"
+  - "opengl"
+  - "3d"
 x_exec:
   host:
     - "x86_64-linux"
