@@ -6,28 +6,27 @@ pkg_id: "pkgforge-dev.super-zsnes"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/super-zsnes"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SUPER ZSNES [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "GPU-powered SNES emulator with hi-res Mode 7 and per-game enhancements"
 homepage:
-  - "https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage"
+  - "https://zsnes.com"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "super-zsnes"
-repology:
-  - "super-zsnes"
 src_url:
   - "https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage"
 tag:
-  - "TODO"
+  - "snes"
+  - "emulator"
+  - "nintendo"
+  - "zsnes"
 x_exec:
   host:
     - "x86_64-linux"
