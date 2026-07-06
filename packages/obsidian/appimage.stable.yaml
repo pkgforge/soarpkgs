@@ -1,33 +1,35 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "obsidian-enhanced"
-pkg_id: "pkgforge-dev.obsidian-enhanced"
+pkg: "obsidian"
+pkg_id: "pkgforge-dev.obsidian"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/obsidian-enhanced"
+ghcr_pkg: "pkgforge-dev/obsidian"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Obsidian that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Office"
+  - "Utility"
+  - "TextEditor"
+description: "Powerful knowledge base and note-taking app on top of local Markdown files"
 homepage:
-  - "https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced"
+  - "https://obsidian.md"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "obsidian-enhanced"
+  - "obsidian"
 repology:
-  - "obsidian-enhanced"
+  - "obsidian"
 src_url:
   - "https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "notes"
+  - "markdown"
+  - "knowledge-base"
+  - "pkm"
 x_exec:
   host:
     - "x86_64-linux"
