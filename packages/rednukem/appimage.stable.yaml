@@ -6,28 +6,30 @@ pkg_id: "pkgforge-dev.rednukem"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rednukem"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Rednukem [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Source port for Duke Nukem 3D, Redneck Rampage and NAM (Build engine)"
 homepage:
-  - "https://github.com/pkgforge-dev/Rednukem-AppImage"
+  - "https://github.com/NBlood/NBlood"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/NBlood/NBlood/master/source/rr/gpl-2.0.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rednukem-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "rednukem"
-repology:
-  - "rednukem"
 src_url:
   - "https://github.com/pkgforge-dev/Rednukem-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "fps"
+  - "source-port"
+  - "build-engine"
 x_exec:
   host:
     - "x86_64-linux"
