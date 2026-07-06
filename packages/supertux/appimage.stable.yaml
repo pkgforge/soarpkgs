@@ -1,33 +1,35 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "supertux-enhanced"
-pkg_id: "pkgforge-dev.supertux-enhanced"
+pkg: "supertux"
+pkg_id: "pkgforge-dev.supertux"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/supertux-enhanced"
+ghcr_pkg: "pkgforge-dev/supertux"
+app_id: "org.supertux.SuperTux"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SuperTux, SuperMario like game, but with Tux.　　　　　[Maintainer=@fiftydinar]"
+  - "Game"
+description: "A classic 2D jump'n'run sidescroller game featuring Tux"
 homepage:
-  - "https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced"
+  - "https://www.supertux.org"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/SuperTux/supertux/refs/heads/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "supertux-enhanced"
+  - "supertux"
 repology:
-  - "supertux-enhanced"
+  - "supertux"
 src_url:
   - "https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "platformer"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
