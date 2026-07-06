@@ -6,28 +6,30 @@ pkg_id: "pkgforge-dev.pcexhumed"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/pcexhumed"
 category:
-  - "TODO"
-description: "Unofficial AppImage of PCExhumed [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Source port of PowerSlave/Exhumed built on EDuke32 Build engine technology"
 homepage:
-  - "https://github.com/pkgforge-dev/PCExhumed-AppImage"
+  - "https://github.com/NBlood/NBlood"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/NBlood/NBlood/master/source/exhumed/gpl-2.0.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCExhumed-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "pcexhumed"
-repology:
-  - "pcexhumed"
 src_url:
   - "https://github.com/pkgforge-dev/PCExhumed-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "fps"
+  - "build-engine"
+  - "source-port"
 x_exec:
   host:
     - "x86_64-linux"
