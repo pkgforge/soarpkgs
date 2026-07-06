@@ -6,16 +6,16 @@ pkg_id: "pkgforge-dev.qarma"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/qarma"
 category:
-  - "TODO"
-description: "Unofficial AppImage of qarma [Maintainer=@Samueru-sama]"
+  - "Utility"
+description: "Qt-based clone of zenity for creating GUI dialog boxes"
 homepage:
-  - "https://github.com/pkgforge-dev/qarma-AppImage"
+  - "https://github.com/luebking/qarma"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-only"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/luebking/qarma/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/qarma-AppImage"
@@ -27,7 +27,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/qarma-AppImage"
 tag:
-  - "TODO"
+  - "qt"
+  - "zenity"
+  - "dialog"
+  - "gui"
 x_exec:
   host:
     - "x86_64-linux"
