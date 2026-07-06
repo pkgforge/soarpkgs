@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.kid3"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kid3"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Kid3. [Maintainer=@Samueru-sama] "
+  - "Audio"
+  - "Utility"
+description: "Efficient audio tag editor supporting a large variety of file formats"
 homepage:
-  - "https://github.com/pkgforge-dev/Kid3-AppImage"
+  - "https://kid3.kde.org"
+  - "https://invent.kde.org/multimedia/kid3"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/multimedia/kid3/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Kid3-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Kid3-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "tagging"
+  - "metadata"
+  - "kde"
 x_exec:
   host:
     - "x86_64-linux"
