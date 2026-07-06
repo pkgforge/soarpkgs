@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.corsixth"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/corsixth"
 category:
-  - "TODO"
-description: "Unofficial AppImage of CorsixTH [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "StrategyGame"
+description: "Open-source reimplementation of the Theme Hospital business simulation game"
 homepage:
-  - "https://github.com/pkgforge-dev/CorsixTH-AppImage"
+  - "https://github.com/CorsixTH/CorsixTH"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/CorsixTH/CorsixTH/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CorsixTH-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/CorsixTH-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "simulation"
+  - "hospital"
+  - "theme-hospital"
 x_exec:
   host:
     - "x86_64-linux"
