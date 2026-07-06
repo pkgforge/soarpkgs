@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.nitrogen"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/nitrogen"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Nitrogen [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "System"
+description: "Background browser and setter for X11 windows"
 homepage:
-  - "https://github.com/pkgforge-dev/Nitrogen-AppImage"
+  - "https://projects.l3ib.org/nitrogen/"
+  - "https://github.com/l3ib/nitrogen"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/l3ib/nitrogen/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Nitrogen-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Nitrogen-AppImage"
 tag:
-  - "TODO"
+  - "wallpaper"
+  - "background"
+  - "x11"
+  - "desktop"
 x_exec:
   host:
     - "x86_64-linux"
