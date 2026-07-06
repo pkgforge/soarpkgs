@@ -10,15 +10,16 @@ category:
   - "Network"
   - "InstantMessaging"
   - "Chat"
-description: "Unofficial AppImage of Telegram [Maintainer=@Samueru-sama]"
+description: "Official Telegram Desktop messaging client"
 homepage:
-  - "https://desktop.telegram.org"
+  - "https://desktop.telegram.org/"
+  - "https://github.com/telegramdesktop/tdesktop"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "GPL-3.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/telegramdesktop/tdesktop/refs/heads/dev/LICENSE"
+  - url: "https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Telegram-AppImage"
@@ -31,7 +32,9 @@ src_url:
   - "https://github.com/pkgforge-dev/Telegram-AppImage"
 tag:
   - "telegram"
+  - "messaging"
   - "chat"
+  - "instant-messaging"
 x_exec:
   host:
     - "x86_64-linux"
