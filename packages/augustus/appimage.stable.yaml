@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "augustus"
+pkg_id: "pkgforge-dev.augustus"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/augustus"
+category:
+  - "Game"
+  - "StrategyGame"
+description: "An open source re-implementation of Caesar III"
+homepage:
+  - "https://github.com/Keriew/augustus"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "AGPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Keriew/augustus/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "augustus"
+src_url:
+  - "https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced"
+tag:
+  - "game"
+  - "strategy"
+  - "caesar"
+  - "citybuilder"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Augustus-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
