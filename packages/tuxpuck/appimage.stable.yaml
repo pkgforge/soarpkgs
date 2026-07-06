@@ -6,17 +6,16 @@ pkg_id: "pkgforge-dev.tuxpuck"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/tuxpuck"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Tuxpuck, hockey-like table game.　　　　　　　　[Maintainer=@fiftydinar]"
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Air hockey game and Shufflepuck Cafe clone featuring Tux"
 homepage:
-  - "https://github.com/pkgforge-dev/Tuxpuck-AppImage"
+  - "https://wiki.debian.org/Games/TuxPuck"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "GPL-2.0"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tuxpuck-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +26,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Tuxpuck-AppImage"
 tag:
-  - "TODO"
+  - "airhockey"
+  - "game"
+  - "tux"
+  - "arcade"
 x_exec:
   host:
     - "x86_64-linux"
