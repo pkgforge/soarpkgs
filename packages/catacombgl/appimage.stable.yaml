@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "catacombgl"
+pkg_id: "pkgforge-dev.catacombgl"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/catacombgl"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Source port with OpenGL graphics for the Catacomb 3-D game series"
+homepage:
+  - "https://github.com/ArnoAnsems/CatacombGL"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ArnoAnsems/CatacombGL/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CatacombGL-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "catacombgl"
+repology:
+  - "catacombgl"
+src_url:
+  - "https://github.com/pkgforge-dev/CatacombGL-AppImage"
+tag:
+  - "opengl"
+  - "catacomb"
+  - "source-port"
+  - "fps"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/CatacombGL-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/CatacombGL-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
