@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.gamescope"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gamescope"
 category:
-  - "TODO"
-description: "Unofficial AppImage of gamescope [Maintainer=@Samueru-sama]"
+  - "System"
+  - "Utility"
+  - "Game"
+description: "SteamOS session compositing window manager (micro-compositor)"
 homepage:
-  - "https://github.com/pkgforge-dev/gamescope-AppImage"
+  - "https://github.com/ValveSoftware/gamescope"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-2-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ValveSoftware/gamescope/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gamescope-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/gamescope-AppImage"
 tag:
-  - "TODO"
+  - "compositor"
+  - "wayland"
+  - "gaming"
+  - "steamos"
 x_exec:
   host:
     - "x86_64-linux"
