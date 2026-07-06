@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "classicube"
+pkg_id: "pkgforge-dev.classicube"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/classicube"
+category:
+  - "Game"
+  - "AdventureGame"
+description: "A custom Minecraft Classic compatible client written in C from scratch"
+homepage:
+  - "https://www.classicube.net"
+  - "https://github.com/ClassiCube/ClassiCube"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-3-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ClassiCube/ClassiCube/master/license.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ClassiCube-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "classicube"
+repology:
+  - "classicube"
+src_url:
+  - "https://github.com/pkgforge-dev/ClassiCube-AppImage"
+tag:
+  - "minecraft"
+  - "sandbox"
+  - "voxel"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ClassiCube-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ClassiCube-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
