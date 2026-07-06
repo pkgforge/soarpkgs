@@ -1,33 +1,35 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "soh-enhanced"
-pkg_id: "pkgforge-dev.soh-enhanced"
+pkg: "soh"
+pkg_id: "pkgforge-dev.soh"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/soh-enhanced"
+ghcr_pkg: "pkgforge-dev/soh"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Shipwright [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Ship of Harkinian: a PC port of The Legend of Zelda: Ocarina of Time"
 homepage:
-  - "https://github.com/pkgforge-dev/soh-AppImage-Enhanced"
+  - "https://github.com/HarbourMasters/Shipwright"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Custom"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/soh-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "soh-enhanced"
+  - "soh"
 repology:
-  - "soh-enhanced"
+  - "shipwright"
 src_url:
   - "https://github.com/pkgforge-dev/soh-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "zelda"
+  - "ocarina-of-time"
+  - "port"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
