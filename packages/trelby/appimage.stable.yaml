@@ -7,16 +7,17 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/trelby"
 category:
   - "Office"
-  - "WordProcessor"
-description: "Unofficial AppImage of Trelby [Maintainer=@Samueru-sama]"
+  - "TextEditor"
+description: "Free, multiplatform, feature-rich screenwriting program"
 homepage:
   - "https://www.trelby.org"
+  - "https://github.com/trelby/trelby"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "GPL-2.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/trelby/trelby/refs/heads/master/LICENSE"
+  - url: "https://raw.githubusercontent.com/trelby/trelby/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Trelby-AppImage"
@@ -30,6 +31,8 @@ src_url:
 tag:
   - "screenwriting"
   - "screenplay"
+  - "office"
+  - "writing"
 x_exec:
   host:
     - "x86_64-linux"
