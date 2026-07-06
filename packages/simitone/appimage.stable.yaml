@@ -6,28 +6,27 @@ pkg_id: "pkgforge-dev.simitone"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/simitone"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Simitone [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "Simulation"
+description: "Community re-implementation of The Sims 1, based on the FreeSO engine"
 homepage:
-  - "https://github.com/pkgforge-dev/Simitone-AppImage"
+  - "https://github.com/alexjyong/Simitone"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "GPL-3.0"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Simitone-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "simitone"
-repology:
-  - "simitone"
 src_url:
   - "https://github.com/pkgforge-dev/Simitone-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "sims"
+  - "freeso"
+  - "simulation"
 x_exec:
   host:
     - "x86_64-linux"
