@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.reco"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/reco"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Reco audio recorder　[Maintainer=@fiftydinar]"
+  - "Audio"
+  - "AudioVideo"
+  - "Recorder"
+description: "An audio recorder focused on being concise and simple to use"
 homepage:
-  - "https://github.com/pkgforge-dev/Reco-AppImage"
+  - "https://github.com/ryonakano/reco"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ryonakano/reco/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Reco-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Reco-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "recorder"
+  - "gnome"
+  - "elementary"
 x_exec:
   host:
     - "x86_64-linux"
