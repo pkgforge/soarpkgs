@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.neochat"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/neochat"
 category:
-  - "TODO"
-description: "Unofficial AppImage of NeoChat [Maintainer=@Link4Electronics]"
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "A client for Matrix, the decentralized communication protocol"
 homepage:
-  - "https://github.com/pkgforge-dev/NeoChat-AppImage"
+  - "https://apps.kde.org/neochat"
+  - "https://invent.kde.org/network/neochat"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/network/neochat/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NeoChat-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/NeoChat-AppImage"
 tag:
-  - "TODO"
+  - "matrix"
+  - "chat"
+  - "kde"
+  - "messaging"
 x_exec:
   host:
     - "x86_64-linux"
