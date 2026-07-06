@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.simutrans"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/simutrans"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Simutrans [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "Simulation"
+  - "StrategyGame"
+description: "Open-source transportation simulation game"
 homepage:
-  - "https://github.com/pkgforge-dev/Simutrans-AppImage"
+  - "https://www.simutrans.com"
+  - "https://github.com/simutrans/simutrans"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Artistic-1.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/simutrans/simutrans/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Simutrans-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Simutrans-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "simulation"
+  - "transport"
+  - "strategy"
 x_exec:
   host:
     - "x86_64-linux"
