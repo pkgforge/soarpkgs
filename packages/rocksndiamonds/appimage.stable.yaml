@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.rocksndiamonds"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rocksndiamonds"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Rocks'n'Diamonds [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+  - "LogicGame"
+description: "Arcade puzzle game inspired by Boulder Dash, Emerald Mine, and Sokoban"
 homepage:
-  - "https://github.com/pkgforge-dev/RocksnDiamonds-AppImage"
+  - "https://www.artsoft.org/rocksndiamonds/"
+  - "https://github.com/tuero/rocksndiamonds"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/tuero/rocksndiamonds/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RocksnDiamonds-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/RocksnDiamonds-AppImage"
 tag:
-  - "TODO"
+  - "puzzle"
+  - "arcade"
+  - "boulderdash"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
