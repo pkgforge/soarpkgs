@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.neverball"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/neverball"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Neverball [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+description: "Tilt the floor to roll a ball through obstacle courses before time runs out"
 homepage:
-  - "https://github.com/pkgforge-dev/Neverball-AppImage"
+  - "https://neverball.org"
+  - "https://github.com/Neverball/neverball"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Neverball/neverball/master/LICENSE.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Neverball-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Neverball-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "arcade"
+  - "ball"
+  - "3d"
 x_exec:
   host:
     - "x86_64-linux"
