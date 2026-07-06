@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.kblocks"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kblocks"
 category:
-  - "TODO"
-description: "Unofficial AppImage of KBlocks [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "BlocksGame"
+  - "KDE"
+description: "Classic falling blocks (Tetris-like) game for KDE"
 homepage:
-  - "https://github.com/pkgforge-dev/KBlocks-AppImage"
+  - "https://apps.kde.org/kblocks"
+  - "https://invent.kde.org/games/kblocks"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/games/kblocks/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KBlocks-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/KBlocks-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "tetris"
+  - "blocks"
+  - "kde"
 x_exec:
   host:
     - "x86_64-linux"
