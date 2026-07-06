@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.dr-robotniks-ring-racers"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/dr-robotniks-ring-racers"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Dr. Robotnik's Ring Racers [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Technical kart racing game by Kart Krew, successor to SRB2Kart"
 homepage:
-  - "https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
+  - "https://www.kartkrew.org"
+  - "https://github.com/KartKrewDev/RingRacers"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-only"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/KartKrewDev/RingRacers/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
@@ -23,11 +26,14 @@ note:
 provides:
   - "dr-robotniks-ring-racers"
 repology:
-  - "dr-robotniks-ring-racers"
+  - "ring-racers"
 src_url:
   - "https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
 tag:
-  - "TODO"
+  - "kart"
+  - "racing"
+  - "game"
+  - "srb2"
 x_exec:
   host:
     - "x86_64-linux"
