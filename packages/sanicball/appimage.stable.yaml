@@ -6,28 +6,31 @@ pkg_id: "pkgforge-dev.sanicball"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/sanicball"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Sanicball [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Extraordinarily fast Sonic-themed ball racing game made in Unity"
 homepage:
-  - "https://github.com/pkgforge-dev/Sanicball-AppImage"
+  - "https://github.com/BK-TN/Sanicball"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/BK-TN/Sanicball/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Sanicball-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "sanicball"
-repology:
-  - "sanicball"
 src_url:
   - "https://github.com/pkgforge-dev/Sanicball-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "unity"
+  - "sonic"
 x_exec:
   host:
     - "x86_64-linux"
