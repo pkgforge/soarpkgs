@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.nomacs"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/nomacs"
 category:
-  - "TODO"
-description: "Unofficial AppImage. nomacs is a free, open source image viewer, which supports multiple platforms. You can use it for viewing all common image formats including RAW and psd images. [Maintainer=@lucasmz1]"
+  - "Graphics"
+  - "Viewer"
+  - "Photography"
+description: "Lightweight, fast image viewer supporting many formats and RAW files"
 homepage:
-  - "https://github.com/pkgforge-dev/Nomacs-AppImage"
+  - "https://nomacs.org"
+  - "https://github.com/nomacs/nomacs"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/nomacs/nomacs/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Nomacs-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Nomacs-AppImage"
 tag:
-  - "TODO"
+  - "image"
+  - "viewer"
+  - "graphics"
+  - "photography"
 x_exec:
   host:
     - "x86_64-linux"
