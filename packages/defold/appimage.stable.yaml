@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.defold"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/defold"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Defold [Maintainer=@Samueru-sama]"
+  - "Development"
+  - "Game"
+description: "Game engine for development of desktop, mobile and web games"
 homepage:
-  - "https://github.com/pkgforge-dev/Defold-AppImage"
+  - "https://defold.com"
+  - "https://github.com/defold/defold"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Custom"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/defold/defold/dev/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Defold-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Defold-AppImage"
 tag:
-  - "TODO"
+  - "game-engine"
+  - "gamedev"
+  - "editor"
+  - "ide"
 x_exec:
   host:
     - "x86_64-linux"
