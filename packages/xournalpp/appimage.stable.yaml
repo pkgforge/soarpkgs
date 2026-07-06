@@ -1,33 +1,39 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "xournalpp-enhanced"
-pkg_id: "pkgforge-dev.xournalpp-enhanced"
+pkg: "xournalpp"
+pkg_id: "pkgforge-dev.xournalpp"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/xournalpp-enhanced"
+ghcr_pkg: "pkgforge-dev/xournalpp"
 category:
-  - "TODO"
-description: "Unofficial AppImage of xournalpp [Maintainer=@Samueru-sama]"
+  - "Office"
+  - "Graphics"
+  - "Utility"
+description: "Handwriting notetaking software with PDF annotation support"
 homepage:
-  - "https://github.com/pkgforge-dev/xournalpp-AppImage-Enhanced"
+  - "https://xournalpp.github.io"
+  - "https://github.com/xournalpp/xournalpp"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/xournalpp/xournalpp/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/xournalpp-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "xournalpp-enhanced"
+  - "xournalpp"
 repology:
-  - "xournalpp-enhanced"
+  - "xournalpp"
 src_url:
   - "https://github.com/pkgforge-dev/xournalpp-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "notetaking"
+  - "handwriting"
+  - "pdf"
+  - "annotation"
 x_exec:
   host:
     - "x86_64-linux"
