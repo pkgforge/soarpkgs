@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.imagemagick"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/imagemagick"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ImageMagick [Maintainer=@Samueru-sama]"
+  - "Graphics"
+  - "RasterGraphics"
+  - "ImageProcessing"
+description: "Software suite to create, edit, convert and display images in 200+ formats"
 homepage:
-  - "https://github.com/pkgforge-dev/ImageMagick-AppImage"
+  - "https://imagemagick.org"
+  - "https://github.com/ImageMagick/ImageMagick"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "ImageMagick"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ImageMagick/ImageMagick/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ImageMagick-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/ImageMagick-AppImage"
 tag:
-  - "TODO"
+  - "imagemagick"
+  - "image"
+  - "graphics"
+  - "convert"
 x_exec:
   host:
     - "x86_64-linux"
