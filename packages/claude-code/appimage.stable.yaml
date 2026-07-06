@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.claude-code"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/claude-code"
 category:
-  - "TODO"
-description: "Unofficial AppImage of claude-code [Maintainer=@Samueru-sama]"
+  - "Development"
+  - "Utility"
+description: "Agentic coding tool that lives in your terminal and understands your codebase"
 homepage:
-  - "https://github.com/pkgforge-dev/claude-code-AppImage"
+  - "https://claude.com/claude-code"
+  - "https://github.com/anthropics/claude-code"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Proprietary"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/anthropics/claude-code/main/LICENSE.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/claude-code-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/claude-code-AppImage"
 tag:
-  - "TODO"
+  - "ai"
+  - "cli"
+  - "coding"
+  - "agent"
 x_exec:
   host:
     - "x86_64-linux"
