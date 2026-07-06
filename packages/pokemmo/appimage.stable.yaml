@@ -6,16 +6,16 @@ pkg_id: "pkgforge-dev.pokemmo"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/pokemmo"
 category:
-  - "TODO"
+  - "Game"
 description: "Unofficial AppImage of PokeMMO [Maintainer=@Link4Electronics]"
 homepage:
-  - "https://github.com/pkgforge-dev/PokeMMO-AppImage"
+  - "https://pokemmo.com/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Proprietary"
 build_asset:
-  - url: "TODO"
+  - url: "https://pokemmo.com/tos/"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PokeMMO-AppImage"
@@ -27,7 +27,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/PokeMMO-AppImage"
 tag:
-  - "TODO"
+  - "pokemon"
+  - "mmo"
 x_exec:
   host:
     - "x86_64-linux"
