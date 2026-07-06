@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "gram-enhanced"
-pkg_id: "pkgforge-dev.gram-enhanced"
+pkg: "gram"
+pkg_id: "pkgforge-dev.gram"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/gram-enhanced"
+ghcr_pkg: "pkgforge-dev/gram"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Gram [Maintainer=@Samueru-sama]"
+  - "Development"
+  - "TextEditor"
+  - "IDE"
+description: "Fast, stable code editor forked from Zed, without AI or subscriptions"
 homepage:
-  - "https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
+  - "https://codeberg.org/GramEditor/gram"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://codeberg.org/GramEditor/gram/raw/branch/main/LICENSE-GPL"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "gram-enhanced"
+  - "gram"
 repology:
-  - "gram-enhanced"
+  - "gram"
 src_url:
   - "https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "editor"
+  - "code-editor"
+  - "zed"
+  - "ide"
 x_exec:
   host:
     - "x86_64-linux"
