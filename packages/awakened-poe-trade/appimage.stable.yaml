@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "awakened-poe-trade-enhanced"
-pkg_id: "pkgforge-dev.awakened-poe-trade-enhanced"
+pkg: "awakened-poe-trade"
+pkg_id: "pkgforge-dev.awakened-poe-trade"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/awakened-poe-trade-enhanced"
+ghcr_pkg: "pkgforge-dev/awakened-poe-trade"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Awakened POE Trade　　　　　　　　　[Maintainer=@fiftydinar]   "
+  - "Utility"
+  - "Game"
+description: "Path of Exile app for price checking and trading"
 homepage:
-  - "https://github.com/pkgforge-dev/Awakened-POE-Trade-AppImage-Enhanced"
+  - "https://snosme.github.io/awakened-poe-trade/download"
+  - "https://github.com/SnosMe/awakened-poe-trade"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Awakened-POE-Trade-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "awakened-poe-trade-enhanced"
+  - "awakened-poe-trade"
 repology:
-  - "awakened-poe-trade-enhanced"
+  - "awakened-poe-trade"
 src_url:
   - "https://github.com/pkgforge-dev/Awakened-POE-Trade-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "poe"
+  - "trade"
+  - "price-check"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
