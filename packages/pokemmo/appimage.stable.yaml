@@ -7,16 +7,15 @@ pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/pokemmo"
 category:
   - "Game"
-description: "Unofficial AppImage of PokeMMO [Maintainer=@Link4Electronics]"
+  - "RolePlaying"
+  - "Network"
+description: "Free MMO client for Pokemon games with online multiplayer and trading"
 homepage:
-  - "https://pokemmo.com/"
+  - "https://pokemmo.com"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "Proprietary"
-build_asset:
-  - url: "https://pokemmo.com/tos/"
-    out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PokeMMO-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,8 +26,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/PokeMMO-AppImage"
 tag:
-  - "pokemon"
+  - "game"
   - "mmo"
+  - "pokemon"
+  - "rpg"
 x_exec:
   host:
     - "x86_64-linux"
