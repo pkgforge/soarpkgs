@@ -1,33 +1,37 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "isle-portable-enhanced"
-pkg_id: "pkgforge-dev.isle-portable-enhanced"
+pkg: "isle-portable"
+pkg_id: "pkgforge-dev.isle-portable"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/isle-portable-enhanced"
+ghcr_pkg: "pkgforge-dev/isle-portable"
 category:
-  - "TODO"
-description: "Unofficial AppImage of isle-portable [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+description: "A portable/cross-platform build of the LEGO Island (1997) decompilation"
 homepage:
-  - "https://github.com/pkgforge-dev/isle-portable-AppImage-Enhanced"
+  - "https://github.com/isledecomp/isle-portable"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "LGPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/isledecomp/isle-portable/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/isle-portable-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "isle-portable-enhanced"
+  - "isle-portable"
 repology:
-  - "isle-portable-enhanced"
+  - "isle-portable"
 src_url:
   - "https://github.com/pkgforge-dev/isle-portable-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "lego"
+  - "island"
+  - "game"
+  - "decompilation"
 x_exec:
   host:
     - "x86_64-linux"
