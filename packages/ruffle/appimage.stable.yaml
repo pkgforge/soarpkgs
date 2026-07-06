@@ -6,16 +6,20 @@ pkg_id: "pkgforge-dev.ruffle"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/ruffle"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Ruffle [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Player"
+  - "Utility"
+description: "An Adobe Flash Player emulator written in Rust"
 homepage:
-  - "https://github.com/pkgforge-dev/Ruffle-AppImage"
+  - "https://ruffle.rs"
+  - "https://github.com/ruffle-rs/ruffle"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
+  - "Apache-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Ruffle-AppImage"
@@ -27,7 +31,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Ruffle-AppImage"
 tag:
-  - "TODO"
+  - "flash"
+  - "emulator"
+  - "player"
+  - "swf"
 x_exec:
   host:
     - "x86_64-linux"
