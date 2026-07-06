@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.xoreos"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/xoreos"
 category:
-  - "TODO"
-description: "Unofficial AppImage of xoreos [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "RolePlaying"
+  - "AdventureGame"
+description: "A reimplementation of BioWare's Aurora engine (NWN, KotOR, etc.)"
 homepage:
-  - "https://github.com/pkgforge-dev/xoreos-AppImage"
+  - "https://xoreos.org"
+  - "https://github.com/xoreos/xoreos"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/xoreos/xoreos/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/xoreos-AppImage"
@@ -27,15 +30,18 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/xoreos-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "engine"
+  - "aurora"
+  - "rpg"
 x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/xoreos-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/xoreos-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/xoreos-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/xoreos-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
