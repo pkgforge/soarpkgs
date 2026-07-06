@@ -1,33 +1,37 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "flycast-enhanced"
-pkg_id: "pkgforge-dev.flycast-enhanced"
+pkg: "flycast"
+pkg_id: "pkgforge-dev.flycast"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/flycast-enhanced"
+ghcr_pkg: "pkgforge-dev/flycast"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Flycast [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Multi-platform Sega Dreamcast, Naomi, and Atomiswave emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced"
+  - "https://github.com/flyinghead/flycast"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/flyinghead/flycast/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "flycast-enhanced"
+  - "flycast"
 repology:
-  - "flycast-enhanced"
+  - "flycast"
 src_url:
   - "https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "emulator"
+  - "dreamcast"
+  - "sega"
+  - "naomi"
 x_exec:
   host:
     - "x86_64-linux"
