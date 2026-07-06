@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.srb2kart"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/srb2kart"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SRB2kart [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+description: "Kart racing game based on the 3D Sonic fangame Sonic Robo Blast 2"
 homepage:
-  - "https://github.com/pkgforge-dev/SRB2Kart-AppImage"
+  - "https://srb2.org"
+  - "https://github.com/STJr/Kart-Public"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/STJr/Kart-Public/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SRB2Kart-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/SRB2Kart-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "kart"
+  - "sonic"
 x_exec:
   host:
     - "x86_64-linux"
