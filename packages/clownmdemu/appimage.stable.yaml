@@ -6,28 +6,31 @@ pkg_id: "pkgforge-dev.clownmdemu"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/clownmdemu"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ClownMDEmu [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Sega Mega Drive/Genesis emulator with reference standalone frontend"
 homepage:
-  - "https://github.com/pkgforge-dev/ClownMDEmu-AppImage"
+  - "https://clownacy.wordpress.com/tag/clownmdemu/"
+  - "https://github.com/Clownacy/clownmdemu-frontend"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "AGPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Clownacy/clownmdemu-frontend/master/LICENCE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ClownMDEmu-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "clownmdemu"
-repology:
-  - "clownmdemu"
 src_url:
   - "https://github.com/pkgforge-dev/ClownMDEmu-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "sega"
+  - "genesis"
+  - "megadrive"
 x_exec:
   host:
     - "x86_64-linux"
