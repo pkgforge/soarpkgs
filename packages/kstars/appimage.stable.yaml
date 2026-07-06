@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.kstars"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kstars"
 category:
-  - "TODO"
-description: "Unofficial AppImage of KStars [Maintainer=@Link4Electronics]"
+  - "Science"
+  - "Education"
+description: "Desktop planetarium and astronomy suite for KDE"
 homepage:
-  - "https://github.com/pkgforge-dev/KStars-AppImage"
+  - "https://apps.kde.org/kstars"
+  - "https://invent.kde.org/education/kstars"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/education/kstars/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KStars-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/KStars-AppImage"
 tag:
-  - "TODO"
+  - "astronomy"
+  - "planetarium"
+  - "kde"
+  - "science"
 x_exec:
   host:
     - "x86_64-linux"
