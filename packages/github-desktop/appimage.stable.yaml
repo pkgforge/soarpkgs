@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "github-desktop-enhanced"
-pkg_id: "pkgforge-dev.github-desktop-enhanced"
+pkg: "github-desktop"
+pkg_id: "pkgforge-dev.github-desktop"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/github-desktop-enhanced"
+ghcr_pkg: "pkgforge-dev/github-desktop"
 category:
-  - "TODO"
-description: "Unofficial AppImage of GitHub Desktop Plus [Maintainer=@Link4Electronics]"
+  - "Development"
+  - "Utility"
+description: "Fork of GitHub Desktop with support for various Linux distributions"
 homepage:
-  - "https://github.com/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+  - "https://desktop.github.com"
+  - "https://github.com/shiftkey/desktop"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/shiftkey/desktop/linux/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "github-desktop-enhanced"
+  - "github-desktop"
 repology:
-  - "github-desktop-enhanced"
+  - "github-desktop"
 src_url:
   - "https://github.com/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "git"
+  - "github"
+  - "vcs"
+  - "gui"
 x_exec:
   host:
     - "x86_64-linux"
