@@ -1,33 +1,35 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "iris-enhanced"
-pkg_id: "pkgforge-dev.iris-enhanced"
+pkg: "iris"
+pkg_id: "pkgforge-dev.iris"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/iris-enhanced"
+ghcr_pkg: "pkgforge-dev/iris"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Iris [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "Emulator"
+description: "Sony PlayStation 2 emulator for Windows, Linux and macOS"
 homepage:
-  - "https://github.com/pkgforge-dev/Iris-AppImage-Enhanced"
+  - "https://github.com/allkern/iris"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/allkern/iris/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Iris-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "iris-enhanced"
-repology:
-  - "iris-enhanced"
+  - "iris"
 src_url:
   - "https://github.com/pkgforge-dev/Iris-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "playstation2"
+  - "emulator"
+  - "ps2"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
