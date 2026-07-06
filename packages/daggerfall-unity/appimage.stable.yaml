@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.daggerfall-unity"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/daggerfall-unity"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Daggerfall Unity [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "RolePlaying"
+  - "AdventureGame"
+description: "Open source recreation of Daggerfall in the Unity engine"
 homepage:
-  - "https://github.com/pkgforge-dev/Daggerfall-Unity-AppImage"
+  - "https://www.dfworkshop.net"
+  - "https://github.com/Interkarma/daggerfall-unity"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Interkarma/daggerfall-unity/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Daggerfall-Unity-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Daggerfall-Unity-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "rpg"
+  - "daggerfall"
+  - "unity"
 x_exec:
   host:
     - "x86_64-linux"
