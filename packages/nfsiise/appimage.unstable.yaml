@@ -6,36 +6,38 @@ pkg_id: "pkgforge-dev.nfsiise"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/nfsiise"
 category:
-  - "TODO"
-description: "Unofficial AppImage of NFSIISE [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+description: "Fork of the Need For Speed II SE cross-platform port with x86_64/arm64 support"
 homepage:
-  - "https://github.com/pkgforge-dev/NFSIISE-AppImage"
+  - "https://github.com/Link4Electronics/NFSIISE"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Link4Electronics/NFSIISE/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NFSIISE-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "nfsiise"
-repology:
-  - "nfsiise"
 src_url:
   - "https://github.com/pkgforge-dev/NFSIISE-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "nfs"
+  - "port"
 x_exec:
   host:
     - "x86_64-linux"
     - "aarch64-linux"
   shell: "sh"
   pkgver: |
-    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/NFSIISE-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/NFSIISE-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
     echo "${VERSION%%@*}"
     echo "$VERSION"
   run: |
-    soar dl "https://github.com/pkgforge-dev/NFSIISE-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
+    soar dl "https://github.com/pkgforge-dev/NFSIISE-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
