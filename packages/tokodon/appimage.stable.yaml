@@ -5,17 +5,19 @@ pkg: "tokodon"
 pkg_id: "pkgforge-dev.tokodon"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/tokodon"
+app_id: "org.kde.tokodon"
 category:
-  - "TODO"
+  - "Network"
+  - "InstantMessaging"
 description: "Unofficial AppImage of Tokodon [Maintainer=@Link4Electronics]"
 homepage:
-  - "https://github.com/pkgforge-dev/Tokodon-AppImage"
+  - "https://apps.kde.org/tokodon/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/KDE/tokodon/refs/heads/master/LICENSES/GPL-3.0-only.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tokodon-AppImage"
@@ -27,7 +29,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Tokodon-AppImage"
 tag:
-  - "TODO"
+  - "mastodon"
+  - "social"
 x_exec:
   host:
     - "x86_64-linux"
