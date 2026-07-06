@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.yamagi-quake-ii"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/yamagi-quake-ii"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Yamagi Quake II [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+  - "Shooter"
+description: "Enhanced Quake II source port with modern features and bug fixes"
 homepage:
-  - "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage"
+  - "https://www.yamagi.org/quake2"
+  - "https://github.com/yquake2/yquake2"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/yquake2/yquake2/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage"
@@ -23,11 +26,14 @@ note:
 provides:
   - "yamagi-quake-ii"
 repology:
-  - "yamagi-quake-ii"
+  - "yamagi-quake2"
 src_url:
   - "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage"
 tag:
-  - "TODO"
+  - "quake"
+  - "fps"
+  - "game"
+  - "sourceport"
 x_exec:
   host:
     - "x86_64-linux"
