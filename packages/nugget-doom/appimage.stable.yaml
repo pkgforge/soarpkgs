@@ -1,33 +1,37 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "nugget-doom-enhanced"
-pkg_id: "pkgforge-dev.nugget-doom-enhanced"
+pkg: "nugget-doom"
+pkg_id: "pkgforge-dev.nugget-doom"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/nugget-doom-enhanced"
+ghcr_pkg: "pkgforge-dev/nugget-doom"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Nugget Doom [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Doom source port forked from Woof! with additional features"
 homepage:
-  - "https://github.com/pkgforge-dev/Nugget-Doom-AppImage-Enhanced"
+  - "https://github.com/MrAlaux/Nugget-Doom"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/MrAlaux/Nugget-Doom/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Nugget-Doom-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "nugget-doom-enhanced"
+  - "nugget-doom"
 repology:
-  - "nugget-doom-enhanced"
+  - "nugget-doom"
 src_url:
   - "https://github.com/pkgforge-dev/Nugget-Doom-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "doom"
+  - "game"
+  - "source-port"
+  - "fps"
 x_exec:
   host:
     - "x86_64-linux"
