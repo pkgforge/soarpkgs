@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.kmines"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kmines"
 category:
-  - "TODO"
-description: "Unofficial AppImage of KMines [Maintainer=@Link4Electronics]"
+  - "Game"
+description: "KMines is the classic Minesweeper game"
 homepage:
-  - "https://github.com/pkgforge-dev/KMines-AppImage"
+  - "https://apps.kde.org/kmines"
+  - "https://invent.kde.org/games/kmines"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/games/kmines/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KMines-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/KMines-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "minesweeper"
+  - "kde"
+  - "puzzle"
 x_exec:
   host:
     - "x86_64-linux"
