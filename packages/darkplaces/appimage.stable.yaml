@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.darkplaces"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/darkplaces"
 category:
-  - "TODO"
-description: "Unofficial AppImage of DarkPlaces [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Modernized Quake game engine with advanced graphics and rendering"
 homepage:
-  - "https://github.com/pkgforge-dev/DarkPlaces-AppImage"
+  - "https://icculus.org/twilight/darkplaces/"
+  - "https://github.com/DarkPlacesEngine/DarkPlaces"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/DarkPlacesEngine/DarkPlaces/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DarkPlaces-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/DarkPlaces-AppImage"
 tag:
-  - "TODO"
+  - "quake"
+  - "game-engine"
+  - "fps"
+  - "3d"
 x_exec:
   host:
     - "x86_64-linux"
