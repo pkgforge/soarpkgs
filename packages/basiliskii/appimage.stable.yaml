@@ -1,33 +1,37 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "basiliskii-enhanced"
-pkg_id: "pkgforge-dev.basiliskii-enhanced"
+pkg: "basiliskii"
+pkg_id: "pkgforge-dev.basiliskii"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/basiliskii-enhanced"
+ghcr_pkg: "pkgforge-dev/basiliskii"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Basilisk II [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "System"
+description: "Open source 68k Macintosh (Basilisk II) emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/BasiliskII-AppImage-Enhanced"
+  - "https://github.com/kanjitalk755/macemu"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-only"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/kanjitalk755/macemu/master/BasiliskII/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BasiliskII-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "basiliskii-enhanced"
+  - "basiliskii"
 repology:
-  - "basiliskii-enhanced"
+  - "basiliskii"
 src_url:
   - "https://github.com/pkgforge-dev/BasiliskII-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "emulator"
+  - "macintosh"
+  - "68k"
+  - "m68k"
 x_exec:
   host:
     - "x86_64-linux"
