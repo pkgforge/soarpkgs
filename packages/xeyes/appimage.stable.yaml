@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.xeyes"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/xeyes"
 category:
-  - "TODO"
-description: "Unofficial AppImage of xeyes [Maintainer=@Link4Electronics]"
+  - "Amusement"
+  - "Utility"
+description: "Classic X11 demo with googly eyes that follow the mouse cursor"
 homepage:
-  - "https://github.com/pkgforge-dev/xeyes-AppImage"
+  - "https://gitlab.freedesktop.org/xorg/app/xeyes"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.freedesktop.org/xorg/app/xeyes/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/xeyes-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/xeyes-AppImage"
 tag:
-  - "TODO"
+  - "x11"
+  - "xorg"
+  - "eyes"
+  - "demo"
 x_exec:
   host:
     - "x86_64-linux"
