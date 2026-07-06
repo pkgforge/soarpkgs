@@ -8,15 +8,18 @@ ghcr_pkg: "pkgforge-dev/taisei-project"
 app_id: "org.taisei_project.Taisei"
 category:
   - "Game"
-description: "Unofficial AppImage of Taisei-Project [Maintainer=@Link4Electronics]"
+  - "ArcadeGame"
+  - "ActionGame"
+description: "A free and open-source Touhou Project fangame (shoot-em-up)"
 homepage:
-  - "https://taisei-project.org"
+  - "https://taisei-project.org/"
+  - "https://github.com/taisei-project/taisei"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "https://raw.githubusercontent.com/taisei-project/taisei/refs/heads/master/COPYING.txt"
+  - url: "https://raw.githubusercontent.com/taisei-project/taisei/master/COPYING.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Taisei-Project-AppImage"
@@ -28,8 +31,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Taisei-Project-AppImage"
 tag:
-  - "shoot-em-up"
-  - "bullet-hell"
+  - "game"
+  - "shmup"
+  - "touhou"
+  - "arcade"
 x_exec:
   host:
     - "x86_64-linux"
