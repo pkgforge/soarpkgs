@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "arx-libertatis"
+pkg_id: "pkgforge-dev.arx-libertatis"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/arx-libertatis"
+category:
+  - "Game"
+  - "RolePlaying"
+description: "Cross-platform port of Arx Fatalis, a first-person role-playing game"
+homepage:
+  - "https://arx-libertatis.org/"
+  - "https://github.com/arx/ArxLibertatis"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/arx/ArxLibertatis/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Arx-Libertatis-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "arx-libertatis"
+repology:
+  - "arx-libertatis"
+src_url:
+  - "https://github.com/pkgforge-dev/Arx-Libertatis-AppImage"
+tag:
+  - "rpg"
+  - "game"
+  - "arx-fatalis"
+  - "first-person"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Arx-Libertatis-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Arx-Libertatis-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
