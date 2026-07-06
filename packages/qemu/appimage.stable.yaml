@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.qemu"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/qemu"
 category:
-  - "TODO"
-description: "Unofficial AppImage of QEMU to emulate all supported platforms [Maintainer=@Link4Electronics] "
+  - "Emulator"
+  - "System"
+  - "Utility"
+description: "Generic and open source machine emulator and virtualizer"
 homepage:
-  - "https://github.com/pkgforge-dev/QEMU-AppImage"
+  - "https://www.qemu.org"
+  - "https://github.com/qemu/qemu"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/qemu/qemu/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/QEMU-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/QEMU-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "virtualization"
+  - "kvm"
+  - "system"
 x_exec:
   host:
     - "x86_64-linux"
