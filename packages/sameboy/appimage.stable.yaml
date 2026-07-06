@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.sameboy"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/sameboy"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SameBoy [Maintainer=@Samueru-sama]"
+  - "Emulator"
+  - "Game"
+description: "Accurate Game Boy and Game Boy Color emulator written in C"
 homepage:
-  - "https://github.com/pkgforge-dev/SameBoy-AppImage"
+  - "https://sameboy.github.io"
+  - "https://github.com/LIJI32/SameBoy"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/LIJI32/SameBoy/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SameBoy-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/SameBoy-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "gameboy"
+  - "gbc"
+  - "retro"
 x_exec:
   host:
     - "x86_64-linux"
