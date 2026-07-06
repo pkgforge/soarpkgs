@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.odamex"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/odamex"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Odamex [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Online multiplayer Doom port focused on original gameplay with enhancements"
 homepage:
-  - "https://github.com/pkgforge-dev/Odamex-AppImage"
+  - "https://odamex.net"
+  - "https://github.com/odamex/odamex"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/odamex/odamex/stable/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Odamex-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Odamex-AppImage"
 tag:
-  - "TODO"
+  - "doom"
+  - "game"
+  - "multiplayer"
+  - "fps"
 x_exec:
   host:
     - "x86_64-linux"
