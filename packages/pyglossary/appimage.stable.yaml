@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.pyglossary"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/pyglossary"
 category:
-  - "TODO"
-description: "Unofficial AppImage of PyGlossary [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "Education"
+  - "Office"
+description: "Tool for converting dictionary files and glossaries between various formats"
 homepage:
-  - "https://github.com/pkgforge-dev/PyGlossary-AppImage"
+  - "https://github.com/ilius/pyglossary"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ilius/pyglossary/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PyGlossary-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/PyGlossary-AppImage"
 tag:
-  - "TODO"
+  - "dictionary"
+  - "glossary"
+  - "converter"
+  - "cli"
 x_exec:
   host:
     - "x86_64-linux"
