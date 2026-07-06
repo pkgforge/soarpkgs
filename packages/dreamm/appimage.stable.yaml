@@ -6,17 +6,16 @@ pkg_id: "pkgforge-dev.dreamm"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/dreamm"
 category:
-  - "TODO"
-description: "Unofficial AppImage of DREAMM [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+  - "Utility"
+description: "Emulator and launcher for classic LucasArts SCUMM adventure games"
 homepage:
-  - "https://github.com/pkgforge-dev/DREAMM-AppImage"
+  - "https://dreamm.net"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DREAMM-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +26,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/DREAMM-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "scumm"
+  - "lucasarts"
+  - "games"
 x_exec:
   host:
     - "x86_64-linux"
