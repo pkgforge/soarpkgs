@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.rewaita"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rewaita"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Rewaita, color tinting for Adwaita.　　　　　[Maintainer=@fiftydinar]"
+  - "Settings"
+  - "Utility"
+  - "Graphics"
+description: "Recolor GTK4/LibAdwaita apps to popular color schemes"
 homepage:
-  - "https://github.com/pkgforge-dev/Rewaita-AppImage"
+  - "https://github.com/SwordPuffin/Rewaita"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/SwordPuffin/Rewaita/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rewaita-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Rewaita-AppImage"
 tag:
-  - "TODO"
+  - "gtk"
+  - "adwaita"
+  - "theme"
+  - "gnome"
 x_exec:
   host:
     - "x86_64-linux"
