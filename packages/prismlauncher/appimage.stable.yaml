@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "prismlauncher-enhanced"
-pkg_id: "pkgforge-dev.prismlauncher-enhanced"
+pkg: "prismlauncher"
+pkg_id: "pkgforge-dev.prismlauncher"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/prismlauncher-enhanced"
+ghcr_pkg: "pkgforge-dev/prismlauncher"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Prism Launcher [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "Utility"
+description: "A custom Minecraft launcher to easily manage multiple Minecraft installations"
 homepage:
-  - "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced"
+  - "https://prismlauncher.org"
+  - "https://github.com/PrismLauncher/PrismLauncher"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "prismlauncher-enhanced"
+  - "prismlauncher"
 repology:
-  - "prismlauncher-enhanced"
+  - "prismlauncher"
 src_url:
   - "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "minecraft"
+  - "launcher"
+  - "game"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
