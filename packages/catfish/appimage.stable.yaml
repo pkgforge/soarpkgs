@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "catfish"
+pkg_id: "pkgforge-dev.catfish"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/catfish"
+category:
+  - "Utility"
+  - "System"
+description: "File-searching application for the XFCE desktop environment"
+homepage:
+  - "https://docs.xfce.org/apps/catfish/start"
+  - "https://gitlab.xfce.org/apps/catfish"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-only"
+build_asset:
+  - url: "https://gitlab.xfce.org/apps/catfish/-/raw/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Catfish-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "catfish"
+repology:
+  - "catfish"
+src_url:
+  - "https://github.com/pkgforge-dev/Catfish-AppImage"
+tag:
+  - "search"
+  - "file-search"
+  - "xfce"
+  - "utility"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Catfish-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Catfish-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
