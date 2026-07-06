@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.uefitool"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/uefitool"
 category:
-  - "TODO"
+  - "System"
+  - "Utility"
 description: "Unofficial AppImage of UEFITool [Maintainer=@Link4Electronics]"
 homepage:
-  - "https://github.com/pkgforge-dev/UEFITool-AppImage"
+  - "https://github.com/LongSoft/UEFITool"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-2-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/LongSoft/UEFITool/refs/heads/master/LICENSE.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UEFITool-AppImage"
@@ -27,7 +28,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/UEFITool-AppImage"
 tag:
-  - "TODO"
+  - "uefi"
+  - "firmware"
 x_exec:
   host:
     - "x86_64-linux"
