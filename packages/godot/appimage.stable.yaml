@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.godot"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/godot"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Godot [Maintainer=@Samueru-sama]"
+  - "Development"
+  - "Game"
+description: "Advanced cross-platform 2D and 3D game engine"
 homepage:
-  - "https://github.com/pkgforge-dev/Godot-AppImage"
+  - "https://godotengine.org"
+  - "https://github.com/godotengine/godot"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/godotengine/godot/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Godot-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Godot-AppImage"
 tag:
-  - "TODO"
+  - "game-engine"
+  - "game"
+  - "godot"
+  - "development"
 x_exec:
   host:
     - "x86_64-linux"
