@@ -6,17 +6,16 @@ pkg_id: "pkgforge-dev.dwarf-fortress"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/dwarf-fortress"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Dwarf Fortress [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "StrategyGame"
+  - "RolePlaying"
+description: "Single-player fantasy construction and management roguelike by Bay 12 Games"
 homepage:
-  - "https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage"
+  - "https://www.bay12games.com/dwarves/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +26,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "roguelike"
+  - "strategy"
+  - "simulation"
 x_exec:
   host:
     - "x86_64-linux"
