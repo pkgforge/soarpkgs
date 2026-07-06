@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "openra-enhanced"
-pkg_id: "pkgforge-dev.openra-enhanced"
+pkg: "openra"
+pkg_id: "pkgforge-dev.openra"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/openra-enhanced"
+ghcr_pkg: "pkgforge-dev/openra"
 category:
-  - "TODO"
-description: "Unofficial AppImage of OpenRA containing all 3 game modes [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "StrategyGame"
+description: "Open source real-time strategy engine reimplementing classic Westwood RTS games"
 homepage:
-  - "https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced"
+  - "https://www.openra.net"
+  - "https://github.com/OpenRA/OpenRA"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/OpenRA/OpenRA/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "openra-enhanced"
+  - "openra"
 repology:
-  - "openra-enhanced"
+  - "openra"
 src_url:
   - "https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "strategy"
+  - "rts"
+  - "game"
+  - "engine"
 x_exec:
   host:
     - "x86_64-linux"
