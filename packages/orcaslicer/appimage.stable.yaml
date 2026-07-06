@@ -1,33 +1,36 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "orcaslicer-enhanced"
-pkg_id: "pkgforge-dev.orcaslicer-enhanced"
+pkg: "orcaslicer"
+pkg_id: "pkgforge-dev.orcaslicer"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/orcaslicer-enhanced"
+ghcr_pkg: "pkgforge-dev/orcaslicer"
+app_id: "com.softfever.OrcaSlicer"
 category:
-  - "TODO"
-description: "Improved AppImage of OrcaSlicer which is able to work on any linux system [Maintainer=@Samueru-sama]"
+  - "3DGraphics"
+  - "Utility"
+description: "Open source slicer for FDM 3D printers, forked from Bambu Studio"
 homepage:
-  - "https://github.com/pkgforge-dev/OrcaSlicer-AppImage-Enhanced"
+  - "https://github.com/OrcaSlicer/OrcaSlicer"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "AGPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/OrcaSlicer/OrcaSlicer/refs/heads/main/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OrcaSlicer-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "orcaslicer-enhanced"
+  - "orcaslicer"
 repology:
-  - "orcaslicer-enhanced"
+  - "orcaslicer"
 src_url:
   - "https://github.com/pkgforge-dev/OrcaSlicer-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "3d-printing"
+  - "slicer"
 x_exec:
   host:
     - "x86_64-linux"
