@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "qmplay2-enhanced"
-pkg_id: "pkgforge-dev.qmplay2-enhanced"
+pkg: "qmplay2"
+pkg_id: "pkgforge-dev.qmplay2"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/qmplay2-enhanced"
+ghcr_pkg: "pkgforge-dev/qmplay2"
 category:
-  - "TODO"
-description: "Unofficial AppImage of QMPlay2 [Maintainer=@Link4Electronics]"
+  - "AudioVideo"
+  - "Player"
+  - "Video"
+description: "Qt-based media player, streamer and downloader supporting many formats"
 homepage:
-  - "https://github.com/pkgforge-dev/QMPlay2-AppImage-Enhanced"
+  - "https://github.com/zaps166/QMPlay2"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "LGPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/zaps166/QMPlay2/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/QMPlay2-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "qmplay2-enhanced"
+  - "qmplay2"
 repology:
-  - "qmplay2-enhanced"
+  - "qmplay2"
 src_url:
   - "https://github.com/pkgforge-dev/QMPlay2-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "media-player"
+  - "video"
+  - "audio"
+  - "qt"
 x_exec:
   host:
     - "x86_64-linux"
