@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.fooyin"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/fooyin"
 category:
-  - "TODO"
-description: "Unofficial AppImage of fooyin [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "Music"
+  - "Player"
+description: "A customisable Qt music player for Linux"
 homepage:
-  - "https://github.com/pkgforge-dev/fooyin-AppImage"
+  - "https://fooyin.org"
+  - "https://github.com/fooyin/fooyin"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/fooyin/fooyin/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/fooyin-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/fooyin-AppImage"
 tag:
-  - "TODO"
+  - "music"
+  - "player"
+  - "audio"
+  - "qt"
 x_exec:
   host:
     - "x86_64-linux"
