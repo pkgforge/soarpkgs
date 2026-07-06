@@ -6,9 +6,9 @@ pkg_id: "pkgforge-dev.uefitool"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/uefitool"
 category:
-  - "System"
   - "Utility"
-description: "Unofficial AppImage of UEFITool [Maintainer=@Link4Electronics]"
+  - "System"
+description: "UEFI firmware image viewer and editor"
 homepage:
   - "https://github.com/LongSoft/UEFITool"
 maintainer:
@@ -16,7 +16,7 @@ maintainer:
 license:
   - "BSD-2-Clause"
 build_asset:
-  - url: "https://raw.githubusercontent.com/LongSoft/UEFITool/refs/heads/master/LICENSE.md"
+  - url: "https://raw.githubusercontent.com/LongSoft/UEFITool/new_engine/LICENSE.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UEFITool-AppImage"
@@ -30,6 +30,8 @@ src_url:
 tag:
   - "uefi"
   - "firmware"
+  - "editor"
+  - "bios"
 x_exec:
   host:
     - "x86_64-linux"
