@@ -5,17 +5,19 @@ pkg: "pdf-tricks"
 pkg_id: "pkgforge-dev.pdf-tricks"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/pdf-tricks"
+app_id: "com.github.muriloventuroso.pdftricks"
 category:
-  - "TODO"
+  - "Office"
+  - "Utility"
 description: "Unofficial AppImage of PDF Tricks [Maintainer=@Samueru-sama]"
 homepage:
-  - "https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
+  - "https://github.com/muriloventuroso/pdftricks"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/muriloventuroso/pdftricks/refs/heads/master/debian/copyright"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
@@ -23,11 +25,12 @@ note:
 provides:
   - "pdf-tricks"
 repology:
-  - "pdf-tricks"
+  - "pdftricks"
 src_url:
   - "https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
 tag:
-  - "TODO"
+  - "pdf"
+  - "ghostscript"
 x_exec:
   host:
     - "x86_64-linux"
