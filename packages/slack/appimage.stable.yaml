@@ -6,17 +6,16 @@ pkg_id: "pkgforge-dev.slack"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/slack"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Slack [Maintainer=@Samueru-sama]"
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "Team messaging and collaboration app for channels, chat, and file sharing"
 homepage:
-  - "https://github.com/pkgforge-dev/Slack-AppImage"
+  - "https://slack.com"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Slack-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +26,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Slack-AppImage"
 tag:
-  - "TODO"
+  - "chat"
+  - "messaging"
+  - "collaboration"
+  - "slack"
 x_exec:
   host:
     - "x86_64-linux"
