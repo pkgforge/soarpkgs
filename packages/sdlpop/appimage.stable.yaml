@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.sdlpop"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/sdlpop"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SDLPoP [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Open-source port of the classic Prince of Persia game"
 homepage:
-  - "https://github.com/pkgforge-dev/SDLPoP-AppImage"
+  - "https://github.com/NagyD/SDLPoP"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/NagyD/SDLPoP/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SDLPoP-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/SDLPoP-AppImage"
 tag:
-  - "TODO"
+  - "prince-of-persia"
+  - "platformer"
+  - "game"
+  - "port"
 x_exec:
   host:
     - "x86_64-linux"
