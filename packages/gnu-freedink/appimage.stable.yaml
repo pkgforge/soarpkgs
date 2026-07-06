@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.gnu-freedink"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gnu-freedink"
 category:
-  - "TODO"
-description: "Unofficial AppImage of GNU FreeDink [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "RolePlaying"
+  - "AdventureGame"
+description: "Free reimplementation of the Dink Smallwood adventure and role-playing game engine"
 homepage:
-  - "https://github.com/pkgforge-dev/GNU-FreeDink-AppImage"
+  - "https://www.gnu.org/software/freedink/"
+  - "https://git.savannah.gnu.org/cgit/freedink.git"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://cgit.git.savannah.gnu.org/cgit/freedink.git/plain/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GNU-FreeDink-AppImage"
@@ -23,11 +26,14 @@ note:
 provides:
   - "gnu-freedink"
 repology:
-  - "gnu-freedink"
+  - "freedink"
 src_url:
   - "https://github.com/pkgforge-dev/GNU-FreeDink-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "rpg"
+  - "adventure"
+  - "dink"
 x_exec:
   host:
     - "x86_64-linux"
