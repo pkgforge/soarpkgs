@@ -9,27 +9,24 @@ app_id: "com.github.muriloventuroso.pdftricks"
 category:
   - "Office"
   - "Utility"
-description: "Unofficial AppImage of PDF Tricks [Maintainer=@Samueru-sama]"
+description: "Simple app for small manipulations in PDF files (split, merge, compress)"
 homepage:
   - "https://github.com/muriloventuroso/pdftricks"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "GPL-3.0"
-build_asset:
-  - url: "https://raw.githubusercontent.com/muriloventuroso/pdftricks/refs/heads/master/debian/copyright"
-    out: "LICENSE"
+  - "GPL-3.0-or-later"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "pdf-tricks"
-repology:
-  - "pdftricks"
 src_url:
   - "https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
 tag:
   - "pdf"
+  - "office"
+  - "utility"
   - "ghostscript"
 x_exec:
   host:
