@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.librewolf-enhanced"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/librewolf-enhanced"
 category:
-  - "TODO"
-description: "Unofficial AppImage of LibreWolf that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Network"
+  - "WebBrowser"
+description: "Privacy- and security-focused fork of Firefox"
 homepage:
-  - "https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced"
+  - "https://librewolf.net"
+  - "https://codeberg.org/librewolf/source"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "MPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://codeberg.org/librewolf/source/raw/branch/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced"
@@ -23,11 +25,14 @@ note:
 provides:
   - "librewolf-enhanced"
 repology:
-  - "librewolf-enhanced"
+  - "librewolf"
 src_url:
   - "https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "browser"
+  - "privacy"
+  - "firefox"
+  - "security"
 x_exec:
   host:
     - "x86_64-linux"
