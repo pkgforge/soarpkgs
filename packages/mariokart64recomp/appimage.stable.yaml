@@ -6,17 +6,15 @@ pkg_id: "pkgforge-dev.mariokart64recomp"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/mariokart64recomp"
 category:
-  - "TODO"
-description: "Unofficial AppImage of MarioKart 64 Recompiled [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+description: "Static recompilation of Nintendo 64's Mario Kart 64"
 homepage:
-  - "https://github.com/pkgforge-dev/MarioKart64Recomp-AppImage"
+  - "https://github.com/sonicdcer/MarioKart64Recomp"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "GPL-3.0-only"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/MarioKart64Recomp-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +25,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/MarioKart64Recomp-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "n64"
+  - "recompilation"
 x_exec:
   host:
     - "x86_64-linux"
