@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.xiphos"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/xiphos"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Xiphos [Maintainer=@Link4Electronics]"
+  - "Education"
+  - "Viewer"
+  - "Utility"
+description: "Bible study tool using SWORD modules for reading, study, and research"
 homepage:
-  - "https://github.com/pkgforge-dev/Xiphos-AppImage"
+  - "https://xiphos.org"
+  - "https://github.com/crosswire/xiphos"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/crosswire/xiphos/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Xiphos-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Xiphos-AppImage"
 tag:
-  - "TODO"
+  - "bible"
+  - "sword"
+  - "study"
+  - "gtk"
 x_exec:
   host:
     - "x86_64-linux"
