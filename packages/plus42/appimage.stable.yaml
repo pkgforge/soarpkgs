@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.plus42"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/plus42"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Plus42 [Maintainer=@Link4Electronics]"
+  - "Calculator"
+  - "Science"
+  - "Utility"
+description: "Advanced scientific programmable calculator, an enhanced HP-42S simulator"
 homepage:
-  - "https://github.com/pkgforge-dev/Plus42-AppImage"
+  - "https://thomasokken.com/plus42"
+  - "https://codeberg.org/thomasokken/plus42desktop"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://codeberg.org/thomasokken/plus42desktop/raw/branch/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Plus42-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Plus42-AppImage"
 tag:
-  - "TODO"
+  - "calculator"
+  - "hp-42s"
+  - "scientific"
+  - "rpn"
 x_exec:
   host:
     - "x86_64-linux"
