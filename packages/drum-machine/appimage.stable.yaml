@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.drum-machine"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/drum-machine"
 category:
-  - "TODO"
-description: " Unofficial AppImage of Drum Machine application for managing and playing with drum patterns.　　　　　[Maintainer=@fiftydinar] "
+  - "Audio"
+  - "Music"
+description: "A drum machine application built with Python, GTK4 and libadwaita"
 homepage:
-  - "https://github.com/pkgforge-dev/Drum-Machine-AppImage"
+  - "https://apps.gnome.org/DrumMachine/"
+  - "https://github.com/Revisto/drum-machine"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Revisto/drum-machine/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Drum-Machine-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Drum-Machine-AppImage"
 tag:
-  - "TODO"
+  - "drum"
+  - "music"
+  - "audio"
+  - "gtk"
 x_exec:
   host:
     - "x86_64-linux"
