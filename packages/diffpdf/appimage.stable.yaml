@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.diffpdf"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/diffpdf"
 category:
-  - "TODO"
-description: "Unofficial AppImage of DiffPDF [Maintainer=@Link4Electronics]"
+  - "Utility"
+  - "Office"
+description: "Compare two PDF files visually or textually"
 homepage:
-  - "https://github.com/pkgforge-dev/DiffPDF-AppImage"
+  - "https://gitlab.com/eang/diffpdf"
+  - "http://www.qtrac.eu/diffpdf-foss.html"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.com/eang/diffpdf/-/raw/master/gpl-2.0.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DiffPDF-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/DiffPDF-AppImage"
 tag:
-  - "TODO"
+  - "pdf"
+  - "diff"
+  - "compare"
+  - "viewer"
 x_exec:
   host:
     - "x86_64-linux"
