@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.nblood"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/nblood"
 category:
-  - "TODO"
-description: "Unofficial AppImage of NBlood [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Source port of Blood based on the EDuke32/Build engine"
 homepage:
-  - "https://github.com/pkgforge-dev/NBlood-AppImage"
+  - "https://github.com/nukeykt/NBlood"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/nukeykt/NBlood/master/package/common/gpl-2.0.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NBlood-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/NBlood-AppImage"
 tag:
-  - "TODO"
+  - "blood"
+  - "fps"
+  - "source-port"
+  - "build-engine"
 x_exec:
   host:
     - "x86_64-linux"
