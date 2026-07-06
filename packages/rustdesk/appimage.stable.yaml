@@ -1,33 +1,39 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "rustdesk-enhanced"
-pkg_id: "pkgforge-dev.rustdesk-enhanced"
+pkg: "rustdesk"
+pkg_id: "pkgforge-dev.rustdesk"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/rustdesk-enhanced"
+ghcr_pkg: "pkgforge-dev/rustdesk"
 category:
-  - "TODO"
-description: "Unofficial AppImage of rustdesk which is able to work on any linux distro. [Maintainer=@Samueru-sama] "
+  - "Network"
+  - "Utility"
+  - "RemoteAccess"
+description: "Open-source remote desktop, a self-hosted alternative to TeamViewer"
 homepage:
-  - "https://github.com/pkgforge-dev/RustDesk-AppImage-Enhanced"
+  - "https://rustdesk.com"
+  - "https://github.com/rustdesk/rustdesk"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "AGPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/rustdesk/rustdesk/master/LICENCE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RustDesk-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "rustdesk-enhanced"
+  - "rustdesk"
 repology:
-  - "rustdesk-enhanced"
+  - "rustdesk"
 src_url:
   - "https://github.com/pkgforge-dev/RustDesk-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "remote-desktop"
+  - "remote-access"
+  - "teamviewer"
+  - "self-hosted"
 x_exec:
   host:
     - "x86_64-linux"
