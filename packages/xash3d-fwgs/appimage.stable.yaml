@@ -1,33 +1,34 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "xash3d-fwgs-enhanced"
-pkg_id: "pkgforge-dev.xash3d-fwgs-enhanced"
+pkg: "xash3d-fwgs"
+pkg_id: "pkgforge-dev.xash3d-fwgs"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/xash3d-fwgs-enhanced"
+ghcr_pkg: "pkgforge-dev/xash3d-fwgs"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Xash3D FWGS Engine [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Game engine compatible with the Half-Life (GoldSrc) engine"
 homepage:
-  - "https://github.com/pkgforge-dev/Xash3D-FWGS-AppImage-Enhanced"
+  - "https://github.com/FWGS/xash3d-fwgs"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "GPL-3.0"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Xash3D-FWGS-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "xash3d-fwgs-enhanced"
+  - "xash3d-fwgs"
 repology:
-  - "xash3d-fwgs-enhanced"
+  - "xash3d-fwgs"
 src_url:
   - "https://github.com/pkgforge-dev/Xash3D-FWGS-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "engine"
+  - "half-life"
+  - "goldsrc"
+  - "fps"
 x_exec:
   host:
     - "x86_64-linux"
