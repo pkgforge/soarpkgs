@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.foot"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/foot"
 category:
-  - "TODO"
-description: "Unofficial AppImage of foot that can also work in x11 [Maintainer=@Samueru-sama]"
+  - "System"
+  - "TerminalEmulator"
+  - "Utility"
+description: "A fast, lightweight and minimalistic Wayland terminal emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/foot-AppImage"
+  - "https://codeberg.org/dnkl/foot"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://codeberg.org/dnkl/foot/raw/branch/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/foot-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/foot-AppImage"
 tag:
-  - "TODO"
+  - "terminal"
+  - "wayland"
+  - "terminal-emulator"
+  - "lightweight"
 x_exec:
   host:
     - "x86_64-linux"
