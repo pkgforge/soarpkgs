@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.optiimage"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/optiimage"
 category:
-  - "TODO"
-description: "Unofficial AppImage of OptiImage [Maintainer=@Link4Electronics]"
+  - "Graphics"
+  - "Utility"
+  - "RasterGraphics"
+description: "An image compressor that supports PNG, JPEG, WebP and SVG file types"
 homepage:
-  - "https://github.com/pkgforge-dev/OptiImage-AppImage"
+  - "https://invent.kde.org/graphics/optiimage"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "LGPL-2.1-only"
+  - "LGPL-3.0-only"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/graphics/optiimage/-/raw/master/LICENSES/LGPL-2.1-only.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OptiImage-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/OptiImage-AppImage"
 tag:
-  - "TODO"
+  - "image"
+  - "compressor"
+  - "optimizer"
+  - "graphics"
 x_exec:
   host:
     - "x86_64-linux"
