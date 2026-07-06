@@ -6,16 +6,16 @@ pkg_id: "pkgforge-dev.taradino"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/taradino"
 category:
-  - "TODO"
+  - "Game"
 description: "Unofficial AppImage of Taradino [Maintainer=@Link4Electronics]"
 homepage:
-  - "https://github.com/pkgforge-dev/Taradino-AppImage"
+  - "https://github.com/fabiangreffrath/taradino"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/fabiangreffrath/taradino/refs/heads/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Taradino-AppImage"
@@ -27,7 +27,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Taradino-AppImage"
 tag:
-  - "TODO"
+  - "fps"
+  - "shooter"
 x_exec:
   host:
     - "x86_64-linux"
