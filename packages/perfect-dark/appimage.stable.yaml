@@ -8,15 +8,17 @@ ghcr_pkg: "pkgforge-dev/perfect-dark"
 app_id: "io.github.perfect_dark_pc_port.perfect_dark"
 category:
   - "Game"
-description: "Unofficial AppImage of Perfect Dark [Maintainer=@Link4Electronics]"
+  - "ActionGame"
+  - "Shooter"
+description: "Work in progress port of the N64 game Perfect Dark to modern platforms"
 homepage:
-  - "https://github.com/perfect-dark-pc-port/perfect_dark"
+  - "https://github.com/fgsfdsfgs/perfect_dark"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "https://raw.githubusercontent.com/perfect-dark-pc-port/perfect_dark/refs/heads/port/LICENSE"
+  - url: "https://raw.githubusercontent.com/fgsfdsfgs/perfect_dark/port/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Perfect-Dark-AppImage"
@@ -28,9 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Perfect-Dark-AppImage"
 tag:
-  - "fps"
+  - "perfect-dark"
   - "n64"
-  - "retro"
+  - "port"
+  - "fps"
 x_exec:
   host:
     - "x86_64-linux"
