@@ -5,17 +5,19 @@ pkg: "parabolic"
 pkg_id: "pkgforge-dev.parabolic"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/parabolic"
+app_id: "org.nickvision.tubeconverter"
 category:
-  - "TODO"
+  - "AudioVideo"
+  - "Network"
 description: "Unofficial AppImage of Parabolic [Maintainer=@Samueru-sama]"
 homepage:
-  - "https://github.com/pkgforge-dev/Parabolic-AppImage"
+  - "https://github.com/NickvisionApps/Parabolic"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/NickvisionApps/Parabolic/refs/heads/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Parabolic-AppImage"
@@ -27,7 +29,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Parabolic-AppImage"
 tag:
-  - "TODO"
+  - "downloader"
+  - "video"
 x_exec:
   host:
     - "x86_64-linux"
