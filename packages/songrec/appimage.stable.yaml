@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.songrec"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/songrec"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SongRec [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "Utility"
+description: "An open-source Shazam client for Linux, written in Rust"
 homepage:
-  - "https://github.com/pkgforge-dev/SongRec-AppImage"
+  - "https://github.com/marin-m/SongRec"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/marin-m/SongRec/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SongRec-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/SongRec-AppImage"
 tag:
-  - "TODO"
+  - "shazam"
+  - "audio"
+  - "recognition"
+  - "music"
 x_exec:
   host:
     - "x86_64-linux"
