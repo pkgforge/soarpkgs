@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.streamlink"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/streamlink"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Streamlink [Maintainer=@domesya]"
+  - "AudioVideo"
+  - "Video"
+  - "Network"
+description: "CLI utility that pipes video streams from various services into a video player"
 homepage:
-  - "https://github.com/pkgforge-dev/Streamlink-AppImage"
+  - "https://streamlink.github.io/"
+  - "https://github.com/streamlink/streamlink"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-2-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/streamlink/streamlink/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Streamlink-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Streamlink-AppImage"
 tag:
-  - "TODO"
+  - "streaming"
+  - "video"
+  - "cli"
+  - "player"
 x_exec:
   host:
     - "x86_64-linux"
