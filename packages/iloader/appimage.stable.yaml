@@ -1,33 +1,37 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "iloader-enhanced"
-pkg_id: "pkgforge-dev.iloader-enhanced"
+pkg: "iloader"
+pkg_id: "pkgforge-dev.iloader"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/iloader-enhanced"
+ghcr_pkg: "pkgforge-dev/iloader"
 category:
-  - "TODO"
-description: "Unofficial AppImage of iloader that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Utility"
+description: "Install SideStore and other iOS apps and import pairing files with ease"
 homepage:
-  - "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced"
+  - "https://iloader.app"
+  - "https://github.com/nab138/iloader"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/nab138/iloader/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/iloader-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "iloader-enhanced"
+  - "iloader"
 repology:
-  - "iloader-enhanced"
+  - "iloader"
 src_url:
   - "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "ios"
+  - "sideloader"
+  - "sidestore"
+  - "tauri"
 x_exec:
   host:
     - "x86_64-linux"
