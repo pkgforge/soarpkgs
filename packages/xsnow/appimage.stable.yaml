@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.xsnow"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/xsnow"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Xsnow [Maintainer=@Link4Electronics]"
+  - "Amusement"
+  - "Utility"
+description: "Let it snow, with Santa and trees, on your desktop"
 homepage:
-  - "https://github.com/pkgforge-dev/Xsnow-AppImage"
+  - "https://xsnow.sourceforge.io"
+  - "https://sourceforge.net/projects/xsnow"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://sourceforge.net/p/xsnow/code/HEAD/tree/trunk/xsnow/COPYING?format=raw"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Xsnow-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Xsnow-AppImage"
 tag:
-  - "TODO"
+  - "snow"
+  - "christmas"
+  - "desktop"
+  - "x11"
 x_exec:
   host:
     - "x86_64-linux"
