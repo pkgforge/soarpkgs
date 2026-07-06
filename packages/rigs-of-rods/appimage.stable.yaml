@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.rigs-of-rods"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rigs-of-rods"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Rigs of Rods [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "Simulation"
+description: "Open-source soft-body physics vehicle simulator"
 homepage:
-  - "https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage"
+  - "https://www.rigsofrods.org"
+  - "https://github.com/RigsOfRods/rigs-of-rods"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/RigsOfRods/rigs-of-rods/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage"
@@ -23,11 +25,14 @@ note:
 provides:
   - "rigs-of-rods"
 repology:
-  - "rigs-of-rods"
+  - "rigsofrods"
 src_url:
   - "https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage"
 tag:
-  - "TODO"
+  - "simulator"
+  - "physics"
+  - "vehicle"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
