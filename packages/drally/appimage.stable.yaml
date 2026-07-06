@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.drally"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/drally"
 category:
-  - "TODO"
-description: "Unofficial AppImage of dRally [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+  - "ActionGame"
+description: "Open source game engine remake of Death Rally (1996)"
 homepage:
-  - "https://github.com/pkgforge-dev/dRally-AppImage"
+  - "https://github.com/urxp/dRally"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/urxp/dRally/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/dRally-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/dRally-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "death-rally"
+  - "engine"
 x_exec:
   host:
     - "x86_64-linux"
