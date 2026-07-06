@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.stella"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/stella"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Stella [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "A multi-platform Atari 2600 VCS emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/Stella-AppImage"
+  - "https://stella-emu.github.io"
+  - "https://github.com/stella-emu/stella"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/stella-emu/stella/master/License.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Stella-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Stella-AppImage"
 tag:
-  - "TODO"
+  - "atari"
+  - "emulator"
+  - "2600"
+  - "vcs"
 x_exec:
   host:
     - "x86_64-linux"
