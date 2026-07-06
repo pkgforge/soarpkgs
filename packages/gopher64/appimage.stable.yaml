@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.gopher64"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gopher64"
 category:
-  - "TODO"
-description: "Unofficial AppImage of gopher64 [Maintainer=@Samueru-sama]"
+  - "Emulator"
+  - "Game"
+description: "Highly compatible cross-platform Nintendo 64 emulator written in Rust"
 homepage:
-  - "https://github.com/pkgforge-dev/Gopher64-AppImage"
+  - "https://github.com/gopher64/gopher64"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/gopher64/gopher64/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gopher64-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Gopher64-AppImage"
 tag:
-  - "TODO"
+  - "n64"
+  - "emulator"
+  - "nintendo64"
+  - "rust"
 x_exec:
   host:
     - "x86_64-linux"
