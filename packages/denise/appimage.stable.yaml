@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.denise"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/denise"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Denise [Maintainer=@Link4Electronics]"
+  - "Emulator"
+description: "Highly accurate C64 and Amiga emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/Denise-AppImage"
+  - "https://dnp.dev"
+  - "https://bitbucket.org/piciji/denise"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://bitbucket.org/piciji/denise/raw/master/licence.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Denise-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Denise-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "c64"
+  - "amiga"
+  - "commodore"
 x_exec:
   host:
     - "x86_64-linux"
