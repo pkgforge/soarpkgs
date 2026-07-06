@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.shockolate"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/shockolate"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Shockolate [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+  - "RolePlaying"
+description: "Minimalist cross-platform System Shock source port"
 homepage:
-  - "https://github.com/pkgforge-dev/Shockolate-AppImage"
+  - "https://github.com/Interrupt/systemshock"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Interrupt/systemshock/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Shockolate-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Shockolate-AppImage"
 tag:
-  - "TODO"
+  - "system-shock"
+  - "source-port"
+  - "fps"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
