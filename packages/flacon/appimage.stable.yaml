@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "flacon-enhanced"
-pkg_id: "pkgforge-dev.flacon-enhanced"
+pkg: "flacon"
+pkg_id: "pkgforge-dev.flacon"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/flacon-enhanced"
+ghcr_pkg: "pkgforge-dev/flacon"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Flacon [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "Utility"
+description: "Extracts audio tracks from an audio CD image to separate files"
 homepage:
-  - "https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced"
+  - "https://flacon.github.io"
+  - "https://github.com/flacon/flacon"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "LGPL-2.1"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/flacon/flacon/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "flacon-enhanced"
+  - "flacon"
 repology:
-  - "flacon-enhanced"
+  - "flacon"
 src_url:
   - "https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "audio"
+  - "cd"
+  - "encoder"
+  - "flac"
 x_exec:
   host:
     - "x86_64-linux"
