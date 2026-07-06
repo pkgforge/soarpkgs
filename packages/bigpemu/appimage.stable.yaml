@@ -6,17 +6,15 @@ pkg_id: "pkgforge-dev.bigpemu"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/bigpemu"
 category:
-  - "TODO"
-description: "Unofficial AppImage of BigPEmu [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Atari Jaguar emulator with high compatibility and enhancement features"
 homepage:
-  - "https://github.com/pkgforge-dev/BigPEmu-AppImage"
+  - "https://www.richwhitehouse.com/jaguar/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BigPEmu-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +25,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/BigPEmu-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "atari"
+  - "jaguar"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
