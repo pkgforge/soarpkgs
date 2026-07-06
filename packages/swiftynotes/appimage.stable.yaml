@@ -6,28 +6,31 @@ pkg_id: "pkgforge-dev.swiftynotes"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/swiftynotes"
 category:
-  - "TODO"
-description: "Unofficial AppImage of swiftynotes [Maintainer=@TheRealYasri]"
+  - "Utility"
+  - "TextEditor"
+  - "Office"
+description: "Native GTK markdown notes for Linux and macOS, written in Swift"
 homepage:
-  - "https://github.com/pkgforge-dev/swiftynotes-AppImage"
+  - "https://github.com/makoni/swifty-notes-gtk"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/makoni/swifty-notes-gtk/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/swiftynotes-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "swiftynotes"
-repology:
-  - "swiftynotes"
 src_url:
   - "https://github.com/pkgforge-dev/swiftynotes-AppImage"
 tag:
-  - "TODO"
+  - "notes"
+  - "markdown"
+  - "gtk"
+  - "editor"
 x_exec:
   host:
     - "x86_64-linux"
