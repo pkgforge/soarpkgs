@@ -1,33 +1,34 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "play-enhanced"
-pkg_id: "pkgforge-dev.play-enhanced"
+pkg: "play"
+pkg_id: "pkgforge-dev.play"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/play-enhanced"
+ghcr_pkg: "pkgforge-dev/play"
+app_id: "com.virtualapplications.play"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Play! [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Play! is a PlayStation 2 emulator for multiple platforms"
 homepage:
-  - "https://github.com/pkgforge-dev/Play-AppImage-Enhanced"
+  - "https://purei.org"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/jpd002/Play-/refs/heads/master/License.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Play-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "play-enhanced"
-repology:
-  - "play-enhanced"
+  - "play"
 src_url:
   - "https://github.com/pkgforge-dev/Play-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "ps2"
+  - "emulator"
 x_exec:
   host:
     - "x86_64-linux"
