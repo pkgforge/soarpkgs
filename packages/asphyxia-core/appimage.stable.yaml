@@ -6,28 +6,32 @@ pkg_id: "pkgforge-dev.asphyxia-core"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/asphyxia-core"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Asphyxia CORE [Maintainer=@Samueru-sama]"
+  - "Game"
+  - "Network"
+  - "Emulator"
+description: "Local private server for Konami BEMANI arcade rhythm games"
 homepage:
-  - "https://github.com/pkgforge-dev/Asphyxia-CORE-AppImage"
+  - "https://asphyxia-core.github.io"
+  - "https://github.com/asphyxia-core/core"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/asphyxia-core/core/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Asphyxia-CORE-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "asphyxia-core"
-repology:
-  - "asphyxia-core"
 src_url:
   - "https://github.com/pkgforge-dev/Asphyxia-CORE-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "server"
+  - "bemani"
+  - "rhythm"
 x_exec:
   host:
     - "x86_64-linux"
