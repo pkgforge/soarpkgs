@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.itgmania"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/itgmania"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ITGmania [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+  - "Music"
+description: "A free, open source, and community-driven dance game"
 homepage:
-  - "https://github.com/pkgforge-dev/ITGmania-AppImage"
+  - "https://www.itgmania.com/"
+  - "https://github.com/itgmania/itgmania"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/itgmania/itgmania/release/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ITGmania-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/ITGmania-AppImage"
 tag:
-  - "TODO"
+  - "rhythm"
+  - "dance"
+  - "game"
+  - "stepmania"
 x_exec:
   host:
     - "x86_64-linux"
