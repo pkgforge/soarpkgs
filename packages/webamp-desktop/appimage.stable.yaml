@@ -1,33 +1,36 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "webamp-desktop-enhanced"
-pkg_id: "pkgforge-dev.webamp-desktop-enhanced"
+pkg: "webamp-desktop"
+pkg_id: "pkgforge-dev.webamp-desktop"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/webamp-desktop-enhanced"
+ghcr_pkg: "pkgforge-dev/webamp-desktop"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Webamp-Desktop [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "Player"
+  - "Music"
+description: "Cross-platform desktop version of the Winamp 2.9 reimplementation Webamp"
 homepage:
-  - "https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced"
+  - "https://github.com/durasj/webamp-desktop"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/durasj/webamp-desktop/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "webamp-desktop-enhanced"
-repology:
-  - "webamp-desktop-enhanced"
+  - "webamp-desktop"
 src_url:
   - "https://github.com/pkgforge-dev/Webamp-Desktop-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "webamp"
+  - "winamp"
+  - "audio"
+  - "player"
 x_exec:
   host:
     - "x86_64-linux"
