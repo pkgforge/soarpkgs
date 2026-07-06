@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.spek"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/spek"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Spek [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "AudioVideo"
+description: "Acoustic spectrum analyser"
 homepage:
-  - "https://github.com/pkgforge-dev/Spek-AppImage"
+  - "http://spek.cc"
+  - "https://github.com/alexkay/spek"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/alexkay/spek/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Spek-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Spek-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "spectrum"
+  - "spectrogram"
+  - "analyser"
 x_exec:
   host:
     - "x86_64-linux"
