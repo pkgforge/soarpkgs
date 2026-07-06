@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cine"
+pkg_id: "pkgforge-dev.cine"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/cine"
+category:
+  - "Video"
+  - "AudioVideo"
+description: "MPV-based video player for Linux"
+homepage:
+  - "https://github.com/diegopvlk/Cine"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/diegopvlk/Cine/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cine-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cine"
+repology:
+  - "cine"
+src_url:
+  - "https://github.com/pkgforge-dev/Cine-AppImage"
+tag:
+  - "video"
+  - "player"
+  - "mpv"
+  - "linux"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Cine-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Cine-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
