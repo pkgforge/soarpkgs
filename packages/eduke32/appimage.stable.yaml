@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.eduke32"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/eduke32"
 category:
-  - "TODO"
-description: "Unofficial AppImage of EDuke32 [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+description: "Advanced source port of Duke Nukem 3D"
 homepage:
-  - "https://github.com/pkgforge-dev/EDuke32-AppImage"
+  - "https://www.eduke32.com"
+  - "https://voidpoint.io/terminx/eduke32"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://voidpoint.io/terminx/eduke32/-/raw/master/package/common/gpl-2.0.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/EDuke32-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/EDuke32-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "fps"
+  - "duke-nukem"
+  - "source-port"
 x_exec:
   host:
     - "x86_64-linux"
