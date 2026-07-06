@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.commander-genius"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/commander-genius"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Commander-Genius [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+  - "ArcadeGame"
+description: "Modern interpreter for the Commander Keen games"
 homepage:
-  - "https://github.com/pkgforge-dev/Commander-Genius-AppImage"
+  - "https://clonekeenplus.sourceforge.io/"
+  - "https://gitlab.com/Dringgstein/Commander-Genius"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.com/Dringgstein/Commander-Genius/-/raw/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Commander-Genius-AppImage"
@@ -23,11 +26,14 @@ note:
 provides:
   - "commander-genius"
 repology:
-  - "commander-genius"
+  - "commandergenius"
 src_url:
   - "https://github.com/pkgforge-dev/Commander-Genius-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "commander-keen"
+  - "platformer"
+  - "engine"
 x_exec:
   host:
     - "x86_64-linux"
