@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.gwenview"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gwenview"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Gwenview [Maintainer=@Samueru-sama]"
+  - "Graphics"
+  - "Viewer"
+  - "Photography"
+description: "Image viewer by KDE"
 homepage:
-  - "https://github.com/pkgforge-dev/Gwenview-AppImage"
+  - "https://apps.kde.org/gwenview"
+  - "https://invent.kde.org/graphics/gwenview"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/graphics/gwenview/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gwenview-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Gwenview-AppImage"
 tag:
-  - "TODO"
+  - "image"
+  - "viewer"
+  - "kde"
+  - "photography"
 x_exec:
   host:
     - "x86_64-linux"
