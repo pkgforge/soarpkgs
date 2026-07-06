@@ -6,17 +6,15 @@ pkg_id: "pkgforge-dev.kega-fusion"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kega-fusion"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Kega Fusion [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Emulator for classic Sega consoles (Genesis, Master System, Game Gear, SegaCD, 32X)"
 homepage:
-  - "https://github.com/pkgforge-dev/Kega-Fusion-AppImage"
+  - "https://www.carpeludum.com/kega-fusion/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Kega-Fusion-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +25,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Kega-Fusion-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "sega"
+  - "genesis"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
