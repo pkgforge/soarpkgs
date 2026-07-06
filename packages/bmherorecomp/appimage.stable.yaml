@@ -1,33 +1,36 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "bmherorecomp-enhanced"
-pkg_id: "pkgforge-dev.bmherorecomp-enhanced"
+pkg: "bmherorecomp"
+pkg_id: "pkgforge-dev.bmherorecomp"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/bmherorecomp-enhanced"
+ghcr_pkg: "pkgforge-dev/bmherorecomp"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Bomberman Hero Recompiled [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+  - "AdventureGame"
+description: "Static recompilation of Bomberman Hero for the Nintendo 64"
 homepage:
-  - "https://github.com/pkgforge-dev/BMHeroRecomp-AppImage-Enhanced"
+  - "https://github.com/RevoSucks/BMHeroRecomp"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/RevoSucks/BMHeroRecomp/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BMHeroRecomp-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "bmherorecomp-enhanced"
-repology:
-  - "bmherorecomp-enhanced"
+  - "bmherorecomp"
 src_url:
   - "https://github.com/pkgforge-dev/BMHeroRecomp-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "game"
+  - "n64"
+  - "recompilation"
+  - "bomberman"
 x_exec:
   host:
     - "x86_64-linux"
