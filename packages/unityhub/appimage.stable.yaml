@@ -5,17 +5,19 @@ pkg: "unityhub"
 pkg_id: "pkgforge-dev.unityhub"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/unityhub"
+app_id: "com.unity.UnityHub"
 category:
-  - "TODO"
+  - "Development"
+  - "IDE"
 description: "Unofficial AppImage for Unity Hub [Maintainer=@crueter]"
 homepage:
-  - "https://github.com/pkgforge-dev/UnityHub-AppImage"
+  - "https://unity.com/unity-hub"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Proprietary"
 build_asset:
-  - url: "TODO"
+  - url: "https://unity.com/legal/terms-of-service"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UnityHub-AppImage"
@@ -27,7 +29,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/UnityHub-AppImage"
 tag:
-  - "TODO"
+  - "unity"
+  - "gamedev"
 x_exec:
   host:
     - "x86_64-linux"
