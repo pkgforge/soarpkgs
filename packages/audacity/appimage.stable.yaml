@@ -1,33 +1,39 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "audacity-enhanced"
-pkg_id: "pkgforge-dev.audacity-enhanced"
+pkg: "audacity"
+pkg_id: "pkgforge-dev.audacity"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/audacity-enhanced"
+ghcr_pkg: "pkgforge-dev/audacity"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Audacity that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Audio"
+  - "AudioVideoEditing"
+  - "Recorder"
+description: "Easy-to-use, multi-track audio editor and recorder"
 homepage:
-  - "https://github.com/pkgforge-dev/Audacity-AppImage-Enhanced"
+  - "https://www.audacityteam.org"
+  - "https://github.com/audacity/audacity"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/audacity/audacity/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Audacity-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "audacity-enhanced"
+  - "audacity"
 repology:
-  - "audacity-enhanced"
+  - "audacity"
 src_url:
   - "https://github.com/pkgforge-dev/Audacity-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "audio"
+  - "editor"
+  - "recorder"
+  - "multitrack"
 x_exec:
   host:
     - "x86_64-linux"
