@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.goldendict-ng"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/goldendict-ng"
 category:
-  - "TODO"
-description: "Unofficial AppImage of GoldenDict-ng [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "Education"
+description: "Advanced multi-format dictionary lookup program, the next generation GoldenDict"
 homepage:
-  - "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage"
+  - "https://xiaoyifang.github.io/goldendict-ng/"
+  - "https://github.com/xiaoyifang/goldendict-ng"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/xiaoyifang/goldendict-ng/staged/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GoldenDict-ng-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage"
 tag:
-  - "TODO"
+  - "dictionary"
+  - "lookup"
+  - "translation"
+  - "reference"
 x_exec:
   host:
     - "x86_64-linux"
