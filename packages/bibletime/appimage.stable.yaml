@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.bibletime"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/bibletime"
 category:
-  - "TODO"
-description: "Unofficial AppImage of BibleTime [Maintainer=@Link4Electronics]"
+  - "Education"
+  - "Viewer"
+  - "Utility"
+description: "Powerful cross platform Bible study tool"
 homepage:
-  - "https://github.com/pkgforge-dev/BibleTime-AppImage"
+  - "https://bibletime.info/"
+  - "https://github.com/bibletime/bibletime"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/bibletime/bibletime/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BibleTime-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/BibleTime-AppImage"
 tag:
-  - "TODO"
+  - "bible"
+  - "study"
+  - "religion"
+  - "qt"
 x_exec:
   host:
     - "x86_64-linux"
