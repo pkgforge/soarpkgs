@@ -1,33 +1,35 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "pcsx-redux-enhanced"
-pkg_id: "pkgforge-dev.pcsx-redux-enhanced"
+pkg: "pcsx-redux"
+pkg_id: "pkgforge-dev.pcsx-redux"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/pcsx-redux-enhanced"
+ghcr_pkg: "pkgforge-dev/pcsx-redux"
 category:
-  - "TODO"
-description: "Unofficial AppImage of PCSX-Redux [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "PlayStation 1 emulator and debugger focused on development"
 homepage:
-  - "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced"
+  - "https://github.com/grumpycoders/pcsx-redux"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/grumpycoders/pcsx-redux/refs/heads/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "pcsx-redux-enhanced"
+  - "pcsx-redux"
 repology:
-  - "pcsx-redux-enhanced"
+  - "pcsx-redux"
 src_url:
   - "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "ps1"
+  - "emulator"
 x_exec:
   host:
     - "x86_64-linux"
