@@ -6,17 +6,15 @@ pkg_id: "pkgforge-dev.asunder"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/asunder"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Asunder [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "AudioVideo"
+description: "Graphical Audio CD ripper and encoder for Linux"
 homepage:
-  - "https://github.com/pkgforge-dev/Asunder-AppImage"
+  - "http://littlesvr.ca/asunder/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "GPL-2.0-or-later"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Asunder-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +25,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Asunder-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "cd-ripper"
+  - "encoder"
+  - "cdda"
 x_exec:
   host:
     - "x86_64-linux"
