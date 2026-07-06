@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.cubyz"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/cubyz"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Cubyz [Maintainer=@Samueru-sama]"
+  - "Game"
+  - "AdventureGame"
+  - "3DGraphics"
+description: "Voxel sandbox game with large render distance and procedurally generated content"
 homepage:
-  - "https://github.com/pkgforge-dev/Cubyz-AppImage"
+  - "https://github.com/PixelGuys/Cubyz"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/PixelGuys/Cubyz/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cubyz-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Cubyz-AppImage"
 tag:
-  - "TODO"
+  - "voxel"
+  - "sandbox"
+  - "game"
+  - "zig"
 x_exec:
   host:
     - "x86_64-linux"
