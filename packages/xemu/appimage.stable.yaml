@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "xemu-enhanced"
-pkg_id: "pkgforge-dev.xemu-enhanced"
+pkg: "xemu"
+pkg_id: "pkgforge-dev.xemu"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/xemu-enhanced"
+ghcr_pkg: "pkgforge-dev/xemu"
 category:
-  - "TODO"
-description: "Unofficial AppImage of xemu [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Original Xbox emulator for Windows, macOS, and Linux"
 homepage:
-  - "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced"
+  - "https://xemu.app"
+  - "https://github.com/xemu-project/xemu"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/xemu-project/xemu/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/xemu-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "xemu-enhanced"
+  - "xemu"
 repology:
-  - "xemu-enhanced"
+  - "xemu"
 src_url:
   - "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "emulator"
+  - "xbox"
+  - "gaming"
+  - "original-xbox"
 x_exec:
   host:
     - "x86_64-linux"
