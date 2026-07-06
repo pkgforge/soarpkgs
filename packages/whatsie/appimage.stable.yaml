@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.whatsie"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/whatsie"
 category:
-  - "TODO"
-description: "Unofficial AppImage of WhatSie [Maintainer=@Link4Electronics]"
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "Fast lightweight WhatsApp client based on Qt WebEngine"
 homepage:
-  - "https://github.com/pkgforge-dev/WhatSie-AppImage"
+  - "https://github.com/keshavbhatt/whatsie"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/keshavbhatt/whatsie/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/WhatSie-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/WhatSie-AppImage"
 tag:
-  - "TODO"
+  - "whatsapp"
+  - "messaging"
+  - "qt"
+  - "chat"
 x_exec:
   host:
     - "x86_64-linux"
