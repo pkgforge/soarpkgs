@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.lmms"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/lmms"
 category:
-  - "TODO"
-description: "Unofficial AppImage of LMMS that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Audio"
+  - "Music"
+  - "AudioVideo"
+description: "Cross-platform music production software (digital audio workstation)"
 homepage:
-  - "https://github.com/pkgforge-dev/LMMS-AppImage"
+  - "https://lmms.io"
+  - "https://github.com/LMMS/lmms"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/LMMS/lmms/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LMMS-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/LMMS-AppImage"
 tag:
-  - "TODO"
+  - "audio"
+  - "music"
+  - "daw"
+  - "synthesizer"
 x_exec:
   host:
     - "x86_64-linux"
