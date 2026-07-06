@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "basiliskii"
+pkg_id: "pkgforge-dev.basiliskii"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/basiliskii"
+category:
+  - "Emulator"
+  - "System"
+description: "Open source 68k Macintosh (Basilisk II) emulator"
+homepage:
+  - "https://github.com/kanjitalk755/macemu"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/kanjitalk755/macemu/master/BasiliskII/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BasiliskII-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "basiliskii"
+repology:
+  - "basiliskii"
+src_url:
+  - "https://github.com/pkgforge-dev/BasiliskII-AppImage-Enhanced"
+tag:
+  - "emulator"
+  - "macintosh"
+  - "68k"
+  - "m68k"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/BasiliskII-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/BasiliskII-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
