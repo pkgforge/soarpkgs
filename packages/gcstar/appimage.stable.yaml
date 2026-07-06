@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.gcstar"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gcstar"
 category:
-  - "TODO"
-description: "Unofficial AppImage of GCstar [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "Database"
+description: "Personal collection manager for movies, books, music, games and more"
 homepage:
-  - "https://github.com/pkgforge-dev/GCstar-AppImage"
+  - "https://www.gcstar.org"
+  - "https://gitlab.com/GCstar/GCstar"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.com/GCstar/GCstar/-/raw/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GCstar-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/GCstar-AppImage"
 tag:
-  - "TODO"
+  - "collection"
+  - "manager"
+  - "catalog"
+  - "gtk"
 x_exec:
   host:
     - "x86_64-linux"
