@@ -6,17 +6,15 @@ pkg_id: "pkgforge-dev.rvgl"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/rvgl"
 category:
-  - "TODO"
-description: "Unofficial AppImage of RVGL [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ArcadeGame"
+description: "A modern port of the classic 1999 R/C car racing game Re-Volt"
 homepage:
-  - "https://github.com/pkgforge-dev/RVGL-AppImage"
+  - "https://rvgl.org"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RVGL-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +25,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/RVGL-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "re-volt"
+  - "arcade"
 x_exec:
   host:
     - "x86_64-linux"
