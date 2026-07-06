@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.cdogs-sdl"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/cdogs-sdl"
 category:
-  - "TODO"
-description: "Unofficial AppImage of C-Dogs SDL [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+  - "ArcadeGame"
+description: "Classic overhead run-and-gun game"
 homepage:
-  - "https://github.com/pkgforge-dev/CDogs-SDL-AppImage"
+  - "https://cxong.github.io/cdogs-sdl/"
+  - "https://github.com/cxong/cdogs-sdl"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/cxong/cdogs-sdl/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CDogs-SDL-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/CDogs-SDL-AppImage"
 tag:
-  - "TODO"
+  - "shooter"
+  - "arcade"
+  - "action"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
