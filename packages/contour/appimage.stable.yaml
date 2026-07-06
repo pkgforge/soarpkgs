@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.contour"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/contour"
 category:
-  - "TODO"
-description: "Unofficial AppImage of the Contour Terminal Emulator [Maintainer=@domesya]"
+  - "TerminalEmulator"
+  - "System"
+  - "Utility"
+description: "Modern and fast terminal emulator with GPU-accelerated rendering"
 homepage:
-  - "https://github.com/pkgforge-dev/contour-AppImage"
+  - "https://contour-terminal.org"
+  - "https://github.com/contour-terminal/contour"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Apache-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/contour-terminal/contour/master/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/contour-AppImage"
@@ -23,11 +26,14 @@ note:
 provides:
   - "contour"
 repology:
-  - "contour"
+  - "contour-terminal"
 src_url:
   - "https://github.com/pkgforge-dev/contour-AppImage"
 tag:
-  - "TODO"
+  - "terminal"
+  - "emulator"
+  - "gpu"
+  - "unicode"
 x_exec:
   host:
     - "x86_64-linux"
