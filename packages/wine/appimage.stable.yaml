@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.wine"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/wine"
 category:
-  - "TODO"
-description: "Unofficial AppImage of wine [Maintainer=@fiftydinar]"
+  - "System"
+  - "Utility"
+  - "Emulator"
+description: "Compatibility layer to run Windows applications on POSIX systems"
 homepage:
-  - "https://github.com/pkgforge-dev/wine-AppImage"
+  - "https://www.winehq.org"
+  - "https://github.com/wine-mirror/wine"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "LGPL-2.1-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/wine-mirror/wine/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/wine-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/wine-AppImage"
 tag:
-  - "TODO"
+  - "wine"
+  - "windows"
+  - "compatibility"
+  - "emulator"
 x_exec:
   host:
     - "x86_64-linux"
