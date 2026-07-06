@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.opengothic"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/opengothic"
 category:
-  - "TODO"
-description: "Unofficial AppImage of OpenGothic [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "RolePlaying"
+  - "AdventureGame"
+description: "Open-source reimplementation of the Gothic 1/2 game engine"
 homepage:
-  - "https://github.com/pkgforge-dev/OpenGothic-AppImage"
+  - "https://github.com/Try/opengothic"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Try/opengothic/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenGothic-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/OpenGothic-AppImage"
 tag:
-  - "TODO"
+  - "gothic"
+  - "game"
+  - "rpg"
+  - "engine"
 x_exec:
   host:
     - "x86_64-linux"
