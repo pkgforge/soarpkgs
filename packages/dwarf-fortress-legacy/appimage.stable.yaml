@@ -6,28 +6,28 @@ pkg_id: "pkgforge-dev.dwarf-fortress-legacy"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/dwarf-fortress-legacy"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Dwarf Fortress Legacy [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "StrategyGame"
+  - "RolePlaying"
+description: "Classic freeware version of the deep dwarven fortress simulation by Bay 12 Games"
 homepage:
-  - "https://github.com/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
+  - "https://www.bay12games.com/dwarves/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "dwarf-fortress-legacy"
-repology:
-  - "dwarf-fortress-legacy"
 src_url:
   - "https://github.com/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "simulation"
+  - "strategy"
+  - "roguelike"
 x_exec:
   host:
     - "x86_64-linux"
