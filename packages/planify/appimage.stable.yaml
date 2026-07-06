@@ -9,15 +9,16 @@ app_id: "io.github.alainm23.planify"
 category:
   - "Office"
   - "Utility"
-description: "Unofficial AppImage of Planify [Maintainer=@Samueru-sama]"
+description: "Task manager and to-do app for elementary OS and GNOME"
 homepage:
   - "https://useplanify.com"
+  - "https://github.com/alainm23/planify"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "GPL-3.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/alainm23/planify/refs/heads/main/LICENSE"
+  - url: "https://raw.githubusercontent.com/alainm23/planify/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Planify-AppImage"
@@ -30,7 +31,9 @@ src_url:
   - "https://github.com/pkgforge-dev/Planify-AppImage"
 tag:
   - "todo"
-  - "tasks"
+  - "task-manager"
+  - "productivity"
+  - "planner"
 x_exec:
   host:
     - "x86_64-linux"
