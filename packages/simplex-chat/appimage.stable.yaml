@@ -1,33 +1,39 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "simplex-chat-enhanced"
-pkg_id: "pkgforge-dev.simplex-chat-enhanced"
+pkg: "simplex-chat"
+pkg_id: "pkgforge-dev.simplex-chat"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/simplex-chat-enhanced"
+ghcr_pkg: "pkgforge-dev/simplex-chat"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Simplex Chat that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "Private messaging network operating without any user identifiers"
 homepage:
-  - "https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced"
+  - "https://simplex.chat"
+  - "https://github.com/simplex-chat/simplex-chat"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "AGPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "simplex-chat-enhanced"
+  - "simplex-chat"
 repology:
-  - "simplex-chat-enhanced"
+  - "simplex-chat"
 src_url:
   - "https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "messaging"
+  - "chat"
+  - "privacy"
+  - "p2p"
 x_exec:
   host:
     - "x86_64-linux"
