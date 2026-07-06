@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.neko-project-ii-kai"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/neko-project-ii-kai"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Neko Project II Kai [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "NEC PC-9801 series emulator (Neko Project II Kai fork)"
 homepage:
-  - "https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage"
+  - "https://github.com/AZO234/NP2kai"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/AZO234/NP2kai/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage"
@@ -23,11 +24,14 @@ note:
 provides:
   - "neko-project-ii-kai"
 repology:
-  - "neko-project-ii-kai"
+  - "np2kai"
 src_url:
   - "https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "pc-98"
+  - "pc-9801"
+  - "nec"
 x_exec:
   host:
     - "x86_64-linux"
