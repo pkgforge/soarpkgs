@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.kcalc"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/kcalc"
 category:
-  - "TODO"
-description: "Unofficial AppImage of KCalc [Maintainer=@Link4Electronics]"
+  - "Utility"
+  - "Calculator"
+  - "Science"
+description: "Calculator offering everything a scientific calculator does, and more"
 homepage:
-  - "https://github.com/pkgforge-dev/KCalc-AppImage"
+  - "https://apps.kde.org/kcalc"
+  - "https://invent.kde.org/utilities/kcalc"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://invent.kde.org/utilities/kcalc/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KCalc-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/KCalc-AppImage"
 tag:
-  - "TODO"
+  - "calculator"
+  - "kde"
+  - "scientific"
+  - "math"
 x_exec:
   host:
     - "x86_64-linux"
