@@ -6,8 +6,9 @@ pkg_id: "pkgforge-dev.archlinux-pkgs-debloated"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/archlinux-pkgs-debloated"
 category:
-  - "TODO"
-description: "Stripped down versions of several archlinux packages, former name llvm-libs-debloated. [Maintainer=@Samueru-sama] "
+  - "System"
+  - "Development"
+description: "Stripped down versions of Archlinux packages/libraries to reduce AppImage size"
 homepage:
   - "https://github.com/pkgforge-dev/archlinux-pkgs-debloated"
 maintainer:
@@ -15,19 +16,20 @@ maintainer:
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/pkgforge-dev/archlinux-pkgs-debloated/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/archlinux-pkgs-debloated"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "archlinux-pkgs-debloated"
-repology:
-  - "archlinux-pkgs-debloated"
 src_url:
   - "https://github.com/pkgforge-dev/archlinux-pkgs-debloated"
 tag:
-  - "TODO"
+  - "appimage"
+  - "archlinux"
+  - "debloated"
+  - "libraries"
 x_exec:
   host:
     - "x86_64-linux"
