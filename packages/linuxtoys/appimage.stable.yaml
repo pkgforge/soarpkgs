@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.linuxtoys"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/linuxtoys"
 category:
-  - "TODO"
-description: "Unofficial AppImage of LinuxToys [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "System"
+description: "A collection of user-friendly tools for Linux systems"
 homepage:
-  - "https://github.com/pkgforge-dev/LinuxToys-AppImage"
+  - "https://linux.toys"
+  - "https://github.com/psygreg/linuxtoys"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/psygreg/linuxtoys/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LinuxToys-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/LinuxToys-AppImage"
 tag:
-  - "TODO"
+  - "linux"
+  - "tools"
+  - "utility"
+  - "scripts"
 x_exec:
   host:
     - "x86_64-linux"
