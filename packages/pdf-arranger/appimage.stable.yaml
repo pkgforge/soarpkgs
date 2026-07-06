@@ -9,15 +9,15 @@ app_id: "com.github.jeromerobert.pdfarranger"
 category:
   - "Office"
   - "Utility"
-description: "Unofficial AppImage of PDF Arranger [Maintainer=@Samueru-sama]"
+description: "Small application to merge, split, rotate, crop and rearrange PDF pages"
 homepage:
-  - "https://github.com/jeromerobert/pdfarranger"
+  - "https://github.com/pdfarranger/pdfarranger"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "GPL-3.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/jeromerobert/pdfarranger/refs/heads/main/COPYING"
+  - url: "https://raw.githubusercontent.com/pdfarranger/pdfarranger/main/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PDF-Arranger-AppImage"
@@ -30,6 +30,9 @@ src_url:
   - "https://github.com/pkgforge-dev/PDF-Arranger-AppImage"
 tag:
   - "pdf"
+  - "merge"
+  - "split"
+  - "rotate"
 x_exec:
   host:
     - "x86_64-linux"
