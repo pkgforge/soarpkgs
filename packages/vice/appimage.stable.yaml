@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.vice"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/vice"
 category:
-  - "TODO"
-description: "Unofficial AppImage of VICE [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Versatile Commodore Emulator for C64, C128, VIC20, PET and more"
 homepage:
-  - "https://github.com/pkgforge-dev/VICE-AppImage"
+  - "https://vice-emu.sourceforge.io"
+  - "https://github.com/VICE-Team/svn-mirror"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/VICE-Team/svn-mirror/main/vice/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/VICE-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/VICE-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "commodore"
+  - "c64"
+  - "retro"
 x_exec:
   host:
     - "x86_64-linux"
