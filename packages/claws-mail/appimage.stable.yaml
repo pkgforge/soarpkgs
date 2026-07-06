@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.claws-mail"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/claws-mail"
 category:
-  - "TODO"
-description: "WIP"
+  - "Network"
+  - "Email"
+description: "The user-friendly, lightweight, and fast GTK+ e-mail client and news reader"
 homepage:
-  - "https://github.com/pkgforge-dev/Claws-Mail-AppImage"
+  - "https://www.claws-mail.org"
+  - "https://git.claws-mail.org/?p=claws.git"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://git.claws-mail.org/?p=claws.git;a=blob_plain;f=COPYING;hb=HEAD"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Claws-Mail-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Claws-Mail-AppImage"
 tag:
-  - "TODO"
+  - "email"
+  - "client"
+  - "gtk"
+  - "news"
 x_exec:
   host:
     - "x86_64-linux"
