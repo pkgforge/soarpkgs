@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bulky"
+pkg_id: "pkgforge-dev.bulky"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/bulky"
+category:
+  - "Utility"
+description: "Bulk file and folder renamer that works across desktop environments"
+homepage:
+  - "https://github.com/linuxmint/bulky"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Bulky-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "bulky"
+repology:
+  - "bulky"
+src_url:
+  - "https://github.com/pkgforge-dev/Bulky-AppImage"
+tag:
+  - "rename"
+  - "files"
+  - "batch"
+  - "xapp"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Bulky-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Bulky-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
