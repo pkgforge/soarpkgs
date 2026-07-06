@@ -1,33 +1,36 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "ghostship-enhanced"
-pkg_id: "pkgforge-dev.ghostship-enhanced"
+pkg: "ghostship"
+pkg_id: "pkgforge-dev.ghostship"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/ghostship-enhanced"
+ghcr_pkg: "pkgforge-dev/ghostship"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Ghostship [Maintainer=@Link4Electronics]"
+  - "Game"
+description: "A native PC port of Super Mario 64 from Harbour Masters"
 homepage:
-  - "https://github.com/pkgforge-dev/Ghostship-AppImage-Enhanced"
+  - "https://github.com/HarbourMasters/Ghostship"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/HarbourMasters/Ghostship/develop/LICENSE.md"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Ghostship-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "ghostship-enhanced"
+  - "ghostship"
 repology:
-  - "ghostship-enhanced"
+  - "ghostship"
 src_url:
   - "https://github.com/pkgforge-dev/Ghostship-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "game"
+  - "super-mario-64"
+  - "port"
+  - "n64"
 x_exec:
   host:
     - "x86_64-linux"
