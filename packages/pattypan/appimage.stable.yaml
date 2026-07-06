@@ -6,9 +6,9 @@ pkg_id: "pkgforge-dev.pattypan"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/pattypan"
 category:
-  - "Network"
   - "Utility"
-description: "Unofficial AppImage of Pattypan [Maintainer=@Samueru-sama]"
+  - "Network"
+description: "Bulk upload tool for Wikimedia Commons"
 homepage:
   - "https://github.com/yarl/pattypan"
 maintainer:
@@ -16,7 +16,7 @@ maintainer:
 license:
   - "MIT"
 build_asset:
-  - url: "https://raw.githubusercontent.com/yarl/pattypan/refs/heads/master/LICENSE"
+  - url: "https://raw.githubusercontent.com/yarl/pattypan/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Pattypan-AppImage"
@@ -29,7 +29,9 @@ src_url:
   - "https://github.com/pkgforge-dev/Pattypan-AppImage"
 tag:
   - "wikimedia"
-  - "uploader"
+  - "upload"
+  - "commons"
+  - "java"
 x_exec:
   host:
     - "x86_64-linux"
