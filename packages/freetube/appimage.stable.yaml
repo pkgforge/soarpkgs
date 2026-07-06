@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.freetube"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/freetube"
 category:
-  - "TODO"
-description: "Unofficial AppImage of FreeTube [Maintainer=@Link4Electronics]"
+  - "Video"
+  - "Player"
+  - "Network"
+description: "An open source desktop YouTube player built with privacy in mind"
 homepage:
-  - "https://github.com/pkgforge-dev/FreeTube-Appimage"
+  - "https://freetubeapp.io"
+  - "https://github.com/FreeTubeApp/FreeTube"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "AGPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/development/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/FreeTube-Appimage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/FreeTube-Appimage"
 tag:
-  - "TODO"
+  - "youtube"
+  - "video"
+  - "player"
+  - "privacy"
 x_exec:
   host:
     - "x86_64-linux"
