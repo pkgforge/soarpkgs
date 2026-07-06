@@ -6,16 +6,16 @@ pkg_id: "pkgforge-dev.postal"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/postal"
 category:
-  - "TODO"
+  - "Game"
 description: "Unofficial AppImage of POSTAL [Maintainer=@Link4Electronics]"
 homepage:
-  - "https://github.com/pkgforge-dev/POSTAL-AppImage"
+  - "https://github.com/RWS-Studios/POSTAL-SourceCode"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/RWS-Studios/POSTAL-SourceCode/refs/heads/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/POSTAL-AppImage"
@@ -27,7 +27,8 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/POSTAL-AppImage"
 tag:
-  - "TODO"
+  - "shooter"
+  - "retro"
 x_exec:
   host:
     - "x86_64-linux"
