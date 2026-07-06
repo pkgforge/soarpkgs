@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.masterkey"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/masterkey"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Master Key [Maintainer=@TheRealYasri]"
+  - "Utility"
+  - "Security"
+description: "A GNOME/libadwaita password manager application"
 homepage:
-  - "https://github.com/pkgforge-dev/masterkey-AppImage"
+  - "https://gitlab.com/guillermop/master-key"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.com/guillermop/master-key/-/raw/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/masterkey-AppImage"
@@ -23,11 +24,14 @@ note:
 provides:
   - "masterkey"
 repology:
-  - "masterkey"
+  - "master-key"
 src_url:
   - "https://github.com/pkgforge-dev/masterkey-AppImage"
 tag:
-  - "TODO"
+  - "password-manager"
+  - "gnome"
+  - "libadwaita"
+  - "security"
 x_exec:
   host:
     - "x86_64-linux"
