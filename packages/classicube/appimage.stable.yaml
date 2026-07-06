@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.classicube"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/classicube"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ClassiCube [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "AdventureGame"
+description: "A custom Minecraft Classic compatible client written in C from scratch"
 homepage:
-  - "https://github.com/pkgforge-dev/ClassiCube-AppImage"
+  - "https://www.classicube.net"
+  - "https://github.com/ClassiCube/ClassiCube"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-3-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ClassiCube/ClassiCube/master/license.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ClassiCube-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/ClassiCube-AppImage"
 tag:
-  - "TODO"
+  - "minecraft"
+  - "sandbox"
+  - "voxel"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
