@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.innoextract"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/innoextract"
 category:
-  - "TODO"
-description: "Unofficial AppImage of innoextract [Maintainer=@Link4Electronics]"
+  - "Utility"
+  - "Archiving"
+description: "A tool to unpack installers created by Inno Setup"
 homepage:
-  - "https://github.com/pkgforge-dev/innoextract-AppImage"
+  - "https://constexpr.org/innoextract"
+  - "https://github.com/dscharrer/innoextract"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "Zlib"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/dscharrer/innoextract/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/innoextract-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/innoextract-AppImage"
 tag:
-  - "TODO"
+  - "innosetup"
+  - "extract"
+  - "installer"
+  - "unpack"
 x_exec:
   host:
     - "x86_64-linux"
