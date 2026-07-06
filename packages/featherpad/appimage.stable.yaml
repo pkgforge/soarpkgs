@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.featherpad"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/featherpad"
 category:
-  - "TODO"
-description: "Unofficial AppImage of FeatherPad [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "TextEditor"
+description: "Lightweight Qt plain-text editor with syntax highlighting and session support"
 homepage:
-  - "https://github.com/pkgforge-dev/FeatherPad-AppImage"
+  - "https://github.com/tsujan/FeatherPad"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/tsujan/FeatherPad/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/FeatherPad-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/FeatherPad-AppImage"
 tag:
-  - "TODO"
+  - "editor"
+  - "text"
+  - "qt"
+  - "lightweight"
 x_exec:
   host:
     - "x86_64-linux"
