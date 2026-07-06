@@ -9,15 +9,17 @@ app_id: "com.github.taiko2k.tauonmb"
 category:
   - "Audio"
   - "Music"
-description: "Unofficial AppImage of Tauon music player [Maintainer=@domesya]"
+  - "Player"
+description: "The music player of today, a sleek and modern desktop audio player"
 homepage:
   - "https://tauonmusicbox.rocks"
+  - "https://github.com/Taiko2k/Tauon"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "GPL-3.0"
 build_asset:
-  - url: "https://raw.githubusercontent.com/Taiko2k/Tauon/refs/heads/master/LICENSE"
+  - url: "https://raw.githubusercontent.com/Taiko2k/Tauon/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tauon-AppImage"
@@ -31,6 +33,8 @@ src_url:
 tag:
   - "music"
   - "player"
+  - "audio"
+  - "desktop"
 x_exec:
   host:
     - "x86_64-linux"
