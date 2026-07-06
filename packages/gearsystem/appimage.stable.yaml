@@ -6,16 +6,17 @@ pkg_id: "pkgforge-dev.gearsystem"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/gearsystem"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Gearsystem [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Sega Master System, Game Gear and SG-1000 emulator with debugger"
 homepage:
-  - "https://github.com/pkgforge-dev/Gearsystem-AppImage"
+  - "https://github.com/drhelius/Gearsystem"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/drhelius/Gearsystem/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gearsystem-AppImage"
@@ -27,7 +28,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Gearsystem-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "sega"
+  - "master-system"
+  - "game-gear"
 x_exec:
   host:
     - "x86_64-linux"
