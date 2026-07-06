@@ -6,28 +6,29 @@ pkg_id: "pkgforge-dev.visual-studio-code"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/visual-studio-code"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Visual Studio Code [Maintainer=@Link4Electronics]"
+  - "Development"
+  - "IDE"
+  - "TextEditor"
+description: "Code editor with debugging, Git control and extensions by Microsoft"
 homepage:
-  - "https://github.com/pkgforge-dev/Visual-Studio-Code-AppImage"
+  - "https://code.visualstudio.com"
+  - "https://github.com/microsoft/vscode"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Visual-Studio-Code-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "visual-studio-code"
-repology:
-  - "visual-studio-code"
 src_url:
   - "https://github.com/pkgforge-dev/Visual-Studio-Code-AppImage"
 tag:
-  - "TODO"
+  - "editor"
+  - "ide"
+  - "development"
+  - "vscode"
 x_exec:
   host:
     - "x86_64-linux"
