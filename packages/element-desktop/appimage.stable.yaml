@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.element-desktop"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/element-desktop"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Element Desktop [Maintainer=@Samueru-sama]"
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "A glossy Matrix collaboration client for desktop"
 homepage:
-  - "https://github.com/pkgforge-dev/Element-Desktop-AppImage"
+  - "https://element.io"
+  - "https://github.com/element-hq/element-desktop"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "AGPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/element-hq/element-desktop/develop/LICENSE-AGPL-3.0"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Element-Desktop-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Element-Desktop-AppImage"
 tag:
-  - "TODO"
+  - "matrix"
+  - "chat"
+  - "messaging"
+  - "electron"
 x_exec:
   host:
     - "x86_64-linux"
