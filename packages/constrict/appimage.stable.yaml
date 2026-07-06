@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.constrict"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/constrict"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Constrict [Maintainer=@TheRealYasri]"
+  - "Video"
+  - "AudioVideo"
+  - "Utility"
+description: "Compress videos to target sizes"
 homepage:
-  - "https://github.com/pkgforge-dev/Constrict-AppImage"
+  - "https://gitlab.gnome.org/World/Constrict"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://gitlab.gnome.org/World/Constrict/-/raw/main/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Constrict-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Constrict-AppImage"
 tag:
-  - "TODO"
+  - "video"
+  - "compression"
+  - "ffmpeg"
+  - "gnome"
 x_exec:
   host:
     - "x86_64-linux"
