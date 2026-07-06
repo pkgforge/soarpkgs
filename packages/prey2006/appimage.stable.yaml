@@ -6,28 +6,31 @@ pkg_id: "pkgforge-dev.prey2006"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/prey2006"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Prey 2006 [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "ActionGame"
+  - "Shooter"
+description: "Prey 2006 SDK integrated with the Doom 3 GPL engine release"
 homepage:
-  - "https://github.com/pkgforge-dev/Prey2006-AppImage"
+  - "https://github.com/FriskTheFallenHuman/Prey2006"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/FriskTheFallenHuman/Prey2006/main/.github/COPYING.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Prey2006-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
   - "prey2006"
-repology:
-  - "prey2006"
 src_url:
   - "https://github.com/pkgforge-dev/Prey2006-AppImage"
 tag:
-  - "TODO"
+  - "prey"
+  - "fps"
+  - "doom3"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
