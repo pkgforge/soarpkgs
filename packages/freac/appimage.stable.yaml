@@ -1,33 +1,39 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "freac-enhanced"
-pkg_id: "pkgforge-dev.freac-enhanced"
+pkg: "freac"
+pkg_id: "pkgforge-dev.freac"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/freac-enhanced"
+ghcr_pkg: "pkgforge-dev/freac"
 category:
-  - "TODO"
-description: "Unofficial AppImage of freac [Maintainer=@Link4Electronics]"
+  - "Audio"
+  - "AudioVideo"
+  - "Utility"
+description: "Free audio converter and CD ripper supporting many formats"
 homepage:
-  - "https://github.com/pkgforge-dev/freac-AppImage-Enhanced"
+  - "https://www.freac.org/"
+  - "https://github.com/enzo1982/freac"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/enzo1982/freac/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/freac-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "freac-enhanced"
+  - "freac"
 repology:
-  - "freac-enhanced"
+  - "freac"
 src_url:
   - "https://github.com/pkgforge-dev/freac-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "audio"
+  - "converter"
+  - "cd-ripper"
+  - "encoder"
 x_exec:
   host:
     - "x86_64-linux"
