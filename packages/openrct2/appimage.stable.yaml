@@ -1,33 +1,39 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "openrct2-enhanced"
-pkg_id: "pkgforge-dev.openrct2-enhanced"
+pkg: "openrct2"
+pkg_id: "pkgforge-dev.openrct2"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/openrct2-enhanced"
+ghcr_pkg: "pkgforge-dev/openrct2"
 category:
-  - "TODO"
-description: "Unofficial AppImage of OpenRCT2 [Maintainer=@Link4Electronics]"
+  - "Game"
+  - "Simulation"
+  - "StrategyGame"
+description: "An open source re-implementation of RollerCoaster Tycoon 2"
 homepage:
-  - "https://github.com/pkgforge-dev/OpenRCT2-AppImage-Enhanced"
+  - "https://openrct2.io"
+  - "https://github.com/OpenRCT2/OpenRCT2"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/licence.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenRCT2-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "openrct2-enhanced"
+  - "openrct2"
 repology:
-  - "openrct2-enhanced"
+  - "openrct2"
 src_url:
   - "https://github.com/pkgforge-dev/OpenRCT2-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "game"
+  - "simulation"
+  - "rollercoaster"
+  - "tycoon"
 x_exec:
   host:
     - "x86_64-linux"
