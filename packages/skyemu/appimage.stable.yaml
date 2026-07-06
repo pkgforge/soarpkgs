@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.skyemu"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/skyemu"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SkyEmu [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Game Boy Advance, Game Boy, Game Boy Color, and Nintendo DS emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/SkyEmu-AppImage"
+  - "https://skyemu.app"
+  - "https://github.com/skylersaleh/SkyEmu"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/skylersaleh/SkyEmu/dev/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SkyEmu-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/SkyEmu-AppImage"
 tag:
-  - "TODO"
+  - "emulator"
+  - "gameboy"
+  - "gba"
+  - "nintendo-ds"
 x_exec:
   host:
     - "x86_64-linux"
