@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.tux-football"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/tux-football"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Tux Football game　　　　　　　　　　[Maintainer=@fiftydinar] "
+  - "Game"
+  - "SportsGame"
+  - "ArcadeGame"
+description: "Arcade-style 2D soccer game featuring Tux"
 homepage:
-  - "https://github.com/pkgforge-dev/Tux-Football-AppImage"
+  - "https://tuxfootball.sourceforge.net/"
+  - "https://sourceforge.net/projects/tuxfootball/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/OSSGames/GAME-SDL-SPORTS-TuxFootball/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tux-Football-AppImage"
@@ -23,11 +26,14 @@ note:
 provides:
   - "tux-football"
 repology:
-  - "tux-football"
+  - "tuxfootball"
 src_url:
   - "https://github.com/pkgforge-dev/Tux-Football-AppImage"
 tag:
-  - "TODO"
+  - "soccer"
+  - "football"
+  - "game"
+  - "tux"
 x_exec:
   host:
     - "x86_64-linux"
