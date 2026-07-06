@@ -5,17 +5,20 @@ pkg: "telegram"
 pkg_id: "pkgforge-dev.telegram"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/telegram"
+app_id: "org.telegram.desktop"
 category:
-  - "TODO"
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
 description: "Unofficial AppImage of Telegram [Maintainer=@Samueru-sama]"
 homepage:
-  - "https://github.com/pkgforge-dev/Telegram-AppImage"
+  - "https://desktop.telegram.org"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/telegramdesktop/tdesktop/refs/heads/dev/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Telegram-AppImage"
@@ -23,11 +26,12 @@ note:
 provides:
   - "telegram"
 repology:
-  - "telegram"
+  - "telegram-desktop"
 src_url:
   - "https://github.com/pkgforge-dev/Telegram-AppImage"
 tag:
-  - "TODO"
+  - "telegram"
+  - "chat"
 x_exec:
   host:
     - "x86_64-linux"
