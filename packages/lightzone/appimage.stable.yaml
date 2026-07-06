@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.lightzone"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/lightzone"
 category:
-  - "TODO"
-description: "Unofficial AppImage of LighZone [Maintainer=@Samueru-sama]"
+  - "Graphics"
+  - "Photography"
+  - "RasterGraphics"
+description: "Open-source professional-grade digital photo editor and darkroom software"
 homepage:
-  - "https://github.com/pkgforge-dev/LightZone-AppImage"
+  - "http://lightzoneproject.org"
+  - "https://github.com/ktgw0316/LightZone"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "BSD-3-Clause"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/ktgw0316/LightZone/master/COPYING"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LightZone-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/LightZone-AppImage"
 tag:
-  - "TODO"
+  - "photo"
+  - "editor"
+  - "darkroom"
+  - "raw"
 x_exec:
   host:
     - "x86_64-linux"
