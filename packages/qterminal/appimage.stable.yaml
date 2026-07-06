@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.qterminal"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/qterminal"
 category:
-  - "TODO"
-description: "Unofficial AppImage of QTerminal [Maintainer=@Samueru-sama]"
+  - "System"
+  - "TerminalEmulator"
+  - "Utility"
+description: "Lightweight Qt-based terminal emulator for the LXQt desktop environment"
 homepage:
-  - "https://github.com/pkgforge-dev/QTerminal-AppImage"
+  - "https://lxqt-project.org"
+  - "https://github.com/lxqt/qterminal"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/lxqt/qterminal/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/QTerminal-AppImage"
@@ -27,7 +30,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/QTerminal-AppImage"
 tag:
-  - "TODO"
+  - "terminal"
+  - "qt"
+  - "lxqt"
+  - "emulator"
 x_exec:
   host:
     - "x86_64-linux"
