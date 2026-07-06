@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "classicimageviewer-enhanced"
-pkg_id: "pkgforge-dev.classicimageviewer-enhanced"
+pkg: "classicimageviewer"
+pkg_id: "pkgforge-dev.classicimageviewer"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/classicimageviewer-enhanced"
+ghcr_pkg: "pkgforge-dev/classicimageviewer"
 category:
-  - "TODO"
-description: "Unofficial AppImage of ClassicImageViewer [Maintainer=@Link4Electronics]"
+  - "Graphics"
+  - "Viewer"
+  - "RasterGraphics"
+description: "A simple and fast image viewer and editor for Linux, BSDs and MacOS"
 homepage:
-  - "https://github.com/pkgforge-dev/ClassicImageViewer-AppImage-Enhanced"
+  - "https://github.com/classicimageviewer/ClassicImageViewer"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/classicimageviewer/ClassicImageViewer/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ClassicImageViewer-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "classicimageviewer-enhanced"
+  - "classicimageviewer"
 repology:
-  - "classicimageviewer-enhanced"
+  - "classicimageviewer"
 src_url:
   - "https://github.com/pkgforge-dev/ClassicImageViewer-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "image"
+  - "viewer"
+  - "editor"
+  - "graphics"
 x_exec:
   host:
     - "x86_64-linux"
