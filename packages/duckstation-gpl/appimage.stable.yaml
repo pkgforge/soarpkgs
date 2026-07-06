@@ -1,33 +1,37 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "duckstation-gpl-enhanced"
-pkg_id: "pkgforge-dev.duckstation-gpl-enhanced"
+pkg: "duckstation-gpl"
+pkg_id: "pkgforge-dev.duckstation-gpl"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/duckstation-gpl-enhanced"
+ghcr_pkg: "pkgforge-dev/duckstation-gpl"
 category:
-  - "TODO"
-description: "Unofficial AppImage of DuckStation when it was still GPLv3 [Maintainer=@Link4Electronics]"
+  - "Emulator"
+  - "Game"
+description: "Fast PlayStation 1 emulator for x86-64/AArch32/AArch64/RV64"
 homepage:
-  - "https://github.com/pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
+  - "https://github.com/stenzek/duckstation"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/stenzek/duckstation/aa955b8ae28314ae061613f0ddf13183a98aca03/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "duckstation-gpl-enhanced"
+  - "duckstation-gpl"
 repology:
-  - "duckstation-gpl-enhanced"
+  - "duckstation"
 src_url:
   - "https://github.com/pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "emulator"
+  - "playstation"
+  - "ps1"
+  - "gaming"
 x_exec:
   host:
     - "x86_64-linux"
