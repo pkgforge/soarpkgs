@@ -1,33 +1,38 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "bitwarden-enhanced"
-pkg_id: "pkgforge-dev.bitwarden-enhanced"
+pkg: "bitwarden"
+pkg_id: "pkgforge-dev.bitwarden"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/bitwarden-enhanced"
+ghcr_pkg: "pkgforge-dev/bitwarden"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Bitwarden that can work on any linux system [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "Security"
+description: "Secure and free password manager for all of your devices"
 homepage:
-  - "https://github.com/pkgforge-dev/Bitwarden-AppImage-Enhanced"
+  - "https://bitwarden.com"
+  - "https://github.com/bitwarden/clients"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/bitwarden/clients/main/LICENSE.txt"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Bitwarden-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "bitwarden-enhanced"
+  - "bitwarden"
 repology:
-  - "bitwarden-enhanced"
+  - "bitwarden"
 src_url:
   - "https://github.com/pkgforge-dev/Bitwarden-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "password"
+  - "security"
+  - "vault"
+  - "encryption"
 x_exec:
   host:
     - "x86_64-linux"
