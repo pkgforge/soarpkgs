@@ -1,33 +1,36 @@
 #!/SBUILD
 _disabled: false
 
-pkg: "pcsx2-enhanced"
-pkg_id: "pkgforge-dev.pcsx2-enhanced"
+pkg: "pcsx2"
+pkg_id: "pkgforge-dev.pcsx2"
 pkg_type: "appimage"
-ghcr_pkg: "pkgforge-dev/pcsx2-enhanced"
+ghcr_pkg: "pkgforge-dev/pcsx2"
+app_id: "net.pcsx2.PCSX2"
 category:
-  - "TODO"
-description: "Unofficial AppImage of PCSX2 that can work on any linux system [Maintainer=@lucasmz1]"
+  - "Emulator"
+  - "Game"
+description: "Free and open-source PlayStation 2 emulator"
 homepage:
-  - "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
+  - "https://pcsx2.net"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/PCSX2/pcsx2/refs/heads/master/COPYING.GPLv3"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
   - "[PORTABLE] (Works on AnyLinux)"
 provides:
-  - "pcsx2-enhanced"
+  - "pcsx2"
 repology:
-  - "pcsx2-enhanced"
+  - "pcsx2"
 src_url:
   - "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
 tag:
-  - "TODO"
+  - "ps2"
+  - "emulator"
 x_exec:
   host:
     - "x86_64-linux"
