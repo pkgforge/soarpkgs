@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.extremetuxracer"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/extremetuxracer"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Extreme Tux Racer [Maintainer=@Samueru-sama]"
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Downhill racing game starring Tux"
 homepage:
-  - "https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage"
+  - "https://sourceforge.net/projects/extremetuxracer/"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-2.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://sourceforge.net/p/extremetuxracer/code/HEAD/tree/trunk/COPYING?format=raw"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage"
@@ -27,7 +29,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/ExtremeTuxRacer-AppImage"
 tag:
-  - "TODO"
+  - "game"
+  - "racing"
+  - "tux"
+  - "arcade"
 x_exec:
   host:
     - "x86_64-linux"
