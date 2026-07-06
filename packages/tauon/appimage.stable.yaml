@@ -5,17 +5,19 @@ pkg: "tauon"
 pkg_id: "pkgforge-dev.tauon"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/tauon"
+app_id: "com.github.taiko2k.tauonmb"
 category:
-  - "TODO"
+  - "Audio"
+  - "Music"
 description: "Unofficial AppImage of Tauon music player [Maintainer=@domesya]"
 homepage:
-  - "https://github.com/pkgforge-dev/Tauon-AppImage"
+  - "https://tauonmusicbox.rocks"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/Taiko2k/Tauon/refs/heads/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Tauon-AppImage"
@@ -23,11 +25,12 @@ note:
 provides:
   - "tauon"
 repology:
-  - "tauon"
+  - "tauon-music-box"
 src_url:
   - "https://github.com/pkgforge-dev/Tauon-AppImage"
 tag:
-  - "TODO"
+  - "music"
+  - "player"
 x_exec:
   host:
     - "x86_64-linux"
