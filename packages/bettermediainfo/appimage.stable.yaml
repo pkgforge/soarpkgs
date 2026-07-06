@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "bettermediainfo"
+pkg_id: "pkgforge-dev.bettermediainfo"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/bettermediainfo"
+category:
+  - "Utility"
+  - "AudioVideo"
+  - "Video"
+description: "A better GUI for MediaInfo media file metadata inspection"
+homepage:
+  - "https://github.com/caoccao/BetterMediaInfo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/caoccao/BetterMediaInfo/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "bettermediainfo"
+src_url:
+  - "https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced"
+tag:
+  - "mediainfo"
+  - "gui"
+  - "metadata"
+  - "video"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
