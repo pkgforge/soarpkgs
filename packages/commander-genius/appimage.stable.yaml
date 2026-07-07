@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "commander-genius"
+pkg_id: "pkgforge-dev.commander-genius"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/commander-genius"
+category:
+  - "Game"
+  - "AdventureGame"
+  - "ArcadeGame"
+description: "Modern interpreter for the Commander Keen games"
+homepage:
+  - "https://clonekeenplus.sourceforge.io/"
+  - "https://gitlab.com/Dringgstein/Commander-Genius"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://gitlab.com/Dringgstein/Commander-Genius/-/raw/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Commander-Genius-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "commander-genius"
+repology:
+  - "commandergenius"
+src_url:
+  - "https://github.com/pkgforge-dev/Commander-Genius-AppImage"
+tag:
+  - "game"
+  - "commander-keen"
+  - "platformer"
+  - "engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Commander-Genius-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Commander-Genius-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
