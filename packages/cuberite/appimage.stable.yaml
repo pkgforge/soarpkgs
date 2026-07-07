@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cuberite"
+pkg_id: "pkgforge-dev.cuberite"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/cuberite"
+category:
+  - "Game"
+  - "Network"
+description: "A lightweight, fast and extensible game server for Minecraft"
+homepage:
+  - "https://cuberite.org"
+  - "https://github.com/cuberite/cuberite"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/cuberite/cuberite/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Cuberite-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cuberite"
+repology:
+  - "cuberite"
+src_url:
+  - "https://github.com/pkgforge-dev/Cuberite-AppImage"
+tag:
+  - "minecraft"
+  - "game-server"
+  - "gaming"
+  - "cpp"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Cuberite-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Cuberite-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
