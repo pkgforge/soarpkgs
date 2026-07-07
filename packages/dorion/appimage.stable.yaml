@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dorion"
+pkg_id: "pkgforge-dev.dorion"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dorion"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "Tiny alternative Discord client with smaller footprint, snappier startup and themes"
+homepage:
+  - "https://github.com/SpikeHD/Dorion"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/SpikeHD/Dorion/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dorion-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dorion"
+repology:
+  - "dorion"
+src_url:
+  - "https://github.com/pkgforge-dev/Dorion-AppImage-Enhanced"
+tag:
+  - "discord"
+  - "chat"
+  - "client"
+  - "messaging"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Dorion-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Dorion-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
