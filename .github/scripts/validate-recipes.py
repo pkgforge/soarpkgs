@@ -5,11 +5,14 @@ Usage: validate-recipes.py <file-with-list-of-recipe-paths>
 
 Hard failures (exit 1):
   * a `repology:` project name that does not exist on repology.org
-  * a `build_asset:` license `url:` that is not reachable
+  * a `build_asset:` license `url:` that returns 404/410 (definitely missing)
 
 Warnings only (never fail the build):
-  * a `homepage:` URL that is not reachable (marketing sites frequently block
-    automated requests or redirect in ways curl/urllib cannot follow)
+  * a `homepage:` URL that is not reachable
+  * any URL that could not be verified (401/403/406 bot blocks, 429 rate
+    limits, 5xx, timeouts, redirect loops). Hosts like SourceForge, Codeberg
+    and gitlab.gnome.org refuse CI-runner IPs, so a non-404 response is treated
+    as "unknown", not "broken".
 
 Recipes without a `repology:` field are skipped for that check - omitting it is
 the correct choice when the upstream is not packaged anywhere on repology.
@@ -135,19 +138,24 @@ def url_reachable(url):
                 if code and code < 400:
                     return True, f"HTTP {code}"
                 last = f"HTTP {code}"
+                break
         except urllib.error.HTTPError as e:
-            # A definitive 4xx (except rate limiting) is a real failure.
+            # Only 404/410 are a definitive "this file is not there" - a real
+            # failure. Everything else (401/403/406 bot blocks, 429 rate limits,
+            # 5xx) means we could not verify from a CI runner IP, so warn only.
+            if e.code in (404, 410):
+                return False, f"HTTP {e.code} (not found)"
             if e.code in (429, 500, 502, 503, 504) and attempt < RETRIES:
                 time.sleep(2 * (attempt + 1))
                 continue
-            return (False, f"HTTP {e.code}") if e.code < 500 else (None, f"HTTP {e.code}")
+            return None, f"HTTP {e.code} (could not verify)"
         except Exception as e:  # noqa: BLE001 - timeouts, redirect loops, DNS...
             last = str(e)
             if attempt < RETRIES:
                 time.sleep(2 * (attempt + 1))
                 continue
-        time.sleep(1)
-    return False, last or "unreachable"
+    # Timeouts, redirect loops, connection resets: cannot confirm - warn only.
+    return None, f"{last or 'unreachable'} (could not verify)"
 
 
 def main():
