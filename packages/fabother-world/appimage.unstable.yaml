@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "fabother-world"
+pkg_id: "pkgforge-dev.fabother-world"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/fabother-world"
+category:
+  - "Game"
+  - "AdventureGame"
+description: "An interpreter for Another World (Out of this World)"
+homepage:
+  - "https://github.com/fabiensanglard/Another-World-Bytecode-Interpreter"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/fabiensanglard/Another-World-Bytecode-Interpreter/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Fabother-World-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "fabother-world"
+repology:
+  - "fabother-world"
+src_url:
+  - "https://github.com/pkgforge-dev/Fabother-World-AppImage"
+tag:
+  - "game"
+  - "interpreter"
+  - "another-world"
+  - "engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Fabother-World-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Fabother-World-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
