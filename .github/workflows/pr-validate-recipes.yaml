@@ -1,0 +1,54 @@
+name: PR Validate Recipes
+
+# Validates package recipes changed in a PR:
+#   * repology:   every declared project name must exist on repology.org
+#   * build_asset: every license `url:` must be reachable (these are meant to be
+#                  direct raw files, so a broken one is a hard failure)
+#   * homepage:   every URL is probed too, but failures are only warnings since
+#                 marketing sites often block bots or redirect oddly.
+#
+# Recipes without a `repology:` field are fine - dropping it is the correct
+# choice when the project is not on repology.
+
+on:
+  pull_request:
+    paths:
+      - 'packages/**/*.yaml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-validate-recipes-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate-recipes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Collect changed recipes
+        id: changed
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          # Only added/copied/modified/renamed recipe files (skip deletions).
+          git diff --diff-filter=ACMR --name-only "${BASE_SHA}...${HEAD_SHA}" -- 'packages/**/*.yaml' > changed_recipes.txt || true
+          echo "Changed recipes:"
+          cat changed_recipes.txt || true
+          if [ -s changed_recipes.txt ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate recipes
+        if: steps.changed.outputs.has_changes == 'true'
+        run: |
+          python3 .github/scripts/validate-recipes.py changed_recipes.txt
