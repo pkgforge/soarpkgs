@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "collaboraoffice"
+pkg_id: "pkgforge-dev.collaboraoffice"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/collaboraoffice"
+category:
+  - "Office"
+  - "Utility"
+description: "LibreOffice-based office suite for documents, spreadsheets and presentations"
+homepage:
+  - "https://github.com/CollaboraOnline/online"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/CollaboraOnline/online/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CollaboraOffice-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "collaboraoffice"
+repology:
+  - "collabora-office"
+src_url:
+  - "https://github.com/pkgforge-dev/CollaboraOffice-AppImage"
+tag:
+  - "office"
+  - "libreoffice"
+  - "documents"
+  - "productivity"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/CollaboraOffice-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/CollaboraOffice-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
