@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dnzhrecomp"
+pkg_id: "pkgforge-dev.dnzhrecomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dnzhrecomp"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Static recompilation of the Nintendo 64 game Duke Nukem: Zero Hour"
+homepage:
+  - "https://github.com/sonicdcer/DNZHRecomp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-only"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DNZHRecomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dnzhrecomp"
+src_url:
+  - "https://github.com/pkgforge-dev/DNZHRecomp-AppImage"
+tag:
+  - "game"
+  - "recompilation"
+  - "n64"
+  - "shooter"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DNZHRecomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DNZHRecomp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
