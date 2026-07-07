@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "github-desktop"
+pkg_id: "pkgforge-dev.github-desktop"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/github-desktop"
+category:
+  - "Development"
+  - "Utility"
+description: "Fork of GitHub Desktop with support for various Linux distributions"
+homepage:
+  - "https://desktop.github.com"
+  - "https://github.com/shiftkey/desktop"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/shiftkey/desktop/linux/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "github-desktop"
+repology:
+  - "github-desktop"
+src_url:
+  - "https://github.com/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+tag:
+  - "git"
+  - "github"
+  - "vcs"
+  - "gui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/GitHub-Desktop-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
