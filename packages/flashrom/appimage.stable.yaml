@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "flashrom"
+pkg_id: "pkgforge-dev.flashrom"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/flashrom"
+category:
+  - "Utility"
+  - "System"
+  - "Electronics"
+description: "Utility for detecting, reading, writing, verifying and erasing flash chips"
+homepage:
+  - "https://flashrom.org"
+  - "https://github.com/flashrom/flashrom"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/flashrom/flashrom/main/COPYING.rst"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Flashrom-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "flashrom"
+repology:
+  - "flashrom"
+src_url:
+  - "https://github.com/pkgforge-dev/Flashrom-AppImage"
+tag:
+  - "flashrom"
+  - "bios"
+  - "firmware"
+  - "flash"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Flashrom-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Flashrom-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
