@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "cromagrally"
+pkg_id: "pkgforge-dev.cromagrally"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/cromagrally"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Port of Cro-Mag Rally, a 2000 kart racing game by Pangea Software"
+homepage:
+  - "https://github.com/jorio/CroMagRally"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "CC-BY-NC-SA-4.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/jorio/CroMagRally/master/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CroMagRally-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "cromagrally"
+repology:
+  - "cromagrally"
+src_url:
+  - "https://github.com/pkgforge-dev/CroMagRally-AppImage"
+tag:
+  - "game"
+  - "racing"
+  - "kart"
+  - "pangea"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/CroMagRally-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/CroMagRally-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
