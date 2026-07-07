@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ocrmypdf"
+pkg_id: "pkgforge-dev.ocrmypdf"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ocrmypdf"
+category:
+  - "Utility"
+  - "Office"
+description: "Adds an OCR text layer to scanned PDF files, making them searchable"
+homepage:
+  - "https://github.com/ocrmypdf/OCRmyPDF"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ocrmypdf/OCRmyPDF/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OCRmyPDF-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ocrmypdf"
+repology:
+  - "ocrmypdf"
+src_url:
+  - "https://github.com/pkgforge-dev/OCRmyPDF-AppImage"
+tag:
+  - "ocr"
+  - "pdf"
+  - "scanned"
+  - "searchable"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OCRmyPDF-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OCRmyPDF-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
