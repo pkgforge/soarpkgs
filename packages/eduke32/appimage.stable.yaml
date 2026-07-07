@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "eduke32"
+pkg_id: "pkgforge-dev.eduke32"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/eduke32"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Advanced source port of Duke Nukem 3D"
+homepage:
+  - "https://www.eduke32.com"
+  - "https://voidpoint.io/terminx/eduke32"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://voidpoint.io/terminx/eduke32/-/raw/master/package/common/gpl-2.0.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/EDuke32-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "eduke32"
+repology:
+  - "eduke32"
+src_url:
+  - "https://github.com/pkgforge-dev/EDuke32-AppImage"
+tag:
+  - "game"
+  - "fps"
+  - "duke-nukem"
+  - "source-port"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/EDuke32-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/EDuke32-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
