@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ecwolf"
+pkg_id: "pkgforge-dev.ecwolf"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ecwolf"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Advanced source port for Wolfenstein 3D, Spear of Destiny and Super 3D Noah's Ark"
+homepage:
+  - "https://maniacsvault.net/ecwolf/"
+  - "https://github.com/ECWolfEngine/ECWolf"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ECWolfEngine/ECWolf/master/docs/license-gpl.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ECWolf-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ecwolf"
+repology:
+  - "ecwolf"
+src_url:
+  - "https://github.com/pkgforge-dev/ECWolf-AppImage"
+tag:
+  - "wolfenstein"
+  - "fps"
+  - "source-port"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ECWolf-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ECWolf-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
