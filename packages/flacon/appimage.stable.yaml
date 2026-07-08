@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "flacon"
+pkg_id: "pkgforge-dev.flacon"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/flacon"
+category:
+  - "Audio"
+  - "Utility"
+description: "Extracts audio tracks from an audio CD image to separate files"
+homepage:
+  - "https://flacon.github.io"
+  - "https://github.com/flacon/flacon"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "LGPL-2.1"
+build_asset:
+  - url: "https://raw.githubusercontent.com/flacon/flacon/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "flacon"
+repology:
+  - "flacon"
+src_url:
+  - "https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced"
+tag:
+  - "audio"
+  - "cd"
+  - "encoder"
+  - "flac"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Flacon-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
