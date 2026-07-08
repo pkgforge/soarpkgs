@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "masterkey"
+pkg_id: "pkgforge-dev.masterkey"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/masterkey"
+category:
+  - "Utility"
+  - "Security"
+description: "A GNOME/libadwaita password manager application"
+homepage:
+  - "https://gitlab.com/guillermop/master-key"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://gitlab.com/guillermop/master-key/-/raw/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/masterkey-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "masterkey"
+repology:
+  - "master-key"
+src_url:
+  - "https://github.com/pkgforge-dev/masterkey-AppImage"
+tag:
+  - "password-manager"
+  - "gnome"
+  - "libadwaita"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/masterkey-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/masterkey-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
