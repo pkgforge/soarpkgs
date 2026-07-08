@@ -24,8 +24,12 @@ permissions:
   id-token: write
   packages: write
 
+# Each merged commit gets its own group so that builds for different packages
+# run in parallel and never cancel one another. A single shared group (e.g.
+# build-${{ github.ref }}) keeps only 1 running + 1 pending run per group, so a
+# merge queue draining several package PRs would cancel the intermediate ones.
 concurrency:
-  group: build-${{ github.ref }}
+  group: build-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
