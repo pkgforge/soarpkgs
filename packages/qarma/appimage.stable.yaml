@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qarma"
+pkg_id: "pkgforge-dev.qarma"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/qarma"
+category:
+  - "Utility"
+description: "Qt-based clone of zenity for creating GUI dialog boxes"
+homepage:
+  - "https://github.com/luebking/qarma"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/luebking/qarma/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/qarma-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "qarma"
+repology:
+  - "qarma"
+src_url:
+  - "https://github.com/pkgforge-dev/qarma-AppImage"
+tag:
+  - "qt"
+  - "zenity"
+  - "dialog"
+  - "gui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/qarma-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/qarma-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
