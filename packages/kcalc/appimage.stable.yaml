@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kcalc"
+pkg_id: "pkgforge-dev.kcalc"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/kcalc"
+category:
+  - "Utility"
+  - "Calculator"
+  - "Science"
+description: "Calculator offering everything a scientific calculator does, and more"
+homepage:
+  - "https://apps.kde.org/kcalc"
+  - "https://invent.kde.org/utilities/kcalc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://invent.kde.org/utilities/kcalc/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KCalc-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kcalc"
+repology:
+  - "kcalc"
+src_url:
+  - "https://github.com/pkgforge-dev/KCalc-AppImage"
+tag:
+  - "calculator"
+  - "kde"
+  - "scientific"
+  - "math"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/KCalc-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/KCalc-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
