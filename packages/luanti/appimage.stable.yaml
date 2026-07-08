@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "luanti"
+pkg_id: "pkgforge-dev.luanti"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/luanti"
+category:
+  - "Game"
+description: "Open-source voxel game engine and platform for building games"
+homepage:
+  - "https://www.luanti.org"
+  - "https://github.com/luanti-org/luanti"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "LGPL-2.1"
+build_asset:
+  - url: "https://raw.githubusercontent.com/luanti-org/luanti/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Luanti-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "luanti"
+repology:
+  - "luanti"
+src_url:
+  - "https://github.com/pkgforge-dev/Luanti-AppImage"
+tag:
+  - "game"
+  - "voxel"
+  - "engine"
+  - "sandbox"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Luanti-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Luanti-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
