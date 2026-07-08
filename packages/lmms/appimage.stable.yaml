@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "lmms"
+pkg_id: "pkgforge-dev.lmms"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/lmms"
+category:
+  - "Audio"
+  - "Music"
+  - "AudioVideo"
+description: "Cross-platform music production software (digital audio workstation)"
+homepage:
+  - "https://lmms.io"
+  - "https://github.com/LMMS/lmms"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/LMMS/lmms/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LMMS-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "lmms"
+repology:
+  - "lmms"
+src_url:
+  - "https://github.com/pkgforge-dev/LMMS-AppImage"
+tag:
+  - "audio"
+  - "music"
+  - "daw"
+  - "synthesizer"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/LMMS-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/LMMS-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
