@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "haruna"
+pkg_id: "pkgforge-dev.haruna"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/haruna"
+category:
+  - "AudioVideo"
+  - "Video"
+  - "Player"
+description: "Open source video player built with Qt/QML and libmpv"
+homepage:
+  - "https://apps.kde.org/haruna"
+  - "https://invent.kde.org/multimedia/haruna"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://invent.kde.org/multimedia/haruna/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Haruna-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "haruna"
+repology:
+  - "haruna"
+src_url:
+  - "https://github.com/pkgforge-dev/Haruna-AppImage"
+tag:
+  - "video"
+  - "player"
+  - "mpv"
+  - "kde"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Haruna-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Haruna-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
