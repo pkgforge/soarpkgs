@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "drum-machine"
+pkg_id: "pkgforge-dev.drum-machine"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/drum-machine"
+category:
+  - "Audio"
+  - "Music"
+description: "A drum machine application built with Python, GTK4 and libadwaita"
+homepage:
+  - "https://apps.gnome.org/DrumMachine/"
+  - "https://github.com/Revisto/drum-machine"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Revisto/drum-machine/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Drum-Machine-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "drum-machine"
+repology:
+  - "drum-machine"
+src_url:
+  - "https://github.com/pkgforge-dev/Drum-Machine-AppImage"
+tag:
+  - "drum"
+  - "music"
+  - "audio"
+  - "gtk"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Drum-Machine-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Drum-Machine-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
