@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "devilutionx"
+pkg_id: "pkgforge-dev.devilutionx"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/devilutionx"
+category:
+  - "Game"
+  - "RolePlaying"
+  - "ActionGame"
+description: "Diablo build for modern operating systems"
+homepage:
+  - "https://github.com/diasurgical/DevilutionX"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://raw.githubusercontent.com/diasurgical/DevilutionX/master/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DevilutionX-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "devilutionx"
+repology:
+  - "devilutionx"
+src_url:
+  - "https://github.com/pkgforge-dev/DevilutionX-AppImage-Enhanced"
+tag:
+  - "diablo"
+  - "rpg"
+  - "game"
+  - "source-port"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DevilutionX-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DevilutionX-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
