@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dwarf-fortress-legacy"
+pkg_id: "pkgforge-dev.dwarf-fortress-legacy"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dwarf-fortress-legacy"
+category:
+  - "Game"
+  - "StrategyGame"
+  - "RolePlaying"
+description: "Classic freeware version of the deep dwarven fortress simulation by Bay 12 Games"
+homepage:
+  - "https://www.bay12games.com/dwarves/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dwarf-fortress-legacy"
+src_url:
+  - "https://github.com/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
+tag:
+  - "game"
+  - "simulation"
+  - "strategy"
+  - "roguelike"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Dwarf-Fortress-Legacy-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
