@@ -24,8 +24,12 @@ permissions:
   id-token: write
   packages: write
 
+# Each merged commit gets its own group so that builds for different packages
+# run in parallel and never cancel one another. A single shared group (e.g.
+# build-${{ github.ref }}) keeps only 1 running + 1 pending run per group, so a
+# merge queue draining several package PRs would cancel the intermediate ones.
 concurrency:
-  group: build-${{ github.ref }}
+  group: build-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
@@ -295,6 +299,24 @@ jobs:
           sbuild cache gh-summary \
             --title "Build Results" \
             --host x86_64-linux || true
+
+  publish-cache:
+    # Uploading the exported cache is serialized so that parallel package builds
+    # (per-commit concurrency above) don't clobber each other's release asset.
+    # Each export is a full snapshot of the shared build cache, so it is safe for
+    # a superseded run here to be cancelled - the surviving run still publishes
+    # the complete, up-to-date cache.
+    needs: [detect-changes, build, update-cache]
+    if: always() && needs.detect-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: build-cache-upload
+      cancel-in-progress: false
+    steps:
+      - name: Download tools
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
+            -o /usr/local/bin/sbuild && chmod +x /usr/local/bin/sbuild || true
 
       - name: Export cache to SQLite and upload
         env:
