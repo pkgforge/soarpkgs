@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openmsx"
+pkg_id: "pkgforge-dev.openmsx"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openmsx"
+category:
+  - "Emulator"
+  - "Game"
+description: "MSX home computer emulator that aims for perfection"
+homepage:
+  - "https://openmsx.org"
+  - "https://github.com/openMSX/openMSX"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/openMSX/openMSX/master/doc/GPL.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/openMSX-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openmsx"
+repology:
+  - "openmsx"
+src_url:
+  - "https://github.com/pkgforge-dev/openMSX-AppImage"
+tag:
+  - "emulator"
+  - "msx"
+  - "retro"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/openMSX-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/openMSX-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
