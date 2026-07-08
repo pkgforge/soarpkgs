@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "exult"
+pkg_id: "pkgforge-dev.exult"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/exult"
+category:
+  - "Game"
+  - "RolePlaying"
+  - "AdventureGame"
+description: "Engine to play Ultima 7 on modern operating systems using original game data"
+homepage:
+  - "https://exult.info"
+  - "https://github.com/exult/exult"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/exult/exult/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Exult-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "exult"
+repology:
+  - "exult"
+src_url:
+  - "https://github.com/pkgforge-dev/Exult-AppImage"
+tag:
+  - "game"
+  - "ultima7"
+  - "rpg"
+  - "engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Exult-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Exult-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
