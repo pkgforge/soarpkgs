@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "d2x-rebirth"
+pkg_id: "pkgforge-dev.d2x-rebirth"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/d2x-rebirth"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Source port of Descent 2 with enhanced graphics and modern OS support"
+homepage:
+  - "https://www.dxx-rebirth.com"
+  - "https://github.com/dxx-rebirth/dxx-rebirth"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://raw.githubusercontent.com/dxx-rebirth/dxx-rebirth/master/COPYING.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/D2X-Rebirth-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "d2x-rebirth"
+repology:
+  - "d2x-rebirth"
+src_url:
+  - "https://github.com/pkgforge-dev/D2X-Rebirth-AppImage"
+tag:
+  - "descent"
+  - "source-port"
+  - "fps"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/D2X-Rebirth-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/D2X-Rebirth-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
