@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "keepassxc"
+pkg_id: "pkgforge-dev.keepassxc"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/keepassxc"
+category:
+  - "Security"
+  - "Utility"
+description: "Cross-platform community-driven port of the KeePass password manager"
+homepage:
+  - "https://keepassxc.org/"
+  - "https://github.com/keepassxreboot/keepassxc"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/keepassxreboot/keepassxc/develop/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "keepassxc"
+repology:
+  - "keepassxc"
+src_url:
+  - "https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced"
+tag:
+  - "password-manager"
+  - "security"
+  - "keepass"
+  - "encryption"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/KeePassXC-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
