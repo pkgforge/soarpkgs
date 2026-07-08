@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mixxx"
+pkg_id: "pkgforge-dev.mixxx"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/mixxx"
+category:
+  - "Audio"
+  - "Music"
+  - "AudioVideo"
+description: "Free and open-source DJ mixing software for live performances"
+homepage:
+  - "https://mixxx.org"
+  - "https://github.com/mixxxdj/mixxx"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/mixxxdj/mixxx/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Mixxx-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mixxx"
+repology:
+  - "mixxx"
+src_url:
+  - "https://github.com/pkgforge-dev/Mixxx-AppImage"
+tag:
+  - "dj"
+  - "audio"
+  - "music"
+  - "mixing"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Mixxx-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Mixxx-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
