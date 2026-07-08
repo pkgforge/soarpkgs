@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gearboy"
+pkg_id: "pkgforge-dev.gearboy"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/gearboy"
+category:
+  - "Emulator"
+  - "Game"
+description: "Game Boy / Game Boy Color emulator written in C++"
+homepage:
+  - "https://github.com/drhelius/Gearboy"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/drhelius/Gearboy/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Gearboy-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gearboy"
+repology:
+  - "gearboy"
+src_url:
+  - "https://github.com/pkgforge-dev/Gearboy-AppImage"
+tag:
+  - "emulator"
+  - "gameboy"
+  - "gbc"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Gearboy-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Gearboy-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
