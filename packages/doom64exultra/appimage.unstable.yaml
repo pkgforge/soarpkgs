@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "doom64exultra"
+pkg_id: "pkgforge-dev.doom64exultra"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/doom64exultra"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Fork of Doom64EX+ source port of Doom 64 with new features and fixes"
+homepage:
+  - "https://github.com/StevenSYS/DOOM64EXUltra"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/StevenSYS/DOOM64EXUltra/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "doom64exultra"
+src_url:
+  - "https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage"
+tag:
+  - "doom"
+  - "fps"
+  - "source-port"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/DOOM64EXUltra-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
