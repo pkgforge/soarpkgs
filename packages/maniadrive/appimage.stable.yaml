@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "maniadrive"
+pkg_id: "pkgforge-dev.maniadrive"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/maniadrive"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Arcade stunt car racing game with acrobatic tracks"
+homepage:
+  - "http://maniadrive.raydium.org"
+  - "https://raydium.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ManiaDrive-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "maniadrive"
+repology:
+  - "maniadrive"
+src_url:
+  - "https://github.com/pkgforge-dev/ManiaDrive-AppImage"
+tag:
+  - "game"
+  - "racing"
+  - "arcade"
+  - "car"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ManiaDrive-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ManiaDrive-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
