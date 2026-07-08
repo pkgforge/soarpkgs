@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "element-desktop"
+pkg_id: "pkgforge-dev.element-desktop"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/element-desktop"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "A glossy Matrix collaboration client for desktop"
+homepage:
+  - "https://element.io"
+  - "https://github.com/element-hq/element-desktop"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "AGPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/element-hq/element-desktop/develop/LICENSE-AGPL-3.0"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Element-Desktop-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "element-desktop"
+repology:
+  - "element-desktop"
+src_url:
+  - "https://github.com/pkgforge-dev/Element-Desktop-AppImage"
+tag:
+  - "matrix"
+  - "chat"
+  - "messaging"
+  - "electron"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Element-Desktop-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Element-Desktop-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
