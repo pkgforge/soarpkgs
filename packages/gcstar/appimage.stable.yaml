@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gcstar"
+pkg_id: "pkgforge-dev.gcstar"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/gcstar"
+category:
+  - "Utility"
+  - "Database"
+description: "Personal collection manager for movies, books, music, games and more"
+homepage:
+  - "https://www.gcstar.org"
+  - "https://gitlab.com/GCstar/GCstar"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://gitlab.com/GCstar/GCstar/-/raw/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GCstar-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gcstar"
+repology:
+  - "gcstar"
+src_url:
+  - "https://github.com/pkgforge-dev/GCstar-AppImage"
+tag:
+  - "collection"
+  - "manager"
+  - "catalog"
+  - "gtk"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/GCstar-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/GCstar-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
