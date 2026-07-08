@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dr-robotniks-ring-racers"
+pkg_id: "pkgforge-dev.dr-robotniks-ring-racers"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dr-robotniks-ring-racers"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Technical kart racing game by Kart Krew, successor to SRB2Kart"
+homepage:
+  - "https://www.kartkrew.org"
+  - "https://github.com/KartKrewDev/RingRacers"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/KartKrewDev/RingRacers/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dr-robotniks-ring-racers"
+repology:
+  - "ring-racers"
+src_url:
+  - "https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
+tag:
+  - "kart"
+  - "racing"
+  - "game"
+  - "srb2"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
