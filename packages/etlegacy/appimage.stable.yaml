@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "etlegacy"
+pkg_id: "pkgforge-dev.etlegacy"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/etlegacy"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Open-source multiplayer FPS based on Wolfenstein: Enemy Territory"
+homepage:
+  - "https://www.etlegacy.com"
+  - "https://github.com/etlegacy/etlegacy"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/etlegacy/etlegacy/master/COPYING.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ETLegacy-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "etlegacy"
+repology:
+  - "etlegacy"
+src_url:
+  - "https://github.com/pkgforge-dev/ETLegacy-AppImage"
+tag:
+  - "game"
+  - "fps"
+  - "multiplayer"
+  - "shooter"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ETLegacy-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ETLegacy-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
