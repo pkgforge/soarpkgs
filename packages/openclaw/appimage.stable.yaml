@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openclaw"
+pkg_id: "pkgforge-dev.openclaw"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openclaw"
+category:
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Reimplementation of the Captain Claw (1997) platformer game"
+homepage:
+  - "https://github.com/pjasicek/OpenClaw"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/pjasicek/OpenClaw/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenClaw-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openclaw"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenClaw-AppImage"
+tag:
+  - "game"
+  - "platformer"
+  - "captain-claw"
+  - "reimplementation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenClaw-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenClaw-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
