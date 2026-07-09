@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "media-downloader"
+pkg_id: "pkgforge-dev.media-downloader"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/media-downloader"
+category:
+  - "Network"
+  - "AudioVideo"
+  - "Video"
+description: "Qt GUI front end for yt-dlp, youtube-dl, aria2 and other downloaders"
+homepage:
+  - "https://github.com/mhogomchungu/media-downloader"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/mhogomchungu/media-downloader/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Media-Downloader-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "media-downloader"
+repology:
+  - "media-downloader"
+src_url:
+  - "https://github.com/pkgforge-dev/Media-Downloader-AppImage"
+tag:
+  - "downloader"
+  - "yt-dlp"
+  - "video"
+  - "qt"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Media-Downloader-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Media-Downloader-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
