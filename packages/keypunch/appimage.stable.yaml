@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "keypunch"
+pkg_id: "pkgforge-dev.keypunch"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/keypunch"
+category:
+  - "Education"
+  - "Utility"
+description: "Practice your typing skills"
+homepage:
+  - "https://apps.gnome.org/Keypunch/"
+  - "https://github.com/bragefuglseth/keypunch"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/bragefuglseth/keypunch/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Keypunch-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "keypunch"
+repology:
+  - "keypunch"
+src_url:
+  - "https://github.com/pkgforge-dev/Keypunch-AppImage"
+tag:
+  - "typing"
+  - "practice"
+  - "gnome"
+  - "tutor"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Keypunch-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Keypunch-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
