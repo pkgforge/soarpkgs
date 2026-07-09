@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nitrogen"
+pkg_id: "pkgforge-dev.nitrogen"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/nitrogen"
+category:
+  - "Utility"
+  - "System"
+description: "Background browser and setter for X11 windows"
+homepage:
+  - "https://projects.l3ib.org/nitrogen/"
+  - "https://github.com/l3ib/nitrogen"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/l3ib/nitrogen/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Nitrogen-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "nitrogen"
+repology:
+  - "nitrogen"
+src_url:
+  - "https://github.com/pkgforge-dev/Nitrogen-AppImage"
+tag:
+  - "wallpaper"
+  - "background"
+  - "x11"
+  - "desktop"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Nitrogen-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Nitrogen-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
