@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mini-vmac"
+pkg_id: "pkgforge-dev.mini-vmac"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/mini-vmac"
+category:
+  - "Emulator"
+  - "Game"
+description: "Emulator of early Macintosh computers such as the Mac Plus and 128K"
+homepage:
+  - "https://www.gryphel.com/c/minivmac/"
+  - "https://github.com/minivmac/minivmac"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/minivmac/minivmac/master/COPYING.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Mini-vMac-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mini-vmac"
+repology:
+  - "minivmac"
+src_url:
+  - "https://github.com/pkgforge-dev/Mini-vMac-AppImage"
+tag:
+  - "emulator"
+  - "macintosh"
+  - "apple"
+  - "retro"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Mini-vMac-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Mini-vMac-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
