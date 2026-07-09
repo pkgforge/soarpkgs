@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "nxengine-evo"
+pkg_id: "pkgforge-dev.nxengine-evo"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/nxengine-evo"
+category:
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Refactored and enhanced version of the NXEngine Cave Story game engine"
+homepage:
+  - "https://github.com/nxengine/nxengine-evo"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/nxengine/nxengine-evo/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NXEngine-evo-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "nxengine-evo"
+repology:
+  - "nxengine-evo"
+src_url:
+  - "https://github.com/pkgforge-dev/NXEngine-evo-AppImage-Enhanced"
+tag:
+  - "cave-story"
+  - "game-engine"
+  - "platformer"
+  - "adventure"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/NXEngine-evo-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/NXEngine-evo-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
