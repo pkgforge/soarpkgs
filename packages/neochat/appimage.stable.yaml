@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "neochat"
+pkg_id: "pkgforge-dev.neochat"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/neochat"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "A client for Matrix, the decentralized communication protocol"
+homepage:
+  - "https://apps.kde.org/neochat"
+  - "https://invent.kde.org/network/neochat"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://invent.kde.org/network/neochat/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/NeoChat-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "neochat"
+repology:
+  - "neochat"
+src_url:
+  - "https://github.com/pkgforge-dev/NeoChat-AppImage"
+tag:
+  - "matrix"
+  - "chat"
+  - "kde"
+  - "messaging"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/NeoChat-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/NeoChat-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
