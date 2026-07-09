@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "knights"
+pkg_id: "pkgforge-dev.knights"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/knights"
+category:
+  - "Game"
+description: "KDE chess board interface with support for the XBoard chess engine protocol"
+homepage:
+  - "https://apps.kde.org/knights"
+  - "https://invent.kde.org/games/knights"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://invent.kde.org/games/knights/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Knights-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "knights"
+repology:
+  - "knights"
+src_url:
+  - "https://github.com/pkgforge-dev/Knights-AppImage"
+tag:
+  - "chess"
+  - "game"
+  - "kde"
+  - "board"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Knights-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Knights-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
