@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "goldendict-ng"
+pkg_id: "pkgforge-dev.goldendict-ng"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/goldendict-ng"
+category:
+  - "Utility"
+  - "Education"
+description: "Advanced multi-format dictionary lookup program, the next generation GoldenDict"
+homepage:
+  - "https://xiaoyifang.github.io/goldendict-ng/"
+  - "https://github.com/xiaoyifang/goldendict-ng"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/xiaoyifang/goldendict-ng/staged/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/GoldenDict-ng-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "goldendict-ng"
+repology:
+  - "goldendict-ng"
+src_url:
+  - "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage"
+tag:
+  - "dictionary"
+  - "lookup"
+  - "translation"
+  - "reference"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/GoldenDict-ng-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
