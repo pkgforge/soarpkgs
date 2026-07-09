@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "obsidian"
+pkg_id: "pkgforge-dev.obsidian"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/obsidian"
+category:
+  - "Office"
+  - "Utility"
+  - "TextEditor"
+description: "Powerful knowledge base and note-taking app on top of local Markdown files"
+homepage:
+  - "https://obsidian.md"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "obsidian"
+repology:
+  - "obsidian"
+src_url:
+  - "https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced"
+tag:
+  - "notes"
+  - "markdown"
+  - "knowledge-base"
+  - "pkm"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Obsidian-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
