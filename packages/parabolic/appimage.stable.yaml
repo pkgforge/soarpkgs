@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "parabolic"
+pkg_id: "pkgforge-dev.parabolic"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/parabolic"
+app_id: "org.nickvision.tubeconverter"
+category:
+  - "Network"
+  - "AudioVideo"
+  - "Video"
+description: "Download web video and audio"
+homepage:
+  - "https://github.com/NickvisionApps/Parabolic"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/NickvisionApps/Parabolic/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Parabolic-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "parabolic"
+repology:
+  - "parabolic"
+src_url:
+  - "https://github.com/pkgforge-dev/Parabolic-AppImage"
+tag:
+  - "yt-dlp"
+  - "downloader"
+  - "video"
+  - "audio"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Parabolic-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Parabolic-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
