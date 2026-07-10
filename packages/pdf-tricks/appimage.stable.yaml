@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pdf-tricks"
+pkg_id: "pkgforge-dev.pdf-tricks"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pdf-tricks"
+app_id: "com.github.muriloventuroso.pdftricks"
+category:
+  - "Office"
+  - "Utility"
+description: "Simple app for small manipulations in PDF files (split, merge, compress)"
+homepage:
+  - "https://github.com/muriloventuroso/pdftricks"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pdf-tricks"
+src_url:
+  - "https://github.com/pkgforge-dev/PDF-Tricks-AppImage"
+tag:
+  - "pdf"
+  - "office"
+  - "utility"
+  - "ghostscript"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PDF-Tricks-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PDF-Tricks-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
