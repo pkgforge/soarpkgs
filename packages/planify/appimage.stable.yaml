@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "planify"
+pkg_id: "pkgforge-dev.planify"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/planify"
+app_id: "io.github.alainm23.planify"
+category:
+  - "Office"
+  - "Utility"
+description: "Task manager and to-do app for elementary OS and GNOME"
+homepage:
+  - "https://useplanify.com"
+  - "https://github.com/alainm23/planify"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/alainm23/planify/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Planify-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "planify"
+repology:
+  - "planify"
+src_url:
+  - "https://github.com/pkgforge-dev/Planify-AppImage"
+tag:
+  - "todo"
+  - "task-manager"
+  - "productivity"
+  - "planner"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Planify-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Planify-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
