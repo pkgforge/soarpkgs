@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pcsx2"
+pkg_id: "pkgforge-dev.pcsx2"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pcsx2"
+app_id: "net.pcsx2.PCSX2"
+category:
+  - "Emulator"
+  - "Game"
+description: "Free and open-source PlayStation 2 emulator"
+homepage:
+  - "https://pcsx2.net"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/PCSX2/pcsx2/refs/heads/master/COPYING.GPLv3"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pcsx2"
+repology:
+  - "pcsx2"
+src_url:
+  - "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced"
+tag:
+  - "ps2"
+  - "emulator"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PCSX2-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
