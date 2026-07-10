@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openjazz"
+pkg_id: "pkgforge-dev.openjazz"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openjazz"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "ActionGame"
+description: "Free reimplementation of the Jazz Jackrabbit platformer games"
+homepage:
+  - "https://alister.eu/jazz/oj/"
+  - "https://github.com/AlisterT/openjazz"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/AlisterT/openjazz/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenJazz-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openjazz"
+repology:
+  - "openjazz"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenJazz-AppImage"
+tag:
+  - "game"
+  - "platformer"
+  - "arcade"
+  - "jazz-jackrabbit"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenJazz-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenJazz-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
