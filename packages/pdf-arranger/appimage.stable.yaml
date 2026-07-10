@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pdf-arranger"
+pkg_id: "pkgforge-dev.pdf-arranger"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pdf-arranger"
+app_id: "com.github.jeromerobert.pdfarranger"
+category:
+  - "Office"
+  - "Utility"
+description: "Small application to merge, split, rotate, crop and rearrange PDF pages"
+homepage:
+  - "https://github.com/pdfarranger/pdfarranger"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/pdfarranger/pdfarranger/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PDF-Arranger-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pdf-arranger"
+repology:
+  - "pdfarranger"
+src_url:
+  - "https://github.com/pkgforge-dev/PDF-Arranger-AppImage"
+tag:
+  - "pdf"
+  - "merge"
+  - "split"
+  - "rotate"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PDF-Arranger-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PDF-Arranger-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
