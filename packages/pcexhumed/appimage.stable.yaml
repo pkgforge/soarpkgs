@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pcexhumed"
+pkg_id: "pkgforge-dev.pcexhumed"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pcexhumed"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Source port of PowerSlave/Exhumed built on EDuke32 Build engine technology"
+homepage:
+  - "https://github.com/NBlood/NBlood"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/NBlood/NBlood/master/source/exhumed/gpl-2.0.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCExhumed-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pcexhumed"
+src_url:
+  - "https://github.com/pkgforge-dev/PCExhumed-AppImage"
+tag:
+  - "game"
+  - "fps"
+  - "build-engine"
+  - "source-port"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PCExhumed-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PCExhumed-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
