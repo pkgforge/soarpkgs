@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openboardview"
+pkg_id: "pkgforge-dev.openboardview"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openboardview"
+category:
+  - "Electronics"
+  - "Utility"
+description: "Software for viewing .brd circuit board files"
+homepage:
+  - "https://github.com/OpenBoardView/OpenBoardView"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/OpenBoardView/OpenBoardView/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenBoardView-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openboardview"
+repology:
+  - "openboardview"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenBoardView-AppImage"
+tag:
+  - "electronics"
+  - "brd"
+  - "viewer"
+  - "pcb"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenBoardView-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenBoardView-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
