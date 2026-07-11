@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openra"
+pkg_id: "pkgforge-dev.openra"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openra"
+category:
+  - "Game"
+  - "StrategyGame"
+description: "Open source real-time strategy engine reimplementing classic Westwood RTS games"
+homepage:
+  - "https://www.openra.net"
+  - "https://github.com/OpenRA/OpenRA"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/OpenRA/OpenRA/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openra"
+repology:
+  - "openra"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced"
+tag:
+  - "strategy"
+  - "rts"
+  - "game"
+  - "engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenRA-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
