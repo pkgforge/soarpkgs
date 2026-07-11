@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "primehack"
+pkg_id: "pkgforge-dev.primehack"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/primehack"
+category:
+  - "Emulator"
+  - "Game"
+description: "Dolphin fork giving Metroid Prime Trilogy mouselook and FPS controls"
+homepage:
+  - "https://github.com/shiiion/dolphin"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/shiiion/dolphin/primehack-master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PrimeHack-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "primehack"
+src_url:
+  - "https://github.com/pkgforge-dev/PrimeHack-AppImage"
+tag:
+  - "emulator"
+  - "dolphin"
+  - "gamecube"
+  - "wii"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PrimeHack-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PrimeHack-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
