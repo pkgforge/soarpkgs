@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "featherpad"
+pkg_id: "pkgforge-dev.featherpad"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/featherpad"
+category:
+  - "Utility"
+  - "TextEditor"
+description: "Lightweight Qt plain-text editor with syntax highlighting and session support"
+homepage:
+  - "https://github.com/tsujan/FeatherPad"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/tsujan/FeatherPad/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/FeatherPad-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "featherpad"
+repology:
+  - "featherpad"
+src_url:
+  - "https://github.com/pkgforge-dev/FeatherPad-AppImage"
+tag:
+  - "editor"
+  - "text"
+  - "qt"
+  - "lightweight"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/FeatherPad-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/FeatherPad-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
