@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "odamex"
+pkg_id: "pkgforge-dev.odamex"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/odamex"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Online multiplayer Doom port focused on original gameplay with enhancements"
+homepage:
+  - "https://odamex.net"
+  - "https://github.com/odamex/odamex"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/odamex/odamex/stable/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Odamex-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "odamex"
+repology:
+  - "odamex"
+src_url:
+  - "https://github.com/pkgforge-dev/Odamex-AppImage"
+tag:
+  - "doom"
+  - "game"
+  - "multiplayer"
+  - "fps"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Odamex-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Odamex-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
