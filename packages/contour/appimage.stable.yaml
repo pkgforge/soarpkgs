@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "contour"
+pkg_id: "pkgforge-dev.contour"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/contour"
+category:
+  - "TerminalEmulator"
+  - "System"
+  - "Utility"
+description: "Modern and fast terminal emulator with GPU-accelerated rendering"
+homepage:
+  - "https://contour-terminal.org"
+  - "https://github.com/contour-terminal/contour"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/contour-terminal/contour/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/contour-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "contour"
+repology:
+  - "contour-terminal"
+src_url:
+  - "https://github.com/pkgforge-dev/contour-AppImage"
+tag:
+  - "terminal"
+  - "emulator"
+  - "gpu"
+  - "unicode"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/contour-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/contour-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
