@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ruffle"
+pkg_id: "pkgforge-dev.ruffle"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ruffle"
+category:
+  - "Emulator"
+  - "Player"
+  - "Utility"
+description: "An Adobe Flash Player emulator written in Rust"
+homepage:
+  - "https://ruffle.rs"
+  - "https://github.com/ruffle-rs/ruffle"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+  - "Apache-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Ruffle-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ruffle"
+repology:
+  - "ruffle"
+src_url:
+  - "https://github.com/pkgforge-dev/Ruffle-AppImage"
+tag:
+  - "flash"
+  - "emulator"
+  - "player"
+  - "swf"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Ruffle-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Ruffle-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
