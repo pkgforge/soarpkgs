@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "optiimage"
+pkg_id: "pkgforge-dev.optiimage"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/optiimage"
+category:
+  - "Graphics"
+  - "Utility"
+  - "RasterGraphics"
+description: "An image compressor that supports PNG, JPEG, WebP and SVG file types"
+homepage:
+  - "https://invent.kde.org/graphics/optiimage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "LGPL-2.1-only"
+  - "LGPL-3.0-only"
+build_asset:
+  - url: "https://invent.kde.org/graphics/optiimage/-/raw/master/LICENSES/LGPL-2.1-only.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OptiImage-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "optiimage"
+repology:
+  - "optiimage"
+src_url:
+  - "https://github.com/pkgforge-dev/OptiImage-AppImage"
+tag:
+  - "image"
+  - "compressor"
+  - "optimizer"
+  - "graphics"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OptiImage-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OptiImage-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
