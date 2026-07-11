@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "redriver2"
+pkg_id: "pkgforge-dev.redriver2"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/redriver2"
+category:
+  - "Game"
+  - "ActionGame"
+  - "ArcadeGame"
+description: "Reverse-engineered port of the PSX game Driver 2"
+homepage:
+  - "https://github.com/OpenDriver2/REDRIVER2"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/OpenDriver2/REDRIVER2/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/REDRIVER2-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "redriver2"
+src_url:
+  - "https://github.com/pkgforge-dev/REDRIVER2-AppImage"
+tag:
+  - "game"
+  - "driver2"
+  - "psx"
+  - "port"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/REDRIVER2-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/REDRIVER2-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
