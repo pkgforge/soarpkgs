@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "phantom-satellite"
+pkg_id: "pkgforge-dev.phantom-satellite"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/phantom-satellite"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "Pale Moon fork supporting older and niche platforms without dropping modern ones"
+homepage:
+  - "https://github.com/DCFUKSURMOM/Phantom-Satellite"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://raw.githubusercontent.com/DCFUKSURMOM/Phantom-Satellite/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Phantom-Satellite-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "phantom-satellite"
+src_url:
+  - "https://github.com/pkgforge-dev/Phantom-Satellite-AppImage"
+tag:
+  - "browser"
+  - "web-browser"
+  - "palemoon"
+  - "fork"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Phantom-Satellite-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Phantom-Satellite-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
