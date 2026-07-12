@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ioquake3"
+pkg_id: "pkgforge-dev.ioquake3"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ioquake3"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Community source port continuing id's Quake III Arena engine"
+homepage:
+  - "https://ioquake3.org/"
+  - "https://github.com/ioquake/ioq3"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ioquake/ioq3/main/COPYING.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ioquake3-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ioquake3"
+repology:
+  - "ioquake3"
+src_url:
+  - "https://github.com/pkgforge-dev/ioquake3-AppImage"
+tag:
+  - "quake"
+  - "fps"
+  - "game"
+  - "engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ioquake3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ioquake3-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
