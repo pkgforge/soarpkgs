@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "vice"
+pkg_id: "pkgforge-dev.vice"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/vice"
+category:
+  - "Emulator"
+  - "Game"
+description: "Versatile Commodore Emulator for C64, C128, VIC20, PET and more"
+homepage:
+  - "https://vice-emu.sourceforge.io"
+  - "https://github.com/VICE-Team/svn-mirror"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/VICE-Team/svn-mirror/main/vice/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/VICE-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "vice"
+repology:
+  - "vice"
+src_url:
+  - "https://github.com/pkgforge-dev/VICE-AppImage"
+tag:
+  - "emulator"
+  - "commodore"
+  - "c64"
+  - "retro"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/VICE-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/VICE-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
