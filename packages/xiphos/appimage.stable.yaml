@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xiphos"
+pkg_id: "pkgforge-dev.xiphos"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/xiphos"
+category:
+  - "Education"
+  - "Viewer"
+  - "Utility"
+description: "Bible study tool using SWORD modules for reading, study, and research"
+homepage:
+  - "https://xiphos.org"
+  - "https://github.com/crosswire/xiphos"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/crosswire/xiphos/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Xiphos-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "xiphos"
+repology:
+  - "xiphos"
+src_url:
+  - "https://github.com/pkgforge-dev/Xiphos-AppImage"
+tag:
+  - "bible"
+  - "sword"
+  - "study"
+  - "gtk"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Xiphos-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Xiphos-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
