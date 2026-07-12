@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "visualboyadvance-m"
+pkg_id: "pkgforge-dev.visualboyadvance-m"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/visualboyadvance-m"
+category:
+  - "Emulator"
+  - "Game"
+description: "The continuing development of the legendary VBA Game Boy Advance emulator"
+homepage:
+  - "https://vba-m.com"
+  - "https://github.com/visualboyadvance-m/visualboyadvance-m"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "visualboyadvance-m"
+repology:
+  - "visualboyadvance-m"
+src_url:
+  - "https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage"
+tag:
+  - "emulator"
+  - "gameboy"
+  - "gba"
+  - "retro-gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/VisualBoyAdvance-M-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/VisualBoyAdvance-M-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
