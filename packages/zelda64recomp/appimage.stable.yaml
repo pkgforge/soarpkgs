@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zelda64recomp"
+pkg_id: "pkgforge-dev.zelda64recomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/zelda64recomp"
+category:
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Static recompilation of The Legend of Zelda: Majora's Mask to run natively on PC"
+homepage:
+  - "https://github.com/Zelda64Recomp/Zelda64Recomp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Zelda64Recomp/Zelda64Recomp/dev/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Zelda64Recomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "zelda64recomp"
+repology:
+  - "zelda64recomp"
+src_url:
+  - "https://github.com/pkgforge-dev/Zelda64Recomp-AppImage"
+tag:
+  - "zelda"
+  - "majoras-mask"
+  - "n64"
+  - "recompilation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Zelda64Recomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Zelda64Recomp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
