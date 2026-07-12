@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gimagereader"
+pkg_id: "pkgforge-dev.gimagereader"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/gimagereader"
+category:
+  - "Utility"
+  - "Graphics"
+description: "A Gtk/Qt front-end to tesseract-ocr"
+homepage:
+  - "https://github.com/manisandro/gImageReader"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/manisandro/gImageReader/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gImageReader-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gimagereader"
+repology:
+  - "gimagereader"
+src_url:
+  - "https://github.com/pkgforge-dev/gImageReader-AppImage"
+tag:
+  - "ocr"
+  - "tesseract"
+  - "gtk"
+  - "qt"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/gImageReader-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/gImageReader-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
