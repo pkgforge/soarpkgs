@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "protontricks"
+pkg_id: "pkgforge-dev.protontricks"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/protontricks"
+category:
+  - "Utility"
+  - "Game"
+description: "Wrapper for running Winetricks commands for Proton-enabled games"
+homepage:
+  - "https://github.com/Matoking/protontricks"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Matoking/protontricks/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Protontricks-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "protontricks"
+repology:
+  - "protontricks"
+src_url:
+  - "https://github.com/pkgforge-dev/Protontricks-AppImage"
+tag:
+  - "proton"
+  - "winetricks"
+  - "wine"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Protontricks-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Protontricks-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
