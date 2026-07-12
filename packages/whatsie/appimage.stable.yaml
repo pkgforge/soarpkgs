@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "whatsie"
+pkg_id: "pkgforge-dev.whatsie"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/whatsie"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "Fast lightweight WhatsApp client based on Qt WebEngine"
+homepage:
+  - "https://github.com/keshavbhatt/whatsie"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/keshavbhatt/whatsie/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/WhatSie-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "whatsie"
+repology:
+  - "whatsie"
+src_url:
+  - "https://github.com/pkgforge-dev/WhatSie-AppImage"
+tag:
+  - "whatsapp"
+  - "messaging"
+  - "qt"
+  - "chat"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/WhatSie-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/WhatSie-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
