@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "dhewm3"
+pkg_id: "pkgforge-dev.dhewm3"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/dhewm3"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Doom 3 GPL source port based on id Tech 4 engine"
+homepage:
+  - "https://dhewm3.org"
+  - "https://github.com/dhewm/dhewm3"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/dhewm/dhewm3/master/COPYING.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/dhewm3-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "dhewm3"
+repology:
+  - "dhewm3"
+src_url:
+  - "https://github.com/pkgforge-dev/dhewm3-AppImage"
+tag:
+  - "doom3"
+  - "game"
+  - "fps"
+  - "sourceport"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/dhewm3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/dhewm3-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
