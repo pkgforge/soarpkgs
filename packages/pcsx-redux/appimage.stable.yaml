@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pcsx-redux"
+pkg_id: "pkgforge-dev.pcsx-redux"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pcsx-redux"
+category:
+  - "Emulator"
+  - "Game"
+description: "PlayStation 1 emulator and debugger focused on development"
+homepage:
+  - "https://github.com/grumpycoders/pcsx-redux"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/grumpycoders/pcsx-redux/refs/heads/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pcsx-redux"
+repology:
+  - "pcsx-redux"
+src_url:
+  - "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced"
+tag:
+  - "ps1"
+  - "emulator"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PCSX-Redux-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
