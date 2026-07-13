@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "piglit"
+pkg_id: "pkgforge-dev.piglit"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/piglit"
+category:
+  - "Development"
+  - "Utility"
+description: "OpenGL, Vulkan and OpenCL implementation test suite and test-suite runner"
+homepage:
+  - "https://gitlab.freedesktop.org/mesa/piglit"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://gitlab.freedesktop.org/mesa/piglit/-/raw/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Piglit-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "piglit"
+repology:
+  - "piglit"
+src_url:
+  - "https://github.com/pkgforge-dev/Piglit-AppImage"
+tag:
+  - "opengl"
+  - "testing"
+  - "vulkan"
+  - "opencl"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Piglit-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Piglit-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
