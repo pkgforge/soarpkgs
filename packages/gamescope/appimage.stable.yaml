@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "gamescope"
+pkg_id: "pkgforge-dev.gamescope"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/gamescope"
+category:
+  - "System"
+  - "Utility"
+  - "Game"
+description: "SteamOS session compositing window manager (micro-compositor)"
+homepage:
+  - "https://github.com/ValveSoftware/gamescope"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/ValveSoftware/gamescope/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/gamescope-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "gamescope"
+repology:
+  - "gamescope"
+src_url:
+  - "https://github.com/pkgforge-dev/gamescope-AppImage"
+tag:
+  - "compositor"
+  - "wayland"
+  - "gaming"
+  - "steamos"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/gamescope-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/gamescope-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
