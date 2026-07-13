@@ -1,0 +1,40 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "clonehero"
+pkg_id: "pkgforge-dev.clonehero"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/clonehero"
+category:
+  - "TODO"
+description: "Unofficial AppImage of Clone Hero [Maintainer=@Samueru-sama]"
+homepage:
+  - "https://github.com/pkgforge-dev/CloneHero-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CloneHero-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "clonehero"
+repology:
+  - "clonehero"
+src_url:
+  - "https://github.com/pkgforge-dev/CloneHero-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/CloneHero-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/CloneHero-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
