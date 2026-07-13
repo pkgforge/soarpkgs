@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "openswe1r"
+pkg_id: "pkgforge-dev.openswe1r"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/openswe1r"
+category:
+  - "Game"
+  - "ArcadeGame"
+description: "Open-source port of the 1999 game Star Wars Episode 1: Racer"
+homepage:
+  - "https://github.com/OpenSWE1R/openswe1r"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/openswe1r/openswe1r/master/LICENSE.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenSWE1R-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "openswe1r"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenSWE1R-AppImage"
+tag:
+  - "racing"
+  - "game"
+  - "star-wars"
+  - "port"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION="HEAD-$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenSWE1R-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')"
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenSWE1R-AppImage@${REMOTE_PKGVER#HEAD-}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
