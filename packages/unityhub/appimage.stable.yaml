@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "unityhub"
+pkg_id: "pkgforge-dev.unityhub"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/unityhub"
+app_id: "com.unity.UnityHub"
+category:
+  - "Development"
+  - "Utility"
+description: "Manage Unity editor installations and projects with Unity Hub"
+homepage:
+  - "https://unity.com/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UnityHub-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "unityhub"
+repology:
+  - "unityhub"
+src_url:
+  - "https://github.com/pkgforge-dev/UnityHub-AppImage"
+tag:
+  - "unity"
+  - "gamedev"
+  - "development"
+  - "editor"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/UnityHub-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/UnityHub-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
