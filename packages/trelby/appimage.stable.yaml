@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "trelby"
+pkg_id: "pkgforge-dev.trelby"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/trelby"
+category:
+  - "Office"
+  - "TextEditor"
+description: "Free, multiplatform, feature-rich screenwriting program"
+homepage:
+  - "https://www.trelby.org"
+  - "https://github.com/trelby/trelby"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/trelby/trelby/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Trelby-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "trelby"
+repology:
+  - "trelby"
+src_url:
+  - "https://github.com/pkgforge-dev/Trelby-AppImage"
+tag:
+  - "screenwriting"
+  - "screenplay"
+  - "office"
+  - "writing"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Trelby-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Trelby-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
