@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "mariokart64recomp"
+pkg_id: "pkgforge-dev.mariokart64recomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/mariokart64recomp"
+category:
+  - "Game"
+  - "ArcadeGame"
+description: "Static recompilation of Nintendo 64's Mario Kart 64"
+homepage:
+  - "https://github.com/sonicdcer/MarioKart64Recomp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-only"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/MarioKart64Recomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "mariokart64recomp"
+repology:
+  - "mariokart64recomp"
+src_url:
+  - "https://github.com/pkgforge-dev/MarioKart64Recomp-AppImage"
+tag:
+  - "game"
+  - "racing"
+  - "n64"
+  - "recompilation"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/MarioKart64Recomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/MarioKart64Recomp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
