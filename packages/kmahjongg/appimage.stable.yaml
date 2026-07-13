@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "kmahjongg"
+pkg_id: "pkgforge-dev.kmahjongg"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/kmahjongg"
+category:
+  - "Game"
+description: "A tile matching mahjong solitaire game for one or two players"
+homepage:
+  - "https://apps.kde.org/kmahjongg"
+  - "https://invent.kde.org/games/kmahjongg"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://invent.kde.org/games/kmahjongg/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/KMahjongg-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "kmahjongg"
+repology:
+  - "kmahjongg"
+src_url:
+  - "https://github.com/pkgforge-dev/KMahjongg-AppImage"
+tag:
+  - "game"
+  - "mahjong"
+  - "solitaire"
+  - "kde"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/KMahjongg-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/KMahjongg-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
