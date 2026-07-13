@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "megaman64recomp"
+pkg_id: "pkgforge-dev.megaman64recomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/megaman64recomp"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Native PC port of Mega Man 64 via static recompilation of the N64 game"
+homepage:
+  - "https://github.com/MegaMan64Recomp/MegaMan64Recompiled"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/MegaMan64Recomp/MegaMan64Recompiled/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/MegaMan64Recomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "megaman64recomp"
+src_url:
+  - "https://github.com/pkgforge-dev/MegaMan64Recomp-AppImage"
+tag:
+  - "megaman"
+  - "recompilation"
+  - "n64"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/MegaMan64Recomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/MegaMan64Recomp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
