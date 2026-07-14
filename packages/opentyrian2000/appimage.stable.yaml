@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "opentyrian2000"
+pkg_id: "pkgforge-dev.opentyrian2000"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/opentyrian2000"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "ActionGame"
+description: "Open-source port of the DOS shoot-em-up Tyrian 2000"
+homepage:
+  - "https://github.com/KScl/opentyrian2000"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/KScl/opentyrian2000/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/OpenTyrian2000-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "opentyrian2000"
+repology:
+  - "opentyrian2000"
+src_url:
+  - "https://github.com/pkgforge-dev/OpenTyrian2000-AppImage"
+tag:
+  - "game"
+  - "shootemup"
+  - "tyrian"
+  - "port"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/OpenTyrian2000-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/OpenTyrian2000-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
