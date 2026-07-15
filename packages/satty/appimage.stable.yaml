@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "satty"
+pkg_id: "pkgforge-dev.satty"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/satty"
+category:
+  - "Graphics"
+  - "Utility"
+description: "Modern screenshot annotation tool built on GTK"
+homepage:
+  - "https://github.com/Satty-org/Satty"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/Satty-org/Satty/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Satty-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "satty"
+repology:
+  - "satty"
+src_url:
+  - "https://github.com/pkgforge-dev/Satty-AppImage"
+tag:
+  - "screenshot"
+  - "annotation"
+  - "graphics"
+  - "gtk"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Satty-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Satty-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
