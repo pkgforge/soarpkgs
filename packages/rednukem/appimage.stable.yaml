@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rednukem"
+pkg_id: "pkgforge-dev.rednukem"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/rednukem"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Source port for Duke Nukem 3D, Redneck Rampage and NAM (Build engine)"
+homepage:
+  - "https://github.com/NBlood/NBlood"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/NBlood/NBlood/master/source/rr/gpl-2.0.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rednukem-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rednukem"
+src_url:
+  - "https://github.com/pkgforge-dev/Rednukem-AppImage"
+tag:
+  - "game"
+  - "fps"
+  - "source-port"
+  - "build-engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Rednukem-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Rednukem-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
