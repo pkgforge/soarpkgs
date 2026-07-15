@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "hp-15c-simulator"
+pkg_id: "pkgforge-dev.hp-15c-simulator"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/hp-15c-simulator"
+category:
+  - "Calculator"
+  - "Utility"
+  - "Science"
+description: "Simulator of the HP-15C RPN scientific programmable calculator"
+homepage:
+  - "https://hp-15c-simulator.de"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "hp-15c-simulator"
+src_url:
+  - "https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage"
+tag:
+  - "calculator"
+  - "hp-15c"
+  - "rpn"
+  - "science"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/HP-15C-Simulator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
