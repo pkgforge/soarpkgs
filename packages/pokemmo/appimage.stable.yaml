@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "pokemmo"
+pkg_id: "pkgforge-dev.pokemmo"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/pokemmo"
+category:
+  - "Game"
+  - "RolePlaying"
+  - "Network"
+description: "Free MMO client for Pokemon games with online multiplayer and trading"
+homepage:
+  - "https://pokemmo.com"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PokeMMO-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "pokemmo"
+repology:
+  - "pokemmo"
+src_url:
+  - "https://github.com/pkgforge-dev/PokeMMO-AppImage"
+tag:
+  - "game"
+  - "mmo"
+  - "pokemon"
+  - "rpg"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PokeMMO-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PokeMMO-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
