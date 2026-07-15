@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sacdextractgui"
+pkg_id: "pkgforge-dev.sacdextractgui"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/sacdextractgui"
+category:
+  - "Audio"
+  - "Utility"
+description: "GUI for sacd_extract to extract audio from SACD ISO images"
+homepage:
+  - "https://github.com/setmind/SACDExtractGUI"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-only"
+build_asset:
+  - url: "https://raw.githubusercontent.com/setmind/SACDExtractGUI/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SACDExtractGUI-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sacdextractgui"
+src_url:
+  - "https://github.com/pkgforge-dev/SACDExtractGUI-AppImage"
+tag:
+  - "audio"
+  - "sacd"
+  - "extract"
+  - "gui"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/SACDExtractGUI-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SACDExtractGUI-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
