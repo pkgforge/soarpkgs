@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rewaita"
+pkg_id: "pkgforge-dev.rewaita"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/rewaita"
+category:
+  - "Settings"
+  - "Utility"
+  - "Graphics"
+description: "Recolor GTK4/LibAdwaita apps to popular color schemes"
+homepage:
+  - "https://github.com/SwordPuffin/Rewaita"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/SwordPuffin/Rewaita/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rewaita-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rewaita"
+repology:
+  - "rewaita"
+src_url:
+  - "https://github.com/pkgforge-dev/Rewaita-AppImage"
+tag:
+  - "gtk"
+  - "adwaita"
+  - "theme"
+  - "gnome"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Rewaita-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Rewaita-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
