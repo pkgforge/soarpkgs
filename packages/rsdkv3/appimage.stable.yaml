@@ -1,0 +1,44 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rsdkv3"
+pkg_id: "pkgforge-dev.rsdkv3"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/rsdkv3"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "ActionGame"
+description: "Decompilation of the Retro Engine (RSDKv3), playable Sonic CD (2011)"
+homepage:
+  - "https://github.com/RSDKModding/RSDKv3-Decompilation"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://raw.githubusercontent.com/RSDKModding/RSDKv3-Decompilation/master/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RSDKv3-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rsdkv3"
+src_url:
+  - "https://github.com/pkgforge-dev/RSDKv3-AppImage"
+tag:
+  - "sonic"
+  - "retro-engine"
+  - "decompilation"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/RSDKv3-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/RSDKv3-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
