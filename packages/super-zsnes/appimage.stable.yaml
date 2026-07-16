@@ -1,0 +1,39 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "super-zsnes"
+pkg_id: "pkgforge-dev.super-zsnes"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/super-zsnes"
+category:
+  - "Emulator"
+  - "Game"
+description: "GPU-powered SNES emulator with hi-res Mode 7 and per-game enhancements"
+homepage:
+  - "https://zsnes.com"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "super-zsnes"
+src_url:
+  - "https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage"
+tag:
+  - "snes"
+  - "emulator"
+  - "nintendo"
+  - "zsnes"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/SUPER-ZSNES-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
