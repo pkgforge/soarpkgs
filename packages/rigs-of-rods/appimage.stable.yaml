@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rigs-of-rods"
+pkg_id: "pkgforge-dev.rigs-of-rods"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/rigs-of-rods"
+category:
+  - "Game"
+  - "Simulation"
+description: "Open-source soft-body physics vehicle simulator"
+homepage:
+  - "https://www.rigsofrods.org"
+  - "https://github.com/RigsOfRods/rigs-of-rods"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/RigsOfRods/rigs-of-rods/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rigs-of-rods"
+repology:
+  - "rigsofrods"
+src_url:
+  - "https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage"
+tag:
+  - "simulator"
+  - "physics"
+  - "vehicle"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Rigs-of-Rods-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
