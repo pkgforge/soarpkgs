@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rsdkv4"
+pkg_id: "pkgforge-dev.rsdkv4"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/rsdkv4"
+category:
+  - "Game"
+  - "ActionGame"
+description: "Decompilation of Sonic 1 & Sonic 2 (2013) and the Retro Engine (v4)"
+homepage:
+  - "https://github.com/RSDKModding/RSDKv4-Decompilation"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+build_asset:
+  - url: "https://raw.githubusercontent.com/RSDKModding/RSDKv4-Decompilation/main/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RSDKv4-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rsdkv4"
+repology:
+  - "rsdkv4"
+src_url:
+  - "https://github.com/pkgforge-dev/RSDKv4-AppImage"
+tag:
+  - "sonic"
+  - "retro-engine"
+  - "decompilation"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/RSDKv4-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/RSDKv4-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
