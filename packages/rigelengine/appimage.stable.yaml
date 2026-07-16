@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "rigelengine"
+pkg_id: "pkgforge-dev.rigelengine"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/rigelengine"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "ActionGame"
+description: "A modern re-implementation of the classic DOS game Duke Nukem II"
+homepage:
+  - "https://github.com/lethal-guitar/RigelEngine"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/lethal-guitar/RigelEngine/master/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/RigelEngine-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "rigelengine"
+repology:
+  - "rigelengine"
+src_url:
+  - "https://github.com/pkgforge-dev/RigelEngine-AppImage"
+tag:
+  - "game"
+  - "duke-nukem"
+  - "remake"
+  - "engine"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/RigelEngine-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/RigelEngine-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
