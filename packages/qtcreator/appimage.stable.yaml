@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "qtcreator"
+pkg_id: "pkgforge-dev.qtcreator"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/qtcreator"
+category:
+  - "Development"
+  - "IDE"
+description: "Cross-platform C++/QML IDE for Qt application development"
+homepage:
+  - "https://www.qt.io/product/development-tools"
+  - "https://github.com/qt-creator/qt-creator"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/qt-creator/qt-creator/master/LICENSES/LICENSE.GPL3-EXCEPT"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/QtCreator-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "qtcreator"
+repology:
+  - "qtcreator"
+src_url:
+  - "https://github.com/pkgforge-dev/QtCreator-AppImage"
+tag:
+  - "ide"
+  - "development"
+  - "qt"
+  - "cpp"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/QtCreator-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/QtCreator-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
