@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "play"
+pkg_id: "pkgforge-dev.play"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/play"
+app_id: "com.virtualapplications.play"
+category:
+  - "Emulator"
+  - "Game"
+description: "Play! is a PlayStation 2 emulator for multiple platforms"
+homepage:
+  - "https://purei.org"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/jpd002/Play-/refs/heads/master/License.txt"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Play-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "play"
+src_url:
+  - "https://github.com/pkgforge-dev/Play-AppImage-Enhanced"
+tag:
+  - "ps2"
+  - "emulator"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Play-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Play-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
