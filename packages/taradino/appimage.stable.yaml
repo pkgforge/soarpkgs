@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "taradino"
+pkg_id: "pkgforge-dev.taradino"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/taradino"
+category:
+  - "Game"
+  - "ActionGame"
+  - "Shooter"
+description: "SDL2 port of Rise of the Triad"
+homepage:
+  - "https://github.com/fabiangreffrath/taradino"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/fabiangreffrath/taradino/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Taradino-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "taradino"
+repology:
+  - "taradino"
+src_url:
+  - "https://github.com/pkgforge-dev/Taradino-AppImage"
+tag:
+  - "game"
+  - "shooter"
+  - "sdl2"
+  - "rott"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Taradino-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Taradino-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
