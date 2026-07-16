@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "srb2kart"
+pkg_id: "pkgforge-dev.srb2kart"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/srb2kart"
+category:
+  - "Game"
+  - "ArcadeGame"
+description: "Kart racing game based on the 3D Sonic fangame Sonic Robo Blast 2"
+homepage:
+  - "https://srb2.org"
+  - "https://github.com/STJr/Kart-Public"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/STJr/Kart-Public/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SRB2Kart-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "srb2kart"
+repology:
+  - "srb2kart"
+src_url:
+  - "https://github.com/pkgforge-dev/SRB2Kart-AppImage"
+tag:
+  - "game"
+  - "racing"
+  - "kart"
+  - "sonic"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/SRB2Kart-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SRB2Kart-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
