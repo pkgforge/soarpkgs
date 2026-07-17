@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "anylinux-sharun"
+pkg_id: "pkgforge-dev.anylinux-sharun"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/anylinux-sharun"
+category:
+  - "TODO"
+description: "fork of sharun intended for Anylinux AppImages"
+homepage:
+  - "https://github.com/pkgforge-dev/Anylinux-sharun"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Anylinux-sharun"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "anylinux-sharun"
+repology:
+  - "anylinux-sharun"
+src_url:
+  - "https://github.com/pkgforge-dev/Anylinux-sharun"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Anylinux-sharun/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Anylinux-sharun@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
