@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "librewolf-enhanced"
+pkg_id: "pkgforge-dev.librewolf-enhanced"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/librewolf-enhanced"
+category:
+  - "Network"
+  - "WebBrowser"
+description: "Privacy- and security-focused fork of Firefox"
+homepage:
+  - "https://librewolf.net"
+  - "https://codeberg.org/librewolf/source"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MPL-2.0"
+build_asset:
+  - url: "https://codeberg.org/librewolf/source/raw/branch/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "librewolf-enhanced"
+repology:
+  - "librewolf"
+src_url:
+  - "https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced"
+tag:
+  - "browser"
+  - "privacy"
+  - "firefox"
+  - "security"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/LibreWolf-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
