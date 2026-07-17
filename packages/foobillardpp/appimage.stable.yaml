@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "foobillardpp"
+pkg_id: "pkgforge-dev.foobillardpp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/foobillardpp"
+category:
+  - "Game"
+  - "SportsGame"
+description: "Free 3D OpenGL billiard game with 8-ball, 9-ball, snooker and carambol"
+homepage:
+  - "https://sourceforge.net/projects/foobillardplus/"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://sourceforge.net/p/foobillardplus/code/HEAD/tree/COPYING?format=raw"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Foobillardpp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "foobillardpp"
+repology:
+  - "foobillard++"
+src_url:
+  - "https://github.com/pkgforge-dev/Foobillardpp-AppImage"
+tag:
+  - "billiard"
+  - "pool"
+  - "opengl"
+  - "3d"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Foobillardpp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Foobillardpp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
