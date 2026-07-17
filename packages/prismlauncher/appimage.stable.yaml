@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "prismlauncher"
+pkg_id: "pkgforge-dev.prismlauncher"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/prismlauncher"
+category:
+  - "Game"
+  - "Utility"
+description: "A custom Minecraft launcher to easily manage multiple Minecraft installations"
+homepage:
+  - "https://prismlauncher.org"
+  - "https://github.com/PrismLauncher/PrismLauncher"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "prismlauncher"
+repology:
+  - "prismlauncher"
+src_url:
+  - "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced"
+tag:
+  - "minecraft"
+  - "launcher"
+  - "game"
+  - "gaming"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
