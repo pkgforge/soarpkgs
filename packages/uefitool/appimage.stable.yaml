@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "uefitool"
+pkg_id: "pkgforge-dev.uefitool"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/uefitool"
+category:
+  - "Utility"
+  - "System"
+description: "UEFI firmware image viewer and editor"
+homepage:
+  - "https://github.com/LongSoft/UEFITool"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "BSD-2-Clause"
+build_asset:
+  - url: "https://raw.githubusercontent.com/LongSoft/UEFITool/new_engine/LICENSE.md"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/UEFITool-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "uefitool"
+repology:
+  - "uefitool"
+src_url:
+  - "https://github.com/pkgforge-dev/UEFITool-AppImage"
+tag:
+  - "uefi"
+  - "firmware"
+  - "editor"
+  - "bios"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/UEFITool-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/UEFITool-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
