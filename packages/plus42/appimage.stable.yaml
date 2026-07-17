@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "plus42"
+pkg_id: "pkgforge-dev.plus42"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/plus42"
+category:
+  - "Calculator"
+  - "Science"
+  - "Utility"
+description: "Advanced scientific programmable calculator, an enhanced HP-42S simulator"
+homepage:
+  - "https://thomasokken.com/plus42"
+  - "https://codeberg.org/thomasokken/plus42desktop"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://codeberg.org/thomasokken/plus42desktop/raw/branch/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Plus42-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "plus42"
+repology:
+  - "plus42"
+src_url:
+  - "https://github.com/pkgforge-dev/Plus42-AppImage"
+tag:
+  - "calculator"
+  - "hp-42s"
+  - "scientific"
+  - "rpn"
+x_exec:
+  host:
+    - "x86_64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Plus42-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Plus42-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
