@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ptyxis"
+pkg_id: "pkgforge-dev.ptyxis"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ptyxis"
+category:
+  - "TerminalEmulator"
+  - "System"
+  - "Utility"
+description: "A terminal for a container-oriented desktop with first-class container support"
+homepage:
+  - "https://apps.gnome.org/Ptyxis"
+  - "https://gitlab.gnome.org/GNOME/ptyxis"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Ptyxis-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ptyxis"
+repology:
+  - "ptyxis"
+src_url:
+  - "https://github.com/pkgforge-dev/Ptyxis-AppImage"
+tag:
+  - "terminal"
+  - "gnome"
+  - "container"
+  - "gtk4"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Ptyxis-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Ptyxis-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
