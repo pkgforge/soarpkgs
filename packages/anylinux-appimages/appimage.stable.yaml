@@ -1,0 +1,42 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "anylinux-appimages"
+pkg_id: "pkgforge-dev.anylinux-appimages"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/anylinux-appimages"
+category:
+  - "TODO"
+description: "AppImages That Truly Work On Any Linux System (Even musl-libc and non-FHS systems)"
+homepage:
+  - "https://pkgforge-dev.github.io/Anylinux-AppImages/"
+  - "https://github.com/pkgforge-dev/Anylinux-AppImages"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Anylinux-AppImages"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "anylinux-appimages"
+repology:
+  - "anylinux-appimages"
+src_url:
+  - "https://github.com/pkgforge-dev/Anylinux-AppImages"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Anylinux-AppImages/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Anylinux-AppImages@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
