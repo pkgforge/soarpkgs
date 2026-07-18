@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "iloader"
+pkg_id: "pkgforge-dev.iloader"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/iloader"
+category:
+  - "Utility"
+description: "Install SideStore and other iOS apps and import pairing files with ease"
+homepage:
+  - "https://iloader.app"
+  - "https://github.com/nab138/iloader"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/nab138/iloader/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/iloader-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "iloader"
+repology:
+  - "iloader"
+src_url:
+  - "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced"
+tag:
+  - "ios"
+  - "sideloader"
+  - "sidestore"
+  - "tauri"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/iloader-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
