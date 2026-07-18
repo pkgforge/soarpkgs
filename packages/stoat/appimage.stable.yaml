@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "stoat"
+pkg_id: "pkgforge-dev.stoat"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/stoat"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "Desktop client for Stoat, an open-source user-first chat platform"
+homepage:
+  - "https://stoat.chat"
+  - "https://github.com/stoatchat/for-desktop"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "AGPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/stoatchat/for-desktop/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Stoat-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "stoat"
+repology:
+  - "stoat-desktop"
+src_url:
+  - "https://github.com/pkgforge-dev/Stoat-AppImage"
+tag:
+  - "chat"
+  - "messaging"
+  - "revolt"
+  - "electron"
+  - "client"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Stoat-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}" | sed "s/^v//"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Stoat-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
