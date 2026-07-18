@@ -1,0 +1,43 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "soh"
+pkg_id: "pkgforge-dev.soh"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/soh"
+category:
+  - "Game"
+  - "AdventureGame"
+  - "ActionGame"
+description: "Ship of Harkinian: a PC port of The Legend of Zelda: Ocarina of Time"
+homepage:
+  - "https://github.com/HarbourMasters/Shipwright"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Custom"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/soh-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "soh"
+repology:
+  - "shipwright"
+src_url:
+  - "https://github.com/pkgforge-dev/soh-AppImage-Enhanced"
+tag:
+  - "zelda"
+  - "ocarina-of-time"
+  - "port"
+  - "game"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/soh-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/soh-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
