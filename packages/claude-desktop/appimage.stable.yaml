@@ -6,17 +6,17 @@ pkg_id: "pkgforge-dev.claude-desktop"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/claude-desktop"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Claude Desktop [Maintainer=@mnalmahmud]"
+  - "Network"
+  - "Chat"
+  - "Utility"
+description: "Desktop application for Anthropic's Claude AI assistant"
 homepage:
-  - "https://github.com/pkgforge-dev/Claude-Desktop-AppImage"
+  - "https://claude.ai"
+  - "https://www.anthropic.com/claude"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Claude-Desktop-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +27,11 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/Claude-Desktop-AppImage"
 tag:
-  - "TODO"
+  - "claude"
+  - "ai"
+  - "anthropic"
+  - "chatbot"
+  - "assistant"
 x_exec:
   host:
     - "x86_64-linux"
