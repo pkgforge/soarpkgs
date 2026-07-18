@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "webcord"
+pkg_id: "pkgforge-dev.webcord"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/webcord"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "A Discord and SpaceBar Electron-based client implemented without the Discord API"
+homepage:
+  - "https://github.com/SpacingBat3/WebCord"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://raw.githubusercontent.com/SpacingBat3/WebCord/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/WebCord-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "webcord"
+repology:
+  - "webcord"
+src_url:
+  - "https://github.com/pkgforge-dev/WebCord-AppImage-Enhanced"
+tag:
+  - "discord"
+  - "chat"
+  - "electron"
+  - "messaging"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/WebCord-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/WebCord-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
