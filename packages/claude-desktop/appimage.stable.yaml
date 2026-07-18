@@ -1,0 +1,45 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "claude-desktop"
+pkg_id: "pkgforge-dev.claude-desktop"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/claude-desktop"
+category:
+  - "Network"
+  - "Chat"
+  - "Utility"
+description: "Desktop application for Anthropic's Claude AI assistant"
+homepage:
+  - "https://claude.ai"
+  - "https://www.anthropic.com/claude"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "Proprietary"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Claude-Desktop-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "claude-desktop"
+repology:
+  - "claude-desktop"
+src_url:
+  - "https://github.com/pkgforge-dev/Claude-Desktop-AppImage"
+tag:
+  - "claude"
+  - "ai"
+  - "anthropic"
+  - "chatbot"
+  - "assistant"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Claude-Desktop-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Claude-Desktop-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
