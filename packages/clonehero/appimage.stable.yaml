@@ -6,17 +6,15 @@ pkg_id: "pkgforge-dev.clonehero"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/clonehero"
 category:
-  - "TODO"
-description: "Unofficial AppImage of Clone Hero [Maintainer=@Samueru-sama]"
+  - "Game"
+  - "ArcadeGame"
+description: "Rhythm game supporting guitar controllers, drum kits, gamepads, and keyboards"
 homepage:
-  - "https://github.com/pkgforge-dev/CloneHero-AppImage"
+  - "https://clonehero.net"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
-build_asset:
-  - url: "TODO"
-    out: "LICENSE"
+  - "Proprietary"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/CloneHero-AppImage"
   - "[PORTABLE] (Works on AnyLinux)"
@@ -27,7 +25,10 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/CloneHero-AppImage"
 tag:
-  - "TODO"
+  - "rhythm"
+  - "guitar"
+  - "music"
+  - "game"
 x_exec:
   host:
     - "x86_64-linux"
