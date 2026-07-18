@@ -6,16 +6,19 @@ pkg_id: "pkgforge-dev.sirikali"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/sirikali"
 category:
-  - "TODO"
-description: "Unofficial AppImage of SiriKali [Maintainer=@Samueru-sama]"
+  - "Utility"
+  - "Security"
+  - "System"
+description: "Qt GUI front end to sshfs, cryfs, gocryptfs, securefs, fscrypt and encfs"
 homepage:
-  - "https://github.com/pkgforge-dev/SiriKali-AppImage"
+  - "https://mhogomchungu.github.io/sirikali"
+  - "https://github.com/mhogomchungu/sirikali"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
-  - "MIT"
+  - "GPL-3.0-or-later"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/mhogomchungu/sirikali/master/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SiriKali-AppImage"
@@ -27,7 +30,11 @@ repology:
 src_url:
   - "https://github.com/pkgforge-dev/SiriKali-AppImage"
 tag:
-  - "TODO"
+  - "encryption"
+  - "filesystem"
+  - "gocryptfs"
+  - "encfs"
+  - "qt"
 x_exec:
   host:
     - "x86_64-linux"
