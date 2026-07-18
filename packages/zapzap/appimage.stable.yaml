@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "zapzap"
+pkg_id: "pkgforge-dev.zapzap"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/zapzap"
+category:
+  - "Network"
+  - "InstantMessaging"
+  - "Chat"
+description: "WhatsApp desktop application written in PyQt6 + PyQt6-WebEngine"
+homepage:
+  - "https://github.com/rafatosta/zapzap"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/rafatosta/zapzap/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "zapzap"
+repology:
+  - "zapzap"
+src_url:
+  - "https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced"
+tag:
+  - "whatsapp"
+  - "messaging"
+  - "chat"
+  - "qt"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
