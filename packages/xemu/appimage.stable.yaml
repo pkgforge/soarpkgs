@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "xemu"
+pkg_id: "pkgforge-dev.xemu"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/xemu"
+category:
+  - "Emulator"
+  - "Game"
+description: "Original Xbox emulator for Windows, macOS, and Linux"
+homepage:
+  - "https://xemu.app"
+  - "https://github.com/xemu-project/xemu"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/xemu-project/xemu/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/xemu-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "xemu"
+repology:
+  - "xemu"
+src_url:
+  - "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced"
+tag:
+  - "emulator"
+  - "xbox"
+  - "gaming"
+  - "original-xbox"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/xemu-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
