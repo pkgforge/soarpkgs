@@ -6,16 +6,18 @@ pkg_id: "pkgforge-dev.opencode-cli"
 pkg_type: "appimage"
 ghcr_pkg: "pkgforge-dev/opencode-cli"
 category:
-  - "TODO"
-description: "Unofficial AppImage of opencode CLI [Maintainer=@Samueru-sama]"
+  - "Development"
+  - "Utility"
+description: "AI coding agent built for the terminal"
 homepage:
-  - "https://github.com/pkgforge-dev/opencode-cli-AppImage"
+  - "https://opencode.ai"
+  - "https://github.com/anomalyco/opencode"
 maintainer:
   - "QaidVoid (contact@qaidvoid.dev)"
 license:
   - "MIT"
 build_asset:
-  - url: "TODO"
+  - url: "https://raw.githubusercontent.com/anomalyco/opencode/dev/LICENSE"
     out: "LICENSE"
 note:
   - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/opencode-cli-AppImage"
@@ -23,11 +25,15 @@ note:
 provides:
   - "opencode-cli"
 repology:
-  - "opencode-cli"
+  - "opencode"
 src_url:
   - "https://github.com/pkgforge-dev/opencode-cli-AppImage"
 tag:
-  - "TODO"
+  - "ai"
+  - "cli"
+  - "coding-agent"
+  - "llm"
+  - "terminal"
 x_exec:
   host:
     - "x86_64-linux"
