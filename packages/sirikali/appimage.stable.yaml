@@ -1,0 +1,48 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sirikali"
+pkg_id: "pkgforge-dev.sirikali"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/sirikali"
+category:
+  - "Utility"
+  - "Security"
+  - "System"
+description: "Qt GUI front end to sshfs, cryfs, gocryptfs, securefs, fscrypt and encfs"
+homepage:
+  - "https://mhogomchungu.github.io/sirikali"
+  - "https://github.com/mhogomchungu/sirikali"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0-or-later"
+build_asset:
+  - url: "https://raw.githubusercontent.com/mhogomchungu/sirikali/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SiriKali-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sirikali"
+repology:
+  - "sirikali"
+src_url:
+  - "https://github.com/pkgforge-dev/SiriKali-AppImage"
+tag:
+  - "encryption"
+  - "filesystem"
+  - "gocryptfs"
+  - "encfs"
+  - "qt"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/SiriKali-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SiriKali-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
