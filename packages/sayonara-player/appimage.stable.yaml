@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "sayonara-player"
+pkg_id: "pkgforge-dev.sayonara-player"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/sayonara-player"
+category:
+  - "Audio"
+  - "Player"
+  - "AudioVideo"
+description: "Small, fast and clean Qt audio player for Linux using GStreamer"
+homepage:
+  - "https://sayonara-player.com"
+  - "https://gitlab.com/luciocarreras/sayonara-player"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://gitlab.com/luciocarreras/sayonara-player/-/raw/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "sayonara-player"
+repology:
+  - "sayonara"
+src_url:
+  - "https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced"
+tag:
+  - "audio"
+  - "music"
+  - "player"
+  - "qt"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
