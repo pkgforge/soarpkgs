@@ -131,7 +131,7 @@ jobs:
 
       - name: Checkout for lint
         if: steps.parse.outputs.command == 'lint'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -202,7 +202,7 @@ jobs:
 
       - name: Checkout for check
         if: steps.parse.outputs.command == 'check'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
