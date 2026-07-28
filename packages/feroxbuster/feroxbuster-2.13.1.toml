@@ -2,19 +2,19 @@ version = "2.13.1"
 
 [url]
 x86_64-linux  = "https://github.com/epi052/feroxbuster/releases/download/v2.13.1/x86_64-linux-feroxbuster.tar.gz"
-aarch64-linux = "https://github.com/epi052/feroxbuster/releases/download/v2.13.1/x86_64-linux-feroxbuster.tar.gz"
+aarch64-linux = "https://github.com/epi052/feroxbuster/releases/download/v2.13.1/aarch64-linux-feroxbuster.zip"
 
 [blake3]
+aarch64-linux = "3f9a03faad03a926065169ccd0e4e06d04272e6c58dc2777eae683d3aebaa655"
 x86_64-linux  = "dfe5f8e03aa1244e50f36a074c1bf2417142bdc5f15a8d93e75b887330d37cb9"
-aarch64-linux = "dfe5f8e03aa1244e50f36a074c1bf2417142bdc5f15a8d93e75b887330d37cb9"
 
 [sha256]
+aarch64-linux = "1e5244e1f52e55a647b65e0c76ae7afe0b9983c1fbea30ed7c67e477175eb381"
 x86_64-linux  = "7985c00e6803b0f25d5e9139f7472279f3f4d891429627a5cedc629e53992d80"
-aarch64-linux = "7985c00e6803b0f25d5e9139f7472279f3f4d891429627a5cedc629e53992d80"
 
 [size]
+aarch64-linux = 5461708
 x86_64-linux  = 5012610
-aarch64-linux = 5012610
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/epi052/feroxbuster/main/LICENSE"

@@ -17,8 +17,13 @@ strategy     = "github-releases"
 repo         = "epi052/feroxbuster"
 strip-prefix = "v"
 
+# Upstream names each architecture differently and ships them in
+# different container formats, so neither can come from one template.
+[source.url]
+x86_64-linux  = "https://github.com/epi052/feroxbuster/releases/download/v${version}/x86_64-linux-feroxbuster.tar.gz"
+aarch64-linux = "https://github.com/epi052/feroxbuster/releases/download/v${version}/aarch64-linux-feroxbuster.zip"
+
 [source]
-url     = "https://github.com/epi052/feroxbuster/releases/download/v${version}/x86_64-linux-feroxbuster.tar.gz"
 
 [source.install]
 "feroxbuster" = "feroxbuster"
