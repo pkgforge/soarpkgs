@@ -9,9 +9,6 @@ category    = ["System", "Utility"]
 repology    = ["clipcat"]
 provides    = ["clipcatd", "@clipcat-menu", "@clipcat-notify", "@clipcatctl"]
 
-[subpackage.clipcat]
-provides = ["clipcatd", "@clipcat-menu", "@clipcat-notify", "@clipcatctl"]
-
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
