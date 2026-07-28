@@ -62,6 +62,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
+          UA: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36'
         run: |
           set -uo pipefail
           gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
@@ -75,13 +76,27 @@ jobs:
           fail=0
           while read -r f; do
             [ -n "$f" ] || continue
-            grep -oE 'https?://[^"]+' "$f" | while read -r url; do
-              code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 -I "$url" || echo 000)
+            # A pkg.toml source URL is a template the bot expands, so it is
+            # not a fetchable address; only the literal ones are checked.
+            grep -oE 'https?://[^" )]+' "$f" | grep -v '\${' | while read -r url; do
+              code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 \
+                       -A "$UA" -I "$url" || echo 000)
+              # Plenty of hosts refuse HEAD, or refuse it only for bots, and
+              # answer a GET perfectly well. Retrying keeps a live homepage
+              # from failing the build.
               if [ "$code" != "200" ]; then
-                echo "::error file=$f::$url returned HTTP $code"
-                exit 1
+                code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 \
+                         -A "$UA" "$url" || echo 000)
               fi
-              echo "  ok  $code  $url"
+              case "$code" in
+                200) echo "  ok  $code  $url" ;;
+                # Only these mean the thing is gone. A 403 or a timeout means
+                # the check was blocked, which says nothing about the link.
+                404|410)
+                  echo "::error file=$f::$url returned HTTP $code"
+                  exit 1 ;;
+                *) echo "::warning file=$f::$url returned HTTP $code (not checked)" ;;
+              esac
             done || fail=1
           done < changed.txt
           exit $fail
