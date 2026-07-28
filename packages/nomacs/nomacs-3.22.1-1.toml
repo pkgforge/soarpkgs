@@ -1,0 +1,23 @@
+version = "3.22.1-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Nomacs-AppImage/releases/download/3.22.1-1%402026-07-01_1782914593/nomacs-3.22.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Nomacs-AppImage/releases/download/3.22.1-1%402026-07-01_1782914593/nomacs-3.22.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "55acfa5b029ff7e0b2baa3a7abfc6c39862cb71abfac70bdc314407dc1275691"
+x86_64-linux  = "ff2f840c7e738f3857ddba03dcefa2d182da5d5dfded132431d2c43fae53ea63"
+
+[sha256]
+aarch64-linux = "1ead52204cbe8003db40dd79892b8246afaaf809fd6c4f4aab2f3f675e813cca"
+x86_64-linux  = "2a89f20898314402eaf7c48e065ec31646552be657d7a5d28f493adb003831f7"
+
+[size]
+aarch64-linux = 44682975
+x86_64-linux  = 55545741
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/nomacs/nomacs/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

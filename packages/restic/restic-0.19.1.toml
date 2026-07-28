@@ -1,0 +1,23 @@
+version = "0.19.1"
+
+[url]
+x86_64-linux  = "https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_linux_amd64.bz2"
+aarch64-linux = "https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_linux_arm64.bz2"
+
+[blake3]
+aarch64-linux = "6b1b357aec144fcb781e1af5bb914e4f001dcd10396f3238818bb479b6ff6c47"
+x86_64-linux  = "1caa862312a1910b756130a150790e08c5d35faf4ae64c1f960a3f902323baf9"
+
+[sha256]
+aarch64-linux = "a5f64aaab53d51e311fa3829124c5b703f2d14cf187d8640b6be3b2b49376465"
+x86_64-linux  = "f415415624dcc452f2a02b8c33641791a8c6d6d3b65bbb3543fcf9a25151585c"
+
+[size]
+aarch64-linux = 9044264
+x86_64-linux  = 10107515
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/restic/restic/master/LICENSE"
+to     = "LICENSE"
+blake3 = "ddc7557049e2bf7fb1a80b0999f8acdd15389337b4029f704f07f61fe6d9511b"
+sha256 = "6f08a01a9fab5b24e139a09f15cc24a73087c7bc09e3bacf099fdf2d767bf897"

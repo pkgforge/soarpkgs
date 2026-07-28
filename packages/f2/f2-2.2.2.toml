@@ -1,0 +1,17 @@
+version = "2.2.2"
+
+[url]
+x86_64-linux  = "https://github.com/ayoisaiah/f2/releases/download/v2.2.2/f2_2.2.2_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/ayoisaiah/f2/releases/download/v2.2.2/f2_2.2.2_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "f19fc713ed38baa5e4a432d54b13b7a824caf32f4663a0890b83e813cf61be30"
+aarch64-linux = "d612c4e55c088ef95fff2d2019f1125c7950199fd6658c8428ee2a55a5c8155a"
+
+[sha256]
+x86_64-linux  = "d44bca9d9a08721655e0fd4a3459f4c2b844abb896de3e6a74551e8bf5f51432"
+aarch64-linux = "65a38d8fe73a386d86f5163235ba3df04fc6cd45f73a6f67bf90ea02f1b9abfd"
+
+[size]
+x86_64-linux  = 5547223
+aarch64-linux = 5123839

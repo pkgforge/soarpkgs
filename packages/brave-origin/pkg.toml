@@ -1,0 +1,26 @@
+[pkg]
+name        = "brave-origin"
+type        = "appimage"
+description = "A privacy-focused Brave browser variant with telemetry stripped out"
+homepage    = ["https://github.com/brave/brave-browser"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "WebBrowser"]
+repology    = ["brave-origin"]
+provides    = ["brave-origin"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Brave-Origin-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Brave-Origin-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/brave/brave-browser/refs/heads/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "0.7.4-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.7.4-1%402026-07-22_1784721744/SongRec-0.7.4-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.7.4-1%402026-07-22_1784721744/SongRec-0.7.4-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "a26bb5dda6e9de09ef7cd97ea533d20f619440474dc7c17afe354b5bf6d0521f"
+x86_64-linux  = "8c9d2083c700bd4bd2eff76d02dc26bdc06568c256dfa6526a5d5fac59cd48ca"
+
+[sha256]
+aarch64-linux = "48175eb5f067de1acb779fb271b4af1d67df0a4eef9c4b567ba28e898f9834e8"
+x86_64-linux  = "a16b840c6125a6ef8ee0d47e1f2be63d8618278d3de4a9a09a7daf851d47d08c"
+
+[size]
+aarch64-linux = 48426741
+x86_64-linux  = 49325223
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/marin-m/SongRec/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

@@ -1,0 +1,23 @@
+version = "1.92.144-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Brave-Origin-AppImage/releases/download/1.92.144-1%402026-07-24_1784917489/Brave_Origin-1.92.144-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Brave-Origin-AppImage/releases/download/1.92.144-1%402026-07-24_1784917489/Brave_Origin-1.92.144-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "639c6563d592ef7e817b389ea579ac172acd4bd3e69fc83591acdebf11852072"
+aarch64-linux = "50309d39f18a7b2065579f75ed97bbcc01275aaa1fac91c99c0e7741d5e46fdb"
+
+[sha256]
+x86_64-linux  = "061ff4ef8cac9a63b88639ab22607841042b449b774fc6b69e3e3ec9549bffa5"
+aarch64-linux = "a30e57b6075cb1fffd5a618f2f4c7738fc7111dd039285ca56cd813eb589048b"
+
+[size]
+x86_64-linux  = 192538784
+aarch64-linux = 187562080
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/brave/brave-browser/refs/heads/master/LICENSE"
+to     = "LICENSE"
+blake3 = "7ad11002cb765572342fc15096832825a9071dfc7f4f427d92c6906d83ea9b54"
+sha256 = "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"

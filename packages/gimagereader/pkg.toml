@@ -1,0 +1,26 @@
+[pkg]
+name        = "gimagereader"
+type        = "appimage"
+description = "A Gtk/Qt front-end to tesseract-ocr"
+homepage    = ["https://github.com/manisandro/gImageReader"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Graphics"]
+repology    = ["gimagereader"]
+provides    = ["gimagereader"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/gImageReader-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/gImageReader-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/manisandro/gImageReader/master/COPYING"
+to  = "LICENSE"

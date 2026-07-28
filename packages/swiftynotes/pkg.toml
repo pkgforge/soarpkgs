@@ -1,0 +1,25 @@
+[pkg]
+name        = "swiftynotes"
+type        = "appimage"
+description = "Native GTK markdown notes for Linux and macOS, written in Swift"
+homepage    = ["https://github.com/makoni/swifty-notes-gtk"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "TextEditor", "Office"]
+provides    = ["swiftynotes"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/swiftynotes-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/swiftynotes-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/makoni/swifty-notes-gtk/master/LICENSE"
+to  = "LICENSE"

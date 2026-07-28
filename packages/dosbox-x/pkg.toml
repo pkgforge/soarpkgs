@@ -1,0 +1,26 @@
+[pkg]
+name        = "dosbox-x"
+type        = "appimage"
+description = "Cross-platform DOS emulator, a fork of the DOSBox project"
+homepage    = ["https://dosbox-x.com", "https://github.com/joncampbell123/dosbox-x"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game", "System"]
+repology    = ["dosbox-x"]
+provides    = ["dosbox-x"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DOSBox-X-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DOSBox-X-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/joncampbell123/dosbox-x/master/COPYING"
+to  = "LICENSE"

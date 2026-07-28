@@ -1,0 +1,26 @@
+[pkg]
+name        = "reco"
+type        = "appimage"
+description = "An audio recorder focused on being concise and simple to use"
+homepage    = ["https://github.com/ryonakano/reco"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "AudioVideo", "Recorder"]
+repology    = ["reco"]
+provides    = ["reco"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Reco-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Reco-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ryonakano/reco/main/LICENSE"
+to  = "LICENSE"

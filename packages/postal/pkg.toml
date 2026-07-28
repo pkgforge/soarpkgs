@@ -1,0 +1,26 @@
+[pkg]
+name        = "postal"
+type        = "appimage"
+description = "POSTAL (1997), the classic isometric shooter by Running With Scissors"
+homepage    = ["https://github.com/RWS-Studios/POSTAL-SourceCode"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+provides    = ["postal"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/POSTAL-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/POSTAL-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/RWS-Studios/POSTAL-SourceCode/main/LICENSE"
+to  = "LICENSE"

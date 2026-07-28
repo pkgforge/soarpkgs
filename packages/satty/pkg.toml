@@ -1,0 +1,26 @@
+[pkg]
+name        = "satty"
+type        = "appimage"
+description = "Modern screenshot annotation tool built on GTK"
+homepage    = ["https://github.com/Satty-org/Satty"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Utility"]
+repology    = ["satty"]
+provides    = ["satty"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Satty-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Satty-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Satty-org/Satty/main/LICENSE"
+to  = "LICENSE"

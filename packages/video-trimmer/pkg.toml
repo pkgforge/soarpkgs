@@ -1,0 +1,29 @@
+[pkg]
+name        = "video-trimmer"
+type        = "appimage"
+description = "Cut out fragments of video without re-encoding"
+homepage    = [
+  "https://gitlab.gnome.org/YaLTeR/video-trimmer",
+  "https://github.com/pkgforge-dev/Video-Trimmer-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["AudioVideo", "AudioVideoEditing", "Video"]
+repology   = ["video-trimmer"]
+provides   = ["video-trimmer"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Video-Trimmer-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Video-Trimmer-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"
+to  = "LICENSE"

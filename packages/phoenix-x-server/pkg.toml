@@ -1,0 +1,27 @@
+[pkg]
+name        = "phoenix-x-server"
+type        = "appimage"
+description = "X Server for Android"
+homepage    = ["https://git.dec05eba.com/phoenix"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["System"]
+repology    = ["phoenix-x-server"]
+provides    = ["phoenix-x-server"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/phoenix-x-server-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/phoenix-x-server-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://git.dec05eba.com/phoenix/plain/LICENSE"
+to  = "LICENSE"

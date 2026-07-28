@@ -1,0 +1,26 @@
+[pkg]
+name        = "gearcoleco"
+type        = "appimage"
+description = "ColecoVision emulator and debugger"
+homepage    = ["https://github.com/drhelius/Gearcoleco"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["gearcoleco"]
+provides    = ["gearcoleco"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gearcoleco-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gearcoleco-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/drhelius/Gearcoleco/main/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,29 @@
+[pkg]
+name        = "upx"
+type        = "static"
+description = "Ultimate packer for executables"
+homepage    = ["https://upx.github.io"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["upx"]
+provides    = ["upx"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "upx/upx"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/upx/upx/releases/download/v${version}/upx-${version}-${arch}_linux.tar.xz"
+
+[source.install]
+"upx-${version}-${arch}_linux/upx"     = "upx"
+"upx-${version}-${arch}_linux/LICENSE" = "LICENSE"

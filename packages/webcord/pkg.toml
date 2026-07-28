@@ -1,0 +1,26 @@
+[pkg]
+name        = "webcord"
+type        = "appimage"
+description = "A Discord and SpaceBar Electron-based client implemented without the Discord API"
+homepage    = ["https://github.com/SpacingBat3/WebCord"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["webcord"]
+provides    = ["webcord"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/WebCord-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/WebCord-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/SpacingBat3/WebCord/master/LICENSE"
+to  = "LICENSE"

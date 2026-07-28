@@ -1,0 +1,23 @@
+version = "1.9.1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/masterkey-AppImage/releases/download/v1.9.1%402026-07-20_1784570600/Master_Key-v1.9.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/masterkey-AppImage/releases/download/v1.9.1%402026-07-20_1784570600/Master_Key-v1.9.1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "fd189c0667e3951d199160063b5d0f59ee4eac726d71974f18716bd7347655a6"
+x86_64-linux  = "9e43b518b316c788f5e2bb40b28e45116bdc31b4c41630ccbc4bc9106332cd1b"
+
+[sha256]
+aarch64-linux = "45f5393fe7b212f491b74074b01db98e168bdea9966114bbfad0587495d075b0"
+x86_64-linux  = "4cf2a5e9865f3e68a767adab03df109fe2c047fdcbc517cf49712fd47f52b52d"
+
+[size]
+aarch64-linux = 44873037
+x86_64-linux  = 44334474
+
+[[extra]]
+url    = "https://gitlab.com/guillermop/master-key/-/raw/master/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

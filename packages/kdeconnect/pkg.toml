@@ -1,0 +1,29 @@
+[pkg]
+name        = "kdeconnect"
+type        = "appimage"
+description = "Integrate your devices"
+homepage    = [
+  "https://kdeconnect.kde.org",
+  "https://github.com/pkgforge-dev/kdeconnect-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Network", "Utility"]
+repology   = ["kdeconnect"]
+provides   = ["kdeconnect"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/kdeconnect-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/kdeconnect-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KDE/kdeconnect-kde/refs/heads/master/LICENSES/GPL-2.0-only.txt"
+to  = "LICENSE"

@@ -1,0 +1,27 @@
+[pkg]
+name        = "bitwarden"
+type        = "appimage"
+description = "Secure and free password manager for all of your devices"
+homepage    = ["https://bitwarden.com", "https://github.com/bitwarden/clients"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Security"]
+repology    = ["bitwarden"]
+provides    = ["bitwarden"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Bitwarden-AppImage-Enhanced"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Bitwarden-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/bitwarden/clients/main/LICENSE.txt"
+to  = "LICENSE"

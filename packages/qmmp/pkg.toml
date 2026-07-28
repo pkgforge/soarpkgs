@@ -1,0 +1,22 @@
+[pkg]
+name        = "qmmp"
+type        = "appimage"
+description = "Qt-based multimedia audio player with a Winamp/XMMS-style skinnable interface"
+homepage    = ["https://qmmp.ylsoftware.com", "https://github.com/Greedysky/qmmp"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Music", "Player"]
+repology    = ["qmmp"]
+provides    = ["qmmp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Qmmp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Qmmp-AppImage"
+glob   = "*${arch}*.appimage"

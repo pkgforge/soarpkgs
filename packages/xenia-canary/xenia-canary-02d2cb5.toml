@@ -1,0 +1,19 @@
+version = "02d2cb5"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/xenia-canary-AppImage/releases/download/02d2cb5%402026-07-22_1784722047/Xenia_Canary-02d2cb5-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "08eb90b40b851c3676fc326ffc951474df104c906b8bee8412d620a2b36594d0"
+
+[sha256]
+x86_64-linux = "5ef3f159158ba4ee8efdb94efa3b03b02804e96026a4dac447c66cf44d42373f"
+
+[size]
+x86_64-linux = 46891448
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xenia-canary/xenia-canary/master/LICENSE"
+to     = "LICENSE"
+blake3 = "19f6093e51c83ff3db11b2c2cc9a7dad37f1dc811f06ca8f6ff0825e4fb7e6a5"
+sha256 = "369ea6b0f7ba57544067e9d470ca82a927da787fb0a749b11cb55f1fd0ba47ae"

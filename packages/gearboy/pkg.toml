@@ -1,0 +1,26 @@
+[pkg]
+name        = "gearboy"
+type        = "appimage"
+description = "Game Boy / Game Boy Color emulator written in C++"
+homepage    = ["https://github.com/drhelius/Gearboy"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["gearboy"]
+provides    = ["gearboy"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gearboy-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gearboy-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/drhelius/Gearboy/master/LICENSE"
+to  = "LICENSE"

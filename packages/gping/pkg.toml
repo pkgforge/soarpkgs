@@ -1,0 +1,32 @@
+[pkg]
+name        = "gping"
+type        = "static"
+description = "Ping, but with a graph"
+homepage    = ["https://github.com/orf/gping"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["gping"]
+provides    = ["gping"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "orf/gping"
+strip-prefix = "gping-v"
+
+[source]
+url     = "https://github.com/orf/gping/releases/download/gping-v${version}/gping-Linux-musl-${arch}.tar.gz"
+
+[source.install]
+"gping" = "gping"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/orf/gping/master/LICENSE"
+to  = "LICENSE"

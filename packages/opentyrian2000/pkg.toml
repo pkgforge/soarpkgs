@@ -1,0 +1,26 @@
+[pkg]
+name        = "opentyrian2000"
+type        = "appimage"
+description = "Open-source port of the DOS shoot-em-up Tyrian 2000"
+homepage    = ["https://github.com/KScl/opentyrian2000"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["opentyrian2000"]
+provides    = ["opentyrian2000"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenTyrian2000-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenTyrian2000-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KScl/opentyrian2000/master/COPYING"
+to  = "LICENSE"

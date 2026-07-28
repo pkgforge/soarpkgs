@@ -1,0 +1,23 @@
+version = "4.4.0-3"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Xiphos-AppImage/releases/download/4.4.0-3%402026-07-26_1785031533/Xiphos_Bible_Guide-4.4.0-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Xiphos-AppImage/releases/download/4.4.0-3%402026-07-26_1785031533/Xiphos_Bible_Guide-4.4.0-3-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "5961725aa2b740460cdd7ee0083f69fba93294a89ca48ecb9900fd1c8c8e615f"
+x86_64-linux  = "49bdac6b908f05f2b09b6168f358013f62d41c46106f51807afeb2224033cd8b"
+
+[sha256]
+aarch64-linux = "911566613d91110f1fa9698274f6698abf9e11a45e686d019757e3aaab99da13"
+x86_64-linux  = "720662888d45c075cc49cb3d249bd658ed42bd38afa9d91b2038d1d69de4daa6"
+
+[size]
+aarch64-linux = 96962838
+x86_64-linux  = 93496296
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/crosswire/xiphos/master/COPYING"
+to     = "LICENSE"
+blake3 = "5d2999e12570c9907dfa43673b37cec0e1aab24701bc81854d4e7405a275baf4"
+sha256 = "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"

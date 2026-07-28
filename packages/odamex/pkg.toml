@@ -1,0 +1,26 @@
+[pkg]
+name        = "odamex"
+type        = "appimage"
+description = "Online multiplayer Doom port focused on original gameplay with enhancements"
+homepage    = ["https://odamex.net", "https://github.com/odamex/odamex"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["odamex"]
+provides    = ["odamex"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Odamex-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Odamex-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/odamex/odamex/stable/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,29 @@
+[pkg]
+name        = "grpcurl"
+type        = "static"
+description = "CLI tool for interacting with gRPC servers"
+homepage    = ["https://github.com/fullstorydev/grpcurl"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Development"]
+repology    = ["grpcurl"]
+provides    = ["grpcurl"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "fullstorydev/grpcurl"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/fullstorydev/grpcurl/releases/download/v${version}/grpcurl_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"grpcurl" = "grpcurl"
+"LICENSE" = "LICENSE"

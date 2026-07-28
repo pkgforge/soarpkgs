@@ -1,0 +1,21 @@
+[pkg]
+name        = "simitone"
+type        = "appimage"
+description = "Community re-implementation of The Sims 1, based on the FreeSO engine"
+homepage    = ["https://github.com/alexjyong/Simitone"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Simulation"]
+provides    = ["simitone"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Simitone-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Simitone-AppImage"
+glob   = "*${arch}*.appimage"

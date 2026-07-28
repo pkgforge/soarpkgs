@@ -1,0 +1,26 @@
+[pkg]
+name        = "stella"
+type        = "appimage"
+description = "A multi-platform Atari 2600 VCS emulator"
+homepage    = ["https://stella-emu.github.io", "https://github.com/stella-emu/stella"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["stella"]
+provides    = ["stella"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Stella-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Stella-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/stella-emu/stella/master/License.txt"
+to  = "LICENSE"

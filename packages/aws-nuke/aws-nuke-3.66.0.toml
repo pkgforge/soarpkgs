@@ -1,0 +1,17 @@
+version = "3.66.0"
+
+[url]
+x86_64-linux  = "https://github.com/ekristen/aws-nuke/releases/download/v3.66.0/aws-nuke-v3.66.0-linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/ekristen/aws-nuke/releases/download/v3.66.0/aws-nuke-v3.66.0-linux-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "cdae9ffc36c18fab72ea4a81f7c95cc8db1efdfd2c56567aebd779784daea0c6"
+aarch64-linux = "59d4b8073f37515a206676a73cabdaa8507fdcf80cd61d839652ae9ba40bf1d2"
+
+[sha256]
+x86_64-linux  = "65a361f164cc5075b7ecd947b355cd6ae19680f9eea32d52cba441d4bf2677f9"
+aarch64-linux = "de6a23b2cd06af8caaa85603531a9229bdc601cbf84557d50cb8269ec1652a4c"
+
+[size]
+x86_64-linux  = 62999746
+aarch64-linux = 55838080

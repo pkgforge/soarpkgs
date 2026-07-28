@@ -1,0 +1,26 @@
+[pkg]
+name        = "akhenaten"
+type        = "appimage"
+description = "Open source re-implementation of Pharaoh, the classic city builder"
+homepage    = ["https://github.com/dalerank/Akhenaten"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Simulation"]
+repology    = ["akhenaten"]
+provides    = ["akhenaten"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Akhenaten-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Akhenaten-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dalerank/Akhenaten/refs/heads/master/LICENSE.txt"
+to  = "LICENSE"

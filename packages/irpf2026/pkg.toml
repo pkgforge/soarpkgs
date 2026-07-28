@@ -1,0 +1,23 @@
+[pkg]
+name        = "irpf2026"
+type        = "appimage"
+description = "Brazilian Receita Federal IRPF 2026 personal income tax declaration program"
+homepage    = [
+  "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Finance", "Office", "Utility"]
+provides   = ["irpf2026"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/IRPF2026-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/IRPF2026-AppImage"
+glob   = "*${arch}*.appimage"

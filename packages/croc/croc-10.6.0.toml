@@ -1,0 +1,17 @@
+version = "10.6.0"
+
+[url]
+x86_64-linux  = "https://github.com/schollz/croc/releases/download/v10.6.0/croc_v10.6.0_Linux-64bit.tar.gz"
+aarch64-linux = "https://github.com/schollz/croc/releases/download/v10.6.0/croc_v10.6.0_Linux-ARM64.tar.gz"
+
+[blake3]
+x86_64-linux  = "88037fc0ab1647f2b71f053327ff6442981f26fe9f7e69470ada7550c95ef563"
+aarch64-linux = "a85d969fbccc2f5995619b6e28e07f466917be39674e12b8e981604cfc7d8ed3"
+
+[sha256]
+x86_64-linux  = "c392d91e1db4c82ff3b676e4f03e731b5d3c2b8d57a6f90addd3814c84a8f8ed"
+aarch64-linux = "ee950b1dcd1f284b3f2223d3ebac2767d1b3406f58c978c8854ddb88fe75a121"
+
+[size]
+x86_64-linux  = 10267229
+aarch64-linux = 9545198

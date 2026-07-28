@@ -1,0 +1,17 @@
+version = "2.96.0"
+
+[url]
+x86_64-linux  = "https://github.com/cli/cli/releases/download/v2.96.0/gh_2.96.0_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/cli/cli/releases/download/v2.96.0/gh_2.96.0_linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "d1fe554ffe7665454886bd3897d35de0dadef641da59df7058e228fb7382ed69"
+x86_64-linux  = "f906924982d2469c7e677be0eb75f6215fa68ecf6b3a19e4edcc8dcf4eb3cdff"
+
+[sha256]
+aarch64-linux = "06f86ec7103d41993b76cd78072f43595c34aaa56506d971d9860e67140bf909"
+x86_64-linux  = "83d5c2ccad5498f58bf6368acb1ab32588cf43ab3a4b1c301bf36328b1c8bd60"
+
+[size]
+aarch64-linux = 13321232
+x86_64-linux  = 14652560

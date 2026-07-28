@@ -1,0 +1,23 @@
+version = "0.11.2-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Readest-AppImage-Enhanced/releases/download/0.11.2-1%402026-06-01_1780331377/Readest-0.11.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Readest-AppImage-Enhanced/releases/download/0.11.2-1%402026-06-01_1780331377/Readest-0.10.6-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "c3876b0fa02bc7c37b207e00b2e1e8e80ba20fa03dfa1941e0e2bf6fc53a48d8"
+x86_64-linux  = "7fb2c43305deab9bd28f72a9a8e3405acd7c904fd23adb703ac660fd6755e95e"
+
+[sha256]
+aarch64-linux = "1ee39ac9685d64b320b9c8e14c3bbfa9a2d158b580ad3b405b3f1f4d177546bc"
+x86_64-linux  = "9e6b6438071ddcefbb0d1688173cfadc80db4d358cc5b927009f71c0f16898da"
+
+[size]
+aarch64-linux = 121572708
+x86_64-linux  = 127632923
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/readest/readest/main/LICENSE"
+to     = "LICENSE"
+blake3 = "f8ac07ce091aae4b9e02d5132b3095e0ca0f94146d4df2ef01ce36e7606bf3e0"
+sha256 = "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"

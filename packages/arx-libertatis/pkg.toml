@@ -1,0 +1,26 @@
+[pkg]
+name        = "arx-libertatis"
+type        = "appimage"
+description = "Cross-platform port of Arx Fatalis, a first-person role-playing game"
+homepage    = ["https://arx-libertatis.org/", "https://github.com/arx/ArxLibertatis"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying"]
+repology    = ["arx-libertatis"]
+provides    = ["arx-libertatis"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Arx-Libertatis-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Arx-Libertatis-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/arx/ArxLibertatis/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "nomacs"
+type        = "appimage"
+description = "Lightweight, fast image viewer supporting many formats and RAW files"
+homepage    = ["https://nomacs.org", "https://github.com/nomacs/nomacs"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Viewer", "Photography"]
+repology    = ["nomacs"]
+provides    = ["nomacs"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Nomacs-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Nomacs-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/nomacs/nomacs/master/LICENSE"
+to  = "LICENSE"

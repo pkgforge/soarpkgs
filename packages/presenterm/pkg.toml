@@ -1,0 +1,25 @@
+[pkg]
+name        = "presenterm"
+type        = "static"
+description = "Terminal-based markdown slideshow tool"
+homepage    = ["https://github.com/mfontanini/presenterm"]
+license     = ["BSD-2-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["presenterm"]
+provides    = ["presenterm"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "mfontanini/presenterm"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/mfontanini/presenterm/releases/download/v${version}/presenterm-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"presenterm-${version}/presenterm" = "presenterm"
+"presenterm-${version}/LICENSE"    = "LICENSE"

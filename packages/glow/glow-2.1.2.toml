@@ -1,0 +1,17 @@
+version = "2.1.2"
+
+[url]
+x86_64-linux  = "https://github.com/charmbracelet/glow/releases/download/v2.1.2/glow_2.1.2_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/charmbracelet/glow/releases/download/v2.1.2/glow_2.1.2_Linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "f821e9edbbde6af147d4e43200e097f188134cfb848110b04fcc88a14ed84351"
+x86_64-linux  = "889bc8b1203e136a80939403aa1f5c396bee0e3a0999fd4961f87db9c60979e2"
+
+[sha256]
+aarch64-linux = "cf63abebcb50b72909db965d78290e7cecbf17a900e84705dc84addbb6952099"
+x86_64-linux  = "6063d4f2af8a82a5f4bba0831e165de9381660aa8b41df4816d0106a265b07d5"
+
+[size]
+aarch64-linux = 5954660
+x86_64-linux  = 6586652

@@ -1,0 +1,25 @@
+[pkg]
+name        = "sanicball"
+type        = "appimage"
+description = "Extraordinarily fast Sonic-themed ball racing game made in Unity"
+homepage    = ["https://github.com/BK-TN/Sanicball"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "SportsGame"]
+provides    = ["sanicball"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Sanicball-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Sanicball-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/BK-TN/Sanicball/master/LICENSE"
+to  = "LICENSE"

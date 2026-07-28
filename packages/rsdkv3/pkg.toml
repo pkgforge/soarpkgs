@@ -1,0 +1,25 @@
+[pkg]
+name        = "rsdkv3"
+type        = "appimage"
+description = "Decompilation of the Retro Engine (RSDKv3), playable Sonic CD (2011)"
+homepage    = ["https://github.com/RSDKModding/RSDKv3-Decompilation"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+provides    = ["rsdkv3"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/RSDKv3-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/RSDKv3-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/RSDKModding/RSDKv3-Decompilation/master/LICENSE.md"
+to  = "LICENSE"

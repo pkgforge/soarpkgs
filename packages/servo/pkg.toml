@@ -1,0 +1,27 @@
+[pkg]
+name        = "servo"
+type        = "appimage"
+description = "Parallel browser engine"
+homepage    = ["https://servo.org", "https://github.com/pkgforge-dev/servo-AppImage"]
+license     = ["MPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Network", "WebBrowser"]
+repology    = ["servo"]
+provides    = ["servo"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/servo-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/servo-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/servo/servo/refs/heads/main/LICENSE"
+to  = "LICENSE"

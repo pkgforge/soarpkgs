@@ -1,0 +1,23 @@
+version = "0.8.0.r868.gd1269ea-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ITGmania-AppImage/releases/download/0.8.0.r868.gd1269ea-1%402026-03-08_1772964022/ITGmania-0.8.0.r868.gd1269ea-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ITGmania-AppImage/releases/download/0.8.0.r868.gd1269ea-1%402026-03-08_1772964022/ITGmania-0.8.0.r868.gd1269ea-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "8eb28fc1379cdfa6a7598e106c28199b90a123b7e5129cab7f6739054a7ad4b7"
+x86_64-linux  = "d803fe8961625f5227626b888ceefdf9d445f62e69f45e29c48ab5300abef733"
+
+[sha256]
+aarch64-linux = "ff47779999b7c3c65c9709f367568fdeab8b3368838712061ca867f504d42f9d"
+x86_64-linux  = "d7e8d670b7104c133682143513b87b9e2ea5b500f2d674ca504555d1ad5770e5"
+
+[size]
+aarch64-linux = 144842119
+x86_64-linux  = 146158984
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/itgmania/itgmania/release/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

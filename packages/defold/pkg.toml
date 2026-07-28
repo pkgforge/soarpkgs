@@ -1,0 +1,26 @@
+[pkg]
+name        = "defold"
+type        = "appimage"
+description = "Game engine for development of desktop, mobile and web games"
+homepage    = ["https://defold.com", "https://github.com/defold/defold"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Game"]
+repology    = ["defold"]
+provides    = ["defold"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Defold-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Defold-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/defold/defold/dev/LICENSE.txt"
+to  = "LICENSE"

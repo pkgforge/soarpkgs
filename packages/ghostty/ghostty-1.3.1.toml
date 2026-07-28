@@ -1,0 +1,23 @@
+version = "1.3.1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ghostty-appimage/releases/download/v1.3.1/Ghostty-1.3.1-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ghostty-appimage/releases/download/v1.3.1/Ghostty-1.3.1-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "9d63607e6f5614c8763b1c2dc56f5dc6e883a21ed4ddd8cc0eee46c3208c3c39"
+x86_64-linux  = "1dfbce84319b6863536aae1f725dd83f66a940b762d23fb2e7851472ceb9005f"
+
+[sha256]
+aarch64-linux = "55b7d1e2073b80954e23167a70f9e5994189d81e954d36dad4d2dc2d2fe6c121"
+x86_64-linux  = "fde48d2b716afd1978766879bbf1aae30dd305e8ad86a1037a2614a14d82dc28"
+
+[size]
+aarch64-linux = 48306901
+x86_64-linux  = 48876785
+
+[[extra]]
+url    = "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
+to     = "LICENSE"
+blake3 = "b0b0abfb45abba4c3396c97fb0706a17e3bd80cbd475569e721578e096312856"
+sha256 = "7151ffdf96b8b1351a123ca2faf33c440b17b4cb1198ed1f69202200263299ec"

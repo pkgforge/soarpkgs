@@ -1,0 +1,29 @@
+[pkg]
+name        = "gnome-system-monitor"
+type        = "appimage"
+description = "View current processes and monitor system state"
+homepage    = [
+  "https://wiki.gnome.org/Apps/SystemMonitor",
+  "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Monitor", "System"]
+repology   = ["gnome-system-monitor"]
+provides   = ["gnome-system-monitor"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gnome-System-Monitor-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gnome-System-Monitor-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/GNOME/gnome-system-monitor/refs/heads/main/COPYING"
+to  = "LICENSE"

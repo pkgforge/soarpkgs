@@ -1,0 +1,29 @@
+[pkg]
+name        = "virt-manager"
+type        = "appimage"
+description = "Virtual machine manager"
+homepage    = [
+  "https://virt-manager.org",
+  "https://github.com/pkgforge-dev/virt-manager-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Emulator", "System"]
+repology   = ["virt-manager"]
+provides   = ["virt-manager"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/virt-manager-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/virt-manager-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/virt-manager/virt-manager/refs/heads/main/COPYING"
+to  = "LICENSE"

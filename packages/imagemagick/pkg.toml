@@ -1,0 +1,26 @@
+[pkg]
+name        = "imagemagick"
+type        = "appimage"
+description = "Software suite to create, edit, convert and display images in 200+ formats"
+homepage    = ["https://imagemagick.org", "https://github.com/ImageMagick/ImageMagick"]
+license     = ["ImageMagick"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "RasterGraphics", "ImageProcessing"]
+repology    = ["imagemagick"]
+provides    = ["imagemagick"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ImageMagick-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ImageMagick-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ImageMagick/ImageMagick/main/LICENSE"
+to  = "LICENSE"

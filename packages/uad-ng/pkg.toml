@@ -1,0 +1,29 @@
+[pkg]
+name        = "uad-ng"
+type        = "appimage"
+description = "Universal Android Debloater Next Generation"
+homepage    = [
+  "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["System", "Utility"]
+repology   = ["uad-ng"]
+provides   = ["uad-ng"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/uad-ng-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/uad-ng-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/refs/heads/main/LICENSE"
+to  = "LICENSE"

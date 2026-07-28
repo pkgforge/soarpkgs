@@ -1,0 +1,29 @@
+[pkg]
+name        = "awakened-poe-trade"
+type        = "appimage"
+description = "Path of Exile app for price checking and trading"
+homepage    = [
+  "https://snosme.github.io/awakened-poe-trade/download",
+  "https://github.com/SnosMe/awakened-poe-trade",
+]
+license    = ["MIT"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "Game"]
+repology   = ["awakened-poe-trade"]
+provides   = ["awakened-poe-trade"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Awakened-POE-Trade-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Awakened-POE-Trade-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/master/LICENSE"
+to  = "LICENSE"

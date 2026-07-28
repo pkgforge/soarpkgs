@@ -1,0 +1,26 @@
+[pkg]
+name        = "isle-portable"
+type        = "appimage"
+description = "A portable/cross-platform build of the LEGO Island (1997) decompilation"
+homepage    = ["https://github.com/isledecomp/isle-portable"]
+license     = ["LGPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame"]
+repology    = ["isle-portable"]
+provides    = ["isle-portable"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/isle-portable-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/isle-portable-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/isledecomp/isle-portable/master/LICENSE"
+to  = "LICENSE"

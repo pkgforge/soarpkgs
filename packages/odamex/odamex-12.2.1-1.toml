@@ -1,0 +1,23 @@
+version = "12.2.1-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Odamex-AppImage/releases/download/12.2.1-1%402026-07-22_1784722328/Odamex-12.2.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Odamex-AppImage/releases/download/12.2.1-1%402026-07-22_1784722328/Odamex-12.2.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "8b67752c274e1345d9d7e9a9276f2121e1668eb30d1639819b4d4952e845fd28"
+x86_64-linux  = "bb48ef9c842af8c83136675d554e5e9c0cedd403ac2c4aec3e840ddca5c02ff1"
+
+[sha256]
+aarch64-linux = "07b636cfc0b2d2ef8593d873d7f91e5a8ccd148187d2cd5488204bbd71e5297c"
+x86_64-linux  = "9be1b5d61a2f0e5cad57150ccbf6b4c3bf02ff578a21a5e970cc9260b665c209"
+
+[size]
+aarch64-linux = 51082626
+x86_64-linux  = 51623373
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/odamex/odamex/stable/LICENSE"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

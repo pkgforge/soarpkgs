@@ -1,0 +1,17 @@
+version = "1.9.3"
+
+[url]
+x86_64-linux  = "https://github.com/fullstorydev/grpcurl/releases/download/v1.9.3/grpcurl_1.9.3_linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/fullstorydev/grpcurl/releases/download/v1.9.3/grpcurl_1.9.3_linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "8319966613fe40e4a05a8a8b3c22f5b53f1cbd07006993e235dbb4db13907036"
+x86_64-linux  = "fedc97582a962e4b8c2257537722a9f23a6c68bab0c325cd5c8a071d5e37fb09"
+
+[sha256]
+aarch64-linux = "b20a00c1cb82ab81ec32696766d4076e99b4cb5ca0823a71767ba64dbea0f263"
+x86_64-linux  = "a926b62a85787ccf73ef8736b3ae554f1242e39d92bb8767a79d6dd23b11d1d5"
+
+[size]
+aarch64-linux = 7331038
+x86_64-linux  = 7909225

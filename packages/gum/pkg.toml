@@ -1,0 +1,29 @@
+[pkg]
+name        = "gum"
+type        = "static"
+description = "A tool for glamorous shell scripts"
+homepage    = ["https://github.com/charmbracelet/gum"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["gum"]
+provides    = ["gum"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "charmbracelet/gum"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/charmbracelet/gum/releases/download/v${version}/gum_${version}_Linux_${arch}.tar.gz"
+
+[source.install]
+"gum_${version}_Linux_${arch}/gum"     = "gum"
+"gum_${version}_Linux_${arch}/LICENSE" = "LICENSE"

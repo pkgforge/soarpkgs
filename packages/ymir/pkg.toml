@@ -1,0 +1,26 @@
+[pkg]
+name        = "ymir"
+type        = "appimage"
+description = "Sega Saturn emulator"
+homepage    = ["https://github.com/StrikerX3/Ymir"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["ymir"]
+provides    = ["ymir"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ymir-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ymir-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/StrikerX3/Ymir/main/LICENSE"
+to  = "LICENSE"

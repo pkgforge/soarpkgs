@@ -1,0 +1,23 @@
+version = "2125.1.3"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced/releases/download/2125.1.3%402026-07-22_1784724297/Azahar-2125.1.3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced/releases/download/2125.1.3%402026-07-22_1784724297/Azahar-2125.1.3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "91d5820201968474dd941c76a66f0a659709afe03f634739218aeabb6ffce297"
+aarch64-linux = "3c7149a75b8ed99805b55d8ebc846183d217678db076715fa41514c295c663bb"
+
+[sha256]
+x86_64-linux  = "0d961a0e6991abb6584f31223143b139123b2724d6f4fb1a8d5897a92b1b92fd"
+aarch64-linux = "8992142219b563cc58fd3fdd6227c27f132b582d83cedc8e4156b93a9ce2a724"
+
+[size]
+x86_64-linux  = 90542284
+aarch64-linux = 87697876
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/azahar-emu/azahar/refs/heads/master/license.txt"
+to     = "LICENSE"
+blake3 = "58b8d009f91eeebae72ec220be414a5a8339446259f4d0375f8f8471d320cf37"
+sha256 = "a77e81713ddfe05f9f7f3a3c46de4147f82b5fe9d6e5e24af96e36a6de53f613"

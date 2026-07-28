@@ -1,0 +1,26 @@
+[pkg]
+name        = "zapzap"
+type        = "appimage"
+description = "WhatsApp desktop application written in PyQt6 + PyQt6-WebEngine"
+homepage    = ["https://github.com/rafatosta/zapzap"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["zapzap"]
+provides    = ["zapzap"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ZapZap-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ZapZap-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/rafatosta/zapzap/main/LICENSE"
+to  = "LICENSE"

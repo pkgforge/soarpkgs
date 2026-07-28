@@ -1,0 +1,26 @@
+[pkg]
+name        = "amiberry"
+type        = "appimage"
+description = "Optimized Amiga emulator"
+homepage    = ["https://amiberry.com", "https://github.com/BlitterStudio/amiberry"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["amiberry"]
+provides    = ["amiberry"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Amiberry-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Amiberry-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/BlitterStudio/amiberry/refs/heads/master/LICENSE"
+to  = "LICENSE"

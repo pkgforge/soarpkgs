@@ -1,0 +1,22 @@
+[pkg]
+name        = "tuxpuck"
+type        = "appimage"
+description = "Air hockey game and Shufflepuck Cafe clone featuring Tux"
+homepage    = ["https://wiki.debian.org/Games/TuxPuck"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "SportsGame"]
+repology    = ["tuxpuck"]
+provides    = ["tuxpuck"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Tuxpuck-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Tuxpuck-AppImage"
+glob   = "*${arch}*.appimage"

@@ -1,0 +1,23 @@
+version = "1.4.2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Stoat-AppImage/releases/download/v1.4.2%402026-07-22_1784722230/Stoat-v1.4.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Stoat-AppImage/releases/download/v1.4.2%402026-07-22_1784722230/Stoat-v1.4.2-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "9db9e12f1826813912fd472545b77d66fb27cd4f7604d934478597a766c81969"
+x86_64-linux  = "a36551c9709e84df799f4b0f7202dd71d94ed4e2ce7b577696f3d3edae6e738a"
+
+[sha256]
+aarch64-linux = "feba9357b50bfd1e32fb525194e618105a84608e2740594e707f7e55aa29baab"
+x86_64-linux  = "06723f1a88355a220000685263af7f68d4803faa389ae80c387a41d50c88d99a"
+
+[size]
+aarch64-linux = 128343868
+x86_64-linux  = 128046750
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/stoatchat/for-desktop/main/LICENSE"
+to     = "LICENSE"
+blake3 = "3d9b84c414e29763f05def1c583645e3e05e3fa2f7a55cb15b5356d90ce6e579"
+sha256 = "6e6f0b6c2a89f9132768bf1596bd4db32267e9d0493d869d82bada688206d2b3"

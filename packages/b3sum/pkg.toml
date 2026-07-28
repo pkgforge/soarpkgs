@@ -1,0 +1,23 @@
+[pkg]
+name        = "b3sum"
+type        = "static"
+description = "Command line utility for calculating BLAKE3 hashes"
+homepage    = ["https://github.com/BLAKE3-team/BLAKE3"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["blake3"]
+provides    = ["b3sum"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+# one repository publishes for several packages, so tags are filtered
+tag-prefix = "b3sum-"
+
+[source]
+github = "pkgforge/builds"
+glob   = "b3sum-${version}-${arch}-linux.tar.gz"

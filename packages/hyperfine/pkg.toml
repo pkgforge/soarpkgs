@@ -1,0 +1,25 @@
+[pkg]
+name        = "hyperfine"
+type        = "static"
+description = "A command-line benchmarking tool"
+homepage    = ["https://github.com/sharkdp/hyperfine"]
+license     = ["Apache-2.0", "MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["hyperfine"]
+provides    = ["hyperfine"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "sharkdp/hyperfine"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/sharkdp/hyperfine/releases/download/v${version}/hyperfine-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"hyperfine-v${version}-${arch}-unknown-linux-musl/hyperfine"      = "hyperfine"
+"hyperfine-v${version}-${arch}-unknown-linux-musl/LICENSE-APACHE" = "LICENSE"

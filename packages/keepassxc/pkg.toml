@@ -1,0 +1,26 @@
+[pkg]
+name        = "keepassxc"
+type        = "appimage"
+description = "Cross-platform community-driven port of the KeePass password manager"
+homepage    = ["https://keepassxc.org/", "https://github.com/keepassxreboot/keepassxc"]
+license     = ["GPL-2.0", "GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Security", "Utility"]
+repology    = ["keepassxc"]
+provides    = ["keepassxc"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KeePassXC-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KeePassXC-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/keepassxreboot/keepassxc/develop/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,29 @@
+[pkg]
+name        = "gradia"
+type        = "appimage"
+description = "Make your screenshots ready to share with backgrounds and annotations"
+homepage    = [
+  "https://gradia.alexandervanhee.be",
+  "https://github.com/AlexanderVanhee/Gradia",
+]
+license    = ["GPL-3.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Graphics", "Utility"]
+repology   = ["gradia"]
+provides   = ["gradia"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gradia-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gradia-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/AlexanderVanhee/Gradia/main/COPYING"
+to  = "LICENSE"

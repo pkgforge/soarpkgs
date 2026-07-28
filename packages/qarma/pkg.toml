@@ -1,0 +1,26 @@
+[pkg]
+name        = "qarma"
+type        = "appimage"
+description = "Qt-based clone of zenity for creating GUI dialog boxes"
+homepage    = ["https://github.com/luebking/qarma"]
+license     = ["GPL-2.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility"]
+repology    = ["qarma"]
+provides    = ["qarma"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/qarma-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/qarma-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/luebking/qarma/master/LICENSE"
+to  = "LICENSE"

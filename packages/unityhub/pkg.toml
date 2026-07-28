@@ -1,0 +1,22 @@
+[pkg]
+name        = "unityhub"
+type        = "appimage"
+description = "Manage Unity editor installations and projects with Unity Hub"
+homepage    = ["https://unity.com/"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["unityhub"]
+provides    = ["unityhub"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/UnityHub-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/UnityHub-AppImage"
+glob   = "*${arch}*.appimage"

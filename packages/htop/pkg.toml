@@ -1,0 +1,26 @@
+[pkg]
+name        = "htop"
+type        = "appimage"
+description = "Interactive process viewer and system monitor"
+homepage    = ["https://htop.dev", "https://github.com/htop-dev/htop"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Monitor"]
+repology    = ["htop"]
+provides    = ["htop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/htop-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/htop-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/htop-dev/htop/refs/heads/main/COPYING"
+to  = "LICENSE"

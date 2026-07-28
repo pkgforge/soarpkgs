@@ -1,0 +1,17 @@
+version = "0.3.2"
+
+[url]
+x86_64-linux  = "https://github.com/orhun/binsider/releases/download/v0.3.2/binsider-0.3.2-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/orhun/binsider/releases/download/v0.3.2/binsider-0.3.2-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "c660502c46b6d459fd64a1b628a942472d4c991978d8098802f39535689f73aa"
+aarch64-linux = "7cee2ce0f236f27bcf5f989dfe9f10b65ed7d5bf803d3e0264dcea99e826a7ee"
+
+[sha256]
+x86_64-linux  = "fd349c580824f2b52ff7cd6a302aaa774a3fe4beedd9378515bdfecec0d877a3"
+aarch64-linux = "a5e745f1e31f1667ec14f6239bac3c31cc5043962624b12dae4182d31b5244e2"
+
+[size]
+x86_64-linux  = 1427946
+aarch64-linux = 1206922

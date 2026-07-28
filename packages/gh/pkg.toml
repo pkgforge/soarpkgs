@@ -1,0 +1,29 @@
+[pkg]
+name        = "gh"
+type        = "static"
+description = "GitHub CLI tool"
+homepage    = ["https://cli.github.com"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "RevisionControl"]
+repology    = ["github-cli"]
+provides    = ["gh"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "cli/cli"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/cli/cli/releases/download/v${version}/gh_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"gh_${version}_linux_${arch}/bin/gh"  = "gh"
+"gh_${version}_linux_${arch}/LICENSE" = "LICENSE"

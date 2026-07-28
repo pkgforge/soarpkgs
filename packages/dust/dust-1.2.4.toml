@@ -1,0 +1,17 @@
+version = "1.2.4"
+
+[url]
+x86_64-linux  = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "b2098c162616b16f38d8d17ff1b6dc23ddbce3c518aa11183c13e511fab2b05d"
+aarch64-linux = "6dd0630fc6c76f75241a722a21277d46043c9cf69f840bef549f867e08933f12"
+
+[sha256]
+x86_64-linux  = "4e313f9f854017e58a2ada4c0d1774677b8cf53d63ab55a991d5871d5f504452"
+aarch64-linux = "e09b0d24b5da0fa06aecf1561849c13ae41ef055c1ce7077e35e9a46744b16af"
+
+[size]
+x86_64-linux  = 1319411
+aarch64-linux = 1180113

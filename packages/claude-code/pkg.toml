@@ -1,0 +1,29 @@
+[pkg]
+name        = "claude-code"
+type        = "appimage"
+description = "Agentic coding tool that lives in your terminal and understands your codebase"
+homepage    = [
+  "https://claude.com/claude-code",
+  "https://github.com/anthropics/claude-code",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Development", "Utility"]
+repology   = ["claude-code"]
+provides   = ["claude-code"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/claude-code-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/claude-code-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/anthropics/claude-code/main/LICENSE.md"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "rquickshare"
+type        = "appimage"
+description = "Rust implementation of NearbyShare/QuickShare from Android for Linux"
+homepage    = ["https://github.com/Martichou/rquickshare"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["FileTransfer", "Network", "Utility"]
+repology    = ["rquickshare"]
+provides    = ["rquickshare"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/rquickshare-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/rquickshare-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Martichou/rquickshare/master/LICENSE"
+to  = "LICENSE"

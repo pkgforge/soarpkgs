@@ -1,0 +1,26 @@
+[pkg]
+name        = "xclock"
+type        = "appimage"
+description = "Classic X11 analog and digital clock application from X.Org"
+homepage    = ["https://gitlab.freedesktop.org/xorg/app/xclock"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Clock", "System"]
+repology    = ["xclock"]
+provides    = ["xclock"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/xclock-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/xclock-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.freedesktop.org/xorg/app/xclock/-/raw/master/COPYING"
+to  = "LICENSE"

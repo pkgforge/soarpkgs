@@ -1,0 +1,19 @@
+version = "0.12"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/SpeedCrunch-AppImage/releases/download/0.12%402026-07-01_1782912074/SpeedCrunch-0.12-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "20c3c978f39ea526008c689e5c42ac9888a65bead73873c619f6fde22dbfda49"
+
+[sha256]
+x86_64-linux = "62c562cd6410b448fd3eb52d51fff4d4b9cd6dc570556110257141e9abea79d1"
+
+[size]
+x86_64-linux = 17652441
+
+[[extra]]
+url    = "https://bitbucket.org/heldercorreia/speedcrunch/raw/3c1b4c18ccb275eb2891f9d8ff36a9205c0f566b/LICENSE"
+to     = "LICENSE"
+blake3 = "9680a78b4b33c56d322b42e39be3405150ce6e8a605e8eca6bd4acdad17f62fe"
+sha256 = "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505"

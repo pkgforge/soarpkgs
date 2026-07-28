@@ -1,0 +1,26 @@
+[pkg]
+name        = "playerctl"
+type        = "appimage"
+description = "Command-line utility for controlling media players"
+homepage    = ["https://github.com/altdesktop/playerctl"]
+license     = ["LGPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Audio", "Utility"]
+repology    = ["playerctl"]
+provides    = ["playerctl"]
+channel     = "nightly"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/playerctl-AppImage"
+
+[source]
+github = "pkgforge-dev/playerctl-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/altdesktop/playerctl/master/COPYING"
+to  = "LICENSE"

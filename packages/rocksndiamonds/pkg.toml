@@ -1,0 +1,29 @@
+[pkg]
+name        = "rocksndiamonds"
+type        = "appimage"
+description = "Arcade puzzle game inspired by Boulder Dash, Emerald Mine, and Sokoban"
+homepage    = [
+  "https://www.artsoft.org/rocksndiamonds/",
+  "https://github.com/tuero/rocksndiamonds",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "ArcadeGame", "LogicGame"]
+repology   = ["rocksndiamonds"]
+provides   = ["rocksndiamonds"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/RocksnDiamonds-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/RocksnDiamonds-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/tuero/rocksndiamonds/master/COPYING"
+to  = "LICENSE"

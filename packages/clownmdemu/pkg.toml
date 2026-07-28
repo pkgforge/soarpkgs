@@ -1,0 +1,28 @@
+[pkg]
+name        = "clownmdemu"
+type        = "appimage"
+description = "Sega Mega Drive/Genesis emulator with reference standalone frontend"
+homepage    = [
+  "https://clownacy.wordpress.com/tag/clownmdemu/",
+  "https://github.com/Clownacy/clownmdemu-frontend",
+]
+license    = ["AGPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Emulator", "Game"]
+provides   = ["clownmdemu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ClownMDEmu-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ClownMDEmu-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Clownacy/clownmdemu-frontend/master/LICENCE.txt"
+to  = "LICENSE"

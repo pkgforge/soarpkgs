@@ -1,0 +1,23 @@
+version = "0.9.1"
+
+[url]
+x86_64-linux  = "https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "37b3a98876a8de1da64210227f3247a1cc7a653149b7df6a36828d3d5f5502fa"
+aarch64-linux = "b132c6889e2c0be133a081f2050167b60a040e473c7970f57c09b2a2025630b6"
+
+[sha256]
+x86_64-linux  = "5add851e7062c5e56939abb664705e4d14fa2d06289490aff31d51f153832de7"
+aarch64-linux = "22ea0ad29f6610bf443aa351e600de97e47a9b380ef58316606a84bb8f595216"
+
+[size]
+x86_64-linux  = 1285584
+aarch64-linux = 1189297
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/muesli/duf/master/LICENSE"
+to     = "LICENSE"
+blake3 = "898c090565c70600439949b0ba711dfe6d4ea849ecb631874b34b70d6688edbd"
+sha256 = "81090e71a92a18ce7f95bd3433a9523c568329be4fd47d8f0b94d490ca628d86"

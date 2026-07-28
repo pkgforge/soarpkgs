@@ -1,0 +1,26 @@
+[pkg]
+name        = "gcstar"
+type        = "appimage"
+description = "Personal collection manager for movies, books, music, games and more"
+homepage    = ["https://www.gcstar.org", "https://gitlab.com/GCstar/GCstar"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Database"]
+repology    = ["gcstar"]
+provides    = ["gcstar"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/GCstar-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/GCstar-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/GCstar/GCstar/-/raw/main/LICENSE"
+to  = "LICENSE"

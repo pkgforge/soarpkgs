@@ -1,0 +1,23 @@
+version = "4.6.2-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gapless-AppImage/releases/download/4.6.2-1%402026-07-22_1784722449/Gapless-4.6.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gapless-AppImage/releases/download/4.6.2-1%402026-07-22_1784722449/Gapless-4.6.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "6961b869347acc240a9b97d1bc9e5ce982a3ece6e4c1649788f3b514af43a164"
+x86_64-linux  = "676b64c67c337bfbacfbe011337026905b718cb46fe58948b703a445405dbc77"
+
+[sha256]
+aarch64-linux = "1a6322ff979a469388d7950c904312d3071143ccc3e2a400b59c1d064a692d76"
+x86_64-linux  = "32467dc2daf7f6c7e59e2bb49d6ed41b6ca6bcdb21a0ef2854ad43a29673e3f9"
+
+[size]
+aarch64-linux = 69826070
+x86_64-linux  = 74065874
+
+[[extra]]
+url    = "https://gitlab.gnome.org/neithern/g4music/-/raw/master/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

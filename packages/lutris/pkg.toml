@@ -1,0 +1,26 @@
+[pkg]
+name        = "lutris"
+type        = "appimage"
+description = "Open source gaming platform"
+homepage    = ["https://lutris.net", "https://github.com/pkgforge-dev/Lutris-AppImage"]
+license     = ["GPL-3.0"]
+maintainer  = ["contrarybaton60 (github.com/contrarybaton60)"]
+category    = ["Game"]
+repology    = ["lutris"]
+provides    = ["lutris"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Lutris-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Lutris-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/lutris/lutris/refs/heads/master/LICENSE"
+to  = "LICENSE"

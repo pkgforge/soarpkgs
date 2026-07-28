@@ -1,0 +1,23 @@
+version = "2.13.1-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Cartridges-AppImage/releases/download/2.13.1-1%402026-07-22_1784722496/Cartridges-2.13.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Cartridges-AppImage/releases/download/2.13.1-1%402026-07-22_1784722496/Cartridges-2.13.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "2c6f434680d3bec6ff502bc49b106f4d7a122d7d858eeb91e266407ff80debe1"
+aarch64-linux = "43d4d494066442c6fe2eb13ca80893c039e54df60ad49c84030d212d9de6cef2"
+
+[sha256]
+x86_64-linux  = "1576dac8aff820958cb2b0605e293c893461106e01b9f737a73773a26b7e61fe"
+aarch64-linux = "a733433752a908e69bb3ff37221f82170e0917829d370524a9b87b1a89e2410a"
+
+[size]
+x86_64-linux  = 50293275
+aarch64-linux = 50017396
+
+[[extra]]
+url    = "https://codeberg.org/kramo/cartridges/raw/branch/main/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

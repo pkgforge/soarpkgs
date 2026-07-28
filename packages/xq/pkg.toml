@@ -1,0 +1,28 @@
+[pkg]
+name        = "xq"
+type        = "static"
+description = "Command-line XML and HTML beautifier and content extractor"
+homepage    = ["https://github.com/sibprogrammer/xq"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["xq"]
+provides    = ["xq"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "sibprogrammer/xq"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/sibprogrammer/xq/releases/download/v${version}/xq_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"xq" = "xq"

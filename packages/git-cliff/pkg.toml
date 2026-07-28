@@ -1,0 +1,25 @@
+[pkg]
+name        = "git-cliff"
+type        = "static"
+description = "Highly customizable changelog generator following Conventional Commits"
+homepage    = ["https://git-cliff.org"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["git-cliff"]
+provides    = ["git-cliff"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "orhun/git-cliff"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/orhun/git-cliff/releases/download/v${version}/git-cliff-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"git-cliff-${version}/git-cliff"   = "git-cliff"
+"git-cliff-${version}/LICENSE-MIT" = "LICENSE"

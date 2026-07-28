@@ -1,0 +1,29 @@
+[pkg]
+name        = "walk"
+type        = "static"
+description = "Terminal file manager"
+homepage    = ["https://github.com/antonmedv/walk"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileManager", "Utility"]
+repology    = ["walk"]
+provides    = ["walk"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "antonmedv/walk"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/antonmedv/walk/releases/download/v${version}/walk_linux_${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/antonmedv/walk/master/LICENSE"
+to  = "LICENSE"

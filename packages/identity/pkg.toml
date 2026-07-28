@@ -1,0 +1,29 @@
+[pkg]
+name        = "identity"
+type        = "appimage"
+description = "Compare images and videos"
+homepage    = [
+  "https://gitlab.gnome.org/YaLTeR/identity",
+  "https://github.com/pkgforge-dev/Identity-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["Graphics", "Utility"]
+repology   = ["identity"]
+provides   = ["identity"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Identity-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Identity-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/YaLTeR/identity/-/raw/main/COPYING"
+to  = "LICENSE"

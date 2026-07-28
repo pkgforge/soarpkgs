@@ -1,0 +1,26 @@
+[pkg]
+name        = "sdlpop"
+type        = "appimage"
+description = "Open-source port of the classic Prince of Persia game"
+homepage    = ["https://github.com/NagyD/SDLPoP"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "ActionGame"]
+repology    = ["sdlpop"]
+provides    = ["sdlpop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SDLPoP-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SDLPoP-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/NagyD/SDLPoP/master/COPYING"
+to  = "LICENSE"

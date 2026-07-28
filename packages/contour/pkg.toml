@@ -1,0 +1,29 @@
+[pkg]
+name        = "contour"
+type        = "appimage"
+description = "Modern and fast terminal emulator with GPU-accelerated rendering"
+homepage    = [
+  "https://contour-terminal.org",
+  "https://github.com/contour-terminal/contour",
+]
+license    = ["Apache-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["TerminalEmulator", "System", "Utility"]
+repology   = ["contour-terminal"]
+provides   = ["contour"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/contour-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/contour-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/contour-terminal/contour/master/LICENSE.txt"
+to  = "LICENSE"

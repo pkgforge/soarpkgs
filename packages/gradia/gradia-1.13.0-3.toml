@@ -1,0 +1,23 @@
+version = "1.13.0-3"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gradia-AppImage/releases/download/1.13.0-3%402026-07-22_1784722048/Gradia-1.13.0-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gradia-AppImage/releases/download/1.13.0-3%402026-07-22_1784722048/Gradia-1.13.0-3-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "916d5746f03ffa9633f0b8d5e90d28e51cc447533df233944320c703afb409d8"
+x86_64-linux  = "5be0aa140419b2dc266eb876a3025f0c3df8d5aa89570453db243c99bc39b247"
+
+[sha256]
+aarch64-linux = "78ecbd6b4f7de112a31b78c6059eb572f3d5721bde9f844753492abb40833139"
+x86_64-linux  = "df2e37515abc65eeff5da96f703213c8f55ec0b46ed9bcb725e4233c168c42d1"
+
+[size]
+aarch64-linux = 99271912
+x86_64-linux  = 105035338
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AlexanderVanhee/Gradia/main/COPYING"
+to     = "LICENSE"
+blake3 = "421aedcb746d1e98fe78560e2eb8b5c0d0298bde77b4e5ebcef195cdc259d7bf"
+sha256 = "b69c62829f176a47dc482840afa24e9d63d66cb963c4b0a994547576d7d2acf4"

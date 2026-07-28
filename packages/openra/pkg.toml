@@ -1,0 +1,26 @@
+[pkg]
+name        = "openra"
+type        = "appimage"
+description = "Open source real-time strategy engine reimplementing classic Westwood RTS games"
+homepage    = ["https://www.openra.net", "https://github.com/OpenRA/OpenRA"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "StrategyGame"]
+repology    = ["openra"]
+provides    = ["openra"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenRA-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenRA-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OpenRA/OpenRA/master/COPYING"
+to  = "LICENSE"

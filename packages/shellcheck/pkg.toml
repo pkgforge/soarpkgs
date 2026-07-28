@@ -1,0 +1,25 @@
+[pkg]
+name        = "shellcheck"
+type        = "static"
+description = "Static analysis tool for shell scripts"
+homepage    = ["https://github.com/koalaman/shellcheck"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["shellcheck"]
+provides    = ["shellcheck"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "koalaman/shellcheck"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/koalaman/shellcheck/releases/download/v${version}/shellcheck-v${version}.linux.${arch}.tar.xz"
+
+[source.install]
+"shellcheck-v${version}/shellcheck"  = "shellcheck"
+"shellcheck-v${version}/LICENSE.txt" = "LICENSE"

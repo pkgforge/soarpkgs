@@ -1,0 +1,26 @@
+[pkg]
+name        = "kid3"
+type        = "appimage"
+description = "Efficient audio tag editor supporting a large variety of file formats"
+homepage    = ["https://kid3.kde.org", "https://invent.kde.org/multimedia/kid3"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Utility"]
+repology    = ["kid3"]
+provides    = ["kid3"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Kid3-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Kid3-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/multimedia/kid3/-/raw/master/COPYING"
+to  = "LICENSE"

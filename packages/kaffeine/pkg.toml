@@ -1,0 +1,29 @@
+[pkg]
+name        = "kaffeine"
+type        = "appimage"
+description = "Media player for KDE"
+homepage    = [
+  "https://apps.kde.org/kaffeine",
+  "https://github.com/pkgforge-dev/kaffeine-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["AudioVideo", "Player"]
+repology   = ["kaffeine"]
+provides   = ["kaffeine"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/kaffeine-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/kaffeine-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KDE/kaffeine/refs/heads/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "varia"
+type        = "appimage"
+description = "Download manager"
+homepage    = ["https://github.com/giantpinkrobots/varia"]
+license     = ["MPL-2.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Network", "Utility"]
+repology    = ["varia"]
+provides    = ["varia"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Varia-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Varia-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/giantpinkrobots/varia/refs/heads/main/LICENSE"
+to  = "LICENSE"

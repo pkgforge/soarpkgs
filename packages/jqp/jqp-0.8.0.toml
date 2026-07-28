@@ -1,0 +1,17 @@
+version = "0.8.0"
+
+[url]
+x86_64-linux  = "https://github.com/noahgorstein/jqp/releases/download/v0.8.0/jqp_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/noahgorstein/jqp/releases/download/v0.8.0/jqp_Linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "d0e5d551a1a01e8e6ff7fdd2a09bb52e5b5b14717840c86aeefc12bd1d257b05"
+x86_64-linux  = "6a7cb9ec65745ef065dec32e87e7d561aaa1da44be94e8e35154642ec5e795ee"
+
+[sha256]
+aarch64-linux = "178a3d5ad64aefcabb0cf69435b70b23b13618ea71b829148223179b80ac101b"
+x86_64-linux  = "66b2a100ff114a8bbe45a8e6052269fb2f4c61de4edd5ea57b763bf2ec7c6593"
+
+[size]
+aarch64-linux = 3740381
+x86_64-linux  = 4030837

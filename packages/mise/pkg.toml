@@ -1,0 +1,30 @@
+[pkg]
+name        = "mise"
+type        = "static"
+description = "The front-end to your dev env"
+homepage    = ["https://mise.jdx.dev"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["mise"]
+provides    = ["mise"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x64"
+
+[update]
+strategy     = "github-releases"
+repo         = "jdx/mise"
+strip-prefix = "v"
+
+[source]
+github  = "jdx/mise"
+glob    = "*linux-${arch}-musl.tar.xz"
+
+[source.install]
+"mise/bin/mise" = "mise"
+"mise/LICENSE"  = "LICENSE"

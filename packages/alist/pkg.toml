@@ -1,0 +1,32 @@
+[pkg]
+name        = "alist"
+type        = "static"
+description = "A file list/WebDAV program that supports multiple storages"
+homepage    = ["https://alistgo.com"]
+license     = ["AGPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["FileManager", "Network"]
+repology    = ["alist"]
+provides    = ["alist"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "alist-org/alist"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/AlistGo/alist/releases/download/v${version}/alist-linux-musl-${arch}.tar.gz"
+
+[source.install]
+"alist" = "alist"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"
+to  = "LICENSE"

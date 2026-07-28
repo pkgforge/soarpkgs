@@ -1,0 +1,26 @@
+[pkg]
+name        = "galculator"
+type        = "appimage"
+description = "GTK 2 / GTK 3 based scientific calculator"
+homepage    = ["https://github.com/galculator/galculator"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Calculator", "Science"]
+repology    = ["galculator"]
+provides    = ["galculator"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Galculator-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Galculator-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/galculator/galculator/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "collision"
+type        = "appimage"
+description = "Check hashes for your files"
+homepage    = ["https://github.com/GeopJr/Collision"]
+license     = ["BSD-2-Clause"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Security", "Utility"]
+repology    = ["collision"]
+provides    = ["collision"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Collision-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Collision-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/GeopJr/Collision/refs/heads/main/LICENSE"
+to  = "LICENSE"

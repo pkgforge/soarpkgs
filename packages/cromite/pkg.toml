@@ -1,0 +1,27 @@
+[pkg]
+name        = "cromite"
+type        = "appimage"
+description = "A privacy-focused Chromium-based browser"
+homepage    = ["https://github.com/uazo/cromite"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Network", "WebBrowser"]
+repology    = ["cromite"]
+provides    = ["cromite"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Cromite-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Cromite-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/uazo/cromite/master/LICENSE"
+to  = "LICENSE"

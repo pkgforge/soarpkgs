@@ -1,0 +1,25 @@
+[pkg]
+name        = "algernon"
+type        = "static"
+description = "Small self-contained pure-Go web server with Lua, Teal, Markdown, HTTP/2, QUIC, Redis and PostgreSQL support"
+homepage    = ["https://algernon.roboticoverlords.org"]
+license     = ["BSD-3-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "WebDevelopment"]
+repology    = ["algernon"]
+provides    = ["algernon"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "xyproto/algernon"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/xyproto/algernon/releases/download/v${version}/algernon-${version}-linux_${arch}_static.tar.xz"
+
+[source.install]
+"*/algernon" = "algernon"
+"*/LICENSE"  = "LICENSE"

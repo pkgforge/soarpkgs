@@ -1,0 +1,26 @@
+[pkg]
+name        = "vibeprint-studio"
+type        = "appimage"
+description = "Automatically layout and print images in an ICC-aware environment"
+homepage    = ["https://github.com/crenedecotret/vibeprint"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Photography"]
+provides    = ["vibeprint-studio"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Vibeprint-Studio-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Vibeprint-Studio-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/crenedecotret/vibeprint/refs/heads/main/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,22 @@
+[pkg]
+name        = "slack"
+type        = "appimage"
+description = "Team messaging and collaboration app for channels, chat, and file sharing"
+homepage    = ["https://slack.com"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["slack"]
+provides    = ["slack"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Slack-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Slack-AppImage"
+glob   = "*${arch}*.appimage"

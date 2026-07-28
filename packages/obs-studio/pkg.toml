@@ -1,0 +1,26 @@
+[pkg]
+name        = "obs-studio"
+type        = "appimage"
+description = "Free and open source software for live streaming and screen recording"
+homepage    = ["https://obsproject.com", "https://github.com/obsproject/obs-studio"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideoEditing", "Recorder"]
+repology    = ["obs-studio"]
+provides    = ["obs-studio"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OBS-Studio-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OBS-Studio-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/obsproject/obs-studio/13a132b486295042a0daf558bff977a6d19a4e84/COPYING"
+to  = "LICENSE"

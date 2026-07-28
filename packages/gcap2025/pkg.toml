@@ -1,0 +1,24 @@
+[pkg]
+name        = "gcap2025"
+type        = "appimage"
+description = "Brazilian income tax auxiliary program for calculating capital gains (GCAP 2025)"
+homepage    = [
+  "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/gcap",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Office", "Finance"]
+repology   = ["gcap2025"]
+provides   = ["gcap2025"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/GCAP2025-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/GCAP2025-AppImage"
+glob   = "*${arch}*.appimage"

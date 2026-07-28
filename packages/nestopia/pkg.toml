@@ -1,0 +1,26 @@
+[pkg]
+name        = "nestopia"
+type        = "appimage"
+description = "Cross-platform NES/Famicom emulator with a GUI"
+homepage    = ["https://github.com/0ldsk00l/nestopia", "http://0ldsk00l.ca/nestopia"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["nestopia"]
+provides    = ["nestopia"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Nestopia-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Nestopia-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/0ldsk00l/nestopia/master/COPYING"
+to  = "LICENSE"

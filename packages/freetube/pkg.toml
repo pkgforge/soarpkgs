@@ -1,0 +1,26 @@
+[pkg]
+name        = "freetube"
+type        = "appimage"
+description = "An open source desktop YouTube player built with privacy in mind"
+homepage    = ["https://freetubeapp.io", "https://github.com/FreeTubeApp/FreeTube"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Video", "Player", "Network"]
+repology    = ["freetube"]
+provides    = ["freetube"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/FreeTube-Appimage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/FreeTube-Appimage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/development/LICENSE"
+to  = "LICENSE"

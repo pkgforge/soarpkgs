@@ -1,0 +1,26 @@
+[pkg]
+name        = "cartridges"
+type        = "appimage"
+description = "Simple game launcher for your games"
+homepage    = ["https://github.com/kra-mo/cartridges"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Game"]
+repology    = ["cartridges"]
+provides    = ["cartridges"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Cartridges-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Cartridges-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://codeberg.org/kramo/cartridges/raw/branch/main/LICENSE"
+to  = "LICENSE"

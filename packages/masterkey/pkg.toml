@@ -1,0 +1,27 @@
+[pkg]
+name        = "masterkey"
+type        = "appimage"
+description = "A GNOME/libadwaita password manager application"
+homepage    = ["https://gitlab.com/guillermop/master-key"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Security"]
+repology    = ["master-key"]
+provides    = ["masterkey"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/masterkey-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/masterkey-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/guillermop/master-key/-/raw/master/COPYING"
+to  = "LICENSE"

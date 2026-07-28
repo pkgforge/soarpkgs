@@ -1,0 +1,23 @@
+version = "0.7.1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/BMHeroRecomp-AppImage-Enhanced/releases/download/0.7.1%402026-07-22_1784721980/Bomberman_Hero_Recompiled-0.7.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/BMHeroRecomp-AppImage-Enhanced/releases/download/0.7.1%402026-07-22_1784721980/Bomberman_Hero_Recompiled-0.7.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3e276eb273e7dbc792727fdb156b89a8e3d2206fc53dcba4b4aea66036163dea"
+aarch64-linux = "1dcfd35e7396aa78d64bb3eb84faa205c3ee4551b946a7d629ea67a4901f1a1c"
+
+[sha256]
+x86_64-linux  = "c5f6d4036d30eea295bf1c57f3c73735540a5b4292d433e79d022cd1a293da4c"
+aarch64-linux = "f57258c1bb3c026e1186e6147a2452f52640331480955938e3815cedbfc32f0a"
+
+[size]
+x86_64-linux  = 43580800
+aarch64-linux = 43273770
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/RevoSucks/BMHeroRecomp/master/COPYING"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

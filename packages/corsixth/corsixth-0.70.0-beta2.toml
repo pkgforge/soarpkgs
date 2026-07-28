@@ -1,0 +1,23 @@
+version = "0.70.0-beta2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/CorsixTH-AppImage-Enhanced/releases/download/v0.70.0-beta2%402026-07-22_1784721965/CorsixTH-v0.70.0-beta2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/CorsixTH-AppImage-Enhanced/releases/download/v0.70.0-beta2%402026-07-22_1784721965/CorsixTH-v0.70.0-beta2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1217153ce2646004c992d397e3df678e6425259ed703887f4d620efcb5486eb0"
+aarch64-linux = "072b5d9fa5720141623cc722459cd0ed7ebf524322a6a874fb6e859a281cf3d4"
+
+[sha256]
+x86_64-linux  = "2506f29b1a6a2510f2c93e28fdfec3d5e77b5944712a87b8dcff512d8999a154"
+aarch64-linux = "05dc9af95612654108655cc3142cfa2135ebcca21efa2ee0c760f714858c69a6"
+
+[size]
+x86_64-linux  = 66790372
+aarch64-linux = 65414079
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/CorsixTH/CorsixTH/master/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "c8b101e54957b948aee05ff08438bcc8002d852185d297b60b1f932d9ad13d4a"
+sha256 = "016f1848e7b9601136b07405af4744654b38afda7217fdaee0f90b03f0bb0561"

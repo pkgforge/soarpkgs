@@ -1,0 +1,26 @@
+[pkg]
+name        = "copyq"
+type        = "appimage"
+description = "Clipboard manager with advanced features"
+homepage    = ["https://hluk.github.io/CopyQ/", "https://github.com/hluk/CopyQ"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility"]
+repology    = ["copyq"]
+provides    = ["copyq"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/CopyQ-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/CopyQ-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/hluk/CopyQ/master/LICENSE"
+to  = "LICENSE"

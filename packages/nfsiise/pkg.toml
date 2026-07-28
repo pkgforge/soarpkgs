@@ -1,0 +1,26 @@
+[pkg]
+name        = "nfsiise"
+type        = "appimage"
+description = "Fork of the Need For Speed II SE cross-platform port with x86_64/arm64 support"
+homepage    = ["https://github.com/Link4Electronics/NFSIISE"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+provides    = ["nfsiise"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/NFSIISE-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/NFSIISE-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Link4Electronics/NFSIISE/master/LICENSE"
+to  = "LICENSE"

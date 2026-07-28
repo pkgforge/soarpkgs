@@ -1,0 +1,17 @@
+version = "0.17.0"
+
+[url]
+x86_64-linux  = "https://github.com/charmbracelet/gum/releases/download/v0.17.0/gum_0.17.0_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/charmbracelet/gum/releases/download/v0.17.0/gum_0.17.0_Linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "88a0ea57a703ddcef42225c3a9a989dfea4e743917be2fc29e2f830b654420a4"
+x86_64-linux  = "b858645e560553923f1d9eed175cad209c19c9c8b766d552af212311abdf381b"
+
+[sha256]
+aarch64-linux = "b0b9ed95cbf7c8b7073f17b9591811f5c001e33c7cfd066ca83ce8a07c576f9c"
+x86_64-linux  = "69ee169bd6387331928864e94d47ed01ef649fbfe875baed1bbf27b5377a6fdb"
+
+[size]
+aarch64-linux = 4249159
+x86_64-linux  = 4681855

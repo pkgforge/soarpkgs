@@ -1,0 +1,23 @@
+version = "5.0.0beta3-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/LightZone-AppImage/releases/download/5.0.0beta3-1%402026-05-22_1779457497/LightZone-5.0.0beta3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/LightZone-AppImage/releases/download/5.0.0beta3-1%402026-05-22_1779457497/LightZone-5.0.0beta3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "c21efd90faed860ac89c6a828ff0089025adc0d08cd06d245d1a13ad32a00aa9"
+x86_64-linux  = "7c8c480d3ca6a45004de91eb2be90ea1af3389dc457296eacfcd44651bc849aa"
+
+[sha256]
+aarch64-linux = "614ec9143b04d4522d6493ac50effdb5e2220b141fc30a5ede8dfb07980415bc"
+x86_64-linux  = "a46cf0e5e2108ec936dae3eef3d1b20eb228c7ff1f272df410b2673567e340a2"
+
+[size]
+aarch64-linux = 77966934
+x86_64-linux  = 74623930
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ktgw0316/LightZone/master/COPYING"
+to     = "LICENSE"
+blake3 = "e5c779771b20c52fa3b4ca845bda56e82fb6252da83fb1197de87c226a562c85"
+sha256 = "ec79890ac08f66ae8fb742c96d843129f9f9a372f3d3fc473c49a9b4a1c2857e"

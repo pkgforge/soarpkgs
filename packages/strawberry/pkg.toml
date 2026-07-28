@@ -1,0 +1,29 @@
+[pkg]
+name        = "strawberry"
+type        = "appimage"
+description = "Music player and music collection organizer"
+homepage    = [
+  "https://www.strawberrymusicplayer.org",
+  "https://github.com/pkgforge-dev/strawberry-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Audio", "Music", "Player"]
+repology   = ["strawberry"]
+provides   = ["strawberry"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/strawberry-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/strawberry-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/strawberrymusicplayer/strawberry/refs/heads/master/COPYING"
+to  = "LICENSE"

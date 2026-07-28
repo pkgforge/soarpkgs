@@ -1,0 +1,32 @@
+[pkg]
+name        = "rclone"
+type        = "static"
+description = "Rsync for cloud storage - sync files to and from various cloud providers"
+homepage    = ["https://rclone.org"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileTransfer", "Network"]
+repology    = ["rclone"]
+provides    = ["rclone"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "rclone/rclone"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/rclone/rclone/releases/download/v${version}/rclone-v${version}-linux-${arch}.zip"
+
+[source.install]
+"rclone-v${version}-linux-${arch}/rclone" = "rclone"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/rclone/rclone/master/COPYING"
+to  = "LICENSE"

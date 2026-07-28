@@ -1,0 +1,26 @@
+[pkg]
+name        = "tokodon"
+type        = "appimage"
+description = "Mastodon client for Plasma and Plasma Mobile"
+homepage    = ["https://apps.kde.org/tokodon", "https://invent.kde.org/network/tokodon"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "Chat"]
+repology    = ["tokodon"]
+provides    = ["tokodon"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Tokodon-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Tokodon-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/network/tokodon/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to  = "LICENSE"

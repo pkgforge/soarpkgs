@@ -1,0 +1,22 @@
+[pkg]
+name        = "pokemmo"
+type        = "appimage"
+description = "Free MMO client for Pokemon games with online multiplayer and trading"
+homepage    = ["https://pokemmo.com"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying", "Network"]
+repology    = ["pokemmo"]
+provides    = ["pokemmo"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PokeMMO-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PokeMMO-AppImage"
+glob   = "*${arch}*.appimage"

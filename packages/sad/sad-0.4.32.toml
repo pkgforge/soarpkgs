@@ -1,0 +1,23 @@
+version = "0.4.32"
+
+[url]
+x86_64-linux  = "https://github.com/ms-jpq/sad/releases/download/v0.4.32/x86_64-unknown-linux-musl.zip"
+aarch64-linux = "https://github.com/ms-jpq/sad/releases/download/v0.4.32/aarch64-unknown-linux-musl.zip"
+
+[blake3]
+aarch64-linux = "9bb29fbdbcc1495af16f9bbe17c6f04644ae06f6e453f63309c6d9a8c5e2d93e"
+x86_64-linux  = "cb7e0b3d2e80735f2304bc625bf02e32d133ea8391204cfdd14e156f706cb366"
+
+[sha256]
+aarch64-linux = "dbe40e14e2b8aad95a77408c46333336a6e03e17612d3066e87e43b8c9bd2f3c"
+x86_64-linux  = "c1fac2377b702eae602c6fdc2c4a1b20c9f3fd5857a0b03152ce3fa37e27503a"
+
+[size]
+aarch64-linux = 4434176
+x86_64-linux  = 4818120
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ms-jpq/sad/senpai/LICENSE"
+to     = "LICENSE"
+blake3 = "a682846cd056d4da88ba713925975aab684a6165aeabab677899d031f8eac724"
+sha256 = "f9698208ec005b3994984d4151ca62c04858e0c6a379ad6f9e9192604cd33b95"

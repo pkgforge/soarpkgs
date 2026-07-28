@@ -1,0 +1,22 @@
+[pkg]
+name        = "supermariowar"
+type        = "appimage"
+description = "A fan-made multiplayer Super Mario Bros. style deathmatch game"
+homepage    = ["https://github.com/mmatyas/supermariowar"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["supermariowar"]
+provides    = ["supermariowar"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Supermariowar-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Supermariowar-AppImage"
+glob   = "*${arch}*.appimage"

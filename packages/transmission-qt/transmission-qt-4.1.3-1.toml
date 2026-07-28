@@ -1,0 +1,23 @@
+version = "4.1.3-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/transmission-qt-AppImage/releases/download/4.1.3-1%402026-07-01_1782914515/Transmission_Qt-4.1.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/transmission-qt-AppImage/releases/download/4.1.3-1%402026-07-01_1782914515/Transmission_Qt-4.1.3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "4a1a72859ed5fae9c35891f28379b36cac62bed206b112d5d90cadbe426ff817"
+x86_64-linux  = "a2376fbe2a901f5e12a9c1290c26c14a372ae2f5bc958e4f144341965d141412"
+
+[sha256]
+aarch64-linux = "d76ce172671ba622034b50a962b5605f9386bf1eadf7ed1d49cd0624cde0548c"
+x86_64-linux  = "c085eb7e148f4370e2b07201d56f37d33c93863bba8a15cd2f21f80443a6bb89"
+
+[size]
+aarch64-linux = 29435973
+x86_64-linux  = 28190942
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/transmission/transmission/main/COPYING"
+to     = "LICENSE"
+blake3 = "e594c290a9e85db9ff086cf6d036d1810e18b128b76128a61560b08a0158d2da"
+sha256 = "9715b55d11caa499d34a6e23498c766fe1ece4ace57777553313e27d688dee78"

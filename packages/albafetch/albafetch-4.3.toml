@@ -1,0 +1,23 @@
+version = "4.3"
+
+[url]
+x86_64-linux  = "https://github.com/alba4k/albafetch/releases/download/v4.3/albafetch-linux-x64-static.zip"
+aarch64-linux = "https://github.com/alba4k/albafetch/releases/download/v4.3/albafetch-linux-aarch64-static.zip"
+
+[blake3]
+x86_64-linux  = "2a38dd315ff0338611c2be8cc9f11d1270a8ad0e115caf3e420f40a92f9242f9"
+aarch64-linux = "75f9bfb0f0265ab654e66410a9ab6b440e72d22836d52fe9880e5ed18e6d6008"
+
+[sha256]
+x86_64-linux  = "b195ca5a1ad308f6c8f7fd624d1515ed8481b6a64cbb60658cc39e268153df22"
+aarch64-linux = "54e95c35469cd355e2bf5c66678da2fe9dff675b523cde0cee4206ba5dfbc803"
+
+[size]
+x86_64-linux  = 1071252
+aarch64-linux = 1071155
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/alba4k/albafetch/master/LICENSE"
+to     = "LICENSE"
+blake3 = "d3f6b19f9b7b94037fd9941a922944d687ed59098d6d2da66960d66c7d8318a2"
+sha256 = "e8b24189012b6e0017244cc2efd58b2632409d812e9de326c67e864e484cb7b1"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "86box"
+type        = "appimage"
+description = "Emulator of x86-based machines"
+homepage    = ["https://86box.net", "https://github.com/86Box/86Box"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "System"]
+repology    = ["86box"]
+provides    = ["86box"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/86box-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/86box-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/86Box/86Box/refs/heads/master/COPYING"
+to  = "LICENSE"

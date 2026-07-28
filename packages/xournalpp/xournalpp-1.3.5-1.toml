@@ -1,0 +1,23 @@
+version = "1.3.5-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/xournalpp-AppImage-Enhanced/releases/download/1.3.5-1%402026-07-22_1784721985/Xournal%2B%2B-1.3.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/xournalpp-AppImage-Enhanced/releases/download/1.3.5-1%402026-07-22_1784721985/Xournal%2B%2B-1.3.5-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "6d37158514c80bb38fd089f97eed354d750f7a9e7427f4c502983f16deadd5ae"
+x86_64-linux  = "843c1712f026b727c114bf44e4658798136b8a7a1c7c1f1343e0ede18317cb95"
+
+[sha256]
+aarch64-linux = "3253a5ad0af6856bbab2699fd15a7d7b5957adb2c0a4f254bde6fef6fcb7ede3"
+x86_64-linux  = "c2d0af35b509b5367be2a269736e499a097199b8f8f261f0aed8aef686742e38"
+
+[size]
+aarch64-linux = 39681530
+x86_64-linux  = 39707888
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xournalpp/xournalpp/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9680a78b4b33c56d322b42e39be3405150ce6e8a605e8eca6bd4acdad17f62fe"
+sha256 = "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505"

@@ -1,0 +1,27 @@
+[pkg]
+name        = "xenia-canary"
+type        = "appimage"
+description = "Xbox 360 emulator (canary build)"
+homepage    = ["https://xenia.jp", "https://github.com/xenia-canary/xenia-canary"]
+license     = ["BSD-3-Clause"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "Game"]
+repology    = ["xenia-canary"]
+provides    = ["xenia-canary"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/xenia-canary-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/xenia-canary-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/xenia-canary/xenia-canary/master/LICENSE"
+to  = "LICENSE"

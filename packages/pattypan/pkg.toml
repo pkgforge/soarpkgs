@@ -1,0 +1,27 @@
+[pkg]
+name        = "pattypan"
+type        = "appimage"
+description = "Bulk upload tool for Wikimedia Commons"
+homepage    = ["https://github.com/yarl/pattypan"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Network"]
+repology    = ["pattypan"]
+provides    = ["pattypan"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Pattypan-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Pattypan-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/yarl/pattypan/master/LICENSE"
+to  = "LICENSE"

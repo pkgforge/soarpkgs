@@ -1,0 +1,22 @@
+[pkg]
+name        = "rvgl"
+type        = "appimage"
+description = "A modern port of the classic 1999 R/C car racing game Re-Volt"
+homepage    = ["https://rvgl.org"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["rvgl"]
+provides    = ["rvgl"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/RVGL-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/RVGL-AppImage"
+glob   = "*${arch}*.appimage"

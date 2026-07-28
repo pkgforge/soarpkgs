@@ -1,0 +1,19 @@
+version = "1.3.7"
+
+[url]
+x86_64-linux = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-unknown-linux-musl"
+
+[blake3]
+x86_64-linux = "f14a0e23ccc1b03a7c0761c6aaf0b5b679a2d9be3d8932fdb499fb36082915bb"
+
+[sha256]
+x86_64-linux = "f9958b15b9c5e2ed21162dcd21e514b51a03efc8dcbf730546c3dbef8a2eba2a"
+
+[size]
+x86_64-linux = 3527408
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/theryangeary/choose/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

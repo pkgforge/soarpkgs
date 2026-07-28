@@ -1,0 +1,26 @@
+[pkg]
+name        = "godot"
+type        = "appimage"
+description = "Advanced cross-platform 2D and 3D game engine"
+homepage    = ["https://godotengine.org", "https://github.com/godotengine/godot"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Game"]
+repology    = ["godot"]
+provides    = ["godot"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Godot-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Godot-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/godotengine/godot/master/LICENSE.txt"
+to  = "LICENSE"

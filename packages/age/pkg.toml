@@ -1,0 +1,32 @@
+[pkg]
+name        = "age"
+type        = "static"
+description = "A simple, modern and secure encryption tool"
+homepage    = ["https://age-encryption.org"]
+license     = ["BSD-3-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Security", "Utility"]
+repology    = ["age-encryption"]
+provides    = ["age", "@age-inspect", "@age-keygen", "@age-plugin-batchpass"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "FiloSottile/age"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/FiloSottile/age/releases/download/v${version}/age-v${version}-linux-${arch}.tar.gz"
+
+[source.install]
+"age/age"                    = "age"
+"age/age-keygen"             = "age-keygen"
+"age/age-inspect"            = "age-inspect"
+"age/age-plugin-batchpass"   = "age-plugin-batchpass"
+"age/LICENSE"                = "LICENSE"

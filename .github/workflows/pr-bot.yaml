@@ -65,10 +65,7 @@ jobs:
           | Command | Description |
           |---------|-------------|
           | `/help` | Show this help message |
-          | `/build` | Build all changed recipes in this PR |
-          | `/build x86_64` | Build for specific host (x86_64, aarch64) |
-          | `/build <recipe>` | Build a specific recipe |
-          | `/lint` | Run linter on changed recipes |
+          | `/validate` | Validate the package tree |
           | `/check` | Check upstream versions |
           | `/approve` | Approve and merge (maintainers only) |
 
@@ -80,123 +77,45 @@ jobs:
             --repo ${{ github.repository }} \
             --body "$HELP_MSG"
 
-      - name: Handle /build
-        if: steps.parse.outputs.command == 'build'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          ARGS="${{ steps.parse.outputs.args }}"
-          PR_NUM="${{ github.event.issue.number }}"
-
-          # Parse args: each word is either a host or a package
-          HOST="ALL"
-          PACKAGE=""
-          for arg in $ARGS; do
-            case "$arg" in
-              x86_64|X86_64|x86_64-linux) HOST="x86_64-linux" ;;
-              aarch64|AARCH64|arm64|aarch64-linux) HOST="aarch64-linux" ;;
-              all|ALL) HOST="ALL" ;;
-              *) PACKAGE="$arg" ;;
-            esac
-          done
-
-          # Build info for comment
-          PKG_INFO=""
-          if [ -n "$PACKAGE" ]; then
-            PKG_INFO="| **Package** | \`${PACKAGE}\` |"
-          fi
-
-          # Post acknowledgment
-          gh pr comment "$PR_NUM" \
-            --repo ${{ github.repository }} \
-            --body "🚀 **Build triggered!**
-
-          | | |
-          |---|---|
-          | **PR** | #${PR_NUM} |
-          | **Host** | \`${HOST}\` |
-          ${PKG_INFO}
-          | **Triggered by** | @${{ github.event.comment.user.login }} |
-
-          Build will start shortly. I'll post results when complete.
-
-          [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-
-          # Trigger the build workflow
-          gh workflow run pr-build-test.yaml \
-            --repo ${{ github.repository }} \
-            -f pr_number="$PR_NUM" \
-            -f host="$HOST" \
-            -f package="$PACKAGE"
-
-      - name: Checkout for lint
-        if: steps.parse.outputs.command == 'lint'
+      - name: Checkout for validate
+        if: steps.parse.outputs.command == 'validate'
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Handle /lint
-        if: steps.parse.outputs.command == 'lint'
+      - name: Handle /validate
+        if: steps.parse.outputs.command == 'validate'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           PR_NUM="${{ github.event.issue.number }}"
-          HEAD_SHA="${{ steps.pr-info.outputs.head_sha }}"
-          BASE_REF="${{ steps.pr-info.outputs.base_ref }}"
 
           gh pr comment "$PR_NUM" \
             --repo ${{ github.repository }} \
-            --body "🔍 **Running linter...**"
+            --body "🔍 **Validating package tree...**"
 
-          # Checkout PR branch
           gh pr checkout "$PR_NUM"
 
-          # Download sbuild
           curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-x86_64-linux" \
             -o /tmp/sbuild && chmod +x /tmp/sbuild
 
-          # Get changed files
-          CHANGED=$(git diff --name-only "origin/${BASE_REF}" HEAD -- 'binaries/**/*.yaml' 'packages/**/*.yaml' 2>/dev/null || true)
-
-          if [ -z "$CHANGED" ]; then
-            gh pr comment "$PR_NUM" \
-              --repo ${{ github.repository }} \
-              --body "✅ **Lint complete** - No recipe files changed"
-            exit 0
-          fi
-
-          # Run linter on each file
-          RESULTS="| Recipe | Status | Details |
-          |--------|--------|---------|"
-          HAS_ERRORS=false
-
-          for file in $CHANGED; do
-            if [ -f "$file" ]; then
-              if /tmp/sbuild lint "$file" > /tmp/lint-output.txt 2>&1; then
-                RESULTS="${RESULTS}
-          | \`${file}\` | ✅ Valid | - |"
-              else
-                ERROR_MSG=$(cat /tmp/lint-output.txt | head -3 | tr '\n' ' ' | head -c 100)
-                RESULTS="${RESULTS}
-          | \`${file}\` | ❌ Invalid | ${ERROR_MSG:-Unknown error} |"
-                HAS_ERRORS=true
-              fi
-            fi
-          done
-
-          if [ "$HAS_ERRORS" = true ]; then
-            EMOJI="❌"
-            STATUS="Lint Failed"
+          # The validator checks the whole tree at once; it needs no network
+          # and one package can invalidate another, so there is no subset to
+          # usefully check.
+          if /tmp/sbuild validate > /tmp/validate.txt 2>&1; then
+            EMOJI="✅"; STATUS="Validation Passed"
           else
-            EMOJI="✅"
-            STATUS="Lint Passed"
+            EMOJI="❌"; STATUS="Validation Failed"
           fi
+          OUTPUT=$(head -40 /tmp/validate.txt)
 
           gh pr comment "$PR_NUM" \
             --repo ${{ github.repository }} \
             --body "## ${EMOJI} ${STATUS}
 
-          ${RESULTS}
+          \`\`\`
+          ${OUTPUT}
+          \`\`\`
 
           <sub>Triggered by @${{ github.event.comment.user.login }}</sub>"
 
@@ -230,7 +149,7 @@ jobs:
           }
 
           # Run version check
-          /tmp/sbuild meta check-updates \
+          /tmp/sbuild resolve . \
             --recipes ./binaries ./packages \
             --output /tmp/updates.json \
             --parallel 5 \

@@ -1,0 +1,28 @@
+[pkg]
+name        = "sad"
+type        = "static"
+description = "CLI search and replace, Space Age seD"
+homepage    = ["https://github.com/ms-jpq/sad"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["sad"]
+provides    = ["sad"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "ms-jpq/sad"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/ms-jpq/sad/releases/download/v${version}/${arch}-unknown-linux-musl.zip"
+
+[source.install]
+"sad" = "sad"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ms-jpq/sad/senpai/LICENSE"
+to  = "LICENSE"

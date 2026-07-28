@@ -1,0 +1,27 @@
+[pkg]
+name        = "stoat"
+type        = "appimage"
+description = "Desktop client for Stoat, an open-source user-first chat platform"
+homepage    = ["https://stoat.chat", "https://github.com/stoatchat/for-desktop"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["stoat-desktop"]
+provides    = ["stoat"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Stoat-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Stoat-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/stoatchat/for-desktop/main/LICENSE"
+to  = "LICENSE"

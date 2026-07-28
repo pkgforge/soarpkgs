@@ -1,0 +1,23 @@
+version = "0.26.0"
+
+[url]
+x86_64-linux  = "https://github.com/xrelkd/clipcat/releases/download/v0.26.0/clipcat-0.26.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/xrelkd/clipcat/releases/download/v0.26.0/clipcat-0.26.0-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "cecb784974526eb897e4acfb3c47e98ca5f61970d2c91a5e431e43be8bc2e1fd"
+aarch64-linux = "c25ffd17c66474e6d717ca7d9787d6c5a1e7c6e0b6e94d73852306bf31fdc3d9"
+
+[sha256]
+x86_64-linux  = "4b3a6568ccfb8f0155315e7e74d8186eb6f0628ebe21367482dc621924898589"
+aarch64-linux = "3dd8133dbb4f9aa95fec71d4379caa7ab86f0070a637e599ba5f529c7f52ec1f"
+
+[size]
+x86_64-linux  = 21208236
+aarch64-linux = 20234551
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xrelkd/clipcat/main/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

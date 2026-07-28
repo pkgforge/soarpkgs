@@ -1,0 +1,17 @@
+version = "0.21.4"
+
+[url]
+x86_64-linux  = "https://github.com/xo/usql/releases/download/v0.21.4/usql_static-0.21.4-linux-amd64.tar.bz2"
+aarch64-linux = "https://github.com/xo/usql/releases/download/v0.21.4/usql_static-0.21.4-linux-arm64.tar.bz2"
+
+[blake3]
+aarch64-linux = "94aef0acaeab36e6d5f2b57be5931592a1d8d39aadede12ee5c08e222e9d7682"
+x86_64-linux  = "14f257d4a81f5ca52eee9f0e306b7b390fc56609ba08c40eb24f7b71b760e5e5"
+
+[sha256]
+aarch64-linux = "69cce9f81d95a855260437567453376e08539ca412305818d08cc4e17b9a42cb"
+x86_64-linux  = "93537a7239737b3d0cd2f42b7a13766a455a40176be7c0896a3586cd698cf751"
+
+[size]
+aarch64-linux = 36419159
+x86_64-linux  = 57321595

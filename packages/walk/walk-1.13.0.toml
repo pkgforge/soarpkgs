@@ -1,0 +1,23 @@
+version = "1.13.0"
+
+[url]
+x86_64-linux  = "https://github.com/antonmedv/walk/releases/download/v1.13.0/walk_linux_amd64"
+aarch64-linux = "https://github.com/antonmedv/walk/releases/download/v1.13.0/walk_linux_arm64"
+
+[blake3]
+aarch64-linux = "06d8059ef2fb3edbd5d6fd659882be416d5b19bc93099fd780135ab935cf23a5"
+x86_64-linux  = "81925a11d9dd76f9ff466f2657a71124914acdd02a6651f95d58dd61610ce0d3"
+
+[sha256]
+aarch64-linux = "42664c11d54d1e7f7ca5131c34197de120f03d535238d6cadbe03bba8303ebc8"
+x86_64-linux  = "7c3b6e28fd0eee20170a07be5ceae001e466d8948b32feb005c447f4cf7c3c21"
+
+[size]
+aarch64-linux = 11555267
+x86_64-linux  = 11788887
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/antonmedv/walk/master/LICENSE"
+to     = "LICENSE"
+blake3 = "35ef8cc78828caf8d41affcc460452efc17d274e27ad23373cd80c80351f3bf6"
+sha256 = "d63a8c4f17dde022f8d1f96a4b2c744821f65bcae926b4de4ee77230a70cdee4"

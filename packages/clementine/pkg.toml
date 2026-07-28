@@ -1,0 +1,29 @@
+[pkg]
+name        = "clementine"
+type        = "appimage"
+description = "Modern music player and library organizer"
+homepage    = [
+  "https://www.clementine-player.org",
+  "https://github.com/pkgforge-dev/Clementine-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Audio", "Music", "Player"]
+repology   = ["clementine"]
+provides   = ["clementine"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Clementine-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Clementine-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/clementine-player/Clementine/refs/heads/master/COPYING"
+to  = "LICENSE"

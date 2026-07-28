@@ -1,0 +1,26 @@
+[pkg]
+name        = "openboardview"
+type        = "appimage"
+description = "Software for viewing .brd circuit board files"
+homepage    = ["https://github.com/OpenBoardView/OpenBoardView"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Electronics", "Utility"]
+repology    = ["openboardview"]
+provides    = ["openboardview"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenBoardView-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenBoardView-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OpenBoardView/OpenBoardView/master/LICENSE"
+to  = "LICENSE"

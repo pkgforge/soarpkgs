@@ -1,0 +1,17 @@
+version = "26.02"
+
+[url]
+x86_64-linux  = "https://github.com/ip7z/7zip/releases/download/26.02/7z2602-linux-x64.tar.xz"
+aarch64-linux = "https://github.com/ip7z/7zip/releases/download/26.02/7z2602-linux-arm64.tar.xz"
+
+[blake3]
+x86_64-linux  = "666c5c66feb9f83071c97f44c7ea9e9058567406b7166a46f6a8b4257420b591"
+aarch64-linux = "58e257c24079e5c89a8a1a3e5ff0cfe7598ec28a14a87b6ef19407c0472f68f4"
+
+[sha256]
+x86_64-linux  = "41aaba7b1235304ab5aa0624530c67ae829496cd29e875925271efdccc28c03e"
+aarch64-linux = "70ea6cc737ae1495ea2d7eb20ef3120fe579bd3f1a83a9d2362b62ec5bde2bba"
+
+[size]
+x86_64-linux  = 1571416
+aarch64-linux = 1326944

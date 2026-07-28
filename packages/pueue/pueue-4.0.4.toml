@@ -1,0 +1,37 @@
+version = "4.0.4"
+
+[url]
+x86_64-linux  = "https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueue-x86_64-unknown-linux-musl"
+aarch64-linux = "https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueue-aarch64-unknown-linux-musl"
+
+[blake3]
+aarch64-linux = "bd335854cdd0481e8acd58093e6b60f24471bbe13d1a420794c4ff759d9f95f2"
+x86_64-linux  = "4b6e04eb7edb4e58c222b1393722c71db517e06e5f3ff3eef77f3eb06940f764"
+
+[sha256]
+aarch64-linux = "759bf5100a51024997111c6913aaf3330a0cdfd893ff552dcf429ae9b5e01e09"
+x86_64-linux  = "c1b10d7e4e62211075ddd0e1dc3e8cbfc5a43d662cb3be7402a28504e23fcb51"
+
+[size]
+aarch64-linux = 1771996
+x86_64-linux  = 2143736
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Nukesor/pueue/main/LICENSE.MIT"
+to     = "LICENSE"
+blake3 = "a5eb25c3d497e0293851e4f4d6b0eaaf46385d9c50ba1858d73bda95758bae87"
+sha256 = "468daf7701048c1d511b211b64ae8d75a90240d557fbe247c9f59db8c0b7e6a6"
+
+[[extra]]
+url    = "https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueued-aarch64-unknown-linux-musl"
+to     = "pueued"
+host   = "aarch64-linux"
+blake3 = "5fb45697ca0f57fa353367905b748e322c4ee489b062c190bddf29ab27af9fb1"
+sha256 = "332c5ef74270b64aeaf04894c8c04826f3422eb7d50dbd1a8e0706d74a42f653"
+
+[[extra]]
+url    = "https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueued-x86_64-unknown-linux-musl"
+to     = "pueued"
+host   = "x86_64-linux"
+blake3 = "63fead7ccbdd423aa237db6ce2d960b0a9dc4b41418c6a15ac958c8c5466714b"
+sha256 = "5afeff6adbafb909e8d54e2caff158e6966c2adffa2c09e60fd631cc51b60390"

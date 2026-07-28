@@ -1,0 +1,26 @@
+[pkg]
+name        = "cemu"
+type        = "appimage"
+description = "Wii U emulator"
+homepage    = ["https://cemu.info", "https://github.com/cemu-project/Cemu"]
+license     = ["MPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "Game"]
+repology    = ["cemu"]
+provides    = ["cemu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Cemu-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Cemu-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/cemu-project/Cemu/main/LICENSE.txt"
+to  = "LICENSE"

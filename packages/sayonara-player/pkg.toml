@@ -1,0 +1,29 @@
+[pkg]
+name        = "sayonara-player"
+type        = "appimage"
+description = "Small, fast and clean Qt audio player for Linux using GStreamer"
+homepage    = [
+  "https://sayonara-player.com",
+  "https://gitlab.com/luciocarreras/sayonara-player",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Audio", "Player", "AudioVideo"]
+repology   = ["sayonara"]
+provides   = ["sayonara-player"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Sayonara-Player-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Sayonara-Player-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/luciocarreras/sayonara-player/-/raw/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "dhewm3"
+type        = "appimage"
+description = "Doom 3 GPL source port based on id Tech 4 engine"
+homepage    = ["https://dhewm3.org", "https://github.com/dhewm/dhewm3"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["dhewm3"]
+provides    = ["dhewm3"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/dhewm3-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/dhewm3-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dhewm/dhewm3/master/COPYING.txt"
+to  = "LICENSE"

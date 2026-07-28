@@ -1,0 +1,23 @@
+version = "5e8d3b6"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenBoardView-AppImage/releases/download/5e8d3b6%402026-07-22_1784721636/OpenBoardView-5e8d3b6-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenBoardView-AppImage/releases/download/5e8d3b6%402026-07-22_1784721636/OpenBoardView-5e8d3b6-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "e0bf7fbd0d1e1f8e8cb7f745bb8302dbab76a7eac9681e946a112e2d3cc25eec"
+x86_64-linux  = "2e8f8f571271882e0a1a3e44432b84c70b0e820b05a987d4747b1ed6f1403a8a"
+
+[sha256]
+aarch64-linux = "e4fb0bf68a0bcecefc80f629f21ed6b68331625ed5400de209d608779a925d0b"
+x86_64-linux  = "7e6c2feaf2607f01eb74fc7fa1d55895e3f28cc65830be32cf7bfb68391d6bf5"
+
+[size]
+aarch64-linux = 30642380
+x86_64-linux  = 31430949
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenBoardView/OpenBoardView/master/LICENSE"
+to     = "LICENSE"
+blake3 = "f12e89a7d76938a00365e6bfe8f68e41e4eda85cbb9c183f0581d6b274efd9f3"
+sha256 = "25ed31bde0126bd1629bed054c0d1b638add5d5d9b3447285aeccd01e353f9b1"

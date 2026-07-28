@@ -1,0 +1,19 @@
+version = "50.0-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/download/50.0-1%402026-07-22_1784722145/System_Monitor-50.0-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "ae047c6aee80bac4591878fb14609a3dd34d65cb7f9f87c6f27f7256f9a70d1e"
+
+[sha256]
+x86_64-linux = "ce5d150ed928a780edb4b99d18aa545af8665ee1e5bd57d57f605abb0004e926"
+
+[size]
+x86_64-linux = 38873645
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/GNOME/gnome-system-monitor/refs/heads/main/COPYING"
+to     = "LICENSE"
+blake3 = "3510147b11592b9f0d31865fa615db786240a0a5a96dc1abc140ef898edda042"
+sha256 = "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"

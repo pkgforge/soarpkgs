@@ -1,0 +1,25 @@
+[pkg]
+name        = "megaman64recomp"
+type        = "appimage"
+description = "Native PC port of Mega Man 64 via static recompilation of the N64 game"
+homepage    = ["https://github.com/MegaMan64Recomp/MegaMan64Recompiled"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+provides    = ["megaman64recomp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/MegaMan64Recomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/MegaMan64Recomp-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/MegaMan64Recomp/MegaMan64Recompiled/main/LICENSE"
+to  = "LICENSE"

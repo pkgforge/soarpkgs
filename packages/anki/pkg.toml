@@ -1,0 +1,30 @@
+[pkg]
+name        = "anki"
+type        = "appimage"
+description = "Powerful, intelligent flash cards"
+homepage    = [
+  "https://apps.ankiweb.net",
+  "https://github.com/pkgforge-dev/anki-AppImage",
+]
+license    = ["AGPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Education"]
+repology   = ["anki"]
+provides   = ["anki"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/anki-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/anki-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ankitects/anki/refs/heads/main/LICENSE"
+to  = "LICENSE"

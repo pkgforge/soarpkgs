@@ -1,0 +1,29 @@
+[pkg]
+name        = "transmission-qt"
+type        = "appimage"
+description = "Fast, easy, and free BitTorrent client (Qt interface)"
+homepage    = [
+  "https://transmissionbt.com",
+  "https://github.com/transmission/transmission",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["FileTransfer", "Network", "P2P"]
+repology   = ["transmission"]
+provides   = ["transmission-qt"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/transmission-qt-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/transmission-qt-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/transmission/transmission/main/COPYING"
+to  = "LICENSE"

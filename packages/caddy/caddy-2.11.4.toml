@@ -1,0 +1,17 @@
+version = "2.11.4"
+
+[url]
+x86_64-linux  = "https://github.com/caddyserver/caddy/releases/download/v2.11.4/caddy_2.11.4_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/caddyserver/caddy/releases/download/v2.11.4/caddy_2.11.4_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "4b7c6815a5bdaa092190cb2fde365229eb9190cfcafd6d5f9132a0b40c268073"
+aarch64-linux = "4b0118376f7e5ac53f43a27014d4f4705171f09c1c4ee0eff25da028bbc8c946"
+
+[sha256]
+x86_64-linux  = "527fbf917c39189a1e3b31d34fa955601680b2d5c8055d2a87b8b9588dec7bb9"
+aarch64-linux = "52d42ae12b3462097e9868da6dfed3c9648ae12edd3b3638102312af84cb6904"
+
+[size]
+x86_64-linux  = 17238873
+aarch64-linux = 15704974

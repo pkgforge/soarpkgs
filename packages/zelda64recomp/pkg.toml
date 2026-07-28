@@ -1,0 +1,26 @@
+[pkg]
+name        = "zelda64recomp"
+type        = "appimage"
+description = "Static recompilation of The Legend of Zelda: Majora's Mask to run natively on PC"
+homepage    = ["https://github.com/Zelda64Recomp/Zelda64Recomp"]
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "ActionGame"]
+repology    = ["zelda64recomp"]
+provides    = ["zelda64recomp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Zelda64Recomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Zelda64Recomp-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Zelda64Recomp/Zelda64Recomp/dev/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,22 @@
+[pkg]
+name        = "warp"
+type        = "appimage"
+description = "Fast and secure file transfer"
+homepage    = ["https://apps.gnome.org/Warp"]
+license     = ["GPL-3.0-only", "CC0-1.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["FileTransfer", "Network"]
+repology    = ["warp"]
+provides    = ["warp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Warp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Warp-AppImage"
+glob   = "*${arch}*.appimage"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "classicimageviewer"
+type        = "appimage"
+description = "A simple and fast image viewer and editor for Linux, BSDs and MacOS"
+homepage    = ["https://github.com/classicimageviewer/ClassicImageViewer"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Viewer", "RasterGraphics"]
+repology    = ["classicimageviewer"]
+provides    = ["classicimageviewer"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ClassicImageViewer-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ClassicImageViewer-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/classicimageviewer/ClassicImageViewer/master/LICENSE"
+to  = "LICENSE"

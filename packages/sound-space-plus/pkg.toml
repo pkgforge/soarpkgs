@@ -1,0 +1,26 @@
+[pkg]
+name        = "sound-space-plus"
+type        = "appimage"
+description = "Rhythm game"
+homepage    = ["https://github.com/David20122/sound-space-plus"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Game", "Music"]
+repology    = ["sound-space-plus"]
+provides    = ["sound-space-plus"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/sound-space-plus-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/sound-space-plus-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/David20122/sound-space-plus/refs/heads/nightly/LICENSE.txt"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "media-downloader"
+type        = "appimage"
+description = "Qt GUI front end for yt-dlp, youtube-dl, aria2 and other downloaders"
+homepage    = ["https://github.com/mhogomchungu/media-downloader"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "AudioVideo", "Video"]
+repology    = ["media-downloader"]
+provides    = ["media-downloader"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Media-Downloader-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Media-Downloader-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mhogomchungu/media-downloader/main/LICENSE"
+to  = "LICENSE"

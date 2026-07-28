@@ -1,0 +1,29 @@
+[pkg]
+name        = "glow"
+type        = "static"
+description = "Render markdown on the CLI"
+homepage    = ["https://github.com/charmbracelet/glow"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["glow"]
+provides    = ["glow"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "charmbracelet/glow"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/charmbracelet/glow/releases/download/v${version}/glow_${version}_Linux_${arch}.tar.gz"
+
+[source.install]
+"glow_${version}_Linux_${arch}/glow"    = "glow"
+"glow_${version}_Linux_${arch}/LICENSE" = "LICENSE"

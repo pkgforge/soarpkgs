@@ -1,0 +1,19 @@
+version = "9.1-3"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/9.1-3%402026-07-22_1784722574/Fretboard-9.1-3-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "a1e8a4346b4a047da05fb2689c3182b47817fef67cfcc0b9277f3bd16cf8259c"
+
+[sha256]
+x86_64-linux = "a4633f6af095dc19c9641f3899fe06ea645c045fc6067563f0ba8738f2748c1a"
+
+[size]
+x86_64-linux = 25534776
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/bragefuglseth/fretboard/refs/heads/main/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

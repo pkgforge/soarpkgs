@@ -1,0 +1,26 @@
+[pkg]
+name        = "kpatience"
+type        = "appimage"
+description = "KPatience offers a selection of solitaire card games"
+homepage    = ["https://apps.kde.org/kpat", "https://invent.kde.org/games/kpat"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game"]
+repology    = ["kpat"]
+provides    = ["kpatience"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KPatience-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KPatience-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/games/kpat/-/raw/master/COPYING"
+to  = "LICENSE"

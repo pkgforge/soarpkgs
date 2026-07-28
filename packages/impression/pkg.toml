@@ -1,0 +1,29 @@
+[pkg]
+name        = "impression"
+type        = "appimage"
+description = "Create bootable drives"
+homepage    = [
+  "https://gitlab.com/adhami3310/Impression",
+  "https://github.com/pkgforge-dev/Impression-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["System", "Utility"]
+repology   = ["impression"]
+provides   = ["impression"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Impression-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Impression-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/adhami3310/Impression/-/raw/main/COPYING"
+to  = "LICENSE"

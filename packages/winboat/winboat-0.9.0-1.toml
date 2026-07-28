@@ -1,0 +1,19 @@
+version = "0.9.0-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/WinBoat-AppImage/releases/download/0.9.0-1%402026-07-22_1784722169/winboat-0.9.0-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "c35ff69ca939c4cb332dc7f9b703a44e1aeaeca74e73a7a92678724a362c1b7c"
+
+[sha256]
+x86_64-linux = "d88396b5215caa890b6f2cd54b68145de81ee52b829fa658347324fcd92f924b"
+
+[size]
+x86_64-linux = 149600328
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/TibixDev/winboat/main/LICENSE"
+to     = "LICENSE"
+blake3 = "2251e2e196f2a0158a6219cf906c8119180ff2e8cc3de9088d8f9c0d1278f0a6"
+sha256 = "6ad1922bc41144de01f36f7aa4e5e0690d9425d48b5bfd054ce98f18c9d044c0"

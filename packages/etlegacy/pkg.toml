@@ -1,0 +1,26 @@
+[pkg]
+name        = "etlegacy"
+type        = "appimage"
+description = "Open-source multiplayer FPS based on Wolfenstein: Enemy Territory"
+homepage    = ["https://www.etlegacy.com", "https://github.com/etlegacy/etlegacy"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["etlegacy"]
+provides    = ["etlegacy"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ETLegacy-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ETLegacy-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/etlegacy/etlegacy/master/COPYING.txt"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "0.7.10-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Mousai-AppImage/releases/download/0.7.10-1%402026-07-22_1784722503/Mousai-0.7.10-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Mousai-AppImage/releases/download/0.7.10-1%402026-07-22_1784722503/Mousai-0.7.10-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "4d049f39aeaf902c4f7e5200e93b387dc279741ee2e94f15c4e46a2ea71af158"
+x86_64-linux  = "9382e48628fc17c8fe24873627aeb601fd7f5f84dd4519b11a76a58cf7e657fa"
+
+[sha256]
+aarch64-linux = "55e3723c0862d2efc05156539f32a32d620bcb159a712de340d9c81dc77c8fb3"
+x86_64-linux  = "179780ac404dfb47d752cceb3849828622f3150a0d7263058ef205fab442fe55"
+
+[size]
+aarch64-linux = 57990831
+x86_64-linux  = 59084184
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/SeaDve/Mousai/refs/heads/main/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

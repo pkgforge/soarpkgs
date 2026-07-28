@@ -1,0 +1,26 @@
+[pkg]
+name        = "vokoscreenng"
+type        = "appimage"
+description = "Powerful screencast creator to record the screen, an area or a window"
+homepage    = ["https://github.com/vkohaupt/vokoscreenNG"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Recorder", "Video"]
+repology    = ["vokoscreen"]
+provides    = ["vokoscreenng"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/vokoscreenNG-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/vokoscreenNG-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/vkohaupt/vokoscreenNG/3.0/COPYING"
+to  = "LICENSE"

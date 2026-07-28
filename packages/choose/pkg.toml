@@ -1,0 +1,25 @@
+[pkg]
+name        = "choose"
+type        = "static"
+description = "A human-friendly and fast alternative to cut and (sometimes) awk"
+homepage    = ["https://github.com/theryangeary/choose"]
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["choose"]
+provides    = ["choose"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "theryangeary/choose"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/theryangeary/choose/releases/download/v${version}/choose-${arch}-unknown-linux-musl"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/theryangeary/choose/master/LICENSE"
+to  = "LICENSE"

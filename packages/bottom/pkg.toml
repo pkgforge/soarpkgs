@@ -1,0 +1,27 @@
+[pkg]
+name        = "bottom"
+type        = "static"
+description = "A customizable cross-platform graphical process/system monitor for the terminal"
+homepage    = ["https://clementtsang.github.io/bottom"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Monitor", "System"]
+repology    = ["bottom"]
+provides    = ["btm"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "ClementTsang/bottom"
+
+[source]
+url     = "https://github.com/ClementTsang/bottom/releases/download/${version}/bottom_${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"btm" = "btm"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ClementTsang/bottom/main/LICENSE"
+to  = "LICENSE"

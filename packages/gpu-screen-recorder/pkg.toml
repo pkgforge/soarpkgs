@@ -1,0 +1,33 @@
+[pkg]
+name        = "gpu-screen-recorder"
+type        = "appimage"
+description = "Screen recorder with GPU acceleration"
+homepage    = [
+  "https://git.dec05eba.com/gpu-screen-recorder",
+  "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Recorder", "Video"]
+repology   = ["gpu-screen-recorder"]
+provides   = [
+  "gpu-screen-recorder=>gpu-screen-recorder-gtk",
+  "gpu-screen-recorder=>gsr-ui",
+]
+channel = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/gpu-screen-recorder-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/gpu-screen-recorder-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://git.dec05eba.com/gpu-screen-recorder/plain/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,19 @@
+version = "3.0.0"
+
+[url]
+x86_64-linux = "https://github.com/01mf02/jaq/releases/download/v3.0.0/jaq-x86_64-unknown-linux-musl"
+
+[blake3]
+x86_64-linux = "2ba0e34002510893ad334ef0be8537a58bece9a7f5b9c1981cad21cd462b3ac4"
+
+[sha256]
+x86_64-linux = "5beeeadd874b0bc9e4fdacff00b4dc5f8fb1430a85b3734e2c7210085dd1be08"
+
+[size]
+x86_64-linux = 4476936
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/01mf02/jaq/main/LICENSE-MIT"
+to     = "LICENSE"
+blake3 = "e236a4d5f14aab8594aa14bb1c7e535f9531925b1fc21d4ab21d322da13cd108"
+sha256 = "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"

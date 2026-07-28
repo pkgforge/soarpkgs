@@ -1,0 +1,25 @@
+[pkg]
+name        = "visualboyadvance-m"
+type        = "appimage"
+description = "The continuing development of the legendary VBA Game Boy Advance emulator"
+homepage    = [
+  "https://vba-m.com",
+  "https://github.com/visualboyadvance-m/visualboyadvance-m",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Emulator", "Game"]
+repology   = ["visualboyadvance-m"]
+provides   = ["visualboyadvance-m"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/VisualBoyAdvance-M-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/VisualBoyAdvance-M-AppImage"
+glob   = "*${arch}*.appimage"

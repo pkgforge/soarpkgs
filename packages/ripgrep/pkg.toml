@@ -1,0 +1,25 @@
+[pkg]
+name        = "ripgrep"
+type        = "static"
+description = "A search tool that combines the usability of ag with the raw speed of grep"
+homepage    = ["https://github.com/BurntSushi/ripgrep"]
+license     = ["MIT", "Unlicense"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["ripgrep"]
+provides    = ["rg"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "BurntSushi/ripgrep"
+
+[source]
+github = "BurntSushi/ripgrep"
+glob   = "ripgrep-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"*/rg"          = "rg"
+"*/LICENSE-MIT" = "LICENSE"

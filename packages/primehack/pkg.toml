@@ -1,0 +1,25 @@
+[pkg]
+name        = "primehack"
+type        = "appimage"
+description = "Dolphin fork giving Metroid Prime Trilogy mouselook and FPS controls"
+homepage    = ["https://github.com/shiiion/dolphin"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+provides    = ["primehack"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PrimeHack-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PrimeHack-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/shiiion/dolphin/primehack-master/COPYING"
+to  = "LICENSE"

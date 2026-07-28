@@ -1,0 +1,19 @@
+version = "20250330-3"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced/releases/download/20250330-3%402026-07-22_1784722130/OpenRA-20250330-3-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "eb0697bdd1ea74b85f26acce2096fdbae027fab5d1ea8a0d0c15c26757eed4ec"
+
+[sha256]
+x86_64-linux = "e3c6a4ec0c4080602bd9d67c1833924b7ad33fe96c35da334b5a069faddd27d1"
+
+[size]
+x86_64-linux = 86296210
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenRA/OpenRA/master/COPYING"
+to     = "LICENSE"
+blake3 = "1110f57cc53ee3e8f1ebf379693ab3c4c4b18098176c92e2ad6a44e6700edaf8"
+sha256 = "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b"

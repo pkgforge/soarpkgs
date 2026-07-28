@@ -1,0 +1,17 @@
+version = "0.2.7"
+
+[url]
+x86_64-linux  = "https://github.com/bluetuith-org/bluetuith/releases/download/v0.2.7/bluetuith_0.2.7_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/bluetuith-org/bluetuith/releases/download/v0.2.7/bluetuith_0.2.7_Linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "c873b37f3780bd5d2dc2138fde4d5abae5fd8c73a296315de6d8b86199502299"
+aarch64-linux = "ec2c8c45af740a01b7b0db621c70f59b9b8fd9f2452c578f317ac73ce687dbea"
+
+[sha256]
+x86_64-linux  = "145888f0e3959d29832c7395403c2327e0f03b9591e4cdd3f712741cf0f934e9"
+aarch64-linux = "81ec8bdbdf18ddabff0ce5fb11f478dfa8dccbd9efc8e14583d4cbb8ef0f8d84"
+
+[size]
+x86_64-linux  = 7183702
+aarch64-linux = 6487958

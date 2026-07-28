@@ -1,0 +1,23 @@
+version = "1.0.0"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/BM64Recomp-AppImage-Enhanced/releases/download/1.0.0%402026-07-22_1784721876/Bomberman_64_Recompiled-1.0.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/BM64Recomp-AppImage-Enhanced/releases/download/1.0.0%402026-07-22_1784721876/Bomberman_64_Recompiled-1.0.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "bf627385620c123b8708439d9d5ef3a971f468bb938d466b15dbc68d0c7df134"
+aarch64-linux = "f0c804f67d676276d3f84f077c71335e88461f3cee0ff8e3185ede394c9c8676"
+
+[sha256]
+x86_64-linux  = "5395b41ff02aba6d066d8c244560258bdcc3c3dbc2cc97009cabf26129429a7c"
+aarch64-linux = "f4edc08991c54bd88600dfea17bfde0095b0bf0618adbe9f553697cb5d4793d8"
+
+[size]
+x86_64-linux  = 49347508
+aarch64-linux = 49168351
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/RevoSucks/BM64Recomp/master/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

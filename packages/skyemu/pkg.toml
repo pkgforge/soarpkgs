@@ -1,0 +1,26 @@
+[pkg]
+name        = "skyemu"
+type        = "appimage"
+description = "Game Boy Advance, Game Boy, Game Boy Color, and Nintendo DS emulator"
+homepage    = ["https://skyemu.app", "https://github.com/skylersaleh/SkyEmu"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["skyemu"]
+provides    = ["skyemu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SkyEmu-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SkyEmu-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/skylersaleh/SkyEmu/dev/LICENSE"
+to  = "LICENSE"

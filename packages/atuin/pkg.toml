@@ -1,0 +1,25 @@
+[pkg]
+name        = "atuin"
+type        = "static"
+description = "Sync, search and backup tool for shell history"
+homepage    = ["https://atuin.sh"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Shell", "Utility"]
+repology    = ["atuin"]
+provides    = ["atuin"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "atuinsh/atuin"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/atuinsh/atuin/releases/download/v${version}/atuin-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"atuin-${arch}-unknown-linux-musl/atuin"   = "atuin"
+"atuin-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"

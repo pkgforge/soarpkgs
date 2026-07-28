@@ -1,0 +1,23 @@
+version = "2.1.3.1-4"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DiffPDF-AppImage/releases/download/2.1.3.1-4%402026-07-22_1784722238/DiffPDF-2.1.3.1-5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DiffPDF-AppImage/releases/download/2.1.3.1-4%402026-07-22_1784722238/DiffPDF-2.1.3.1-4-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8b054d64ec1eef3561725a939739104364fe121e7150dc1840c8468c8fe53a0b"
+aarch64-linux = "e461d129ac9186533d0395696a75cc37ca3839056c36bb72d2c417c3c568cfee"
+
+[sha256]
+x86_64-linux  = "81dd9139dd518a97d2101792abb83b699d34c5bd56a89b3837c38744ff3a7f1e"
+aarch64-linux = "1b0e0e556720cbc19b7caca72a8cba2806d2f6ce60a2a235819d7be374d0a1b2"
+
+[size]
+x86_64-linux  = 44773636
+aarch64-linux = 44636022
+
+[[extra]]
+url    = "https://gitlab.com/eang/diffpdf/-/raw/master/gpl-2.0.txt"
+to     = "LICENSE"
+blake3 = "3510147b11592b9f0d31865fa615db786240a0a5a96dc1abc140ef898edda042"
+sha256 = "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"

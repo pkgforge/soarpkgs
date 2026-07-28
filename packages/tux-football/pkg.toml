@@ -1,0 +1,29 @@
+[pkg]
+name        = "tux-football"
+type        = "appimage"
+description = "Arcade-style 2D soccer game featuring Tux"
+homepage    = [
+  "https://tuxfootball.sourceforge.net/",
+  "https://sourceforge.net/projects/tuxfootball/",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "SportsGame", "ArcadeGame"]
+repology   = ["tuxfootball"]
+provides   = ["tux-football"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Tux-Football-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Tux-Football-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OSSGames/GAME-SDL-SPORTS-TuxFootball/master/COPYING"
+to  = "LICENSE"

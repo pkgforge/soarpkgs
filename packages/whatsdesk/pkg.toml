@@ -1,0 +1,27 @@
+[pkg]
+name        = "whatsdesk"
+type        = "appimage"
+description = "Unofficial WhatsApp desktop client built with Electron"
+homepage    = ["https://gitlab.com/zerkc/whatsdesk"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["whatsdesk"]
+provides    = ["whatsdesk"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/WhatsDesk-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/WhatsDesk-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/zerkc/whatsdesk/-/raw/master/LICENSE"
+to  = "LICENSE"

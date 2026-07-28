@@ -1,0 +1,23 @@
+[pkg]
+name        = "bingrep"
+type        = "static"
+description = "Cross-platform binary parser and colorizer"
+homepage    = ["https://github.com/m4b/bingrep"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["bingrep"]
+provides    = ["bingrep"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+# one repository publishes for several packages, so tags are filtered
+tag-prefix = "bingrep-"
+
+[source]
+github = "pkgforge/builds"
+glob   = "bingrep-${version}-${arch}-linux.tar.gz"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "collaboraoffice"
+type        = "appimage"
+description = "LibreOffice-based office suite for documents, spreadsheets and presentations"
+homepage    = ["https://github.com/CollaboraOnline/online"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Utility"]
+repology    = ["collabora-office"]
+provides    = ["collaboraoffice"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/CollaboraOffice-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/CollaboraOffice-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/CollaboraOnline/online/master/COPYING"
+to  = "LICENSE"

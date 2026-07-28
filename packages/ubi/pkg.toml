@@ -1,0 +1,32 @@
+[pkg]
+name        = "ubi"
+type        = "static"
+description = "The universal binary installer"
+homepage    = ["https://github.com/houseabsolute/ubi"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["ubi"]
+provides    = ["ubi"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "houseabsolute/ubi"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/houseabsolute/ubi/releases/download/v${version}/ubi-Linux-musl-${arch}.tar.gz"
+
+[source.install]
+"ubi" = "ubi"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/houseabsolute/ubi/master/LICENSE-APACHE"
+to  = "LICENSE"

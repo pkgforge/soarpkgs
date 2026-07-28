@@ -1,0 +1,22 @@
+[pkg]
+name        = "mariokart64recomp"
+type        = "appimage"
+description = "Static recompilation of Nintendo 64's Mario Kart 64"
+homepage    = []
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["mariokart64recomp"]
+provides    = ["mariokart64recomp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/MarioKart64Recomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/MarioKart64Recomp-AppImage"
+glob   = "*${arch}*.appimage"

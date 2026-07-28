@@ -1,0 +1,23 @@
+version = "2.6-4"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Cemu-AppImage-Enhanced/releases/download/2.6-4%402026-02-01_1769935971/Cemu-2.6-4-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Cemu-AppImage-Enhanced/releases/download/2.6-4%402026-02-01_1769935971/Cemu-2.6-4-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a598829c49b7ea820fe3acaf89928253b4a1ba07d4f18b04d1e00de370783d96"
+aarch64-linux = "425c3e865bf6fe24f24ee443384eaf986c6353e1b9c4fd63ff353c0dd2278b52"
+
+[sha256]
+x86_64-linux  = "4b9276df7fb56198c6a54dfaa3afba6b69f0fb33b09ddbbbd2db10508e311f04"
+aarch64-linux = "7f6eb4bd721759f2bddb65bd369ff52cc03085b77415154218ae3e596795e8ff"
+
+[size]
+x86_64-linux  = 63775904
+aarch64-linux = 63140494
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/cemu-project/Cemu/main/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "926c4fd4d1e3f2b2191be91717f8766e03cc9b62ea266f7000c57e10856e81e9"
+sha256 = "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"

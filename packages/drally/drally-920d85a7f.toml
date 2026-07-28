@@ -1,0 +1,23 @@
+version = "920d85a7f"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/dRally-AppImage/releases/download/920d85a7f%402026-07-01_1782905535/dRally-920d85a7f-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/dRally-AppImage/releases/download/920d85a7f%402026-07-01_1782905535/dRally-920d85a7f-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "cbdbc2b1252cccba954d0d8a188b89e8560ce2630b825d9f37fa5d6ba91ebeb5"
+aarch64-linux = "2ac63d366ae91b7c28c3cbfc61331a9639afd2d2a1441daafc7cc0a370e66f1b"
+
+[sha256]
+x86_64-linux  = "1058f9d76824508e77cb39a83582c56d48bfd73d7e6d7794c59de4dd50f8b71d"
+aarch64-linux = "b5f8e5cbd568cee684023dd85b6f343f3ef7b96a3c6459b6ac9cfa593d29bca3"
+
+[size]
+x86_64-linux  = 20098825
+aarch64-linux = 19444758
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/urxp/dRally/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9d4c5b0bbde4c0c70a2f823cf58c4e51a48e34f412f02cd88125b4dfe0bd037b"
+sha256 = "525cc3fd3b1fc414b3c14fe62333442ae833b3fbc0c70e4540c63b7a94e29eb3"

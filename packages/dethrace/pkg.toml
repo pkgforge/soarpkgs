@@ -1,0 +1,26 @@
+[pkg]
+name        = "dethrace"
+type        = "appimage"
+description = "Reverse-engineered reimplementation of the 1997 game Carmageddon"
+homepage    = ["https://github.com/dethrace-labs/dethrace"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["dethrace"]
+provides    = ["dethrace"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/dethrace-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/dethrace-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dethrace-labs/dethrace/main/LICENSE"
+to  = "LICENSE"

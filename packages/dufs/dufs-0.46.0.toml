@@ -1,0 +1,23 @@
+version = "0.46.0"
+
+[url]
+x86_64-linux  = "https://github.com/sigoden/dufs/releases/download/v0.46.0/dufs-v0.46.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/sigoden/dufs/releases/download/v0.46.0/dufs-v0.46.0-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "5671bb7736ad2d4940ae446d0b33a432c873edd855b555955fd815e689a739ab"
+aarch64-linux = "7f70ae7faeb7d795e5ec61f6c7d1e12b88729da0818ca180b4382917e487965f"
+
+[sha256]
+x86_64-linux  = "817769f726613194bcff9d0e3e481eaccc86ac11208857614f36a8c02f410977"
+aarch64-linux = "1472123ae3aa07e49404d16b20305c2dec90c59883ebda9308717f7205e6511b"
+
+[size]
+x86_64-linux  = 2898409
+aarch64-linux = 2618631
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/sigoden/dufs/main/LICENSE-MIT"
+to     = "LICENSE"
+blake3 = "7df2c08e3dbbb7808876e1abcc3ae982c07b49d1e0d6fa8f44137a96f02752da"
+sha256 = "4623d04ec401ec83c94b935d75d8b4329e860580e91ed777ef03a0aa3b31bb04"

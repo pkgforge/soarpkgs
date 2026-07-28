@@ -1,0 +1,17 @@
+version = "1.2.0"
+
+[url]
+x86_64-linux  = "https://github.com/mr-karan/doggo/releases/download/v1.2.0/doggo-linux-x86_64.tar.gz"
+aarch64-linux = "https://github.com/mr-karan/doggo/releases/download/v1.2.0/doggo-linux-aarch64.tar.gz"
+
+[blake3]
+x86_64-linux  = "f071031bf8c35314ad99d27db5abe61ba4b6af3261583c6c58fa5fd1e9cca8ce"
+aarch64-linux = "e5b38cf361f58ab45a81758ac53e93d3328f95fbffaba3fc489ff56452eafa32"
+
+[sha256]
+x86_64-linux  = "aa6760e7f163958e7626420447385ab938fdc127983edaceb121f809bd3e2bca"
+aarch64-linux = "b15e3e56b1e1d2e4bb3bf81b292a49a1b55781465ab2cb858cdb7f081fd95d0f"
+
+[size]
+x86_64-linux  = 5781657
+aarch64-linux = 5236673

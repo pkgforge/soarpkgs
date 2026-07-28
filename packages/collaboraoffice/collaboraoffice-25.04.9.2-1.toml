@@ -1,0 +1,23 @@
+version = "25.04.9.2-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/CollaboraOffice-AppImage/releases/download/25.04.9.2-1%402026-05-01_1777639060/Collabora_Office-25.04.9.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/CollaboraOffice-AppImage/releases/download/25.04.9.2-1%402026-05-01_1777639060/Collabora_Office-25.04.9.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e2d02bfe6918adc1f39966c796ef85e402927edc25cb1751931aebb3ae5a27e6"
+aarch64-linux = "f61a19828d58005472acddb57ae305f06488153c6beed5a7a44bcd576c5c4722"
+
+[sha256]
+x86_64-linux  = "6b60f3dc6a8f138e922807950b407834b6ba5d0eef804599929575306031f0b7"
+aarch64-linux = "de48cfce1e7b3bb0ced53450beefedb66427d0779b9d49a2bacd9e86ad4b6572"
+
+[size]
+x86_64-linux  = 328166434
+aarch64-linux = 340504953
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/CollaboraOnline/online/master/COPYING"
+to     = "LICENSE"
+blake3 = "6f2685a1c60fb3ef002f81da25e9fb9e6a79ebce138784d5bd81e5f9a649fb58"
+sha256 = "2bfdca60adf803108d4c7f009000bea76ad00e621e163197881b0eaae91b530e"

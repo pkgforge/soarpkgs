@@ -1,0 +1,17 @@
+version = "1.12.0"
+
+[url]
+x86_64-linux  = "https://github.com/homeport/dyff/releases/download/v1.12.0/dyff_1.12.0_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/homeport/dyff/releases/download/v1.12.0/dyff_1.12.0_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "4c7750467fc248926490e3de8c6d3b540448fc99fd7960e13fc4355e40c04b8b"
+aarch64-linux = "373a25dcccc614b33bb2ee503eae0ee5511988fbfe057e861a307df526b09134"
+
+[sha256]
+x86_64-linux  = "50b43017a7474c2216694d0b5387439488a1d3c2b5eefe1674cd0e5c18bc0316"
+aarch64-linux = "c9710f57940306abc1e34e2bf1a1ba94e6a92c543cde4e5dfaea169ded06e832"
+
+[size]
+x86_64-linux  = 4098051
+aarch64-linux = 3708437

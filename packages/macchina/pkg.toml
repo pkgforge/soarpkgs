@@ -1,0 +1,28 @@
+[pkg]
+name        = "macchina"
+type        = "static"
+description = "A system information frontend with an emphasis on performance"
+homepage    = ["https://github.com/Macchina-CLI/macchina"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["macchina"]
+provides    = ["macchina"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "Macchina-CLI/macchina"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/Macchina-CLI/macchina/releases/download/v${version}/macchina-v${version}-linux-musl-${arch}.tar.gz"
+
+[source.install]
+"macchina" = "macchina"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Macchina-CLI/macchina/main/LICENSE"
+to  = "LICENSE"

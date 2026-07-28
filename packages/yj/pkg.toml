@@ -1,0 +1,29 @@
+[pkg]
+name        = "yj"
+type        = "static"
+description = "Convert between YAML, TOML, JSON, and HCL"
+homepage    = ["https://github.com/sclevine/yj"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["yj"]
+provides    = ["yj"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "sclevine/yj"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/sclevine/yj/releases/download/v${version}/yj-linux-${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/sclevine/yj/main/LICENSE"
+to  = "LICENSE"

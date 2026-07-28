@@ -1,0 +1,26 @@
+[pkg]
+name        = "claws-mail"
+type        = "appimage"
+description = "The user-friendly, lightweight, and fast GTK+ e-mail client and news reader"
+homepage    = ["https://www.claws-mail.org", "https://git.claws-mail.org/?p=claws.git"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "Email"]
+repology    = ["claws-mail"]
+provides    = ["claws-mail"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Claws-Mail-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Claws-Mail-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://git.claws-mail.org/?p=claws.git;a=blob_plain;f=COPYING;hb=HEAD"
+to  = "LICENSE"

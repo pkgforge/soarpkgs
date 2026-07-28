@@ -1,0 +1,26 @@
+[pkg]
+name        = "dust"
+type        = "static"
+description = "A CLI disk usage analyzer"
+homepage    = ["https://github.com/bootandy/dust"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Filesystem", "Utility"]
+repology    = ["du-dust"]
+provides    = ["dust"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "bootandy/dust"
+strip-prefix = "v"
+
+[source]
+github  = "bootandy/dust"
+glob    = "*${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"dust-v${version}-${arch}-unknown-linux-musl/dust"    = "dust"
+"dust-v${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"

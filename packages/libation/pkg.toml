@@ -1,0 +1,26 @@
+[pkg]
+name        = "libation"
+type        = "appimage"
+description = "Audible audiobook library manager and downloader"
+homepage    = ["https://getlibation.com", "https://github.com/rmcrackan/Libation"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Utility", "AudioVideo"]
+repology    = ["libation"]
+provides    = ["libation"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Libation-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Libation-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/rmcrackan/Libation/master/LICENSE"
+to  = "LICENSE"

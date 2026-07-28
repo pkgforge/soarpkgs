@@ -1,0 +1,23 @@
+version = "1.3.1"
+
+[url]
+x86_64-linux  = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-x86_64.tar.gz"
+aarch64-linux = "https://github.com/sachaos/viddy/releases/download/v1.3.1/viddy-v1.3.1-linux-arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "a4447280a8809b2d474c55a37bacddd71429141fe4252084379eb390d4c44904"
+x86_64-linux  = "fc782d1a37735207f2aea6222b05c0cfd50be657672d97c218e43a64a83e7729"
+
+[sha256]
+aarch64-linux = "4bf88aa5443b09a49e8af55c1e92ff6148486856703b8f886e1984b0e541af4d"
+x86_64-linux  = "c0406da6c19bbfbf0381a1a54cf7098a97372c15e5d64bed38e4b8be53e8455e"
+
+[size]
+aarch64-linux = 4011615
+x86_64-linux  = 3623684
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/sachaos/viddy/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9a3ed01a848c4ef9638a94ad3597e320dca2ef1d7c849134bf178ef9ed987903"
+sha256 = "e6eea22d4e9e0aa6a78d0f9126009ec041ea047f94b320c003c34a631821f953"

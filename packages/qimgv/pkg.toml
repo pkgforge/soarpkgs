@@ -1,0 +1,26 @@
+[pkg]
+name        = "qimgv"
+type        = "appimage"
+description = "Image viewer"
+homepage    = ["https://github.com/easymodo/qimgv"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Graphics", "Viewer"]
+repology    = ["qimgv"]
+provides    = ["qimgv"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Qimgv-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Qimgv-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/easymodo/qimgv/refs/heads/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "1.4.4"
+
+[url]
+x86_64-linux  = "https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64"
+aarch64-linux = "https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-arm64"
+
+[blake3]
+aarch64-linux = "137f93024d16ff91e7c080695c1ddb4a41fc4d1dbb3afbfb432df5477997ad65"
+x86_64-linux  = "2337bf318a54e40d6fb36ee89306f031fcecc00e02dad69afa2bc2b579959f80"
+
+[sha256]
+aarch64-linux = "b98f2cc69fd9147fe4d405d859c57504571adec0d3611c3eefd04107c7ac00d0"
+x86_64-linux  = "6d31c65b03972c6dc4a14ab429f2928300518b26503f58723e532d1b0a3bbb52"
+
+[size]
+aarch64-linux = 4633188
+x86_64-linux  = 4788866
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/FiloSottile/mkcert/master/LICENSE"
+to     = "LICENSE"
+blake3 = "d4b02331290a227131ad729dd90dc3003d4ef5f09c936d3484781af32b437a2c"
+sha256 = "26c2246f9f611783b409f51bac7cc6124a26c943971c14742961bedabe2ef90a"

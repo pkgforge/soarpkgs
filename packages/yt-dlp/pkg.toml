@@ -1,0 +1,26 @@
+[pkg]
+name        = "yt-dlp"
+type        = "appimage"
+description = "A feature-rich command-line audio/video downloader"
+homepage    = ["https://github.com/yt-dlp/yt-dlp"]
+license     = ["Unlicense"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Network"]
+repology    = ["yt-dlp"]
+provides    = ["yt-dlp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/yt-dlp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/yt-dlp-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/yt-dlp/yt-dlp/refs/heads/master/LICENSE"
+to  = "LICENSE"

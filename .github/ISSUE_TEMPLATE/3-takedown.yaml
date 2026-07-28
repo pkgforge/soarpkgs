@@ -1,0 +1,47 @@
+name: Take Down Request
+description: Request removal of a package for copyright, licensing or legal reasons
+title: "takedown: <name>"
+labels: ["takedown"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        This repository does not host the artifacts. It records where a package
+        is published upstream and what its bytes hash to, so a takedown here
+        removes the reference, not the file. If the artifact itself is the
+        problem, it also needs reporting to whoever hosts it.
+
+  - type: input
+    id: name
+    attributes:
+      label: Package
+      placeholder: some-package
+    validations:
+      required: true
+
+  - type: textarea
+    id: grounds
+    attributes:
+      label: What is being infringed, and how
+      description: >
+        Identify the work and what specifically infringes it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: standing
+    attributes:
+      label: Your relationship to the work
+      description: >
+        Whether you own it or act on behalf of the owner, and how that can be
+        verified.
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      description: How to reach you about this request.
+    validations:
+      required: true

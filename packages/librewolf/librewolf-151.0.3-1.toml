@@ -1,0 +1,23 @@
+version = "151.0.3-1"
+
+[url]
+x86_64-linux  = "https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/151.0.3-1/LibreWolf.x86_64.AppImage"
+aarch64-linux = "https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/151.0.3-1/LibreWolf.aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "85cfd847eb2bbb74f4bfef7f1661d4a518fce765cef96ae11b6c5ae71c8187da"
+x86_64-linux  = "eccd291cc27653dfe5f692feab70100886b155cdb0e4d5806c68c8d9325bff11"
+
+[sha256]
+aarch64-linux = "e75a957baeb9d2fe8c56c08be80e5aadd89d78dab0c1e43cc924b4cc0dffd08a"
+x86_64-linux  = "8b909052e9f860a4eeccc8d205d4d1fd3ba6d20497bff10308be7531a6e0bdf0"
+
+[size]
+aarch64-linux = 124733960
+x86_64-linux  = 133343736
+
+[[extra]]
+url    = "https://gitlab.com/librewolf-community/browser/source/-/raw/main/LICENSE"
+to     = "LICENSE"
+blake3 = "926c4fd4d1e3f2b2191be91717f8766e03cc9b62ea266f7000c57e10856e81e9"
+sha256 = "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"

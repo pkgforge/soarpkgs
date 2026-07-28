@@ -1,0 +1,23 @@
+version = "1.5.1"
+
+[url]
+x86_64-linux  = "https://github.com/svenstaro/genact/releases/download/v1.5.1/genact-1.5.1-x86_64-unknown-linux-musl"
+aarch64-linux = "https://github.com/svenstaro/genact/releases/download/v1.5.1/genact-1.5.1-aarch64-unknown-linux-musl"
+
+[blake3]
+aarch64-linux = "fbd15ea31650d933bb5491df2e26624becacae8811ae5c5d47020661b732e54f"
+x86_64-linux  = "9ae9473bcdeb4a9a677f2440b8d221fee875196829b03f6455e9a757e8f87af7"
+
+[sha256]
+aarch64-linux = "7d767a78b505752c23a6cf847ca3c5c72289707abf866644c9ebb8aff5d12a6a"
+x86_64-linux  = "f382b3466ef85ed8394064ef49ed8d446e6aebd67791a42456c3d36c6dd164e8"
+
+[size]
+aarch64-linux = 1583504
+x86_64-linux  = 1629460
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/svenstaro/genact/master/LICENSE"
+to     = "LICENSE"
+blake3 = "d2d987bc0b2f77596d978cc306f4790358ccfc996b14f3700db8eba24428ebaf"
+sha256 = "4367524e5000757d2fe3660ebfa9efbfdfb69df3a7a46e3b8bc52ad78244781f"

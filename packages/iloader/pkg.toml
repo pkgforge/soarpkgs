@@ -1,0 +1,27 @@
+[pkg]
+name        = "iloader"
+type        = "appimage"
+description = "Install SideStore and other iOS apps and import pairing files with ease"
+homepage    = ["https://iloader.app", "https://github.com/nab138/iloader"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility"]
+repology    = ["iloader"]
+provides    = ["iloader"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/iloader-AppImage-Enhanced"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/iloader-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/nab138/iloader/main/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "simutrans"
+type        = "appimage"
+description = "Open-source transportation simulation game"
+homepage    = ["https://www.simutrans.com", "https://github.com/simutrans/simutrans"]
+license     = ["Artistic-1.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Simulation", "StrategyGame"]
+repology    = ["simutrans"]
+provides    = ["simutrans"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Simutrans-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Simutrans-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/simutrans/simutrans/master/LICENSE.txt"
+to  = "LICENSE"

@@ -1,0 +1,17 @@
+version = "0.13.1"
+
+[url]
+x86_64-linux  = "https://github.com/wagoodman/dive/releases/download/v0.13.1/dive_0.13.1_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/wagoodman/dive/releases/download/v0.13.1/dive_0.13.1_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "ce7f5d08815c7372c8a4e7ae7b50ba8bcaf587409f8d3efcdbfccd93beb4ce3d"
+aarch64-linux = "a770477b2b4ebe1abae62be6934bb8aca8d405ef9c63bb22ff3204ad5dd5c062"
+
+[sha256]
+x86_64-linux  = "0970549eb4a306f8825a84145a2534153badb4d7dcf3febd1967c706367c3d0e"
+aarch64-linux = "2fcd2cf20f634ccdb41efac44048b204bfc867c115641f37a7420693ed480a18"
+
+[size]
+x86_64-linux  = 4026656
+aarch64-linux = 3704417

@@ -1,0 +1,22 @@
+[pkg]
+name        = "antigravity-ide"
+type        = "appimage"
+description = "Agentic development platform from Google, evolving the IDE into the agent-first era"
+homepage    = ["https://antigravity.google"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "IDE", "TextEditor"]
+repology    = ["antigravity-ide"]
+provides    = ["antigravity-ide"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Antigravity-IDE-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Antigravity-IDE-AppImage"
+glob   = "*${arch}*.appimage"

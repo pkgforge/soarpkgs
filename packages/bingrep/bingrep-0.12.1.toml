@@ -1,0 +1,17 @@
+version = "0.12.1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge/builds/releases/download/bingrep-0.12.1/bingrep-0.12.1-x86_64-linux.tar.gz"
+aarch64-linux = "https://github.com/pkgforge/builds/releases/download/bingrep-0.12.1/bingrep-0.12.1-aarch64-linux.tar.gz"
+
+[blake3]
+aarch64-linux = "d0ac95519be7b25dadf83eae37545dffa7503f99c6444f5b881e4c1b6a83e79b"
+x86_64-linux  = "9497745e13386fba52e84551fac6b74d0d009d697e6c7b41746053d66f1e7afb"
+
+[sha256]
+aarch64-linux = "64a88f6d5784450fa451d11b89e9b5085544877a0d208c845f8671dcd77bd327"
+x86_64-linux  = "8c6cf78ea6fbfc6ec4d69d4fe6804a62f0cfe3ae12cbfe3dae055290decea396"
+
+[size]
+aarch64-linux = 1554047
+x86_64-linux  = 1631626

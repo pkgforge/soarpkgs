@@ -1,0 +1,26 @@
+[pkg]
+name        = "tauon"
+type        = "appimage"
+description = "The music player of today, a sleek and modern desktop audio player"
+homepage    = ["https://tauonmusicbox.rocks", "https://github.com/Taiko2k/Tauon"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Music", "Player"]
+repology    = ["tauon-music-box"]
+provides    = ["tauon"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Tauon-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Tauon-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Taiko2k/Tauon/master/LICENSE"
+to  = "LICENSE"

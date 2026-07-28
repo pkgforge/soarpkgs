@@ -1,0 +1,26 @@
+[pkg]
+name        = "protontricks"
+type        = "appimage"
+description = "Wrapper for running Winetricks commands for Proton-enabled games"
+homepage    = ["https://github.com/Matoking/protontricks"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Game"]
+repology    = ["protontricks"]
+provides    = ["protontricks"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Protontricks-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Protontricks-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Matoking/protontricks/master/LICENSE"
+to  = "LICENSE"

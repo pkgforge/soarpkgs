@@ -1,0 +1,26 @@
+[pkg]
+name        = "openttd"
+type        = "appimage"
+description = "Open source simulation game based upon Transport Tycoon Deluxe"
+homepage    = ["https://www.openttd.org/", "https://github.com/OpenTTD/OpenTTD"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Simulation", "StrategyGame"]
+repology    = ["openttd"]
+provides    = ["openttd"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenTTD-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenTTD-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OpenTTD/OpenTTD/master/COPYING.md"
+to  = "LICENSE"

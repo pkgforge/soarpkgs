@@ -1,0 +1,29 @@
+[pkg]
+name        = "curlie"
+type        = "static"
+description = "Frontend to cURL that adds the ease of use of HTTPie"
+homepage    = ["https://curlie.io"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["curlie"]
+provides    = ["curlie"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "rs/curlie"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/rs/curlie/releases/download/v${version}/curlie_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"curlie"  = "curlie"
+"LICENSE" = "LICENSE"

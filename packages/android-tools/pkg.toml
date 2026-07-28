@@ -1,0 +1,36 @@
+[pkg]
+name        = "android-tools"
+type        = "appimage"
+description = "Android SDK Platform-Tools (adb, fastboot & more)"
+homepage    = ["https://github.com/nmeum/android-tools"]
+license     = ["Apache-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Development", "Utility"]
+repology    = ["android-tools"]
+provides    = [
+  "android-tools=>adb",
+  "android-tools=>etc1tool",
+  "android-tools=>fastboot",
+  "android-tools=>hprof-conv",
+  "android-tools=>make_f2fs",
+  "android-tools=>make_f2fs_casefold",
+  "android-tools=>mke2fs",
+  "android-tools=>sqlite3",
+]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/android-tools-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/android-tools-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/nmeum/android-tools/refs/heads/master/LICENSE"
+to  = "LICENSE"

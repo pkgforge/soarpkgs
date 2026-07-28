@@ -1,0 +1,23 @@
+version = "2.4.3-16"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/EasyTAG-AppImage/releases/download/2.4.3-16%402026-07-01_1782913764/EasyTAG-2.4.3-16-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/EasyTAG-AppImage/releases/download/2.4.3-16%402026-07-01_1782913764/EasyTAG-2.4.3-16-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "bba3ebae21818420cdf5ea33676581134310cfd8637fb0af43deefde1583294f"
+aarch64-linux = "c7fdfb81e60ec03c4bdbb38b6382fa0b841b62cfb9eb61e873126e2cd15aa727"
+
+[sha256]
+x86_64-linux  = "6e8974a5d6f0b4693054142c94c134a8b9e0a029d858c5689ca32fc590461e27"
+aarch64-linux = "c53ea22626eb95b63e7b580c937158c77b107d48235bdc4c560ecd4446df5f7e"
+
+[size]
+x86_64-linux  = 21939226
+aarch64-linux = 21320399
+
+[[extra]]
+url    = "https://gitlab.gnome.org/GNOME/easytag/-/raw/master/COPYING"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

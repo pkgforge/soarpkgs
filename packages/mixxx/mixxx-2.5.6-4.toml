@@ -1,0 +1,19 @@
+version = "2.5.6-4"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Mixxx-AppImage/releases/download/2.5.6-4%402026-07-22_1784721742/Mixxx-2.5.6-4-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "d9c77a65bbe8ce346656b6b251d66dd5bce1c80ae8288eee2ed289d1c0e27e1a"
+
+[sha256]
+x86_64-linux = "a8e6607b18dfc3d173b94baf13dd81bd3e4a80e64601a6d51f8c5bb2e528ffc6"
+
+[size]
+x86_64-linux = 94248980
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mixxxdj/mixxx/main/COPYING"
+to     = "LICENSE"
+blake3 = "8af799697c867aa19de69f176f2bf295bbd97ba037b49466b286f6c9d583b8e5"
+sha256 = "98adb836b75addd92719b0b90ae3200c4b2e2074508135d9057ee0ca4ca9faa5"

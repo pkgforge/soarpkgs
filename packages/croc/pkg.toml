@@ -1,0 +1,30 @@
+[pkg]
+name        = "croc"
+type        = "static"
+description = "Easily and securely send things from one computer to another"
+homepage    = ["https://schollz.com/software/croc6"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["FileTransfer", "Network", "Utility"]
+repology    = ["croc"]
+provides    = ["croc"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "ARM64"
+x86_64  = "64bit"
+
+[update]
+strategy     = "github-releases"
+repo         = "schollz/croc"
+strip-prefix = "v"
+
+[source]
+github  = "schollz/croc"
+glob    = "*Linux-${arch}.tar.gz"
+
+[source.install]
+"croc"    = "croc"
+"LICENSE" = "LICENSE"

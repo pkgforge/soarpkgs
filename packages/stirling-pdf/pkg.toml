@@ -1,0 +1,27 @@
+[pkg]
+name        = "stirling-pdf"
+type        = "appimage"
+description = "Locally hosted web application for PDF manipulation"
+homepage    = ["https://github.com/Stirling-Tools/Stirling-PDF"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Office", "Utility"]
+repology    = ["stirling-pdf"]
+provides    = ["stirling-pdf"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Stirling-PDF-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Stirling-PDF-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/refs/heads/main/LICENSE"
+to  = "LICENSE"

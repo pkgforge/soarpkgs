@@ -1,0 +1,29 @@
+[pkg]
+name        = "okteta"
+type        = "appimage"
+description = "Hex editor for KDE"
+homepage    = [
+  "https://apps.kde.org/okteta",
+  "https://github.com/pkgforge-dev/okteta-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Development", "Utility"]
+repology   = ["okteta"]
+provides   = ["okteta"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/okteta-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/okteta-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KDE/okteta/refs/heads/master/LICENSES/GPL-2.0-only.txt"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "kstars"
+type        = "appimage"
+description = "Desktop planetarium and astronomy suite for KDE"
+homepage    = ["https://apps.kde.org/kstars", "https://invent.kde.org/education/kstars"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Science", "Education"]
+repology    = ["kstars"]
+provides    = ["kstars"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KStars-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KStars-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/education/kstars/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"

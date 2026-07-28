@@ -1,0 +1,29 @@
+[pkg]
+name        = "easytag"
+type        = "appimage"
+description = "Simple application for viewing and editing tags in audio files"
+homepage    = [
+  "https://wiki.gnome.org/Apps/EasyTAG",
+  "https://github.com/pkgforge-dev/EasyTAG-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Audio", "Utility"]
+repology   = ["easytag"]
+provides   = ["easytag"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/EasyTAG-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/EasyTAG-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/GNOME/easytag/-/raw/master/COPYING"
+to  = "LICENSE"

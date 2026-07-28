@@ -1,0 +1,29 @@
+[pkg]
+name        = "newsflash"
+type        = "appimage"
+description = "RSS reader"
+homepage    = [
+  "https://gitlab.com/news-flash/news_flash_gtk",
+  "https://github.com/pkgforge-dev/NewsFlash-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["Feed", "Network", "News"]
+repology   = ["newsflash"]
+provides   = ["newsflash"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/NewsFlash-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/NewsFlash-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/news-flash/news_flash_gtk/-/raw/main/LICENSE"
+to  = "LICENSE"

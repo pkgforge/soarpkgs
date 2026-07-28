@@ -1,0 +1,27 @@
+[pkg]
+name        = "corsixth"
+type        = "appimage"
+description = "Open-source reimplementation of the Theme Hospital business simulation game"
+homepage    = ["https://github.com/CorsixTH/CorsixTH"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "StrategyGame"]
+repology    = ["corsixth"]
+provides    = ["corsixth"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/CorsixTH-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/CorsixTH-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/CorsixTH/CorsixTH/master/LICENSE.txt"
+to  = "LICENSE"

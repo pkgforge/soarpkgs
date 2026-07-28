@@ -1,0 +1,26 @@
+[pkg]
+name        = "openswe1r"
+type        = "appimage"
+description = "Open-source port of the 1999 game Star Wars Episode 1: Racer"
+homepage    = ["https://github.com/OpenSWE1R/openswe1r"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+provides    = ["openswe1r"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenSWE1R-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenSWE1R-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/openswe1r/openswe1r/master/LICENSE.txt"
+to  = "LICENSE"

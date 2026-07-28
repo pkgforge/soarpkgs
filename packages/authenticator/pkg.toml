@@ -1,0 +1,27 @@
+[pkg]
+name        = "authenticator"
+type        = "appimage"
+description = "Two-factor authentication codes generator"
+homepage    = ["https://gitlab.gnome.org/World/Authenticator"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Security", "Utility"]
+repology    = ["authenticator"]
+provides    = ["authenticator"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Authenticator-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Authenticator-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/World/Authenticator/-/raw/master/LICENSE"
+to  = "LICENSE"

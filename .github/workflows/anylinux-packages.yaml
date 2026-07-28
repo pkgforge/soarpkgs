@@ -34,10 +34,39 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install sbuild
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-$(uname -m)-linux" \
+            -o /usr/local/bin/sbuild
+          chmod +x /usr/local/bin/sbuild
+          sbuild --version
+
       - name: Find missing packages
         id: missing
         run: |
-          ./scripts/add_anylinux_pkg.sh list | grep -F ' -> ' | awk '{print $1, $3}' > /tmp/missing.txt || true
+          # Repos advertised by Anylinux-AppImages, minus the ones already
+          # packaged. Package name drops the -AppImage suffix, keeping the
+          # -enhanced variant distinct.
+          curl -sSL "https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/main/README.md" \
+            | grep -oP 'github\.com/pkgforge-dev/\K[A-Za-z0-9_-]+' | sort -u > /tmp/upstream.txt
+
+          grep -rhoP 'pkgforge-dev/\K[A-Za-z0-9_-]+' packages/*/pkg.toml 2>/dev/null \
+            | sort -u > /tmp/existing.txt
+
+          : > /tmp/missing.txt
+          while read -r repo; do
+            [ -n "$repo" ] || continue
+            grep -qix "$repo" /tmp/existing.txt && continue
+            case "$repo" in
+              *-[Aa]pp[Ii]mage-[Ee]nhanced)
+                pkg=$(printf '%s' "${repo%-*-*}" | tr '[:upper:]' '[:lower:]')-enhanced ;;
+              *-[Aa]pp[Ii]mage)
+                pkg=$(printf '%s' "${repo%-*}" | tr '[:upper:]' '[:lower:]') ;;
+              *)
+                pkg=$(printf '%s' "$repo" | tr '[:upper:]' '[:lower:]') ;;
+            esac
+            echo "$repo $pkg" >> /tmp/missing.txt
+          done < /tmp/upstream.txt
 
           if [ -n "${{ inputs.repo }}" ]; then
             grep -i "^${{ inputs.repo }} " /tmp/missing.txt > /tmp/missing-filtered.txt || {
@@ -95,14 +124,18 @@ jobs:
             git checkout main
             git checkout -b "$branch"
 
-            if ! ./scripts/add_anylinux_pkg.sh "$repo" "$pkg"; then
-              echo "::warning::Failed to generate recipe for ${pkg}"
+            # Scaffold, then pin. Resolve is what records the URL and hash;
+            # the scaffold deliberately leaves the human fields as TODO.
+            if ! sbuild new "$pkg" "pkgforge-dev/${repo}" --tag-suffix-strip \
+                 || ! sbuild resolve . "$pkg" \
+                 || ! sbuild hashfill; then
+              echo "::warning::Failed to generate package for ${pkg}"
               git checkout main
               git branch -D "$branch"
               continue
             fi
 
-            recipe_path="packages/${pkg}/appimage.stable.yaml"
+            recipe_path="packages/${pkg}/pkg.toml"
             git add "packages/${pkg}"
             git commit -m "${pkg}: init"
             git push origin "$branch"
@@ -117,12 +150,11 @@ jobs:
           | **Recipe** | [\`${recipe_path}\`](https://github.com/${{ github.repository }}/blob/${branch}/${recipe_path}) |
 
           ### TODO before merge
-          - [ ] \`category\` — pick from [freedesktop menu spec](https://specifications.freedesktop.org/menu-spec/latest/apa.html)
-          - [ ] \`build_asset\` — URL to upstream LICENSE file
-          - [ ] \`tag\` — sensible tags for the app
-          - [ ] \`repology\` — verify at https://repology.org/projects/
+          - [ ] \`category\`: pick from [freedesktop menu spec](https://specifications.freedesktop.org/menu-spec/latest/apa.html)
+                    - [ ] \`repology\`: verify at https://repology.org/projects/
           - [ ] Review description/license/homepage
-          - [ ] Test build passes
+          - [ ] `license`: verify upstream license
+          - [ ] Confirm the pinned hash matches upstream
 
           ---
           <sub>🤖 This PR was automatically created from [Anylinux-AppImages](https://github.com/pkgforge-dev/Anylinux-AppImages)</sub>

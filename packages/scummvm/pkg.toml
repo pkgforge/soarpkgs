@@ -1,0 +1,26 @@
+[pkg]
+name        = "scummvm"
+type        = "appimage"
+description = "Interpreter to run classic point-and-click adventure and RPG games"
+homepage    = ["https://www.scummvm.org", "https://github.com/scummvm/scummvm"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "Emulator"]
+repology    = ["scummvm"]
+provides    = ["scummvm"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ScummVM-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ScummVM-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/scummvm/scummvm/master/COPYING"
+to  = "LICENSE"

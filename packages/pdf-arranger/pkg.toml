@@ -1,0 +1,26 @@
+[pkg]
+name        = "pdf-arranger"
+type        = "appimage"
+description = "Small application to merge, split, rotate, crop and rearrange PDF pages"
+homepage    = ["https://github.com/pdfarranger/pdfarranger"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Utility"]
+repology    = ["pdfarranger"]
+provides    = ["pdf-arranger"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PDF-Arranger-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PDF-Arranger-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pdfarranger/pdfarranger/main/COPYING"
+to  = "LICENSE"

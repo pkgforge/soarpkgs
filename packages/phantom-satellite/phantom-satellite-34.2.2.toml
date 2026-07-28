@@ -1,0 +1,23 @@
+version = "34.2.2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Phantom-Satellite-AppImage/releases/download/34.2.2%402026-05-12_1778621546/Phantom_Satellite-34.2.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Phantom-Satellite-AppImage/releases/download/34.2.2%402026-05-12_1778621546/Phantom_Satellite-34.2.2-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "91dc644065993a245e565bee70bbdd1895b96ab35f6895b9457f3d20743959af"
+x86_64-linux  = "8e4adbbcd976d202be78ed93e71e4522033eb3e6206352109947b112d5bc1077"
+
+[sha256]
+aarch64-linux = "0ec77e3ac20eb99879e3f636d93bb372c19a318f41399e5033427e74659a3dce"
+x86_64-linux  = "9c6c921e85d75af713336584c6cf56ee7802a653e9777a2fd32461bbb5134896"
+
+[size]
+aarch64-linux = 75627475
+x86_64-linux  = 71104825
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/DCFUKSURMOM/Phantom-Satellite/master/LICENSE"
+to     = "LICENSE"
+blake3 = "b8ef6a848928e4f33748ad55d2e35d3fa0ed29ef248b55190dc2a73a1b463268"
+sha256 = "511405c84fd0b25f235c1121b5894c50f1100f860d9d0bfe2de48ee362216c1a"

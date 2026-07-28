@@ -1,0 +1,30 @@
+[pkg]
+name        = "ares-emu"
+type        = "appimage"
+description = "Multi-system emulator focused on accuracy and preservation"
+homepage    = ["https://ares-emu.net"]
+license     = ["ISC"]
+maintainer  = [
+  "bmsuseluda (github.com/bmsuseluda)",
+  "Samueru-sama (github.com/Samueru-sama)",
+]
+category = ["Emulator", "Game"]
+repology = ["ares-emu"]
+provides = ["ares-emu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/ares-emu-appimage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/ares-emu-appimage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ares-emulator/ares/refs/heads/master/LICENSE"
+to  = "LICENSE"

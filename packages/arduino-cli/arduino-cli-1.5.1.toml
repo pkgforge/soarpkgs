@@ -1,0 +1,17 @@
+version = "1.5.1"
+
+[url]
+x86_64-linux  = "https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_64bit.tar.gz"
+aarch64-linux = "https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_ARM64.tar.gz"
+
+[blake3]
+x86_64-linux  = "97efe521902152bffbc5ef545587b5d7309643f639624cae59b5ed0589a33484"
+aarch64-linux = "bd45b081ca667ea8933bbe19ed4889ea2fbea8d5f6ef5ff85b60f35fee04d7da"
+
+[sha256]
+x86_64-linux  = "28a8e119c498a25607821c36cb2dc49e8463941b261a0d99091baa7bc692dd2b"
+aarch64-linux = "1e69e077479f300614d4551334e0a33f08ee40b04315d83b8e7e0e94f0d0ee62"
+
+[size]
+x86_64-linux  = 17630765
+aarch64-linux = 16155457

@@ -1,0 +1,23 @@
+version = "0.24.10-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Riseup-VPN-AppImage/releases/download/0.24.10-1%402026-07-22_1784721758/RiseupVPN-0.24.10-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Riseup-VPN-AppImage/releases/download/0.24.10-1%402026-07-22_1784721758/RiseupVPN-0.24.10-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "17ac32c7240073c20b46eb4fd68d61785021dd7811dc8271d36b1e51e6ea84ea"
+x86_64-linux  = "3a7bacefe656a60fde5205fd10d28f911e3c0f34f9c87d8d986d5172c1664955"
+
+[sha256]
+aarch64-linux = "3e8a4a705bfe30920c1626aaea3a03ac3f2bc8600b395f9bf2cfc07fec5b71a1"
+x86_64-linux  = "f2fffcacef918ab3110c140ce9155693ba70528d72b4b12c934dc2e295ceb0f7"
+
+[size]
+aarch64-linux = 69115666
+x86_64-linux  = 69777946
+
+[[extra]]
+url    = "https://0xacab.org/leap/bitmask-vpn/-/raw/main/LICENSE"
+to     = "LICENSE"
+blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
+sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

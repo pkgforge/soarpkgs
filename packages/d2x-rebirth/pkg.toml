@@ -1,0 +1,29 @@
+[pkg]
+name        = "d2x-rebirth"
+type        = "appimage"
+description = "Source port of Descent 2 with enhanced graphics and modern OS support"
+homepage    = [
+  "https://www.dxx-rebirth.com",
+  "https://github.com/dxx-rebirth/dxx-rebirth",
+]
+license    = ["Custom"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "ActionGame"]
+repology   = ["d2x-rebirth"]
+provides   = ["d2x-rebirth"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/D2X-Rebirth-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/D2X-Rebirth-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dxx-rebirth/dxx-rebirth/master/COPYING.txt"
+to  = "LICENSE"

@@ -1,0 +1,19 @@
+version = "0.3.0"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/servo-AppImage/releases/download/v0.3.0%402026-07-22_1784722015/Servo-v0.3.0-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "b75b504f633d55d2d3e1c7fe5eb9f0e51bb921f07d92040781c2a793c4c367f9"
+
+[sha256]
+x86_64-linux = "27039fd6b3340cc17e665294a96a4d97bc78e592532f32036b8a7f32df4f6dfb"
+
+[size]
+x86_64-linux = 102945033
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/servo/servo/refs/heads/main/LICENSE"
+to     = "LICENSE"
+blake3 = "629e8a0f1e1161e6138fb7b0b3c10610a8ec5018ad146e3bc5e634c3d25a58f6"
+sha256 = "1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e"

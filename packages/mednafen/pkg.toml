@@ -1,0 +1,28 @@
+[pkg]
+name        = "mednafen"
+type        = "appimage"
+description = "Multi-system emulator"
+homepage    = [
+  "https://mednafen.github.io",
+  "https://github.com/pkgforge-dev/mednafen-appimage",
+]
+license    = ["GPL-2.0"]
+maintainer = [
+  "bmsuseluda (github.com/bmsuseluda)",
+  "Samueru-sama (github.com/Samueru-sama)",
+]
+category = ["Emulator", "Game"]
+repology = ["mednafen"]
+provides = ["mednafen"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/mednafen-appimage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/mednafen-appimage"
+glob   = "*${arch}*.appimage"

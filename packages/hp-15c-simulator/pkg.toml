@@ -1,0 +1,21 @@
+[pkg]
+name        = "hp-15c-simulator"
+type        = "appimage"
+description = "Simulator of the HP-15C RPN scientific programmable calculator"
+homepage    = ["https://hp-15c-simulator.de"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Calculator", "Utility", "Science"]
+provides    = ["hp-15c-simulator"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/HP-15C-Simulator-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/HP-15C-Simulator-AppImage"
+glob   = "*${arch}*.appimage"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "github-desktop"
+type        = "appimage"
+description = "Fork of GitHub Desktop with support for various Linux distributions"
+homepage    = ["https://desktop.github.com", "https://github.com/shiftkey/desktop"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["github-desktop"]
+provides    = ["github-desktop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/shiftkey/desktop/linux/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,28 @@
+[pkg]
+name        = "shiru"
+type        = "appimage"
+description = "A personal anime library manager for watching and tracking your collection in real time"
+homepage    = ["https://github.com/RockinChaos/Shiru"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Video"]
+repology    = ["shiru"]
+provides    = ["shiru"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Shiru-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Shiru-AppImage"
+glob   = "*${arch}*.appimage"
+
+# upstream source repository DMCA-blocked (github/dmca 2025-11-18)
+[[extra]]
+license = "GPL-3.0"
+to      = "LICENSE"

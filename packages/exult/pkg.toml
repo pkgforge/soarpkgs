@@ -1,0 +1,26 @@
+[pkg]
+name        = "exult"
+type        = "appimage"
+description = "Engine to play Ultima 7 on modern operating systems using original game data"
+homepage    = ["https://exult.info", "https://github.com/exult/exult"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying", "AdventureGame"]
+repology    = ["exult"]
+provides    = ["exult"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Exult-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Exult-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/exult/exult/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "geargrafx"
+type        = "appimage"
+description = "PC Engine / TurboGrafx-16 / SuperGrafx emulator and debugger"
+homepage    = ["https://github.com/drhelius/Geargrafx"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["geargrafx"]
+provides    = ["geargrafx"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Geargrafx-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Geargrafx-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/drhelius/Geargrafx/main/LICENSE"
+to  = "LICENSE"

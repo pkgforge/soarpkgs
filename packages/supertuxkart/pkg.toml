@@ -1,0 +1,26 @@
+[pkg]
+name        = "supertuxkart"
+type        = "appimage"
+description = "Kart racing game featuring Tux and his friends"
+homepage    = ["https://supertuxkart.net", "https://github.com/supertuxkart/stk-code"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "SportsGame"]
+repology    = ["supertuxkart"]
+provides    = ["supertuxkart"]
+
+[host]
+supported = ["aarch64-linux", "x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SuperTuxKart-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SuperTuxKart-AppImage-Enhanced"
+glob   = "*${arch}.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/supertuxkart/stk-code/refs/heads/master/COPYING"
+to  = "LICENSE"

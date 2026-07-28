@@ -1,0 +1,30 @@
+[pkg]
+name        = "bluetuith"
+type        = "static"
+description = "A TUI bluetooth manager for Linux"
+homepage    = ["https://github.com/darkhz/bluetuith"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["bluetuith"]
+provides    = ["bluetuith"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "bluetuith-org/bluetuith"
+strip-prefix = "v"
+
+[source]
+github  = "bluetuith-org/bluetuith"
+glob    = "*Linux_${arch}.tar.gz"
+
+[source.install]
+"bluetuith" = "bluetuith"
+"LICENSE"   = "LICENSE"

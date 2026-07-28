@@ -1,0 +1,27 @@
+[pkg]
+name        = "alacritty"
+type        = "appimage"
+description = "A cross-platform, GPU-accelerated terminal emulator"
+homepage    = ["https://alacritty.org", "https://github.com/alacritty/alacritty"]
+license     = ["Apache-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["TerminalEmulator"]
+repology    = ["alacritty"]
+provides    = ["alacritty"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/alacritty-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/alacritty-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/alacritty/alacritty/master/LICENSE-APACHE"
+to  = "LICENSE"

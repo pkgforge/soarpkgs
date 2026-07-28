@@ -1,0 +1,26 @@
+[pkg]
+name        = "kblocks"
+type        = "appimage"
+description = "Classic falling blocks (Tetris-like) game for KDE"
+homepage    = ["https://apps.kde.org/kblocks", "https://invent.kde.org/games/kblocks"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "BlocksGame", "KDE"]
+repology    = ["kblocks"]
+provides    = ["kblocks"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KBlocks-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KBlocks-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/games/kblocks/-/raw/master/COPYING"
+to  = "LICENSE"

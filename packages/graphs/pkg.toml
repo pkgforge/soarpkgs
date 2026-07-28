@@ -1,0 +1,26 @@
+[pkg]
+name        = "graphs"
+type        = "appimage"
+description = "Plot and manipulate data"
+homepage    = ["https://gitlab.gnome.org/World/Graphs"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["DataVisualization", "Math", "Science"]
+repology    = ["graphs"]
+provides    = ["graphs"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Graphs-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Graphs-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/World/Graphs/-/raw/main/LICENSE"
+to  = "LICENSE"

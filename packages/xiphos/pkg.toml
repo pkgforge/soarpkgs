@@ -1,0 +1,26 @@
+[pkg]
+name        = "xiphos"
+type        = "appimage"
+description = "Bible study tool using SWORD modules for reading, study, and research"
+homepage    = ["https://xiphos.org", "https://github.com/crosswire/xiphos"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Education", "Viewer", "Utility"]
+repology    = ["xiphos"]
+provides    = ["xiphos"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Xiphos-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Xiphos-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/crosswire/xiphos/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,22 @@
+[pkg]
+name        = "claude-desktop"
+type        = "appimage"
+description = "Desktop application for Anthropic's Claude AI assistant"
+homepage    = ["https://claude.ai", "https://www.anthropic.com/claude"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "Chat", "Utility"]
+repology    = ["claude-desktop"]
+provides    = ["claude-desktop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Claude-Desktop-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Claude-Desktop-AppImage"
+glob   = "*${arch}*.appimage"

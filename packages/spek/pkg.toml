@@ -1,0 +1,26 @@
+[pkg]
+name        = "spek"
+type        = "appimage"
+description = "Acoustic spectrum analyser"
+homepage    = ["http://spek.cc", "https://github.com/alexkay/spek"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "AudioVideo"]
+repology    = ["spek"]
+provides    = ["spek"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Spek-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Spek-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/alexkay/spek/master/LICENSE"
+to  = "LICENSE"

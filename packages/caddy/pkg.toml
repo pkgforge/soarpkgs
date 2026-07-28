@@ -1,0 +1,30 @@
+[pkg]
+name        = "caddy"
+type        = "static"
+description = "A powerful, enterprise-ready, and extensible HTTP/2 + HTTP/3 web server with automatic HTTPS"
+homepage    = ["https://caddyserver.com"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "WebDevelopment"]
+repology    = ["caddy"]
+provides    = ["caddy"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "caddyserver/caddy"
+strip-prefix = "v"
+
+[source]
+github  = "caddyserver/caddy"
+glob    = "*linux_${arch}.tar.gz"
+
+[source.install]
+"caddy"   = "caddy"
+"LICENSE" = "LICENSE"

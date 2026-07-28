@@ -1,0 +1,17 @@
+version = "1.3.1"
+
+[url]
+x86_64-linux  = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-linux-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "5d419f193b3fa998bd37f2ce4392858a4a6fde224b467649a7b43f083762b0ca"
+aarch64-linux = "85bfe2cd9485668eb7071d087862bd83cce47d4839f3db41a0279c19fe794524"
+
+[sha256]
+x86_64-linux  = "bdc69c09cbdd6cf8b1f333d372a1f58247b3a33146406333e30c0f26e8f51377"
+aarch64-linux = "c6878a324421b69e3e20b00ba17c04bc5c6dab0030cfe55bf8f68fa8d9e9093a"
+
+[size]
+x86_64-linux  = 10263766
+aarch64-linux = 9466344

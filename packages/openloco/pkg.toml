@@ -1,0 +1,26 @@
+[pkg]
+name        = "openloco"
+type        = "appimage"
+description = "Open source re-implementation of Chris Sawyer's Locomotion"
+homepage    = ["https://openloco.io", "https://github.com/OpenLoco/OpenLoco"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "StrategyGame", "Simulation"]
+repology    = ["openloco"]
+provides    = ["openloco"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenLoco-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenLoco-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OpenLoco/OpenLoco/master/LICENSE"
+to  = "LICENSE"

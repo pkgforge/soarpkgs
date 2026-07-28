@@ -1,0 +1,23 @@
+version = "2.4.16.2-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Trelby-AppImage/releases/download/2.4.16.2-1%402026-07-01_1782914769/Trelby-2.4.16.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Trelby-AppImage/releases/download/2.4.16.2-1%402026-07-01_1782914769/Trelby-2.4.16.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "6390e158c413192f2c226596a4b5615e1eacd755050c17dda87710057843a3c9"
+x86_64-linux  = "05223874e9f0b2294993414ef51ae3759793aeac196f09a2356e7e2554b5187d"
+
+[sha256]
+aarch64-linux = "656f3a20d95a7e37a5aee269333ba6922a6b78c4a24907e94241e615203dc787"
+x86_64-linux  = "8fd3c70172355b64410fbdd6798f8934aecf2469dc746f0c193374122069aa32"
+
+[size]
+aarch64-linux = 63596749
+x86_64-linux  = 64478262
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/trelby/trelby/master/LICENSE"
+to     = "LICENSE"
+blake3 = "8eb21ea94748f3f4ad2ca255daecd39a3ede68935fd8a5a31401e5478f8c2695"
+sha256 = "df84246204e3c54cd24aebbc23714235f5fc41d754d53b65444a2afbf070130f"

@@ -1,0 +1,23 @@
+version = "10.2.3-68"
+
+[url]
+x86_64-linux  = "https://github.com/tonistiigi/binfmt/releases/download/deploy/v10.2.3-68/binfmt_linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/tonistiigi/binfmt/releases/download/deploy/v10.2.3-68/binfmt_linux-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "5bb892401f475e76e6821fa0ddd064fb295418bfcaf8d93a56a416d63133f886"
+aarch64-linux = "7cbc50b071163e6ac5b122370eed470e556f6cfa703e839bd40c8039caa25c27"
+
+[sha256]
+x86_64-linux  = "9f955e980acb29986365766db7d36383a1dbbf2159f30b532a74474f6f5dd75d"
+aarch64-linux = "f34d842ae7df0018c1e66ff06066da6c66c41e9e6788caa76916a07250286ac0"
+
+[size]
+x86_64-linux  = 2460995
+aarch64-linux = 2302247
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/tonistiigi/binfmt/master/LICENSE"
+to     = "LICENSE"
+blake3 = "2ff84f07889ea741296b3e30b8e6aad015842552a5d5b8bc02c17373db07b831"
+sha256 = "bba3332a1e2ec03031b587452cd9254bd7ab6ec701aef20b12e642f47f423dd6"

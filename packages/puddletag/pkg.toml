@@ -1,0 +1,29 @@
+[pkg]
+name        = "puddletag"
+type        = "appimage"
+description = "Audio tag editor"
+homepage    = [
+  "https://docs.puddletag.net",
+  "https://github.com/pkgforge-dev/puddletag-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Audio", "Utility"]
+repology   = ["puddletag"]
+provides   = ["puddletag"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/puddletag-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/puddletag-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/puddletag/puddletag/refs/heads/master/LICENSE"
+to  = "LICENSE"

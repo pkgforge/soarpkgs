@@ -1,0 +1,23 @@
+version = "1.5.5.r0.g455b88e-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/dhewm3-AppImage/releases/download/1.5.5.r0.g455b88e-1%402026-07-22_1784722575/Dhewm3-1.5.5.r0.g455b88e-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/dhewm3-AppImage/releases/download/1.5.5.r0.g455b88e-1%402026-07-22_1784722575/Dhewm3-1.5.5.r0.g455b88e-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "298550341395937f2445f86a076d4bddac852a3f9401a1473f16c78535b8e127"
+aarch64-linux = "f961369dbfc7145fdb9696de2ffca4e4ac1aa2ffc6198ac1343ffbbb004fea66"
+
+[sha256]
+x86_64-linux  = "60d5b0e37b7238241ca03866a9c2e1e511edef60d93bdf8ce826e59626543498"
+aarch64-linux = "99981c2870727cbe72e1c4efc39454ba6b9cf91aa3ca2f9af325c15c47826a40"
+
+[size]
+x86_64-linux  = 29223386
+aarch64-linux = 29248843
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dhewm/dhewm3/master/COPYING.txt"
+to     = "LICENSE"
+blake3 = "12aa4e196e71d1ff8acc36b4261db439500464dc885efb29e3f40d603ae21860"
+sha256 = "f83520e077c35722a56889cd54da8e46105e31278f8f97fa39318957e865c5c7"

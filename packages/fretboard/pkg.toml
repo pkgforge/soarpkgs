@@ -1,0 +1,26 @@
+[pkg]
+name        = "fretboard"
+type        = "appimage"
+description = "Look up guitar chords"
+homepage    = ["https://github.com/bragefuglseth/fretboard"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Audio", "Education", "Music"]
+repology    = ["fretboard"]
+provides    = ["fretboard"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Fretboard-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Fretboard-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/bragefuglseth/fretboard/refs/heads/main/COPYING"
+to  = "LICENSE"

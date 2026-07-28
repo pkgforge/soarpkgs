@@ -1,0 +1,28 @@
+[pkg]
+name        = "fx"
+type        = "static"
+description = "Terminal JSON viewer & processor"
+homepage    = ["https://fx.wtf"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["fx"]
+provides    = ["fx"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy = "github-releases"
+repo     = "antonmedv/fx"
+
+[source]
+url = "https://github.com/antonmedv/fx/releases/download/${version}/fx_linux_${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/antonmedv/fx/master/LICENSE"
+to  = "LICENSE"

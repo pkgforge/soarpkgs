@@ -1,0 +1,23 @@
+version = "1.5-1"
+
+[url]
+aarch64-linux = "https://github.com/pkgforge-dev/SuperTuxKart-AppImage-Enhanced/releases/download/1.5-1%402026-07-01_1782914677/SuperTuxKart-1.5-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/SuperTuxKart-AppImage-Enhanced/releases/download/1.5-1%402026-07-01_1782914677/SuperTuxKart-1.5-1-anylinux-x86_64.AppImage"
+
+[blake3]
+aarch64-linux = "8c5e7e8bd1660b8ad81473553d3179d95d3496fa04835a7ca066d92300d3e2b7"
+x86_64-linux  = "7b7770ced1cedebbaf3f2c82453489687e28f9acd919fdac699dff7143da9876"
+
+[sha256]
+aarch64-linux = "1983cec080f10a6e511e8e8adc212956c085ca28eb469a97cd12ee4dd6b0d36a"
+x86_64-linux  = "2f7c99f26a3e46f015fd8debbfcaadc60f6ed5b682f61a634424a06babb86bd7"
+
+[size]
+aarch64-linux = 709186102
+x86_64-linux  = 708234628
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/supertuxkart/stk-code/refs/heads/master/COPYING"
+to     = "LICENSE"
+blake3 = "9ec2894b1afa467e09a2784665172794b85abecdc4ff39b804a87852592063b4"
+sha256 = "d27207a5213f746aac53893e9ecc18456e9595d3ffa662bd1ec9eb10787c214a"

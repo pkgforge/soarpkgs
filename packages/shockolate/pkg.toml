@@ -1,0 +1,26 @@
+[pkg]
+name        = "shockolate"
+type        = "appimage"
+description = "Minimalist cross-platform System Shock source port"
+homepage    = ["https://github.com/Interrupt/systemshock"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame", "RolePlaying"]
+repology    = ["shockolate"]
+provides    = ["shockolate"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Shockolate-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Shockolate-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Interrupt/systemshock/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,25 @@
+[pkg]
+name        = "iris"
+type        = "appimage"
+description = "Sony PlayStation 2 emulator for Windows, Linux and macOS"
+homepage    = ["https://github.com/allkern/iris"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Emulator"]
+provides    = ["iris"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Iris-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Iris-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/allkern/iris/master/LICENSE"
+to  = "LICENSE"

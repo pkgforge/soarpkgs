@@ -1,0 +1,29 @@
+[pkg]
+name        = "veracrypt"
+type        = "appimage"
+description = "Disk encryption software"
+homepage    = [
+  "https://www.veracrypt.fr",
+  "https://github.com/pkgforge-dev/VeraCrypt-AppImage",
+]
+license    = ["Apache-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Security", "Utility"]
+repology   = ["veracrypt"]
+provides   = ["veracrypt"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/VeraCrypt-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/VeraCrypt-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/veracrypt/VeraCrypt/refs/heads/master/License.txt"
+to  = "LICENSE"

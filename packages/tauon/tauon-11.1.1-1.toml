@@ -1,0 +1,19 @@
+version = "11.1.1-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Tauon-AppImage/releases/download/11.1.1-1%402026-07-22_1784722515/Tauon-11.1.1-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "3c37255daf90c4d75dfc2327e533e507cf7a7ae7309424ec0f2b796f3c39aa07"
+
+[sha256]
+x86_64-linux = "7003dffe4fa537459273184ff8f155f69f0a649492882461038856b784e0484d"
+
+[size]
+x86_64-linux = 96789359
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Taiko2k/Tauon/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

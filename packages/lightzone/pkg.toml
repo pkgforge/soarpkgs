@@ -1,0 +1,26 @@
+[pkg]
+name        = "lightzone"
+type        = "appimage"
+description = "Open-source professional-grade digital photo editor and darkroom software"
+homepage    = ["http://lightzoneproject.org", "https://github.com/ktgw0316/LightZone"]
+license     = ["BSD-3-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Photography", "RasterGraphics"]
+repology    = ["lightzone"]
+provides    = ["lightzone"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/LightZone-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/LightZone-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ktgw0316/LightZone/master/COPYING"
+to  = "LICENSE"

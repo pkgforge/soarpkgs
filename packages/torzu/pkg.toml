@@ -1,0 +1,23 @@
+[pkg]
+name        = "torzu"
+type        = "appimage"
+description = "Nintendo Switch emulator"
+homepage    = ["https://github.com/litucks/torzu"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "Game"]
+repology    = ["torzu"]
+provides    = ["torzu"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Torzu-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Torzu-AppImage"
+glob   = "*${arch}*.appimage"

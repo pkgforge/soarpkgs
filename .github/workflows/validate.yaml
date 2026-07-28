@@ -1,0 +1,105 @@
+name: Validate
+
+on:
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install sbuild
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-$(uname -m)-linux" \
+            -o /usr/local/bin/sbuild
+          chmod +x /usr/local/bin/sbuild
+          sbuild --version
+
+      # Validates the whole tree, not just changed files. It is cheap (no
+      # network, no downloads) and a change to one package can invalidate
+      # another, so there is no reason to check a subset.
+      - name: Validate tree
+        run: sbuild validate
+
+      # Downloading is only worth it for what changed, but for those the
+      # archive is the only place a wrong install path shows up.
+      - name: Audit changed packages against their archives
+        if: github.event_name == 'pull_request'
+        env:
+          # Asking the API which files changed avoids fetching history the
+          # checkout does not have: it is shallow, so a base..head range has
+          # no merge base to resolve against.
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          # The files API paginates; `gh pr diff` caps at 300 files and
+          # errors past it, which on this repository means auditing nothing.
+          files=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
+                    --paginate --jq '.[].filename')
+          changed=$(printf '%s\n' "$files" \
+                     | { grep '^packages/' || true; } \
+                     | cut -d/ -f2 | sort -u | tr '\n' ' ')
+          if [ -z "$changed" ]; then
+            echo "No package changes."
+            exit 0
+          fi
+          echo "Auditing: $changed"
+          sbuild audit . $changed
+
+      # Every pinned URL must resolve to the artifact its hash describes.
+      # Only checked for changed packages, since it costs a request each.
+      - name: Check changed URLs resolve
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          UA: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36'
+        run: |
+          set -uo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
+            --paginate --jq '.[].filename' \
+            | { grep -E '^packages/.*\.toml$' || true; } > changed.txt
+          if [ ! -s changed.txt ]; then
+            echo "No package changes."
+            exit 0
+          fi
+
+          fail=0
+          while read -r f; do
+            [ -n "$f" ] || continue
+            # A pkg.toml source URL is a template the bot expands, so it is
+            # not a fetchable address; only the literal ones are checked.
+            grep -oE 'https?://[^" )]+' "$f" | grep -v '\${' | while read -r url; do
+              # Hosts disagree about what they will answer: some refuse HEAD,
+              # some refuse curl's own agent, and GitLab refuses a browser
+              # agent it does not believe. Escalate rather than assume, and
+              # stop at the first that answers.
+              code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 --retry 2 --retry-connrefused -I "$url" || true)
+              if [ "$code" != "200" ]; then
+                code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 --retry 2 --retry-connrefused "$url" || true)
+              fi
+              if [ "$code" != "200" ]; then
+                code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 --retry 2 --retry-connrefused \
+                         -A "$UA" "$url" || true)
+              fi
+              case "$code" in
+                200) echo "  ok  $code  $url" ;;
+                # Only these mean the thing is gone. A 403 or a timeout means
+                # the check was blocked, which says nothing about the link.
+                404|410)
+                  echo "::error file=$f::$url returned HTTP $code"
+                  exit 1 ;;
+                *) echo "::warning file=$f::$url returned HTTP $code (not checked)" ;;
+              esac
+            done || fail=1
+          done < changed.txt
+          exit $fail

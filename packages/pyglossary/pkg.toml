@@ -1,0 +1,26 @@
+[pkg]
+name        = "pyglossary"
+type        = "appimage"
+description = "Tool for converting dictionary files and glossaries between various formats"
+homepage    = ["https://github.com/ilius/pyglossary"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Education", "Office"]
+repology    = ["pyglossary"]
+provides    = ["pyglossary"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PyGlossary-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PyGlossary-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ilius/pyglossary/master/LICENSE"
+to  = "LICENSE"

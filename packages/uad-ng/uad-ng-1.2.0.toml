@@ -1,0 +1,19 @@
+version = "1.2.0"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/uad-ng-AppImage/releases/download/v1.2.0%402026-07-01_1782909263/Universal_Android_Debloater_Next_Generation-v1.2.0-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "46708d821485812d9b9361c9de5194d6b647222004ffe62c30d2de79891b9aa8"
+
+[sha256]
+x86_64-linux = "3ddbc2d9b842ea3c2422fe5f43cc982217a2d2dc5680251868bd065650a0c709"
+
+[size]
+x86_64-linux = 32593559
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/refs/heads/main/LICENSE"
+to     = "LICENSE"
+blake3 = "2152d4ac03f654642d407d3421f3e711a0d41d860476131ac6dd9e1d6dfdf438"
+sha256 = "5434217a8ec1b97c3f421a5b291bb5b1ef3afd23d63c044bed9f6ac4b9f66df8"

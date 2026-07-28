@@ -1,0 +1,26 @@
+[pkg]
+name        = "gapless"
+type        = "appimage"
+description = "Light-weight music player with gapless playback"
+homepage    = ["https://github.com/neithern/g4music"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Audio", "Music", "Player"]
+repology    = ["gapless"]
+provides    = ["gapless"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gapless-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gapless-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/neithern/g4music/-/raw/master/COPYING"
+to  = "LICENSE"

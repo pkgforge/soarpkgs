@@ -1,0 +1,26 @@
+[pkg]
+name        = "ghostty"
+type        = "appimage"
+description = "Fast, native, feature-rich terminal emulator pushing modern features"
+homepage    = ["https://ghostty.org", "https://github.com/ghostty-org/ghostty"]
+license     = ["MIT"]
+maintainer  = ["psadi (https://github.com/psadi)"]
+category    = ["TerminalEmulator"]
+repology    = ["ghostty"]
+provides    = ["ghostty"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/ghostty-appimage"
+strip-prefix = "v"
+
+[source]
+github = "pkgforge-dev/ghostty-appimage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://github.com/ghostty-org/ghostty/raw/918ccdba5cc65ccd1fb48a54c71306d869299441/LICENSE"
+to  = "LICENSE"

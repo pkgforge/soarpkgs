@@ -1,0 +1,23 @@
+version = "1e6bf41f5"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/WhatsDesk-AppImage/releases/download/1e6bf41f5%402026-07-22_1784722383/whatsdesk-1e6bf41f5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/WhatsDesk-AppImage/releases/download/1e6bf41f5%402026-07-22_1784722383/whatsdesk-1e6bf41f5-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "0077e270695eb68f87e057afda57af38306937df91b0d0c9d5df6526394fc977"
+x86_64-linux  = "85d8f929c1f835fcfedf637d2987e76e5925f145079df963e2cf1b6a07440217"
+
+[sha256]
+aarch64-linux = "603ab3fe37c5032079a95696faa6995311f592dcaab22567a785543120afaac2"
+x86_64-linux  = "7dd5ba6cf8e2cdb97f7e30ce0574a9d2d28d88b3d5171e98d27b437d4a55525d"
+
+[size]
+aarch64-linux = 135054113
+x86_64-linux  = 136493066
+
+[[extra]]
+url    = "https://gitlab.com/zerkc/whatsdesk/-/raw/master/LICENSE"
+to     = "LICENSE"
+blake3 = "f4090cba4deeaa364b878086806b36119ab588aa4fdeabf58d0526462f58dbde"
+sha256 = "38f8c3d94c9497be761fc95f10d3c530a693bae33fa89d5ce29fe1fac45e3aea"

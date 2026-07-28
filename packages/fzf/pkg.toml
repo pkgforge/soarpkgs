@@ -1,0 +1,33 @@
+[pkg]
+name        = "fzf"
+type        = "static"
+description = "A command-line fuzzy finder"
+homepage    = ["https://github.com/junegunn/fzf"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["fzf"]
+provides    = ["fzf"]
+
+[host]
+supported = ["aarch64-linux", "x86_64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "junegunn/fzf"
+strip-prefix = "v"
+
+[source]
+github  = "junegunn/fzf"
+glob    = "*linux_${arch}.tar.gz"
+
+[source.install]
+"fzf" = "fzf"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/junegunn/fzf/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,28 @@
+[pkg]
+name        = "procs"
+type        = "static"
+description = "A modern replacement for ps written in Rust"
+homepage    = ["https://github.com/dalance/procs"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Monitor", "System"]
+repology    = ["procs"]
+provides    = ["procs"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "dalance/procs"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/dalance/procs/releases/download/v${version}/procs-v${version}-${arch}-linux.zip"
+
+[source.install]
+"procs" = "procs"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dalance/procs/master/LICENSE"
+to  = "LICENSE"

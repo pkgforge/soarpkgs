@@ -1,0 +1,26 @@
+[pkg]
+name        = "scrcpy"
+type        = "appimage"
+description = "Display and control Android devices"
+homepage    = ["https://github.com/Genymobile/scrcpy"]
+license     = ["Apache-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Network", "Utility"]
+repology    = ["scrcpy"]
+provides    = ["scrcpy"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/scrcpy-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/scrcpy-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Genymobile/scrcpy/refs/heads/master/LICENSE"
+to  = "LICENSE"

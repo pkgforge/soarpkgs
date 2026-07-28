@@ -1,0 +1,29 @@
+[pkg]
+name        = "httpx"
+type        = "static"
+description = "Fast and multi-purpose HTTP toolkit"
+homepage    = ["https://github.com/projectdiscovery/httpx"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Security"]
+repology    = ["httpx"]
+provides    = ["httpx"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "projectdiscovery/httpx"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/projectdiscovery/httpx/releases/download/v${version}/httpx_${version}_linux_${arch}.zip"
+
+[source.install]
+"httpx"      = "httpx"
+"LICENSE.md" = "LICENSE"

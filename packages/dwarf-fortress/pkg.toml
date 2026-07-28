@@ -1,0 +1,22 @@
+[pkg]
+name        = "dwarf-fortress"
+type        = "appimage"
+description = "Single-player fantasy construction and management roguelike by Bay 12 Games"
+homepage    = ["https://www.bay12games.com/dwarves/"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "StrategyGame", "RolePlaying"]
+repology    = ["dwarf-fortress"]
+provides    = ["dwarf-fortress"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Dwarf-Fortress-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Dwarf-Fortress-AppImage"
+glob   = "*${arch}*.appimage"

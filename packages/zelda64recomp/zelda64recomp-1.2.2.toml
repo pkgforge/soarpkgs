@@ -1,0 +1,23 @@
+version = "1.2.2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Zelda64Recomp-AppImage/releases/download/1.2.2%402026-07-22_1784721902/Zelda_64_Recompiled-1.2.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Zelda64Recomp-AppImage/releases/download/1.2.2%402026-07-22_1784721902/Zelda_64_Recompiled-1.2.2-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "40d1e9f2f0e0cc5e3d9139c3b42dc6e984ef0cf166216e9d8eb8db993639b614"
+x86_64-linux  = "a21fd7c6d51485ef5d009805a6d3a6e7921dce042412d8ae3c76d386dc275820"
+
+[sha256]
+aarch64-linux = "fb55fbc6667618b3d2b806f8db0cc2aca627c010612bf5c21d2a0f05bb5fa764"
+x86_64-linux  = "5f3153aa61369a409f180f84be5778c44eeaf928d74a69e62c718b6a2de865ae"
+
+[size]
+aarch64-linux = 51334503
+x86_64-linux  = 51055526
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Zelda64Recomp/Zelda64Recomp/dev/COPYING"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

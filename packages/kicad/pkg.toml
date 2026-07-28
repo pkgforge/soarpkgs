@@ -1,0 +1,26 @@
+[pkg]
+name        = "kicad"
+type        = "appimage"
+description = "Electronic design automation suite"
+homepage    = ["https://www.kicad.org", "https://github.com/pkgforge-dev/KiCad-AppImage"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Electronics", "Science"]
+repology    = ["kicad"]
+provides    = ["kicad"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KiCad-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KiCad-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/kicad/code/kicad/-/raw/master/LICENSE"
+to  = "LICENSE"

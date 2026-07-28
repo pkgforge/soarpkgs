@@ -1,0 +1,26 @@
+[pkg]
+name        = "kronos"
+type        = "appimage"
+description = "Sega Saturn emulator"
+homepage    = ["https://github.com/FCare/Kronos"]
+license     = ["GPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "Game"]
+repology    = ["kronos"]
+provides    = ["kronos"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Kronos-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Kronos-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FCare/Kronos/refs/heads/extui-align/yabause/COPYING"
+to  = "LICENSE"

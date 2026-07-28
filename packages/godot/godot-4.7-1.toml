@@ -1,0 +1,19 @@
+version = "4.7-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Godot-AppImage/releases/download/4.7-1%402026-07-01_1782914826/Godot_Engine-4.7-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "1362f4b023d21fc77b4fdf3b717dae8ab78df58a6ca282a6e79522ceaf4fed3d"
+
+[sha256]
+x86_64-linux = "41aa811186cb1f510bc3e2d31e5b6fc8fd98fbe8965fa3eb9384c31d819956d7"
+
+[size]
+x86_64-linux = 108738245
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/godotengine/godot/master/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "8c2a43c83174100aa378378c48dbd82d5237ef34b1d48cf0cc4c5113a8d5dd0a"
+sha256 = "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80"

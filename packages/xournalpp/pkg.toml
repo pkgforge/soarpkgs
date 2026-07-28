@@ -1,0 +1,26 @@
+[pkg]
+name        = "xournalpp"
+type        = "appimage"
+description = "Handwriting notetaking software with PDF annotation support"
+homepage    = ["https://xournalpp.github.io", "https://github.com/xournalpp/xournalpp"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Graphics", "Utility"]
+repology    = ["xournalpp"]
+provides    = ["xournalpp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/xournalpp-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/xournalpp-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/xournalpp/xournalpp/master/LICENSE"
+to  = "LICENSE"

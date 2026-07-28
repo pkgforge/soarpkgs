@@ -1,0 +1,26 @@
+[pkg]
+name        = "fooyin"
+type        = "appimage"
+description = "A customisable Qt music player for Linux"
+homepage    = ["https://fooyin.org", "https://github.com/fooyin/fooyin"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Music", "Player"]
+repology    = ["fooyin"]
+provides    = ["fooyin"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/fooyin-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/fooyin-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/fooyin/fooyin/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,19 @@
+version = "e6bac4672"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/ZSNES-AppImage/releases/download/e6bac4672%402026-07-22_1784722471/ZSNES-e6bac4672-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "e8d09e4d06bd7084c9e588793459a86d98dcb293f0899f4e2e840167d832724c"
+
+[sha256]
+x86_64-linux = "998d5230ddafcb5fac978e8587aba22a31e8d7155c706f5d2c0475189f23e048"
+
+[size]
+x86_64-linux = 82844888
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xyproto/zsnes/main/COPYING"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

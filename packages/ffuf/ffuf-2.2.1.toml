@@ -1,0 +1,17 @@
+version = "2.2.1"
+
+[url]
+x86_64-linux  = "https://github.com/ffuf/ffuf/releases/download/v2.2.1/ffuf_2.2.1_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/ffuf/ffuf/releases/download/v2.2.1/ffuf_2.2.1_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "f9757b76ce11b1187822a0b5a66ac85942445f0325bb5edc78fe075d605c0451"
+aarch64-linux = "3f5931eeb93fc5a40e88019e5d2bb8766122ef6cff220840649852ec68a195a9"
+
+[sha256]
+x86_64-linux  = "86307885810d3c36ba4a3e9ba5178c2d9027bba0dd7f4ea39e39e7c972b62396"
+aarch64-linux = "89ad4f50345e6a9a48ecc8d241811d582cedf96279276b48d666b12b31260484"
+
+[size]
+x86_64-linux  = 4078669
+aarch64-linux = 3709316

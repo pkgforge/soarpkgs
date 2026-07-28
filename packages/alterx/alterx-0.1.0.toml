@@ -1,0 +1,17 @@
+version = "0.1.0"
+
+[url]
+x86_64-linux  = "https://github.com/projectdiscovery/alterx/releases/download/v0.1.0/alterx_0.1.0_linux_amd64.zip"
+aarch64-linux = "https://github.com/projectdiscovery/alterx/releases/download/v0.1.0/alterx_0.1.0_linux_arm64.zip"
+
+[blake3]
+x86_64-linux  = "cecf7b2efd7d6ae11512b76176f537b00425d674ca1cf2c1a9a1a5d6778381c3"
+aarch64-linux = "ba31805864cbb22c92d426deba8e93b15bef755405dcd23eaf40bb74a8357c8f"
+
+[sha256]
+x86_64-linux  = "ffae5b25138cb27b58900b9b5849e02d0390385fce404252d32e469f2a0e97ac"
+aarch64-linux = "14dfdaebfee0ecce559afacf62e9e15e9f8aa7dd8a2a659d9e0b3bc2dbb4419f"
+
+[size]
+x86_64-linux  = 7227762
+aarch64-linux = 6620229

@@ -1,0 +1,25 @@
+[pkg]
+name        = "prey2006"
+type        = "appimage"
+description = "Prey 2006 SDK integrated with the Doom 3 GPL engine release"
+homepage    = ["https://github.com/FriskTheFallenHuman/Prey2006"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame", "Shooter"]
+provides    = ["prey2006"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Prey2006-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Prey2006-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FriskTheFallenHuman/Prey2006/main/.github/COPYING.txt"
+to  = "LICENSE"

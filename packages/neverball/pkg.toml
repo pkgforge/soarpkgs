@@ -1,0 +1,26 @@
+[pkg]
+name        = "neverball"
+type        = "appimage"
+description = "Tilt the floor to roll a ball through obstacle courses before time runs out"
+homepage    = ["https://neverball.org", "https://github.com/Neverball/neverball"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["neverball"]
+provides    = ["neverball"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Neverball-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Neverball-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Neverball/neverball/master/LICENSE.md"
+to  = "LICENSE"

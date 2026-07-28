@@ -1,0 +1,26 @@
+[pkg]
+name        = "pavucontrol-qt"
+type        = "appimage"
+description = "Qt port of volume control pavucontrol for PulseAudio"
+homepage    = ["https://github.com/lxqt/pavucontrol-qt"]
+license     = ["GPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Audio", "Mixer"]
+repology    = ["pavucontrol-qt"]
+provides    = ["pavucontrol-qt"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/pavucontrol-qt-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/pavucontrol-qt-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/lxqt/pavucontrol-qt/master/LICENSE"
+to  = "LICENSE"

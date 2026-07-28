@@ -1,0 +1,23 @@
+version = "0.3.0-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Cubyz-AppImage/releases/download/0.3.0-1%402026-07-22_1784721726/Cubyz-0.3.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Cubyz-AppImage/releases/download/0.3.0-1%402026-07-22_1784721726/Cubyz-0.3.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "9414bd47e493861efa5446be1f4fc34aa70fecfb527e0f6eebbcdcd022d530c0"
+aarch64-linux = "451fe94f5bd7d903d8bc78bbe0ac68f6cee674683039cabf7f362c8d059107ff"
+
+[sha256]
+x86_64-linux  = "e4d7141160d7d82b151dfbffa36dabce7bcbac76b13656e1c87e6489a33c8cc0"
+aarch64-linux = "56b3bb6d728de1db361cd3fe63fcd5c2581f945ee2bac67b86b2e5a6b2e29d49"
+
+[size]
+x86_64-linux  = 135532820
+aarch64-linux = 136762630
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/PixelGuys/Cubyz/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

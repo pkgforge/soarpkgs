@@ -1,0 +1,29 @@
+[pkg]
+name        = "tutanota-desktop-enhanced"
+type        = "appimage"
+description = "Secure email client"
+homepage    = [
+  "https://tutanota.com",
+  "https://github.com/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced",
+]
+license    = ["GPL-3.0"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["Email", "Network"]
+repology   = ["tutanota-desktop-enhanced"]
+provides   = ["tutanota-desktop-enhanced"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/tutao/tutanota/refs/heads/master/LICENSE.txt"
+to  = "LICENSE"

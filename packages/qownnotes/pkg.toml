@@ -1,0 +1,24 @@
+[pkg]
+name        = "qownnotes"
+type        = "appimage"
+description = "Plain-text file markdown note taking with Nextcloud/ownCloud integration"
+homepage    = ["https://www.qownnotes.org", "https://github.com/pbek/QOwnNotes"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["TextEditor", "Utility"]
+repology    = ["qownnotes"]
+provides    = ["qownnotes"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/QOwnNotes-AppImage"
+
+[source]
+url = "https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/${version}/QOwnNotes-${version}-anylinux-${arch}.AppImage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pbek/QOwnNotes/main/LICENSE"
+to  = "LICENSE"

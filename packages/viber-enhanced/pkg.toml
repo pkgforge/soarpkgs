@@ -1,0 +1,29 @@
+[pkg]
+name        = "viber-enhanced"
+type        = "appimage"
+description = "Free calls and messages"
+homepage    = [
+  "https://www.viber.com",
+  "https://github.com/pkgforge-dev/Viber-AppImage-Enhanced",
+]
+license    = ["Proprietary"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["InstantMessaging", "Network"]
+repology   = ["viber-enhanced"]
+provides   = ["viber-enhanced"]
+note        = [
+  "Terms of service: https://www.viber.com/en/terms/viber-terms-use/",
+]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Viber-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Viber-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+

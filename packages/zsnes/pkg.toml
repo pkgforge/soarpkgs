@@ -1,0 +1,26 @@
+[pkg]
+name        = "zsnes"
+type        = "appimage"
+description = "A maintained fork of ZSNES, a Super Nintendo (SNES) emulator"
+homepage    = ["https://www.zsnes.com", "https://github.com/xyproto/zsnes"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["zsnes"]
+provides    = ["zsnes"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ZSNES-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ZSNES-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/xyproto/zsnes/main/COPYING"
+to  = "LICENSE"

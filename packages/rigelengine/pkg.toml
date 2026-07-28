@@ -1,0 +1,26 @@
+[pkg]
+name        = "rigelengine"
+type        = "appimage"
+description = "A modern re-implementation of the classic DOS game Duke Nukem II"
+homepage    = ["https://github.com/lethal-guitar/RigelEngine"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["rigelengine"]
+provides    = ["rigelengine"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/RigelEngine-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/RigelEngine-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/lethal-guitar/RigelEngine/master/LICENSE.md"
+to  = "LICENSE"

@@ -1,0 +1,22 @@
+[pkg]
+name        = "asunder"
+type        = "appimage"
+description = "Graphical Audio CD ripper and encoder for Linux"
+homepage    = ["http://littlesvr.ca/asunder/"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "AudioVideo"]
+repology    = ["asunder"]
+provides    = ["asunder"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Asunder-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Asunder-AppImage"
+glob   = "*${arch}*.appimage"

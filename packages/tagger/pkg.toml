@@ -1,0 +1,26 @@
+[pkg]
+name        = "tagger"
+type        = "appimage"
+description = "Music tag editor"
+homepage    = ["https://github.com/nlogozzo/NickvisionTagger"]
+license     = ["MIT"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Audio", "Utility"]
+repology    = ["tagger"]
+provides    = ["tagger"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Tagger-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Tagger-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/NickvisionApps/Tagger/refs/heads/main/LICENSE"
+to  = "LICENSE"

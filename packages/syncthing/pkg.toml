@@ -1,0 +1,30 @@
+[pkg]
+name        = "syncthing"
+type        = "static"
+description = "Open Source Continuous File Synchronization"
+homepage    = ["https://syncthing.net"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Filesystem", "FileTransfer"]
+repology    = ["syncthing"]
+provides    = ["syncthing"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "syncthing/syncthing"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/syncthing/syncthing/releases/download/v${version}/syncthing-linux-${arch}-v${version}.tar.gz"
+
+[source.install]
+"*/syncthing"                              = "syncthing"
+"*/LICENSE.txt"                            = "LICENSE"
+"*/etc/linux-desktop/syncthing-ui.desktop" = "syncthing-ui.desktop"

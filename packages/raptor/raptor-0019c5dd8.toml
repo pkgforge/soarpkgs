@@ -1,0 +1,23 @@
+version = "0019c5dd8"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Raptor-AppImage/releases/download/0019c5dd8%402026-07-22_1784722391/Raptor-0019c5dd8-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Raptor-AppImage/releases/download/0019c5dd8%402026-07-22_1784722391/Raptor-0019c5dd8-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "d0a3a71a48941657692fa88f328851fcd1d6538c714f8529d0e99ff7bb8f837d"
+x86_64-linux  = "608e9e1bfc2206d7591edbf7c658e6fafdacca4c6c76dc0c6d23aa9974c53e27"
+
+[sha256]
+aarch64-linux = "458125f0848d67cddbcca2b4027f2471dda0f2b02e7b199d6daa00f313f9f2b5"
+x86_64-linux  = "bccab5a5180bb8354aa25d735832243eae68f07d13504f50253a2b6106c11266"
+
+[size]
+aarch64-linux = 19295852
+x86_64-linux  = 19945523
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/skynettx/raptor/master/LICENSE"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

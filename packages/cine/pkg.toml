@@ -1,0 +1,27 @@
+[pkg]
+name        = "cine"
+type        = "appimage"
+description = "MPV-based video player for Linux"
+homepage    = ["https://github.com/diegopvlk/Cine"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Video", "AudioVideo"]
+repology    = ["cine"]
+provides    = ["cine"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Cine-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Cine-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/diegopvlk/Cine/main/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+[pkg]
+name        = "wipeout-rewrite"
+type        = "appimage"
+description = "A re-implementation of the 1995 PSX game wipEout"
+homepage    = ["https://github.com/phoboslab/wipeout-rewrite"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["wipeout-rewrite"]
+provides    = ["wipeout-rewrite"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/wipEout-Rewrite-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/wipEout-Rewrite-AppImage"
+glob   = "*${arch}*.appimage"

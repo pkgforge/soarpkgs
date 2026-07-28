@@ -1,0 +1,31 @@
+[pkg]
+name        = "lf"
+type        = "static"
+description = "Terminal file manager"
+homepage    = ["https://github.com/gokcehan/lf"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileManager", "Utility"]
+repology    = ["lf"]
+provides    = ["lf"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy = "github-releases"
+repo     = "gokcehan/lf"
+
+[source]
+url     = "https://github.com/gokcehan/lf/releases/download/${version}/lf-linux-${arch}.tar.gz"
+
+[source.install]
+"lf" = "lf"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/gokcehan/lf/master/LICENSE"
+to  = "LICENSE"

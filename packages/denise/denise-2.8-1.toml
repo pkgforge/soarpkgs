@@ -1,0 +1,23 @@
+version = "2.8-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Denise-AppImage/releases/download/2.8-1%402026-07-22_1784722189/Denise-2.8-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Denise-AppImage/releases/download/2.8-1%402026-07-22_1784722189/Denise-2.8-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "40bc8b65d071f0a96962ec0203350c3dbdc37b2ee00bb667aafed0264e82681b"
+aarch64-linux = "1af2fb8bacae8f7cfd7543e55ce11085f77b499241b7e454bbbf136739a1060f"
+
+[sha256]
+x86_64-linux  = "7affbfeb3200b7c0a2bc9545a565c0a99c5eb907ecf2fba75fd7692ff158a28d"
+aarch64-linux = "095c8332583ceaabf2e9c5c0ade956d3b701d220d0ba1f148044e30deabe627a"
+
+[size]
+x86_64-linux  = 39799720
+aarch64-linux = 39876434
+
+[[extra]]
+url    = "https://bitbucket.org/piciji/denise/raw/master/licence.md"
+to     = "LICENSE"
+blake3 = "68962da5ff6afadbb90956cdf05c33e6d81e133634072d4b7df02a33e0bd6922"
+sha256 = "05771c123ec1712fbbe0d6aa43a6a539bb438411096a8ed2d9b70b39b784008f"

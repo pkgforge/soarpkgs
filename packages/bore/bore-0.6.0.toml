@@ -1,0 +1,23 @@
+version = "0.6.0"
+
+[url]
+x86_64-linux  = "https://github.com/ekzhang/bore/releases/download/v0.6.0/bore-v0.6.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/ekzhang/bore/releases/download/v0.6.0/bore-v0.6.0-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "fb6a384b0c3d37c95a2504abac5a57c137a3b3c1eb0aadc9073b334c72307ed8"
+aarch64-linux = "13f6e1dfefd047fe94a5402215c01e548d08927e48872b6a847e714ebb102a9d"
+
+[sha256]
+x86_64-linux  = "e484d1e3acba77169b773f31a5bfb34192d4b660f44a094a658a2522cd2270f7"
+aarch64-linux = "ffc4515f3617420b243758cf36ed6a63208d7dba76b2ec3e90d1f476a9742951"
+
+[size]
+x86_64-linux  = 1097869
+aarch64-linux = 1073405
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ekzhang/bore/master/LICENSE"
+to     = "LICENSE"
+blake3 = "be6ea7ce04976e39e6898089a9b7ceb4d1b2d2a0f348255fec0683de21421d08"
+sha256 = "0f0671ef3955721e9003a45f11920a2d8c45d2d08dcb3414b874aa88a1390dc2"

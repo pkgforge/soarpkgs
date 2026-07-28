@@ -1,0 +1,28 @@
+[pkg]
+name        = "bandwhich"
+type        = "static"
+description = "Terminal bandwidth utilization tool"
+homepage    = ["https://github.com/imsnif/bandwhich"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Monitor", "Network"]
+repology    = ["bandwhich"]
+provides    = ["bandwhich"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "imsnif/bandwhich"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/imsnif/bandwhich/releases/download/v${version}/bandwhich-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"bandwhich" = "bandwhich"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/imsnif/bandwhich/main/LICENSE.md"
+to  = "LICENSE"

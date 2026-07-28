@@ -1,0 +1,41 @@
+name: Broken Package
+description: Report a package that does not install or does not work
+title: "broken: <name>"
+labels: ["broken"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Package
+      placeholder: ripgrep
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens
+      description: >
+        What you ran and what it did. Paste the error if there is one.
+      placeholder: |
+        $ soar install ripgrep
+        ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: soar version
+      description: Output of `soar --version`.
+      placeholder: soar-cli 0.12.7
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Before opening
+      options:
+        - label: The same thing fails when I download the artifact from upstream directly, OR it works there and only fails through soar
+          required: false

@@ -1,0 +1,19 @@
+version = "1.26.24-3"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/VeraCrypt-AppImage/releases/download/1.26.24-3%402026-07-22_1784722260/VeraCrypt-1.26.24-3-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "792d54749ea27f446c8c28efc628e835f70801796eb077a58d3d15b30107badd"
+
+[sha256]
+x86_64-linux = "167df17fe81863a0b09357189da22c944cc534fecc3d72c0c9eb096a607e2918"
+
+[size]
+x86_64-linux = 33110451
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/veracrypt/VeraCrypt/refs/heads/master/License.txt"
+to     = "LICENSE"
+blake3 = "79d31103fcb64ff31a346d2a30fe394fbbbb60c9887ff9a482e814df3ef82e63"
+sha256 = "a57c81748a85c12a26bafd3d7e397374ea0f5ea39de1bfcb942d39398416aa5f"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "opengothic"
+type        = "appimage"
+description = "Open-source reimplementation of the Gothic 1/2 game engine"
+homepage    = ["https://github.com/Try/opengothic"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying", "AdventureGame"]
+repology    = ["opengothic"]
+provides    = ["opengothic"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenGothic-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenGothic-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Try/opengothic/master/LICENSE"
+to  = "LICENSE"
