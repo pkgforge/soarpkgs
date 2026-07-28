@@ -55,8 +55,10 @@ jobs:
           echo "Auditing: $changed"
           sbuild audit . $changed
 
-      # Every pinned URL must resolve to the artifact its hash describes.
-      # Only checked for changed packages, since it costs a request each.
+      # Only the pinned artifact URLs are checked. Those live on forges that
+      # answer reliably, and a broken one breaks installs. Homepages sit on
+      # project sites that routinely refuse CI runners outright, so checking
+      # them here produces warnings nobody can act on.
       - name: Check changed URLs resolve
         if: github.event_name == 'pull_request'
         env:
@@ -67,7 +69,7 @@ jobs:
           set -uo pipefail
           gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
             --paginate --jq '.[].filename' \
-            | { grep -E '^packages/.*\.toml$' || true; } > changed.txt
+            | { grep -E '^packages/[^/]+/[^/]+-[^/]+\.toml$' || true; } > changed.txt
           if [ ! -s changed.txt ]; then
             echo "No package changes."
             exit 0
@@ -76,8 +78,6 @@ jobs:
           fail=0
           while read -r f; do
             [ -n "$f" ] || continue
-            # A pkg.toml source URL is a template the bot expands, so it is
-            # not a fetchable address; only the literal ones are checked.
             grep -oE 'https?://[^" )]+' "$f" | grep -v '\${' | while read -r url; do
               # Hosts disagree about what they will answer: some refuse HEAD,
               # some refuse curl's own agent, and GitLab refuses a browser
