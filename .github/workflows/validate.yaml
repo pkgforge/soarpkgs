@@ -34,12 +34,20 @@ jobs:
       - name: Audit changed packages against their archives
         if: github.event_name == 'pull_request'
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          # Asking the API which files changed avoids fetching history the
+          # checkout does not have: it is shallow, so a base..head range has
+          # no merge base to resolve against.
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
-          changed=$(git diff --diff-filter=ACMR --name-only "${BASE_SHA}...${HEAD_SHA}" \
-                     -- 'packages/**' | cut -d/ -f2 | sort -u | tr '\n' ' ')
+          # The files API paginates; `gh pr diff` caps at 300 files and
+          # errors past it, which on this repository means auditing nothing.
+          files=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
+                    --paginate --jq '.[].filename')
+          changed=$(printf '%s\n' "$files" \
+                     | { grep '^packages/' || true; } \
+                     | cut -d/ -f2 | sort -u | tr '\n' ' ')
           if [ -z "$changed" ]; then
             echo "No package changes."
             exit 0
@@ -52,12 +60,13 @@ jobs:
       - name: Check changed URLs resolve
         if: github.event_name == 'pull_request'
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
         run: |
           set -uo pipefail
-          git diff --diff-filter=ACMR --name-only "${BASE_SHA}...${HEAD_SHA}" \
-            -- 'packages/**/*.toml' > changed.txt || true
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
+            --paginate --jq '.[].filename' \
+            | { grep -E '^packages/.*\.toml$' || true; } > changed.txt
           if [ ! -s changed.txt ]; then
             echo "No package changes."
             exit 0
