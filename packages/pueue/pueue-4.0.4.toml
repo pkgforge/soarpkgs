@@ -21,3 +21,17 @@ url    = "https://raw.githubusercontent.com/Nukesor/pueue/main/LICENSE.MIT"
 to     = "LICENSE"
 blake3 = "a5eb25c3d497e0293851e4f4d6b0eaaf46385d9c50ba1858d73bda95758bae87"
 sha256 = "468daf7701048c1d511b211b64ae8d75a90240d557fbe247c9f59db8c0b7e6a6"
+
+[[extra]]
+url    = "https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueued-aarch64-unknown-linux-musl"
+to     = "pueued"
+host   = "aarch64-linux"
+blake3 = "5fb45697ca0f57fa353367905b748e322c4ee489b062c190bddf29ab27af9fb1"
+sha256 = "332c5ef74270b64aeaf04894c8c04826f3422eb7d50dbd1a8e0706d74a42f653"
+
+[[extra]]
+url    = "https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueued-x86_64-unknown-linux-musl"
+to     = "pueued"
+host   = "x86_64-linux"
+blake3 = "63fead7ccbdd423aa237db6ce2d960b0a9dc4b41418c6a15ac958c8c5466714b"
+sha256 = "5afeff6adbafb909e8d54e2caff158e6966c2adffa2c09e60fd631cc51b60390"
