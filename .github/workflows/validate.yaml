@@ -79,14 +79,17 @@ jobs:
             # A pkg.toml source URL is a template the bot expands, so it is
             # not a fetchable address; only the literal ones are checked.
             grep -oE 'https?://[^" )]+' "$f" | grep -v '\${' | while read -r url; do
-              code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 \
-                       -A "$UA" -I "$url" || echo 000)
-              # Plenty of hosts refuse HEAD, or refuse it only for bots, and
-              # answer a GET perfectly well. Retrying keeps a live homepage
-              # from failing the build.
+              # Hosts disagree about what they will answer: some refuse HEAD,
+              # some refuse curl's own agent, and GitLab refuses a browser
+              # agent it does not believe. Escalate rather than assume, and
+              # stop at the first that answers.
+              code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 --retry 2 --retry-connrefused -I "$url" || true)
               if [ "$code" != "200" ]; then
-                code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 \
-                         -A "$UA" "$url" || echo 000)
+                code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 --retry 2 --retry-connrefused "$url" || true)
+              fi
+              if [ "$code" != "200" ]; then
+                code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 60 --retry 2 --retry-connrefused \
+                         -A "$UA" "$url" || true)
               fi
               case "$code" in
                 200) echo "  ok  $code  $url" ;;
