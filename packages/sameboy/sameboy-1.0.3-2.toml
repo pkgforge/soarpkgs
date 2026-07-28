@@ -1,0 +1,23 @@
+version = "1.0.3-2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SameBoy-AppImage/releases/download/1.0.3-2%402026-07-22_1784722522/SameBoy-1.0.3-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SameBoy-AppImage/releases/download/1.0.3-2%402026-07-22_1784722522/SameBoy-1.0.3-2-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "d056288e239c2561dfd360753d06b25714a9b965d4d76802501d5c8478d5c541"
+x86_64-linux  = "6555a53347fa2e841af3819acf30cc6b5be72cdcf12408b817d8e9bd15c9631d"
+
+[sha256]
+aarch64-linux = "9052ffc56bf664f50c0de6e8116e4381cb051b6ed48e0ff0882c2af108f1a36d"
+x86_64-linux  = "9d54b68bd6df0d488bd1b804dda3dd3eb882b85715748bfbab9538686cf26dd3"
+
+[size]
+aarch64-linux = 19957522
+x86_64-linux  = 20711811
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/LIJI32/SameBoy/master/LICENSE"
+to     = "LICENSE"
+blake3 = "c1e1022a0bf1ad77d687c8f7e6e07ac307bc3febc7bec28d155362dea9585731"
+sha256 = "875b2c940181c315fa99ce5292326b985a43cdc4e878b38995066d6b495ff151"

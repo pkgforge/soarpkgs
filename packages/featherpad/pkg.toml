@@ -1,0 +1,26 @@
+[pkg]
+name        = "featherpad"
+type        = "appimage"
+description = "Lightweight Qt plain-text editor with syntax highlighting and session support"
+homepage    = ["https://github.com/tsujan/FeatherPad"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "TextEditor"]
+repology    = ["featherpad"]
+provides    = ["featherpad"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/FeatherPad-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/FeatherPad-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/tsujan/FeatherPad/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "3.1.2"
+
+[url]
+x86_64-linux  = "https://github.com/sigstore/cosign/releases/download/v3.1.2/cosign-linux-amd64"
+aarch64-linux = "https://github.com/sigstore/cosign/releases/download/v3.1.2/cosign-linux-arm64"
+
+[blake3]
+x86_64-linux  = "4f60532d1fac188c7dcf73ad3b2c631090bb3df46222bc33c255e04ffbc4b4fb"
+aarch64-linux = "b1ec1b0cd8d01dd8a9c1b3c45a5e5daf6b24ed205ce63613226a770cf3dd37a6"
+
+[sha256]
+x86_64-linux  = "f7622ed3cf22e55e1ae6377c080979ff77a22da9981c11df222a2e444991e7cf"
+aarch64-linux = "90e7ae0b5dfd60f20816b52c012addf7fc055ebcc7bea4ce81c428ca8518c302"
+
+[size]
+x86_64-linux  = 141150460
+aarch64-linux = 132737437
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/sigstore/cosign/main/LICENSE"
+to     = "LICENSE"
+blake3 = "3833fc3c91a379ff509b431db1f7fd40dea69a6614249f420ec62398957087b1"
+sha256 = "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"

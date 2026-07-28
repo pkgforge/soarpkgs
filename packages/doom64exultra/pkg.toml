@@ -1,0 +1,26 @@
+[pkg]
+name        = "doom64exultra"
+type        = "appimage"
+description = "Fork of Doom64EX+ source port of Doom 64 with new features and fixes"
+homepage    = ["https://github.com/StevenSYS/DOOM64EXUltra"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+provides    = ["doom64exultra"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DOOM64EXUltra-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DOOM64EXUltra-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/StevenSYS/DOOM64EXUltra/main/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,24 @@
+[pkg]
+name        = "amp"
+type        = "static"
+description = "A complete text editor for your terminal"
+homepage    = ["https://amp.rs"]
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "TextEditor"]
+repology    = ["amp"]
+provides    = ["amp"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "jmacdonald/amp"
+
+[source]
+url = "https://github.com/jmacdonald/amp/releases/download/${version}/amp-${arch}-unknown-linux-musl"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/jmacdonald/amp/main/LICENSE"
+to  = "LICENSE"

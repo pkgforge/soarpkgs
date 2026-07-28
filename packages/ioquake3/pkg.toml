@@ -1,0 +1,27 @@
+[pkg]
+name        = "ioquake3"
+type        = "appimage"
+description = "Community source port continuing id's Quake III Arena engine"
+homepage    = ["https://ioquake3.org/", "https://github.com/ioquake/ioq3"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["ioquake3"]
+provides    = ["ioquake3"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ioquake3-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ioquake3-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ioquake/ioq3/main/COPYING.txt"
+to  = "LICENSE"

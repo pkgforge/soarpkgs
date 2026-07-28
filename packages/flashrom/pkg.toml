@@ -1,0 +1,26 @@
+[pkg]
+name        = "flashrom"
+type        = "appimage"
+description = "Utility for detecting, reading, writing, verifying and erasing flash chips"
+homepage    = ["https://flashrom.org", "https://github.com/flashrom/flashrom"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "System", "Electronics"]
+repology    = ["flashrom"]
+provides    = ["flashrom"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Flashrom-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Flashrom-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/flashrom/flashrom/main/COPYING.rst"
+to  = "LICENSE"

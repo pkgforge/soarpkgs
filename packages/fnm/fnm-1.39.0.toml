@@ -1,0 +1,23 @@
+version = "1.39.0"
+
+[url]
+x86_64-linux  = "https://github.com/Schniz/fnm/releases/download/v1.39.0/fnm-linux.zip"
+aarch64-linux = "https://github.com/Schniz/fnm/releases/download/v1.39.0/fnm-arm64.zip"
+
+[blake3]
+aarch64-linux = "71339ab5205a699f802dc06c8557c66249a362293fdb8992bab595c2ebcf6eb1"
+x86_64-linux  = "6af1ce1842c386ccb78f8d7ca738f84beb9544e9ddca6b875add55524a7a1107"
+
+[sha256]
+aarch64-linux = "4eaff58b2c5bf30d0934027572dd0b5bbb60d2a1af309230b53662d4b1d45599"
+x86_64-linux  = "7807664f39d39fc518da1c35ba0181e4b3267603c4b1dedeb4b5fc6ae440a224"
+
+[size]
+aarch64-linux = 3685524
+x86_64-linux  = 3360953
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Schniz/fnm/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

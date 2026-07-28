@@ -1,0 +1,23 @@
+version = "1.58.0"
+
+[url]
+x86_64-linux  = "https://github.com/Canop/broot/releases/download/v1.58.0/broot_1.58.0.zip"
+aarch64-linux = "https://github.com/Canop/broot/releases/download/v1.58.0/broot_1.58.0.zip"
+
+[blake3]
+x86_64-linux  = "776076224c3e33a07989ad05de9350f947e6d188dd731b5d7f67db9f41af4958"
+aarch64-linux = "776076224c3e33a07989ad05de9350f947e6d188dd731b5d7f67db9f41af4958"
+
+[sha256]
+x86_64-linux  = "590068b6c3dba327b91bf6509d55fdf1bc67eccef6961ef2f47977c5e4be5507"
+aarch64-linux = "590068b6c3dba327b91bf6509d55fdf1bc67eccef6961ef2f47977c5e4be5507"
+
+[size]
+x86_64-linux  = 58799509
+aarch64-linux = 58799509
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Canop/broot/main/LICENSE"
+to     = "LICENSE"
+blake3 = "6c3688d9a2e6d3807c3fadc2c28c605b620f0bc5f66e9d353696b96037df4cf4"
+sha256 = "89461664ce2aee7d80ea8fba7118fe7abd490d76ba435cf1d81d3128e060711f"

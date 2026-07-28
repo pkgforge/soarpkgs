@@ -1,0 +1,29 @@
+[pkg]
+name        = "mini-vmac"
+type        = "appimage"
+description = "Emulator of early Macintosh computers such as the Mac Plus and 128K"
+homepage    = [
+  "https://www.gryphel.com/c/minivmac/",
+  "https://github.com/minivmac/minivmac",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Emulator", "Game"]
+repology   = ["minivmac"]
+provides   = ["mini-vmac"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Mini-vMac-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Mini-vMac-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/minivmac/minivmac/master/COPYING.txt"
+to  = "LICENSE"

@@ -1,0 +1,21 @@
+[pkg]
+name        = "visual-studio-code"
+type        = "appimage"
+description = "Code editor with debugging, Git control and extensions by Microsoft"
+homepage    = ["https://code.visualstudio.com", "https://github.com/microsoft/vscode"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "IDE", "TextEditor"]
+provides    = ["visual-studio-code"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Visual-Studio-Code-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Visual-Studio-Code-AppImage"
+glob   = "*${arch}*.appimage"

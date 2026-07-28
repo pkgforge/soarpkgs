@@ -1,0 +1,26 @@
+[pkg]
+name        = "mgba"
+type        = "appimage"
+description = "mGBA Game Boy Advance emulator"
+homepage    = ["https://mgba.io/", "https://github.com/mgba-emu/mgba"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["mgba"]
+provides    = ["mgba"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/mGBA-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/mGBA-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mgba-emu/mgba/master/LICENSE"
+to  = "LICENSE"

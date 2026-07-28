@@ -1,0 +1,30 @@
+[pkg]
+name        = "aws-nuke"
+type        = "static"
+description = "Remove all the resources from an AWS account"
+homepage    = ["https://aws-nuke.ekristen.dev"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["aws-nuke"]
+provides    = ["aws-nuke"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "ekristen/aws-nuke"
+strip-prefix = "v"
+
+[source]
+github  = "ekristen/aws-nuke"
+glob    = "*linux-${arch}.tar.gz"
+
+[source.install]
+"aws-nuke" = "aws-nuke"
+"LICENSE"  = "LICENSE"

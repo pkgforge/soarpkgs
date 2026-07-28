@@ -1,0 +1,25 @@
+[pkg]
+name        = "dummyhttp"
+type        = "static"
+description = "Super simple HTTP server that replies a fixed body with a fixed response code"
+homepage    = ["https://github.com/svenstaro/dummyhttp"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["dummyhttp"]
+provides    = ["dummyhttp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "svenstaro/dummyhttp"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/svenstaro/dummyhttp/releases/download/v${version}/dummyhttp-${version}-${arch}-unknown-linux-musl"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/svenstaro/dummyhttp/master/LICENSE"
+to  = "LICENSE"

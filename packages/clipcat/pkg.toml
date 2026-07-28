@@ -1,0 +1,35 @@
+[pkg]
+name        = "clipcat"
+type        = "static"
+description = "A clipboard manager in Rust"
+homepage    = ["https://github.com/xrelkd/clipcat"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Utility"]
+repology    = ["clipcat"]
+provides    = ["clipcatd", "@clipcat-menu", "@clipcat-notify", "@clipcatctl"]
+
+[subpackage.clipcat]
+provides = ["clipcatd", "@clipcat-menu", "@clipcat-notify", "@clipcatctl"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "xrelkd/clipcat"
+strip-prefix = "v"
+
+[source]
+github  = "xrelkd/clipcat"
+glob    = "*${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"bin/clipcatd"       = "clipcatd"
+"bin/clipcatctl"     = "clipcatctl"
+"bin/clipcat-menu"   = "clipcat-menu"
+"bin/clipcat-notify" = "clipcat-notify"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/xrelkd/clipcat/main/LICENSE"
+to  = "LICENSE"

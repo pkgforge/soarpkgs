@@ -1,0 +1,26 @@
+[pkg]
+name        = "nsz"
+type        = "appimage"
+description = "Nintendo Switch ROM compression tool"
+homepage    = ["https://github.com/nicoboss/nsz"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Archiving", "Compression", "Utility"]
+repology    = ["nsz"]
+provides    = ["nsz"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/NSZ-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/NSZ-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/nicoboss/nsz/master/LICENSE.md"
+to  = "LICENSE"

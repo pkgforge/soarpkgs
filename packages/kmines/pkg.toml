@@ -1,0 +1,26 @@
+[pkg]
+name        = "kmines"
+type        = "appimage"
+description = "KMines is the classic Minesweeper game"
+homepage    = ["https://apps.kde.org/kmines", "https://invent.kde.org/games/kmines"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game"]
+repology    = ["kmines"]
+provides    = ["kmines"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KMines-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KMines-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/games/kmines/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"

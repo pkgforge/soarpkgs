@@ -1,0 +1,26 @@
+[pkg]
+name        = "freac"
+type        = "appimage"
+description = "Free audio converter and CD ripper supporting many formats"
+homepage    = ["https://www.freac.org/", "https://github.com/enzo1982/freac"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "AudioVideo", "Utility"]
+repology    = ["freac"]
+provides    = ["freac"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/freac-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/freac-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/enzo1982/freac/master/COPYING"
+to  = "LICENSE"

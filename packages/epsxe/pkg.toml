@@ -1,0 +1,22 @@
+[pkg]
+name        = "epsxe"
+type        = "appimage"
+description = "PlayStation emulator"
+homepage    = ["https://www.epsxe.com", "https://github.com/pkgforge-dev/ePSXe-AppImage"]
+license     = ["Proprietary"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "Game"]
+repology    = ["epsxe"]
+provides    = ["epsxe"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ePSXe-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ePSXe-AppImage"
+glob   = "*${arch}*.appimage"

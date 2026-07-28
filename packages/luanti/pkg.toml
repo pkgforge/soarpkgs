@@ -1,0 +1,26 @@
+[pkg]
+name        = "luanti"
+type        = "appimage"
+description = "Open-source voxel game engine and platform for building games"
+homepage    = ["https://www.luanti.org", "https://github.com/luanti-org/luanti"]
+license     = ["LGPL-2.1"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game"]
+repology    = ["luanti"]
+provides    = ["luanti"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Luanti-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Luanti-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/luanti-org/luanti/master/LICENSE.txt"
+to  = "LICENSE"

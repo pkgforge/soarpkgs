@@ -1,0 +1,32 @@
+[pkg]
+name        = "jq"
+type        = "static"
+description = "Lightweight and flexible command-line JSON processor"
+homepage    = ["https://jqlang.github.io/jq"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "TextTools", "Utility"]
+repology    = ["jq"]
+provides    = ["jq"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "jqlang/jq"
+strip-prefix = "jq-"
+
+[source]
+url = "https://github.com/jqlang/jq/releases/download/jq-${version}/jq-linux-${arch}"
+
+[source.install]
+"jq" = "jq"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/jqlang/jq/master/COPYING"
+to  = "LICENSE"

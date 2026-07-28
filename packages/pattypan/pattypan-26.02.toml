@@ -1,0 +1,19 @@
+version = "26.02"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Pattypan-AppImage/releases/download/v26.02%402026-05-15_1778856962/Pattypan-v26.02-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "1792beb261ad3915eb332843b3520149a83e55c40395ef48c0c560a99ca55f9a"
+
+[sha256]
+x86_64-linux = "7927739624ceeeeb08b9da8690d998f84b6decae66a28912ca5ea98c6d1eb188"
+
+[size]
+x86_64-linux = 154821154
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/yarl/pattypan/master/LICENSE"
+to     = "LICENSE"
+blake3 = "e85c7fe12383636909dbb647909188d112ebab60aed69e28854b726a8c61705f"
+sha256 = "9981763115e6e6ffd48eeaf445c58274b45cc03e595ade978f3914196439cb48"

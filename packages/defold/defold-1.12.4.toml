@@ -1,0 +1,19 @@
+version = "1.12.4"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Defold-AppImage/releases/download/1.12.4%402026-06-22_1782145707/Defold-1.12.4-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "fe46353bd915f2922d0c318a3d46f82063662bf4256ef2a0c475706f98b8ca0c"
+
+[sha256]
+x86_64-linux = "5e029581e96508e97613f792c0e82a6d97da5da3440acd60b4ac6f235a45b3c3"
+
+[size]
+x86_64-linux = 307225404
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/defold/defold/dev/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "b59a5d22baffd0961f3e3582bc1613eb0300750a1ddca13f83d63bc6b2487477"
+sha256 = "be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a"

@@ -1,0 +1,19 @@
+version = "r1891.8671c352-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/sView-AppImage/releases/download/r1891.8671c352-1%402026-07-22_1784722444/sView-r1891.8671c352-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "0c6f758cda7eecda39d789cc74365625e8cd07b778afb71f7894ae2d3ee8ac63"
+
+[sha256]
+x86_64-linux = "88afd493b9f3f8ad89485b159fdc0ce52893e73dccc6d3b239183355d9fbd1c6"
+
+[size]
+x86_64-linux = 66831334
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/gkv311/sview/refs/heads/master/LICENSE_GPL_3-0.txt"
+to     = "LICENSE"
+blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
+sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

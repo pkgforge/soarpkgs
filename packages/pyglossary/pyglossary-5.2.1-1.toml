@@ -1,0 +1,23 @@
+version = "5.2.1-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-07-22_1784722493/PyGlossary-5.2.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-07-22_1784722493/PyGlossary-5.2.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "46d2bf9c6fdfa07c6e3c655daf8a86273b52270b1926e3e93440d64f8e012c45"
+x86_64-linux  = "e0b9c27851319c6eeb668b489582dba9a70c1b01b5489b926ec2828e99bed0e9"
+
+[sha256]
+aarch64-linux = "acf288f9542fba3679fde517c1fe9af7ef54c384f7606fbbd6cd8eb7d57e3133"
+x86_64-linux  = "c194c035a4d4a20ce9521609924b899b7232fe2fce396aea3488031c3c4e31f7"
+
+[size]
+aarch64-linux = 51845827
+x86_64-linux  = 52350768
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ilius/pyglossary/master/LICENSE"
+to     = "LICENSE"
+blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
+sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

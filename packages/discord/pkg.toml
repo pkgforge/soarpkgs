@@ -1,0 +1,26 @@
+[pkg]
+name        = "discord"
+type        = "appimage"
+description = "All-in-one voice and text chat for gamers"
+homepage    = ["https://discord.com"]
+license     = ["Proprietary"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Chat", "InstantMessaging", "Network"]
+repology    = ["discord"]
+provides    = ["discord"]
+note        = [
+  "Terms of service: https://discord.com/terms",
+]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Discord-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Discord-AppImage"
+glob   = "*${arch}*.appimage"
+

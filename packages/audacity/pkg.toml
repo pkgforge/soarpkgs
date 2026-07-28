@@ -1,0 +1,26 @@
+[pkg]
+name        = "audacity"
+type        = "appimage"
+description = "Easy-to-use, multi-track audio editor and recorder"
+homepage    = ["https://www.audacityteam.org", "https://github.com/audacity/audacity"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "AudioVideoEditing", "Recorder"]
+repology    = ["audacity"]
+provides    = ["audacity"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Audacity-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Audacity-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/audacity/audacity/master/LICENSE.txt"
+to  = "LICENSE"

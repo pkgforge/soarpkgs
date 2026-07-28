@@ -1,0 +1,27 @@
+[pkg]
+name        = "audio-sharing"
+type        = "appimage"
+description = "Share audio between computers over network"
+homepage    = ["https://gitlab.gnome.org/World/AudioSharing"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Audio", "Network"]
+repology    = ["audio-sharing"]
+provides    = ["audio-sharing"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Audio-Sharing-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Audio-Sharing-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/World/AudioSharing/-/raw/main/COPYING.md"
+to  = "LICENSE"

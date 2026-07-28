@@ -1,0 +1,25 @@
+[pkg]
+name        = "genact"
+type        = "static"
+description = "A nonsense activity generator"
+homepage    = ["https://github.com/svenstaro/genact"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Amusement"]
+repology    = ["genact"]
+provides    = ["genact"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "svenstaro/genact"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/svenstaro/genact/releases/download/v${version}/genact-${version}-${arch}-unknown-linux-musl"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/svenstaro/genact/master/LICENSE"
+to  = "LICENSE"

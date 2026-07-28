@@ -1,0 +1,19 @@
+version = "50.1-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Gnome-Text-Editor-AppImage/releases/download/50.1-1%402026-07-22_1784722345/Text_Editor-50.1-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "4d3958ab702bb88c2769b64408a92c981497db56cf7acf224966fed3bb6be5c4"
+
+[sha256]
+x86_64-linux = "52b39621e6438248ecdf705ffea4b53e0847c08981f915e60dbef7d8be67e354"
+
+[size]
+x86_64-linux = 37437558
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/GNOME/gnome-text-editor/refs/heads/main/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

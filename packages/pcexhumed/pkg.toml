@@ -1,0 +1,25 @@
+[pkg]
+name        = "pcexhumed"
+type        = "appimage"
+description = "Source port of PowerSlave/Exhumed built on EDuke32 Build engine technology"
+homepage    = ["https://github.com/NBlood/NBlood"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+provides    = ["pcexhumed"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PCExhumed-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PCExhumed-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/NBlood/NBlood/master/source/exhumed/gpl-2.0.txt"
+to  = "LICENSE"

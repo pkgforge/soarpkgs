@@ -1,0 +1,26 @@
+[pkg]
+name        = "optiimage"
+type        = "appimage"
+description = "An image compressor that supports PNG, JPEG, WebP and SVG file types"
+homepage    = ["https://invent.kde.org/graphics/optiimage"]
+license     = ["LGPL-2.1-only", "LGPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Utility", "RasterGraphics"]
+repology    = ["optiimage"]
+provides    = ["optiimage"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OptiImage-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OptiImage-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/graphics/optiimage/-/raw/master/LICENSES/LGPL-2.1-only.txt"
+to  = "LICENSE"

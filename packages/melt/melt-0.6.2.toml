@@ -1,0 +1,17 @@
+version = "0.6.2"
+
+[url]
+x86_64-linux  = "https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "81e122c78d32b472a179a663a4d921e3bb808dadae5011b0e712857d1bd752e5"
+x86_64-linux  = "9c136c228b71a08c0aed0d3f685cbe6bff19aeef556bc442f6fa86878a86fb0c"
+
+[sha256]
+aarch64-linux = "12cdf4ee09b5fea8bba9388495912c19c784c844f407dddadb86e1d2b7b63acd"
+x86_64-linux  = "82f543dcade2244a86196a506a28dcd41b55d5e0be71d692d291fc4f6803ac82"
+
+[size]
+aarch64-linux = 3234056
+x86_64-linux  = 3420615

@@ -1,0 +1,29 @@
+[pkg]
+name        = "innoextract"
+type        = "appimage"
+description = "A tool to unpack installers created by Inno Setup"
+homepage    = [
+  "https://constexpr.org/innoextract",
+  "https://github.com/dscharrer/innoextract",
+]
+license    = ["Zlib"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "Archiving"]
+repology   = ["innoextract"]
+provides   = ["innoextract"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/innoextract-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/innoextract-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dscharrer/innoextract/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "1.05"
+
+[url]
+x86_64-linux  = "https://github.com/Dr-Noob/cpufetch/releases/download/v1.05/cpufetch_x86-64_linux"
+aarch64-linux = "https://github.com/Dr-Noob/cpufetch/releases/download/v1.05/cpufetch_arm64_linux"
+
+[blake3]
+x86_64-linux  = "4b9b183a901b215a43224fc56a6c3cc660d7cf9a141b350b743cd24942f37575"
+aarch64-linux = "2b77ef2632d3acc61b081c68adae97c0a73d0e28fa2f2b63707d1dbe019a31ec"
+
+[sha256]
+x86_64-linux  = "96b62a614c8da9ff63c865856f49c55ca51247353e883b261c2035973a7ed4a2"
+aarch64-linux = "6fe01b8199ca0c92e3e7ea52d6ddeacaebd8657f3a5a11afd1126afca0fa65c3"
+
+[size]
+x86_64-linux  = 1082144
+aarch64-linux = 865240
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Dr-Noob/cpufetch/master/LICENSE"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

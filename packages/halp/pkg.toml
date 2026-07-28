@@ -1,0 +1,25 @@
+[pkg]
+name        = "halp"
+type        = "static"
+description = "A CLI tool to get help with CLI tools"
+homepage    = ["https://github.com/orhun/halp"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["halp"]
+provides    = ["halp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "orhun/halp"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/orhun/halp/releases/download/v${version}/halp-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"halp-${version}/halp"        = "halp"
+"halp-${version}/LICENSE-MIT" = "LICENSE"

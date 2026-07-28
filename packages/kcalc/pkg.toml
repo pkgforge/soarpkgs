@@ -1,0 +1,26 @@
+[pkg]
+name        = "kcalc"
+type        = "appimage"
+description = "Calculator offering everything a scientific calculator does, and more"
+homepage    = ["https://apps.kde.org/kcalc", "https://invent.kde.org/utilities/kcalc"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Calculator", "Science"]
+repology    = ["kcalc"]
+provides    = ["kcalc"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KCalc-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KCalc-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/utilities/kcalc/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"

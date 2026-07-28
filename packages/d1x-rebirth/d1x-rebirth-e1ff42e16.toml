@@ -1,0 +1,23 @@
+version = "e1ff42e16"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/e1ff42e16%402026-07-22_1784722265/D1X-Rebirth-e1ff42e16-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/e1ff42e16%402026-07-22_1784722265/D1X-Rebirth-e1ff42e16-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7a6925806ae9ccdb587147b158db011bb424e0a57d44b25c0d54f6065a335e39"
+aarch64-linux = "85efec00ce39aa0d333c75961fd190427ad13a55a707f88c0a45a2b4cebb5177"
+
+[sha256]
+x86_64-linux  = "df6ea57d2e6ac10fe81c46bff7223fd153cd1130a8df1caea5d484edb32bad83"
+aarch64-linux = "acb04053f544c8727fd0c7efc3df156f3aae4d4bf261b9fcce8410fdcf851401"
+
+[size]
+x86_64-linux  = 105259602
+aarch64-linux = 104251677
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dxx-rebirth/dxx-rebirth/master/COPYING.txt"
+to     = "LICENSE"
+blake3 = "50d723dbed4280fa940211a097e14596b0b5eec32d1b9bdcdf096b3ea8cd56c4"
+sha256 = "8779af112733760366c29dfe57b29303edb5a1f61f4a2c3c831c36a065a344c5"

@@ -1,0 +1,25 @@
+[pkg]
+name        = "rednukem"
+type        = "appimage"
+description = "Source port for Duke Nukem 3D, Redneck Rampage and NAM (Build engine)"
+homepage    = ["https://github.com/NBlood/NBlood"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+provides    = ["rednukem"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Rednukem-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Rednukem-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/NBlood/NBlood/master/source/rr/gpl-2.0.txt"
+to  = "LICENSE"

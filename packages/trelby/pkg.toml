@@ -1,0 +1,26 @@
+[pkg]
+name        = "trelby"
+type        = "appimage"
+description = "Free, multiplatform, feature-rich screenwriting program"
+homepage    = ["https://www.trelby.org", "https://github.com/trelby/trelby"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "TextEditor"]
+repology    = ["trelby"]
+provides    = ["trelby"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Trelby-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Trelby-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/trelby/trelby/master/LICENSE"
+to  = "LICENSE"

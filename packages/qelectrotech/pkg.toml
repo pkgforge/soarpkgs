@@ -1,0 +1,29 @@
+[pkg]
+name        = "qelectrotech"
+type        = "appimage"
+description = "Electric diagram editor"
+homepage    = [
+  "https://qelectrotech.org",
+  "https://github.com/pkgforge-dev/QElectroTech-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Electronics", "Science"]
+repology   = ["qelectrotech"]
+provides   = ["qelectrotech"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/QElectroTech-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/QElectroTech-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "rewaita"
+type        = "appimage"
+description = "Recolor GTK4/LibAdwaita apps to popular color schemes"
+homepage    = ["https://github.com/SwordPuffin/Rewaita"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Settings", "Utility", "Graphics"]
+repology    = ["rewaita"]
+provides    = ["rewaita"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Rewaita-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Rewaita-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/SwordPuffin/Rewaita/main/COPYING"
+to  = "LICENSE"

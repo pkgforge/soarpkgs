@@ -1,0 +1,26 @@
+[pkg]
+name        = "unleashedrecomp"
+type        = "appimage"
+description = "An unofficial PC port of the Xbox 360 version of Sonic Unleashed"
+homepage    = ["https://github.com/hedge-dev/UnleashedRecomp"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["ActionGame", "Game"]
+repology    = ["unleashedrecomp"]
+provides    = ["unleashedrecomp"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/UnleashedRecomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/UnleashedRecomp-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/hedge-dev/UnleashedRecomp/refs/heads/main/COPYING"
+to  = "LICENSE"

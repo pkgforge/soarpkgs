@@ -1,0 +1,26 @@
+[pkg]
+name        = "devilutionx"
+type        = "appimage"
+description = "Diablo build for modern operating systems"
+homepage    = ["https://github.com/diasurgical/DevilutionX"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying", "ActionGame"]
+repology    = ["devilutionx"]
+provides    = ["devilutionx"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DevilutionX-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DevilutionX-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/diasurgical/DevilutionX/master/LICENSE.md"
+to  = "LICENSE"

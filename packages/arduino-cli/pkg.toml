@@ -1,0 +1,30 @@
+[pkg]
+name        = "arduino-cli"
+type        = "static"
+description = "Arduino command line interface"
+homepage    = ["https://github.com/arduino/arduino-cli"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Electronics"]
+repology    = ["arduino-cli"]
+provides    = ["arduino-cli"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "ARM64"
+x86_64  = "64bit"
+
+[update]
+strategy     = "github-releases"
+repo         = "arduino/arduino-cli"
+strip-prefix = "v"
+
+[source]
+github  = "arduino/arduino-cli"
+glob    = "*Linux_${arch}.tar.gz"
+
+[source.install]
+"arduino-cli" = "arduino-cli"
+"LICENSE.txt" = "LICENSE"

@@ -1,0 +1,28 @@
+[pkg]
+name        = "fish"
+type        = "static"
+description = "The user-friendly command line shell"
+homepage    = ["https://fishshell.com"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Shell"]
+repology    = ["fish"]
+provides    = ["fish"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "fish-shell/fish-shell"
+
+[source]
+github  = "fish-shell/fish-shell"
+glob    = "*linux-${arch}.tar.xz"
+
+[source.install]
+"*" = "."
+
+[[extra]]
+url = "https://raw.githubusercontent.com/fish-shell/fish-shell/master/COPYING"
+to  = "LICENSE"

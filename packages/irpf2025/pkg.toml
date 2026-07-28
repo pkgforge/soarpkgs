@@ -1,0 +1,24 @@
+[pkg]
+name        = "irpf2025"
+type        = "appimage"
+description = "Brazilian personal income tax (Receita Federal) declaration program for 2025"
+homepage    = [
+  "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Finance", "Office"]
+repology   = ["irpf2025"]
+provides   = ["irpf2025"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/IRPF2025-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/IRPF2025-AppImage"
+glob   = "*${arch}*.appimage"

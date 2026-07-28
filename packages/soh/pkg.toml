@@ -1,0 +1,22 @@
+[pkg]
+name        = "soh"
+type        = "appimage"
+description = "Ship of Harkinian: a PC port of The Legend of Zelda: Ocarina of Time"
+homepage    = ["https://github.com/HarbourMasters/Shipwright"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "ActionGame"]
+repology    = ["shipwright"]
+provides    = ["soh"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/soh-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/soh-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"

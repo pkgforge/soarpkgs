@@ -1,0 +1,19 @@
+version = "2026.01"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage/releases/download/2026.01%402026-07-22_1784722273/RoR-2026.01-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "9c76517a63b41e4a654d54b40c0b47a2a86cf68971a0c52884df451d2be95e95"
+
+[sha256]
+x86_64-linux = "61523df36c3abc346426ff2cfa6b6ea1c8952a8d2811e0477f05b0425240585b"
+
+[size]
+x86_64-linux = 150600225
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/RigsOfRods/rigs-of-rods/master/COPYING"
+to     = "LICENSE"
+blake3 = "04161bbc1c778f50af4e4f104a8074bf7ea951e21f15efd2ebac5385e5e42862"
+sha256 = "321429c853d59b621414832581e93ff38586c348aa2de43c7e571b33423d670a"

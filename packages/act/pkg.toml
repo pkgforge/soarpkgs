@@ -1,0 +1,28 @@
+[pkg]
+name        = "act"
+type        = "static"
+description = "Run your GitHub Actions locally"
+homepage    = ["https://nektosact.com", "https://github.com/nektos/act"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["act-github-actions"]
+provides    = ["act"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+
+[update]
+strategy     = "github-releases"
+repo         = "nektos/act"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/nektos/act/releases/download/v${version}/act_Linux_${arch}.tar.gz"
+
+[source.install]
+"act"     = "act"
+"LICENSE" = "LICENSE"

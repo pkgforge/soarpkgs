@@ -1,0 +1,25 @@
+[pkg]
+name        = "pixelpulse2"
+type        = "appimage"
+description = "Oscilloscope and logic analyzer application"
+homepage    = ["https://github.com/analogdevicesinc/pixelpulse2"]
+license     = ["MPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Electronics", "Science"]
+repology    = ["pixelpulse2"]
+provides    = ["pixelpulse2"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/Pixelpulse2-AppImage"
+
+[source]
+github = "pkgforge-dev/Pixelpulse2-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/analogdevicesinc/Pixelpulse2/refs/heads/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,22 @@
+[pkg]
+name        = "kega-fusion"
+type        = "appimage"
+description = "Emulator for classic Sega consoles (Genesis, Master System, Game Gear, SegaCD, 32X)"
+homepage    = ["https://www.carpeludum.com/kega-fusion/"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["kega-fusion"]
+provides    = ["kega-fusion"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Kega-Fusion-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Kega-Fusion-AppImage"
+glob   = "*${arch}*.appimage"

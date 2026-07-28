@@ -1,0 +1,26 @@
+[pkg]
+name        = "eyedropper"
+type        = "appimage"
+description = "Pick and format colors"
+homepage    = ["https://github.com/FineFindus/eyedropper"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Graphics", "Utility"]
+repology    = ["eyedropper"]
+provides    = ["eyedropper"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Eyedropper-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Eyedropper-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FineFindus/eyedropper/refs/heads/main/LICENSE"
+to  = "LICENSE"

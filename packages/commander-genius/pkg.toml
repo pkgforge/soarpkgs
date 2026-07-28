@@ -1,0 +1,29 @@
+[pkg]
+name        = "commander-genius"
+type        = "appimage"
+description = "Modern interpreter for the Commander Keen games"
+homepage    = [
+  "https://clonekeenplus.sourceforge.io/",
+  "https://gitlab.com/Dringgstein/Commander-Genius",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "AdventureGame", "ArcadeGame"]
+repology   = ["commandergenius"]
+provides   = ["commander-genius"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Commander-Genius-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Commander-Genius-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/Dringgstein/Commander-Genius/-/raw/master/LICENSE"
+to  = "LICENSE"

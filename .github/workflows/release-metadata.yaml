@@ -55,18 +55,17 @@ jobs:
           }
           chmod +x /usr/local/bin/soar
 
+      # Pure function: tree in, index out. No network, no build state.
       - name: Generate metadata
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p /tmp/output
 
-          sbuild meta generate \
-            -a "${{ matrix.arch }}" \
-            -r ./packages/ \
-            -o /tmp/output/metadata.json \
+          sbuild meta \
+            --arch "${{ matrix.arch }}" \
+            --output /tmp/output/metadata.json \
             || {
-            echo "::warning::metadata generation failed or no packages found"
+            echo "::error::metadata generation failed"
+            exit 1
           }
 
           if [ -f "/tmp/output/metadata.json" ]; then

@@ -1,0 +1,27 @@
+[pkg]
+name        = "rofi"
+type        = "appimage"
+description = "Window switcher, run dialog and dmenu replacement"
+homepage    = ["https://github.com/davatorium/rofi"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["System", "Utility"]
+repology    = ["rofi"]
+provides    = ["rofi"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/rofi-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/rofi-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/davatorium/rofi/next/COPYING"
+to  = "LICENSE"

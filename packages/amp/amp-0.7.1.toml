@@ -1,0 +1,19 @@
+version = "0.7.1"
+
+[url]
+x86_64-linux = "https://github.com/jmacdonald/amp/releases/download/0.7.1/amp-x86_64-unknown-linux-musl"
+
+[blake3]
+x86_64-linux = "bbd60704cf71690418bb0d5fda04e0f9e5649a358821044c224248a1792c18d2"
+
+[sha256]
+x86_64-linux = "b9d3a1fcbdc683ce680a7c7f4f36570ba6772329fe02232a517659fecab56db3"
+
+[size]
+x86_64-linux = 8373152
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/jmacdonald/amp/main/LICENSE"
+to     = "LICENSE"
+blake3 = "e791e88ec6505398f81c131f53e9124d3e7adb26ce7a6555d38e1c083696152b"
+sha256 = "3590d46a5adacf8f603aa7566d3a14d4d0cee7acdf8aa1887d7e212372938e89"

@@ -1,0 +1,24 @@
+[pkg]
+name        = "intermodal"
+type        = "static"
+description = "A user-friendly and featureful command-line BitTorrent metainfo utility"
+homepage    = ["https://github.com/casey/intermodal"]
+license     = ["CC0-1.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["intermodal"]
+provides    = ["imdl"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "casey/intermodal"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/casey/intermodal/releases/download/v${version}/imdl-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"imdl" = "imdl"

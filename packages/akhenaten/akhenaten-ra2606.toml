@@ -1,0 +1,23 @@
+version = "ra2606"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Akhenaten-AppImage/releases/download/ra2606%402026-07-22_1784721925/Akhenaten-ra2606-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Akhenaten-AppImage/releases/download/ra2606%402026-07-22_1784721925/Akhenaten-ra2606-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c69375986dd3976ceef504cb803983310843e66fee1a9aa2d24abd8a472073fd"
+aarch64-linux = "ae630469f26a887e3b66881ad6758a30298fc1500dcf6e09f2e51b05c2d29f8c"
+
+[sha256]
+x86_64-linux  = "6a3c1f72e87ae9048fc3c5c40b53b20315e712c69c397c1a0fd56bbd1c10ef77"
+aarch64-linux = "ffed72070f1139a5ab59bd182ee9644fb93bd6021c4e5e2d3214664890bfaed5"
+
+[size]
+x86_64-linux  = 39085498
+aarch64-linux = 39171205
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dalerank/Akhenaten/refs/heads/master/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "ca0292789c0a0ecba706f4b3f3493007a9951731c1d432c52c4aac1f1abba8ef"
+sha256 = "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"

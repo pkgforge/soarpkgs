@@ -1,0 +1,26 @@
+[pkg]
+name        = "opencode-enhanced"
+type        = "appimage"
+description = "Open source code editor"
+homepage    = ["https://github.com/VSCodium/vscodium"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Development", "IDE", "TextEditor"]
+repology    = ["opencode-enhanced"]
+provides    = ["opencode-enhanced"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/opencode-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/opencode-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/anomalyco/opencode/refs/heads/dev/LICENSE"
+to  = "LICENSE"

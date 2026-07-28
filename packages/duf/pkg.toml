@@ -1,0 +1,32 @@
+[pkg]
+name        = "duf"
+type        = "static"
+description = "Disk Usage/Free Utility - a better 'df' alternative"
+homepage    = ["https://github.com/muesli/duf"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Filesystem", "Utility"]
+repology    = ["duf"]
+provides    = ["duf"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "muesli/duf"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/muesli/duf/releases/download/v${version}/duf_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"duf" = "duf"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/muesli/duf/master/LICENSE"
+to  = "LICENSE"

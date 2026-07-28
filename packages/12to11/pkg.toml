@@ -1,0 +1,26 @@
+[pkg]
+name        = "12to11"
+type        = "appimage"
+description = "Tool for running Wayland applications on an X server"
+homepage    = ["https://git.linuxping.win/12to11/12to11"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["System", "Utility"]
+provides    = ["12to11"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/12to11-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/12to11-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://git.linuxping.win/12to11/12to11/raw/branch/master/COPYING"
+to  = "LICENSE"

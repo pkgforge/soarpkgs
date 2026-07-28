@@ -1,0 +1,27 @@
+[pkg]
+name        = "eduke32"
+type        = "appimage"
+description = "Advanced source port of Duke Nukem 3D"
+homepage    = ["https://www.eduke32.com", "https://voidpoint.io/terminx/eduke32"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["eduke32"]
+provides    = ["eduke32"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/EDuke32-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/EDuke32-AppImage"
+glob   = "*${arch}*.appimage"
+
+# upstream host rate-limits; canonical GPL text is identical
+[[extra]]
+license = "GPL-2.0"
+to      = "LICENSE"

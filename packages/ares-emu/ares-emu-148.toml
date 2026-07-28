@@ -1,0 +1,23 @@
+version = "148"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ares-emu-appimage/releases/download/v148%402026-06-15_1781529274/ares-v148-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ares-emu-appimage/releases/download/v148%402026-06-15_1781529274/ares-v148-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "53b8954bc8e845bd6c84935e8c3b29323da734b01b770d73215f9ea7a5b04caf"
+aarch64-linux = "3d2095b74bc647e624210accba819352f079adbedd371d437f79593291b99f34"
+
+[sha256]
+x86_64-linux  = "cc7ac8d2c643afd6701c12a15aeae010512da112c95b0f1e5e830ca3de0ff919"
+aarch64-linux = "6a1be49d6ab65fe9a9a0b0e0fce27398cdcdf3212019ea0ef20065982ea60e92"
+
+[size]
+x86_64-linux  = 90835908
+aarch64-linux = 87676996
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ares-emulator/ares/refs/heads/master/LICENSE"
+to     = "LICENSE"
+blake3 = "e1dc6b238a35e3208e9105082b791f4415ddd4f655eff359983e10a25dd53573"
+sha256 = "a1053dec5f15ee7c851abf7716634344b9d5740b414bf5893802f9910fdc7a97"

@@ -1,0 +1,19 @@
+version = "2.14.2"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Stirling-PDF-AppImage/releases/download/v2.14.2%402026-07-22_1784722078/Stirling-PDF-v2.14.2-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "674afc4cd129f447e3d16d72debd283c90d95cb69fe971ba3ed60bc0d6b74642"
+
+[sha256]
+x86_64-linux = "84bb2383a46efa8c4407e353788b00d8204e0fbac6f5b0006e65cefca75a9dad"
+
+[size]
+x86_64-linux = 344670963
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/refs/heads/main/LICENSE"
+to     = "LICENSE"
+blake3 = "e03fc7a1b4cda9fc7a8e1f8170493b6139f0e499d9dc4a9331ad532cdc1d90ed"
+sha256 = "0f8255f64436045a3302d6c37b0c9b9e984e172938bbb0445b4613db3c05c8a5"

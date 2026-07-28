@@ -1,0 +1,29 @@
+[pkg]
+name        = "filelight"
+type        = "appimage"
+description = "Visualize disk usage"
+homepage    = [
+  "https://apps.kde.org/filelight",
+  "https://github.com/pkgforge-dev/Filelight-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["FileTools", "Utility"]
+repology   = ["filelight"]
+provides   = ["filelight"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Filelight-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Filelight-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KDE/filelight/refs/heads/master/LICENSES/GPL-3.0-only.txt"
+to  = "LICENSE"

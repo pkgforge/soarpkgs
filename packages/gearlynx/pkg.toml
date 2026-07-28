@@ -1,0 +1,26 @@
+[pkg]
+name        = "gearlynx"
+type        = "appimage"
+description = "Atari Lynx emulator and debugger"
+homepage    = ["https://github.com/drhelius/Gearlynx"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["gearlynx"]
+provides    = ["gearlynx"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gearlynx-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gearlynx-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/drhelius/Gearlynx/main/LICENSE"
+to  = "LICENSE"

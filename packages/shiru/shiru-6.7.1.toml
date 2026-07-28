@@ -1,0 +1,19 @@
+version = "6.7.1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Shiru-AppImage/releases/download/v6.7.1%402026-07-01_1782914161/Shiru-v6.7.1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "a6dd5d2168053ab18c933b5b2ebf47d5106d076f6c3ef6f2ce608c670bafe92d"
+
+[sha256]
+x86_64-linux = "bf21904e1947f917c422dde4227eb57d587e10f4bf5e8a36cce6f55edc5045e6"
+
+[size]
+x86_64-linux = 157530460
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/licenses/GPL-3.0.txt"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

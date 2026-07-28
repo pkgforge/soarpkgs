@@ -1,0 +1,28 @@
+[pkg]
+name        = "feroxbuster"
+type        = "static"
+description = "Fast, simple, recursive content discovery tool written in Rust"
+homepage    = ["https://github.com/epi052/feroxbuster"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Security"]
+repology    = ["feroxbuster"]
+provides    = ["feroxbuster"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "epi052/feroxbuster"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/epi052/feroxbuster/releases/download/v${version}/x86_64-linux-feroxbuster.tar.gz"
+
+[source.install]
+"feroxbuster" = "feroxbuster"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/epi052/feroxbuster/main/LICENSE"
+to  = "LICENSE"

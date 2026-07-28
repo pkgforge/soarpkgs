@@ -1,0 +1,29 @@
+[pkg]
+name        = "7zip"
+type        = "static"
+description = "File archiver with a high compression ratio"
+homepage    = ["https://7-zip.org", "https://github.com/ip7z/7zip"]
+license     = ["LGPL-2.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Archiving", "Compression", "Utility"]
+repology    = ["7zip"]
+provides    = ["7zip=>7z"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x64"
+
+[update]
+strategy = "github-releases"
+repo     = "ip7z/7zip"
+
+[source]
+github  = "ip7z/7zip"
+glob    = "*linux-${arch}*.tar.xz"
+
+[source.install]
+"7zzs"        = "7z"
+"License.txt" = "LICENSE"

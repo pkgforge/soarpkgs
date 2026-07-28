@@ -1,0 +1,26 @@
+[pkg]
+name        = "openxray"
+type        = "appimage"
+description = "Improved version of the X-Ray Engine from the S.T.A.L.K.E.R. game series"
+homepage    = ["https://github.com/OpenXRay/xray-16"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["openxray"]
+provides    = ["openxray"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenXRay-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenXRay-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OpenXRay/xray-16/dev/License.txt"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "749b030-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/tachoparser-AppImage/releases/download/749b030-1%402026-07-22_1784722370/tachoparser-749b030-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/tachoparser-AppImage/releases/download/749b030-1%402026-07-22_1784722370/tachoparser-749b030-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "528676496e03b5608255ee68eacd0c795e7e420e2e62a581de51b5679e245f1f"
+x86_64-linux  = "218ba10c9a2aa22d7f298917eabc6efeb1da512d7a155bf74c310a4c2f6d9f49"
+
+[sha256]
+aarch64-linux = "f3b64e8610234252da351f279bcab16f3ac708567643482812e1964da9637ddd"
+x86_64-linux  = "e4db51678aad6ceb44d6792c91aa6b0ccf07c0449fe6832737cbda24c0d7d2f4"
+
+[size]
+aarch64-linux = 11600496
+x86_64-linux  = 11972571
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/traconiq/tachoparser/refs/heads/main/LICENSE.md"
+to     = "LICENSE"
+blake3 = "12ed459a28357c896647c36525767c123d2db17325ab5250a17e65b4147e1559"
+sha256 = "00352ab19865e23bb0ab7e0f45332206aba6a66d75b3f3cc962fdd6508d63ea4"

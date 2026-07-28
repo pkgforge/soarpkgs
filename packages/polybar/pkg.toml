@@ -1,0 +1,29 @@
+[pkg]
+name        = "polybar"
+type        = "appimage"
+description = "Fast and easy-to-use status bar"
+homepage    = [
+  "https://polybar.github.io",
+  "https://github.com/pkgforge-dev/polybar-AppImage",
+]
+license    = ["MIT"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["System", "Utility"]
+repology   = ["polybar"]
+provides   = ["polybar"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/polybar-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/polybar-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/polybar/polybar/refs/heads/master/LICENSE"
+to  = "LICENSE"

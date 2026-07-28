@@ -1,0 +1,26 @@
+[pkg]
+name        = "orcaslicer"
+type        = "appimage"
+description = "Open source slicer for FDM 3D printers, forked from Bambu Studio"
+homepage    = ["https://github.com/OrcaSlicer/OrcaSlicer"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["3DGraphics", "Utility"]
+repology    = ["orcaslicer"]
+provides    = ["orcaslicer"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OrcaSlicer-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OrcaSlicer-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/OrcaSlicer/OrcaSlicer/refs/heads/main/LICENSE.txt"
+to  = "LICENSE"

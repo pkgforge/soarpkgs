@@ -1,0 +1,29 @@
+[pkg]
+name        = "cosign"
+type        = "static"
+description = "Code signing and transparency for containers and binaries"
+homepage    = ["https://github.com/sigstore/cosign"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Security", "Utility"]
+repology    = ["cosign"]
+provides    = ["cosign"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "sigstore/cosign"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/sigstore/cosign/releases/download/v${version}/cosign-linux-${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/sigstore/cosign/main/LICENSE"
+to  = "LICENSE"

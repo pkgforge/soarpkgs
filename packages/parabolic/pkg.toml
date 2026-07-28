@@ -1,0 +1,26 @@
+[pkg]
+name        = "parabolic"
+type        = "appimage"
+description = "Download web video and audio"
+homepage    = ["https://github.com/NickvisionApps/Parabolic"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "AudioVideo", "Video"]
+repology    = ["parabolic"]
+provides    = ["parabolic"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Parabolic-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Parabolic-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/NickvisionApps/Parabolic/main/LICENSE"
+to  = "LICENSE"

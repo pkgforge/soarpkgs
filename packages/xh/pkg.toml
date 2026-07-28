@@ -1,0 +1,25 @@
+[pkg]
+name        = "xh"
+type        = "static"
+description = "Friendly and fast tool for sending HTTP requests"
+homepage    = ["https://github.com/ducaale/xh"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["xh"]
+provides    = ["xh"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "ducaale/xh"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/ducaale/xh/releases/download/v${version}/xh-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"xh-v${version}-${arch}-unknown-linux-musl/xh"      = "xh"
+"xh-v${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"

@@ -1,0 +1,28 @@
+[pkg]
+name        = "dufs"
+type        = "static"
+description = "A file server that supports static serving, uploading, searching, accessing control, webdav"
+homepage    = ["https://github.com/sigoden/dufs"]
+license     = ["Apache-2.0", "MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["dufs"]
+provides    = ["dufs"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "sigoden/dufs"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/sigoden/dufs/releases/download/v${version}/dufs-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"dufs" = "dufs"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/sigoden/dufs/main/LICENSE-MIT"
+to  = "LICENSE"

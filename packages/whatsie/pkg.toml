@@ -1,0 +1,26 @@
+[pkg]
+name        = "whatsie"
+type        = "appimage"
+description = "Fast lightweight WhatsApp client based on Qt WebEngine"
+homepage    = ["https://github.com/keshavbhatt/whatsie"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["whatsie"]
+provides    = ["whatsie"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/WhatSie-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/WhatSie-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/keshavbhatt/whatsie/main/LICENSE"
+to  = "LICENSE"

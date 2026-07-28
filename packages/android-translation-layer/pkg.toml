@@ -1,0 +1,28 @@
+[pkg]
+name        = "android-translation-layer"
+type        = "appimage"
+description = "Android Translation Layer - Run Android apps on Linux"
+homepage    = ["https://github.com/android-translation-layer/android_translation_layer"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "System"]
+repology    = ["android-translation-layer"]
+provides    = ["android-translation-layer"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/android_translation_layer-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/android_translation_layer-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/android_translation_layer/android_translation_layer/-/raw/master/LICENSE.txt"
+to  = "LICENSE"

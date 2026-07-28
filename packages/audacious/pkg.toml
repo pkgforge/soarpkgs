@@ -1,0 +1,29 @@
+[pkg]
+name        = "audacious"
+type        = "appimage"
+description = "Lightweight and versatile audio player"
+homepage    = [
+  "https://audacious-media-player.org",
+  "https://github.com/audacious-media-player/audacious",
+]
+license    = ["BSD-2-Clause"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Audio", "AudioVideo", "Player"]
+repology   = ["audacious"]
+provides   = ["audacious"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Audacious-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Audacious-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/audacious-media-player/audacious/refs/heads/master/COPYING"
+to  = "LICENSE"

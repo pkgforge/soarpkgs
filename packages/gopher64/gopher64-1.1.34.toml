@@ -1,0 +1,23 @@
+version = "1.1.34"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gopher64-AppImage/releases/download/v1.1.34%402026-07-22_1784722027/Gopher64-v1.1.34-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gopher64-AppImage/releases/download/v1.1.34%402026-07-22_1784722027/Gopher64-v1.1.34-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "848b700d259b706c131c569e968b2174f71f2d32288662ff56d42d2cc36453e2"
+x86_64-linux  = "5e9b778dd5b9f03f10fb985e9f2dcec504cb2f0833fd0e806f87595b062e9fe3"
+
+[sha256]
+aarch64-linux = "ffa2f7d7fe6b81fee14a2ee5506170bbd068f4bd4bc71c43a9a89290c09bf613"
+x86_64-linux  = "2670e6c6f5049e2627a8de3c4e424209db90e56a115d2922afc4c0a5c1d13523"
+
+[size]
+aarch64-linux = 49917107
+x86_64-linux  = 51644089
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/gopher64/gopher64/main/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

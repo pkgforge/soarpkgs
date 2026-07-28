@@ -1,0 +1,28 @@
+[pkg]
+name        = "jql"
+type        = "static"
+description = "A JSON Query Language CLI tool"
+homepage    = ["https://github.com/yamafaktory/jql"]
+license     = ["Apache-2.0", "MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["jql"]
+provides    = ["jql"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "yamafaktory/jql"
+strip-prefix = "jql-v"
+
+[source]
+url     = "https://github.com/yamafaktory/jql/releases/download/jql-v${version}/jql-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"jql" = "jql"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/yamafaktory/jql/main/LICENSE-MIT"
+to  = "LICENSE"

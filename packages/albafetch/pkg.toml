@@ -1,0 +1,33 @@
+[pkg]
+name        = "albafetch"
+type        = "static"
+description = "Faster neofetch alternative, written in C"
+homepage    = ["https://github.com/alba4k/albafetch"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["albafetch"]
+provides    = ["albafetch"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "aarch64"
+x86_64  = "x64"
+
+[update]
+strategy     = "github-releases"
+repo         = "alba4k/albafetch"
+strip-prefix = "v"
+
+[source]
+github  = "alba4k/albafetch"
+glob    = "albafetch-linux-${arch}-static.zip"
+
+[source.install]
+"albafetch" = "albafetch"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/alba4k/albafetch/master/LICENSE"
+to  = "LICENSE"

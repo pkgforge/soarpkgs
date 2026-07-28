@@ -1,0 +1,23 @@
+version = "0.6.5-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Extension-Manager-AppImage/releases/download/0.6.5-1%402026-07-22_1784722434/Extension_Manager-0.6.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Extension-Manager-AppImage/releases/download/0.6.5-1%402026-07-22_1784722434/Extension_Manager-0.6.5-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "22fd207e493531e8194fa89d3dc398bd2f989b4a51b97ecb5061a0bab313d5c9"
+aarch64-linux = "096a9816c37d8799d7196074e9d562c54690fbb3e0008c4a1c6ca1d21de8524d"
+
+[sha256]
+x86_64-linux  = "64bf79dca8cf0b888482b578bd02bb5872b6e549b029afd6fec316e9835b66da"
+aarch64-linux = "f0679da5ae62263d98aa594af897ad862eb1eef9fa02a65314dc5fcc4c63675c"
+
+[size]
+x86_64-linux  = 57690476
+aarch64-linux = 55932775
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mjakeman/extension-manager/refs/heads/master/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

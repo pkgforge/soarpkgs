@@ -1,0 +1,23 @@
+version = "0.20a-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Iris-AppImage-Enhanced/releases/download/0.20a-1%402026-07-22_1784722430/Iris-0.20a-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Iris-AppImage-Enhanced/releases/download/0.20a-1%402026-07-22_1784722430/Iris-0.20a-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "26f17924d74eb147c2fdb1db664973771cbb78cd4f0226ebee3b42cafd0d0ca0"
+x86_64-linux  = "7d95ded413c31d671e4b0aa1f981e554b4a5dd8ce672e5c52ba700f0ed27b41b"
+
+[sha256]
+aarch64-linux = "ff8166bce30eb9976d66ef0c4ad7fa3ab1a342b6b27cbbe8b6bef05ff8ec33fd"
+x86_64-linux  = "6aa8d9341dd88abad6e83289695883719625690d5f69cb1878fefd8cfeca5072"
+
+[size]
+aarch64-linux = 32568146
+x86_64-linux  = 32034809
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/allkern/iris/master/LICENSE"
+to     = "LICENSE"
+blake3 = "3c673045c70daeb7a252fe6937f229420b71f0b244209582dd4f4dac70bb7187"
+sha256 = "571e1c2104cf8d6ae856713f9e7eb44a2540d28392df5d821cbdff437f474a16"

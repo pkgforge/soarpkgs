@@ -1,0 +1,31 @@
+[pkg]
+name            = "winboat"
+type            = "appimage"
+description     = "Run Windows apps on Linux with seamless integration"
+homepage        = ["https://github.com/TibixDev/winboat", "https://www.winboat.app/"]
+license         = ["MIT"]
+maintainer      = ["QaidVoid (contact@qaidvoid.dev)"]
+category        = ["System", "Utility"]
+repology        = ["winboat"]
+provides        = ["winboat"]
+portable        = false
+portable-reason = "Requires Docker or Podman (not bundled)"
+note            = [
+  "AppImage itself works on any distro, but depends on an external container runtime",
+]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/WinBoat-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/WinBoat-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/TibixDev/winboat/main/LICENSE"
+to  = "LICENSE"

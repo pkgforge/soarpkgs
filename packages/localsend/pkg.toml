@@ -1,0 +1,29 @@
+[pkg]
+name        = "localsend"
+type        = "appimage"
+description = "Share files to nearby devices"
+homepage    = [
+  "https://localsend.org",
+  "https://github.com/pkgforge-dev/localsend-AppImage",
+]
+license    = ["Apache-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["FileTransfer", "Network"]
+repology   = ["localsend"]
+provides   = ["localsend"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/localsend-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/localsend-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/localsend/localsend/refs/heads/main/LICENSE"
+to  = "LICENSE"

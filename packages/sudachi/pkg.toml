@@ -1,0 +1,24 @@
+[pkg]
+name        = "sudachi"
+type        = "appimage"
+description = "Nintendo Switch emulator"
+homepage    = ["https://github.com/pkgforge-dev/Sudachi-AppImage"]
+license     = ["GPL-3.0"]
+maintainer  = ["pflyly (github.com/pflyly)"]
+category    = ["Emulator", "Game"]
+repology    = ["sudachi"]
+provides    = ["sudachi"]
+
+disabled        = true
+disabled-reason = "upstream repo deleted"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/Sudachi-AppImage"
+
+[source]
+github = "pkgforge-dev/Sudachi-AppImage"
+glob   = "*${arch}*.appimage"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "cromagrally"
+type        = "appimage"
+description = "Port of Cro-Mag Rally, a 2000 kart racing game by Pangea Software"
+homepage    = ["https://github.com/jorio/CroMagRally"]
+license     = ["CC-BY-NC-SA-4.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "SportsGame"]
+repology    = ["cromagrally"]
+provides    = ["cromagrally"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/CroMagRally-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/CroMagRally-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/jorio/CroMagRally/master/LICENSE.md"
+to  = "LICENSE"

@@ -1,0 +1,24 @@
+[pkg]
+name        = "skim"
+type        = "static"
+description = "Fuzzy Finder in rust"
+homepage    = ["https://github.com/lotabout/skim"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["skim"]
+provides    = ["sk"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "lotabout/skim"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/lotabout/skim/releases/download/v${version}/skim-${arch}-unknown-linux-musl.tar.xz"
+
+[source.install]
+"skim-${arch}-unknown-linux-musl/sk" = "sk"

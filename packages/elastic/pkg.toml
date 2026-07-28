@@ -1,0 +1,26 @@
+[pkg]
+name        = "elastic"
+type        = "appimage"
+description = "Elastic allows to design and export spring physics-based animations to use with libadwaita."
+homepage    = ["https://github.com/veedeo/elastic"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["Development", "Graphics"]
+repology    = ["elastic"]
+provides    = ["elastic"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Elastic-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Elastic-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/World/elastic/-/raw/main/COPYING"
+to  = "LICENSE"

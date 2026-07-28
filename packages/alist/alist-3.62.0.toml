@@ -1,0 +1,23 @@
+version = "3.62.0"
+
+[url]
+x86_64-linux  = "https://github.com/AlistGo/alist/releases/download/v3.62.0/alist-linux-musl-amd64.tar.gz"
+aarch64-linux = "https://github.com/AlistGo/alist/releases/download/v3.62.0/alist-linux-musl-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "76e57d1f3e45a4bbe9387d301032fba38b4b49d51e1960f05bacc9a748fadb02"
+aarch64-linux = "6381a5b147d7254839847af1ef174d1e6348b6568b4e604d596b3fcb378e0d37"
+
+[sha256]
+x86_64-linux  = "1915f7cadb35564358a2c1ecf869517587ab91df34e0566b4eac579823bc9a72"
+aarch64-linux = "c694a3c1474b576306015bd58772ef90781311c4c90f37173476b3b57ff850d2"
+
+[size]
+x86_64-linux  = 44721248
+aarch64-linux = 41993037
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"
+to     = "LICENSE"
+blake3 = "42b996554b1bd52a6c0d9035090b572782bea9a525b3d99d16fe2f41ed002b7b"
+sha256 = "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "cdogs-sdl"
+type        = "appimage"
+description = "Classic overhead run-and-gun game"
+homepage    = ["https://cxong.github.io/cdogs-sdl/", "https://github.com/cxong/cdogs-sdl"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame", "ArcadeGame"]
+repology    = ["cdogs-sdl"]
+provides    = ["cdogs-sdl"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/CDogs-SDL-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/CDogs-SDL-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/cxong/cdogs-sdl/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,29 @@
+[pkg]
+name        = "rnote"
+type        = "appimage"
+description = "Sketch and take handwritten notes"
+homepage    = [
+  "https://rnote.flxzt.net",
+  "https://github.com/pkgforge-dev/Rnote-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["fiftydinar (github.com/fiftydinar)"]
+category   = ["Graphics", "Office"]
+repology   = ["rnote"]
+provides   = ["rnote"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Rnote-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Rnote-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/flxzt/rnote/refs/heads/main/LICENSE"
+to  = "LICENSE"

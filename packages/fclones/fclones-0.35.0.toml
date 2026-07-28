@@ -1,0 +1,19 @@
+version = "0.35.0"
+
+[url]
+x86_64-linux = "https://github.com/pkolaczk/fclones/releases/download/v0.35.0/fclones-0.35.0-linux-musl-x86_64.tar.gz"
+
+[blake3]
+x86_64-linux = "8a94e588f1c20ef8a37790867a5d81cb3f57c513d6ff716d1a21ad043056b90b"
+
+[sha256]
+x86_64-linux = "9eae0466e5b78871cf25822e503ee9efbfa28dc36cc167060c4a4920306389ac"
+
+[size]
+x86_64-linux = 2156805
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkolaczk/fclones/master/LICENSE"
+to     = "LICENSE"
+blake3 = "02773d7b04c156062d639e815a5d76bfea09d92b5baf10821da366a9df87b723"
+sha256 = "fa876876689ee8c7ad01e3d332f53502bece80de772d4239dced8f3398014000"

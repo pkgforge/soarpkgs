@@ -1,0 +1,32 @@
+[pkg]
+name        = "zfind"
+type        = "static"
+description = "Search for files using a SQL-WHERE filter, even inside archives"
+homepage    = ["https://github.com/laktak/zfind"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileTools", "Utility"]
+repology    = ["zfind"]
+provides    = ["zfind"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "laktak/zfind"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/laktak/zfind/releases/download/v${version}/zfind-linux-${arch}.tar.gz"
+
+[source.install]
+"zfind" = "zfind"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/laktak/zfind/master/LICENSE"
+to  = "LICENSE"

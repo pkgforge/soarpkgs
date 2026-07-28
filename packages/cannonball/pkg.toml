@@ -1,0 +1,26 @@
+[pkg]
+name        = "cannonball"
+type        = "appimage"
+description = "Enhanced OutRun arcade game engine, a C++ rewrite of the Sega original"
+homepage    = ["https://github.com/djyt/cannonball"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["cannonball"]
+provides    = ["cannonball"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Cannonball-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Cannonball-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/djyt/cannonball/master/docs/license.txt"
+to  = "LICENSE"

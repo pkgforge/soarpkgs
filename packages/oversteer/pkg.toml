@@ -1,0 +1,26 @@
+[pkg]
+name        = "oversteer"
+type        = "appimage"
+description = "Steering wheel configuration tool"
+homepage    = ["https://github.com/berarma/oversteer"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Game", "HardwareSettings"]
+repology    = ["oversteer"]
+provides    = ["oversteer"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Oversteer-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Oversteer-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/berarma/oversteer/refs/heads/master/LICENSE"
+to  = "LICENSE"

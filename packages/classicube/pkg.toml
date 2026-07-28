@@ -1,0 +1,26 @@
+[pkg]
+name        = "classicube"
+type        = "appimage"
+description = "A custom Minecraft Classic compatible client written in C from scratch"
+homepage    = ["https://www.classicube.net", "https://github.com/ClassiCube/ClassiCube"]
+license     = ["BSD-3-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame"]
+repology    = ["classicube"]
+provides    = ["classicube"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ClassiCube-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ClassiCube-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ClassiCube/ClassiCube/master/license.txt"
+to  = "LICENSE"

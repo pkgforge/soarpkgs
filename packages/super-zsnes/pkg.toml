@@ -1,0 +1,21 @@
+[pkg]
+name        = "super-zsnes"
+type        = "appimage"
+description = "GPU-powered SNES emulator with hi-res Mode 7 and per-game enhancements"
+homepage    = ["https://zsnes.com"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+provides    = ["super-zsnes"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SUPER-ZSNES-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SUPER-ZSNES-AppImage"
+glob   = "*${arch}*.appimage"

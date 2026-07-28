@@ -1,0 +1,23 @@
+version = "2026.3.27-2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Varia-AppImage/releases/download/2026.3.27-2%402026-07-22_1784721834/Varia-2026.3.27-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Varia-AppImage/releases/download/2026.3.27-2%402026-07-22_1784721834/Varia-2026.3.27-2-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "b146d09dca555a90e9c1b0284eb6bb9b2348161d40947b2b001c36dff0be690c"
+x86_64-linux  = "43e1d71aa2ebd442d74304f80e5f197b637303c7377531458c8fb168d57777b3"
+
+[sha256]
+aarch64-linux = "ad35fec1984fbc222bc2a27d60ef2ba73c2f3f5c510061ea375dcf61aa21fb1c"
+x86_64-linux  = "f35d08017196e8a35fbd1d43feeb40cbfdebec31a9dd833b6e5bcee203ac3ee9"
+
+[size]
+aarch64-linux = 114528034
+x86_64-linux  = 116818828
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/giantpinkrobots/varia/refs/heads/main/LICENSE"
+to     = "LICENSE"
+blake3 = "926c4fd4d1e3f2b2191be91717f8766e03cc9b62ea266f7000c57e10856e81e9"
+sha256 = "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"

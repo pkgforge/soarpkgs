@@ -1,0 +1,29 @@
+[pkg]
+name        = "gnome-calculator"
+type        = "appimage"
+description = "GNOME Calculator"
+homepage    = [
+  "https://wiki.gnome.org/Apps/Calculator",
+  "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Calculator", "Utility"]
+repology   = ["gnome-calculator"]
+provides   = ["gnome-calculator"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gnome-Calculator-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gnome-Calculator-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/GNOME/gnome-calculator/refs/heads/main/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,28 @@
+[pkg]
+name        = "grex"
+type        = "static"
+description = "Command-line tool for generating regular expressions from test cases"
+homepage    = ["https://github.com/pemistahl/grex"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["grex"]
+provides    = ["grex"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pemistahl/grex"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/pemistahl/grex/releases/download/v${version}/grex-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"grex" = "grex"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pemistahl/grex/main/LICENSE"
+to  = "LICENSE"

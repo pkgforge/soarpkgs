@@ -1,0 +1,25 @@
+[pkg]
+name        = "sd"
+type        = "static"
+description = "Intuitive find & replace CLI (sed alternative)"
+homepage    = ["https://github.com/chmln/sd"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "TextTools", "Utility"]
+repology    = ["sd"]
+provides    = ["sd"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "chmln/sd"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/chmln/sd/releases/download/v${version}/sd-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"sd-v${version}-${arch}-unknown-linux-musl/sd"      = "sd"
+"sd-v${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"

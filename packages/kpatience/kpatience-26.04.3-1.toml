@@ -1,0 +1,23 @@
+version = "26.04.3-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KPatience-AppImage/releases/download/26.04.3-1%402026-07-22_1784722291/KPatience-26.04.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KPatience-AppImage/releases/download/26.04.3-1%402026-07-22_1784722291/KPatience-26.04.3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "47094a5cc6b5f0ee658b234825fc6ffb9376e1eb7d951b4e493c905b394ec627"
+x86_64-linux  = "e1da66364e828c417a5044a93e7f39aba56d1fad72b4aaab6d2ec7ac51e05607"
+
+[sha256]
+aarch64-linux = "fe2b0dcc1d884ab685831e264e5f5df85cd5b213bc372f08e6af3eed94062f47"
+x86_64-linux  = "dfedf31f045455931cc1038c90b4d70edd44b9fe62529bec94db6086f6e35f09"
+
+[size]
+aarch64-linux = 70230268
+x86_64-linux  = 70817606
+
+[[extra]]
+url    = "https://invent.kde.org/games/kpat/-/raw/master/COPYING"
+to     = "LICENSE"
+blake3 = "16dc640bac8ce753afe3b8d47ff5cdc79acb39164073b4cda07bbb28e60a6678"
+sha256 = "1e3b44dcceda47fb8fc2f95c63eba433f6f8da833503719409f0d30ebe5af8b3"

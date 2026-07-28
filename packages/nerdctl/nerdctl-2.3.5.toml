@@ -1,0 +1,23 @@
+version = "2.3.5"
+
+[url]
+x86_64-linux  = "https://github.com/containerd/nerdctl/releases/download/v2.3.5/nerdctl-2.3.5-linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/containerd/nerdctl/releases/download/v2.3.5/nerdctl-2.3.5-linux-arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "65c48c75b757694d0e8acbc0343eaaf304507549b3483a7b32033e26c8593c76"
+x86_64-linux  = "e35e7b1971cbda6647563c450534ce3547084cd71cd77e1a526a9ace41285bb9"
+
+[sha256]
+aarch64-linux = "76ced9bd0d03f6140f9cf7b927958b654cb8d5ecd3c58af585d096c8bdf9d6c2"
+x86_64-linux  = "de3206aeb7cbd5f20f5fb1f55c1e3bf2db1be567812a8a3f5e65eba2488347ee"
+
+[size]
+aarch64-linux = 10527006
+x86_64-linux  = 11744522
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/containerd/nerdctl/main/LICENSE"
+to     = "LICENSE"
+blake3 = "83cb3a2fcf829b6138e095b083016c34ddcdfa07b68d38782722c14fcf85ace6"
+sha256 = "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"

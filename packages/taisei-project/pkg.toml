@@ -1,0 +1,26 @@
+[pkg]
+name        = "taisei-project"
+type        = "appimage"
+description = "A free and open-source Touhou Project fangame (shoot-em-up)"
+homepage    = ["https://taisei-project.org/", "https://github.com/taisei-project/taisei"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["taisei"]
+provides    = ["taisei-project"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Taisei-Project-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Taisei-Project-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/taisei-project/taisei/master/COPYING.txt"
+to  = "LICENSE"

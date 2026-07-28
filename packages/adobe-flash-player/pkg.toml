@@ -1,0 +1,22 @@
+[pkg]
+name        = "adobe-flash-player"
+type        = "appimage"
+description = "Standalone player for Adobe Flash (SWF) content"
+homepage    = ["https://www.adobe.com/products/flashplayer/end-of-life-alternative.html"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Player"]
+repology    = ["adobe-flash"]
+provides    = ["adobe-flash-player"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Adobe-Flash-Player-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Adobe-Flash-Player-AppImage"
+glob   = "*${arch}*.appimage"

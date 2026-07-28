@@ -1,0 +1,19 @@
+version = "4.17.0"
+
+[url]
+x86_64-linux = "https://github.com/brocode/fblog/releases/download/v4.17.0/fblog"
+
+[blake3]
+x86_64-linux = "004d0d41a018c518efa9d4acc58e96d70494bb4f73e9cfa88b58ac902561ebb3"
+
+[sha256]
+x86_64-linux = "2bc0a97ae4f03ec8169f6ce1319099ac4b6f9901247f62ffc61178a7347a59e4"
+
+[size]
+x86_64-linux = 4552008
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/brocode/fblog/master/LICENSE"
+to     = "LICENSE"
+blake3 = "5648860491f5a05f7370a913b363de49f41d0e560dee1e0789b47893d534a042"
+sha256 = "0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5"

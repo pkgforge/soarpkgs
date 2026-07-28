@@ -1,0 +1,26 @@
+[pkg]
+name        = "kmahjongg"
+type        = "appimage"
+description = "A tile matching mahjong solitaire game for one or two players"
+homepage    = ["https://apps.kde.org/kmahjongg", "https://invent.kde.org/games/kmahjongg"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game"]
+repology    = ["kmahjongg"]
+provides    = ["kmahjongg"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KMahjongg-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KMahjongg-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/games/kmahjongg/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"

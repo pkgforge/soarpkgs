@@ -1,0 +1,29 @@
+[pkg]
+name        = "gwenview"
+type        = "appimage"
+description = "Image viewer by KDE"
+homepage    = [
+  "https://apps.kde.org/gwenview",
+  "https://invent.kde.org/graphics/gwenview",
+]
+license    = ["GPL-2.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Graphics", "Viewer", "Photography"]
+repology   = ["gwenview"]
+provides   = ["gwenview"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gwenview-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gwenview-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/graphics/gwenview/-/raw/master/COPYING"
+to  = "LICENSE"

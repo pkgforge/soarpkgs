@@ -1,0 +1,26 @@
+[pkg]
+name        = "yamagi-quake-ii"
+type        = "appimage"
+description = "Enhanced Quake II source port with modern features and bug fixes"
+homepage    = ["https://www.yamagi.org/quake2", "https://github.com/yquake2/yquake2"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame", "Shooter"]
+repology    = ["yamagi-quake2"]
+provides    = ["yamagi-quake-ii"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Yamagi-Quake-II-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Yamagi-Quake-II-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/yquake2/yquake2/master/LICENSE"
+to  = "LICENSE"

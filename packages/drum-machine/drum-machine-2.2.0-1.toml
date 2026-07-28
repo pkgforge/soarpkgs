@@ -1,0 +1,23 @@
+version = "2.2.0-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Drum-Machine-AppImage/releases/download/2.2.0-1%402026-07-22_1784722164/Drum_Machine-2.2.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Drum-Machine-AppImage/releases/download/2.2.0-1%402026-07-22_1784722164/Drum_Machine-2.2.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "cc29004d36e421b8ae9e21503ed19ead11469ce3a9a5c31fd59ce86755d2738c"
+aarch64-linux = "327f61cd596664ffeb8d9f881b4af319303ac8ebd1260fd27a32d9b8e6ded7f8"
+
+[sha256]
+x86_64-linux  = "89b9453b4f19e603a01714387a974990bd53d7b7d70b53dc5b9023d53d16c389"
+aarch64-linux = "49fc1006fa3863513bc64a32d3946c97d5835bcca43890fb5a3a6b1490b34567"
+
+[size]
+x86_64-linux  = 104332211
+aarch64-linux = 97191595
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Revisto/drum-machine/main/COPYING"
+to     = "LICENSE"
+blake3 = "421aedcb746d1e98fe78560e2eb8b5c0d0298bde77b4e5ebcef195cdc259d7bf"
+sha256 = "b69c62829f176a47dc482840afa24e9d63d66cb963c4b0a994547576d7d2acf4"

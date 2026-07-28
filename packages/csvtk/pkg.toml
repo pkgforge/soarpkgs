@@ -1,0 +1,32 @@
+[pkg]
+name        = "csvtk"
+type        = "static"
+description = "A cross-platform, efficient and practical CSV/TSV toolkit"
+homepage    = ["https://bioinf.shenwei.me/csvtk"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["csvtk"]
+provides    = ["csvtk"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "shenwei356/csvtk"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/shenwei356/csvtk/releases/download/v${version}/csvtk_linux_${arch}.tar.gz"
+
+[source.install]
+"csvtk" = "csvtk"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/shenwei356/csvtk/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "0.100-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-07-22_1784721420/QElectroTech-0.100-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-07-22_1784721420/QElectroTech-0.100-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "781de111c6af66d6c402e08eb85dde65e382cfdde931118fafd4265d1c11c77a"
+x86_64-linux  = "03fb011f42c34252464ebac91cd0a04df7001193ea712e0f9a6e5418b72f9816"
+
+[sha256]
+aarch64-linux = "0f637dd888d5657c4005cf20e96b771d5193a2e91294f96f7233981700c9ee84"
+x86_64-linux  = "2d9568f9679e8fa5276ba89bc3fdac68cc78e61c03ef486e941fe73d3eb934ff"
+
+[size]
+aarch64-linux = 58715450
+x86_64-linux  = 58069434
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/LICENSE"
+to     = "LICENSE"
+blake3 = "d428de68615f2823c7bd623c435c038ba880d6fbffcdd1a61faaa7639a50e199"
+sha256 = "5eb1f469d96f13762ea581e878fc27ab3ee4db517ef8056fdf161685b04492c0"

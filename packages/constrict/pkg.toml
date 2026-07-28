@@ -1,0 +1,26 @@
+[pkg]
+name        = "constrict"
+type        = "appimage"
+description = "Compress videos to target sizes"
+homepage    = ["https://gitlab.gnome.org/World/Constrict"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Video", "AudioVideo", "Utility"]
+repology    = ["constrict"]
+provides    = ["constrict"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Constrict-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Constrict-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.gnome.org/World/Constrict/-/raw/main/LICENSE"
+to  = "LICENSE"

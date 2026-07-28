@@ -1,0 +1,25 @@
+[pkg]
+name        = "kmon"
+type        = "static"
+description = "Linux kernel manager and activity monitor"
+homepage    = ["https://github.com/orhun/kmon"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["kmon"]
+provides    = ["kmon"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "orhun/kmon"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/orhun/kmon/releases/download/v${version}/kmon-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"kmon-${version}/kmon"    = "kmon"
+"kmon-${version}/LICENSE" = "LICENSE"

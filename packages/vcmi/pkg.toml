@@ -1,0 +1,26 @@
+[pkg]
+name        = "vcmi"
+type        = "appimage"
+description = "Open-source engine for Heroes of Might and Magic III"
+homepage    = ["https://vcmi.eu", "https://github.com/pkgforge-dev/vcmi-AppImage"]
+license     = ["GPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Game", "StrategyGame"]
+repology    = ["vcmi"]
+provides    = ["vcmi"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/vcmi-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/vcmi-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/vcmi/vcmi/refs/heads/develop/license.txt"
+to  = "LICENSE"

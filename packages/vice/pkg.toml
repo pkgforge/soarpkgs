@@ -1,0 +1,29 @@
+[pkg]
+name        = "vice"
+type        = "appimage"
+description = "Versatile Commodore Emulator for C64, C128, VIC20, PET and more"
+homepage    = [
+  "https://vice-emu.sourceforge.io",
+  "https://github.com/VICE-Team/svn-mirror",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Emulator", "Game"]
+repology   = ["vice"]
+provides   = ["vice"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/VICE-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/VICE-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/VICE-Team/svn-mirror/main/vice/COPYING"
+to  = "LICENSE"

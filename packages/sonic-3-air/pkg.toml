@@ -1,0 +1,27 @@
+[pkg]
+name        = "sonic-3-air"
+type        = "appimage"
+description = "Fan-made widescreen remaster of Sonic 3 & Knuckles built on the Oxygen Engine"
+homepage    = ["https://sonic3air.org", "https://github.com/Eukaryot/sonic3air"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["sonic3air"]
+provides    = ["sonic-3-air"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Sonic-3-AIR-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Sonic-3-AIR-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Eukaryot/sonic3air/main/LICENSE"
+to  = "LICENSE"

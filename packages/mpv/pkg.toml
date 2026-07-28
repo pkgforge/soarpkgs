@@ -1,0 +1,27 @@
+[pkg]
+name        = "mpv"
+type        = "appimage"
+description = "Free, open source, and cross-platform media player"
+homepage    = ["https://mpv.io", "https://github.com/pkgforge-dev/mpv-AppImage"]
+license     = ["GPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["AudioVideo", "Player"]
+repology    = ["mpv"]
+provides    = ["mpv"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/mpv-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/mpv-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mpv-player/mpv/refs/heads/master/LICENSE.GPL"
+to  = "LICENSE"

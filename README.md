@@ -19,8 +19,8 @@
 </div>
 
 <p align="center">
-    <b><strong>soarpkgs - SBUILD Recipe Repository</strong></b>
-    <br>Hosts SBUILD recipes used to build packages for Soar
+    <b><strong>soarpkgs - Package Repository</strong></b>
+    <br>Declarative, hash-pinned package definitions for Soar
     <br>
 </p>
 
@@ -28,29 +28,39 @@
 
 ## Overview
 
-This repository hosts [`.SBUILD` recipes](https://docs.pkgforge.dev/sbuild/introduction) used to build packages for [Soar](https://github.com/pkgforge/soar).
+This repository hosts declarative package definitions for [Soar](https://github.com/pkgforge/soar).
+
+Every package pins its upstream artifact together with that artifact's hash, in
+git. Nothing here is executed: a client resolves a package by parsing alone, so
+the download can be verified against a hash that was reviewed in a commit
+rather than measured after the fact.
+
+See [`docs/FORMAT.md`](docs/FORMAT.md) for the format and its
+rationale.
 
 ```bash
 .
-└── packages    --> SBUILD recipes for all packages
+└── packages
+    └── <name>
+        ├── pkg.toml              --> identity, metadata, update policy
+        └── <name>-<version>.toml --> pinned URL, hash and size per host
 ```
 
 > [!NOTE]
 > We recommend cloning with [`--filter=blob:none`](https://github.blog/open-source/git/get-up-to-speed-with-partial-clone-and-shallow-clone/) for local development<br>
-> Package Listing & Searching: https://pkgs.pkgforge.dev
+> Package Listing & Searching: https://soarpkgs.qaidvoid.dev
 
 ---
 
 ## Search for packages
 
-Visit: https://pkgs.pkgforge.dev
+Visit: https://soarpkgs.qaidvoid.dev
 
 ---
 
 ## Documentation
 
-- [SBUILD Introduction](https://docs.pkgforge.dev/sbuild/introduction)
-- [How to Write SBUILD Recipes](https://docs.pkgforge.dev/sbuild/instructions)
+- [Port format](docs/FORMAT.md)
 - [Contribution Guidelines](https://docs.pkgforge.dev/repositories/soarpkgs/contribution)
 - [Request a Package](https://docs.pkgforge.dev/repositories/soarpkgs/package-request)
 - [FAQs](https://docs.pkgforge.dev/repositories/soarpkgs/faq)

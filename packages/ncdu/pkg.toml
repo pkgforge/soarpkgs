@@ -1,0 +1,30 @@
+[pkg]
+name        = "ncdu"
+type        = "static"
+description = "Disk usage analyzer with an ncurses interface"
+homepage    = ["https://dev.yorhel.nl/ncdu"]
+src         = ["https://code.blicky.net/yorhel/ncdu"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Filesystem", "Utility"]
+repology    = ["ncdu"]
+provides    = ["ncdu"]
+note        = ["Official binary from https://dev.yorhel.nl/ncdu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "html-regex"
+repo     = "https://dev.yorhel.nl/ncdu"
+pattern  = "ncdu-(\\d+\\.\\d+(?:\\.\\d+)?)-linux"
+
+[source]
+url     = "https://dev.yorhel.nl/download/ncdu-${version}-linux-${arch}.tar.gz"
+
+[source.install]
+"*" = "."
+
+[[extra]]
+url = "https://code.blicky.net/yorhel/ncdu/raw/branch/HEAD/LICENSES/MIT.txt"
+to  = "LICENSE"

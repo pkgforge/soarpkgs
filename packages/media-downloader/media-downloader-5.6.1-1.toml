@@ -1,0 +1,19 @@
+version = "5.6.1-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Media-Downloader-AppImage/releases/download/5.6.1-1%402026-07-22_1784721106/Media_Downloader-5.6.1-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "cbcc1728c41602219da20e30287bd05132811de80d7ac33aef34c9db66f3a358"
+
+[sha256]
+x86_64-linux = "022282b50f24d3fdbeb3782372fc33df01674c2dfa16c070170f963584179d38"
+
+[size]
+x86_64-linux = 101816941
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mhogomchungu/media-downloader/main/LICENSE"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

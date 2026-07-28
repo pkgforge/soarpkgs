@@ -1,0 +1,25 @@
+[pkg]
+name        = "openclaw"
+type        = "appimage"
+description = "Reimplementation of the Captain Claw (1997) platformer game"
+homepage    = ["https://github.com/pjasicek/OpenClaw"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "ActionGame"]
+provides    = ["openclaw"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenClaw-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenClaw-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pjasicek/OpenClaw/master/LICENSE.txt"
+to  = "LICENSE"

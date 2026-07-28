@@ -1,0 +1,22 @@
+[pkg]
+name        = "bulky"
+type        = "appimage"
+description = "Bulk file and folder renamer that works across desktop environments"
+homepage    = ["https://github.com/linuxmint/bulky"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility"]
+repology    = ["bulky"]
+provides    = ["bulky"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Bulky-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Bulky-AppImage"
+glob   = "*${arch}*.appimage"

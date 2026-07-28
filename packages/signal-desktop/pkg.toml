@@ -1,0 +1,26 @@
+[pkg]
+name        = "signal-desktop"
+type        = "appimage"
+description = "Private, simple, and secure messenger"
+homepage    = ["https://signal.org", "https://github.com/signalapp/signal-desktop"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Chat", "InstantMessaging", "Network"]
+repology    = ["signal-desktop"]
+provides    = ["signal-desktop"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Signal-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Signal-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/signalapp/Signal-Desktop/a3173f6ae3961a44827fa59f975a789db1224e56/LICENSE"
+to  = "LICENSE"

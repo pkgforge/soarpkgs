@@ -1,0 +1,26 @@
+[pkg]
+name        = "mesa"
+type        = "appimage"
+description = "Open source implementations of OpenGL, Vulkan and other graphics APIs"
+homepage    = ["https://www.mesa3d.org", "https://gitlab.freedesktop.org/mesa/mesa"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Graphics", "System"]
+repology    = ["mesa"]
+provides    = ["mesa"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/MESA-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/MESA-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.freedesktop.org/mesa/mesa/-/raw/main/docs/license.rst"
+to  = "LICENSE"

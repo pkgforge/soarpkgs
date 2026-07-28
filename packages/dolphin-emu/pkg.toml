@@ -1,0 +1,29 @@
+[pkg]
+name        = "dolphin-emu"
+type        = "appimage"
+description = "GameCube and Wii emulator"
+homepage    = [
+  "https://dolphin-emu.org",
+  "https://github.com/pkgforge-dev/Dolphin-emu-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Emulator", "Game"]
+repology   = ["dolphin-emu"]
+provides   = ["dolphin-emu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Dolphin-emu-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Dolphin-emu-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dolphin-emu/dolphin/refs/heads/master/COPYING"
+to  = "LICENSE"

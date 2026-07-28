@@ -1,0 +1,26 @@
+[pkg]
+name        = "denise"
+type        = "appimage"
+description = "Highly accurate C64 and Amiga emulator"
+homepage    = ["https://dnp.dev", "https://bitbucket.org/piciji/denise"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator"]
+repology    = ["denise"]
+provides    = ["denise"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Denise-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Denise-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://bitbucket.org/piciji/denise/raw/master/licence.md"
+to  = "LICENSE"

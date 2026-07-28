@@ -1,0 +1,26 @@
+[pkg]
+name        = "xeyes"
+type        = "appimage"
+description = "Classic X11 demo with googly eyes that follow the mouse cursor"
+homepage    = ["https://gitlab.freedesktop.org/xorg/app/xeyes"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Amusement", "Utility"]
+repology    = ["xeyes"]
+provides    = ["xeyes"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/xeyes-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/xeyes-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.freedesktop.org/xorg/app/xeyes/-/raw/master/COPYING"
+to  = "LICENSE"

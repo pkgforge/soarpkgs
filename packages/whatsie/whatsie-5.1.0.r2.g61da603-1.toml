@@ -1,0 +1,23 @@
+version = "5.1.0.r2.g61da603-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/5.1.0.r2.g61da603-1%402026-07-22_1784722445/WhatSie-5.1.0.r2.g61da603-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/5.1.0.r2.g61da603-1%402026-07-22_1784722445/WhatSie-5.1.0.r2.g61da603-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "d8c32f5e938818f315ce8d5862448599f565cfb8cdb41a0274d91e21b54c4c58"
+x86_64-linux  = "c22343de2d09d384a9638d24f9e9a8697403bc2f2d81d321d9c130ce2dda3084"
+
+[sha256]
+aarch64-linux = "0710a081466464b86d5b3b7c03537d52d397c8e338d1a815e6ea363bddd11e54"
+x86_64-linux  = "21565c85dd9cdfd7b53f105fadf55d9c09ebb50bc527d7d9a15e71e893270e00"
+
+[size]
+aarch64-linux = 180299452
+x86_64-linux  = 192754084
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/keshavbhatt/whatsie/main/LICENSE"
+to     = "LICENSE"
+blake3 = "3693ee9d60f6da566a566f292cfd3db84df5e334180a33d36a9dfb56a3c788f5"
+sha256 = "ac83aa3a8e087039c597c1c9a485b4bcbaa44c044f3bbfa84ddbd149625a8432"

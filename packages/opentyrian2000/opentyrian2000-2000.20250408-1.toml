@@ -1,0 +1,23 @@
+version = "2000.20250408-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenTyrian2000-AppImage/releases/download/2000.20250408-1%402026-07-22_1784718658/OpenTyrian2000-2000.20250408-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenTyrian2000-AppImage/releases/download/2000.20250408-1%402026-07-22_1784718658/OpenTyrian2000-2000.20250408-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "e41589461d574480897428e33d1fb3bf3a61f02df5d220bc3cbf56abc0408c12"
+x86_64-linux  = "d70a2dc5595a34b13929f9b6e8017c7a5192965fa0f6c7defd70f9b83a3609f0"
+
+[sha256]
+aarch64-linux = "e884748b4e370360f18ddd993fcc4669dd68e0c35b8e32634489785566e46ebb"
+x86_64-linux  = "3960931ae1f17647fa7462f286b2f71cf3f8a5762551f1a589ae9f3aad915477"
+
+[size]
+aarch64-linux = 23402008
+x86_64-linux  = 24029778
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/KScl/opentyrian2000/master/COPYING"
+to     = "LICENSE"
+blake3 = "3510147b11592b9f0d31865fa615db786240a0a5a96dc1abc140ef898edda042"
+sha256 = "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"

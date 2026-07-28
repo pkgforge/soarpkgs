@@ -1,0 +1,29 @@
+[pkg]
+name        = "dunst"
+type        = "appimage"
+description = "Lightweight and customizable notification daemon"
+homepage    = [
+  "https://dunst-project.org",
+  "https://github.com/pkgforge-dev/dunst-AppImage",
+]
+license    = ["BSD-3-Clause"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["System", "Utility"]
+repology   = ["dunst"]
+provides   = ["dunst=>dunstctl", "dunst=>dunstify"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/dunst-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/dunst-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/dunst-project/dunst/refs/heads/master/LICENSE"
+to  = "LICENSE"

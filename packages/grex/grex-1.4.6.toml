@@ -1,0 +1,23 @@
+version = "1.4.6"
+
+[url]
+x86_64-linux  = "https://github.com/pemistahl/grex/releases/download/v1.4.6/grex-v1.4.6-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/pemistahl/grex/releases/download/v1.4.6/grex-v1.4.6-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+aarch64-linux = "3c4a39b7e03643de00b2a06d95020550a683b0b732be52728dc8ee17040282e2"
+x86_64-linux  = "26153acfbdff31e63f385391a36c78fc0c9f102a369eba2518383825f935c513"
+
+[sha256]
+aarch64-linux = "65ac2010ffc4a02690b091819f2971c0b26081b2ce7cb717a0de3f10409010b9"
+x86_64-linux  = "8f02f4ebe72d9e3098c646b77f7bc53ec8a8c1fb51ed042db06b739d08e56af8"
+
+[size]
+aarch64-linux = 1273972
+x86_64-linux  = 1382876
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pemistahl/grex/main/LICENSE"
+to     = "LICENSE"
+blake3 = "3833fc3c91a379ff509b431db1f7fd40dea69a6614249f420ec62398957087b1"
+sha256 = "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"

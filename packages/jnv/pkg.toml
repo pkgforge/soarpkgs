@@ -1,0 +1,25 @@
+[pkg]
+name        = "jnv"
+type        = "static"
+description = "Interactive JSON filter using jq"
+homepage    = ["https://github.com/ynqa/jnv"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["jnv"]
+provides    = ["jnv"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "ynqa/jnv"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/ynqa/jnv/releases/download/v${version}/jnv-${arch}-unknown-linux-musl.tar.xz"
+
+[source.install]
+"jnv-${arch}-unknown-linux-musl/jnv"     = "jnv"
+"jnv-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"

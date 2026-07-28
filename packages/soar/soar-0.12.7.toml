@@ -1,0 +1,17 @@
+version = "0.12.7"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge/soar/releases/download/v0.12.7/soar-x86_64-linux.tar.gz"
+aarch64-linux = "https://github.com/pkgforge/soar/releases/download/v0.12.7/soar-aarch64-linux.tar.gz"
+
+[blake3]
+aarch64-linux = "6fc8bb299b89f4c4bed6ae00a643db7560a1229bb0913c87c57c8097142640a2"
+x86_64-linux  = "23f879ddf8a25509c3053266a1a231c7cca9b56f81270f579c3ee61135cd5825"
+
+[sha256]
+aarch64-linux = "22f5502e04d32fd79ca9985b15a847be186315bab7d1f9b2d1af7e81f7b7c76b"
+x86_64-linux  = "f94747f12498142ec01f8af2b4d4be5db6ead9c8561eb22a5ee69f8361f2397b"
+
+[size]
+aarch64-linux = 3560561
+x86_64-linux  = 3759480

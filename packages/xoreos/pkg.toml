@@ -1,0 +1,27 @@
+[pkg]
+name        = "xoreos"
+type        = "appimage"
+description = "A reimplementation of BioWare's Aurora engine (NWN, KotOR, etc.)"
+homepage    = ["https://xoreos.org", "https://github.com/xoreos/xoreos"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying", "AdventureGame"]
+repology    = ["xoreos"]
+provides    = ["xoreos"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/xoreos-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/xoreos-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/xoreos/xoreos/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "rsdkv4"
+type        = "appimage"
+description = "Decompilation of Sonic 1 & Sonic 2 (2013) and the Retro Engine (v4)"
+homepage    = ["https://github.com/RSDKModding/RSDKv4-Decompilation"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["rsdkv4"]
+provides    = ["rsdkv4"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/RSDKv4-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/RSDKv4-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/RSDKModding/RSDKv4-Decompilation/main/LICENSE.md"
+to  = "LICENSE"

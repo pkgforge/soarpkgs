@@ -1,0 +1,25 @@
+[pkg]
+name        = "miniserve"
+type        = "static"
+description = "CLI tool to serve files and dirs over HTTP"
+homepage    = ["https://github.com/svenstaro/miniserve"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["miniserve"]
+provides    = ["miniserve"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "svenstaro/miniserve"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/svenstaro/miniserve/releases/download/v${version}/miniserve-${version}-${arch}-unknown-linux-musl"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/svenstaro/miniserve/master/LICENSE"
+to  = "LICENSE"

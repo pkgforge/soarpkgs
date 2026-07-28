@@ -1,0 +1,22 @@
+[pkg]
+name        = "bigpemu"
+type        = "appimage"
+description = "Atari Jaguar emulator with high compatibility and enhancement features"
+homepage    = ["https://www.richwhitehouse.com/jaguar/"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["bigpemu"]
+provides    = ["bigpemu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/BigPEmu-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/BigPEmu-AppImage"
+glob   = "*${arch}*.appimage"

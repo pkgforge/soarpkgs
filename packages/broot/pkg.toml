@@ -1,0 +1,28 @@
+[pkg]
+name        = "broot"
+type        = "static"
+description = "A new way to see and navigate directory trees"
+homepage    = ["https://dystroy.org/broot"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileManager", "Utility"]
+repology    = ["broot"]
+provides    = ["broot"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "Canop/broot"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/Canop/broot/releases/download/v${version}/broot_${version}.zip"
+
+[source.install]
+"${arch}-unknown-linux-musl/broot" = "broot"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Canop/broot/main/LICENSE"
+to  = "LICENSE"

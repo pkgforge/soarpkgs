@@ -1,0 +1,30 @@
+[pkg]
+name        = "doggo"
+type        = "static"
+description = "Command-line DNS client for humans"
+homepage    = ["https://github.com/mr-karan/doggo"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Network", "Utility"]
+repology    = ["doggo"]
+provides    = ["doggo"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "aarch64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "mr-karan/doggo"
+strip-prefix = "v"
+
+[source]
+github  = "mr-karan/doggo"
+glob    = "doggo-linux-${arch}.tar.gz"
+
+[source.install]
+"doggo"   = "doggo"
+"LICENSE" = "LICENSE"

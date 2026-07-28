@@ -1,0 +1,23 @@
+version = "1.8.1-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-1%402026-07-22_1784722457/Haruna-1.8.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-1%402026-07-22_1784722457/Haruna-1.8.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "10268b077977b90b47cefb262581783d3f3d7c33e8b31c8c08117bd7eb05651f"
+x86_64-linux  = "3d854746d9488039af599c64862e3d2017c8d960b9bb437656db584278ada342"
+
+[sha256]
+aarch64-linux = "114d5e603c6c9d62d243faa966b8a16102e74c5dbdf19af9ba18bf1a922556be"
+x86_64-linux  = "fb3c0f00297eed1f7302a8d70ffa65a1ff0808e3b0a90a61d5958d9517e6350c"
+
+[size]
+aarch64-linux = 98346012
+x86_64-linux  = 100020494
+
+[[extra]]
+url    = "https://invent.kde.org/multimedia/haruna/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to     = "LICENSE"
+blake3 = "1ff8b02fa0a10b3cae1d5fdeacd20b4d5d914d619567726c68f325af975d3a69"
+sha256 = "2ca9503d76d1ffab14f599b4741382eec11face60ad1f0d7a41897809003a286"

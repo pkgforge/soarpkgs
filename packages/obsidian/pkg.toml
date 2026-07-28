@@ -1,0 +1,23 @@
+[pkg]
+name        = "obsidian"
+type        = "appimage"
+description = "Powerful knowledge base and note-taking app on top of local Markdown files"
+homepage    = ["https://obsidian.md"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Utility", "TextEditor"]
+repology    = ["obsidian"]
+provides    = ["obsidian"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Obsidian-AppImage-Enhanced"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Obsidian-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"

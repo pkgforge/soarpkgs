@@ -1,0 +1,19 @@
+version = "0.9.0-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/RMG-AppImage-Enhanced/releases/download/0.9.0-1%402026-07-22_1784722188/RMG-0.9.0-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "c860ff3eb01517c454aa6b03e3f36fed747d27ea7c2568f8e7780dd4770ce707"
+
+[sha256]
+x86_64-linux = "febc5659918c58e00cf8a49adbe7bd2d21811e57ac7cc88c41154cd62ef5eb97"
+
+[size]
+x86_64-linux = 96666252
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Rosalie241/RMG/refs/heads/master/LICENSE"
+to     = "LICENSE"
+blake3 = "da337ac60a5ecdf50638d2adaabf4116f35500aab0016f9851ef1b38111b9532"
+sha256 = "e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052"

@@ -1,0 +1,17 @@
+version = "1.8.2"
+
+[url]
+x86_64-linux  = "https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "d492138243b0d3529e56fa08f9ee031ad748e23a8b373c0d223d8257c3051f23"
+aarch64-linux = "922d956d81cc22e5c6f0cfce805035bb7ed19397981f5737fc465f5612256d47"
+
+[sha256]
+x86_64-linux  = "033d39a06d7a4320f923c49b488b89ec415c1901413ae85d26b9f7a09b38f1a1"
+aarch64-linux = "570d505ad08e51ffe98e2ee39ee969cb340e846bc17a10ed2e4ba7a5e9d64c1a"
+
+[size]
+x86_64-linux  = 1099430
+aarch64-linux = 1019210

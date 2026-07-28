@@ -1,0 +1,23 @@
+version = "r10781.d93f9c42-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DarkPlaces-AppImage/releases/download/r10781.d93f9c42-1%402026-07-22_1784722359/Darkplaces-r10781.d93f9c42-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DarkPlaces-AppImage/releases/download/r10781.d93f9c42-1%402026-07-22_1784722359/Darkplaces-r10781.d93f9c42-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f669031af4bd81992cce618224dff824f602cbe039b043a02cc9a649d1c16691"
+aarch64-linux = "4e7fc749c95e6a96ce92033311ee01b93961af5757d47156dab0a786b6b01b0e"
+
+[sha256]
+x86_64-linux  = "0e378c117928d551d1206d3b64a81ea6adfdf3b21eb6315b3cad6e2dfe37900e"
+aarch64-linux = "11f26942e20fd3ad5e28adb7ee69f1a04be7f3c55fc120f2049a11e70db7b115"
+
+[size]
+x86_64-linux  = 28661136
+aarch64-linux = 28420526
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/DarkPlacesEngine/DarkPlaces/master/COPYING"
+to     = "LICENSE"
+blake3 = "ed1e92674d6f4c991b839948f1623a8265989a981d487c175e8a5402c92db8e4"
+sha256 = "ba9ed2269151ad63b922598f3c5c19ddf781b2bbb6cb843ed9f085ecd1679c5d"

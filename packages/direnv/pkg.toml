@@ -1,0 +1,32 @@
+[pkg]
+name        = "direnv"
+type        = "static"
+description = "Unclutter your .profile - per-directory shell configuration"
+homepage    = ["https://direnv.net"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Shell", "Development"]
+repology    = ["direnv"]
+provides    = ["direnv"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "direnv/direnv"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/direnv/direnv/releases/download/v${version}/direnv.linux-${arch}"
+
+[source.install]
+"direnv" = "direnv"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/direnv/direnv/master/LICENSE"
+to  = "LICENSE"

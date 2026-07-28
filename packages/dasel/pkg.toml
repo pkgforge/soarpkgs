@@ -1,0 +1,29 @@
+[pkg]
+name        = "dasel"
+type        = "static"
+description = "Select, put and delete data from JSON, TOML, YAML, XML and CSV"
+homepage    = ["https://github.com/TomWright/dasel"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["dasel"]
+provides    = ["dasel"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "TomWright/dasel"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/TomWright/dasel/releases/download/v${version}/dasel_linux_${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/TomWright/dasel/master/LICENSE"
+to  = "LICENSE"

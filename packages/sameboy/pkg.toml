@@ -1,0 +1,26 @@
+[pkg]
+name        = "sameboy"
+type        = "appimage"
+description = "Accurate Game Boy and Game Boy Color emulator written in C"
+homepage    = ["https://sameboy.github.io", "https://github.com/LIJI32/SameBoy"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["sameboy"]
+provides    = ["sameboy"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SameBoy-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SameBoy-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/LIJI32/SameBoy/master/LICENSE"
+to  = "LICENSE"

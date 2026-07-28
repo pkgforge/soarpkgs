@@ -1,0 +1,23 @@
+version = "4.0.0-2"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced/releases/download/4.0.0-2%402026-07-22_1784722477/Augustus-4.0.0-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced/releases/download/4.0.0-2%402026-07-22_1784722477/Augustus-4.0.0-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0441b58a47e80ea4dc573321a25a0a12186c33504a499b36676023da5b4e1a53"
+aarch64-linux = "62fa0f666cdeddcb95ec0594d6d9b9457eefbebb47a11854fa761ae92cc48992"
+
+[sha256]
+x86_64-linux  = "7009c8e397708e11507309567de96fadcb175c8acb46f53ef217b2d23b5a9c30"
+aarch64-linux = "ad914e22738ddc3cbfdb1a90a7e837af4410e0bed28983e3c6d14022fe6883f4"
+
+[size]
+x86_64-linux  = 35295892
+aarch64-linux = 34361948
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Keriew/augustus/master/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "ca0292789c0a0ecba706f4b3f3493007a9951731c1d432c52c4aac1f1abba8ef"
+sha256 = "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"

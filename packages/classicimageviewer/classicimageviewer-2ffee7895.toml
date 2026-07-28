@@ -1,0 +1,23 @@
+version = "2ffee7895"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ClassicImageViewer-AppImage-Enhanced/releases/download/2ffee7895%402026-07-22_1784721244/ClassicImageViewer-2ffee7895-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ClassicImageViewer-AppImage-Enhanced/releases/download/2ffee7895%402026-07-22_1784721244/ClassicImageViewer-2ffee7895-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "281e87d20e292ab96b36a6f4052c92acf382fc063b4e1f2da453efa5f12ed7bc"
+aarch64-linux = "20fd8b8d651aac957956836888cfbf7737aa50cca3fbe235b42dcaa9d07b9a69"
+
+[sha256]
+x86_64-linux  = "9c4f3d735bac30644c7e3666feaff0ad336c95ae98e1fa77a3ce2b237dd1d860"
+aarch64-linux = "6c90b03c75952918564cef5ef8f73f7ba656298ad2d6dec50c62ceb067f09a36"
+
+[size]
+x86_64-linux  = 35141472
+aarch64-linux = 34424614
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/classicimageviewer/ClassicImageViewer/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "neko-project-ii-kai"
+type        = "appimage"
+description = "NEC PC-9801 series emulator (Neko Project II Kai fork)"
+homepage    = ["https://github.com/AZO234/NP2kai"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["np2kai"]
+provides    = ["neko-project-ii-kai"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Neko-Project-II-Kai-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Neko-Project-II-Kai-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/AZO234/NP2kai/master/LICENSE"
+to  = "LICENSE"

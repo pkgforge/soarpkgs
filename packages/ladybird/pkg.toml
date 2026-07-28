@@ -1,0 +1,29 @@
+[pkg]
+name        = "ladybird"
+type        = "appimage"
+description = "Truly independent web browser"
+homepage    = [
+  "https://ladybird.dev",
+  "https://github.com/pkgforge-dev/ladybird-appimage",
+]
+license    = ["BSD-2-Clause"]
+maintainer = ["psadi (https://github.com/psadi)"]
+category   = ["Network", "WebBrowser"]
+repology   = ["ladybird"]
+provides   = ["ladybird"]
+channel    = "nightly"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/ladybird-appimage"
+
+[source]
+github = "pkgforge-dev/ladybird-appimage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/LadybirdBrowser/ladybird/refs/heads/master/LICENSE"
+to  = "LICENSE"

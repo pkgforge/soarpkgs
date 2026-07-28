@@ -1,0 +1,25 @@
+[pkg]
+name        = "jaq"
+type        = "static"
+description = "A jq clone focussed on correctness, speed, and simplicity"
+homepage    = ["https://github.com/01mf02/jaq"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["jaq"]
+provides    = ["jaq"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "01mf02/jaq"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/01mf02/jaq/releases/download/v${version}/jaq-${arch}-unknown-linux-musl"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/01mf02/jaq/main/LICENSE-MIT"
+to  = "LICENSE"

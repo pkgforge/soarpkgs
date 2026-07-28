@@ -1,0 +1,26 @@
+[pkg]
+name        = "rigs-of-rods"
+type        = "appimage"
+description = "Open-source soft-body physics vehicle simulator"
+homepage    = ["https://www.rigsofrods.org", "https://github.com/RigsOfRods/rigs-of-rods"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Simulation"]
+repology    = ["rigsofrods"]
+provides    = ["rigs-of-rods"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Rigs-of-Rods-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Rigs-of-Rods-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/RigsOfRods/rigs-of-rods/master/COPYING"
+to  = "LICENSE"

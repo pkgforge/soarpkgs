@@ -1,0 +1,19 @@
+version = "1.0.3"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/UnleashedRecomp-AppImage/releases/download/v1.0.3%402026-07-01_1782904341/Unleashed_Recompiled-v1.0.3-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "09045dbb906101a5f8bfbb87d11330b586980d6db71180dac613289cfc08faf8"
+
+[sha256]
+x86_64-linux = "fe0f8f1afd88fcd9aee1efdcb343f2f4b7e2c8f57cd8cdc884ffaf28444d3db2"
+
+[size]
+x86_64-linux = 83441210
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/hedge-dev/UnleashedRecomp/refs/heads/main/COPYING"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

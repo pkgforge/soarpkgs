@@ -1,0 +1,23 @@
+version = "21.0-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/openMSX-AppImage/releases/download/21.0-1%402026-07-22_1784722350/openMSX-21.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/openMSX-AppImage/releases/download/21.0-1%402026-07-22_1784722350/openMSX-21.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "9436d5133e6c5a7a77a9d8e480ffe3d17b14b98cfbc770fffb8f80a4de8865e5"
+x86_64-linux  = "832e93589e2ff4ff2fb1688d25d352a0b6bbc62525fb5275fd0b141202e8437b"
+
+[sha256]
+aarch64-linux = "ce9383b606ae70cb3ad582e3f3f7faa4247dcddc1449c9c1752965ff7ea8274c"
+x86_64-linux  = "f9f4aa41e934d33c060ac0f905fe18b516ca7c4c3276d325db3bd8b925cbb3aa"
+
+[size]
+aarch64-linux = 28109909
+x86_64-linux  = 29063697
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/openMSX/openMSX/master/doc/GPL.txt"
+to     = "LICENSE"
+blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
+sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

@@ -1,0 +1,27 @@
+[pkg]
+name        = "difftastic"
+type        = "static"
+description = "A structural diff that understands syntax"
+homepage    = ["https://difftastic.wilfred.me.uk"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["difftastic"]
+provides    = ["difft"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "Wilfred/difftastic"
+
+[source]
+url     = "https://github.com/Wilfred/difftastic/releases/download/${version}/difft-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"difft" = "difft"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Wilfred/difftastic/master/LICENSE"
+to  = "LICENSE"

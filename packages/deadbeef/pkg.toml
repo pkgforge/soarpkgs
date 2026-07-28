@@ -1,0 +1,29 @@
+[pkg]
+name        = "deadbeef"
+type        = "appimage"
+description = "Modular audio player"
+homepage    = [
+  "https://deadbeef.sourceforge.io",
+  "https://github.com/pkgforge-dev/DeaDBeeF-AppImage",
+]
+license    = ["GPL-2.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Audio", "Player"]
+repology   = ["deadbeef"]
+provides   = ["deadbeef"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DeaDBeeF-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DeaDBeeF-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/DeaDBeeF-Player/deadbeef/refs/heads/master/COPYING.GPLv2"
+to  = "LICENSE"

@@ -1,0 +1,40 @@
+name: Package Request
+description: Ask for a package to be added
+title: "pkg: <name>"
+labels: ["package-request"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Package
+      description: The command you would run after installing it.
+      placeholder: ripgrep
+    validations:
+      required: true
+
+  - type: input
+    id: upstream
+    attributes:
+      label: Where it is released
+      description: >
+        A link to the project's releases. If it publishes prebuilt Linux
+        binaries there, say so; if it does not, that is fine to mention too.
+      placeholder: https://github.com/BurntSushi/ripgrep/releases
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: >
+        Optional. Skip everything you are unsure about; a maintainer works out
+        the licence, category and platform support when writing the definition.
+
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Before opening
+      options:
+        - label: I searched https://soarpkgs.qaidvoid.dev and the existing issues
+          required: true

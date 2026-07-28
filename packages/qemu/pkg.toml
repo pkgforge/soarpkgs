@@ -1,0 +1,26 @@
+[pkg]
+name        = "qemu"
+type        = "appimage"
+description = "Generic and open source machine emulator and virtualizer"
+homepage    = ["https://www.qemu.org", "https://github.com/qemu/qemu"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "System", "Utility"]
+repology    = ["qemu"]
+provides    = ["qemu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/QEMU-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/QEMU-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/qemu/qemu/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,29 @@
+[pkg]
+name        = "dive"
+type        = "static"
+description = "A tool for exploring each layer in a Docker image"
+homepage    = ["https://github.com/wagoodman/dive"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["dive"]
+provides    = ["dive"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "wagoodman/dive"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/wagoodman/dive/releases/download/v${version}/dive_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"dive"    = "dive"
+"LICENSE" = "LICENSE"

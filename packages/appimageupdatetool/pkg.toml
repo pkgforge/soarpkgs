@@ -1,0 +1,27 @@
+[pkg]
+name        = "appimageupdatetool"
+type        = "appimage"
+description = "Tool to update AppImages"
+homepage    = ["https://github.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["PackageManager", "Utility"]
+repology    = ["appimageupdatetool"]
+provides    = ["appimageupdatetool"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/AppImageUpdate-Enhanced-Edition"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/AppImageUpdate-Enhanced-Edition"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/refs/heads/main/LICENSE.txt"
+to  = "LICENSE"

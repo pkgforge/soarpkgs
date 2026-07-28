@@ -1,0 +1,29 @@
+[pkg]
+name        = "lazygit"
+type        = "static"
+description = "Simple terminal UI for git commands"
+homepage    = ["https://github.com/jesseduffield/lazygit"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "RevisionControl"]
+repology    = ["lazygit"]
+provides    = ["lazygit"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "jesseduffield/lazygit"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/jesseduffield/lazygit/releases/download/v${version}/lazygit_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"lazygit" = "lazygit"
+"LICENSE" = "LICENSE"

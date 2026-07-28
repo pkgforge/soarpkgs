@@ -1,0 +1,29 @@
+[pkg]
+name        = "dyff"
+type        = "static"
+description = "Diff tool for YAML files, and sometimes JSON"
+homepage    = ["https://github.com/homeport/dyff"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["dyff"]
+provides    = ["dyff"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "homeport/dyff"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/homeport/dyff/releases/download/v${version}/dyff_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"dyff"    = "dyff"
+"LICENSE" = "LICENSE"

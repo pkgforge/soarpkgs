@@ -1,0 +1,23 @@
+version = "3.6.3.r2.gfd6e11b-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Commander-Genius-AppImage/releases/download/3.6.3.r2.gfd6e11b-1%402026-07-22_1784722302/Commander_Genius-3.6.3.r2.gfd6e11b-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Commander-Genius-AppImage/releases/download/3.6.3.r2.gfd6e11b-1%402026-07-22_1784722302/Commander_Genius-3.6.3.r2.gfd6e11b-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "23d2fd0c376a867b11fa0ef6c2ca149f353cdb0b71ee514d227162ef53dbe67d"
+aarch64-linux = "25c96ecd87d4e6e1ca7aab5123e6c35c903dac0e5de91e5ac64be105cc521909"
+
+[sha256]
+x86_64-linux  = "edf7ab2d4642c6cc6fcf9468080dfa6816a17ba11f262ece1154d1dbd2efc78e"
+aarch64-linux = "e9ecfd1b55bfedd27c62ef1383823dd39b10d6ac2e1a3d6a52f1cb5173b0e634"
+
+[size]
+x86_64-linux  = 36792414
+aarch64-linux = 34513559
+
+[[extra]]
+url    = "https://gitlab.com/Dringgstein/Commander-Genius/-/raw/master/LICENSE"
+to     = "LICENSE"
+blake3 = "b61bb238413e58121dcc67f09f21effb98fc9d5714b9652f54255de63dc0586d"
+sha256 = "962d8a3fae2328554066f89338310787df6fba64762540cf21155686c5d4eb6f"

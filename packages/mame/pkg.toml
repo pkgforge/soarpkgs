@@ -1,0 +1,26 @@
+[pkg]
+name        = "mame"
+type        = "appimage"
+description = "Multiple Arcade Machine Emulator"
+homepage    = ["https://www.mamedev.org", "https://github.com/pkgforge-dev/MAME-AppImage"]
+license     = ["GPL-2.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Emulator", "Game"]
+repology    = ["mame"]
+provides    = ["mame"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/MAME-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/MAME-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mamedev/mame/refs/heads/master/COPYING"
+to  = "LICENSE"

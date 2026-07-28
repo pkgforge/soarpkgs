@@ -1,0 +1,26 @@
+[pkg]
+name        = "gpodder"
+type        = "appimage"
+description = "The gPodder podcast client and feed aggregator"
+homepage    = ["https://gpodder.github.io", "https://github.com/gpodder/gpodder"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Player", "Feed"]
+repology    = ["gpodder"]
+provides    = ["gpodder"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/gPodder-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/gPodder-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/gpodder/gpodder/master/COPYING"
+to  = "LICENSE"

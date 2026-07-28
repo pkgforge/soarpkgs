@@ -1,0 +1,23 @@
+[pkg]
+name        = "clonehero"
+type        = "appimage"
+description = "Rhythm game supporting guitar controllers, drum kits, gamepads, and keyboards"
+homepage    = ["https://clonehero.net"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["clonehero"]
+provides    = ["clonehero"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/CloneHero-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/CloneHero-AppImage"
+glob   = "*${arch}*.appimage"

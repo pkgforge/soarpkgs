@@ -1,0 +1,26 @@
+[pkg]
+name        = "system-monitoring-center"
+type        = "appimage"
+description = "Multi-featured system monitor"
+homepage    = ["https://github.com/hakandundar34coding/system-monitoring-center"]
+license     = ["GPL-3.0"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["Monitor", "System"]
+repology    = ["system-monitoring-center"]
+provides    = ["system-monitoring-center"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/system-monitoring-center-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/system-monitoring-center-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/hakandundar34coding/system-monitoring-center/refs/heads/master/LICENSE"
+to  = "LICENSE"

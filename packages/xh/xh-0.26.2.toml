@@ -1,0 +1,17 @@
+version = "0.26.2"
+
+[url]
+x86_64-linux  = "https://github.com/ducaale/xh/releases/download/v0.26.2/xh-v0.26.2-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/ducaale/xh/releases/download/v0.26.2/xh-v0.26.2-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+aarch64-linux = "9ece7b5e547fc0ac836c64e156551754ae705e055d8957b9a772f0821e0e9929"
+x86_64-linux  = "37c8f86b3d4e5eceb890cb359373e6e6c63d88738f1491040601e6ee09490fed"
+
+[sha256]
+aarch64-linux = "3a44900a8ac53f614aa0cd1d2e54ecf4e93584384c1ad091aa18d7992686d7eb"
+x86_64-linux  = "8c53b6a23435754f9e2ea8ab8c0d0296a1921404b88132cf9b364ff6e8c22a6e"
+
+[size]
+aarch64-linux = 4220425
+x86_64-linux  = 4609532

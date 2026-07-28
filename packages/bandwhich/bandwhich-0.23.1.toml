@@ -1,0 +1,23 @@
+version = "0.23.1"
+
+[url]
+x86_64-linux  = "https://github.com/imsnif/bandwhich/releases/download/v0.23.1/bandwhich-v0.23.1-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/imsnif/bandwhich/releases/download/v0.23.1/bandwhich-v0.23.1-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "7e106d4a7d253b44f79165068429c89de45324e12afa2449acc0ccd14dff18f4"
+aarch64-linux = "8c385727e68d182dc9151c30c0ac3f89eb1b2dfcf2e5934c7688ebb0c18c9f44"
+
+[sha256]
+x86_64-linux  = "fec93e01c393cd3ef8aa168a675dffb8fa4841d5fd93390b5d14f238ae29e59c"
+aarch64-linux = "6bbf084e5280a1a10833b8f466728ff428a7d637282c0487d6fcda0c4781357a"
+
+[size]
+x86_64-linux  = 1601364
+aarch64-linux = 1495429
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/imsnif/bandwhich/main/LICENSE.md"
+to     = "LICENSE"
+blake3 = "21d2e08df1831226021fd59f98ba9592d63f5ed0bccfa14460d68a939ccc83b0"
+sha256 = "9b26448cb1b5f1c3626d1f32acca734729cb693af722ecc34a7a330d35a95924"

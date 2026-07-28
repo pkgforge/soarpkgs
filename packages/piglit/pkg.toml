@@ -1,0 +1,26 @@
+[pkg]
+name        = "piglit"
+type        = "appimage"
+description = "OpenGL, Vulkan and OpenCL implementation test suite and test-suite runner"
+homepage    = ["https://gitlab.freedesktop.org/mesa/piglit"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["piglit"]
+provides    = ["piglit"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Piglit-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Piglit-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.freedesktop.org/mesa/piglit/-/raw/main/COPYING"
+to  = "LICENSE"

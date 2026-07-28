@@ -1,0 +1,29 @@
+[pkg]
+name        = "hadolint"
+type        = "static"
+description = "Dockerfile linter, validate inline bash"
+homepage    = ["https://github.com/hadolint/hadolint"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["hadolint"]
+provides    = ["hadolint"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "hadolint/hadolint"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/hadolint/hadolint/releases/download/v${version}/hadolint-Linux-${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/hadolint/hadolint/master/LICENSE"
+to  = "LICENSE"

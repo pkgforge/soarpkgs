@@ -1,0 +1,23 @@
+version = "0.4.7"
+
+[url]
+x86_64-linux  = "https://github.com/laktak/zfind/releases/download/v0.4.7/zfind-linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/laktak/zfind/releases/download/v0.4.7/zfind-linux-arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "6c9b5cd3a6230392a75358be3a2ec80dbe7c84ef693b718112d5b7de200cc656"
+x86_64-linux  = "661ef9820fda5bb3b1f611a7a54f667ff9219705ca2d380f5f816f60a5b4ae04"
+
+[sha256]
+aarch64-linux = "57092153d61aa02a2da169eafc8002e9e3f212d25d0b2bed4e92e81d76e37184"
+x86_64-linux  = "fb016f67fda4be03ca781f4092aa8274fd72b6dbbe3491562b77cb6ecac53757"
+
+[size]
+aarch64-linux = 6483556
+x86_64-linux  = 6969392
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/laktak/zfind/master/LICENSE"
+to     = "LICENSE"
+blake3 = "c32d371e7a875ca65c76612b856aa2acdd45cffc1d1f9a621edb4df3192cf26c"
+sha256 = "f7ebb783a3ebbfd8d9871f0e1b69729c153e66c0d61a715ce58675021cffa748"

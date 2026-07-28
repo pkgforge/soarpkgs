@@ -1,0 +1,27 @@
+[pkg]
+name        = "blender"
+type        = "appimage"
+description = "A fully integrated 3D graphics creation suite"
+homepage    = ["https://blender.org", "https://github.com/blender/blender"]
+license     = ["GPL"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["3DGraphics", "Graphics"]
+repology    = ["blender"]
+provides    = ["blender"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/blender-AppImage"
+tag-suffix = "strip"
+
+[source]
+github  = "pkgforge-dev/blender-AppImage"
+match   = ["appimage", "${arch}"]
+exclude = ["zsync"]
+
+[[extra]]
+url = "https://raw.githubusercontent.com/blender/blender/35240eab7126741074a92d6dbfcea81c4283e776/COPYING"
+to  = "LICENSE"

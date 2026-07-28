@@ -1,0 +1,32 @@
+[pkg]
+name        = "binfmt"
+type        = "static"
+description = "Cross-platform emulator collection distributed with Docker images"
+homepage    = ["https://github.com/tonistiigi/binfmt"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Emulator", "System"]
+provides    = ["binfmt"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "tonistiigi/binfmt"
+strip-prefix = "deploy/v"
+
+[source]
+github  = "tonistiigi/binfmt"
+glob    = "binfmt_linux-${arch}.tar.gz"
+
+[source.install]
+"binfmt" = "binfmt"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/tonistiigi/binfmt/master/LICENSE"
+to  = "LICENSE"

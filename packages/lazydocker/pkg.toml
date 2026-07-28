@@ -1,0 +1,29 @@
+[pkg]
+name        = "lazydocker"
+type        = "static"
+description = "TUI for docker resource visualization and management"
+homepage    = ["https://github.com/jesseduffield/lazydocker"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["lazydocker"]
+provides    = ["lazydocker"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "jesseduffield/lazydocker"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/jesseduffield/lazydocker/releases/download/v${version}/lazydocker_${version}_Linux_${arch}.tar.gz"
+
+[source.install]
+"lazydocker" = "lazydocker"
+"LICENSE"    = "LICENSE"

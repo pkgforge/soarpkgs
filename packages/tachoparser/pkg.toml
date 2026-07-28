@@ -1,0 +1,26 @@
+[pkg]
+name        = "tachoparser"
+type        = "appimage"
+description = "Parser for tachograph files, supporting VU and driver card data"
+homepage    = ["https://github.com/traconiq/tachoparser"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility"]
+provides    = ["tachoparser"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/tachoparser-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/tachoparser-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/traconiq/tachoparser/refs/heads/main/LICENSE.md"
+to  = "LICENSE"

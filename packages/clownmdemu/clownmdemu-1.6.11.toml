@@ -1,0 +1,23 @@
+version = "1.6.11"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ClownMDEmu-AppImage-Enhanced/releases/download/1.6.11%402026-07-22_1784722404/ClownMDEmu-1.6.11-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ClownMDEmu-AppImage-Enhanced/releases/download/1.6.11%402026-07-22_1784722404/ClownMDEmu-1.6.11-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "d04adc1b091f22a7ffe573f116b0e3f841c009d0a76cb485e20cd8082e7438ab"
+aarch64-linux = "b24800342b16357ef190453dc10cdcac78530b7fbf93e785e2fe84dece17a909"
+
+[sha256]
+x86_64-linux  = "d0d462e3c27103b12389fd42e49ed55173afdcfb015802b4ebfa408fe25decc9"
+aarch64-linux = "3d8e581b639a1f95b8c977372dffe17a0fea06fb206b0d7bc2779f0a37a206db"
+
+[size]
+x86_64-linux  = 25901586
+aarch64-linux = 25225844
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Clownacy/clownmdemu-frontend/master/LICENCE.txt"
+to     = "LICENSE"
+blake3 = "42b996554b1bd52a6c0d9035090b572782bea9a525b3d99d16fe2f41ed002b7b"
+sha256 = "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"

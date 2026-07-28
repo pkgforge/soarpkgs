@@ -1,0 +1,29 @@
+[pkg]
+name        = "actionlint"
+type        = "static"
+description = "Static checker for GitHub Actions workflow files"
+homepage    = ["https://rhysd.github.io/actionlint"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+repology    = ["actionlint"]
+provides    = ["actionlint"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "rhysd/actionlint"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/rhysd/actionlint/releases/download/v${version}/actionlint_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"actionlint"  = "actionlint"
+"LICENSE.txt" = "LICENSE"

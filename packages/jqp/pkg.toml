@@ -1,0 +1,29 @@
+[pkg]
+name        = "jqp"
+type        = "static"
+description = "A TUI playground to experiment with jq"
+homepage    = ["https://github.com/noahgorstein/jqp"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["jqp"]
+provides    = ["jqp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "noahgorstein/jqp"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/noahgorstein/jqp/releases/download/v${version}/jqp_Linux_${arch}.tar.gz"
+
+[source.install]
+"jqp"     = "jqp"
+"LICENSE" = "LICENSE"

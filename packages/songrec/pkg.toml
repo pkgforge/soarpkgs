@@ -1,0 +1,26 @@
+[pkg]
+name        = "songrec"
+type        = "appimage"
+description = "An open-source Shazam client for Linux, written in Rust"
+homepage    = ["https://github.com/marin-m/SongRec"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Utility"]
+repology    = ["songrec"]
+provides    = ["songrec"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SongRec-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SongRec-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/marin-m/SongRec/master/LICENSE"
+to  = "LICENSE"

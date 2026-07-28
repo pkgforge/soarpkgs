@@ -1,0 +1,22 @@
+[pkg]
+name        = "maniadrive"
+type        = "appimage"
+description = "Arcade stunt car racing game with acrobatic tracks"
+homepage    = ["http://maniadrive.raydium.org", "https://raydium.org"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "SportsGame"]
+repology    = ["maniadrive"]
+provides    = ["maniadrive"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ManiaDrive-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ManiaDrive-AppImage"
+glob   = "*${arch}*.appimage"

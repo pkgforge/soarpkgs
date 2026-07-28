@@ -1,0 +1,26 @@
+[pkg]
+name        = "openlara"
+type        = "appimage"
+description = "Classic Tomb Raider open-source engine reimplementation"
+homepage    = ["https://github.com/XProger/OpenLara"]
+license     = ["BSD-2-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "ActionGame"]
+repology    = ["openlara"]
+provides    = ["openlara"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenLara-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenLara-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/XProger/OpenLara/master/LICENSE"
+to  = "LICENSE"

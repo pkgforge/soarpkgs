@@ -1,0 +1,26 @@
+[pkg]
+name        = "eza"
+type        = "static"
+description = "A modern replacement for ls"
+homepage    = ["https://eza.rocks"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileTools", "Utility"]
+repology    = ["eza"]
+provides    = ["eza"]
+
+disabled        = true
+disabled-reason = "awaiting first release from pkgforge/builds"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+# one repository publishes for several packages, so tags are filtered
+tag-prefix = "eza-"
+
+[source]
+github = "pkgforge/builds"
+glob   = "eza-${version}-${arch}-linux.tar.gz"

@@ -1,0 +1,23 @@
+version = "1.0.1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/BanjoRecomp-AppImage/releases/download/1.0.1%402026-07-22_1784722334/Banjo_Recompiled-1.0.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/BanjoRecomp-AppImage/releases/download/1.0.1%402026-07-22_1784722334/Banjo_Recompiled-1.0.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "cb4a455832159f4c0e8ac9d91a930a4c225c3aab1cb8fa6a14ff7b574dc949f6"
+aarch64-linux = "e4ba44e0bfbb62e08c81e6d916e419dd5c06040a5837916ed1a59f01f2973704"
+
+[sha256]
+x86_64-linux  = "4dafb5361b53eab50ea173903fdc7628da5c3b8c05338bf58ecdde413985f7e9"
+aarch64-linux = "16de372ed7df6f17279a50db49cb929742ab46fb74538022627cc511410cc1d0"
+
+[size]
+x86_64-linux  = 43972111
+aarch64-linux = 43606548
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/BanjoRecomp/BanjoRecomp/main/COPYING"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

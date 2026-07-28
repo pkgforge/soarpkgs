@@ -1,0 +1,19 @@
+version = "2.7.492.r0.g66c0771-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced/releases/download/2.7.492.r0.g66c0771-1%402026-07-22_1784717398/PCSX2-2.7.492.r0.g66c0771-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "c43c6fd7faa85a526a1c999f1fdd78e6bd6bb87cb455eb4dd2ebfa1b473df253"
+
+[sha256]
+x86_64-linux = "85789a698c400ab8e8242e4bdf99ec202f2a6f346d23670fc7d72ee7417b9bc6"
+
+[size]
+x86_64-linux = 70916875
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/PCSX2/pcsx2/refs/heads/master/COPYING.GPLv3"
+to     = "LICENSE"
+blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
+sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

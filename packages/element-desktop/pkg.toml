@@ -1,0 +1,26 @@
+[pkg]
+name        = "element-desktop"
+type        = "appimage"
+description = "A glossy Matrix collaboration client for desktop"
+homepage    = ["https://element.io", "https://github.com/element-hq/element-desktop"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["element-desktop"]
+provides    = ["element-desktop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Element-Desktop-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Element-Desktop-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/element-hq/element-desktop/develop/LICENSE-AGPL-3.0"
+to  = "LICENSE"

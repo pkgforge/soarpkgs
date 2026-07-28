@@ -1,0 +1,32 @@
+[pkg]
+name        = "yq"
+type        = "static"
+description = "Portable command-line YAML, JSON, XML, CSV, TOML and properties processor"
+homepage    = ["https://mikefarah.gitbook.io/yq"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "TextTools", "Utility"]
+repology    = ["yq-mikefarah"]
+provides    = ["yq"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "mikefarah/yq"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/mikefarah/yq/releases/download/v${version}/yq_linux_${arch}"
+
+[source.install]
+"yq" = "yq"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mikefarah/yq/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "dr-robotniks-ring-racers"
+type        = "appimage"
+description = "Technical kart racing game by Kart Krew, successor to SRB2Kart"
+homepage    = ["https://www.kartkrew.org", "https://github.com/KartKrewDev/RingRacers"]
+license     = ["GPL-2.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "SportsGame"]
+repology    = ["ring-racers"]
+provides    = ["dr-robotniks-ring-racers"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KartKrewDev/RingRacers/master/LICENSE"
+to  = "LICENSE"

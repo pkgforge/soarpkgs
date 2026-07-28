@@ -1,0 +1,30 @@
+[pkg]
+name        = "cursor-cli"
+type        = "appimage"
+description = "Command-line interface for Cursor editor"
+homepage    = [
+  "https://www.cursor.com",
+  "https://github.com/pkgforge-dev/cursor-cli-AppImage",
+]
+license    = ["Proprietary"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["Development", "Utility"]
+repology   = ["cursor-cli"]
+provides   = ["cursor-cli"]
+note        = [
+  "Terms of service: https://cursor.com/terms-of-service",
+]
+channel    = "unstable"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/cursor-cli-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/cursor-cli-AppImage"
+glob   = "*${arch}*.appimage"
+

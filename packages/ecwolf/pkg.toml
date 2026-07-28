@@ -1,0 +1,29 @@
+[pkg]
+name        = "ecwolf"
+type        = "appimage"
+description = "Advanced source port for Wolfenstein 3D, Spear of Destiny and Super 3D Noah's Ark"
+homepage    = [
+  "https://maniacsvault.net/ecwolf/",
+  "https://github.com/ECWolfEngine/ECWolf",
+]
+license    = ["GPL-2.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "ActionGame"]
+repology   = ["ecwolf"]
+provides   = ["ecwolf"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ECWolf-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ECWolf-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ECWolfEngine/ECWolf/master/docs/license-gpl.txt"
+to  = "LICENSE"

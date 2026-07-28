@@ -1,0 +1,17 @@
+version = "0.2.30"
+
+[url]
+x86_64-linux  = "https://github.com/abhimanyu003/sttr/releases/download/v0.2.30/sttr_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/abhimanyu003/sttr/releases/download/v0.2.30/sttr_Linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "b4d3331345f8aca4a20bad2a58afffb4ba966ae926d9baad90262abbdfe314e4"
+x86_64-linux  = "6bf821c431e3b637c9df36b91361f7da596376fb5aa04ce058b6b5549faba496"
+
+[sha256]
+aarch64-linux = "3653d0b1ebebae7cc93e96260d03a872698e3bc689f3162de31c758f25331311"
+x86_64-linux  = "f4cb5b240853b53f67d7b789c9cf5969e794675c5c38aad2ed5ff2c065be4c19"
+
+[size]
+aarch64-linux = 2890407
+x86_64-linux  = 3135552

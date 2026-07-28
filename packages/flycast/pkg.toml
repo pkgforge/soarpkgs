@@ -1,0 +1,26 @@
+[pkg]
+name        = "flycast"
+type        = "appimage"
+description = "Multi-platform Sega Dreamcast, Naomi, and Atomiswave emulator"
+homepage    = ["https://github.com/flyinghead/flycast"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["flycast"]
+provides    = ["flycast"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Flycast-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Flycast-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/flyinghead/flycast/master/LICENSE"
+to  = "LICENSE"

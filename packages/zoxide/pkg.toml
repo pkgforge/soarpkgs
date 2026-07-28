@@ -1,0 +1,25 @@
+[pkg]
+name        = "zoxide"
+type        = "static"
+description = "A smarter cd command, inspired by z and autojump"
+homepage    = ["https://github.com/ajeetdsouza/zoxide"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Shell", "Utility"]
+repology    = ["zoxide"]
+provides    = ["zoxide"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "ajeetdsouza/zoxide"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/ajeetdsouza/zoxide/releases/download/v${version}/zoxide-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"zoxide"  = "zoxide"
+"LICENSE" = "LICENSE"

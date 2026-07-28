@@ -1,0 +1,19 @@
+version = "1.60b"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Asphyxia-CORE-AppImage/releases/download/v1.60b%402026-07-22_1784722405/asphyxia-core-v1.60b-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "a8ac58148066198f27d8b7a84ff2af96d24c63af6b2b6350cbbe95b3a049970f"
+
+[sha256]
+x86_64-linux = "eddc253aa00b4a124d1621e1d334e14f678c098fb7e2e8b4968180f0b1373707"
+
+[size]
+x86_64-linux = 23957991
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/asphyxia-core/core/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

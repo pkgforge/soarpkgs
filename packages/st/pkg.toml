@@ -1,0 +1,22 @@
+[pkg]
+name        = "st"
+type        = "appimage"
+description = "Simple terminal"
+homepage    = ["https://st.suckless.org", "https://github.com/pkgforge-dev/st-AppImage"]
+license     = ["MIT"]
+maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
+category    = ["System", "TerminalEmulator"]
+repology    = ["st"]
+provides    = ["st"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/st-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/st-AppImage"
+glob   = "*${arch}*.appimage"

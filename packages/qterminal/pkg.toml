@@ -1,0 +1,26 @@
+[pkg]
+name        = "qterminal"
+type        = "appimage"
+description = "Lightweight Qt-based terminal emulator for the LXQt desktop environment"
+homepage    = ["https://lxqt-project.org", "https://github.com/lxqt/qterminal"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "TerminalEmulator", "Utility"]
+repology    = ["qterminal"]
+provides    = ["qterminal"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/QTerminal-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/QTerminal-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/lxqt/qterminal/master/LICENSE"
+to  = "LICENSE"

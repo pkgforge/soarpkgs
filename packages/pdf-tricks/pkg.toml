@@ -1,0 +1,21 @@
+[pkg]
+name        = "pdf-tricks"
+type        = "appimage"
+description = "Simple app for small manipulations in PDF files (split, merge, compress)"
+homepage    = ["https://github.com/muriloventuroso/pdftricks"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Utility"]
+provides    = ["pdf-tricks"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PDF-Tricks-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PDF-Tricks-AppImage"
+glob   = "*${arch}*.appimage"

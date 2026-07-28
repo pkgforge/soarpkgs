@@ -1,0 +1,29 @@
+[pkg]
+name        = "keypunch"
+type        = "appimage"
+description = "Practice your typing skills"
+homepage    = [
+  "https://apps.gnome.org/Keypunch/",
+  "https://github.com/bragefuglseth/keypunch",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Education", "Utility"]
+repology   = ["keypunch"]
+provides   = ["keypunch"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Keypunch-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Keypunch-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/bragefuglseth/keypunch/main/COPYING"
+to  = "LICENSE"

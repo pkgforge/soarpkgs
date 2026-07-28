@@ -1,0 +1,26 @@
+[pkg]
+name        = "amarok"
+type        = "appimage"
+description = "Powerful music player that lets you rediscover your music"
+homepage    = ["https://amarok.kde.org", "https://invent.kde.org/multimedia/amarok"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Music", "Player"]
+repology    = ["amarok"]
+provides    = ["amarok"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Amarok-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Amarok-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/KDE/amarok/refs/heads/master/COPYING"
+to  = "LICENSE"

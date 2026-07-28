@@ -1,0 +1,26 @@
+[pkg]
+name        = "qmplay2"
+type        = "appimage"
+description = "Qt-based media player, streamer and downloader supporting many formats"
+homepage    = ["https://github.com/zaps166/QMPlay2"]
+license     = ["LGPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Player", "Video"]
+repology    = ["qmplay2"]
+provides    = ["qmplay2"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/QMPlay2-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/QMPlay2-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/zaps166/QMPlay2/master/LICENSE"
+to  = "LICENSE"

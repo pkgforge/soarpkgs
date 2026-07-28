@@ -1,0 +1,26 @@
+[pkg]
+name        = "mixxx"
+type        = "appimage"
+description = "Free and open-source DJ mixing software for live performances"
+homepage    = ["https://mixxx.org", "https://github.com/mixxxdj/mixxx"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Music", "AudioVideo"]
+repology    = ["mixxx"]
+provides    = ["mixxx"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Mixxx-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Mixxx-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mixxxdj/mixxx/main/COPYING"
+to  = "LICENSE"

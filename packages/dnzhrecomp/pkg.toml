@@ -1,0 +1,21 @@
+[pkg]
+name        = "dnzhrecomp"
+type        = "appimage"
+description = "Static recompilation of the Nintendo 64 game Duke Nukem: Zero Hour"
+homepage    = ["https://github.com/sonicdcer/DNZHRecomp"]
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+provides    = ["dnzhrecomp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DNZHRecomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DNZHRecomp-AppImage"
+glob   = "*${arch}*.appimage"

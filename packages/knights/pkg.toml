@@ -1,0 +1,26 @@
+[pkg]
+name        = "knights"
+type        = "appimage"
+description = "KDE chess board interface with support for the XBoard chess engine protocol"
+homepage    = ["https://apps.kde.org/knights", "https://invent.kde.org/games/knights"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game"]
+repology    = ["knights"]
+provides    = ["knights"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Knights-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Knights-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/games/knights/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"

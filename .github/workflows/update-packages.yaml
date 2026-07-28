@@ -1,0 +1,85 @@
+name: Update Packages
+
+# Resolves the current upstream version of every package and opens a PR with
+# the newly pinned version files. The diff is a handful of lines per package,
+# which is the point: a silently swapped upstream artifact shows up as a
+# changed hash that somebody can actually look at.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'Space-separated package names; empty = all'
+        type: string
+        default: ''
+
+concurrency:
+  group: update-packages
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install sbuild
+        run: |
+          curl -fsSL "https://github.com/pkgforge/sbuilder/releases/download/nightly/sbuild-$(uname -m)-linux" \
+            -o /usr/local/bin/sbuild
+          chmod +x /usr/local/bin/sbuild
+          sbuild --version
+
+      - name: Resolve upstream versions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: sbuild resolve . ${{ inputs.packages }}
+
+      # Forges that report no digest leave a pinned URL with no hash. That
+      # state must never reach a commit, so fill it before validating.
+      - name: Hash artifacts with no reported digest
+        run: sbuild hashfill
+
+      - name: Validate
+        run: sbuild validate
+
+      - name: Summarise changes
+        id: diff
+        run: |
+          git add -A packages
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          {
+            echo "## Package updates"
+            echo
+            echo '```'
+            git diff --cached --stat -- packages | tail -40
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automated/package-updates
+          title: 'chore: update pinned package versions'
+          commit-message: 'chore: update pinned package versions'
+          body: |
+            Automated version bump. Each changed file pins a resolved URL and
+            its hash.
+
+            Review the hashes: a changed hash on an *unchanged* version means
+            upstream replaced an artifact in place, which is worth
+            investigating before merging.
+          labels: automated
+          delete-branch: true

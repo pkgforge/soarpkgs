@@ -1,0 +1,19 @@
+version = "0.4.10"
+
+[url]
+x86_64-linux = "https://github.com/samtay/so/releases/download/v0.4.10/so-x86_64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux = "da5a862df11ce2cc5250ea830e329f303f90835a9255dee0a541bf59795ec204"
+
+[sha256]
+x86_64-linux = "57dc2fd6b1bf203c0a79a50a068623f45a8fd5f70ff59d4f930e237d950e1d4f"
+
+[size]
+x86_64-linux = 6329509
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/samtay/so/main/LICENSE"
+to     = "LICENSE"
+blake3 = "6909b15702e34683f8611cfc3478a1511d2a9f506f2c94ace60d7a608d014a07"
+sha256 = "deb469b345ad2b4c331a51b1a4e689b7661f5d2da773139ac1b7e09e1e0c51f6"

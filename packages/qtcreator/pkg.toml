@@ -1,0 +1,29 @@
+[pkg]
+name        = "qtcreator"
+type        = "appimage"
+description = "Cross-platform C++/QML IDE for Qt application development"
+homepage    = [
+  "https://www.qt.io/product/development-tools",
+  "https://github.com/qt-creator/qt-creator",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Development", "IDE"]
+repology   = ["qtcreator"]
+provides   = ["qtcreator"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/QtCreator-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/QtCreator-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/qt-creator/qt-creator/master/LICENSES/LICENSE.GPL3-EXCEPT"
+to  = "LICENSE"

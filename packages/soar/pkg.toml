@@ -1,0 +1,25 @@
+[pkg]
+name        = "soar"
+type        = "static"
+description = "Fast, modern, bloat-free distro-independent package manager"
+homepage    = ["https://soar.qaidvoid.dev"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["PackageManager", "System"]
+repology    = ["soar"]
+provides    = ["soar"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge/soar"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/pkgforge/soar/releases/download/v${version}/soar-${arch}-linux.tar.gz"
+
+[source.install]
+"release/soar"    = "soar"
+"release/LICENSE" = "LICENSE"

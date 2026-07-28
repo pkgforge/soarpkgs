@@ -1,0 +1,28 @@
+[pkg]
+name        = "sequin"
+type        = "static"
+description = "Human-readable ANSI sequences"
+homepage    = ["https://github.com/charmbracelet/sequin"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["sequin"]
+provides    = ["sequin"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "charmbracelet/sequin"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/charmbracelet/sequin/releases/download/v${version}/sequin_${version}_Linux_${arch}.tar.gz"
+
+[source.install]
+"sequin_${version}_Linux_${arch}/sequin" = "sequin"

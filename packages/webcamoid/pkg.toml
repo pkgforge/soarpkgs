@@ -1,0 +1,29 @@
+[pkg]
+name        = "webcamoid"
+type        = "appimage"
+description = "Webcam suite"
+homepage    = [
+  "https://webcamoid.github.io",
+  "https://github.com/pkgforge-dev/Webcamoid-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
+category   = ["AudioVideo", "Video"]
+repology   = ["webcamoid"]
+provides   = ["webcamoid"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Webcamoid-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Webcamoid-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/webcamoid/webcamoid/refs/heads/master/COPYING"
+to  = "LICENSE"

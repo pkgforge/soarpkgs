@@ -1,0 +1,26 @@
+[pkg]
+name        = "wine"
+type        = "appimage"
+description = "Compatibility layer to run Windows applications on POSIX systems"
+homepage    = ["https://www.winehq.org", "https://github.com/wine-mirror/wine"]
+license     = ["LGPL-2.1-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Utility", "Emulator"]
+repology    = ["wine"]
+provides    = ["wine"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/wine-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/wine-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/wine-mirror/wine/master/LICENSE"
+to  = "LICENSE"

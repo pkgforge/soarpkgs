@@ -1,0 +1,23 @@
+[pkg]
+name        = "itr2025"
+type        = "appimage"
+description = "Brazilian Federal Revenue rural land tax (ITR) declaration program for 2025"
+homepage    = [
+  "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/ditr",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Finance", "Office", "Utility"]
+provides   = ["itr2025"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ITR2025-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ITR2025-AppImage"
+glob   = "*${arch}*.appimage"

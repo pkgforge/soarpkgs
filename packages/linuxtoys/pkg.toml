@@ -1,0 +1,26 @@
+[pkg]
+name        = "linuxtoys"
+type        = "appimage"
+description = "A collection of user-friendly tools for Linux systems"
+homepage    = ["https://linux.toys", "https://github.com/psygreg/linuxtoys"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "System"]
+repology    = ["linuxtoys"]
+provides    = ["linuxtoys"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/LinuxToys-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/LinuxToys-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/psygreg/linuxtoys/master/LICENSE"
+to  = "LICENSE"

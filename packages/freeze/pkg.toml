@@ -1,0 +1,28 @@
+[pkg]
+name        = "freeze"
+type        = "static"
+description = "Generate images of code and terminal output"
+homepage    = ["https://github.com/charmbracelet/freeze"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["freeze"]
+provides    = ["freeze"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "charmbracelet/freeze"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/charmbracelet/freeze/releases/download/v${version}/freeze_${version}_Linux_${arch}.tar.gz"
+
+[source.install]
+"freeze_${version}_Linux_${arch}/freeze" = "freeze"

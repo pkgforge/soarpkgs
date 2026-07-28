@@ -1,0 +1,26 @@
+[pkg]
+name        = "melonds"
+type        = "appimage"
+description = "Nintendo DS emulator focused on accuracy, features and portability"
+homepage    = ["https://melonds.kuribo64.net", "https://github.com/melonDS-emu/melonDS"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["melonds"]
+provides    = ["melonds"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/melonDS-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/melonDS-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/melonDS-emu/melonDS/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "0.10.0"
+
+[url]
+x86_64-linux  = "https://github.com/houseabsolute/ubi/releases/download/v0.10.0/ubi-Linux-musl-x86_64.tar.gz"
+aarch64-linux = "https://github.com/houseabsolute/ubi/releases/download/v0.10.0/ubi-Linux-musl-arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "dc63327e32715528d200dcb397e0d7d540e230aacf106109cd51dabd76c374c7"
+x86_64-linux  = "76cbb885b93f7076afe7a3000960ae24382bc41db116a1e2b2706699560c7520"
+
+[sha256]
+aarch64-linux = "06155eb12b8826a0e8ec176ca98ca0ca91d257c5ac9aa32ec6dc241fc8fe6396"
+x86_64-linux  = "d062bfa4956397d0d95ef96e70b81c9afafbf3dcadc6f672c6d1eaf52341ce6f"
+
+[size]
+aarch64-linux = 3842418
+x86_64-linux  = 4042900
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/houseabsolute/ubi/master/LICENSE-APACHE"
+to     = "LICENSE"
+blake3 = "3833fc3c91a379ff509b431db1f7fd40dea69a6614249f420ec62398957087b1"
+sha256 = "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"

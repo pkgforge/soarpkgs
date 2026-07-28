@@ -1,0 +1,29 @@
+[pkg]
+name        = "drum-machine"
+type        = "appimage"
+description = "A drum machine application built with Python, GTK4 and libadwaita"
+homepage    = [
+  "https://apps.gnome.org/DrumMachine/",
+  "https://github.com/Revisto/drum-machine",
+]
+license    = ["GPL-3.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Audio", "Music"]
+repology   = ["drum-machine"]
+provides   = ["drum-machine"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Drum-Machine-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Drum-Machine-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Revisto/drum-machine/main/COPYING"
+to  = "LICENSE"

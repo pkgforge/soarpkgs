@@ -1,0 +1,26 @@
+[pkg]
+name        = "bibletime"
+type        = "appimage"
+description = "Powerful cross platform Bible study tool"
+homepage    = ["https://bibletime.info/", "https://github.com/bibletime/bibletime"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Education", "Viewer", "Utility"]
+repology    = ["bibletime"]
+provides    = ["bibletime"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/BibleTime-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/BibleTime-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/bibletime/bibletime/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,29 @@
+[pkg]
+name        = "quickshell"
+type        = "appimage"
+description = "Flexible QtQuick based desktop shell toolkit"
+homepage    = [
+  "https://quickshell.outfoxxed.me",
+  "https://github.com/quickshell-mirror/quickshell",
+]
+license    = ["LGPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["System", "Utility"]
+repology   = ["quickshell"]
+provides   = ["quickshell"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Quickshell-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Quickshell-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/quickshell-mirror/quickshell/master/LICENSE"
+to  = "LICENSE"

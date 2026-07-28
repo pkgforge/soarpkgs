@@ -1,0 +1,26 @@
+[pkg]
+name        = "ffmpeg"
+type        = "appimage"
+description = "Complete cross-platform solution to record, convert and stream audio and video"
+homepage    = ["https://ffmpeg.org", "https://github.com/FFmpeg/FFmpeg"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Video", "Audio"]
+repology    = ["ffmpeg"]
+provides    = ["ffmpeg"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/FFmpeg-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/FFmpeg-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/COPYING.GPLv3"
+to  = "LICENSE"

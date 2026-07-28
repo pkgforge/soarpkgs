@@ -1,0 +1,26 @@
+[pkg]
+name        = "ghostship"
+type        = "appimage"
+description = "A native PC port of Super Mario 64 from Harbour Masters"
+homepage    = ["https://github.com/HarbourMasters/Ghostship"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game"]
+repology    = ["ghostship"]
+provides    = ["ghostship"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ghostship-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ghostship-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/HarbourMasters/Ghostship/develop/LICENSE.md"
+to  = "LICENSE"

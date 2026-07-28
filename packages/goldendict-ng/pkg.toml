@@ -1,0 +1,29 @@
+[pkg]
+name        = "goldendict-ng"
+type        = "appimage"
+description = "Advanced multi-format dictionary lookup program, the next generation GoldenDict"
+homepage    = [
+  "https://xiaoyifang.github.io/goldendict-ng/",
+  "https://github.com/xiaoyifang/goldendict-ng",
+]
+license    = ["GPL-3.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "Education"]
+repology   = ["goldendict-ng"]
+provides   = ["goldendict-ng"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/GoldenDict-ng-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/GoldenDict-ng-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/xiaoyifang/goldendict-ng/staged/LICENSE.txt"
+to  = "LICENSE"

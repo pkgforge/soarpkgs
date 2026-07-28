@@ -1,0 +1,23 @@
+version = "4.8.1"
+
+[url]
+x86_64-linux  = "https://github.com/fish-shell/fish-shell/releases/download/4.8.1/fish-4.8.1-linux-x86_64.tar.xz"
+aarch64-linux = "https://github.com/fish-shell/fish-shell/releases/download/4.8.1/fish-4.8.1-linux-aarch64.tar.xz"
+
+[blake3]
+aarch64-linux = "f31b2d65f6b4beb869610a606a477894dbbbfa9cd1834f565f17d9d9c100baaf"
+x86_64-linux  = "4109015910e387c65cbfaa8f0edd70cd2898714ddf6ef0b0bd6d2a8f49139fb5"
+
+[sha256]
+aarch64-linux = "a03c8a445570a2a37e114cb13cebe41842cf17c4dd67a6530a57f742db04eee4"
+x86_64-linux  = "39cab35242ab77bfdbce73b473000c3b045aaf2fe0951b042199bb7fdba3df78"
+
+[size]
+aarch64-linux = 2899572
+x86_64-linux  = 3194120
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/fish-shell/fish-shell/master/COPYING"
+to     = "LICENSE"
+blake3 = "9b683191421facf7c9a3c6bb7316dab3413124992a884ce146ececcb3744bed1"
+sha256 = "41f2f3709337de306838f27cedebf345c5d4690f68ecced154d57349ca63b85a"

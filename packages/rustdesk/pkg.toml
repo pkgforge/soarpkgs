@@ -1,0 +1,26 @@
+[pkg]
+name        = "rustdesk"
+type        = "appimage"
+description = "Open-source remote desktop, a self-hosted alternative to TeamViewer"
+homepage    = ["https://rustdesk.com", "https://github.com/rustdesk/rustdesk"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "Utility", "RemoteAccess"]
+repology    = ["rustdesk"]
+provides    = ["rustdesk"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/RustDesk-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/RustDesk-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/rustdesk/rustdesk/master/LICENCE"
+to  = "LICENSE"

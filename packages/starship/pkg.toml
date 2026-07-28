@@ -1,0 +1,28 @@
+[pkg]
+name        = "starship"
+type        = "static"
+description = "The minimal, blazing-fast, and infinitely customizable prompt for any shell"
+homepage    = ["https://github.com/starship/starship"]
+license     = ["ISC"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Shell"]
+repology    = ["starship"]
+provides    = ["starship"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "starship/starship"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/starship/starship/releases/download/v${version}/starship-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"starship" = "starship"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/starship/starship/master/LICENSE"
+to  = "LICENSE"

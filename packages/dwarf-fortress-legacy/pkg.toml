@@ -1,0 +1,21 @@
+[pkg]
+name        = "dwarf-fortress-legacy"
+type        = "appimage"
+description = "Classic freeware version of the deep dwarven fortress simulation by Bay 12 Games"
+homepage    = ["https://www.bay12games.com/dwarves/"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "StrategyGame", "RolePlaying"]
+provides    = ["dwarf-fortress-legacy"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Dwarf-Fortress-Legacy-AppImage"
+glob   = "*${arch}*.appimage"

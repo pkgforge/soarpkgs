@@ -1,0 +1,23 @@
+version = "0.25.1-beta"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.1-beta%402026-07-22_1784722446/FreeTube-0.25.1-beta-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.1-beta%402026-07-22_1784722446/FreeTube-0.25.1-beta-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "189b008b3cc3b256527447125815aa9d7a5ecf05cf98d23b16a3bfdd6b5f7e51"
+x86_64-linux  = "ad3fa5d09f41165c5f1d01e7f59d2b2715c6a31fbda400f01c49e9cd203dc303"
+
+[sha256]
+aarch64-linux = "ecef64c070d1cb67b0d484dedd91d941fe10019960b08fa153a83cc1c9edd297"
+x86_64-linux  = "512d01570f75ef8ca6213ce3561ad4fca2c312b8993b95c83bdaf70b673685f0"
+
+[size]
+aarch64-linux = 139800798
+x86_64-linux  = 142374453
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/development/LICENSE"
+to     = "LICENSE"
+blake3 = "42b996554b1bd52a6c0d9035090b572782bea9a525b3d99d16fe2f41ed002b7b"
+sha256 = "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"

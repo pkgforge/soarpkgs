@@ -1,0 +1,25 @@
+[pkg]
+name        = "roller"
+type        = "appimage"
+description = "Reverse-engineered reimplementation of the 1995 racing game Whiplash/Fatal Racing"
+homepage    = ["https://github.com/FatalDecomp/ROLLER"]
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+provides    = ["roller"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ROLLER-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ROLLER-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FatalDecomp/ROLLER/master/LICENSE.md"
+to  = "LICENSE"

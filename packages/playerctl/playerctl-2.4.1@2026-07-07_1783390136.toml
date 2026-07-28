@@ -1,0 +1,19 @@
+version = "2.4.1@2026-07-07_1783390136"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/playerctl-AppImage/releases/download/2.4.1%402026-07-07_1783390136/playerctl-2.4.1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "40256b4ff23141b7ee0a2ca0322d0e732dee01be370a85de9993784324da2b6c"
+
+[sha256]
+x86_64-linux = "5399aea2140c8057fea71c41a3e3d1f8b9d8e19ec36babb5147effded1b8ffa9"
+
+[size]
+x86_64-linux = 4355689
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/altdesktop/playerctl/master/COPYING"
+to     = "LICENSE"
+blake3 = "23dacf46965bca95ef0cff7c8c096fce955fbb447c9c16eccb7f9d00b038b4c5"
+sha256 = "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"

@@ -1,0 +1,17 @@
+version = "0.2.89"
+
+[url]
+x86_64-linux  = "https://github.com/nektos/act/releases/download/v0.2.89/act_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/nektos/act/releases/download/v0.2.89/act_Linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "12b2ddac8eeee0d3488500bf00399ea49df3bacfa421430ad70d3a64e9e0f190"
+aarch64-linux = "1c23f31f9519601e2b19b4c6fc4f3d641e9b130e4ad407f70e7425552198ae25"
+
+[sha256]
+x86_64-linux  = "0191d6f1f3b716b5c55820032605d05fc3c1cdbf581ebeff655019e5dd1524c0"
+aarch64-linux = "daa8679ba9615a74d2d0cec321dc593f21948a2a11bb65862b063d8b930f4bcb"
+
+[size]
+x86_64-linux  = 8200078
+aarch64-linux = 7453153

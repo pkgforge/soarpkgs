@@ -1,0 +1,26 @@
+[pkg]
+name        = "lmms"
+type        = "appimage"
+description = "Cross-platform music production software (digital audio workstation)"
+homepage    = ["https://lmms.io", "https://github.com/LMMS/lmms"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Music", "AudioVideo"]
+repology    = ["lmms"]
+provides    = ["lmms"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/LMMS-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/LMMS-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/LMMS/lmms/master/LICENSE.txt"
+to  = "LICENSE"

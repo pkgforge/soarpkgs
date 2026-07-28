@@ -1,0 +1,26 @@
+[pkg]
+name        = "neochat"
+type        = "appimage"
+description = "A client for Matrix, the decentralized communication protocol"
+homepage    = ["https://apps.kde.org/neochat", "https://invent.kde.org/network/neochat"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["neochat"]
+provides    = ["neochat"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/NeoChat-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/NeoChat-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/network/neochat/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to  = "LICENSE"

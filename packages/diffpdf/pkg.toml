@@ -1,0 +1,26 @@
+[pkg]
+name        = "diffpdf"
+type        = "appimage"
+description = "Compare two PDF files visually or textually"
+homepage    = ["https://gitlab.com/eang/diffpdf", "http://www.qtrac.eu/diffpdf-foss.html"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "Office"]
+repology    = ["diffpdf"]
+provides    = ["diffpdf"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DiffPDF-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DiffPDF-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/eang/diffpdf/-/raw/master/gpl-2.0.txt"
+to  = "LICENSE"

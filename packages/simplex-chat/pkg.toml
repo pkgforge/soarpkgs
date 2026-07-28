@@ -1,0 +1,27 @@
+[pkg]
+name        = "simplex-chat"
+type        = "appimage"
+description = "Private messaging network operating without any user identifiers"
+homepage    = ["https://simplex.chat", "https://github.com/simplex-chat/simplex-chat"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "InstantMessaging", "Chat"]
+repology    = ["simplex-chat"]
+provides    = ["simplex-chat"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/SimpleX-Chat-AppImage-Enhanced"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/SimpleX-Chat-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable/LICENSE"
+to  = "LICENSE"

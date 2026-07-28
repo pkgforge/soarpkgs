@@ -1,0 +1,26 @@
+[pkg]
+name        = "hatari"
+type        = "appimage"
+description = "Free Atari ST/STE/TT/Falcon emulator"
+homepage    = ["https://hatari.tuxfamily.org", "https://github.com/hatari/hatari"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["hatari"]
+provides    = ["hatari"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Hatari-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Hatari-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/hatari/hatari/main/gpl.txt"
+to  = "LICENSE"

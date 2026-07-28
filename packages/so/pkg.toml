@@ -1,0 +1,28 @@
+[pkg]
+name        = "so"
+type        = "static"
+description = "A terminal interface for Stack Overflow"
+homepage    = ["https://github.com/samtay/so"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["so"]
+provides    = ["so"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "samtay/so"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/samtay/so/releases/download/v${version}/so-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"so" = "so"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/samtay/so/main/LICENSE"
+to  = "LICENSE"

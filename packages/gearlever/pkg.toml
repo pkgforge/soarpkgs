@@ -1,0 +1,26 @@
+[pkg]
+name        = "gearlever"
+type        = "appimage"
+description = "Manage AppImages and more"
+homepage    = ["https://github.com/mijorus/gearlever"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["PackageManager", "Utility"]
+repology    = ["gearlever"]
+provides    = ["gearlever"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gear-Lever-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gear-Lever-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/mijorus/gearlever/refs/heads/master/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,17 @@
+version = "1.4.0"
+
+[url]
+x86_64-linux  = "https://github.com/sibprogrammer/xq/releases/download/v1.4.0/xq_1.4.0_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/sibprogrammer/xq/releases/download/v1.4.0/xq_1.4.0_linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "8e033cc86a4e79672cded77115643fbaf0b539e62001d995e84087a83b631475"
+x86_64-linux  = "b26bb15ec1b7a3614ab3e9bb7a6de1a76a5f10078d51d866c30e2e740780a38e"
+
+[sha256]
+aarch64-linux = "d511ce8cb96fd7bf2d01e172d19b5d831a49fd7d6adf4106072ccab885bc4202"
+x86_64-linux  = "467e83864c3cf70a3a0754cd08070d21fa4b5fbccb8eb10ac3d7ea499fa48217"
+
+[size]
+aarch64-linux = 2476343
+x86_64-linux  = 2658527

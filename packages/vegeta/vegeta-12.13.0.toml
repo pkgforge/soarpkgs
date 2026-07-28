@@ -1,0 +1,23 @@
+version = "12.13.0"
+
+[url]
+x86_64-linux  = "https://github.com/tsenart/vegeta/releases/download/v12.13.0/vegeta_12.13.0_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/tsenart/vegeta/releases/download/v12.13.0/vegeta_12.13.0_linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "a3c131a8e2951923280b61fd1841301edb22e3b5b58232464dacd9f5db5e8ee2"
+x86_64-linux  = "b9a8c274d9000e0fa9ba04e572d5affb555a28cab4aede5b570c31e51e1a3231"
+
+[sha256]
+aarch64-linux = "950381173a5575e25e8e086f36fc03bf65d61a2433329b48e41e1cb5e4133bba"
+x86_64-linux  = "e8759ce45c14e18374bdccd3ba6068197bc3a9f9b7e484db3837f701b9d12e61"
+
+[size]
+aarch64-linux = 3956348
+x86_64-linux  = 4309032
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/tsenart/vegeta/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9581e5e3ff7a4aefceda46c120e62733c01af015dfa497d7dbf8fa49dbb1c88b"
+sha256 = "bd735c25acac78c723de1120e5079faf4ca6d074df116330282c3beb3610838b"

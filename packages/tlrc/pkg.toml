@@ -1,0 +1,25 @@
+[pkg]
+name        = "tlrc"
+type        = "static"
+description = "A tldr client written in Rust"
+homepage    = ["https://github.com/tldr-pages/tlrc"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["tlrc"]
+provides    = ["tldr"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "tldr-pages/tlrc"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/tldr-pages/tlrc/releases/download/v${version}/tlrc-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"tldr"    = "tldr"
+"LICENSE" = "LICENSE"

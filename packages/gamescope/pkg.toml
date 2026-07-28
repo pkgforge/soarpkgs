@@ -1,0 +1,26 @@
+[pkg]
+name        = "gamescope"
+type        = "appimage"
+description = "SteamOS session compositing window manager (micro-compositor)"
+homepage    = ["https://github.com/ValveSoftware/gamescope"]
+license     = ["BSD-2-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Utility", "Game"]
+repology    = ["gamescope"]
+provides    = ["gamescope"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/gamescope-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/gamescope-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ValveSoftware/gamescope/master/LICENSE"
+to  = "LICENSE"

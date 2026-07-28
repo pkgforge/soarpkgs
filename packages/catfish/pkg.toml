@@ -1,0 +1,29 @@
+[pkg]
+name        = "catfish"
+type        = "appimage"
+description = "File-searching application for the XFCE desktop environment"
+homepage    = [
+  "https://docs.xfce.org/apps/catfish/start",
+  "https://gitlab.xfce.org/apps/catfish",
+]
+license    = ["GPL-2.0-only"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "System"]
+repology   = ["catfish"]
+provides   = ["catfish"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Catfish-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Catfish-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.xfce.org/apps/catfish/-/raw/master/COPYING"
+to  = "LICENSE"

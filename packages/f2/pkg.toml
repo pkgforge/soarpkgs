@@ -1,0 +1,29 @@
+[pkg]
+name        = "f2"
+type        = "static"
+description = "Cross-platform tool for batch renaming files and directories"
+homepage    = ["https://github.com/ayoisaiah/f2"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "FileTools", "Utility"]
+repology    = ["f2"]
+provides    = ["f2"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "ayoisaiah/f2"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/ayoisaiah/f2/releases/download/v${version}/f2_${version}_linux_${arch}.tar.gz"
+
+[source.install]
+"f2"      = "f2"
+"LICENCE" = "LICENSE"

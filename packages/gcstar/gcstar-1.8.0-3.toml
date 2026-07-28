@@ -1,0 +1,23 @@
+version = "1.8.0-3"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/GCstar-AppImage/releases/download/1.8.0-3%402026-07-22_1784722137/GCstar-1.8.0-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/GCstar-AppImage/releases/download/1.8.0-3%402026-07-22_1784722137/GCstar-1.8.0-3-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "873b3785e78fa6bed15f308a44c8dd1aedab00adf893df2d7bd3978ca7d40d42"
+x86_64-linux  = "5f7b1d3b0b0ea967e3ff8eff3acb23bd215668e968770b2ae50ed70c43c87298"
+
+[sha256]
+aarch64-linux = "b32b1602c7cf913a3e6110f067a7ac77a009e88f308bfc04404edd2c5417562f"
+x86_64-linux  = "d43c2271bed44e830f4e55e2e17095929d89dcdde512a9bc1391fb9132a01fea"
+
+[size]
+aarch64-linux = 56203540
+x86_64-linux  = 58925957
+
+[[extra]]
+url    = "https://gitlab.com/GCstar/GCstar/-/raw/main/LICENSE"
+to     = "LICENSE"
+blake3 = "73ee6241e80f26df6008916389e6ee3a855d627aca33eebc96e2c47eb8dfc33d"
+sha256 = "07cbd44da43bf899404c440bae49454e3b4097748af9e6524936b3a5d8aef5d7"

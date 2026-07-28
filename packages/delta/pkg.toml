@@ -1,0 +1,24 @@
+[pkg]
+name        = "delta"
+type        = "static"
+description = "A syntax-highlighting pager for git, diff, and grep output"
+homepage    = ["https://dandavison.github.io/delta"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "TextTools", "Utility"]
+repology    = ["git-delta"]
+provides    = ["delta"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "dandavison/delta"
+
+[source]
+url     = "https://github.com/dandavison/delta/releases/download/${version}/delta-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"delta-${version}-${arch}-unknown-linux-musl/delta"   = "delta"
+"delta-${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"

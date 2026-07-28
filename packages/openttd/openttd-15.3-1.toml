@@ -1,0 +1,23 @@
+version = "15.3-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-07-22_1784721843/OpenTTD-15.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-07-22_1784721843/OpenTTD-15.3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "8427f4be30a21fb854584ee0203c0a29d787f4bda6fa2624e9e10dda117c3fd1"
+x86_64-linux  = "383753990c75b66e9b8244392bd6a2d0f2ad6227471d2fcc66b9eeb98c7e0037"
+
+[sha256]
+aarch64-linux = "5e0fb7142e6ef4bd1bd1238d72b533ff4bebaf6813936923ca82335cd7bb7652"
+x86_64-linux  = "bfd31f1e94922372bfab6f93ee670993ed900c3eea13038b574a8a83b5078c45"
+
+[size]
+aarch64-linux = 54957101
+x86_64-linux  = 54487064
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenTTD/OpenTTD/master/COPYING.md"
+to     = "LICENSE"
+blake3 = "c60cba09565d1eee20369abd1d69bc462fe9cf8df3a655041d695af0aab465df"
+sha256 = "50ac792e113700dd23ecb25ed6f341eb383bed36cb8fd87aa164f4e44f2760b3"

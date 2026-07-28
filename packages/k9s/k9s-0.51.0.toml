@@ -1,0 +1,17 @@
+version = "0.51.0"
+
+[url]
+x86_64-linux  = "https://github.com/derailed/k9s/releases/download/v0.51.0/k9s_Linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/derailed/k9s/releases/download/v0.51.0/k9s_Linux_arm64.tar.gz"
+
+[blake3]
+aarch64-linux = "a1a7baab763a394c615462e77d17e60eaf3a9a04ec8c7288087039166c197756"
+x86_64-linux  = "080b21cc2d49186768ecb3ac60d5da8ff6e99703f8c212f671abed994847b3a2"
+
+[sha256]
+aarch64-linux = "3ee05c82e5f9198928a4e86133608ba6a2c10a2244d6a7789e820f78319d640c"
+x86_64-linux  = "c3752ad51a5a4015a113819c4eeb6e55a4d0e4b8e652494797532f6fc8161dd7"
+
+[size]
+aarch64-linux = 37438999
+x86_64-linux  = 41387759

@@ -1,0 +1,26 @@
+[pkg]
+name        = "perfect-dark"
+type        = "appimage"
+description = "Work in progress port of the N64 game Perfect Dark to modern platforms"
+homepage    = ["https://github.com/fgsfdsfgs/perfect_dark"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame", "Shooter"]
+repology    = ["perfect-dark"]
+provides    = ["perfect-dark"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Perfect-Dark-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Perfect-Dark-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/fgsfdsfgs/perfect_dark/port/LICENSE"
+to  = "LICENSE"

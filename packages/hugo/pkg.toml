@@ -1,0 +1,29 @@
+[pkg]
+name        = "hugo"
+type        = "static"
+description = "The world's fastest framework for building websites"
+homepage    = ["https://gohugo.io"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "WebDevelopment"]
+repology    = ["hugo"]
+provides    = ["hugo"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "gohugoio/hugo"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_${version}_linux-${arch}.tar.gz"
+
+[source.install]
+"hugo"    = "hugo"
+"LICENSE" = "LICENSE"

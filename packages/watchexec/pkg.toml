@@ -1,0 +1,25 @@
+[pkg]
+name        = "watchexec"
+type        = "static"
+description = "Executes commands in response to file modifications"
+homepage    = ["https://watchexec.github.io"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["watchexec"]
+provides    = ["watchexec"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "watchexec/watchexec"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/watchexec/watchexec/releases/download/v${version}/watchexec-${version}-${arch}-unknown-linux-musl.tar.xz"
+
+[source.install]
+"watchexec-${version}-${arch}-unknown-linux-musl/watchexec" = "watchexec"
+"watchexec-${version}-${arch}-unknown-linux-musl/LICENSE"   = "LICENSE"

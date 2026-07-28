@@ -1,0 +1,23 @@
+[pkg]
+name        = "zed"
+type        = "appimage"
+description = "A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
+homepage    = ["https://zed.dev", "https://github.com/zed-industries/zed"]
+license     = ["Apache-2.0", "GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "TextEditor"]
+repology    = ["zed-editor"]
+provides    = ["zed"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge-dev/Zed-AppImage"
+strip-prefix = "v"
+tag-suffix   = "strip"
+
+[source]
+github = "pkgforge-dev/Zed-AppImage"
+glob   = "*${arch}*.appimage"

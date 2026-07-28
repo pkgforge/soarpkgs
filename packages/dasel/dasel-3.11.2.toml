@@ -1,0 +1,23 @@
+version = "3.11.2"
+
+[url]
+x86_64-linux  = "https://github.com/TomWright/dasel/releases/download/v3.11.2/dasel_linux_amd64"
+aarch64-linux = "https://github.com/TomWright/dasel/releases/download/v3.11.2/dasel_linux_arm64"
+
+[blake3]
+x86_64-linux  = "0923333015382aeaa3974c07f6349137d336b7c12483e15966b1a060ab22ce3c"
+aarch64-linux = "933af45726215b22ae7f43a9656b98ff3646e9defa1a02a4d8592299d009d047"
+
+[sha256]
+x86_64-linux  = "5006ee3a4239ab6a3edb1bf5c932874d814f7c276117ca677352697a4f547799"
+aarch64-linux = "df33920a792cd8ee5573cec3632a710cd2178d7bc4fc3892c6be78f35e7cbcc6"
+
+[size]
+x86_64-linux  = 10477730
+aarch64-linux = 9765026
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/TomWright/dasel/master/LICENSE"
+to     = "LICENSE"
+blake3 = "62b0fa18c2b78335ebaa2c1ec15f5de434929fc30124f181d0dd6db8820bae16"
+sha256 = "9ef843c5508932baa0632243d2bbda06e85d192e7af3bd36aa7c8be24732e67d"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "nugget-doom"
+type        = "appimage"
+description = "Doom source port forked from Woof! with additional features"
+homepage    = ["https://github.com/MrAlaux/Nugget-Doom"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["nugget-doom"]
+provides    = ["nugget-doom"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Nugget-Doom-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Nugget-Doom-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/MrAlaux/Nugget-Doom/master/COPYING"
+to  = "LICENSE"

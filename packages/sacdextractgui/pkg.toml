@@ -1,0 +1,26 @@
+[pkg]
+name        = "sacdextractgui"
+type        = "appimage"
+description = "GUI for sacd_extract to extract audio from SACD ISO images"
+homepage    = ["https://github.com/setmind/SACDExtractGUI"]
+license     = ["GPL-3.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "Utility"]
+provides    = ["sacdextractgui"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SACDExtractGUI-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SACDExtractGUI-AppImage"
+glob   = "*${arch}*.appimage"
+
+# upstream source repository no longer exists
+[[extra]]
+license = "GPL-3.0"
+to      = "LICENSE"

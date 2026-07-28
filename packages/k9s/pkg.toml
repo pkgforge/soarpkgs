@@ -1,0 +1,29 @@
+[pkg]
+name        = "k9s"
+type        = "static"
+description = "Terminal UI to interact with Kubernetes clusters"
+homepage    = ["https://k9scli.io"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["k9s"]
+provides    = ["k9s"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "derailed/k9s"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_${arch}.tar.gz"
+
+[source.install]
+"k9s"     = "k9s"
+"LICENSE" = "LICENSE"

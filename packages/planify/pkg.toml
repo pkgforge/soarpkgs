@@ -1,0 +1,26 @@
+[pkg]
+name        = "planify"
+type        = "appimage"
+description = "Task manager and to-do app for elementary OS and GNOME"
+homepage    = ["https://useplanify.com", "https://github.com/alainm23/planify"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Utility"]
+repology    = ["planify"]
+provides    = ["planify"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Planify-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Planify-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/alainm23/planify/main/LICENSE"
+to  = "LICENSE"

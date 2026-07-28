@@ -1,0 +1,26 @@
+[pkg]
+name        = "crispy-doom"
+type        = "appimage"
+description = "Limit-removing enhanced-resolution Doom source port based on Chocolate Doom"
+homepage    = ["https://github.com/fabiangreffrath/crispy-doom"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+repology    = ["crispy-doom"]
+provides    = ["crispy-doom"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Crispy-Doom-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Crispy-Doom-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/fabiangreffrath/crispy-doom/master/COPYING.md"
+to  = "LICENSE"

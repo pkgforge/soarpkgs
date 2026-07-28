@@ -1,0 +1,26 @@
+[pkg]
+name        = "binsider"
+type        = "static"
+description = "A toolkit to perform analysis on binaries"
+homepage    = ["https://binsider.dev"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["binsider"]
+provides    = ["binsider"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "orhun/binsider"
+strip-prefix = "v"
+
+[source]
+github  = "orhun/binsider"
+glob    = "*${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"binsider-${version}/binsider"    = "binsider"
+"binsider-${version}/LICENSE-MIT" = "LICENSE"

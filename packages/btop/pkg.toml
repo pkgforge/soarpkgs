@@ -1,0 +1,26 @@
+[pkg]
+name        = "btop"
+type        = "static"
+description = "Modern and colorful command line resource monitor that shows usage and stats"
+homepage    = ["https://github.com/aristocratos/btop"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Monitor", "System"]
+repology    = ["btop"]
+provides    = ["btop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "aristocratos/btop"
+strip-prefix = "v"
+
+[source]
+github  = "aristocratos/btop"
+glob    = "btop-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"btop/bin/btop" = "btop"
+"btop/LICENSE"  = "LICENSE"

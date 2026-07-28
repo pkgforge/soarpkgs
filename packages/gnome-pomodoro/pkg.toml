@@ -1,0 +1,29 @@
+[pkg]
+name        = "gnome-pomodoro"
+type        = "appimage"
+description = "Time management utility for GNOME"
+homepage    = [
+  "https://gnomepomodoro.org",
+  "https://github.com/pkgforge-dev/gnome-pomodoro-appimage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["psadi (https://github.com/psadi)"]
+category   = ["Clock", "GNOME", "Utility"]
+repology   = ["gnome-pomodoro"]
+provides   = ["gnome-pomodoro"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/gnome-pomodoro-appimage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/gnome-pomodoro-appimage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/gnome-pomodoro/gnome-pomodoro/refs/heads/main/COPYING"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "0.2.4-4"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Audio-Sharing-AppImage/releases/download/0.2.4-4%402026-07-22_1784713161/Audio_Sharing-0.2.4-4-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Audio-Sharing-AppImage/releases/download/0.2.4-4%402026-07-22_1784713161/Audio_Sharing-0.2.4-4-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f069c79a5d42f4106f2e1255bb50495a105242997c3733b47afad34b5872f5da"
+aarch64-linux = "5e1175b3c9e6aa22d49aa3613be702958f9bfa8d273ecaf9ad3f022b944acb56"
+
+[sha256]
+x86_64-linux  = "47f8091eab4a6706ac2a7569b07706a033a21aeb7ec67e6eb86018f1f2d9e113"
+aarch64-linux = "e7314bea13bb87dcdccad8aaaac5effdc51e7164d0fedea7939f5b4e1610b92a"
+
+[size]
+x86_64-linux  = 52741377
+aarch64-linux = 52227656
+
+[[extra]]
+url    = "https://gitlab.gnome.org/World/AudioSharing/-/raw/main/COPYING.md"
+to     = "LICENSE"
+blake3 = "4b2faf11693e603c8ce7d84485d972a127dede0ffd95d30d831b218196b44a13"
+sha256 = "33bc26d4498c183b703d1760ee45b8774d21d6e0178ca393dc715271840c7a21"

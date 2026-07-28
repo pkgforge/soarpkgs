@@ -1,0 +1,26 @@
+[pkg]
+name        = "ruffle"
+type        = "appimage"
+description = "An Adobe Flash Player emulator written in Rust"
+homepage    = ["https://ruffle.rs", "https://github.com/ruffle-rs/ruffle"]
+license     = ["MIT", "Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Player", "Utility"]
+repology    = ["ruffle"]
+provides    = ["ruffle"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ruffle-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ruffle-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md"
+to  = "LICENSE"

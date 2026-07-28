@@ -1,0 +1,29 @@
+[pkg]
+name        = "streamlink"
+type        = "appimage"
+description = "CLI utility that pipes video streams from various services into a video player"
+homepage    = [
+  "https://streamlink.github.io/",
+  "https://github.com/streamlink/streamlink",
+]
+license    = ["BSD-2-Clause"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["AudioVideo", "Video", "Network"]
+repology   = ["streamlink"]
+provides   = ["streamlink"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Streamlink-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Streamlink-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/streamlink/streamlink/master/LICENSE"
+to  = "LICENSE"

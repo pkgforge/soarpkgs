@@ -1,0 +1,23 @@
+version = "1.0.3-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Elastic-AppImage/releases/download/1.0.3-1%402026-07-22_1784713644/Elastic-1.0.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Elastic-AppImage/releases/download/1.0.3-1%402026-07-22_1784713644/Elastic-1.0.3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a4bb00ccb9248d08b66055b5e0e430a939dd3b5fe5ed1244682a7866393ec012"
+aarch64-linux = "9bb127f4537015405f85454afa35eeccded04824d3f027346e18072f0db2e7aa"
+
+[sha256]
+x86_64-linux  = "9f4c9996ee2f46fd72c9dcc140c95ca17a9123960799809a4e0320aef678f1b1"
+aarch64-linux = "8cb35be902b4a580e2d8240e10c0bc3f01f79309a4dc3cc24a38503814833875"
+
+[size]
+x86_64-linux  = 34665508
+aarch64-linux = 34615874
+
+[[extra]]
+url    = "https://gitlab.gnome.org/World/elastic/-/raw/main/COPYING"
+to     = "LICENSE"
+blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
+sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

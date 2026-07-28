@@ -1,0 +1,25 @@
+[pkg]
+name        = "raptor"
+type        = "appimage"
+description = "Source port of the classic vertical shooter Raptor: Call of the Shadows"
+homepage    = ["https://github.com/skynettx/raptor"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+provides    = ["raptor"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Raptor-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Raptor-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/skynettx/raptor/master/LICENSE"
+to  = "LICENSE"

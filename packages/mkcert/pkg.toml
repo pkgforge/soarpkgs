@@ -1,0 +1,29 @@
+[pkg]
+name        = "mkcert"
+type        = "static"
+description = "Simple zero-config tool to make locally trusted development certificates"
+homepage    = ["https://github.com/FiloSottile/mkcert"]
+license     = ["BSD-3-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Security"]
+repology    = ["mkcert"]
+provides    = ["mkcert"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+aarch64 = "arm64"
+x86_64  = "amd64"
+
+[update]
+strategy     = "github-releases"
+repo         = "FiloSottile/mkcert"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/FiloSottile/mkcert/releases/download/v${version}/mkcert-v${version}-linux-${arch}"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/FiloSottile/mkcert/master/LICENSE"
+to  = "LICENSE"

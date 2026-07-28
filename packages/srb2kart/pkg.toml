@@ -1,0 +1,26 @@
+[pkg]
+name        = "srb2kart"
+type        = "appimage"
+description = "Kart racing game based on the 3D Sonic fangame Sonic Robo Blast 2"
+homepage    = ["https://srb2.org", "https://github.com/STJr/Kart-Public"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["srb2kart"]
+provides    = ["srb2kart"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SRB2Kart-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/SRB2Kart-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/STJr/Kart-Public/master/LICENSE"
+to  = "LICENSE"

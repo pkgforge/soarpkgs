@@ -1,0 +1,28 @@
+[pkg]
+name        = "navi"
+type        = "static"
+description = "Interactive cheatsheet tool for the command-line"
+homepage    = ["https://github.com/denisidoro/navi"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["navi"]
+provides    = ["navi"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "denisidoro/navi"
+strip-prefix = "v"
+
+[source]
+url     = "https://github.com/denisidoro/navi/releases/download/v${version}/navi-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"navi" = "navi"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/denisidoro/navi/master/LICENSE"
+to  = "LICENSE"

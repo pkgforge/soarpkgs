@@ -1,0 +1,30 @@
+[pkg]
+name        = "amdgpu_top"
+description = "Tool to display AMDGPU usage"
+homepage    = ["https://github.com/Umio-Yasuno/amdgpu_top"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Monitor"]
+repology    = ["amdgpu-top"]
+provides    = ["amdgpu_top"]
+note        = ["Upstream binary with its libraries bundled by onelf"]
+
+disabled        = true
+disabled-reason = "awaiting first release from pkgforge/builds"
+
+# The GUI variant is not built yet. It needs a second build definition
+# carrying the graphics libraries, so it is left out rather than declared
+# and then not produced.
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+# one repository publishes for several packages, so tags are filtered
+tag-prefix = "amdgpu_top-"
+
+[source]
+github  = "pkgforge/builds"
+glob    = "amdgpu_top-${version}-${arch}-linux.tar.gz"

@@ -1,0 +1,22 @@
+[pkg]
+name        = "dreamm"
+type        = "appimage"
+description = "Emulator and launcher for classic LucasArts SCUMM adventure games"
+homepage    = ["https://dreamm.net"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game", "Utility"]
+repology    = ["dreamm"]
+provides    = ["dreamm"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DREAMM-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DREAMM-AppImage"
+glob   = "*${arch}*.appimage"

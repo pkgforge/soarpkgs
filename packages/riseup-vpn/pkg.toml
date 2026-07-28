@@ -1,0 +1,26 @@
+[pkg]
+name        = "riseup-vpn"
+type        = "appimage"
+description = "Easy, fast, and secure VPN client from riseup.net, based on LEAP/Bitmask"
+homepage    = ["https://riseup.net/vpn", "https://0xacab.org/leap/bitmask-vpn"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "Security"]
+repology    = ["riseup-vpn"]
+provides    = ["riseup-vpn"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Riseup-VPN-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Riseup-VPN-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://0xacab.org/leap/bitmask-vpn/-/raw/main/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,26 @@
+[pkg]
+name        = "haruna"
+type        = "appimage"
+description = "Open source video player built with Qt/QML and libmpv"
+homepage    = ["https://apps.kde.org/haruna", "https://invent.kde.org/multimedia/haruna"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Video", "Player"]
+repology    = ["haruna"]
+provides    = ["haruna"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Haruna-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Haruna-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/multimedia/haruna/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to  = "LICENSE"

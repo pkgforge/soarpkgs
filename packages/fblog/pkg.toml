@@ -1,0 +1,25 @@
+[pkg]
+name        = "fblog"
+type        = "static"
+description = "Small command-line JSON log viewer"
+homepage    = ["https://github.com/brocode/fblog"]
+license     = ["WTFPL"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Utility"]
+repology    = ["fblog"]
+provides    = ["fblog"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "brocode/fblog"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/brocode/fblog/releases/download/v${version}/fblog"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/brocode/fblog/master/LICENSE"
+to  = "LICENSE"

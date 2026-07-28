@@ -1,0 +1,23 @@
+version = "0.8.3"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Oversteer-AppImage/releases/download/v0.8.3%402026-07-22_1784721894/Oversteer-v0.8.3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Oversteer-AppImage/releases/download/v0.8.3%402026-07-22_1784721894/Oversteer-v0.8.3-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "dc7f3bc92161e4832e491124c7b6906d617469a25ca568732dfb406049299bd0"
+x86_64-linux  = "41ec259665675e7a0e2dd67591d4dc91d7e3b510d11987ad6a738c60ca658cc6"
+
+[sha256]
+aarch64-linux = "1c20120a37550ef3919ace689b9f3c22c6b0b242c8c13958df0400f33a68a59d"
+x86_64-linux  = "65b59746540f3f18e8c632856483103fbbfcf7a50246765eb310b7093b26222d"
+
+[size]
+aarch64-linux = 86378464
+x86_64-linux  = 90282722
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/berarma/oversteer/refs/heads/master/LICENSE"
+to     = "LICENSE"
+blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
+sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

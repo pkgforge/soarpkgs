@@ -1,0 +1,26 @@
+[pkg]
+name        = "clk"
+type        = "appimage"
+description = "Latency-hating emulator of many 8- and 16-bit retro computers and consoles"
+homepage    = ["https://github.com/TomHarte/CLK"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator"]
+repology    = ["clock-signal"]
+provides    = ["clk"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/CLK-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/CLK-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/TomHarte/CLK/master/LICENCE"
+to  = "LICENSE"

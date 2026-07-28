@@ -1,0 +1,26 @@
+[pkg]
+name        = "cuberite"
+type        = "appimage"
+description = "A lightweight, fast and extensible game server for Minecraft"
+homepage    = ["https://cuberite.org", "https://github.com/cuberite/cuberite"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Network"]
+repology    = ["cuberite"]
+provides    = ["cuberite"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Cuberite-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Cuberite-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/cuberite/cuberite/master/LICENSE"
+to  = "LICENSE"

@@ -1,0 +1,23 @@
+version = "1.53.2-1"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Nestopia-AppImage/releases/download/1.53.2-1%402026-07-22_1784722470/Nestopia-1.53.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Nestopia-AppImage/releases/download/1.53.2-1%402026-07-22_1784722470/Nestopia-1.53.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "bdd30676df4b90a63db689ded3338c062031d96443e0bfea9fa13e52b0a91784"
+x86_64-linux  = "80428044de06648bdc05dbf5837e470faa7a70b93f112eb26cd5a0ba4d7808cb"
+
+[sha256]
+aarch64-linux = "e072b09ff6c6b804db8f708872f62820966205050f7561672041417c07512f6e"
+x86_64-linux  = "152964957de62ee57ca1ee77834ed66586e53ebacbf8e51f4f6e70b30ee632c7"
+
+[size]
+aarch64-linux = 31417776
+x86_64-linux  = 31452673
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/0ldsk00l/nestopia/master/COPYING"
+to     = "LICENSE"
+blake3 = "8eb21ea94748f3f4ad2ca255daecd39a3ede68935fd8a5a31401e5478f8c2695"
+sha256 = "df84246204e3c54cd24aebbc23714235f5fc41d754d53b65444a2afbf070130f"

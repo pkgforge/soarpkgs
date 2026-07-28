@@ -1,0 +1,19 @@
+version = "1.1.1-1"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Daggerfall-Unity-AppImage/releases/download/1.1.1-1%402026-07-22_1784722048/Daggerfall-1.1.1-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "a8b365ef609efedf0af2b41a4a51353acffddf96f8fe61400b5dea52d852e49b"
+
+[sha256]
+x86_64-linux = "ffe20a5d01d5a79b8423402acdda3600eb9b915d8ba1bb75f180ec3fd6343892"
+
+[size]
+x86_64-linux = 154046392
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Interkarma/daggerfall-unity/master/LICENSE"
+to     = "LICENSE"
+blake3 = "0041bf8bc390d9ade4ab63281e51c5a977b1b2d4181b478b3f81316b67c1c43f"
+sha256 = "6e5e22fa760938ab398743150787896bd20fcf4936aad0122704700bad1e669a"

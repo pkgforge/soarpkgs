@@ -1,0 +1,29 @@
+[pkg]
+name        = "prismlauncher"
+type        = "appimage"
+description = "A custom Minecraft launcher to easily manage multiple Minecraft installations"
+homepage    = [
+  "https://prismlauncher.org",
+  "https://github.com/PrismLauncher/PrismLauncher",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "Utility"]
+repology   = ["prismlauncher"]
+provides   = ["prismlauncher"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PrismLauncher-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PrismLauncher-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/LICENSE"
+to  = "LICENSE"

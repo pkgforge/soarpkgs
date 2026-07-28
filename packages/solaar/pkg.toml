@@ -1,0 +1,26 @@
+[pkg]
+name        = "solaar"
+type        = "appimage"
+description = "Linux device manager for Logitech devices (Unifying receivers, mice, keyboards)"
+homepage    = ["https://github.com/pwr-Solaar/Solaar"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Utility", "System", "HardwareSettings"]
+repology    = ["solaar"]
+provides    = ["solaar"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Solaar-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Solaar-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pwr-Solaar/Solaar/master/LICENSE.txt"
+to  = "LICENSE"

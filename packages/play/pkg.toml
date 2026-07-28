@@ -1,0 +1,25 @@
+[pkg]
+name        = "play"
+type        = "appimage"
+description = "Play! is a PlayStation 2 emulator for multiple platforms"
+homepage    = ["https://purei.org"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+provides    = ["play"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Play-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Play-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/jpd002/Play-/refs/heads/master/License.txt"
+to  = "LICENSE"

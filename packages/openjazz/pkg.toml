@@ -1,0 +1,26 @@
+[pkg]
+name        = "openjazz"
+type        = "appimage"
+description = "Free reimplementation of the Jazz Jackrabbit platformer games"
+homepage    = ["https://alister.eu/jazz/oj/", "https://github.com/AlisterT/openjazz"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame", "ActionGame"]
+repology    = ["openjazz"]
+provides    = ["openjazz"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenJazz-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenJazz-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/AlisterT/openjazz/master/COPYING"
+to  = "LICENSE"

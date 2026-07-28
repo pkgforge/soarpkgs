@@ -1,0 +1,26 @@
+[pkg]
+name        = "zen-browser"
+type        = "appimage"
+description = "A Firefox-based browser focused on privacy and a calm browsing experience"
+homepage    = ["https://github.com/zen-browser/desktop", "https://zen-browser.app"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "WebBrowser"]
+repology    = ["zen-browser"]
+provides    = ["zen-browser"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Zen-Browser-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Zen-Browser-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/zen-browser/desktop/dev/LICENSE"
+to  = "LICENSE"

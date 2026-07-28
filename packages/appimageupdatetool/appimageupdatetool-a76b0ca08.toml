@@ -1,0 +1,23 @@
+version = "a76b0ca08"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/AppImageUpdate-deprecated/releases/download/a76b0ca08/appimageupdatetool%2Bvalidate-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/AppImageUpdate-deprecated/releases/download/a76b0ca08/appimageupdatetool%2Bvalidate-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "64f775aea399a2c50d9a493234f6bb95484356430e15f91c3273ad64293c7ed2"
+aarch64-linux = "9ab31b06fd2b9fa19e5e2ba857178758740e384702e7c72e99f9011a23ad8eef"
+
+[sha256]
+x86_64-linux  = "2d0169ec2a4c4ee67d4247e42083a9c27d43f6cdfefb4b4278ed2b9ea12431a7"
+aarch64-linux = "a3adec8b928c98960532ebbfbd4f721e7e2ea553b5decbe79bd6a917da157b39"
+
+[size]
+x86_64-linux  = 6088262
+aarch64-linux = 5644665
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/refs/heads/main/LICENSE.txt"
+to     = "LICENSE"
+blake3 = "ae84fcb755b4328f54db14d45bcde4a64ba773c8f9e739fa0e896f7e452c3c64"
+sha256 = "39089eaef4a8262516be1a9dd33bcb9837b3bedb5fc74fcd0c1448c5cca2367b"

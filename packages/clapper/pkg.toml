@@ -1,0 +1,26 @@
+[pkg]
+name        = "clapper"
+type        = "appimage"
+description = "Modern media player built with GTK4 and GStreamer"
+homepage    = ["https://github.com/Rafostar/clapper"]
+license     = ["GPL-3.0"]
+maintainer  = ["fiftydinar (github.com/fiftydinar)"]
+category    = ["AudioVideo", "Player"]
+repology    = ["clapper"]
+provides    = ["clapper"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Clapper-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Clapper-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Rafostar/clapper/refs/heads/master/COPYING-GPL"
+to  = "LICENSE"

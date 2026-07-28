@@ -1,0 +1,24 @@
+[pkg]
+name        = "just"
+type        = "static"
+description = "A handy way to save and run project-specific commands"
+homepage    = ["https://just.systems"]
+license     = ["CC0-1.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["just"]
+provides    = ["just"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "casey/just"
+
+[source]
+url     = "https://github.com/casey/just/releases/download/${version}/just-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"just"    = "just"
+"LICENSE" = "LICENSE"
