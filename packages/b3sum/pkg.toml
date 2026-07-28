@@ -9,9 +9,6 @@ category    = ["ConsoleOnly", "Utility"]
 repology    = ["blake3"]
 provides    = ["b3sum"]
 
-disabled        = true
-disabled-reason = "awaiting first release from pkgforge/builds"
-
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 

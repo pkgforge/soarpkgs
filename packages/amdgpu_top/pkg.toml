@@ -9,9 +9,6 @@ repology    = ["amdgpu-top"]
 provides    = ["amdgpu_top"]
 note        = ["Upstream binary with its libraries bundled by onelf"]
 
-disabled        = true
-disabled-reason = "awaiting first release from pkgforge/builds"
-
 # The GUI variant is not built yet. It needs a second build definition
 # carrying the graphics libraries, so it is left out rather than declared
 # and then not produced.

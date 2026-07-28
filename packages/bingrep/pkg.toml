@@ -9,9 +9,6 @@ category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["bingrep"]
 provides    = ["bingrep"]
 
-disabled        = true
-disabled-reason = "awaiting first release from pkgforge/builds"
-
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 

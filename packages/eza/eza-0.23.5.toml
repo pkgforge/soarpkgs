@@ -1,0 +1,17 @@
+version = "0.23.5"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge/builds/releases/download/eza-0.23.5/eza-0.23.5-x86_64-linux.tar.gz"
+aarch64-linux = "https://github.com/pkgforge/builds/releases/download/eza-0.23.5/eza-0.23.5-aarch64-linux.tar.gz"
+
+[blake3]
+aarch64-linux = "8ae4f6c2623776c23c250982576a04880a281f10092acd4fa32e7bfb4e21ee7a"
+x86_64-linux  = "b10e62e431cd40e9bbafe04defdd03c703a94d7fce973f7fa8e9a20a000fed3b"
+
+[sha256]
+aarch64-linux = "1d711a90b16c7312f23dd8005a25f4000f97c12f27bbe3013d2a42aa9d20ab07"
+x86_64-linux  = "105d49797ab2ffe25189e2ec10e7d84a9893e6b0b0ed25747a16bf8357f9ab13"
+
+[size]
+aarch64-linux = 1354099
+x86_64-linux  = 1427383
