@@ -1,0 +1,22 @@
+version = "26.1.5-1"
+date    = "2026-07-29T09:43:23Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.5-1%402026-07-29_1785318202/MESA-26.1.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.5-1%402026-07-29_1785318202/MESA-26.1.5-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e90b81f618d042c30563495329e28b2238f816174897f68544c53f33822402e4"
+aarch64-linux = "38dedd466f6b91855e0285dde15865d5b2249230e21d7d92fd29130a872f555c"
+
+[sha256]
+x86_64-linux  = "944e369a365914e50f8be99af70b14f6bd9b6d89ba82a7af532607d79b808b77"
+aarch64-linux = "ca274c0d5d967ed4f0c016d996ee0fb504d02b553114cd8820d9e6fd8e1a8b77"
+
+[size]
+x86_64-linux  = 27134105
+aarch64-linux = 25811221
+
+[[extra]]
+url    = "https://gitlab.freedesktop.org/mesa/mesa/-/raw/main/docs/license.rst"
+to     = "LICENSE"

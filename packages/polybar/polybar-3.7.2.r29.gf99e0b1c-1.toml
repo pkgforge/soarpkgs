@@ -1,23 +1,22 @@
 version = "3.7.2.r29.gf99e0b1c-1"
+date    = "2026-07-27T10:43:35Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-07-27_1785149014/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-07-27_1785149014/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "ed26c9b7b238d745d4ed43f1c3ee8a6b38888e508cadc8fa8a59cdc531cb7f7e"
 x86_64-linux  = "a78c9a5d47e8275c0982c8821697a14314466e6095efd8193cf331e26f511775"
+aarch64-linux = "ed26c9b7b238d745d4ed43f1c3ee8a6b38888e508cadc8fa8a59cdc531cb7f7e"
 
 [sha256]
-aarch64-linux = "656f09818e4179b6a1e645131a594b1538f4900092dfc1e1c8d2c5aa86b688f7"
 x86_64-linux  = "a4b5dda536c40e8cd1856a704f7277a02af31eb61907f0c2b2ee8720e4a33f98"
+aarch64-linux = "656f09818e4179b6a1e645131a594b1538f4900092dfc1e1c8d2c5aa86b688f7"
 
 [size]
-aarch64-linux = 17771504
 x86_64-linux  = 17429352
+aarch64-linux = 17771504
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/polybar/polybar/refs/heads/master/LICENSE"
 to     = "LICENSE"
-blake3 = "329faebbdbe080d832fb8e498d69d2638bf52a9c555dcba21218bd4d0c31324e"
-sha256 = "39fce608f39672f265cffca1d14e381b2d605c339747360041f920fd466ceffa"

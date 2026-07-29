@@ -1,23 +1,22 @@
 version = "a6afacb"
+date    = "2026-07-22T12:11:53Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/rofi-AppImage/releases/download/a6afacb%402026-07-22_1784722311/rofi-a6afacb-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/rofi-AppImage/releases/download/a6afacb%402026-07-22_1784722311/rofi-a6afacb-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "4d4d98129cd37b23a7f1e7eeaa08b90a87faa8fdeb682fe9fefc46a08ac66b6c"
 x86_64-linux  = "cc0e841210e4e393955cbf801dcd3be66f219086e4b2ba70ca64be7939d1c54d"
+aarch64-linux = "4d4d98129cd37b23a7f1e7eeaa08b90a87faa8fdeb682fe9fefc46a08ac66b6c"
 
 [sha256]
-aarch64-linux = "ea3bb061c4be2e296cb5804e356df6d7c9bc3658577d319d608b5ebc67d0ea7a"
 x86_64-linux  = "1f8e8afd1678f280b3f2453c06468d232aec743c2b3b2b0528c38edfce77477a"
+aarch64-linux = "ea3bb061c4be2e296cb5804e356df6d7c9bc3658577d319d608b5ebc67d0ea7a"
 
 [size]
-aarch64-linux = 13672215
 x86_64-linux  = 13698970
+aarch64-linux = 13672215
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/davatorium/rofi/next/COPYING"
 to     = "LICENSE"
-blake3 = "2ff03d125385e93bd7e9e74aae2cd53ce149cc114e7e9005c4534fdaa2a22b86"
-sha256 = "3775605ff69c11ea876d445a2f136194b3bf30d6afa01aa85289662979a232d3"

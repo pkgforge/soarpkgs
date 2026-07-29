@@ -1,13 +1,13 @@
 [pkg]
-name        = "opencode-enhanced"
+name        = "opencode"
 type        = "appimage"
 description = "Open source code editor"
 homepage    = ["https://github.com/VSCodium/vscodium"]
 license     = ["MIT"]
 maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
 category    = ["Development", "IDE", "TextEditor"]
-repology    = ["opencode-enhanced"]
-provides    = ["opencode-enhanced"]
+repology    = ["opencode"]
+provides    = ["opencode"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/anomalyco/opencode/refs/heads/dev/LICENSE"
 to  = "LICENSE"
+verify = false

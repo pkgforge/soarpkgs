@@ -1,17 +1,18 @@
 version = "15.2.0"
+date    = "2026-07-15T16:26:10Z"
 
 [url]
 x86_64-linux  = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "37f81f09dab01269d3d70da8a03641054ad25fcd7d011f88ef3da451b274c138"
 x86_64-linux  = "85bc9b662e1868a010691ae699ac4fb7c87f79fa9075a0efa14478164aafd4e7"
+aarch64-linux = "37f81f09dab01269d3d70da8a03641054ad25fcd7d011f88ef3da451b274c138"
 
 [sha256]
-aarch64-linux = "800b1e7206afe799dfb5a6901f23147cfaabe0e52210538100f61e86e1740915"
 x86_64-linux  = "33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
+aarch64-linux = "800b1e7206afe799dfb5a6901f23147cfaabe0e52210538100f61e86e1740915"
 
 [size]
-aarch64-linux = 1982561
 x86_64-linux  = 2265718
+aarch64-linux = 1982561

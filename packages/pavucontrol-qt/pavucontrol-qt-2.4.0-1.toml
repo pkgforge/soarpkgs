@@ -1,23 +1,22 @@
 version = "2.4.0-1"
+date    = "2026-07-01T13:48:55Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage/releases/download/2.4.0-1%402026-07-01_1782913734/pavucontrol-qt-2.4.0-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/pavucontrol-qt-AppImage/releases/download/2.4.0-1%402026-07-01_1782913734/pavucontrol-qt-2.4.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "721f3f348b37bfcebbf6e68da25cb7e1216871efe48f2404ecb01a26431dac2c"
 x86_64-linux  = "7d1227d4a68bb6e9d1772a90d34745fd4c9fcdb91de0b1bd7e0e84f064e245a5"
+aarch64-linux = "721f3f348b37bfcebbf6e68da25cb7e1216871efe48f2404ecb01a26431dac2c"
 
 [sha256]
-aarch64-linux = "a95158d6ee4a8cd0486994889ff3c52e70772061e52eb44ce53e22bbf017de57"
 x86_64-linux  = "a8b1bd7654c131fa853c7667915b1238f730632de76ced26ec675f4a79bc7c06"
+aarch64-linux = "a95158d6ee4a8cd0486994889ff3c52e70772061e52eb44ce53e22bbf017de57"
 
 [size]
-aarch64-linux = 23563111
 x86_64-linux  = 23426048
+aarch64-linux = 23563111
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/lxqt/pavucontrol-qt/master/LICENSE"
 to     = "LICENSE"
-blake3 = "0f49c31fda64bdc2b3ffadadd84cf5328dcd6b9c6c2e51d40f42ac0502ae8976"
-sha256 = "9640ed919f3fd3c0e6cc5b56ac38cc33173176c448f5c643bda90b506ae2b77f"

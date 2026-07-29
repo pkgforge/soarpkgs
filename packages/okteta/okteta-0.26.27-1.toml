@@ -1,23 +1,22 @@
 version = "0.26.27-1"
+date    = "2026-07-22T12:14:42Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.27-1%402026-07-22_1784722481/Okteta-0.26.27-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.27-1%402026-07-22_1784722481/Okteta-0.26.27-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "9ab6558a23cf71e67760a2d240b1936cb1776a7d18859e9d74d590202ca85c07"
 x86_64-linux  = "84926132a9309b37af4c68e8b207939ff598b0e19a528cd6f9adaef114a82c24"
+aarch64-linux = "9ab6558a23cf71e67760a2d240b1936cb1776a7d18859e9d74d590202ca85c07"
 
 [sha256]
-aarch64-linux = "410aa5fb6f27a2018ba96f82beb0e6d6f3474d378c4fbbfffde66cd9c59da22e"
 x86_64-linux  = "a1f13fe4996432e55c31ca730f76c41c092d26b1cccb83e0cb38b664132753cb"
+aarch64-linux = "410aa5fb6f27a2018ba96f82beb0e6d6f3474d378c4fbbfffde66cd9c59da22e"
 
 [size]
-aarch64-linux = 62027701
 x86_64-linux  = 60858059
+aarch64-linux = 62027701
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/KDE/okteta/refs/heads/master/LICENSES/GPL-2.0-only.txt"
 to     = "LICENSE"
-blake3 = "bc56d27e7160d1864ba39a573d5f2e63b3467440d0bc30dea5ed85944df49675"
-sha256 = "d1cf0896da7045d841fe45b0991cf35540bac1a17b5d11f4afcf8fcb950246b5"

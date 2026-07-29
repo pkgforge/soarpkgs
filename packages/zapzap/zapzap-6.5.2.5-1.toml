@@ -5,19 +5,17 @@ x86_64-linux  = "https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releas
 aarch64-linux = "https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/download/6.5.2.5-1%402026-07-01_1782914125/ZapZap-6.5.2.5-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "bb8ceb74405fd2bbc4003d6fe44e75b57029abc10d551ac553d18655f216deac"
 x86_64-linux  = "a28a19267889f1b63cbe4d401c34fa50c1f4d4136e8ec361aee5bf3a7b0aa505"
+aarch64-linux = "bb8ceb74405fd2bbc4003d6fe44e75b57029abc10d551ac553d18655f216deac"
 
 [sha256]
-aarch64-linux = "a15f9cfc5ce58c0cc6a05808aeb3d4c39254f6255dcd5fbcb2f3e5a9cb182d55"
 x86_64-linux  = "f847742134c8a90e7deeafdcc0f562bef58f13a6e510192f61d354d0771e6390"
+aarch64-linux = "a15f9cfc5ce58c0cc6a05808aeb3d4c39254f6255dcd5fbcb2f3e5a9cb182d55"
 
 [size]
-aarch64-linux = 180598703
 x86_64-linux  = 186119407
+aarch64-linux = 180598703
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/rafatosta/zapzap/main/LICENSE"
 to     = "LICENSE"
-blake3 = "a44cc87cabca5252a40326fa6e746f387260ed1b1b28597d08e125f0ae6de042"
-sha256 = "605e9047a563c5c8396ffb18232aa4304ec56586aee537c45064c6fb425e44ad"

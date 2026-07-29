@@ -1,23 +1,22 @@
 version = "11.0.2-1"
+date    = "2026-07-22T12:11:58Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/11.0.2-1%402026-07-22_1784722317/Prism_Launcher-11.0.2-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/11.0.2-1%402026-07-22_1784722317/Prism_Launcher-11.0.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "156960df8a5de3dfc286d1a008ff0b4d1be624f43030c8059548c3b79b023a1b"
 x86_64-linux  = "f933b99c3c11f870fa1a2b8f8fcb7f6411993a59b6f5988b6f7e7c3fbd0aca4a"
+aarch64-linux = "156960df8a5de3dfc286d1a008ff0b4d1be624f43030c8059548c3b79b023a1b"
 
 [sha256]
-aarch64-linux = "d09295c217f5dbd919621116488ad77921d3614b2ccff784625faf697c4da476"
 x86_64-linux  = "33997e36e387c448fa2a52ca48da6f004bc1f06cccb0a6370e622da070b6e38c"
+aarch64-linux = "d09295c217f5dbd919621116488ad77921d3614b2ccff784625faf697c4da476"
 
 [size]
-aarch64-linux = 54929911
 x86_64-linux  = 53638884
+aarch64-linux = 54929911
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/LICENSE"
 to     = "LICENSE"
-blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
-sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

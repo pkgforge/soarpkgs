@@ -1,23 +1,22 @@
 version = "7.0.0"
+date    = "2026-07-14T07:01:16Z"
 
 [url]
 x86_64-linux  = "https://github.com/bensadeh/tailspin/releases/download/7.0.0/tailspin-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/bensadeh/tailspin/releases/download/7.0.0/tailspin-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "dbddb52e02dbd3aef54cea96ac1a85c4d6bf772b7d7e6ac06bc395741b333016"
 x86_64-linux  = "79d4a69893e7614299289a53c59725afe67155a073877104e18a27caa38e0a0b"
+aarch64-linux = "dbddb52e02dbd3aef54cea96ac1a85c4d6bf772b7d7e6ac06bc395741b333016"
 
 [sha256]
-aarch64-linux = "de78d9e9204af6817cc3dae342e92d41c41975c2bb11ae1abeabf30c43bc86ad"
 x86_64-linux  = "f2de9268dc24811908e63a170507d860ac90c7f6a2f1937f59e5cca78cef21a2"
+aarch64-linux = "de78d9e9204af6817cc3dae342e92d41c41975c2bb11ae1abeabf30c43bc86ad"
 
 [size]
-aarch64-linux = 1259162
 x86_64-linux  = 1407130
+aarch64-linux = 1259162
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/bensadeh/tailspin/main/LICENCE"
 to     = "LICENSE"
-blake3 = "319b35f392b94dccb3f60d54ec46f34da600ee4a4d39ae272e246ee92cfbe234"
-sha256 = "11195f352a29af27ce53f2885d831a1bc6dfa9648bec9341921d186bbf6742e9"

@@ -1,17 +1,18 @@
 version = "0.10.0"
+date    = "2026-07-04T12:41:16Z"
 
 [url]
 x86_64-linux  = "https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "3eb55def529ad5f57dea41c251a91248e9bfe31e566ed618f22db6009c4b565e"
 x86_64-linux  = "fe5883b404bffc32b9e71a471a9bc699ab317f9b1fe9b8cd88756b6960d2e3c0"
+aarch64-linux = "3eb55def529ad5f57dea41c251a91248e9bfe31e566ed618f22db6009c4b565e"
 
 [sha256]
-aarch64-linux = "f1f16c5d6298d63dee467eedea1cdcd8490e43e493bea43acd416dc9033ef641"
 x86_64-linux  = "2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae"
+aarch64-linux = "f1f16c5d6298d63dee467eedea1cdcd8490e43e493bea43acd416dc9033ef641"
 
 [size]
-aarch64-linux = 551084
 x86_64-linux  = 591384
+aarch64-linux = 551084

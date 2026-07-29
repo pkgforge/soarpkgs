@@ -1,23 +1,22 @@
 version = "5ee5740ca"
+date    = "2026-07-01T14:06:22Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/OpenClaw-AppImage/releases/download/5ee5740ca%402026-07-01_1782914771/OpenClaw-5ee5740ca-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/OpenClaw-AppImage/releases/download/5ee5740ca%402026-07-01_1782914771/OpenClaw-5ee5740ca-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "835c637df32c44ce41663429113e3d519344f0385df863c54bb245869b206d5b"
 x86_64-linux  = "3825b664f57621be0e56962056064a1b711cd346a524eade01694a63b5133965"
+aarch64-linux = "835c637df32c44ce41663429113e3d519344f0385df863c54bb245869b206d5b"
 
 [sha256]
-aarch64-linux = "adeb728c0a1464ea6e063965df2b53b481f6a88ecdd6658ec44299c8ee1a569f"
 x86_64-linux  = "a15a5845ef425cb4ff8dbf4e97da1b4d92ed777a36cc2a6301a3e5d6179584cf"
+aarch64-linux = "adeb728c0a1464ea6e063965df2b53b481f6a88ecdd6658ec44299c8ee1a569f"
 
 [size]
-aarch64-linux = 73943181
 x86_64-linux  = 75420629
+aarch64-linux = 73943181
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/pjasicek/OpenClaw/master/LICENSE.txt"
 to     = "LICENSE"
-blake3 = "25aee06044ed6a301700cda27c3e4195231751d3081010c46a827c1616a4edc6"
-sha256 = "fe3eea6c599e23a00c08c5f5cb2320c30adc8f8687db5fcec9b79a662c53ff6b"

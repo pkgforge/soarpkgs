@@ -1,23 +1,22 @@
 version = "3.44.5"
+date    = "2026-07-01T14:00:52Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Zenity-GTK3-AppImage/releases/download/3.44.5%402026-07-01_1782914451/zenity-3.44.5-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Zenity-GTK3-AppImage/releases/download/3.44.5%402026-07-01_1782914451/zenity-3.44.5-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "cc584505d354c8e4368de6f3f0ba2289929845c7a345127b694370bfb9b73f79"
 x86_64-linux  = "a6516f943d736248758e9c457887328efe01f13d10e0e4db7f82b7ad4b8f5138"
+aarch64-linux = "cc584505d354c8e4368de6f3f0ba2289929845c7a345127b694370bfb9b73f79"
 
 [sha256]
-aarch64-linux = "5afa9196e0797430d130d7cd9cbb1b7882b440ba99de4a7082a5df2dd39eaeda"
 x86_64-linux  = "bf31e63e6086751b6282a887f3e82aaf09aa8ead0e31a473cb81c82b49780d89"
+aarch64-linux = "5afa9196e0797430d130d7cd9cbb1b7882b440ba99de4a7082a5df2dd39eaeda"
 
 [size]
-aarch64-linux = 18921392
 x86_64-linux  = 19461349
+aarch64-linux = 18921392
 
 [[extra]]
 url    = "https://gitlab.gnome.org/GNOME/zenity/-/raw/master/COPYING"
 to     = "LICENSE"
-blake3 = "3656891afc85e58f6a2167e395cd0d10cfa14677a4a3b0886e606020399bc249"
-sha256 = "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"

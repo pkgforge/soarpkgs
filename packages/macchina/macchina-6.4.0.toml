@@ -1,23 +1,22 @@
 version = "6.4.0"
+date    = "2024-11-03T15:36:46Z"
 
 [url]
 x86_64-linux  = "https://github.com/Macchina-CLI/macchina/releases/download/v6.4.0/macchina-v6.4.0-linux-musl-x86_64.tar.gz"
 aarch64-linux = "https://github.com/Macchina-CLI/macchina/releases/download/v6.4.0/macchina-v6.4.0-linux-musl-aarch64.tar.gz"
 
 [blake3]
-aarch64-linux = "939fe5e4abfc310898ba4e902a3c9a3c8a13158aff8e1ab3d4b7603a4c27aa1a"
 x86_64-linux  = "07b195d235f717baa271dca9c152e856f535b55cb5adcdca6fc8e7f0d0e65640"
+aarch64-linux = "939fe5e4abfc310898ba4e902a3c9a3c8a13158aff8e1ab3d4b7603a4c27aa1a"
 
 [sha256]
-aarch64-linux = "8600ceb3278bd8ff66dc967743190f6fb92c6289d5182eb59ba0b2f98d35bb09"
 x86_64-linux  = "d6f7cd376da51d8399c0db72629db9503abec75b51b873807c911080525c4d88"
+aarch64-linux = "8600ceb3278bd8ff66dc967743190f6fb92c6289d5182eb59ba0b2f98d35bb09"
 
 [size]
-aarch64-linux = 2106699
 x86_64-linux  = 2259668
+aarch64-linux = 2106699
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Macchina-CLI/macchina/main/LICENSE"
 to     = "LICENSE"
-blake3 = "bd2711df0f644b02b69d20608e40416955dacdc94fcb2e017bd33b72c13354df"
-sha256 = "d868343456eff199aa8dec4b781175c1cc427a9e4e5b6fbcc707bab9f87aa367"

@@ -1,23 +1,22 @@
 version = "4cc3d07df"
+date    = "2026-07-22T12:10:53Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Shockolate-AppImage/releases/download/4cc3d07df%402026-07-22_1784722252/Shockolate-4cc3d07df-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Shockolate-AppImage/releases/download/4cc3d07df%402026-07-22_1784722252/Shockolate-4cc3d07df-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "30701157080bb8ff4cfab3225957c53ec75831bf92a61f294a42231117294b3b"
 x86_64-linux  = "335678d25526c4c066d6f823b7917acd5fd3efd35962b250e61150303aed34e3"
+aarch64-linux = "30701157080bb8ff4cfab3225957c53ec75831bf92a61f294a42231117294b3b"
 
 [sha256]
-aarch64-linux = "769379c4813b287abeacce7a1fbddd138b685d6be2703876f269e822c16c4461"
 x86_64-linux  = "30fbd9a59a169824a05b916516a2f0a1cef554e00abadcc66311a1c1ad2883a9"
+aarch64-linux = "769379c4813b287abeacce7a1fbddd138b685d6be2703876f269e822c16c4461"
 
 [size]
-aarch64-linux = 28877344
 x86_64-linux  = 29880166
+aarch64-linux = 28877344
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Interrupt/systemshock/master/LICENSE"
 to     = "LICENSE"
-blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
-sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

@@ -1,23 +1,22 @@
 version = "2.1.0"
+date    = "2026-07-01T14:00:51Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/spacecadetpinball-AppImage/releases/download/2.1.0%402026-07-01_1782914450/SpaceCadetPinball-2.1.0-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/spacecadetpinball-AppImage/releases/download/2.1.0%402026-07-01_1782914450/SpaceCadetPinball-2.1.0-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "49a2d48b2f223ed3443ae79e2535d1fecd96ce63afa9f3dc910b8b7cc9d9284b"
 x86_64-linux  = "f40a9ac6069c721421b91c24fa6f37df43c2b0fb438932cfee2b6a2c2f4d1a40"
+aarch64-linux = "49a2d48b2f223ed3443ae79e2535d1fecd96ce63afa9f3dc910b8b7cc9d9284b"
 
 [sha256]
-aarch64-linux = "15c7d73fc7d339309b88e6d3297f15944fe2539dd9bba1afcfb5a3c59bf64ab9"
 x86_64-linux  = "c6fdc9a79ad25767c6181547a1754a947326402cba7f0d31929fba26492080c1"
+aarch64-linux = "15c7d73fc7d339309b88e6d3297f15944fe2539dd9bba1afcfb5a3c59bf64ab9"
 
 [size]
-aarch64-linux = 23614298
 x86_64-linux  = 24255067
+aarch64-linux = 23614298
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/k4zmu2a/SpaceCadetPinball/refs/heads/master/LICENSE"
 to     = "LICENSE"
-blake3 = "0ad4d72dba2134624d9f3585117ebd43d72503d8ca7250055de580aba8797680"
-sha256 = "db6fc129469da7e295ddcd27bb4b7cc05b35d1bb89c460a33250e23bf004dc96"

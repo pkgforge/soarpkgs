@@ -23,6 +23,7 @@ url = "https://github.com/Nukesor/pueue/releases/download/v${version}/pueue-${ar
 [[extra]]
 url = "https://raw.githubusercontent.com/Nukesor/pueue/main/LICENSE.MIT"
 to  = "LICENSE"
+verify = false
 
 [[extra]]
 url = "https://github.com/Nukesor/pueue/releases/download/v${version}/pueued-${arch}-unknown-linux-musl"

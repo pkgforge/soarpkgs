@@ -5,19 +5,17 @@ x86_64-linux  = "https://github.com/mvdan/sh/releases/download/v3.13.0/shfmt_v3.
 aarch64-linux = "https://github.com/mvdan/sh/releases/download/v3.13.0/shfmt_v3.13.0_linux_arm64"
 
 [blake3]
-aarch64-linux = "27f94b64db697789f511b835fa29236237e0f3964d33b89b235bf7f23f24b528"
 x86_64-linux  = "cc4e88a14c9651bd980b0e251af6f20163bbfc3fcbf2ad61a4a7cd346cd213a0"
+aarch64-linux = "27f94b64db697789f511b835fa29236237e0f3964d33b89b235bf7f23f24b528"
 
 [sha256]
-aarch64-linux = "2091a31afd47742051a77bf7cfd175533ab07e924c20ef3151cd108fa1cab5b0"
 x86_64-linux  = "70aa99784703a8d6569bbf0b1e43e1a91906a4166bf1a79de42050a6d0de7551"
+aarch64-linux = "2091a31afd47742051a77bf7cfd175533ab07e924c20ef3151cd108fa1cab5b0"
 
 [size]
-aarch64-linux = 3014818
 x86_64-linux  = 3117218
+aarch64-linux = 3014818
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mvdan/sh/master/LICENSE"
 to     = "LICENSE"
-blake3 = "1ab0beb7d2d589bbd5e784ff154bdb58782e25b85040d8c26c15366266214e6b"
-sha256 = "ce63850f77649f00d1394045e2794ffb09a5596beabac51c9548edd958845d7c"

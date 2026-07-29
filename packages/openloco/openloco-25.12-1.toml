@@ -1,23 +1,22 @@
 version = "25.12-1"
+date    = "2026-06-01T16:37:06Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/25.12-1%402026-06-01_1780331825/OpenLoco-25.12-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/25.12-1%402026-06-01_1780331825/OpenLoco-25.12-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "bf37165e7f70cbd4d8927920fb646e0e93130f0441f29d1331a4ffe977680f45"
 x86_64-linux  = "a6ab6daa23683eeedb3c5f4ecfb42b32d6dd071e94f39d3059f417d8500c8988"
+aarch64-linux = "bf37165e7f70cbd4d8927920fb646e0e93130f0441f29d1331a4ffe977680f45"
 
 [sha256]
-aarch64-linux = "a68209eb5409559a45137eb3192bd6113a5a30d3eee1cafd9564eeed3b829b29"
 x86_64-linux  = "6d721e15a25c54f739e8de71c72ba075f3eb0dd5fc8595923593768176c28c5a"
+aarch64-linux = "a68209eb5409559a45137eb3192bd6113a5a30d3eee1cafd9564eeed3b829b29"
 
 [size]
-aarch64-linux = 23307981
 x86_64-linux  = 23716191
+aarch64-linux = 23307981
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/OpenLoco/OpenLoco/master/LICENSE"
 to     = "LICENSE"
-blake3 = "18184587e1eebe2e9cfb83cc346579555109be8b9824d93387cb0f3e6bc2129a"
-sha256 = "4b802543d874d846571bfc27cca0f530eef4aad9d48b051ff2965ce6a1754e18"

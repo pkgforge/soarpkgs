@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/flashrom/flashrom/main/COPYING.rst"
 to  = "LICENSE"
+verify = false

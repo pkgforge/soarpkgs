@@ -1,0 +1,18 @@
+version = "10.7.0"
+date    = "2026-07-28T19:16:04Z"
+
+[url]
+x86_64-linux  = "https://github.com/schollz/croc/releases/download/v10.7.0/croc_v10.7.0_Linux-64bit.tar.gz"
+aarch64-linux = "https://github.com/schollz/croc/releases/download/v10.7.0/croc_v10.7.0_Linux-ARM64.tar.gz"
+
+[blake3]
+x86_64-linux  = "26d1515d71fc81b3b328b528d5cbaedb080e2e6260573d229ce04aabdafaa381"
+aarch64-linux = "cd23eee35e6486d141239608f30e86581f6c8ad63b8fc414665b596a3846acac"
+
+[sha256]
+x86_64-linux  = "58ac4e1cc6f47e5982d08936b6484456286bfbdb4bc47e13b6894674a5f1ddca"
+aarch64-linux = "1607e11c0a6304d6e88b201f015daa8a87d9d8696b4dd728c4e95c4fbd6f7f89"
+
+[size]
+x86_64-linux  = 10536221
+aarch64-linux = 9794204

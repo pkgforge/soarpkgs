@@ -1,23 +1,22 @@
 version = "0.9.4"
+date    = "2025-12-24T21:10:19Z"
 
 [url]
 x86_64-linux  = "https://github.com/cantino/mcfly/releases/download/v0.9.4/mcfly-v0.9.4-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/cantino/mcfly/releases/download/v0.9.4/mcfly-v0.9.4-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "1f103377ed0120ef201c7c9068cbdf655a51815edb35ea35c6600a30e8d77790"
 x86_64-linux  = "d15976f1c1bb7cba5baaa78b7d0255f837d2a7bb3af0fcd5298c717402ff68ed"
+aarch64-linux = "1f103377ed0120ef201c7c9068cbdf655a51815edb35ea35c6600a30e8d77790"
 
 [sha256]
-aarch64-linux = "57eb23c3c40b3a7675dc1fe3b785501a6a41598b9b3cbe35d80f8d65267cf1cd"
 x86_64-linux  = "72d2c6fdaa111ac96c2cf725fc40e313e2856643482be58608911a09440313f1"
+aarch64-linux = "57eb23c3c40b3a7675dc1fe3b785501a6a41598b9b3cbe35d80f8d65267cf1cd"
 
 [size]
-aarch64-linux = 2347732
 x86_64-linux  = 2488171
+aarch64-linux = 2347732
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/cantino/mcfly/master/LICENSE"
 to     = "LICENSE"
-blake3 = "374ea488ded945fb7d33caa2eb47e9a3190a2689ad5a6eb74adbe4d01472c7eb"
-sha256 = "2ad7ccca027878f515366628a2fadff0cd684a2e62692bfd806977f1e5527989"

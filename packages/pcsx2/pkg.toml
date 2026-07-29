@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/PCSX2/pcsx2/refs/heads/master/COPYING.GPLv3"
 to  = "LICENSE"
+verify = false

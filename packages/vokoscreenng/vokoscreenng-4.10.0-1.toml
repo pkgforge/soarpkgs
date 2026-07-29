@@ -1,23 +1,22 @@
 version = "4.10.0-1"
+date    = "2026-07-22T12:15:16Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/4.10.0-1%402026-07-22_1784722515/vokoscreenNG-4.10.0-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/4.10.0-1%402026-07-22_1784722515/vokoscreenNG-4.10.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "e4fc1dd3e728af4574de30b1fb7b9ed0a1ac8cc549d71f59925a9a2b838b13d9"
 x86_64-linux  = "671345cda62aad7e3386c7b92072ac640bce9bf9e054da0b6871234a1d3d2545"
+aarch64-linux = "e4fc1dd3e728af4574de30b1fb7b9ed0a1ac8cc549d71f59925a9a2b838b13d9"
 
 [sha256]
-aarch64-linux = "baa6d65f742ae2348051f8b23554e0043f14d260a5da9cd82b9dd0922430829f"
 x86_64-linux  = "ad66bff7778fe91b00f19937e95675e4cf25bf9f5f60775d89d7c8fbaa0ab431"
+aarch64-linux = "baa6d65f742ae2348051f8b23554e0043f14d260a5da9cd82b9dd0922430829f"
 
 [size]
-aarch64-linux = 98379046
 x86_64-linux  = 100947829
+aarch64-linux = 98379046
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/vkohaupt/vokoscreenNG/3.0/COPYING"
 to     = "LICENSE"
-blake3 = "5e978fbdea9c1d2ff7ce8b9b8312f03465135b9c5e09bcb327fde21533bc1031"
-sha256 = "cf32dbf46799c5d0a6e6bf302a8bcfa77e63656740f42e300914e0133d08a2b5"

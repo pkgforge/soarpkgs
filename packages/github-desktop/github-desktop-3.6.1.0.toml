@@ -5,19 +5,17 @@ x86_64-linux  = "https://github.com/pkgforge-dev/GitHub-Desktop-Plus-AppImage-En
 aarch64-linux = "https://github.com/pkgforge-dev/GitHub-Desktop-Plus-AppImage-Enhanced/releases/download/3.6.1.0%402026-06-29_1782704782/Desktop_Plus-3.6.1.0-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "24d14f20073c3a1154b6235d8b5c8d60f6dae1879f43738dc88ba9ee5c53bd6c"
 x86_64-linux  = "bb378d564a39cabecc0a2234ac081b56a169cca8b629cae09feb5220cd525096"
+aarch64-linux = "24d14f20073c3a1154b6235d8b5c8d60f6dae1879f43738dc88ba9ee5c53bd6c"
 
 [sha256]
-aarch64-linux = "ae2e60371f8e4d7fc7145ddc92786114656b28cc475f655f2cc289a614c466b0"
 x86_64-linux  = "fd9edd807c62401a5d1e66892d6d1846716ad608ff1eb0e99a3eb99dc77a9f5b"
+aarch64-linux = "ae2e60371f8e4d7fc7145ddc92786114656b28cc475f655f2cc289a614c466b0"
 
 [size]
-aarch64-linux = 261999624
 x86_64-linux  = 269590749
+aarch64-linux = 261999624
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/shiftkey/desktop/linux/LICENSE"
 to     = "LICENSE"
-blake3 = "14f45f7515bac5e82d82a519632618665af34a9a7593cacaa9c13782881a58cb"
-sha256 = "891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530"

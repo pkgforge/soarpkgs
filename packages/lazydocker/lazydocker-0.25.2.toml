@@ -1,17 +1,18 @@
 version = "0.25.2"
+date    = "2026-04-19T02:54:16Z"
 
 [url]
 x86_64-linux  = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/lazydocker_0.25.2_Linux_x86_64.tar.gz"
 aarch64-linux = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/lazydocker_0.25.2_Linux_arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "94205286deec1b0a7ace340c7748def381a12625d62515ffad4fc918c3237147"
 x86_64-linux  = "8483fd9de4ea0bc50a823998375442174e17dddae953ff9a04adc737f84db82c"
+aarch64-linux = "94205286deec1b0a7ace340c7748def381a12625d62515ffad4fc918c3237147"
 
 [sha256]
-aarch64-linux = "005c38b685aaa557e7d646d83a3dadb5024340eeed8c6a2e1949eee6f530de23"
 x86_64-linux  = "0d9dbfc26068b218e7ed84b104748cadc6e3cf733c0afd35465306fb39b9523c"
+aarch64-linux = "005c38b685aaa557e7d646d83a3dadb5024340eeed8c6a2e1949eee6f530de23"
 
 [size]
-aarch64-linux = 4548216
 x86_64-linux  = 4934171
+aarch64-linux = 4548216

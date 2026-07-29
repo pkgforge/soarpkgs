@@ -1,23 +1,22 @@
 version = "r41"
+date    = "2026-02-04T05:50:51Z"
 
 [url]
 x86_64-linux  = "https://github.com/gokcehan/lf/releases/download/r41/lf-linux-amd64.tar.gz"
 aarch64-linux = "https://github.com/gokcehan/lf/releases/download/r41/lf-linux-arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "2fce775dabb19492f53f73ad0a73e3d66596f679deb7ec1492c29d6d7d9593c5"
 x86_64-linux  = "592fd98ed817636b06ff8a109a8d7221d49a30f0e745e916cc7a3c29fa64efe7"
+aarch64-linux = "2fce775dabb19492f53f73ad0a73e3d66596f679deb7ec1492c29d6d7d9593c5"
 
 [sha256]
-aarch64-linux = "02ebad67a8973e995f8b1d9d0f5cabbee866451d0d3978fe7d1bb196772371ea"
 x86_64-linux  = "c7c4237b5d8618a13bbe01592859d89d6de0f460f8483b8e47c0f8c416203275"
+aarch64-linux = "02ebad67a8973e995f8b1d9d0f5cabbee866451d0d3978fe7d1bb196772371ea"
 
 [size]
-aarch64-linux = 2148873
 x86_64-linux  = 2339674
+aarch64-linux = 2148873
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/gokcehan/lf/master/LICENSE"
 to     = "LICENSE"
-blake3 = "1163891b74d13e588763e5bfc23a4965cf446334394a8b4e646c8bc7f57e6563"
-sha256 = "077f3c8aa73a4886221438f9df5c1551baab43c6a0f2e7cddf56f436e8b63480"

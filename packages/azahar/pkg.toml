@@ -1,13 +1,13 @@
 [pkg]
-name        = "azahar-enhanced"
+name        = "azahar"
 type        = "appimage"
 description = "Nintendo 3DS emulator"
 homepage    = ["https://github.com/azahar-emu/azahar"]
 license     = ["GPL-2.0"]
 maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
 category    = ["Emulator", "Game"]
-repology    = ["azahar-enhanced"]
-provides    = ["azahar-enhanced"]
+repology    = ["azahar"]
+provides    = ["azahar"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/azahar-emu/azahar/refs/heads/master/license.txt"
 to  = "LICENSE"
+verify = false

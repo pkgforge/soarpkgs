@@ -1,23 +1,22 @@
 version = "2b4ea3c6c"
+date    = "2026-07-22T12:05:15Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Taradino-AppImage/releases/download/2b4ea3c6c%402026-07-22_1784721914/Taradino-2b4ea3c6c-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Taradino-AppImage/releases/download/2b4ea3c6c%402026-07-22_1784721914/Taradino-2b4ea3c6c-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6dc9751a07ae1790d23e71ce41f20f80ec0f0605d5e0ed7136abcbaf610e09ce"
 x86_64-linux  = "4552ff8f295d4d92533dd605c2853ce51d99add196bd56be52f421e984f03231"
+aarch64-linux = "6dc9751a07ae1790d23e71ce41f20f80ec0f0605d5e0ed7136abcbaf610e09ce"
 
 [sha256]
-aarch64-linux = "76bb9a334c1c33553896a7d67c264aed5314570ddc375cd9139549fe5afc5bf4"
 x86_64-linux  = "bf114ebac1db1f7df91e0e746efaf2bdcc86bf769ac242f30135b3dc65ff255d"
+aarch64-linux = "76bb9a334c1c33553896a7d67c264aed5314570ddc375cd9139549fe5afc5bf4"
 
 [size]
-aarch64-linux = 19449281
 x86_64-linux  = 20114214
+aarch64-linux = 19449281
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/fabiangreffrath/taradino/main/COPYING"
 to     = "LICENSE"
-blake3 = "4e55e20f5749bb6d7d7139031e982c188a34a27473e666a89d9507a8a3b687f7"
-sha256 = "3f9d5f29ecf12b61c4c20045e23e01c717182fa862bb1e97afa19a91a0ef68c4"

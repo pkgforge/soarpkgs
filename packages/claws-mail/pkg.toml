@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://git.claws-mail.org/?p=claws.git;a=blob_plain;f=COPYING;hb=HEAD"
 to  = "LICENSE"
+verify = false

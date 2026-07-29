@@ -1,13 +1,13 @@
 [pkg]
-name        = "rmg-enhanced"
+name        = "rmg"
 type        = "appimage"
 description = "Rosalie's Mupen GUI - N64 emulator frontend"
 homepage    = ["https://github.com/Rosalie241/RMG"]
 license     = ["GPL-3.0"]
 maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
 category    = ["Emulator", "Game"]
-repology    = ["rmg-enhanced"]
-provides    = ["rmg-enhanced"]
+repology    = ["rmg"]
+provides    = ["rmg"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/Rosalie241/RMG/refs/heads/master/LICENSE"
 to  = "LICENSE"
+verify = false

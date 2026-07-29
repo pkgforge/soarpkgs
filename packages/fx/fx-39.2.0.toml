@@ -1,23 +1,22 @@
 version = "39.2.0"
+date    = "2025-11-12T09:45:39Z"
 
 [url]
 x86_64-linux  = "https://github.com/antonmedv/fx/releases/download/39.2.0/fx_linux_amd64"
 aarch64-linux = "https://github.com/antonmedv/fx/releases/download/39.2.0/fx_linux_arm64"
 
 [blake3]
-aarch64-linux = "6f6f2507e70f67e7e979ab3a7203f250a0d5b327577a0f80559d7d81c01014ca"
 x86_64-linux  = "a17f53bd0db9de15df8cad41f0876f1eb6063752eb6c771a38e87f2140087308"
+aarch64-linux = "6f6f2507e70f67e7e979ab3a7203f250a0d5b327577a0f80559d7d81c01014ca"
 
 [sha256]
-aarch64-linux = "85ea8435b0a80b6d31ffa9f61ac9b67d9bb8f0ffffabdfe5e7e587b07a0a0684"
 x86_64-linux  = "17ea6549c7cf0b8be5ec109d04da7fbf1d5de9f7b99d957a6215081933528afe"
+aarch64-linux = "85ea8435b0a80b6d31ffa9f61ac9b67d9bb8f0ffffabdfe5e7e587b07a0a0684"
 
 [size]
-aarch64-linux = 17639716
 x86_64-linux  = 18104523
+aarch64-linux = 17639716
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/antonmedv/fx/master/LICENSE"
 to     = "LICENSE"
-blake3 = "9ec1ee424e6f569bed8a5e345b0a47e806b0fd3782b2ac782ba740e4f68da1a4"
-sha256 = "f2c369e1796dc84c37cf34a966033e8850e535567fde32ef74b672726ed61d23"

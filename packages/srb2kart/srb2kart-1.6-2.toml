@@ -1,23 +1,22 @@
 version = "1.6-2"
+date    = "2026-07-22T12:06:41Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6-2%402026-07-22_1784722000/SRB2Kart-1.6-2-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6-2%402026-07-22_1784722000/SRB2Kart-1.6-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "60ec3caedf7de371d05953b54a8a13a319b67e64e1eaa98b2424d355bd8180f3"
 x86_64-linux  = "02bf03f62a02c744f55a2b59d2b2e8d7477bf1a8ce6cc2fceef528540af9e632"
+aarch64-linux = "60ec3caedf7de371d05953b54a8a13a319b67e64e1eaa98b2424d355bd8180f3"
 
 [sha256]
-aarch64-linux = "751b2d9092771bb801b001d1a5b1be0e38298096366604d9ae22590f7d1f8259"
 x86_64-linux  = "b65bf9c453eef586b72f8406d1fd9482ea0c9f583584aa9f4410d0968e021fd4"
+aarch64-linux = "751b2d9092771bb801b001d1a5b1be0e38298096366604d9ae22590f7d1f8259"
 
 [size]
-aarch64-linux = 226106880
 x86_64-linux  = 225321017
+aarch64-linux = 226106880
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/STJr/Kart-Public/master/LICENSE"
 to     = "LICENSE"
-blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
-sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

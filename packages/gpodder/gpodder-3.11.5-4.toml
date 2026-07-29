@@ -1,23 +1,22 @@
 version = "3.11.5-4"
+date    = "2026-07-22T12:10:28Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-4%402026-07-22_1784722227/gPodder-3.11.5-4-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-4%402026-07-22_1784722227/gPodder-3.11.5-4-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "039caf1ee16fa28bbccc24855f56255dd463e3067edb2b4523a272a7f84f5b82"
 x86_64-linux  = "f25d3d825019c1840132298f0dd95f5f65424c47ce0de6ca0aaa0a8cd596a9fd"
+aarch64-linux = "039caf1ee16fa28bbccc24855f56255dd463e3067edb2b4523a272a7f84f5b82"
 
 [sha256]
-aarch64-linux = "1ca50074278326172ec8a7e5f540f2c8dd3a3621f7754ca6d8ad4874fd298081"
 x86_64-linux  = "7c47b40b681c314649ddf442244b309eecad60ca91b42f8bbc1c949a21976c09"
+aarch64-linux = "1ca50074278326172ec8a7e5f540f2c8dd3a3621f7754ca6d8ad4874fd298081"
 
 [size]
-aarch64-linux = 37188727
 x86_64-linux  = 37268140
+aarch64-linux = 37188727
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/gpodder/gpodder/master/COPYING"
 to     = "LICENSE"
-blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
-sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

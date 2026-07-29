@@ -1,23 +1,22 @@
 version = "0.41.0"
+date    = "2026-07-01T13:56:17Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/mpv-AppImage/releases/download/v0.41.0%402026-07-01_1782914175/mpv-v0.41.0-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/mpv-AppImage/releases/download/v0.41.0%402026-07-01_1782914175/mpv-v0.41.0-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "b57143c3ca885478bc84083d44775575c7bb290219e62edf077e737678bb2cb3"
 x86_64-linux  = "87aab28be28ea06a4deb20a15d76366964c2e53b2a5abd4f13528d05b58fa83f"
+aarch64-linux = "b57143c3ca885478bc84083d44775575c7bb290219e62edf077e737678bb2cb3"
 
 [sha256]
-aarch64-linux = "a9940e2f15dc2ce46e732ff365baa1fca29892a58e51b0c598ff679837d0dfae"
 x86_64-linux  = "9ba489eb78c39fa4d5ef9cfaf9e80b92dcb9f69a05dd365d30255e6dca3c8fbd"
+aarch64-linux = "a9940e2f15dc2ce46e732ff365baa1fca29892a58e51b0c598ff679837d0dfae"
 
 [size]
-aarch64-linux = 49917119
 x86_64-linux  = 50451389
+aarch64-linux = 49917119
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mpv-player/mpv/refs/heads/master/LICENSE.GPL"
 to     = "LICENSE"
-blake3 = "4c95eafcec13afd0ef3cebf5ea466cd2b57cfc39c48fc7afa48b97cf24a1e995"
-sha256 = "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"

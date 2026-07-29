@@ -1,23 +1,22 @@
 version = "3.8.0-1"
+date    = "2026-07-22T12:14:39Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Impression-AppImage/releases/download/3.8.0-1%402026-07-22_1784722477/Impression-3.8.0-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Impression-AppImage/releases/download/3.8.0-1%402026-07-22_1784722477/Impression-3.8.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "696d0f413e391b6de37a705973d1c248060677c4113941542176a52a67a33491"
 x86_64-linux  = "9cd93705fafc8a20d83745578d4373f23e4321bc223315529ddc23cac1ed1a94"
+aarch64-linux = "696d0f413e391b6de37a705973d1c248060677c4113941542176a52a67a33491"
 
 [sha256]
-aarch64-linux = "da5958a23d93994959be6c07075dcdb4e1eca9b020a3f5009dbfaff852b50c34"
 x86_64-linux  = "134ab882ece40ed5731577cf5e931a4f9bee2e269d8cc92ead51925d217e4a6d"
+aarch64-linux = "da5958a23d93994959be6c07075dcdb4e1eca9b020a3f5009dbfaff852b50c34"
 
 [size]
-aarch64-linux = 37179756
 x86_64-linux  = 36942013
+aarch64-linux = 37179756
 
 [[extra]]
 url    = "https://gitlab.com/adhami3310/Impression/-/raw/main/COPYING"
 to     = "LICENSE"
-blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
-sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

@@ -1,23 +1,22 @@
 version = "2.2.15-1"
+date    = "2026-07-22T12:10:34Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15-1%402026-07-22_1784722233/Sonic_Robo_Blast_2-2.2.15-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15-1%402026-07-22_1784722233/Sonic_Robo_Blast_2-2.2.15-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "85b757ff89e48bc396b58b66e47623d7f0841306a9734da1d9d901e8a9fd1b53"
 x86_64-linux  = "2f857b40be9a3ea12eb5151b3c769731d0aa4e1606d8972e9fdccbc7b6957855"
+aarch64-linux = "85b757ff89e48bc396b58b66e47623d7f0841306a9734da1d9d901e8a9fd1b53"
 
 [sha256]
-aarch64-linux = "7c5c13918ba5551917e354839044d865b2d446ca0368694ed686e57d663f72d7"
 x86_64-linux  = "6efe557502cb837dacc3e3160e089f2a45a59bf6f2e5e23ecd6b01a499e9ec12"
+aarch64-linux = "7c5c13918ba5551917e354839044d865b2d446ca0368694ed686e57d663f72d7"
 
 [size]
-aarch64-linux = 198259299
 x86_64-linux  = 198097301
+aarch64-linux = 198259299
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/STJr/SRB2/master/LICENSE"
 to     = "LICENSE"
-blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
-sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

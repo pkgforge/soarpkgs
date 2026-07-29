@@ -1,17 +1,18 @@
 version = "0.2.0"
+date    = "2024-06-20T19:40:02Z"
 
 [url]
 x86_64-linux  = "https://github.com/orhun/halp/releases/download/v0.2.0/halp-0.2.0-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/orhun/halp/releases/download/v0.2.0/halp-0.2.0-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "906ea864f36c32c9cbfbb95607f48db484f866656211d35f137f402f3a0f57cd"
 x86_64-linux  = "50e6d364d149246dc7584ec9be9a3962a2d6da76c6ffcb76004a3a5c91b2969f"
+aarch64-linux = "906ea864f36c32c9cbfbb95607f48db484f866656211d35f137f402f3a0f57cd"
 
 [sha256]
-aarch64-linux = "c15b4671a394030ea2939e39bd82c053e0863d8ed93c90f5c06238835be46938"
 x86_64-linux  = "b252400f8c94204cc2de7180a0f984bd2fcfdbdd2889f62a663d81fc0c1bd8b0"
+aarch64-linux = "c15b4671a394030ea2939e39bd82c053e0863d8ed93c90f5c06238835be46938"
 
 [size]
-aarch64-linux = 2045339
 x86_64-linux  = 2176942
+aarch64-linux = 2045339

@@ -1,23 +1,22 @@
 version = "26.04.3-1"
+date    = "2026-07-22T12:15:22Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.04.3-1%402026-07-22_1784722521/KMines-26.04.3-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.04.3-1%402026-07-22_1784722521/KMines-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "b186ead039c59f8aa75013a6e3a6d61617b0374b641985c03176fb49375a68e6"
 x86_64-linux  = "0ea4df28ffe5fd0e0a8f5873d5c33657e35d05bd3eeb68b1475f7711ebc72734"
+aarch64-linux = "b186ead039c59f8aa75013a6e3a6d61617b0374b641985c03176fb49375a68e6"
 
 [sha256]
-aarch64-linux = "fd49e3588d6888e8ea8222cbe0144f8b4f7155a1dc69a98e59b0c8a63f8a9248"
 x86_64-linux  = "90233615b93d7f2d39cc26d7986a004d97b6c65b644090d32df4c17eeba44c07"
+aarch64-linux = "fd49e3588d6888e8ea8222cbe0144f8b4f7155a1dc69a98e59b0c8a63f8a9248"
 
 [size]
-aarch64-linux = 75383468
 x86_64-linux  = 75986492
+aarch64-linux = 75383468
 
 [[extra]]
 url    = "https://invent.kde.org/games/kmines/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
 to     = "LICENSE"
-blake3 = "4a3bd19b9e456fc0c7fd0e708d93c33a81c1752448bfcf96abae5990dfb722a9"
-sha256 = "b58671fb4d9e9efeb9a6af1bdba02e61ac69af654855b45a372efe8f52413f83"

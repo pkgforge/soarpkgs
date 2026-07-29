@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/htop-dev/htop/refs/heads/main/COPYING"
 to  = "LICENSE"
+verify = false

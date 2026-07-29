@@ -5,19 +5,17 @@ x86_64-linux  = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-x86_64.tar.gz"
 aarch64-linux = "https://dev.yorhel.nl/download/ncdu-2.9.1-linux-aarch64.tar.gz"
 
 [blake3]
-aarch64-linux = "10b6b18a0a980e8a8e23de24afbf9c44deb2839f00048472579c1d0a15a53a35"
 x86_64-linux  = "8a33bf4ee11eb471ebe18ee66f77f84b0d1eba4edb95adcd3dd657386af7edb9"
+aarch64-linux = "10b6b18a0a980e8a8e23de24afbf9c44deb2839f00048472579c1d0a15a53a35"
 
 [sha256]
-aarch64-linux = "5bf4a37e8b5e1ecc6863475dc800c6a0d73b9cd1452e37d744edd3df0b58dac0"
 x86_64-linux  = "0c6c84b3f763c33baa051c8327f0e736f46f33a8cc061bb951d24517a8c5d73e"
+aarch64-linux = "5bf4a37e8b5e1ecc6863475dc800c6a0d73b9cd1452e37d744edd3df0b58dac0"
 
 [size]
-aarch64-linux = 391350
 x86_64-linux  = 377081
+aarch64-linux = 391350
 
 [[extra]]
 url    = "https://code.blicky.net/yorhel/ncdu/raw/branch/HEAD/LICENSES/MIT.txt"
 to     = "LICENSE"
-blake3 = "3a2ebcbce83900411701d89157e9a853261dbfce71669b4114e19092f3e76435"
-sha256 = "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"

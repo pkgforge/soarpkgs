@@ -27,3 +27,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/GNOME/gnome-text-editor/refs/heads/main/COPYING"
 to  = "LICENSE"
+verify = false

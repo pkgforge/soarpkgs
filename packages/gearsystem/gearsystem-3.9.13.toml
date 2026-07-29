@@ -1,23 +1,22 @@
 version = "3.9.13"
+date    = "2026-07-22T12:15:32Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Gearsystem-AppImage/releases/download/3.9.13%402026-07-22_1784722531/Gearsystem-3.9.13-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Gearsystem-AppImage/releases/download/3.9.13%402026-07-22_1784722531/Gearsystem-3.9.13-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "8ae64cb51e2e5812a91471e2f157c1a8c305b017ac842ab07b00b6573143a52a"
 x86_64-linux  = "bcbea52104d82e7f29b10a1866ddc4a5b19ec4d2e011a12431fed5504a9bdb8c"
+aarch64-linux = "8ae64cb51e2e5812a91471e2f157c1a8c305b017ac842ab07b00b6573143a52a"
 
 [sha256]
-aarch64-linux = "1ff22c8513d6f2a2c3520c49e60c1fbd2e32bc614c9faacaef32fdfa7d3ed084"
 x86_64-linux  = "abc41420d97ba2f857e073862f92d22f9a72e31c99be8061ba64de1bd4dce1ee"
+aarch64-linux = "1ff22c8513d6f2a2c3520c49e60c1fbd2e32bc614c9faacaef32fdfa7d3ed084"
 
 [size]
-aarch64-linux = 31707270
 x86_64-linux  = 32490197
+aarch64-linux = 31707270
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/drhelius/Gearsystem/master/LICENSE"
 to     = "LICENSE"
-blake3 = "5f283a501b12773301e2757302be384fc66f98aa0fbc84b2e166348877332386"
-sha256 = "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"

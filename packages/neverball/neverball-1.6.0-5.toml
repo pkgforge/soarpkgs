@@ -1,23 +1,22 @@
 version = "1.6.0-5"
+date    = "2026-07-01T14:02:36Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Neverball-AppImage/releases/download/1.6.0-5%402026-07-01_1782914555/Neverball-1.6.0-5-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Neverball-AppImage/releases/download/1.6.0-5%402026-07-01_1782914555/Neverball-1.6.0-5-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "0eb1591a657622a8d1b10eb90f9058f11b0c12a7c64b2c1a891d3808438c85fc"
 x86_64-linux  = "cd058058eda078f088dce898a57a207540a6cb11b67ff67de442a620ae916975"
+aarch64-linux = "0eb1591a657622a8d1b10eb90f9058f11b0c12a7c64b2c1a891d3808438c85fc"
 
 [sha256]
-aarch64-linux = "a2d93903efbf5b470d054d33907c491c01bae042f119fcda457d5eb797e16b42"
 x86_64-linux  = "8504f4b152782031f2d938734aa87cd6101094f6e7a7579ceff735869a008b55"
+aarch64-linux = "a2d93903efbf5b470d054d33907c491c01bae042f119fcda457d5eb797e16b42"
 
 [size]
-aarch64-linux = 78571651
 x86_64-linux  = 79263334
+aarch64-linux = 78571651
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Neverball/neverball/master/LICENSE.md"
 to     = "LICENSE"
-blake3 = "c4e6153a26d3b349335c9df661bc5d1b4a9e3288056179a401789444229142f0"
-sha256 = "f724e11d880d0de9328ad8f804fb4ef73fd6d9934b68ef2f9fe3c47ad7f5d3b9"

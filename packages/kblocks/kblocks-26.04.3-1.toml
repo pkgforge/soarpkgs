@@ -1,23 +1,22 @@
 version = "26.04.3-1"
+date    = "2026-07-22T12:06:38Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.04.3-1%402026-07-22_1784721997/KBlocks-26.04.3-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.04.3-1%402026-07-22_1784721997/KBlocks-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "d234e9c9ccc7572b5816af3554a63b09a948495491fd87aed8f79af0b632e44d"
 x86_64-linux  = "70c3a7827ba8b0a065ba3053e7443055deb0d09852e42352d876dfe3738222ce"
+aarch64-linux = "d234e9c9ccc7572b5816af3554a63b09a948495491fd87aed8f79af0b632e44d"
 
 [sha256]
-aarch64-linux = "1fd27f7301d7652ecd693d67829e6c3d8cac5ecde415784176c2099f244b7b72"
 x86_64-linux  = "1244f05c31b7528fd68fc90c4fec6bd41a1ed1e4c9acfbf00f48ec2c52848cf0"
+aarch64-linux = "1fd27f7301d7652ecd693d67829e6c3d8cac5ecde415784176c2099f244b7b72"
 
 [size]
-aarch64-linux = 63107263
 x86_64-linux  = 63645869
+aarch64-linux = 63107263
 
 [[extra]]
 url    = "https://invent.kde.org/games/kblocks/-/raw/master/COPYING"
 to     = "LICENSE"
-blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
-sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

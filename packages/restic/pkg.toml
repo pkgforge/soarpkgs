@@ -30,3 +30,4 @@ url = "https://github.com/restic/restic/releases/download/v${version}/restic_${v
 [[extra]]
 url = "https://raw.githubusercontent.com/restic/restic/master/LICENSE"
 to  = "LICENSE"
+verify = false

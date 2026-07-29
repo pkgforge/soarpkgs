@@ -1,23 +1,22 @@
 version = "0.86.rev.22.230.gcbadd75-1"
+date    = "2026-04-07T01:52:34Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage/releases/download/0.86.rev.22.230.gcbadd75-1%402026-04-07_1775526753/Neko_Project_II_kai-0.86.rev.22.230.gcbadd75-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage/releases/download/0.86.rev.22.230.gcbadd75-1%402026-04-07_1775526753/Neko_Project_II_kai-0.86.rev.22.230.gcbadd75-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "3bf8359940faf57dde67446ecb9502d123aae2ae30b77ee76a1204b96f3d9360"
 x86_64-linux  = "72746a58a567c594142482d5ad389496bfd62416e06767eeb384d7e4dcd7bbcd"
+aarch64-linux = "3bf8359940faf57dde67446ecb9502d123aae2ae30b77ee76a1204b96f3d9360"
 
 [sha256]
-aarch64-linux = "c1b321dbc38814ecc008b6b0f8692007d11e9647bf296035a9c88433244a7aa6"
 x86_64-linux  = "d489e301b99b6edb4a022f6b813f37e7341fb2115176d06ace87149ad01df0db"
+aarch64-linux = "c1b321dbc38814ecc008b6b0f8692007d11e9647bf296035a9c88433244a7aa6"
 
 [size]
-aarch64-linux = 27916939
 x86_64-linux  = 29197228
+aarch64-linux = 27916939
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/AZO234/NP2kai/master/LICENSE"
 to     = "LICENSE"
-blake3 = "f12ef7a9b8cbcc87defa20af24c5790547ba3aed67837609e597a038811e0c40"
-sha256 = "4dcb041b83a1bee1cfb542dc8f815c731f3c5b8dbb5268b2eb7fc932c3ff63fe"
