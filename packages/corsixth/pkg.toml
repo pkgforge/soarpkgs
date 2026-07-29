@@ -14,12 +14,12 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy     = "github-releases"
-repo         = "pkgforge-dev/CorsixTH-AppImage"
+repo         = "pkgforge-dev/CorsixTH-AppImage-Enhanced"
 strip-prefix = "v"
 tag-suffix   = "strip"
 
 [source]
-github = "pkgforge-dev/CorsixTH-AppImage"
+github = "pkgforge-dev/CorsixTH-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
 
 [[extra]]

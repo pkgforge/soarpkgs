@@ -14,11 +14,11 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy   = "github-releases"
-repo       = "pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+repo       = "pkgforge-dev/GitHub-Desktop-Plus-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
-github = "pkgforge-dev/GitHub-Desktop-AppImage-Enhanced"
+github = "pkgforge-dev/GitHub-Desktop-Plus-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
 
 [[extra]]

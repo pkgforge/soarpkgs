@@ -14,11 +14,11 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy   = "github-releases"
-repo       = "pkgforge-dev/LMMS-AppImage"
+repo       = "pkgforge-dev/LMMS-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
-github = "pkgforge-dev/LMMS-AppImage"
+github = "pkgforge-dev/LMMS-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
 
 [[extra]]

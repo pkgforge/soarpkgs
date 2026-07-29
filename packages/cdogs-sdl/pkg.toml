@@ -14,11 +14,11 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy   = "github-releases"
-repo       = "pkgforge-dev/CDogs-SDL-AppImage"
+repo       = "pkgforge-dev/C-Dogs_SDL-AppImage"
 tag-suffix = "strip"
 
 [source]
-github = "pkgforge-dev/CDogs-SDL-AppImage"
+github = "pkgforge-dev/C-Dogs_SDL-AppImage"
 glob   = "*${arch}*.appimage"
 
 [[extra]]

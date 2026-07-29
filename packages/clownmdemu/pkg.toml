@@ -16,11 +16,11 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy   = "github-releases"
-repo       = "pkgforge-dev/ClownMDEmu-AppImage"
+repo       = "pkgforge-dev/ClownMDEmu-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
-github = "pkgforge-dev/ClownMDEmu-AppImage"
+github = "pkgforge-dev/ClownMDEmu-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
 
 [[extra]]

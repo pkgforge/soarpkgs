@@ -14,11 +14,11 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy   = "github-releases"
-repo       = "pkgforge-dev/FreeTube-Appimage"
+repo       = "pkgforge-dev/FreeTube-Appimage-Enhanced"
 tag-suffix = "strip"
 
 [source]
-github = "pkgforge-dev/FreeTube-Appimage"
+github = "pkgforge-dev/FreeTube-Appimage-Enhanced"
 glob   = "*${arch}*.appimage"
 
 [[extra]]
