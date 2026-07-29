@@ -1,5 +1,5 @@
 [pkg]
-name        = "tutanota-desktop-enhanced"
+name        = "tutanota-desktop"
 type        = "appimage"
 description = "Secure email client"
 homepage    = [
@@ -9,8 +9,8 @@ homepage    = [
 license    = ["GPL-3.0"]
 maintainer = ["fiftydinar (github.com/fiftydinar)"]
 category   = ["Email", "Network"]
-repology   = ["tutanota-desktop-enhanced"]
-provides   = ["tutanota-desktop-enhanced"]
+repology   = ["tutanota-desktop"]
+provides   = ["tutanota-desktop"]
 
 [host]
 supported = ["x86_64-linux"]

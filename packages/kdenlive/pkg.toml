@@ -1,5 +1,5 @@
 [pkg]
-name        = "kdenlive-enhanced"
+name        = "kdenlive"
 type        = "appimage"
 description = "Video editor"
 homepage    = [
@@ -9,8 +9,8 @@ homepage    = [
 license    = ["GPL-3.0"]
 maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
 category   = ["AudioVideo", "AudioVideoEditing", "Video"]
-repology   = ["kdenlive-enhanced"]
-provides   = ["kdenlive-enhanced"]
+repology   = ["kdenlive"]
+provides   = ["kdenlive"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]

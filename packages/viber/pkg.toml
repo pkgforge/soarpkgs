@@ -1,5 +1,5 @@
 [pkg]
-name        = "viber-enhanced"
+name        = "viber"
 type        = "appimage"
 description = "Free calls and messages"
 homepage    = [
@@ -9,8 +9,8 @@ homepage    = [
 license    = ["Proprietary"]
 maintainer = ["fiftydinar (github.com/fiftydinar)"]
 category   = ["InstantMessaging", "Network"]
-repology   = ["viber-enhanced"]
-provides   = ["viber-enhanced"]
+repology   = ["viber"]
+provides   = ["viber"]
 note        = [
   "Terms of service: https://www.viber.com/en/terms/viber-terms-use/",
 ]

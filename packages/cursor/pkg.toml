@@ -1,5 +1,5 @@
 [pkg]
-name        = "cursor-enhanced"
+name        = "cursor"
 type        = "appimage"
 description = "The AI-first code editor"
 homepage    = [
@@ -9,8 +9,8 @@ homepage    = [
 license    = ["Proprietary"]
 maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
 category   = ["Development", "IDE", "TextEditor"]
-repology   = ["cursor-enhanced"]
-provides   = ["cursor-enhanced"]
+repology   = ["cursor"]
+provides   = ["cursor"]
 note        = [
   "Terms of service: https://cursor.com/terms-of-service",
 ]
