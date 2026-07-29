@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/wine-mirror/wine/master/LICENSE"
 to  = "LICENSE"
+verify = false

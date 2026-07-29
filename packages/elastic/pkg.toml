@@ -24,3 +24,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://gitlab.gnome.org/World/elastic/-/raw/main/COPYING"
 to  = "LICENSE"
+verify = false

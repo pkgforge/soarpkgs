@@ -30,3 +30,4 @@ url     = "https://github.com/containerd/nerdctl/releases/download/v${version}/n
 [[extra]]
 url = "https://raw.githubusercontent.com/containerd/nerdctl/main/LICENSE"
 to  = "LICENSE"
+verify = false

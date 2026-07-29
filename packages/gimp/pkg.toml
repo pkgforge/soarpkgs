@@ -27,3 +27,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://gitlab.gnome.org/GNOME/gimp/-/raw/master/COPYING"
 to  = "LICENSE"
+verify = false

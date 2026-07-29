@@ -30,3 +30,4 @@ url     = "https://github.com/rclone/rclone/releases/download/v${version}/rclone
 [[extra]]
 url = "https://raw.githubusercontent.com/rclone/rclone/master/COPYING"
 to  = "LICENSE"
+verify = false

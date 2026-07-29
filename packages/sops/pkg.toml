@@ -27,3 +27,4 @@ url = "https://github.com/getsops/sops/releases/download/v${version}/sops-v${ver
 [[extra]]
 url = "https://raw.githubusercontent.com/getsops/sops/main/LICENSE"
 to  = "LICENSE"
+verify = false

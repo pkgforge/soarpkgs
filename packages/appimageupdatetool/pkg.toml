@@ -25,3 +25,4 @@ glob   = "*${arch}*.appimage"
 [[extra]]
 url = "https://raw.githubusercontent.com/pkgforge-dev/AppImageUpdate-Enhanced-Edition/refs/heads/main/LICENSE.txt"
 to  = "LICENSE"
+verify = false
