@@ -45,10 +45,18 @@ jobs:
         id: missing
         run: |
           # Repos advertised by Anylinux-AppImages, minus the ones already
-          # packaged. Package name drops the -AppImage suffix, keeping the
-          # -enhanced variant distinct.
+          # packaged. Only the marked application table counts: the surrounding
+          # prose links tooling repos such as sharun and appimagetool, which are
+          # not AppImages and must not be packaged as if they were.
           curl -sSL "https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/main/README.md" \
-            | grep -oP 'github\.com/pkgforge-dev/\K[A-Za-z0-9_-]+' | sort -u > /tmp/upstream.txt
+            | awk '/APPS_LIST_START/,/APPS_LIST_END/' \
+            | grep -oP '^\|\s*\[[^]]+\]\(https://github\.com/pkgforge-dev/\K[A-Za-z0-9_.-]+(?=\))' \
+            | sort -u > /tmp/upstream.txt
+
+          if [ ! -s /tmp/upstream.txt ]; then
+            echo "::error::No applications found; the README layout may have changed"
+            exit 1
+          fi
 
           grep -rhoP 'pkgforge-dev/\K[A-Za-z0-9_-]+' packages/*/pkg.toml 2>/dev/null \
             | sort -u > /tmp/existing.txt
@@ -57,14 +65,22 @@ jobs:
           while read -r repo; do
             [ -n "$repo" ] || continue
             grep -qix "$repo" /tmp/existing.txt && continue
+            # An enhanced build is the same application, so it keeps the
+            # plain name rather than carrying the variant into the package.
             case "$repo" in
               *-[Aa]pp[Ii]mage-[Ee]nhanced)
-                pkg=$(printf '%s' "${repo%-*-*}" | tr '[:upper:]' '[:lower:]')-enhanced ;;
+                pkg=$(printf '%s' "${repo%-*-*}" | tr '[:upper:]' '[:lower:]') ;;
               *-[Aa]pp[Ii]mage)
                 pkg=$(printf '%s' "${repo%-*}" | tr '[:upper:]' '[:lower:]') ;;
               *)
                 pkg=$(printf '%s' "$repo" | tr '[:upper:]' '[:lower:]') ;;
             esac
+            # Dropping the -enhanced suffix can land on a name already taken
+            # by the plain build of the same application.
+            if [ -d "packages/${pkg}" ]; then
+              echo "::notice::${repo} maps to ${pkg}, which is already packaged"
+              continue
+            fi
             echo "$repo $pkg" >> /tmp/missing.txt
           done < /tmp/upstream.txt
 
