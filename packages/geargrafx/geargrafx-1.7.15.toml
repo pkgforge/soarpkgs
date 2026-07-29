@@ -1,23 +1,22 @@
 version = "1.7.15"
+date    = "2026-07-22T12:11:16Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Geargrafx-AppImage/releases/download/1.7.15%402026-07-22_1784722275/Geargrafx-1.7.15-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Geargrafx-AppImage/releases/download/1.7.15%402026-07-22_1784722275/Geargrafx-1.7.15-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "3e2c3e5e6674aa48e281e7322140ead0c85f89cb53ead7e20a05a5cd58e4eb13"
 x86_64-linux  = "0356083208fd9d03f8c67fb18f42612d53117b528b341b2f1d34fb51587e41be"
+aarch64-linux = "3e2c3e5e6674aa48e281e7322140ead0c85f89cb53ead7e20a05a5cd58e4eb13"
 
 [sha256]
-aarch64-linux = "0747a5dea7a21b6a7e9931cde8679a9cc64b2ee211565942ac31f1c06caaec5e"
 x86_64-linux  = "cbc47a60b5693e36a791986e6e6eb07c5f270a117173ad8abfab10145d89b4aa"
+aarch64-linux = "0747a5dea7a21b6a7e9931cde8679a9cc64b2ee211565942ac31f1c06caaec5e"
 
 [size]
-aarch64-linux = 32197083
 x86_64-linux  = 33013463
+aarch64-linux = 32197083
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/drhelius/Geargrafx/main/LICENSE"
 to     = "LICENSE"
-blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
-sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

@@ -1,23 +1,22 @@
 version = "26.04.2-1"
+date    = "2026-07-01T13:51:16Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.04.2-1%402026-07-01_1782913875/Filelight-26.04.2-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.04.2-1%402026-07-01_1782913875/Filelight-26.04.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "68a5ec756303e0e62b5e6a76165c7b65175941063ff0316317b1110e992ae596"
 x86_64-linux  = "9def9c8e0a18c4204fc7031aa45d98975d8aff283d980a7984910458e5f0b20a"
+aarch64-linux = "68a5ec756303e0e62b5e6a76165c7b65175941063ff0316317b1110e992ae596"
 
 [sha256]
-aarch64-linux = "e3326f795b37395030a40effb6e1679a9a29355bac1d32343562f5e8d53b212f"
 x86_64-linux  = "6a966a8e1b39a2e760845c04c34a454704f0d3e7d74f584f007578cc051b868a"
+aarch64-linux = "e3326f795b37395030a40effb6e1679a9a29355bac1d32343562f5e8d53b212f"
 
 [size]
-aarch64-linux = 51428475
 x86_64-linux  = 51144530
+aarch64-linux = 51428475
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/KDE/filelight/refs/heads/master/LICENSES/GPL-3.0-only.txt"
 to     = "LICENSE"
-blake3 = "d7841551eeb2173783d3d6fbd33ed660fa1690d75e4898987eb650308953e8ac"
-sha256 = "c7120bba88c79b87ca40eacc1cf4ac95bcb2e96b8a00dd91886ef81dbad87f33"

@@ -1,23 +1,22 @@
 version = "1.1.20-2"
+date    = "2026-07-22T12:08:24Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Solaar-AppImage/releases/download/1.1.20-2%402026-07-22_1784722102/Solaar-1.1.20-2-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Solaar-AppImage/releases/download/1.1.20-2%402026-07-22_1784722102/Solaar-1.1.20-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "1908a7076f86a49c92c7bd7d01f1decf6edbda4811fb13fde92dfd20256bc2b3"
 x86_64-linux  = "fc0a2cf26afd862917edc464622227ce79136efa235b429fc7ea158f4e29a983"
+aarch64-linux = "1908a7076f86a49c92c7bd7d01f1decf6edbda4811fb13fde92dfd20256bc2b3"
 
 [sha256]
-aarch64-linux = "288ba230b29a7f2be93fd1eb886a5523ceb3c067f3dc744bf56bb336a304fd57"
 x86_64-linux  = "1b1c371b21bba7a18e3ce9a16f3fa474a8ba7af496f0a15e9a6185b283abef86"
+aarch64-linux = "288ba230b29a7f2be93fd1eb886a5523ceb3c067f3dc744bf56bb336a304fd57"
 
 [size]
-aarch64-linux = 36701432
 x86_64-linux  = 36284376
+aarch64-linux = 36701432
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/pwr-Solaar/Solaar/master/LICENSE.txt"
 to     = "LICENSE"
-blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
-sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

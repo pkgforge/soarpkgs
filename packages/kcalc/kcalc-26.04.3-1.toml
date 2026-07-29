@@ -1,23 +1,22 @@
 version = "26.04.3-1"
+date    = "2026-07-22T11:48:03Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.04.3-1%402026-07-22_1784720882/KCalc-26.04.3-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.04.3-1%402026-07-22_1784720882/KCalc-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "8eda678d58ebbe05beed1633915ffaf5faafe2ff2e44d5b01fc0fa1a61bc271d"
 x86_64-linux  = "9534cf09f33234152cdef653512ab5d1a4f7c03bb903fe28deea6e0e697674be"
+aarch64-linux = "8eda678d58ebbe05beed1633915ffaf5faafe2ff2e44d5b01fc0fa1a61bc271d"
 
 [sha256]
-aarch64-linux = "e586e3095c2f37c6db330efbb85c9195eceb93be7cdb7eb3e41801ef17bc4094"
 x86_64-linux  = "111f35f97a20f5aa2ed3770cd5e1e9c5a893480a9717ed986c028a53af2dcd4e"
+aarch64-linux = "e586e3095c2f37c6db330efbb85c9195eceb93be7cdb7eb3e41801ef17bc4094"
 
 [size]
-aarch64-linux = 32689693
 x86_64-linux  = 32148588
+aarch64-linux = 32689693
 
 [[extra]]
 url    = "https://invent.kde.org/utilities/kcalc/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
 to     = "LICENSE"
-blake3 = "4a3bd19b9e456fc0c7fd0e708d93c33a81c1752448bfcf96abae5990dfb722a9"
-sha256 = "b58671fb4d9e9efeb9a6af1bdba02e61ac69af654855b45a372efe8f52413f83"

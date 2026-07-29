@@ -1,23 +1,22 @@
 version = "r1287.fef2b38-1"
+date    = "2026-07-22T12:15:55Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Supermodel-AppImage/releases/download/r1287.fef2b38-1%402026-07-22_1784722553/Supermodel-r1287.fef2b38-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Supermodel-AppImage/releases/download/r1287.fef2b38-1%402026-07-22_1784722553/Supermodel-r1287.fef2b38-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "b24691dae0670abcfe3a0a61e62b2518c9536a6d427921034db80ae5b749e40f"
 x86_64-linux  = "7dd75a59a2a41968c952d651075aa602be38cc122641e05aad2381dffa003ac4"
+aarch64-linux = "b24691dae0670abcfe3a0a61e62b2518c9536a6d427921034db80ae5b749e40f"
 
 [sha256]
-aarch64-linux = "4cbcca0514b46c530fd76ca2def08d5bd5c0de05c4efa37701a1fc8655559c74"
 x86_64-linux  = "1e88cdba1965919c11c5fd61ee4eb6aca318ce197d52210921412ebffabeb0fb"
+aarch64-linux = "4cbcca0514b46c530fd76ca2def08d5bd5c0de05c4efa37701a1fc8655559c74"
 
 [size]
-aarch64-linux = 20436015
 x86_64-linux  = 21172756
+aarch64-linux = 20436015
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/trzy/Supermodel/master/Docs/LICENSE.txt"
 to     = "LICENSE"
-blake3 = "28a7910ef6716ee828b91a1c8c44914dbc6b67ef5ab3b4f9d6364dc25e0c020e"
-sha256 = "38029eb83f299d3baeed6440e3a992e16d235f818346e54eb8f7ff79d251775f"

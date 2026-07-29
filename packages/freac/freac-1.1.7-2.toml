@@ -1,23 +1,22 @@
 version = "1.1.7-2"
+date    = "2026-07-22T12:08:38Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/freac-AppImage-Enhanced/releases/download/1.1.7-2%402026-07-22_1784722117/fre_ac-1.1.7-2-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/freac-AppImage-Enhanced/releases/download/1.1.7-2%402026-07-22_1784722117/fre_ac-1.1.7-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "e8489975fa7a715a5f988b609109195b10a901b8f8198b43d40e89751e1327c2"
 x86_64-linux  = "dca6f31ed72ee186365dceedfe1d6f2e1a7786a23101ed867ae6f140588d5b7a"
+aarch64-linux = "e8489975fa7a715a5f988b609109195b10a901b8f8198b43d40e89751e1327c2"
 
 [sha256]
-aarch64-linux = "91c2ad7ce4c11b9d384360d610bf8f05987be57a3bfe2f692ebcc6e60661d562"
 x86_64-linux  = "c5511b9a044ceacbf8fc7e9a6cac7d41e94acb81b10595e36874eda0404e4e57"
+aarch64-linux = "91c2ad7ce4c11b9d384360d610bf8f05987be57a3bfe2f692ebcc6e60661d562"
 
 [size]
-aarch64-linux = 36157190
 x86_64-linux  = 36315923
+aarch64-linux = 36157190
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/enzo1982/freac/master/COPYING"
 to     = "LICENSE"
-blake3 = "0f64370e0a64a373e2422dc68f8f0d296932c1dbbc6d77795ded4bdd3500e751"
-sha256 = "04a6da0f0a6f6e71312544a83e8adcbeae50d554bd3915a3011210de6dcaca8b"

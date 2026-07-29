@@ -1,23 +1,22 @@
 version = "0.5.1-2"
+date    = "2026-07-22T12:06:14Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/QuantumLauncher-AppImage-Enhanced/releases/download/0.5.1-2%402026-07-22_1784721973/QuantumLauncher-0.5.1-2-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/QuantumLauncher-AppImage-Enhanced/releases/download/0.5.1-2%402026-07-22_1784721973/QuantumLauncher-0.5.1-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "67adec1980d221a3d688da3451914ebb60749e98e39bca2be8cf9d52e3da06c5"
 x86_64-linux  = "f5528c31497d033a748beb6a6d7634018dc27bcbd77149a39ab2306937fdb68c"
+aarch64-linux = "67adec1980d221a3d688da3451914ebb60749e98e39bca2be8cf9d52e3da06c5"
 
 [sha256]
-aarch64-linux = "6787f55caffebc56b58d4ec3ea41e1d1d22befa8c5d5f78d2d0bff59f85dc4a1"
 x86_64-linux  = "68e15ba034d4df94a1899a9c871609844d7af80af6ea3ecb9697fe6788a629ab"
+aarch64-linux = "6787f55caffebc56b58d4ec3ea41e1d1d22befa8c5d5f78d2d0bff59f85dc4a1"
 
 [size]
-aarch64-linux = 34038734
 x86_64-linux  = 33710098
+aarch64-linux = 34038734
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Mrmayman/quantumlauncher/main/LICENSE"
 to     = "LICENSE"
-blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
-sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

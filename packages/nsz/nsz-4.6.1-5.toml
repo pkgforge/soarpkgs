@@ -1,23 +1,22 @@
 version = "4.6.1-5"
+date    = "2026-07-22T12:06:33Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/4.6.1-5%402026-07-22_1784721991/NSZ-4.6.1-5-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/4.6.1-5%402026-07-22_1784721991/NSZ-4.6.1-5-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "f22ca90f52c3a5e074be54d81fc1b7da72922b3294a14ec53923ef97353d8d87"
 x86_64-linux  = "9837996db9e4abdba39a4ad99967a7dc1f64b6fa0615c6182bbf1df51e8f41ae"
+aarch64-linux = "f22ca90f52c3a5e074be54d81fc1b7da72922b3294a14ec53923ef97353d8d87"
 
 [sha256]
-aarch64-linux = "79ff5e86e56c79c91c7dea6a479d640c3ad8bb21f1486c4c77d029ca5d800784"
 x86_64-linux  = "7a6ac8ce7366a20ec79569a1017655d4679e6db0db0baf540ee1d34fb7b3d24f"
+aarch64-linux = "79ff5e86e56c79c91c7dea6a479d640c3ad8bb21f1486c4c77d029ca5d800784"
 
 [size]
-aarch64-linux = 43640012
 x86_64-linux  = 47287356
+aarch64-linux = 43640012
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/nicoboss/nsz/master/LICENSE.md"
 to     = "LICENSE"
-blake3 = "89e810dc9a15566146094a5283cf1cb6f5b394a97cf40a85de27624afbcdaf9e"
-sha256 = "401f18b04c2da1dd952d9be660b4a078e6b6c4b47803efe121d19383ae6364a5"

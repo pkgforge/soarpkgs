@@ -1,23 +1,22 @@
 version = "4.1"
+date    = "2026-07-22T12:14:52Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/scrcpy-AppImage/releases/download/v4.1%402026-07-22_1784722491/scrcpy-v4.1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/scrcpy-AppImage/releases/download/v4.1%402026-07-22_1784722491/scrcpy-v4.1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "8e6a98e20e4611b15ee0d13a9dd08281e2cc7ed4ddfdd20ffc90c1537f4e0edb"
 x86_64-linux  = "462d0caa06560dad84c7293f205d0e42e2e29145c4283ba6a21592c2ca1daf7d"
+aarch64-linux = "8e6a98e20e4611b15ee0d13a9dd08281e2cc7ed4ddfdd20ffc90c1537f4e0edb"
 
 [sha256]
-aarch64-linux = "77990f948e1e88ebc8099c7b3cfed7cecb80fda2a1795b89279dc387b7c486a2"
 x86_64-linux  = "325f76123558889c6504d93b482f54030c228cbbe9f54005c6d59202c1fb93eb"
+aarch64-linux = "77990f948e1e88ebc8099c7b3cfed7cecb80fda2a1795b89279dc387b7c486a2"
 
 [size]
-aarch64-linux = 35291055
 x86_64-linux  = 36661278
+aarch64-linux = 35291055
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Genymobile/scrcpy/refs/heads/master/LICENSE"
 to     = "LICENSE"
-blake3 = "3b8e60508644be443c48f511429f4fcea04e4886b5f59963bc47b9fe502ab4fa"
-sha256 = "01c12035bf35af37241298dc7ad538eb2a07e5c940437bc6876feeaa9d1951d0"

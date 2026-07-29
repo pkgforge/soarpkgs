@@ -5,19 +5,17 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.1-1%402026-07-22_1784722510/Gear_Lever-4.6.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6c5c1b3eb8a0bcba108df22b42e868922066e425bd66c764facbb5e89280ddb9"
 x86_64-linux  = "8eb4e585449629059c8b7abb95d3d52fd97ff616f115dfbb2f87afff4b334e3e"
+aarch64-linux = "6c5c1b3eb8a0bcba108df22b42e868922066e425bd66c764facbb5e89280ddb9"
 
 [sha256]
-aarch64-linux = "dff27c5600d3f783172f5eb955b84722bbf22d4f228f15819f2ddebe88db17c9"
 x86_64-linux  = "b41ecb4908e0c702da800d29104690e66a3e588962a453e6b131510d92908209"
+aarch64-linux = "dff27c5600d3f783172f5eb955b84722bbf22d4f228f15819f2ddebe88db17c9"
 
 [size]
-aarch64-linux = 78375209
 x86_64-linux  = 79320882
+aarch64-linux = 78375209
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mijorus/gearlever/refs/heads/master/COPYING"
 to     = "LICENSE"
-blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
-sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

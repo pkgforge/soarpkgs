@@ -1,23 +1,22 @@
 version = "1.2.1-1"
+date    = "2026-07-22T12:13:40Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/xclock-AppImage/releases/download/1.2.1-1%402026-07-22_1784722418/xclock-1.2.1-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/xclock-AppImage/releases/download/1.2.1-1%402026-07-22_1784722418/xclock-1.2.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "bffc7eee8d00610bf650be5d193800daa82987cec0c9a2842873a33b1de7ef50"
 x86_64-linux  = "05d0442aeb7ed42c50a8c19f49822a9b698bec191c32d16e4fb7569277902037"
+aarch64-linux = "bffc7eee8d00610bf650be5d193800daa82987cec0c9a2842873a33b1de7ef50"
 
 [sha256]
-aarch64-linux = "3b4b08e7d96944d79889b6ced35a27e81a95770fb8a204b420fd5bb02caf4622"
 x86_64-linux  = "d1562a202fac6f811b9fa9eb93444209ecc72ed4bdd806b6bb8a58876eeceae3"
+aarch64-linux = "3b4b08e7d96944d79889b6ced35a27e81a95770fb8a204b420fd5bb02caf4622"
 
 [size]
-aarch64-linux = 8580734
 x86_64-linux  = 8524733
+aarch64-linux = 8580734
 
 [[extra]]
 url    = "https://gitlab.freedesktop.org/xorg/app/xclock/-/raw/master/COPYING"
 to     = "LICENSE"
-blake3 = "48111d7efe8bf598ae3a37af02c77e0be1499453835bda128842adbe6544ab76"
-sha256 = "ec294acf2264d517521a1b8ccc32b815ef3f2370e7a52c5d888b3eb0123a9bfb"

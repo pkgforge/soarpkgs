@@ -1,23 +1,22 @@
 version = "0.8.135-1"
+date    = "2026-07-22T12:09:08Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.135-1%402026-07-22_1784722147/xemu-0.8.135-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.135-1%402026-07-22_1784722147/xemu-0.8.135-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "10922da84df7a94466b4565c24e3e335100b84f9710874dc1858324e9a09de9a"
 x86_64-linux  = "8ab3c33c86ad1778c06b880000da7bb138c25bf87f2a3ae6f85a39f31e1828f3"
+aarch64-linux = "10922da84df7a94466b4565c24e3e335100b84f9710874dc1858324e9a09de9a"
 
 [sha256]
-aarch64-linux = "636c1276e619bb586a0cf676f345263878842bcfbac69aa16565c597ff37e6ae"
 x86_64-linux  = "c20ed11f0ac9438aeb16d0e7361a8bfcb39e5c498d90a3d14f71de4f25adcf72"
+aarch64-linux = "636c1276e619bb586a0cf676f345263878842bcfbac69aa16565c597ff37e6ae"
 
 [size]
-aarch64-linux = 50073123
 x86_64-linux  = 48659744
+aarch64-linux = 50073123
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/xemu-project/xemu/master/COPYING"
 to     = "LICENSE"
-blake3 = "c4d09092afabde81241c1598949d52fa7a5c7093ef0c3ea08f0f2769357b3b12"
-sha256 = "dd3ce02338c3a48abb6ba59b48809f7108a8bd242cb0cc8be90daafa30707c28"

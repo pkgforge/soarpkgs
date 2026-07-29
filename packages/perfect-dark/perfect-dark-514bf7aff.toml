@@ -1,23 +1,22 @@
 version = "514bf7aff"
+date    = "2026-07-22T12:14:08Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Perfect-Dark-AppImage/releases/download/514bf7aff%402026-07-22_1784722447/Perfect_Dark-514bf7aff-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Perfect-Dark-AppImage/releases/download/514bf7aff%402026-07-22_1784722447/Perfect_Dark-514bf7aff-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "94159bc3eea20660f2a5acd69d9c8206a966e9514df0f528aa27594ffb4cc05f"
 x86_64-linux  = "1259f36d15f53194d01af2438af2b7d47feda65adf0436ed6594b5388edb90a4"
+aarch64-linux = "94159bc3eea20660f2a5acd69d9c8206a966e9514df0f528aa27594ffb4cc05f"
 
 [sha256]
-aarch64-linux = "e7204af01642bb771c7382792bff938c895eb23cdd5001f4d36194cc2b7a9984"
 x86_64-linux  = "4b80182d97acf793c276568a9fd0a19398c478c8455c303649563b266014d9b2"
+aarch64-linux = "e7204af01642bb771c7382792bff938c895eb23cdd5001f4d36194cc2b7a9984"
 
 [size]
-aarch64-linux = 20675009
 x86_64-linux  = 21365780
+aarch64-linux = 20675009
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/fgsfdsfgs/perfect_dark/port/LICENSE"
 to     = "LICENSE"
-blake3 = "cbf662e32e4db98274701c20cdc6bae9839b186fbce015280cbd4e3c7404be26"
-sha256 = "33efa0ef96a7e69f0aeb755b01f6b846cdadd750f725a32a19f4612b2b86c03c"

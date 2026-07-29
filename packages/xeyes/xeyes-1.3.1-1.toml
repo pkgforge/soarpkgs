@@ -1,23 +1,22 @@
 version = "1.3.1-1"
+date    = "2026-05-01T12:34:00Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/xeyes-AppImage/releases/download/1.3.1-1%402026-05-01_1777638839/Xeyes-1.3.1-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/xeyes-AppImage/releases/download/1.3.1-1%402026-05-01_1777638839/Xeyes-1.3.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "deb0f1a4565c364a328e663558da6d958ea94e1e1ed5c29fd39bdd5320ddd864"
 x86_64-linux  = "11d3bd00f0fa1abf3c0f1eda38bdb0b14f9e9c8bb508235a66d81c63f0294f57"
+aarch64-linux = "deb0f1a4565c364a328e663558da6d958ea94e1e1ed5c29fd39bdd5320ddd864"
 
 [sha256]
-aarch64-linux = "e209c5a58fa60409fb3add49ce0a2d7e356c0ced4bd47f569ac5db1a13878e72"
 x86_64-linux  = "0f05bc72fb044b70fcee955aa841d02ef1da457b0a9b70834aa23dadd8c0560b"
+aarch64-linux = "e209c5a58fa60409fb3add49ce0a2d7e356c0ced4bd47f569ac5db1a13878e72"
 
 [size]
-aarch64-linux = 4078073
 x86_64-linux  = 4482171
+aarch64-linux = 4078073
 
 [[extra]]
 url    = "https://gitlab.freedesktop.org/xorg/app/xeyes/-/raw/master/COPYING"
 to     = "LICENSE"
-blake3 = "f22a44c6d4caeda87c99f4083c1bd38803451bcd1b4a86c9e07bf725f284097d"
-sha256 = "eb051f2b83cbc5c65b3b8c268747ee7fe5e37997375af47d269beca8ec58b362"

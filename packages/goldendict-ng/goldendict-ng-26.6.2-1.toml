@@ -1,23 +1,22 @@
 version = "26.6.2-1"
+date    = "2026-07-22T12:13:51Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.6.2-1%402026-07-22_1784722430/GoldenDict-ng-26.6.2-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.6.2-1%402026-07-22_1784722430/GoldenDict-ng-26.6.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "8d74676a224e4a8224d688b3f73705a58e9c07729d4a85b2495e25403d2bcd5f"
 x86_64-linux  = "00f50ea74fd8bc9180707b07f859da13570c516ef6a4f2f6490d1ecb97b0e0f6"
+aarch64-linux = "8d74676a224e4a8224d688b3f73705a58e9c07729d4a85b2495e25403d2bcd5f"
 
 [sha256]
-aarch64-linux = "34dce96e079306dc2073fc3bd1318afc011855b710ec4f325df94c5057da259c"
 x86_64-linux  = "0114e96673f0ccddbc596751cd3383c77c743bf3ec70804b2ea188b52bc14196"
+aarch64-linux = "34dce96e079306dc2073fc3bd1318afc011855b710ec4f325df94c5057da259c"
 
 [size]
-aarch64-linux = 183888214
 x86_64-linux  = 195071897
+aarch64-linux = 183888214
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/xiaoyifang/goldendict-ng/staged/LICENSE.txt"
 to     = "LICENSE"
-blake3 = "deefdb37dc9f395f830ba3ee4bbc2fdea2e64d5ff97188c6185db2d8a6bb3319"
-sha256 = "83d204405035f7b10a2a6772d28307c3c8b8d2e485055cac16a77335e8956e70"

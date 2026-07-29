@@ -1,23 +1,22 @@
 version = "6.4.8-1"
+date    = "2026-07-22T12:15:06Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/LinuxToys-AppImage/releases/download/6.4.8-1%402026-07-22_1784722505/LinuxToys-6.4.8-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/LinuxToys-AppImage/releases/download/6.4.8-1%402026-07-22_1784722505/LinuxToys-6.4.8-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "0a6beb6b7b0e5267187c0aecec62375ad783cf7bf4ff524413df5c40a5ab9f10"
 x86_64-linux  = "30a3507a4eae8728e121b4785702f15e6908da0452383b3d08f7e853a92a63c4"
+aarch64-linux = "0a6beb6b7b0e5267187c0aecec62375ad783cf7bf4ff524413df5c40a5ab9f10"
 
 [sha256]
-aarch64-linux = "c8c002e6cefd78200caf9bc631d13d36aff6cc4f514adf3b63245fe1b69ac904"
 x86_64-linux  = "f2baf99ce69c41c2dcedbad7d8e5fb9b73df76850f185c8133e67b1caf9c71d3"
+aarch64-linux = "c8c002e6cefd78200caf9bc631d13d36aff6cc4f514adf3b63245fe1b69ac904"
 
 [size]
-aarch64-linux = 47638509
 x86_64-linux  = 48635295
+aarch64-linux = 47638509
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/psygreg/linuxtoys/master/LICENSE"
 to     = "LICENSE"
-blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
-sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

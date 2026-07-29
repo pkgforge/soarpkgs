@@ -1,17 +1,18 @@
 version = "1.8.5"
+date    = "2026-07-28T10:51:46Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge/builds/releases/download/b3sum-1.8.5/b3sum-1.8.5-x86_64-linux.tar.gz"
 aarch64-linux = "https://github.com/pkgforge/builds/releases/download/b3sum-1.8.5/b3sum-1.8.5-aarch64-linux.tar.gz"
 
 [blake3]
-aarch64-linux = "90d0d6982d6a0b9c2da0ae81c7fd82fab7f52ffbd9cad01368e164c545bcee2f"
 x86_64-linux  = "1580f8dca6ff881b7886baec9d98c09437fd2c8fb88370f336d9866ff42adf82"
+aarch64-linux = "90d0d6982d6a0b9c2da0ae81c7fd82fab7f52ffbd9cad01368e164c545bcee2f"
 
 [sha256]
-aarch64-linux = "e9c880b37f3b7d8d6bc580b2e15abb0c46d9b5881942ee3cd4a33bc9bd0adc00"
 x86_64-linux  = "7de6c1a6f1f7a67e398727c5202f965327a1c3c48ad913c158d8acbb6f08dbbe"
+aarch64-linux = "e9c880b37f3b7d8d6bc580b2e15abb0c46d9b5881942ee3cd4a33bc9bd0adc00"
 
 [size]
-aarch64-linux = 609172
 x86_64-linux  = 631998
+aarch64-linux = 609172

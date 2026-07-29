@@ -1,23 +1,22 @@
 version = "6ff555698"
+date    = "2026-07-22T12:08:56Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Vibeprint-Studio-AppImage/releases/download/6ff555698%402026-07-22_1784722134/Vibeprint_Studio-6ff555698-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Vibeprint-Studio-AppImage/releases/download/6ff555698%402026-07-22_1784722134/Vibeprint_Studio-6ff555698-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "51166de401c9d9be1ad9f17dcab52df4a3627a8c35ff1751b97154765b9c6899"
 x86_64-linux  = "dea55a92079d37ca4aa1bce70aa62c68698956b908bedab39faab75adf2ad2be"
+aarch64-linux = "51166de401c9d9be1ad9f17dcab52df4a3627a8c35ff1751b97154765b9c6899"
 
 [sha256]
-aarch64-linux = "97d7e7a25fbfb8a8220abe84c9fa1efd2c7197c05df31903c91d58e59b76b780"
 x86_64-linux  = "c8170e811a4330f7516b5d3514c056a13120bab16a2443cd14c6aa76dda29483"
+aarch64-linux = "97d7e7a25fbfb8a8220abe84c9fa1efd2c7197c05df31903c91d58e59b76b780"
 
 [size]
-aarch64-linux = 29757076
 x86_64-linux  = 30383000
+aarch64-linux = 29757076
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/crenedecotret/vibeprint/refs/heads/main/LICENSE"
 to     = "LICENSE"
-blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
-sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

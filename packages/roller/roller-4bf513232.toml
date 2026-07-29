@@ -1,23 +1,22 @@
 version = "4bf513232"
+date    = "2026-05-01T12:35:21Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/ROLLER-AppImage/releases/download/4bf513232%402026-05-01_1777638920/Roller-4bf513232-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/ROLLER-AppImage/releases/download/4bf513232%402026-05-01_1777638920/Roller-4bf513232-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "ac7dffb67ef34186f8236a22412fa66eee3b5e80febbcccdcd730d5e923823f8"
 x86_64-linux  = "8db4bc02f45995a5b8a9543c6d988f51a1d5ba5be9d8ef19b44ad9f60c8c7e2f"
+aarch64-linux = "ac7dffb67ef34186f8236a22412fa66eee3b5e80febbcccdcd730d5e923823f8"
 
 [sha256]
-aarch64-linux = "bfca487d7b06c96c1af90e8468d1e1c956bdeec7f9525d4378e016027dfea09b"
 x86_64-linux  = "b5aa9e1bd9a49ef61b1108b2bbe61643c40b5a0b4687039845c63b920a24f35f"
+aarch64-linux = "bfca487d7b06c96c1af90e8468d1e1c956bdeec7f9525d4378e016027dfea09b"
 
 [size]
-aarch64-linux = 53364557
 x86_64-linux  = 52982777
+aarch64-linux = 53364557
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/FatalDecomp/ROLLER/master/LICENSE.md"
 to     = "LICENSE"
-blake3 = "9531546decbed2aa21abd964d148ded0bbd272d98b13698629883de3abfa9b30"
-sha256 = "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"

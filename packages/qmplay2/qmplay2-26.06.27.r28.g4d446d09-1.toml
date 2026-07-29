@@ -1,23 +1,22 @@
 version = "26.06.27.r28.g4d446d09-1"
+date    = "2026-07-27T05:40:48Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/QMPlay2-AppImage-Enhanced/releases/download/26.06.27.r28.g4d446d09-1%402026-07-27_1785130847/QMPlay2-26.06.27.r28.g4d446d09-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/QMPlay2-AppImage-Enhanced/releases/download/26.06.27.r28.g4d446d09-1%402026-07-27_1785130847/QMPlay2-26.06.27.r28.g4d446d09-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "5172b6bed27d6fe3f7dbc98ba89b067ba9f8bd268a2ef93907add83c51036f42"
 x86_64-linux  = "107fb968ee446ffb129de5b96df6266eece13257ff70e24985d7a825b5e2b4c4"
+aarch64-linux = "5172b6bed27d6fe3f7dbc98ba89b067ba9f8bd268a2ef93907add83c51036f42"
 
 [sha256]
-aarch64-linux = "d3a5b985118108238fa9f232917157806714dfff501756f0abca02f403fea6eb"
 x86_64-linux  = "77fae00d519f7a4ff37c62ad8d2ba11e1d9fb2a319ff4b1f8d760db68469a5fc"
+aarch64-linux = "d3a5b985118108238fa9f232917157806714dfff501756f0abca02f403fea6eb"
 
 [size]
-aarch64-linux = 98854230
 x86_64-linux  = 100759507
+aarch64-linux = 98854230
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/zaps166/QMPlay2/master/LICENSE"
 to     = "LICENSE"
-blake3 = "9d9fc6f02facd029ae90643ccfe1812bc6fc92ab28cb2aa266459fcfa4581be9"
-sha256 = "34c1bfa612a77b3501b8f49bf79ef34e7595a4c20cac5cbc0aa01d873486d45d"

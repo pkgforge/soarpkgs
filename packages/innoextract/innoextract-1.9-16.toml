@@ -1,23 +1,22 @@
 version = "1.9-16"
+date    = "2026-07-22T12:15:15Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-16%402026-07-22_1784722514/innoextract-1.9-16-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-16%402026-07-22_1784722514/innoextract-1.9-16-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "563f7892d83fdd306d122b8c0215f692674717da853a176f053f565bdb094463"
 x86_64-linux  = "bd02e29d61cec906a512277df405db36f3577cc7961808d925fbee310856b7b7"
+aarch64-linux = "563f7892d83fdd306d122b8c0215f692674717da853a176f053f565bdb094463"
 
 [sha256]
-aarch64-linux = "918ba244960300c5042a1bd1d090408309b9952a505d773f8cd97d6b90704aba"
 x86_64-linux  = "09e2ad2b432d88b9f6e1377d90fa1abf7e1682705d1dcd016b05b935263206b4"
+aarch64-linux = "918ba244960300c5042a1bd1d090408309b9952a505d773f8cd97d6b90704aba"
 
 [size]
-aarch64-linux = 8896749
 x86_64-linux  = 8746466
+aarch64-linux = 8896749
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/dscharrer/innoextract/master/LICENSE"
 to     = "LICENSE"
-blake3 = "3c62fd674a7afb8ae61c447ff56ec2668ea334889e70766bc0c44c120938de23"
-sha256 = "7cd6f3bf0c83f2c3ce8438aab20a4827a5de934fb87dd7966f6f3f2651685127"

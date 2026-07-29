@@ -1,23 +1,22 @@
 version = "1.6.3-1"
+date    = "2026-07-22T12:14:11Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/FeatherPad-AppImage/releases/download/1.6.3-1%402026-07-22_1784722450/FeatherPad-1.6.3-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/FeatherPad-AppImage/releases/download/1.6.3-1%402026-07-22_1784722450/FeatherPad-1.6.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "5b7854e7249aa32a1057eb14685897d9a13646e4d5f1b677291496847e1495be"
 x86_64-linux  = "f6905a5ca12fe4bef358d7a32000ef1482fdf0c4a49a94a6749ed7166a5c0157"
+aarch64-linux = "5b7854e7249aa32a1057eb14685897d9a13646e4d5f1b677291496847e1495be"
 
 [sha256]
-aarch64-linux = "bb07a97e9e5db127bf16620525f4c313a7b1b081c363d756cf9c879bdc149ebf"
 x86_64-linux  = "85dc98ea290449fdc5be27b6ca970085a84847936b24299c32a97f4acb1f3fae"
+aarch64-linux = "bb07a97e9e5db127bf16620525f4c313a7b1b081c363d756cf9c879bdc149ebf"
 
 [size]
-aarch64-linux = 34755882
 x86_64-linux  = 35392033
+aarch64-linux = 34755882
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/tsujan/FeatherPad/master/COPYING"
 to     = "LICENSE"
-blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
-sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

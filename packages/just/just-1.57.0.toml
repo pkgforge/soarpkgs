@@ -1,17 +1,18 @@
 version = "1.57.0"
+date    = "2026-07-19T01:58:52Z"
 
 [url]
 x86_64-linux  = "https://github.com/casey/just/releases/download/1.57.0/just-1.57.0-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/casey/just/releases/download/1.57.0/just-1.57.0-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "025a7de55df9b6a1a30279787e0d1cee1d52e382e000f5c14db0aa34ffee8923"
 x86_64-linux  = "5ff3b89011d3ff2e077e745a6a10cc272ef6ed1c8f32f0724f20e40d355f5702"
+aarch64-linux = "025a7de55df9b6a1a30279787e0d1cee1d52e382e000f5c14db0aa34ffee8923"
 
 [sha256]
-aarch64-linux = "f225044a81adea6e0b3a8b9370aaf374e6af76c8735ae263ac993df55fd137ec"
 x86_64-linux  = "45b548094283cb9739af8f13273b8cddeee869f5b4ef2bb631b1f311cb566155"
+aarch64-linux = "f225044a81adea6e0b3a8b9370aaf374e6af76c8735ae263ac993df55fd137ec"
 
 [size]
-aarch64-linux = 2303191
 x86_64-linux  = 2526964
+aarch64-linux = 2303191

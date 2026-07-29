@@ -1,17 +1,18 @@
 version = "0.2.2"
+date    = "2025-04-01T23:42:28Z"
 
 [url]
 x86_64-linux  = "https://github.com/charmbracelet/freeze/releases/download/v0.2.2/freeze_0.2.2_Linux_x86_64.tar.gz"
 aarch64-linux = "https://github.com/charmbracelet/freeze/releases/download/v0.2.2/freeze_0.2.2_Linux_arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "ca3f457af008f6a521d9bfd6599c3d56f47132fbd350f3520a2540d792bafc41"
 x86_64-linux  = "70955ee2f50b6f5c36feb706a89552894858361eab9766539c881390b3d9f451"
+aarch64-linux = "ca3f457af008f6a521d9bfd6599c3d56f47132fbd350f3520a2540d792bafc41"
 
 [sha256]
-aarch64-linux = "ba1164c2e6d573af32df13ddc5868f7cdfc8b9992f26f53695787ca5f4274023"
 x86_64-linux  = "012fdbdd16c0c19570f9052aac34d16d93d7d0d3b565b05374cc59492f53539b"
+aarch64-linux = "ba1164c2e6d573af32df13ddc5868f7cdfc8b9992f26f53695787ca5f4274023"
 
 [size]
-aarch64-linux = 5091786
 x86_64-linux  = 5440077
+aarch64-linux = 5091786

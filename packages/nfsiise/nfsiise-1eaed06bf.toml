@@ -1,23 +1,22 @@
 version = "1eaed06bf"
+date    = "2026-06-01T04:41:58Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/NFSIISE-AppImage/releases/download/1eaed06bf%402026-06-01_1780288917/Need_For_Speed_II_SE-1eaed06bf-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/NFSIISE-AppImage/releases/download/1eaed06bf%402026-06-01_1780288917/Need_For_Speed_II_SE-1eaed06bf-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "314b51622beb659ffd7124c48cf22b48ed48757460249cb489f7a9898d661afa"
 x86_64-linux  = "815ae97ae928a25748403d6b9d0db10a6ac993f1211e1defe73f10aea1e57da5"
+aarch64-linux = "314b51622beb659ffd7124c48cf22b48ed48757460249cb489f7a9898d661afa"
 
 [sha256]
-aarch64-linux = "fda1a23882ff4e49d76b7ef16f85e7006d11554c7ae19df708c032bf8b2c99ac"
 x86_64-linux  = "cc8c92d40e4e407863ac654341795cfa566c78f2f388d9d3ef62da176e5ab888"
+aarch64-linux = "fda1a23882ff4e49d76b7ef16f85e7006d11554c7ae19df708c032bf8b2c99ac"
 
 [size]
-aarch64-linux = 19254699
 x86_64-linux  = 20474193
+aarch64-linux = 19254699
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Link4Electronics/NFSIISE/master/LICENSE"
 to     = "LICENSE"
-blake3 = "714fef99aa0fb4b64b1fa6c49f2829e8cec2a4f7eed2da20916bf40af8c1329f"
-sha256 = "41a12ee8369e709571b822daf75f4a4f5d61212d05458bb08fddeb7f83af5655"

@@ -1,23 +1,22 @@
 version = "5.1.0"
+date    = "2022-04-12T01:58:57Z"
 
 [url]
 x86_64-linux  = "https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64"
 aarch64-linux = "https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-arm64"
 
 [blake3]
-aarch64-linux = "3dda7484fa38218e1a68a3200e7cb5173a40b4d2f12616e303545e4f55f55d8c"
 x86_64-linux  = "bd1016d89dfc195e84afc57ad7b4446bbb0080ac3daa25ada76978bf6377d9b4"
+aarch64-linux = "3dda7484fa38218e1a68a3200e7cb5173a40b4d2f12616e303545e4f55f55d8c"
 
 [sha256]
-aarch64-linux = "3456617536fc1c1b78a34d3c171a7eaf6a3a7c634896abd6f1afb3ebec318084"
 x86_64-linux  = "8ce43e40fda9a28221dabc0d7228e2325d1e959cd770487240deb47e02660986"
+aarch64-linux = "3456617536fc1c1b78a34d3c171a7eaf6a3a7c634896abd6f1afb3ebec318084"
 
 [size]
-aarch64-linux = 4431129
 x86_64-linux  = 4562871
+aarch64-linux = 4431129
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/sclevine/yj/main/LICENSE"
 to     = "LICENSE"
-blake3 = "b3abf09a57e4981e7de925f1ddb858271e66a5c859e0d20dfbc61e8a5f4a4342"
-sha256 = "c481f4dc271d0a57a79a104b93dda635ee6cc1eaa48f3ea0a61fa9ae0dd1add0"

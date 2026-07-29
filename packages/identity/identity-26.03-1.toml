@@ -1,23 +1,22 @@
 version = "26.03-1"
+date    = "2026-07-22T12:14:45Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-1%402026-07-22_1784722484/Identity-26.03-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-1%402026-07-22_1784722484/Identity-26.03-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "d4516ed8198d4745ca78d3cf82b85ffd01c4b58bc85c8f47374d28e0f070d246"
 x86_64-linux  = "533f371909e80eb2794f501ff2676b369c3053dbeca4aee5afee3b2946b41866"
+aarch64-linux = "d4516ed8198d4745ca78d3cf82b85ffd01c4b58bc85c8f47374d28e0f070d246"
 
 [sha256]
-aarch64-linux = "d4f2f705bb62610d30bf372a0a8b3af45dd5b5def00ced7c62b8299a81ea3ea0"
 x86_64-linux  = "5dc6451d7c1a04f6b6ecddaf0c76cb93d6e1fabe89ffdb95c7465d888382ba57"
+aarch64-linux = "d4f2f705bb62610d30bf372a0a8b3af45dd5b5def00ced7c62b8299a81ea3ea0"
 
 [size]
-aarch64-linux = 89300164
 x86_64-linux  = 95861371
+aarch64-linux = 89300164
 
 [[extra]]
 url    = "https://gitlab.gnome.org/YaLTeR/identity/-/raw/main/COPYING"
 to     = "LICENSE"
-blake3 = "51e575a5ad51e90c078389c254399b4fe8f4ef47f73799d8a4932aff670e98cb"
-sha256 = "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"

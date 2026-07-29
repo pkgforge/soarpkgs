@@ -1,23 +1,22 @@
 version = "3.2.4-2"
+date    = "2026-07-22T12:09:24Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.4-2%402026-07-22_1784722162/GIMP-3.2.4-2-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.4-2%402026-07-22_1784722162/GIMP-3.2.4-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "c16e792b105e0dc67964b21033f3f212b60f44710f5fa80fd76b8b4c13195581"
 x86_64-linux  = "dc0b82c44b0c31b309f63648fee19f100dc69720df562c284ad86e1cc6de4feb"
+aarch64-linux = "c16e792b105e0dc67964b21033f3f212b60f44710f5fa80fd76b8b4c13195581"
 
 [sha256]
-aarch64-linux = "8eedd37baa8e2dedc444875d5aeb0d34830e00c13cea6e0a81d422765ca340cf"
 x86_64-linux  = "904d282b782d375acc0564ece44e7f3e27faf54e4cd803ae5fa4609faa7303af"
+aarch64-linux = "8eedd37baa8e2dedc444875d5aeb0d34830e00c13cea6e0a81d422765ca340cf"
 
 [size]
-aarch64-linux = 179533650
 x86_64-linux  = 199005023
+aarch64-linux = 179533650
 
 [[extra]]
 url    = "https://gitlab.gnome.org/GNOME/gimp/-/raw/master/COPYING"
 to     = "LICENSE"
-blake3 = "1110f57cc53ee3e8f1ebf379693ab3c4c4b18098176c92e2ad6a44e6700edaf8"
-sha256 = "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b"

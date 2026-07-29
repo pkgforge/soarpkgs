@@ -1,23 +1,22 @@
 version = "0.9.1"
+date    = "2026-07-22T12:11:30Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/MegaMan64Recomp-AppImage/releases/download/0.9.1%402026-07-22_1784722289/Mega_Man_64_Recompiled-0.9.1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/MegaMan64Recomp-AppImage/releases/download/0.9.1%402026-07-22_1784722289/Mega_Man_64_Recompiled-0.9.1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "70f23bb8d0e4dacaac109df10e669d900d2c2baa71c74ca4f423c590a2194a85"
 x86_64-linux  = "ff1f2e3fb10ad7c171e644938753e589164077efcba5e3de24ccc24911305be6"
+aarch64-linux = "70f23bb8d0e4dacaac109df10e669d900d2c2baa71c74ca4f423c590a2194a85"
 
 [sha256]
-aarch64-linux = "7e533e996c2f3d2c3abfdd8a935d96c64db9f9f6debe5ca95cbf930e25c9b2ff"
 x86_64-linux  = "9fc9ddd825c926ce71585c92fb05977440ca3db613ff505fe605f9c18258b399"
+aarch64-linux = "7e533e996c2f3d2c3abfdd8a935d96c64db9f9f6debe5ca95cbf930e25c9b2ff"
 
 [size]
-aarch64-linux = 47400490
 x86_64-linux  = 47603105
+aarch64-linux = 47400490
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/MegaMan64Recomp/MegaMan64Recompiled/main/LICENSE"
 to     = "LICENSE"
-blake3 = "a44cc87cabca5252a40326fa6e746f387260ed1b1b28597d08e125f0ae6de042"
-sha256 = "605e9047a563c5c8396ffb18232aa4304ec56586aee537c45064c6fb425e44ad"

@@ -1,0 +1,22 @@
+version = "7.1-1"
+date    = "2026-07-27T21:21:22Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/download/7.1-1%402026-07-27_1785187279/ZapZap-7.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/download/7.1-1%402026-07-27_1785187279/ZapZap-7.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a9e5ac3dbc5290d837bd6370031a516e1aa73eecfb017b20a76c56fb4a557208"
+aarch64-linux = "0d5971511e3d9b367b93f55c057f1232bc47d78b6ae4e4f10e51670b4dfc4c6d"
+
+[sha256]
+x86_64-linux  = "4c3bc9e54aef80bd2ce0013af8b9e6e61789cb79b7d828e1c172408ec021c225"
+aarch64-linux = "a4c0783fcfde734ad7477d6c49a7c01301f2adc35087b1263d24f9beb19cd961"
+
+[size]
+x86_64-linux  = 186398652
+aarch64-linux = 180334260
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/rafatosta/zapzap/main/LICENSE"
+to     = "LICENSE"

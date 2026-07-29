@@ -1,23 +1,22 @@
 version = "6.2.r38.g832ebd6-1"
+date    = "2026-07-01T13:55:43Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/6.2.r38.g832ebd6-1%402026-07-01_1782914142/Keypunch-6.2.r38.g832ebd6-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/6.2.r38.g832ebd6-1%402026-07-01_1782914142/Keypunch-6.2.r38.g832ebd6-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "868501e120f49bef5a8f3c73bca4371b25809058298c768967a97bc978fd37b8"
 x86_64-linux  = "2e1ed2fff62fe0643abaa634a1665b0a77ee59046419a2ce995ba2b69f1c761e"
+aarch64-linux = "868501e120f49bef5a8f3c73bca4371b25809058298c768967a97bc978fd37b8"
 
 [sha256]
-aarch64-linux = "d5e72bbbe26e54f737c11ea61e7531f6c3b7bc4026398896c73ad4a7ed608f0b"
 x86_64-linux  = "2113c5bf80990630bebcda7255666cebf317862a5257618472b0d0c7c11ff1c5"
+aarch64-linux = "d5e72bbbe26e54f737c11ea61e7531f6c3b7bc4026398896c73ad4a7ed608f0b"
 
 [size]
-aarch64-linux = 26785186
 x86_64-linux  = 26919357
+aarch64-linux = 26785186
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/bragefuglseth/keypunch/main/COPYING"
 to     = "LICENSE"
-blake3 = "421aedcb746d1e98fe78560e2eb8b5c0d0298bde77b4e5ebcef195cdc259d7bf"
-sha256 = "b69c62829f176a47dc482840afa24e9d63d66cb963c4b0a994547576d7d2acf4"

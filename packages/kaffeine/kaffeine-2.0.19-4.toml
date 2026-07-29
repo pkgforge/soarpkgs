@@ -1,23 +1,22 @@
 version = "2.0.19-4"
+date    = "2026-07-22T12:12:33Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/kaffeine-AppImage/releases/download/2.0.19-4%402026-07-22_1784722352/Kaffeine-2.0.19-4-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/kaffeine-AppImage/releases/download/2.0.19-4%402026-07-22_1784722352/Kaffeine-2.0.19-4-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "809040210369ec25a3a336b807255b67d19c08bde12930c561b399c7cb7bc207"
 x86_64-linux  = "3f48a3cf54d568445af139385ac988732933968775f8c7a69a89f5c52029688b"
+aarch64-linux = "809040210369ec25a3a336b807255b67d19c08bde12930c561b399c7cb7bc207"
 
 [sha256]
-aarch64-linux = "7ed6e5d4c7ef1624e496463e5d3a7d173cf1e9a6cce25b6de830a8f3d87643d8"
 x86_64-linux  = "066586c1802415d517caa4ab270fac50751406c17eb6565946e792647af563d3"
+aarch64-linux = "7ed6e5d4c7ef1624e496463e5d3a7d173cf1e9a6cce25b6de830a8f3d87643d8"
 
 [size]
-aarch64-linux = 94005198
 x86_64-linux  = 102191575
+aarch64-linux = 94005198
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/KDE/kaffeine/refs/heads/master/COPYING"
 to     = "LICENSE"
-blake3 = "5886b01395916aaa9c9857f7365778ddc4fde3108a794211b61ae3b5afb22bcc"
-sha256 = "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"

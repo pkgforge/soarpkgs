@@ -1,17 +1,18 @@
 version = "0.63.1"
+date    = "2026-07-15T11:39:25Z"
 
 [url]
 x86_64-linux  = "https://github.com/jesseduffield/lazygit/releases/download/v0.63.1/lazygit_0.63.1_linux_x86_64.tar.gz"
 aarch64-linux = "https://github.com/jesseduffield/lazygit/releases/download/v0.63.1/lazygit_0.63.1_linux_arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "ed515c5a027cdd9568293e18cb58aa7d834e58b52c63f00a37742f603f01cd56"
 x86_64-linux  = "6273c98e8f4c92b7337ea2538572d18a7ce3a5f73fa4b58bf3dec06bd8f56544"
+aarch64-linux = "ed515c5a027cdd9568293e18cb58aa7d834e58b52c63f00a37742f603f01cd56"
 
 [sha256]
-aarch64-linux = "555dbc9a8efcf2e33bc24e7fbd9463e9fa375e3c5e23cc270763733c38eeae36"
 x86_64-linux  = "8e033bc78c8e192dee9510e951f6c9e154289b7198d22c924ed1d0a951b0dac1"
+aarch64-linux = "555dbc9a8efcf2e33bc24e7fbd9463e9fa375e3c5e23cc270763733c38eeae36"
 
 [size]
-aarch64-linux = 6234637
 x86_64-linux  = 6868239
+aarch64-linux = 6234637

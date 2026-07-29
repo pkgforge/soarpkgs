@@ -1,17 +1,18 @@
 version = "0.16.1"
+date    = "2026-02-20T01:51:07Z"
 
 [url]
 x86_64-linux  = "https://github.com/mfontanini/presenterm/releases/download/v0.16.1/presenterm-0.16.1-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/mfontanini/presenterm/releases/download/v0.16.1/presenterm-0.16.1-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "650b01c0e4be7e5a468f72487306ad96ec674d643004849032fb3eef2e04a9e1"
 x86_64-linux  = "f8d6a9fa11fa0e75045afe4c5623d440fb545321e7507871a185bb5aea2b9922"
+aarch64-linux = "650b01c0e4be7e5a468f72487306ad96ec674d643004849032fb3eef2e04a9e1"
 
 [sha256]
-aarch64-linux = "c03c3744609d61587aac9dda4f431912748bd70d88d4fa6c0440b079001c64c3"
 x86_64-linux  = "87512d7c88c3d961c7687aca3519f83c2b7611a550cf769c67c6f7948e8b8f54"
+aarch64-linux = "c03c3744609d61587aac9dda4f431912748bd70d88d4fa6c0440b079001c64c3"
 
 [size]
-aarch64-linux = 3635120
 x86_64-linux  = 3800922
+aarch64-linux = 3635120

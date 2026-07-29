@@ -1,23 +1,22 @@
 version = "r12276.1ba657c3b-1"
+date    = "2026-06-01T17:09:11Z"
 
 [url]
 x86_64-linux  = "https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/r12276.1ba657c3b-1%402026-06-01_1780333750/Piglit-r12276.1ba657c3b-1-anylinux-x86_64.AppImage"
 aarch64-linux = "https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/r12276.1ba657c3b-1%402026-06-01_1780333750/Piglit-r12276.1ba657c3b-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6d2b782c4f6e80a54c10767c348c9793278fcbc0f76d6b95caa9c2aa8448d88e"
 x86_64-linux  = "79e76c8b7daf96081b16ec920845487b9a7002e580ec95d4974faf2e53785df6"
+aarch64-linux = "6d2b782c4f6e80a54c10767c348c9793278fcbc0f76d6b95caa9c2aa8448d88e"
 
 [sha256]
-aarch64-linux = "86525478294e95df3e980a9517cbc9f98519f7402af7287ebc0ec0e981566bbc"
 x86_64-linux  = "8d15608a8d132f4e6261daa26a044fc625adea585839e41cb87bf851a7f4e017"
+aarch64-linux = "86525478294e95df3e980a9517cbc9f98519f7402af7287ebc0ec0e981566bbc"
 
 [size]
-aarch64-linux = 62481320
 x86_64-linux  = 63156644
+aarch64-linux = 62481320
 
 [[extra]]
 url    = "https://gitlab.freedesktop.org/mesa/piglit/-/raw/main/COPYING"
 to     = "LICENSE"
-blake3 = "6d1bc56df39b5f3f46840e2f928fc18ae6653a57265d7dbe9cb776c13a73bb00"
-sha256 = "dcc398730859aee7cc1d6aa57f526f8d181b47bb3a49830e85b5723d5bc2c3bc"

@@ -1,23 +1,22 @@
 version = "0.4.2"
+date    = "2026-04-29T11:27:12Z"
 
 [url]
 x86_64-linux  = "https://github.com/blacknon/hwatch/releases/download/0.4.2/hwatch-0.4.2.x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/blacknon/hwatch/releases/download/0.4.2/hwatch-0.4.2.aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "d37d4ab43f2157adab21d6dcb321acf1ac4b3d116bf3fcce305927b4fbd0202a"
 x86_64-linux  = "8d49be2a5ab5483cd1fd3819540c7421009b97ac94541eddb5cd8fdb7c77c6b7"
+aarch64-linux = "d37d4ab43f2157adab21d6dcb321acf1ac4b3d116bf3fcce305927b4fbd0202a"
 
 [sha256]
-aarch64-linux = "bdb592e933274aa6437a3d9b45aa93d2be62292eab978f7e8612c12ed42b4a49"
 x86_64-linux  = "9d1c6a61b1f04f9e1aa84fe18634a6296aa22061c62d39416a3fa23fba066803"
+aarch64-linux = "bdb592e933274aa6437a3d9b45aa93d2be62292eab978f7e8612c12ed42b4a49"
 
 [size]
-aarch64-linux = 2273563
 x86_64-linux  = 2402055
+aarch64-linux = 2273563
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/blacknon/hwatch/master/LICENSE"
 to     = "LICENSE"
-blake3 = "9188f40533af5de02e1efcb9141b692223445abde263c75fdc11b0af4b1344c7"
-sha256 = "83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c"

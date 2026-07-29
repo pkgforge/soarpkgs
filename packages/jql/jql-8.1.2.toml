@@ -1,23 +1,22 @@
 version = "8.1.2"
+date    = "2026-03-18T13:14:56Z"
 
 [url]
 x86_64-linux  = "https://github.com/yamafaktory/jql/releases/download/jql-v8.1.2/jql-v8.1.2-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/yamafaktory/jql/releases/download/jql-v8.1.2/jql-v8.1.2-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "2a46598a422cbc09df09ce8bd28bc6ff573959f903282294672be99874d03466"
 x86_64-linux  = "30eafc4c837fbde1157359be91f29e7bb2374a80fe083357388c2cb4c85f64bf"
+aarch64-linux = "2a46598a422cbc09df09ce8bd28bc6ff573959f903282294672be99874d03466"
 
 [sha256]
-aarch64-linux = "8db3486e12e5683f96cef5190c7522c018abfa8009d353252c060ebd97db52e8"
 x86_64-linux  = "57473f5b7c075fdcd315d2e576a17b47dcfd8b78ffa9094c3d072eea5d1e550c"
+aarch64-linux = "8db3486e12e5683f96cef5190c7522c018abfa8009d353252c060ebd97db52e8"
 
 [size]
-aarch64-linux = 629065
 x86_64-linux  = 615718
+aarch64-linux = 629065
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/yamafaktory/jql/main/LICENSE-MIT"
 to     = "LICENSE"
-blake3 = "420bee0d13989ed28dff87493edea3270f72ee0eca8218aac11cf9dbe4388d7a"
-sha256 = "2282729282450a05a4908270ed7685dfc6aa0c3e86f2352cf4daa252c4cf6bf8"
