@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Hatari-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-07-22_1784712079/Hatari-2.6.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "23b973a8a61f502a7b8a8d31ee4e66becd68d413c4f16410f8a5b5707807b21b"
 x86_64-linux  = "a7b9a7f145d037aefec9043dfb365889649b92c4ef8ed4e14dc9d257722fcb68"
+aarch64-linux = "23b973a8a61f502a7b8a8d31ee4e66becd68d413c4f16410f8a5b5707807b21b"
 
 [sha256]
-aarch64-linux = "85b8ca98b97f3e84007c7104ece7d8e77b489a4309f54ac3b7e2879739797759"
 x86_64-linux  = "21e30575c1f23a4775b9f8f3094701545309337c81754d1eb6a2bc7353d4795f"
+aarch64-linux = "85b8ca98b97f3e84007c7104ece7d8e77b489a4309f54ac3b7e2879739797759"
 
 [size]
-aarch64-linux = 23153845
 x86_64-linux  = 25480434
+aarch64-linux = 23153845
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/hatari/hatari/main/gpl.txt"

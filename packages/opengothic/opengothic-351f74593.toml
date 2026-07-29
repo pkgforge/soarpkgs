@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/download/351f74593%402026-05-02_1777702768/OpenGothic-351f74593-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "a5d792cda6bd0e3f1d1861432b913b26601c67f50790377ff7f35aaedf1e2573"
 x86_64-linux  = "e149843da1755d54d562f16e014c1ddae769c5cd474b4dcf6bdd0d1ca4b685f2"
+aarch64-linux = "a5d792cda6bd0e3f1d1861432b913b26601c67f50790377ff7f35aaedf1e2573"
 
 [sha256]
-aarch64-linux = "34b05f601062c16bb72feb62aa859a964d20fd5225fbdeecdbd07ca8ba515f2d"
 x86_64-linux  = "8b4f6e3cb3c0724e0afa92dd20dcc3f7f70649079ed74895e6f1beeb4d2289be"
+aarch64-linux = "34b05f601062c16bb72feb62aa859a964d20fd5225fbdeecdbd07ca8ba515f2d"
 
 [size]
-aarch64-linux = 27792580
 x86_64-linux  = 27892171
+aarch64-linux = 27792580
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Try/opengothic/master/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Taisei-Project-AppImage/release
 aarch64-linux = "https://github.com/pkgforge-dev/Taisei-Project-AppImage/releases/download/1.4.5-1%402026-07-22_1784714598/Taisei-1.4.5-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "a3d328d125617591fa7e1ee92c2ec397a9ca9c469fc8588684fcb0e7f6c4a779"
 x86_64-linux  = "10fd3bd12ff19cf20a61eeb24e72b252082a7f004ed4ad044739110042666df7"
+aarch64-linux = "a3d328d125617591fa7e1ee92c2ec397a9ca9c469fc8588684fcb0e7f6c4a779"
 
 [sha256]
-aarch64-linux = "3ccda6173e6830ad174a6221281d829f2c034cd080898b18f194e9a6d2b4fc21"
 x86_64-linux  = "e3b093110818f3b984f37d85cdc38c2fb11b7e219d1bb683b41d2fdf3af7f725"
+aarch64-linux = "3ccda6173e6830ad174a6221281d829f2c034cd080898b18f194e9a6d2b4fc21"
 
 [size]
-aarch64-linux = 239590127
 x86_64-linux  = 239019890
+aarch64-linux = 239590127
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/taisei-project/taisei/master/COPYING.txt"

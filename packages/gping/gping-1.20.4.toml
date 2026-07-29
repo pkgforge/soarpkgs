@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/orf/gping/releases/download/gping-v1.20.4/gp
 aarch64-linux = "https://github.com/orf/gping/releases/download/gping-v1.20.4/gping-Linux-musl-arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "3d31525e4376e42c3c2e098e4c0f06116c16476e191a9aaf9dd5bf61badb489f"
 x86_64-linux  = "f5213b9ba750419db6a58baa3da7533eaf16347494488eddd62d1270642e5b5e"
+aarch64-linux = "3d31525e4376e42c3c2e098e4c0f06116c16476e191a9aaf9dd5bf61badb489f"
 
 [sha256]
-aarch64-linux = "4c160ee83ab5ba3a4db086c5cda9511d857133edb65c62b4ba7c0944d3099696"
 x86_64-linux  = "42cdad977e084c16b533c6801883f2000944992d523e3442fc85675641ae477c"
+aarch64-linux = "4c160ee83ab5ba3a4db086c5cda9511d857133edb65c62b4ba7c0944d3099696"
 
 [size]
-aarch64-linux = 1352583
 x86_64-linux  = 1456189
+aarch64-linux = 1352583
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/orf/gping/master/LICENSE"

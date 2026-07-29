@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/puddletag-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/puddletag-AppImage/releases/download/2.5.0.r37.gda6fd53-1%402026-07-22_1784722469/puddletag-2.5.0.r37.gda6fd53-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "264da6a9682a6d4de09f4b8681f66d4774cc328f3622a14cbce62ed95c2c8eb3"
 x86_64-linux  = "0cbc148f2482be8d5642f14fafc998f7948452006b3e9a1a31d2b8e49dd29283"
+aarch64-linux = "264da6a9682a6d4de09f4b8681f66d4774cc328f3622a14cbce62ed95c2c8eb3"
 
 [sha256]
-aarch64-linux = "55dc50ae0bbc64054156422c64079084c4e58be2b94701e16d1590b52d9b85e4"
 x86_64-linux  = "ed600c0c1ae439760ed028e784b0060ce616308c70e6b2ef1c26d7dd21a00451"
+aarch64-linux = "55dc50ae0bbc64054156422c64079084c4e58be2b94701e16d1590b52d9b85e4"
 
 [size]
-aarch64-linux = 39689676
 x86_64-linux  = 39456229
+aarch64-linux = 39689676
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/puddletag/puddletag/refs/heads/master/LICENSE"

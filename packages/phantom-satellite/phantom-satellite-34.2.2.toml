@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Phantom-Satellite-AppImage/rele
 aarch64-linux = "https://github.com/pkgforge-dev/Phantom-Satellite-AppImage/releases/download/34.2.2%402026-05-12_1778621546/Phantom_Satellite-34.2.2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "91dc644065993a245e565bee70bbdd1895b96ab35f6895b9457f3d20743959af"
 x86_64-linux  = "8e4adbbcd976d202be78ed93e71e4522033eb3e6206352109947b112d5bc1077"
+aarch64-linux = "91dc644065993a245e565bee70bbdd1895b96ab35f6895b9457f3d20743959af"
 
 [sha256]
-aarch64-linux = "0ec77e3ac20eb99879e3f636d93bb372c19a318f41399e5033427e74659a3dce"
 x86_64-linux  = "9c6c921e85d75af713336584c6cf56ee7802a653e9777a2fd32461bbb5134896"
+aarch64-linux = "0ec77e3ac20eb99879e3f636d93bb372c19a318f41399e5033427e74659a3dce"
 
 [size]
-aarch64-linux = 75627475
 x86_64-linux  = 71104825
+aarch64-linux = 75627475
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/DCFUKSURMOM/Phantom-Satellite/master/LICENSE"

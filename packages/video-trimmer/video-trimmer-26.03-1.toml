@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Video-Trimmer-AppImage/releases
 aarch64-linux = "https://github.com/pkgforge-dev/Video-Trimmer-AppImage/releases/download/26.03-1%402026-07-22_1784722462/Video_Trimmer-26.03-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "b7543f316e9b80e3e3832213abc9223adfc59a0200a4f52303e31a7881d42098"
 x86_64-linux  = "c6fd3d71c966bd9689f3a8417b3afa078d3e2755b221af8cb6c3c8186fca9f48"
+aarch64-linux = "b7543f316e9b80e3e3832213abc9223adfc59a0200a4f52303e31a7881d42098"
 
 [sha256]
-aarch64-linux = "c0f75e1793e24340589b997a124cdd543a226986924feab6ece50491f5d95f39"
 x86_64-linux  = "713e1b354f75ee3d4db2ff397cb3ab2b3202569b6aed3282c52db0e134690d47"
+aarch64-linux = "c0f75e1793e24340589b997a124cdd543a226986924feab6ece50491f5d95f39"
 
 [size]
-aarch64-linux = 100049207
 x86_64-linux  = 109911460
+aarch64-linux = 100049207
 
 [[extra]]
 url    = "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"

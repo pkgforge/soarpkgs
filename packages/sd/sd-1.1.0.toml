@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/chmln/sd/releases/download/v1.1.0/sd-v1.1.0-
 aarch64-linux = "https://github.com/chmln/sd/releases/download/v1.1.0/sd-v1.1.0-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "b02af0dd79664107768bb4df3da754fd1594b89bbd14a3326eb891c1c811662f"
 x86_64-linux  = "8f5c6e51b1682012fb7fe9db2751b57f08fd0297fdd7b9abef24d5f3392fb97b"
+aarch64-linux = "b02af0dd79664107768bb4df3da754fd1594b89bbd14a3326eb891c1c811662f"
 
 [sha256]
-aarch64-linux = "ec8c93c0533ff21f4851d11566808d4082544baf063d9b96ea77c27e98b7cd99"
 x86_64-linux  = "02f00f4777d43e8e95b7b8d49e1a0d6e502fed4b8e79c1c8b8063857a30caa2e"
+aarch64-linux = "ec8c93c0533ff21f4851d11566808d4082544baf063d9b96ea77c27e98b7cd99"
 
 [size]
-aarch64-linux = 924956
 x86_64-linux  = 1049511
+aarch64-linux = 924956

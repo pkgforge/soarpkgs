@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/LightZone-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/LightZone-AppImage/releases/download/5.0.0beta3-1%402026-05-22_1779457497/LightZone-5.0.0beta3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "c21efd90faed860ac89c6a828ff0089025adc0d08cd06d245d1a13ad32a00aa9"
 x86_64-linux  = "7c8c480d3ca6a45004de91eb2be90ea1af3389dc457296eacfcd44651bc849aa"
+aarch64-linux = "c21efd90faed860ac89c6a828ff0089025adc0d08cd06d245d1a13ad32a00aa9"
 
 [sha256]
-aarch64-linux = "614ec9143b04d4522d6493ac50effdb5e2220b141fc30a5ede8dfb07980415bc"
 x86_64-linux  = "a46cf0e5e2108ec936dae3eef3d1b20eb228c7ff1f272df410b2673567e340a2"
+aarch64-linux = "614ec9143b04d4522d6493ac50effdb5e2220b141fc30a5ede8dfb07980415bc"
 
 [size]
-aarch64-linux = 77966934
 x86_64-linux  = 74623930
+aarch64-linux = 77966934
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/ktgw0316/LightZone/master/COPYING"

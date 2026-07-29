@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Nestopia-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/Nestopia-AppImage/releases/download/1.53.2-1%402026-07-22_1784722470/Nestopia-1.53.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "bdd30676df4b90a63db689ded3338c062031d96443e0bfea9fa13e52b0a91784"
 x86_64-linux  = "80428044de06648bdc05dbf5837e470faa7a70b93f112eb26cd5a0ba4d7808cb"
+aarch64-linux = "bdd30676df4b90a63db689ded3338c062031d96443e0bfea9fa13e52b0a91784"
 
 [sha256]
-aarch64-linux = "e072b09ff6c6b804db8f708872f62820966205050f7561672041417c07512f6e"
 x86_64-linux  = "152964957de62ee57ca1ee77834ed66586e53ebacbf8e51f4f6e70b30ee632c7"
+aarch64-linux = "e072b09ff6c6b804db8f708872f62820966205050f7561672041417c07512f6e"
 
 [size]
-aarch64-linux = 31417776
 x86_64-linux  = 31452673
+aarch64-linux = 31417776
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/0ldsk00l/nestopia/master/COPYING"

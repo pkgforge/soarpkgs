@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/7aea169db%402026-07-22_1784722032/PCExhumed-7aea169db-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6d4da48232f1a4e8741213f05bc93122624bf66f342acb85430b2399812065d6"
 x86_64-linux  = "9d90c2a14d37e6d1bef43f11b3a6fbb9d362290a5a461c95cf5145ee64c10774"
+aarch64-linux = "6d4da48232f1a4e8741213f05bc93122624bf66f342acb85430b2399812065d6"
 
 [sha256]
-aarch64-linux = "4e8d74389073568659ac170f03d693b6d13c22ab04f265cc4f60fa00e3350bb7"
 x86_64-linux  = "3f789e568a7d7b84cffcc43426845c4b80cdc2fd54451181f0c24f2cb773bd3b"
+aarch64-linux = "4e8d74389073568659ac170f03d693b6d13c22ab04f265cc4f60fa00e3350bb7"
 
 [size]
-aarch64-linux = 29988936
 x86_64-linux  = 30349772
+aarch64-linux = 29988936
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/NBlood/NBlood/master/source/exhumed/gpl-2.0.txt"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Gearcoleco-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/Gearcoleco-AppImage/releases/download/1.6.7%402026-07-22_1784722532/Gearcoleco-1.6.7-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "361929343493acffbada981a0787019ad7381a53cbc22cb06053bfba9725bf65"
 x86_64-linux  = "0cffcfeeeea24fd03171f8181077a9e4450533422fd0e043fd92a262c427ae1c"
+aarch64-linux = "361929343493acffbada981a0787019ad7381a53cbc22cb06053bfba9725bf65"
 
 [sha256]
-aarch64-linux = "f0f4e6d5e5445400c50f7e0454ae37fff679b8ba71e3407b31cfd6413b9dd488"
 x86_64-linux  = "5951b875dfe3b8dc390b596b8c41fe79683ea954ebc23f78fafceeaf2e4abfbb"
+aarch64-linux = "f0f4e6d5e5445400c50f7e0454ae37fff679b8ba71e3407b31cfd6413b9dd488"
 
 [size]
-aarch64-linux = 33001724
 x86_64-linux  = 33750063
+aarch64-linux = 33001724
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/drhelius/Gearcoleco/main/LICENSE"

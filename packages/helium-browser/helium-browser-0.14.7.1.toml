@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhance
 aarch64-linux = "https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhanced/releases/download/0.14.7.1%402026-07-21_1784626182/Helium-0.14.7.1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "06d3ec4118f86a0a9eb9a595efcad66f215b65c40405a8311c720a9cb0599fbd"
 x86_64-linux  = "e592801ed407f0c631476f5185c3a89c4e43d0d59a9f79e8aa5b8ef1e9d9f968"
+aarch64-linux = "06d3ec4118f86a0a9eb9a595efcad66f215b65c40405a8311c720a9cb0599fbd"
 
 [sha256]
-aarch64-linux = "8ce13dbfdca43b822c45554a7c25c23dd27da0cd9cebf6cd7480cc03b306d3fb"
 x86_64-linux  = "89f0ae7b8684be4746181d801fa5c88c67cd769bb2f8abb8282225cbf6e06500"
+aarch64-linux = "8ce13dbfdca43b822c45554a7c25c23dd27da0cd9cebf6cd7480cc03b306d3fb"
 
 [size]
-aarch64-linux = 187045920
 x86_64-linux  = 190654789
+aarch64-linux = 187045920
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/imputnet/helium-linux/main/LICENSE"

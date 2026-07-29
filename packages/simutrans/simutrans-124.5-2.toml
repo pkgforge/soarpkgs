@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Simutrans-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/124.5-2%402026-07-22_1784722239/Simutrans-124.5-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "c963bb1983e57e9209fa0b4bc8208ff7bfae7d0e140499437e33b0a59ca14938"
 x86_64-linux  = "b48304a9d1773cebb4afd7aa2637209dcc4f1bf914d54c46dcb5e5e652123f2b"
+aarch64-linux = "c963bb1983e57e9209fa0b4bc8208ff7bfae7d0e140499437e33b0a59ca14938"
 
 [sha256]
-aarch64-linux = "eeb95524fa66f50a9fb501111fae17cb6fae22541f85de891248b8af5454dc26"
 x86_64-linux  = "b3b41a8e9efa0fcf09d6278ba74de67ed1fbbde8d5d77ced73dcfd617a39985b"
+aarch64-linux = "eeb95524fa66f50a9fb501111fae17cb6fae22541f85de891248b8af5454dc26"
 
 [size]
-aarch64-linux = 64697096
 x86_64-linux  = 65881053
+aarch64-linux = 64697096
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/simutrans/simutrans/master/LICENSE.txt"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/ioquake3-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/ioquake3-AppImage/releases/download/20260719.g58839361-1%402026-07-22_1784722335/Quake_III_Arena-20260719.g58839361-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "77658fb1e47cf5da8a2cc6bed17415459ebf06aa755c9af68092ac670db3acac"
 x86_64-linux  = "937affb9995d8af5f009af0ae502efb74bccab4e812eacbd811eacde66e9553d"
+aarch64-linux = "77658fb1e47cf5da8a2cc6bed17415459ebf06aa755c9af68092ac670db3acac"
 
 [sha256]
-aarch64-linux = "6fb2df4dcb9ec4059785971ca40c46ff0fb86a30fd4ad7b33035196643e76ee5"
 x86_64-linux  = "cd87d15a8b49159fcee24c7e1dffee02d36724db4239d47117184bad387b0459"
+aarch64-linux = "6fb2df4dcb9ec4059785971ca40c46ff0fb86a30fd4ad7b33035196643e76ee5"
 
 [size]
-aarch64-linux = 47367126
 x86_64-linux  = 48119038
+aarch64-linux = 47367126
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/ioquake/ioq3/main/COPYING.txt"

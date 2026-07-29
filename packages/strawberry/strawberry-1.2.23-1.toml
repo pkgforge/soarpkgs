@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/strawberry-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/1.2.23-1%402026-07-22_1784721324/strawberry-1.2.23-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "db9d7d2b05edbb39b48809d5e93910a2be9952f27ff67deec4544ebd23e421db"
 x86_64-linux  = "e8579cf95967be56bbf6e3fcbbd05c404db21968d64d99178d8477b77b6306db"
+aarch64-linux = "db9d7d2b05edbb39b48809d5e93910a2be9952f27ff67deec4544ebd23e421db"
 
 [sha256]
-aarch64-linux = "be48690d7d4537a79a85e39879f865f9fbafbbfe3f251b5f05b8f75b43f6ae1c"
 x86_64-linux  = "e813342361b5936c5bcd0aa8d84f39d60fbc78c779c10c7d36ec7002798a7b49"
+aarch64-linux = "be48690d7d4537a79a85e39879f865f9fbafbbfe3f251b5f05b8f75b43f6ae1c"
 
 [size]
-aarch64-linux = 96422781
 x86_64-linux  = 101033761
+aarch64-linux = 96422781
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/strawberrymusicplayer/strawberry/refs/heads/master/COPYING"

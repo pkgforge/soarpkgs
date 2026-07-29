@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/TouchHLE-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/TouchHLE-AppImage/releases/download/v0.2.3%402026-07-22_1784721311/touchHLE-v0.2.3-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "f18fa9aa5d2aa0ec96a978342b2bf1b4f9f2d5989baf24478399c2d2912894dc"
 x86_64-linux  = "5ab6ce7f40176c5ea52e66a3a7f71c69b409cca840125630dd2e77d55bb36f67"
+aarch64-linux = "f18fa9aa5d2aa0ec96a978342b2bf1b4f9f2d5989baf24478399c2d2912894dc"
 
 [sha256]
-aarch64-linux = "902325a86a1fb92ba2416679d300a3b0d5cfd26df006dc7a2854a1d48eba3c0a"
 x86_64-linux  = "b3d208e2aaa0c5be82f7fccc22013a307d4c635039c6455c6431bd67461b7812"
+aarch64-linux = "902325a86a1fb92ba2416679d300a3b0d5cfd26df006dc7a2854a1d48eba3c0a"
 
 [size]
-aarch64-linux = 31673794
 x86_64-linux  = 32605900
+aarch64-linux = 31673794
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/touchHLE/touchHLE/refs/heads/trunk/LICENSE"

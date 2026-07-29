@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/RocksnDiamonds-AppImage/release
 aarch64-linux = "https://github.com/pkgforge-dev/RocksnDiamonds-AppImage/releases/download/4.4.2.3-1%402026-07-01_1782914670/Rocks.N.Diamonds-4.4.2.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "256a204b11aca3d3658b88098642deef1e91b2149036c33d9239f5a99dacc310"
 x86_64-linux  = "dad1985b8efa27652f92f8cbe59447ba8dd2ac879fa83a61f3576781c7fcb878"
+aarch64-linux = "256a204b11aca3d3658b88098642deef1e91b2149036c33d9239f5a99dacc310"
 
 [sha256]
-aarch64-linux = "fe91471c4a85794f1c5acf6872519054ca3bfc53538765900cb0cc1c1d15e259"
 x86_64-linux  = "29d543a1bae0deecf8a99adf5bcd10d3e1ffc6bbb39f246f08926c05689acc46"
+aarch64-linux = "fe91471c4a85794f1c5acf6872519054ca3bfc53538765900cb0cc1c1d15e259"
 
 [size]
-aarch64-linux = 129703776
 x86_64-linux  = 132926140
+aarch64-linux = 129703776
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/tuero/rocksndiamonds/master/COPYING"

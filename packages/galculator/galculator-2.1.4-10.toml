@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Galculator-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/2.1.4-10%402026-07-01_1782914566/Galculator-2.1.4-10-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "f0afdb8ff60b98d204ef0a7b7ea7f770130d60dca8410593c3bbc9bd2e8e3376"
 x86_64-linux  = "13d62598eb5ae894af70d57fb6f22ba134ed7098d9f1fe119caa75e8f53a10ad"
+aarch64-linux = "f0afdb8ff60b98d204ef0a7b7ea7f770130d60dca8410593c3bbc9bd2e8e3376"
 
 [sha256]
-aarch64-linux = "45349be91a66c40c3c3e3d44afee92160aac5d62a7d874927123b967ac59583f"
 x86_64-linux  = "12e5ab974ce9d12325984f20eb787d94e375297ee1d2240f9a681dd3c5178327"
+aarch64-linux = "45349be91a66c40c3c3e3d44afee92160aac5d62a7d874927123b967ac59583f"
 
 [size]
-aarch64-linux = 17572233
 x86_64-linux  = 17654222
+aarch64-linux = 17572233
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/galculator/galculator/master/COPYING"

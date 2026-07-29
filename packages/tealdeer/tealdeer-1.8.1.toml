@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.
 aarch64-linux = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-aarch64-musl"
 
 [blake3]
-aarch64-linux = "0401c36cc2f0e4c74c9c6241c079268f366943aff926ab71e71469415a91f8d3"
 x86_64-linux  = "ccf3139621566341a116594c16b020f6d47a20681c6323aaeb1924b5995a5b67"
+aarch64-linux = "0401c36cc2f0e4c74c9c6241c079268f366943aff926ab71e71469415a91f8d3"
 
 [sha256]
-aarch64-linux = "09d4506b3ba2efe7376e3a5ce1238aa5e6c33ae6f2532c190156540f6c4e7d69"
 x86_64-linux  = "6f2fad4435e0110484d3f25cdc4bf20129dae03238f32d06ebdd00bdc50ae2ed"
+aarch64-linux = "09d4506b3ba2efe7376e3a5ce1238aa5e6c33ae6f2532c190156540f6c4e7d69"
 
 [size]
-aarch64-linux = 2953464
 x86_64-linux  = 3564384
+aarch64-linux = 2953464
 
 [[extra]]
 url    = "https://github.com/dbrgn/tealdeer/releases/download/v1.8.1/LICENSE-APACHE.txt"

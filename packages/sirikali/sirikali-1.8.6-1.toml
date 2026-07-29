@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/SiriKali-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/SiriKali-AppImage/releases/download/1.8.6-1%402026-07-22_1784722206/SiriKali-1.8.6-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "077533b23c192925c24e646f0b48a9cc1830cb9560bdfc851eb5b3bfd993b085"
 x86_64-linux  = "f6c389c8b21b87f02588bb53718f2b5c44b2ddad4496af30850a2c86350adabf"
+aarch64-linux = "077533b23c192925c24e646f0b48a9cc1830cb9560bdfc851eb5b3bfd993b085"
 
 [sha256]
-aarch64-linux = "42115f435d475bbe7a37798e025937050e45584dc7ad89c6ee6eeb2a8969dbab"
 x86_64-linux  = "6a1d57047294fd5632f17e6c5aca4a3caa41d9fa992f84a3a624160b1fe38d8b"
+aarch64-linux = "42115f435d475bbe7a37798e025937050e45584dc7ad89c6ee6eeb2a8969dbab"
 
 [size]
-aarch64-linux = 36660807
 x86_64-linux  = 36546065
+aarch64-linux = 36660807
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mhogomchungu/sirikali/master/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Streamlink-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/Streamlink-AppImage/releases/download/8.4.0-1%402026-07-22_1784722494/streamlink-8.4.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "0120046bf7baba47040e98fa3bf3b85818bed0e2aef1bbf6deb79d7bc3a357eb"
 x86_64-linux  = "efbee328590f43916a4057718745db77ba7f7a794de9e8410fece66b7434559c"
+aarch64-linux = "0120046bf7baba47040e98fa3bf3b85818bed0e2aef1bbf6deb79d7bc3a357eb"
 
 [sha256]
-aarch64-linux = "7a69be7dc0b5c0fd2295159ffaa501b1c2b5d118b4dcc75ae730bba692730328"
 x86_64-linux  = "4975192ec16b9253f8fb7365053b9a124e2b3112b7af2b42136d17d32ab7beaf"
+aarch64-linux = "7a69be7dc0b5c0fd2295159ffaa501b1c2b5d118b4dcc75ae730bba692730328"
 
 [size]
-aarch64-linux = 23030723
 x86_64-linux  = 23635143
+aarch64-linux = 23030723
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/streamlink/streamlink/master/LICENSE"

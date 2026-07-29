@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/fujiapple852/trippy/releases/download/0.13.0
 aarch64-linux = "https://github.com/fujiapple852/trippy/releases/download/0.13.0/trippy-0.13.0-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "603d6ba00f3868f50a17dcfdefb58d5dfafa166e5bf1c42df1bd31ae4a22c529"
 x86_64-linux  = "68e5c67f4c48915207e72361bb4951f58796ba14bfdf38a138a6e8beeafdb7ff"
+aarch64-linux = "603d6ba00f3868f50a17dcfdefb58d5dfafa166e5bf1c42df1bd31ae4a22c529"
 
 [sha256]
-aarch64-linux = "73af939aa94e9e0f07cac2b3c8177e02a6b1c3be88299d85988e02be81ae7004"
 x86_64-linux  = "aa2b7b2a0773f3cc04da691100419049950b690fe3736d25e24ac955b63d6056"
+aarch64-linux = "73af939aa94e9e0f07cac2b3c8177e02a6b1c3be88299d85988e02be81ae7004"
 
 [size]
-aarch64-linux = 3403143
 x86_64-linux  = 3679426
+aarch64-linux = 3403143
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/fujiapple852/trippy/master/LICENSE"

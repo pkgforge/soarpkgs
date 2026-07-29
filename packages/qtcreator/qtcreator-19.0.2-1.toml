@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/QtCreator-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/19.0.2-1%402026-05-22_1779458728/Qt_Creator-19.0.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "fbcc84e024a8f61239d2bd8393f4e5b1b54fcb0da24a3e46658c475d9ae77c80"
 x86_64-linux  = "9a461dec09ae3950806be1e70d8d72f89fd67388b47fe60bb27ebd43b116ba7b"
+aarch64-linux = "fbcc84e024a8f61239d2bd8393f4e5b1b54fcb0da24a3e46658c475d9ae77c80"
 
 [sha256]
-aarch64-linux = "5043776020c0a67d8ccde897a125cb875835d1fcb16fe311e1e87ca04b130f16"
 x86_64-linux  = "1e1068099ebada9eb7ef466475a6f9d1b0de7d9db24950eeb8518b9894bb4fd3"
+aarch64-linux = "5043776020c0a67d8ccde897a125cb875835d1fcb16fe311e1e87ca04b130f16"
 
 [size]
-aarch64-linux = 266884245
 x86_64-linux  = 282066386
+aarch64-linux = 266884245
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/qt-creator/qt-creator/master/LICENSES/LICENSE.GPL3-EXCEPT"

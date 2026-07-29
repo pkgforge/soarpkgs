@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download
 aarch64-linux = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.3-2%402026-07-15_1784106882/MESA-26.1.3-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "615e4f57a994bb54b2c09c0b27d66d75438caa33f9073c7308266aa17a8798ec"
 x86_64-linux  = "c2f96a488c81466703626de615dc0d367bdbc1f7c991467a016a6deb2bb57e44"
+aarch64-linux = "615e4f57a994bb54b2c09c0b27d66d75438caa33f9073c7308266aa17a8798ec"
 
 [sha256]
-aarch64-linux = "1ecc56cc64a322c53122bee1d09bbd0cf8f7b0cbacada3fa39f2d861df91b9cf"
 x86_64-linux  = "3428eaf4136701136ee2c01d40bf490efd20804be96ff4a00226f9beb6a28aa7"
+aarch64-linux = "1ecc56cc64a322c53122bee1d09bbd0cf8f7b0cbacada3fa39f2d861df91b9cf"
 
 [size]
-aarch64-linux = 26133328
 x86_64-linux  = 27425390
+aarch64-linux = 26133328
 
 [[extra]]
 url    = "https://gitlab.freedesktop.org/mesa/mesa/-/raw/main/docs/license.rst"

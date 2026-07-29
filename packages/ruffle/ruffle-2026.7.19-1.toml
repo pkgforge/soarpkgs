@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Ruffle-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/Ruffle-AppImage/releases/download/2026.7.19-1%402026-07-22_1784722066/Ruffle-2026.7.19-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "361769fb989f1d58b1174baf22c9b5e092d1e637fba37eeb32342f19361f7fdc"
 x86_64-linux  = "ac359e316e05ff3adb446cecfc065c8e76b35b07f3de36998b684c5d147535ed"
+aarch64-linux = "361769fb989f1d58b1174baf22c9b5e092d1e637fba37eeb32342f19361f7fdc"
 
 [sha256]
-aarch64-linux = "91e0cc7fad1dea8ed1fbf0e0c5a43cb84ee6e78e65fe497085fdcbb5df96f1f6"
 x86_64-linux  = "11f44710339692b1c35967234f0a0012a7ed49ea5d22a1f7b1d3561e90fd72f4"
+aarch64-linux = "91e0cc7fad1dea8ed1fbf0e0c5a43cb84ee6e78e65fe497085fdcbb5df96f1f6"
 
 [size]
-aarch64-linux = 34959407
 x86_64-linux  = 34567645
+aarch64-linux = 34959407
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md"

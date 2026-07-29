@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced/re
 aarch64-linux = "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced/releases/download/r7365.55fbf046-1%402026-07-22_1784722170/PCSX-Redux-r7365.55fbf046-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "463d8d598c1296245e61af340d0288a5064096ee6437a1cff1cb012311c43cbb"
 x86_64-linux  = "56d83528cf7c063aa375e88a9ade6af0a31f2349223351b604232fc9fc48bb39"
+aarch64-linux = "463d8d598c1296245e61af340d0288a5064096ee6437a1cff1cb012311c43cbb"
 
 [sha256]
-aarch64-linux = "ae78ff622d43e3637d2f31d82fc4e52176826f3363c5b98f84306d03ff3795ab"
 x86_64-linux  = "bcfd9d032d9fada40baa45160e6b79f196ea7c7ca661b162b0c2656357dd1e44"
+aarch64-linux = "ae78ff622d43e3637d2f31d82fc4e52176826f3363c5b98f84306d03ff3795ab"
 
 [size]
-aarch64-linux = 61660419
 x86_64-linux  = 62385057
+aarch64-linux = 61660419
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/grumpycoders/pcsx-redux/refs/heads/main/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Planify-AppImage/releases/downl
 aarch64-linux = "https://github.com/pkgforge-dev/Planify-AppImage/releases/download/4.19.5-1%402026-07-22_1784722467/Planify-4.19.5-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "eec58f9cffdb77938e078934db3308a9a498c52f54c57fc748fedeec0ab344d5"
 x86_64-linux  = "a6a0d43fffd655319d4a34f9a9c0a7e85a9a7080c396a21231462756a8dffaf0"
+aarch64-linux = "eec58f9cffdb77938e078934db3308a9a498c52f54c57fc748fedeec0ab344d5"
 
 [sha256]
-aarch64-linux = "80edb0dc62238684978f97a7784a3e9181bf260b7ae1ca00b93bb61aaf67bb58"
 x86_64-linux  = "b182218993a1740b8c78bb21e4607bff47ee7df0f53576027a426ba510c96bbe"
+aarch64-linux = "80edb0dc62238684978f97a7784a3e9181bf260b7ae1ca00b93bb61aaf67bb58"
 
 [size]
-aarch64-linux = 46635641
 x86_64-linux  = 46359697
+aarch64-linux = 46635641
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/alainm23/planify/main/LICENSE"

@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/watchexec/watchexec/releases/download/v2.5.1
 aarch64-linux = "https://github.com/watchexec/watchexec/releases/download/v2.5.1/watchexec-2.5.1-aarch64-unknown-linux-musl.tar.xz"
 
 [blake3]
-aarch64-linux = "0a4b668e0fb9a63cd32caaf0cda7d252c408e905dbf71373bfb1f575e38a6e3c"
 x86_64-linux  = "5c204127309d70ac24f514e6b7fefd02cb8db3be97e429dd1bcab0d338bb60b7"
+aarch64-linux = "0a4b668e0fb9a63cd32caaf0cda7d252c408e905dbf71373bfb1f575e38a6e3c"
 
 [sha256]
-aarch64-linux = "c073887583d502fa0b393a8b847bb4460a111b3b0a199d1f70dafd5d89e71a2f"
 x86_64-linux  = "9efabd08de720c1ee7e57b487fe11904f0966828e76146e2b5ea5deee90626be"
+aarch64-linux = "c073887583d502fa0b393a8b847bb4460a111b3b0a199d1f70dafd5d89e71a2f"
 
 [size]
-aarch64-linux = 2481320
 x86_64-linux  = 2910140
+aarch64-linux = 2481320

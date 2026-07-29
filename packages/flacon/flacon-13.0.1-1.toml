@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced/releas
 aarch64-linux = "https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced/releases/download/13.0.1-1%402026-07-22_1784722327/Flacon-13.0.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "a509cc47c00a6153ae9f528aaa88c951cd396cc434ab34449cfda361600222de"
 x86_64-linux  = "73f7cefcc4f57f1f0d01441e7a7d730ca2c51a1e29a13efb3199bec0959d602b"
+aarch64-linux = "a509cc47c00a6153ae9f528aaa88c951cd396cc434ab34449cfda361600222de"
 
 [sha256]
-aarch64-linux = "2bcdc6a23d727bd8182aebaa348d5afbccd65c564217fa9a3f56ee0b42d64bc8"
 x86_64-linux  = "cf126b216c5691f31ccf33ea9d9385c70dbd5e00c17fee82ecf5fb6e4630be7f"
+aarch64-linux = "2bcdc6a23d727bd8182aebaa348d5afbccd65c564217fa9a3f56ee0b42d64bc8"
 
 [size]
-aarch64-linux = 43734004
 x86_64-linux  = 43830157
+aarch64-linux = 43734004
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/flacon/flacon/master/LICENSE"

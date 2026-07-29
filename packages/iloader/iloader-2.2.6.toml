@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced/relea
 aarch64-linux = "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced/releases/download/v2.2.6%402026-07-22_1784721952/iloader-v2.2.6-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "0095491f6359255fd4a776d96b2ff0574176b3c8e6f8ad18f2dde79cc17d660f"
 x86_64-linux  = "a45920c6b3977a6c01c8359e813423ed4d6014e62538ecc5f711378ec3efc1e9"
+aarch64-linux = "0095491f6359255fd4a776d96b2ff0574176b3c8e6f8ad18f2dde79cc17d660f"
 
 [sha256]
-aarch64-linux = "4677d10cc689bd4663b345548e29b7963167ca59fd8313772caeac5a0c9ed13f"
 x86_64-linux  = "f8e67caf07384e000452bc593de4d5e2942c3891142c97b21194d4246b34b2d8"
+aarch64-linux = "4677d10cc689bd4663b345548e29b7963167ca59fd8313772caeac5a0c9ed13f"
 
 [size]
-aarch64-linux = 101260662
 x86_64-linux  = 98307435
+aarch64-linux = 101260662
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/nab138/iloader/main/LICENSE"

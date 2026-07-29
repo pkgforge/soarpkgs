@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Nitrogen-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/Nitrogen-AppImage/releases/download/1.6.1-6%402026-07-07_1783430657/nitrogen-1.6.1-6-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "fabd8272e751ca8a4945354b134a4b1726767fc28f9808dc69c85c125f9b52a0"
 x86_64-linux  = "c3ee755d093e71e1839c308006c262897c84ec83f2b68732b63559f7052a20ad"
+aarch64-linux = "fabd8272e751ca8a4945354b134a4b1726767fc28f9808dc69c85c125f9b52a0"
 
 [sha256]
-aarch64-linux = "bf856148369000ec93dcf9f2129194d193bdac3f168b6ef12c617c1fd2f4d108"
 x86_64-linux  = "dfbd6c706f8872156d8bb31a7aec74f063be963c22740d0f422034acacfd36b2"
+aarch64-linux = "bf856148369000ec93dcf9f2129194d193bdac3f168b6ef12c617c1fd2f4d108"
 
 [size]
-aarch64-linux = 17395921
 x86_64-linux  = 17575577
+aarch64-linux = 17395921
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/l3ib/nitrogen/master/COPYING"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releas
 aarch64-linux = "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releases/download/8.70-1%402026-07-22_1784722059/Yamagi_Quake_II-8.70-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "50892fa96baa2038934af14ca48fe0e20d0d0b33c46e8b1ecb1b3e907509bcb7"
 x86_64-linux  = "20e7ebb7ae399348a19134a9820f24b40360239f7a2324f12db982828ffe92af"
+aarch64-linux = "50892fa96baa2038934af14ca48fe0e20d0d0b33c46e8b1ecb1b3e907509bcb7"
 
 [sha256]
-aarch64-linux = "4d1e7fd19a7eabfac8c32389c4a9df95739468c110834b6c64ce8e64019a305e"
 x86_64-linux  = "0735b06ca4cba3b1467363739cd94652670985004f394872bc91003c136e01af"
+aarch64-linux = "4d1e7fd19a7eabfac8c32389c4a9df95739468c110834b6c64ce8e64019a305e"
 
 [size]
-aarch64-linux = 26966315
 x86_64-linux  = 26895080
+aarch64-linux = 26966315
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/yquake2/yquake2/master/LICENSE"

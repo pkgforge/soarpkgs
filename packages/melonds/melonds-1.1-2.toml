@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/melonDS-AppImage-Enhanced/relea
 aarch64-linux = "https://github.com/pkgforge-dev/melonDS-AppImage-Enhanced/releases/download/1.1-2%402026-07-22_1784721991/melonDS-1.1-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "87252a8edc52b51f1c779a4f8e6ae739103e1515c08bf7742a250c082b942f8e"
 x86_64-linux  = "42514ee4f0db361a3172d3d1570a7da066a76bc4ad1146db4ad22ebae296547b"
+aarch64-linux = "87252a8edc52b51f1c779a4f8e6ae739103e1515c08bf7742a250c082b942f8e"
 
 [sha256]
-aarch64-linux = "0a1af6641736f7ce64611e5582c8e1db8c243a4a73ab36ea92616a0f8f42919a"
 x86_64-linux  = "36669b98096ffb2cfa686e161cb853c0193f864c7a017a6feedd24b51190ced0"
+aarch64-linux = "0a1af6641736f7ce64611e5582c8e1db8c243a4a73ab36ea92616a0f8f42919a"
 
 [size]
-aarch64-linux = 64414995
 x86_64-linux  = 65833722
+aarch64-linux = 64414995
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/melonDS-emu/melonDS/master/LICENSE"

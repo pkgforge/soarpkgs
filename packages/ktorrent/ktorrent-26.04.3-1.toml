@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/KTorrent-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/KTorrent-AppImage/releases/download/26.04.3-1%402026-07-22_1784722500/KTorrent-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "496a4c2b261e10ffc98a203994496f3a5ad1e99989a80dc0f8a0afd2ca117ff0"
 x86_64-linux  = "f140197ab13ccf20c8e87d9c4bca24dd8493a0ec1cfa7faddd5500f6597966a1"
+aarch64-linux = "496a4c2b261e10ffc98a203994496f3a5ad1e99989a80dc0f8a0afd2ca117ff0"
 
 [sha256]
-aarch64-linux = "cf5d84465885da1c7159eb71985a90c8d705adbf29bb7177c4b7281a9535c62a"
 x86_64-linux  = "cd350afc605b47db7625cd7298e716d6595b2217053023fcf2cbb01c27cebb59"
+aarch64-linux = "cf5d84465885da1c7159eb71985a90c8d705adbf29bb7177c4b7281a9535c62a"
 
 [size]
-aarch64-linux = 166820139
 x86_64-linux  = 172568685
+aarch64-linux = 166820139
 
 [[extra]]
 url    = "https://invent.kde.org/network/ktorrent/-/raw/master/LICENSES/GPL-2.0-or-later.txt"

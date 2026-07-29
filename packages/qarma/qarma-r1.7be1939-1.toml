@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/qarma-AppImage/releases/downloa
 aarch64-linux = "https://github.com/pkgforge-dev/qarma-AppImage/releases/download/r1.7be1939-1%402026-07-22_1784722377/qarma-r1.7be1939-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "58dc58f6c283e2c27d62a81f81303023015ac04e7add0e92beebb3f113f603eb"
 x86_64-linux  = "4ed35aca1637150842e1f3d507f6d9f7250d3ba78207c47cdc5832bcfe92d5c0"
+aarch64-linux = "58dc58f6c283e2c27d62a81f81303023015ac04e7add0e92beebb3f113f603eb"
 
 [sha256]
-aarch64-linux = "3965dd19e981856fcebc8389fb6b61f2c6cb821d8a8a3afd40550cf52b6a7518"
 x86_64-linux  = "0af0a616f991bb3cc3a3d14ce16300ed7f0f285c501f26d01e5cf4718376c182"
+aarch64-linux = "3965dd19e981856fcebc8389fb6b61f2c6cb821d8a8a3afd40550cf52b6a7518"
 
 [size]
-aarch64-linux = 21225563
 x86_64-linux  = 20978216
+aarch64-linux = 21225563
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/luebking/qarma/master/LICENSE"

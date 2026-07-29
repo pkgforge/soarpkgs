@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/KolourPaint-AppImage/releases/d
 aarch64-linux = "https://github.com/pkgforge-dev/KolourPaint-AppImage/releases/download/26.04.3-1%402026-07-22_1784722500/KolourPaint-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6ae9310df2639c62758bb2b90ed82e93010774c7ee7c24a8a98e2361df877071"
 x86_64-linux  = "c5e7258ee051802a6d31b7abb6bb781e5062a8c6253ffd83a50769ed6f2a2a26"
+aarch64-linux = "6ae9310df2639c62758bb2b90ed82e93010774c7ee7c24a8a98e2361df877071"
 
 [sha256]
-aarch64-linux = "db809f585a7b930562c5c77e1782ed31d7795607ec6a24f007342b336a546f4b"
 x86_64-linux  = "bae966c902f5e6c662ba94858e819e3af216e1e60fd95e26ccffe5220b4d0985"
+aarch64-linux = "db809f585a7b930562c5c77e1782ed31d7795607ec6a24f007342b336a546f4b"
 
 [size]
-aarch64-linux = 65214627
 x86_64-linux  = 65471419
+aarch64-linux = 65214627
 
 [[extra]]
 url    = "https://invent.kde.org/graphics/kolourpaint/-/raw/master/LICENSES/BSD-2-Clause.txt"

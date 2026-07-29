@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/LMMS-AppImage-Enhanced/releases
 aarch64-linux = "https://github.com/pkgforge-dev/LMMS-AppImage-Enhanced/releases/download/1.3.0.alpha.1.r1021.g795d39d65-1%402026-07-22_1784721810/LMMS-1.3.0.alpha.1.r1021.g795d39d65-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "9d7d8f29c6227b84533b2f55a7efa55e4e7424cfe17935fc7261c580d4b928eb"
 x86_64-linux  = "96dcd3356f302d30cc52972398e49b606ce7a0c52dad4d868150374c0b95d9cb"
+aarch64-linux = "9d7d8f29c6227b84533b2f55a7efa55e4e7424cfe17935fc7261c580d4b928eb"
 
 [sha256]
-aarch64-linux = "9224c62a376a56e9e5e2427895245167d8b42d231edcd01d78eb2af4e1fdd1b3"
 x86_64-linux  = "77c6df7ff5e1b47cb759de9fa76cc8fcc3b957df0d29dfa7f78449f5c41329b9"
+aarch64-linux = "9224c62a376a56e9e5e2427895245167d8b42d231edcd01d78eb2af4e1fdd1b3"
 
 [size]
-aarch64-linux = 106078116
 x86_64-linux  = 109047086
+aarch64-linux = 106078116
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/LMMS/lmms/master/LICENSE.txt"

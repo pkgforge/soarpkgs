@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Graphs-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.5-1%402026-07-22_1784722395/Graphs-2.0.5-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "e2b5bad9baa754f2a0ad376ff34c79e15dea882b1ec22e2fc64d8338cf445783"
 x86_64-linux  = "1eebe2555b60ee535e761c31a0fede586b550eaa5bc61e42ea8e0a02ce785172"
+aarch64-linux = "e2b5bad9baa754f2a0ad376ff34c79e15dea882b1ec22e2fc64d8338cf445783"
 
 [sha256]
-aarch64-linux = "d1310876b65adacc49cdbffd4149fbf0133a045b967a06e37a525f296e4b90aa"
 x86_64-linux  = "14ba923c83c39c56e3bb7d1aa4a8e504571cb3aa07954d9b4c63d15570de7de7"
+aarch64-linux = "d1310876b65adacc49cdbffd4149fbf0133a045b967a06e37a525f296e4b90aa"
 
 [size]
-aarch64-linux = 111183950
 x86_64-linux  = 115881174
+aarch64-linux = 111183950
 
 [[extra]]
 url    = "https://gitlab.gnome.org/World/Graphs/-/raw/main/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/hatoo/oha/releases/download/v1.15.0/oha-linu
 aarch64-linux = "https://github.com/hatoo/oha/releases/download/v1.15.0/oha-linux-arm64"
 
 [blake3]
-aarch64-linux = "3e16e00f5a2b66b922bfc3387e94511a22362ee8909dd2b6b73d0dfad66d698a"
 x86_64-linux  = "83a93cdeca31c133ef44db3940533f1a9552b8d73f271a872ecd1c35b7562e90"
+aarch64-linux = "3e16e00f5a2b66b922bfc3387e94511a22362ee8909dd2b6b73d0dfad66d698a"
 
 [sha256]
-aarch64-linux = "72d5bf4575cede9f9277f93f097b904f893b0f0cd4d92f0869439b05e1403731"
 x86_64-linux  = "86ab7fa2c1df23b3bbc53b73561ffa44a7a38ca08f0e10351df9522a5c4c3c61"
+aarch64-linux = "72d5bf4575cede9f9277f93f097b904f893b0f0cd4d92f0869439b05e1403731"
 
 [size]
-aarch64-linux = 11401208
 x86_64-linux  = 13322968
+aarch64-linux = 11401208
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/hatoo/oha/master/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/astral-sh/ruff/releases/download/0.16.0/ruff
 aarch64-linux = "https://github.com/astral-sh/ruff/releases/download/0.16.0/ruff-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "47d3a57054cba442a49194ea3589f7b16ba5efa64c440c749d0ba90437f13d75"
 x86_64-linux  = "0ec59a638331ad77a7b70316d1284f29696bae67313f0b1c51ee57854325cd07"
+aarch64-linux = "47d3a57054cba442a49194ea3589f7b16ba5efa64c440c749d0ba90437f13d75"
 
 [sha256]
-aarch64-linux = "7a6add3d38768dfa00c6d3853e9bd940b5526f3fbb76f02b1fe77ec0653f1e0e"
 x86_64-linux  = "2138b7bc58ff877f5bba09aea4cc984ad5699433b6a3f811003527b8cff8e9ad"
+aarch64-linux = "7a6add3d38768dfa00c6d3853e9bd940b5526f3fbb76f02b1fe77ec0653f1e0e"
 
 [size]
-aarch64-linux = 10325304
 x86_64-linux  = 11094525
+aarch64-linux = 10325304
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE"

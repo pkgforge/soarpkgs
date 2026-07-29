@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/download/1.2.19%402026-07-22_1784722158/Gearlynx-1.2.19-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "dee1ff161eddfe9f4f6278ae75d1ee4fd12ed280243d4225740df46c83aea591"
 x86_64-linux  = "5198457506edaa236ab19605fa1f5fef3c48d9b3030fa2f488a2d563c27e79e0"
+aarch64-linux = "dee1ff161eddfe9f4f6278ae75d1ee4fd12ed280243d4225740df46c83aea591"
 
 [sha256]
-aarch64-linux = "caeb480c863081409f59bb910d47dbf6764fe218837e0ce37f77a618ff2de388"
 x86_64-linux  = "3fbeeceef2eb6b38fba626c3d60740d2845b497bae3b991786db580e5665bdec"
+aarch64-linux = "caeb480c863081409f59bb910d47dbf6764fe218837e0ce37f77a618ff2de388"
 
 [size]
-aarch64-linux = 31831261
 x86_64-linux  = 32611761
+aarch64-linux = 31831261
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/drhelius/Gearlynx/main/LICENSE"

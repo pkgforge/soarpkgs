@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/OptiImage-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/OptiImage-AppImage/releases/download/1.0.0-4%402026-07-22_1784721656/OptiImage-1.0.0-4-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "902b7c60401cc6d3f04a5602a0caca2a4615e617d991557f9a0e6046425b456a"
 x86_64-linux  = "8b90ed7d79611eb84db30515757afcd507a5da0d607b681f4afd9ae1bb8ad424"
+aarch64-linux = "902b7c60401cc6d3f04a5602a0caca2a4615e617d991557f9a0e6046425b456a"
 
 [sha256]
-aarch64-linux = "25f7f32303aacb27c977ff808e65b8a56fbeb4767822022ec82c13af16479f52"
 x86_64-linux  = "9a01ff62f3ed433c1c0eded0c948dc10310233424ce183fd7f23a7cecf9da648"
+aarch64-linux = "25f7f32303aacb27c977ff808e65b8a56fbeb4767822022ec82c13af16479f52"
 
 [size]
-aarch64-linux = 62573940
 x86_64-linux  = 63277216
+aarch64-linux = 62573940
 
 [[extra]]
 url    = "https://invent.kde.org/graphics/optiimage/-/raw/master/LICENSES/LGPL-2.1-only.txt"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/MAME-AppImage/releases/download
 aarch64-linux = "https://github.com/pkgforge-dev/MAME-AppImage/releases/download/0.288-1%402026-07-22_1784754526/MAME-0.288-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "d96528c4d114fa31aa919461dacc37304f30623a36a0803e03e04e13aaf14809"
 x86_64-linux  = "7ab989c6361662a994f5b18196689dd63d901baced0587c6ce63125935f7834e"
+aarch64-linux = "d96528c4d114fa31aa919461dacc37304f30623a36a0803e03e04e13aaf14809"
 
 [sha256]
-aarch64-linux = "a55d27c8d6811e8d89373d5217a6cd352e443b0eaf9ef3fd01440374c0867b9a"
 x86_64-linux  = "9529dadaa7dc4e9cce9dafadd63440b76d66210651dff606ba56e189aaf022f6"
+aarch64-linux = "a55d27c8d6811e8d89373d5217a6cd352e443b0eaf9ef3fd01440374c0867b9a"
 
 [size]
-aarch64-linux = 196610301
 x86_64-linux  = 207775786
+aarch64-linux = 196610301
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mamedev/mame/refs/heads/master/COPYING"

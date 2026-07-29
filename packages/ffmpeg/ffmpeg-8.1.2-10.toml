@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/8.1.2-10%402026-07-22_1784722452/ffmpeg-8.1.2-10-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "0df0bf054d88523ba58fee6c2c0213bd1f58a3318293437fc13dbdfe7c1a3008"
 x86_64-linux  = "6276c0a72ecdfecceb3a6a4a4b3ac9101a02ed43a689791a0097c0acb466c65f"
+aarch64-linux = "0df0bf054d88523ba58fee6c2c0213bd1f58a3318293437fc13dbdfe7c1a3008"
 
 [sha256]
-aarch64-linux = "3cf1905e1dd7d2914346bfa2a2ff6952c895e9221080e51228a3f7a647652ddc"
 x86_64-linux  = "909e7f1b66d681df289b3490be9a80f1a7e3b66d2bd1ae09a3c971faabdc40c1"
+aarch64-linux = "3cf1905e1dd7d2914346bfa2a2ff6952c895e9221080e51228a3f7a647652ddc"
 
 [size]
-aarch64-linux = 52242780
 x86_64-linux  = 60308565
+aarch64-linux = 52242780
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/COPYING.GPLv3"

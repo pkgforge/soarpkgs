@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Rewaita-AppImage/releases/downl
 aarch64-linux = "https://github.com/pkgforge-dev/Rewaita-AppImage/releases/download/1.1.5-1%402026-07-26_1785080163/Rewaita-1.1.5-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "cf18f331e76c193af6efc0b3f182808e3225b918e2a137c303e5dee6f2d7d0d4"
 x86_64-linux  = "ec650e5577bee037a3407cb54ca33a4874be1e392aa131a46661279760d11614"
+aarch64-linux = "cf18f331e76c193af6efc0b3f182808e3225b918e2a137c303e5dee6f2d7d0d4"
 
 [sha256]
-aarch64-linux = "1a5b0456799e10763521a4430f5c4efe6861cb844042bc82c15be5af6662625b"
 x86_64-linux  = "56c8583feb182cf60f8851d5b82e6c180311f3d90b3618effe47d13ab7b76658"
+aarch64-linux = "1a5b0456799e10763521a4430f5c4efe6861cb844042bc82c15be5af6662625b"
 
 [size]
-aarch64-linux = 65868465
 x86_64-linux  = 69068343
+aarch64-linux = 65868465
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/SwordPuffin/Rewaita/main/COPYING"

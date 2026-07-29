@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage/re
 aarch64-linux = "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage/releases/download/5.12.3-1%402026-07-21_1784626173/gpu-screen-recorder-5.12.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6572bfc881462a303083ecf71ac00a412f7f2132f2473943946a5e55830d3c6d"
 x86_64-linux  = "ebff13a7abad65ba3fdaef28c60ff3b9f356828e531dc16a7337af88dcc5be3e"
+aarch64-linux = "6572bfc881462a303083ecf71ac00a412f7f2132f2473943946a5e55830d3c6d"
 
 [sha256]
-aarch64-linux = "8e00264e0ff2edd4bf4fb9847df5abf0b3022e16df5bdd3e8b300ecee7fa52a6"
 x86_64-linux  = "3b8de67d5a2efc2548b40f91e712871e1bd126301cc261796587a37c7f1221a0"
+aarch64-linux = "8e00264e0ff2edd4bf4fb9847df5abf0b3022e16df5bdd3e8b300ecee7fa52a6"
 
 [size]
-aarch64-linux = 56375722
 x86_64-linux  = 62711798
+aarch64-linux = 56375722
 
 [[extra]]
 url    = "https://git.dec05eba.com/gpu-screen-recorder/plain/LICENSE"

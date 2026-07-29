@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/KStars-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/KStars-AppImage/releases/download/3.8.3-2%402026-07-22_1784722222/KStars-3.8.3-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "c3c39f160b369ed0a0c5ce679c063a68738e85aca4d67c3498ddbd7273a8da6b"
 x86_64-linux  = "258d49b595b457a176917b38674945327e219cf6d7a71bb8cc867f299859ae48"
+aarch64-linux = "c3c39f160b369ed0a0c5ce679c063a68738e85aca4d67c3498ddbd7273a8da6b"
 
 [sha256]
-aarch64-linux = "b2d86c658bb45b81e52b7f066b58cec78ddca037d9fcb9e89cf82772c083f369"
 x86_64-linux  = "f31f37e48592ddac16b96d4535d8a0dec575f7a11e7e5c17fb993fab8c0841f6"
+aarch64-linux = "b2d86c658bb45b81e52b7f066b58cec78ddca037d9fcb9e89cf82772c083f369"
 
 [size]
-aarch64-linux = 109733068
 x86_64-linux  = 122306676
+aarch64-linux = 109733068
 
 [[extra]]
 url    = "https://invent.kde.org/education/kstars/-/raw/master/LICENSES/GPL-2.0-or-later.txt"

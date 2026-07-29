@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases
 aarch64-linux = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.135-1%402026-07-22_1784722147/xemu-0.8.135-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "10922da84df7a94466b4565c24e3e335100b84f9710874dc1858324e9a09de9a"
 x86_64-linux  = "8ab3c33c86ad1778c06b880000da7bb138c25bf87f2a3ae6f85a39f31e1828f3"
+aarch64-linux = "10922da84df7a94466b4565c24e3e335100b84f9710874dc1858324e9a09de9a"
 
 [sha256]
-aarch64-linux = "636c1276e619bb586a0cf676f345263878842bcfbac69aa16565c597ff37e6ae"
 x86_64-linux  = "c20ed11f0ac9438aeb16d0e7361a8bfcb39e5c498d90a3d14f71de4f25adcf72"
+aarch64-linux = "636c1276e619bb586a0cf676f345263878842bcfbac69aa16565c597ff37e6ae"
 
 [size]
-aarch64-linux = 50073123
 x86_64-linux  = 48659744
+aarch64-linux = 50073123
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/xemu-project/xemu/master/COPYING"

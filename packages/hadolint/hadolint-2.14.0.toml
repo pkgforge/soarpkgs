@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/hadolint/hadolint/releases/download/v2.14.0/
 aarch64-linux = "https://github.com/hadolint/hadolint/releases/download/v2.14.0/hadolint-Linux-arm64"
 
 [blake3]
-aarch64-linux = "3dcc0e4f8cf6487cd560839e3842dd09c5ec975a9c795001ba10bf884f1b79fc"
 x86_64-linux  = "caca77767db81a741c4cad24c12dd1003e6e07a572f3b3486a6a07d63c191abc"
+aarch64-linux = "3dcc0e4f8cf6487cd560839e3842dd09c5ec975a9c795001ba10bf884f1b79fc"
 
 [sha256]
-aarch64-linux = "331f1d3511b84a4f1e3d18d52fec284723e4019552f4f47b19322a53ce9a40ed"
 x86_64-linux  = "6bf226944684f56c84dd014e8b979d27425c0148f61b3bd99bcc6f39e9dc5a47"
+aarch64-linux = "331f1d3511b84a4f1e3d18d52fec284723e4019552f4f47b19322a53ce9a40ed"
 
 [size]
-aarch64-linux = 59451320
 x86_64-linux  = 54727336
+aarch64-linux = 59451320
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/hadolint/hadolint/master/LICENSE"

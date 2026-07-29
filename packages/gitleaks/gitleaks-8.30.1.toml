@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/
 aarch64-linux = "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "8263573a9ee90c0db343ffed8985308875f2f94f044637fe5c8841f08b42d0c1"
 x86_64-linux  = "e150484216f7997caa0f42390b0ffdb7c1780f70b16ba396345182d728095439"
+aarch64-linux = "8263573a9ee90c0db343ffed8985308875f2f94f044637fe5c8841f08b42d0c1"
 
 [sha256]
-aarch64-linux = "e4a487ee7ccd7d3a7f7ec08657610aa3606637dab924210b3aee62570fb4b080"
 x86_64-linux  = "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+aarch64-linux = "e4a487ee7ccd7d3a7f7ec08657610aa3606637dab924210b3aee62570fb4b080"
 
 [size]
-aarch64-linux = 7601421
 x86_64-linux  = 8230402
+aarch64-linux = 7601421

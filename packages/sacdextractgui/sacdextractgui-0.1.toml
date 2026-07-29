@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/SACDExtractGUI-AppImage/release
 aarch64-linux = "https://github.com/pkgforge-dev/SACDExtractGUI-AppImage/releases/download/0.1%402026-07-01_1782914662/SACDExtractGUI-0.1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "9431bad764cdad77d884e5ed9ab8c0fffa7a8ec8ffa2337e84530257ea47a37f"
 x86_64-linux  = "8e2cd7301241e63dd0591f50e6c2b9edc742e67f9de52455fee100772b82811d"
+aarch64-linux = "9431bad764cdad77d884e5ed9ab8c0fffa7a8ec8ffa2337e84530257ea47a37f"
 
 [sha256]
-aarch64-linux = "b44babe2fbe9cf84cf5dc870f1ff3cede9a6743c53f50bd903d5414c835be9dc"
 x86_64-linux  = "ed9d3839263e06a5c8aefde3bbbe9e2be5ce72ff5ad738b34af447b480509319"
+aarch64-linux = "b44babe2fbe9cf84cf5dc870f1ff3cede9a6743c53f50bd903d5414c835be9dc"
 
 [size]
-aarch64-linux = 44801905
 x86_64-linux  = 45236978
+aarch64-linux = 44801905
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/licenses/GPL-3.0.txt"

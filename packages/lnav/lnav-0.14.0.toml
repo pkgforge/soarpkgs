@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0
 aarch64-linux = "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-linux-musl-arm64.zip"
 
 [blake3]
-aarch64-linux = "7e4de419f57f6c557e436aa789dcbe6ff1ed4e40bff82ca8f1135e2d3a21672e"
 x86_64-linux  = "ec99f1d4372aca349a1ef104d0abc235b21af18d0d29bb623c8341ce838788b5"
+aarch64-linux = "7e4de419f57f6c557e436aa789dcbe6ff1ed4e40bff82ca8f1135e2d3a21672e"
 
 [sha256]
-aarch64-linux = "027e9f540567cd0e9ba00335ab9be0275a414b14608e10d49dc2d6a2633aa546"
 x86_64-linux  = "9d146d1da2af005a77920afff5da96d2ae0771ee25450b0954b27de95e7f0f57"
+aarch64-linux = "027e9f540567cd0e9ba00335ab9be0275a414b14608e10d49dc2d6a2633aa546"
 
 [size]
-aarch64-linux = 40048031
 x86_64-linux  = 42330935
+aarch64-linux = 40048031
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/tstack/lnav/master/LICENSE"

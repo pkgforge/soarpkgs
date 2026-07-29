@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/htop-AppImage/releases/download
 aarch64-linux = "https://github.com/pkgforge-dev/htop-AppImage/releases/download/3.5.2-f3744bb-dirty%402026-07-22_1784739840/htop-3.5.2-f3744bb-dirty-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "ef7412b50d1970ae45e244e24ba82d6a8aaa30adc25ec19e99afbc16f8dda41f"
 x86_64-linux  = "7b87d761b6f753136b52a43decd747a191c506d61b5643cac064de7c984275f7"
+aarch64-linux = "ef7412b50d1970ae45e244e24ba82d6a8aaa30adc25ec19e99afbc16f8dda41f"
 
 [sha256]
-aarch64-linux = "78f3fa5b9c026cf8e8830feabdb79a4acb92f727b0c422a03ca69d7dde5c468a"
 x86_64-linux  = "634f91f57b5168d3e63ed765c48cfc9e8cf4ec0a4dc6ecffd26cc3b13f38bab6"
+aarch64-linux = "78f3fa5b9c026cf8e8830feabdb79a4acb92f727b0c422a03ca69d7dde5c468a"
 
 [size]
-aarch64-linux = 2261032
 x86_64-linux  = 2433488
+aarch64-linux = 2261032
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/htop-dev/htop/refs/heads/main/COPYING"

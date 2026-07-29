@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Satty-AppImage/releases/downloa
 aarch64-linux = "https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.21.1-1%402026-07-22_1784722394/Satty-0.21.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "65b92559eebf8ee9a45e8b0effdf8eecb903a488fdabdf55973b173148bc9d64"
 x86_64-linux  = "610558888883f9a1955641dc8a738508ed4317fb792a2ce0284096a65e628dde"
+aarch64-linux = "65b92559eebf8ee9a45e8b0effdf8eecb903a488fdabdf55973b173148bc9d64"
 
 [sha256]
-aarch64-linux = "dcff5dfce21717e4d59fb9b8c39727ace120c5a9ee50492a760aae487eecd067"
 x86_64-linux  = "ba3ea5afbc8dbda7fcaa46457977bc05c906dc27bfdc4f594a2df82b84674dbd"
+aarch64-linux = "dcff5dfce21717e4d59fb9b8c39727ace120c5a9ee50492a760aae487eecd067"
 
 [size]
-aarch64-linux = 36592485
 x86_64-linux  = 36784341
+aarch64-linux = 36592485
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Satty-org/Satty/main/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/yt-dlp-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/yt-dlp-AppImage/releases/download/2026.07.04-1%402026-07-22_1784722424/yt-dlp-2026.07.04-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "fa61e05552c38bca601bbde6fea8ae7af412b695cbf688eab78f459d3186016e"
 x86_64-linux  = "75f7cd44370c07df33a028b657d10a6a227d84c832c8986806e4e78b2bbd9008"
+aarch64-linux = "fa61e05552c38bca601bbde6fea8ae7af412b695cbf688eab78f459d3186016e"
 
 [sha256]
-aarch64-linux = "f7362a3e1153ba4f7a07be4c9d999c4d2ba0095a07db777f9e840b15bf963d1f"
 x86_64-linux  = "9d2ef4c553c189ce9ec40c2a429a2855f0e761a9ca28d0684a47c8255d4ac869"
+aarch64-linux = "f7362a3e1153ba4f7a07be4c9d999c4d2ba0095a07db777f9e840b15bf963d1f"
 
 [size]
-aarch64-linux = 48138454
 x86_64-linux  = 48224691
+aarch64-linux = 48138454
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/yt-dlp/yt-dlp/refs/heads/master/LICENSE"

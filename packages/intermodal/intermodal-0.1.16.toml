@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/casey/intermodal/releases/download/v0.1.16/i
 aarch64-linux = "https://github.com/casey/intermodal/releases/download/v0.1.16/imdl-v0.1.16-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "7be131fd8377021178206419bd2fe6a273e3c35ffa3ffcfeaf7726d6112f91f5"
 x86_64-linux  = "29065e1ac6b73d98ad266106eb65de44e35a89ba41465f37f2f34715ccb6d053"
+aarch64-linux = "7be131fd8377021178206419bd2fe6a273e3c35ffa3ffcfeaf7726d6112f91f5"
 
 [sha256]
-aarch64-linux = "5b5f8a88cc0e8d86fb791b6fb94aaa7aa40de307f6d76e87614a39e9da167ecc"
 x86_64-linux  = "c9e60ec12a6a32eb771cabea9de2d697e2c4bded482240f9955f74e4b96a11c1"
+aarch64-linux = "5b5f8a88cc0e8d86fb791b6fb94aaa7aa40de307f6d76e87614a39e9da167ecc"
 
 [size]
-aarch64-linux = 1900448
 x86_64-linux  = 2054210
+aarch64-linux = 1900448

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/dalance/procs/releases/download/v0.14.12/pro
 aarch64-linux = "https://github.com/dalance/procs/releases/download/v0.14.12/procs-v0.14.12-aarch64-linux.zip"
 
 [blake3]
-aarch64-linux = "4291b722c9b4e771a93c3d41b5a2eb0487a571f698ef53af599e8ac9cd8a32f2"
 x86_64-linux  = "ebf3bb6d0fb4d7c4ed56c9e93f96fac14e03491f27cf75ff516ac3687739e978"
+aarch64-linux = "4291b722c9b4e771a93c3d41b5a2eb0487a571f698ef53af599e8ac9cd8a32f2"
 
 [sha256]
-aarch64-linux = "74b4f82acc6fe553cbd5af20ba0baac420b42bef9bb0cbb38fef14b8317d9f91"
 x86_64-linux  = "81964faf9d5cd0e9f399d5d0954fb6fe4d4d9f7d3cbec4507633df5a45b11713"
+aarch64-linux = "74b4f82acc6fe553cbd5af20ba0baac420b42bef9bb0cbb38fef14b8317d9f91"
 
 [size]
-aarch64-linux = 2400955
 x86_64-linux  = 2565746
+aarch64-linux = 2400955
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/dalance/procs/master/LICENSE"

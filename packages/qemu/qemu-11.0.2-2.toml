@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download
 aarch64-linux = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.0.2-2%402026-07-06_1783352658/QEMU-11.0.2-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "9ece6226f87b1e05841f49f6841335d99995a643aab91f06f540212bfeeee615"
 x86_64-linux  = "c48eb448e68b7d493ad637b103b47d922b284892190cde7589ef8c60110b9891"
+aarch64-linux = "9ece6226f87b1e05841f49f6841335d99995a643aab91f06f540212bfeeee615"
 
 [sha256]
-aarch64-linux = "daf51a3d843928dc2bdaaa108667caa8a0e3c47024878e1ea28a22924b70c81a"
 x86_64-linux  = "a277e4cef3c9a94eec6400baa62808dea89cd30462640baae4a6e27beff31ac3"
+aarch64-linux = "daf51a3d843928dc2bdaaa108667caa8a0e3c47024878e1ea28a22924b70c81a"
 
 [size]
-aarch64-linux = 175517105
 x86_64-linux  = 179125645
+aarch64-linux = 175517105
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/qemu/qemu/master/COPYING"

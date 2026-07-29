@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linu
 aarch64-linux = "https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-arm64"
 
 [blake3]
-aarch64-linux = "3dda7484fa38218e1a68a3200e7cb5173a40b4d2f12616e303545e4f55f55d8c"
 x86_64-linux  = "bd1016d89dfc195e84afc57ad7b4446bbb0080ac3daa25ada76978bf6377d9b4"
+aarch64-linux = "3dda7484fa38218e1a68a3200e7cb5173a40b4d2f12616e303545e4f55f55d8c"
 
 [sha256]
-aarch64-linux = "3456617536fc1c1b78a34d3c171a7eaf6a3a7c634896abd6f1afb3ebec318084"
 x86_64-linux  = "8ce43e40fda9a28221dabc0d7228e2325d1e959cd770487240deb47e02660986"
+aarch64-linux = "3456617536fc1c1b78a34d3c171a7eaf6a3a7c634896abd6f1afb3ebec318084"
 
 [size]
-aarch64-linux = 4431129
 x86_64-linux  = 4562871
+aarch64-linux = 4431129
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/sclevine/yj/main/LICENSE"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/down
 aarch64-linux = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.7.0-1%402026-07-22_1784722240/flashrom-1.7.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "bde601c3b6a4b3fd6511bc2268c53482956c8ea616618908930c640cf4fd07b4"
 x86_64-linux  = "1f3d2d765ec125baa55f415f181e3654ef7eb7b048903449604ee3e7e3e9d5be"
+aarch64-linux = "bde601c3b6a4b3fd6511bc2268c53482956c8ea616618908930c640cf4fd07b4"
 
 [sha256]
-aarch64-linux = "fe989dd10b5b627c9cfc870b095847b364003d4d30bd5fc2cebfded8fe3fd9e8"
 x86_64-linux  = "e8380dbbaa9dce610bdace22e5c0773e45ede70de4b0cba6a032e831ab20c346"
+aarch64-linux = "fe989dd10b5b627c9cfc870b095847b364003d4d30bd5fc2cebfded8fe3fd9e8"
 
 [size]
-aarch64-linux = 8263758
 x86_64-linux  = 7582584
+aarch64-linux = 8263758
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/flashrom/flashrom/main/COPYING.rst"

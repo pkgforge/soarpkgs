@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/nushell/nushell/releases/download/0.114.1/nu
 aarch64-linux = "https://github.com/nushell/nushell/releases/download/0.114.1/nu-0.114.1-aarch64-unknown-linux-musl.tar.gz"
 
 [blake3]
-aarch64-linux = "82b658ab5ac046a482fa6686a4958eb18b02f4bdbe63ee277a6433a6212b5ac6"
 x86_64-linux  = "46f918444e2f4a1bd88180c7d811add5f41592294ae0b56e2096a7be56130b40"
+aarch64-linux = "82b658ab5ac046a482fa6686a4958eb18b02f4bdbe63ee277a6433a6212b5ac6"
 
 [sha256]
-aarch64-linux = "4f9e880e7bbf8ee58f3860ef49f453eb2628965b6f2c880fb03d4775f290b536"
 x86_64-linux  = "ce3a1c5a07c784098b5675224a165e73a45f0f720a8392791d7c3a5b4720255e"
+aarch64-linux = "4f9e880e7bbf8ee58f3860ef49f453eb2628965b6f2c880fb03d4775f290b536"
 
 [size]
-aarch64-linux = 81702773
 x86_64-linux  = 84915650
+aarch64-linux = 81702773

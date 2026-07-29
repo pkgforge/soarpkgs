@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releas
 aarch64-linux = "https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-1%402026-07-22_1784722434/Snes9x-1.63-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "10f9761c5874c3b3d42fe016bf3c58a951dcfc099c353c4af2c5186a46b7309e"
 x86_64-linux  = "8eab6f3e1631a8ba56afc6a97b3688dbed193e28aa3e82f4027184f5c1d0879a"
+aarch64-linux = "10f9761c5874c3b3d42fe016bf3c58a951dcfc099c353c4af2c5186a46b7309e"
 
 [sha256]
-aarch64-linux = "5208629a07a4e42d2dccd56c5bd2fb1b81ceff6719e42deea5d4054e6dae65fb"
 x86_64-linux  = "f15caaf4469360c15d7b39525c286488922be73011d6b550384bee9589b6ef0b"
+aarch64-linux = "5208629a07a4e42d2dccd56c5bd2fb1b81ceff6719e42deea5d4054e6dae65fb"
 
 [size]
-aarch64-linux = 47248360
 x86_64-linux  = 47881424
+aarch64-linux = 47248360
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/snes9xgit/snes9x/master/LICENSE"

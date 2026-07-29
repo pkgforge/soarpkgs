@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/KMahjongg-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/KMahjongg-AppImage/releases/download/26.04.3-1%402026-07-22_1784722401/KMahjongg-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "33d14ea903e08d8fdbbda4dc7cb22a6194303b6a2ed785814241a1065ca8f5ad"
 x86_64-linux  = "dd6060fa0ceb27f4f5b1b38a988f1eb4283f2f956d312cdb681b060e4d008057"
+aarch64-linux = "33d14ea903e08d8fdbbda4dc7cb22a6194303b6a2ed785814241a1065ca8f5ad"
 
 [sha256]
-aarch64-linux = "7954ec9dbc0a343402e03b3d0b92d98fb8c80d4d2e5e5573781fbab8dc38cac0"
 x86_64-linux  = "e1b7844cd777e8582d883901ae623246da7a4605a477c5d0ee2afbb9c6943d56"
+aarch64-linux = "7954ec9dbc0a343402e03b3d0b92d98fb8c80d4d2e5e5573781fbab8dc38cac0"
 
 [size]
-aarch64-linux = 62465585
 x86_64-linux  = 63005586
+aarch64-linux = 62465585
 
 [[extra]]
 url    = "https://invent.kde.org/games/kmahjongg/-/raw/master/LICENSES/GPL-2.0-or-later.txt"

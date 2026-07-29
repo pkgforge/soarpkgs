@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-a
 aarch64-linux = "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-arm64_linux.tar.xz"
 
 [blake3]
-aarch64-linux = "76f69880a3fa1c68e989dfd9d551fe4b92a0c1d06cbc8e9c94d939ef0a8098c9"
 x86_64-linux  = "bdcd542de382e6cf9329465a448daef9619219e31c56324d2812b047fa80f05e"
+aarch64-linux = "76f69880a3fa1c68e989dfd9d551fe4b92a0c1d06cbc8e9c94d939ef0a8098c9"
 
 [sha256]
-aarch64-linux = "55d48a61e8ffd17152db871c855376cba7f08e830b37799d0947a16dff8ec36c"
 x86_64-linux  = "3db5d3294707439db97866feab8d75d800f028f48481a40547411824da4288a1"
+aarch64-linux = "55d48a61e8ffd17152db871c855376cba7f08e830b37799d0947a16dff8ec36c"
 
 [size]
-aarch64-linux = 668552
 x86_64-linux  = 661288
+aarch64-linux = 668552

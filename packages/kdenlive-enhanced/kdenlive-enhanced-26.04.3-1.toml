@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced/rele
 aarch64-linux = "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/download/26.04.3-1%402026-07-22_1784722197/Kdenlive-26.04.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "7eb995fc6fdd01d70e0184b1fef32103fdc901dffb3a69e86d7acf8080ef877a"
 x86_64-linux  = "7101283dc2eb31f29209c03875404e6b85a856ddfb728149a8dc7c2e135347a5"
+aarch64-linux = "7eb995fc6fdd01d70e0184b1fef32103fdc901dffb3a69e86d7acf8080ef877a"
 
 [sha256]
-aarch64-linux = "4b6ccac8af8dbc77728d9fe37c700be04f233685973f6ad988eba34c385a74c8"
 x86_64-linux  = "e648699accba3c5d0cfeec41cc762e21e0047a898f9aaf986dcb9ca2e29f1bcb"
+aarch64-linux = "4b6ccac8af8dbc77728d9fe37c700be04f233685973f6ad988eba34c385a74c8"
 
 [size]
-aarch64-linux = 169735817
 x86_64-linux  = 194918014
+aarch64-linux = 169735817
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/KDE/kdenlive/refs/heads/master/COPYING"

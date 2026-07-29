@@ -5,13 +5,13 @@ x86_64-linux  = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x
 aarch64-linux = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-unknown-linux-musl.zip"
 
 [blake3]
-aarch64-linux = "98af801ada40864013efc31a15568d1b2a90e06354c228a2a75206973e012800"
 x86_64-linux  = "4353f33bcbebad9698e3bc922bc66a28074c738bfa9465f6aa485bd950c732ef"
+aarch64-linux = "98af801ada40864013efc31a15568d1b2a90e06354c228a2a75206973e012800"
 
 [sha256]
-aarch64-linux = "dff4a6774069bdde616c3cd145275b462a5887229cd9bf6341e78063da37e84f"
 x86_64-linux  = "1031a02560d053301537195a6661d227c15cb4ce5c30481050b31e2b88681bff"
+aarch64-linux = "dff4a6774069bdde616c3cd145275b462a5887229cd9bf6341e78063da37e84f"
 
 [size]
-aarch64-linux = 10570424
 x86_64-linux  = 11394377
+aarch64-linux = 10570424

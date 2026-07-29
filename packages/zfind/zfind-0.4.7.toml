@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/laktak/zfind/releases/download/v0.4.7/zfind-
 aarch64-linux = "https://github.com/laktak/zfind/releases/download/v0.4.7/zfind-linux-arm64.tar.gz"
 
 [blake3]
-aarch64-linux = "6c9b5cd3a6230392a75358be3a2ec80dbe7c84ef693b718112d5b7de200cc656"
 x86_64-linux  = "661ef9820fda5bb3b1f611a7a54f667ff9219705ca2d380f5f816f60a5b4ae04"
+aarch64-linux = "6c9b5cd3a6230392a75358be3a2ec80dbe7c84ef693b718112d5b7de200cc656"
 
 [sha256]
-aarch64-linux = "57092153d61aa02a2da169eafc8002e9e3f212d25d0b2bed4e92e81d76e37184"
 x86_64-linux  = "fb016f67fda4be03ca781f4092aa8274fd72b6dbbe3491562b77cb6ecac53757"
+aarch64-linux = "57092153d61aa02a2da169eafc8002e9e3f212d25d0b2bed4e92e81d76e37184"
 
 [size]
-aarch64-linux = 6483556
 x86_64-linux  = 6969392
+aarch64-linux = 6483556
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/laktak/zfind/master/LICENSE"

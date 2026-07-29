@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Quickshell-AppImage/releases/do
 aarch64-linux = "https://github.com/pkgforge-dev/Quickshell-AppImage/releases/download/0.3.0-2%402026-07-22_1784722465/quickshell-0.3.0-2-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "21e6af25f99a8d31fd6027bb393871584d3fd82ade28fb421568923ad12b74af"
 x86_64-linux  = "5b6ab9bf612a479556e623199ca20d49c863293e361d38c8e75429c542cc19b1"
+aarch64-linux = "21e6af25f99a8d31fd6027bb393871584d3fd82ade28fb421568923ad12b74af"
 
 [sha256]
-aarch64-linux = "96a3cae98f3639d64cb7e0cc5d43b99644287eaa295fe36c320d4d9b991ff4f5"
 x86_64-linux  = "d0451b6567b9971e9188ee4a5575d26fde5c99930947a0d36741d86ded9bdbfe"
+aarch64-linux = "96a3cae98f3639d64cb7e0cc5d43b99644287eaa295fe36c320d4d9b991ff4f5"
 
 [size]
-aarch64-linux = 55790527
 x86_64-linux  = 56547550
+aarch64-linux = 55790527
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/quickshell-mirror/quickshell/master/LICENSE"

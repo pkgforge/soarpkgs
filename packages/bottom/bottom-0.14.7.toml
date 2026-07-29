@@ -1,0 +1,23 @@
+version = "0.14.7"
+
+[url]
+x86_64-linux  = "https://github.com/ClementTsang/bottom/releases/download/0.14.7/bottom_x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/ClementTsang/bottom/releases/download/0.14.7/bottom_aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+aarch64-linux = "c3e16ccab62b6431d07daf633dd2f5940e0e1e6a386e689cd5a13383397f7680"
+x86_64-linux  = "639db2b3fa2b73610d517889d32060889d6be40c265d6dca8a830f1de25b838a"
+
+[sha256]
+aarch64-linux = "0119ab5c1a6f2501dfa6f94ec7529f108dc62fcc0097f4d5614a36fffdbf64a4"
+x86_64-linux  = "060f157720194906393d0118e01a84f654b93749575d896b5331499d5ead06ee"
+
+[size]
+aarch64-linux = 1911156
+x86_64-linux  = 2119000
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ClementTsang/bottom/main/LICENSE"
+to     = "LICENSE"
+blake3 = "8a3f8551b9b13f1aefa6da147fb3ca54e55707ca4ba1bb7d464cea9d2f00e137"
+sha256 = "89855774cfcb4b828306549bdb9d3424c15bebf01d60a59e6c98ff0e2896da9e"

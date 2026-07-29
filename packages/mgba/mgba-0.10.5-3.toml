@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/mGBA-AppImage-Enhanced/releases
 aarch64-linux = "https://github.com/pkgforge-dev/mGBA-AppImage-Enhanced/releases/download/0.10.5-3%402026-07-01_1782914640/mGBA-0.10.5-3-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "1df05d751aa03ef257fb1cd91756e1a06e67cfe07a3bd56603d3cdf8c4b1049d"
 x86_64-linux  = "a6fa91b6e94616d67cf592c508a65942faefc9a81430f98caf84a7598ed1ed6d"
+aarch64-linux = "1df05d751aa03ef257fb1cd91756e1a06e67cfe07a3bd56603d3cdf8c4b1049d"
 
 [sha256]
-aarch64-linux = "187321e35d5eeb622076bef9afa0e30a2c516d8d219b0a9ad0e2342993502d5f"
 x86_64-linux  = "4d076bb7a982fa31e954c45aca7937999cc7e3e8ad72e828458f2c2af7956344"
+aarch64-linux = "187321e35d5eeb622076bef9afa0e30a2c516d8d219b0a9ad0e2342993502d5f"
 
 [size]
-aarch64-linux = 63432340
 x86_64-linux  = 64612876
+aarch64-linux = 63432340
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mgba-emu/mgba/master/LICENSE"

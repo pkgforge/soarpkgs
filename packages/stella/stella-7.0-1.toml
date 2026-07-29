@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Stella-AppImage/releases/downlo
 aarch64-linux = "https://github.com/pkgforge-dev/Stella-AppImage/releases/download/7.0-1%402026-07-22_1784722337/Stella-7.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "89743d0cb6c9f2e8dc8c253662956f142caca61570c78627a1c91cc003207043"
 x86_64-linux  = "c644a64b100ca53d728f8cbf58a57af84aacbd16445e954dacb01877ca021c70"
+aarch64-linux = "89743d0cb6c9f2e8dc8c253662956f142caca61570c78627a1c91cc003207043"
 
 [sha256]
-aarch64-linux = "09751b73812ca2f95f0c0fc601b6f696225b5f8aece8200cbab97c3f32cbf477"
 x86_64-linux  = "3c17eba4afd6e7b48362091e3238491ab362fc48aac804d7b916b0c84b51f18b"
+aarch64-linux = "09751b73812ca2f95f0c0fc601b6f696225b5f8aece8200cbab97c3f32cbf477"
 
 [size]
-aarch64-linux = 22606771
 x86_64-linux  = 22697438
+aarch64-linux = 22606771
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/stella-emu/stella/master/License.txt"

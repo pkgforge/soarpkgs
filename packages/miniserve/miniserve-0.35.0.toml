@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/svenstaro/miniserve/releases/download/v0.35.
 aarch64-linux = "https://github.com/svenstaro/miniserve/releases/download/v0.35.0/miniserve-0.35.0-aarch64-unknown-linux-musl"
 
 [blake3]
-aarch64-linux = "352c640257882a19b49e1aba7625286e1978da8bcfc4ccc8c091d5a77d0455f6"
 x86_64-linux  = "454d1a558923fc7b6f29910b23351534623441aea88a3cfa40c4436b69249f40"
+aarch64-linux = "352c640257882a19b49e1aba7625286e1978da8bcfc4ccc8c091d5a77d0455f6"
 
 [sha256]
-aarch64-linux = "732b1d5b30a3903580cee9ca24b2ff04ba2a5c78fa1ba6579dc5154fc431b40a"
 x86_64-linux  = "c630ee030d5d9d83c88c5cc72f43ae215b0c214d64fd7afc92244fe369af2964"
+aarch64-linux = "732b1d5b30a3903580cee9ca24b2ff04ba2a5c78fa1ba6579dc5154fc431b40a"
 
 [size]
-aarch64-linux = 2169156
 x86_64-linux  = 2443404
+aarch64-linux = 2169156
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/svenstaro/miniserve/master/LICENSE"

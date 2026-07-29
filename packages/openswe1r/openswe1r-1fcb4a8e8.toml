@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/OpenSWE1R-AppImage/releases/dow
 aarch64-linux = "https://github.com/pkgforge-dev/OpenSWE1R-AppImage/releases/download/1fcb4a8e8%402026-07-01_1782914648/OpenSWE1R-1fcb4a8e8-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "6cacbb59867b0e4079415e85c48ba78b6d378196d04cde9a71889444d59a9854"
 x86_64-linux  = "92ff77eea3988d1630b8ccb57b69128da918413ec30b29b291159954d5f94f45"
+aarch64-linux = "6cacbb59867b0e4079415e85c48ba78b6d378196d04cde9a71889444d59a9854"
 
 [sha256]
-aarch64-linux = "94842211829326de720ad039679cad07ae6e8355c8b2966b05498dbe9021863e"
 x86_64-linux  = "d06dd67429c52ce8479d0c333bbf69dd8f7b17eddb5f7d9158a229799ebf7954"
+aarch64-linux = "94842211829326de720ad039679cad07ae6e8355c8b2966b05498dbe9021863e"
 
 [size]
-aarch64-linux = 23896437
 x86_64-linux  = 21115339
+aarch64-linux = 23896437
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/openswe1r/openswe1r/master/LICENSE.txt"

@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/gitui-org/gitui/releases/download/v0.28.1/gi
 aarch64-linux = "https://github.com/gitui-org/gitui/releases/download/v0.28.1/gitui-linux-aarch64.tar.gz"
 
 [blake3]
-aarch64-linux = "e38feb6ee2cd56cd8b64fbf956473857be74ea3e4e6bb15cfe7e12cba1f3b73c"
 x86_64-linux  = "a89df61fe80adfedd9e3f683249648ca6b76d7b45070b4be69ae4cc9fd83e518"
+aarch64-linux = "e38feb6ee2cd56cd8b64fbf956473857be74ea3e4e6bb15cfe7e12cba1f3b73c"
 
 [sha256]
-aarch64-linux = "2a640da05b73e9152a7bf92bfd7c23acd9d60438f4f2cabb62357014a5fd7c28"
 x86_64-linux  = "f6149b9ae203397158b0c89c13cfde718e7121d3d3cd2ebc597f93d6628d9b5b"
+aarch64-linux = "2a640da05b73e9152a7bf92bfd7c23acd9d60438f4f2cabb62357014a5fd7c28"
 
 [size]
-aarch64-linux = 6987794
 x86_64-linux  = 6840775
+aarch64-linux = 6987794
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/extrawurst/gitui/master/LICENSE.md"

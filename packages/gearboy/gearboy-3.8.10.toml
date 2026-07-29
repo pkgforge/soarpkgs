@@ -5,16 +5,16 @@ x86_64-linux  = "https://github.com/pkgforge-dev/Gearboy-AppImage/releases/downl
 aarch64-linux = "https://github.com/pkgforge-dev/Gearboy-AppImage/releases/download/3.8.10%402026-07-22_1784721937/Gearboy-3.8.10-anylinux-aarch64.AppImage"
 
 [blake3]
-aarch64-linux = "c0ec6051749d440ab4e3c519b59a85b40a6715d108182cd761a39a2fcd6c2cef"
 x86_64-linux  = "45654f89dc18c6850e770aa85563be7e16b246a08bb0500ca3f747a421a9018a"
+aarch64-linux = "c0ec6051749d440ab4e3c519b59a85b40a6715d108182cd761a39a2fcd6c2cef"
 
 [sha256]
-aarch64-linux = "f0534abe9c3d70cce542276a2177433b53f9fd7e93fa8117ad06ac1b86f711f0"
 x86_64-linux  = "1c25ccd24f4fbc22b34db27f8c37ad021c0e779a1d1dd69f11f5589bd7a05a2b"
+aarch64-linux = "f0534abe9c3d70cce542276a2177433b53f9fd7e93fa8117ad06ac1b86f711f0"
 
 [size]
-aarch64-linux = 33058322
 x86_64-linux  = 33828098
+aarch64-linux = 33058322
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/drhelius/Gearboy/master/LICENSE"
