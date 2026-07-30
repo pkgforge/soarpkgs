@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "foot"
+pkg_id: "pkgforge-dev.foot"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/foot"
+category:
+  - "System"
+  - "TerminalEmulator"
+  - "Utility"
+description: "A fast, lightweight and minimalistic Wayland terminal emulator"
+homepage:
+  - "https://codeberg.org/dnkl/foot"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "https://codeberg.org/dnkl/foot/raw/branch/master/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/foot-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "foot"
+repology:
+  - "foot"
+src_url:
+  - "https://github.com/pkgforge-dev/foot-AppImage"
+tag:
+  - "terminal"
+  - "wayland"
+  - "terminal-emulator"
+  - "lightweight"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/foot-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/foot-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
