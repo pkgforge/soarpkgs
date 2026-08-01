@@ -7,7 +7,6 @@ license     = ["GPL-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["upx"]
-provides    = ["upx"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/upx/upx/releases/download/v${version}/upx-${version}-${arch}_linux.tar.xz"
 
 [source.install]
-"upx-${version}-${arch}_linux/upx"     = "upx"
+"upx-${version}-${arch}_linux/COPYING" = "COPYING"
 "upx-${version}-${arch}_linux/LICENSE" = "LICENSE"
+"upx-${version}-${arch}_linux/upx"     = "bin/upx"
+"upx-${version}-${arch}_linux/upx.1"   = "share/man/man1/upx.1"

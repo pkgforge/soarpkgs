@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Security", "Utility"]
 repology    = ["melt"]
-provides    = ["melt"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,4 +24,9 @@ strip-prefix = "v"
 url     = "https://github.com/charmbracelet/melt/releases/download/v${version}/melt_${version}_Linux_${arch}.tar.gz"
 
 [source.install]
-"melt_${version}_Linux_${arch}/melt" = "melt"
+"melt_${version}_Linux_${arch}/LICENSE.md"            = "LICENSE.md"
+"melt_${version}_Linux_${arch}/melt"                  = "bin/melt"
+"melt_${version}_Linux_${arch}/completions/melt.bash" = "share/bash-completion/completions/melt"
+"melt_${version}_Linux_${arch}/completions/melt.fish" = "share/fish/vendor_completions.d/melt.fish"
+"melt_${version}_Linux_x86_64/manpages/melt.1.gz"     = "share/man/man1/melt.1.gz"
+"melt_${version}_Linux_${arch}/completions/melt.zsh"  = "share/zsh/site-functions/_melt"

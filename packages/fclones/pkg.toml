@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileTools", "Utility"]
 repology    = ["fclones"]
-provides    = ["fclones"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -21,7 +20,7 @@ strip-prefix = "v"
 url     = "https://github.com/pkolaczk/fclones/releases/download/v${version}/fclones-${version}-linux-musl-${arch}.tar.gz"
 
 [source.install]
-"target/${arch}-unknown-linux-musl/release/fclones" = "fclones"
+"target/${arch}-unknown-linux-musl/release/fclones" = "bin/fclones"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/pkolaczk/fclones/master/LICENSE"

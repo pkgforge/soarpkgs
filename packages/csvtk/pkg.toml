@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["csvtk"]
-provides    = ["csvtk"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/shenwei356/csvtk/releases/download/v${version}/csvtk_linux_${arch}.tar.gz"
 
 [source.install]
-"csvtk" = "csvtk"
+"csvtk" = "bin/csvtk"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/shenwei356/csvtk/master/LICENSE"

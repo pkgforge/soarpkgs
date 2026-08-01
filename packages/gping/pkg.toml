@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Network", "Utility"]
 repology    = ["gping"]
-provides    = ["gping"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,8 @@ strip-prefix = "gping-v"
 url     = "https://github.com/orf/gping/releases/download/gping-v${version}/gping-Linux-musl-${arch}.tar.gz"
 
 [source.install]
-"gping" = "gping"
+"gping"   = "bin/gping"
+"gping.1" = "share/man/man1/gping.1"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/orf/gping/master/LICENSE"

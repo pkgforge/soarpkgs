@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Monitor", "System"]
 repology    = ["procs"]
-provides    = ["procs"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,7 +20,7 @@ strip-prefix = "v"
 url     = "https://github.com/dalance/procs/releases/download/v${version}/procs-v${version}-${arch}-linux.zip"
 
 [source.install]
-"procs" = "procs"
+"procs" = "bin/procs"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/dalance/procs/master/LICENSE"

@@ -7,7 +7,6 @@ license     = ["GPL-3.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["System", "Utility"]
 repology    = ["clipcat"]
-provides    = ["clipcatd", "@clipcat-menu", "@clipcat-notify", "@clipcatctl"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -22,10 +21,22 @@ github  = "xrelkd/clipcat"
 glob    = "*${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"bin/clipcatd"       = "clipcatd"
-"bin/clipcatctl"     = "clipcatctl"
-"bin/clipcat-menu"   = "clipcat-menu"
-"bin/clipcat-notify" = "clipcat-notify"
+"bin/clipcat-menu"                                      = "bin/clipcat-menu"
+"bin/clipcat-notify"                                    = "bin/clipcat-notify"
+"bin/clipcatctl"                                        = "bin/clipcatctl"
+"bin/clipcatd"                                          = "bin/clipcatd"
+"share/bash-completion/completions/clipcat-menu.bash"   = "share/bash-completion/completions/clipcat-menu"
+"share/bash-completion/completions/clipcat-notify.bash" = "share/bash-completion/completions/clipcat-notify"
+"share/bash-completion/completions/clipcatctl.bash"     = "share/bash-completion/completions/clipcatctl"
+"share/bash-completion/completions/clipcatd.bash"       = "share/bash-completion/completions/clipcatd"
+"share/fish/vendor_completions.d/clipcat-menu.fish"     = "share/fish/vendor_completions.d/clipcat-menu.fish"
+"share/fish/vendor_completions.d/clipcat-notify.fish"   = "share/fish/vendor_completions.d/clipcat-notify.fish"
+"share/fish/vendor_completions.d/clipcatctl.fish"       = "share/fish/vendor_completions.d/clipcatctl.fish"
+"share/fish/vendor_completions.d/clipcatd.fish"         = "share/fish/vendor_completions.d/clipcatd.fish"
+"share/zsh/site-functions/_clipcat-menu"                = "share/zsh/site-functions/_clipcat-menu"
+"share/zsh/site-functions/_clipcat-notify"              = "share/zsh/site-functions/_clipcat-notify"
+"share/zsh/site-functions/_clipcatctl"                  = "share/zsh/site-functions/_clipcatctl"
+"share/zsh/site-functions/_clipcatd"                    = "share/zsh/site-functions/_clipcatd"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/xrelkd/clipcat/main/LICENSE"

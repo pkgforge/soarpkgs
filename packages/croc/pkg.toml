@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["FileTransfer", "Network", "Utility"]
 repology    = ["croc"]
-provides    = ["croc"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,5 @@ github  = "schollz/croc"
 glob    = "*Linux-${arch}.tar.gz"
 
 [source.install]
-"croc"    = "croc"
 "LICENSE" = "LICENSE"
+"croc"    = "bin/croc"

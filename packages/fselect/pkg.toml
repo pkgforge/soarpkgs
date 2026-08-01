@@ -7,7 +7,6 @@ license     = ["Apache-2.0", "MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileTools", "Utility"]
 repology    = ["fselect"]
-provides    = ["fselect"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -20,7 +19,7 @@ repo     = "jhspetersson/fselect"
 url = "https://github.com/jhspetersson/fselect/releases/download/${version}/fselect-${arch}-linux-musl.gz"
 
 [source.install]
-"fselect" = "fselect"
+"fselect" = "bin/fselect"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/jhspetersson/fselect/master/LICENSE-MIT"

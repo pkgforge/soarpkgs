@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["bat-cat"]
-provides    = ["bat"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,10 @@ strip-prefix = "v"
 url     = "https://github.com/sharkdp/bat/releases/download/v${version}/bat-v${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"bat-v${version}-${arch}-unknown-linux-musl/bat"         = "bat"
-"bat-v${version}-${arch}-unknown-linux-musl/LICENSE-MIT" = "LICENSE"
+"bat-v${version}-${arch}-unknown-linux-musl/LICENSE-MIT"           = "LICENSE-MIT"
+"bat-v${version}-${arch}-unknown-linux-musl/LICENSE-APACHE"        = "LICENSE-APACHE"
+"bat-v${version}-${arch}-unknown-linux-musl/bat"                   = "bin/bat"
+"bat-v${version}-${arch}-unknown-linux-musl/autocomplete/bat.bash" = "share/bash-completion/completions/bat"
+"bat-v${version}-${arch}-unknown-linux-musl/autocomplete/bat.fish" = "share/fish/vendor_completions.d/bat.fish"
+"bat-v${version}-${arch}-unknown-linux-musl/bat.1"                 = "share/man/man1/bat.1"
+"bat-v${version}-${arch}-unknown-linux-musl/autocomplete/bat.zsh"  = "share/zsh/site-functions/_bat"

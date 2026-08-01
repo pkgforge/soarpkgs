@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["watchexec"]
-provides    = ["watchexec"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,9 @@ strip-prefix = "v"
 url     = "https://github.com/watchexec/watchexec/releases/download/v${version}/watchexec-${version}-${arch}-unknown-linux-musl.tar.xz"
 
 [source.install]
-"watchexec-${version}-${arch}-unknown-linux-musl/watchexec" = "watchexec"
-"watchexec-${version}-${arch}-unknown-linux-musl/LICENSE"   = "LICENSE"
+"watchexec-${version}-${arch}-unknown-linux-musl/LICENSE"          = "LICENSE"
+"watchexec-${version}-${arch}-unknown-linux-musl/watchexec"        = "bin/watchexec"
+"watchexec-${version}-${arch}-unknown-linux-musl/completions/bash" = "share/bash-completion/completions/watchexec"
+"watchexec-${version}-${arch}-unknown-linux-musl/completions/fish" = "share/fish/vendor_completions.d/watchexec.fish"
+"watchexec-${version}-${arch}-unknown-linux-musl/watchexec.1"      = "share/man/man1/watchexec.1"
+"watchexec-${version}-${arch}-unknown-linux-musl/completions/zsh"  = "share/zsh/site-functions/_watchexec"

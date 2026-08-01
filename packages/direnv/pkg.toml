@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Shell", "Development"]
 repology    = ["direnv"]
-provides    = ["direnv"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url = "https://github.com/direnv/direnv/releases/download/v${version}/direnv.linux-${arch}"
 
 [source.install]
-"direnv" = "direnv"
+"direnv" = "bin/direnv"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/direnv/direnv/master/LICENSE"

@@ -7,7 +7,6 @@ license     = ["LGPL-2.0-only"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Archiving", "Compression", "Utility"]
 repology    = ["7zip"]
-provides    = ["7zip=>7z"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -24,6 +23,11 @@ repo     = "ip7z/7zip"
 github  = "ip7z/7zip"
 glob    = "*linux-${arch}*.tar.xz"
 
-[source.install]
-"7zzs"        = "7z"
-"License.txt" = "LICENSE"
+[[source.install]]
+from = "License.txt"
+to   = "License.txt"
+
+[[source.install]]
+from       = "7zz"
+to         = "bin/7zz"
+symlink_as = ["7z", "7za", "7zr"]

@@ -7,7 +7,6 @@ license     = ["BSD-2-Clause"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Monitor", "Utility"]
 repology    = ["lnav"]
-provides    = ["lnav"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,8 @@ strip-prefix = "v"
 url     = "https://github.com/tstack/lnav/releases/download/v${version}/lnav-${version}-linux-musl-${arch}.zip"
 
 [source.install]
-"lnav-${version}/lnav" = "lnav"
+"lnav-${version}/lnav"   = "bin/lnav"
+"lnav-${version}/lnav.1" = "share/man/man1/lnav.1"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/tstack/lnav/master/LICENSE"

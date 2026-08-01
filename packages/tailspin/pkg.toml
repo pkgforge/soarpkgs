@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["tailspin"]
-provides    = ["tspin"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -20,7 +19,7 @@ repo     = "bensadeh/tailspin"
 url     = "https://github.com/bensadeh/tailspin/releases/download/${version}/tailspin-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"tspin" = "tspin"
+"tspin" = "bin/tspin"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/bensadeh/tailspin/main/LICENCE"

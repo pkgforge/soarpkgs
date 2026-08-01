@@ -7,7 +7,6 @@ license     = ["GPL-3.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["shellcheck"]
-provides    = ["shellcheck"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,5 @@ strip-prefix = "v"
 url     = "https://github.com/koalaman/shellcheck/releases/download/v${version}/shellcheck-v${version}.linux.${arch}.tar.xz"
 
 [source.install]
-"shellcheck-v${version}/shellcheck"  = "shellcheck"
-"shellcheck-v${version}/LICENSE.txt" = "LICENSE"
+"shellcheck-v${version}/LICENSE.txt" = "LICENSE.txt"
+"shellcheck-v${version}/shellcheck"  = "bin/shellcheck"

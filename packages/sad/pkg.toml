@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["sad"]
-provides    = ["sad"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,7 +20,7 @@ strip-prefix = "v"
 url     = "https://github.com/ms-jpq/sad/releases/download/v${version}/${arch}-unknown-linux-musl.zip"
 
 [source.install]
-"sad" = "sad"
+"sad" = "bin/sad"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/ms-jpq/sad/senpai/LICENSE"

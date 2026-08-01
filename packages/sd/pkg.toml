@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "TextTools", "Utility"]
 repology    = ["sd-find-replace"]
-provides    = ["sd"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,9 @@ strip-prefix = "v"
 url     = "https://github.com/chmln/sd/releases/download/v${version}/sd-v${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"sd-v${version}-${arch}-unknown-linux-musl/sd"      = "sd"
-"sd-v${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"
+"sd-v${version}-${arch}-unknown-linux-musl/LICENSE"             = "LICENSE"
+"sd-v${version}-${arch}-unknown-linux-musl/sd"                  = "bin/sd"
+"sd-v${version}-${arch}-unknown-linux-musl/completions/sd.bash" = "share/bash-completion/completions/sd"
+"sd-v${version}-${arch}-unknown-linux-musl/completions/sd.fish" = "share/fish/vendor_completions.d/sd.fish"
+"sd-v${version}-${arch}-unknown-linux-musl/sd.1"                = "share/man/man1/sd.1"
+"sd-v${version}-${arch}-unknown-linux-musl/completions/_sd"     = "share/zsh/site-functions/_sd"

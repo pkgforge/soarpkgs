@@ -7,7 +7,6 @@ license     = ["LGPL-2.1"]
 maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
 category    = ["Development", "Utility"]
 repology    = ["zenity"]
-provides    = ["zenity-gtk3==zenity"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -20,6 +19,9 @@ tag-suffix = "strip"
 [source]
 github = "pkgforge-dev/Zenity-GTK3-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[source.install]]
+to   = "bin/zenity"
 
 [[extra]]
 url = "https://gitlab.gnome.org/GNOME/zenity/-/raw/master/COPYING"

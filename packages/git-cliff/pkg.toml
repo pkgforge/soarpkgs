@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["git-cliff"]
-provides    = ["git-cliff"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,10 @@ strip-prefix = "v"
 url     = "https://github.com/orhun/git-cliff/releases/download/v${version}/git-cliff-${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"git-cliff-${version}/git-cliff"   = "git-cliff"
-"git-cliff-${version}/LICENSE-MIT" = "LICENSE"
+"git-cliff-${version}/LICENSE-MIT"                = "LICENSE-MIT"
+"git-cliff-${version}/LICENSE-APACHE"             = "LICENSE-APACHE"
+"git-cliff-${version}/git-cliff"                  = "bin/git-cliff"
+"git-cliff-${version}/completions/git-cliff.bash" = "share/bash-completion/completions/git-cliff"
+"git-cliff-${version}/completions/git-cliff.fish" = "share/fish/vendor_completions.d/git-cliff.fish"
+"git-cliff-${version}/man/git-cliff.1"            = "share/man/man1/git-cliff.1"
+"git-cliff-${version}/completions/_git-cliff"     = "share/zsh/site-functions/_git-cliff"

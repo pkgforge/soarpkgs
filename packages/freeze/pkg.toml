@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["freeze"]
-provides    = ["freeze"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,4 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/charmbracelet/freeze/releases/download/v${version}/freeze_${version}_Linux_${arch}.tar.gz"
 
 [source.install]
-"freeze_${version}_Linux_${arch}/freeze" = "freeze"
+"freeze_${version}_Linux_${arch}/LICENSE" = "LICENSE"
+"freeze_${version}_Linux_${arch}/freeze"  = "bin/freeze"

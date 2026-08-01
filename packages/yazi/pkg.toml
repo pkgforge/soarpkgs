@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileManager", "Utility"]
 repology    = ["yazi"]
-provides    = ["yazi", "@ya"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,6 +20,12 @@ strip-prefix = "v"
 url     = "https://github.com/sxyazi/yazi/releases/download/v${version}/yazi-${arch}-unknown-linux-musl.zip"
 
 [source.install]
-"yazi-${arch}-unknown-linux-musl/yazi"    = "yazi"
-"yazi-${arch}-unknown-linux-musl/ya"      = "ya"
-"yazi-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"
+"yazi-${arch}-unknown-linux-musl/LICENSE"               = "LICENSE"
+"yazi-${arch}-unknown-linux-musl/ya"                    = "bin/ya"
+"yazi-${arch}-unknown-linux-musl/yazi"                  = "bin/yazi"
+"yazi-${arch}-unknown-linux-musl/completions/ya.bash"   = "share/bash-completion/completions/ya"
+"yazi-${arch}-unknown-linux-musl/completions/yazi.bash" = "share/bash-completion/completions/yazi"
+"yazi-${arch}-unknown-linux-musl/completions/ya.fish"   = "share/fish/vendor_completions.d/ya.fish"
+"yazi-${arch}-unknown-linux-musl/completions/yazi.fish" = "share/fish/vendor_completions.d/yazi.fish"
+"yazi-${arch}-unknown-linux-musl/completions/_ya"       = "share/zsh/site-functions/_ya"
+"yazi-${arch}-unknown-linux-musl/completions/_yazi"     = "share/zsh/site-functions/_yazi"

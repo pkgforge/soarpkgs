@@ -6,7 +6,6 @@ homepage    = ["https://github.com/tonistiigi/binfmt"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Emulator", "System"]
-provides    = ["binfmt"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ github  = "tonistiigi/binfmt"
 glob    = "binfmt_linux-${arch}.tar.gz"
 
 [source.install]
-"binfmt" = "binfmt"
+"binfmt" = "bin/binfmt"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/tonistiigi/binfmt/master/LICENSE"

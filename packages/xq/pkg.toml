@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["xq-sibprogrammer"]
-provides    = ["xq"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,4 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/sibprogrammer/xq/releases/download/v${version}/xq_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"xq" = "xq"
+"LICENSE" = "LICENSE"
+"xq"      = "bin/xq"

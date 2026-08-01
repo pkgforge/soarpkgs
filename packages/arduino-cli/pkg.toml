@@ -7,7 +7,6 @@ license     = ["GPL-3.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Development", "Electronics"]
 repology    = ["arduino-cli"]
-provides    = ["arduino-cli"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,5 @@ github  = "arduino/arduino-cli"
 glob    = "*Linux_${arch}.tar.gz"
 
 [source.install]
-"arduino-cli" = "arduino-cli"
-"LICENSE.txt" = "LICENSE"
+"LICENSE.txt" = "LICENSE.txt"
+"arduino-cli" = "bin/arduino-cli"

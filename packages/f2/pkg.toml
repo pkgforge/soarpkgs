@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileTools", "Utility"]
 repology    = ["f2"]
-provides    = ["f2"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,8 @@ strip-prefix = "v"
 url     = "https://github.com/ayoisaiah/f2/releases/download/v${version}/f2_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"f2"      = "f2"
-"LICENCE" = "LICENSE"
+"LICENCE"             = "LICENCE"
+"f2"                  = "bin/f2"
+"completions/f2.bash" = "share/bash-completion/completions/f2"
+"completions/f2.fish" = "share/fish/vendor_completions.d/f2.fish"
+"completions/f2.zsh"  = "share/zsh/site-functions/_f2"

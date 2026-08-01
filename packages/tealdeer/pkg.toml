@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["tealdeer"]
-provides    = ["tldr"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -19,6 +18,9 @@ strip-prefix = "v"
 
 [source]
 url = "https://github.com/dbrgn/tealdeer/releases/download/v${version}/tealdeer-linux-${arch}-musl"
+
+[[source.install]]
+to   = "bin/tldr"
 
 [[extra]]
 url = "https://github.com/dbrgn/tealdeer/releases/download/v${version}/LICENSE-APACHE.txt"

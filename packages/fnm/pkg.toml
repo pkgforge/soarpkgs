@@ -7,7 +7,6 @@ license     = ["GPL-3.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["fnm"]
-provides    = ["fnm"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -24,7 +23,7 @@ x86_64-linux  = "https://github.com/Schniz/fnm/releases/download/v${version}/fnm
 aarch64-linux = "https://github.com/Schniz/fnm/releases/download/v${version}/fnm-arm64.zip"
 
 [source.install]
-"fnm" = "fnm"
+"fnm" = "bin/fnm"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/Schniz/fnm/master/LICENSE"

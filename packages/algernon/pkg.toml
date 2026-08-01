@@ -7,7 +7,6 @@ license     = ["BSD-3-Clause"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Network", "WebDevelopment"]
 repology    = ["algernon"]
-provides    = ["algernon"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,6 @@ strip-prefix = "v"
 url     = "https://github.com/xyproto/algernon/releases/download/v${version}/algernon-${version}-linux_${arch}_static.tar.xz"
 
 [source.install]
-"*/algernon" = "algernon"
-"*/LICENSE"  = "LICENSE"
+"*/LICENSE"                                             = "LICENSE"
+"*/algernon"                                            = "bin/algernon"
+"algernon-${version}-linux_x86_64_static/algernon.1.gz" = "share/man/man1/algernon.1.gz"

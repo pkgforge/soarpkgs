@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["hwatch"]
-provides    = ["hwatch"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -20,7 +19,11 @@ repo     = "blacknon/hwatch"
 url     = "https://github.com/blacknon/hwatch/releases/download/${version}/hwatch-${version}.${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"bin/hwatch" = "hwatch"
+"bin/hwatch"                             = "bin/hwatch"
+"man/hwatch.1"                           = "share/man/man1/hwatch.1"
+"completion/bash/hwatch-completion.bash" = "share/bash-completion/completions/hwatch"
+"completion/fish/hwatch.fish"            = "share/fish/vendor_completions.d/hwatch.fish"
+"completion/zsh/_hwatch"                 = "share/zsh/site-functions/_hwatch"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/blacknon/hwatch/master/LICENSE"

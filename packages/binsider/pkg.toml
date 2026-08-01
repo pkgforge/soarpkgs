@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["binsider"]
-provides    = ["binsider"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -22,5 +21,6 @@ github  = "orhun/binsider"
 glob    = "*${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"binsider-${version}/binsider"    = "binsider"
-"binsider-${version}/LICENSE-MIT" = "LICENSE"
+"binsider-${version}/LICENSE-MIT"    = "LICENSE-MIT"
+"binsider-${version}/LICENSE-APACHE" = "LICENSE-APACHE"
+"binsider-${version}/binsider"       = "bin/binsider"

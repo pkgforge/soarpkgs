@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["sttr"]
-provides    = ["sttr"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/abhimanyu003/sttr/releases/download/v${version}/sttr_Linux_${arch}.tar.gz"
 
 [source.install]
-"sttr"    = "sttr"
 "LICENSE" = "LICENSE"
+"sttr"    = "bin/sttr"

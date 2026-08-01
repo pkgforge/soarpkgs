@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["jnv"]
-provides    = ["jnv"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -21,5 +20,5 @@ strip-prefix = "v"
 url     = "https://github.com/ynqa/jnv/releases/download/v${version}/jnv-${arch}-unknown-linux-musl.tar.xz"
 
 [source.install]
-"jnv-${arch}-unknown-linux-musl/jnv"     = "jnv"
 "jnv-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"
+"jnv-${arch}-unknown-linux-musl/jnv"     = "bin/jnv"

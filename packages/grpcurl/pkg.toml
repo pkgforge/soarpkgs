@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Network", "Development"]
 repology    = ["grpcurl"]
-provides    = ["grpcurl"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/fullstorydev/grpcurl/releases/download/v${version}/grpcurl_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"grpcurl" = "grpcurl"
 "LICENSE" = "LICENSE"
+"grpcurl" = "bin/grpcurl"

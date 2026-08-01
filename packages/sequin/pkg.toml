@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["sequin"]
-provides    = ["sequin"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,4 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/charmbracelet/sequin/releases/download/v${version}/sequin_${version}_Linux_${arch}.tar.gz"
 
 [source.install]
-"sequin_${version}_Linux_${arch}/sequin" = "sequin"
+"sequin_${version}_Linux_${arch}/LICENSE" = "LICENSE"
+"sequin_${version}_Linux_${arch}/sequin"  = "bin/sequin"
