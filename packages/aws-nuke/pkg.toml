@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Development", "Utility"]
 repology    = ["aws-nuke"]
-provides    = ["aws-nuke"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,5 @@ github  = "ekristen/aws-nuke"
 glob    = "*linux-${arch}.tar.gz"
 
 [source.install]
-"aws-nuke" = "aws-nuke"
 "LICENSE"  = "LICENSE"
+"aws-nuke" = "bin/aws-nuke"

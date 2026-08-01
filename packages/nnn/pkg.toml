@@ -7,7 +7,6 @@ license     = ["BSD-2-Clause"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileManager", "Utility"]
 repology    = ["nnn"]
-provides    = ["nnn"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -21,7 +20,7 @@ strip-prefix = "v"
 url     = "https://github.com/jarun/nnn/releases/download/v${version}/nnn-musl-static-${version}.${arch}.tar.gz"
 
 [source.install]
-"nnn-musl-static" = "nnn"
+"nnn-musl-static" = "bin/nnn"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/jarun/nnn/master/LICENSE"

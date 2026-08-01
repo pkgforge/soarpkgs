@@ -10,10 +10,6 @@ license    = ["GPL-3.0"]
 maintainer = ["Samueru-sama (github.com/Samueru-sama)"]
 category   = ["Recorder", "Video"]
 repology   = ["gpu-screen-recorder"]
-provides   = [
-  "gpu-screen-recorder=>gpu-screen-recorder-gtk",
-  "gpu-screen-recorder=>gsr-ui",
-]
 channel = "unstable"
 
 [host]
@@ -27,6 +23,10 @@ tag-suffix = "strip"
 [source]
 github = "pkgforge-dev/gpu-screen-recorder-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[source.install]]
+to   = "bin/gpu-screen-recorder"
+symlink_as = ["gpu-screen-recorder-gtk", "gsr-ui"]
 
 [[extra]]
 url = "https://git.dec05eba.com/gpu-screen-recorder/plain/LICENSE"

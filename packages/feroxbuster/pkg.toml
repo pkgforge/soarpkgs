@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Network", "Security"]
 repology    = ["feroxbuster"]
-provides    = ["feroxbuster"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,7 +25,7 @@ aarch64-linux = "https://github.com/epi052/feroxbuster/releases/download/v${vers
 [source]
 
 [source.install]
-"feroxbuster" = "feroxbuster"
+"feroxbuster" = "bin/feroxbuster"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/epi052/feroxbuster/main/LICENSE"

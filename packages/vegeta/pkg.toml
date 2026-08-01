@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Network", "Utility"]
 repology    = ["vegeta"]
-provides    = ["vegeta"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/tsenart/vegeta/releases/download/v${version}/vegeta_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"vegeta" = "vegeta"
+"vegeta" = "bin/vegeta"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/tsenart/vegeta/master/LICENSE"

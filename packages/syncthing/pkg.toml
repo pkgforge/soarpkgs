@@ -7,7 +7,6 @@ license     = ["MPL-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Filesystem", "FileTransfer"]
 repology    = ["syncthing"]
-provides    = ["syncthing"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,6 +24,6 @@ strip-prefix = "v"
 url     = "https://github.com/syncthing/syncthing/releases/download/v${version}/syncthing-linux-${arch}-v${version}.tar.gz"
 
 [source.install]
-"*/syncthing"                              = "syncthing"
-"*/LICENSE.txt"                            = "LICENSE"
+"*/LICENSE.txt"                            = "LICENSE.txt"
+"*/syncthing"                              = "bin/syncthing"
 "*/etc/linux-desktop/syncthing-ui.desktop" = "syncthing-ui.desktop"

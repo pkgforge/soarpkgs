@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["albafetch"]
-provides    = ["albafetch"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,7 +25,7 @@ github  = "alba4k/albafetch"
 glob    = "albafetch-linux-${arch}-static.zip"
 
 [source.install]
-"albafetch" = "albafetch"
+"albafetch" = "bin/albafetch"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/alba4k/albafetch/master/LICENSE"

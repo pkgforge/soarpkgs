@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["vhs"]
-provides    = ["vhs"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,4 +24,9 @@ strip-prefix = "v"
 url     = "https://github.com/charmbracelet/vhs/releases/download/v${version}/vhs_${version}_Linux_${arch}.tar.gz"
 
 [source.install]
-"vhs_${version}_Linux_${arch}/vhs" = "vhs"
+"vhs_${version}_Linux_${arch}/LICENSE"              = "LICENSE"
+"vhs_${version}_Linux_${arch}/vhs"                  = "bin/vhs"
+"vhs_${version}_Linux_${arch}/completions/vhs.bash" = "share/bash-completion/completions/vhs"
+"vhs_${version}_Linux_${arch}/completions/vhs.fish" = "share/fish/vendor_completions.d/vhs.fish"
+"vhs_${version}_Linux_x86_64/manpages/vhs.1.gz"     = "share/man/man1/vhs.1.gz"
+"vhs_${version}_Linux_${arch}/completions/vhs.zsh"  = "share/zsh/site-functions/_vhs"

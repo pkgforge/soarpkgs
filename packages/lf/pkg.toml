@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileManager", "Utility"]
 repology    = ["lf"]
-provides    = ["lf"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -24,7 +23,7 @@ repo     = "gokcehan/lf"
 url     = "https://github.com/gokcehan/lf/releases/download/${version}/lf-linux-${arch}.tar.gz"
 
 [source.install]
-"lf" = "lf"
+"lf" = "bin/lf"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/gokcehan/lf/master/LICENSE"

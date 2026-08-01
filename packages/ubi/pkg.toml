@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["ubi"]
-provides    = ["ubi"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/houseabsolute/ubi/releases/download/v${version}/ubi-Linux-musl-${arch}.tar.gz"
 
 [source.install]
-"ubi" = "ubi"
+"ubi" = "bin/ubi"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/houseabsolute/ubi/master/LICENSE-APACHE"

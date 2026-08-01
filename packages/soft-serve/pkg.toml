@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Network"]
 repology    = ["soft-serve"]
-provides    = ["soft"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,4 +24,9 @@ strip-prefix = "v"
 url     = "https://github.com/charmbracelet/soft-serve/releases/download/v${version}/soft-serve_${version}_Linux_${arch}.tar.gz"
 
 [source.install]
-"soft-serve_${version}_Linux_${arch}/soft" = "soft"
+"soft-serve_${version}_Linux_${arch}/LICENSE"                     = "LICENSE"
+"soft-serve_${version}_Linux_${arch}/soft"                        = "bin/soft"
+"soft-serve_${version}_Linux_${arch}/completions/soft-serve.bash" = "share/bash-completion/completions/soft-serve"
+"soft-serve_${version}_Linux_${arch}/completions/soft-serve.fish" = "share/fish/vendor_completions.d/soft-serve.fish"
+"soft-serve_${version}_Linux_x86_64/manpages/soft-serve.1.gz"     = "share/man/man1/soft-serve.1.gz"
+"soft-serve_${version}_Linux_${arch}/completions/soft-serve.zsh"  = "share/zsh/site-functions/_soft-serve"

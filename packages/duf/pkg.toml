@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Filesystem", "Utility"]
 repology    = ["duf"]
-provides    = ["duf"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,8 @@ strip-prefix = "v"
 url     = "https://github.com/muesli/duf/releases/download/v${version}/duf_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"duf" = "duf"
+"duf"   = "bin/duf"
+"duf.1" = "share/man/man1/duf.1"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/muesli/duf/master/LICENSE"

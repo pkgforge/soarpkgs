@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Development", "Utility"]
 repology    = ["mise"]
-provides    = ["mise"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,7 @@ github  = "jdx/mise"
 glob    = "*linux-${arch}-musl.tar.xz"
 
 [source.install]
-"mise/bin/mise" = "mise"
-"mise/LICENSE"  = "LICENSE"
+"mise/LICENSE"                                     = "LICENSE"
+"mise/bin/mise"                                    = "bin/mise"
+"mise/share/fish/vendor_conf.d/mise-activate.fish" = "share/fish/vendor_completions.d/mise-activate.fish"
+"mise/man/man1/mise.1"                             = "share/man/man1/mise.1"

@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["ruff-python-linter"]
-provides    = ["ruff"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -20,7 +19,7 @@ repo     = "astral-sh/ruff"
 url     = "https://github.com/astral-sh/ruff/releases/download/${version}/ruff-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"ruff-${arch}-unknown-linux-musl/ruff" = "ruff"
+"ruff-${arch}-unknown-linux-musl/ruff" = "bin/ruff"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE"

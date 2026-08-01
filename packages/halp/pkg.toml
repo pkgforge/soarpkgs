@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["halp"]
-provides    = ["halp"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,10 @@ strip-prefix = "v"
 url     = "https://github.com/orhun/halp/releases/download/v${version}/halp-${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"halp-${version}/halp"        = "halp"
-"halp-${version}/LICENSE-MIT" = "LICENSE"
+"halp-${version}/LICENSE-MIT"           = "LICENSE-MIT"
+"halp-${version}/LICENSE-APACHE"        = "LICENSE-APACHE"
+"halp-${version}/halp"                  = "bin/halp"
+"halp-${version}/completions/halp.bash" = "share/bash-completion/completions/halp"
+"halp-${version}/completions/halp.fish" = "share/fish/vendor_completions.d/halp.fish"
+"halp-${version}/man/halp.1"            = "share/man/man1/halp.1"
+"halp-${version}/completions/_halp"     = "share/zsh/site-functions/_halp"

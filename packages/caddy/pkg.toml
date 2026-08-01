@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Network", "WebDevelopment"]
 repology    = ["caddy"]
-provides    = ["caddy"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,5 @@ github  = "caddyserver/caddy"
 glob    = "*linux_${arch}.tar.gz"
 
 [source.install]
-"caddy"   = "caddy"
 "LICENSE" = "LICENSE"
+"caddy"   = "bin/caddy"

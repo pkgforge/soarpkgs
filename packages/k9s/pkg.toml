@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["k9s"]
-provides    = ["k9s"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_${arch}.tar.gz"
 
 [source.install]
-"k9s"     = "k9s"
 "LICENSE" = "LICENSE"
+"k9s"     = "bin/k9s"

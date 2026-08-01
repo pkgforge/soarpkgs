@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["fzf"]
-provides    = ["fzf"]
 
 [host]
 supported = ["aarch64-linux", "x86_64-linux"]
@@ -26,7 +25,7 @@ github  = "junegunn/fzf"
 glob    = "*linux_${arch}.tar.gz"
 
 [source.install]
-"fzf" = "fzf"
+"fzf" = "bin/fzf"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/junegunn/fzf/master/LICENSE"

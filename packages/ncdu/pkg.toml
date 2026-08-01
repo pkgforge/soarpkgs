@@ -8,7 +8,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Filesystem", "Utility"]
 repology    = ["ncdu"]
-provides    = ["ncdu"]
 note        = ["Official binary from https://dev.yorhel.nl/ncdu"]
 
 [host]
@@ -21,9 +20,6 @@ pattern  = "ncdu-(\\d+\\.\\d+(?:\\.\\d+)?)-linux"
 
 [source]
 url     = "https://dev.yorhel.nl/download/ncdu-${version}-linux-${arch}.tar.gz"
-
-[source.install]
-"*" = "."
 
 [[extra]]
 url = "https://code.blicky.net/yorhel/ncdu/raw/branch/HEAD/LICENSES/MIT.txt"

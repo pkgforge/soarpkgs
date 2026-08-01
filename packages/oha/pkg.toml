@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Network", "Utility"]
 repology    = ["oha"]
-provides    = ["oha"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url = "https://github.com/hatoo/oha/releases/download/v${version}/oha-linux-${arch}"
 
 [source.install]
-"oha" = "oha"
+"oha" = "bin/oha"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/hatoo/oha/master/LICENSE"

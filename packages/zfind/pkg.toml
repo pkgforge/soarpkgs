@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileTools", "Utility"]
 repology    = ["zfind"]
-provides    = ["zfind"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/laktak/zfind/releases/download/v${version}/zfind-linux-${arch}.tar.gz"
 
 [source.install]
-"zfind" = "zfind"
+"zfind" = "bin/zfind"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/laktak/zfind/master/LICENSE"

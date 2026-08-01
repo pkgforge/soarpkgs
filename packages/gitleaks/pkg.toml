@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Security", "Development"]
 repology    = ["gitleaks"]
-provides    = ["gitleaks"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/gitleaks/gitleaks/releases/download/v${version}/gitleaks_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"gitleaks" = "gitleaks"
 "LICENSE"  = "LICENSE"
+"gitleaks" = "bin/gitleaks"

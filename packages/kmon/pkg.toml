@@ -7,7 +7,6 @@ license     = ["GPL-3.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["kmon"]
-provides    = ["kmon"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -21,5 +20,9 @@ strip-prefix = "v"
 url     = "https://github.com/orhun/kmon/releases/download/v${version}/kmon-${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"kmon-${version}/kmon"    = "kmon"
-"kmon-${version}/LICENSE" = "LICENSE"
+"kmon-${version}/LICENSE"               = "LICENSE"
+"kmon-${version}/kmon"                  = "bin/kmon"
+"kmon-${version}/completions/kmon.bash" = "share/bash-completion/completions/kmon"
+"kmon-${version}/completions/kmon.fish" = "share/fish/vendor_completions.d/kmon.fish"
+"kmon-${version}/man/kmon.8"            = "share/man/man8/kmon.8"
+"kmon-${version}/completions/_kmon"     = "share/zsh/site-functions/_kmon"

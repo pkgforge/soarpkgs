@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["bluetuith"]
-provides    = ["bluetuith"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,5 @@ github  = "bluetuith-org/bluetuith"
 glob    = "*Linux_${arch}.tar.gz"
 
 [source.install]
-"bluetuith" = "bluetuith"
 "LICENSE"   = "LICENSE"
+"bluetuith" = "bin/bluetuith"

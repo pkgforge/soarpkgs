@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["pueue"]
-provides    = ["pueue", "@pueued"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -19,6 +18,10 @@ strip-prefix = "v"
 
 [source]
 url = "https://github.com/Nukesor/pueue/releases/download/v${version}/pueue-${arch}-unknown-linux-musl"
+
+[[source.install]]
+to   = "bin/pueue"
+symlink_as = ["pueued"]
 
 [[extra]]
 url = "https://raw.githubusercontent.com/Nukesor/pueue/main/LICENSE.MIT"

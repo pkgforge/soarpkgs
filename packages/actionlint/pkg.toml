@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["Development", "Utility"]
 repology    = ["actionlint"]
-provides    = ["actionlint"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,6 @@ strip-prefix = "v"
 url     = "https://github.com/rhysd/actionlint/releases/download/v${version}/actionlint_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"actionlint"  = "actionlint"
-"LICENSE.txt" = "LICENSE"
+"LICENSE.txt"  = "LICENSE.txt"
+"actionlint"   = "bin/actionlint"
+"actionlint.1" = "share/man/man1/actionlint.1"

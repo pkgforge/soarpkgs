@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "TextTools", "Utility"]
 repology    = ["git-delta"]
-provides    = ["delta"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -20,5 +19,5 @@ repo     = "dandavison/delta"
 url     = "https://github.com/dandavison/delta/releases/download/${version}/delta-${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"delta-${version}-${arch}-unknown-linux-musl/delta"   = "delta"
 "delta-${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"
+"delta-${version}-${arch}-unknown-linux-musl/delta"   = "bin/delta"

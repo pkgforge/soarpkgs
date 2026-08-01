@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["nerdctl"]
-provides    = ["nerdctl"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/containerd/nerdctl/releases/download/v${version}/nerdctl-${version}-linux-${arch}.tar.gz"
 
 [source.install]
-"nerdctl" = "nerdctl"
+"nerdctl" = "bin/nerdctl"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/containerd/nerdctl/main/LICENSE"

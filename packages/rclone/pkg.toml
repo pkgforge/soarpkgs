@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileTransfer", "Network"]
 repology    = ["rclone"]
-provides    = ["rclone"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,8 @@ strip-prefix = "v"
 url     = "https://github.com/rclone/rclone/releases/download/v${version}/rclone-v${version}-linux-${arch}.zip"
 
 [source.install]
-"rclone-v${version}-linux-${arch}/rclone" = "rclone"
+"rclone-v${version}-linux-${arch}/rclone"   = "bin/rclone"
+"rclone-v${version}-linux-${arch}/rclone.1" = "share/man/man1/rclone.1"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/rclone/rclone/master/COPYING"

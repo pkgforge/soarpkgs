@@ -7,7 +7,6 @@ license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "FileTools", "Utility"]
 repology    = ["lsd"]
-provides    = ["lsd"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -21,5 +20,8 @@ strip-prefix = "v"
 url     = "https://github.com/lsd-rs/lsd/releases/download/v${version}/lsd-v${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
-"lsd-v${version}-${arch}-unknown-linux-musl/lsd"     = "lsd"
-"lsd-v${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"
+"lsd-v${version}-${arch}-unknown-linux-musl/LICENSE"               = "LICENSE"
+"lsd-v${version}-${arch}-unknown-linux-musl/lsd"                   = "bin/lsd"
+"lsd-v${version}-${arch}-unknown-linux-musl/autocomplete/lsd.fish" = "share/fish/vendor_completions.d/lsd.fish"
+"lsd-v${version}-${arch}-unknown-linux-musl/lsd.1"                 = "share/man/man1/lsd.1"
+"lsd-v${version}-${arch}-unknown-linux-musl/autocomplete/_lsd"     = "share/zsh/site-functions/_lsd"

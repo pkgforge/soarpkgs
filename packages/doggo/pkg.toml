@@ -7,7 +7,6 @@ license     = ["GPL-3.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Network", "Utility"]
 repology    = ["doggo"]
-provides    = ["doggo"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -26,5 +25,5 @@ github  = "mr-karan/doggo"
 glob    = "doggo-linux-${arch}.tar.gz"
 
 [source.install]
-"doggo"   = "doggo"
 "LICENSE" = "LICENSE"
+"doggo"   = "bin/doggo"

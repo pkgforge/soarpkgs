@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["dive"]
-provides    = ["dive"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/wagoodman/dive/releases/download/v${version}/dive_${version}_linux_${arch}.tar.gz"
 
 [source.install]
-"dive"    = "dive"
 "LICENSE" = "LICENSE"
+"dive"    = "bin/dive"

@@ -7,7 +7,6 @@ license     = ["AGPL-3.0-or-later"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["FileManager", "Network"]
 repology    = ["alist"]
-provides    = ["alist"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,7 +24,7 @@ strip-prefix = "v"
 url     = "https://github.com/AlistGo/alist/releases/download/v${version}/alist-linux-musl-${arch}.tar.gz"
 
 [source.install]
-"alist" = "alist"
+"alist" = "bin/alist"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"

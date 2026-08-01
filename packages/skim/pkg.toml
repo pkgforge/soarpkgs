@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["skim-fuzzy-finder"]
-provides    = ["sk"]
 
 [host]
 supported = ["x86_64-linux"]
@@ -21,4 +20,13 @@ strip-prefix = "v"
 url     = "https://github.com/lotabout/skim/releases/download/v${version}/skim-${arch}-unknown-linux-musl.tar.xz"
 
 [source.install]
-"skim-${arch}-unknown-linux-musl/sk" = "sk"
+"skim-${arch}-unknown-linux-musl/shell/LICENSE"           = "LICENSE"
+"skim-${arch}-unknown-linux-musl/sk"                      = "bin/sk"
+"skim-${arch}-unknown-linux-musl/shell/completion.bash"   = "share/bash-completion/completions/completion"
+"skim-${arch}-unknown-linux-musl/shell/key-bindings.bash" = "share/bash-completion/completions/key-bindings"
+"skim-${arch}-unknown-linux-musl/shell/completion.fish"   = "share/fish/vendor_completions.d/completion.fish"
+"skim-${arch}-unknown-linux-musl/shell/key-bindings.fish" = "share/fish/vendor_completions.d/key-bindings.fish"
+"skim-${arch}-unknown-linux-musl/man/man1/sk-tmux.1"      = "share/man/man1/sk-tmux.1"
+"skim-${arch}-unknown-linux-musl/man/man1/sk.1"           = "share/man/man1/sk.1"
+"skim-${arch}-unknown-linux-musl/shell/completion.zsh"    = "share/zsh/site-functions/_completion"
+"skim-${arch}-unknown-linux-musl/shell/key-bindings.zsh"  = "share/zsh/site-functions/_key-bindings"

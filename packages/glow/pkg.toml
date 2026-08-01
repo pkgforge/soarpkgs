@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Utility"]
 repology    = ["glow"]
-provides    = ["glow"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,9 @@ strip-prefix = "v"
 url     = "https://github.com/charmbracelet/glow/releases/download/v${version}/glow_${version}_Linux_${arch}.tar.gz"
 
 [source.install]
-"glow_${version}_Linux_${arch}/glow"    = "glow"
-"glow_${version}_Linux_${arch}/LICENSE" = "LICENSE"
+"glow_${version}_Linux_${arch}/LICENSE"               = "LICENSE"
+"glow_${version}_Linux_${arch}/glow"                  = "bin/glow"
+"glow_${version}_Linux_${arch}/completions/glow.bash" = "share/bash-completion/completions/glow"
+"glow_${version}_Linux_${arch}/completions/glow.fish" = "share/fish/vendor_completions.d/glow.fish"
+"glow_${version}_Linux_x86_64/manpages/glow.1.gz"     = "share/man/man1/glow.1.gz"
+"glow_${version}_Linux_${arch}/completions/glow.zsh"  = "share/zsh/site-functions/_glow"

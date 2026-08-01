@@ -7,7 +7,6 @@ license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
 category    = ["ConsoleOnly", "Database", "Utility"]
 repology    = ["usql-cli"]
-provides    = ["usql"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
@@ -25,5 +24,5 @@ strip-prefix = "v"
 url     = "https://github.com/xo/usql/releases/download/v${version}/usql_static-${version}-linux-${arch}.tar.bz2"
 
 [source.install]
-"usql_static" = "usql"
 "LICENSE"     = "LICENSE"
+"usql_static" = "bin/usql"
