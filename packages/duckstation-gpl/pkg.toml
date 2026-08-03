@@ -1,0 +1,23 @@
+[pkg]
+name        = "duckstation-gpl"
+id          = "pkgforge-dev.duckstation-gpl"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+tag         = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
