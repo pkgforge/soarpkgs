@@ -1,0 +1,41 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "img2pdf"
+pkg_id: "pkgforge-dev.img2pdf"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/img2pdf"
+category:
+  - "TODO"
+description: "Unofficial AppImage of im2pdf [Maintainer=@Samueru-sama]"
+homepage:
+  - "https://github.com/pkgforge-dev/img2pdf-AppImage"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "MIT"
+build_asset:
+  - url: "TODO"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/img2pdf-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "img2pdf"
+repology:
+  - "img2pdf"
+src_url:
+  - "https://github.com/pkgforge-dev/img2pdf-AppImage"
+tag:
+  - "TODO"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/img2pdf-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/img2pdf-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
