@@ -1,0 +1,22 @@
+version = "3.5.2"
+date    = "2026-08-02T09:06:33Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/htop-AppImage/releases/download/3.5.2%402026-08-02_1785661592/Htop-3.5.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/htop-AppImage/releases/download/3.5.2%402026-08-02_1785661592/Htop-3.5.2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6eb739829907d250d385e2e22a25e4bfb5a35f9a70fca518b55a4a78ff7cb4e1"
+aarch64-linux = "156d6805cf5ec1c7b9835fdc26a38afab8ea4779080cd135ca5c4bc290c93837"
+
+[sha256]
+x86_64-linux  = "d2cc1d18f0ea0b59abddf005c4047756b08269f1d3dfc6acec60052725bb9431"
+aarch64-linux = "737bc1875df9f1dd111749a7ceea02df50f972aeff620559bbe9d2d1efa76011"
+
+[size]
+x86_64-linux  = 2322946
+aarch64-linux = 2088890
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/htop-dev/htop/refs/heads/main/COPYING"
+to     = "LICENSE"

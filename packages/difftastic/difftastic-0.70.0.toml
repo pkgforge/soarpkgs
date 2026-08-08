@@ -1,0 +1,18 @@
+version = "0.70.0"
+date    = "2026-08-07T22:06:18Z"
+
+[url]
+x86_64-linux = "https://github.com/Wilfred/difftastic/releases/download/0.70.0/difft-x86_64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux = "d28b4ceaaee79d96e2e1b7f16f178028964c717bdd5dd48ef334f950d2ed623e"
+
+[sha256]
+x86_64-linux = "16f65a74a3d64d0bb44d31223d56d0ccaa9ad148f520322450a0629ee21f205f"
+
+[size]
+x86_64-linux = 11904574
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Wilfred/difftastic/master/LICENSE"
+to     = "LICENSE"

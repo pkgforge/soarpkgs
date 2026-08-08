@@ -1,21 +1,21 @@
 version = "26.1.5-1"
-date    = "2026-07-29T09:43:23Z"
+date    = "2026-08-01T12:12:28Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.5-1%402026-07-29_1785318202/MESA-26.1.5-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.5-1%402026-07-29_1785318202/MESA-26.1.5-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.5-1%402026-08-01_1785586347/MESA-26.1.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/MESA-AppImage/releases/download/26.1.5-1%402026-08-01_1785586347/MESA-26.1.5-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "e90b81f618d042c30563495329e28b2238f816174897f68544c53f33822402e4"
-aarch64-linux = "38dedd466f6b91855e0285dde15865d5b2249230e21d7d92fd29130a872f555c"
+x86_64-linux  = "7bf38653a373b8fb0b88cf8255266f562f02f0c4070025802eabd3d4bbe982db"
+aarch64-linux = "e658de9694f36e5bab86639f03011c80213272559ba01694a8f48dfcf5d54749"
 
 [sha256]
-x86_64-linux  = "944e369a365914e50f8be99af70b14f6bd9b6d89ba82a7af532607d79b808b77"
-aarch64-linux = "ca274c0d5d967ed4f0c016d996ee0fb504d02b553114cd8820d9e6fd8e1a8b77"
+x86_64-linux  = "ed9535ef93ccf4a5e728353cbbfc5ac563ddb274c094c88c283c45c553c02052"
+aarch64-linux = "d2b0064038594335878c622ed6c8da68d14cf81846544f200496d477fe2c1c15"
 
 [size]
-x86_64-linux  = 27134105
-aarch64-linux = 25811221
+x86_64-linux  = 27158710
+aarch64-linux = 25811147
 
 [[extra]]
 url    = "https://gitlab.freedesktop.org/mesa/mesa/-/raw/main/docs/license.rst"

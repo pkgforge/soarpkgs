@@ -1,21 +1,21 @@
 version = "1.7.0-1"
-date    = "2026-07-22T12:10:41Z"
+date    = "2026-08-01T12:06:11Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.7.0-1%402026-07-22_1784722240/flashrom-1.7.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.7.0-1%402026-07-22_1784722240/flashrom-1.7.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.7.0-1%402026-08-01_1785585970/flashrom-1.7.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.7.0-1%402026-08-01_1785585970/flashrom-1.7.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "1f3d2d765ec125baa55f415f181e3654ef7eb7b048903449604ee3e7e3e9d5be"
-aarch64-linux = "bde601c3b6a4b3fd6511bc2268c53482956c8ea616618908930c640cf4fd07b4"
+x86_64-linux  = "1a1f66c4ee8717b128d081034274744500215a8335260cdf472ca18fb808c65c"
+aarch64-linux = "5fe9813ab7d67e9d47a630dfeda61d41a7209d07011ebc7fa52f8c46fc1086b4"
 
 [sha256]
-x86_64-linux  = "e8380dbbaa9dce610bdace22e5c0773e45ede70de4b0cba6a032e831ab20c346"
-aarch64-linux = "fe989dd10b5b627c9cfc870b095847b364003d4d30bd5fc2cebfded8fe3fd9e8"
+x86_64-linux  = "4d484955decd5d840ace85b13439aa7e769d9db49551ee732f21e31a85393b4d"
+aarch64-linux = "4ebfb4f4c75b2b4db0f7f1deacd6dce9334899dcd9939020c0e51fe34688b94e"
 
 [size]
-x86_64-linux  = 7582584
-aarch64-linux = 8263758
+x86_64-linux  = 7616536
+aarch64-linux = 8260673
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/flashrom/flashrom/main/COPYING.rst"

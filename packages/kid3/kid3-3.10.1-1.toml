@@ -1,0 +1,22 @@
+version = "3.10.1-1"
+date    = "2026-08-01T12:05:44Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Kid3-AppImage/releases/download/3.10.1-1%402026-08-01_1785585943/Kid3-3.10.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Kid3-AppImage/releases/download/3.10.1-1%402026-08-01_1785585943/Kid3-3.10.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0f0419c7eb38aa14d6582ee1f86b378e329f7ad6ed7853848ad7537df0d70a67"
+aarch64-linux = "5a648d45ce8d9748d78a5d4a2e6078ea73c457aa74bd899271f7b7afb1f77874"
+
+[sha256]
+x86_64-linux  = "82663f1f9f302882c25aacb3cc2794ff7f5ca69958ae15ffcdc62a5f1807ba25"
+aarch64-linux = "a091ef7d216e99edb544002192be879545651511f50bd3d19c058f961040552f"
+
+[size]
+x86_64-linux  = 87705053
+aarch64-linux = 86876761
+
+[[extra]]
+url    = "https://invent.kde.org/multimedia/kid3/-/raw/master/COPYING"
+to     = "LICENSE"

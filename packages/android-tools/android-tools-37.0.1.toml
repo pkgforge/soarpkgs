@@ -1,0 +1,18 @@
+version = "37.0.1"
+date    = "2026-08-01T12:07:14Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/37.0.1%402026-08-01_1785586033/Android_Tools-37.0.1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "b206322a44933fbe5bb1af346e7a0e0a5cb0772f51818aca19e894036b8ed9e0"
+
+[sha256]
+x86_64-linux = "a93026339ac9c7ee6f70f6546f0ccfa63c31311e42ef3af1d6f9c1421bf71548"
+
+[size]
+x86_64-linux = 10305312
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/nmeum/android-tools/refs/heads/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,18 @@
+version = "6.8.0"
+date    = "2026-08-05T08:24:14Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Shiru-AppImage/releases/download/v6.8.0%402026-08-05_1785918252/Shiru-v6.8.0-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "5b398b95c673834213147ffd1f5d828e19aee68c05ecc23cea86d0cbbfaf623e"
+
+[sha256]
+x86_64-linux = "cd976a255a20b269807276ac91d9c71b9a10f280fc8bec5596e8aa0dcdc94b49"
+
+[size]
+x86_64-linux = 155265846
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/licenses/GPL-3.0.txt"
+to     = "LICENSE"
