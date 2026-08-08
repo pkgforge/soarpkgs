@@ -1,12 +1,12 @@
 [pkg]
-name        = "opencode"
+name        = "opencode-desktop"
 type        = "appimage"
-description = "Open source code editor"
+description = "AI coding agent desktop client"
 homepage    = ["https://github.com/VSCodium/vscodium"]
 license     = ["MIT"]
 maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
 category    = ["Development", "IDE", "TextEditor"]
-repology    = ["opencode"]
+repology    = ["opencode-desktop"]
 
 [host]
 supported = ["x86_64-linux"]
