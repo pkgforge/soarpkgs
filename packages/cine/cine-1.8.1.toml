@@ -1,0 +1,22 @@
+version = "1.8.1"
+date    = "2026-08-01T12:06:23Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Cine-AppImage/releases/download/v1.8.1%402026-08-01_1785585982/Cine-v1.8.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Cine-AppImage/releases/download/v1.8.1%402026-08-01_1785585982/Cine-v1.8.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "418d522ccea83e43bfdfa3dff31d60464aa42f3b64311f4fd37cd8332d819336"
+aarch64-linux = "eedd5d83612d3285f5aa310d428bc848a1ebea177fa5dd09bc448ad1f173f91d"
+
+[sha256]
+x86_64-linux  = "aa1cdc4abfd19978d8f2c3c7cf4a641eec82bf2bc3fa641d92fbe6d5ac9ffe2e"
+aarch64-linux = "cb18caa046567001db70a017dc28cbc2af67a3c1b5dd6d4fd47964604d358804"
+
+[size]
+x86_64-linux  = 86469051
+aarch64-linux = 85306995
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/diegopvlk/Cine/main/LICENSE"
+to     = "LICENSE"

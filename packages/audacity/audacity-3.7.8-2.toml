@@ -1,0 +1,22 @@
+version = "3.7.8-2"
+date    = "2026-08-01T12:03:42Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Audacity-AppImage-Enhanced/releases/download/3.7.8-2%402026-08-01_1785585821/Audacity-3.7.8-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Audacity-AppImage-Enhanced/releases/download/3.7.8-2%402026-08-01_1785585821/Audacity-3.7.8-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "54e2b0571e443f1cbe8a36c46d2ee61e98c2dfad263098a63339456a33b579fb"
+aarch64-linux = "d865fcb416eccb47e6de7e62c54908a232bdbe585f1d06eb898ce51101bd1dce"
+
+[sha256]
+x86_64-linux  = "eb26f50a9aac06bceb91422e3c75f7b47597ce06559bec7b12e1b7d229237282"
+aarch64-linux = "36caec4b069ff39028cddd67d0fe635d3bfc6c64e7df10cf177cce9de2a746a8"
+
+[size]
+x86_64-linux  = 51407826
+aarch64-linux = 51490463
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/audacity/audacity/master/LICENSE.txt"
+to     = "LICENSE"

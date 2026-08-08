@@ -1,0 +1,22 @@
+version = "3b268ca4b"
+date    = "2026-08-01T12:11:43Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenLara-AppImage/releases/download/3b268ca4b%402026-08-01_1785586302/OpenLara-3b268ca4b-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenLara-AppImage/releases/download/3b268ca4b%402026-08-01_1785586302/OpenLara-3b268ca4b-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "78281bc55186d6308921f282f263529ca45e239f7e6cae0037841202d8ba8e79"
+aarch64-linux = "6dcb47cdece018eb5b2e7310d9894b021d16766e3f8b8ccb416d32d814f95a03"
+
+[sha256]
+x86_64-linux  = "af9147f8d19bad6395456831b71bf798c36c1668f18e9c6db9c7b35795b1f671"
+aarch64-linux = "771c46bf046574f53b9943b14d81e915bc27074de45127130c0f680c6b177089"
+
+[size]
+x86_64-linux  = 26708036
+aarch64-linux = 26689327
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/XProger/OpenLara/master/LICENSE"
+to     = "LICENSE"

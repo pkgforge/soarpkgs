@@ -1,0 +1,22 @@
+version = "d66806847"
+date    = "2026-08-01T12:01:22Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/d66806847%402026-08-01_1785585681/PCExhumed-d66806847-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/d66806847%402026-08-01_1785585681/PCExhumed-d66806847-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6f03c02d71b3f731d89f7363108f861adfaba38bddae6c27c9e16eac5fd2b7a3"
+aarch64-linux = "64a4d6293775228cbfb21ac36bc8ee4c5b58b4ff2c859a280f120e235b7c7ea0"
+
+[sha256]
+x86_64-linux  = "d36b28b821f4175fcc9d5b6b881326d9ae6387158d59de58e8f419d740244f0b"
+aarch64-linux = "f72d4bff0ec8b5c726b4ff94ac082f6be1b380eed41e2fb65105df0c20d6d770"
+
+[size]
+x86_64-linux  = 30384835
+aarch64-linux = 29982034
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/NBlood/NBlood/master/source/exhumed/gpl-2.0.txt"
+to     = "LICENSE"

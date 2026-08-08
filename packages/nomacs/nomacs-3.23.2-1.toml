@@ -1,0 +1,22 @@
+version = "3.23.2-1"
+date    = "2026-08-01T12:08:58Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Nomacs-AppImage/releases/download/3.23.2-1%402026-08-01_1785586137/nomacs-3.23.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Nomacs-AppImage/releases/download/3.23.2-1%402026-08-01_1785586137/nomacs-3.23.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f463d2bcc041ae87b6658a98e731ef3376d384c734f90f3a258df63af634f2c2"
+aarch64-linux = "c4c48a565f014076403677bcda420bbc82789bb2da0a68976d85dbc972d9915a"
+
+[sha256]
+x86_64-linux  = "8487782c31d7f642a8a9b6c77e6cfd5bf24fe5c8d841721081a7dc7c329b02ae"
+aarch64-linux = "7e8542c4748eeb96d4b0aa1fbd362cddfa73d8b81b3b4e54aa5322ffe89f9bc5"
+
+[size]
+x86_64-linux  = 57058972
+aarch64-linux = 46687402
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/nomacs/nomacs/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "3.8.11"
+date    = "2026-08-01T12:03:05Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gearboy-AppImage/releases/download/3.8.11%402026-08-01_1785585784/Gearboy-3.8.11-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gearboy-AppImage/releases/download/3.8.11%402026-08-01_1785585784/Gearboy-3.8.11-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3dd5f92a8ed5565e02b985c57ccc52ab92e4b7c59c6fa8b5f615de661e80447b"
+aarch64-linux = "20a0add9ca746bc308811e8aa9daaa1472f1f0939a1609ef7ac0fb5442864bbd"
+
+[sha256]
+x86_64-linux  = "35ef16ee6c7c8e98fd813b4709749f6fe284a645ad1e29b48078d412194cba5d"
+aarch64-linux = "ddc9dadac0a0d2cde32f76b0d60836579f04e2818aebf855115199de5e5cf83b"
+
+[size]
+x86_64-linux  = 33849357
+aarch64-linux = 33071040
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/drhelius/Gearboy/master/LICENSE"
+to     = "LICENSE"

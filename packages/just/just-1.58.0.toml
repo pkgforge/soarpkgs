@@ -1,0 +1,18 @@
+version = "1.58.0"
+date    = "2026-08-03T20:31:31Z"
+
+[url]
+x86_64-linux  = "https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "3015b9732600d98449c599e5f7187e16b23d3586dafedcbc6c2ee1ea6ead428e"
+aarch64-linux = "9a15d98dfcd14477aa4e81c1d194c091e50c96d352029df748fe8df3955347c5"
+
+[sha256]
+x86_64-linux  = "4a5cc2f53e6f0f8c59092a6cc38291eb729d46a7dd95d3ae582008881b84931d"
+aarch64-linux = "748237128c4c40cbdabc65e841d05ceba13cc23a91eaba395495894c1d9764df"
+
+[size]
+x86_64-linux  = 2529009
+aarch64-linux = 2306281

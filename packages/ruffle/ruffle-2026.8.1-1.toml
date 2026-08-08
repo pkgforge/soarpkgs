@@ -1,0 +1,22 @@
+version = "2026.8.1-1"
+date    = "2026-08-01T12:08:37Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Ruffle-AppImage/releases/download/2026.8.1-1%402026-08-01_1785586116/Ruffle-2026.8.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Ruffle-AppImage/releases/download/2026.8.1-1%402026-08-01_1785586116/Ruffle-2026.8.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "eb4e084ae89e8cd7b003f95d48f616fd20300e4b1c203eaec71e88da5fd768fe"
+aarch64-linux = "ee3ae07ca6ce40e3bb402ad442c149aa6948f573a73e82490334f36029633806"
+
+[sha256]
+x86_64-linux  = "4b034b007b5d840561f9feb6e112df38128601dff228aee9a4e7e9788a3d24f7"
+aarch64-linux = "49def4dfda0b71179a640f887cf5af4ef161fe0eab257eba90ac9207ae75be24"
+
+[size]
+x86_64-linux  = 34670756
+aarch64-linux = 34957172
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ruffle-rs/ruffle/master/LICENSE.md"
+to     = "LICENSE"

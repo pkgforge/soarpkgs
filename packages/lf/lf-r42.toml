@@ -1,0 +1,22 @@
+version = "r42"
+date    = "2026-07-31T07:16:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/gokcehan/lf/releases/download/r42/lf-linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/gokcehan/lf/releases/download/r42/lf-linux-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "da6bd268d7ccad2e4626552bf20170e7f730e605b0f5d8725dc60f5ddf5bc946"
+aarch64-linux = "4b9918733c82e548641bdfe79f299a3ede5569149ca3d0e3160934f79953182e"
+
+[sha256]
+x86_64-linux  = "c6abe6c0c11a0a4ae89754884aad67de18decc113935cbc5eaa57dc0d1850fb4"
+aarch64-linux = "b8095f4f9d2561340bea019a21ce5a7ac671f4c76402b7039732c003b6c03951"
+
+[size]
+x86_64-linux  = 2324047
+aarch64-linux = 2109998
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/gokcehan/lf/master/LICENSE"
+to     = "LICENSE"

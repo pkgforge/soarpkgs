@@ -1,21 +1,21 @@
 version = "2.6.1-1"
-date    = "2026-07-22T09:21:21Z"
+date    = "2026-08-01T10:26:40Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-07-22_1784712079/Hatari-2.6.1-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-07-22_1784712079/Hatari-2.6.1-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-08-01_1785579999/Hatari-2.6.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-08-01_1785579999/Hatari-2.6.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "a7b9a7f145d037aefec9043dfb365889649b92c4ef8ed4e14dc9d257722fcb68"
-aarch64-linux = "23b973a8a61f502a7b8a8d31ee4e66becd68d413c4f16410f8a5b5707807b21b"
+x86_64-linux  = "9ddb81aaa9db994b5023ae2f209c57ffe8ed1e9b93d2c5935bf8dcee8a7ad859"
+aarch64-linux = "049ac8a2f966350d5bb426f9e98f63be49cf09a5b5d0ee1f496201e85f55443e"
 
 [sha256]
-x86_64-linux  = "21e30575c1f23a4775b9f8f3094701545309337c81754d1eb6a2bc7353d4795f"
-aarch64-linux = "85b8ca98b97f3e84007c7104ece7d8e77b489a4309f54ac3b7e2879739797759"
+x86_64-linux  = "796e9e005d5e73e303c08140987cf02fd5f1d64f67f445e1e754d1dc916bc8fa"
+aarch64-linux = "f9ec64fb225b3980f07165dcb79d0d4af98ee864340fbec2b9ee03473cad4eb6"
 
 [size]
-x86_64-linux  = 25480434
-aarch64-linux = 23153845
+x86_64-linux  = 25501480
+aarch64-linux = 23151705
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/hatari/hatari/main/gpl.txt"

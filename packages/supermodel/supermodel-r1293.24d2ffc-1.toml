@@ -1,0 +1,22 @@
+version = "r1293.24d2ffc-1"
+date    = "2026-08-01T12:07:28Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Supermodel-AppImage/releases/download/r1293.24d2ffc-1%402026-08-01_1785586047/Supermodel-r1293.24d2ffc-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Supermodel-AppImage/releases/download/r1293.24d2ffc-1%402026-08-01_1785586047/Supermodel-r1293.24d2ffc-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e512734a4b53095436eb3d41965338517750829db944cd0f7609ab883775abfd"
+aarch64-linux = "b6ae57152f18c9e7e30bc16de405833e83db0006ffba8293217e9a7639095985"
+
+[sha256]
+x86_64-linux  = "b58c50528bff539975d84778c75cd8fe4d6b58ab752ad9508f5a23bda9477db2"
+aarch64-linux = "c37dfb4f92d13e6680d20f12994d21ac1f3730500b91f42586623fb1ae56daa0"
+
+[size]
+x86_64-linux  = 21222214
+aarch64-linux = 20436264
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/trzy/Supermodel/master/Docs/LICENSE.txt"
+to     = "LICENSE"

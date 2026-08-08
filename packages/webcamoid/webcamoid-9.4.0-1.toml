@@ -1,21 +1,21 @@
 version = "9.4.0-1"
-date    = "2026-07-22T12:13:51Z"
+date    = "2026-08-01T12:08:58Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Webcamoid-AppImage/releases/download/9.4.0-1%402026-07-22_1784722430/Webcamoid-9.4.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Webcamoid-AppImage/releases/download/9.4.0-1%402026-07-22_1784722430/Webcamoid-9.4.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Webcamoid-AppImage/releases/download/9.4.0-1%402026-08-01_1785586137/Webcamoid-9.4.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Webcamoid-AppImage/releases/download/9.4.0-1%402026-08-01_1785586137/Webcamoid-9.4.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "2c875bc8ea5df47203a495520cd6ef65ccefdb13f1ede6a8734af473bd6bbe44"
-aarch64-linux = "52eebfdc1b4b542a03cd65f66593894b5dd38b734e0b3f28120f09b48dfa39ee"
+x86_64-linux  = "bd1f1d9764a74083d6af657f1c68f01ca13cad4d54d7a19f366096ce8e6981c5"
+aarch64-linux = "38bc0b9000709b6e7eec99841c6126e3d8ba7659bbe8e15371c826a1dcaacca4"
 
 [sha256]
-x86_64-linux  = "d85c66783b6208bdab8515bb1e1aa64b548abd24f1cc1c340679ed984a74c161"
-aarch64-linux = "86a73f03f9ab587b13f947526411657b1efb0b7a6c98ca52ea07e4154360a724"
+x86_64-linux  = "ee4fb8f81af7874a74f237ba328c04a19bb6b9bb4884bd1ff75f7287643dbc19"
+aarch64-linux = "547ee58f0321482273c940e6182826e9a4212eef6a9adff85f6ea9acb2837a81"
 
 [size]
-x86_64-linux  = 111972509
-aarch64-linux = 107268643
+x86_64-linux  = 112090185
+aarch64-linux = 107279719
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/webcamoid/webcamoid/refs/heads/master/COPYING"

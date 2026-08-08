@@ -1,0 +1,18 @@
+version = "3.1.2"
+date    = "2026-08-04T07:44:12Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Pinta-AppImage/releases/download/3.1.2%402026-08-04_1785829451/Pinta-3.1.2-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "64f96e59ab3551f34dd5fdca57d9a7d4bcb515fee6de51844316959d8634848b"
+
+[sha256]
+x86_64-linux = "68ce30cd0463f1907ffffc7bdb22a0fb590d02c4588931f8ed6b24b49a969e9c"
+
+[size]
+x86_64-linux = 46938216
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/PintaProject/Pinta/refs/heads/master/license-mit.txt"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "11.0.3-2"
+date    = "2026-08-01T12:06:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/11.0.3-2%402026-08-01_1785585993/Prism_Launcher-11.0.3-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/11.0.3-2%402026-08-01_1785585993/Prism_Launcher-11.0.3-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5c2fdd46b769ff0b129aa11c0740d581f425727f251f9811debd0bd9afb94bd0"
+aarch64-linux = "aeb964bcd1c141877d894b8b9ec0c98d75d2c54214e65e335dfddc83f17cd1c9"
+
+[sha256]
+x86_64-linux  = "765ba69f85ecb375b29544c652f2d9422d044147e452b440ca813c88b4654794"
+aarch64-linux = "f5571c5e3fe68ca93cab7292048c4b47793536dce7f8925086a447237dad7413"
+
+[size]
+x86_64-linux  = 53669823
+aarch64-linux = 55075276
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/develop/LICENSE"
+to     = "LICENSE"

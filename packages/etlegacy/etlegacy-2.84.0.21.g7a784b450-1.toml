@@ -1,0 +1,22 @@
+version = "2.84.0.21.g7a784b450-1"
+date    = "2026-08-01T12:08:21Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ETLegacy-AppImage/releases/download/2.84.0.21.g7a784b450-1%402026-08-01_1785586100/ET_Legacy-2.84.0.21.g7a784b450-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ETLegacy-AppImage/releases/download/2.84.0.21.g7a784b450-1%402026-08-01_1785586100/ET_Legacy-2.84.0.21.g7a784b450-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3a406e08a66c15c1a2a6e53582627d33a04bdcd3b0ef60dd8687dfb7e3033c1d"
+aarch64-linux = "0387874fb76a9522af2212779857c50bbe89f5dd530084522ee5571d95989463"
+
+[sha256]
+x86_64-linux  = "ad82ea8a0008f5e911019043ad23d4ec96448fe9e99c74a2a8fbc72332e6e002"
+aarch64-linux = "bd247951d14b3bfd367e89421e822195a3240ed5921c062bcbbe206d57d7f5c4"
+
+[size]
+x86_64-linux  = 270454727
+aarch64-linux = 269524365
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/etlegacy/etlegacy/master/COPYING.txt"
+to     = "LICENSE"
