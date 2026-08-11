@@ -1,0 +1,18 @@
+version = "26_07"
+date    = "2026-08-09T17:48:05Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/sView-AppImage/releases/download/26_07%402026-08-09_1786297684/sView-26_07-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "fa84406e5994aa1df8859debaaeae5f69c754a6e2519bd851481bdb6aebc835f"
+
+[sha256]
+x86_64-linux = "9bad300a255462d679b3a90dae901ea4d9521b679999c693b0302d1cd40d627c"
+
+[size]
+x86_64-linux = 52932360
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/gkv311/sview/refs/heads/master/LICENSE_GPL_3-0.txt"
+to     = "LICENSE"

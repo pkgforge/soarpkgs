@@ -1,0 +1,18 @@
+version = "11.0.3"
+date    = "2026-08-10T00:55:57Z"
+
+[url]
+x86_64-linux  = "https://github.com/schollz/croc/releases/download/v11.0.3/croc_v11.0.3_Linux-64bit.tar.gz"
+aarch64-linux = "https://github.com/schollz/croc/releases/download/v11.0.3/croc_v11.0.3_Linux-ARM64.tar.gz"
+
+[blake3]
+x86_64-linux  = "d1eda57e8e12c4bc22eab87d96066924f1c585c607b3fe2726dbda95d8db79bb"
+aarch64-linux = "ca85a2af0c8b0d58bdde85a03091aee0c312accffdc9f4e433fc1a95093c9679"
+
+[sha256]
+x86_64-linux  = "60d8fd674259d6b0a33fae052930e8d4abbed1325ab1cc5ea775de4a89b2df1a"
+aarch64-linux = "c533792fc9fed2db5a9b127e1f7f03a90541362da4cd4ef3a3f51d68741582be"
+
+[size]
+x86_64-linux  = 3496407
+aarch64-linux = 3151553
