@@ -18,7 +18,7 @@ generated index, so a specific version can be installed.
 ```toml
 [pkg]
 name        = "gh"
-type        = "static"            # static | appimage
+type        = "static"            # static | appimage | onelf
 description = "GitHub CLI tool"
 homepage    = ["https://cli.github.com"]
 license     = ["MIT"]
