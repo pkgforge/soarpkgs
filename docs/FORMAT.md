@@ -91,6 +91,23 @@ x86_64-linux  = "https://github.com/Schniz/fnm/releases/download/v${version}/fnm
 aarch64-linux = "https://github.com/Schniz/fnm/releases/download/v${version}/fnm-arm64.zip"
 ```
 
+`[source.install]` takes a host the same way, for a package whose artifacts are
+not laid out alike everywhere. This happens when one host is served by a build
+of our own and the rest come from upstream:
+
+```toml
+[source.install]
+"nu-${version}-${arch}-unknown-linux-musl/nu" = "bin/nu"
+
+[source.install.riscv64-linux]
+"nu" = "bin/nu"
+```
+
+Naming a host replaces the shared list for that host alone; every other host
+keeps it, so the common case is written once. A package with nothing shared
+names only the hosts that install something, and the rest take the artifact to
+be the file itself.
+
 ## The version file
 
 Written by `sbuild resolve` and `sbuild hashfill`. Everything here is

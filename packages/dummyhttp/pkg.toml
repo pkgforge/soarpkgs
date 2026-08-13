@@ -9,7 +9,7 @@ category    = ["ConsoleOnly", "Network", "Utility"]
 repology    = ["dummyhttp"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
 strategy     = "github-releases"
@@ -17,9 +17,17 @@ repo         = "svenstaro/dummyhttp"
 strip-prefix = "v"
 
 [source]
-url = "https://github.com/svenstaro/dummyhttp/releases/download/v${version}/dummyhttp-${version}-${arch}-unknown-linux-musl"
+
+[source.url]
+x86_64-linux  = "https://github.com/svenstaro/dummyhttp/releases/download/v${version}/dummyhttp-${version}-${arch}-unknown-linux-musl"
+aarch64-linux = "https://github.com/svenstaro/dummyhttp/releases/download/v${version}/dummyhttp-${version}-${arch}-unknown-linux-musl"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/dummyhttp-${version}/dummyhttp-${version}-riscv64-linux.tar.gz"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/svenstaro/dummyhttp/master/LICENSE"
 to  = "LICENSE"
 verify = false
+
+[source.install.riscv64-linux]
+"dummyhttp" = "bin/dummyhttp"
+"LICENSE"   = "LICENSE"

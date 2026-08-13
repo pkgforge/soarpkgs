@@ -4,18 +4,22 @@ date    = "2026-04-08T12:11:43Z"
 [url]
 x86_64-linux  = "https://github.com/svenstaro/miniserve/releases/download/v0.35.0/miniserve-0.35.0-x86_64-unknown-linux-musl"
 aarch64-linux = "https://github.com/svenstaro/miniserve/releases/download/v0.35.0/miniserve-0.35.0-aarch64-unknown-linux-musl"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/miniserve-0.35.0/miniserve-0.35.0-riscv64-linux.tar.gz"
 
 [blake3]
 x86_64-linux  = "454d1a558923fc7b6f29910b23351534623441aea88a3cfa40c4436b69249f40"
 aarch64-linux = "352c640257882a19b49e1aba7625286e1978da8bcfc4ccc8c091d5a77d0455f6"
+riscv64-linux = "3389d3eb226b4f62a4faaa89e5430362d27e53a501e04b10744d2acc78cd8652"
 
 [sha256]
 x86_64-linux  = "c630ee030d5d9d83c88c5cc72f43ae215b0c214d64fd7afc92244fe369af2964"
 aarch64-linux = "732b1d5b30a3903580cee9ca24b2ff04ba2a5c78fa1ba6579dc5154fc431b40a"
+riscv64-linux = "6dee20f0c0352a53245a1ffbe6b2458d41f57cff3a30e5cf1deaf9679324a2aa"
 
 [size]
 x86_64-linux  = 2443404
 aarch64-linux = 2169156
+riscv64-linux = 3027226
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/svenstaro/miniserve/master/LICENSE"

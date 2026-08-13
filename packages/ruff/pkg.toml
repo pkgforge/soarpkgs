@@ -9,17 +9,25 @@ category    = ["ConsoleOnly", "Development", "Utility"]
 repology    = ["ruff-python-linter"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
 strategy = "github-releases"
 repo     = "astral-sh/ruff"
 
 [source]
-url     = "https://github.com/astral-sh/ruff/releases/download/${version}/ruff-${arch}-unknown-linux-musl.tar.gz"
+
+[source.url]
+x86_64-linux  = "https://github.com/astral-sh/ruff/releases/download/${version}/ruff-${arch}-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/astral-sh/ruff/releases/download/${version}/ruff-${arch}-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/ruff-${version}/ruff-${version}-riscv64-linux.tar.gz"
 
 [source.install]
 "ruff-${arch}-unknown-linux-musl/ruff" = "bin/ruff"
+
+[source.install.riscv64-linux]
+"ruff"    = "bin/ruff"
+"LICENSE" = "LICENSE"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE"
