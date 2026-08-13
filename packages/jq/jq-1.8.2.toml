@@ -4,18 +4,22 @@ date    = "2026-06-20T14:11:27Z"
 [url]
 x86_64-linux  = "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-amd64"
 aarch64-linux = "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-arm64"
+riscv64-linux = "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-riscv64"
 
 [blake3]
 x86_64-linux  = "4311c64431be63fb82189e7e0950b060b39046e865ebb796ec3fa974309c4986"
 aarch64-linux = "428869e0c7c8b86cc2422a2b1e034cb026776795fb5df707bca3f889c6256626"
+riscv64-linux = "74c6e8611233d076f8428c4a775bdf0be81b0bd7d62a7c496bffa796770ba5c0"
 
 [sha256]
 x86_64-linux  = "b1c22172dd303f3be49e935aa56aa48a8b7a46e0bc838b4997d3bb451495870f"
 aarch64-linux = "8b85c817833814ddca00a144c33705546355afccf0cf39b188f3cdb48b852309"
+riscv64-linux = "a96e5a78a7b2c5a0575bc2a10dda4b20d84efd8c02c8806539ee5f5e57603e8d"
 
 [size]
 x86_64-linux  = 2267912
 aarch64-linux = 1797688
+riscv64-linux = 1609208
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/jqlang/jq/master/COPYING"

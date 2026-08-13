@@ -9,11 +9,12 @@ category    = ["FileTransfer", "Network", "Utility"]
 repology    = ["croc"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [arch]
 aarch64 = "ARM64"
 x86_64  = "64bit"
+riscv64 = "RISCV64"
 
 [update]
 strategy     = "github-releases"

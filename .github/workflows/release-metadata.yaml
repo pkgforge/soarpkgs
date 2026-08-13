@@ -19,12 +19,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - arch: x86_64-linux
-            runner: ubuntu-latest
-          - arch: aarch64-linux
-            runner: ubuntu-24.04-arm
-    runs-on: ${{ matrix.runner }}
+        # Generating an index only reads the tree, so a host never has to match
+        # the arch it is generating for. That is just as well for riscv64,
+        # which GitHub has no runner for.
+        arch: [x86_64-linux, aarch64-linux, riscv64-linux]
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read

@@ -9,7 +9,10 @@ category    = ["ConsoleOnly", "Shell"]
 repology    = ["starship"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
+
+[arch]
+riscv64 = "riscv64gc"
 
 [update]
 strategy     = "github-releases"

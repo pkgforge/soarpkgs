@@ -4,15 +4,19 @@ date    = "2026-07-16T17:44:15Z"
 [url]
 x86_64-linux  = "https://github.com/pkgforge/soar/releases/download/v0.12.7/soar-x86_64-linux.tar.gz"
 aarch64-linux = "https://github.com/pkgforge/soar/releases/download/v0.12.7/soar-aarch64-linux.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/soar/releases/download/v0.12.7/soar-riscv64-linux.tar.gz"
 
 [blake3]
 x86_64-linux  = "23f879ddf8a25509c3053266a1a231c7cca9b56f81270f579c3ee61135cd5825"
 aarch64-linux = "6fc8bb299b89f4c4bed6ae00a643db7560a1229bb0913c87c57c8097142640a2"
+riscv64-linux = "fb34b277c3a6a4893a95561a3441be4ee687efe22c6cd3d15394d0ea0ea246ca"
 
 [sha256]
 x86_64-linux  = "f94747f12498142ec01f8af2b4d4be5db6ead9c8561eb22a5ee69f8361f2397b"
 aarch64-linux = "22f5502e04d32fd79ca9985b15a847be186315bab7d1f9b2d1af7e81f7b7c76b"
+riscv64-linux = "22c4b0b6d1eaffa50146cd4ee62c201fa08f44be92e0bf83456e34c4c2c57c33"
 
 [size]
 x86_64-linux  = 3759480
 aarch64-linux = 3560561
+riscv64-linux = 3425463

@@ -4,18 +4,22 @@ date    = "2026-07-05T08:13:33Z"
 [url]
 x86_64-linux  = "https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_linux_amd64.bz2"
 aarch64-linux = "https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_linux_arm64.bz2"
+riscv64-linux = "https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_linux_riscv64.bz2"
 
 [blake3]
 x86_64-linux  = "1caa862312a1910b756130a150790e08c5d35faf4ae64c1f960a3f902323baf9"
 aarch64-linux = "6b1b357aec144fcb781e1af5bb914e4f001dcd10396f3238818bb479b6ff6c47"
+riscv64-linux = "836a2b2f0d2ae2af6f66b1eaf1f2b348aaa31829dd4a5faf3cfb51c374016f6e"
 
 [sha256]
 x86_64-linux  = "f415415624dcc452f2a02b8c33641791a8c6d6d3b65bbb3543fcf9a25151585c"
 aarch64-linux = "a5f64aaab53d51e311fa3829124c5b703f2d14cf187d8640b6be3b2b49376465"
+riscv64-linux = "fe2215a9879861139a3a02c8f5d62d1be16d29d393aa11bea652b92ea8ac52fa"
 
 [size]
 x86_64-linux  = 10107515
 aarch64-linux = 9044264
+riscv64-linux = 9718106
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/restic/restic/master/LICENSE"

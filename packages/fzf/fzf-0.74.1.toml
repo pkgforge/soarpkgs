@@ -4,18 +4,22 @@ date    = "2026-07-18T12:54:00Z"
 [url]
 aarch64-linux = "https://github.com/junegunn/fzf/releases/download/v0.74.1/fzf-0.74.1-linux_arm64.tar.gz"
 x86_64-linux  = "https://github.com/junegunn/fzf/releases/download/v0.74.1/fzf-0.74.1-linux_amd64.tar.gz"
+riscv64-linux = "https://github.com/junegunn/fzf/releases/download/v0.74.1/fzf-0.74.1-linux_riscv64.tar.gz"
 
 [blake3]
 aarch64-linux = "1f7837dd83f8e20197873a31b2b01f342b8db45be564694cf7500bed98266694"
 x86_64-linux  = "87e19d58bec3e92dd048097105654a367d06a2b77f99de288c7c3c673290a1b7"
+riscv64-linux = "c8856d696a72f739fae2c10367953d2f2f8cd8a20c1070278b2135051ec3375f"
 
 [sha256]
 aarch64-linux = "f22204dd1a091d43e102268d062fd53b47133c8d8581671ee5eb225b75e31183"
 x86_64-linux  = "df53438be5f51e151bb4044d78fda72bdfe209e3ecd2baecae48e8dea370c81b"
+riscv64-linux = "a647e12d907c650d963b5a4b5887bcba0307578a68deb37917142903a1c217d6"
 
 [size]
 aarch64-linux = 1835004
 x86_64-linux  = 2003429
+riscv64-linux = 1864318
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/junegunn/fzf/master/LICENSE"

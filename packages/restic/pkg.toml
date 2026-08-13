@@ -9,11 +9,12 @@ category    = ["ConsoleOnly", "Archiving", "Utility"]
 repology    = ["restic"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [arch]
 aarch64 = "arm64"
 x86_64  = "amd64"
+riscv64 = "riscv64"
 
 [update]
 strategy     = "github-releases"
