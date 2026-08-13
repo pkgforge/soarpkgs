@@ -28,11 +28,12 @@ repology    = ["github-cli"]
 provides    = ["gh"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [arch]                            # host arch -> what upstream calls it
 x86_64  = "amd64"
 aarch64 = "arm64"
+riscv64 = "riscv64"
 
 [update]                          # how to find the current version
 strategy     = "github-releases"

@@ -9,7 +9,7 @@ category    = ["PackageManager", "System"]
 repology    = ["soar"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
 strategy     = "github-releases"

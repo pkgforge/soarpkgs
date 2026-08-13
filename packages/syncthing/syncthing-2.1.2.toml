@@ -4,15 +4,19 @@ date    = "2026-07-08T13:43:41Z"
 [url]
 x86_64-linux  = "https://github.com/syncthing/syncthing/releases/download/v2.1.2/syncthing-linux-amd64-v2.1.2.tar.gz"
 aarch64-linux = "https://github.com/syncthing/syncthing/releases/download/v2.1.2/syncthing-linux-arm64-v2.1.2.tar.gz"
+riscv64-linux = "https://github.com/syncthing/syncthing/releases/download/v2.1.2/syncthing-linux-riscv64-v2.1.2.tar.gz"
 
 [blake3]
 x86_64-linux  = "97c572976bc74b0b8eb922ada13e26a8b9773c1dd8be1539e1da22b47d8ee68b"
 aarch64-linux = "f493533df6619fd659c947ab99f484f87900516f004e59b79c6ed9c0cc2a2c09"
+riscv64-linux = "457e8615fc6232380bc89eb982d5e949c80db155b063b6d237518d90480c4c3a"
 
 [sha256]
 x86_64-linux  = "0cea24660ac7d8df19f01da979827b5c9463a8a60042e296829293cf80213ee4"
 aarch64-linux = "2fcee9688f37df46337b0b78e7d2badc44549481e29eccaa8cdb1e698d79c8c5"
+riscv64-linux = "cf86c14f905fc2bf13907e07e316b7d7caf929f5b70a2a189a95789eb3d202b1"
 
 [size]
 x86_64-linux  = 11775645
 aarch64-linux = 10855953
+riscv64-linux = 11126050

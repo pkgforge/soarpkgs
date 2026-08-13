@@ -4,15 +4,19 @@ date    = "2026-06-01T03:22:22Z"
 [url]
 x86_64-linux  = "https://github.com/nektos/act/releases/download/v0.2.89/act_Linux_x86_64.tar.gz"
 aarch64-linux = "https://github.com/nektos/act/releases/download/v0.2.89/act_Linux_arm64.tar.gz"
+riscv64-linux = "https://github.com/nektos/act/releases/download/v0.2.89/act_Linux_riscv64.tar.gz"
 
 [blake3]
 x86_64-linux  = "12b2ddac8eeee0d3488500bf00399ea49df3bacfa421430ad70d3a64e9e0f190"
 aarch64-linux = "1c23f31f9519601e2b19b4c6fc4f3d641e9b130e4ad407f70e7425552198ae25"
+riscv64-linux = "d6a6ca73db8c6e5a16390189d262dabb719618a16633e2f010f4d60917b915d5"
 
 [sha256]
 x86_64-linux  = "0191d6f1f3b716b5c55820032605d05fc3c1cdbf581ebeff655019e5dd1524c0"
 aarch64-linux = "daa8679ba9615a74d2d0cec321dc593f21948a2a11bb65862b063d8b930f4bcb"
+riscv64-linux = "a37df9bdc62f0f718952516eeec8ee9e014bd4a949c124456a6ac82bba40e63e"
 
 [size]
 x86_64-linux  = 8200078
 aarch64-linux = 7453153
+riscv64-linux = 7746445

@@ -4,15 +4,19 @@ date    = "2026-05-01T16:05:51Z"
 [url]
 x86_64-linux  = "https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-x86_64-unknown-linux-musl.tar.gz"
 aarch64-linux = "https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-riscv64-unknown-linux-musl.tar.gz"
 
 [blake3]
 x86_64-linux  = "e6a1abe48bf918252904a19d57e8bcf27b5a45b665e7aed24aa8f6f6120f183e"
 aarch64-linux = "3c64c5260afe28db5791f16464391d230c92f8a75166bf05352df1c12e90669b"
+riscv64-linux = "de968a75c9d84096b640c8b259175b062eebd9191a4580a60f603038e5398b15"
 
 [sha256]
 x86_64-linux  = "5099054dd6a101bd12eb6ff3702a9a6a3f57aaa27923a0da478ae5b517faf335"
 aarch64-linux = "6270de0ef4c84cf0eea61cb148b3ad9ae91a11e9c3309867ffc6b3751024c252"
+riscv64-linux = "1138bcccbfe3cd67a4d78b5671cc3659549452b3cc3c6c5cf2ee573f9b22259a"
 
 [size]
 x86_64-linux  = 1047005
 aarch64-linux = 983319
+riscv64-linux = 1006144

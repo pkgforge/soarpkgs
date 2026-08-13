@@ -9,11 +9,12 @@ category    = ["ConsoleOnly", "Utility"]
 repology    = ["fzf"]
 
 [host]
-supported = ["aarch64-linux", "x86_64-linux"]
+supported = ["aarch64-linux", "x86_64-linux", "riscv64-linux"]
 
 [arch]
 aarch64 = "arm64"
 x86_64  = "amd64"
+riscv64 = "riscv64"
 
 [update]
 strategy     = "github-releases"
