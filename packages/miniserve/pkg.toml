@@ -9,7 +9,7 @@ category    = ["ConsoleOnly", "Network", "Utility"]
 repology    = ["miniserve"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
 strategy     = "github-releases"
@@ -17,9 +17,17 @@ repo         = "svenstaro/miniserve"
 strip-prefix = "v"
 
 [source]
-url = "https://github.com/svenstaro/miniserve/releases/download/v${version}/miniserve-${version}-${arch}-unknown-linux-musl"
+
+[source.url]
+x86_64-linux  = "https://github.com/svenstaro/miniserve/releases/download/v${version}/miniserve-${version}-${arch}-unknown-linux-musl"
+aarch64-linux = "https://github.com/svenstaro/miniserve/releases/download/v${version}/miniserve-${version}-${arch}-unknown-linux-musl"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/miniserve-${version}/miniserve-${version}-riscv64-linux.tar.gz"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/svenstaro/miniserve/master/LICENSE"
 to  = "LICENSE"
 verify = false
+
+[source.install.riscv64-linux]
+"miniserve" = "bin/miniserve"
+"LICENSE"   = "LICENSE"

@@ -9,7 +9,7 @@ category    = ["FileManager", "Network"]
 repology    = ["alist"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [arch]
 aarch64 = "arm64"
@@ -21,7 +21,11 @@ repo         = "alist-org/alist"
 strip-prefix = "v"
 
 [source]
-url     = "https://github.com/AlistGo/alist/releases/download/v${version}/alist-linux-musl-${arch}.tar.gz"
+
+[source.url]
+x86_64-linux  = "https://github.com/AlistGo/alist/releases/download/v${version}/alist-linux-musl-${arch}.tar.gz"
+aarch64-linux = "https://github.com/AlistGo/alist/releases/download/v${version}/alist-linux-musl-${arch}.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/alist-${version}/alist-${version}-riscv64-linux.tar.gz"
 
 [source.install]
 "alist" = "bin/alist"

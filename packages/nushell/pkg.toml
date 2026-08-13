@@ -9,15 +9,23 @@ category    = ["ConsoleOnly", "System", "Utility"]
 repology    = ["nushell"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
 strategy = "github-releases"
 repo     = "nushell/nushell"
 
 [source]
-url     = "https://github.com/nushell/nushell/releases/download/${version}/nu-${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.url]
+x86_64-linux  = "https://github.com/nushell/nushell/releases/download/${version}/nu-${version}-${arch}-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/nushell/nushell/releases/download/${version}/nu-${version}-${arch}-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/nushell-${version}/nushell-${version}-riscv64-linux.tar.gz"
 
 [source.install]
 "nu-${version}-${arch}-unknown-linux-musl/LICENSE" = "LICENSE"
 "nu-${version}-${arch}-unknown-linux-musl/nu"      = "bin/nu"
+
+[source.install.riscv64-linux]
+"nu"      = "bin/nu"
+"LICENSE" = "LICENSE"
