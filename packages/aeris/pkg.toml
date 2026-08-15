@@ -1,0 +1,24 @@
+[pkg]
+name        = "aeris"
+type        = "onelf"
+description = "Manages your package managers"
+homepage    = ["https://github.com/pkgforge/aeris"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "PackageManager"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "pkgforge/aeris"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/pkgforge/aeris/releases/download/v${version}/aeris-${arch}-linux.onelf"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pkgforge/aeris/main/LICENSE"
+to  = "LICENSE"
+verify = false
