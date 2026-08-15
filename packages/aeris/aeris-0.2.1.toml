@@ -1,0 +1,22 @@
+version = "0.2.1"
+date    = "2026-08-15T13:33:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-x86_64-linux.onelf"
+aarch64-linux = "https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-aarch64-linux.onelf"
+
+[blake3]
+x86_64-linux  = "90e44ab85b8fe42313b3f4a9592c092204c00128eb433291821bbd3f208b96c9"
+aarch64-linux = "4ff26bf5355043f74892bd94269519af0771b5e93ac9a6889cd0763a4b9e44c0"
+
+[sha256]
+x86_64-linux  = "4dbf798d3b51aecabd955ccef9ebceac60d99319eca837dda3e00374e05eb486"
+aarch64-linux = "9cf5ca6f2654d7684ef55d87eb69d2dd3379c8af6803a1b5853f0094f54ad684"
+
+[size]
+x86_64-linux  = 33646749
+aarch64-linux = 32560675
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkgforge/aeris/main/LICENSE"
+to     = "LICENSE"
