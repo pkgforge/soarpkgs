@@ -2,6 +2,7 @@
 name        = "miniserve"
 type        = "static"
 description = "CLI tool to serve files and dirs over HTTP"
+src         = ["https://github.com/svenstaro/miniserve"]
 homepage    = ["https://github.com/svenstaro/miniserve"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -12,9 +13,9 @@ repology    = ["miniserve"]
 supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
-strategy     = "github-releases"
-repo         = "svenstaro/miniserve"
-strip-prefix = "v"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "miniserve-"
 
 [source]
 

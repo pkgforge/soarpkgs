@@ -2,6 +2,7 @@
 name        = "yazi"
 type        = "static"
 description = "Blazing fast terminal file manager written in Rust, based on async I/O"
+src         = ["https://github.com/sxyazi/yazi"]
 homepage    = ["https://yazi-rs.github.io"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -12,9 +13,9 @@ repology    = ["yazi"]
 supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
-strategy     = "github-releases"
-repo         = "sxyazi/yazi"
-strip-prefix = "v"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "yazi-"
 
 [source]
 

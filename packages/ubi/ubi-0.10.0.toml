@@ -1,5 +1,5 @@
 version = "0.10.0"
-date    = "2026-07-26T18:21:28Z"
+date    = "2026-08-13T04:12:03Z"
 
 [url]
 x86_64-linux  = "https://github.com/houseabsolute/ubi/releases/download/v0.10.0/ubi-Linux-musl-x86_64.tar.gz"
@@ -12,15 +12,11 @@ aarch64-linux = "dc63327e32715528d200dcb397e0d7d540e230aacf106109cd51dabd76c374c
 riscv64-linux = "d3eb8bee98f97583b06603048413087ecdca8a2275da474e112bbbfa49a3da1b"
 
 [sha256]
+riscv64-linux = "dbf1e6b4a2797fc70cf9e1062afb15570ef021d7efa1e12b9c0ff0b5ec13bdfc"
 x86_64-linux  = "d062bfa4956397d0d95ef96e70b81c9afafbf3dcadc6f672c6d1eaf52341ce6f"
 aarch64-linux = "06155eb12b8826a0e8ec176ca98ca0ca91d257c5ac9aa32ec6dc241fc8fe6396"
-riscv64-linux = "dbf1e6b4a2797fc70cf9e1062afb15570ef021d7efa1e12b9c0ff0b5ec13bdfc"
 
 [size]
+riscv64-linux = 2794362
 x86_64-linux  = 4042900
 aarch64-linux = 3842418
-riscv64-linux = 2794362
-
-[[extra]]
-url    = "https://raw.githubusercontent.com/houseabsolute/ubi/master/LICENSE-APACHE"
-to     = "LICENSE"
