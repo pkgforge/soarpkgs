@@ -2,6 +2,7 @@
 name        = "dummyhttp"
 type        = "static"
 description = "Super simple HTTP server that replies a fixed body with a fixed response code"
+src         = ["https://github.com/svenstaro/dummyhttp"]
 homepage    = ["https://github.com/svenstaro/dummyhttp"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -12,9 +13,9 @@ repology    = ["dummyhttp"]
 supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
-strategy     = "github-releases"
-repo         = "svenstaro/dummyhttp"
-strip-prefix = "v"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "dummyhttp-"
 
 [source]
 

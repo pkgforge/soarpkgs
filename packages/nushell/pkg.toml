@@ -2,6 +2,7 @@
 name        = "nushell"
 type        = "static"
 description = "A new type of shell"
+src         = ["https://github.com/nushell/nushell"]
 homepage    = ["https://www.nushell.sh"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -12,8 +13,9 @@ repology    = ["nushell"]
 supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "nushell/nushell"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "nushell-"
 
 [source]
 

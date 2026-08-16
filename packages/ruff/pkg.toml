@@ -2,6 +2,7 @@
 name        = "ruff"
 type        = "static"
 description = "Extremely fast Python linter and code formatter, written in Rust"
+src         = ["https://github.com/astral-sh/ruff"]
 homepage    = ["https://github.com/astral-sh/ruff"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -12,8 +13,9 @@ repology    = ["ruff-python-linter"]
 supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "astral-sh/ruff"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "ruff-"
 
 [source]
 

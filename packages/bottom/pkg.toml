@@ -2,6 +2,7 @@
 name        = "bottom"
 type        = "static"
 description = "A customizable cross-platform graphical process/system monitor for the terminal"
+src         = ["https://github.com/ClementTsang/bottom"]
 homepage    = ["https://clementtsang.github.io/bottom"]
 license     = ["MIT"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -12,8 +13,9 @@ repology    = ["bottom"]
 supported = ["x86_64-linux", "aarch64-linux", "riscv64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "ClementTsang/bottom"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "bottom-"
 
 [source]
 

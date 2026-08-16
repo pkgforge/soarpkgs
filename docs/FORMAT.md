@@ -72,6 +72,21 @@ either, because resolution has already happened by the time an index is built.
 Strategies: `github-releases`, `github-tags`, `gitlab-tags`, `html-regex`.
 Use `tag-prefix` when one repository publishes releases for several packages.
 
+A package whose artifact for some host comes from
+[pkgforge/builds](https://github.com/pkgforge/builds) tracks *that* repository
+rather than upstream, and states its real origin in `[pkg] src`:
+
+```toml
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "nushell-"
+```
+
+Tracking upstream instead would resolve a version that has been released there
+but not yet built here, pinning a URL that does not exist and failing the
+update. The version pinned has to be one every host can actually download.
+
 `[source]` selects the artifact either by templated URL, or by globbing the
 assets of a release:
 

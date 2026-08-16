@@ -2,6 +2,7 @@
 name        = "ubi"
 type        = "static"
 description = "The universal binary installer"
+src         = ["https://github.com/houseabsolute/ubi"]
 homepage    = ["https://github.com/houseabsolute/ubi"]
 license     = ["Apache-2.0"]
 maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
@@ -16,9 +17,9 @@ aarch64 = "arm64"
 x86_64  = "x86_64"
 
 [update]
-strategy     = "github-releases"
-repo         = "houseabsolute/ubi"
-strip-prefix = "v"
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "ubi-"
 
 [source]
 
