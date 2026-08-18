@@ -1,0 +1,47 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "ristretto"
+pkg_id: "pkgforge-dev.ristretto"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/ristretto"
+category:
+  - "Graphics"
+  - "Viewer"
+  - "Photography"
+description: "Fast and lightweight image viewer for the XFCE desktop"
+homepage:
+  - "https://docs.xfce.org/apps/ristretto"
+  - "https://gitlab.xfce.org/apps/ristretto"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-2.0"
+build_asset:
+  - url: "https://gitlab.xfce.org/apps/ristretto/-/raw/master/COPYING"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/Ristretto-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "ristretto"
+repology:
+  - "ristretto"
+src_url:
+  - "https://github.com/pkgforge-dev/Ristretto-AppImage"
+tag:
+  - "image"
+  - "viewer"
+  - "xfce"
+  - "graphics"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/Ristretto-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/Ristretto-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
