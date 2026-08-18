@@ -1,0 +1,22 @@
+version = "2.1.228"
+date    = "2026-08-12T08:11:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/claude-code-AppImage/releases/download/2.1.228%402026-08-12_1786522275/claude-2.1.228-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/claude-code-AppImage/releases/download/2.1.228%402026-08-12_1786522275/claude-2.1.228-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b145b3c0905c3b2b5ca6d235c8609baf71ab660a8fa6fe0dabed88f422fef207"
+aarch64-linux = "8d285f0a14bdbfe2623c6c4e9ab4ad016e8d947f1739eeff4dc1febf8c0e072b"
+
+[sha256]
+x86_64-linux  = "2aa4a75db7900a691d89e4dc5a0a213e817c9bc49553de442047acdc86e03c7e"
+aarch64-linux = "3c9411c714915d854b81aaa3eb61d289900ffa80e816b685bc82f9d30151175a"
+
+[size]
+x86_64-linux  = 74344794
+aarch64-linux = 74641312
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/anthropics/claude-code/main/LICENSE.md"
+to     = "LICENSE"

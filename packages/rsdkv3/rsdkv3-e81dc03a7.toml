@@ -1,0 +1,22 @@
+version = "e81dc03a7"
+date    = "2026-08-15T07:42:14Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/RSDKv3-AppImage/releases/download/e81dc03a7%402026-08-15_1786779733/Sonic_CD-e81dc03a7-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/RSDKv3-AppImage/releases/download/e81dc03a7%402026-08-15_1786779733/Sonic_CD-e81dc03a7-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7032720344cd0fe2ac2719a2953d0929efdaada7dcad443dd04a43ff7f325cec"
+aarch64-linux = "0f684d146b53d614318788a5dc2f125d55606f5a6e168451a2e95ba33e8e9f4a"
+
+[sha256]
+x86_64-linux  = "be19223a273360e42d099a048f2264ae2472c777d19e99a9e60af60bec3933ea"
+aarch64-linux = "a3e1a785af1c9cc68a43f259986932f844cff4f0356963acbedf1c299524750a"
+
+[size]
+x86_64-linux  = 19213303
+aarch64-linux = 19197633
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/RSDKModding/RSDKv3-Decompilation/master/LICENSE.md"
+to     = "LICENSE"

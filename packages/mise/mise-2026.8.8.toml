@@ -1,0 +1,18 @@
+version = "2026.8.8"
+date    = "2026-08-17T17:53:49Z"
+
+[url]
+x86_64-linux  = "https://github.com/jdx/mise/releases/download/v2026.8.8/mise-v2026.8.8-linux-x64-musl.tar.xz"
+aarch64-linux = "https://github.com/jdx/mise/releases/download/v2026.8.8/mise-v2026.8.8-linux-arm64-musl.tar.xz"
+
+[blake3]
+x86_64-linux  = "a6baf50b087fe69c249396fad3e644d12fa283ba06231f0653c3e491f0ee1de8"
+aarch64-linux = "9eb283e6ac64ab5e971647969f0c283aadd19469537fef1dd5f841a4444292a8"
+
+[sha256]
+x86_64-linux  = "2195901e99408eb143722ab4600ad4a7004442e10d73e9ecd76bce57875743b9"
+aarch64-linux = "7ebdd464db572c7f57bf8c77ea163a3d8b431f0ccdbdeb14f7e8c60e02c680e3"
+
+[size]
+x86_64-linux  = 21098284
+aarch64-linux = 21577684

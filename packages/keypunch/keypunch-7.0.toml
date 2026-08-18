@@ -1,0 +1,22 @@
+version = "7.0"
+date    = "2026-08-11T17:41:44Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/v7.0%402026-08-11_1786470103/Keypunch-v7.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/v7.0%402026-08-11_1786470103/Keypunch-v7.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8c0753727f572c8d8285c7e6e6109fbf926d75536137daac96e3905df1749d0d"
+aarch64-linux = "8ed8f4b395d5168fffa4a815d44db4fc9ace30a5570af7f9b3c4808ff8170306"
+
+[sha256]
+x86_64-linux  = "b91f5fe1da6819005a013da2a897c52e74f46df8331e6a883e103344e6f354d8"
+aarch64-linux = "233762ca8fe886ef1d30741aca24ab7cac133f7c9f33a28ba9a13cecc7c76952"
+
+[size]
+x86_64-linux  = 25479718
+aarch64-linux = 25828525
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/bragefuglseth/keypunch/main/COPYING"
+to     = "LICENSE"

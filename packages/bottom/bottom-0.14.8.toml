@@ -1,0 +1,26 @@
+version = "0.14.8"
+date    = "2026-08-16T06:42:08Z"
+
+[url]
+x86_64-linux  = "https://github.com/ClementTsang/bottom/releases/download/0.14.8/bottom_x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/ClementTsang/bottom/releases/download/0.14.8/bottom_aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/bottom-0.14.8/bottom-0.14.8-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "f605c5437569086fc0462d197e56bcccb4ef9051919f4a161e1bcf6e67930cc6"
+aarch64-linux = "27b7e365c4e49e3c6b25217ea102ea2f1047aed9fefb10bad8562c09ec3cd221"
+riscv64-linux = "fcc9c6f430296059cde57cb9b5faf19a10601023590432f82c430490d3f601ff"
+
+[sha256]
+x86_64-linux  = "9d071c11a5b5bf266f05aa6519a43ad353330155d3d5627a750572d85ed19f54"
+aarch64-linux = "cc6ad0527598fb45eff929ac168e0c93eb7c3cd604723876b9df9b487ac10a47"
+riscv64-linux = "570d21effb2ca148a59832ee858809fce0270f452a5630af99a54cbd231da23f"
+
+[size]
+x86_64-linux  = 2125079
+aarch64-linux = 1917044
+riscv64-linux = 2049290
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ClementTsang/bottom/main/LICENSE"
+to     = "LICENSE"

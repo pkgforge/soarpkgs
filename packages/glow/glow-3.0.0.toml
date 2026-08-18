@@ -1,0 +1,18 @@
+version = "3.0.0"
+date    = "2026-08-11T18:09:45Z"
+
+[url]
+x86_64-linux  = "https://github.com/charmbracelet/glow/releases/download/v3.0.0/glow_3.0.0_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/charmbracelet/glow/releases/download/v3.0.0/glow_3.0.0_Linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "31fbd3d34b61ef5abec18a20e2d5dd119ced6b26f3faa12ae5bd8d3e778dc9ba"
+aarch64-linux = "9824f7e4ea7313258bf1b8e6ecfb5996ff8e9891427da73b5be907476e98e6f2"
+
+[sha256]
+x86_64-linux  = "13e05e4b2acc18d2aee44291aefe6325b077ec321b631a0cfa780e8e3bc33f78"
+aarch64-linux = "810c39f4691feb75e675a5f5f54b9fa091354e7599d9cf9c9fc9b97e47a99759"
+
+[size]
+x86_64-linux  = 6824849
+aarch64-linux = 6223975

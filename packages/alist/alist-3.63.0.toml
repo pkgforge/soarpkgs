@@ -12,11 +12,15 @@ aarch64-linux = "f45f146e5f3d61e4bf1719ef006788918eaa2a239e16ac5e80a39f0e87088e0
 riscv64-linux = "722a78726b88d9b2748c6253822dd0dd01c40f243c4444f3241cf989b8b7ba6c"
 
 [sha256]
-riscv64-linux = "22fe761ecdf571ed132e6bc4a95d86234278f973ce90800111031e0ccf09b461"
 x86_64-linux  = "9933694a09fc9ee5d23430ad01b73d35b393b96f027c278c7d0d6b8ec9d2d477"
 aarch64-linux = "c503448ed24450163dec1646e54f71dde6dba9831a05fe228025ae6d3d60e02c"
+riscv64-linux = "22fe761ecdf571ed132e6bc4a95d86234278f973ce90800111031e0ccf09b461"
 
 [size]
-riscv64-linux = 24106573
 x86_64-linux  = 44817646
 aarch64-linux = 42080723
+riscv64-linux = 24106573
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"
+to     = "LICENSE"

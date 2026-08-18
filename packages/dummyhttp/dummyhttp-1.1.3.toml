@@ -12,11 +12,15 @@ aarch64-linux = "c8bfdb7528926e253ea42000aa81a8a5cecb2f2c7cbed1a57d85c3b5bc42896
 riscv64-linux = "2046b855e8f6c7090dde5a0b37b90a6d146c238f06e499238f475a987711950c"
 
 [sha256]
-riscv64-linux = "954b5cd3338d477b53ba18c2929738799ed6d02b2fef2602806b89bf579f3c83"
 x86_64-linux  = "4424297e624a0ed615120961d5ed1b065f6ed31bc7a1dee7b71356eda8f5121f"
 aarch64-linux = "2e7cc075fb8c29cdf954cdedff56a60bcd3fe4167000b5b7d0e482afcd6c554e"
+riscv64-linux = "954b5cd3338d477b53ba18c2929738799ed6d02b2fef2602806b89bf579f3c83"
 
 [size]
-riscv64-linux = 2465594
 x86_64-linux  = 9250896
 aarch64-linux = 6624680
+riscv64-linux = 2465594
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/svenstaro/dummyhttp/master/LICENSE"
+to     = "LICENSE"

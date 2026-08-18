@@ -1,0 +1,22 @@
+version = "3.3.0-1"
+date    = "2026-08-12T08:26:07Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Dillo-AppImage/releases/download/3.3.0-1%402026-08-12_1786523166/Dillo-3.3.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Dillo-AppImage/releases/download/3.3.0-1%402026-08-12_1786523166/Dillo-3.3.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a49c1f70d0d3887904a8ae078b2d7687fd6eaebfef08ef22ef7197abbb146ac9"
+aarch64-linux = "9a59a6c03e0efaf829a342ae97a3db93774713571a210d3d673139f52c4994cb"
+
+[sha256]
+x86_64-linux  = "ee6b2c6c0fb60d4a23a936f1293c7214daf3714e1f19c82c994c4a49ba08ff75"
+aarch64-linux = "bbb9c08c7f416833bab1522bc98d8719992464a214330f48996fbf05fbce2826"
+
+[size]
+x86_64-linux  = 13626450
+aarch64-linux = 13986305
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dillo-browser/dillo/master/COPYING"
+to     = "LICENSE"

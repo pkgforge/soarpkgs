@@ -1,0 +1,22 @@
+version = "0.289-1"
+date    = "2026-08-13T18:18:29Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/MAME-AppImage/releases/download/0.289-1%402026-08-13_1786645108/MAME-0.289-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/MAME-AppImage/releases/download/0.289-1%402026-08-13_1786645108/MAME-0.289-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "ce74c8726aa4eb481355f7d9a908447675456c98467fa9e60b368b20f751cc8c"
+aarch64-linux = "d296e3ae4f8fbfb9a4806877f2ee544074485bb3cc2d0a0ee3c076ca4b9c66cf"
+
+[sha256]
+x86_64-linux  = "e3d4745b777ace8f4137a021c0a317fa3f271f7d03d8b027ceda5e5df34dfde1"
+aarch64-linux = "f4eb2a5c2a3be6ed32e3fdcf51eaee9afe1bcef7222746deb24b346b9a2114b7"
+
+[size]
+x86_64-linux  = 202474319
+aarch64-linux = 192337047
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mamedev/mame/refs/heads/master/COPYING"
+to     = "LICENSE"

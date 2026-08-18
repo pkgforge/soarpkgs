@@ -1,0 +1,18 @@
+version = "5.3"
+date    = "2026-08-15T14:12:16Z"
+
+[url]
+x86_64-linux = "https://github.com/jarun/nnn/releases/download/v5.3/nnn-musl-static-5.3.x86_64.tar.gz"
+
+[blake3]
+x86_64-linux = "3ef39afc1317406968804aed2ffac67d78df73a458d08db1c6dca0c9982e81ac"
+
+[sha256]
+x86_64-linux = "ba36a4013f6bea3150e27c6ecfd550ce77abb6c90d6aa376466ec60d17ac3345"
+
+[size]
+x86_64-linux = 209447
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/jarun/nnn/master/LICENSE"
+to     = "LICENSE"
