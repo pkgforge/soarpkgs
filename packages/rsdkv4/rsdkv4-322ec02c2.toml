@@ -1,0 +1,22 @@
+version = "322ec02c2"
+date    = "2026-08-15T07:14:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/RSDKv4-AppImage/releases/download/322ec02c2%402026-08-15_1786778056/RSDKv4-322ec02c2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/RSDKv4-AppImage/releases/download/322ec02c2%402026-08-15_1786778056/RSDKv4-322ec02c2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0a9a6fd86f4ba24cd6cda590a379fd0bcc8974a1f37dfaf4a490363da42e24c9"
+aarch64-linux = "7517c448f91238a2b599c0a6b21433ca09861d14a3b45dfa924e583eb07704c5"
+
+[sha256]
+x86_64-linux  = "50fbbb8f0ebecb6f34e29bf7fae9e87f7892033e8556e233f46a5fc4ac517c65"
+aarch64-linux = "ff52566fb80e0a320f274872507d6c8a50fd451411e326b894b74b25f2b4a63e"
+
+[size]
+x86_64-linux  = 19261837
+aarch64-linux = 19265469
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/RSDKModding/RSDKv4-Decompilation/main/LICENSE.md"
+to     = "LICENSE"

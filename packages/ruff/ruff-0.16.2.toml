@@ -20,3 +20,7 @@ aarch64-linux = "7cc696f9d89cfeef02167301feedfc3017061fe45df3688b4f3589cde90a113
 riscv64-linux = 11182119
 x86_64-linux  = 11156960
 aarch64-linux = 10412010
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE"
+to     = "LICENSE"

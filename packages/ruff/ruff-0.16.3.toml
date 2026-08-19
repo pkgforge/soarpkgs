@@ -1,0 +1,26 @@
+version = "0.16.3"
+date    = "2026-08-16T06:47:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/astral-sh/ruff/releases/download/0.16.3/ruff-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/astral-sh/ruff/releases/download/0.16.3/ruff-aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/ruff-0.16.3/ruff-0.16.3-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "e38f76f6c4d0c1ceef8bf35710bd505aeb93975b2894b6d70e04dd875b836e4a"
+aarch64-linux = "55ac8f9b207a923c2e4852cc3686daf443c3f313790b81e9f0d1c5bf945887e1"
+riscv64-linux = "7c64260f2c47ad703c3a344c8942bbd8bbba4b0c0e101295262f26857b2ab360"
+
+[sha256]
+x86_64-linux  = "d67c9b5949981698c48915abf65e0b3406ba9184ad73521cdf20a926bc889c73"
+aarch64-linux = "8319ba22f655e6efc086103486d7165bf0de73f71ff1c5f25ba580153ad05feb"
+riscv64-linux = "8527e5a0a735d376c27732b7ad322df61923d683c9684eb8594dcb3885a13f32"
+
+[size]
+x86_64-linux  = 11225151
+aarch64-linux = 10411229
+riscv64-linux = 11246715
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE"
+to     = "LICENSE"
