@@ -1,6 +1,6 @@
 [pkg]
 name        = "iriunwebcam"
-type        = "static"
+type        = "appimage"
 description = "Use your phone's camera as a wireless webcam in your PC or Mac"
 homepage    = ["https://iriun.gitlab.io", "https://iriun.com"]
 license     = ["Proprietary"]
@@ -10,7 +10,6 @@ repology    = ["iriunwebcam"]
 note        = [
   "Proprietary software - Terms: https://iriun.com",
   "Requires v4l2loopback kernel module (v4l2loopback-dkms) and PipeWire",
-  "Depends: v4l2loopback-dkms, libqt6widgets6, qt6-qpa-plugins, adb (recommended)",
 ]
 portable = true
 portable-reason = "requires v4l2loopback kernel module and system PipeWire integration"
@@ -19,16 +18,10 @@ portable-reason = "requires v4l2loopback kernel module and system PipeWire integ
 supported = ["x86_64-linux"]
 
 [update]
-strategy = "html-regex"
-repo     = "https://iriun.gitlab.io/"
-pattern  = "iriunwebcam-(\\d+\\.\\d+\\.\\d+)\\.deb"
+strategy     = "github-releases"
+repo         = "sharno/IriunWebcam-AppImage"
+strip-prefix = "v"
 
 [source]
-url = "https://iriun.gitlab.io/iriunwebcam-${version}.deb"
-
-[source.install]
-"usr/local/bin/iriunwebcam"                                   = "bin/iriunwebcam"
-"usr/lib/x86_64-linux-gnu/spa-0.2/iriunaudio/libspa-iriunaudio.so" = "lib/spa-0.2/iriunaudio/libspa-iriunaudio.so"
-"usr/share/applications/iriunwebcam.desktop"                  = "share/applications/iriunwebcam.desktop"
-"usr/share/pixmaps/iriunwebcam.png"                           = "share/pixmaps/iriunwebcam.png"
-"usr/share/pipewire/pipewire.conf.d/iriunaudio.conf"          = "share/pipewire/pipewire.conf.d/iriunaudio.conf"
+github = "sharno/IriunWebcam-AppImage"
+glob   = "*${arch}*.AppImage"
