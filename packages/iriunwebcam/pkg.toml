@@ -1,0 +1,27 @@
+[pkg]
+name        = "iriunwebcam"
+type        = "appimage"
+description = "Use your phone's camera as a wireless webcam in your PC or Mac"
+homepage    = ["https://iriun.gitlab.io", "https://iriun.com"]
+license     = ["Proprietary"]
+maintainer  = ["Mohamed Elsharnouby <sharnoby3@gmail.com>"]
+category    = ["AudioVideo", "Video", "Utility"]
+repology    = ["iriunwebcam"]
+note        = [
+  "Proprietary software - Terms: https://iriun.com",
+  "Requires v4l2loopback kernel module (v4l2loopback-dkms) and PipeWire",
+]
+portable = true
+portable-reason = "requires v4l2loopback kernel module and system PipeWire integration"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "sharno/IriunWebcam-AppImage"
+strip-prefix = "v"
+
+[source]
+github = "sharno/IriunWebcam-AppImage"
+glob   = "*${arch}*.AppImage"
