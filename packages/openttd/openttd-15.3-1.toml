@@ -1,21 +1,21 @@
 version = "15.3-1"
-date    = "2026-08-01T12:11:22Z"
+date    = "2026-08-20T16:11:05Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-08-01_1785586281/OpenTTD-15.3-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-08-01_1785586281/OpenTTD-15.3-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-08-20_1787242264/OpenTTD-15.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-08-20_1787242264/OpenTTD-15.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "113175d3fe945a1647f9e86d70e3c0b1250849f7dfc40a0e9be6ee861e4f9f92"
-aarch64-linux = "0b351e83ed45c6522e37cb4b699be1a47e14db0360a1467e676f41211c1a88e6"
+x86_64-linux  = "1af9f338547064c873c832a158c93b5e371efc001836466a723a6ce7c9fbb0ff"
+aarch64-linux = "b5fea2d19d7d3453e0b3f1ab5cda4bcdf758bdaa1cd621c0c4840ab4491d0830"
 
 [sha256]
-x86_64-linux  = "c6dadd512085434257490a474588786a70cff7b2579d9b125c027eba9b3ddb5d"
-aarch64-linux = "8dc4c685d622312db868ad7d8f6822957fa67fc066bad34e6d1dbfaca799aeec"
+x86_64-linux  = "8c5bdab9701973187595d59cb6c0362c7cf2d7b90ed66c8dd139f3fdab207dd3"
+aarch64-linux = "1d0943134b9e827621a7c4c4c005d3db847a82ccb92f71e05df910f5d07c44dd"
 
 [size]
-x86_64-linux  = 54525304
-aarch64-linux = 54961007
+x86_64-linux  = 51426770
+aarch64-linux = 52374263
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/OpenTTD/OpenTTD/master/COPYING.md"
