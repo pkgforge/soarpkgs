@@ -1,0 +1,22 @@
+version = "0.45.0"
+date    = "2026-08-20T09:05:55Z"
+
+[url]
+x86_64-linux  = "https://github.com/zellij-org/zellij/releases/download/v0.45.0/zellij-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/zellij-org/zellij/releases/download/v0.45.0/zellij-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "23b22b2b1dd28dd26d654929d60bf3f29a0a3ded5ec3c2bc90a8c1b08b271a70"
+aarch64-linux = "4ab8592b507f8e2f340ea5fcc340335464c88c1cf6a126bb84f3d8a2ccf073b5"
+
+[sha256]
+x86_64-linux  = "ab8b2494d80c20c07da4361041a25b96b93c73df992d2d54143e70fb9b1a1063"
+aarch64-linux = "d8b311d0f9ec7a03f3341563331aac12c9f52990ecc96a36ed44b1add9dfa035"
+
+[size]
+x86_64-linux  = 18691582
+aarch64-linux = 17957129
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/zellij-org/zellij/main/LICENSE.md"
+to     = "LICENSE"

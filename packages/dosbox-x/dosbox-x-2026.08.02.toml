@@ -1,0 +1,22 @@
+version = "2026.08.02"
+date    = "2026-08-20T06:16:02Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.08.02%402026-08-20_1787206561/DOSBox-X-2026.08.02-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.08.02%402026-08-20_1787206561/DOSBox-X-2026.08.02-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5f037a1ed229e90d49cea40797e78cf3e487e217537f1c4bf15a1b32337b3b57"
+aarch64-linux = "5aefa416489e3855d8963cfccf13d6fe05a1e503c290ab9ee2f3fa971609bebd"
+
+[sha256]
+x86_64-linux  = "0f45003e40dc1ee17530f529ea76e7921c432eae02db65407379648b56caecdf"
+aarch64-linux = "7e3e1ce9a01240291721da09bfb8b262f98c32df49cf8c5cc8e3780b22c4c4fe"
+
+[size]
+x86_64-linux  = 88592821
+aarch64-linux = 80699034
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/joncampbell123/dosbox-x/master/COPYING"
+to     = "LICENSE"

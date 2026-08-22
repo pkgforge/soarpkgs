@@ -1,0 +1,22 @@
+version = "27493ebf6"
+date    = "2026-08-19T11:01:21Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Cannonball-AppImage/releases/download/27493ebf6%402026-08-19_1787137280/CannonBall-27493ebf6-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Cannonball-AppImage/releases/download/27493ebf6%402026-08-19_1787137280/CannonBall-27493ebf6-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "77ba1f3d188a02a6b97c9e3d3d6d8e8da6e60478d56d265cdd286b07b18d068b"
+aarch64-linux = "0b8188a631df89eb8881a8a0d3817043118ec5c074df46dfa5ae34ec5ee674d6"
+
+[sha256]
+x86_64-linux  = "27540c6271b5d88c2c42dc0a654ff360382866adb32367508d493af09cc53321"
+aarch64-linux = "9d608465be72713e6249d7a46d6fd3b65e1e3ceff58e4fffa3466ea0429ddb79"
+
+[size]
+x86_64-linux  = 18376980
+aarch64-linux = 18322808
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/djyt/cannonball/master/docs/license.txt"
+to     = "LICENSE"
