@@ -1,0 +1,21 @@
+[pkg]
+name        = "2ship2harkinian"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/2ship2harkinian-AppImage-Enhanced"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/2ship2harkinian-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/2ship2harkinian-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
