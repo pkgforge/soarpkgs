@@ -1,0 +1,21 @@
+[pkg]
+name        = "dingusppc"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/DingusPPC-AppImage"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/DingusPPC-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DingusPPC-AppImage"
+glob   = "*${arch}*.appimage"
