@@ -1,21 +1,21 @@
 version = "2.4.0-1"
-date    = "2026-08-01T11:53:14Z"
+date    = "2026-08-22T10:37:48Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/QTerminal-AppImage/releases/download/2.4.0-1%402026-08-01_1785585193/QTerminal-2.4.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/QTerminal-AppImage/releases/download/2.4.0-1%402026-08-01_1785585193/QTerminal-2.4.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/QTerminal-AppImage/releases/download/2.4.0-1%402026-08-22_1787395067/QTerminal-2.4.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QTerminal-AppImage/releases/download/2.4.0-1%402026-08-22_1787395067/QTerminal-2.4.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "5144dd03322122cdc35fd349f523cff0f6f9c31fd2e842eaceb40bf4c619493a"
-aarch64-linux = "ebfbf26327a2e8fbfe80e851f35e7d0dbf769f9113b0e1c538b981d843ae9d9c"
+x86_64-linux  = "2d095650a495bc200716f719d6ab3e0c9a367bfcb1bca77ad415937b976fda61"
+aarch64-linux = "8a19f391c09f900ea0fde7003d7872612e194171780ca54c980bd8421f9cd3ab"
 
 [sha256]
-x86_64-linux  = "89192e6f0c04f9c1e8fa0214c220e68ed08e0e4d5dd9b187f421fc4d3fe2b75c"
-aarch64-linux = "4d1cea0b74d977b74bf46c95715dffc7b1f7c4aa0b72ccfbc5b399855f5d38dd"
+x86_64-linux  = "e7138414f1217e9e9826317030c0f1388b01d8a3daa0d9d5ff2597f7b912ddd4"
+aarch64-linux = "1bacb8625c1579fe8f89c17bed5d16052e72197260da2870443a55aea8b8ac93"
 
 [size]
-x86_64-linux  = 30789771
-aarch64-linux = 30389823
+x86_64-linux  = 30693889
+aarch64-linux = 31466640
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/lxqt/qterminal/master/LICENSE"

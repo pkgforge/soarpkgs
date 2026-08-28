@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-08-22T10:42:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KolourPaint-AppImage/releases/download/26.08.0-1%402026-08-22_1787395320/KolourPaint-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KolourPaint-AppImage/releases/download/26.08.0-1%402026-08-22_1787395320/KolourPaint-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "760b116fefd6d2a95b8a56e5779e49de2de5becdfacf651dcbcb0c2fe2fc05ba"
+aarch64-linux = "44f0447b469ab01c2bc55ac2b1c561fd69ae06ddc5890868b30e2dfd82781958"
+
+[sha256]
+x86_64-linux  = "d46aececdb02fe7a2a108894428d87a24578c86fcc4c46835e7bd7c47a93c55a"
+aarch64-linux = "a69d931a8caf8556e7fb2930d12eabd641dbdafcdd90ee18122853ddcc290f03"
+
+[size]
+x86_64-linux  = 63495044
+aarch64-linux = 63861090
+
+[[extra]]
+url    = "https://invent.kde.org/graphics/kolourpaint/-/raw/master/LICENSES/BSD-2-Clause.txt"
+to     = "LICENSE"

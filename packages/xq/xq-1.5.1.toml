@@ -1,0 +1,18 @@
+version = "1.5.1"
+date    = "2026-08-23T14:27:12Z"
+
+[url]
+x86_64-linux  = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "63e4e69788c510175ae6c7399eae0edaaec7e54fbc44e2657ee13eb3fa5340d8"
+aarch64-linux = "ee86e9e3cbd1bee16dc03d6f4ca54a672888392306bb4af312b048bc319792b4"
+
+[sha256]
+x86_64-linux  = "40ec8915ca3809bc6cdd75eeacdeb8e31276f82bdaca1bfa0b4a5260d8416414"
+aarch64-linux = "e69e382c6fb7c39457a0cbd7b088970cf0dced47c15c01596c78a403560289ca"
+
+[size]
+x86_64-linux  = 2793785
+aarch64-linux = 2581969

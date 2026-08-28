@@ -1,0 +1,18 @@
+version = "2.0.0"
+date    = "2026-08-20T08:13:46Z"
+
+[url]
+x86_64-linux  = "https://github.com/charmbracelet/gum/releases/download/v2.0.0/gum_2.0.0_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/charmbracelet/gum/releases/download/v2.0.0/gum_2.0.0_Linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "bb3f62ff1f97e7d57142a25a86a29f9a27d07a3bf21e0b8b9282433baa72251f"
+aarch64-linux = "2d8af1541652eff8fa1f5d294315349df125f96aed33058a790b9210e735e932"
+
+[sha256]
+x86_64-linux  = "c99b0005bb5b514770eea404b24c7987e08eba35bb0b2d7bc6545bb676c36861"
+aarch64-linux = "ed51e91457a48f5681f67dd925bd40eb1794d41d1f48cf1d7e19e2517b7fac76"
+
+[size]
+x86_64-linux  = 4963142
+aarch64-linux = 4556270

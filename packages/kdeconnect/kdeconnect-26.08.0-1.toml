@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-08-22T10:41:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/kdeconnect-AppImage/releases/download/26.08.0-1%402026-08-22_1787395276/KDE_Connect-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/kdeconnect-AppImage/releases/download/26.08.0-1%402026-08-22_1787395276/KDE_Connect-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6f03e55dce22f404e65aa49b4d8a9c0177677f36516ea5453ad60981b2654433"
+aarch64-linux = "b74ca25d62ec0f11dcb625653e915c34f21931a2dccc3b6a239921e482630487"
+
+[sha256]
+x86_64-linux  = "801b89c172d41c9f34bde38e1ba2fa458c305922d89cfcd5b1870bcace345c19"
+aarch64-linux = "ae1d809bc9c294a02814231840387fd0445504e73769d0f99159c8433d8240d9"
+
+[size]
+x86_64-linux  = 63988597
+aarch64-linux = 64598237
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/KDE/kdeconnect-kde/refs/heads/master/LICENSES/GPL-2.0-only.txt"
+to     = "LICENSE"

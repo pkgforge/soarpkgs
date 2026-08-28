@@ -1,0 +1,22 @@
+version = "4.4.2.4-1"
+date    = "2026-08-23T23:43:59Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/RocksnDiamonds-AppImage/releases/download/4.4.2.4-1%402026-08-23_1787528638/Rocks.N.Diamonds-4.4.2.4-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/RocksnDiamonds-AppImage/releases/download/4.4.2.4-1%402026-08-23_1787528638/Rocks.N.Diamonds-4.4.2.4-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "efb1dd065d33f7527e84c9268cb6ccd77e7c8bf7643d4ca896f2cf4bbbb4d475"
+aarch64-linux = "b728543e5c891a48b1a9f4f74b3f12310f521ffa68811b068fb0335c17ad074c"
+
+[sha256]
+x86_64-linux  = "7730521e2d9cd6245b08ffc05b420a3ab7e22faf1cd16db5b9da6bb41d0e1be8"
+aarch64-linux = "9004768458cc6d28894722c6a4f088f137dcd80c5d09bf4d697d916bd775fd1f"
+
+[size]
+x86_64-linux  = 131038858
+aarch64-linux = 128417989
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/tuero/rocksndiamonds/master/COPYING"
+to     = "LICENSE"

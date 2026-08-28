@@ -1,0 +1,18 @@
+version = "11.16-1"
+date    = "2026-08-22T10:36:22Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/wine-AppImage/releases/download/11.16-1%402026-08-22_1787394981/wine-11.16-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "0080f6cdad3e7f83154446ae74db0fb284cae676de970e9302c119eca2c5f050"
+
+[sha256]
+x86_64-linux = "ddc9d3ea775a308419fd6c5a3f96fff23ac97c5cf67aa6fa7f4efb524d6b444c"
+
+[size]
+x86_64-linux = 158928720
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/wine-mirror/wine/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "26.08-1"
+date    = "2026-08-22T10:38:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/26.08-1%402026-08-22_1787395095/OpenLoco-26.08-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/26.08-1%402026-08-22_1787395095/OpenLoco-26.08-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c0253beb33153ba9f6e21e82a52aeb773390e27f99b56542075ae58bc9d02e6d"
+aarch64-linux = "60714b58cfc47fe0d55f282766842c6b05fd3ffc1903fcff9b9c5beec444dd9d"
+
+[sha256]
+x86_64-linux  = "dd5912123ade46ee208ab76ffca285959bd41658236b226b9856389346734030"
+aarch64-linux = "366eb7b43a295c3bf6423ef4168b98a9a3985571b10bf48ee9ec16e5e8f56612"
+
+[size]
+x86_64-linux  = 28212975
+aarch64-linux = 28399123
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenLoco/OpenLoco/master/LICENSE"
+to     = "LICENSE"

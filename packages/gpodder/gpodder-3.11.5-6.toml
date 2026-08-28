@@ -1,0 +1,22 @@
+version = "3.11.5-6"
+date    = "2026-08-22T10:36:12Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-08-22_1787394971/gPodder-3.11.5-6-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-08-22_1787394971/gPodder-3.11.5-6-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "ac513ffd75f8e082f94a597e184180abbb4abf5afc58d272bfc26e9c9af6a852"
+aarch64-linux = "6f259ff1604e1f57fbf92075badc0e32bf3af94a75fb6cb7f9e8a5aec257e954"
+
+[sha256]
+x86_64-linux  = "374df4eed69d080837147938eb15c6a4ae949f3468d705503f2d29d55eada24a"
+aarch64-linux = "b0f3336cdb2c2c158041198b30c2696c255078122bfc1c5ff5f3a8474be35ccc"
+
+[size]
+x86_64-linux  = 30704742
+aarch64-linux = 30671347
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/gpodder/gpodder/master/COPYING"
+to     = "LICENSE"

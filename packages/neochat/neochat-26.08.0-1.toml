@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-08-22T10:25:20Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/NeoChat-AppImage/releases/download/26.08.0-1%402026-08-22_1787394319/NeoChat-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/NeoChat-AppImage/releases/download/26.08.0-1%402026-08-22_1787394319/NeoChat-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "9c674aec788f07ce9972cad6778401cf5bd0bbcaa1cfac381cbdcd3b5265d163"
+aarch64-linux = "d3bc930e8817c4f5ea6473ae109dadd03d18aa6a6996caa06ea5fb08ac3ea485"
+
+[sha256]
+x86_64-linux  = "0dda1cfc9ce97a8394a8defcd98606f6a97ab937e06cd484317b1bb4ff499f02"
+aarch64-linux = "e860817fc99a1a2c21c78e6665e243d4cbc52e7976bb343ca7ec7f2c1accf3de"
+
+[size]
+x86_64-linux  = 199550990
+aarch64-linux = 183680270
+
+[[extra]]
+url    = "https://invent.kde.org/network/neochat/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "7.0.1"
+date    = "2026-08-22T10:41:39Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced/releases/download/v7.0.1%402026-08-22_1787395298/simplex-v7.0.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced/releases/download/v7.0.1%402026-08-22_1787395298/simplex-v7.0.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f7246359cc698641e304bd2c87fe8f2f7c492e316c78d4ce49986865b8164225"
+aarch64-linux = "9418b9c2e20fd3b729500ebb308a90bc8492f003c44c92702bbc2380287dcfdf"
+
+[sha256]
+x86_64-linux  = "d488156519ad56b0fcd982e6ad850c46aa0a68c9a23607120b160431d1f4b725"
+aarch64-linux = "b88c545fa88e3c390325302ea9d084454ca9c20b4722f01120fbbb00e2114086"
+
+[size]
+x86_64-linux  = 337974771
+aarch64-linux = 333681363
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable/LICENSE"
+to     = "LICENSE"

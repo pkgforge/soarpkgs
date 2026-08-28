@@ -1,21 +1,21 @@
 version = "11.1.0-1"
-date    = "2026-08-17T06:43:17Z"
+date    = "2026-08-22T10:18:48Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.0-1%402026-08-17_1786948996/QEMU-11.1.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.0-1%402026-08-17_1786948996/QEMU-11.1.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.0-1%402026-08-22_1787393927/QEMU-11.1.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.0-1%402026-08-22_1787393927/QEMU-11.1.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "46b0101cca1f812902b1c005d5b8f316e35a0a366090ba64ac2ebb9c7e6fbdba"
-aarch64-linux = "87987381401bd8d5e6cba6c57d99f378b9f10fca0e91c21d9e35c713272f1199"
+x86_64-linux  = "c50869976a92780ba3c7d70b68a21b3b6e966dba441853533b9613c799289ceb"
+aarch64-linux = "7f7b129404dd887e96cf0b1a72e4c681385ab56d1a5eb976a3939083146e9787"
 
 [sha256]
-x86_64-linux  = "64531607f31afb0301906752fff16077500a4f2a0183ef8569900331a5d415a9"
-aarch64-linux = "a7b39f71f50342c2099d5ac83f8662ec539f0b0fbc14f55fe1ead6373fea36cd"
+x86_64-linux  = "fb302c84d494e5f61fc641dabaacc087f68a404998556d2479926f552b9ed441"
+aarch64-linux = "122774f99e10853ab1043edc301af280e94c6e4095bce370a754b0e42d0789e2"
 
 [size]
-x86_64-linux  = 171519006
-aarch64-linux = 170271031
+x86_64-linux  = 171323680
+aarch64-linux = 170865625
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/qemu/qemu/master/COPYING"

@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-08-22T10:41:53Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.08.0-1%402026-08-22_1787395312/KMines-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.08.0-1%402026-08-22_1787395312/KMines-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "84c585ed75bb5096eb901f9360363d5d865cec2a5e7e559157cb935fed1a9507"
+aarch64-linux = "0e271fee297319103a2eab146d5fffaf56ba8123a0a19888aa6970a57ff13c06"
+
+[sha256]
+x86_64-linux  = "7513949347dbdc7b4d39b7fee78a385670e8be6029311c4b7675eec7d3205abb"
+aarch64-linux = "5479987315558d320abfa2b56277aaf88c2a645bb41c3620e3a9d0d75b7e08e7"
+
+[size]
+x86_64-linux  = 73961555
+aarch64-linux = 74319319
+
+[[extra]]
+url    = "https://invent.kde.org/games/kmines/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

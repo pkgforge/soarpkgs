@@ -1,0 +1,22 @@
+version = "26.03.1-1"
+date    = "2026-08-24T09:59:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Video-Trimmer-AppImage/releases/download/26.03.1-1%402026-08-24_1787565539/Video_Trimmer-26.03.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Video-Trimmer-AppImage/releases/download/26.03.1-1%402026-08-24_1787565539/Video_Trimmer-26.03.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "53a0155d23db50821e445b83f6b13da50c86d6fc0d45a9e045ab2b671d156e9a"
+aarch64-linux = "dba842161005b173a0637945f850fdf32e882e36803cc17ade7452689be4e2f1"
+
+[sha256]
+x86_64-linux  = "025fb9e0d7e67770e5dd595112ba883061eb189187a2c42ce97a6f683b86566f"
+aarch64-linux = "a63ad66727ce57a691aca46810812aee7843599bd75f13e30aadb54327567aaa"
+
+[size]
+x86_64-linux  = 106427184
+aarch64-linux = 98044264
+
+[[extra]]
+url    = "https://gitlab.gnome.org/YaLTeR/video-trimmer/-/raw/main/COPYING"
+to     = "LICENSE"
