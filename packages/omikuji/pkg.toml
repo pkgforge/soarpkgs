@@ -1,0 +1,24 @@
+[pkg]
+name        = "omikuji"
+type        = "appimage"
+description = "Qt/QML based game launcher for Linux"
+homepage    = ["https://github.com/omikuji-launcher/omikuji"]
+license     = ["GPL-3.0"]
+maintainer  = ["imshinyu"]
+repology    = ["github-cli"]
+provides    = ["gh"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[arch]
+x86_64  = "x86_64"
+
+[update]
+strategy     = "github-releases"
+repo         = "omikuji-launcher/omikuji"
+strip-prefix = "v"
+
+[source]
+github = "omikuji-launcher/omikuji"
+glob   = "Omikuji-*-anylinux-x86_64.AppImage"
