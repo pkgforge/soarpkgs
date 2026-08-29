@@ -18,9 +18,9 @@ portable-reason = "requires v4l2loopback kernel module and system PipeWire integ
 supported = ["x86_64-linux"]
 
 [update]
-strategy     = "github-releases"
-repo         = "sharno/IriunWebcam-AppImage"
-strip-prefix = "v"
+strategy   = "github-releases"
+repo       = "sharno/IriunWebcam-AppImage"
+tag-suffix = "strip"
 
 [source]
 github = "sharno/IriunWebcam-AppImage"
