@@ -1,0 +1,23 @@
+[pkg]
+name        = "appimagetool"
+type        = "static"
+description = "Rust implementation of appimagetool for the Anylinux-AppImages project"
+homepage    = ["https://github.com/pkgforge-dev/appimagetool"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/appimagetool"
+
+[source]
+url = "https://github.com/pkgforge-dev/appimagetool/releases/download/${version}/appimagetool-${arch}-linux"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/pkgforge-dev/appimagetool/main/LICENSE"
+to  = "LICENSE"
+verify = false
