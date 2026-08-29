@@ -1,0 +1,21 @@
+[pkg]
+name        = "extremetuxracer"
+type        = "appimage"
+description = "Downhill racing game starring Tux"
+homepage    = ["https://sourceforge.net/projects/extremetuxracer"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "SportsGame"]
+repology    = ["extremetuxracer"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ExtremeTuxRacer-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ExtremeTuxRacer-AppImage"
+glob   = "*${arch}*.appimage"
