@@ -1,0 +1,21 @@
+[pkg]
+name        = "ghostscript"
+type        = "appimage"
+description = "PostScript and PDF interpreter"
+homepage    = ["https://www.ghostscript.com"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Graphics", "Utility"]
+repology    = ["ghostscript"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ghostscript-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ghostscript-AppImage"
+glob   = "*${arch}*.appimage"
