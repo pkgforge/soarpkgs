@@ -1,21 +1,26 @@
 [pkg]
 name        = "sheepshaver"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/SheepShaver-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Open source PowerPC Macintosh (SheepShaver) emulator"
+homepage    = ["https://github.com/kanjitalk755/macemu"]
+license     = ["GPL-2.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "System"]
+repology    = ["sheepshaver"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/SheepShaver-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SheepShaver-AppImage"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/SheepShaver-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/kanjitalk755/macemu/master/SheepShaver/COPYING"
+to  = "LICENSE"
+verify = false
