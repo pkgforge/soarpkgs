@@ -1,0 +1,26 @@
+[pkg]
+name        = "extremegrecomp"
+type        = "appimage"
+description = "Static recompilation of the Nintendo 64 game Extreme-G"
+homepage    = ["https://gitlab.com/sonicdcer/ExtremeGRecomp"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+note        = ["Needs an original Extreme-G ROM, which is not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ExtremeGRecomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ExtremeGRecomp-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://gitlab.com/sonicdcer/ExtremeGRecomp/-/raw/main/COPYING"
+to  = "LICENSE"
+verify = false
