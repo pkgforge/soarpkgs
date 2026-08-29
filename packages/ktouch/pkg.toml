@@ -1,0 +1,26 @@
+[pkg]
+name        = "ktouch"
+type        = "appimage"
+description = "Touch typing tutor"
+homepage    = ["https://apps.kde.org/ktouch"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Education", "Utility"]
+repology    = ["ktouch"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KTouch-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KTouch-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/education/ktouch/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"
+verify = false
