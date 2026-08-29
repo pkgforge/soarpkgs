@@ -1,21 +1,27 @@
 [pkg]
 name        = "2ship2harkinian"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/2ship2harkinian-AppImage-Enhanced"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Native PC port of The Legend of Zelda: Majora's Mask"
+homepage    = ["https://github.com/HarbourMasters/2ship2harkinian"]
+license     = ["CC0-1.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame"]
+repology    = ["2ship2harkinian"]
+note        = ["Needs an original Majora's Mask ROM, which is not shipped"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/2ship2harkinian-AppImage-Enhanced"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/2ship2harkinian-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/2ship2harkinian-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/HarbourMasters/2ship2harkinian/develop/LICENSE"
+to  = "LICENSE"
+verify = false
