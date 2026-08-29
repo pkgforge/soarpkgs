@@ -1,0 +1,29 @@
+[pkg]
+name        = "telegram-desktop"
+type        = "appimage"
+description = "Telegram Desktop messaging app"
+homepage    = [
+  "https://desktop.telegram.org",
+  "https://github.com/pkgforge-dev/Telegram-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Network", "InstantMessaging", "Chat"]
+repology   = ["telegram-desktop"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Telegram-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Telegram-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/telegramdesktop/tdesktop/refs/heads/dev/LICENSE"
+to  = "LICENSE"
+verify = false
