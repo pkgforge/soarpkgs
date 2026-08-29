@@ -1,0 +1,21 @@
+[pkg]
+name        = "xsnow"
+type        = "appimage"
+description = "Let it snow, with Santa and trees, on your desktop"
+homepage    = ["https://ratrabbit.nl/ratrabbit/xsnow"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Amusement", "Utility"]
+repology    = ["xsnow"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Xsnow-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Xsnow-AppImage"
+glob   = "*${arch}*.appimage"
