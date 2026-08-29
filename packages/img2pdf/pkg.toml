@@ -1,0 +1,21 @@
+[pkg]
+name        = "img2pdf"
+type        = "appimage"
+description = "Lossless conversion of raster images to PDF"
+homepage    = ["https://gitlab.mister-muffin.de/josch/img2pdf"]
+license     = ["LGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Graphics", "Office"]
+repology    = ["img2pdf"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/img2pdf-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/img2pdf-AppImage"
+glob   = "*${arch}*.appimage"
