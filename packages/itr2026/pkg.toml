@@ -1,0 +1,21 @@
+[pkg]
+name        = "itr2026"
+type        = "appimage"
+description = "Brazilian rural land tax declaration program (ITR 2026)"
+homepage    = ["https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/ditr"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Office", "Finance"]
+note        = ["Proprietary software from Receita Federal do Brasil; terms at https://www.gov.br/receitafederal"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ITR2026-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/ITR2026-AppImage"
+glob   = "*${arch}*.appimage"
