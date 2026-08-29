@@ -1,0 +1,21 @@
+[pkg]
+name        = "foobillardpp"
+type        = "appimage"
+description = "3D OpenGL billiard game with 8-ball, 9-ball, snooker and carambol"
+homepage    = ["https://foobillardplus.sourceforge.net"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Simulation", "SportsGame"]
+repology    = ["foobillard++"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Foobillardpp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Foobillardpp-AppImage"
+glob   = "*${arch}*.appimage"
