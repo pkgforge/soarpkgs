@@ -5,14 +5,11 @@ description = "Qt/QML based game launcher for Linux"
 homepage    = ["https://github.com/omikuji-launcher/omikuji"]
 license     = ["GPL-3.0"]
 maintainer  = ["imshinyu"]
-repology    = ["github-cli"]
-provides    = ["gh"]
+category    = ["Game", "Utility"]
+repology    = ["omikuji"]
 
 [host]
 supported = ["x86_64-linux"]
-
-[arch]
-x86_64  = "x86_64"
 
 [update]
 strategy     = "github-releases"
