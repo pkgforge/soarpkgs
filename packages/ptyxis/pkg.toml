@@ -1,0 +1,21 @@
+[pkg]
+name        = "ptyxis"
+type        = "appimage"
+description = "Terminal for a container-oriented desktop"
+homepage    = ["https://gitlab.gnome.org/chergert/ptyxis"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "TerminalEmulator", "Utility"]
+repology    = ["ptyxis"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ptyxis-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ptyxis-AppImage"
+glob   = "*${arch}*.appimage"
