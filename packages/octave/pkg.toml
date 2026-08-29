@@ -1,0 +1,29 @@
+[pkg]
+name        = "octave"
+type        = "appimage"
+description = "Scientific programming language for numerical computation"
+homepage    = [
+  "https://octave.org",
+  "https://github.com/pkgforge-dev/GNU-Octave-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Science", "Math"]
+repology   = ["octave"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/GNU-Octave-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/GNU-Octave-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/gnu-octave/octave/default/COPYING"
+to  = "LICENSE"
+verify = false

@@ -16,3 +16,7 @@ aarch64-linux = "c042c44c9f6f07fb1f7dc16be6753e30668b1f6a03df42a7d598c2273430d04
 [size]
 x86_64-linux  = 106300853
 aarch64-linux = 98014277
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/gnu-octave/octave/default/COPYING"
+to     = "LICENSE"
