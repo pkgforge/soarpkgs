@@ -1,0 +1,22 @@
+version = "1.28.0-3"
+date    = "2026-07-14T23:27:41Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/MATE-Calculator-AppImage/releases/download/1.28.0-3%402026-07-14_1784071660/MATE_Calculator-1.28.0-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/MATE-Calculator-AppImage/releases/download/1.28.0-3%402026-07-14_1784071660/MATE_Calculator-1.28.0-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1e8d98aec6bfa056f997600ca088a5a287d6b53d1865c9b383fbcad779abdb59"
+aarch64-linux = "c2448e7aa6a50519a53348393219ab628311343f1d03310e21ca925fc574536a"
+
+[sha256]
+x86_64-linux  = "2b5ecdaacca37b8c3aa239a45861cf325ac2b26294959d2b33e2986e0f4ada4a"
+aarch64-linux = "e95a0e2ca9504f56baf6016b1062438a6e5d808b2ad379acb8a9e6c5ad5f909e"
+
+[size]
+x86_64-linux  = 18754126
+aarch64-linux = 18698379
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mate-desktop/mate-calc/refs/heads/master/COPYING"
+to     = "LICENSE"
