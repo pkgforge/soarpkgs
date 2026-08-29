@@ -1,0 +1,26 @@
+[pkg]
+name        = "foot"
+type        = "appimage"
+description = "Fast, lightweight and minimalistic Wayland terminal emulator"
+homepage    = ["https://codeberg.org/dnkl/foot"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "TerminalEmulator", "Utility"]
+repology    = ["foot"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/foot-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/foot-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://codeberg.org/dnkl/foot/raw/branch/master/LICENSE"
+to  = "LICENSE"
+verify = false
