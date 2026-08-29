@@ -1,0 +1,21 @@
+[pkg]
+name        = "gthumb"
+type        = "appimage"
+description = "Image viewer and browser for the GNOME desktop"
+homepage    = ["https://gitlab.gnome.org/GNOME/gthumb"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Viewer", "Photography"]
+repology    = ["gthumb"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/gThumb-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/gThumb-AppImage"
+glob   = "*${arch}*.appimage"
