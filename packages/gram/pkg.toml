@@ -1,23 +1,26 @@
 [pkg]
 name        = "gram"
-id          = "pkgforge-dev.gram"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-tag         = ["TODO"]
-repology    = ["TODO"]
+description = "Code editor forked from Zed, without AI or subscriptions"
+homepage    = ["https://codeberg.org/GramEditor/gram"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "TextEditor", "IDE"]
+repology    = ["gram"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/Gram-AppImage-Enhanced"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gram-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/Gram-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://codeberg.org/GramEditor/gram/raw/branch/main/LICENSE-GPL"
+to  = "LICENSE"
+verify = false
