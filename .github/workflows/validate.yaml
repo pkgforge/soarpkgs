@@ -29,6 +29,16 @@ jobs:
       - name: Validate tree
         run: sbuild validate
 
+      # A hash is only worth what it was checked against. validate proves one
+      # is present, not that it was ever true of the artifact beside it.
+      - name: Check changed pins against the forge
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 .github/scripts/check-pins.py
+
       # Downloading is only worth it for what changed, but for those the
       # archive is the only place a wrong install path shows up.
       - name: Audit changed packages against their archives
