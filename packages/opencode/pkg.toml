@@ -1,0 +1,21 @@
+[pkg]
+name        = "opencode"
+type        = "appimage"
+description = "AI coding agent built for the terminal"
+homepage    = ["https://github.com/sst/opencode"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+repology    = ["opencode"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/opencode-cli-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/opencode-cli-AppImage"
+glob   = "*${arch}*.appimage"
