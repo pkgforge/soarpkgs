@@ -20,14 +20,14 @@ strip-prefix = "v"
 url     = "https://github.com/Canop/broot/releases/download/v${version}/broot_${version}.zip"
 
 [source.install]
-"${arch}-unknown-linux-musl/broot"      = "bin/broot"
-"${arch}-unknown-linux-musl/br.bash"    = "share/bash-completion/completions/br"
-"${arch}-unknown-linux-musl/broot.bash" = "share/bash-completion/completions/broot"
-"${arch}-unknown-linux-musl/br.fish"    = "share/fish/vendor_completions.d/br.fish"
-"${arch}-unknown-linux-musl/broot.fish" = "share/fish/vendor_completions.d/broot.fish"
-"${arch}-unknown-linux-musl/broot.1"    = "share/man/man1/broot.1"
-"${arch}-unknown-linux-musl/_br"        = "share/zsh/site-functions/_br"
-"${arch}-unknown-linux-musl/_broot"     = "share/zsh/site-functions/_broot"
+"${arch}-unknown-linux-musl/broot" = "bin/broot"
+"completion/br.bash"              = "share/bash-completion/completions/br"
+"completion/broot.bash"           = "share/bash-completion/completions/broot"
+"completion/br.fish"              = "share/fish/vendor_completions.d/br.fish"
+"completion/broot.fish"           = "share/fish/vendor_completions.d/broot.fish"
+"completion/_br"                  = "share/zsh/site-functions/_br"
+"completion/_broot"               = "share/zsh/site-functions/_broot"
+"broot.1"                         = "share/man/man1/broot.1"
 
 [[extra]]
 url = "https://raw.githubusercontent.com/Canop/broot/main/LICENSE"
