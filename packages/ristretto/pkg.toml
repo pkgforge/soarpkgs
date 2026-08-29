@@ -1,0 +1,21 @@
+[pkg]
+name        = "ristretto"
+type        = "appimage"
+description = "Fast and lightweight image viewer for the Xfce desktop"
+homepage    = ["https://docs.xfce.org/apps/ristretto/start"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Viewer"]
+repology    = ["ristretto"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ristretto-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ristretto-AppImage"
+glob   = "*${arch}*.appimage"
