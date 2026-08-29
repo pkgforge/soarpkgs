@@ -1,23 +1,26 @@
 [pkg]
 name        = "deepin-calculator"
-id          = "pkgforge-dev.deepin-calculator"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/Deepin-Calculator-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-tag         = ["TODO"]
-repology    = ["TODO"]
+description = "Calculator for the Deepin desktop"
+homepage    = ["https://github.com/linuxdeepin/deepin-calculator"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Calculator", "Utility"]
+repology    = ["deepin-calculator"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/Deepin-Calculator-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Deepin-Calculator-AppImage"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/Deepin-Calculator-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/linuxdeepin/deepin-calculator/master/LICENSE"
+to  = "LICENSE"
+verify = false
