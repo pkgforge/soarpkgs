@@ -1,23 +1,29 @@
 [pkg]
 name        = "supertux"
-id          = "pkgforge-dev.supertux"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-tag         = ["TODO"]
-repology    = ["TODO"]
+description = "Classic 2D jump'n'run sidescroller game featuring Tux"
+homepage    = [
+  "https://supertux.org",
+  "https://github.com/SuperTux/supertux",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "ActionGame"]
+repology   = ["supertux"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/SuperTux-AppImage-Enhanced"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SuperTux-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/SuperTux-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/SuperTux/supertux/master/LICENSE.txt"
+to  = "LICENSE"
+verify = false
