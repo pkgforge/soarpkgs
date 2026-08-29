@@ -1,23 +1,29 @@
 [pkg]
 name        = "pinta-gtk3"
-id          = "pkgforge-dev.pinta-gtk3"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/Pinta-GTK3-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-tag         = ["TODO"]
-repology    = ["TODO"]
+description = "Simple GTK paint program (GTK3 build)"
+homepage    = [
+  "https://www.pinta-project.com",
+  "https://github.com/PintaProject/Pinta",
+]
+license    = ["MIT"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Graphics", "RasterGraphics"]
+repology   = ["pinta"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/Pinta-GTK3-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Pinta-GTK3-AppImage"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/Pinta-GTK3-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/PintaProject/Pinta/master/license-mit.txt"
+to  = "LICENSE"
+verify = false
