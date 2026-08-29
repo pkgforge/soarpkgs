@@ -1,0 +1,21 @@
+[pkg]
+name        = "themix-gui"
+type        = "appimage"
+description = "Theme designer for GTK, Qt and icon themes"
+homepage    = ["https://github.com/themix-project/themix-gui"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Settings", "Utility"]
+repology    = ["themix-gui"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Themix-GUI-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Themix-GUI-AppImage"
+glob   = "*${arch}*.appimage"
