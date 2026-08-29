@@ -1,0 +1,21 @@
+[pkg]
+name        = "freedink"
+type        = "appimage"
+description = "Free reimplementation of the Dink Smallwood adventure game"
+homepage    = ["https://www.gnu.org/software/freedink"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame", "RolePlaying"]
+repology    = ["freedink"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/GNU-FreeDink-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/GNU-FreeDink-AppImage"
+glob   = "*${arch}*.appimage"
