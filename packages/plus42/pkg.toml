@@ -1,0 +1,21 @@
+[pkg]
+name        = "plus42"
+type        = "appimage"
+description = "Scientific programmable calculator, an enhanced HP-42S simulator"
+homepage    = ["https://thomasokken.com/plus42"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Calculator", "Science", "Utility"]
+repology    = ["plus42"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Plus42-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Plus42-AppImage"
+glob   = "*${arch}*.appimage"
