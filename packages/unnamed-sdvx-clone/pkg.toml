@@ -1,0 +1,21 @@
+[pkg]
+name        = "unnamed-sdvx-clone"
+type        = "appimage"
+description = "Open source rhythm game clone of Sound Voltex"
+homepage    = ["https://github.com/Drewol/unnamed-sdvx-clone"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["unnamed-sdvx-clone"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Unnamed-SDVX-clone-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Unnamed-SDVX-clone-AppImage"
+glob   = "*${arch}*.appimage"
