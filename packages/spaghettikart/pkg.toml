@@ -1,21 +1,20 @@
 [pkg]
 name        = "spaghettikart"
-id          = "pkgforge-dev.spaghettikart"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-tag         = ["TODO"]
-repology    = ["TODO"]
+description = "Native PC port of Mario Kart 64"
+homepage    = ["https://github.com/HarbourMasters/SpaghettiKart"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+repology    = ["spaghettikart"]
+note        = ["Needs an original Mario Kart 64 ROM, which is not shipped"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/SpaghettiKart-AppImage-Enhanced"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/SpaghettiKart-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
