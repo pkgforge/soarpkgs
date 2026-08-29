@@ -1,0 +1,21 @@
+[pkg]
+name        = "zod-engine"
+type        = "appimage"
+description = "Open source remake of the 1996 strategy game Z"
+homepage    = ["https://github.com/ericlemanissier/zod-engine"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "StrategyGame"]
+repology    = ["zod-engine"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Zod-Engine-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Zod-Engine-AppImage"
+glob   = "*${arch}*.appimage"
