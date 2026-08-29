@@ -1,0 +1,21 @@
+[pkg]
+name        = "shotwell"
+type        = "appimage"
+description = "Photo manager and organizer for the GNOME desktop"
+homepage    = ["https://gitlab.gnome.org/GNOME/shotwell"]
+license     = ["LGPL-2.1"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "Photography", "Viewer"]
+repology    = ["shotwell"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Shotwell-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Shotwell-AppImage"
+glob   = "*${arch}*.appimage"
