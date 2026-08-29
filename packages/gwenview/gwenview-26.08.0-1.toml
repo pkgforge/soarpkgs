@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-08-22T10:41:29Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gwenview-AppImage/releases/download/26.08.0-1%402026-08-22_1787395288/Gwenview-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gwenview-AppImage/releases/download/26.08.0-1%402026-08-22_1787395288/Gwenview-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1935a7f64825186460a07e292bea11d2fb9dc658b5221e4c5afd4d111136850a"
+aarch64-linux = "2b818f0ae7dce6a25f7cf182164643df6fcbad91766f5b7955e8f8369fab8017"
+
+[sha256]
+x86_64-linux  = "c7bae7273ae64eb9436ca29f94fdffd111770a2eb69f0a57aefda0884a6ae473"
+aarch64-linux = "8d4cee011dad8426bc3b48a2d0f7371567eb2f2ad5ba92e7ea3e475e6d1c765e"
+
+[size]
+x86_64-linux  = 79162314
+aarch64-linux = 79865730
+
+[[extra]]
+url    = "https://invent.kde.org/graphics/gwenview/-/raw/master/COPYING"
+to     = "LICENSE"

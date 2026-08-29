@@ -1,0 +1,22 @@
+version = "4.6.1-2"
+date    = "2026-08-22T10:42:50Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.1-2%402026-08-22_1787395369/Audacious-4.6.1-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.1-2%402026-08-22_1787395369/Audacious-4.6.1-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "2a0f6de987b745b79be9f70d40e7244062bcb0fa0bf0d853f72c33f70353d589"
+aarch64-linux = "fc3de783b33f35dcc07679f089e1c170cf5dcf8a80b4041982e68a9732e76a17"
+
+[sha256]
+x86_64-linux  = "dd2a462ec909e082e3d5007645795f6cb1261e8524a116175eace985ae70df38"
+aarch64-linux = "df6cbf8e831006e4875087ebf04bb524c30b2d54975fcc77b0d668e2165dded0"
+
+[size]
+x86_64-linux  = 61733608
+aarch64-linux = 61751917
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/audacious-media-player/audacious/refs/heads/master/COPYING"
+to     = "LICENSE"

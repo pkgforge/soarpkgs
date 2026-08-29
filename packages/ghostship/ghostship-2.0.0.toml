@@ -1,0 +1,22 @@
+version = "2.0.0"
+date    = "2026-08-22T10:42:14Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Ghostship-AppImage-Enhanced/releases/download/2.0.0%402026-08-22_1787395333/Ghostship-2.0.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Ghostship-AppImage-Enhanced/releases/download/2.0.0%402026-08-22_1787395333/Ghostship-2.0.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "21a3aa356c99b3ed4f663030e553d2bf69e2abd2d529a76937ff0b73ce856a8e"
+aarch64-linux = "a2bf8d7165a318626e100fa49d4acbe2e29945f11b3c83247a68a7a96edded70"
+
+[sha256]
+x86_64-linux  = "d96faaf70d05019ec509eab55727e709fe91359ed956ad4a3bae7cc06eb759fa"
+aarch64-linux = "50376c9e89a7f3075f33d5246009a83df9a4b61bcde19b3ccf0ab5add93a59a7"
+
+[size]
+x86_64-linux  = 28468550
+aarch64-linux = 28841102
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/HarbourMasters/Ghostship/develop/LICENSE.md"
+to     = "LICENSE"

@@ -1,0 +1,18 @@
+version = "1.18.2-1"
+date    = "2026-08-26T06:17:53Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/LocalSend-AppImage/releases/download/1.18.2-1%402026-08-26_1787725072/LocalSend-1.18.2-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "3f8d663cc1eae93f3662cab3bf89a46f7be14101ea8032780bf2893f14edcdcf"
+
+[sha256]
+x86_64-linux = "49140909326557d01f1a69f1de3bdf66c09a7f66fd87be37829cf437846d45a9"
+
+[size]
+x86_64-linux = 44068633
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/localsend/localsend/refs/heads/main/LICENSE"
+to     = "LICENSE"

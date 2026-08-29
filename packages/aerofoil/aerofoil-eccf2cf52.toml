@@ -1,0 +1,22 @@
+version = "eccf2cf52"
+date    = "2026-08-26T08:58:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Aerofoil-AppImage/releases/download/eccf2cf52%402026-08-26_1787734713/Aerofoil-eccf2cf52-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Aerofoil-AppImage/releases/download/eccf2cf52%402026-08-26_1787734713/Aerofoil-eccf2cf52-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "87498db3e895ef2e529e41cdf2ea6543a264a0fecb607be91b124cd7274ce5da"
+aarch64-linux = "44aa2981ffe1a1ccd329bd686ce6dcf43985f9d801941f2c8e9ee0716e934996"
+
+[sha256]
+x86_64-linux  = "5bb8abeb04596a5d9f71f58c5a9fe74a24215a94aca91ce16c02aa0b01938d3f"
+aarch64-linux = "445709b80064f58026e192c52dedfe601003d661487b7b323a845d8f0c57ed6d"
+
+[size]
+x86_64-linux  = 28561131
+aarch64-linux = 28381466
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/elasota/Aerofoil/refs/heads/master/LICENSE.txt"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "3.8.4.1-1"
+date    = "2026-08-22T10:32:46Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KStars-AppImage/releases/download/3.8.4.1-1%402026-08-22_1787394765/KStars-3.8.4.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KStars-AppImage/releases/download/3.8.4.1-1%402026-08-22_1787394765/KStars-3.8.4.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1a4b0adc7838e070e235a1ad8df7b631407211ee9df74ab7dd568b2e622fe813"
+aarch64-linux = "cebc7661cc3719e3bac93b399b074fcca1977c8d749bb28b1a1041e401791e6d"
+
+[sha256]
+x86_64-linux  = "c4a92514d35ff2952cf6f2886be5a3546d7369eeebcd436a5bab17f821f25456"
+aarch64-linux = "79b234c890bc971f56769939903986eaf921b1da79dfe21e144bdf23192e0741"
+
+[size]
+x86_64-linux  = 122039019
+aarch64-linux = 109464008
+
+[[extra]]
+url    = "https://invent.kde.org/education/kstars/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

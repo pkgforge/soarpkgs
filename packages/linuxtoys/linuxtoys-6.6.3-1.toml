@@ -1,0 +1,22 @@
+version = "6.6.3-1"
+date    = "2026-08-22T10:40:44Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/LinuxToys-AppImage/releases/download/6.6.3-1%402026-08-22_1787395243/LinuxToys-6.6.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/LinuxToys-AppImage/releases/download/6.6.3-1%402026-08-22_1787395243/LinuxToys-6.6.3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "fbf28b0f7bc8c7373812b580e52455a583bf05f6e1bc48a7ca0be90decdb3e2a"
+aarch64-linux = "06918d9ef0e343ed30b26d367cb4c0323579ddd5083e082162ac967e0f01b142"
+
+[sha256]
+x86_64-linux  = "7e827c92879fcdb2d226a90c51fbc0bd8bac7020b9854067d83273555d1b605c"
+aarch64-linux = "e536d15154fec791e8003ed48844c8e827c1dde6ee75fb992fdeabe101e46424"
+
+[size]
+x86_64-linux  = 38511192
+aarch64-linux = 38201706
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/psygreg/linuxtoys/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-08-22T10:39:49Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.08.0-1%402026-08-22_1787395188/KBlocks-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.08.0-1%402026-08-22_1787395188/KBlocks-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "9fb80007008e40955f60399f392821dfce08ff503081993f546681b46c08929d"
+aarch64-linux = "5d762b61ebb9b42698f6e1384400d028c208bed788a36e260dff51733adf2853"
+
+[sha256]
+x86_64-linux  = "9747696345115e3f14b6846c8ac516c2907de934da64b08ec23c60a5a4b4ba9e"
+aarch64-linux = "c56995a7ddfd4d031d41873206f19c019a9a1e03e42f7b9ec8c95e9b66268892"
+
+[size]
+x86_64-linux  = 61637780
+aarch64-linux = 61935416
+
+[[extra]]
+url    = "https://invent.kde.org/games/kblocks/-/raw/master/COPYING"
+to     = "LICENSE"

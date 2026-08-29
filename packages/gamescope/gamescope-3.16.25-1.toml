@@ -1,21 +1,21 @@
 version = "3.16.25-1"
-date    = "2026-08-01T12:06:52Z"
+date    = "2026-08-22T10:38:03Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.25-1%402026-08-01_1785586011/gamescope-3.16.25-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.25-1%402026-08-01_1785586011/gamescope-3.16.25-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.25-1%402026-08-22_1787395082/gamescope-3.16.25-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.25-1%402026-08-22_1787395082/gamescope-3.16.25-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "5bbb0124a87f630a0abae0a397c53021098610e1ec1008f4d60c3b8322624397"
-aarch64-linux = "4bd440908648beb2992e7af9ae34258046f7ae92e971f32e26e1267994d1bc2f"
+x86_64-linux  = "8d851ce9015c91d47d3df9282b3a6b6ae2dd73b18ee3b6137d9e844fa1b98b45"
+aarch64-linux = "3a24a1e53d686f1714d5bcb8dcbdaa97d50dbaa1b8ccb670a412816d4f86dadb"
 
 [sha256]
-x86_64-linux  = "3e1e7c6df449df1cacf4efb0b35bd3dbddf4e8f4b0da9cd8480bd8846dc10d65"
-aarch64-linux = "437b142863d2e4ee5a91b549a375f0e7b9a1be66b0f4ac734a9223a22676e905"
+x86_64-linux  = "453eb92adac8f2cc0d071cb81f2391d393254d38ecb108ff1425e734f8f2fa03"
+aarch64-linux = "f79a1a290beb6a3306fedd9e89f5bdb0c796a4e21f5dd2f413c964456e093430"
 
 [size]
-x86_64-linux  = 44876202
-aarch64-linux = 41147884
+x86_64-linux  = 43013186
+aarch64-linux = 40273655
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/ValveSoftware/gamescope/master/LICENSE"

@@ -1,0 +1,22 @@
+version = "2.7-1"
+date    = "2026-08-22T10:35:18Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced/releases/download/2.7-1%402026-08-22_1787394917/Flycast-2.7-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced/releases/download/2.7-1%402026-08-22_1787394917/Flycast-2.7-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c5ddf1dc46d9487ace5cb338d357d91b6ddf2b8eb9e37766bc48d742ab8e52a7"
+aarch64-linux = "e4e046c7e6331b6e0e264423657d4075ab1dc3ce1e52e747a42171a1a2437cff"
+
+[sha256]
+x86_64-linux  = "dfdf113749203b56628aadf57d1bbeee626716e969dfba71aeadf9fea8cd9bf9"
+aarch64-linux = "9ab82cc0f3f8e5bf5ee83bf0413e4ab8f7c2c9619df9aad5db81466e01d9be9c"
+
+[size]
+x86_64-linux  = 39119594
+aarch64-linux = 41014105
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/flyinghead/flycast/master/LICENSE"
+to     = "LICENSE"

@@ -1,21 +1,21 @@
 version = "7.1-2"
-date    = "2026-08-01T12:10:40Z"
+date    = "2026-08-22T10:39:33Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/7.1-2%402026-08-01_1785586239/Crispy_Doom-7.1-2-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/7.1-2%402026-08-01_1785586239/Crispy_Doom-7.1-2-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/7.1-2%402026-08-22_1787395172/Crispy_Doom-7.1-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/7.1-2%402026-08-22_1787395172/Crispy_Doom-7.1-2-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "5744fe98de6da887ee99e9af0d8e84f81cbc9b305be168b9eb7d5ec61d61b099"
-aarch64-linux = "74bca9e507db9070068ae75e89629842f0f1740d46410f44bc74d7f1b8f9b5a5"
+x86_64-linux  = "3cf6a454fc3a1292aba14f19e0eb9566c8562ba55b0bfde1a6f89937c3fb6194"
+aarch64-linux = "bb1940b72054ee404cac0d654241e487729bf3cf06ce442f093f57ab197157b7"
 
 [sha256]
-x86_64-linux  = "4c26d584da17b62494a280e9742778d17ce2a15e4d8039ebdce85fd1c4c68327"
-aarch64-linux = "e751990bdfe2daf62a898371e222c466f1ae3c6c078db76fd18caefa4bea5bd3"
+x86_64-linux  = "ea6afe07dd444330896f8fddc5e7dc23a9e3be8f29a971ea8096a5701de09594"
+aarch64-linux = "0afb01c039956a380076c46f1def011edb9aed96e6cb372acf7d2791f5ee2c61"
 
 [size]
-x86_64-linux  = 32102568
-aarch64-linux = 31338971
+x86_64-linux  = 23381944
+aarch64-linux = 23593014
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/fabiangreffrath/crispy-doom/master/COPYING.md"

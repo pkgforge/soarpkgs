@@ -1,0 +1,18 @@
+version = "10.5.0"
+date    = "2026-08-26T07:59:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "2d5de8511740b94961316c0fe51e7784f3e84352d148fc177b8bd315397ea3ae"
+aarch64-linux = "16d5fc216c079f8b02f69aef646c10d00783327441f141a37942dccbb4227036"
+
+[sha256]
+x86_64-linux  = "761c72dc8e120d85b22292063be8a796e2eeb20eb3e4f38b8fa2343ccf3514a7"
+aarch64-linux = "d76c4317f7d5dba69f8a2a15856c90c777e7f0dd4e85f0de8c76de6992c374d4"
+
+[size]
+x86_64-linux  = 1573549
+aarch64-linux = 1429078

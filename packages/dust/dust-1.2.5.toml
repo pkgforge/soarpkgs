@@ -1,0 +1,18 @@
+version = "1.2.5"
+date    = "2026-08-19T20:01:31Z"
+
+[url]
+x86_64-linux  = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/bootandy/dust/releases/download/v1.2.5/dust-v1.2.5-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "6c129bbe939b07271135796f1070ee76baba0564243d3bc5693642d6031e39b5"
+aarch64-linux = "3d601ee6ec72310001e066748fe5ebf52f2402c369550fb504b82e55001260e5"
+
+[sha256]
+x86_64-linux  = "79813b5743fab1e04c1d9c34042aab865dbe09efb76719e7c7d260568850fabc"
+aarch64-linux = "331b328233a70e56f0509ff962b2a6ea606eb2e654ce8a0e9a3bebe1bd54a2be"
+
+[size]
+x86_64-linux  = 1255296
+aarch64-linux = 1131020

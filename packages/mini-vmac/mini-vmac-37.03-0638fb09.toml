@@ -1,0 +1,22 @@
+version = "37.03-0638fb09"
+date    = "2026-08-22T10:27:48Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Mini-vMac-AppImage/releases/download/37.03-0638fb09%402026-08-22_1787394467/Mini_vMac-37.03-0638fb09-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Mini-vMac-AppImage/releases/download/37.03-0638fb09%402026-08-22_1787394467/Mini_vMac-37.03-0638fb09-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6441c4bb1dba943d2e85721877f7b644e9d04fca83263b110676a32ba91e891f"
+aarch64-linux = "21cdd7f3acb89b160174ee876420bbf485df2c47c748cc514e62e74575824b19"
+
+[sha256]
+x86_64-linux  = "f8edad78edf36705735fd994c9f503c2208a7c0892b1d1212129129ca1126e27"
+aarch64-linux = "88706a1a886c518c03d5d820ca8344e17945816d6a82d73b46ac9c8dd8369c71"
+
+[size]
+x86_64-linux  = 18103037
+aarch64-linux = 18041636
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/minivmac/minivmac/master/COPYING.txt"
+to     = "LICENSE"

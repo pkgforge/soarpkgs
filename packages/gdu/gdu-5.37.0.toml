@@ -1,0 +1,22 @@
+version = "5.37.0"
+date    = "2026-08-18T08:48:32Z"
+
+[url]
+x86_64-linux  = "https://github.com/dundee/gdu/releases/download/v5.37.0/gdu_linux_amd64_static.tgz"
+aarch64-linux = "https://github.com/dundee/gdu/releases/download/v5.37.0/gdu_linux_arm64.tgz"
+
+[blake3]
+x86_64-linux  = "ac3375cb946a01b2bc58ee0357c94b27c6b6ef75c3fe3b41b34d34d282a6ccfd"
+aarch64-linux = "702fbba9bc74336ffe3f050659fc4b0d7736e1fa24e78d12fd3a97912caeaea6"
+
+[sha256]
+x86_64-linux  = "dfd19216393c73cd2e54823092ef8471fd49f028c8258d9861796a82856aca08"
+aarch64-linux = "40bde14eceec8b8c025dd12338564b7dbe1224f69189fa109de6455e3d31b994"
+
+[size]
+x86_64-linux  = 8537697
+aarch64-linux = 7792064
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dundee/gdu/master/LICENSE.md"
+to     = "LICENSE"

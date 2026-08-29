@@ -1,0 +1,22 @@
+version = "32a1cb9f2"
+date    = "2026-08-22T10:40:19Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Perfect-Dark-AppImage/releases/download/32a1cb9f2%402026-08-22_1787395218/Perfect_Dark-32a1cb9f2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Perfect-Dark-AppImage/releases/download/32a1cb9f2%402026-08-22_1787395218/Perfect_Dark-32a1cb9f2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "9058a49e794e8952ed135e44c68abfaeb4ac7ce67308e337f1c10bedaf406fa3"
+aarch64-linux = "f2c10eef597456dff7844e09f4c016172a26c096ae3aa0ff08c2b6dd8a10bebb"
+
+[sha256]
+x86_64-linux  = "303cd6bfbe8610957ed6da1142fa45952e04e8a59ccb2c447d6b37eb0c0c3cf2"
+aarch64-linux = "ec003a27a63577fffcd5449d411dda67751f9119949e07742c4cc6c54276250c"
+
+[size]
+x86_64-linux  = 19414049
+aarch64-linux = 19290467
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/fgsfdsfgs/perfect_dark/port/LICENSE"
+to     = "LICENSE"

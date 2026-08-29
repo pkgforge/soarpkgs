@@ -1,0 +1,22 @@
+version = "1.9-17"
+date    = "2026-08-22T10:38:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-17%402026-08-22_1787395096/innoextract-1.9-17-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-17%402026-08-22_1787395096/innoextract-1.9-17-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b1741868cccaf812aea8f53c07e1fed715c740a090950146fecc75dd8787f922"
+aarch64-linux = "1473a57cb9223f1b7853832689a84cd4ce5c38177807909ffe3e7c75f53ff0d6"
+
+[sha256]
+x86_64-linux  = "429851b6995527e68d02990366f3f0a88b7a78560f7a1a70339c411d133c308a"
+aarch64-linux = "98b7068ae0476ba1c04d4741dd63242ce7f3f4e63d4b8f39a451eaffe1539596"
+
+[size]
+x86_64-linux  = 5503579
+aarch64-linux = 5531611
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dscharrer/innoextract/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "2.0.6-1"
+date    = "2026-08-22T10:41:41Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.6-1%402026-08-22_1787395300/Graphs-2.0.6-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.6-1%402026-08-22_1787395300/Graphs-2.0.6-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "577ff8772a13ba31bff3583e3fcbd8edfdb3323e2f18b46abcfbbc26384dd10e"
+aarch64-linux = "6da328c63e1dd7da2e08e80d5399a3c56fc063af857930921add5fed768797ff"
+
+[sha256]
+x86_64-linux  = "99091affbbc4a2d17faa207b80dc141991d0790da7896e00ef6f3b399b91f2c9"
+aarch64-linux = "eda42fa65004debc018c4ec64acdf3a57cf2b8aa134be72cad190a5bc9976506"
+
+[size]
+x86_64-linux  = 86599445
+aarch64-linux = 82288015
+
+[[extra]]
+url    = "https://gitlab.gnome.org/World/Graphs/-/raw/main/LICENSE"
+to     = "LICENSE"
