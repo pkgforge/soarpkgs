@@ -1,0 +1,22 @@
+[pkg]
+name        = "duckstation-gpl"
+type        = "appimage"
+description = "Fast PlayStation 1 emulator, last GPL-licensed build"
+homepage    = ["https://github.com/stenzek/duckstation"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["duckstation"]
+note        = ["Needs a PlayStation BIOS image, which is not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DuckStation-GPL-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
