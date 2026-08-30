@@ -9,7 +9,11 @@ category    = ["AudioVideo", "Audio"]
 repology    = ["feishin"]
 
 [host]
-supported = ["x86_64-linux"]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+x86_64  = "x86_64"
+aarch64 = "arm64"
 
 [update]
 strategy     = "github-releases"
@@ -18,4 +22,4 @@ strip-prefix = "v"
 
 [source]
 github = "jeffvli/feishin"
-glob   = "Feishin-linux-x86_64.AppImage"
+glob   = "Feishin-linux-${arch}.AppImage"
