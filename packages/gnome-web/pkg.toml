@@ -1,0 +1,21 @@
+[pkg]
+name        = "gnome-web"
+type        = "appimage"
+description = "GNOME web browser based on the WebKit rendering engine"
+homepage    = ["https://apps.gnome.org/Epiphany"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "WebBrowser"]
+repology    = ["epiphany-browser"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Gnome-Web-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Gnome-Web-AppImage"
+glob   = "*${arch}*.appimage"
