@@ -1,29 +1,25 @@
 [pkg]
-name            = "librewolf"
-type            = "appimage"
-description     = "A custom version of Firefox, focused on privacy, security and freedom"
-homepage        = ["https://librewolf.net", "https://codeberg.org/librewolf"]
-src             = ["https://codeberg.org/librewolf/source"]
-license         = ["MPL-2.0"]
-maintainer      = ["QaidVoid (contact@qaidvoid.dev)"]
-category        = ["WebBrowser", "Network"]
-repology        = ["librewolf"]
-portable        = false
-portable-reason = "Dynamically linked executable"
-note            = [
-  "Fetched from official LibreWolf AppImage. Check/Report @ https://codeberg.org/librewolf/issues",
-]
+name        = "librewolf"
+type        = "appimage"
+description = "A custom version of Firefox, focused on privacy, security and freedom"
+homepage    = ["https://librewolf.net", "https://codeberg.org/librewolf"]
+src         = ["https://codeberg.org/librewolf/source"]
+license     = ["MPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["WebBrowser", "Network"]
+repology    = ["librewolf"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy     = "gitlab-tags"
-repo         = "24386000"
-strip-prefix = "v"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/LibreWolf-AppImage-Enhanced"
+tag-suffix = "strip"
 
 [source]
-url = "https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/${version}/LibreWolf.${arch}.AppImage"
+github = "pkgforge-dev/LibreWolf-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
 
 [[extra]]
 url = "https://gitlab.com/librewolf-community/browser/source/-/raw/main/LICENSE"
