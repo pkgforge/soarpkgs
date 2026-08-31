@@ -1,0 +1,21 @@
+[pkg]
+name        = "donkeykong64recomp"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/DonkeyKong64Recomp-AppImage"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/DonkeyKong64Recomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DonkeyKong64Recomp-AppImage"
+glob   = "*${arch}*.appimage"
