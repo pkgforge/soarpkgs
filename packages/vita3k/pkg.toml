@@ -1,0 +1,21 @@
+[pkg]
+name        = "vita3k"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/Vita3K-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Vita3K-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
