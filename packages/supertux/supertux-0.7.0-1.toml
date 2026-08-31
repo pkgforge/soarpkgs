@@ -1,0 +1,22 @@
+version = "0.7.0-1"
+date    = "2026-07-01T13:40:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced/releases/download/0.7.0-1%402026-07-01_1782913233/SuperTux_2-0.7.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced/releases/download/0.7.0-1%402026-07-01_1782913233/SuperTux_2-0.7.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "109d3aa72f88066b04c67dcdeb82b934bd8697cc53b8358d34598e1c3076d1b2"
+aarch64-linux = "b5d1233e35643a6040c73d4d2f7ec750d34763abc0f1629997811f1cdad4eb83"
+
+[sha256]
+x86_64-linux  = "04956718bfe0b939735b7f78e12a7bf3da6b139398df892f668dcf966f3ace20"
+aarch64-linux = "07567aec47b1f9061fd4446aaccbbb9077a7694a9f2723b4e55caafb9ad9cc5d"
+
+[size]
+x86_64-linux  = 311414935
+aarch64-linux = 308122673
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/SuperTux/supertux/master/LICENSE.txt"
+to     = "LICENSE"
