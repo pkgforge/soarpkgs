@@ -1,0 +1,46 @@
+#!/SBUILD
+_disabled: false
+
+pkg: "snowboardkids2recomp"
+pkg_id: "pkgforge-dev.snowboardkids2recomp"
+pkg_type: "appimage"
+ghcr_pkg: "pkgforge-dev/snowboardkids2recomp"
+category:
+  - "Game"
+  - "ArcadeGame"
+  - "SportsGame"
+description: "Static recompilation of the Nintendo 64 game Snowboard Kids 2"
+homepage:
+  - "https://github.com/cdlewis/snowboardkids2-recomp"
+maintainer:
+  - "QaidVoid (contact@qaidvoid.dev)"
+license:
+  - "GPL-3.0"
+build_asset:
+  - url: "https://raw.githubusercontent.com/cdlewis/snowboardkids2-recomp/main/LICENSE"
+    out: "LICENSE"
+note:
+  - "Fetched from Pre Built Community Created AppImage. Check/Report @ https://github.com/pkgforge-dev/SnowboardKids2Recomp-AppImage"
+  - "[PORTABLE] (Works on AnyLinux)"
+provides:
+  - "snowboardkids2recomp"
+repology:
+  - "snowboardkids2recomp"
+src_url:
+  - "https://github.com/pkgforge-dev/SnowboardKids2Recomp-AppImage"
+tag:
+  - "game"
+  - "n64"
+  - "recompilation"
+  - "snowboarding"
+x_exec:
+  host:
+    - "x86_64-linux"
+    - "aarch64-linux"
+  shell: "sh"
+  pkgver: |
+    VERSION=$(curl -qfsSL "https://api.github.com/repos/pkgforge-dev/SnowboardKids2Recomp-AppImage/releases/latest?per_page=20" | jq -r '.tag_name')
+    echo "${VERSION%%@*}"
+    echo "$VERSION"
+  run: |
+    soar dl "https://github.com/pkgforge-dev/SnowboardKids2Recomp-AppImage@${REMOTE_PKGVER}" --glob "*${ARCH}*.appimage" -o "./${PKG}" --yes
