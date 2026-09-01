@@ -1,0 +1,29 @@
+[pkg]
+name        = "krita"
+type        = "appimage"
+description = "Digital painting and illustration application"
+homepage    = [
+  "https://krita.org",
+  "https://github.com/pkgforge-dev/Krita-AppImage-Enhanced",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Graphics", "RasterGraphics", "2DGraphics"]
+repology   = ["krita"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Krita-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Krita-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/graphics/krita/-/raw/master/COPYING"
+to  = "LICENSE"
+verify = false
