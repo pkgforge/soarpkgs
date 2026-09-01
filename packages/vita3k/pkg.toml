@@ -1,21 +1,30 @@
 [pkg]
 name        = "vita3k"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Experimental PlayStation Vita emulator"
+homepage    = [
+  "https://vita3k.org",
+  "https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced",
+]
+license    = ["GPL-2.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Emulator", "Game"]
+repology   = ["vita3k"]
+note       = ["Needs PlayStation Vita firmware and game data, which are not shipped"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/Vita3K-AppImage-Enhanced"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Vita3K-AppImage-Enhanced"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/Vita3K-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Vita3K/Vita3K/master/COPYING.txt"
+to  = "LICENSE"
+verify = false
