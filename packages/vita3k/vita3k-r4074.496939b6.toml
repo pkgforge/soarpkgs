@@ -1,0 +1,22 @@
+version = "r4074.496939b6"
+date    = "2026-08-29T22:07:15Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced/releases/download/r4074.496939b6%402026-08-29_1788041234/Vita3K-r4074.496939b6-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced/releases/download/r4074.496939b6%402026-08-29_1788041234/Vita3K-r4074.496939b6-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "bb8bff5f53fdf2efda968d34032feda6f8914c8eec39f4d382e50ec2f5023443"
+aarch64-linux = "68fe76fd36c13ba87b08741b69881d1da539d0614452a6f38a98f0f9eb70d90a"
+
+[sha256]
+x86_64-linux  = "bc6bde54b292abb8531db8ad719746d281f109a77e6869c5e320ed0752a5ce9d"
+aarch64-linux = "39f544a9adac5aaff22b3743d5e6e35f5bace6321f87f77fe02aa1e470be02a1"
+
+[size]
+x86_64-linux  = 72765769
+aarch64-linux = 73737740
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Vita3K/Vita3K/master/COPYING.txt"
+to     = "LICENSE"
