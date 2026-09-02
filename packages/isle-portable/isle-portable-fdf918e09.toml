@@ -1,0 +1,22 @@
+version = "fdf918e09"
+date    = "2026-09-01T15:48:27Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/isle-portable-AppImage-Enhanced/releases/download/fdf918e09%402026-09-01_1788277706/Isle_Portable-fdf918e09-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/isle-portable-AppImage-Enhanced/releases/download/fdf918e09%402026-09-01_1788277706/Isle_Portable-fdf918e09-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b844526d7a1d13b3bb18b5a0dfdb33c4ba859e627141277e5cb129589da29088"
+aarch64-linux = "b04f9f8190dcb3076ed4861f8c21c420ac93573305fc47772a39d65d733fcb88"
+
+[sha256]
+x86_64-linux  = "fcc2dfd86efa432d284386aca6cca4bca430cffb9a319392d2186984700a7e09"
+aarch64-linux = "1bfdd726bef355e65d396ff97260229b744d6c38f583d88194d640804ac23595"
+
+[size]
+x86_64-linux  = 41221268
+aarch64-linux = 43338213
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/isledecomp/isle-portable/master/LICENSE"
+to     = "LICENSE"

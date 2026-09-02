@@ -1,0 +1,22 @@
+version = "0.8.136-1"
+date    = "2026-09-01T13:35:51Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.136-1%402026-09-01_1788269750/xemu-0.8.136-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.136-1%402026-09-01_1788269750/xemu-0.8.136-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "4c057ce93c4d9d55171115f7d83cb503b07ea64df11add6fc11272dd216db90a"
+aarch64-linux = "745968d7856d953bf029caa62f25ba216b2fb93977d3b66949cc962f0766401e"
+
+[sha256]
+x86_64-linux  = "deddbac8d7bddb5e382465784c667263f813a9d7a5c917f7d39a48547977fc3f"
+aarch64-linux = "de78256f01501a8d8bb7794e75ba7d7a627598c0bea9e5c9a2f434a13898e1b9"
+
+[size]
+x86_64-linux  = 38195556
+aarch64-linux = 40342142
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xemu-project/xemu/master/COPYING"
+to     = "LICENSE"

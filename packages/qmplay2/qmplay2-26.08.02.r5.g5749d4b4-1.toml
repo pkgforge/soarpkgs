@@ -1,0 +1,22 @@
+version = "26.08.02.r5.g5749d4b4-1"
+date    = "2026-09-01T15:44:30Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/QMPlay2-AppImage/releases/download/26.08.02.r5.g5749d4b4-1%402026-09-01_1788277469/QMPlay2-26.08.02.r5.g5749d4b4-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QMPlay2-AppImage/releases/download/26.08.02.r5.g5749d4b4-1%402026-09-01_1788277469/QMPlay2-26.08.02.r5.g5749d4b4-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6e8fa18f0a212c059d8e13ec7bed0d733253e79884dab22906a6da449f2b123c"
+aarch64-linux = "0cc1f1401172734b46c65bfadf51bac0de9c62092a20e5cb93c40f747d28e5da"
+
+[sha256]
+x86_64-linux  = "7d4b858eda9e838b4fbfd1dbdf1e8a24d9b97d720514580e1879061f1b43219d"
+aarch64-linux = "0b7853cce28c965e359ade22fc2b66f9f7dfe5a6bfbc8323a62e93817dcd37af"
+
+[size]
+x86_64-linux  = 90205431
+aarch64-linux = 90408578
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/zaps166/QMPlay2/master/LICENSE"
+to     = "LICENSE"

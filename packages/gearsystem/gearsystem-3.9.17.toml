@@ -1,0 +1,22 @@
+version = "3.9.17"
+date    = "2026-09-01T15:59:33Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gearsystem-AppImage/releases/download/3.9.17%402026-09-01_1788278372/Gearsystem-3.9.17-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gearsystem-AppImage/releases/download/3.9.17%402026-09-01_1788278372/Gearsystem-3.9.17-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b5f8a82b2592bfb5f43e5ec7a75bc9bc250f48b8f27a8ae66ea62d36cd01b9cb"
+aarch64-linux = "3ce02c6662a91d0fbd356b5eaef2c22ac72df4eaf52118a569a3c1463bb0b8bb"
+
+[sha256]
+x86_64-linux  = "af649859a86e8da37ae924a3303c046dcfedfb3eae04e44b6d351c3b0092332d"
+aarch64-linux = "032fc9c20b958cce24c23bad64c85044a5a636711c99190adc29f4427ac341ce"
+
+[size]
+x86_64-linux  = 20078796
+aarch64-linux = 20003355
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/drhelius/Gearsystem/master/LICENSE"
+to     = "LICENSE"

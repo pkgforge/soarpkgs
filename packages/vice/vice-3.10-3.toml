@@ -1,21 +1,21 @@
 version = "3.10-3"
-date    = "2026-08-22T09:40:29Z"
+date    = "2026-09-01T15:37:25Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/VICE-AppImage/releases/download/3.10-3%402026-08-22_1787391628/VICE-3.10-3-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/VICE-AppImage/releases/download/3.10-3%402026-08-22_1787391628/VICE-3.10-3-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/VICE-AppImage/releases/download/3.10-3%402026-09-01_1788277044/VICE-3.10-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/VICE-AppImage/releases/download/3.10-3%402026-09-01_1788277044/VICE-3.10-3-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "c4393d469f2e27abd349feccf3bc20e667ca20823d88e31388c87a57a6ad6cca"
-aarch64-linux = "87569a195b8725601c36d24ff21dce42c0012e08c02ace5185d61971426560cb"
+x86_64-linux  = "fc8c8d74e3ce4b2365a7b8e355b0e98eb68e6d6864e2e16459f3988f99a192b4"
+aarch64-linux = "3e90fbe9b45b60a72606e2340bf4a25fd12caf8421cfafe332b9a1633b6cd0c7"
 
 [sha256]
-x86_64-linux  = "661a4789373276868647d240f21f2ef2d9fb4cd48d455b8da33788ae49967981"
-aarch64-linux = "7f82c6bf78dcab915acd9f4c336655e289c79dea2e460de8997639814a42a363"
+x86_64-linux  = "d8e9128affce2029e7532c4179671b44252f3ed4028b7f051b6d72c1e1764c04"
+aarch64-linux = "d2009c871fd0ebbca8e77ca3412dcfb893ab70e79680a52236476958178da63b"
 
 [size]
-x86_64-linux  = 36315526
-aarch64-linux = 38089336
+x86_64-linux  = 36527918
+aarch64-linux = 38302190
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/VICE-Team/svn-mirror/main/vice/COPYING"

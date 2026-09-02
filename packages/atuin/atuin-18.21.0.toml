@@ -1,0 +1,18 @@
+version = "18.21.0"
+date    = "2026-08-31T23:19:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/atuinsh/atuin/releases/download/v18.21.0/atuin-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/atuinsh/atuin/releases/download/v18.21.0/atuin-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "1911af17aca9abc67537b599143b023ab355deef028588e8a2af4f8be5ab73d9"
+aarch64-linux = "b5795a83f87767afa26433b67d11ed88a0a17f4d58a9f044b8926895b3a3c13f"
+
+[sha256]
+x86_64-linux  = "792e1867d113ba9bebec94996b3160164aba738e3d23987b3cddb9dee976ac08"
+aarch64-linux = "9b8a76df370eba71ea0809d4df74f79351be2314c1ed90cae229499e69ca2ee1"
+
+[size]
+x86_64-linux  = 15468704
+aarch64-linux = 14460810

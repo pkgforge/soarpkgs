@@ -1,0 +1,22 @@
+version = "fe53066e0"
+date    = "2026-09-01T14:26:05Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/NBlood-AppImage/releases/download/fe53066e0%402026-09-01_1788272764/NBlood-fe53066e0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/NBlood-AppImage/releases/download/fe53066e0%402026-09-01_1788272764/NBlood-fe53066e0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "aa430922d289e941a775806789567243248a844d1ab81f4e7eea325e0db7f176"
+aarch64-linux = "78b2e7fdb599a40e7222f896b165c177423a6096091f2f521284a443ec1f8098"
+
+[sha256]
+x86_64-linux  = "779a15fc5d4738377ea7959fb226aa5cb9d220bb542ce551ad22805b6d12f011"
+aarch64-linux = "ed21b4f4461345d479355168aa4bcb73e414e9379d5ecaa6828355eed7856c5a"
+
+[size]
+x86_64-linux  = 29175840
+aarch64-linux = 29308364
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/nukeykt/NBlood/master/package/common/gpl-2.0.txt"
+to     = "LICENSE"

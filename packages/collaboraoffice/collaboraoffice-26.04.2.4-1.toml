@@ -1,0 +1,22 @@
+version = "26.04.2.4-1"
+date    = "2026-09-01T15:57:20Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/CollaboraOffice-AppImage/releases/download/26.04.2.4-1%402026-09-01_1788278238/Collabora_Office-26.04.2.4-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/CollaboraOffice-AppImage/releases/download/26.04.2.4-1%402026-09-01_1788278238/Collabora_Office-26.04.2.4-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7796592c4ba21d5f8bc0913e825948d8e026eae25c563a5935b06dce7e8c1cc7"
+aarch64-linux = "76ae809c24adff6a776ddd2f3ef517758bbca1c2b74b2aa81871adcd00fc15cd"
+
+[sha256]
+x86_64-linux  = "01c05483fcc5db865e026426ab9231c8bdb7a4d70a0efc084a700ea0aaff6b5e"
+aarch64-linux = "9694da93f7f825b252338c8f6de87791979ca2cf0263e876a90b82ead48b2bac"
+
+[size]
+x86_64-linux  = 314379814
+aarch64-linux = 311933244
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/CollaboraOnline/online/master/COPYING"
+to     = "LICENSE"

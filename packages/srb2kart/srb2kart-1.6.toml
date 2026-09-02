@@ -1,0 +1,22 @@
+version = "1.6"
+date    = "2026-09-01T16:04:37Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6%402026-09-01_1788278675/SRB2Kart-1.6-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6%402026-09-01_1788278675/SRB2Kart-1.6-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "57450ccde748c28a52490a99086965d96b36b12c4dac43000ebc4012bb0bf23a"
+aarch64-linux = "323f63c78cc27103c6736558b67b8da9a36a504ed0c8b68879edce4016818e1c"
+
+[sha256]
+x86_64-linux  = "500c8eb7ea28e023ca7917daf560d473702846960f2a5c0632451491ba727174"
+aarch64-linux = "ecd335130cecfe919d06f59e60bd523a17ad9e9e55ab941a47bb0f127ae08a27"
+
+[size]
+x86_64-linux  = 223564240
+aarch64-linux = 224415655
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/STJr/Kart-Public/master/LICENSE"
+to     = "LICENSE"

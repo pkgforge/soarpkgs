@@ -1,21 +1,21 @@
 version = "0.10.0-2"
-date    = "2026-08-22T10:16:41Z"
+date    = "2026-09-01T15:54:10Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0-2%402026-08-22_1787393799/Clapper-0.10.0-2-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0-2%402026-08-22_1787393799/Clapper-0.10.0-2-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0-2%402026-09-01_1788278048/Clapper-0.10.0-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0-2%402026-09-01_1788278048/Clapper-0.10.0-2-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "2a96117ecd7b22257e8b31b0b1563511a735073baa738b59f7dd7eef64404dc3"
-aarch64-linux = "b89fcbbe2f3f6f0d380c654bb5178af53e6bb30517941f1e684e8d48c7cebb95"
+x86_64-linux  = "2cb8e461fd2b5389e082f5b468f2b85dcb9ff8913f50ba97fabdc22e9f5b1ad1"
+aarch64-linux = "dec4efc7fd23525ad4a0825ce25aee0631e47065b147ecd1ee6574e7ff90bb33"
 
 [sha256]
-x86_64-linux  = "189b5d24be4b87011c38a8a4052a2095d7016ae20776b8b00b1cce221e9287a4"
-aarch64-linux = "813f0b4b050e957b76d7e1a5e364478ef4d23036fbe190a6c65275a6909bc4a2"
+x86_64-linux  = "b083981b0320610600bf1d5610ca6699294387fb90f5f222a07920b9bc4f4b48"
+aarch64-linux = "1ea1c49b9c57118cc362eac5b7dc2c9df4490354fa44a6eea1d5668c7447a660"
 
 [size]
-x86_64-linux  = 85581439
-aarch64-linux = 78389902
+x86_64-linux  = 85912703
+aarch64-linux = 78662989
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Rafostar/clapper/refs/heads/master/COPYING-GPL"

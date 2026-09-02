@@ -1,0 +1,22 @@
+version = "d4f823fba"
+date    = "2026-09-01T15:59:28Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Vibeprint-Studio-AppImage/releases/download/d4f823fba%402026-09-01_1788278367/Vibeprint_Studio-d4f823fba-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Vibeprint-Studio-AppImage/releases/download/d4f823fba%402026-09-01_1788278367/Vibeprint_Studio-d4f823fba-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7a81888e7ab7388c7f1791899a9b228c5ca128b36d3ee7de1e504c6c0ec452f0"
+aarch64-linux = "9748ace0fbd4f7016db28da2d53fd511f5320602b54dbc85bad0da15f3c52232"
+
+[sha256]
+x86_64-linux  = "4d772408e3e22bd2d263ab5cf5b1f355ae9e3827d97dc09c131c7bf0936b0aef"
+aarch64-linux = "77779a616c42385beb0676441944f0b0d61e5bc1aa60768278a66158bc48559f"
+
+[size]
+x86_64-linux  = 38841239
+aarch64-linux = 38690609
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/crenedecotret/vibeprint/refs/heads/main/LICENSE"
+to     = "LICENSE"

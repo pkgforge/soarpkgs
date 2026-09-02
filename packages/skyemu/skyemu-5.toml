@@ -1,0 +1,22 @@
+version = "5"
+date    = "2026-09-01T15:55:53Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SkyEmu-AppImage/releases/download/5%402026-09-01_1788278151/SkyEmu-5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SkyEmu-AppImage/releases/download/5%402026-09-01_1788278151/SkyEmu-5-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "dbb857e06211005a1d35dded3275f014c6473a7ebb4d7f77df1827985977ffc9"
+aarch64-linux = "085517a6c866f703d0ae2d567f7b07c59cf00053917d7e79d68b95240c4eee8f"
+
+[sha256]
+x86_64-linux  = "9405e30fa99684eac59c61bbc61e92c3691af3608cdafeac3cce3bd41353e8ed"
+aarch64-linux = "5e028540ee03e0503ad221b3153f67566c873e34266d85b66c0d12fa57b68a3c"
+
+[size]
+x86_64-linux  = 39226126
+aarch64-linux = 39956238
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/skylersaleh/SkyEmu/dev/LICENSE"
+to     = "LICENSE"

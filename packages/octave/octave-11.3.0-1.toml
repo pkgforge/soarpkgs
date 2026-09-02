@@ -1,21 +1,21 @@
 version = "11.3.0-1"
-date    = "2026-08-14T00:20:24Z"
+date    = "2026-09-01T15:44:25Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-08-14_1786666823/GNU_Octave-11.3.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-08-14_1786666823/GNU_Octave-11.3.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-09-01_1788277464/GNU_Octave-11.3.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-09-01_1788277464/GNU_Octave-11.3.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "0b5d20268efa8025436a8efa0bbe02b2e00d2c1454e4f945878402c746330712"
-aarch64-linux = "e7f049914bd853dddb1191c8fdcb52896f5592714e4b755c0b602797cf3da26c"
+x86_64-linux  = "2105c6d6615a2da97bcb171f92ce3ab0f95310d816b8741ce98b2cd5d88f9ebb"
+aarch64-linux = "e0a3e326c4ecfa4ed04ff03f4fea446afff2825759f9d12b2afc9a85e933bf99"
 
 [sha256]
-x86_64-linux  = "d95ace570972dfc242c765e1b5b970e627278b813f9849c9cbe50ed4082d9e86"
-aarch64-linux = "c042c44c9f6f07fb1f7dc16be6753e30668b1f6a03df42a7d598c2273430d049"
+x86_64-linux  = "6b28532cfc19dc46bbfcfabd34090af3758ec86718988cacc06420293120a799"
+aarch64-linux = "b19c97a61215533a041e63fc1fc790b77b8ff858d1272a8cc27f8f740e72b2b3"
 
 [size]
-x86_64-linux  = 106300853
-aarch64-linux = 98014277
+x86_64-linux  = 97579741
+aarch64-linux = 88869664
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/gnu-octave/octave/default/COPYING"

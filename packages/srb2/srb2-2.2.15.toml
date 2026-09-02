@@ -1,0 +1,22 @@
+version = "2.2.15"
+date    = "2026-09-01T16:31:49Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15%402026-09-01_1788280307/Sonic_Robo_Blast_2-2.2.15-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15%402026-09-01_1788280307/Sonic_Robo_Blast_2-2.2.15-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "22ea7e4bbb5b53fc8914534ac4bec7dab035baff0c3e20a76c63879201ce316b"
+aarch64-linux = "3665149d8c05fa0023fbc178af88630b72ca3b876ab91c2685f7738312e43735"
+
+[sha256]
+x86_64-linux  = "6fda9ddbb4d568e2ddb90a53476959c290b84f30ec3cdbdb12e12fd9056c6647"
+aarch64-linux = "cf669023a27a490c5ce19bb67c19a205ad5c6e15f7876a7f8f384b6bf4daaef4"
+
+[size]
+x86_64-linux  = 193991775
+aarch64-linux = 195084231
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/STJr/SRB2/master/LICENSE"
+to     = "LICENSE"
