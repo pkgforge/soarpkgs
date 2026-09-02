@@ -1,0 +1,22 @@
+version = "e53ed4d"
+date    = "2026-09-01T16:00:30Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/download/e53ed4d%402026-09-01_1788278429/OpenGothic-e53ed4d-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/download/e53ed4d%402026-09-01_1788278429/OpenGothic-e53ed4d-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "90cc325024e3dd5dc63d5a298023fe6d7aaabc54aac7a79b0627da3b9e536def"
+aarch64-linux = "4958acf466bd8d1d23bb85065f8bff940bce116c0539fa976a7d0d6f6e903b7f"
+
+[sha256]
+x86_64-linux  = "00c90ababb41164d46015e893c8e5e8c8cb2ef9ca4f2a7ed13445b6bd2b3ecb6"
+aarch64-linux = "6c538ebc04b10708671fac8ed0027d37a593c0e6c113f5957d886041cb302a08"
+
+[size]
+x86_64-linux  = 26114771
+aarch64-linux = 28169927
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Try/opengothic/master/LICENSE"
+to     = "LICENSE"

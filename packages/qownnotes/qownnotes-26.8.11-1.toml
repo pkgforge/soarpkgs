@@ -1,0 +1,22 @@
+version = "26.8.11-1"
+date    = "2026-08-31T15:06:53Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/26.8.11-1/QOwnNotes-26.8.11-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/26.8.11-1/QOwnNotes-26.8.11-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "707134d88b5135dc2f1e235fa77f9f47fea59b2eb8e01d1033f43e1a4b06776e"
+aarch64-linux = "fedd76e8c5cce441c959e22fe7ca83255f7ee5ad7b55cb459163841d2374a642"
+
+[sha256]
+x86_64-linux  = "8f4181833a0593ef808e77e2abddeb60b71cc951e8e6280406776317a0114546"
+aarch64-linux = "60a1b6daae88a4d987cead2e0c91ffc412c922408e49acbe02e5d2c9c48ecca1"
+
+[size]
+x86_64-linux  = 61652247
+aarch64-linux = 62659539
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pbek/QOwnNotes/main/LICENSE"
+to     = "LICENSE"

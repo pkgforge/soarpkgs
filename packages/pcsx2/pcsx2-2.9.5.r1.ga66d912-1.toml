@@ -1,0 +1,18 @@
+version = "2.9.5.r1.ga66d912-1"
+date    = "2026-09-01T12:43:33Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/PCSX2-AppImage-Enhanced/releases/download/2.9.5.r1.ga66d912-1%402026-09-01_1788266612/PCSX2-2.9.5.r1.ga66d912-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "f28c3e378b4b0fd9539662b1ae66b3ac7e409dd8b137228aee9d815ad6ab0713"
+
+[sha256]
+x86_64-linux = "39ea19ef2cba4df8bdf1c8163dc0e4dee1cd976db719f060dbbae52cec9b9702"
+
+[size]
+x86_64-linux = 69713695
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/PCSX2/pcsx2/refs/heads/master/COPYING.GPLv3"
+to     = "LICENSE"

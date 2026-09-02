@@ -1,0 +1,22 @@
+version = "1.21.0"
+date    = "2026-08-31T20:13:19Z"
+
+[url]
+x86_64-linux  = "https://github.com/orf/gping/releases/download/gping-v1.21.0/gping-Linux-musl-x86_64.tar.gz"
+aarch64-linux = "https://github.com/orf/gping/releases/download/gping-v1.21.0/gping-Linux-musl-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "67ce1183046cbdd2963e2799002bd0e091bbc4ece6cca70c864bcd481f517dd9"
+aarch64-linux = "fe2640bde04146181fd844331a1543093d75c7e3ae6d33ad9c30d657fc5b5d21"
+
+[sha256]
+x86_64-linux  = "cea59e22f6faf941f054cf0925433a2e3e4e6c42dc5c778b0265279a5056aeec"
+aarch64-linux = "75e485e9ae081b4478b7c9fea0585a125dd7e640334cdbdec852af6238c3f1f1"
+
+[size]
+x86_64-linux  = 1478569
+aarch64-linux = 1373998
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/orf/gping/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "1.6.0"
+date    = "2026-09-01T15:47:25Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Neverball-AppImage/releases/download/1.6.0%402026-09-01_1788277643/Neverball-1.6.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Neverball-AppImage/releases/download/1.6.0%402026-09-01_1788277643/Neverball-1.6.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a094fa228560f333261d2e95615f43aceeda587c6a56e9eb057cc0effea8dce3"
+aarch64-linux = "0d7d5354e2574aee8150fdec21d61c56cf54b7b743ac0d6edb08c5bfd3fee1c7"
+
+[sha256]
+x86_64-linux  = "46c410436639d0c5e0750047b1fc575bbfa00839dbb9d347d71cf33d73b484ca"
+aarch64-linux = "12b6489ed3e04fc73def151275551dd7b0b159a652ebe3ec0fff9ba27ce9cf64"
+
+[size]
+x86_64-linux  = 77777347
+aarch64-linux = 77658303
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Neverball/neverball/master/LICENSE.md"
+to     = "LICENSE"

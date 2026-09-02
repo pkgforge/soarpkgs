@@ -1,0 +1,22 @@
+version = "10.0.6-1"
+date    = "2026-09-01T21:19:27Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KiCad-AppImage/releases/download/10.0.6-1%402026-09-01_1788297566/KiCad-10.0.6-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KiCad-AppImage/releases/download/10.0.6-1%402026-09-01_1788297566/KiCad-10.0.6-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "964f56a2f950104c49434bb70ea3f8b348ee5292fd5ee1d5a25913596d574ac6"
+aarch64-linux = "3df6458247234c009fbd4cf8ed41291727c5be216bee7fd0ec790ede1a5a150b"
+
+[sha256]
+x86_64-linux  = "0d4219ebf1b3d9e2754c367cfdee34d85803ea584b3909dc5be8bfb4d607bcef"
+aarch64-linux = "77bc1762daa9c054e237f13dd3780f19fedeef22d0dd0cdd4ac6ec7fd1064aab"
+
+[size]
+x86_64-linux  = 486991587
+aarch64-linux = 499491145
+
+[[extra]]
+url    = "https://gitlab.com/kicad/code/kicad/-/raw/master/LICENSE"
+to     = "LICENSE"

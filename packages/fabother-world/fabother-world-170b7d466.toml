@@ -1,0 +1,22 @@
+version = "170b7d466"
+date    = "2026-09-01T15:18:47Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-09-01_1788275926/Fabother_World-170b7d466-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-09-01_1788275926/Fabother_World-170b7d466-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "41137d59d55803b0d5ab3e0d7c8e82bea92bcee64dd419b9a5e11742af07c55f"
+aarch64-linux = "2c540a47f1229b5947365721fc3818c7cd266f41660348773634e5d5f0071ead"
+
+[sha256]
+x86_64-linux  = "1854d9eeada362bef5ec488936216015c7438354907cfe4fced8f4447e5cccdb"
+aarch64-linux = "cb17af23316f3112968b14597b0fe392c73fc32e3eae12b97d9faec2aac64c74"
+
+[size]
+x86_64-linux  = 18675335
+aarch64-linux = 18603172
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/fabiensanglard/Another-World-Bytecode-Interpreter/master/LICENSE.txt"
+to     = "LICENSE"

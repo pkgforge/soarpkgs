@@ -1,0 +1,22 @@
+version = "0.77.r9.ge9aa5ace0-1"
+date    = "2026-09-01T15:59:33Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Play-AppImage-Enhanced/releases/download/0.77.r9.ge9aa5ace0-1%402026-09-01_1788278371/Play.-0.77.r9.ge9aa5ace0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Play-AppImage-Enhanced/releases/download/0.77.r9.ge9aa5ace0-1%402026-09-01_1788278371/Play.-0.77.r9.ge9aa5ace0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b0a5445b100f0c83712f461534856350f30cb571732e5dd18f15a743cb4f1916"
+aarch64-linux = "f6454614030d97e3d907beba882af448ddf878af6392fec739c9ea4e12f9aa15"
+
+[sha256]
+x86_64-linux  = "5e6712fc6f10400eb1942f9fd0c1000d6fd196273139ce3a262a7d0715a82b17"
+aarch64-linux = "97e212941618922e3715341eb7a618c08f48a7cbe1a42b0481d71adf9cc02940"
+
+[size]
+x86_64-linux  = 45866303
+aarch64-linux = 48145805
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/jpd002/Play-/refs/heads/master/License.txt"
+to     = "LICENSE"

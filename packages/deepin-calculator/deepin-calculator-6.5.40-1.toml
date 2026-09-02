@@ -1,0 +1,18 @@
+version = "6.5.40-1"
+date    = "2026-09-01T15:57:40Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Deepin-Calculator-AppImage/releases/download/6.5.40-1%402026-09-01_1788278259/Deepin_Calculator-6.5.40-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "665e9093e07b45100980d4e337060388494dae29128a6aa369dad96c5ddb8f07"
+
+[sha256]
+x86_64-linux = "832a3b7bd970bba2779ca1b551824087d66db7d19cbb63bf65c96e9de3f40dc9"
+
+[size]
+x86_64-linux = 42389338
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/linuxdeepin/deepin-calculator/master/LICENSE"
+to     = "LICENSE"

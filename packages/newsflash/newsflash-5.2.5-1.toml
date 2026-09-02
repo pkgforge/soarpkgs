@@ -1,0 +1,22 @@
+version = "5.2.5-1"
+date    = "2026-09-01T15:22:38Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.5-1%402026-09-01_1788276157/Newsflash-5.2.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.5-1%402026-09-01_1788276157/Newsflash-5.2.3-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6e6cc9beb0a36fc836bcdc683b69adbc5bfee0f292d72c5bdd46afbcccf3bcda"
+aarch64-linux = "ad8394688f0be2b07265d0f74ab37a2cdb64111e30b0bb62cb074a956d866ea4"
+
+[sha256]
+x86_64-linux  = "eb08f030fcca723d41aa3575f209489058ad2c27b9b9bc85cc36875cd3ff37d4"
+aarch64-linux = "1a48d2d155ae34ffd2eee0ed975cf51c1dc8c878f2614b602cf284b572f5d31f"
+
+[size]
+x86_64-linux  = 64905633
+aarch64-linux = 64473046
+
+[[extra]]
+url    = "https://gitlab.com/news-flash/news_flash_gtk/-/raw/main/LICENSE"
+to     = "LICENSE"

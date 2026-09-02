@@ -1,0 +1,22 @@
+version = "2.4"
+date    = "2026-09-01T15:58:45Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage/releases/download/2.4%402026-09-01_1788278324/Dr._Robotnik.s_Ring_Racers-2.4-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage/releases/download/2.4%402026-09-01_1788278324/Dr._Robotnik.s_Ring_Racers-2.4-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e2f615aba0ec594022253528120b421d6aa94304cc1fa9532e690030ad285310"
+aarch64-linux = "824acf2bb6ef73a4cbe84af1f0205e73b612be61b41a52c2bbfb04acd30d88ac"
+
+[sha256]
+x86_64-linux  = "bfc71792578256cf44c06ef469aea51ee7458cd70d5c610d4e076557b751e0a8"
+aarch64-linux = "4168cbc16d55c83512a9faaf5a3d3e6bdb162bf6e66a502ea1861855fdde9b11"
+
+[size]
+x86_64-linux  = 750886946
+aarch64-linux = 751651152
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/KartKrewDev/RingRacers/master/LICENSE"
+to     = "LICENSE"

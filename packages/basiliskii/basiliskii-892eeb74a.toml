@@ -1,0 +1,22 @@
+version = "892eeb74a"
+date    = "2026-09-01T15:57:03Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/BasiliskII-AppImage/releases/download/892eeb74a%402026-09-01_1788278222/BasiliskII-892eeb74a-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/BasiliskII-AppImage/releases/download/892eeb74a%402026-09-01_1788278222/BasiliskII-892eeb74a-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "28621035ec9965a593510d415f9d56501fb470519dd0d5dd1e751aaf3899421f"
+aarch64-linux = "5c95dfa40b0fad5971f0848284822b60dc203248b9700d8a93c3e9d895db5a44"
+
+[sha256]
+x86_64-linux  = "508f64867f06d20e5ba295b6ab018c26e237deba77071e525b5a586d245dbe36"
+aarch64-linux = "110d340f5ee01f5bafc6f0d5c59f0cf7f8ea8776ca7eb9f7da182ff4bd979f05"
+
+[size]
+x86_64-linux  = 28253050
+aarch64-linux = 28278666
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/kanjitalk755/macemu/master/BasiliskII/COPYING"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "2a36099dc"
+date    = "2026-09-01T15:52:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced/releases/download/2a36099dc%402026-09-01_1788277919/PCSX-Redux-2a36099dc-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced/releases/download/2a36099dc%402026-09-01_1788277919/PCSX-Redux-2a36099dc-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6b0295c51389e28cf9eb7f8c0425cd489fcbc036b316f2d53e8c2c7e73c54ba5"
+aarch64-linux = "9705a72e03f186b290ef855e706a64a127c4b5845811bc412466a916dd6f94b8"
+
+[sha256]
+x86_64-linux  = "92e000c82813f7a0123d2268e04811515dba4b04169d1616bec62547b7eb7f0e"
+aarch64-linux = "68b06e22ee69b13da7f1e70adeb43336b7413b8d137d2ca83dca4487484f8c28"
+
+[size]
+x86_64-linux  = 64518369
+aarch64-linux = 62404417
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/grumpycoders/pcsx-redux/refs/heads/main/LICENSE"
+to     = "LICENSE"

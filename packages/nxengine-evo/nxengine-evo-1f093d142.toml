@@ -1,0 +1,22 @@
+version = "1f093d142"
+date    = "2026-09-01T15:40:26Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/NXEngine-evo-AppImage-Enhanced/releases/download/1f093d142%402026-09-01_1788277224/Cave_Story_NX-evo-1f093d142-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/NXEngine-evo-AppImage-Enhanced/releases/download/1f093d142%402026-09-01_1788277224/Cave_Story_NX-evo-1f093d142-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "20ee43556a55b9a67fc75d48d1667f7426c13d274271c20692519b9d51aaf084"
+aarch64-linux = "bbd78f304f3a2059e0fa737e1c8591f7823033e5b98e4749ee807ad1f25161c0"
+
+[sha256]
+x86_64-linux  = "a1a698cdcbaa372d657d01657f9fb27bbdcc8db6058e4a0649d83da98a663ab2"
+aarch64-linux = "7ab4e2a712b11944e9756afe091a66535a3b40757d1f1a6d14bbe96faeb43b26"
+
+[size]
+x86_64-linux  = 29144003
+aarch64-linux = 28970421
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/nxengine/nxengine-evo/master/LICENSE"
+to     = "LICENSE"

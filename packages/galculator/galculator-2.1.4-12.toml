@@ -1,0 +1,22 @@
+version = "2.1.4-12"
+date    = "2026-09-01T15:59:39Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/2.1.4-12%402026-09-01_1788278377/Galculator-2.1.4-12-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/2.1.4-12%402026-09-01_1788278377/Galculator-2.1.4-12-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "89e151320449da87d021dfd3b351d1f0bf2f13b8165b407a93c0078e35416aa6"
+aarch64-linux = "54ab3e8a7f6cb4c0c9962f28ad8108f4c48cd6d90f9ad3bb1451f9a02fdff439"
+
+[sha256]
+x86_64-linux  = "e1f33841402a2fad7e097838f49fc76573ea4355ee03c58e2bd5d849807c5210"
+aarch64-linux = "a0126ac69b04dacbaea2f5b0f2259652de69bfcb70a67c46664ae9e1c3b6cb07"
+
+[size]
+x86_64-linux  = 15058739
+aarch64-linux = 14987277
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/galculator/galculator/master/COPYING"
+to     = "LICENSE"

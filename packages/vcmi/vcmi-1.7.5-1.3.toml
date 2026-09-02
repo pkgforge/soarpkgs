@@ -1,0 +1,18 @@
+version = "1.7.5-1.3"
+date    = "2026-09-01T15:55:36Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/vcmi-AppImage/releases/download/1.7.5-1.3%402026-09-01_1788278135/VCMI_Client-1.7.5-1.3-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "25c847c79c1f6ab6550d99ee084bcc6c661c33a6382ac4222af65ac4458c7f12"
+
+[sha256]
+x86_64-linux = "735108d7ade7b672c3c5276b1952b4470c9f5f65b0db4a9a24093eeb46928e76"
+
+[size]
+x86_64-linux = 90509469
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/vcmi/vcmi/refs/heads/develop/license.txt"
+to     = "LICENSE"

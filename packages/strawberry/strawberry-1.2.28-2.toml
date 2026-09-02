@@ -1,0 +1,22 @@
+version = "1.2.28-2"
+date    = "2026-09-01T15:51:19Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/1.2.28-2%402026-09-01_1788277877/strawberry-1.2.28-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/1.2.28-2%402026-09-01_1788277877/strawberry-1.2.28-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "45fd85d756f2200453c7c518757f49ddb1f140979071b3b26ed1f482558744e9"
+aarch64-linux = "cc127fb9dde3cf18d1dcfc42b01bf880f860a5189645666186226139394839ae"
+
+[sha256]
+x86_64-linux  = "1b20ad1afc3653c05493d4d81a3b7194d8b27a20a3faeae73e26ac5918b44cd1"
+aarch64-linux = "eed047ffdacd34c8068667fb9608b01fee43e77f6b7e8e4c3e7b201469feb32e"
+
+[size]
+x86_64-linux  = 97216378
+aarch64-linux = 93470796
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/strawberrymusicplayer/strawberry/refs/heads/master/COPYING"
+to     = "LICENSE"

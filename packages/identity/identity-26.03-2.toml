@@ -1,0 +1,22 @@
+version = "26.03-2"
+date    = "2026-09-01T15:56:18Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-2%402026-09-01_1788278176/Identity-26.03-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-2%402026-09-01_1788278176/Identity-26.03-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "bff73440f451df5bda99a559baaf4c64dca224daa86f47f9a1169e42314c02e6"
+aarch64-linux = "ef25fbcf2ed3f69ffc2d1bae13e19c2a1083e980df4e345e7ae1fea356dcb703"
+
+[sha256]
+x86_64-linux  = "9d103d8e6104725656000b163c451009fcdccd09e97117d220fdb09bc1d60121"
+aarch64-linux = "06c3d6ac9f131d8986a7ccf760499b9dafbe2bd233da57391d89868f61403f14"
+
+[size]
+x86_64-linux  = 95337963
+aarch64-linux = 89317450
+
+[[extra]]
+url    = "https://gitlab.gnome.org/YaLTeR/identity/-/raw/main/COPYING"
+to     = "LICENSE"

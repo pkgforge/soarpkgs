@@ -1,0 +1,22 @@
+version = "20260301.r32.ga1626f4-1"
+date    = "2026-09-01T12:12:31Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/20260301.r32.ga1626f4-1%402026-09-01_1788264750/OpenJazz-20260301.r32.ga1626f4-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/20260301.r32.ga1626f4-1%402026-09-01_1788264750/OpenJazz-20260301.r32.ga1626f4-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "17cc48e6493acf57e6379adc98c324d86029e4010b50fc46f5971a7c125d95be"
+aarch64-linux = "ae0f97b06a8188e2b4bf622afd438cbdf8f8ce5b9d44866e30f53beef3b5b954"
+
+[sha256]
+x86_64-linux  = "5f7151429e7c6a61e239759346dbf1fbcf26f9595cffd303d94aebcfb08cd3c3"
+aarch64-linux = "d33fa3d80c93c2370cd32f7e70f08435c32f217a0f46b81ce50d120e59850894"
+
+[size]
+x86_64-linux  = 18703456
+aarch64-linux = 18614868
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AlisterT/openjazz/master/COPYING"
+to     = "LICENSE"
