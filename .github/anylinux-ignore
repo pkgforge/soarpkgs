@@ -1,0 +1,10 @@
+# Anylinux-AppImages repos the bot must never open a package PR for.
+# One repository name per line, matched case-insensitively. Blank lines
+# and lines starting with # are ignored.
+#
+# Only for repos the upstream README advertises as applications but that
+# were rejected on review. Tooling such as sharun and appimagetool sits
+# outside the APPS_LIST markers already and needs no entry here.
+
+# Android streaming front-end; there is no desktop application to ship.
+NewPipe-AppImage
