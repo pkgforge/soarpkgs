@@ -1,0 +1,22 @@
+version = "1.4.2"
+date    = "2026-09-03T02:49:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ECWolf-AppImage/releases/download/1.4.2%402026-09-03_1788403740/ECWolf-1.4.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ECWolf-AppImage/releases/download/1.4.2%402026-09-03_1788403740/ECWolf-1.4.2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "91d6ccfc706064f45167198b83ecfb6546299b15302f155be8d97b60c8fb77bc"
+aarch64-linux = "9ded704cdc4519596ca10a7b82c619a59b9e7c5b2b50750d5c80d1aeff51514b"
+
+[sha256]
+x86_64-linux  = "920aff2dfc2a4029a6dde28e6dd70b41ebb06d850930c001df466b34e442d221"
+aarch64-linux = "989f66dde19beb54e622d43f071e18fb26c993a4862ee66c55d99d4d9def1a65"
+
+[size]
+x86_64-linux  = 30238228
+aarch64-linux = 30091878
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ECWolfEngine/ECWolf/master/docs/license-gpl.txt"
+to     = "LICENSE"

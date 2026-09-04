@@ -1,0 +1,22 @@
+version = "26.9.1"
+date    = "2026-09-02T16:05:33Z"
+
+[url]
+x86_64-linux  = "https://github.com/sxyazi/yazi/releases/download/v26.9.1/yazi-x86_64-unknown-linux-musl.zip"
+aarch64-linux = "https://github.com/sxyazi/yazi/releases/download/v26.9.1/yazi-aarch64-unknown-linux-musl.zip"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/yazi-26.9.1/yazi-26.9.1-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "6e5b56aa93750407882dc93bf1cb05927d03118967dea6183f77359fd6a0c009"
+aarch64-linux = "2b616d7123984df0f883593b1c04b316e61c6812191d405f6c558d3d64127cf2"
+riscv64-linux = "bada080fa71e5f0906e3568eaa8fa262c4e88310cfadead5fc095db9c06d151e"
+
+[sha256]
+x86_64-linux  = "9b9c39decccf8cb0ff53a7d637d38f8a79d93bbd0099f4ea9c619ef6bb392f5d"
+aarch64-linux = "dd569daecaae914185f295634109295ccd25c1b42b02eb89a74f651970024f2e"
+riscv64-linux = "8fe6d5c6e777a5939078ddb66235658753ab60921330d433f96cf9858ac500ba"
+
+[size]
+x86_64-linux  = 14722461
+aarch64-linux = 14035517
+riscv64-linux = 16720295
