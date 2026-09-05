@@ -1,0 +1,18 @@
+version = "0.10.3"
+date    = "2026-09-05T08:07:05Z"
+
+[url]
+x86_64-linux = "https://github.com/jhspetersson/fselect/releases/download/0.10.3/fselect-x86_64-linux-musl.gz"
+
+[blake3]
+x86_64-linux = "1d41efb88bf39aa80d60a49d9e88420deb00d6cd16e790b09990f05317b0e470"
+
+[sha256]
+x86_64-linux = "01e25f362c04e41e565216b70b4859e8bfe27038fa3a240810ca954247364864"
+
+[size]
+x86_64-linux = 3751324
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/jhspetersson/fselect/master/LICENSE-MIT"
+to     = "LICENSE"
