@@ -1,0 +1,22 @@
+version = "a1626f4ed"
+date    = "2026-09-04T22:18:59Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/a1626f4ed%402026-09-04_1788560338/OpenJazz-a1626f4ed-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/a1626f4ed%402026-09-04_1788560338/OpenJazz-a1626f4ed-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f67f9e74d984615305687b9b061f02d553fc2b311ec4e04a773cc76e52363222"
+aarch64-linux = "5a9c7c883a35d735dac55d9d3941a1a40668272f5f0019c85e39c9e32851e2cf"
+
+[sha256]
+x86_64-linux  = "4d6b096e0594364b2d4bcc48d35e9246aa168b7eeefcafc907ab34d8788c541c"
+aarch64-linux = "7ec53044c38809d735be171ade18103cf92fd31976ac68d1f667ad51651d12cb"
+
+[size]
+x86_64-linux  = 18670418
+aarch64-linux = 18594390
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AlisterT/openjazz/master/COPYING"
+to     = "LICENSE"
