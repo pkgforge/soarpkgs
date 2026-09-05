@@ -1,0 +1,26 @@
+version = "0.12.0"
+date    = "2026-09-02T16:00:51Z"
+
+[url]
+x86_64-linux  = "https://github.com/houseabsolute/ubi/releases/download/v0.12.0/ubi-Linux-musl-x86_64.tar.gz"
+aarch64-linux = "https://github.com/houseabsolute/ubi/releases/download/v0.12.0/ubi-Linux-musl-arm64.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/ubi-0.12.0/ubi-0.12.0-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "5524a6fcad85ea39c0e767795c19d6e8d135230d570354e183006a43a5cc2870"
+aarch64-linux = "c5ae3fa4be17e6259fd46f4248ae190abd30660810021dfceb532e0e443d4234"
+riscv64-linux = "65ec5c2b263734f1e8de52330fad2a9548c7862c3e7c13920c9f64e26a3ed22a"
+
+[sha256]
+x86_64-linux  = "a4a12a324c32b90c105e256ac3bef9f45569346636be71fc008ecbc6baa6f616"
+aarch64-linux = "8969a5c824de859aaf19fe71a869ed84527564df33677263893758f10502e428"
+riscv64-linux = "33f2bfe9eacdba5e41e0527f8b6f68e47164d56b68bf4c2ca147ff0fffc4eb2f"
+
+[size]
+x86_64-linux  = 4050668
+aarch64-linux = 3850438
+riscv64-linux = 2788518
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/houseabsolute/ubi/master/LICENSE-APACHE"
+to     = "LICENSE"
