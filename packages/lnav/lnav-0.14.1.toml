@@ -1,0 +1,22 @@
+version = "0.14.1"
+date    = "2026-09-05T04:26:42Z"
+
+[url]
+x86_64-linux  = "https://github.com/tstack/lnav/releases/download/v0.14.1/lnav-0.14.1-linux-musl-x86_64.zip"
+aarch64-linux = "https://github.com/tstack/lnav/releases/download/v0.14.1/lnav-0.14.1-linux-musl-arm64.zip"
+
+[blake3]
+x86_64-linux  = "4998648040032d697e2c60295755a9f7a3f353e20685fcca9b7ef09d5a2042be"
+aarch64-linux = "91b4ba4e0d93d69a694b3400722c667987110f1d892a6e2b9472fed1aba0263d"
+
+[sha256]
+x86_64-linux  = "ec1750f0a6962eed6bb85ad4249457894f190e961277c56d69c47eecce9e705e"
+aarch64-linux = "e605ac855af193b5c7201e2fd94372febec931c5721b50fdf828b3e5af90c677"
+
+[size]
+x86_64-linux  = 42423829
+aarch64-linux = 40195815
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/tstack/lnav/master/LICENSE"
+to     = "LICENSE"

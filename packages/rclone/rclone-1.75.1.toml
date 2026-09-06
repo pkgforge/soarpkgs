@@ -1,0 +1,22 @@
+version = "1.75.1"
+date    = "2026-09-04T17:11:27Z"
+
+[url]
+x86_64-linux  = "https://github.com/rclone/rclone/releases/download/v1.75.1/rclone-v1.75.1-linux-amd64.zip"
+aarch64-linux = "https://github.com/rclone/rclone/releases/download/v1.75.1/rclone-v1.75.1-linux-arm64.zip"
+
+[blake3]
+x86_64-linux  = "1d93a5489209567de0a5628fc1a68be22dc51b93bd71478724991fee20ef088c"
+aarch64-linux = "3a3759cd95ceb134b9173a27ed9bc9d4b82a12dd923ab34bb8fb95d499c50256"
+
+[sha256]
+x86_64-linux  = "982b5aa772841168f8e380f139e9e787b2a105403e32b94da8676a0e1c0a13ab"
+aarch64-linux = "03f2504174034b6d004152ed7369251c9a9ec1f7e0836eda420f5c7a5ec0dff9"
+
+[size]
+x86_64-linux  = 31470505
+aarch64-linux = 28640903
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/rclone/rclone/master/COPYING"
+to     = "LICENSE"
