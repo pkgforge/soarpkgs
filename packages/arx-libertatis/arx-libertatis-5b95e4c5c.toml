@@ -1,0 +1,22 @@
+version = "5b95e4c5c"
+date    = "2026-09-09T06:50:07Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/download/5b95e4c5c%402026-09-09_1788936606/Arx_Libertatis-5b95e4c5c-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/download/5b95e4c5c%402026-09-09_1788936606/Arx_Libertatis-5b95e4c5c-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6a5ecfc1d0975cfd25d706cc2a3d732cf7eebf154300de0ee48f5137f90085c3"
+aarch64-linux = "71747a0438b35462c4a4071750f9a9c5cb398f2180115cab11d9b8f98cf8319f"
+
+[sha256]
+x86_64-linux  = "183daf649a7a15b2e746b2e4d428efd9fa8da421f599668bd058e601110812c4"
+aarch64-linux = "d232c7c710a494b52f41cd1a260a7f615c4ccb9b77798e0e1f901b3a0864221b"
+
+[size]
+x86_64-linux  = 22478698
+aarch64-linux = 22222553
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/arx/ArxLibertatis/master/LICENSE"
+to     = "LICENSE"

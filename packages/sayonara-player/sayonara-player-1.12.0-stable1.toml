@@ -1,0 +1,22 @@
+version = "1.12.0-stable1"
+date    = "2026-09-09T03:46:22Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-09-09_1788925581/Sayonara-1.12.0-stable1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-09-09_1788925581/Sayonara-1.12.0-stable1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "329c09d353823f6ee7fe6eef8756a2bbb471d12ac9f4385b9f09981a0e713534"
+aarch64-linux = "677481983284e5a14c1ebc0161502ad19bf2fafc296a8a126a7bc0fc99e97b8a"
+
+[sha256]
+x86_64-linux  = "4589705fcf8ad544d7867c87b8c14a4d689e545428e7858cddf4b0d689781f09"
+aarch64-linux = "d30e21301bd2de633b5665cecd4567a3229901f39a85761b97854ea08ee3cea2"
+
+[size]
+x86_64-linux  = 98021679
+aarch64-linux = 92240521
+
+[[extra]]
+url    = "https://gitlab.com/luciocarreras/sayonara-player/-/raw/master/COPYING"
+to     = "LICENSE"

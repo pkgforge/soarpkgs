@@ -1,0 +1,22 @@
+version = "20260807-10669-ec5824db8"
+date    = "2026-09-11T01:29:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/EDuke32-AppImage/releases/download/20260807-10669-ec5824db8%402026-09-11_1789090140/EDuke32-20260807-10669-ec5824db8-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/EDuke32-AppImage/releases/download/20260807-10669-ec5824db8%402026-09-11_1789090140/EDuke32-20260807-10669-ec5824db8-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "678ff73c01bb1f3ecb8bca0f1d4043e9a97d3e454d2349ad09b87026105cdfb2"
+aarch64-linux = "7366edbfc603e8dd298ee8423fe1e3212631269b565d2ec7ab14b477196411fa"
+
+[sha256]
+x86_64-linux  = "e48a09f1fc2a1f4617810581456847159501f8098ba2197d9f959fd7830c2ee3"
+aarch64-linux = "765926b3fb551bf42951bcb0e356178fc80c6df9297eeb27237dec0ae1af8225"
+
+[size]
+x86_64-linux  = 31119678
+aarch64-linux = 30635498
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkgforge/soarpkgs/main/licenses/GPL-2.0.txt"
+to     = "LICENSE"

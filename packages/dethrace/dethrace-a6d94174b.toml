@@ -1,0 +1,22 @@
+version = "a6d94174b"
+date    = "2026-09-11T04:45:03Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/dethrace-AppImage/releases/download/a6d94174b%402026-09-11_1789101901/dethrace-a6d94174b-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/dethrace-AppImage/releases/download/a6d94174b%402026-09-11_1789101901/dethrace-a6d94174b-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "53f8c4c2c36a01b395f0510f0a5bed58cc831b07e9cabe371f6b31eaa1eaa38a"
+aarch64-linux = "19d52df140e68552ef9e7d966beb088ac17eeaa3e210c24f6838656ab27845a7"
+
+[sha256]
+x86_64-linux  = "a5d1a13f2d6bd0cff9add4ccde4ccd0321a3bb642ed15ea132d6f661d109359c"
+aarch64-linux = "0183a8ab1745795b8d187a3e1f22a1845bca474ff9f5c7e838e0d328f7607f68"
+
+[size]
+x86_64-linux  = 27013532
+aarch64-linux = 28264897
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dethrace-labs/dethrace/main/LICENSE"
+to     = "LICENSE"

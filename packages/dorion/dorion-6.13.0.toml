@@ -1,0 +1,22 @@
+version = "6.13.0"
+date    = "2026-09-10T05:52:06Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Dorion-AppImage-Enhanced/releases/download/6.13.0%402026-09-10_1789019525/Dorion-6.13.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Dorion-AppImage-Enhanced/releases/download/6.13.0%402026-09-10_1789019525/Dorion-6.13.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "713721642ef8b2521e21dd3b1e7a9c97ed066d456d393eafb9dad6e817399bb3"
+aarch64-linux = "71e1e72361c0a5cf4d2f792059a8d81f6d3d521217186348c4b5bc7a9fdc15de"
+
+[sha256]
+x86_64-linux  = "65a39a13a2f516ba985d8f95e84a72cb6be848a7085ecff420868360cf5596aa"
+aarch64-linux = "a768cd63ea4c8ccdaa1d1f28a455f3877fb157e9092176f3e27ef657be7e6036"
+
+[size]
+x86_64-linux  = 105178680
+aarch64-linux = 109570994
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/SpikeHD/Dorion/main/LICENSE"
+to     = "LICENSE"

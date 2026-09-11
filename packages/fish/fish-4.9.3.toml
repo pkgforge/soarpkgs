@@ -1,0 +1,22 @@
+version = "4.9.3"
+date    = "2026-09-08T19:27:08Z"
+
+[url]
+x86_64-linux  = "https://github.com/fish-shell/fish-shell/releases/download/4.9.3/fish-4.9.3-linux-x86_64.tar.xz"
+aarch64-linux = "https://github.com/fish-shell/fish-shell/releases/download/4.9.3/fish-4.9.3-linux-aarch64.tar.xz"
+
+[blake3]
+x86_64-linux  = "b2f92ae60539f61f6f7386527b0eb9d97adb6308fd8f09274aae0622df0b9cd7"
+aarch64-linux = "e7c2c718839f56e58cd15c3390572da44bdc995f250585b3d3d7dfa26b2a1ab3"
+
+[sha256]
+x86_64-linux  = "8f643d10ad1abb0ef7072764c01ceb5cf61b2d373fda400cf60f0bad69b7e095"
+aarch64-linux = "57349f0111728c64b703a84e611aa97ff4d1fa8466385d64e67bd5bc3ffa49fc"
+
+[size]
+x86_64-linux  = 3217572
+aarch64-linux = 2916008
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/fish-shell/fish-shell/master/COPYING"
+to     = "LICENSE"

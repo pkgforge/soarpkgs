@@ -1,0 +1,18 @@
+version = "2.3.0"
+date    = "2026-09-09T19:16:19Z"
+
+[url]
+x86_64-linux  = "https://github.com/ffuf/ffuf/releases/download/v2.3.0/ffuf_2.3.0_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/ffuf/ffuf/releases/download/v2.3.0/ffuf_2.3.0_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "1527c64590fa2ec98845958f4f68bbb9d331ab61d5e0f51fe3da97f1972d1c9a"
+aarch64-linux = "7e048247d4db21632c9052cb7576c3356773f0a92195d0496120204bc91610f3"
+
+[sha256]
+x86_64-linux  = "b2a3c725fcb9da175159682f54d6e9149f2905b00d84d155e7efc5d599975ceb"
+aarch64-linux = "e2d712615d53da797ee929006e41f2df5a7960a5353133db9c150ddaa22ae4e8"
+
+[size]
+x86_64-linux  = 4367536
+aarch64-linux = 3950470
