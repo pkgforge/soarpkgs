@@ -1,0 +1,22 @@
+version = "11.1.1-1"
+date    = "2026-09-11T08:14:39Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.1-1%402026-09-11_1789114478/QEMU-11.1.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.1-1%402026-09-11_1789114478/QEMU-11.1.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "927669826cf201656b5e6bbbb3123e269006feb9476e1da1e7988ddbfa812de5"
+aarch64-linux = "1a17364b40fa306882b25dbd1a00ca8750f1b0eb765ac08339ee1a959c46fd6f"
+
+[sha256]
+x86_64-linux  = "d4324f3146cda3f3e808dd5c017f7f14ba3dce604274175375e818075e4aa5eb"
+aarch64-linux = "34cf0525a0b759ab02c24823682e5a87ba81d355634607eb8ff92a459493fd12"
+
+[size]
+x86_64-linux  = 172983561
+aarch64-linux = 174430903
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/qemu/qemu/master/COPYING"
+to     = "LICENSE"

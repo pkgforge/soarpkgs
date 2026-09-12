@@ -1,0 +1,18 @@
+version = "1.12.0"
+date    = "2026-09-08T13:36:33Z"
+
+[url]
+x86_64-linux  = "https://github.com/projectdiscovery/httpx/releases/download/v1.12.0/httpx_1.12.0_linux_amd64.zip"
+aarch64-linux = "https://github.com/projectdiscovery/httpx/releases/download/v1.12.0/httpx_1.12.0_linux_arm64.zip"
+
+[blake3]
+x86_64-linux  = "bc419bfd1ef96661d5f0426630b70bf736c5f5fe52f2c9706469de6a3b98176a"
+aarch64-linux = "62c5eadca5c60be5d36979374fb3c69d213a608030796eb722e67999fc8794e1"
+
+[sha256]
+x86_64-linux  = "9d8439e8b6c9aa7d1e2314817a392e00d5178da3af5652f7475f88868f418f76"
+aarch64-linux = "fd7b123c1dfbc3d69f19f524e4eebcd6ec06b9a6cbd56813c76f11645197331e"
+
+[size]
+x86_64-linux  = 19200026
+aarch64-linux = 17927774

@@ -1,0 +1,22 @@
+version = "0.2.4"
+date    = "2026-09-09T07:15:56Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Abaddon-AppImage/releases/download/0.2.4%402026-09-09_1788938155/abaddon-0.2.4-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Abaddon-AppImage/releases/download/0.2.4%402026-09-09_1788938155/abaddon-0.2.4-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1f5a632bd452b0a1c74e78f99d934946c7816540c3d16546262b05bf32b37746"
+aarch64-linux = "466377d4f6186cc684f8fd1c0328f37b22bdb4652c3737d136ee71ca6c37f7db"
+
+[sha256]
+x86_64-linux  = "c5f8688d50c3d47f3ed06aba63cb84438bdb93f8f0e9075039adafab95102c9a"
+aarch64-linux = "b0b89aac8b7f7d874e708304d7009fa377336852a71565dac09de55aae7f63b5"
+
+[size]
+x86_64-linux  = 42050017
+aarch64-linux = 42184839
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/uowuo/abaddon/refs/heads/master/LICENSE"
+to     = "LICENSE"

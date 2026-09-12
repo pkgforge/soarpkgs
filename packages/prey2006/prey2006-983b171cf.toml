@@ -1,0 +1,22 @@
+version = "983b171cf"
+date    = "2026-09-09T05:22:21Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Prey2006-AppImage/releases/download/983b171cf%402026-09-09_1788931340/Prey_2006-983b171cf-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Prey2006-AppImage/releases/download/983b171cf%402026-09-09_1788931340/Prey_2006-983b171cf-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "4817b576d0f6d19e2c89151d69adfb87c23298857f44576bf81e397708bbf084"
+aarch64-linux = "cf3cbb69b4486fad4071c1e1b4a5df8695ab3dc366da3e5191d73e2d6fb2dbd3"
+
+[sha256]
+x86_64-linux  = "3a928482019643ed1acb57a99b0be019b09e972c6b85aea39e2f0d526ced5915"
+aarch64-linux = "d41501ecc94d3c255750cc06ce67dab66383785d857e2adcec1c4c6bc9714791"
+
+[size]
+x86_64-linux  = 41618033
+aarch64-linux = 41597847
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/FriskTheFallenHuman/Prey2006/main/.github/COPYING.txt"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "1.1.7-1"
+date    = "2026-09-07T16:48:29Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Rewaita-AppImage/releases/download/1.1.7-1%402026-09-07_1788799708/Rewaita-1.1.7-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Rewaita-AppImage/releases/download/1.1.7-1%402026-09-07_1788799708/Rewaita-1.1.7-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b3c5168cf3211814867c6facf7a640a61fdb1d43b139a21abb3f69a798f99a64"
+aarch64-linux = "9c74969c780f9c8f9c08db4edec79c44f034e30d4c0f70820e81cf3afb93e041"
+
+[sha256]
+x86_64-linux  = "61c3c6da2a63bcad4dc823d4ad7209167b8486ec891e8aa9f329507f56ccb619"
+aarch64-linux = "26b06f7e7b48bf2cf124fabf9058177ef85489b20c40cac6bf8a2f9078f73e82"
+
+[size]
+x86_64-linux  = 60025027
+aarch64-linux = 57379389
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/SwordPuffin/Rewaita/main/COPYING"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "0.4.2"
+date    = "2026-09-10T20:32:56Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/appimagetool/releases/download/0.4.2/appimagetool-x86_64-linux"
+aarch64-linux = "https://github.com/pkgforge-dev/appimagetool/releases/download/0.4.2/appimagetool-aarch64-linux"
+
+[blake3]
+x86_64-linux  = "59237388d45ebecf7e6bd3a1eb7f2eb07f565a96a156995c9350f691d99bc622"
+aarch64-linux = "30fe4e1cdadb6436eed6f51170b0ab5530cb26619212f075dd35df1493b10395"
+
+[sha256]
+x86_64-linux  = "f29cfe794718bad077339e4e1aa65a32635361b9bcad5c4b585b6685430b1bd8"
+aarch64-linux = "988c44cca6060d4c6b6680e2bda445f0bddbe8596510b0ed95017da5cd045cfc"
+
+[size]
+x86_64-linux  = 4268032
+aarch64-linux = 4083560
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/pkgforge-dev/appimagetool/main/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "155.0.1"
+date    = "2026-09-10T07:10:32Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Firefox-AppImage/releases/download/155.0.1%402026-09-10_1789024231/Firefox-155.0.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Firefox-AppImage/releases/download/155.0.1%402026-09-10_1789024231/Firefox-155.0.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a844a4cbca0db2dbbfe86da9b96b5f5f78521389fbe1931ec9b7211145f42809"
+aarch64-linux = "a9823295be06f0acfde5f6d86d0fcdb4bfeb2b195ff3503c46a97bb56935a3eb"
+
+[sha256]
+x86_64-linux  = "a32194cbd3570648aa73d7e6b6eb5e615e9e54d8bd04a844f987a64a0ba83ea4"
+aarch64-linux = "842c4936c63a98c47a37669f4ff72b1e9cfe6aabe23bedf656865d3c077659aa"
+
+[size]
+x86_64-linux  = 140788061
+aarch64-linux = 129577653
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mozilla-firefox/firefox/main/LICENSE"
+to     = "LICENSE"

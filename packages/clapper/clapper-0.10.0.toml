@@ -1,0 +1,22 @@
+version = "0.10.0"
+date    = "2026-09-09T19:35:51Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0%402026-09-09_1788982549/Clapper-0.10.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0%402026-09-09_1788982549/Clapper-0.10.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5b7d920a9707ee17f9f6798aff8bade9a431e8084e781940fda0020f197168b8"
+aarch64-linux = "29fc7a851d2581cb406efa75e5f8b0f958dd22725e4bb1be85d25bf1bd550fb8"
+
+[sha256]
+x86_64-linux  = "101d7c8e8200cfa6ef1284b396f0d40834be5bec70cfe13a0d55f50360bf8018"
+aarch64-linux = "1ba26b2eb2ea708b4c9ef251d0feab90e8fc981673b35b123c94c5f17cbd4ba7"
+
+[size]
+x86_64-linux  = 94343411
+aarch64-linux = 89247322
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Rafostar/clapper/refs/heads/master/COPYING-GPL"
+to     = "LICENSE"
