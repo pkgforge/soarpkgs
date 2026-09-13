@@ -1,0 +1,22 @@
+version = "0.20-alpha"
+date    = "2026-09-12T19:17:11Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Iris-AppImage-Enhanced/releases/download/0.20-alpha%402026-09-12_1789240630/Iris-0.20-alpha-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Iris-AppImage-Enhanced/releases/download/0.20-alpha%402026-09-12_1789240630/Iris-0.20-alpha-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7ec0141ca4bac204d93e54515e0e9243ebdea139c70d67c5771b859c4dde6965"
+aarch64-linux = "04e8f60853fdafd13695469c66c5a6744fdaea5f4ee7ba87a0700fd4e8277a20"
+
+[sha256]
+x86_64-linux  = "171496ac347690b03dd03d83dbfc93e216e8760cb9a969a80ccc1ebf996eae90"
+aarch64-linux = "86dbac38cf1366152e6bc5640933b0e829ba0a17b5206172c64485b9ea762b1d"
+
+[size]
+x86_64-linux  = 30277211
+aarch64-linux = 32113547
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/allkern/iris/master/LICENSE"
+to     = "LICENSE"
