@@ -1,0 +1,22 @@
+version = "A75"
+date    = "2026-08-28T21:27:51Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/UEFITool-AppImage/releases/download/A75%402026-08-28_1787952470/UEFITool-A75-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/UEFITool-AppImage/releases/download/A75%402026-08-28_1787952470/UEFITool-A75-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c06ca5e2117bd236dd7a981831b1a902865fc204224711e7ab3ec2f816ed6e45"
+aarch64-linux = "e978ee38d5e8acf15c5b61b15436c2234ebcfda69981605246b8a26a483fefec"
+
+[sha256]
+x86_64-linux  = "c4df5590fadc4aaf0d857e42a9e6bc4743a492dcf13a9141ce127ffb4e5984c6"
+aarch64-linux = "3d20b5e7e8cfba9a6fbadc9fbd038ed7400a842593ac66e62c092b86340175c7"
+
+[size]
+x86_64-linux  = 23542851
+aarch64-linux = 24095692
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/LongSoft/UEFITool/new_engine/LICENSE.txt"
+to     = "LICENSE"
