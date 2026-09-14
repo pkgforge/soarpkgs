@@ -61,10 +61,19 @@ jobs:
           grep -rhoP 'pkgforge-dev/\K[A-Za-z0-9_-]+' packages/*/pkg.toml 2>/dev/null \
             | sort -u > /tmp/existing.txt
 
+          # Repos rejected on review. Without this they come back every run,
+          # because nothing in the upstream README marks them as unwanted.
+          grep -v '^[[:space:]]*\(#\|$\)' .github/anylinux-ignore 2>/dev/null \
+            | sort -u > /tmp/ignored.txt
+
           : > /tmp/missing.txt
           while read -r repo; do
             [ -n "$repo" ] || continue
             grep -qix "$repo" /tmp/existing.txt && continue
+            if grep -qix "$repo" /tmp/ignored.txt; then
+              echo "::notice::${repo} is on the ignore list"
+              continue
+            fi
             # An enhanced build is the same application, so it keeps the
             # plain name rather than carrying the variant into the package.
             case "$repo" in
