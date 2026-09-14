@@ -1,0 +1,22 @@
+version = "83700b2c3"
+date    = "2026-09-12T05:24:23Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Play-AppImage-Enhanced/releases/download/83700b2c3%402026-09-12_1789190662/Play.-83700b2c3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Play-AppImage-Enhanced/releases/download/83700b2c3%402026-09-12_1789190662/Play.-83700b2c3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8a0efbb3b1a94cd88606bb32f108b9d303bef6f568a271d46e0b4b2070bf1fef"
+aarch64-linux = "8fb140fc370a9fc1c09465a35f45fbc0d65d0ecac0413d634710de5e7108dd73"
+
+[sha256]
+x86_64-linux  = "8001e2eccf3dd86367fe6cddd77a77d51bcbc2373bfbfbb34263462c646148d9"
+aarch64-linux = "e69781226e610eb532cf0438b90f859827fc9dbfb759129a0c3797f10e726412"
+
+[size]
+x86_64-linux  = 46270685
+aarch64-linux = 48149647
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/jpd002/Play-/refs/heads/master/License.txt"
+to     = "LICENSE"
