@@ -1,0 +1,21 @@
+[pkg]
+name        = "prusaslicer"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/PrusaSlicer-AppImage"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/PrusaSlicer-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/PrusaSlicer-AppImage"
+glob   = "*${arch}*.appimage"
