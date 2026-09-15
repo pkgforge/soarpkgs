@@ -1,0 +1,18 @@
+version = "2.7.3"
+date    = "2026-09-15T10:36:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-x86_64-unknown-linux-musl.tar.xz"
+aarch64-linux = "https://github.com/watchexec/watchexec/releases/download/v2.7.3/watchexec-2.7.3-aarch64-unknown-linux-musl.tar.xz"
+
+[blake3]
+x86_64-linux  = "99ef02a942b609d49495882a9430a99fde9a357d7e6f742ea9c3e5f4226cbf2b"
+aarch64-linux = "ffeddcc5162f966cfd7744aa0f68a0ceb84b29ebff10e64b93d7c587918705d3"
+
+[sha256]
+x86_64-linux  = "b5bcd00ae3ebb53f7ea5d499fdf98bda14711589a7ecc0619e1847586beaa24d"
+aarch64-linux = "80bd9acfc25e4035624d99585b2f920add5ecbdc0c732c4e42fa1451b63d80a5"
+
+[size]
+x86_64-linux  = 3061236
+aarch64-linux = 2605668
