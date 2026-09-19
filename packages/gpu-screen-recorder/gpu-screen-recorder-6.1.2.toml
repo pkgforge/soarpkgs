@@ -1,0 +1,22 @@
+version = "6.1.2"
+date    = "2026-09-17T12:35:18Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage/releases/download/6.1.2%402026-09-17_1789648516/gpu-screen-recorder-6.1.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage/releases/download/6.1.2%402026-09-17_1789648516/gpu-screen-recorder-6.1.2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a9238ec8d5122ed80d12c502ecfcbd6581999798ecc719fea008c5c912095920"
+aarch64-linux = "e613b3c86c1e27ccebb5ede9a83c8a23da79c540a8bc4699d6139f3ebf2b3a92"
+
+[sha256]
+x86_64-linux  = "1992616637906d1505bb58e93232e433176b7bacf4472274581ebb537c31c9c1"
+aarch64-linux = "f3af9ad0c419223db82237b7919f716fab51ac9f889ad2e16d1c49b9df0d486f"
+
+[size]
+x86_64-linux  = 36614797
+aarch64-linux = 32358716
+
+[[extra]]
+url    = "https://git.dec05eba.com/gpu-screen-recorder/plain/LICENSE"
+to     = "LICENSE"
