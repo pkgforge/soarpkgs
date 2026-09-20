@@ -1,21 +1,29 @@
 [pkg]
 name        = "chipass"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/ChiPass-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Cross-platform password manager forked from KeePassXC"
+homepage    = [
+  "https://chipass.org",
+  "https://codeberg.org/ChiPass/ChiPass",
+]
+license    = ["GPL-2.0", "GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "Security"]
+repology   = ["chipass"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/ChiPass-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/ChiPass-AppImage"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/ChiPass-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://codeberg.org/ChiPass/ChiPass/raw/branch/main/COPYING"
+to  = "LICENSE"
+verify = false
