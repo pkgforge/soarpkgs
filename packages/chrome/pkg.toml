@@ -1,19 +1,23 @@
 [pkg]
 name        = "chrome"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/Chrome-Appimage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Google Chrome web browser"
+homepage    = [
+  "https://www.google.com/chrome",
+  "https://github.com/pkgforge-dev/Chrome-Appimage",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Network", "WebBrowser"]
+repology   = ["google-chrome"]
+note       = ["Terms of service: https://www.google.com/chrome/terms"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/Chrome-Appimage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Chrome-Appimage"
 tag-suffix = "strip"
 
 [source]
