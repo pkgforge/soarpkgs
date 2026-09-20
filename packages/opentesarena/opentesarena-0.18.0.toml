@@ -1,0 +1,22 @@
+version = "0.18.0"
+date    = "2026-09-04T18:28:48Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenTESArena-AppImage/releases/download/0.18.0%402026-09-04_1788546527/OpenTESArena-0.18.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenTESArena-AppImage/releases/download/0.18.0%402026-09-04_1788546527/OpenTESArena-0.18.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5c4b8c6fd0e471a04f51f2b8ce96b2e6ba3687008e4a20ee8c52c30834cd8db2"
+aarch64-linux = "3d6875bdcba69b5e6bf661f4bf8657354dd700120066bba991f806661dd07077"
+
+[sha256]
+x86_64-linux  = "9bbe6f5391c8d7a3d6d3e92f4fa60a2676748ad7a8dc57d61425eb6ca3a4ac3d"
+aarch64-linux = "6920f0edbe8b24637f8f7fe7bfaef18b197ee14fc1297f7624da61ba6e6f10f9"
+
+[size]
+x86_64-linux  = 58804313
+aarch64-linux = 59190758
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/afritz1/OpenTESArena/main/LICENSE.txt"
+to     = "LICENSE"
