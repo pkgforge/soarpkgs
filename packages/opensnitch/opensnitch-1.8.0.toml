@@ -1,0 +1,22 @@
+version = "1.8.0"
+date    = "2026-09-10T21:17:02Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%402026-09-10_1789075021/OpenSnitch-1.8.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%402026-09-10_1789075021/OpenSnitch-1.8.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e4ae65a88abcfb4d970359b24369fa6cba14a82587dfbd2cc0b0bff098359dc7"
+aarch64-linux = "16eb13ad1f31cea0d2ce178fdc88a09fbc986a70f890bb9d3ba02368d2f540e9"
+
+[sha256]
+x86_64-linux  = "a200f8401cd67c9e8322040e9fad85089c44b454dcf1c02dac677d3830101fa8"
+aarch64-linux = "8da7b396ab92ec0bffaf75b47614fe83bdbcd1f65ba480e77ccfd80b26828c26"
+
+[size]
+x86_64-linux  = 52400803
+aarch64-linux = 53052656
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/evilsocket/opensnitch/master/LICENSE"
+to     = "LICENSE"
