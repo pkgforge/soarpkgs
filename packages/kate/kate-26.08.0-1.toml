@@ -1,0 +1,22 @@
+version = "26.08.0-1"
+date    = "2026-09-01T15:57:51Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Kate-AppImage-Enhanced/releases/download/26.08.0-1%402026-09-01_1788278269/Kate-26.08.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Kate-AppImage-Enhanced/releases/download/26.08.0-1%402026-09-01_1788278269/Kate-26.08.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5f32201fa33890686836ee032bdc281f21e784e53a88ff76063aa221f980e92a"
+aarch64-linux = "62cb4edf5066d73da0116122d4beb6c385707a28a45197ed651f12fe2cdd9578"
+
+[sha256]
+x86_64-linux  = "fdeece72449a5b95b9097310589c454dead79c543c4b597bee65c2dc2a7b94f8"
+aarch64-linux = "c913272d98763ccc7fe54ee27171c946a518921751dc3f8e067b7c5e52eebca8"
+
+[size]
+x86_64-linux  = 66706233
+aarch64-linux = 66913230
+
+[[extra]]
+url    = "https://invent.kde.org/utilities/kate/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

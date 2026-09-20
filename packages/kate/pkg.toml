@@ -1,0 +1,29 @@
+[pkg]
+name        = "kate"
+type        = "appimage"
+description = "Advanced text editor from KDE, with KWrite included"
+homepage    = [
+  "https://kate-editor.org",
+  "https://invent.kde.org/utilities/kate",
+]
+license    = ["GPL-2.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "TextEditor", "Development"]
+repology   = ["kate"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Kate-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Kate-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://invent.kde.org/utilities/kate/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to  = "LICENSE"
+verify = false
