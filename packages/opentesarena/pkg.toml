@@ -1,21 +1,29 @@
 [pkg]
 name        = "opentesarena"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/OpenTESArena-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Open-source re-implementation of The Elder Scrolls: Arena"
+homepage    = [
+  "https://github.com/afritz1/OpenTESArena",
+  "https://github.com/pkgforge-dev/OpenTESArena-AppImage",
+]
+license    = ["MIT"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "RolePlaying"]
+note       = ["Needs the original The Elder Scrolls: Arena game data, which is not shipped"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/OpenTESArena-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenTESArena-AppImage"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/OpenTESArena-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/afritz1/OpenTESArena/main/LICENSE.txt"
+to  = "LICENSE"
+verify = false
