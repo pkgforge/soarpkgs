@@ -1,21 +1,29 @@
 [pkg]
 name        = "prusaslicer"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/PrusaSlicer-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Slicer that turns 3D models into G-code for 3D printers"
+homepage    = [
+  "https://www.prusa3d.com/prusaslicer",
+  "https://github.com/prusa3d/PrusaSlicer",
+]
+license    = ["AGPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["3DGraphics", "Engineering", "Utility"]
+repology   = ["prusa-slicer"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/PrusaSlicer-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/PrusaSlicer-AppImage"
 tag-suffix = "strip"
 
 [source]
 github = "pkgforge-dev/PrusaSlicer-AppImage"
 glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/prusa3d/PrusaSlicer/master/LICENSE"
+to  = "LICENSE"
+verify = false
