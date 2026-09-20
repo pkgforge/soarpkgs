@@ -1,0 +1,27 @@
+[pkg]
+name        = "vypresschat"
+type        = "appimage"
+description = "LAN instant messenger for office and home networks"
+homepage    = [
+  "https://www.vypress.com/chat",
+  "https://github.com/pkgforge-dev/VypressChat-AppImage",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Network", "Chat", "InstantMessaging"]
+note       = [
+  "Windows application run through a bundled Wine",
+  "Proprietary software from Vypress; terms at https://www.vypress.com/chat",
+]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/VypressChat-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/VypressChat-AppImage"
+glob   = "*${arch}*.appimage"
