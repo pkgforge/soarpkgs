@@ -1,0 +1,29 @@
+[pkg]
+name        = "donkeykong64recomp"
+type        = "appimage"
+description = "Static recompilation of the Nintendo 64 game Donkey Kong 64"
+homepage    = [
+  "https://github.com/Rainchus/Donkey-Kong-64-Recompiled",
+  "https://github.com/pkgforge-dev/DonkeyKong64Recomp-AppImage",
+]
+license    = ["GPL-3.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "AdventureGame"]
+note       = ["Needs an original Donkey Kong 64 ROM, which is not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/DonkeyKong64Recomp-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/DonkeyKong64Recomp-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/Rainchus/Donkey-Kong-64-Recompiled/main/LICENSE"
+to  = "LICENSE"
+verify = false
