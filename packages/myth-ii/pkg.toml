@@ -1,0 +1,27 @@
+[pkg]
+name        = "myth-ii"
+type        = "appimage"
+description = "Myth II: Soulblighter real-time tactics game with the Project Magma update"
+homepage    = [
+  "https://projectmagma.net",
+  "https://github.com/pkgforge-dev/Myth-II-AppImage",
+]
+license    = ["Proprietary"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "StrategyGame"]
+note       = [
+  "Needs the original Myth II: Soulblighter game data, which is not shipped",
+  "Proprietary software; terms at https://projectmagma.net",
+]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Myth-II-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Myth-II-AppImage"
+glob   = "*${arch}*.appimage"
