@@ -1,0 +1,21 @@
+[pkg]
+name        = "qemu-static"
+type        = "static"
+description = "QEMU user mode emulation binaries"
+homepage    = ["https://www.qemu.org", "https://codeberg.org/ziglang/qemu-static"]
+src         = ["https://gitlab.com/qemu-project/qemu"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Emulator", "Utility"]
+repology    = ["qemu-user"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge/builds"
+tag-prefix = "qemu-static-"
+
+[source]
+url = "https://github.com/pkgforge/builds/releases/download/qemu-static-${version}/qemu-static-${version}-x86_64-linux.tar.gz"
