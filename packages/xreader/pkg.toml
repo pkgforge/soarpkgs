@@ -1,0 +1,24 @@
+[pkg]
+name        = "xreader"
+type        = "appimage"
+description = "A generic Document Reader"
+homepage    = [
+  "https://xapp-project.org",
+  "https://github.com/linuxmint/xreader",
+]
+license    = ["GPL-2.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "Viewer"]
+repology   = ["xreader"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Xreader-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Xreader-AppImage"
+glob   = "*${arch}*.appimage"
