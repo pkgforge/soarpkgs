@@ -1,19 +1,21 @@
 [pkg]
 name        = "xed"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/Xed-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "X-Apps text editor with a traditional UI"
+homepage    = [
+  "https://xapp-project.org",
+  "https://github.com/linuxmint/xed",
+]
+license    = ["GPL-2.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Utility", "TextEditor"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/Xed-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Xed-AppImage"
 tag-suffix = "strip"
 
 [source]
