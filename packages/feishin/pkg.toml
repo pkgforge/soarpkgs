@@ -1,0 +1,25 @@
+[pkg]
+name        = "feishin"
+type        = "appimage"
+description = "A modern self-hosted music player frontend"
+homepage    = ["https://github.com/jeffvli/feishin"]
+license     = ["GPL-3.0"]
+maintainer  = ["imshinyu (imshinyu@proton.me)"]
+category    = ["AudioVideo", "Audio"]
+repology    = ["feishin"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+x86_64  = "x86_64"
+aarch64 = "arm64"
+
+[update]
+strategy     = "github-releases"
+repo         = "jeffvli/feishin"
+strip-prefix = "v"
+
+[source]
+github = "jeffvli/feishin"
+glob   = "Feishin-linux-${arch}.AppImage"
