@@ -1,0 +1,24 @@
+[pkg]
+name        = "warpinator"
+type        = "appimage"
+description = "Share files across the LAN"
+homepage    = [
+  "https://xapp-project.org",
+  "https://github.com/linuxmint/warpinator",
+]
+license    = ["GPL-3.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Network", "Utility"]
+repology   = ["warpinator"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Warpinator-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Warpinator-AppImage"
+glob   = "*${arch}*.appimage"
