@@ -1,0 +1,20 @@
+[pkg]
+name        = "cataclysm-tlg"
+type        = "appimage"
+description = "Post-apocalyptic survival roguelike, fork of Cataclysm: Dark Days Ahead"
+homepage    = ["https://github.com/Cataclysm-TLG/Cataclysm-TLG"]
+license     = ["CC-BY-SA-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "RolePlaying"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Cataclysm-TLG-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Cataclysm-TLG-AppImage"
+glob   = "*${arch}*.appimage"
