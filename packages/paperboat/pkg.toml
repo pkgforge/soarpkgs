@@ -1,0 +1,24 @@
+[pkg]
+name        = "paperboat"
+type        = "appimage"
+description = "PC port of Paper Mario 64 by Harbour Masters"
+homepage    = [
+  "https://www.harbourmasters.org",
+  "https://github.com/HarbourMasters/PaperBoat",
+]
+license    = ["CC0-1.0"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Game", "RolePlaying"]
+note       = ["Needs an original Paper Mario 64 ROM, which is not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Paperboat-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Paperboat-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"

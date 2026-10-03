@@ -1,0 +1,22 @@
+version = "1.0.1"
+date    = "2026-09-22T15:38:55Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Paperboat-AppImage-Enhanced/releases/download/1.0.1%402026-09-22_1790091534/PaperBoat-1.0.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Paperboat-AppImage-Enhanced/releases/download/1.0.1%402026-09-22_1790091534/PaperBoat-1.0.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "24257255f03221c8604e7759856441d566a4c97fc6fb4eb4f2637a9e70f6a271"
+aarch64-linux = "6304423f6fbc35e280cce19e93a3073b731aa7a193ebbe3d9ee4ab16b8cb054a"
+
+[sha256]
+x86_64-linux  = "4e8952206cb9fbe44b66d26ea92b3e55efb1f9db2685c3a14ead90dab9cdebd3"
+aarch64-linux = "78643e782515c8aea771b2cdbf1cd9b1e665b8cd631ee9f9d3ebd1803a8f1ab3"
+
+[size]
+x86_64-linux  = 30099211
+aarch64-linux = 30089527
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/HarbourMasters/PaperBoat/develop/LICENSE"
+to     = "LICENSE"
