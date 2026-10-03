@@ -1,0 +1,21 @@
+[pkg]
+name        = "ungoogled-chromium"
+type        = "appimage"
+description = "Google Chromium, sans integration with Google"
+homepage    = [ "https://github.com/ungoogled-software/ungoogled-chromium" ]
+license    = ["BSD-3-Clause"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Network", "WebBrowser"]
+repology   = ["ungoogled-chromium"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Ungoogled-Chromium-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Ungoogled-Chromium-AppImage"
+glob   = "*${arch}*.appimage"
