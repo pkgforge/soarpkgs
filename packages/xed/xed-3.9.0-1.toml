@@ -1,0 +1,22 @@
+version = "3.9.0-1"
+date    = "2026-09-28T01:53:50Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Xed-AppImage/releases/download/3.9.0-1%402026-09-28_1790560429/Xed-3.9.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Xed-AppImage/releases/download/3.9.0-1%402026-09-28_1790560429/Xed-3.9.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0373ebf4443799efdeb57ff825ceface83094e70b965e70bf8887faed7edfb03"
+aarch64-linux = "d1915a2be423da2e57e340521f5bd9c858648e0a2124da1069d1dbfc7ffbb7ec"
+
+[sha256]
+x86_64-linux  = "828f6b60f8d0d1bd9b1cfde916c7283b3389d062b2fb399872933b905ebbbb2a"
+aarch64-linux = "f660710c7b999b380436b79f77ba75162066cbe221fda02cc00fc08e1076b1f3"
+
+[size]
+x86_64-linux  = 35826737
+aarch64-linux = 35695650
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/linuxmint/xed/master/COPYING"
+to     = "LICENSE"
