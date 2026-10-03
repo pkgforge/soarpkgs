@@ -1,0 +1,24 @@
+[pkg]
+name        = "openscad"
+type        = "appimage"
+description = "The Programmers Solid 3D CAD Modeller"
+homepage    = [
+  "https://www.openscad.org",
+  "https://github.com/openscad/openscad",
+]
+license    = ["GPL-3.0-or-later"]
+maintainer = ["QaidVoid (contact@qaidvoid.dev)"]
+category   = ["Graphics", "3DGraphics", "Engineering"]
+repology   = ["openscad"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/OpenSCAD-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/OpenSCAD-AppImage"
+glob   = "*${arch}*.appimage"
