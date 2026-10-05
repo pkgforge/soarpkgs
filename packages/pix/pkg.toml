@@ -1,0 +1,21 @@
+[pkg]
+name        = "pix"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/Pix-AppImage"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/Pix-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Pix-AppImage"
+glob   = "*${arch}*.appimage"
