@@ -47,12 +47,52 @@ jobs:
       - name: Hash artifacts with no reported digest
         run: sbuild hashfill
 
+      # One package failing must not cost the tree a month of updates, which
+      # is what a hard failure here does: the step aborts, no pull request is
+      # opened, and every other package waits for the next scheduled run.
+      # So validate, and keep going when it reports errors.
       - name: Validate
-        run: sbuild validate
+        id: validate
+        run: |
+          set -uo pipefail
+          sbuild validate > validate.log 2>&1 || true
+          cat validate.log
+
+      # A package validate rejects is left with a pinned URL and no hash,
+      # which is exactly the state a commit must not carry. Reverting the
+      # package to its committed state drops the bad pin while leaving the
+      # rest of the run's work in place.
+      - name: Revert packages that failed validation
+        run: |
+          set -euo pipefail
+          # validate names the offending version file by bare name, with no
+          # path and no extension, so locate it to find its package. Stripping
+          # a version suffix instead would be wrong: 149 of the tree's version
+          # files carry a commit hash or a non-numeric suffix.
+          sed -n 's/^  ERROR \([^:]*\):.*/\1/p' validate.log \
+            | while read -r vf; do
+                find packages -name "$vf.toml"
+              done \
+            | sed 's|^packages/||; s|/.*||' | sort -u > failed.txt || true
+          if [ ! -s failed.txt ]; then
+            echo "All packages validated."
+            exit 0
+          fi
+          echo "Reverting packages that failed validation:"
+          cat failed.txt
+          # A newly pinned version file is untracked, so checkout alone
+          # leaves it behind and `git add -A` would commit a URL with no
+          # hash. Clean the recipe and the new pins together.
+          while read -r pkg; do
+            [ -n "$pkg" ] || continue
+            git checkout -- "packages/$pkg"
+            git clean -fdq "packages/$pkg"
+          done < failed.txt
 
       - name: Summarise changes
         id: diff
         run: |
+          set -euo pipefail
           git add -A packages
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -65,6 +105,16 @@ jobs:
             echo '```'
             git diff --cached --stat -- packages | tail -40
             echo '```'
+            if [ -s failed.txt ]; then
+              echo
+              echo "## Packages left unpinned"
+              echo
+              # Named so the next run can be pointed at them once the
+              # upstream breakage is fixed.
+              echo '```'
+              cat failed.txt
+              echo '```'
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Open pull request
@@ -81,5 +131,9 @@ jobs:
             Review the hashes: a changed hash on an *unchanged* version means
             upstream replaced an artifact in place, which is worth
             investigating before merging.
+
+            Packages that failed validation are reverted in this run and named
+            in the check summary. Re-run this workflow with them once the
+            upstream breakage is fixed.
           labels: automated
           delete-branch: true
