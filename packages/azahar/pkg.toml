@@ -3,7 +3,7 @@ name        = "azahar"
 type        = "appimage"
 description = "Nintendo 3DS emulator"
 homepage    = ["https://github.com/azahar-emu/azahar"]
-license     = ["GPL-2.0"]
+license     = ["GPL-3.0"]
 maintainer  = ["Samueru-sama (github.com/Samueru-sama)"]
 category    = ["Emulator", "Game"]
 repology    = ["azahar"]
@@ -19,8 +19,3 @@ tag-suffix = "strip"
 [source]
 github = "pkgforge-dev/Azahar-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
-
-[[extra]]
-url = "https://raw.githubusercontent.com/azahar-emu/azahar/refs/heads/master/license.txt"
-to  = "LICENSE"
-verify = false

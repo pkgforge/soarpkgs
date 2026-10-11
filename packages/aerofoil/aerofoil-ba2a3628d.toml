@@ -1,0 +1,22 @@
+version = "ba2a3628d"
+date    = "2026-10-01T17:41:46Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Aerofoil-AppImage/releases/download/ba2a3628d%402026-10-01_1790876505/Aerofoil-ba2a3628d-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Aerofoil-AppImage/releases/download/ba2a3628d%402026-10-01_1790876505/Aerofoil-ba2a3628d-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "d857393a193da89bb7801bafd7cdb43510e96404f31cbf11735f02c6fd3a3b5e"
+aarch64-linux = "e52021337ebfd470d41a77088c2ad79c7122e9ad598898bd237e2c25646da5fe"
+
+[sha256]
+x86_64-linux  = "7be8b9dde2cb85f65c5d9cb01e78f5b4e483ea6192113679339af25096516ea4"
+aarch64-linux = "d35778f3f25c165ffc8968da0328dd48bf5c89f0a7e5f24599b27d58d72f2952"
+
+[size]
+x86_64-linux  = 28803387
+aarch64-linux = 27762047
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/elasota/Aerofoil/refs/heads/master/LICENSE.txt"
+to     = "LICENSE"

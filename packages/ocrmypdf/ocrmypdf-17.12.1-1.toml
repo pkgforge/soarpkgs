@@ -1,0 +1,22 @@
+version = "17.12.1-1"
+date    = "2026-10-01T17:43:53Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.12.1-1%402026-10-01_1790876632/ocrmypdf-17.12.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.12.1-1%402026-10-01_1790876632/ocrmypdf-17.12.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a831f4085bca1df27e0151f447860e74ce273f68645492d34ab5ffa5bc6c0676"
+aarch64-linux = "b4ad2f9c3a56f4d4414abd56b2a8de709bf994f5decb62c7e911d3a24e5a5829"
+
+[sha256]
+x86_64-linux  = "f592ccf2640d6c60a3c26d416ec00bc2bea65fad681bdd6a55fd2efc1c3fef11"
+aarch64-linux = "ce091033c825d5246f0096ce4342164b3bda6faa0f41713f43960b85e1a25bd3"
+
+[size]
+x86_64-linux  = 80290450
+aarch64-linux = 78019094
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ocrmypdf/OCRmyPDF/main/LICENSE"
+to     = "LICENSE"

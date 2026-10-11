@@ -1,0 +1,22 @@
+version = "0.5.5-1"
+date    = "2026-10-01T15:30:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenRCT2-AppImage-Enhanced/releases/download/0.5.5-1%402026-10-01_1790868633/OpenRCT2-0.5.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenRCT2-AppImage-Enhanced/releases/download/0.5.5-1%402026-10-01_1790868633/OpenRCT2-0.5.5-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b137597b449040f968a961d96d89d6d8ea4ab73bdc96dad5281f5cb6cc05b168"
+aarch64-linux = "30318535c8c24b16b718f24ff47237a729ceca0bddfc55356ebeb722fb5e45e1"
+
+[sha256]
+x86_64-linux  = "cf47392b6d3e28788025ed44990d6ec7a31df5e1bd756399b57a1294991b5447"
+aarch64-linux = "4bf73a2053fc406f1f079532c92c14b030c057688b6b8911325e2ea615b66c9d"
+
+[size]
+x86_64-linux  = 97903712
+aarch64-linux = 97485180
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/licence.txt"
+to     = "LICENSE"

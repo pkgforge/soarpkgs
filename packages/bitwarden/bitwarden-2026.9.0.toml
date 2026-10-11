@@ -1,0 +1,22 @@
+version = "2026.9.0"
+date    = "2026-10-01T17:14:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Bitwarden-AppImage-Enhanced/releases/download/v2026.9.0%402026-10-01_1790874856/Bitwarden-v2026.9.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Bitwarden-AppImage-Enhanced/releases/download/v2026.9.0%402026-10-01_1790874856/Bitwarden-v2026.9.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1d52b5a34364b5300b47c53ec30ac8bfbd8b49ad262da0f1df2d94462dc4f4f9"
+aarch64-linux = "fe87241bbdd3447ba5e89370cb07ac6116749a52e240324e54fd2bcb70f04300"
+
+[sha256]
+x86_64-linux  = "5721a97fcf1c873749de5daca0b0c76f82cefe49fd8ff0458790aeaa89547169"
+aarch64-linux = "be91b9906d7834c49607d52df1385fd27604fcf38affa6d5fab59f2da61bece0"
+
+[size]
+x86_64-linux  = 151604661
+aarch64-linux = 149658738
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/bitwarden/clients/main/LICENSE.txt"
+to     = "LICENSE"

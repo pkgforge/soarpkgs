@@ -1,0 +1,22 @@
+version = "2.7.12-5"
+date    = "2026-10-01T17:41:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced/releases/download/2.7.12-5%402026-10-01_1790876467/KeePassXC-2.7.12-5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced/releases/download/2.7.12-5%402026-10-01_1790876467/KeePassXC-2.7.12-5-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "07e8cb31b7ab48920e4cc5823d843098bb3f869270fa81a4e63f39f96af374ce"
+aarch64-linux = "10c1f16d0c3f0824ba7b77e30fd2941184af6129c65e202ba23596c01677a872"
+
+[sha256]
+x86_64-linux  = "7ad99387710bdc6d15a474d46e8309dd33abf4b78cedb3871a4e265181b30eeb"
+aarch64-linux = "6536eb880e059d8315e22d6fb5708ed0bd99d9ae81945b0175cd9bb26326ec2e"
+
+[size]
+x86_64-linux  = 43081031
+aarch64-linux = 43733374
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/keepassxreboot/keepassxc/develop/COPYING"
+to     = "LICENSE"

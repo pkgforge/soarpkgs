@@ -1,0 +1,22 @@
+version = "0.38.0"
+date    = "2026-09-24T07:21:40Z"
+
+[url]
+x86_64-linux  = "https://github.com/shenwei356/csvtk/releases/download/v0.38.0/csvtk_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/shenwei356/csvtk/releases/download/v0.38.0/csvtk_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "73e34ce100f9f5365bb0fa0933e05877053bcd35c9301ccddf300303d38a0a7a"
+aarch64-linux = "ba34d3d0b7e6d2486a18d5aa208cdb0298b93aef164639acf48371fb670c8003"
+
+[sha256]
+x86_64-linux  = "43eac0a8e3da02158184737298fad461d1af075f78f049aae9902d868c8846a5"
+aarch64-linux = "2f9fc0fb763df5bc83a12d9916f72d16461e70589fb20b190e72a544d5ab5d6f"
+
+[size]
+x86_64-linux  = 10522133
+aarch64-linux = 9600848
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/shenwei356/csvtk/master/LICENSE"
+to     = "LICENSE"

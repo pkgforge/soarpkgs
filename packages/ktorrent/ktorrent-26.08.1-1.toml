@@ -1,0 +1,22 @@
+version = "26.08.1-1"
+date    = "2026-10-01T17:36:00Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KTorrent-AppImage/releases/download/26.08.1-1%402026-10-01_1790876159/KTorrent-26.08.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KTorrent-AppImage/releases/download/26.08.1-1%402026-10-01_1790876159/KTorrent-26.08.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "23d66b23b208bbe6b4bd2237d5c3a08051882e58683781a23925d508439a8b26"
+aarch64-linux = "5c51ffbe03e8206e0bfaa24e9b597fac620c330dcf8e33d15e58ef663c031297"
+
+[sha256]
+x86_64-linux  = "ff328ba4e11af99d4890309a74a1839b62dca493f7c0fbf623de45abf282001c"
+aarch64-linux = "675466a84acd4ec9e8460fce7266f6adee878d5626339941b0a619a9ce1470d6"
+
+[size]
+x86_64-linux  = 164125398
+aarch64-linux = 157996690
+
+[[extra]]
+url    = "https://invent.kde.org/network/ktorrent/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

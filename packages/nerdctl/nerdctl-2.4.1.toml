@@ -1,0 +1,26 @@
+version = "2.4.1"
+date    = "2026-10-02T22:07:27Z"
+
+[url]
+x86_64-linux  = "https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-2.4.1-linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-2.4.1-linux-arm64.tar.gz"
+riscv64-linux = "https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-2.4.1-linux-riscv64.tar.gz"
+
+[blake3]
+x86_64-linux  = "5d9fb97a58b78fde836400b3fc1508503a624bcd44cffe229871a24d90fd5eb5"
+aarch64-linux = "c27e93b40fa483c64597cf5281508415de3a4ffc0b4ece17acc0a0abe1cce0bf"
+riscv64-linux = "9e058020e470f28d2c0b58f0029fa8c8afdc9d97430adaeefb8b93251acec99c"
+
+[sha256]
+x86_64-linux  = "f6bbf02fd8a299cbcbc71a0bad113c1b63b3f33689bbb7d51b0fa98c6d361d5e"
+aarch64-linux = "2b60e7311589342abec39ffd2c172bef51da31ccc1278a89ec3aa04d1d3040bb"
+riscv64-linux = "6570ca3ab6d5e5283291134d7cc147f8935c378fddc39f871e8d5f0811087f79"
+
+[size]
+x86_64-linux  = 12148553
+aarch64-linux = 10879774
+riscv64-linux = 11332990
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/containerd/nerdctl/main/LICENSE"
+to     = "LICENSE"

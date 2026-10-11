@@ -1,0 +1,22 @@
+version = "9e283e301"
+date    = "2026-10-01T17:42:56Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/freac-AppImage-Enhanced/releases/download/9e283e301%402026-10-01_1790876574/fre_ac-9e283e301-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/freac-AppImage-Enhanced/releases/download/9e283e301%402026-10-01_1790876574/fre_ac-9e283e301-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "2c299628072b01f2f4649765af176ae919cbaabf6222cd63d246195165177b12"
+aarch64-linux = "d9476677a1ae4f8edb6440fc3035ca21496ab89530ac800af849acc978a6bff7"
+
+[sha256]
+x86_64-linux  = "f36acadb2279dc6906718f74528984b8025eace5f8ee718de7dbea7b6e3b2160"
+aarch64-linux = "2874dfdbd262bfb58c3841ec98327896547e248404e94e650d153e7aa6161c1f"
+
+[size]
+x86_64-linux  = 28273964
+aarch64-linux = 28029912
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/enzo1982/freac/master/COPYING"
+to     = "LICENSE"

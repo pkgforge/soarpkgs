@@ -1,0 +1,22 @@
+version = "1.28.0-2"
+date    = "2026-10-01T17:38:22Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/foot-AppImage/releases/download/1.28.0-2%402026-10-01_1790876300/Foot-1.28.0-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/foot-AppImage/releases/download/1.28.0-2%402026-10-01_1790876300/Foot-1.28.0-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "9b306186262b162d7299be6edf2d10e00c9abfe43e1ae3f65ac01ec469ca0ee6"
+aarch64-linux = "b6b8ff2998dab7de71d283a14f1dac00d5c069bb6d0d520cf18f068e48056c8f"
+
+[sha256]
+x86_64-linux  = "4b8556cb5916ce5fcf9f88c41b6bef0307ad417bf350249c04fb47f420b01c19"
+aarch64-linux = "6a856800f5f79fbf03cf34544f64bf6e0098de051cbd39d3cf33d4cdbe1c286d"
+
+[size]
+x86_64-linux  = 17994496
+aarch64-linux = 17193664
+
+[[extra]]
+url    = "https://codeberg.org/dnkl/foot/raw/branch/master/LICENSE"
+to     = "LICENSE"

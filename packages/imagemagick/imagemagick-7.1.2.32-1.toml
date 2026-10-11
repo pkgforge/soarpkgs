@@ -1,0 +1,22 @@
+version = "7.1.2.32-1"
+date    = "2026-10-07T14:19:40Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ImageMagick-AppImage/releases/download/7.1.2.32-1%402026-10-07_1791382779/ImageMagick-7.1.2.32-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ImageMagick-AppImage/releases/download/7.1.2.32-1%402026-10-07_1791382779/ImageMagick-7.1.2.32-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "afcb60742c04183e9b1c08fc78f6865e0b4d664856f0467193215fa1d3aa1436"
+aarch64-linux = "61526da72f841fada19cbfd67710cbf6df77723162673449c6bc2ff77f3a491e"
+
+[sha256]
+x86_64-linux  = "c27b0dae078f9fbde8dbc0d540a8a967139e003692eb013ac0e693cce3826f5e"
+aarch64-linux = "05ddb1303478b33872a0b2f069a434031f8e2c602ba0a8c9e4c522fd01bbf870"
+
+[size]
+x86_64-linux  = 32408711
+aarch64-linux = 30523158
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ImageMagick/ImageMagick/main/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "4.20.0"
+date    = "2026-09-29T22:41:35Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Planify-AppImage/releases/download/v4.20.0%402026-09-29_1790721694/Planify-v4.20.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Planify-AppImage/releases/download/v4.20.0%402026-09-29_1790721694/Planify-v4.20.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "4a25f0784c8ead0c5455484e49f9f0ce7e7f79e703a922f93091c63a315aaa68"
+aarch64-linux = "99de11963510297d9e62fe5ac6e677d8276f62edadb4698eb906c1a32747773f"
+
+[sha256]
+x86_64-linux  = "816b5f19c0fa0350883d4cbeeb6bb344865bc704f8be9a88c5cf14038960571f"
+aarch64-linux = "eb06a57fe68b6a87e403977e32b47526e8c8b0ed301b2e7c865dfdf103755650"
+
+[size]
+x86_64-linux  = 39441143
+aarch64-linux = 38772358
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/alainm23/planify/main/LICENSE"
+to     = "LICENSE"

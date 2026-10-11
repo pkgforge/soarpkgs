@@ -1,0 +1,22 @@
+version = "1.5.5"
+date    = "2026-10-01T17:43:40Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DevilutionX-AppImage-Enhanced/releases/download/1.5.5%402026-10-01_1790876619/DevilutionX-1.5.5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DevilutionX-AppImage-Enhanced/releases/download/1.5.5%402026-10-01_1790876619/DevilutionX-1.5.5-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "28c55ec4128c2e5d894334a65e9cdabe88370d7723f394c5d709697f4dc5d35b"
+aarch64-linux = "5242f8e831a2073dc5a183d1221c05524d297c3e3ea4082f278923a27554551f"
+
+[sha256]
+x86_64-linux  = "9a6aa80514c847c96ecb2fba0f311c31c7bb7c2db64ad1cf32be66d14d9b6e41"
+aarch64-linux = "fa2c0163aa80e14258b4cb423546cb7e6098734c9dae586ef4b6f40cace4a00b"
+
+[size]
+x86_64-linux  = 25778571
+aarch64-linux = 24665172
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/diasurgical/DevilutionX/master/LICENSE.md"
+to     = "LICENSE"

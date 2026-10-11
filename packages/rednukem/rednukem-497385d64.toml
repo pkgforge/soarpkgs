@@ -1,0 +1,22 @@
+version = "497385d64"
+date    = "2026-10-01T17:26:05Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Rednukem-AppImage/releases/download/497385d64%402026-10-01_1790875563/Rednukem-497385d64-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Rednukem-AppImage/releases/download/497385d64%402026-10-01_1790875563/Rednukem-497385d64-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "df7b3924bbf821e8b24d91fd6c7828f3621e55a470bcae3ca5bada79107ed198"
+aarch64-linux = "86ec01c306df0fb83f70978c149ffee2cf857baa48b73286433bc057ce592113"
+
+[sha256]
+x86_64-linux  = "925c9962eeed27ca6e676118e3e091a38543eaca2d29c2041a50a965593b67d3"
+aarch64-linux = "34be6478bca8feb74d363cf66fa6076416441558e4c6ece54d4e8d1fb74e4ee2"
+
+[size]
+x86_64-linux  = 29496205
+aarch64-linux = 28593876
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/NBlood/NBlood/master/source/rr/gpl-2.0.txt"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "1.0.3"
+date    = "2026-10-01T17:25:52Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DonkeyKong64Recomp-AppImage/releases/download/1.0.3%402026-10-01_1790875551/DK64Recompiled-1.0.3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DonkeyKong64Recomp-AppImage/releases/download/1.0.3%402026-10-01_1790875551/DK64Recompiled-1.0.3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3a5f530944a841c8df8002de5973027c84e3945edb4c63e8097464cf3ab3569d"
+aarch64-linux = "6ecc3a22ff831be93133bfb0d4da7050cae32503eaa5defd84755ce82105789d"
+
+[sha256]
+x86_64-linux  = "95b5ad906149c10ca8e1c587596c3a8d9ec14220a67346ec9258a6683814fa0b"
+aarch64-linux = "e7b7d29f0c0c4d69fbc6abc35bab8bb631954bad982aa5059ba65b23c7661abb"
+
+[size]
+x86_64-linux  = 46123822
+aarch64-linux = 46784572
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Rainchus/Donkey-Kong-64-Recompiled/main/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,18 @@
+version = "0.12.1"
+date    = "2026-09-24T09:30:55Z"
+
+[url]
+x86_64-linux  = "https://github.com/charmbracelet/vhs/releases/download/v0.12.1/vhs_0.12.1_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/charmbracelet/vhs/releases/download/v0.12.1/vhs_0.12.1_Linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "c0a91d699d47f92b049b868648b4068f671763eb6620198beeb24b2cb19ed52b"
+aarch64-linux = "d40f5e4fff0d2b8af430845944b28eaa79b42b63bc050f6bf61044d0db895201"
+
+[sha256]
+x86_64-linux  = "eb33787a5b1cebf91fe0b18bd231e2d71d36c1ff4babd99ddac1a6ab411efd10"
+aarch64-linux = "0b27029809fcc2ca2c381cceb854cbe03479a0f229b963e9bc3a2f2c36ffd3e7"
+
+[size]
+x86_64-linux  = 9474207
+aarch64-linux = 8803865

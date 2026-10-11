@@ -1,0 +1,22 @@
+version = "6.0.1"
+date    = "2026-10-01T17:42:18Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Nugget-Doom-AppImage-Enhanced/releases/download/6.0.1%402026-10-01_1790876537/Nugget_Doom-6.0.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Nugget-Doom-AppImage-Enhanced/releases/download/6.0.1%402026-10-01_1790876537/Nugget_Doom-6.0.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "34455b364ad99feb925b6b0a1679d9a221ae6ab06f8af857e022aca73d22ac8a"
+aarch64-linux = "9e0137528fa9a7bd708abcf99ff14fae05a0fee530f8c1ce992ccc30bf36bd6e"
+
+[sha256]
+x86_64-linux  = "fcf3038395e8ba74ce80c700f5f03d448e8f861d8160e041c748681d14a6a71b"
+aarch64-linux = "f72c973cc16bd74877cc32f796295e0f8da69ed6f71a4a3080d7c5caf41b2694"
+
+[size]
+x86_64-linux  = 30703550
+aarch64-linux = 29736658
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/MrAlaux/Nugget-Doom/master/COPYING"
+to     = "LICENSE"

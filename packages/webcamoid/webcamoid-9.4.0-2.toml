@@ -1,0 +1,22 @@
+version = "9.4.0-2"
+date    = "2026-10-01T17:43:10Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Webcamoid-AppImage/releases/download/9.4.0-2%402026-10-01_1790876588/Webcamoid-9.4.0-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Webcamoid-AppImage/releases/download/9.4.0-2%402026-10-01_1790876588/Webcamoid-9.4.0-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e08a4751bf9018fba04bad3136f09c864eb5df6ee2c6860cad317a9826970b3e"
+aarch64-linux = "2b182c758786a7dbb23ec225b23f539325d3ac6276535852447ef595903e1c78"
+
+[sha256]
+x86_64-linux  = "7436d93e1bc748e3c1f2f7a03cf5a0fbd8b03e6406bcfa64733451288a8c2118"
+aarch64-linux = "4668409df0b88a563ad0e84b260508294faefb162c0d4ce493bf6ba0e8156810"
+
+[size]
+x86_64-linux  = 108823991
+aarch64-linux = 103641064
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/webcamoid/webcamoid/refs/heads/master/COPYING"
+to     = "LICENSE"

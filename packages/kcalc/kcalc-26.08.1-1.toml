@@ -1,0 +1,22 @@
+version = "26.08.1-1"
+date    = "2026-10-01T17:04:29Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.08.1-1%402026-10-01_1790874267/KCalc-26.08.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.08.1-1%402026-10-01_1790874267/KCalc-26.08.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "77ba37f242ff367728d3452caa2773cb987f5edd9b7b4a2905ca05e31305d22c"
+aarch64-linux = "25abaefa611cb2e132a15a7516f7a74df4b874294b1f0cb4ccc2556fca5d50cc"
+
+[sha256]
+x86_64-linux  = "20f8b5804e331ed177822a14e4fac22857c84e44ee3df9eeff30f969cc214144"
+aarch64-linux = "48d53ec3edba9d2d67edea4d11addd12d25e5692ec265cf5d3a8fedcffbe4843"
+
+[size]
+x86_64-linux  = 30766771
+aarch64-linux = 30528643
+
+[[extra]]
+url    = "https://invent.kde.org/utilities/kcalc/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

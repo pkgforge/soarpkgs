@@ -1,0 +1,22 @@
+version = "db1996a7f"
+date    = "2026-10-01T17:44:37Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/db1996a7f%402026-10-01_1790876676/D1X-Rebirth-db1996a7f-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/db1996a7f%402026-10-01_1790876676/D1X-Rebirth-db1996a7f-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "eff15a75748ddfed7415272738e70f2fa0823e25c0e7a140277a06651c321be2"
+aarch64-linux = "a692c3033e6cdf2d1ff9d7623df40c33b513290cfbb1e210fa0900c44b342b9c"
+
+[sha256]
+x86_64-linux  = "57603224244534014a9f8acee2c303ce22637eed5e4a5253176bf3ce56cbf640"
+aarch64-linux = "f35221bfd9cf9df0348ae56f4366d0da710693131c67e92635c9c0e88ecf7d01"
+
+[size]
+x86_64-linux  = 97964896
+aarch64-linux = 96978168
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dxx-rebirth/dxx-rebirth/master/COPYING.txt"
+to     = "LICENSE"
