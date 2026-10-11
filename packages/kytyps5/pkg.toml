@@ -1,0 +1,21 @@
+[pkg]
+name        = "kytyps5"
+type        = "appimage"
+description = "PlayStation 5 translation layer for Windows, Linux and macOS"
+homepage    = ["https://kytyps5.github.io"]
+license     = ["GPL-2.0-only"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["kytyps5"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/KytyPS5-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KytyPS5-AppImage"
+glob   = "*${arch}*.appimage"
