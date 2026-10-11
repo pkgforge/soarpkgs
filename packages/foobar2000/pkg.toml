@@ -1,19 +1,20 @@
 [pkg]
 name        = "foobar2000"
 type        = "appimage"
-description = "TODO: one-line description"
-homepage    = ["https://github.com/pkgforge-dev/foobar2000-AppImage"]
-license     = ["TODO"]
-maintainer  = ["TODO <you@example.com>"]
-category    = ["TODO"]
-repology    = ["TODO"]
+description = "Advanced freeware audio player"
+homepage    = ["https://www.foobar2000.org"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Audio", "Player"]
+repology    = ["foobar2000"]
+note        = ["License: https://www.foobar2000.org/license"]
 
 [host]
-supported = ["x86_64-linux", "aarch64-linux"]
+supported = ["x86_64-linux"]
 
 [update]
-strategy = "github-releases"
-repo     = "pkgforge-dev/foobar2000-AppImage"
+strategy   = "github-releases"
+repo       = "pkgforge-dev/foobar2000-AppImage"
 tag-suffix = "strip"
 
 [source]
