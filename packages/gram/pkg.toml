@@ -19,8 +19,3 @@ tag-suffix = "strip"
 [source]
 github = "pkgforge-dev/Gram-AppImage-Enhanced"
 glob   = "*${arch}*.appimage"
-
-[[extra]]
-url = "https://codeberg.org/GramEditor/gram/raw/branch/main/LICENSE-GPL"
-to  = "LICENSE"
-verify = false
