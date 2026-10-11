@@ -1,0 +1,22 @@
+[pkg]
+name        = "xash3d-fwgs"
+type        = "appimage"
+description = "Game engine compatible with the Half-Life (GoldSrc) engine"
+homepage    = ["https://github.com/FWGS/xash3d-fwgs"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Shooter"]
+repology    = ["xash3d-fwgs"]
+note        = ["Needs the original Half-Life game data to run"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Xash3D-FWGS-AppImage-Enhanced"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Xash3D-FWGS-AppImage-Enhanced"
+glob   = "*${arch}*.appimage"
