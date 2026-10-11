@@ -1,0 +1,22 @@
+[pkg]
+name        = "foobar2000"
+type        = "appimage"
+description = "Advanced freeware audio player"
+homepage    = ["https://www.foobar2000.org"]
+license     = ["Proprietary"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Audio", "Player"]
+repology    = ["foobar2000"]
+note        = ["License: https://www.foobar2000.org/license"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/foobar2000-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/foobar2000-AppImage"
+glob   = "*${arch}*.appimage"
