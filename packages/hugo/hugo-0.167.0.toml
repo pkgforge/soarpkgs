@@ -1,0 +1,18 @@
+version = "0.167.0"
+date    = "2026-09-28T15:20:52Z"
+
+[url]
+x86_64-linux  = "https://github.com/gohugoio/hugo/releases/download/v0.167.0/hugo_0.167.0_linux-amd64.tar.gz"
+aarch64-linux = "https://github.com/gohugoio/hugo/releases/download/v0.167.0/hugo_0.167.0_linux-arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "fc02a1af594a01272f5eda558f99468938c0caf170c75c3ba533a493ed1dcedb"
+aarch64-linux = "76cb46c486841efdef86068d2dcf316c297eb270d768eb77cf13fc2828222c83"
+
+[sha256]
+x86_64-linux  = "4d84519b9f619e6d4c3fb45a50157abeabeb724f859c60605f44c23def6e1169"
+aarch64-linux = "d0dd0d1ed249842525a93413e10ca1ef6f3b63311ee1695b16a0ce488142cec1"
+
+[size]
+x86_64-linux  = 20970860
+aarch64-linux = 19354090

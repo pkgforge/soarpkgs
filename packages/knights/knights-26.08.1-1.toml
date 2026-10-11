@@ -1,0 +1,22 @@
+version = "26.08.1-1"
+date    = "2026-10-01T17:40:11Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Knights-AppImage/releases/download/26.08.1-1%402026-10-01_1790876410/Knights-26.08.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Knights-AppImage/releases/download/26.08.1-1%402026-10-01_1790876410/Knights-26.08.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "fc55c34eec3d79d8bc43d329e05b579af175d186f3fd027bcf52105f92a32ba3"
+aarch64-linux = "fbf5392a5df8b77fabf5c3f3decdc0525b1cac4af051ec7efda323238e24423e"
+
+[sha256]
+x86_64-linux  = "0a92e2972fef2e5ac5b50365f5fb332730713e7591f9cf4c9bfbb4b59fdb07d0"
+aarch64-linux = "87a3d51c5787f928db93d59d1e855d4221c3131f5065f9a669124c51432408bf"
+
+[size]
+x86_64-linux  = 61875278
+aarch64-linux = 61295024
+
+[[extra]]
+url    = "https://invent.kde.org/games/knights/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

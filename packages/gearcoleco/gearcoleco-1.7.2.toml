@@ -1,0 +1,22 @@
+version = "1.7.2"
+date    = "2026-10-01T17:43:18Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gearcoleco-AppImage/releases/download/1.7.2%402026-10-01_1790876597/Gearcoleco-1.7.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gearcoleco-AppImage/releases/download/1.7.2%402026-10-01_1790876597/Gearcoleco-1.7.2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e02535f54ea62a8cba80743a348aad9892d1c6d89cbea94cb5b167a6374b52bd"
+aarch64-linux = "0b5af4bf68434517f08fca1517dc81ff6636db4822836e0e0012d61f8dc33d76"
+
+[sha256]
+x86_64-linux  = "ee24ce44a6804bfa1851ea34f63cb767072190b14a152fbafadf97504b0310c4"
+aarch64-linux = "a2490b8d532902cf217af455f45cff6b1e0cfa6b50e4b97f353f3d9f423d9c7e"
+
+[size]
+x86_64-linux  = 21492130
+aarch64-linux = 20569940
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/drhelius/Gearcoleco/main/LICENSE"
+to     = "LICENSE"

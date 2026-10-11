@@ -1,0 +1,22 @@
+version = "6774724d5"
+date    = "2026-10-01T17:44:04Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/xoreos-AppImage/releases/download/6774724d5%402026-10-01_1790876643/xoreos-6774724d5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/xoreos-AppImage/releases/download/6774724d5%402026-10-01_1790876643/xoreos-6774724d5-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "b66ac8328649b448e12b8abe019fda6b1e366a5f9d79343dc4027b142648a4dd"
+aarch64-linux = "89dbcae93a32dbe99cbbf58266f5f235dbb2e30a496b9ad50a5c18afea2c3a6d"
+
+[sha256]
+x86_64-linux  = "16cfed87ef85cefdef701d47b06b7b0b1e1db258da0382bbbd2f1199263d072b"
+aarch64-linux = "f4d5fc3ceebef89f39bb73f0f0c95556cecb0a6ddc6b6ba64d310647dc7213fd"
+
+[size]
+x86_64-linux  = 27992954
+aarch64-linux = 27030538
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xoreos/xoreos/master/COPYING"
+to     = "LICENSE"

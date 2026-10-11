@@ -1,0 +1,22 @@
+version = "1.6.0"
+date    = "2026-10-01T21:28:04Z"
+
+[url]
+x86_64-linux  = "https://github.com/svenstaro/genact/releases/download/v1.6.0/genact-1.6.0-x86_64-unknown-linux-musl"
+aarch64-linux = "https://github.com/svenstaro/genact/releases/download/v1.6.0/genact-1.6.0-aarch64-unknown-linux-musl"
+
+[blake3]
+x86_64-linux  = "aa9909c9579d7df235405c6b594389278d5267d8e705c126109656c7ddeee88d"
+aarch64-linux = "ac94f7426054b2c3f3446da0680541338a70428f58d611b70061800affd2d17e"
+
+[sha256]
+x86_64-linux  = "ce6ad0615dc0b767194ffa86aeae78d04bfdda42909e465ce69b846e81903a48"
+aarch64-linux = "aff55a2adcfff6cafe530d1629d4a7d58332682b2b7bc7f8f405e7d9e44d7e1a"
+
+[size]
+x86_64-linux  = 1635500
+aarch64-linux = 1590940
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/svenstaro/genact/master/LICENSE"
+to     = "LICENSE"

@@ -1,21 +1,21 @@
 version = "50.0-1"
-date    = "2026-09-01T12:38:33Z"
+date    = "2026-10-01T17:31:00Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/50.0-1%402026-09-01_1788266311/Calculator-50.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/50.0-1%402026-09-01_1788266311/Calculator-50.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/50.0-1%402026-10-01_1790875858/Calculator-50.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/50.0-1%402026-10-01_1790875858/Calculator-50.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "4d31825f9399fc64ddeb010e9c0ae14d6f99ece8fe70353ea36808febdc2e3c9"
-aarch64-linux = "706647ba6354648eb2255943acdea0463ea3d11a1809da4071e46a0bb3968ab8"
+x86_64-linux  = "797b0ccfa66ad6fb48aab6e8c26728dc24083551897dcd14075a9389b55b0000"
+aarch64-linux = "2c007850c6825c3cfb8be5c36857b8f93f06c533945bbb4e40652a187da18520"
 
 [sha256]
-x86_64-linux  = "fbb65169d63a9a2ff214d144c5cb7c51c1e60dd84dbcc3387bcdb08d48e08980"
-aarch64-linux = "ace4f030d1b07411286b0df7b9928eaa326b41a93ae23bdfe03dcaa275c2fb1e"
+x86_64-linux  = "b0423ac2445bc555fa58a3b51a15e40b6cc237da2591f55236feb9b3188b074f"
+aarch64-linux = "1afe7c20e74db8c9c08f1686b73bd40349bdafea779103633020ba148e6586a9"
 
 [size]
-x86_64-linux  = 31428374
-aarch64-linux = 32394536
+x86_64-linux  = 33484547
+aarch64-linux = 33212162
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/GNOME/gnome-calculator/refs/heads/main/COPYING"

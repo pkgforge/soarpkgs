@@ -1,0 +1,22 @@
+version = "8.6.1-1"
+date    = "2026-10-01T17:41:35Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Streamlink-AppImage/releases/download/8.6.1-1%402026-10-01_1790876494/streamlink-8.6.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Streamlink-AppImage/releases/download/8.6.1-1%402026-10-01_1790876494/streamlink-8.6.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8c28e4f037610e2c70a204bfd4259687edc6189ab53fd80b89280d59d5c16d9d"
+aarch64-linux = "bba4502cc2b9242f30062ca20185849f8d6dadcbebc5dd47518e31be15d9b082"
+
+[sha256]
+x86_64-linux  = "f0d9703d32544314dc46ae6acb74600aedc17388df01b27f86a4120112b695ce"
+aarch64-linux = "19f5f7c7358ba07a7e7f0a27f8d15fd52bee69f6d4c55fda22ddee41215bdadf"
+
+[size]
+x86_64-linux  = 25132276
+aarch64-linux = 23573869
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/streamlink/streamlink/master/LICENSE"
+to     = "LICENSE"

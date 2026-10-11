@@ -1,0 +1,22 @@
+version = "2.38.2"
+date    = "2026-10-10T08:41:29Z"
+
+[url]
+x86_64-linux  = "https://github.com/direnv/direnv/releases/download/v2.38.2/direnv.linux-amd64"
+aarch64-linux = "https://github.com/direnv/direnv/releases/download/v2.38.2/direnv.linux-arm64"
+
+[blake3]
+x86_64-linux  = "c988e182e6ddd175ce5ecf0f0e359077fa205f18e3a59ae76a14e7df35b060e5"
+aarch64-linux = "de6c0106c102c4554c9885faefbf3a2428a91692371314dc87ee9e0e7573983e"
+
+[sha256]
+x86_64-linux  = "148820a187930d36ca6a204504e5cdb30d8396cd1a97e64c3b3f10d793c11247"
+aarch64-linux = "ec2a32dbe2f19dd085bd9315a1b4ea88b55ec288aa7eabe8723490baf466cb23"
+
+[size]
+x86_64-linux  = 8548514
+aarch64-linux = 7930018
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/direnv/direnv/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "d4979c2bc"
+date    = "2026-10-01T17:41:10Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenXRay-AppImage/releases/download/d4979c2bc%402026-10-01_1790876469/OpenXRay-d4979c2bc-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenXRay-AppImage/releases/download/d4979c2bc%402026-10-01_1790876469/OpenXRay-d4979c2bc-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "335d0a8bf956c09f990757bce72ca5b47007e4ecf6655c5fda95cd289b885b8e"
+aarch64-linux = "023f72ed9f7a00d8dbdc417ef41f8694ebda272a9d70d81e8bb93c3d3923dbb0"
+
+[sha256]
+x86_64-linux  = "c8397fd0d2bc76a7464f82517df2097b30b4fdd057920ab71e5d2d57ae3521e7"
+aarch64-linux = "81c189879be7049dde1f20ce1f5280588cde9f5a636c83f478f13a036249fb8f"
+
+[size]
+x86_64-linux  = 32018857
+aarch64-linux = 30273872
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenXRay/xray-16/dev/License.txt"
+to     = "LICENSE"

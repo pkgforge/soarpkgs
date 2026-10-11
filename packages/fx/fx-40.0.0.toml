@@ -1,0 +1,22 @@
+version = "40.0.0"
+date    = "2026-10-05T16:01:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/antonmedv/fx/releases/download/40.0.0/fx_linux_amd64"
+aarch64-linux = "https://github.com/antonmedv/fx/releases/download/40.0.0/fx_linux_arm64"
+
+[blake3]
+x86_64-linux  = "4a34ecc012280ac8f039a7173a080a2d5c92e7fcfec3694764cab066e961dff0"
+aarch64-linux = "54accf35d32d9dd608cb9283da2b6e0884c13b361803dfc43cd95a5e6bc7a51a"
+
+[sha256]
+x86_64-linux  = "c5cf146137d3d1819384356366913f1f98bcf5b334e5f100e4705c081f65ed8e"
+aarch64-linux = "1200eb9c7e78aae2108c84809a90e361193b2859c2ea528ad49f2e8b690620c9"
+
+[size]
+x86_64-linux  = 22306758
+aarch64-linux = 21018603
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/antonmedv/fx/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "0.26.28-1"
+date    = "2026-10-01T17:44:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-10-01_1790876648/Okteta-0.26.28-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-10-01_1790876648/Okteta-0.26.28-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "49e2057bec145aa446375367a01a129df0b837dfefc9a46503a9eb02c52cdcd5"
+aarch64-linux = "6fc570d20c59569117546a5c776e9aca41e61783c5a6af656586f6703f634af1"
+
+[sha256]
+x86_64-linux  = "1e03e6ff7526cbded5d3081f92ebca3ae8003aa3c7addb57d67f3e3adcb62a26"
+aarch64-linux = "3c02185f707629ace9c971d740d1c003081ce7d6af11ba4b25bc38563b7d7217"
+
+[size]
+x86_64-linux  = 57106525
+aarch64-linux = 57605924
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/KDE/okteta/refs/heads/master/LICENSES/GPL-2.0-only.txt"
+to     = "LICENSE"

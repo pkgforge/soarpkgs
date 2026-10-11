@@ -1,22 +1,18 @@
 version = "2021.01-23"
-date    = "2026-09-09T19:45:47Z"
+date    = "2026-10-07T14:04:14Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/OpenSCAD-AppImage/releases/download/2021.01-23%402026-09-09_1788983146/OpenSCAD-2021.01-23-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/OpenSCAD-AppImage/releases/download/2021.01-23%402026-09-09_1788983146/OpenSCAD-2021.01-23-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenSCAD-AppImage/releases/download/2021.01-23%402026-10-07_1791381852/OpenSCAD-2021.01-23-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenSCAD-AppImage/releases/download/2021.01-23%402026-10-07_1791381852/OpenSCAD-2021.01-23-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "47005668a286c3002dd388db490149ac4c08994a86393ad43a9871deb23e9769"
-aarch64-linux = "481a3c0925c53804e96c40e9e70ea0e3fb78202c389b19715e53a1ea28336079"
+x86_64-linux  = "5c4a9bd350cfbb7595bc6da19f6561f5ad3a74e2431e81183409ab573dc6b9f3"
+aarch64-linux = "22d529307bddbde11dd43e3213ab60ca1e3a9bcc5c14570eca9f82fa296df481"
 
 [sha256]
-x86_64-linux  = "fc7271656ea3b9c7fc12499b3f7a8a1096c161a854e97d63190ac03a43dd252c"
-aarch64-linux = "9b491fd9ba36e38521280349afb9894621148823caa3e8795edf8218c0007de9"
+x86_64-linux  = "f45dcbb69c0472d462ea294143792f6722853d17c653a3de18c3cef334f69f28"
+aarch64-linux = "721d290127adcf593343005039fe72dfa9a81e995679fd14fb18c6d899e5f5cb"
 
 [size]
-x86_64-linux  = 41691984
-aarch64-linux = 42585684
-
-[[extra]]
-url    = "https://raw.githubusercontent.com/openscad/openscad/master/COPYING"
-to     = "LICENSE"
+x86_64-linux  = 42084915
+aarch64-linux = 42143676

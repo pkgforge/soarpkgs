@@ -1,21 +1,21 @@
 version = "2026.3.0-1"
-date    = "2026-09-01T15:47:53Z"
+date    = "2026-10-01T17:23:27Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.3.0-1%402026-09-01_1788277672/ScummVM-2026.3.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.3.0-1%402026-09-01_1788277672/ScummVM-2026.3.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.3.0-1%402026-10-01_1790875406/ScummVM-2026.3.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.3.0-1%402026-10-01_1790875406/ScummVM-2026.3.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "5d9919ac9a4a78cda31deb1e70f31918e47885415fea257c3383b12129b381fb"
-aarch64-linux = "979c656ddb4ba826f523c3234133ef19abd88a516865d07b8b051da11b19f0ed"
+x86_64-linux  = "60c429f8f5f6038b3c4de0b143a083fbb017697c4a1aca2c12cf8e6ce5edbfc0"
+aarch64-linux = "c1fe97cf07f228783c6104e226e7bc6fafa940c9888e4123235c5957f81f8983"
 
 [sha256]
-x86_64-linux  = "009688b6452b3043e2959c6d2a85ab9d6b294e0c11fecd54b8851960a9ef6747"
-aarch64-linux = "5b3db33582f83263ebe07de78615b8994b03adfb78d1d22ad1b6f92db9200270"
+x86_64-linux  = "3f873e5de99e1abe8b4454e6e0bcbdc20e7697d3a0a7145bac7093312c7ad86b"
+aarch64-linux = "719f1f477640a16ed59062ba475fe8d1c492da30dae04925f694ab4faf74c654"
 
 [size]
-x86_64-linux  = 141283468
-aarch64-linux = 140715367
+x86_64-linux  = 143062241
+aarch64-linux = 141468287
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/scummvm/scummvm/master/COPYING"

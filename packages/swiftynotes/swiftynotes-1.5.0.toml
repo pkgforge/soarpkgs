@@ -1,0 +1,22 @@
+version = "1.5.0"
+date    = "2026-09-22T00:20:21Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/swiftynotes-AppImage/releases/download/1.5.0%402026-09-22_1790036420/Swifty_Notes-1.5.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/swiftynotes-AppImage/releases/download/1.5.0%402026-09-22_1790036420/Swifty_Notes-1.5.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c770a5be2779847ec9861fde98df81e4124077aeeb768185e9d0650a75a1e235"
+aarch64-linux = "3fc63b55e9f2979e04a3be543c4a9fe9143fb1b6b599601887968f6079c1bb6d"
+
+[sha256]
+x86_64-linux  = "a2d43d2ecd84ad47f9f21ab478e161a8974952cc68e22d86e1f2eb70d8eab738"
+aarch64-linux = "e3831f8a9da6df368edd25643d66b5ee055e26e977753fff4f5a492317faa310"
+
+[size]
+x86_64-linux  = 64042894
+aarch64-linux = 64491715
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/makoni/swifty-notes-gtk/master/LICENSE"
+to     = "LICENSE"

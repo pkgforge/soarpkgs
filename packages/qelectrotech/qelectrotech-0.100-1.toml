@@ -1,21 +1,21 @@
 version = "0.100-1"
-date    = "2026-09-01T15:37:11Z"
+date    = "2026-10-01T17:40:51Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-09-01_1788277030/QElectroTech-0.100-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-09-01_1788277030/QElectroTech-0.100-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-10-01_1790876449/QElectroTech-0.100-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-10-01_1790876449/QElectroTech-0.100-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "b49e51ee0aa6faf284a5c71c3814aaa0d1df79bfc505da862b557bb67ab0986f"
-aarch64-linux = "195c64aeb63062155a42b4942e278f94682c7c51ba354734bfb837a3b8290505"
+x86_64-linux  = "9a13e56625e9b2fb8791f0bd8b4f3a21fa1798c9872c2469aa1110dff1246f67"
+aarch64-linux = "a4e003abd99401020a276e034c970a8e98538ada4026bed8e29f814181491fd5"
 
 [sha256]
-x86_64-linux  = "f3e8332b3f559808b27b62982c8f5933f1a26ad61dd3e565c7ee7606e314eba9"
-aarch64-linux = "6bd57c821ed73428f1f141c2344358f5fc0727c6d8e99ff6731ea4abcc1fdf43"
+x86_64-linux  = "2ce4137b91059a5c696513d05bf62c26b2a84b0c3516322c038f37af0560cf8f"
+aarch64-linux = "f1cad95f6755160695eb86860e3add9e3d173e7e71392f61e7f0ba4634decd4b"
 
 [size]
-x86_64-linux  = 56726221
-aarch64-linux = 58029621
+x86_64-linux  = 56961528
+aarch64-linux = 56983355
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/LICENSE"

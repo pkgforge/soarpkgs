@@ -1,0 +1,22 @@
+version = "26.08.1-1"
+date    = "2026-10-01T17:40:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KTouch-AppImage/releases/download/26.08.1-1%402026-10-01_1790876407/KTouch-26.08.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KTouch-AppImage/releases/download/26.08.1-1%402026-10-01_1790876407/KTouch-26.08.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f032908a8ca83086b4aa6d9ac3a986505a67fc56a04c58ff9c1edd2ae4313fd1"
+aarch64-linux = "1e16e8c0c8bcd1c8afbd39a5c4b2d5908271572fbf31085dce494622739ea0b0"
+
+[sha256]
+x86_64-linux  = "b43acc6e733ec848292fc865c501445d31c3511be0a5ef6ab14318a619e047f6"
+aarch64-linux = "d70a368b5fd9f5ec7d406a0d7848f6bee034bb812f13776f88efa2d9fd54326a"
+
+[size]
+x86_64-linux  = 73428305
+aarch64-linux = 72602789
+
+[[extra]]
+url    = "https://invent.kde.org/education/ktouch/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"

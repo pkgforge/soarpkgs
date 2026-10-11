@@ -1,0 +1,22 @@
+version = "6c1fe472e"
+date    = "2026-10-01T17:44:08Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Shockolate-AppImage/releases/download/6c1fe472e%402026-10-01_1790876647/Shockolate-6c1fe472e-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Shockolate-AppImage/releases/download/6c1fe472e%402026-10-01_1790876647/Shockolate-6c1fe472e-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "299a2edaa0b1b8e7b7da41a4a6cca04911bbbcaa182e92bf558e066ce4e24868"
+aarch64-linux = "1f046707d80671f889725c1958863f874085cb1a9d8c13fe6c22e1f2c8dd6d39"
+
+[sha256]
+x86_64-linux  = "227f4a45582aa4988b3bdb06965e4f7047a41f1f90571c67cbf1e94f2de1deb5"
+aarch64-linux = "23b6bb7b46ee4f7586f98ac5b65f7f68740fbb49aac71c239d72525d1dd565df"
+
+[size]
+x86_64-linux  = 21746240
+aarch64-linux = 20847368
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Interrupt/systemshock/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,18 @@
+version = "0.6.0"
+date    = "2026-10-01T17:42:39Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/servo-AppImage/releases/download/v0.6.0%402026-10-01_1790876557/Servo-v0.6.0-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "61ee036fa13b68af3149da835ee5a00561cb879698f1fc4410abfc67875e10ed"
+
+[sha256]
+x86_64-linux = "42152f051576baa62d064beb8f151a4313121d4769fded8e6de12384f2276492"
+
+[size]
+x86_64-linux = 101137810
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/servo/servo/refs/heads/main/LICENSE"
+to     = "LICENSE"

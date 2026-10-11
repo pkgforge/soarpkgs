@@ -1,0 +1,22 @@
+version = "2.5.0.r79.g98730ba-1"
+date    = "2026-10-07T14:09:20Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/puddletag-AppImage/releases/download/2.5.0.r79.g98730ba-1%402026-10-07_1791382158/puddletag-2.5.0.r79.g98730ba-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/puddletag-AppImage/releases/download/2.5.0.r79.g98730ba-1%402026-10-07_1791382158/puddletag-2.5.0.r79.g98730ba-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "eb3687430a7d289574bf6bbb27db3a0af4fa941f2e79a1d85cb0dbc2e9b638c4"
+aarch64-linux = "46f97229e51c6f6a4ebe8f0d88d7b20a036cf625369c4abce8c5ef41407aba43"
+
+[sha256]
+x86_64-linux  = "1b47d47f2016aa2144f53beb93c18c16a0a710a76a827c588d98520c7ed7c2f7"
+aarch64-linux = "66fa8de45a7eda2ff6b58e74b91cc9008acfd6ec212761ba6e0f43693249d650"
+
+[size]
+x86_64-linux  = 33534888
+aarch64-linux = 33417826
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/puddletag/puddletag/refs/heads/master/LICENSE"
+to     = "LICENSE"

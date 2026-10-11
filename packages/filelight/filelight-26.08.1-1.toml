@@ -1,0 +1,22 @@
+version = "26.08.1-1"
+date    = "2026-10-01T16:25:15Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.08.1-1%402026-10-01_1790871913/Filelight-26.08.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.08.1-1%402026-10-01_1790871913/Filelight-26.08.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "de52d789130e0007d7533d34552d6535f1598e8f22b6828ff3ff6e01a8116ecd"
+aarch64-linux = "1952dc024524d2d3ef2c8bdce9f3d3ce504136f8fc9dc0dcb7673e9b3b2df9f4"
+
+[sha256]
+x86_64-linux  = "632d17ddbb6a3a2e4c45d744d850ae93dcd4a45a7f331e70b79c669b09e48131"
+aarch64-linux = "da401e486ded00d181083efa3989c43dab8b58985ac710b3a677531de7b95903"
+
+[size]
+x86_64-linux  = 52095318
+aarch64-linux = 51885768
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/KDE/filelight/refs/heads/master/LICENSES/GPL-3.0-only.txt"
+to     = "LICENSE"

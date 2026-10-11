@@ -1,0 +1,22 @@
+version = "cc76e69"
+date    = "2026-10-01T17:27:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenBoardView-AppImage/releases/download/cc76e69%402026-10-01_1790875653/OpenBoardView-cc76e69-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenBoardView-AppImage/releases/download/cc76e69%402026-10-01_1790875653/OpenBoardView-cc76e69-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "ed2318a93fc7b586607780528c078563d20e86f42d5e9a7de921bd42a6a690c7"
+aarch64-linux = "b15f94829a8d4854bb709ef21ff2e7cfe8ac44b6bdba01273cf3a3cf39201032"
+
+[sha256]
+x86_64-linux  = "dfd1a50fa3a129dde112a729ce14ba604cd02f3d021a6523015f247d3b52c6bd"
+aarch64-linux = "6f8cfa8244b5b72dbeb8f15eba71a3a7beb346d7b15aaba00f3048562bcec1cf"
+
+[size]
+x86_64-linux  = 22660680
+aarch64-linux = 21610745
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/OpenBoardView/OpenBoardView/master/LICENSE"
+to     = "LICENSE"

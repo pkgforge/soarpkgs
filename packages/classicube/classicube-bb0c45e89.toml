@@ -1,0 +1,22 @@
+version = "bb0c45e89"
+date    = "2026-10-01T17:42:28Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ClassiCube-AppImage/releases/download/bb0c45e89%402026-10-01_1790876545/ClassiCube-bb0c45e89-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ClassiCube-AppImage/releases/download/bb0c45e89%402026-10-01_1790876545/ClassiCube-bb0c45e89-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6cffabbd40fb18787d545092ba0a3fb48ed9d9eab7f0a94669091afb208d102e"
+aarch64-linux = "4f97402436545f155c26d138c189eda2664998056c5b697c306903ac7ddd4b96"
+
+[sha256]
+x86_64-linux  = "910731ecf62015a03a29d9a09e16ba1bf148b92176071b16d40197fd6a8581c0"
+aarch64-linux = "dfc54bd376542268637a0171c0413305d9d78eaa1724b50126ae7f27603266c1"
+
+[size]
+x86_64-linux  = 25735910
+aarch64-linux = 25300089
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ClassiCube/ClassiCube/master/license.txt"
+to     = "LICENSE"

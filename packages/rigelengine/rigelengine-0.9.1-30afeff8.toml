@@ -1,0 +1,22 @@
+version = "0.9.1-30afeff8"
+date    = "2026-10-01T17:43:36Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/RigelEngine-AppImage/releases/download/0.9.1-30afeff8%402026-10-01_1790876614/RigelEngine-0.9.1-30afeff8-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/RigelEngine-AppImage/releases/download/0.9.1-30afeff8%402026-10-01_1790876614/RigelEngine-0.9.1-30afeff8-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5246796db7c64f5cf0985bb6cc39f7fda37d4752b3bbf7c9b33dde63e06a2b4b"
+aarch64-linux = "88ee31b94a59a396759c11a5abe297153108196fc66776b964feb006c9e1477f"
+
+[sha256]
+x86_64-linux  = "cbd3333a1906956be78d2aa7dfd762d5b21b06a04e992ac56f61f93f6b21fd5c"
+aarch64-linux = "cc4a163c58450cc8b1818778064b6ca17cd6701694b5d74c563e3614cfbc0460"
+
+[size]
+x86_64-linux  = 20831928
+aarch64-linux = 19855557
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/lethal-guitar/RigelEngine/master/LICENSE.md"
+to     = "LICENSE"

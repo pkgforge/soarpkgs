@@ -1,0 +1,22 @@
+version = "0.3.0"
+date    = "2026-10-01T17:37:54Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/TouchHLE-AppImage/releases/download/v0.3.0%402026-10-01_1790876273/touchHLE-v0.3.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/TouchHLE-AppImage/releases/download/v0.3.0%402026-10-01_1790876273/touchHLE-v0.3.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3c85321e016c54a22adc5244cabdf4d966dbccbdde7431ff1d4df25a0483cc5d"
+aarch64-linux = "2645e23ce8b5154f9d14d06b9543bc26f4a5ecaa5f0580775d03218d9888201b"
+
+[sha256]
+x86_64-linux  = "ef1e6697a6cf59540db04bcc21c329498f47154fb6a15564e226ad16ab57a973"
+aarch64-linux = "c4ae99375ee3d739613ac881e3425315876bbe72cc02bbc7004b214f880ce76d"
+
+[size]
+x86_64-linux  = 32703718
+aarch64-linux = 31468049
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/touchHLE/touchHLE/refs/heads/trunk/LICENSE"
+to     = "LICENSE"

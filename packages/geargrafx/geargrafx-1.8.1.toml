@@ -1,0 +1,22 @@
+version = "1.8.1"
+date    = "2026-10-01T17:35:14Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Geargrafx-AppImage/releases/download/1.8.1%402026-10-01_1790876112/Geargrafx-1.8.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Geargrafx-AppImage/releases/download/1.8.1%402026-10-01_1790876112/Geargrafx-1.8.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "09578d60ff5bde2a0692fe01e172ee2b8382277afde84c12f27d4276aee59557"
+aarch64-linux = "ce786359482622a7f5c71f625e458c965b468f1a270071e358f7d09ad98607d7"
+
+[sha256]
+x86_64-linux  = "3bab5a0115b8480068403c5a128553d2e15e96b8de3e942541dffd158369c521"
+aarch64-linux = "dd7fa5595b032da71fdf4240779519bc8f98b1f9d8cb6955e9e0866f321d31ce"
+
+[size]
+x86_64-linux  = 20943942
+aarch64-linux = 19945402
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/drhelius/Geargrafx/main/LICENSE"
+to     = "LICENSE"

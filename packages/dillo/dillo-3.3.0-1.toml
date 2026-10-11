@@ -1,21 +1,21 @@
 version = "3.3.0-1"
-date    = "2026-09-12T11:36:09Z"
+date    = "2026-10-01T17:43:52Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Dillo-AppImage/releases/download/3.3.0-1%402026-09-12_1789212968/Dillo-3.3.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Dillo-AppImage/releases/download/3.3.0-1%402026-09-12_1789212968/Dillo-3.3.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Dillo-AppImage/releases/download/3.3.0-1%402026-10-01_1790876631/Dillo-3.3.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Dillo-AppImage/releases/download/3.3.0-1%402026-10-01_1790876631/Dillo-3.3.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "8a528221a00a9d3d07a19b8ddebf4d4a164b71303b5ef86a7f6fb6d877e848fb"
-aarch64-linux = "94367efbccc7ae23b17faebc99b2000fd405ca3b76b9f8a795c9c9ead8fb9f8d"
+x86_64-linux  = "4a370bf0dd743690dd8d673c066b3b13f62fa91c3b30126f548286a8da4ed9c9"
+aarch64-linux = "453cf37b4b0bcd58aa4af510c947aba544282c0f07a86defb4193e479a01b995"
 
 [sha256]
-x86_64-linux  = "028e99363593d2c5bbec154960cf624036f19196eb0be0b5142b3d7ae992ded1"
-aarch64-linux = "de7a7c321a48907cd3f797a9903d524f7044abdee347e3a423e13952be9c784c"
+x86_64-linux  = "ca88f7d10f3dda7d8f7a23b6669d5a4c25f8382cb7034d67bebd4af3d4e8c540"
+aarch64-linux = "3e4e47fdeeb3cb2de1142fa64431c2b1d5620c4616d356cfc65663c58c217cae"
 
 [size]
-x86_64-linux  = 13326503
-aarch64-linux = 13676753
+x86_64-linux  = 13555141
+aarch64-linux = 13398239
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/dillo-browser/dillo/master/COPYING"

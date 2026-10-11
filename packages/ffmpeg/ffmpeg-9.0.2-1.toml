@@ -1,0 +1,22 @@
+version = "9.0.2-1"
+date    = "2026-10-01T17:44:35Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-1%402026-10-01_1790876674/ffmpeg-9.0.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-1%402026-10-01_1790876674/ffmpeg-9.0.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8ab7e9e5befa007959a68a5a50776df18083fd3d128900e90d4d2156670827a6"
+aarch64-linux = "839756f36b246014d514a5f2fe1401ccfd4a818263c30b77aae07afa611249e5"
+
+[sha256]
+x86_64-linux  = "77cfcf0de84805e1b9310184adf13dea0c047e1ac737788205547d61b48acd3a"
+aarch64-linux = "0b44a79d6bc815380f829c78437013d87ff419680da71c5e74b2aeea472a3960"
+
+[size]
+x86_64-linux  = 60020676
+aarch64-linux = 51109638
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/COPYING.GPLv3"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "26b7159"
+date    = "2026-10-01T17:43:03Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/download/26b7159%402026-10-01_1790876582/OpenGothic-26b7159-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/download/26b7159%402026-10-01_1790876582/OpenGothic-26b7159-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8619fedbe45900f1cedc884d7fc2996835c1874345fcc8143200edc9e1b02092"
+aarch64-linux = "2e5c9e7adb393c94d3c1af3f7d51d7c59ce912bff2b16959e357465a3869053f"
+
+[sha256]
+x86_64-linux  = "d57c239835dd7194797a1dcf37479cfe73a136a8c1be59ef09a56739acb59288"
+aarch64-linux = "a9c52beef1f33152b8e49000734ff122f3cbff13f83b23f7e1590cfb7fe7d86a"
+
+[size]
+x86_64-linux  = 24557084
+aarch64-linux = 25790170
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Try/opengothic/master/LICENSE"
+to     = "LICENSE"

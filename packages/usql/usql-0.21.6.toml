@@ -1,0 +1,18 @@
+version = "0.21.6"
+date    = "2026-09-22T23:58:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/xo/usql/releases/download/v0.21.6/usql_static-0.21.6-linux-amd64.tar.bz2"
+aarch64-linux = "https://github.com/xo/usql/releases/download/v0.21.6/usql_static-0.21.6-linux-arm64.tar.bz2"
+
+[blake3]
+x86_64-linux  = "c7ae627e2e5c28d535a3d8565966131e2ae87c5493b9d6c81b99fdd9eb13fe84"
+aarch64-linux = "f0f1469c5cbdae10a611a965e75db1fb2920524dc028ef443ab6f893e76dbb8f"
+
+[sha256]
+x86_64-linux  = "046b25a4ce8d16b200d38a47e85c45c5eb694eb5ae071a21436d39fe08a897bc"
+aarch64-linux = "19415f69089431e31e96a9f17e38c7611375c8552efb9f095aaf733860172116"
+
+[size]
+x86_64-linux  = 61785941
+aarch64-linux = 40356618

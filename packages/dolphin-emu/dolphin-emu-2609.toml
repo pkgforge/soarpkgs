@@ -1,0 +1,22 @@
+version = "2609"
+date    = "2026-10-01T17:41:30Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2609%402026-10-01_1790876487/Dolphin_Emulator-2609-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2609%402026-10-01_1790876487/Dolphin_Emulator-2609-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "923efcdcca290140e8833c20b560b5d3f97e825cb4174c4d206dc9c9dafa9f79"
+aarch64-linux = "307c950783fb8ef354a0c098b78b3907d4be87cf79f7475089702034c6165cc3"
+
+[sha256]
+x86_64-linux  = "d033d883870c3cd3224fa28b8b70ac932f464f4f6c3dea4e331f875c811d437a"
+aarch64-linux = "9689b6fba9fc9c3be53f3703dcc29511e4b96bb2468ebb23740744c73f24ffc2"
+
+[size]
+x86_64-linux  = 61716856
+aarch64-linux = 62878695
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dolphin-emu/dolphin/refs/heads/master/COPYING"
+to     = "LICENSE"
