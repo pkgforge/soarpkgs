@@ -1,0 +1,21 @@
+[pkg]
+name        = "zrythm"
+type        = "appimage"
+description = "Highly automated and intuitive digital audio workstation"
+homepage    = ["https://www.zrythm.org"]
+license     = ["AGPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Audio"]
+repology    = ["zrythm"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Zrythm-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Zrythm-AppImage"
+glob   = "*${arch}*.appimage"
