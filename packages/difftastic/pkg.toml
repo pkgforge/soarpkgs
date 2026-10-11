@@ -16,7 +16,7 @@ strategy = "github-releases"
 repo     = "Wilfred/difftastic"
 
 [source]
-url     = "https://github.com/Wilfred/difftastic/releases/download/${version}/difft-${arch}-unknown-linux-musl.tar.gz"
+url     = "https://github.com/Wilfred/difftastic/releases/download/${version}/difft-${version}-${arch}-unknown-linux-musl.tar.gz"
 
 [source.install]
 "difft" = "bin/difft"
