@@ -1,0 +1,26 @@
+[pkg]
+name        = "uefitool"
+type        = "appimage"
+description = "UEFI firmware image viewer and editor"
+homepage    = ["https://github.com/LongSoft/UEFITool"]
+license     = ["BSD-2-Clause"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "System", "Utility"]
+repology    = ["uefitool"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/UEFITool-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/UEFITool-AppImage"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/LongSoft/UEFITool/new_engine/LICENSE.txt"
+to  = "LICENSE"
+verify = false
