@@ -1,0 +1,21 @@
+[pkg]
+name        = "sonic-mania-decompilation"
+type        = "appimage"
+description = "Decompilation of Sonic Mania"
+homepage    = ["https://github.com/Rubberduckycooly/Sonic-Mania-Decompilation"]
+license     = ["Custom"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ArcadeGame"]
+note        = ["Needs the original Sonic Mania game assets, which are not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "pkgforge-dev/Sonic-Mania-Decompilation-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Sonic-Mania-Decompilation-AppImage"
+glob   = "*${arch}*.appimage"
