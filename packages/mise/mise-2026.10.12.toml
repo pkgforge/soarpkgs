@@ -1,0 +1,18 @@
+version = "2026.10.12"
+date    = "2026-10-16T18:19:41Z"
+
+[url]
+x86_64-linux  = "https://github.com/jdx/mise/releases/download/v2026.10.12/mise-v2026.10.12-linux-x64-musl.tar.xz"
+aarch64-linux = "https://github.com/jdx/mise/releases/download/v2026.10.12/mise-v2026.10.12-linux-arm64-musl.tar.xz"
+
+[blake3]
+x86_64-linux  = "ae7453b18333580feeabd48bcdab4da5dd03b5bfb617ff4b124bcb10a75156d7"
+aarch64-linux = "28fb5039cad665a80178fd247e055da61286c914e0931fcf9e9209263b760fc3"
+
+[sha256]
+x86_64-linux  = "21f0cec63288353feda34d420286d868265efbe9b8e6bcf88a331236aae29402"
+aarch64-linux = "3898a284290164d1adf9820fc909110ecb1ae0b090080cc5cbe6c6ef331886b6"
+
+[size]
+x86_64-linux  = 31410112
+aarch64-linux = 32300892

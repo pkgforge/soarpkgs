@@ -1,0 +1,26 @@
+version = "1.27.0"
+date    = "2026-10-17T09:17:43Z"
+
+[url]
+x86_64-linux  = "https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/starship/starship/releases/download/v1.27.0/starship-aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/starship/starship/releases/download/v1.27.0/starship-riscv64gc-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "7aa15219e9c1def15a4278e8dca18e4f78305629eb6cd365d583cf067e0dcb57"
+aarch64-linux = "3212961090a4a93c91de55cd05e5ad8ed2cc1093f0ab8b8c0222fee8d0297dc2"
+riscv64-linux = "c45db8853d21c37f4098fce74a872931678155059875bc94cff0703db64d61b3"
+
+[sha256]
+x86_64-linux  = "10c8eb4cb3b761d9bf59ea828444c2dab36c900b7d69a69e08814b286969df89"
+aarch64-linux = "341f5cbf24699fa0b27ec88965ad25f862ea09e15d35a543fd6ffdff1d2aa00d"
+riscv64-linux = "4cbf07f29f7610f4d031263bca5f5552b8bcbcf69c43e2ad225960b8082a0adb"
+
+[size]
+x86_64-linux  = 5215016
+aarch64-linux = 4776202
+riscv64-linux = 5079891
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/starship/starship/master/LICENSE"
+to     = "LICENSE"

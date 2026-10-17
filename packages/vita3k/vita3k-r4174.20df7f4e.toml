@@ -1,0 +1,22 @@
+version = "r4174.20df7f4e"
+date    = "2026-10-13T11:08:57Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced/releases/download/r4174.20df7f4e%402026-10-13_1791889736/Vita3K-r4174.20df7f4e-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Vita3K-AppImage-Enhanced/releases/download/r4174.20df7f4e%402026-10-13_1791889736/Vita3K-r4174.20df7f4e-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f40e4c37e90cbc8118203784e95393767d593be70ceb82498fe3cf9d5914f018"
+aarch64-linux = "124da151ba7d6c5b623bd0c403ac2e8eb7318f250629596bfff55e6358d3fc12"
+
+[sha256]
+x86_64-linux  = "282843a17dd7fa5b0b46bf6c1cebe08a0db2af6dc3528df12b3b3c62d0526dd8"
+aarch64-linux = "fdc848597923cab96e7ca2e62417e8df0bce4f1b129b908bd42c6f73960519ce"
+
+[size]
+x86_64-linux  = 49247258
+aarch64-linux = 49256594
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Vita3K/Vita3K/master/COPYING.txt"
+to     = "LICENSE"

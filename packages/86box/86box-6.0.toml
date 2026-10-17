@@ -1,0 +1,22 @@
+version = "6.0"
+date    = "2026-10-12T11:43:46Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/6.0%402026-10-12_1791805425/86Box-6.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/6.0%402026-10-12_1791805425/86Box-6.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3efb2be066b32233e511bd7b7b209dcd6ebdf8f7d751f9c86bd63743706df7c4"
+aarch64-linux = "c617fedb21849ee3e08023289d5aedbdf2eb5b31d57115bcdfadcf6df4c585df"
+
+[sha256]
+x86_64-linux  = "0bd6c89f96cb979b04266bc69242f55c691f94cec30ee51b52c653f86a539734"
+aarch64-linux = "8b9eca5fdeb763e147291d6c520014b46c52a471a516ba300927ceb9f59b89fa"
+
+[size]
+x86_64-linux  = 134449370
+aarch64-linux = 133863059
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/86Box/86Box/refs/heads/master/COPYING"
+to     = "LICENSE"

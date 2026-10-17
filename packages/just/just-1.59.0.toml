@@ -1,0 +1,22 @@
+version = "1.59.0"
+date    = "2026-10-15T06:41:04Z"
+
+[url]
+x86_64-linux  = "https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-riscv64gc-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "37d22e85e3e950f8e03c85cc8572a60d17325b481bdd1184b9cc1e0c52540516"
+aarch64-linux = "afb69f25939097296b45c74bdab06ff8d1085152bd213b22d1b5f626948c1bfa"
+riscv64-linux = "63d8a6dd8f92aee31ade87ff9e2b44cab62b71e3ce844ec9858bfa020406b447"
+
+[sha256]
+x86_64-linux  = "409044617b6f06517c1035e55ca38c8c856ff8b650e41bc2aa1ef82d5903a23e"
+aarch64-linux = "23871b1702bfd550fb5f901778fd4290ecf2ee034a45a889fbe96d89b188086d"
+riscv64-linux = "698951bdc89869cd8a3c0229402944c628e67d1e41e9179d8ef2b35301b666b4"
+
+[size]
+x86_64-linux  = 2572537
+aarch64-linux = 2343258
+riscv64-linux = 2405624
