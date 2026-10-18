@@ -1,0 +1,22 @@
+version = "1.23.2b"
+date    = "2026-10-12T16:27:54Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Zen-Browser-AppImage-Enhanced/releases/download/1.23.2b%402026-10-12_1791822473/Zen_Browser-1.23.2b-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Zen-Browser-AppImage-Enhanced/releases/download/1.23.2b%402026-10-12_1791822473/Zen_Browser-1.23.2b-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "38c1c9ca43501f3be56f3fe9f34573e791f285fe5c79439138a227eba7e8724f"
+aarch64-linux = "1481d81a2654db63680b54c244de55a695d75b3d73b43c4b4f44a55112bfc4de"
+
+[sha256]
+x86_64-linux  = "439611ed79484780baf93de2028cde46d26b76e50037c62f53ccf4805ccff813"
+aarch64-linux = "ac2d5565bb7d6f026108c3e481c452c247eb7f06875fa63beec251ba7086797b"
+
+[size]
+x86_64-linux  = 225131511
+aarch64-linux = 201320105
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/zen-browser/desktop/dev/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,18 @@
+version = "1.26.29-1"
+date    = "2026-10-12T09:55:21Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/VeraCrypt-AppImage/releases/download/1.26.29-1%402026-10-12_1791798919/VeraCrypt-1.26.29-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "63bed56a76ceae259f61c1b0f65bc1ec7301efae2531d054e66bb580bf92333c"
+
+[sha256]
+x86_64-linux = "d0df17c54a570d2077dc228969db30585eee5270ffd7b717fa06ae10037ad6d3"
+
+[size]
+x86_64-linux = 32402804
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/veracrypt/VeraCrypt/refs/heads/master/License.txt"
+to     = "LICENSE"

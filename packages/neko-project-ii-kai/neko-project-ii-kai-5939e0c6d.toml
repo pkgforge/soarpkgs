@@ -1,0 +1,22 @@
+version = "5939e0c6d"
+date    = "2026-10-11T19:48:54Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage/releases/download/5939e0c6d%402026-10-11_1791748133/Neko_Project_II_kai-5939e0c6d-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Neko-Project-II-Kai-AppImage/releases/download/5939e0c6d%402026-10-11_1791748133/Neko_Project_II_kai-5939e0c6d-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6cc330c529318f23c71952ace08c5a51f206290e69b7b17a05f80d3ac3d9a9de"
+aarch64-linux = "3144216466e7d7ee85658ea83fef2dd9608cf46703158d1c4479cadafe844821"
+
+[sha256]
+x86_64-linux  = "74fbb653e6ed03c2668d8508ae97fdf7060295da680f80ffbf1ae669ccc6507d"
+aarch64-linux = "ab17b7af62b48790f4dd1697746c1064c1f8916367aa3c102fba1f93ce1f53f1"
+
+[size]
+x86_64-linux  = 38825216
+aarch64-linux = 38094092
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AZO234/NP2kai/master/LICENSE"
+to     = "LICENSE"
