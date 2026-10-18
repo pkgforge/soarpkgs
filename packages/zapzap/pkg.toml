@@ -13,11 +13,10 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy   = "github-releases"
-repo       = "pkgforge-dev/ZapZap-AppImage-Enhanced"
-tag-suffix = "strip"
+repo       = "rafatosta/zapzap"
 
 [source]
-github = "pkgforge-dev/ZapZap-AppImage-Enhanced"
+github = "rafatosta/zapzap"
 glob   = "*${arch}*.appimage"
 
 [[extra]]
