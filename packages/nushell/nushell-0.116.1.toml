@@ -1,0 +1,22 @@
+version = "0.116.1"
+date    = "2026-10-17T15:22:03Z"
+
+[url]
+x86_64-linux  = "https://github.com/nushell/nushell/releases/download/0.116.1/nu-0.116.1-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/nushell/nushell/releases/download/0.116.1/nu-0.116.1-aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/nushell-0.116.1/nushell-0.116.1-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "f585d71b8008db67adca4dce4282ae13e396052f6bc4c55675633519c1fe63c1"
+aarch64-linux = "5cd85b68cbdca3b7d0255a2ce0573c9d5acbd1df0e2fd483628b5d33a3a09178"
+riscv64-linux = "e6706235aee3a3663dd566b70061280f007e0ab7878ece728568a09f88cfa66f"
+
+[sha256]
+x86_64-linux  = "13ef75df08df30f8d7b031df538e82a52c6e74ce839b1a9091c3a3f1969c3742"
+aarch64-linux = "b103770c00bf322c409caa007aad44882d1cc5d24d82f719f877812ac33d6ad1"
+riscv64-linux = "bc54161247bdc4e67f02a25585002f0fad58fabe9551c32b6cdb9321bd9e2340"
+
+[size]
+x86_64-linux  = 85918122
+aarch64-linux = 80861387
+riscv64-linux = 18150666
