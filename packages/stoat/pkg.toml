@@ -13,12 +13,11 @@ supported = ["x86_64-linux", "aarch64-linux"]
 
 [update]
 strategy     = "github-releases"
-repo         = "pkgforge-dev/Stoat-AppImage"
+repo         = "stoatchat/for-desktop"
 strip-prefix = "v"
-tag-suffix   = "strip"
 
 [source]
-github = "pkgforge-dev/Stoat-AppImage"
+github = "stoatchat/for-desktop"
 glob   = "*${arch}*.appimage"
 
 [[extra]]
