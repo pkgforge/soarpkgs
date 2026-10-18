@@ -1,0 +1,25 @@
+[pkg]
+name        = "vscodium"
+type        = "appimage"
+description = "Code editor with debugging, Git control and extensions, community-built binaries of VS Code"
+homepage    = ["https://vscodium.com", "https://github.com/VSCodium/vscodium"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "IDE", "TextEditor"]
+repology    = ["vscodium"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "VSCodium/vscodium"
+
+[source]
+github = "VSCodium/vscodium"
+glob   = "*${arch}*.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/VSCodium/vscodium/master/LICENSE"
+to  = "LICENSE"
+verify = false
