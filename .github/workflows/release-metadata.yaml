@@ -47,7 +47,7 @@ jobs:
           sbuild --version
 
           # Download soar for SDB generation
-          curl -fsSL "https://github.com/pkgforge/soar/releases/download/nightly/soar-${ARCH}" \
+          curl -fsSL "https://github.com/pkgforge/soar/releases/latest/download/soar-${ARCH}" \
             -o /usr/local/bin/soar || {
             echo "::error::Failed to download soar"
             exit 1
