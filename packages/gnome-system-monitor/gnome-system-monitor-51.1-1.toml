@@ -1,0 +1,18 @@
+version = "51.1-1"
+date    = "2026-10-22T17:07:11Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/download/51.1-1%402026-10-22_1792688828/System_Monitor-51.1-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "55728d18415b27e6b395eacdf6996e27e5bd34d5467fa71aba9ec7d3a1d71484"
+
+[sha256]
+x86_64-linux = "c7b7f46a515cd85006d44651836fef55fe084ffcf7f9c6d7b07004c74c4f89f1"
+
+[size]
+x86_64-linux = 34869778
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/GNOME/gnome-system-monitor/refs/heads/main/COPYING"
+to     = "LICENSE"

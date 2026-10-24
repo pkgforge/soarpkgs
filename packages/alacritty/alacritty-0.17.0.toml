@@ -1,21 +1,21 @@
 version = "0.17.0"
-date    = "2026-10-01T17:44:25Z"
+date    = "2026-10-22T17:09:17Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-01_1790876663/Alacritty-v0.17.0-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-01_1790876663/Alacritty-v0.17.0-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-22_1792688955/Alacritty-v0.17.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-22_1792688955/Alacritty-v0.17.0-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "ba0fba39c7f68f2f510ea92c566a4cba614dd88cc5295ae1ca1162a516c7ae2f"
-aarch64-linux = "8604865484c245eb4745629d486958d9805a4db2cd4a17867660cf612876dc0e"
+x86_64-linux  = "b57fe7dbcecfa0f4ce6c4839310e91ba71df1e3e2b5bbb1fd1a8f02e6361140a"
+aarch64-linux = "4c97fc4f8804e0fbe3e795d1b79d8758001cb2275c6b45e3203a4200087d2a28"
 
 [sha256]
-x86_64-linux  = "dd0263e678aa5e8dbe3606c7beb46b4dd815a1dd05c6b70ecf1567ec1c84ee5e"
-aarch64-linux = "58fa249e8ce7596417a1432590b05b289049b42af190de04256dbe87c49ce6bf"
+x86_64-linux  = "b2e188249a76bedb7cae452e3984f852a95bbd4965c38f4092e46aa36cb03e1f"
+aarch64-linux = "fc5c25b32d7789a93df19723fa6fb637fdc04f3a7d078fab177ebb8848fc74e9"
 
 [size]
-x86_64-linux  = 20004003
-aarch64-linux = 19194596
+x86_64-linux  = 20089118
+aarch64-linux = 19224023
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/alacritty/alacritty/master/LICENSE-APACHE"

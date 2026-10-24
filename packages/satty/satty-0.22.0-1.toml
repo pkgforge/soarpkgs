@@ -1,21 +1,21 @@
 version = "0.22.0-1"
-date    = "2026-10-01T17:41:38Z"
+date    = "2026-10-22T17:11:20Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.22.0-1%402026-10-01_1790876496/Satty-0.22.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.22.0-1%402026-10-01_1790876496/Satty-0.22.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.22.0-1%402026-10-22_1792689078/Satty-0.22.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.22.0-1%402026-10-22_1792689078/Satty-0.22.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "61302618cce2566f02da2a1bc71d33b104a5819d7a12bc7785ae0a7af22c8f91"
-aarch64-linux = "0d8dfdae3ce6f04badb3c4a990320dacb32cbce9a839e4c048f7fb7ba10991e4"
+x86_64-linux  = "d16d1b0f578a44f6561c8cfbae0228fa7eb71e3246524726ba02ca09097fcd2f"
+aarch64-linux = "0207f7201873c7aafeaabf3c69a6ed1f32c2acae0ba57407208e61cc49b828c4"
 
 [sha256]
-x86_64-linux  = "a8fe9ddf07554c7366295f3dfc3f7d9a9018590d7c0cd89b4f82e9f97e99f2a4"
-aarch64-linux = "b474a8f4ebd816382f77a4a919d471254d4bced920570e97561e4e6815c359d3"
+x86_64-linux  = "ec7afb08aa1d8e7ca7ef8a349ace280e520179375442e518eb3d5b5eee903595"
+aarch64-linux = "259c9f1f67905c74dd409d1b4fa05e472bf6085eae4cc0512a273c9b0fa9567a"
 
 [size]
-x86_64-linux  = 28844541
-aarch64-linux = 28548994
+x86_64-linux  = 23696966
+aarch64-linux = 22884005
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Satty-org/Satty/main/LICENSE"

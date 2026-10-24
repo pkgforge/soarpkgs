@@ -1,0 +1,22 @@
+version = "2026.10.21-1"
+date    = "2026-10-22T17:14:50Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/yt-dlp-AppImage/releases/download/2026.10.21-1%402026-10-22_1792689288/yt-dlp-2026.10.21-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/yt-dlp-AppImage/releases/download/2026.10.21-1%402026-10-22_1792689288/yt-dlp-2026.10.21-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "bf3d1f4e36d7858aadb87441b3bf55ad4871e053ecb97818e3a2c219c3304d52"
+aarch64-linux = "9258d55fc2c733d5b0ae8e0754cbb17191d1d2e3ca3c8d572ddae7571399c108"
+
+[sha256]
+x86_64-linux  = "f8b560857935cfc1331efaf80c21a2fcde8db4c501a8e2c488df2285f3f252a8"
+aarch64-linux = "95171d885234b94c2017d2cfefbbd713689ca46ff4045ac1f17cf1244408ec8f"
+
+[size]
+x86_64-linux  = 20972793
+aarch64-linux = 20678079
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/yt-dlp/yt-dlp/refs/heads/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "0.20.1.1"
+date    = "2026-10-23T12:22:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhanced/releases/download/0.20.1.1%402026-10-23_1792758128/Helium-0.20.1.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Helium-Browser-AppImage-Enhanced/releases/download/0.20.1.1%402026-10-23_1792758128/Helium-0.20.1.1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5f910b34bb695a4c52baf8a2ee98dd1195ab97bab89494cda0dfd0b87295fc21"
+aarch64-linux = "8469e9d9a0561dfd404d3f29d35bfc039c57ffecffb1c52e4fd934ed6f529bd7"
+
+[sha256]
+x86_64-linux  = "019c5c792e473941281bccf872d7e43881e7f33b0dbb8aca567f6cc601fa6e59"
+aarch64-linux = "9eaba2721ea54eaf3f730206c17a7cdf793927ebf0d34fa0b0b5e5e890feb173"
+
+[size]
+x86_64-linux  = 189207202
+aarch64-linux = 186611434
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/imputnet/helium-linux/main/LICENSE"
+to     = "LICENSE"

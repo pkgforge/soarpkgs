@@ -1,0 +1,22 @@
+version = "2.5.0"
+date    = "2026-10-22T17:12:24Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/C-Dogs_SDL-AppImage/releases/download/2.5.0%402026-10-22_1792689142/C-Dogs_SDL-2.5.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/C-Dogs_SDL-AppImage/releases/download/2.5.0%402026-10-22_1792689142/C-Dogs_SDL-2.5.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "26f19dc94cbd094999a766964e8e8297cb1d940b5f24d9415bc37a39c2b09747"
+aarch64-linux = "08f2898a5959c40c62b1fdf1d129744ec32afe5ec7167722b801040c353aed6c"
+
+[sha256]
+x86_64-linux  = "7ac9f96671708033273b1dc860ba3fdc729e00c02e2b16736a21f4f34a5f5a33"
+aarch64-linux = "657a4d8d048876589e1a39fbf29491b0b6728f42d6a9a51d68b7d0dee232cd75"
+
+[size]
+x86_64-linux  = 46955901
+aarch64-linux = 45904839
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/cxong/cdogs-sdl/master/COPYING"
+to     = "LICENSE"

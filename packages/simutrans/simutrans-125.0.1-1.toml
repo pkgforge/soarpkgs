@@ -1,0 +1,22 @@
+version = "125.0.1-1"
+date    = "2026-10-22T16:57:31Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/125.0.1-1%402026-10-22_1792688249/Simutrans-125.0.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/125.0.1-1%402026-10-22_1792688249/Simutrans-125.0.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "d39d2162514d86fed03b1c738448cca08a043b638d25107660dd1c1c0ededc32"
+aarch64-linux = "c94d6fb45038d38b5d5651f9700817616c3f47b7636cdff80d56c643ec26f916"
+
+[sha256]
+x86_64-linux  = "2466715c4b69c260177c1806c09d9e650af95623d09e9614ae6712386e588084"
+aarch64-linux = "70b92b953f78fd342b91530aeb1d5b0ea51acc5afe300e98017e170ac7315312"
+
+[size]
+x86_64-linux  = 63674123
+aarch64-linux = 62925517
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/simutrans/simutrans/master/LICENSE.txt"
+to     = "LICENSE"

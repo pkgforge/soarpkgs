@@ -1,0 +1,22 @@
+version = "14f4b8bb9"
+date    = "2026-10-24T08:12:13Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Exult-AppImage/releases/download/14f4b8bb9%402026-10-24_1792829532/Exult-14f4b8bb9-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Exult-AppImage/releases/download/14f4b8bb9%402026-10-24_1792829532/Exult-14f4b8bb9-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "beee86df8f90f6e19c075c0948cd8ea5991a785efb8a6730bd0ef1ec992351b9"
+aarch64-linux = "29fc38398a0b1bd1a905ee7fd8b77187396ee23243d47e2c50c4acbc0d954604"
+
+[sha256]
+x86_64-linux  = "9a7beec6155d90a3a7ae9744f231b5f43b5adb6481fd89780a90ed54297bb7d7"
+aarch64-linux = "cab07196278425abf655374da7811fb0a4eb28d744034ce88bd0b4bda9a657c8"
+
+[size]
+x86_64-linux  = 31501200
+aarch64-linux = 30449504
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/exult/exult/master/COPYING"
+to     = "LICENSE"

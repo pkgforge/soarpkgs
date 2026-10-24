@@ -1,0 +1,22 @@
+version = "26.08.2-1"
+date    = "2026-10-22T17:13:09Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Tokodon-AppImage/releases/download/26.08.2-1%402026-10-22_1792689186/Tokodon-26.08.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Tokodon-AppImage/releases/download/26.08.2-1%402026-10-22_1792689186/Tokodon-26.08.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "93bc4bb7a3513d74a2e9aa6997d5abc7a304b506ee8db03793304f5a668cc11e"
+aarch64-linux = "b5b5b35df6310474840b23f5f49bbb5e4f39f31e9662860e04fd9143ddf9aaf4"
+
+[sha256]
+x86_64-linux  = "c3e16ea70cc42af2796dd74f732d92feb951da893d77fe44bcce76e9c35ab415"
+aarch64-linux = "cd867969419a1f22cd52bebaa97b281d85ae9b71f281685a95c54b71f6d1d85a"
+
+[size]
+x86_64-linux  = 180267567
+aarch64-linux = 174272764
+
+[[extra]]
+url    = "https://invent.kde.org/network/tokodon/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to     = "LICENSE"

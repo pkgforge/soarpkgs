@@ -1,0 +1,18 @@
+version = "1.5.0-1"
+date    = "2026-10-22T17:15:35Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/RustDesk-AppImage-Enhanced/releases/download/1.5.0-1%402026-10-22_1792689332/RustDesk-1.5.0-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "39b23d31c3285dddc6d1f669eb953ce3f13800375ae83a246f902817970dadc0"
+
+[sha256]
+x86_64-linux = "6572deab8717691d2a4293cff3dc241e1d7d739aaad71e2b2a3eb72943fd16ee"
+
+[size]
+x86_64-linux = 96475118
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/rustdesk/rustdesk/master/LICENCE"
+to     = "LICENSE"

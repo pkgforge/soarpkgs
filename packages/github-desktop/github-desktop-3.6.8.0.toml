@@ -1,0 +1,22 @@
+version = "3.6.8.0"
+date    = "2026-10-22T17:05:15Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/GitHub-Desktop-Plus-AppImage-Enhanced/releases/download/3.6.8.0%402026-10-22_1792688713/Desktop_Plus-3.6.8.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/GitHub-Desktop-Plus-AppImage-Enhanced/releases/download/3.6.8.0%402026-10-22_1792688713/Desktop_Plus-3.6.8.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "03c6eb40dd47eaa411e99865d14cc7bca4267b71ff058b2aa3bcfe9301457c6e"
+aarch64-linux = "e718ffeccbcad3981130a955e0f0d17c9b36bafe171e8e63d4cdc58655926485"
+
+[sha256]
+x86_64-linux  = "f4605028aa8695e7de7f925cd675451dfc29599096c640cd62adbdb3807996ca"
+aarch64-linux = "60916f6186e48ca13b27d1be8b33311261686047b6dabbe771dbcad18ccfc250"
+
+[size]
+x86_64-linux  = 245458899
+aarch64-linux = 212467569
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/shiftkey/desktop/linux/LICENSE"
+to     = "LICENSE"

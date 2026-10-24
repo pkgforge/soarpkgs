@@ -1,0 +1,22 @@
+version = "1.3.0.alpha.2.r17.g4fde529fb-1"
+date    = "2026-10-22T17:08:42Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/LMMS-AppImage-Enhanced/releases/download/1.3.0.alpha.2.r17.g4fde529fb-1%402026-10-22_1792688920/LMMS-1.3.0.alpha.2.r17.g4fde529fb-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/LMMS-AppImage-Enhanced/releases/download/1.3.0.alpha.2.r17.g4fde529fb-1%402026-10-22_1792688920/LMMS-1.3.0.alpha.2.r17.g4fde529fb-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c84e4d0dbce25f87672ec0c374193bf19987a575e6528de31da8103e5018142a"
+aarch64-linux = "044d11093ea33ba3cd73911d04a406ae32494eb86d2e5b48c102bdb190613d38"
+
+[sha256]
+x86_64-linux  = "b91f84382886be73cded1df38bcb0c1ae7a554d26caf8e0514d7e05bcc90cf4e"
+aarch64-linux = "2c1716163da05769f8db4e352d372a380be4f2a17a788b826aedd14f9ee3f1c0"
+
+[size]
+x86_64-linux  = 90974362
+aarch64-linux = 88917362
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/LMMS/lmms/master/LICENSE.txt"
+to     = "LICENSE"

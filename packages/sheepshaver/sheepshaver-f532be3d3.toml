@@ -1,0 +1,22 @@
+version = "f532be3d3"
+date    = "2026-10-22T17:13:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SheepShaver-AppImage/releases/download/f532be3d3%402026-10-22_1792689195/SheepShaver-f532be3d3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SheepShaver-AppImage/releases/download/f532be3d3%402026-10-22_1792689195/SheepShaver-f532be3d3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f221b3c0b347ecc57eb735b9605f905155620303a9c40278adf7a3318849ce1c"
+aarch64-linux = "c2c21ab86c98d8d403589d195483e7bac941e06a8871acb6fed142d74586036b"
+
+[sha256]
+x86_64-linux  = "1c9d86209f223d4a7e45b9cdb2b37c62ccc313e3e2670a23abb74789e9d7299f"
+aarch64-linux = "254d9e968c468dd84ae814ea43cb197d5bd29e9ad2cffb824d2f83c7e7d6ad48"
+
+[size]
+x86_64-linux  = 29785247
+aarch64-linux = 28645168
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/kanjitalk755/macemu/master/SheepShaver/COPYING"
+to     = "LICENSE"

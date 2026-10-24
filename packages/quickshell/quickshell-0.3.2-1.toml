@@ -1,0 +1,22 @@
+version = "0.3.2-1"
+date    = "2026-10-22T17:12:07Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Quickshell-AppImage/releases/download/0.3.2-1%402026-10-22_1792689125/quickshell-0.3.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Quickshell-AppImage/releases/download/0.3.2-1%402026-10-22_1792689125/quickshell-0.3.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0c40361f1f13606c8f29fc991985da7c66f8866d7d37f8d3dfbac43262b125ac"
+aarch64-linux = "de77a50c133af8fce7d9e0b00803cb7c53bd8af12eb9d685853ca77fda7c81ab"
+
+[sha256]
+x86_64-linux  = "65e542f9f2ef5c65cd9da5ebaed42d1ab5b3e9e6a1fc0a48b33e3f9d4e23c5b2"
+aarch64-linux = "c34487700924788080556cf5e019746eeb96830322c237e7d2144af665fb8918"
+
+[size]
+x86_64-linux  = 52836036
+aarch64-linux = 52891575
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/quickshell-mirror/quickshell/master/LICENSE"
+to     = "LICENSE"

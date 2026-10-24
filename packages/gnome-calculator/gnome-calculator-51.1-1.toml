@@ -1,0 +1,22 @@
+version = "51.1-1"
+date    = "2026-10-22T16:36:37Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/51.1-1%402026-10-22_1792686994/Calculator-51.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/51.1-1%402026-10-22_1792686994/Calculator-51.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "933d6c7cd23c32909e19ec506f1ca35011012bb2dc8662fa517ebe506460e0e8"
+aarch64-linux = "48eab59a525da5eab1b86009bba089c0fa9d7a5ff9ad78f3656d45fd66a9add0"
+
+[sha256]
+x86_64-linux  = "beb3af74b1a1d9811a0709f1037fa6659f1f6a35f6cced2b9616649b631fe064"
+aarch64-linux = "6f577012bc039613fb2a5a5bd0759ecb3e0f8757457613c2222f4f44e9988514"
+
+[size]
+x86_64-linux  = 33141806
+aarch64-linux = 32762571
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/GNOME/gnome-calculator/refs/heads/main/COPYING"
+to     = "LICENSE"

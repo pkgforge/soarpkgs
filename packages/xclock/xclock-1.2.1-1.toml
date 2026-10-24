@@ -1,21 +1,21 @@
 version = "1.2.1-1"
-date    = "2026-10-01T17:26:41Z"
+date    = "2026-10-22T16:42:11Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/xclock-AppImage/releases/download/1.2.1-1%402026-10-01_1790875599/xclock-1.2.1-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/xclock-AppImage/releases/download/1.2.1-1%402026-10-01_1790875599/xclock-1.2.1-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/xclock-AppImage/releases/download/1.2.1-1%402026-10-22_1792687329/xclock-1.2.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/xclock-AppImage/releases/download/1.2.1-1%402026-10-22_1792687329/xclock-1.2.1-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "127f2f09990f2d657fece124a09492f968476ab8e6a7dcb1387a2758336868aa"
-aarch64-linux = "d96f7250c87ee2768064156a3a5a537a2393eb89557e552b0213c770c18f4d72"
+x86_64-linux  = "2f8ec80746c9e94da648fd27ecf27caf85a373c898a574c8e64f949d3d8f7126"
+aarch64-linux = "613c9bce9eb79182eb99d94bed8e534b1c9710a4f3ad01b13273c59877cbad4b"
 
 [sha256]
-x86_64-linux  = "bce2e29eaa1d9130d7a799e7f487fc695e4977512ebff8befc9658140eaf9f2c"
-aarch64-linux = "1467ceb79062433e005eb48d73f2a61c1d0de2d9c60127ea9632dbf32dd55386"
+x86_64-linux  = "b0f40514aa09fb759e910204e911e1088b1b783639f3bc356016fa24bdbd2f14"
+aarch64-linux = "b1f6599efe25fa2aeb36e0b8f8856d42cb0ff21816807a7fb67eaebd9081d7c2"
 
 [size]
-x86_64-linux  = 7559600
-aarch64-linux = 7067973
+x86_64-linux  = 7637628
+aarch64-linux = 7092326
 
 [[extra]]
 url    = "https://gitlab.freedesktop.org/xorg/app/xclock/-/raw/master/COPYING"

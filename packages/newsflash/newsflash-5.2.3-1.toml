@@ -1,21 +1,21 @@
 version = "5.2.3-1"
-date    = "2026-08-22T10:26:50Z"
+date    = "2026-10-22T17:08:45Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.3-1%402026-08-22_1787394408/Newsflash-5.2.5-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.3-1%402026-08-22_1787394408/Newsflash-5.2.3-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.3-1%402026-10-22_1792688923/Newsflash-5.2.5-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.3-1%402026-10-22_1792688923/Newsflash-5.2.3-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "a15dfb6a8412598146f27cfe1ed09e4a0e640cddb6d64a406adcf12d69730b45"
-aarch64-linux = "3ad88e15786f2bccf912bd08252600d61bc0a774bb66cf77660e35dd8d6f69a7"
+x86_64-linux  = "9b916f0acaf3baf7ce023f4c0a4755171f388cc0e73ca89c373c8f33d8396c41"
+aarch64-linux = "84a9d8f30a75d82d0cfb0a7c179682ccb4cead4e39ba4550abc8cf6e21bc00eb"
 
 [sha256]
-x86_64-linux  = "48833cce5594c28ddbca10945b4c6874dfe546b4cfefd7bffb07f56f6ccfc392"
-aarch64-linux = "8e362441e1be5869f9339b83df44e2637d2061b908c66c037acb452d4fd092a3"
+x86_64-linux  = "cc2df8ca3b0be8e3f2252b57e529560633b577b393161420abc19e5e0189c41a"
+aarch64-linux = "2a4b0b8c639ed48eae303a502202d972863d864ef0a1647606475f7ec89a3627"
 
 [size]
-x86_64-linux  = 64610349
-aarch64-linux = 64274694
+x86_64-linux  = 108918066
+aarch64-linux = 101024286
 
 [[extra]]
 url    = "https://gitlab.com/news-flash/news_flash_gtk/-/raw/main/LICENSE"

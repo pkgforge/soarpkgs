@@ -1,0 +1,18 @@
+version = "3.1.2"
+date    = "2026-10-21T11:35:52Z"
+
+[url]
+x86_64-linux = "https://github.com/01mf02/jaq/releases/download/v3.1.2/jaq-x86_64-unknown-linux-musl"
+
+[blake3]
+x86_64-linux = "d23e82dfc3f66a580abdba858bee66c7aa24ac112d47cfc9ab0333ec661c6024"
+
+[sha256]
+x86_64-linux = "a469f5e6980fe2c7e73dce0a1db5176eb4a717b933b77fa32fa1da7847c12232"
+
+[size]
+x86_64-linux = 4469200
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/01mf02/jaq/main/LICENSE-MIT"
+to     = "LICENSE"
