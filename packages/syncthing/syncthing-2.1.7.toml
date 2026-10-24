@@ -1,0 +1,22 @@
+version = "2.1.7"
+date    = "2026-10-21T06:09:14Z"
+
+[url]
+x86_64-linux  = "https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-linux-amd64-v2.1.7.tar.gz"
+aarch64-linux = "https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-linux-arm64-v2.1.7.tar.gz"
+riscv64-linux = "https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-linux-riscv64-v2.1.7.tar.gz"
+
+[blake3]
+x86_64-linux  = "459f6d841a823b94ab0e73409f673987ef62bab2003f4df9a6fdb5fc8d1c54f6"
+aarch64-linux = "fe97a2e97d6eea3d2e5b34ff98aa793deb1b1ec39a451eed87661cbd911aa9b8"
+riscv64-linux = "f8438278dfb2dcd8a6940c37fde559059efe6af3b3d7e87fc281a35d9abe2e5a"
+
+[sha256]
+x86_64-linux  = "2edc416e7ed136b7c858ed5f3f02a3b8316589605e54c380228ceea7acbf0142"
+aarch64-linux = "48e456690cd2b97e7d26b02b5ac35f62a3b36172267b144cfeaf02c993ab955c"
+riscv64-linux = "ea710ba8bc286f293b362e8fb37697a36877c9d29b8ca6ec1c05444d631a937b"
+
+[size]
+x86_64-linux  = 14046697
+aarch64-linux = 12866755
+riscv64-linux = 13328126

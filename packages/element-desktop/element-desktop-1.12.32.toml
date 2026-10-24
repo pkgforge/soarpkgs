@@ -1,0 +1,22 @@
+version = "1.12.32"
+date    = "2026-10-22T17:11:24Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Element-Desktop-AppImage/releases/download/1.12.32%402026-10-22_1792689082/Element-1.12.32-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Element-Desktop-AppImage/releases/download/1.12.32%402026-10-22_1792689082/Element-1.12.32-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f8f1051ef1066bd2d381d8c188b55b997f020d3d3aff2a919c21821684300b76"
+aarch64-linux = "1e86373f456dc56c1742d5b9c4c2fd6cb68fe04e4665a7d919427ccff4efe504"
+
+[sha256]
+x86_64-linux  = "9d951ac01278835eb2ef87c4d0dcfab40c38564a133059ea5e6d87e6a975a477"
+aarch64-linux = "763b2e83165f14748b686dab33e4e2e5ad9e336b79045be7cc4ad7d6e5ad1529"
+
+[size]
+x86_64-linux  = 178255179
+aarch64-linux = 178559143
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/element-hq/element-desktop/develop/LICENSE-AGPL-3.0"
+to     = "LICENSE"

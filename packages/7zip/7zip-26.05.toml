@@ -1,0 +1,18 @@
+version = "26.05"
+date    = "2026-10-21T13:05:54Z"
+
+[url]
+x86_64-linux  = "https://github.com/ip7z/7zip/releases/download/26.05/7z2605-linux-x64.tar.xz"
+aarch64-linux = "https://github.com/ip7z/7zip/releases/download/26.05/7z2605-linux-arm64.tar.xz"
+
+[blake3]
+x86_64-linux  = "943e0c0b23065b1277880945695175a24ef4ea22466a73f2fc47d63dc879810b"
+aarch64-linux = "2c107957e48842d2efde361bf06c4b36d5c4f64294c703cd2440201db539e4c9"
+
+[sha256]
+x86_64-linux  = "22cf82fcc6eb7474f1d5bb4f02c0f8ebd573a718089d6833dc30f8350a3b232e"
+aarch64-linux = "0b71f6cfc34669b3bf69f2347efd3429f77020665003a13b9cdc53b784270421"
+
+[size]
+x86_64-linux  = 1579976
+aarch64-linux = 1317128

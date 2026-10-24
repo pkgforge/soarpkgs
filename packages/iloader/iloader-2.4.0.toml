@@ -1,0 +1,22 @@
+version = "2.4.0"
+date    = "2026-10-22T14:36:59Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced/releases/download/v2.4.0%402026-10-22_1792679817/iloader-v2.4.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/iloader-AppImage-Enhanced/releases/download/v2.4.0%402026-10-22_1792679817/iloader-v2.4.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "d042cad1b2af97f2a45a71f17a6f0c5d08292cb857f6fe1b78a5506bd2d304ae"
+aarch64-linux = "587ad108e4e8e52932e39784582805313b560c736b7af33d2b7eec51952fb15d"
+
+[sha256]
+x86_64-linux  = "cff083abbc4736efee58fc2a47be1437ff95f60e0c7ae2798e6028a651117b65"
+aarch64-linux = "ef850132c95eb9984abf164c348ff3d5c285a23ff16bf52a8247cebb4c94a4b0"
+
+[size]
+x86_64-linux  = 100876687
+aarch64-linux = 102633702
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/nab138/iloader/main/LICENSE"
+to     = "LICENSE"

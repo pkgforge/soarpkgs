@@ -1,0 +1,22 @@
+version = "20.0.2-3"
+date    = "2026-10-22T17:17:29Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-3%402026-10-22_1792689447/Qt_Creator-20.0.2-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-3%402026-10-22_1792689447/Qt_Creator-20.0.2-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "541e76a1df7b6a03f0fa4e169e37762a705300fd8e3a91bfbfa769a37ab850d6"
+aarch64-linux = "6f7eefbdea924e81ef43931e388773e9521d674dea04a86f8c62b1d0df9ec734"
+
+[sha256]
+x86_64-linux  = "2ab9f14897b310c957304cb24520caa556cd5a03dbe1ec593abe054fab9c422d"
+aarch64-linux = "423e982df644c4b9b32d6c8dcb824f044922d388b05ac13a806cb5d3026c551b"
+
+[size]
+x86_64-linux  = 294289479
+aarch64-linux = 280155440
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/qt-creator/qt-creator/master/LICENSES/LICENSE.GPL3-EXCEPT"
+to     = "LICENSE"

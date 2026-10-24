@@ -1,0 +1,22 @@
+version = "26.10"
+date    = "2026-10-22T17:09:22Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Constrict-AppImage/releases/download/26.10%402026-10-22_1792688961/Constrict-26.10-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Constrict-AppImage/releases/download/26.10%402026-10-22_1792688961/Constrict-26.10-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "36cd302d8d91f1ee7cde5a4d4551181468a57329be15a3d4875262e9359fd151"
+aarch64-linux = "cde4f1a88997f59c1a23b81e8bc5b212553abbde5e0f12ccfa3e8e2c57dc42aa"
+
+[sha256]
+x86_64-linux  = "7e7e889253c5adb8007b43a5fa7f27e73f575e0d7805070b20a360e5b8ff717d"
+aarch64-linux = "17e35268b611f186d4351ceb2e0fb1431b59ca974ebc7ca109bc1f02469979ca"
+
+[size]
+x86_64-linux  = 89575099
+aarch64-linux = 78833891
+
+[[extra]]
+url    = "https://gitlab.gnome.org/World/Constrict/-/raw/main/LICENSE"
+to     = "LICENSE"

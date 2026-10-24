@@ -1,0 +1,22 @@
+version = "1.8.34-1"
+date    = "2026-10-22T17:08:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced/releases/download/1.8.34-1%402026-10-22_1792688879/AAAAXY-1.8.34-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced/releases/download/1.8.34-1%402026-10-22_1792688879/AAAAXY-1.8.34-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "4200ab826bab18f870c2689b2466786425dd3f296f9f3f7580bd81eb6392853e"
+aarch64-linux = "a6689b0fb5af43fd87cfb3b96f6b4f23e1c011e2dc502917d9d535bffdec29bd"
+
+[sha256]
+x86_64-linux  = "12b1a94ed6a1a89016f8982bfbb859546bd059dbce9aafa8f095d02302bcd09d"
+aarch64-linux = "2d8af6a7808d0440e977900945e13d68afda7b7591df3826746990080798aec6"
+
+[size]
+x86_64-linux  = 52368434
+aarch64-linux = 51101009
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/divVerent/aaaaxy/refs/heads/main/LICENSE"
+to     = "LICENSE"

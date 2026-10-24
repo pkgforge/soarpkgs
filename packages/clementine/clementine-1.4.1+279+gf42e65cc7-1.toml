@@ -1,0 +1,22 @@
+version = "1.4.1+279+gf42e65cc7-1"
+date    = "2026-10-22T17:11:12Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Clementine-AppImage/releases/download/1.4.1%2B279%2Bgf42e65cc7-1%402026-10-22_1792689070/Clementine-1.4.1%2B279%2Bgf42e65cc7-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Clementine-AppImage/releases/download/1.4.1%2B279%2Bgf42e65cc7-1%402026-10-22_1792689070/Clementine-1.4.1%2B279%2Bgf42e65cc7-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "458012cd91dcbd089b7e13ce48fca3de76db086ed800a2a0bd4425044d19bbfd"
+aarch64-linux = "731b7e43ec21790de8961639652d046410c5450f5e1b38d7554d17aa51e3f28b"
+
+[sha256]
+x86_64-linux  = "e720b7c94dfae2526e60b5fd94768810d9675516dc1269bed94dcac573ce271d"
+aarch64-linux = "002fc8fd8a15bbbefe045bd39a740e10b671e29218f6eb2fedbb959f095d4de5"
+
+[size]
+x86_64-linux  = 95795641
+aarch64-linux = 90781547
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/clementine-player/Clementine/refs/heads/master/COPYING"
+to     = "LICENSE"

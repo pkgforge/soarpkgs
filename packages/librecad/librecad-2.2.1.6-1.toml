@@ -1,0 +1,22 @@
+version = "2.2.1.6-1"
+date    = "2026-10-22T17:07:41Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/LibreCAD-AppImage/releases/download/2.2.1.6-1%402026-10-22_1792688858/LibreCAD-2.2.1.6-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/LibreCAD-AppImage/releases/download/2.2.1.6-1%402026-10-22_1792688858/LibreCAD-2.2.1.6-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "d62e2b1f7e8591c9e9419383f0e91622c045f54fd0af81fe8f8bd44c54b5d7a9"
+aarch64-linux = "e25a81ed55555392e780ecad52dd04add16cd4377aad1d302e0e452b2c1b7e17"
+
+[sha256]
+x86_64-linux  = "6b1bf72bdbc09287c0179353f5100cf0e758c2f66f6be1d3009b6b258fa7d18a"
+aarch64-linux = "fc63918e53c205dff59ecdaa0f417a15a0944b0ba11d4c02919dd83a9676f905"
+
+[size]
+x86_64-linux  = 80856458
+aarch64-linux = 80127020
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/LibreCAD/LibreCAD/refs/heads/master/LICENSE"
+to     = "LICENSE"

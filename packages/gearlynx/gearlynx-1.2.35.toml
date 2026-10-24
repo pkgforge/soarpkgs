@@ -1,0 +1,22 @@
+version = "1.2.35"
+date    = "2026-10-22T17:15:41Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/download/1.2.35%402026-10-22_1792689339/Gearlynx-1.2.35-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/download/1.2.35%402026-10-22_1792689339/Gearlynx-1.2.35-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f1bc5f76c8c32e4cfbc298beea58fb311afc7b6b2be21ae85bb4adb853f6da9c"
+aarch64-linux = "8ad186ddc55ae3935321e772fa78172f537582af5eee1acd9adb7b96246b718d"
+
+[sha256]
+x86_64-linux  = "2cd41bc948d554d03269193f4a1b728bf891670f9b45547638f6d957dcab1790"
+aarch64-linux = "380672e4baf28ae7cadffbf46210a1c978e5f8544975b5f05c858c694e1a72bb"
+
+[size]
+x86_64-linux  = 20549395
+aarch64-linux = 19523188
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/drhelius/Gearlynx/main/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "1.13.2-3"
+date    = "2026-10-22T17:09:24Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/dunst-AppImage/releases/download/1.13.2-3%402026-10-22_1792688962/dunst-1.13.2-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/dunst-AppImage/releases/download/1.13.2-3%402026-10-22_1792688962/dunst-1.13.2-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8e669b41f2d6fc3d52fa2e2533a805c7f291343551ebffcdde0c13579e97f7f5"
+aarch64-linux = "174a1db06b2468a7fb2c15d0847aaff6ce7ff1eb1c7dc9d7eccc4ca03d559c6e"
+
+[sha256]
+x86_64-linux  = "5a7d3fbb8bfd18e7abe81ef797e36a4dca59d2995664513c5630a50f4672ab7c"
+aarch64-linux = "244a596f8b7faad504782eb950efa13a56016179f6c2df3530c6754d63b9afb6"
+
+[size]
+x86_64-linux  = 11707100
+aarch64-linux = 11015351
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dunst-project/dunst/refs/heads/master/LICENSE"
+to     = "LICENSE"

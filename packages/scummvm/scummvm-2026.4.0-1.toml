@@ -1,0 +1,22 @@
+version = "2026.4.0-1"
+date    = "2026-10-22T16:53:54Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.4.0-1%402026-10-22_1792688032/ScummVM-2026.4.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.4.0-1%402026-10-22_1792688032/ScummVM-2026.4.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "3c1498327d8e5a4448f06464efa1f4c208f7ed2b1a5322a1055b60ce1b4b4468"
+aarch64-linux = "55c18901e7edbd95a2414f6e582aa4c81e789776312f8482c186d694da9e3a5b"
+
+[sha256]
+x86_64-linux  = "650e40d4c5143eee19461d3f0bc450e527899944cfd1e3560b7873e235dc0bac"
+aarch64-linux = "ed2ce0bab1130c644b16e1b7415f3deefffb47d61fb239c05dd9172bfbb91938"
+
+[size]
+x86_64-linux  = 146110876
+aarch64-linux = 144358713
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/scummvm/scummvm/master/COPYING"
+to     = "LICENSE"

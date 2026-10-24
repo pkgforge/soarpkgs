@@ -1,0 +1,22 @@
+version = "1.63-2"
+date    = "2026-10-22T17:14:14Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-2%402026-10-22_1792689251/Snes9x-1.63-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-2%402026-10-22_1792689251/Snes9x-1.63-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "60dc434334754c3ac644736263b3282c4166a9085fc6936c88bfeef48f6aa13b"
+aarch64-linux = "f2a43c8be078c33bd4e286699ed8a63f11fb019800eef472370c7139a49ded2f"
+
+[sha256]
+x86_64-linux  = "2666c7fa93a55a1c2dd699c69ccf6bafc7b6993d362120751f6d04fcdbfe8c62"
+aarch64-linux = "436633b4f11a6d5cc9b797f41e65822a8d5c982b6aaa16b9df9ea161b0fa2735"
+
+[size]
+x86_64-linux  = 40222772
+aarch64-linux = 40398069
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/snes9xgit/snes9x/master/LICENSE"
+to     = "LICENSE"

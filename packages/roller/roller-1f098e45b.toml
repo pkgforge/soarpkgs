@@ -1,0 +1,22 @@
+version = "1f098e45b"
+date    = "2026-10-22T17:01:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ROLLER-AppImage/releases/download/1f098e45b%402026-10-22_1792688474/Roller-1f098e45b-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ROLLER-AppImage/releases/download/1f098e45b%402026-10-22_1792688474/Roller-1f098e45b-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1b65e02540af1c35f1419a10768e1c1d5d51fcc9e62f2e1a5728d4500b6e843e"
+aarch64-linux = "ca5c2e48ad1c120adbcf9e5ad3d35e5d6f6ef0d716585708c3742cb8bdf7def1"
+
+[sha256]
+x86_64-linux  = "fc302c38430a1737c3ec923fe5ebc2c037e4f909ca7901e0d947ab31ccc1e789"
+aarch64-linux = "42a6544c0e0162a4d454e8c0e71b486d3b6bdabcacbd0d7223ca946a2ac7faaa"
+
+[size]
+x86_64-linux  = 52668056
+aarch64-linux = 52663910
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/FatalDecomp/ROLLER/master/LICENSE.md"
+to     = "LICENSE"

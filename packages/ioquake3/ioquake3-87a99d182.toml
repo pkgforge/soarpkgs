@@ -1,0 +1,22 @@
+version = "87a99d182"
+date    = "2026-10-22T17:08:21Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/ioquake3-AppImage/releases/download/87a99d182%402026-10-22_1792688900/Quake_III_Arena-87a99d182-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ioquake3-AppImage/releases/download/87a99d182%402026-10-22_1792688900/Quake_III_Arena-87a99d182-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "dba360d08bb0f193b23875b324277c5c6952cebfd4ac8297b9b773735bc84564"
+aarch64-linux = "e210cf0e2aa830ba14fd4eba5736b92230b4e03ddd0b87c39732e38c47201f09"
+
+[sha256]
+x86_64-linux  = "df5ccc701334ba795d839dfc6c351058c36bad233c8c0984c9c81f5300762b6f"
+aarch64-linux = "be7c63c4df8dc7280353d8fc250dd9eaf1813083b56b18afb47c024652b7259b"
+
+[size]
+x86_64-linux  = 47333203
+aarch64-linux = 46272677
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ioquake/ioq3/main/COPYING.txt"
+to     = "LICENSE"

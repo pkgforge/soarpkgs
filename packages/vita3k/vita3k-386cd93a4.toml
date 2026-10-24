@@ -1,0 +1,21 @@
+version = "386cd93a4"
+
+[url]
+x86_64-linux  = "https://github.com/Vita3K/Vita3K/releases/download/continuous/Vita3K-x86_64.AppImage"
+aarch64-linux = "https://github.com/Vita3K/Vita3K/releases/download/continuous/Vita3K-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "2f3d5ee9abfa39baf80375033f15365b4a61025167a2a7e806b02657ffd27d42"
+aarch64-linux = "2e096139fb9c2a804fab7184a5b7c9920088edf4ed54b30b5801cde90d85fad5"
+
+[sha256]
+x86_64-linux  = "5e2f40e2a023dd379373120cd072d48c0bd0916ec9b4c822539343b5d858b2a7"
+aarch64-linux = "b00d4d76da3cf1c839efb5e3792c790489af574352c2117c25ec37604be4c476"
+
+[size]
+x86_64-linux  = 78669103
+aarch64-linux = 78222808
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/Vita3K/Vita3K/master/COPYING.txt"
+to     = "LICENSE"

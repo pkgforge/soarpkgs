@@ -1,0 +1,22 @@
+version = "26.08.2-1"
+date    = "2026-10-22T17:08:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/KMahjongg-AppImage/releases/download/26.08.2-1%402026-10-22_1792688896/KMahjongg-26.08.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/KMahjongg-AppImage/releases/download/26.08.2-1%402026-10-22_1792688896/KMahjongg-26.08.2-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "e470f5d2feab14be47f2abd5c5d76173b19d1d5a8bd2202eb856f1a40fb45b89"
+aarch64-linux = "66da26e6b6927b7a9ac7bb780349988d9cc8f6374facceaadcb89b581b1b127f"
+
+[sha256]
+x86_64-linux  = "db3903416f1fe6d4ea36d6ac37e2ca95c5b3628a4e5e80251f78a8b09daffc51"
+aarch64-linux = "6a87b88de56c87f723b7a1f61d62673d78bf664b90c20d5e715a9a815693fcf2"
+
+[size]
+x86_64-linux  = 56352225
+aarch64-linux = 56143464
+
+[[extra]]
+url    = "https://invent.kde.org/games/kmahjongg/-/raw/master/LICENSES/GPL-2.0-or-later.txt"
+to     = "LICENSE"
