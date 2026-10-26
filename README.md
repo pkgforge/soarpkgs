@@ -61,6 +61,7 @@ Visit: https://soarpkgs.qaidvoid.dev
 ## Documentation
 
 - [Port format](docs/FORMAT.md)
+- [Package requirements](CONTRIBUTING.md)
 - [Contribution Guidelines](https://docs.pkgforge.dev/repositories/soarpkgs/contribution)
 - [Request a Package](https://docs.pkgforge.dev/repositories/soarpkgs/package-request)
 - [FAQs](https://docs.pkgforge.dev/repositories/soarpkgs/faq)
