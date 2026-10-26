@@ -1,0 +1,25 @@
+[pkg]
+name        = "konjugate"
+type        = "appimage"
+description = "Graph-native simulation engine for engineering and digital twins"
+homepage    = ["https://www.konjugate.com", "https://github.com/zenineasa/Konjugate"]
+license     = ["MPL-2.0"]
+maintainer  = ["Zenin Easa Panthakkalakath (zeninpeasa@gmail.com)"]
+category    = ["Science", "Engineering"]
+note        = ["C++ providers compile with the host's C++ compiler (c++ on PATH), which is not shipped"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "zenineasa/Konjugate"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/zenineasa/Konjugate/releases/download/v${version}/Konjugate-${version}-${arch}.AppImage"
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/zenineasa/Konjugate/master/LICENSE"
+to     = "LICENSE"
+verify = false
