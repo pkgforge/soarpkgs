@@ -1,0 +1,20 @@
+[pkg]
+name        = "melo"
+type        = "appimage"
+description = "YouTube integrated native desktop music player"
+homepage    = ["https://melo-foundation.github.io/melo", "https://github.com/melo-foundation/melo"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Audio", "AudioVideo", "Music", "Player"]
+channel     = "unstable"
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "melo-foundation/melo"
+
+[source]
+github = "melo-foundation/melo"
+glob   = "melo-anylinux-${arch}.appimage"
