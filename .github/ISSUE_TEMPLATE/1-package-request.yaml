@@ -32,6 +32,18 @@ body:
         the licence, category and platform support when writing the definition.
 
   - type: checkboxes
+    id: portability
+    attributes:
+      label: Portability
+      description: >
+        Optional. Tick only what you have checked, as described in the
+        [package requirements](https://github.com/pkgforge/soarpkgs/blob/main/CONTRIBUTING.md).
+      options:
+        - label: It does not need FUSE
+        - label: It works on musl distributions such as Alpine
+        - label: It works on non-FHS distributions such as NixOS
+
+  - type: checkboxes
     id: checked
     attributes:
       label: Before opening
