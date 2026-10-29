@@ -1,0 +1,22 @@
+version = "96d308c67"
+date    = "2026-10-27T08:01:03Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/96d308c67%402026-10-27_1793088062/Piglit-96d308c67-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/96d308c67%402026-10-27_1793088062/Piglit-96d308c67-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "a3e7dee5fe08f399a7e15b359a62e7c17a3de066848e1e7302047ad45a4833e8"
+aarch64-linux = "0a8d44c31c682e3a18df49e14d4383964a8719ae9ef31e0b6cb7643a32ba095d"
+
+[sha256]
+x86_64-linux  = "2415d8dc5a0343247b83fbfc4ed7f5b272a4724ddea9048134ef9692ed852aec"
+aarch64-linux = "8342f2075d81353b1afee13d0e6d8873f05157fb973ca0ba1ec4564471560522"
+
+[size]
+x86_64-linux  = 52088644
+aarch64-linux = 50086177
+
+[[extra]]
+url    = "https://gitlab.freedesktop.org/mesa/piglit/-/raw/main/COPYING"
+to     = "LICENSE"
