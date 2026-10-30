@@ -1,0 +1,22 @@
+version = "1.4.8"
+date    = "2026-10-25T08:02:10Z"
+
+[url]
+x86_64-linux  = "https://github.com/aristocratos/btop/releases/download/v1.4.8/btop-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/aristocratos/btop/releases/download/v1.4.8/btop-aarch64-unknown-linux-musl.tar.gz"
+riscv64-linux = "https://github.com/aristocratos/btop/releases/download/v1.4.8/btop-riscv64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "6449793f4d3799d0a5ab9b131f2a7c3e7d20ab23e3cbb35f32a89d86f8b2aef5"
+aarch64-linux = "2feef12c14e2c1a842763ac0fd88b0eb0180a80456a4af0bd9c98093d7e790a9"
+riscv64-linux = "3c6af9d127e2190caf76d6fc140002e596c74afe4e63bb2f70bd39a4d8f9b887"
+
+[sha256]
+x86_64-linux  = "af589cf82cc9ea9c29ce050b9239a13bef2d1492256d476156e1054a42ce89ad"
+aarch64-linux = "95328e26ab08f42033af26628e2d169206a5a420f35669ce17459ef85114c14c"
+riscv64-linux = "3db77ca010eed2702ea89e44603ebf517c2139e8acf4ba64bd4c488cad47e1ff"
+
+[size]
+x86_64-linux  = 1068255
+aarch64-linux = 973166
+riscv64-linux = 1001891

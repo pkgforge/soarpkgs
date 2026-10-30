@@ -1,0 +1,22 @@
+version = "1.9.1"
+date    = "2026-10-24T21:12:15Z"
+
+[url]
+x86_64-linux  = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.1/tealdeer-linux-x86_64-musl"
+aarch64-linux = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.1/tealdeer-linux-aarch64-musl"
+
+[blake3]
+x86_64-linux  = "54bbf0ebd0db3a579d01edf917ec9bf4f2d4eeee5fc831c55ed2b3f995a9c52c"
+aarch64-linux = "d828a9edce7fb60b952456ad5a48ece3a6656433a01705910a94e8b8c1c092a9"
+
+[sha256]
+x86_64-linux  = "5a9c3f0691b9cf375ee5c99de802885f3d50498cf686a539e2ddda028eb6b4f6"
+aarch64-linux = "247746dd2d18f0135da79b849bb6b49e45262e2fe4318adfc3082dc6ce3ee968"
+
+[size]
+x86_64-linux  = 3658688
+aarch64-linux = 3019104
+
+[[extra]]
+url    = "https://github.com/dbrgn/tealdeer/releases/download/v1.9.1/LICENSE-APACHE.txt"
+to     = "LICENSE"
