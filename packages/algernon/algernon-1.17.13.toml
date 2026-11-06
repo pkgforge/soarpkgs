@@ -1,0 +1,18 @@
+version = "1.17.13"
+date    = "2026-11-05T22:52:42Z"
+
+[url]
+x86_64-linux  = "https://github.com/xyproto/algernon/releases/download/v1.17.13/algernon-1.17.13-linux_x86_64_static.tar.xz"
+aarch64-linux = "https://github.com/xyproto/algernon/releases/download/v1.17.13/algernon-1.17.13-linux_aarch64_static.tar.xz"
+
+[blake3]
+x86_64-linux  = "4c0d5bf55899c563328ae0626fca66df7785c9bde4e180a376d719068062ed25"
+aarch64-linux = "06e9a88ebd3e7512bd1d1c8b1621a7ff9e0e0759e578aeff417b02fae3f1e564"
+
+[sha256]
+x86_64-linux  = "2bb92b5a7bf77e0340e574c1057c75a534faa63f5471668b0cbe385aa5c56e60"
+aarch64-linux = "88e919a1c9dd0b0426b01f2ac589aa1c641979501f27783b2a5ea0c84dd105ba"
+
+[size]
+x86_64-linux  = 13417220
+aarch64-linux = 11591628

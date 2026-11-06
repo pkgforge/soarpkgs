@@ -1,21 +1,21 @@
 version = "5.0.1"
-date    = "2026-10-22T17:15:52Z"
+date    = "2026-11-01T18:32:30Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/scrcpy-AppImage/releases/download/v5.0.1%402026-10-22_1792689350/scrcpy-v5.0.1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/scrcpy-AppImage/releases/download/v5.0.1%402026-10-22_1792689350/scrcpy-v5.0.1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/scrcpy-AppImage/releases/download/v5.0.1%402026-11-01_1793557949/scrcpy-v5.0.1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/scrcpy-AppImage/releases/download/v5.0.1%402026-11-01_1793557949/scrcpy-v5.0.1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "461dcb226cb147f208faee96e4d03410d0e98849ec4f1efd30245bcdaed68e29"
-aarch64-linux = "b3b209c4be10a1c10073e30940afe8307665efb3f48d1d5ee0652f2cfb6785fa"
+x86_64-linux  = "91ccdbb49153f19bbf6a2c82308255515b13c57b27cd6dce4f5c614678d7484c"
+aarch64-linux = "65056b18677da6145a5ebfecaa566d5198440d6b822be2a9b8f05fa8fa6d7c17"
 
 [sha256]
-x86_64-linux  = "7d9de3124021cb8fd647fbd95bf54436927d5aa630d5c2c427c7e754bf86cec3"
-aarch64-linux = "81d9a0309d9f735cf22f0ce57249c2d5cedcddd898a2cf1740330581cdcdbd98"
+x86_64-linux  = "3b20744444803fc6545c9badc8d83e9407eecf1fc34dd3efcf4a0d6d8420f55d"
+aarch64-linux = "db5430fe21c16096281e47ad6f9470a0c8f490137dcf2b87cf94a659343ee841"
 
 [size]
-x86_64-linux  = 29054124
-aarch64-linux = 27703460
+x86_64-linux  = 29408683
+aarch64-linux = 28057245
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Genymobile/scrcpy/refs/heads/master/LICENSE"

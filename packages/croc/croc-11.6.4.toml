@@ -1,0 +1,22 @@
+version = "11.6.4"
+date    = "2026-11-05T00:16:57Z"
+
+[url]
+x86_64-linux  = "https://github.com/schollz/croc/releases/download/v11.6.4/croc_v11.6.4_Linux-64bit.tar.gz"
+aarch64-linux = "https://github.com/schollz/croc/releases/download/v11.6.4/croc_v11.6.4_Linux-ARM64.tar.gz"
+riscv64-linux = "https://github.com/schollz/croc/releases/download/v11.6.4/croc_v11.6.4_Linux-RISCV64.tar.gz"
+
+[blake3]
+x86_64-linux  = "2d82c2331daf53da64279069c8917a5f70ab34b070e36ef1adad806740951a30"
+aarch64-linux = "dbc67a3818391d970c42f123bf7acaa5c7588711ce6e4341a46d3b80fb5e95c3"
+riscv64-linux = "99b3757e802ed28f062cedc9be026ea7d069da6e818c3c20e4b55153d21747bc"
+
+[sha256]
+x86_64-linux  = "800394c81a8a731ea2dcb42067a2e6dbe68998a55cf96f7c7b5ffcf0cdb0b04c"
+aarch64-linux = "e98ec8edd339fd0a272d7b37a0f0e464199efafac03a6dedee0f4dc71449fd53"
+riscv64-linux = "0d9b0d6bb0a7f670935a79951836ff10f6c5ec928149b604072d1a2adda73f20"
+
+[size]
+x86_64-linux  = 12658166
+aarch64-linux = 11416420
+riscv64-linux = 11903268

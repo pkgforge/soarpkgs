@@ -1,21 +1,21 @@
 version = "9.0.2-2"
-date    = "2026-10-22T17:18:09Z"
+date    = "2026-11-01T18:30:32Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-2%402026-10-22_1792689487/ffmpeg-9.0.2-2-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-2%402026-10-22_1792689487/ffmpeg-9.0.2-2-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-2%402026-11-01_1793557831/ffmpeg-9.0.2-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-2%402026-11-01_1793557831/ffmpeg-9.0.2-2-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "6b412209b91d44bc7c85887b0edf68ab4cc80e28fdb78c6957be67446d7f8f46"
-aarch64-linux = "7d9e11f242205d339d2a369e42cab18af810ab4eaf17a8dec8f5ac275db2eb62"
+x86_64-linux  = "f7a42bf31710d911996b80f4025aafc697af4f5c3babfdcc47ec98ed7eacdb70"
+aarch64-linux = "a207a774da354fec6c37084862ea78ea6ba518b8ced692a7046e350b8b21384d"
 
 [sha256]
-x86_64-linux  = "07e22511138ea83ba0d569726d2a53b50dbc2fdf2613e6d8d15463a73e138fc9"
-aarch64-linux = "9380899c51d7359fbb003132789f84f48f3f46c7e1ef8a2a3889afd3a259c8ca"
+x86_64-linux  = "88bdcb124158cc8f85bcdfc6d0bea69618e0b4fde1df6dcb3259cdb228a21166"
+aarch64-linux = "3827134b0cfd0a501352ccdc297facdadd270220ca8ab96db84aab9152ed9365"
 
 [size]
-x86_64-linux  = 59252834
-aarch64-linux = 50266328
+x86_64-linux  = 60538334
+aarch64-linux = 51414318
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/COPYING.GPLv3"

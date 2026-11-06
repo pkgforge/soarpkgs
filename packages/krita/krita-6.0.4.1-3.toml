@@ -1,0 +1,22 @@
+version = "6.0.4.1-3"
+date    = "2026-11-01T18:32:43Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Krita-AppImage-Enhanced/releases/download/6.0.4.1-3%402026-11-01_1793557961/Krita-6.0.4.1-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Krita-AppImage-Enhanced/releases/download/6.0.4.1-3%402026-11-01_1793557961/Krita-6.0.4.1-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "2c55e948d107c8d48285db708c01062c41fa9268e26ac110d8207125400513c9"
+aarch64-linux = "f12eeb458bf17fdf4d992e3a33695180035e414985dcfb2fd37c60406c30fdab"
+
+[sha256]
+x86_64-linux  = "e52d9dc6cdcc674fc124ff45554a2d185d4ac01b40badcc7a93251c86691d076"
+aarch64-linux = "93bf0e8a3d4e303e8745592c694ae2389bcb01862855562e1cd749ddc44691ad"
+
+[size]
+x86_64-linux  = 228162342
+aarch64-linux = 208673106
+
+[[extra]]
+url    = "https://invent.kde.org/graphics/krita/-/raw/master/COPYING"
+to     = "LICENSE"
