@@ -1,21 +1,21 @@
 version = "4.6.2-1"
-date    = "2026-10-22T17:16:08Z"
+date    = "2026-11-01T18:30:27Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.2-1%402026-10-22_1792689366/Audacious-4.6.2-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.2-1%402026-10-22_1792689366/Audacious-4.6.2-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.2-1%402026-11-01_1793557826/Audacious-4.6.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.2-1%402026-11-01_1793557826/Audacious-4.6.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "8a812e926883e7ed343e2889312295a80c32179b05f4ccb34c92d40ad1396898"
-aarch64-linux = "3b2df507a1abb52d31ab975e9e883e4cfdc56e2212454e6be1c04d6e7183cb5c"
+x86_64-linux  = "2e04c3b3268cc47b7782d3f69a339e343bc4dd57c2222e86903ceec6fb20223d"
+aarch64-linux = "6e8a625348db98e2a1adb172721d5e770df1fed5285987fa96c66f985699fd7d"
 
 [sha256]
-x86_64-linux  = "e40c85298a817287490a16acd1e83d634a5dad4efc755f64beb7a68a4d5b955d"
-aarch64-linux = "0097e0b80fae569046189cad77431650649ec9c765b5674e9c58aa3454013768"
+x86_64-linux  = "4d640da246461ba82001ec9f2244e4cc66d0b0fadd3ddee6ffa9cf69926805c6"
+aarch64-linux = "ca266a7ded4edb0fc4526d43db3f6760cf45913be994483d989b55cb5e7e68f6"
 
 [size]
-x86_64-linux  = 62949445
-aarch64-linux = 61531658
+x86_64-linux  = 63237028
+aarch64-linux = 61832627
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/audacious-media-player/audacious/refs/heads/master/COPYING"

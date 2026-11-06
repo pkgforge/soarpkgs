@@ -1,0 +1,22 @@
+version = "4.11.1-1"
+date    = "2026-11-01T18:31:18Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/4.11.1-1%402026-11-01_1793557877/vokoscreenNG-4.11.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/4.11.1-1%402026-11-01_1793557877/vokoscreenNG-4.11.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "243aead4bb6688bb450651e25c5427ed0ca0c35605c22c6ce2fc7a86faa38eb0"
+aarch64-linux = "ddaef2a09306ec127421b5a1abcc9966f5ee8a907c89fdabfc62a04f95a3cd6f"
+
+[sha256]
+x86_64-linux  = "a3e8ae8f2da3b2d6c3e125a9594b5004d39d228be23c685061827267d33c793a"
+aarch64-linux = "a8f621d7ab129397f329250ed4f796beea70a6f0bc4e5e7155d3e77e4768c076"
+
+[size]
+x86_64-linux  = 204984361
+aarch64-linux = 196376265
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/vkohaupt/vokoscreenNG/3.0/COPYING"
+to     = "LICENSE"

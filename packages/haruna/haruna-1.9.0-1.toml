@@ -1,0 +1,22 @@
+version = "1.9.0-1"
+date    = "2026-11-01T18:32:32Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.9.0-1%402026-11-01_1793557950/Haruna-1.9.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.9.0-1%402026-11-01_1793557950/Haruna-1.9.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "5536f4e6c82f17428cae184596e5797091eb1f9827ece50b383c3b8d7a9b3361"
+aarch64-linux = "bfd99f775bfd869fe4b76df172f22992714e7e2cf6f02490cfb3bf7b3f68e471"
+
+[sha256]
+x86_64-linux  = "2d008d4447c8353498e96064828681eb8325fa539f3b5c9e8bead349f299b683"
+aarch64-linux = "df30d7269596c15c947c0d5fd6d107e874b4d0aaf439ac63a8e67cb7c6d4e8cd"
+
+[size]
+x86_64-linux  = 97249338
+aarch64-linux = 97165608
+
+[[extra]]
+url    = "https://invent.kde.org/multimedia/haruna/-/raw/master/LICENSES/GPL-3.0-or-later.txt"
+to     = "LICENSE"

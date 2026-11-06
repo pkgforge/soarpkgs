@@ -1,0 +1,22 @@
+version = "26.11.0-1"
+date    = "2026-11-01T00:43:19Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.11.0-1%402026-11-01_1793493798/GoldenDict-ng-26.11.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.11.0-1%402026-11-01_1793493798/GoldenDict-ng-26.11.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6b830d53d7f538462c5792c8491e457961f75d7df41809406263d93b7b034d47"
+aarch64-linux = "fd861d6494e2c7e17f783f33cd1bcf145528da0225880e48ac47b9841fe72013"
+
+[sha256]
+x86_64-linux  = "ad12dcfd06327794b4370f333fa7674207801150cdd6cdad1053574838a18abd"
+aarch64-linux = "f896b39257d581091edfa969767df8b2575ce4704ef0413b05c4e234aa4e88f7"
+
+[size]
+x86_64-linux  = 197561101
+aarch64-linux = 186103114
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xiaoyifang/goldendict-ng/staged/LICENSE.txt"
+to     = "LICENSE"

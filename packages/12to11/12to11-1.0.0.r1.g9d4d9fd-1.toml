@@ -1,0 +1,22 @@
+version = "1.0.0.r1.g9d4d9fd-1"
+date    = "2026-11-01T18:28:21Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/12to11-AppImage/releases/download/1.0.0.r1.g9d4d9fd-1%402026-11-01_1793557699/12to11-1.0.0.r1.g9d4d9fd-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/12to11-AppImage/releases/download/1.0.0.r1.g9d4d9fd-1%402026-11-01_1793557699/12to11-1.0.0.r1.g9d4d9fd-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7ecfe282d79f1526042e070e8269192d99285cc0562bc1d0271c7645882512dc"
+aarch64-linux = "07a4e35c97b4035701ba240dc7007cea226e279a0f9691070ea11dd266cef675"
+
+[sha256]
+x86_64-linux  = "b0289a9eb353b23fa030098fb769d8a6e3f354fc37784d7a56190923b5853600"
+aarch64-linux = "798072ce9420fd6f9ad951441ef70a3e002e84c7f253c75ae2f5107e0bc5e452"
+
+[size]
+x86_64-linux  = 15990935
+aarch64-linux = 15172880
+
+[[extra]]
+url    = "https://git.linuxping.win/12to11/12to11/raw/branch/master/COPYING"
+to     = "LICENSE"

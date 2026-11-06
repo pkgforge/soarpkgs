@@ -1,0 +1,22 @@
+version = "8cf8134"
+date    = "2026-11-01T18:31:23Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/rofi-AppImage/releases/download/8cf8134%402026-11-01_1793557880/rofi-8cf8134-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/rofi-AppImage/releases/download/8cf8134%402026-11-01_1793557880/rofi-8cf8134-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "bb00fe1e8794eb5036a0fe58aef55e1180c95ab4c2979a875949d0f2b815f216"
+aarch64-linux = "fd936cf4617124d4ecb7d02b36cd0b1f718126fc169fb44b81791b29f7938db5"
+
+[sha256]
+x86_64-linux  = "adc06c9fc19a81d102698b3ea84f63234431f25fe57034358a2259d39cd1e5cb"
+aarch64-linux = "e9f395400a868fd4aad9e661b92daabf9f241a09a35a829e869698cc5333d362"
+
+[size]
+x86_64-linux  = 13353193
+aarch64-linux = 12610381
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/davatorium/rofi/next/COPYING"
+to     = "LICENSE"
