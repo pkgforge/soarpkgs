@@ -1,0 +1,18 @@
+version = "0.8.0-1"
+date    = "2026-11-01T18:21:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.8.0-1%402026-11-01_1793557274/SongRec-0.8.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.8.0-1%402026-11-01_1793557274/SongRec-0.8.0-1-anylinux-aarch64.AppImage"
+
+[sha256]
+x86_64-linux  = "971c89f7dd2d94ffb9400cbf3ce46e604dd70d8aac12e40f93305ce82ee3653a"
+aarch64-linux = "b50bdcc449272d59683943c31c961d084a9098dbc2ef6ef3030d79b79c191929"
+
+[size]
+x86_64-linux  = 39070210
+aarch64-linux = 38475675
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/marin-m/SongRec/master/LICENSE"
+to     = "LICENSE"

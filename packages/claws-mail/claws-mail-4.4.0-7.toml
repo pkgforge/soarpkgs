@@ -1,0 +1,22 @@
+version = "4.4.0-7"
+date    = "2026-11-07T13:42:27Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Claws-Mail-AppImage/releases/download/4.4.0-7%402026-11-07_1794058946/Claws_Mail-4.4.0-7-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Claws-Mail-AppImage/releases/download/4.4.0-7%402026-11-07_1794058946/Claws_Mail-4.4.0-7-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "cbb4671210e1420c5969fd185d2e26d588236fd1ca173de85f224197278c2d15"
+aarch64-linux = "80e974c3d90c2e394b2b276cabde013cb73b8016313b0afb002f8b14d3d31a20"
+
+[sha256]
+x86_64-linux  = "b23aa638940baa06cfc50c01233949872afa37cc9f64684c58f62cb082efa87f"
+aarch64-linux = "66dcf814faa833836ec57f0bd852ac497a5f57bf813618806568073adcef7fac"
+
+[size]
+x86_64-linux  = 115057711
+aarch64-linux = 118049000
+
+[[extra]]
+url    = "https://git.claws-mail.org/?p=claws.git;a=blob_plain;f=COPYING;hb=HEAD"
+to     = "LICENSE"

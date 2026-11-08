@@ -1,21 +1,17 @@
 version = "5.2.1-1"
-date    = "2026-10-22T17:13:47Z"
+date    = "2026-11-01T18:28:51Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Reco-AppImage/releases/download/5.2.1-1%402026-10-22_1792689225/Reco-5.2.1-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Reco-AppImage/releases/download/5.2.1-1%402026-10-22_1792689225/Reco-5.2.1-1-anylinux-aarch64.AppImage"
-
-[blake3]
-x86_64-linux  = "dece83a074a4c04ffe1bcd51538582b5683639f885200fd624d1a1fce09897be"
-aarch64-linux = "e52f05d85a6f261e7bd5748d7f84e3e4ad89fdf77c4ae3fb81dfdfdac215074e"
+x86_64-linux  = "https://github.com/pkgforge-dev/Reco-AppImage/releases/download/5.2.1-1%402026-11-01_1793557730/Reco-5.2.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Reco-AppImage/releases/download/5.2.1-1%402026-11-01_1793557730/Reco-5.2.1-1-anylinux-aarch64.AppImage"
 
 [sha256]
-x86_64-linux  = "b4a633b04477f3bf276e8ce19afd1a3011d69aa850dbff4686b7516faff590d1"
-aarch64-linux = "d25d67bfdf57070e4e48faaaebca4621c440a5919c690f59746933ebe25230fb"
+x86_64-linux  = "5281f575775571a03f0e8debb6710c4faedc591e7ab78f505430f751b5f05d13"
+aarch64-linux = "a46db6184a0bca92df6afc3531ab58ae98536f4009b629bc4bee89efac655b80"
 
 [size]
-x86_64-linux  = 66867839
-aarch64-linux = 64545309
+x86_64-linux  = 68040815
+aarch64-linux = 65589687
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/ryonakano/reco/main/LICENSE"

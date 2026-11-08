@@ -1,0 +1,22 @@
+version = "810c3f9dd"
+date    = "2026-11-01T18:28:36Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DingusPPC-AppImage/releases/download/810c3f9dd%402026-11-01_1793557715/DingusPPC-810c3f9dd-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DingusPPC-AppImage/releases/download/810c3f9dd%402026-11-01_1793557715/DingusPPC-810c3f9dd-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "26d6535f2c4f8de040c15a8bfad4f5588384c8487f6231c2b51a46fce25693fc"
+aarch64-linux = "8a76be356343eaf1296312ac5506e99897a6ff93594d6978c1f8e5df5455f877"
+
+[sha256]
+x86_64-linux  = "76be4626baa4a8b947d9d811430f6ed493eea26591c1010a495c628d50cf1fe0"
+aarch64-linux = "3285914b188fae731450fd638726408a6df67432e9f4c68b665b5f905bad6323"
+
+[size]
+x86_64-linux  = 19890101
+aarch64-linux = 18906782
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dingusdev/dingusppc/refs/heads/master/LICENSE"
+to     = "LICENSE"

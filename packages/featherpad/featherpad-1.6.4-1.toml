@@ -1,0 +1,22 @@
+version = "1.6.4-1"
+date    = "2026-11-07T13:51:40Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/FeatherPad-AppImage/releases/download/1.6.4-1%402026-11-07_1794059498/FeatherPad-1.6.4-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/FeatherPad-AppImage/releases/download/1.6.4-1%402026-11-07_1794059498/FeatherPad-1.6.4-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f5a72ef3fa77900198c41ea0e0bb528fa7a4ac5670ecf212ad4fe79f817709aa"
+aarch64-linux = "d6902c9777605186f96d310380dd1c5fadb432de77a326cd67dd10a9721d5300"
+
+[sha256]
+x86_64-linux  = "f20923c10b4b3f528b781ed2ecc47fd4da8f88a5989a34cd0ba8c734dc163142"
+aarch64-linux = "b4b8f3432e2295caba236a49e22b554fc8e236e5e9915a7c8b2d501953c72562"
+
+[size]
+x86_64-linux  = 28049690
+aarch64-linux = 27761173
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/tsujan/FeatherPad/master/COPYING"
+to     = "LICENSE"

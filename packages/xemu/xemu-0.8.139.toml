@@ -1,21 +1,17 @@
 version = "0.8.139"
-date    = "2026-10-22T16:58:02Z"
+date    = "2026-11-01T18:27:12Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.139%402026-10-22_1792688280/xemu-0.8.139-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.139%402026-10-22_1792688280/xemu-0.8.139-anylinux-aarch64.AppImage"
-
-[blake3]
-x86_64-linux  = "3dbe75779b86e0ece5bba92ad2f7c45c9c8af4366534c7b1887242c2797f54d8"
-aarch64-linux = "114e20451408bcfa80cd41ce7e4b0dbffe279154a2cfd4f2aead29da1fb424d7"
+x86_64-linux  = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.139%402026-11-01_1793557631/xemu-0.8.139-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/xemu-AppImage-Enhanced/releases/download/0.8.139%402026-11-01_1793557631/xemu-0.8.139-anylinux-aarch64.AppImage"
 
 [sha256]
-x86_64-linux  = "26620644f013d37c728e970276a0dd2f1b06a2f79eb96226d87cbfa7e0a98745"
-aarch64-linux = "f0ede32e70763c9aad39d5509b7bc1c2a7b14ffd8ea99c81b20267c7b2809546"
+x86_64-linux  = "9fdd8aa7fde31fbfef51610006bca5ff41ae4f01778ab346d054a35cf481b3e6"
+aarch64-linux = "b0676caa46722962f2af161236231a4cb31c51652f23421a34a2ad3f288b5439"
 
 [size]
-x86_64-linux  = 38705415
-aarch64-linux = 39005340
+x86_64-linux  = 38932829
+aarch64-linux = 39229375
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/xemu-project/xemu/master/COPYING"
