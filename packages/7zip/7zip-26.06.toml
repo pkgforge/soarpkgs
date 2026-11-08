@@ -1,0 +1,18 @@
+version = "26.06"
+date    = "2026-11-07T11:45:33Z"
+
+[url]
+x86_64-linux  = "https://github.com/ip7z/7zip/releases/download/26.06/7z2606-linux-x64.tar.xz"
+aarch64-linux = "https://github.com/ip7z/7zip/releases/download/26.06/7z2606-linux-arm64.tar.xz"
+
+[blake3]
+x86_64-linux  = "5d6ced3a949c6c0229c1b5a18c62bd3e5734afa672e3828e734fdecd91fa715d"
+aarch64-linux = "bcaa0ac2c606223bdfb9c53dd6ea8f31484588afd3480dd1698e7213261bd0d8"
+
+[sha256]
+x86_64-linux  = "2b539cf067b2ad48e1baa5093dbaa8818b73542d1222a0ffde9dc5f2922ea62e"
+aarch64-linux = "edcc408aacce77da5223728f2eceb5e9f6dc713b8a9df934ad21e2a7f7560627"
+
+[size]
+x86_64-linux  = 1575552
+aarch64-linux = 1326668

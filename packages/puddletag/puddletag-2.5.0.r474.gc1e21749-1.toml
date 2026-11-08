@@ -1,0 +1,18 @@
+version = "2.5.0.r474.gc1e21749-1"
+date    = "2026-11-07T13:43:05Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/puddletag-AppImage/releases/download/2.5.0.r474.gc1e21749-1%402026-11-07_1794058983/puddletag-2.5.0.r474.gc1e21749-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/puddletag-AppImage/releases/download/2.5.0.r474.gc1e21749-1%402026-11-07_1794058983/puddletag-2.5.0.r474.gc1e21749-1-anylinux-aarch64.AppImage"
+
+[sha256]
+x86_64-linux  = "e668e71665a489439f2445bc9e69fda4b921da61d8c457dfb4916909b7c7ef8e"
+aarch64-linux = "83c3485cab7367800bb32ad632df6340f41ccb0f1bcbc8c4d3130d5b6e71e8b8"
+
+[size]
+x86_64-linux  = 34162944
+aarch64-linux = 33872642
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/puddletag/puddletag/refs/heads/master/LICENSE"
+to     = "LICENSE"

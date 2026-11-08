@@ -1,0 +1,22 @@
+version = "26.08.2-3"
+date    = "2026-11-01T18:30:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/download/26.08.2-3%402026-11-01_1793557815/Kdenlive-26.08.2-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/download/26.08.2-3%402026-11-01_1793557815/Kdenlive-26.08.2-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "be50a1a0a089987fc7e88b027ee1ae044265e86d3aefb582cd5678e4d96938f4"
+aarch64-linux = "adfb0a00f083ee8de181fa42e54b53002f97f6bf9ec35bb6b38ec5d9e272e0e0"
+
+[sha256]
+x86_64-linux  = "b3d406764a98c4f56c6ac214e66c8b75e6dde01491cb37f83f82a157cb0a0359"
+aarch64-linux = "0600ff0a1e64779a3f390b5c92f25155ad0a156051a3b57c138ba7d9cffab5aa"
+
+[size]
+x86_64-linux  = 197401673
+aarch64-linux = 171802203
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/KDE/kdenlive/refs/heads/master/COPYING"
+to     = "LICENSE"

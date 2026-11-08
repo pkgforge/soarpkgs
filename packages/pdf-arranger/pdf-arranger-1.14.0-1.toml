@@ -1,21 +1,17 @@
 version = "1.14.0-1"
-date    = "2026-10-22T12:46:58Z"
+date    = "2026-11-01T14:37:06Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-10-22_1792673217/PDF_Arranger-1.14.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-10-22_1792673217/PDF_Arranger-1.14.0-1-anylinux-aarch64.AppImage"
-
-[blake3]
-x86_64-linux  = "4dac59d73f1eb773bcb826c9c11ca63b2a8d708b7df3f48016af055a6010f090"
-aarch64-linux = "bff95c0fc860abeb436f1fd677fb65b2ce56428ab330a4b093a08e541c76716a"
+x86_64-linux  = "https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-11-01_1793543825/PDF_Arranger-1.14.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-11-01_1793543825/PDF_Arranger-1.14.0-1-anylinux-aarch64.AppImage"
 
 [sha256]
-x86_64-linux  = "0695b1bfddad4390772140d8dbff50f83c298d60b4d220b51ef6109028866857"
-aarch64-linux = "fc1ecf12be15809010d1641edb2da4fe363d2a146ec6a06e7d3d837bd613d4b0"
+x86_64-linux  = "fa49261433b26cb2e347050dbec3cb2052393a5cffb9f0b1ccf86f4a452e666b"
+aarch64-linux = "2f486f5706b40253b377ea8c478964c952f4455a5a1113aff24e1c909dfc4a2f"
 
 [size]
-x86_64-linux  = 73038905
-aarch64-linux = 69467653
+x86_64-linux  = 73471393
+aarch64-linux = 69848077
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/pdfarranger/pdfarranger/main/COPYING"

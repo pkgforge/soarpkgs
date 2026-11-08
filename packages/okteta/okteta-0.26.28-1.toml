@@ -1,21 +1,17 @@
 version = "0.26.28-1"
-date    = "2026-10-22T17:19:29Z"
+date    = "2026-11-01T18:31:53Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-10-22_1792689567/Okteta-0.26.28-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-10-22_1792689567/Okteta-0.26.28-1-anylinux-aarch64.AppImage"
-
-[blake3]
-x86_64-linux  = "df847d00f4f80df9790e3a5e8482d02c0c3fb5c3d4dd120eb8785c2fe042d313"
-aarch64-linux = "45de21e5af31a10b003a993708a2dca437bca06e094b255575aefc88dc926b09"
+x86_64-linux  = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-11-01_1793557911/Okteta-0.26.28-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-11-01_1793557911/Okteta-0.26.28-1-anylinux-aarch64.AppImage"
 
 [sha256]
-x86_64-linux  = "7e92e5ca145a906ec483db99c64893416252e5f16e11f0bd7927a3f76df7bfc9"
-aarch64-linux = "ffac2ff8dd56906529648fdf0fe463b54f4e40fc95f9327f5a2304e1bb5d966a"
+x86_64-linux  = "c343a7e218c2f8bf4cea9be17c53f4fbe5bc9f9b5904b29947c10fdb44fb14e3"
+aarch64-linux = "236b6c1c88d32f962a645bb2973a6c784c2217bd2b747484b9f6d9a13cdc5c7a"
 
 [size]
-x86_64-linux  = 57206469
-aarch64-linux = 57576889
+x86_64-linux  = 57634024
+aarch64-linux = 57994436
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/KDE/okteta/refs/heads/master/LICENSES/GPL-2.0-only.txt"

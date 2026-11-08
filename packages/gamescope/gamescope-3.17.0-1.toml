@@ -1,0 +1,22 @@
+version = "3.17.0-1"
+date    = "2026-11-01T18:30:10Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.17.0-1%402026-11-01_1793557808/gamescope-3.17.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.17.0-1%402026-11-01_1793557808/gamescope-3.17.0-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "46a0ae384e64df27fde9e8acec9f9d02973f1d5ab1c7d4cb85e081d9a3f3eeb7"
+aarch64-linux = "94c7604c997b98e98fe5ac7268ea37bcefaf2d0753086ce68cda2fc3ac737754"
+
+[sha256]
+x86_64-linux  = "65bdc2bd6978b18bd8dd8a70a64849a7036bad2ca2746456031b179b8704efa6"
+aarch64-linux = "b9585c6d290c2cb3c2ddb52e9b896ef45de4a78eec79907d4e1e063e43472bd4"
+
+[size]
+x86_64-linux  = 43019233
+aarch64-linux = 39544662
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ValveSoftware/gamescope/master/LICENSE"
+to     = "LICENSE"

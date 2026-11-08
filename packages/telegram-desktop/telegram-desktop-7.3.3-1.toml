@@ -1,0 +1,18 @@
+version = "7.3.3-1"
+date    = "2026-11-01T18:33:01Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Telegram-AppImage/releases/download/7.3.3-1%402026-11-01_1793557980/Telegram-7.3.3-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Telegram-AppImage/releases/download/7.3.3-1%402026-11-01_1793557980/Telegram-7.3.3-1-anylinux-aarch64.AppImage"
+
+[sha256]
+x86_64-linux  = "14bd4229e4bcbdde16829d5bc8fae09107abcb62fec424ab4291a5679f5df532"
+aarch64-linux = "9d56bab8c6f4db51e9774b5906281ea48cfb5f71765ad0ea9be6b5839777a475"
+
+[size]
+x86_64-linux  = 203729720
+aarch64-linux = 207079205
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/telegramdesktop/tdesktop/refs/heads/dev/LICENSE"
+to     = "LICENSE"

@@ -1,21 +1,17 @@
 version = "3.7.2.r29.gf99e0b1c-1"
-date    = "2026-09-01T03:01:52Z"
+date    = "2026-11-01T03:45:12Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-09-01_1788231711/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-09-01_1788231711/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-aarch64.AppImage"
-
-[blake3]
-x86_64-linux  = "aaf8f5ec09ed36f34bd15646af90d6af75464b0b57be758ac011b634db9e02a7"
-aarch64-linux = "766d3ca6874abecd1443305c109535bd52d757d66097e0adb319d3edd3fb935a"
+x86_64-linux  = "https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-11-01_1793504711/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-11-01_1793504711/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-aarch64.AppImage"
 
 [sha256]
-x86_64-linux  = "4c7b4f26b7c2e237314dc6e648201f7f77c8d8de3a551f7efa7fe92b8cea097d"
-aarch64-linux = "6231d55d092e7bf48d611012107107a2703b0e19390f15fddf735b28986b03ec"
+x86_64-linux  = "78b1f33c014a669201e9392e9351028009467f4944928ccd3b93bcea8dc1fc57"
+aarch64-linux = "2a9ed9faf0af665e6013e5806cda2c514c83ec8ab4bb8c9aa9c0fc75883ab4c3"
 
 [size]
-x86_64-linux  = 16803330
-aarch64-linux = 17119776
+x86_64-linux  = 17506778
+aarch64-linux = 17300727
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/polybar/polybar/refs/heads/master/LICENSE"

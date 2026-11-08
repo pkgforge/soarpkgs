@@ -1,0 +1,18 @@
+version = "0.4.33"
+date    = "2026-11-02T07:16:41Z"
+
+[url]
+x86_64-linux  = "https://github.com/ms-jpq/sad/releases/download/v0.4.33/x86_64-unknown-linux-musl.zip"
+aarch64-linux = "https://github.com/ms-jpq/sad/releases/download/v0.4.33/aarch64-unknown-linux-musl.zip"
+
+[sha256]
+x86_64-linux  = "e5f4062b6f4ab91f1b358a5c22928e93f7592b1b21bec3b277ea7f7d395ed174"
+aarch64-linux = "81546b7fa93a8b5928fc2b780ccb84e51cdc463d9a635cc835b9dab2d3ad5e46"
+
+[size]
+x86_64-linux  = 4656384
+aarch64-linux = 4352416
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ms-jpq/sad/senpai/LICENSE"
+to     = "LICENSE"

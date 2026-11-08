@@ -1,0 +1,21 @@
+version = "0.42.0"
+date    = "2026-11-07T13:48:12Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/mpv-AppImage/releases/download/v0.42.0%402026-11-07_1794059289/mpv-v0.42.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/mpv-AppImage/releases/download/v0.42.0%402026-11-07_1794059289/mpv-v0.42.0-anylinux-aarch64.AppImage"
+
+[blake3]
+aarch64-linux = "ae55a9f5f1a9ccc538687147fe6a0383211e8fe266adfbae930129cf9b338ce1"
+
+[sha256]
+x86_64-linux  = "c9c367a4038e85b8061ecf974521f56692f68df06f3b2cc37990ab1f43ed6203"
+aarch64-linux = "0926e601e37f5fcba21f85f1440dedb9c664e19f898a7cfc938fa4d36d24e851"
+
+[size]
+x86_64-linux  = 31853153
+aarch64-linux = 31134778
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mpv-player/mpv/refs/heads/master/LICENSE.GPL"
+to     = "LICENSE"

@@ -1,21 +1,17 @@
 version = "0.10.5-5"
-date    = "2026-10-22T17:17:09Z"
+date    = "2026-11-01T18:32:12Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/mGBA-AppImage-Enhanced/releases/download/0.10.5-5%402026-10-22_1792689427/mGBA-0.10.5-5-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/mGBA-AppImage-Enhanced/releases/download/0.10.5-5%402026-10-22_1792689427/mGBA-0.10.5-5-anylinux-aarch64.AppImage"
-
-[blake3]
-x86_64-linux  = "b3d3c021076d4ad397d43601ae99a91984598df7f5811139414a837e5e8e5eb4"
-aarch64-linux = "88548e543a32ee61d0849443d444eda84de53691575cc1c52154fdfc85f9b383"
+x86_64-linux  = "https://github.com/pkgforge-dev/mGBA-AppImage-Enhanced/releases/download/0.10.5-5%402026-11-01_1793557930/mGBA-0.10.5-5-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/mGBA-AppImage-Enhanced/releases/download/0.10.5-5%402026-11-01_1793557930/mGBA-0.10.5-5-anylinux-aarch64.AppImage"
 
 [sha256]
-x86_64-linux  = "dc5d6018b90efdc6b02354150cfa4feb24d30963b08c8a2ff19c54374a467f24"
-aarch64-linux = "9f8fc0eab0bb6f8f135bf16011f5f32c9ebce988acfed5045a597a9bf8805afc"
+x86_64-linux  = "38fcdd8046939a4b49267959108a1fc3bcef7c0088963508dd963527134b23bf"
+aarch64-linux = "713da807e9508e2aad3a5fe3808dd23db79460da4ca2d4a6547ec3d5cd3e0615"
 
 [size]
-x86_64-linux  = 63843637
-aarch64-linux = 61849094
+x86_64-linux  = 64123001
+aarch64-linux = 62126144
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mgba-emu/mgba/master/LICENSE"
