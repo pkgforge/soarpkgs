@@ -29,6 +29,34 @@ jobs:
       - name: Validate tree
         run: sbuild validate
 
+      # validate passes a pin that carries a sha256 but no blake3, because
+      # that state is reachable mid-update. A merged version file must be
+      # verifiable on every host its package claims, so the changed pins are
+      # checked strictly here. Only changed files are in scope: a stale gap
+      # in an old pin must not freeze every future bump of its package.
+      - name: Check changed pins serve every supported host
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -uo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" \
+            --paginate --jq '.[] | select(.status != "removed") | .filename' \
+            | { grep -E '^packages/[^/]+/[^/]+\.toml$' || true; } \
+            | { grep -v '/pkg\.toml$' || true; } > changed-pins.txt
+          if [ ! -s changed-pins.txt ]; then
+            echo "No version file changes."
+            exit 0
+          fi
+          if sbuild validate --strict . --files $(cat changed-pins.txt) > strict.log 2>&1; then
+            echo "Every changed pin is verifiable and serves all supported hosts."
+            exit 0
+          fi
+          cat strict.log
+          sed -n 's/^  ERROR /::error::/p' strict.log
+          exit 1
+
       # Downloading is only worth it for what changed, but for those the
       # archive is the only place a wrong install path shows up.
       - name: Audit changed packages against their archives
