@@ -6,6 +6,11 @@ x86_64-linux  = "https://github.com/mikefarah/yq/releases/download/v4.54.2/yq_li
 aarch64-linux = "https://github.com/mikefarah/yq/releases/download/v4.54.2/yq_linux_arm64"
 riscv64-linux = "https://github.com/mikefarah/yq/releases/download/v4.54.2/yq_linux_riscv64"
 
+[blake3]
+x86_64-linux  = "8b89f10c024b7a0641b7ef330f09c365a3340a0d5fb26c43a49a00ffd641cf65"
+aarch64-linux = "eccc4ba4ff89893f905fad23e435ff2ee4ef2dad929138020ce65b1f6a82ca84"
+riscv64-linux = "880dba2557ee1bcca40c597d43bbd6d3401ae625dffe8f3d4ee539c5c6c767ab"
+
 [sha256]
 x86_64-linux  = "44c7759059b4910827a0059a2757b22001e59360cdecdb2ef8dedc4b6c7e9f32"
 aarch64-linux = "bd44211dcd29a5f0eb701d4b7eb5ccd0cfff3bd3966cb4f7f9bd5b13701d997e"
