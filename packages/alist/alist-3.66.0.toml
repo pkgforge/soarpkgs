@@ -1,0 +1,26 @@
+version = "3.66.0"
+date    = "2026-11-08T15:19:13Z"
+
+[url]
+x86_64-linux  = "https://github.com/AlistGo/alist/releases/download/v3.66.0/alist-linux-musl-amd64.tar.gz"
+aarch64-linux = "https://github.com/AlistGo/alist/releases/download/v3.66.0/alist-linux-musl-arm64.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/builds/releases/download/alist-3.66.0/alist-3.66.0-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "15e611a031823fe79475eb7596262abc84114f1e2ef8d4493f130d1bd7da9494"
+aarch64-linux = "c2fc6e3b74d9683b3586c986c9d3e68901c9230a91fb0d66b1981d8d73c83066"
+riscv64-linux = "dac167c0e18c8b2108a0e6d63804be36540b5e91addf57a81abf82088369334d"
+
+[sha256]
+x86_64-linux  = "dfdd7be485963261b1edf445361977e626f23cb2ace12281fe50a0070fa22149"
+aarch64-linux = "2a562a2d0b4349d4999574ee77bd71ffdac37de70b94c227a1582b02e0d916b3"
+riscv64-linux = "2d47169687e2c7847b01bc9ddc8caf4dca4b612ee931abf4663b9a1d5dfcdc41"
+
+[size]
+x86_64-linux  = 44923119
+aarch64-linux = 42174235
+riscv64-linux = 24190005
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/AlistGo/alist/main/LICENSE"
+to     = "LICENSE"

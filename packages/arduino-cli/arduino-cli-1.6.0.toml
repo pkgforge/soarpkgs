@@ -1,0 +1,18 @@
+version = "1.6.0"
+date    = "2026-11-10T15:37:39Z"
+
+[url]
+x86_64-linux  = "https://github.com/arduino/arduino-cli/releases/download/v1.6.0/arduino-cli_1.6.0_Linux_64bit.tar.gz"
+aarch64-linux = "https://github.com/arduino/arduino-cli/releases/download/v1.6.0/arduino-cli_1.6.0_Linux_ARM64.tar.gz"
+
+[blake3]
+x86_64-linux  = "231310e5c60c3a596336cc0228cf9e273692b076214659422f9c1068d514c447"
+aarch64-linux = "297d8728dfd9614b9202bbae23d670c336aa575779c40abc313fd49afa29ea94"
+
+[sha256]
+x86_64-linux  = "321ee249f44c78053234fec0f36101092bc6021bf24939e15e0cc2449c5ed250"
+aarch64-linux = "2ed4e1436bb3be1265966af8eba95dd25e28f3a9f92d0a58d371ed14dbaf550f"
+
+[size]
+x86_64-linux  = 20111675
+aarch64-linux = 18401779

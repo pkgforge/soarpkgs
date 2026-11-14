@@ -1,0 +1,26 @@
+version = "4.54.3"
+date    = "2026-11-09T04:51:53Z"
+
+[url]
+x86_64-linux  = "https://github.com/mikefarah/yq/releases/download/v4.54.3/yq_linux_amd64"
+aarch64-linux = "https://github.com/mikefarah/yq/releases/download/v4.54.3/yq_linux_arm64"
+riscv64-linux = "https://github.com/mikefarah/yq/releases/download/v4.54.3/yq_linux_riscv64"
+
+[blake3]
+x86_64-linux  = "dbc4e8a9572263c5276c54670f9d7b75c09a5305e4d7ce4fd142f6e1c756dc9d"
+aarch64-linux = "e86f5e97ab85103179e74847abe3180798300651ec02655fe99eebd67aef05e0"
+riscv64-linux = "71de8545e949448e662f4a459f76943ac49f8a3f38f7f6e969fdc8b1eeaeda39"
+
+[sha256]
+x86_64-linux  = "129534601871538efe0ba4c5e62a34fb1d5f469bcb975c4fddeb467d82974973"
+aarch64-linux = "89f69310b61b68d1245065a1241d1fc843f7a36cd6103ffd77ad987613bd1b67"
+riscv64-linux = "6308bdd8b18e381d10953333221f7b80838f60fe11682e50f0c470465c0a511f"
+
+[size]
+x86_64-linux  = 15499424
+aarch64-linux = 14352544
+riscv64-linux = 13631648
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/mikefarah/yq/master/LICENSE"
+to     = "LICENSE"
