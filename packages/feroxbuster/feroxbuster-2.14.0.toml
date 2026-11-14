@@ -1,0 +1,22 @@
+version = "2.14.0"
+date    = "2026-11-12T19:32:19Z"
+
+[url]
+x86_64-linux  = "https://github.com/epi052/feroxbuster/releases/download/v2.14.0/x86_64-linux-feroxbuster.tar.gz"
+aarch64-linux = "https://github.com/epi052/feroxbuster/releases/download/v2.14.0/aarch64-linux-feroxbuster.zip"
+
+[blake3]
+x86_64-linux  = "0995c6fe3a9bcb8d87c8a0ad92d341bca553b6ea6d8481e06c1b187b3a9340cd"
+aarch64-linux = "a1126595cf68eff72c7e27b4db60e3a1cf5a11c582c9163004be5a2d01bccb8b"
+
+[sha256]
+x86_64-linux  = "3ab2cefdb03af090bcf11c4b82bd85a7e8a2b4439237ac06993568eade28ee96"
+aarch64-linux = "8b3c30a2baf249963331ac1f9417e44eeadc00774b127e2452786a4f32a9a7ea"
+
+[size]
+x86_64-linux  = 6714595
+aarch64-linux = 7062919
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/epi052/feroxbuster/main/LICENSE"
+to     = "LICENSE"

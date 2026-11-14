@@ -1,0 +1,22 @@
+version = "1.17.0"
+date    = "2026-11-14T07:47:02Z"
+
+[url]
+x86_64-linux  = "https://github.com/hatoo/oha/releases/download/v1.17.0/oha-linux-amd64"
+aarch64-linux = "https://github.com/hatoo/oha/releases/download/v1.17.0/oha-linux-arm64"
+
+[blake3]
+x86_64-linux  = "d8ae80e786aa6bc9dbfef2023881a949037091d505b70d1712c3e8f0c828acf2"
+aarch64-linux = "5ea6380254ddc13d4b850be8142bd72fd45da77d0d37ab0b0d0117ccf44c7844"
+
+[sha256]
+x86_64-linux  = "85c6eb98066b8c8bd513b2dd96fafd8f9863249ea653606bae1ca2e3a75c43d2"
+aarch64-linux = "0b360c858f6277a5fca691d38adbd2dbc8c344d049ddf1a12fee8a762351ea24"
+
+[size]
+x86_64-linux  = 12529488
+aarch64-linux = 10621064
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/hatoo/oha/master/LICENSE"
+to     = "LICENSE"
