@@ -43,9 +43,51 @@ jobs:
         run: sbuild resolve . ${{ inputs.packages }}
 
       # Forges that report no digest leave a pinned URL with no hash. That
-      # state must never reach a commit, so fill it before validating.
+      # state must never reach a commit, so fill it before validating. The
+      # second pass costs nothing when the first succeeded: anything already
+      # hashed is skipped, so a transient 500 is retried rather than shipped
+      # as an unverifiable pin.
       - name: Hash artifacts with no reported digest
         run: sbuild hashfill
+      - name: Retry artifacts the first pass could not hash
+        run: sbuild hashfill
+
+      # A pin the forge could not vouch for may still lack blake3 here, and a
+      # release may lack an artifact for a host the package claims. Either way
+      # the package cannot serve every supported host, so the whole package is
+      # held back: the previous pin keeps working, and the pull request names
+      # what is missing instead of merging it.
+      - name: Hold back packages that cannot serve every supported host
+        run: |
+          set -euo pipefail
+          git status --porcelain -uall packages \
+            | cut -c4- \
+            | { grep -E '^packages/[^/]+/[^/]+\.toml$' || true; } \
+            | { grep -v '/pkg\.toml$' || true; } > changed.txt
+          if [ ! -s changed.txt ]; then
+            echo "No version file changes."
+            exit 0
+          fi
+          # Strict and file-scoped: the run judges the new pins alone, so a
+          # stale gap in an old pin never holds its package back.
+          sbuild validate --strict . --files $(cat changed.txt) > held.log 2>&1 || true
+          grep '^  ERROR' held.log > held.txt || true
+          if [ ! -s held.txt ]; then
+            echo "Every changed pin serves all supported hosts."
+            exit 0
+          fi
+          echo "Holding back packages with incomplete or unverifiable pins:"
+          cat held.txt
+          sed 's/^  ERROR \([^:]*\):.*/\1/' held.txt \
+            | while read -r vf; do
+                find packages -name "$vf.toml"
+              done \
+            | sed 's|^packages/||; s|/.*||' \
+            | sort -u \
+            | while read -r pkg; do
+                git checkout -- "packages/$pkg" 2>/dev/null || true
+                git clean -fdq "packages/$pkg"
+              done
 
       # One package failing must not cost the tree a month of updates, which
       # is what a hard failure here does: the step aborts, no pull request is
@@ -115,7 +157,51 @@ jobs:
               cat failed.txt
               echo '```'
             fi
+            if [ -s held.txt ]; then
+              echo
+              echo "## Held back for missing artifacts or hashes"
+              echo
+              echo '```'
+              cat held.txt
+              echo '```'
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Write pull request body
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          {
+            echo "Automated version bump. Each changed file pins a resolved URL"
+            echo "and its hash."
+            echo
+            echo "Review the hashes: a changed hash on an *unchanged* version means"
+            echo "upstream replaced an artifact in place, which is worth"
+            echo "investigating before merging."
+            echo
+            echo "## Package updates"
+            echo
+            echo '```'
+            git diff --cached --stat -- packages | tail -40
+            echo '```'
+            if [ -s failed.txt ] || [ -s held.txt ]; then
+              echo
+              echo "## Packages left unpinned"
+              echo
+              echo "Held back rather than pinned, so no unverifiable or"
+              echo "uninstallable entry reaches the tree. Re-run this workflow with"
+              echo "them once the upstream gap is fixed."
+              echo
+              if [ -s held.txt ]; then
+                sed 's/^  ERROR \([^:]*\): /- **\1**: /' held.txt
+              fi
+              if [ -s failed.txt ]; then
+                while read -r pkg; do
+                  echo "- **$pkg**: failed validation"
+                done < failed.txt
+              fi
+            fi
+          } > pr-body.md
 
       - name: Open pull request
         if: steps.diff.outputs.changed == 'true'
@@ -124,16 +210,6 @@ jobs:
           branch: automated/package-updates
           title: 'chore: update pinned package versions'
           commit-message: 'chore: update pinned package versions'
-          body: |
-            Automated version bump. Each changed file pins a resolved URL and
-            its hash.
-
-            Review the hashes: a changed hash on an *unchanged* version means
-            upstream replaced an artifact in place, which is worth
-            investigating before merging.
-
-            Packages that failed validation are reverted in this run and named
-            in the check summary. Re-run this workflow with them once the
-            upstream breakage is fixed.
+          body-path: pr-body.md
           labels: automated
           delete-branch: true
