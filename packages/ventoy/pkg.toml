@@ -1,0 +1,43 @@
+[pkg]
+name        = "ventoy"
+type        = "onelf"
+description = "Creates a bootable USB drive from ISO, WIM, IMG, VHD(x) and EFI files"
+src         = ["https://github.com/ventoy/Ventoy"]
+homepage    = ["https://www.ventoy.net", "https://github.com/ventoy/Ventoy"]
+license     = ["GPL-3.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Utility"]
+repology    = ["ventoy"]
+provides    = [
+  "ventoy",
+  "ventoy-web",
+  "ventoy-plugson",
+  "ventoy-gui",
+  "ventoy-vlnk",
+  "ventoy-create-persistent",
+  "ventoy-extend-persistent",
+]
+portable        = false
+portable-reason = "Writing drives needs root and the host's fdisk, mkfs.vfat and losetup"
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "onelf-pkgs/ventoy"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/onelf-pkgs/ventoy/releases/download/v${version}/ventoy-${arch}.onelf"
+
+[[source.install]]
+to         = "bin/ventoy"
+symlink_as = [
+  "ventoy-web",
+  "ventoy-plugson",
+  "ventoy-gui",
+  "ventoy-vlnk",
+  "ventoy-create-persistent",
+  "ventoy-extend-persistent",
+]
