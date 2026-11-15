@@ -1,0 +1,36 @@
+[pkg]
+name        = "distrobox"
+type        = "onelf"
+description = "Use any Linux distribution inside your terminal"
+homepage    = ["https://github.com/89luca89/distrobox"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["distrobox"]
+src         = ["https://github.com/89luca89/distrobox"]
+note        = ["Requires Podman or Docker to run containers"]
+provides    = [
+  "distrobox-assemble",
+  "distrobox-create",
+  "distrobox-enter",
+  "distrobox-ephemeral",
+  "distrobox-export",
+  "distrobox-generate-entry",
+  "distrobox-host-exec",
+  "distrobox-init",
+  "distrobox-list",
+  "distrobox-rm",
+  "distrobox-stop",
+  "distrobox-upgrade",
+]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "onelf-pkgs/distrobox"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/onelf-pkgs/distrobox/releases/download/v${version}/distrobox-${arch}.onelf"
