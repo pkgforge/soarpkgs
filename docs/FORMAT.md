@@ -58,7 +58,6 @@ The rest are for exceptions:
 |---|---|---|
 | `family` | `name` | the directory name differs from the package name |
 | `channel` | `stable` | the package tracks `unstable` or `nightly` |
-| `portable` | `true` | it needs something from the host, with `portable-reason` |
 | `src` | derived | upstream is not the repository in `[update]` |
 | `note` | none | there is something a user genuinely needs told |
 | `disabled` | `false` | it should not be installable, with `disabled-reason` |
