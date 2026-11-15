@@ -1,0 +1,21 @@
+[pkg]
+name        = "video2x"
+type        = "onelf"
+description = "A machine learning-based video super resolution and frame interpolation framework"
+homepage    = ["https://docs.video2x.org", "https://github.com/k4yt3x/video2x"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Video"]
+repology    = ["video2x"]
+src         = ["https://github.com/k4yt3x/video2x"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "onelf-pkgs/video2x"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/onelf-pkgs/video2x/releases/download/v${version}/video2x-x86_64.onelf"
