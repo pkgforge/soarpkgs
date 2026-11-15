@@ -1,0 +1,20 @@
+[pkg]
+name        = "aya"
+type        = "onelf"
+description = "Android ADB desktop app"
+homepage    = ["https://aya.liriliri.io", "https://github.com/liriliri/aya"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Development", "Utility"]
+src         = ["https://github.com/liriliri/aya"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "onelf-pkgs/aya"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/onelf-pkgs/aya/releases/download/v${version}/aya-x86_64.onelf"
