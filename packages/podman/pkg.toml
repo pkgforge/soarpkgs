@@ -1,0 +1,26 @@
+[pkg]
+name        = "podman"
+type        = "onelf"
+description = "Daemonless container engine for developing, managing, and running OCI containers"
+homepage    = ["https://podman.io", "https://github.com/containers/podman"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "System", "Utility"]
+repology    = ["podman"]
+src         = ["https://github.com/containers/podman"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "onelf-pkgs/podman"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/onelf-pkgs/podman/releases/download/v${version}/podman-${arch}.onelf"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/containers/podman/main/LICENSE"
+to  = "LICENSE"
+verify = false
