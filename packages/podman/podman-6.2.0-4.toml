@@ -1,0 +1,22 @@
+version = "6.2.0-4"
+date    = "2026-11-15T10:52:28Z"
+
+[url]
+x86_64-linux  = "https://github.com/onelf-pkgs/podman/releases/download/v6.2.0-4/podman-x86_64.onelf"
+aarch64-linux = "https://github.com/onelf-pkgs/podman/releases/download/v6.2.0-4/podman-aarch64.onelf"
+
+[blake3]
+x86_64-linux  = "820433b2a6476ef9d96ed473e0fd8acd46a718c6bc123a96ad5dadbcb9d5b3e0"
+aarch64-linux = "31c579a2b832a7987ee5572fe6319ac35ffa5e420ca16bab4bec30a82c1d9cae"
+
+[sha256]
+x86_64-linux  = "e759724e27540fafd9115f37abbb388778402d09526547cf677666c8b49323f9"
+aarch64-linux = "6c80c29f289c65fd76ee2d4da6a74079348fd90e034ce5bbd55f556546679167"
+
+[size]
+x86_64-linux  = 23734107
+aarch64-linux = 21794448
+
+[[extra]]
+url = "https://raw.githubusercontent.com/containers/podman/main/LICENSE"
+to  = "LICENSE"
