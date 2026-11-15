@@ -17,8 +17,7 @@ provides    = [
   "ventoy-create-persistent",
   "ventoy-extend-persistent",
 ]
-portable        = false
-portable-reason = "Writing drives needs root and the host's fdisk, mkfs.vfat and losetup"
+note = ["Requires root and the host's fdisk, mkfs.vfat and losetup to write drives"]
 
 [host]
 supported = ["x86_64-linux", "aarch64-linux"]

@@ -9,10 +9,8 @@ category    = ["AudioVideo", "Video", "Utility"]
 repology    = ["iriunwebcam"]
 note        = [
   "Proprietary software - Terms: https://iriun.com",
-  "Requires v4l2loopback kernel module (v4l2loopback-dkms) and PipeWire",
+  "Requires the v4l2loopback kernel module (v4l2loopback-dkms) and PipeWire for the virtual camera",
 ]
-portable = true
-portable-reason = "requires v4l2loopback kernel module and system PipeWire integration"
 
 [host]
 supported = ["x86_64-linux"]

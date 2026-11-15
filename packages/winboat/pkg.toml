@@ -7,10 +7,8 @@ license         = ["MIT"]
 maintainer      = ["QaidVoid (contact@qaidvoid.dev)"]
 category        = ["System", "Utility"]
 repology        = ["winboat"]
-portable        = false
-portable-reason = "Requires Docker or Podman (not bundled)"
 note            = [
-  "AppImage itself works on any distro, but depends on an external container runtime",
+  "Requires Docker or Podman to run Windows apps",
 ]
 
 [host]

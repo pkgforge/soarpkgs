@@ -50,5 +50,5 @@ docker run --rm -it -v "$PWD:/pkg" nixos/nix /pkg/app.AppImage --version
 
 Any package, AppImages included, may call another program at runtime, such as
 Docker or `git`. It must still not need a library installed on the host. If
-the package cannot work without that program, mark it `portable = false` and
-give a `portable-reason`, as described in [`docs/FORMAT.md`](docs/FORMAT.md).
+the package cannot work without that program, say so in `note`, as described
+in [`docs/FORMAT.md`](docs/FORMAT.md).
