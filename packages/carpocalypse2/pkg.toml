@@ -1,0 +1,20 @@
+[pkg]
+name        = "carpocalypse2"
+type        = "appimage"
+description = "Decompilation and native port of Carmageddon 2"
+homepage    = ["https://github.com/Link4Electronics/Carpocalypse2"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "ActionGame"]
+note        = ["Needs the original Carmageddon 2 game data, which is not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "Link4Electronics/Carpocalypse2"
+
+[source]
+github = "Link4Electronics/Carpocalypse2"
+glob   = "*anylinux-${arch}.appimage"
