@@ -1,0 +1,21 @@
+[pkg]
+name        = "cli-chess"
+type        = "appimage"
+description = "Play chess in the terminal, online via Lichess or offline against Fairy-Stockfish"
+homepage    = ["https://github.com/trb346/cli-chess"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Game", "BoardGame"]
+repology    = ["cli-chess"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "trb346/cli-chess"
+strip-prefix = "v"
+
+[source]
+github = "trb346/cli-chess"
+glob   = "*-${arch}.appimage"
