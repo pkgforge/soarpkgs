@@ -1,0 +1,25 @@
+[pkg]
+name        = "gpu-t"
+type        = "appimage"
+description = "GPU-Z inspired diagnostic tool showing GPU specs, sensors and diagnostics"
+homepage    = ["https://github.com/lseurttyuu/GPU-T"]
+license     = ["MIT"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "Monitor"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "lseurttyuu/GPU-T"
+strip-prefix = "v"
+
+[source]
+github = "lseurttyuu/GPU-T"
+glob   = "*-${arch}.appimage"
+
+[[extra]]
+url = "https://raw.githubusercontent.com/lseurttyuu/GPU-T/main/LICENSE"
+to  = "LICENSE"
+verify = false
