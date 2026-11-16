@@ -1,0 +1,20 @@
+[pkg]
+name        = "interstellar"
+type        = "appimage"
+description = "App for Mbin, Lemmy and PieFed, connecting you to the fediverse"
+homepage    = ["https://interstellar.jwr.one", "https://github.com/interstellar-app/interstellar"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "News"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "interstellar-app/interstellar"
+strip-prefix = "v"
+
+[source]
+github = "interstellar-app/interstellar"
+glob   = "*linux-${arch}.appimage"
