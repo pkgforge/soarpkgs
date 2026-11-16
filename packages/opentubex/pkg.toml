@@ -1,0 +1,24 @@
+[pkg]
+name        = "opentubex"
+type        = "appimage"
+description = "Privacy-minded YouTube client that also plays from any yt-dlp supported site"
+homepage    = ["https://opentubex.org", "https://github.com/OpenTubeX/OpenTubeX"]
+license     = ["AGPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["AudioVideo", "Video", "Network"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+x86_64  = "amd64"
+aarch64 = "arm64"
+
+[update]
+strategy     = "github-releases"
+repo         = "OpenTubeX/OpenTubeX"
+strip-prefix = "v"
+
+[source]
+github = "OpenTubeX/OpenTubeX"
+glob   = "*-${arch}.appimage"
