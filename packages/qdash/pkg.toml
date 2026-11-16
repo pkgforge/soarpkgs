@@ -1,0 +1,24 @@
+[pkg]
+name        = "qdash"
+type        = "appimage"
+description = "Reliable, high-performance, low-footprint dashboard for FRC robotics"
+homepage    = ["https://git.crueter.xyz/QFRC/QDash"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Engineering", "DataVisualization"]
+src         = ["https://git.crueter.xyz/QFRC/QDash"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+x86_64  = "amd64"
+aarch64 = "aarch64"
+
+[update]
+strategy = "html-regex"
+repo     = "https://git.crueter.xyz/api/v1/repos/QFRC/QDash/releases/latest"
+pattern  = '"tag_name":"([^"]+)"'
+
+[source]
+url = "https://git.crueter.xyz/QFRC/QDash/releases/download/${version}/QDash-Linux-${version}-${arch}-gcc-standard.AppImage"
