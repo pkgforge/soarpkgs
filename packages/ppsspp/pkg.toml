@@ -1,0 +1,21 @@
+[pkg]
+name        = "ppsspp"
+type        = "appimage"
+description = "PSP emulator"
+homepage    = ["https://www.ppsspp.org", "https://github.com/hrydgard/ppsspp"]
+license     = ["GPL-2.0-or-later"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Emulator", "Game"]
+repology    = ["ppsspp"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "hrydgard/ppsspp"
+strip-prefix = "v"
+
+[source]
+github = "hrydgard/ppsspp"
+glob   = "*anylinux-${arch}.appimage"
