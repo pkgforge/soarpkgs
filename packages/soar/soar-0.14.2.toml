@@ -1,0 +1,22 @@
+version = "0.14.2"
+date    = "2026-11-15T07:49:06Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge/soar/releases/download/v0.14.2/soar-x86_64-linux.tar.gz"
+aarch64-linux = "https://github.com/pkgforge/soar/releases/download/v0.14.2/soar-aarch64-linux.tar.gz"
+riscv64-linux = "https://github.com/pkgforge/soar/releases/download/v0.14.2/soar-riscv64-linux.tar.gz"
+
+[blake3]
+x86_64-linux  = "cd112ef10fa8e75465422432118164e12abc0e41370eb7d3df9b286b32e62781"
+aarch64-linux = "069d6b0f72df0ddb93a21d902b7a2347a85f126c5afdca13fdc52462135ef984"
+riscv64-linux = "b11e9d8b88e15796d8350bd55ab1ea13f7f3257ebc7de48e4333493edd7646ab"
+
+[sha256]
+x86_64-linux  = "9e8f2fb3907dbced70614ff437e00aa6eec1d2dece3d581893eb1500e5e39092"
+aarch64-linux = "5cbd9c30b8917970e17fbaa29b058c913b7de25d2e047aa7ce6b0cdd64ce01e3"
+riscv64-linux = "2ea58b50e02ed6241ff02cafb691813905f766df25e8aa1cba7f8792b0209b60"
+
+[size]
+x86_64-linux  = 4089139
+aarch64-linux = 3863498
+riscv64-linux = 3717703

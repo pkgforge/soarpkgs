@@ -1,0 +1,22 @@
+version = "9.0.5"
+date    = "2026-11-15T22:32:16Z"
+
+[url]
+x86_64-linux  = "https://github.com/yamafaktory/jql/releases/download/jql-v9.0.5/jql-v9.0.5-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/yamafaktory/jql/releases/download/jql-v9.0.5/jql-v9.0.5-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "a4716e5f70f0e4b75be9a9fb6cec9371bb9f9a97a627daf94d08869724459eac"
+aarch64-linux = "c26385a326173bb54044bb3f7f0b040638961ce7e469398906a95a99568df04b"
+
+[sha256]
+x86_64-linux  = "6fcee875408f325503f65c84fe7d4175b6702fa8e551c4b29ab38fba13a96aa2"
+aarch64-linux = "2f4d893c65c9d3e95da0429676da700d2a678a7e21702e3db120a53c36e42d82"
+
+[size]
+x86_64-linux  = 678871
+aarch64-linux = 643695
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/yamafaktory/jql/main/LICENSE-MIT"
+to     = "LICENSE"
