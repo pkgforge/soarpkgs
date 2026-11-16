@@ -1,0 +1,21 @@
+[pkg]
+name        = "kde-partition-manager"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/KDE-Partition-Manager-AppImage"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/KDE-Partition-Manager-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/KDE-Partition-Manager-AppImage"
+glob   = "*${arch}*.appimage"
