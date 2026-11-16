@@ -1,0 +1,21 @@
+[pkg]
+name        = "converseen"
+type        = "appimage"
+description = "Batch image converter and resizer"
+homepage    = ["https://converseen.fasterland.net", "https://github.com/Faster3ck/Converseen"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Graphics", "ImageProcessing"]
+repology    = ["converseen"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "Faster3ck/Converseen"
+strip-prefix = "v"
+
+[source]
+github = "Faster3ck/Converseen"
+glob   = "*anylinux-${arch}.appimage"
