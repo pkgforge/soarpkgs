@@ -1,0 +1,20 @@
+[pkg]
+name        = "am-gui"
+type        = "appimage"
+description = "Graphical frontend for AM to install, update and manage AppImages and other portable formats"
+homepage    = ["https://github.com/Shikakiben/AM-GUI"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "PackageManager"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy   = "github-releases"
+repo       = "Shikakiben/AM-GUI"
+tag-suffix = "strip"
+
+[source]
+github = "Shikakiben/AM-GUI"
+glob   = "*anylinux-${arch}.appimage"
