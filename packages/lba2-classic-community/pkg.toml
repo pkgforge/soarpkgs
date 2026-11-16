@@ -1,0 +1,21 @@
+[pkg]
+name        = "lba2-classic-community"
+type        = "appimage"
+description = "Community-maintained source port of the Little Big Adventure 2 engine"
+homepage    = ["https://github.com/LBALab/lba2-classic-community"]
+license     = ["GPL-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "AdventureGame"]
+note        = ["Needs the original Little Big Adventure 2 game data, which is not shipped"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "LBALab/lba2-classic-community"
+strip-prefix = "v"
+
+[source]
+github = "LBALab/lba2-classic-community"
+glob   = "*anylinux-${arch}.appimage"
