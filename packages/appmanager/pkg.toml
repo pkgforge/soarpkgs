@@ -1,0 +1,20 @@
+[pkg]
+name        = "appmanager"
+type        = "appimage"
+description = "macOS-style AppImage installer and management application"
+homepage    = ["https://github.com/kem-a/AppManager"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["System", "PackageManager"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "kem-a/AppManager"
+strip-prefix = "v"
+
+[source]
+github = "kem-a/AppManager"
+glob   = "*anylinux-${arch}.appimage"
