@@ -211,5 +211,6 @@ jobs:
           title: 'chore: update pinned package versions'
           commit-message: 'chore: update pinned package versions'
           body-path: pr-body.md
+          add-paths: packages
           labels: automated
           delete-branch: true
