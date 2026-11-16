@@ -1,0 +1,21 @@
+[pkg]
+name        = "goverlay"
+type        = "appimage"
+description = "Graphical interface to configure MangoHud, vkBasalt and other Linux gaming tools"
+homepage    = ["https://github.com/benjamimgois/goverlay"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Game", "Settings"]
+repology    = ["goverlay"]
+note        = ["Configures MangoHud, which must be installed separately"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "benjamimgois/goverlay"
+
+[source]
+github = "benjamimgois/goverlay"
+glob   = "*-${arch}.appimage"
