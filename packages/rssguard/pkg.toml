@@ -1,0 +1,20 @@
+[pkg]
+name        = "rssguard"
+type        = "appimage"
+description = "Feed reader supporting RSS, Atom, JSON and many web-based feed services"
+homepage    = ["https://github.com/martinrotter/rssguard"]
+license     = ["GPL-3.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["Network", "Feed", "News"]
+repology    = ["rssguard"]
+
+[host]
+supported = ["x86_64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "martinrotter/rssguard"
+
+[source]
+github = "martinrotter/rssguard"
+glob   = "*-web-qt6-linux64.appimage"
