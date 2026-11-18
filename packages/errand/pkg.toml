@@ -1,0 +1,29 @@
+[pkg]
+name        = "errand"
+type        = "static"
+description = "Run a coding agent from a chat channel, each session in a sandbox it cannot escape"
+homepage    = ["https://errand.qaidvoid.dev", "https://github.com/QaidVoid/errand"]
+license     = ["MIT", "Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "Utility"]
+note        = ["Needs a sandbox backend (bailey, rootless podman or Incus) and kage on PATH"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+x86_64  = "x86_64-unknown-linux-musl"
+aarch64 = "aarch64-unknown-linux-musl"
+
+[update]
+strategy     = "github-releases"
+repo         = "QaidVoid/errand"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/QaidVoid/errand/releases/download/v${version}/errand-${version}-${arch}.tar.xz"
+
+[source.install]
+"errand-${version}-${arch}/errand"         = "bin/errand"
+"errand-${version}-${arch}/LICENSE-MIT"    = "LICENSE-MIT"
+"errand-${version}-${arch}/LICENSE-APACHE" = "LICENSE-APACHE"
