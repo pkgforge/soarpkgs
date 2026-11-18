@@ -1,0 +1,32 @@
+[pkg]
+name        = "bailey"
+type        = "static"
+description = "Layered, deny-by-default sandbox for running untrusted programs on Linux"
+homepage    = ["https://bailey.qaidvoid.dev", "https://github.com/QaidVoid/bailey"]
+license     = ["MIT", "Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Security", "Utility"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[arch]
+x86_64  = "x86_64-unknown-linux-musl"
+aarch64 = "aarch64-unknown-linux-musl"
+
+[update]
+strategy     = "github-releases"
+repo         = "QaidVoid/bailey"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/QaidVoid/bailey/releases/download/v${version}/bailey-${version}-${arch}.tar.gz"
+
+[source.install]
+"bailey-${version}-${arch}/bailey"                  = "bin/bailey"
+"bailey-${version}-${arch}/bailey.1"                = "share/man/man1/bailey.1"
+"bailey-${version}-${arch}/completions/bailey.bash" = "share/bash-completion/completions/bailey"
+"bailey-${version}-${arch}/completions/bailey.zsh"  = "share/zsh/site-functions/_bailey"
+"bailey-${version}-${arch}/completions/bailey.fish" = "share/fish/vendor_completions.d/bailey.fish"
+"bailey-${version}-${arch}/LICENSE-MIT"             = "LICENSE-MIT"
+"bailey-${version}-${arch}/LICENSE-APACHE"          = "LICENSE-APACHE"
