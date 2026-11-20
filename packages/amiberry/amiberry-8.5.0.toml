@@ -1,0 +1,22 @@
+version = "8.5.0"
+date    = "2026-11-18T13:10:08Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Amiberry-AppImage-Enhanced/releases/download/8.5.0%402026-11-18_1795007407/Amiberry-8.5.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Amiberry-AppImage-Enhanced/releases/download/8.5.0%402026-11-18_1795007407/Amiberry-8.5.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "fe97c251f001feaebbf63ea54f398f6d3f3631528f8dde6d500f8874c7748c56"
+aarch64-linux = "28f78c01d0451950fbd5a2500c53945f5191a42d7ff432b6b7c55a1d4b336aac"
+
+[sha256]
+x86_64-linux  = "49324205f79740139983e97093ddc7f15c31d0425beb1be6deaa1c680f42050f"
+aarch64-linux = "2f7ab103001ff6ed7b6f70855047cdfda91431854bd3d733417d798927c8caa4"
+
+[size]
+x86_64-linux  = 43092450
+aarch64-linux = 40680074
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/BlitterStudio/amiberry/refs/heads/master/LICENSE"
+to     = "LICENSE"
