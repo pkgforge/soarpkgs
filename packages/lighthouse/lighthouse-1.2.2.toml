@@ -1,0 +1,22 @@
+version = "1.2.2"
+date    = "2026-11-18T03:02:14Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Lighthouse-AppImage-Enhanced/releases/download/1.2.2%402026-11-18_1794970933/Lighthouse-1.2.2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Lighthouse-AppImage-Enhanced/releases/download/1.2.2%402026-11-18_1794970933/Lighthouse-1.2.2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "daab760a934b02f49013082f63bff9b4c55d95148d17cebc9de4b5a90be2af04"
+aarch64-linux = "705a4f41bb001a500bc9cb290296a8cf8d379869d970205cc97781515e3820c6"
+
+[sha256]
+x86_64-linux  = "882003d65bf409370e511618fb3498ba62dcc81e3fe5fbea70577b3069fbef35"
+aarch64-linux = "d2705af8074ae1aeb6a1cf2efae54cfd84a1d5f5f0e44e872e86e37480144e63"
+
+[size]
+x86_64-linux  = 28323718
+aarch64-linux = 28011660
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/HarbourMasters/Lighthouse/develop/LICENSE.md"
+to     = "LICENSE"
