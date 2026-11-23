@@ -1,0 +1,21 @@
+[pkg]
+name        = "patchy"
+type        = "appimage"
+description = "TODO: one-line description"
+homepage    = ["https://github.com/pkgforge-dev/Patchy-AppImage"]
+license     = ["TODO"]
+maintainer  = ["TODO <you@example.com>"]
+category    = ["TODO"]
+repology    = ["TODO"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy = "github-releases"
+repo     = "pkgforge-dev/Patchy-AppImage"
+tag-suffix = "strip"
+
+[source]
+github = "pkgforge-dev/Patchy-AppImage"
+glob   = "*${arch}*.appimage"
