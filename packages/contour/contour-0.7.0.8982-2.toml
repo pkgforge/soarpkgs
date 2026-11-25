@@ -1,0 +1,22 @@
+version = "0.7.0.8982-2"
+date    = "2026-11-22T18:46:28Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/contour-AppImage/releases/download/0.7.0.8982-2%402026-11-22_1795373187/Contour-0.7.0.8982-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/contour-AppImage/releases/download/0.7.0.8982-2%402026-11-22_1795373187/Contour-0.7.0.8982-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "9fc443ac12e4624b12a3baba76e306eb6ffff7eb5cecde7c6ea7009fa494d956"
+aarch64-linux = "9ef7f69b65ebba80833bf7f093753425ad1e2627dafdf8cb32aafc337fe31300"
+
+[sha256]
+x86_64-linux  = "d1a88d419d987cf287e77223c94b6e9d2941c982915bd84cace4bf5d41459bfd"
+aarch64-linux = "7e859e29cc09dd424d0dbea781550d7d001897ff9f731bb816078a2c5d3ee8d1"
+
+[size]
+x86_64-linux  = 50029187
+aarch64-linux = 50297319
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/contour-terminal/contour/master/LICENSE.txt"
+to     = "LICENSE"

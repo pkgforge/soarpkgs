@@ -1,0 +1,22 @@
+version = "r135"
+date    = "2026-11-22T18:34:50Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Cuberite-AppImage/releases/download/r135%402026-11-22_1795372488/Cuberite-r445-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Cuberite-AppImage/releases/download/r135%402026-11-22_1795372488/Cuberite-r135-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "d21ddb37d8b503f5a84215652cd27852cc0f5027c66280db3385617c5d606fe2"
+aarch64-linux = "834c534de17be7b62f7663c71dbca793ea5d2f3954ffcebb6b0c1048706b13fa"
+
+[sha256]
+x86_64-linux  = "9be66763a3b5be90ca1abc4e3106a84f36c2d0b9e644310349a49193b0cd04f9"
+aarch64-linux = "d8ea189dcea2afce0aea30f8e0d2b47dcfb70494fb03df6f53cbc58881c6f54e"
+
+[size]
+x86_64-linux  = 11481233
+aarch64-linux = 11499197
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/cuberite/cuberite/master/LICENSE"
+to     = "LICENSE"

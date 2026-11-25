@@ -1,0 +1,22 @@
+version = "1.8.0-2"
+date    = "2026-11-22T18:51:47Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.8.0-2%402026-11-22_1795373506/flashrom-1.8.0-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.8.0-2%402026-11-22_1795373506/flashrom-1.8.0-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "7a8ee5cc82d9706134af5d2f0e774459b2c1e4c0d64ac1be8828936ca5381956"
+aarch64-linux = "69d86932c4d5faeb014786e98be870b1f72c829810c46bb0c6de1c4e0f6d3b08"
+
+[sha256]
+x86_64-linux  = "750ab2acb26e70a3074d5ff1fe4aa4dc5faf2da252152b1f331687797143c9c0"
+aarch64-linux = "0157839e848a054a610a4d35a2fa86ac7d49489f272215d4b59611bf322a1fd0"
+
+[size]
+x86_64-linux  = 6711522
+aarch64-linux = 6699659
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/flashrom/flashrom/main/COPYING.rst"
+to     = "LICENSE"

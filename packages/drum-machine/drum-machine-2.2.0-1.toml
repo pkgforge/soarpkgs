@@ -1,21 +1,21 @@
 version = "2.2.0-1"
-date    = "2026-11-01T18:27:22Z"
+date    = "2026-11-22T18:40:48Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Drum-Machine-AppImage/releases/download/2.2.0-1%402026-11-01_1793557641/Drum_Machine-2.2.0-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Drum-Machine-AppImage/releases/download/2.2.0-1%402026-11-01_1793557641/Drum_Machine-2.2.0-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Drum-Machine-AppImage/releases/download/2.2.0-1%402026-11-22_1795372847/Drum_Machine-2.2.0-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Drum-Machine-AppImage/releases/download/2.2.0-1%402026-11-22_1795372847/Drum_Machine-2.2.0-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "6352f200424fcff81a69daee937c73f18f49cd37f0261ca82bf69e0722f608a4"
-aarch64-linux = "3cacda3202b91310ac1222a41299666ac0119a9b535f3c3e95530f6b366e14a8"
+x86_64-linux  = "dbf245c84ee4360daa1f9cf1ea84b84d49fb495cd63f6cc68567f52f1163c08b"
+aarch64-linux = "9c9c750243bb828ff93ebae602f3d405b4f0d1ef5e9c3a2d407a0ccc903615cd"
 
 [sha256]
-x86_64-linux  = "62135c16b7e153a01093ec7c77c52ae697739fb093d197114df3c6bb61faa1e0"
-aarch64-linux = "53519878d2d8a924ca3d44c089abe53d31e89b66b3dd9fc6210a5e37f4f52e35"
+x86_64-linux  = "5aa829df2f52641b38e9c62c8ae2d7ae992fecd0c83b39d9a90c06696d8ca92f"
+aarch64-linux = "4f7bbbc6173e1ec309ec07ad7937d81beb8a62304721452bca0820dc1586a31e"
 
 [size]
-x86_64-linux  = 95832818
-aarch64-linux = 86824632
+x86_64-linux  = 98542837
+aarch64-linux = 89848705
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/Revisto/drum-machine/main/COPYING"

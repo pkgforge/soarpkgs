@@ -1,0 +1,22 @@
+version = "fda30d3aa"
+date    = "2026-11-22T18:44:43Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/fda30d3aa%402026-11-22_1795373081/D1X-Rebirth-fda30d3aa-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/fda30d3aa%402026-11-22_1795373081/D1X-Rebirth-fda30d3aa-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "351f9462dc7a84698b3a9ea6841adbc1d3a1ae882a27393c4913f44eec108857"
+aarch64-linux = "3d60c88ee9e221cc4908a75f461055d022ec8a12cf24d22081e688a868eb0e0f"
+
+[sha256]
+x86_64-linux  = "89ab13a9298551a8bff4e6234a1fe588ff0765c5a25d6299335cc499c01b11bb"
+aarch64-linux = "876da0412a9dc71fac27d536354285e9c17e62d453bd1fae247d3763736b035a"
+
+[size]
+x86_64-linux  = 97917762
+aarch64-linux = 97185583
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/dxx-rebirth/dxx-rebirth/master/COPYING.txt"
+to     = "LICENSE"

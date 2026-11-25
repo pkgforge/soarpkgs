@@ -1,0 +1,22 @@
+version = "3.14.1-2"
+date    = "2026-11-22T18:44:02Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Collision-AppImage/releases/download/3.14.1-2%402026-11-22_1795373040/Collision-3.14.1-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Collision-AppImage/releases/download/3.14.1-2%402026-11-22_1795373040/Collision-3.14.1-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c841a8bb27b31eaaa7c31503ed53697c2a797b36a0fbf1ceac6a8610825583d7"
+aarch64-linux = "4ae2fc5424e485c31a1436ad94e002f65bd9bb732021ee00c30a3af22ed4e75f"
+
+[sha256]
+x86_64-linux  = "169987b963997ccd84315f09bb6aad55f514e6a4e703d89d4a85f662dbcfcadd"
+aarch64-linux = "f6d8451908a22fe04f7dcdc384c75bf115c33cb1974aee7fdd3bad9d71cd7b81"
+
+[size]
+x86_64-linux  = 25664540
+aarch64-linux = 25505702
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/GeopJr/Collision/refs/heads/main/LICENSE"
+to     = "LICENSE"

@@ -1,21 +1,21 @@
 version = "4.6.2-1"
-date    = "2026-11-01T18:31:38Z"
+date    = "2026-11-22T18:48:56Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.2-1%402026-11-01_1793557897/Gear_Lever-4.6.2-1-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.2-1%402026-11-01_1793557897/Gear_Lever-4.6.2-1-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.2-1%402026-11-22_1795373335/Gear_Lever-4.6.2-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.2-1%402026-11-22_1795373335/Gear_Lever-4.6.2-1-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "6be2d2221cef3267cfd08e4e06edc63120a59b52f17a4a1aed890adfd4b36038"
-aarch64-linux = "0cc55135f9173676816420c3194c016578126905806e31cb85fffc14fb82e1d5"
+x86_64-linux  = "fc77483ddde7c284da109aa06455ce25a2befefd323ea8abac9c172e9b2c9b62"
+aarch64-linux = "e838a81f8d5b59e5e25aacef2ec6829499735535d99073a2c80d49a8d519a627"
 
 [sha256]
-x86_64-linux  = "3c38efae5c95949cece2b4c1ed625cecf19618b356793a80f8de21d6c923dbf9"
-aarch64-linux = "cfc72eab35fd9b6746ecda29120a601180e412309b6d4f77be5b3afc9475a976"
+x86_64-linux  = "7c149793448b1b261cd684ffe6e1d29af41ad7da95c6ae2edc8fe98ea00ca9f1"
+aarch64-linux = "86d643bf7d8cab0558f09002446bd9bd1fa1b59550f215fcaad5c72725c523ae"
 
 [size]
-x86_64-linux  = 68611904
-aarch64-linux = 67342135
+x86_64-linux  = 70378623
+aarch64-linux = 69651200
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/mijorus/gearlever/refs/heads/master/COPYING"

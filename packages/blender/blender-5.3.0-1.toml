@@ -1,0 +1,18 @@
+version = "5.3.0-1"
+date    = "2026-11-22T18:52:39Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Blender-AppImage/releases/download/5.3.0-1%402026-11-22_1795373558/Blender-5.3.0-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "8a01ed76a5d4bb2c8d786e661bb18c86d84409fbeb9bc1d5523112fd5dada61a"
+
+[sha256]
+x86_64-linux = "4238696f8350593dd5a396d5adeab31598bdaed6623210b210cfc016f119157a"
+
+[size]
+x86_64-linux = 505400398
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/blender/blender/35240eab7126741074a92d6dbfcea81c4283e776/COPYING"
+to     = "LICENSE"

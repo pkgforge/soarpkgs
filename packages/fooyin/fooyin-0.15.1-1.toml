@@ -1,0 +1,22 @@
+version = "0.15.1-1"
+date    = "2026-11-22T18:51:02Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/fooyin-AppImage/releases/download/0.15.1-1%402026-11-22_1795373461/fooyin-0.15.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/fooyin-AppImage/releases/download/0.15.1-1%402026-11-22_1795373461/fooyin-0.15.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "195727437bd7ab9a159a28959cbab5406b828281d4725f501f5001f0369edce3"
+aarch64-linux = "ac61f2c61e107711292cebe172befc6e7f68d173efef64ef9c0343cffab3c99d"
+
+[sha256]
+x86_64-linux  = "b63a80601d9835ab50e7b893b3573d7a515013be63e1244e09e01258aa12fff2"
+aarch64-linux = "6eb004fcafc900d6ba371f5808a023f45ca79d3e27d1b6cb95f1fc9d368eb182"
+
+[size]
+x86_64-linux  = 71145127
+aarch64-linux = 69450495
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/fooyin/fooyin/master/COPYING"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "9c4e2067a"
+date    = "2026-11-22T18:36:57Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/DOSBox-Pure-Unleashed-AppImage/releases/download/9c4e2067a%402026-11-22_1795372615/DOSBox_Pure_Unleashed-9c4e2067a-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/DOSBox-Pure-Unleashed-AppImage/releases/download/9c4e2067a%402026-11-22_1795372615/DOSBox_Pure_Unleashed-9c4e2067a-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "98f3f8f166479b3e0d34787292e3f8fb809e5007e272beb17e5f8a310b84cd92"
+aarch64-linux = "495d40331ae816eb785d63bf8db7f8124f49227e97d8efbf0a994a832bb2136b"
+
+[sha256]
+x86_64-linux  = "683e9ae33c81406ae870360d50d1e644b2aa60fcabda7d48d56d4c481e5081af"
+aarch64-linux = "2201ce382e6fdf1e60f1d0db5a96c37acfa0382293916cfd40b424d79771048c"
+
+[size]
+x86_64-linux  = 17840222
+aarch64-linux = 17091095
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/schellingb/dosbox-pure-unleashed/main/LICENSE"
+to     = "LICENSE"

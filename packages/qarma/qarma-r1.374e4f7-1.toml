@@ -1,0 +1,22 @@
+version = "r1.374e4f7-1"
+date    = "2026-11-22T18:51:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/qarma-AppImage/releases/download/r1.374e4f7-1%402026-11-22_1795373475/qarma-r1.374e4f7-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/qarma-AppImage/releases/download/r1.374e4f7-1%402026-11-22_1795373475/qarma-r1.374e4f7-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "71cef964f92ca7d852b7fe9121ed226bb91652bccbff76766681173748a4d374"
+aarch64-linux = "d34ef75f4b8656d86d17066109ff52fc833a1a9a493fa239f384540fe55724b0"
+
+[sha256]
+x86_64-linux  = "4cba7b9a78af90682ee96a6b0ff296b43c43c148e5f92aa8a841061742d7510f"
+aarch64-linux = "8c5aa24652e25d5e9982e367216f33c4ca9f880c4ceed317f8248decf02fc168"
+
+[size]
+x86_64-linux  = 21696830
+aarch64-linux = 21719775
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/luebking/qarma/master/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "3.1.5"
+date    = "2026-11-24T15:47:22Z"
+
+[url]
+x86_64-linux  = "https://github.com/sigstore/cosign/releases/download/v3.1.5/cosign-linux-amd64"
+aarch64-linux = "https://github.com/sigstore/cosign/releases/download/v3.1.5/cosign-linux-arm64"
+
+[blake3]
+x86_64-linux  = "303e6f0b818d9c7a3f123a3521bd59c9c5968b0ba716bc2c1db863bfc9403317"
+aarch64-linux = "e69488c896124e62427be4d99fdf568299d79de42a82582cd7d52bd661f1885b"
+
+[sha256]
+x86_64-linux  = "912502def4baf810eaf36b210a4f51e1da214f9f6d664e2a9a2154cfc67ee0d6"
+aarch64-linux = "516893301e9ec0f2594edfcf8f943ec3b3ba96f3aad2b507eff2b71e644e5fca"
+
+[size]
+x86_64-linux  = 145753267
+aarch64-linux = 136465132
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/sigstore/cosign/main/LICENSE"
+to     = "LICENSE"

@@ -1,0 +1,22 @@
+version = "f7be2e939"
+date    = "2026-11-22T18:51:34Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SDLPoP-AppImage/releases/download/f7be2e939%402026-11-22_1795373493/SDLPoP-f7be2e939-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SDLPoP-AppImage/releases/download/f7be2e939%402026-11-22_1795373493/SDLPoP-f7be2e939-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "aa13c76ab5b0417c5ffc871ea027b8095539c45672ea7f3a0958ab8a35615f8c"
+aarch64-linux = "d102f7be577ea97fe68344e36dcb8fb6e0b2ddd83256d6a7ae02ea2ce6303f1e"
+
+[sha256]
+x86_64-linux  = "79e1b2173127704ae2ccf9f7126868775733273f4712d5a50289abb15e82c9b5"
+aarch64-linux = "f50ca04bc54f758ddd67e77017717d1a8954b5a326f18e1739e9fe9d9bf6c107"
+
+[size]
+x86_64-linux  = 19105840
+aarch64-linux = 18473188
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/NagyD/SDLPoP/master/COPYING"
+to     = "LICENSE"

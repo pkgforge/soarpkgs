@@ -1,0 +1,22 @@
+version = "17.0.0-3"
+date    = "2026-11-22T18:35:49Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/CopyQ-AppImage/releases/download/17.0.0-3%402026-11-22_1795372547/CopyQ-17.0.0-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/CopyQ-AppImage/releases/download/17.0.0-3%402026-11-22_1795372547/CopyQ-17.0.0-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "8ae00c4f848805022eacf5aeaaf074123fe43ed7d0a2c66745dd318cee2294d9"
+aarch64-linux = "5ed433c9a3a475075d10bf0dc925876277bc57a4d55e471fa2f2c0566ce45ffc"
+
+[sha256]
+x86_64-linux  = "338e7cce01e91b81acf0edec73c54927beb2b747ff6123ee2b133980c004b134"
+aarch64-linux = "f2425f9e9fd0f445834ac283e9a047621095b81212126899d8192b731bac57b4"
+
+[size]
+x86_64-linux  = 47183739
+aarch64-linux = 47363878
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/hluk/CopyQ/master/LICENSE"
+to     = "LICENSE"

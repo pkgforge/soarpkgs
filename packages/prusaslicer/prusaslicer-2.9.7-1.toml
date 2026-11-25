@@ -1,0 +1,18 @@
+version = "2.9.7-1"
+date    = "2026-11-21T15:03:10Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/PrusaSlicer-AppImage/releases/download/2.9.7-1%402026-11-21_1795273389/PrusaSlicer-2.9.7-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "5908388f108ff5f3389491c24dff84906dd63bdbe5dd64acc132e9647564e518"
+
+[sha256]
+x86_64-linux = "67968fb1f35b9ae8c5b8d21b81b199257146327b7cd972e63a5cdf1fe8f6d173"
+
+[size]
+x86_64-linux = 179735188
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/prusa3d/PrusaSlicer/master/LICENSE"
+to     = "LICENSE"

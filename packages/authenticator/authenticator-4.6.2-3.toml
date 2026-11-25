@@ -1,0 +1,22 @@
+version = "4.6.2-3"
+date    = "2026-11-22T18:46:04Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Authenticator-AppImage/releases/download/4.6.2-3%402026-11-22_1795373162/Authenticator-4.6.2-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Authenticator-AppImage/releases/download/4.6.2-3%402026-11-22_1795373162/Authenticator-4.6.2-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0e23cc3cc7cdb1753302d3e158fc97091fdb5dc6eedefee901bf091488cd55c7"
+aarch64-linux = "c52bea4a9469840bd690a671c3620c81b6d9b089b2888ddf18a79e93ec02bfce"
+
+[sha256]
+x86_64-linux  = "31a8bdb622d9ca5d7673d2d26f682fd109ccb86561152feddab2f1b410432daf"
+aarch64-linux = "41bc03db636a0a2466b788dcbdd2d0f62fd5c02f14923806dd2185236236c127"
+
+[size]
+x86_64-linux  = 57118006
+aarch64-linux = 56103844
+
+[[extra]]
+url    = "https://gitlab.gnome.org/World/Authenticator/-/raw/master/LICENSE"
+to     = "LICENSE"

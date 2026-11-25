@@ -1,0 +1,22 @@
+version = "0407cbd51"
+date    = "2026-11-22T18:49:04Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/SheepShaver-AppImage/releases/download/0407cbd51%402026-11-22_1795373343/SheepShaver-0407cbd51-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/SheepShaver-AppImage/releases/download/0407cbd51%402026-11-22_1795373343/SheepShaver-0407cbd51-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "792f0a4a84d37c46f33580a7e302ce1fb3307ef48aac09a9c94519ae03592c7c"
+aarch64-linux = "ed6d7d55b633dc1286223a5dcc79f9eaadddc7423fc334682ee4ff94d140791c"
+
+[sha256]
+x86_64-linux  = "ebf4a16ee12d677396a65b7820a7f3e9e27e1e6ee78653a9ef0ae3d8a70f2cf7"
+aarch64-linux = "5c24a722d22084bfed37500a08e6ed600f60429f971de0b3b29586bebd12e768"
+
+[size]
+x86_64-linux  = 28854970
+aarch64-linux = 28050585
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/kanjitalk755/macemu/master/SheepShaver/COPYING"
+to     = "LICENSE"
