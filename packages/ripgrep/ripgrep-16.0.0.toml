@@ -1,0 +1,18 @@
+version = "16.0.0"
+date    = "2026-11-22T22:59:48Z"
+
+[url]
+x86_64-linux  = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "677cc2159f9cd8e15f5a7c3f9a6c9b75b53594ef0e7c10f7bff23d1e962a79e8"
+aarch64-linux = "42d33cafe36b863f4b4881a0e3208d42674742b12cb81d42afea15094c54ff9e"
+
+[sha256]
+x86_64-linux  = "54268ab4643c00a290a29b0086066d64b3f56236dd805ec64629a86f9bd29fd0"
+aarch64-linux = "374f1886be881e8e8683d7107278f7af1b6017fda75eb97de71f5783f42b0110"
+
+[size]
+x86_64-linux  = 2230229
+aarch64-linux = 1988157

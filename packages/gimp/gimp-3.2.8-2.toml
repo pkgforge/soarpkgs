@@ -1,0 +1,22 @@
+version = "3.2.8-2"
+date    = "2026-11-22T18:44:23Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.8-2%402026-11-22_1795373062/GIMP-3.2.8-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.8-2%402026-11-22_1795373062/GIMP-3.2.8-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "0e5b942c2c54abda7363feb7a351924525f8bf86c718f146fe8f4e80e55f5a2e"
+aarch64-linux = "39c0c342e3c0cd271aeee23b67b63e02c56beed975e43d55ebb37903f2309f97"
+
+[sha256]
+x86_64-linux  = "239219f8b1fb2258e95ab735c56a9b02d0b3753c89096b4b9bb4e3a4d634f778"
+aarch64-linux = "4b51ab3e042310312cf8f79533e0c1e149c427a272ddf3fa23084bdc385c80ea"
+
+[size]
+x86_64-linux  = 184777444
+aarch64-linux = 174484451
+
+[[extra]]
+url    = "https://gitlab.gnome.org/GNOME/gimp/-/raw/master/COPYING"
+to     = "LICENSE"

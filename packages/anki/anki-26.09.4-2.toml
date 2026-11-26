@@ -1,0 +1,22 @@
+version = "26.09.4-2"
+date    = "2026-11-22T18:50:53Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/anki-AppImage/releases/download/26.09.4-2%402026-11-22_1795373452/Anki-26.09.4-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/anki-AppImage/releases/download/26.09.4-2%402026-11-22_1795373452/Anki-26.09.4-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "6419f8021e839656a2a5ef7896ef41a505ea2a338e1a7f7114177b5b00a9302b"
+aarch64-linux = "6d40e7a5dea3a9040b2045ca072973f8ab1d0b6a509c744386ac22283d94a25b"
+
+[sha256]
+x86_64-linux  = "07c4aed8e6c5f014a0cc44df0722c833d114172a344afba01a7a181738bb9297"
+aarch64-linux = "8ee4aa729b303fc1a5690284a6f56184952ec6e50b9bea3e44526514effd5ca0"
+
+[size]
+x86_64-linux  = 184694923
+aarch64-linux = 178832187
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/ankitects/anki/refs/heads/main/LICENSE"
+to     = "LICENSE"

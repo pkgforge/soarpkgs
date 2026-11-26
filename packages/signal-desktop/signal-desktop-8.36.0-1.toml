@@ -1,0 +1,18 @@
+version = "8.36.0-1"
+date    = "2026-11-22T18:41:06Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/Signal-AppImage-Enhanced/releases/download/8.36.0-1%402026-11-22_1795372865/Signal-8.36.0-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "6b6bb085740d0b4a33a0fa7e0aec466fa7ccc665d1cb6abdd2cd78d1ffb1eaf4"
+
+[sha256]
+x86_64-linux = "d02e482a8d479f4e2c1a43fa4433bb90ec088d457d30a8bca4e04048cf2a4184"
+
+[size]
+x86_64-linux = 160884741
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/signalapp/Signal-Desktop/a3173f6ae3961a44827fa59f975a789db1224e56/LICENSE"
+to     = "LICENSE"

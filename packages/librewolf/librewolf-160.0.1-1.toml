@@ -1,0 +1,22 @@
+version = "160.0.1-1"
+date    = "2026-11-23T18:55:44Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced/releases/download/160.0.1-1%402026-11-23_1795460143/LibreWolf-160.0.1-1-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/LibreWolf-AppImage-Enhanced/releases/download/160.0.1-1%402026-11-23_1795460143/LibreWolf-160.0.1-1-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "c76917f91f824c6d97d80c0a1f02735982bd9e2ad4d75fe94c7641d07ecc68d9"
+aarch64-linux = "4d79c2d61a6074177ba7d4e7ba9afbc46fd4738b6ad8c3c5347f4b61d2700c23"
+
+[sha256]
+x86_64-linux  = "0173982974909b0c38bbf4460b553158a478d197302998bdc85012121f05bd55"
+aarch64-linux = "962bd144f67b1f426cbdd9b3b426d675ab9a0a9fbe012977d22c531d406aa464"
+
+[size]
+x86_64-linux  = 218005019
+aarch64-linux = 204302872
+
+[[extra]]
+url    = "https://gitlab.com/librewolf-community/browser/source/-/raw/main/LICENSE"
+to     = "LICENSE"

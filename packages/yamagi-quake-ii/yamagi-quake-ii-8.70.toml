@@ -1,21 +1,21 @@
 version = "8.70"
-date    = "2026-11-01T18:27:02Z"
+date    = "2026-11-22T18:52:31Z"
 
 [url]
-x86_64-linux  = "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releases/download/8.70%402026-11-01_1793557621/Yamagi_Quake_II-8.70-anylinux-x86_64.AppImage"
-aarch64-linux = "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releases/download/8.70%402026-11-01_1793557621/Yamagi_Quake_II-8.70-anylinux-aarch64.AppImage"
+x86_64-linux  = "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releases/download/8.70%402026-11-22_1795373550/Yamagi_Quake_II-8.70-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releases/download/8.70%402026-11-22_1795373550/Yamagi_Quake_II-8.70-anylinux-aarch64.AppImage"
 
 [blake3]
-x86_64-linux  = "4a11ec11a5b76d0855c2c700b900a9d9874fe117d1e26c7a5cbabdc519d1517e"
-aarch64-linux = "c8348e393038f930f3deb582225e63c4fc95422cba37fa06bec654ec8f5334ca"
+x86_64-linux  = "f8b6deea008e07be4d9f11a07fa4b4d0c5f0cbe7f1c550785ab5bb40064367d4"
+aarch64-linux = "0215bf1acfaf9e9a72bd2068059cbead5f2862512b1cf86143179ab0639e2192"
 
 [sha256]
-x86_64-linux  = "79f54d613ecfba14877e47a96c648fbbaf975e4850fe3500f43699e3f149c884"
-aarch64-linux = "62529270f1d8c3c743660718a8ea4daf822b2bdd8903cd59c4f4b76df8cae535"
+x86_64-linux  = "185e5256fb73125dfae6cdf5659f57d533ae8a17604805d108b6d71224fd7eba"
+aarch64-linux = "0dca7b623beb710343f0b03a289b1d2057fb3366d5ee3d0033388277cefc25b2"
 
 [size]
-x86_64-linux  = 25938627
-aarch64-linux = 25198332
+x86_64-linux  = 24172800
+aarch64-linux = 24987254
 
 [[extra]]
 url    = "https://raw.githubusercontent.com/yquake2/yquake2/master/LICENSE"

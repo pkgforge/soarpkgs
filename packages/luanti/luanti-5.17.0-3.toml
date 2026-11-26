@@ -1,0 +1,22 @@
+version = "5.17.0-3"
+date    = "2026-11-22T15:46:48Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Luanti-AppImage/releases/download/5.17.0-3%402026-11-22_1795362407/Luanti-5.17.0-3-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Luanti-AppImage/releases/download/5.17.0-3%402026-11-22_1795362407/Luanti-5.17.0-3-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "1bc25a306e68a44438d2009f084ff20e61f5d0b3fa42cf7ee06b57a5c584f472"
+aarch64-linux = "6019568f6a898279a0704027b5ac57dd4a465b6518af70271ff427ef52c8ddc6"
+
+[sha256]
+x86_64-linux  = "685637a1707643c8ae45ec9f3970123c0f8d02abf7879e7b1a756f121002adbe"
+aarch64-linux = "acc077647d0776b744577c5a0f5760f5a98eb126fb08f31c867996663603d1e8"
+
+[size]
+x86_64-linux  = 37965511
+aarch64-linux = 37625893
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/luanti-org/luanti/master/LICENSE.txt"
+to     = "LICENSE"

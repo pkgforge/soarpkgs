@@ -1,0 +1,22 @@
+version = "6.2.0"
+date    = "2026-11-22T18:45:17Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/6.2.0%402026-11-22_1795373116/Whatsie-6.2.0-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/6.2.0%402026-11-22_1795373116/Whatsie-6.2.0-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "4e684306af59430ce49b4a697c2b81183938e6985d299f5b12089fd3232d21aa"
+aarch64-linux = "4bafdecdd26d880b620aca1884bdde0723dbbe11184bd300b48bc25c8a6d187c"
+
+[sha256]
+x86_64-linux  = "01ecd4e22663fec503e6a8294eff410ef70d417e02e1a4e5cd59c986ed8d8be2"
+aarch64-linux = "c116eae4fcc055aa4cc7747cbde132a380aba0c375aca349628bdc886e997f79"
+
+[size]
+x86_64-linux  = 177091201
+aarch64-linux = 167048734
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/keshavbhatt/whatsie/main/LICENSE"
+to     = "LICENSE"

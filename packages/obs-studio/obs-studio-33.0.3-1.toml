@@ -1,0 +1,18 @@
+version = "33.0.3-1"
+date    = "2026-11-22T18:48:11Z"
+
+[url]
+x86_64-linux = "https://github.com/pkgforge-dev/OBS-Studio-AppImage/releases/download/33.0.3-1%402026-11-22_1795373290/OBS_Studio-33.0.3-1-anylinux-x86_64.AppImage"
+
+[blake3]
+x86_64-linux = "dd6b9ba46dca8a6df812300349002b5b4307048964c1edb54549727e0c37247d"
+
+[sha256]
+x86_64-linux = "7982e12476baa94dde48396d242e0749d9e898d0a4833d425fd773e3c48f3dbe"
+
+[size]
+x86_64-linux = 237768970
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/obsproject/obs-studio/13a132b486295042a0daf558bff977a6d19a4e84/COPYING"
+to     = "LICENSE"

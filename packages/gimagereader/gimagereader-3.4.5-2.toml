@@ -1,0 +1,22 @@
+version = "3.4.5-2"
+date    = "2026-11-22T18:47:59Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/gImageReader-AppImage/releases/download/3.4.5-2%402026-11-22_1795373277/gImageReader-3.4.5-2-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/gImageReader-AppImage/releases/download/3.4.5-2%402026-11-22_1795373277/gImageReader-3.4.5-2-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "05cc3fd31f01ce84239f0dc62c7aa31588d7cb6a9dae68ed2016562a8ce49a22"
+aarch64-linux = "529e6f0468f17bea7dcd5c6d8e8933a64e52b6c6e4cf8be7a10cfc567159a2c0"
+
+[sha256]
+x86_64-linux  = "75c58ee5a97a9c0d5004b8f5e54502943376ecae011173cb24c3e4c843f6cf65"
+aarch64-linux = "0ff15b7b04d564d68cb2857ca0c1e73acf22b3a622b10c0e8fe7cb5c9b190528"
+
+[size]
+x86_64-linux  = 74502368
+aarch64-linux = 74070476
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/manisandro/gImageReader/master/COPYING"
+to     = "LICENSE"

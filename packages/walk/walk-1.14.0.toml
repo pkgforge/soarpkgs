@@ -1,0 +1,22 @@
+version = "1.14.0"
+date    = "2026-11-21T14:16:20Z"
+
+[url]
+x86_64-linux  = "https://github.com/antonmedv/walk/releases/download/v1.14.0/walk_linux_amd64"
+aarch64-linux = "https://github.com/antonmedv/walk/releases/download/v1.14.0/walk_linux_arm64"
+
+[blake3]
+x86_64-linux  = "14bfb5e9c00589a3b03dd70e76d435b4a37bdb5fbdf0ad7a3acccd4356f3bc72"
+aarch64-linux = "94fc5b037a141bcd697df95efe6029d640342e35ec485e1f2df312f541217cdb"
+
+[sha256]
+x86_64-linux  = "00d2555d0cc3d5cee71f89724f57150e3ebc4ed1c38fa9da78023e76744dbd3b"
+aarch64-linux = "3cb402abb7a281dda2933739afc8d4c7289097f75a162a5f246a61470acb1f0e"
+
+[size]
+x86_64-linux  = 13499744
+aarch64-linux = 12818444
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/antonmedv/walk/master/LICENSE"
+to     = "LICENSE"

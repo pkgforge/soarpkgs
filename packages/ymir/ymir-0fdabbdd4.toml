@@ -1,0 +1,22 @@
+version = "0fdabbdd4"
+date    = "2026-11-22T18:51:05Z"
+
+[url]
+x86_64-linux  = "https://github.com/pkgforge-dev/Ymir-AppImage/releases/download/0fdabbdd4%402026-11-22_1795373464/Ymir-0fdabbdd4-anylinux-x86_64.AppImage"
+aarch64-linux = "https://github.com/pkgforge-dev/Ymir-AppImage/releases/download/0fdabbdd4%402026-11-22_1795373464/Ymir-0fdabbdd4-anylinux-aarch64.AppImage"
+
+[blake3]
+x86_64-linux  = "f59f1aa55631d575bf50244da625e77f51d563213ea809415ff3bd72a04b37d9"
+aarch64-linux = "4e7532c265ddd5645508eca8bd4a067d4bbee7ba81ad710d119fecf10958e02b"
+
+[sha256]
+x86_64-linux  = "4048654fee6ab3eed166e5b22d69c7da2d00a511ab8bab7fe791b43fd74a4ca9"
+aarch64-linux = "56963392e0578f56c5acdefcde8ca8af9a3182504190717d55735bf51c0ccdaa"
+
+[size]
+x86_64-linux  = 29768756
+aarch64-linux = 31219506
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/StrikerX3/Ymir/main/LICENSE"
+to     = "LICENSE"
