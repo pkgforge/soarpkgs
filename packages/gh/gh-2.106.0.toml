@@ -1,0 +1,18 @@
+version = "2.106.0"
+date    = "2026-11-25T22:48:46Z"
+
+[url]
+x86_64-linux  = "https://github.com/cli/cli/releases/download/v2.106.0/gh_2.106.0_linux_amd64.tar.gz"
+aarch64-linux = "https://github.com/cli/cli/releases/download/v2.106.0/gh_2.106.0_linux_arm64.tar.gz"
+
+[blake3]
+x86_64-linux  = "4db141b62efcd0a52f17eaf41627fb95b6447f425c75f544f95edf7cfa599798"
+aarch64-linux = "4c8d1dfff67e840026fbe2047e91c829c9b86d701bafa406e6ef0e8783d52aef"
+
+[sha256]
+x86_64-linux  = "a476449fa9625413c54a3734eded62e9e480e49f421ff08e7f3b3879c059a033"
+aarch64-linux = "5e8a0c51e1a8345f36bd0b8bb88604b6a5388df16f3ab3e3b9b6d794fa223a67"
+
+[size]
+x86_64-linux  = 15101741
+aarch64-linux = 13734973
