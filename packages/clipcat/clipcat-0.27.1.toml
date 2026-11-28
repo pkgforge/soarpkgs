@@ -1,0 +1,22 @@
+version = "0.27.1"
+date    = "2026-11-28T00:32:25Z"
+
+[url]
+x86_64-linux  = "https://github.com/xrelkd/clipcat/releases/download/v0.27.1/clipcat-0.27.1-x86_64-unknown-linux-musl.tar.gz"
+aarch64-linux = "https://github.com/xrelkd/clipcat/releases/download/v0.27.1/clipcat-0.27.1-aarch64-unknown-linux-musl.tar.gz"
+
+[blake3]
+x86_64-linux  = "0f6369cb6ffa3387270d7a146f64b4fa2866d721bbdfe4ef578588c576fc5586"
+aarch64-linux = "77d37d7c8636310095a23edd13c4567e0e50f9ca714b4d30883faff08904f447"
+
+[sha256]
+x86_64-linux  = "421af9aaa6d1ba2c9623cec362690a07d98762f6b94a35e099d0d8fe4b63f606"
+aarch64-linux = "b3edf0e0d0d074eeaebcc087e838ab157e60dbd597115f2f8a101f9efc55e1aa"
+
+[size]
+x86_64-linux  = 21565700
+aarch64-linux = 20588798
+
+[[extra]]
+url    = "https://raw.githubusercontent.com/xrelkd/clipcat/main/LICENSE"
+to     = "LICENSE"

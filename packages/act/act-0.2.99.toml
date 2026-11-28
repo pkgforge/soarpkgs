@@ -1,0 +1,22 @@
+version = "0.2.99"
+date    = "2026-11-28T00:03:44Z"
+
+[url]
+x86_64-linux  = "https://github.com/nektos/act/releases/download/v0.2.99/act_Linux_x86_64.tar.gz"
+aarch64-linux = "https://github.com/nektos/act/releases/download/v0.2.99/act_Linux_arm64.tar.gz"
+riscv64-linux = "https://github.com/nektos/act/releases/download/v0.2.99/act_Linux_riscv64.tar.gz"
+
+[blake3]
+x86_64-linux  = "3404b7ab97c600216c4830318d75b86103bbb9ba333f677211ebc0e64d32a323"
+aarch64-linux = "dd54093c907b0825981a82f9fab39fdbd03bf164f3cd98896704e32251a698ce"
+riscv64-linux = "e3de27e64b8c36e1d44bd4cac65f698dd7d6b71d226001073f42e89ad8bf1831"
+
+[sha256]
+x86_64-linux  = "244abf6b011257ae959be907d618a8243863991020190c9107e151b545e32cdd"
+aarch64-linux = "e7544abd0d74a06fd63a158a45c0f935c54a3f8759bf4c615034b1eb66d3a950"
+riscv64-linux = "eab039d825e815cadb87ce4915e7952485b04c658465fa7c18b57b15c6668f88"
+
+[size]
+x86_64-linux  = 8491994
+aarch64-linux = 7662460
+riscv64-linux = 7906201
