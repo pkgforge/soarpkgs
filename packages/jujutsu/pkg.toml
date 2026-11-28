@@ -1,0 +1,24 @@
+[pkg]
+name        = "jujutsu"
+type        = "static"
+description = "Git-compatible version control system"
+homepage    = ["https://github.com/jj-vcs/jj"]
+license     = ["Apache-2.0"]
+maintainer  = ["QaidVoid (contact@qaidvoid.dev)"]
+category    = ["ConsoleOnly", "Development", "RevisionControl"]
+repology    = ["jujutsu"]
+
+[host]
+supported = ["x86_64-linux", "aarch64-linux"]
+
+[update]
+strategy     = "github-releases"
+repo         = "jj-vcs/jj"
+strip-prefix = "v"
+
+[source]
+url = "https://github.com/jj-vcs/jj/releases/download/v${version}/jj-v${version}-${arch}-unknown-linux-musl.tar.gz"
+
+[source.install]
+"LICENSE" = "LICENSE"
+"jj"      = "bin/jj"
