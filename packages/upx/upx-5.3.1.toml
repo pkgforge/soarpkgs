@@ -1,0 +1,22 @@
+version = "5.3.1"
+date    = "2026-11-26T13:43:38Z"
+
+[url]
+x86_64-linux  = "https://github.com/upx/upx/releases/download/v5.3.1/upx-5.3.1-amd64_linux.tar.xz"
+aarch64-linux = "https://github.com/upx/upx/releases/download/v5.3.1/upx-5.3.1-arm64_linux.tar.xz"
+riscv64-linux = "https://github.com/upx/upx/releases/download/v5.3.1/upx-5.3.1-riscv64_linux.tar.xz"
+
+[blake3]
+x86_64-linux  = "7574e8a04d0aaa56c2aaeeec1ea739254237c9c06d4e029f768d9d6c32981235"
+aarch64-linux = "1404516c90a9e1fab09f839b7f0414b199f84d121e60f6284a26e5c58dc0d752"
+riscv64-linux = "3cedf545ba9bb8b49de59af18d7d465d51b524f9f3be77b74eb2746f95f751f6"
+
+[sha256]
+x86_64-linux  = "a559745c9de96101f77cab4a71c396556181b748fcade73e51cc5a6268dcecad"
+aarch64-linux = "e227cff8f0458b9754c9fa8747d094237b34be0ad5466d6fc89d7cee542963a8"
+riscv64-linux = "b24e2d981150d205267405f563938afd9ee6ae130c5c9cb8cb7be883414552fc"
+
+[size]
+x86_64-linux  = 676336
+aarch64-linux = 686316
+riscv64-linux = 751968
